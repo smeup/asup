@@ -61,7 +61,12 @@ public class E4EquinoxApplicationImpl implements IApplication {
 		m.put("xmi", new XMIResourceFactoryImpl());
 
 		ResourceSet resourceSet = new ResourceSetImpl();
-		URI uri = URI.createFileURI(applicationConfig);
+		URI uri = null;
+		
+		if(applicationConfig.startsWith("http"))
+			uri = URI.createURI(applicationConfig);
+		else
+			uri = URI.createFileURI(applicationConfig);
 		Resource resource = resourceSet.getResource(uri, true);
 		resource.load(Collections.EMPTY_MAP);
 		application = (QApplication) resource.getContents().get(0);
