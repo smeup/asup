@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="flow" nsURI="http://www.smeup.org/asup/il/flow" nsPrefix="il-flow">
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationCommand" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Annotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Break" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Call" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="program" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallableUnit" abstract="true" eSuperTypes="#//Unit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setupSection" eType="#//SetupSection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSection" eType="#//DataSection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fileSection" eType="#//FileSection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flowSection" eType="#//FlowSection"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandExec" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Continue" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSection" eSuperTypes="#//UnitSection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datas" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entry" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
+        upperBound="-1" containment="true">
+      <eGenericType eClassifier="#//EntryParameter">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntryParameter" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//NamedNode">
+    <eTypeParameters name="T">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term"/>
+    </eTypeParameters>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" containment="true">
+      <eGenericType eTypeParameter="#//EntryParameter/T"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="passingType" lowerBound="1"
+        eType="#//PassingType" defaultValueLiteral="REF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Eval" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assignment" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EvalOperator">
+    <eLiterals name="Assign" value="10" literal="="/>
+    <eLiterals name="PlusAssign" value="20" literal="+="/>
+    <eLiterals name="MinusAssign" value="30" literal="-="/>
+    <eLiterals name="TimesAssign" value="40" literal="*="/>
+    <eLiterals name="DivideAssign" value="50" literal="/="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileSection" eSuperTypes="#//UnitSection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSets" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DataSetTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyLists" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//KeyListTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cursors" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.db.esql/model/db-esql.ecore#//CursorTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.db.esql/model/db-esql.ecore#//StatementTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="displays" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DisplayTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="printers" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//PrintTerm"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowData">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/DataDef">
+        <eTypeArguments/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlowSection" eSuperTypes="#//UnitSection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterLists" upperBound="-1"
+        eType="#//ParameterList" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="procedures" upperBound="-1"
+        eType="#//Procedure" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prototypes" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="#//Prototype">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routines" upperBound="-1"
+        eType="#//Routine" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="For" eSuperTypes="#//Iteration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="increment" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialization" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="then" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="else" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Invoke" abstract="true" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Iteration" abstract="true" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Jump" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MethodExec" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module" eSuperTypes="#//CallableUnit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Monitor" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onErrors" upperBound="-1"
+        eType="#//OnError" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OnError" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Statement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="error" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterList" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PassingType">
+    <eLiterals name="ByName" value="10" literal="NAM"/>
+    <eLiterals name="ByReference" value="20" literal="REF"/>
+    <eLiterals name="ByValue" value="30" literal="VAL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Procedure" eSuperTypes="#//CallableUnit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Entry"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" containment="true">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/DataDef">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcedureExec" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="procedure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Program" eSuperTypes="#//CallableUnit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//ParameterList"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Prototype" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
+    <eTypeParameters name="DT">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+        <eTypeArguments/>
+      </eBounds>
+    </eTypeParameters>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" containment="true">
+      <eGenericType eTypeParameter="#//Prototype/DT"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Entry"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reset" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Return" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Routine" eSuperTypes="#//Unit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RoutineExec" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="routine" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetupSection" eSuperTypes="#//UnitSection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Annotation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="application" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modules" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="termSensitive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SQLExec" eSuperTypes="#//Invoke">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
+    <eOperations name="accept">
+      <eParameters name="visitor" lowerBound="1" eType="#//StatementVisitor"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StatementVisitor" abstract="true">
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Block"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Break"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Call"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//CommandExec"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Continue"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Eval"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//For"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//If"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Jump"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Label"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//MethodExec"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Monitor"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//ProcedureExec"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Return"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//RoutineExec"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//SQLExec"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Statement"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Until"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//While"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Block"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Break"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Call"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//CommandExec"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Continue"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Eval"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//For"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//If"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Jump"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Label"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//MethodExec"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Monitor"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//ProcedureExec"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Return"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//RoutineExec"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//SQLExec"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Statement"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Until"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//While"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="statement" eType="#//Reset"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="statement" eType="#//Reset"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//NamedNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="main" eType="#//Statement"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitSection" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Until" eSuperTypes="#//Iteration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="While" eSuperTypes="#//Iteration"/>
+</ecore:EPackage>

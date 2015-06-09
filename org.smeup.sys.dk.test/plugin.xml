@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated fw-test -->
+      <package
+            uri="http://www.smeup.org/asup/fw/test"
+            class="org.smeup.sys.dk.test.QDevelopmentKitTestPackage"
+            genModel="model/dk-test.genmodel"/>
+   </extension>
+
+</plugin>

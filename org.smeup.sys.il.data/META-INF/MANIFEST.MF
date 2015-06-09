@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Data
+Bundle-SymbolicName: org.smeup.sys.il.data;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: www.smeup.com
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.smeup.sys.il.core;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.smeup.sys.il.data,
+ org.smeup.sys.il.data.annotation,
+ org.smeup.sys.il.data.def,
+ org.smeup.sys.il.data.def.impl,
+ org.smeup.sys.il.data.impl,
+ org.smeup.sys.il.data.term,
+ org.smeup.sys.il.data.term.impl
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP UI Extended PDM AntLR
+Bundle-SymbolicName: org.smeup.sys.ui.epdm.antlr;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.smeup.sys.ui.epdm.antlr.Activator
+Bundle-Vendor: www.smeup.com
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.console
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/antlr-3.5.1-complete-no-st3.jar,
+ lib/antlrworks-1.5.2-complete.jar
+Export-Package: org.smeup.sys.ui.epdm.antlr,
+ org.smeup.sys.ui.epdm.antlr.actions

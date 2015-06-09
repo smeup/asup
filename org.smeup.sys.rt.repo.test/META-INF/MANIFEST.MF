@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Runtime Repository Test
+Bundle-SymbolicName: org.smeup.sys.rt.repo.test
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.rt.repo,
+ org.smeup.sys.dk.test.e4
+Export-Package: org.smeup.sys.rt.repo.test,
+ org.smeup.sys.rt.repo.test.runner

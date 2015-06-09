@@ -1,0 +1,740 @@
+/**
+ * Copyright (c) 2012, 2015 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
+package org.smeup.sys.rt.core.impl;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.rt.core.ApplicationStatus;
+import org.smeup.sys.rt.core.QApplication;
+import org.smeup.sys.rt.core.QApplicationComponent;
+import org.smeup.sys.rt.core.QApplicationManager;
+import org.smeup.sys.rt.core.QApplicationModule;
+import org.smeup.sys.rt.core.QBundleManager;
+import org.smeup.sys.rt.core.QBundleVisitor;
+import org.smeup.sys.rt.core.QLogger;
+import org.smeup.sys.rt.core.QRuntimeCoreFactory;
+import org.smeup.sys.rt.core.QRuntimeCorePackage;
+import org.smeup.sys.rt.core.QServiceHook;
+import org.smeup.sys.rt.core.QServicePlugin;
+import org.smeup.sys.rt.core.QServiceRef;
+import org.smeup.sys.rt.core.ServiceStatus;
+import org.smeup.sys.rt.core.auth.QRuntimeCoreAuthPackage;
+import org.smeup.sys.rt.core.auth.impl.RuntimeCoreAuthPackageImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Package</b>.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCorePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationComponentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bundleManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bundleVisitorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass loggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceHookEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass servicePluginEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceRefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum applicationStatusEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum serviceStatusEEnum = null;
+
+	/**
+	 * Creates an instance of the model <b>Package</b>, registered with
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * package URI value.
+	 * <p>Note: the correct way to create the package is via the static
+	 * factory method {@link #init init()}, which also performs
+	 * initialization of the package, or returns the registered package,
+	 * if one already exists.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.EPackage.Registry
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#eNS_URI
+	 * @see #init()
+	 * @generated
+	 */
+	private RuntimeCorePackageImpl() {
+		super(eNS_URI, QRuntimeCoreFactory.eINSTANCE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static boolean isInited = false;
+
+	/**
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link QRuntimeCorePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #eNS_URI
+	 * @see #createPackageContents()
+	 * @see #initializePackageContents()
+	 * @generated
+	 */
+	public static QRuntimeCorePackage init() {
+		if (isInited) return (QRuntimeCorePackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeCorePackage.eNS_URI);
+
+		// Obtain or create and register package
+		RuntimeCorePackageImpl theRuntimeCorePackage = (RuntimeCorePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof RuntimeCorePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new RuntimeCorePackageImpl());
+
+		isInited = true;
+
+		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+
+		// Obtain or create and register interdependencies
+		RuntimeCoreAuthPackageImpl theRuntimeCoreAuthPackage = (RuntimeCoreAuthPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI) instanceof RuntimeCoreAuthPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI) : QRuntimeCoreAuthPackage.eINSTANCE);
+
+		// Create package meta-data objects
+		theRuntimeCorePackage.createPackageContents();
+		theRuntimeCoreAuthPackage.createPackageContents();
+
+		// Initialize created meta-data
+		theRuntimeCorePackage.initializePackageContents();
+		theRuntimeCoreAuthPackage.initializePackageContents();
+
+		// Mark meta-data to indicate it can't be changed
+		theRuntimeCorePackage.freeze();
+
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(QRuntimeCorePackage.eNS_URI, theRuntimeCorePackage);
+		return theRuntimeCorePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getApplication() {
+		return applicationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplication_Components() {
+		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getApplication_Hooks() {
+		return (EReference)applicationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getApplication_Name() {
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getApplication_Text() {
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getApplicationComponent() {
+		return applicationComponentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationComponent_Hooks() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationComponent_Modules() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationComponent_Name() {
+		return (EAttribute)applicationComponentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationComponent_Configs() {
+		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getApplicationModule() {
+		return applicationModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplicationModule_Name() {
+		return (EAttribute)applicationModuleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplicationModule_Services() {
+		return (EReference)applicationModuleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getApplicationManager() {
+		return applicationManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBundleManager() {
+		return bundleManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBundleVisitor() {
+		return bundleVisitorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLogger() {
+		return loggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getServiceHook() {
+		return serviceHookEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getServicePlugin() {
+		return servicePluginEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServicePlugin_Name() {
+		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServicePlugin_Text() {
+		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServicePlugin_Version() {
+		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServicePlugin_Vendor() {
+		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getServiceRef() {
+		return serviceRefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRef_ClassName() {
+		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRef_InterfaceName() {
+		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRef_RemoteExport() {
+		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getServiceRef_Status() {
+		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServiceRef_Services() {
+		return (EReference)serviceRefEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getApplicationStatus() {
+		return applicationStatusEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getServiceStatus() {
+		return serviceStatusEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QRuntimeCoreFactory getRuntimeCoreFactory() {
+		return (QRuntimeCoreFactory)getEFactoryInstance();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isCreated = false;
+
+	/**
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void createPackageContents() {
+		if (isCreated) return;
+		isCreated = true;
+
+		// Create classes and their features
+		applicationEClass = createEClass(APPLICATION);
+		createEReference(applicationEClass, APPLICATION__COMPONENTS);
+		createEReference(applicationEClass, APPLICATION__HOOKS);
+		createEAttribute(applicationEClass, APPLICATION__NAME);
+		createEAttribute(applicationEClass, APPLICATION__TEXT);
+
+		applicationComponentEClass = createEClass(APPLICATION_COMPONENT);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__CONFIGS);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__HOOKS);
+		createEReference(applicationComponentEClass, APPLICATION_COMPONENT__MODULES);
+		createEAttribute(applicationComponentEClass, APPLICATION_COMPONENT__NAME);
+
+		applicationManagerEClass = createEClass(APPLICATION_MANAGER);
+
+		applicationModuleEClass = createEClass(APPLICATION_MODULE);
+		createEAttribute(applicationModuleEClass, APPLICATION_MODULE__NAME);
+		createEReference(applicationModuleEClass, APPLICATION_MODULE__SERVICES);
+
+		bundleManagerEClass = createEClass(BUNDLE_MANAGER);
+
+		bundleVisitorEClass = createEClass(BUNDLE_VISITOR);
+
+		loggerEClass = createEClass(LOGGER);
+
+		serviceHookEClass = createEClass(SERVICE_HOOK);
+
+		servicePluginEClass = createEClass(SERVICE_PLUGIN);
+		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__NAME);
+		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__TEXT);
+		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__VERSION);
+		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__VENDOR);
+
+		serviceRefEClass = createEClass(SERVICE_REF);
+		createEAttribute(serviceRefEClass, SERVICE_REF__CLASS_NAME);
+		createEAttribute(serviceRefEClass, SERVICE_REF__INTERFACE_NAME);
+		createEAttribute(serviceRefEClass, SERVICE_REF__REMOTE_EXPORT);
+		createEAttribute(serviceRefEClass, SERVICE_REF__STATUS);
+		createEReference(serviceRefEClass, SERVICE_REF__SERVICES);
+
+		// Create enums
+		applicationStatusEEnum = createEEnum(APPLICATION_STATUS);
+		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isInitialized = false;
+
+	/**
+	 * Complete the initialization of the package and its meta-model.  This
+	 * method is guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void initializePackageContents() {
+		if (isInitialized) return;
+		isInitialized = true;
+
+		// Initialize package
+		setName(eNAME);
+		setNsPrefix(eNS_PREFIX);
+		setNsURI(eNS_URI);
+
+		// Obtain other dependent packages
+		QRuntimeCoreAuthPackage theRuntimeCoreAuthPackage = (QRuntimeCoreAuthPackage)EPackage.Registry.INSTANCE.getEPackage(QRuntimeCoreAuthPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theRuntimeCoreAuthPackage);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
+
+		// Add supertypes to classes
+		applicationEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		applicationEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		serviceHookEClass.getESuperTypes().add(this.getServiceRef());
+		servicePluginEClass.getESuperTypes().add(this.getServiceRef());
+
+		// Initialize classes and features; add operations and parameters
+		initEClass(applicationEClass, QApplication.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplication_Components(), this.getApplicationComponent(), null, "components", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Name(), ecorePackage.getEString(), "name", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Text(), ecorePackage.getEString(), "text", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(applicationEClass, ecorePackage.getEString(), "getInstallPath", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(applicationEClass, this.getApplicationStatus(), "getStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(applicationEClass, ecorePackage.getEBoolean(), "isStartable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(applicationEClass, ecorePackage.getEBoolean(), "isStoppable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(applicationComponentEClass, QApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplicationComponent_Configs(), theIntegratedLanguageCorePackage.getObject(), null, "configs", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationComponent_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationComponent_Modules(), this.getApplicationModule(), null, "modules", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplicationComponent_Name(), ecorePackage.getEString(), "name", null, 1, 1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(applicationManagerEClass, QApplicationManager.class, "ApplicationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(applicationManagerEClass, this.getApplication(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getApplication(), "application", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(applicationModuleEClass, QApplicationModule.class, "ApplicationModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getApplicationModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, QApplicationModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplicationModule_Services(), this.getServiceRef(), null, "services", null, 0, -1, QApplicationModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(bundleManagerEClass, QBundleManager.class, "BundleManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(bundleManagerEClass, ecorePackage.getEBoolean(), "isRegisterable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "bundleName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bundleManagerEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "bundleName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBundleVisitor(), "visitor", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bundleManagerEClass, null, "register", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "bundleName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bundleManagerEClass, null, "unregister", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "symbolicName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(bundleVisitorEClass, QBundleVisitor.class, "BundleVisitor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(bundleVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCorePackage.getObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bundleVisitorEClass, null, "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "container", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bundleVisitorEClass, null, "visitExit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "container", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(loggerEClass, QLogger.class, "Logger", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(loggerEClass, null, "debug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "debug", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaThrowable(), "throwable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "error", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "error", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaThrowable(), "throwable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "info", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "info", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaThrowable(), "throwable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "warning", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(loggerEClass, null, "warning", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaThrowable(), "throwable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(serviceHookEClass, QServiceHook.class, "ServiceHook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(servicePluginEClass, QServicePlugin.class, "ServicePlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServicePlugin_Name(), ecorePackage.getEString(), "name", null, 1, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServicePlugin_Text(), ecorePackage.getEString(), "text", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServicePlugin_Version(), ecorePackage.getEString(), "version", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServicePlugin_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(serviceRefEClass, QServiceRef.class, "ServiceRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceRef_ClassName(), ecorePackage.getEString(), "className", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceRef_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 0, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceRef_RemoteExport(), ecorePackage.getEBoolean(), "remoteExport", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getServiceRef_Status(), this.getServiceStatus(), "status", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceRef_Services(), this.getServiceRef(), null, "services", null, 0, -1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(applicationStatusEEnum, ApplicationStatus.class, "ApplicationStatus");
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.INSTALLED);
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.RESOLVED);
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.UNINSTALLED);
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.STARTING);
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.ACTIVE);
+		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.STOPPING);
+
+		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");
+		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.ACTIVE);
+		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.STOPPED);
+		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.TESTING);
+
+		// Create resource
+		createResource(eNS_URI);
+	}
+
+} //FrameworkCorePackageImpl

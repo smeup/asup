@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Expression Base
+Bundle-SymbolicName: org.smeup.sys.il.expr.base
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Require-Bundle: org.smeup.sys.il.expr,
+ org.smeup.sys.et.antlr
+Export-Package: org.smeup.sys.il.expr.base
+Import-Package: javax.inject

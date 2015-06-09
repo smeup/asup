@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated db-esql -->
+      <package
+            uri="http://www.smeup.org/asup/db/esql"
+            class="org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage"
+            genModel="model/db-esql.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/rt/core" nsPrefix="rt-core">
+  <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eOperations name="getInstallPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getStatus" eType="#//ApplicationStatus"/>
+    <eOperations name="isStartable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isStoppable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="#//ApplicationComponent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
+        eType="#//ServiceHook" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationComponent" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configs" upperBound="-1"
+        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
+        eType="#//ServiceHook" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
+        eType="#//ApplicationModule"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationManager" abstract="true"
+      interface="true">
+    <eOperations name="start" lowerBound="1" eType="#//Application">
+      <eParameters name="application" lowerBound="1" eType="#//Application"/>
+      <eParameters name="output" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationModule" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//ServiceRef" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ApplicationStatus">
+    <eLiterals name="Installed" value="10" literal="INS"/>
+    <eLiterals name="Resolved" value="20" literal="RES"/>
+    <eLiterals name="Uninstalled" value="30" literal="UNS"/>
+    <eLiterals name="Starting" value="40" literal="STR"/>
+    <eLiterals name="Active" value="50" literal="ACT"/>
+    <eLiterals name="Stopping" value="60" literal="STP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BundleManager" abstract="true" interface="true">
+    <eOperations name="isRegisterable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="bundleName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="bundleName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="visitor" lowerBound="1" eType="#//BundleVisitor"/>
+    </eOperations>
+    <eOperations name="register" lowerBound="1">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="bundleName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="unregister" lowerBound="1">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="symbolicName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BundleVisitor" abstract="true">
+    <eOperations name="visit">
+      <eParameters name="object" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+    </eOperations>
+    <eOperations name="visitEnter">
+      <eParameters name="container" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectContainer">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="visitExit">
+      <eParameters name="container" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectContainer">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Logger" abstract="true" interface="true">
+    <eOperations name="debug">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="debug">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
+    </eOperations>
+    <eOperations name="error">
+      <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="error">
+      <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
+    </eOperations>
+    <eOperations name="info">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="info">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
+    </eOperations>
+    <eOperations name="warning">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="warning">
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceHook" eSuperTypes="#//ServiceRef"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServicePlugin" eSuperTypes="#//ServiceRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remoteExport" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//ServiceStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//ServiceRef" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceStatus">
+    <eLiterals name="Active" literal="ACT"/>
+    <eLiterals name="Stopped" value="20" literal="STP"/>
+    <eLiterals name="Testing" value="30" literal="TST"/>
+  </eClassifiers>
+  <eSubpackages name="auth" nsURI="http://www.smeup.org/asup/rt/core/auth" nsPrefix="rt-core-auth">
+    <eClassifiers xsi:type="ecore:EClass" name="AuthenticationToken" abstract="true"
+        interface="true">
+      <eOperations name="getID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AuthenticationManager" abstract="true"
+        interface="true">
+      <eOperations name="createAuthenticationToken" eType="#//auth/AuthenticationToken"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.db.esql/src" modelPluginID="org.smeup.sys.db.esql" modelName="As.UP Integrated Language Embedded SQL"
+    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.il.data/model/il-data.genmodel#//data"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>db-esql.ecore</foreignModel>
+  <genPackages prefix="IntegratedLanguageEmbeddedSQL" basePackage="org.smeup.sys.db" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="db-esql.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-esql.ecore#//CursorType">
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//CursorType/NotScrollable"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//CursorType/Scrollable"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//CursorType/DynamicScroll"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-esql.ecore#//FetchPositioning">
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Next"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Prior"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/First"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Last"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Before"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/After"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Current"/>
+      <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//FetchPositioning/Relative"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//CommunicationArea"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//Cursor">
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/next">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/next/target"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/open"/>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/openUsingDescriptor">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/openUsingDescriptor/descriptorName"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/openUsingVariable">
+        <genParameters ecoreParameter="db-esql.ecore#//Cursor/openUsingVariable/variable"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Cursor/close"/>
+    </genClasses>
+    <genClasses ecoreClass="db-esql.ecore#//CursorTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/cursorType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/hold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/sql"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//CursorTerm/statementName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//DescriptorArea"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlObject">
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlObject/getCommunicationArea"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-esql.ecore#//ESqlTerm/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//Statement">
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/prepare">
+        <genParameters ecoreParameter="db-esql.ecore#//Statement/prepare/from"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//Statement/execute"/>
+    </genClasses>
+    <genClasses ecoreClass="db-esql.ecore#//StatementTerm"/>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlManager">
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlManager/createFactory">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlManager/createFactory/contextProvider"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-esql.ecore#//ESqlFactory">
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createCursor">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursor/cursorTerm"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createCursorTerm">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursorTerm/type"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createCursorTerm/annotations"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createStatement">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatement/statementTerm"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-esql.ecore#//ESqlFactory/createStatementTerm">
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatementTerm/type"/>
+        <genParameters ecoreParameter="db-esql.ecore#//ESqlFactory/createStatementTerm/annotations"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

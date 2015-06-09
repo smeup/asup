@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Expression IBMi Test
+Bundle-SymbolicName: org.smeup.sys.il.expr.ibmi.test
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Require-Bundle: org.smeup.sys.il.expr;visibility:=reexport,
+ org.smeup.sys.dk.test.e4
+Import-Package: javax.inject
+Export-Package: org.smeup.sys.il.expr.ibmi.test,
+ org.smeup.sys.il.expr.ibmi.test.runner

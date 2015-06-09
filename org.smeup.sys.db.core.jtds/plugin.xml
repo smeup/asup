@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.net4j.db.dbAdapters">
+      <dbAdapter
+            class="org.smeup.sys.db.core.jtds.JtdsDatabaseAdapter"
+            name="jtds"
+            version="1.2.7">
+      </dbAdapter>
+   </extension>
+</plugin>

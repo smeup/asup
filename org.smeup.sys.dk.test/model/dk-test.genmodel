@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.dk.test/src" modelPluginID="org.smeup.sys.dk.test"
+    modelName="As.UP Development Kit Test" rootExtendsInterface="" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>dk-test.ecore</foreignModel>
+  <genPackages prefix="DevelopmentKitTest" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="dk-test.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-test.ecore#//AssertionState">
+      <genEnumLiterals ecoreEnumLiteral="dk-test.ecore#//AssertionState/success"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-test.ecore#//AssertionState/failed"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//Asserter">
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertTrue">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertTrue/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertTrue/expected"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.1">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.1/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.1/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.1/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.2">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.2/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.2/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.2/actual"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.2/delta"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.3">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.3/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.3/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.3/actual"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.3/delta"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.4">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.4/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.4/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.4/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.5">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.5/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.5/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.5/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.6">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.6/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.6/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.6/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.7">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.7/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.7/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.7/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.8">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.8/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.8/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.8/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertEquals.9">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.9/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.9/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertEquals.9/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertNotNull">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNotNull/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNotNull/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertNull">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNull/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNull/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertSame">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertSame/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertSame/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertSame/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/assertNotSame">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNotSame/message"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNotSame/expected"/>
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/assertNotSame/actual"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/fail">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/fail/message"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//AssertionFailed"/>
+    <genClasses ecoreClass="dk-test.ecore#//AssertionResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//AssertionResult/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//AssertionResult/time"/>
+      <genOperations ecoreOperation="dk-test.ecore#//AssertionResult/getAssertionState"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//AssertionSuccess"/>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//CallableTest"/>
+    <genClasses ecoreClass="dk-test.ecore#//SuiteTestRunner"/>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestAsserter">
+      <genOperations ecoreOperation="dk-test.ecore#//TestAsserter/resetTime"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//TestContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestContainer/tests"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestListener">
+      <genOperations ecoreOperation="dk-test.ecore#//TestListener/addAssertionResult">
+        <genParameters ecoreParameter="dk-test.ecore#//TestListener/addAssertionResult/assertionResult"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestListener/startTest">
+        <genParameters ecoreParameter="dk-test.ecore#//TestListener/startTest/test"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestListener/endTest">
+        <genParameters ecoreParameter="dk-test.ecore#//TestListener/endTest/test"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestManager">
+      <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareRunner">
+        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/context"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/klass"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareRunner.1">
+        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner.1/context"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner.1/classURI"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//TestResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestResult/assertResults"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/failed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/object"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/runner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/time"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//TestRunner">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestRunner/testListeners"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//UnitTestRunner">
+      <genOperations ecoreOperation="dk-test.ecore#//UnitTestRunner/executeTest">
+        <genParameters ecoreParameter="dk-test.ecore#//UnitTestRunner/executeTest/context"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

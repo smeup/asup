@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.smeup.sys.ui.epdm.antlr.contribution1"
+            nameFilter="*.g"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               icon="icons/asup_24.png"
+               id="org.smeup.sys.ui.epdm.antlr.menu1"
+               label="AntLR Parser"
+               path="additions">
+            <separator
+                  name="compiler">
+            </separator>
+         </menu>
+         <action
+               label="Compile AntLR grammar"
+               class="org.smeup.sys.ui.epdm.antlr.actions.CompileAntLR"
+               menubarPath="org.smeup.sys.ui.epdm.antlr.menu1/compiler"
+               enablesFor="1"
+               id="org.smeup.sys.ui.epdm.antlr.compileAntLR">
+         </action>
+         <action
+         	   label="Edit AntLR grammar"
+               class="org.smeup.sys.ui.epdm.antlr.actions.EditAntLR"
+               menubarPath="org.smeup.sys.ui.epdm.antlr.menu1/compiler"
+               enablesFor="1"             
+               id="org.smeup.sys.ui.epdm.antlr.editAntLR">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.db.syntax/src" modelPluginID="org.smeup.sys.db.syntax" modelName="As.UP Database Syntax"
+    rootExtendsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.db.core/model/db-core.genmodel#//core ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.genmodel#//sqlmodel ../../org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.genmodel#//query ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>db-syntax.ecore</foreignModel>
+  <genPackages prefix="DatabaseSyntax" basePackage="org.smeup.sys.db" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="db-syntax.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//StatementType">
+      <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//StatementType/DML"/>
+      <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//StatementType/DDL"/>
+      <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//StatementType/DBL"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="db-syntax.ecore#//SQLQueryParseResult"/>
+    <genClasses ecoreClass="db-syntax.ecore#//BindingParseError"/>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//BindingParser">
+      <genOperations ecoreOperation="db-syntax.ecore#//BindingParser/parseBinding">
+        <genParameters ecoreParameter="db-syntax.ecore#//BindingParser/parseBinding/stream"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//BindingParser/parseBinding.1">
+        <genParameters ecoreParameter="db-syntax.ecore#//BindingParser/parseBinding.1/sql"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//BindingParserRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//BindingParserRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//BindingParserRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="db-syntax.ecore#//BindingParseResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference db-syntax.ecore#//BindingParseResult/bindingStatement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference db-syntax.ecore#//BindingParseResult/errorList"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//BindingStatement">
+      <genOperations ecoreOperation="db-syntax.ecore#//BindingStatement/getStatementType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//DefinitionParser">
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionParser/parseDefinition">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionParser/parseDefinition/stream"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionParser/parseDefinition.1">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionParser/parseDefinition.1/sql"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//DefinitionParserRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionParserRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionParserRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="db-syntax.ecore#//DefinitionParseError"/>
+    <genClasses ecoreClass="db-syntax.ecore#//DefinitionParseResult">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference db-syntax.ecore#//DefinitionParseResult/definitionStatement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference db-syntax.ecore#//DefinitionParseResult/errorList"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//DefinitionWriter">
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/createSchema">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createSchema/name"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createSchema/schema"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/createTable">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createTable/schema"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createTable/name"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createTable/table"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/createView">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createView/schema"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createView/name"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createView/view"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/createIndex">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createIndex/table"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createIndex/name"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/createIndex/index"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/dropSchema">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/dropSchema/schema"/>
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/dropSchema/ignoreFailOnNonEmpty"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/dropTable">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/dropTable/table"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/dropView">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/dropView/view"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/dropIndex">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/dropIndex/index"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/deleteData">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/deleteData/table"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/insertData">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/insertData/table"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriter/selectData">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriter/selectData/table"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//DefinitionWriterRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionWriterRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//DefinitionWriterRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//DefinitionStatement">
+      <genOperations ecoreOperation="db-syntax.ecore#//DefinitionStatement/getStatementType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//EmbeddedStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//EmbeddedStatement/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//NameHelper">
+      <genOperations ecoreOperation="db-syntax.ecore#//NameHelper/resolveContainers">
+        <genParameters ecoreParameter="db-syntax.ecore#//NameHelper/resolveContainers/query"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//NameHelperRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//NameHelperRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//NameHelperRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//QueryWriter">
+      <genOperations ecoreOperation="db-syntax.ecore#//QueryWriter/writeQuery">
+        <genParameters ecoreParameter="db-syntax.ecore#//QueryWriter/writeQuery/statement"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//QueryWriterRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//QueryWriterRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//QueryWriterRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="db-syntax.ecore#//QueryParser">
+      <genOperations ecoreOperation="db-syntax.ecore#//QueryParser/parseQuery">
+        <genParameters ecoreParameter="db-syntax.ecore#//QueryParser/parseQuery/stream"/>
+      </genOperations>
+      <genOperations ecoreOperation="db-syntax.ecore#//QueryParser/parseQuery.1">
+        <genParameters ecoreParameter="db-syntax.ecore#//QueryParser/parseQuery.1/sql"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="db-syntax.ecore#//QueryParserRegistry">
+      <genOperations ecoreOperation="db-syntax.ecore#//QueryParserRegistry/lookup">
+        <genParameters ecoreParameter="db-syntax.ecore#//QueryParserRegistry/lookup/connectionConfig"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//SQLObjectNameHelper"/>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//StatementWriter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference db-syntax.ecore#//StatementWriter/nameHelper"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="db-syntax.ecore#//StatementParser"/>
+    <nestedGenPackages prefix="DatabaseSyntaxDDL" basePackage="org.smeup.sys.db.syntax"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="db-syntax.ecore#//ddl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//ddl/DropRange">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/DropRange/RESTRICT"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/DropRange/CASCADE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//ddl/TargetElement">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetElement/ALIAS"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetElement/INDEX"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetElement/VIEW"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetElement/TABLE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//ddl/ShareMode">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/ShareMode/SHARE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/ShareMode/EXCLUSIVE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//ddl/TargetItem">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetItem/ALL"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetItem/CURRENT"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//ddl/TargetItem/ALLSQL"/>
+      </genEnums>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CallStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CallStatement/procedureName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/CallStatement/parms"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CommitStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/CommitStatement/hold"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/ConnectStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/ConnectStatement/pwd"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/ConnectStatement/reset"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/ConnectStatement/to"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/ConnectStatement/user"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CreateAliasStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateAliasStatement/aliasName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateAliasStatement/tableName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CreateIndexStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateIndexStatement/indexName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateIndexStatement/onTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateIndexStatement/sortBy"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/CreateIndexStatement/unique"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CreateTableStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateTableStatement/tableName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateTableStatement/fields"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/CreateViewStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/CreateViewStatement/viewName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/CreateViewStatement/fields"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/CreateViewStatement/query"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/DisconnectStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/DisconnectStatement/target"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/DropStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/DropStatement/range"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/DropStatement/targetName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/DropStatement/target"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/LockTableStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/LockTableStatement/allowRead"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/LockTableStatement/shareMode"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/LockTableStatement/tableName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/ReleaseStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/ReleaseStatement/serverName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/RenameStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/RenameStatement/newName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/RenameStatement/system"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//ddl/RenameStatement/originalName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/RenameStatement/target"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/RollbackStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/RollbackStatement/hold"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//ddl/SetConnectionStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//ddl/SetConnectionStatement/databaseName"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="DatabaseSyntaxDML" basePackage="org.smeup.sys.db.syntax"
+        disposableProviderFactory="true" adapterFactory="false" contentTypeIdentifier=""
+        ecorePackage="db-syntax.ecore#//dml">
+      <genClasses ecoreClass="db-syntax.ecore#//dml/ExtendedQuerySelect"/>
+      <genClasses ecoreClass="db-syntax.ecore#//dml/ExtendedQueryExpressionBody">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dml/ExtendedQueryExpressionBody/optimizeRecordsNumber"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="DatabaseSyntaxDBL" basePackage="org.smeup.sys.db.syntax"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="db-syntax.ecore#//dbl">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/CursorType">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/CursorType/NOTSCROLL"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/CursorType/SCROLL"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/CursorType/DYNSCROLL"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/FetchPosition">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/NEXT"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/PRIOR"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/FIRST"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/LAST"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/BEFORE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/AFTER"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/CURRENT"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/FetchPosition/RELATIVE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/IsolationLevel">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/NONE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/SERIALIZABLE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/NO_COMMIT"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/READ_UNCOMMITTED"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/READ_COMMITTED"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/IsolationLevel/REPEATABLE_READ"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/RWOperation">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/RWOperation/READ_ONLY"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/RWOperation/READ_WRITE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/OpenUsingType">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/OpenUsingType/NONE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/OpenUsingType/DESCRIPTOR"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/OpenUsingType/VARIABLE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-syntax.ecore#//dbl/UsingType">
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/NONE"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/NAMES"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/SYSTEM_NAMES"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/LABELS"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/ANY"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/BOTH"/>
+        <genEnumLiterals ecoreEnumLiteral="db-syntax.ecore#//dbl/UsingType/ALL"/>
+      </genEnums>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/DeclareCursorStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DeclareCursorStatement/cursorName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DeclareCursorStatement/cursorType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DeclareCursorStatement/forQuery"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DeclareCursorStatement/forStatementName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DeclareCursorStatement/hold"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/DescribeStatement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//dbl/DescribeStatement/into"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/DescribeStatement/statementName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/ExecuteImmediateStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/ExecuteImmediateStatement/variable"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/ExecuteStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/ExecuteStatement/statementName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/FetchStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/FetchStatement/cursorName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/FetchStatement/into"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/FetchStatement/position"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/FetchStatement/relativePosition"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//dbl/FetchStatement/multipleRowClause"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/IntoClause">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/IntoClause/descriptorName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/IntoClause/using"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/MultipleRowFetchClause">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/MultipleRowFetchClause/descriptor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/MultipleRowFetchClause/rowsNumber"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/MultipleRowFetchClause/usingDescriptor"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/SetTransactionStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/SetTransactionStatement/isolationLevel"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/SetTransactionStatement/rwOperation"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/OpenStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/OpenStatement/cursor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/OpenStatement/using"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/OpenStatement/usingType"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/PrepareStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/PrepareStatement/from"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference db-syntax.ecore#//dbl/PrepareStatement/into"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/PrepareStatement/statementName"/>
+      </genClasses>
+      <genClasses ecoreClass="db-syntax.ecore#//dbl/CloseStatement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute db-syntax.ecore#//dbl/CloseStatement/cursor"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

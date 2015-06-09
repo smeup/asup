@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Syntax Base
+Bundle-SymbolicName: org.smeup.sys.db.syntax.base
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.il.core,
+ org.smeup.sys.db.syntax;visibility:=reexport
+Export-Package: org.smeup.sys.db.syntax.base
+Import-Package: javax.inject;version="1.0.0",
+ org.osgi.framework;version="1.8.0"

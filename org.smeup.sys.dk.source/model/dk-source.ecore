@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="source" nsURI="http://www.smeup.org/asup/dk/source" nsPrefix="dk-source">
+  <eClassifiers xsi:type="ecore:EClass" name="Project" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable #//SourceNode">
+    <eOperations name="getText" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectDef" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceEntry" abstract="true" interface="true"
+      eSuperTypes="#//SourceNode">
+    <eOperations name="getInputStream" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"
+        eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException"/>
+    <eOperations name="getOutputStream" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"
+        eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceManager" abstract="true" interface="true">
+    <eOperations name="createProject" lowerBound="1" eType="#//Project" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="#//ProjectDef"/>
+      <eParameters name="replace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createChildEntry" lowerBound="1" eType="#//SourceEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="parent" lowerBound="1" eType="#//SourceEntry"/>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="replace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createObjectEntry" lowerBound="1" eType="#//SourceEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//SourceManager/createObjectEntry/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createObjectEntry" lowerBound="1" eType="#//SourceEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//SourceManager/createObjectEntry.1/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="content" lowerBound="1">
+        <eGenericType eTypeParameter="#//SourceManager/createObjectEntry.1/T"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="getChildEntry" lowerBound="1" eType="#//SourceEntry">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="parent" lowerBound="1" eType="#//SourceEntry"/>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getObjectEntry" lowerBound="1" eType="#//SourceEntry">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//SourceManager/getObjectEntry/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getProject" lowerBound="1" eType="#//Project">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="listChildEntries" upperBound="-1" eType="#//SourceEntry">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="parent" lowerBound="1" eType="#//SourceEntry"/>
+    </eOperations>
+    <eOperations name="listObjectEntries" upperBound="-1" eType="#//SourceEntry">
+      <eTypeParameters name="T">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="project" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//SourceManager/listObjectEntries/T"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="nameFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="listProjects" upperBound="-1" eType="#//Project">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
+    <eOperations name="refreshEntry">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="entry" lowerBound="1" eType="#//SourceEntry"/>
+    </eOperations>
+    <eOperations name="removeEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="entry" lowerBound="1" eType="#//SourceEntry"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceNode" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eOperations name="getLocation" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
+    <eOperations name="getParent" eType="#//SourceEntry"/>
+    <eOperations name="getRoot" eType="#//SourceEntry"/>
+    <eOperations name="isRoot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+</ecore:EPackage>

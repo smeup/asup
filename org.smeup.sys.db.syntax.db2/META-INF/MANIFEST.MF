@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Syntax DB2
+Bundle-SymbolicName: org.smeup.sys.db.syntax.db2
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.db.syntax.base,
+ org.eclipse.datatools.modelbase.sql.query
+Export-Package: org.smeup.sys.db.syntax.db2

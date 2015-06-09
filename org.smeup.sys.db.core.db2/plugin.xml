@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2012, 2015 Sme.UP and others.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.datatools.connectivity.driverExtension">   
+    <driverTemplate
+            createDefault="false"
+            emptyJarListIsOK="false"
+            id="org.eclipse.datatools.enablement.ibm.db2.luw.asup.driverTemplate"
+            jarList="lib/db2jcc4.jar"
+            name="IBM Data Server Driver for As.UP"
+            parentCategory="org.eclipse.datatools.enablement.ibm.db2.driverCategory"
+            valuesProvider="org.eclipse.datatools.enablement.ibm.db2.luw.DB2LUWJDBC4DriverValuesProvider">
+         <properties>
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.driverClass"
+                  name="Driver Class"
+                  value="com.ibm.db2.jcc.DB2Driver"
+                  required="true"
+                  visible="true"/>
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.vendor"
+                  name="Vendor"
+                  value="DB2 UDB"
+                  required="true"
+                  visible="false"/>
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.version"
+                  name="Version"
+                  value="V10.5"
+                  required="true"
+                  visible="false"/>   
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.databaseName"
+                  name="Database Name"
+                  value="ASUP_VRM"
+                  required="true"
+                  visible="true"/>                             
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.URL"
+                  name="Connection URL"
+                  value="jdbc:db2://localhost:50000/ASUP_VRM:retrieveMessagesFromServerOnGetMessage=true;"
+                  required="true"
+                  visible="true"/>
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.username"
+                  name="User ID"
+                  value=""
+                  required="false"
+                  visible="true"/>
+            <property
+                  generated="false"
+                  id="org.eclipse.datatools.connectivity.db.password"
+                  name="Password"
+                  required="false"
+                  visible="true"/>
+         </properties>
+      </driverTemplate>
+   </extension>
+</plugin>

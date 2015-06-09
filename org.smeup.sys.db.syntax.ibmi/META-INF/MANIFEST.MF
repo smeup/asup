@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Syntax IBMi
+Bundle-SymbolicName: org.smeup.sys.db.syntax.ibmi
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.db.syntax.ibmi.parser.dbl,
+ org.smeup.sys.db.syntax.ibmi.parser.ddl,
+ org.smeup.sys.db.syntax.ibmi.parser.dml
+Require-Bundle: org.smeup.sys.db.syntax.base,
+ net.sourceforge.lpg.lpgjavaruntime;bundle-version="1.1.0",
+ org.eclipse.datatools.sqltools.parsers.sql.lexer;bundle-version="1.0.1",
+ org.smeup.sys.db.syntax,
+ org.smeup.sys.et.antlr
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

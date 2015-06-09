@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Core MsSql
+Bundle-SymbolicName: org.smeup.sys.db.core.mssql;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: lib/sqljdbc4.jar,
+ .
+Bundle-Activator: org.smeup.sys.db.core.mssql.MsSQLActivator$Activator
+Bundle-Vendor: www.smeup.com
+Export-Package: com.microsoft.sqlserver.jdbc,
+ microsoft.sql
+Require-Bundle: org.smeup.sys.db.core.base,
+ org.eclipse.datatools.enablement.msft.sqlserver,
+ org.eclipse.datatools.enablement.msft.sqlserver.dbdefinition
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: com.microsoft.sqlserver.jdbc,
+ org.eclipse.net4j.db;version="4.2.0",
+ org.eclipse.net4j.db.ddl;version="4.2.0",
+ org.eclipse.net4j.spi.db;version="4.2.0",
+ org.eclipse.net4j.util.om;version="3.3.0",
+ org.eclipse.net4j.util.om.log;version="3.3.0",
+ org.eclipse.net4j.util.om.trace;version="3.3.0",
+ org.osgi.framework;version="1.8.0"

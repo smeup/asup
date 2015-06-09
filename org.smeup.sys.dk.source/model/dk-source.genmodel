@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.dk.source/src" modelPluginID="org.smeup.sys.dk.source"
+    modelName="As.UP Development Kit Source" rootExtendsInterface="" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    interfaceNamePattern="Q{0}">
+  <foreignModel>dk-source.ecore</foreignModel>
+  <genPackages prefix="DevelopmentKitSource" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
+      adapterFactory="false" fileExtensions="" ecorePackage="dk-source.ecore#/">
+    <genClasses ecoreClass="dk-source.ecore#//ProjectDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-source.ecore#//ProjectDef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-source.ecore#//ProjectDef/text"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-source.ecore#//SourceEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-source.ecore#//SourceEntry/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dk-source.ecore#//SourceEntry/parent"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference dk-source.ecore#//SourceEntry/root"/>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceEntry/getOutputStream"/>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceEntry/getInputStream"/>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceEntry/isRoot"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dk-source.ecore#//SourceManager">
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/createProject">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createProject/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createProject/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createProject/replace"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/createObjectEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry/type"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry/name"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry/replace"/>
+        <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/createObjectEntry/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/createObjectEntry.1">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/type"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/name"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/replace"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/content"/>
+        <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/createObjectEntry.1/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/createChildEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createChildEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createChildEntry/parent"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createChildEntry/name"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/createChildEntry/replace"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/getProjectEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getProjectEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getProjectEntry/project"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/getObjectEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getObjectEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getObjectEntry/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getObjectEntry/type"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getObjectEntry/name"/>
+        <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/getObjectEntry/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/getChildEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getChildEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getChildEntry/parent"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/getChildEntry/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/listProjects">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listProjects/contextID"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/listObjectEntries">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listObjectEntries/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listObjectEntries/project"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listObjectEntries/type"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listObjectEntries/nameFilter"/>
+        <genTypeParameters ecoreTypeParameter="dk-source.ecore#//SourceManager/listObjectEntries/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/listChildEntries">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listChildEntries/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/listChildEntries/parent"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/refreshEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/refreshEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/refreshEntry/entry"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-source.ecore#//SourceManager/removeEntry">
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/removeEntry/contextID"/>
+        <genParameters ecoreParameter="dk-source.ecore#//SourceManager/removeEntry/entry"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

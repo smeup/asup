@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Expression IBMi
+Bundle-SymbolicName: org.smeup.sys.il.expr.ibmi
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .
+Export-Package: org.smeup.sys.il.expr.ibmi.cl,
+ org.smeup.sys.il.expr.ibmi.rpg
+Require-Bundle: org.smeup.sys.il.expr,
+ org.smeup.sys.il.expr.base,
+ org.smeup.sys.et.antlr

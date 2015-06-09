@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Runtime Core E4
+Bundle-SymbolicName: org.smeup.sys.rt.core.e4;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.rt.core.e4
+Require-Bundle: org.smeup.sys.rt.core,
+ org.smeup.sys.il.core.e4
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.e4.core.contexts,
+ org.eclipse.e4.core.di,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore.xmi.impl,
+ org.osgi.service.log
+Bundle-Activator: org.smeup.sys.rt.core.e4.E4Activator

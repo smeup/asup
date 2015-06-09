@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/co/core" nsPrefix="co-core">
+  <eClassifiers xsi:type="ecore:EClass" name="OutputWrapper" abstract="true" interface="true">
+    <eOperations name="flush" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="write" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="register">
+      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="writer" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaWriter"/>
+    </eOperations>
+    <eOperations name="unregister">
+      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="contains" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerSocketConfig" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerSocket" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerSocketManager" abstract="true"
+      interface="true">
+    <eOperations name="startServerSocket">
+      <eParameters name="config" lowerBound="1" eType="#//ServerSocketConfig"/>
+    </eOperations>
+  </eClassifiers>
+</ecore:EPackage>

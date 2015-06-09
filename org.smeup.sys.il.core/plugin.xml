@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.smeup.org/asup/il/core"
+            class="org.smeup.sys.il.core.QIntegratedLanguageCorePackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+null
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/ctx"
+            class="org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/java"
+            class="org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/meta"
+            class="org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/out"
+            class="org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/term"
+            class="org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+</plugin>

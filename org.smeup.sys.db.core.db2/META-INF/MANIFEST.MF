@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Core DB2
+Bundle-SymbolicName: org.smeup.sys.db.core.db2;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore.xmi.impl
+Require-Bundle: org.smeup.sys.db.core.base,
+ org.eclipse.datatools.enablement.ibm.db2;visibility:=reexport,
+ org.eclipse.datatools.enablement.ibm.db2.luw;visibility:=reexport,
+ org.eclipse.datatools.enablement.ibm.db2.luw.dbdefinition;visibility:=reexport,
+ org.eclipse.datatools.enablement.ibm;visibility:=reexport
+Bundle-ClassPath: lib/db2jcc4.jar
+Export-Package: com.ibm.db2.jcc
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Syntax MySql
+Bundle-SymbolicName: org.smeup.sys.db.syntax.mysql
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.db.syntax.mysql
+Require-Bundle: org.smeup.sys.db.syntax.base
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

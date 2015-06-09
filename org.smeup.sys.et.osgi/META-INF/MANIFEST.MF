@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As,UP External Tool OSGI
+Bundle-SymbolicName: org.smeup.sys.et.osgi
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: lib/org.osgi.enterprise-5.0.0.jar,
+ .
+Export-Package: org.osgi.service.jdbc,
+ org.osgi.service.remoteserviceadmin

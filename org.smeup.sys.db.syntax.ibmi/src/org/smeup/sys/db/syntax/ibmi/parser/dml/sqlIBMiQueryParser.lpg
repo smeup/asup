@@ -1,0 +1,79 @@
+-------------------------------------------------------------------------------
+-- For more information on the form of the LPG inputs, see the LPG Version 3.0
+-- User's Guide (available from Philippe G. Charles of IBM Yorktown).
+--
+-------------------------------------------------------------------------------
+%options escape=$
+%options table=java
+%options action=("IBMiQueryParser.java", "/.", "./")
+%options fp=IBMiQueryParser,prefix=TK_
+%options error-maps
+%options scopes
+%options margin=8
+%options shift_default
+%options nogoto_default
+%options single-productions
+%options noserialize  --serialize for large grammar (65k+), makes it faster after load overhead, creates a .dcl file in dat directory
+%options ParseTable=lpg.lpgjavaruntime.ParseTable
+%options package=org.smeup.sys.db.syntax.ibmi.parser.dml
+%options template=sqlparserTemplate.lpg
+
+
+-- when use soft-keywords lookahead is forced to be 1 and don't use backtrack option
+%options soft-keywords
+%options LALR=4
+%options backtrack
+
+-------------------------------------------------------------------------------
+-- import declarations for generated parser
+-------------------------------------------------------------------------------
+
+$Define
+
+	$parser_base_class
+	/. org.eclipse.datatools.sqltools.parsers.sql.query.AbstractSQLQueryParser ./
+
+$End
+
+-------------------------------------------------------------------------------
+-- Type mapping imported, return types of factory methods/AST types
+-------------------------------------------------------------------------------
+
+$include sqlqueryparserTypes.lpg		-- inherited grammar types
+
+------------------------------------------------------------------------------
+-- Alias definitions imported
+------------------------------------------------------------------------------
+
+$include sqlQueryParserAlias.lpg
+
+
+-------------------------------------------------------------------------------
+-- Base grammar rules imported
+-------------------------------------------------------------------------------
+
+$import sqlqueryparserRules.lpg
+
+-------------------------------------------------------------------------------
+-- Include rules that extend base grammar
+-------------------------------------------------------------------------------
+
+$include sqlIBMiQueryParserRules.lpg
+
+
+$KEYWORDS
+--------------------------------------------
+-- Keywords/Reserved Word list - included --
+--------------------------------------------
+$include sqlKeywords.lpg
+
+$END
+
+
+-------------------------------------------------------
+-- Token kind of identifiers for softkeyword support --
+-------------------------------------------------------
+$IDENTIFIER
+	REGULAR_IDENTIFIER
+$END
+

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Database Core Base
+Bundle-SymbolicName: org.smeup.sys.db.core.base;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.db.core.base
+Require-Bundle: org.smeup.sys.db.core;visibility:=reexport,
+ org.smeup.sys.db.syntax;visibility:=reexport,
+ org.smeup.sys.db.syntax.base;visibility:=reexport,
+ org.smeup.sys.il.core,
+ org.eclipse.datatools.connectivity.sqm.core,
+ org.eclipse.datatools.connectivity,
+ org.eclipse.core.runtime,
+ org.smeup.sys.rt.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Import-Package: org.osgi.framework

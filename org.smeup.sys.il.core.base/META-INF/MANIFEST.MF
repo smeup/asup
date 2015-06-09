@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Core Base
+Bundle-SymbolicName: org.smeup.sys.il.core.base
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.il.core.base
+Require-Bundle: org.smeup.sys.il.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: javax.inject

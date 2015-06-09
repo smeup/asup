@@ -1,0 +1,113 @@
+$RULES
+
+--//*************************** rules that augment base grammar rules*********//
+
+
+
+-- Questa definizione di query_select sostituisce quella presente nella grammatica
+-- 
+-- ./lpg_include/query/sqlqueryparserRules.lpg
+--
+-- La corrispondente regola nella grammatica originaria DEVE ESSERE COMMENTATA.
+-- La nuova regola estende la query con il supporto per la INTO (serve per gli 
+-- embedded SQL) e con la clausula optimize.
+-- L'oggetto tornato è un ExtendedQuerySelect che è una estensione del QuerySelect
+-- del modello DTP.
+
+-- returns ExtendedQuerySelect
+<query_select> ::=
+            SELECT <opt_all_distinct> <selection>
+            <opt_into_clause>
+            FROM <table_ref_commalist>            
+            <opt_where_clause>
+            <opt_group_by_clause>
+            <opt_having_clause>
+            <opt_order_by_clause>
+            <opt_fetch_first_clause>
+            <opt_optimize_clause>
+/. $BeginAction setSym1(m_factory.createQExtendedQuerySelect(getString(2),getList(3),getList(4),getList(6),($RT_opt_where_clause)getSym(7),getList(8),($RT_opt_having_clause)getSym(9), getList(10), getInt(11), getInt(12))); $EndAction ./
+
+<opt_into_clause> ::=
+            <into_clause>
+        |   $empty
+        /. $BeginAction setSym1(0); $EndAction ./
+        
+<into_clause> ::=
+         INTO <into_list>
+                /. $BeginAction setSym1(getSym(2)); $EndAction ./         
+
+<into_list> ::=
+			<into_item>
+				/. $BeginAction setSym1(m_factory.createIntoClause(null,($RT_into_item)getSym(1))); $EndAction ./
+		|	<into_list> _COMMA <into_item>
+				/. $BeginAction setSym1(m_factory.createIntoClause(getList(1),($RT_into_item)getSym(3))); $EndAction ./
+		|   $empty		
+				
+-- Come elemento della INTO mi aspetto una variabile host del tipo :var (oggetto VariableExpression del DTP)
+				
+<into_item> ::=
+--   Se si vuole che la variabile sia tornata con il : iniziale, scommentare le due righe seguenti
+--   e commentare la terza e la quarta
+
+--			_HOSTVAR_PREFIX <identifier>
+--				/. $BeginAction setSym1(m_factory.createVariableExpression(getString(2))); $EndAction ./
+			_HOSTVAR
+				/. $BeginAction setSym1(m_factory.createVariableExpression(getTokenName(1))); $EndAction ./
+
+<opt_optimize_clause> ::=
+            <optimize_clause>
+        |   $empty
+        /. $BeginAction setInt1(0); $EndAction ./
+
+<optimize_clause> ::=
+         OPTIMIZE FOR <opt_optimize_row_count> <row_or_rows>
+                /. $BeginAction setInt1(getInt(3)); $EndAction ./
+
+<opt_optimize_row_count> ::=
+            <unsigned_integer>
+            /. $BeginAction
+                String rowCountStr = getTokenName(1);
+                int rowCount = 1;
+                try {
+                    rowCount = Integer.parseInt(rowCountStr);
+                }
+                catch(NumberFormatException e) {
+                    // ignore
+                }
+                setInt1(rowCount);
+                $EndAction ./
+        |  $empty
+                /. $BeginAction setInt1(1); $EndAction ./
+
+<table_qualified> ::=
+			<schema> _DOT <table> <opt_table_correlation>
+			/. $BeginAction setSym1(m_factory.createReferenceTable(getString(1), getString(3), ($RT_table_correlation)getSym(4))); $EndAction ./
+			|
+			<schema> _SLASH <table> <opt_table_correlation>
+			/. $BeginAction setSym1(m_factory.createReferenceTable(getString(1), getString(3), ($RT_table_correlation)getSym(4))); $EndAction ./
+			
+<project> ::=
+			<expression> <opt_as_alias>
+				/. $BeginAction setSym1(m_factory.createResultColumn(($RT_expression) getSym(1), getString(2))); $EndAction ./
+		|	_STAR
+				/. $BeginAction setSym1(null); $EndAction ./
+        |   <table> _DOT _STAR
+                /. $BeginAction setSym1(m_factory.createResultTableAllColumns(getString(1))); $EndAction ./
+		|   <table> _SLASH _STAR
+                /. $BeginAction setSym1(m_factory.createResultTableAllColumns(getString(1))); $EndAction ./		
+        |   <schema> _DOT <table> _DOT _STAR
+                /. $BeginAction setSym1(m_factory.createResultTableAllColumns(getString(3), getString(1))); $EndAction ./			
+		|   <schema> _SLASH <table> _SLASH _STAR
+			    /. $BeginAction setSym1(m_factory.createResultTableAllColumns(getString(3), getString(1))); $EndAction ./					
+					
+
+<target_table> ::=
+			<table>
+				/. $BeginAction setSym1(m_factory.createSimpleTable(null, getString(1))); $EndAction ./
+		|	<schema> _DOT <table>
+				/. $BeginAction setSym1(m_factory.createSimpleTable(getString(1), getString(3))); $EndAction ./
+		|	<schema> _SLASH <table>
+				/. $BeginAction setSym1(m_factory.createSimpleTable(getString(1), getString(3))); $EndAction ./		
+
+
+$End
