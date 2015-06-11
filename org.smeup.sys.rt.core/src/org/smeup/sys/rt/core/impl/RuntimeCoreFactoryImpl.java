@@ -78,8 +78,6 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QRuntimeCorePackage.APPLICATION_STATUS:
-				return createApplicationStatusFromString(eDataType, initialValue);
 			case QRuntimeCorePackage.SERVICE_STATUS:
 				return createServiceStatusFromString(eDataType, initialValue);
 			default:
@@ -95,8 +93,6 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QRuntimeCorePackage.APPLICATION_STATUS:
-				return convertApplicationStatusToString(eDataType, instanceValue);
 			case QRuntimeCorePackage.SERVICE_STATUS:
 				return convertServiceStatusToString(eDataType, instanceValue);
 			default:
@@ -120,6 +116,7 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QApplicationComponent createApplicationComponent() {
 		ApplicationComponentImpl applicationComponent = new ApplicationComponentImpl();
 		return applicationComponent;
@@ -130,6 +127,7 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QApplicationModule createApplicationModule() {
 		ApplicationModuleImpl applicationModule = new ApplicationModuleImpl();
 		return applicationModule;
@@ -162,29 +160,10 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QServiceRef createServiceRef() {
 		ServiceRefImpl serviceRef = new ServiceRefImpl();
 		return serviceRef;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ApplicationStatus createApplicationStatusFromString(EDataType eDataType, String initialValue) {
-		ApplicationStatus result = ApplicationStatus.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertApplicationStatusToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

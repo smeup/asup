@@ -160,6 +160,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getClassName() {
 		return className;
 	}
@@ -169,6 +170,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClassName(String newClassName) {
 		String oldClassName = className;
 		className = newClassName;
@@ -181,6 +183,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInterfaceName() {
 		return interfaceName;
 	}
@@ -190,6 +193,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInterfaceName(String newInterfaceName) {
 		String oldInterfaceName = interfaceName;
 		interfaceName = newInterfaceName;
@@ -202,6 +206,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isRemoteExport() {
 		return remoteExport;
 	}
@@ -211,6 +216,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRemoteExport(boolean newRemoteExport) {
 		boolean oldRemoteExport = remoteExport;
 		remoteExport = newRemoteExport;
@@ -223,6 +229,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ServiceStatus getStatus() {
 		return status;
 	}
@@ -232,6 +239,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStatus(ServiceStatus newStatus) {
 		ServiceStatus oldStatus = status;
 		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
@@ -244,6 +252,7 @@ public class ServiceRefImpl extends MinimalEObjectImpl.Container implements QSer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<QServiceRef> getServices() {
 		if (services == null) {
 			services = new EObjectContainmentEList<QServiceRef>(QServiceRef.class, this, QRuntimeCorePackage.SERVICE_REF__SERVICES);

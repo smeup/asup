@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.dk.source.e4;
+package org.smeup.sys.dk.source.jdt;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,13 +23,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 
-public class E4ProjectAdapter implements QProject {
+public class JDTProjectAdapter implements QProject {
 
 	private static final long serialVersionUID = 1L;
 	
 	private IProject project;
 	
-	public E4ProjectAdapter(IProject project) {
+	public JDTProjectAdapter(IProject project) {
 		this.project = project;
 	}
 

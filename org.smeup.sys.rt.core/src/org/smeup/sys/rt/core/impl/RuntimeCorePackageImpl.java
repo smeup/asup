@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
-import org.smeup.sys.rt.core.ApplicationStatus;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationManager;
@@ -117,13 +116,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum applicationStatusEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum serviceStatusEEnum = null;
 
 	/**
@@ -210,6 +202,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplication_Components() {
 		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
 	}
@@ -249,6 +242,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getApplicationComponent() {
 		return applicationComponentEClass;
 	}
@@ -258,6 +252,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplicationComponent_Hooks() {
 		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(1);
 	}
@@ -267,6 +262,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplicationComponent_Modules() {
 		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(2);
 	}
@@ -276,6 +272,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getApplicationComponent_Name() {
 		return (EAttribute)applicationComponentEClass.getEStructuralFeatures().get(3);
 	}
@@ -285,6 +282,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplicationComponent_Configs() {
 		return (EReference)applicationComponentEClass.getEStructuralFeatures().get(0);
 	}
@@ -294,6 +292,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getApplicationModule() {
 		return applicationModuleEClass;
 	}
@@ -303,6 +302,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getApplicationModule_Name() {
 		return (EAttribute)applicationModuleEClass.getEStructuralFeatures().get(0);
 	}
@@ -312,6 +312,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplicationModule_Services() {
 		return (EReference)applicationModuleEClass.getEStructuralFeatures().get(1);
 	}
@@ -421,6 +422,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getServiceRef() {
 		return serviceRefEClass;
 	}
@@ -430,6 +432,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceRef_ClassName() {
 		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(0);
 	}
@@ -439,6 +442,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceRef_InterfaceName() {
 		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(1);
 	}
@@ -448,6 +452,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceRef_RemoteExport() {
 		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(2);
 	}
@@ -457,6 +462,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getServiceRef_Status() {
 		return (EAttribute)serviceRefEClass.getEStructuralFeatures().get(3);
 	}
@@ -466,17 +472,9 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getServiceRef_Services() {
 		return (EReference)serviceRefEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getApplicationStatus() {
-		return applicationStatusEEnum;
 	}
 
 	/**
@@ -558,7 +556,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		createEReference(serviceRefEClass, SERVICE_REF__SERVICES);
 
 		// Create enums
-		applicationStatusEEnum = createEEnum(APPLICATION_STATUS);
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
 	}
 
@@ -613,14 +610,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEReference(getApplication_Hooks(), this.getServiceHook(), null, "hooks", null, 0, -1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Name(), ecorePackage.getEString(), "name", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Text(), ecorePackage.getEString(), "text", null, 0, 1, QApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(applicationEClass, ecorePackage.getEString(), "getInstallPath", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(applicationEClass, this.getApplicationStatus(), "getStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(applicationEClass, ecorePackage.getEBoolean(), "isStartable", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(applicationEClass, ecorePackage.getEBoolean(), "isStoppable", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(applicationComponentEClass, QApplicationComponent.class, "ApplicationComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplicationComponent_Configs(), theIntegratedLanguageCorePackage.getObject(), null, "configs", null, 0, -1, QApplicationComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -720,14 +709,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		initEReference(getServiceRef_Services(), this.getServiceRef(), null, "services", null, 0, -1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(applicationStatusEEnum, ApplicationStatus.class, "ApplicationStatus");
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.INSTALLED);
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.RESOLVED);
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.UNINSTALLED);
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.STARTING);
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.ACTIVE);
-		addEEnumLiteral(applicationStatusEEnum, ApplicationStatus.STOPPING);
-
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");
 		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.ACTIVE);
 		addEEnumLiteral(serviceStatusEEnum, ServiceStatus.STOPPED);

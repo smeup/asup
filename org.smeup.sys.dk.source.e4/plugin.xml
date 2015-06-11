@@ -7,7 +7,7 @@
         point="org.eclipse.core.resources.natures">
      <runtime>
         <run
-              class="org.smeup.sys.dk.source.e4.AsupNature">
+              class="org.smeup.sys.dk.source.jdt.AsupNature">
         </run>
      </runtime>
   </extension>

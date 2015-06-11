@@ -2,10 +2,6 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/rt/core" nsPrefix="rt-core">
   <eClassifiers xsi:type="ecore:EClass" name="Application" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-    <eOperations name="getInstallPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="getStatus" eType="#//ApplicationStatus"/>
-    <eOperations name="isStartable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="isStoppable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
         eType="#//ApplicationComponent" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
@@ -36,14 +32,6 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//ServiceRef" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ApplicationStatus">
-    <eLiterals name="Installed" value="10" literal="INS"/>
-    <eLiterals name="Resolved" value="20" literal="RES"/>
-    <eLiterals name="Uninstalled" value="30" literal="UNS"/>
-    <eLiterals name="Starting" value="40" literal="STR"/>
-    <eLiterals name="Active" value="50" literal="ACT"/>
-    <eLiterals name="Stopping" value="60" literal="STP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BundleManager" abstract="true" interface="true">
     <eOperations name="isRegisterable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

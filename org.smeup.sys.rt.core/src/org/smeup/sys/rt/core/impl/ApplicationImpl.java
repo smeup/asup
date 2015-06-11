@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
-import org.smeup.sys.rt.core.ApplicationStatus;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
@@ -125,6 +124,7 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<QApplicationComponent> getComponents() {
 		if (components == null) {
 			components = new EObjectContainmentEList<QApplicationComponent>(QApplicationComponent.class, this, QRuntimeCorePackage.APPLICATION__COMPONENTS);
@@ -191,76 +191,6 @@ public class ApplicationImpl extends ObjectNameableImpl implements QApplication 
 			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.APPLICATION__TEXT, oldText, text));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getInstallPath() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ApplicationStatus getStatus() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isStartable() {
-
-		boolean startable = false;
-
-		// check system status
-		switch (getStatus()) {
-		case RESOLVED:
-			startable = true;
-			break;		
-		case ACTIVE:
-		case INSTALLED:
-		case STARTING:
-		case STOPPING:
-		case UNINSTALLED:
-			break;
-		}
-
-		return startable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isStoppable() {
-		
-		boolean stoppable = false;
-
-		// check system status
-		switch (getStatus()) {
-		case ACTIVE:
-			stoppable = true;
-			break;		
-		case RESOLVED:
-		case INSTALLED:
-		case STARTING:
-		case STOPPING:
-		case UNINSTALLED:
-		}
-
-		return stoppable;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

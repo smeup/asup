@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.dk.source.e4;
+package org.smeup.sys.dk.source.jdt;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,13 +21,13 @@ import java.net.URI;
 import org.eclipse.core.resources.IFile;
 import org.smeup.sys.dk.source.QSourceEntry;
 
-public class E4SourceEntryFileAdapter implements QSourceEntry {
+public class JDTSourceEntryFileAdapter implements QSourceEntry {
 
 	private static final long serialVersionUID = 1L;
 	
 	private transient IFile file;
 	
-	public E4SourceEntryFileAdapter(IFile file) {
+	public JDTSourceEntryFileAdapter(IFile file) {
 		this.file = file;
 	}
 	

@@ -9,7 +9,7 @@
  * Contributors: 
  *   Mattia Rocchi - Initial API and implementation 
  */
-package org.smeup.sys.dk.source.e4;
+package org.smeup.sys.dk.source.jdt;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -41,7 +41,7 @@ import org.smeup.sys.dk.source.QSourceNode;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 
-public class E4SourceManagerImpl implements QSourceManager {
+public class JDTSourceManagerImpl implements QSourceManager {
 
 	public static int EVENT_CREATE_ENTRY = 30;
 	public static int EVENT_BUILD_ENTRY = 40;
@@ -50,11 +50,11 @@ public class E4SourceManagerImpl implements QSourceManager {
 	private String bundlePath;
 	private ResourceSet resourceSet;
 
-	public E4SourceManagerImpl() {
+	public JDTSourceManagerImpl() {
 		this("asup-src");
 	}
 
-	public E4SourceManagerImpl(String bundlePath) {
+	public JDTSourceManagerImpl(String bundlePath) {
 		ResourcesPlugin.getWorkspace().getDescription().setAutoBuilding(false);
 		this.bundlePath = bundlePath;
 		this.resourceSet = new ResourceSetImpl();
@@ -76,12 +76,12 @@ public class E4SourceManagerImpl implements QSourceManager {
 			}
 
 		try {
-			E4ProjectUtil.createAsupProject(project, projectDef);
+			JDTProjectUtil.createAsupProject(project, projectDef);
 		} catch (CoreException e) {
 			throw new IOException(e);
 		}
 
-		return new E4ProjectAdapter(project);
+		return new JDTProjectAdapter(project);
 	}
 
 	@Override
@@ -119,7 +119,7 @@ public class E4SourceManagerImpl implements QSourceManager {
 
 		IProject project = (IProject) resource;
 
-		return new E4ProjectAdapter(project);
+		return new JDTProjectAdapter(project);
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class E4SourceManagerImpl implements QSourceManager {
 		List<QProject> projects = new ArrayList<QProject>();
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		for (IProject project : root.getProjects()) {
-			projects.add(new E4ProjectAdapter(project));
+			projects.add(new JDTProjectAdapter(project));
 		}
 		return projects;
 	}
@@ -222,7 +222,7 @@ public class E4SourceManagerImpl implements QSourceManager {
 			}
 		}
 
-		return new E4SourceEntryFileAdapter(file);
+		return new JDTSourceEntryFileAdapter(file);
 	}
 
 	private <T extends QObjectNameable> QSourceEntry getChildEntry(QContext context, QSourceNode parent, Class<T> type, String name) {
@@ -234,7 +234,7 @@ public class E4SourceManagerImpl implements QSourceManager {
 		if (!file.exists())
 			return null;
 
-		return new E4SourceEntryFileAdapter(file);
+		return new JDTSourceEntryFileAdapter(file);
 	}
 
 	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter) {
@@ -276,7 +276,7 @@ public class E4SourceManagerImpl implements QSourceManager {
 
 				}
 
-				entries.add(new E4SourceEntryFileAdapter((IFile) resource));
+				entries.add(new JDTSourceEntryFileAdapter((IFile) resource));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

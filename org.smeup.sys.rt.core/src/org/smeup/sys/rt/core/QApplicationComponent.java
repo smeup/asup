@@ -80,6 +80,7 @@ public interface QApplicationComponent extends QObjectNameable, QContextProvider
 	 * @model required="true"
 	 * @generated
 	 */
+	@Override
 	String getName();
 
 	/**

@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: As.UP Development Kit Source Eclipse E4
-Bundle-SymbolicName: org.smeup.sys.dk.source.e4;singleton:=true
+Bundle-Name: As.UP Development Kit Source Eclipse JDT
+Bundle-SymbolicName: org.smeup.sys.dk.source.jdt;singleton:=true
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
-Export-Package: org.smeup.sys.dk.source.e4
+Export-Package: org.smeup.sys.dk.source.jdt
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.dk.source;visibility:=reexport,
  org.eclipse.core.runtime,

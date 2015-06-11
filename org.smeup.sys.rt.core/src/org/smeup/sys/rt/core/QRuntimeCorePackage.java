@@ -515,16 +515,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	int SERVICE_PLUGIN_FEATURE_COUNT = SERVICE_REF_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.rt.core.ApplicationStatus <em>Application Status</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.rt.core.ApplicationStatus
-	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getApplicationStatus()
-	 * @generated
-	 */
-	int APPLICATION_STATUS = 10;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -532,7 +522,7 @@ public interface QRuntimeCorePackage extends EPackage {
 	 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getServiceStatus()
 	 * @generated
 	 */
-	int SERVICE_STATUS = 11;
+	int SERVICE_STATUS = 10;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.rt.core.QApplication <em>Application</em>}'.
@@ -844,16 +834,6 @@ public interface QRuntimeCorePackage extends EPackage {
 	EReference getServiceRef_Services();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.rt.core.ApplicationStatus <em>Application Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Application Status</em>'.
-	 * @see org.smeup.sys.rt.core.ApplicationStatus
-	 * @generated
-	 */
-	EEnum getApplicationStatus();
-
-	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1137,16 +1117,6 @@ public interface QRuntimeCorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVICE_REF__SERVICES = eINSTANCE.getServiceRef_Services();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.rt.core.ApplicationStatus <em>Application Status</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.rt.core.ApplicationStatus
-		 * @see org.smeup.sys.rt.core.impl.RuntimeCorePackageImpl#getApplicationStatus()
-		 * @generated
-		 */
-		EEnum APPLICATION_STATUS = eINSTANCE.getApplicationStatus();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.rt.core.ServiceStatus <em>Service Status</em>}' enum.

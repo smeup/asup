@@ -14,7 +14,6 @@ package org.smeup.sys.rt.core.e4;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.rt.core.ApplicationStatus;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QServiceHook;
@@ -58,25 +57,5 @@ public class E4ApplicationImpl implements QApplication {
 	@Override
 	public void setName(String value) {
 		application.setName(value);
-	}
-
-	@Override
-	public String getInstallPath() {
-		return System.getProperty("osgi.instance.area");
-	}
-
-	@Override
-	public ApplicationStatus getStatus() {
-		return ApplicationStatus.ACTIVE;
-	}
-
-	@Override
-	public boolean isStartable() {
-		return application.isStartable();
-	}
-
-	@Override
-	public boolean isStoppable() {
-		return application.isStoppable();
 	}
 }

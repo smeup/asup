@@ -130,6 +130,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<QServiceHook> getHooks() {
 		if (hooks == null) {
 			hooks = new EObjectContainmentEList<QServiceHook>(QServiceHook.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__HOOKS);
@@ -142,6 +143,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<QApplicationModule> getModules() {
 		if (modules == null) {
 			modules = new EObjectResolvingEList<QApplicationModule>(QApplicationModule.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__MODULES);
@@ -154,6 +156,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -163,6 +166,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -175,6 +179,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<QObject> getConfigs() {
 		if (configs == null) {
 			configs = new EObjectContainmentEList<QObject>(QObject.class, this, QRuntimeCorePackage.APPLICATION_COMPONENT__CONFIGS);
@@ -187,6 +192,7 @@ public class ApplicationComponentImpl extends ObjectNameableImpl implements QApp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QContext getContext() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
