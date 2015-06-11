@@ -28,4 +28,12 @@ public interface QApplicationManager {
 	 */
 	QApplication start(QApplication application, OutputStream output);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void restart();
+
 } // QApplicationManager

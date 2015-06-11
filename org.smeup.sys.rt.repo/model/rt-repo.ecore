@@ -2,8 +2,17 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="repo" nsURI="http://www.smeup.org/asup/rt/repo" nsPrefix="rt-repo">
   <eClassifiers xsi:type="ecore:EClass" name="RepositoryManager" abstract="true" interface="true">
-    <eOperations name="checkUpdates">
+    <eOperations name="checkUpdates" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="application" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.rt.core/model/rt-core.ecore#//Application"/>
+    </eOperations>
+    <eOperations name="updateApplication">
+      <eParameters name="application" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.rt.core/model/rt-core.ecore#//Application"/>
+    </eOperations>
+    <eOperations name="checkUpdates" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="component" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.rt.core/model/rt-core.ecore#//ApplicationComponent"/>
+    </eOperations>
+    <eOperations name="updateComponent">
+      <eParameters name="component" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.rt.core/model/rt-core.ecore#//ApplicationComponent"/>
     </eOperations>
   </eClassifiers>
 </ecore:EPackage>

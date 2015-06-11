@@ -7,7 +7,7 @@
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" suppressGenModelAnnotations="false" copyrightFields="false"
     editPluginID="org.smeup.sys.il.core.edit" editorPluginID="org.smeup.sys.il.core.editor"
-    language="EN" interfaceNamePattern="Q{0}" classNamePattern="">
+    language="EN" interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>il-core.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageCore" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="il-core.ecore#/">
@@ -259,13 +259,6 @@
           <genParameters ecoreParameter="il-core.ecore#//java/URIs/getBaseName/uri"/>
         </genOperations>
       </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Lock" basePackage="org.smeup.sys.il.core" disposableProviderFactory="true"
-        ecorePackage="il-core.ecore#//lock">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-core.ecore#//lock/LockType">
-        <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//lock/LockType/Exclusive"/>
-        <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//lock/LockType/ExclusiveRD"/>
-      </genEnums>
     </nestedGenPackages>
     <nestedGenPackages prefix="IntegratedLanguageCoreMeta" basePackage="org.smeup.sys.il.core"
         disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-core.ecore#//meta">

@@ -12,14 +12,17 @@
 package org.smeup.sys.rt.repo.e4;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.equinox.p2.core.IProvisioningAgent;
 import org.eclipse.equinox.p2.core.IProvisioningAgentProvider;
+import org.eclipse.equinox.p2.core.ProvisionException;
 import org.eclipse.equinox.p2.engine.IProfileRegistry;
 import org.eclipse.equinox.p2.metadata.IInstallableUnit;
 import org.eclipse.equinox.p2.operations.InstallOperation;
@@ -32,6 +35,8 @@ import org.eclipse.equinox.p2.query.QueryUtil;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepository;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
 import org.smeup.sys.rt.core.QApplication;
+import org.smeup.sys.rt.core.QApplicationComponent;
+import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.repo.QRepositoryManager;
 
 public class E4RepositoryManagerImpl implements QRepositoryManager {
@@ -46,20 +51,141 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 	// "http://download.eclipse.org/releases/helios";
 	private static String asup_site = "http://smeup.github.io/org.smeup.sys.p2.site";
 
-	@Override
-	public void checkUpdates(QApplication application) {
-		String path = System.getProperty("osgi.instance.area");
+	private IProvisioningAgent agent = null;
 
-		IProvisioningAgent agent = null;
+	@PostConstruct
+	public void init() throws ProvisionException, URISyntaxException {
+		
+		String path = System.getProperty("osgi.instance.area");
+		this.agent = agentProvider.createAgent(new URI(path + "/p2"));		
+	}
+		
+	@Override
+	public boolean checkUpdates(QApplication application) {
+		
+		boolean result = false;
+		
+		for(QApplicationComponent component: application.getComponents()) {
+			if(checkUpdates(component)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public void updateApplication(QApplication application) {
+		
+		for(QApplicationComponent component: application.getComponents()) {
+			updateComponent(component);
+		}
+	}
+
+	@Override
+	public boolean checkUpdates(QApplicationComponent component) {
+
+		boolean result = false;
+		
+		for(QApplicationModule module: component.getModules()) {
+			if(checkUpdates(module)) {
+				result = true;
+				break;
+			}
+		}
+		
+		return result;
+	}
+
+	@Override
+	public void updateComponent(QApplicationComponent component) {
+
+		for(QApplicationModule module: component.getModules()) {
+			updateModule(module);
+		}		
+	}
+
+	private boolean checkUpdates(QApplicationModule module) {
+		
+		boolean result = false;
+
+		result = getInstallableUnit(getMetadataRepository(), module) != null;
+		
+		return result;
+		
+	}
+
+	private void updateModule(QApplicationModule module) {
+		
+	}
+	
+	private IMetadataRepository getMetadataRepository() {
+		
+		IMetadataRepository repository = null;
 		try {
-			agent = agentProvider.createAgent(new URI(path + "/p2"));
 
 			IProfileRegistry profileRegistry = (IProfileRegistry) agent.getService(IProfileRegistry.SERVICE_NAME);
 			if(profileRegistry.getProfile("ASUP") == null)
 				profileRegistry.addProfile("ASUP");
 						
 			IMetadataRepositoryManager manager = (IMetadataRepositoryManager) agent.getService(IMetadataRepositoryManager.SERVICE_NAME);
-			IMetadataRepository repository = manager.loadRepository(new URI(asup_site), null);
+			repository = manager.loadRepository(new URI(asup_site), null);
+		}
+		catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return repository;
+	}
+	
+	private IInstallableUnit getInstallableUnit(IMetadataRepository repository, QApplicationModule module) {
+
+		
+		String moduleName = "org.smeup.sys.ft."+module.getName();
+		
+		// groups
+		IQuery<IInstallableUnit> query = QueryUtil.createLatestQuery(QueryUtil.createIUGroupQuery());
+		IQueryResult<IInstallableUnit> queryResult = repository.query(query, null);
+		
+		IInstallableUnit installableUnit = null;
+
+		for(IInstallableUnit iu: queryResult) {
+			
+			System.out.println(iu.getId());
+			
+			if(iu.getId().equals(moduleName+".feature.group")) {
+				installableUnit = iu;
+				break;
+			}
+		}
+		
+		return installableUnit;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void internalTest() {
+
+		
+		IMetadataRepository repository = getMetadataRepository();
+		
+		try {
 			
 			// repository
 			System.out.println(repository.getName() + "/" + repository.getDescription() + "/" + repository.getLocation() + "/" + repository.getProvider());
@@ -79,7 +205,7 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 				}
 				
 				InstallOperation installOperation = new InstallOperation(new ProvisioningSession(agent), installableGroup);
-				installOperation.setProfileId("ASUP");
+//				installOperation.setProfileId("ASUP");
 				
 				IStatus result = installOperation.resolveModal(null);
 				if (result.isOK()) {
@@ -126,5 +252,7 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 			if (agent != null)
 				agent.stop();
 		}
+
 	}
+
 }

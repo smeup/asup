@@ -8,6 +8,7 @@
 package org.smeup.sys.rt.repo;
 
 import org.smeup.sys.rt.core.QApplication;
+import org.smeup.sys.rt.core.QApplicationComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +27,30 @@ public interface QRepositoryManager {
 	 * @model applicationRequired="true"
 	 * @generated
 	 */
-	void checkUpdates(QApplication application);
+	boolean checkUpdates(QApplication application);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model applicationRequired="true"
+	 * @generated
+	 */
+	void updateApplication(QApplication application);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model componentRequired="true"
+	 * @generated
+	 */
+	boolean checkUpdates(QApplicationComponent component);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model componentRequired="true"
+	 * @generated
+	 */
+	void updateComponent(QApplicationComponent component);
 
 } // QRepositoryManager
