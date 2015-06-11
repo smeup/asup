@@ -36,4 +36,12 @@ public interface QApplicationManager {
 	 */
 	void restart();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean restartCalled();
+
 } // QApplicationManager

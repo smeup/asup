@@ -20,6 +20,8 @@ import org.smeup.sys.rt.core.QApplicationManager;
 
 public class E4ApplicationManagerImpl implements QApplicationManager {
 
+	private boolean restart = false;
+
 	@Override
 	public QApplication start(QApplication application, OutputStream output) {
 
@@ -35,9 +37,13 @@ public class E4ApplicationManagerImpl implements QApplicationManager {
 	}
 
 	@Override
-	public void restart() {
-		// TODO Auto-generated method stub
-		
+	public synchronized void restart() {
+		restart = true;
+	}
+
+	@Override
+	public synchronized boolean restartCalled() {
+		return restart;
 	}
 
 }

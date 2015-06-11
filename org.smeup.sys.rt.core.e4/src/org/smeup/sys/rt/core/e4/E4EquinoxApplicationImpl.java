@@ -13,6 +13,7 @@ package org.smeup.sys.rt.core.e4;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -77,7 +78,21 @@ public class E4EquinoxApplicationImpl implements IApplication {
 		ServiceReference<QApplicationManager> applicationManagerReference = bundleContext.getServiceReference(QApplicationManager.class);
 
 		QApplicationManager applicationManager = bundleContext.getService(applicationManagerReference);
-		return applicationManager.start(application, System.out);
+		applicationManager.start(application, System.out);
+		
+		return waitForStopOrRestart(applicationManager);
+	}
+
+	private Object waitForStopOrRestart(QApplicationManager applicationManager) {
+		for(;;) {
+			try {
+			    TimeUnit.SECONDS.sleep(5);
+			    if (applicationManager.restartCalled()) {
+			    	return EXIT_RESTART;
+			    }
+			} catch (InterruptedException e) {
+			}
+		}
 	}
 
 	@Override

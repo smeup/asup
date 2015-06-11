@@ -19,6 +19,7 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.rt.core.QApplicationManager;
 import org.smeup.sys.rt.repo.test.runner.RespositoryTester;
 
 public class RuntimeRepositoryTestProviderImpl extends E4TestProviderImpl {
@@ -43,4 +44,5 @@ public class RuntimeRepositoryTestProviderImpl extends E4TestProviderImpl {
 		}
 	
 	}
+	
 }
