@@ -34,4 +34,10 @@ public class E4ApplicationManagerImpl implements QApplicationManager {
 		}
 	}
 
+	@Override
+	public void restart() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
