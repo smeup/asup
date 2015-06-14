@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="file" nsURI="http://www.smeup.org/asup/os/file" nsPrefix="os-file">
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseFile" abstract="true" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="databaseFormat" eType="#//DatabaseFileFormat"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseFileField" eSuperTypes="#//FileFormatField"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseFileFormat">
+    <eOperations name="isEmpty" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="formatKey" eType="#//FileFormatKey"
+        containment="true"/>
+    <eGenericSuperTypes eClassifier="#//FileFormat">
+      <eTypeArguments eClassifier="#//DatabaseFileFormatDef"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseFileFormatDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      <eTypeArguments eClassifier="#//DatabaseFileField"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayFile" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="displayFormats" upperBound="-1"
+        eType="#//DisplayFileFormat" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayFileField" eSuperTypes="#//FileFormatField"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayFileFormat">
+    <eGenericSuperTypes eClassifier="#//FileFormat">
+      <eTypeArguments eClassifier="#//DisplayFileFormatDef"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DisplayFileFormatDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      <eTypeArguments eClassifier="#//DisplayFileField"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalFile" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File" abstract="true" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject ../../org.smeup.sys.il.core/model/il-core.ecore#//NamedNode">
+    <eOperations name="getClassURI" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
+    <eOperations name="getPackageInfoURI" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileFormat" abstract="true">
+    <eTypeParameters name="DD">
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eBounds>
+    </eTypeParameters>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eTypeParameter="#//FileFormat/DD"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileFormatField" abstract="true">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/UnaryAtomicBufferedDataDef">
+        <eTypeArguments/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileFormatKey" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyFields" upperBound="-1"
+        eType="#//FileFormatKeyField" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileFormatKeyField">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileManager" abstract="true" interface="true">
+    <eOperations name="getFileOverride" lowerBound="1" eType="#//File">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="fileName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="setFileOverride" lowerBound="1">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="fileFrom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="fileTo" lowerBound="1" eType="#//File"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileMember" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="#//FileMembered"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rows" upperBound="-1" eType="#//FileMemberRow"
+        containment="true" eOpposite="#//FileMemberRow/fileMember"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileMemberManager" abstract="true" interface="true">
+    <eOperations name="list" upperBound="-1" eType="#//FileMember">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="library" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>
+    </eOperations>
+    <eOperations name="lookup" eType="#//FileMember">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="file" lowerBound="1" eType="#//FileMembered"/>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileMemberRow" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fileMember" lowerBound="1"
+        eType="#//FileMember" eOpposite="#//FileMember/rows"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileMembered" abstract="true" interface="true">
+    <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalFile" eSuperTypes="#//DatabaseFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationStatement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tables" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PhysicalFile" eSuperTypes="#//DatabaseFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PrinterFile" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="printerFormats" upperBound="-1"
+        eType="#//PrinterFileFormat" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrinterFileFormat">
+    <eGenericSuperTypes eClassifier="#//FileFormat">
+      <eTypeArguments eClassifier="#//PrinterFileFormatDef"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrinterFileFormatDef">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/CompoundDataDef">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      <eTypeArguments eClassifier="#//PrinterFileField"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrinterFileField" eSuperTypes="#//FileFormatField"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceFile" eSuperTypes="#//File #//FileMembered"/>
+</ecore:EPackage>

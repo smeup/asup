@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<os-pgm:ProgramContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:os-pgm="http://www.smeup.org/asup/os/pgm" 
+    xsi:schemaLocation="http://www.smeup.org/asup/os/pgm ../../org.smeup.sys.os.pgm/model/os-pgm.ecore"
+    basePackage="org.smeup.sys.os.cmd.base.api"
+    scanPackage="true"/>

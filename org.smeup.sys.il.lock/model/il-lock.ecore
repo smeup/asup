@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="lock" nsURI="http://www.smeup.org/asup/il/lock" nsPrefix="il-lock">
+  <eClassifiers xsi:type="ecore:EClass" name="LockManager" abstract="true" interface="true">
+    <eOperations name="getLocker">
+      <eGenericType eClassifier="#//ObjectLocker">
+        <eTypeArguments eTypeParameter="#//LockManager/getLocker/T"/>
+      </eGenericType>
+      <eTypeParameters name="T">
+        <eBounds eClassifier="#//ObjectLockable"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="object">
+        <eGenericType eTypeParameter="#//LockManager/getLocker/T"/>
+      </eParameters>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LockRead" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LockWrite" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectLockable" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lockRead" lowerBound="1"
+        eType="#//LockRead" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lockWrite" lowerBound="1"
+        eType="#//LockWrite" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectLocker" abstract="true" interface="true">
+    <eTypeParameters name="T">
+      <eBounds eClassifier="#//ObjectLockable"/>
+    </eTypeParameters>
+    <eOperations name="lock">
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
+    <eOperations name="tryLock" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
+    <eOperations name="unlock">
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
+    <eOperations name="isLocked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
+    <eOperations name="isLockedByOther" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="lockType" lowerBound="1" eType="#//LockType"/>
+    </eOperations>
+    <eOperations name="getObject">
+      <eGenericType eTypeParameter="#//ObjectLocker/T"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LockType">
+    <eLiterals name="Read" value="10" literal="READ"/>
+    <eLiterals name="Write" value="20" literal="WRITE"/>
+  </eClassifiers>
+</ecore:EPackage>

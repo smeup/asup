@@ -104,7 +104,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public QSourceEntry createChildEntry(QContext context, QSourceEntry parent, String name, boolean replace) throws IOException {
+	public QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace) throws IOException {
 		return createEntry(parent, null, name, replace);
 	}
 
@@ -133,7 +133,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public QSourceEntry getChildEntry(QContext context, QSourceEntry parent, String name) {
+	public QSourceEntry getChildEntry(QContext context, QSourceNode parent, String name) {
 		return getChildEntry(context, parent, null, name);
 	}
 
@@ -159,7 +159,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
-	public List<QSourceEntry> listChildEntries(QContext context, QSourceEntry parent) {
+	public List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent) {
 		return listChildEntries(context, parent, null, null);
 	}
 

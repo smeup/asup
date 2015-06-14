@@ -14,7 +14,7 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,12 +41,10 @@ public interface QEval extends QInvoke {
 	String getAssignment();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getAssignment
-	 * <em>Assignment</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Assignment</em>' attribute.
+	 * @param value the new value of the '<em>Assignment</em>' attribute.
 	 * @see #getAssignment()
 	 * @generated
 	 */

@@ -1742,7 +1742,7 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/data/term" nsPrefix="il-data-term">
-    <eClassifiers xsi:type="ecore:EClass" name="DataTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
+    <eClassifiers xsi:type="ecore:EClass" name="DataTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object ../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
       <eTypeParameters name="DD">
         <eBounds eClassifier="#//def/DataDef">
           <eTypeArguments/>
@@ -1753,6 +1753,7 @@
       </eOperations>
       <eOperations name="getDataTermType" lowerBound="1" eType="#//term/DataTermType"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="constant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definition" containment="true">
         <eGenericType eTypeParameter="#//term/DataTerm/DD"/>
       </eStructuralFeatures>
@@ -1761,6 +1762,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="like" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="restricted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>

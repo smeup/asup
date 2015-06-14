@@ -27,8 +27,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.BlockImpl#getStatements <em>Statements</em>}
- * </li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.BlockImpl#getStatements <em>Statements</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,9 +35,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class BlockImpl extends StatementImpl implements QBlock {
 	/**
-	 * The cached value of the '{@link #getStatements() <em>Statements</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStatements()
 	 * @generated
 	 * @ordered
@@ -51,7 +49,6 @@ public class BlockImpl extends StatementImpl implements QBlock {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected BlockImpl() {
@@ -60,7 +57,6 @@ public class BlockImpl extends StatementImpl implements QBlock {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,86 +66,81 @@ public class BlockImpl extends StatementImpl implements QBlock {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QStatement> getStatements() {
-		if (statements == null)
+		if (statements == null) {
 			statements = new EObjectContainmentEList<QStatement>(QStatement.class, this, QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS);
+		}
 		return statements;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
-			return ((InternalEList<?>) getStatements()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
+				return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
-			return getStatements();
+			case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
+				return getStatements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
-			getStatements().clear();
-			getStatements().addAll((Collection<? extends QStatement>) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
+				getStatements().clear();
+				getStatements().addAll((Collection<? extends QStatement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
-			getStatements().clear();
-			return;
+			case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
+				getStatements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
-			return statements != null && !statements.isEmpty();
+			case QIntegratedLanguageFlowPackage.BLOCK__STATEMENTS:
+				return statements != null && !statements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

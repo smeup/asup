@@ -16,7 +16,7 @@ import org.smeup.sys.il.core.QAnnotation;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,12 +44,9 @@ public interface QAnnotationCommand extends QAnnotation {
 	String getCommand();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Command</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Command</em>' attribute.
 	 * @see #getCommand()
 	 * @generated
 	 */

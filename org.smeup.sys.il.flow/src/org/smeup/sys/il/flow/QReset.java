@@ -14,7 +14,7 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QReset#getObject <em>Object</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QReset#getObject <em>Object</em>}</li>
  * </ul>
  * </p>
  *

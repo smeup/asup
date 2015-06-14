@@ -27,7 +27,6 @@ public class RoutineImpl extends UnitImpl implements QRoutine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected RoutineImpl() {
@@ -36,7 +35,6 @@ public class RoutineImpl extends UnitImpl implements QRoutine {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

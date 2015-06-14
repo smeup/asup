@@ -29,7 +29,6 @@ public abstract class StatementImpl extends NodeImpl implements QStatement {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected StatementImpl() {
@@ -38,7 +37,6 @@ public abstract class StatementImpl extends NodeImpl implements QStatement {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

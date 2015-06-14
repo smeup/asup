@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="outq" nsURI="http://www.smeup.org/asup/os/outq" nsPrefix="os-outq">
+  <eClassifiers xsi:type="ecore:EClass" name="OutQueue" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" lowerBound="1"
+        eType="#//SequenceType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SequenceType">
+    <eLiterals name="FirstInFirstOut" value="10" literal="FIFO"/>
+    <eLiterals name="JobNumber" value="20" literal="JOBNBR"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutQueueManager" abstract="true" interface="true"/>
+</ecore:EPackage>

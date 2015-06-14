@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.os.outq/src" modelPluginID="org.smeup.sys.os.outq"
+    modelName="As.UP Operating System OutQueue" editPluginClass="" editorPluginClass=""
+    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" testSuiteClass="" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>os-outq.ecore</foreignModel>
+  <genPackages prefix="OperatingSystemOutQueue" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="os-outq.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-outq.ecore#//SequenceType">
+      <genEnumLiterals ecoreEnumLiteral="os-outq.ecore#//SequenceType/FirstInFirstOut"/>
+      <genEnumLiterals ecoreEnumLiteral="os-outq.ecore#//SequenceType/JobNumber"/>
+    </genEnums>
+    <genClasses ecoreClass="os-outq.ecore#//OutQueue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-outq.ecore#//OutQueue/sequence"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-outq.ecore#//OutQueueManager"/>
+  </genPackages>
+</genmodel:GenModel>

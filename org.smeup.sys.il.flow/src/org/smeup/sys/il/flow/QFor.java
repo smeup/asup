@@ -14,8 +14,8 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QFor#getIncrement <em>Increment</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFor#getInitialization <em>Initialization</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFor#getIncrement <em>Increment</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFor#getInitialization <em>Initialization</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,12 +71,10 @@ public interface QFor extends QIteration {
 	String getInitialization();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QFor#getInitialization
-	 * <em>Initialization</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QFor#getInitialization <em>Initialization</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Initialization</em>' attribute.
+	 * @param value the new value of the '<em>Initialization</em>' attribute.
 	 * @see #getInitialization()
 	 * @generated
 	 */

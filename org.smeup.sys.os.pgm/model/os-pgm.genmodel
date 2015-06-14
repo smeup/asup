@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.os.pgm/src" editDirectory="/org.smeup.sys.os.pgm.edit/src"
+    editorDirectory="/org.smeup.sys.os.pgm.editor/src" modelPluginID="org.smeup.sys.os.pgm"
+    modelName="As.UP Operating System Program" editPluginClass="" editorPluginClass=""
+    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.os.pgm.edit"
+    editorPluginID="org.smeup.sys.os.pgm.editor" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    interfaceNamePattern="Q{0}">
+  <foreignModel>os-pgm.ecore</foreignModel>
+  <genPackages prefix="OperatingSystemProgram" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
+      adapterFactory="false" fileExtensions="" ecorePackage="os-pgm.ecore#/">
+    <genDataTypes ecoreDataType="os-pgm.ecore#//ParameterList"/>
+    <genClasses ecoreClass="os-pgm.ecore#//ActivationGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-pgm.ecore#//ActivationGroup/frameworkContext"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ActivationGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-pgm.ecore#//ActivationGroup/programs"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroup/lookup">
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroup/lookup/program"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-pgm.ecore#//ActivationGroupManager">
+      <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroupManager/create">
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/create/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/create/name"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/create/register"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroupManager/lookup">
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/lookup/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/lookup/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroupManager/register">
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/register/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroupManager/register/activationGroup"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-pgm.ecore#//CallableProgram">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os-pgm.ecore#//CallableProgram/qActivationGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//CallableProgram/qEntry"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-pgm.ecore#//CallableProgram/qProgram"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/close"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getRawProgram"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/isOpen"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/isStateless"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/open"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-pgm.ecore#//CallableProgramDelegator">
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgramDelegator/getDelegate"/>
+    </genClasses>
+    <genClasses ecoreClass="os-pgm.ecore#//Program">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//Program/activationGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//Program/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//Program/creationParams"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-pgm.ecore#//Program/source"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//Program/getClassURI"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//Program/getPackageInfoURI"/>
+    </genClasses>
+    <genClasses ecoreClass="os-pgm.ecore#//ProgramContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramContainer/basePackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramContainer/scanPackage"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-pgm.ecore#//ProgramManager">
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/callProgram">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram/contextID"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram/library"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram/program"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram/params"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/callProgram.1">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram.1/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram.1/klass"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram.1/params"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/callProgram.1/contextID"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/getCaller">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getCaller/contextID"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getCaller/program"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/getCaller.1">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getCaller.1/contextID"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getCaller.1/program"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/getProgramStack">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getProgramStack/contextID"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/getProgramStack.1">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getProgramStack.1/contextID"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/getProgramStack.1/jobID"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/loadProgram">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/loadProgram/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/loadProgram/program"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramManager/loadProgram.1">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/loadProgram.1/job"/>
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramManager/loadProgram.1/klass"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="os-pgm.ecore#//ProgramSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramSource/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramSource/content"/>
+    </genClasses>
+    <genClasses ecoreClass="os-pgm.ecore#//ProgramStack">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramStack/dateEnter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//ProgramStack/dateExit"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/isEmpty"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/list"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/push">
+        <genParameters ecoreParameter="os-pgm.ecore#//ProgramStack/push/element"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/peek"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/pop"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//ProgramStack/size"/>
+    </genClasses>
+    <genClasses ecoreClass="os-pgm.ecore#//ProgramStatus">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-pgm.ecore#//ProgramStatus/callableProgram"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
