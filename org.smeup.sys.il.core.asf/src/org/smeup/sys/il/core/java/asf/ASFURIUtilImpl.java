@@ -13,7 +13,7 @@ package org.smeup.sys.il.core.java.asf;
 
 import java.net.URI;
 
-import org.smeup.sys.il.core.QURIs;
+import org.smeup.sys.il.core.java.QURIs;
 
 public class ASFURIUtilImpl implements QURIs {
 

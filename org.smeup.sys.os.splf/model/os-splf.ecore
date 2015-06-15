@@ -49,4 +49,11 @@
       <eParameters name="spoolFile" lowerBound="1" eType="#//SpoolFile"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpoolFileData">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/BufferedDataDef">
+        <eTypeArguments/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
 </ecore:EPackage>

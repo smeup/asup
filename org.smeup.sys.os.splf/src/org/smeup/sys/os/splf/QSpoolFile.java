@@ -30,7 +30,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * </ul>
  * </p>
  *
- * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile()
+ * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile()
  * @model
  * @generated
  */
@@ -45,7 +45,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>File Name</em>' attribute.
 	 * @see #setFileName(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_FileName()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_FileName()
 	 * @model
 	 * @generated
 	 */
@@ -71,7 +71,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Job Name</em>' attribute.
 	 * @see #setJobName(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_JobName()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobName()
 	 * @model annotation="il-data length='10'"
 	 * @generated
 	 */
@@ -97,7 +97,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Job Number</em>' attribute.
 	 * @see #setJobNumber(int)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_JobNumber()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobNumber()
 	 * @model annotation="il-data precision='6'"
 	 * @generated
 	 */
@@ -123,7 +123,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Job User</em>' attribute.
 	 * @see #setJobUser(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_JobUser()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_JobUser()
 	 * @model annotation="il-data length='10'"
 	 * @generated
 	 */
@@ -149,7 +149,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Out Queue</em>' attribute.
 	 * @see #setOutQueue(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_OutQueue()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_OutQueue()
 	 * @model annotation="il-data length='10'"
 	 * @generated
 	 */
@@ -175,7 +175,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Spool ID</em>' attribute.
 	 * @see #setSpoolID(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_SpoolID()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_SpoolID()
 	 * @model id="true" required="true"
 	 *        annotation="il-data length='13'"
 	 * @generated
@@ -202,7 +202,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>User Data</em>' attribute.
 	 * @see #setUserData(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_UserData()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_UserData()
 	 * @model annotation="il-data length='48'"
 	 * @generated
 	 */
@@ -229,7 +229,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rows</em>' containment reference list.
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFile_Rows()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_Rows()
 	 * @see org.smeup.sys.os.splf.QSpoolFileRow#getSpoolFile
 	 * @model opposite="spoolFile" containment="true"
 	 * @generated

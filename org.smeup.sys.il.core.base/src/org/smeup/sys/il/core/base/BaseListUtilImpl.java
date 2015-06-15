@@ -13,7 +13,7 @@ package org.smeup.sys.il.core.base;
 
 import java.util.List;
 
-import org.smeup.sys.il.core.QLists;
+import org.smeup.sys.il.core.java.QLists;
 
 public class BaseListUtilImpl implements QLists {
 

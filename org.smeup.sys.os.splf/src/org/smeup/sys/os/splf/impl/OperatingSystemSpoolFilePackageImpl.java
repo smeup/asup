@@ -8,17 +8,28 @@
 package org.smeup.sys.os.splf.impl;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.os.splf.QOperatingSystemSpoolfileFactory;
-import org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage;
+
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+
+import org.smeup.sys.os.splf.QOperatingSystemSpoolFileFactory;
+import org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage;
 import org.smeup.sys.os.splf.QSpoolFile;
+import org.smeup.sys.os.splf.QSpoolFileData;
 import org.smeup.sys.os.splf.QSpoolFileRow;
 import org.smeup.sys.os.splf.QSpoolFileWriter;
 
@@ -28,7 +39,7 @@ import org.smeup.sys.os.splf.QSpoolFileWriter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements QOperatingSystemSpoolfilePackage {
+public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements QOperatingSystemSpoolFilePackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,6 +62,13 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	private EClass spoolFileWriterEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass spoolFileDataEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -61,12 +79,12 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#eNS_URI
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private OperatingSystemSpoolfilePackageImpl() {
-		super(eNS_URI, QOperatingSystemSpoolfileFactory.eINSTANCE);
+	private OperatingSystemSpoolFilePackageImpl() {
+		super(eNS_URI, QOperatingSystemSpoolFileFactory.eINSTANCE);
 	}
 
 	/**
@@ -79,7 +97,7 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link QOperatingSystemSpoolfilePackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QOperatingSystemSpoolFilePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,11 +106,11 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static QOperatingSystemSpoolfilePackage init() {
-		if (isInited) return (QOperatingSystemSpoolfilePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemSpoolfilePackage.eNS_URI);
+	public static QOperatingSystemSpoolFilePackage init() {
+		if (isInited) return (QOperatingSystemSpoolFilePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemSpoolFilePackage.eNS_URI);
 
 		// Obtain or create and register package
-		OperatingSystemSpoolfilePackageImpl theOperatingSystemSpoolfilePackage = (OperatingSystemSpoolfilePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OperatingSystemSpoolfilePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new OperatingSystemSpoolfilePackageImpl());
+		OperatingSystemSpoolFilePackageImpl theOperatingSystemSpoolFilePackage = (OperatingSystemSpoolFilePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OperatingSystemSpoolFilePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new OperatingSystemSpoolFilePackageImpl());
 
 		isInited = true;
 
@@ -100,18 +118,18 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theOperatingSystemSpoolfilePackage.createPackageContents();
+		theOperatingSystemSpoolFilePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theOperatingSystemSpoolfilePackage.initializePackageContents();
+		theOperatingSystemSpoolFilePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theOperatingSystemSpoolfilePackage.freeze();
+		theOperatingSystemSpoolFilePackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(QOperatingSystemSpoolfilePackage.eNS_URI, theOperatingSystemSpoolfilePackage);
-		return theOperatingSystemSpoolfilePackage;
+		EPackage.Registry.INSTANCE.put(QOperatingSystemSpoolFilePackage.eNS_URI, theOperatingSystemSpoolFilePackage);
+		return theOperatingSystemSpoolFilePackage;
 	}
 
 	/**
@@ -173,6 +191,15 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSpoolFile_Rows() {
+		return (EReference)spoolFileEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getSpoolFile_SpoolID() {
 		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(6);
 	}
@@ -184,15 +211,6 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	 */
 	public EAttribute getSpoolFile_UserData() {
 		return (EAttribute)spoolFileEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getSpoolFile_Rows() {
-		return (EReference)spoolFileEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -236,8 +254,17 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QOperatingSystemSpoolfileFactory getOperatingSystemSpoolfileFactory() {
-		return (QOperatingSystemSpoolfileFactory)getEFactoryInstance();
+	public EClass getSpoolFileData() {
+		return spoolFileDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QOperatingSystemSpoolFileFactory getOperatingSystemSpoolFileFactory() {
+		return (QOperatingSystemSpoolFileFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -274,6 +301,8 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 		createEAttribute(spoolFileRowEClass, SPOOL_FILE_ROW__CONTENT);
 
 		spoolFileWriterEClass = createEClass(SPOOL_FILE_WRITER);
+
+		spoolFileDataEClass = createEClass(SPOOL_FILE_DATA);
 	}
 
 	/**
@@ -301,6 +330,8 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -309,6 +340,12 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 		// Add supertypes to classes
 		spoolFileEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		spoolFileRowEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
+		g1.getETypeArguments().add(g2);
+		EGenericType g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		spoolFileDataEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(spoolFileEClass, QSpoolFile.class, "SpoolFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -330,6 +367,8 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 		EOperation op = addEOperation(spoolFileWriterEClass, null, "writeSpoolFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSpoolFile(), "spoolFile", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(spoolFileDataEClass, QSpoolFileData.class, "SpoolFileData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -403,4 +442,4 @@ public class OperatingSystemSpoolfilePackageImpl extends EPackageImpl implements
 		   });
 	}
 
-} //OperatingSystemSpoolfilePackageImpl
+} //OperatingSystemSpoolFilePackageImpl

@@ -14,7 +14,7 @@ package org.smeup.sys.os.splf;
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFileWriter()
+ * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFileWriter()
  * @model interface="true" abstract="true"
  * @generated
  */

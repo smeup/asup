@@ -10,8 +10,11 @@ package org.smeup.sys.os.splf.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.smeup.sys.os.splf.*;
 
 /**
@@ -20,24 +23,24 @@ import org.smeup.sys.os.splf.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OperatingSystemSpoolfileFactoryImpl extends EFactoryImpl implements QOperatingSystemSpoolfileFactory {
+public class OperatingSystemSpoolFileFactoryImpl extends EFactoryImpl implements QOperatingSystemSpoolFileFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static QOperatingSystemSpoolfileFactory init() {
+	public static QOperatingSystemSpoolFileFactory init() {
 		try {
-			QOperatingSystemSpoolfileFactory theOperatingSystemSpoolfileFactory = (QOperatingSystemSpoolfileFactory)EPackage.Registry.INSTANCE.getEFactory(QOperatingSystemSpoolfilePackage.eNS_URI);
-			if (theOperatingSystemSpoolfileFactory != null) {
-				return theOperatingSystemSpoolfileFactory;
+			QOperatingSystemSpoolFileFactory theOperatingSystemSpoolFileFactory = (QOperatingSystemSpoolFileFactory)EPackage.Registry.INSTANCE.getEFactory(QOperatingSystemSpoolFilePackage.eNS_URI);
+			if (theOperatingSystemSpoolFileFactory != null) {
+				return theOperatingSystemSpoolFileFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new OperatingSystemSpoolfileFactoryImpl();
+		return new OperatingSystemSpoolFileFactoryImpl();
 	}
 
 	/**
@@ -46,7 +49,7 @@ public class OperatingSystemSpoolfileFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperatingSystemSpoolfileFactoryImpl() {
+	public OperatingSystemSpoolFileFactoryImpl() {
 		super();
 	}
 
@@ -58,8 +61,9 @@ public class OperatingSystemSpoolfileFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE: return (EObject)createSpoolFile();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW: return (EObject)createSpoolFileRow();
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE: return (EObject)createSpoolFile();
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW: return (EObject)createSpoolFileRow();
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_DATA: return (EObject)createSpoolFileData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -90,8 +94,18 @@ public class OperatingSystemSpoolfileFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QOperatingSystemSpoolfilePackage getOperatingSystemSpoolfilePackage() {
-		return (QOperatingSystemSpoolfilePackage)getEPackage();
+	public QSpoolFileData createSpoolFileData() {
+		SpoolFileDataImpl spoolFileData = new SpoolFileDataImpl();
+		return spoolFileData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QOperatingSystemSpoolFilePackage getOperatingSystemSpoolFilePackage() {
+		return (QOperatingSystemSpoolFilePackage)getEPackage();
 	}
 
 	/**
@@ -101,8 +115,8 @@ public class OperatingSystemSpoolfileFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	@Deprecated
-	public static QOperatingSystemSpoolfilePackage getPackage() {
-		return QOperatingSystemSpoolfilePackage.eINSTANCE;
+	public static QOperatingSystemSpoolFilePackage getPackage() {
+		return QOperatingSystemSpoolFilePackage.eINSTANCE;
 	}
 
-} //OperatingSystemSpoolfileFactoryImpl
+} //OperatingSystemSpoolFileFactoryImpl

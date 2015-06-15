@@ -11,7 +11,10 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
+import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,11 +27,11 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfileFactory
+ * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFileFactory
  * @model kind="package"
  * @generated
  */
-public interface QOperatingSystemSpoolfilePackage extends EPackage {
+public interface QOperatingSystemSpoolFilePackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -59,14 +62,14 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QOperatingSystemSpoolfilePackage eINSTANCE = org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl.init();
+	QOperatingSystemSpoolFilePackage eINSTANCE = org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.splf.impl.SpoolFileImpl <em>Spool File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.splf.impl.SpoolFileImpl
-	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFile()
+	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFile()
 	 * @generated
 	 */
 	int SPOOL_FILE = 0;
@@ -157,7 +160,7 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.splf.impl.SpoolFileRowImpl
-	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFileRow()
+	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileRow()
 	 * @generated
 	 */
 	int SPOOL_FILE_ROW = 1;
@@ -189,13 +192,12 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	 */
 	int SPOOL_FILE_ROW_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.splf.QSpoolFileWriter <em>Spool File Writer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.splf.QSpoolFileWriter
-	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFileWriter()
+	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileWriter()
 	 * @generated
 	 */
 	int SPOOL_FILE_WRITER = 2;
@@ -208,6 +210,115 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	 * @ordered
 	 */
 	int SPOOL_FILE_WRITER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.splf.impl.SpoolFileDataImpl <em>Spool File Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.splf.impl.SpoolFileDataImpl
+	 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileData()
+	 * @generated
+	 */
+	int SPOOL_FILE_DATA = 3;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Constant</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__DEFINITION = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION;
+
+	/**
+	 * The feature id for the '<em><b>Initialized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__INITIALIZED = QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED;
+
+	/**
+	 * The feature id for the '<em><b>Like</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__LIKE = QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__MANDATORY = QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY;
+
+	/**
+	 * The feature id for the '<em><b>Restricted</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__RESTRICTED = QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA__TEXT = QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT;
+
+	/**
+	 * The number of structural features of the '<em>Spool File Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPOOL_FILE_DATA_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 0;
 
 
 	/**
@@ -276,6 +387,17 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	EAttribute getSpoolFile_OutQueue();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.splf.QSpoolFile#getRows <em>Rows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rows</em>'.
+	 * @see org.smeup.sys.os.splf.QSpoolFile#getRows()
+	 * @see #getSpoolFile()
+	 * @generated
+	 */
+	EReference getSpoolFile_Rows();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.splf.QSpoolFile#getSpoolID <em>Spool ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,17 +418,6 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSpoolFile_UserData();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.splf.QSpoolFile#getRows <em>Rows</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Rows</em>'.
-	 * @see org.smeup.sys.os.splf.QSpoolFile#getRows()
-	 * @see #getSpoolFile()
-	 * @generated
-	 */
-	EReference getSpoolFile_Rows();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.splf.QSpoolFileRow <em>Spool File Row</em>}'.
@@ -351,13 +462,23 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 	EClass getSpoolFileWriter();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.splf.QSpoolFileData <em>Spool File Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Spool File Data</em>'.
+	 * @see org.smeup.sys.os.splf.QSpoolFileData
+	 * @generated
+	 */
+	EClass getSpoolFileData();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	QOperatingSystemSpoolfileFactory getOperatingSystemSpoolfileFactory();
+	QOperatingSystemSpoolFileFactory getOperatingSystemSpoolFileFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -377,7 +498,7 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.os.splf.impl.SpoolFileImpl
-		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFile()
+		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFile()
 		 * @generated
 		 */
 		EClass SPOOL_FILE = eINSTANCE.getSpoolFile();
@@ -423,6 +544,14 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 		EAttribute SPOOL_FILE__OUT_QUEUE = eINSTANCE.getSpoolFile_OutQueue();
 
 		/**
+		 * The meta object literal for the '<em><b>Rows</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPOOL_FILE__ROWS = eINSTANCE.getSpoolFile_Rows();
+
+		/**
 		 * The meta object literal for the '<em><b>Spool ID</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -439,19 +568,11 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 		EAttribute SPOOL_FILE__USER_DATA = eINSTANCE.getSpoolFile_UserData();
 
 		/**
-		 * The meta object literal for the '<em><b>Rows</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPOOL_FILE__ROWS = eINSTANCE.getSpoolFile_Rows();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.splf.impl.SpoolFileRowImpl <em>Spool File Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.os.splf.impl.SpoolFileRowImpl
-		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFileRow()
+		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileRow()
 		 * @generated
 		 */
 		EClass SPOOL_FILE_ROW = eINSTANCE.getSpoolFileRow();
@@ -477,11 +598,21 @@ public interface QOperatingSystemSpoolfilePackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.os.splf.QSpoolFileWriter
-		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolfilePackageImpl#getSpoolFileWriter()
+		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileWriter()
 		 * @generated
 		 */
 		EClass SPOOL_FILE_WRITER = eINSTANCE.getSpoolFileWriter();
 
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.splf.impl.SpoolFileDataImpl <em>Spool File Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.splf.impl.SpoolFileDataImpl
+		 * @see org.smeup.sys.os.splf.impl.OperatingSystemSpoolFilePackageImpl#getSpoolFileData()
+		 * @generated
+		 */
+		EClass SPOOL_FILE_DATA = eINSTANCE.getSpoolFileData();
+
 	}
 
-} //QOperatingSystemSpoolfilePackage
+} //QOperatingSystemSpoolFilePackage

@@ -23,7 +23,7 @@ import org.smeup.sys.il.core.QObject;
  * </ul>
  * </p>
  *
- * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFileRow()
+ * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFileRow()
  * @model
  * @generated
  */
@@ -39,7 +39,7 @@ public interface QSpoolFileRow extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Spool File</em>' container reference.
 	 * @see #setSpoolFile(QSpoolFile)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFileRow_SpoolFile()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFileRow_SpoolFile()
 	 * @see org.smeup.sys.os.splf.QSpoolFile#getRows
 	 * @model opposite="rows" required="true" transient="false"
 	 * @generated
@@ -66,7 +66,7 @@ public interface QSpoolFileRow extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content</em>' attribute.
 	 * @see #setContent(String)
-	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage#getSpoolFileRow_Content()
+	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFileRow_Content()
 	 * @model required="true"
 	 * @generated
 	 */

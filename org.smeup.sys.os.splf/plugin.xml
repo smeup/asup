@@ -15,7 +15,7 @@
       <!-- @generated os-splf -->
       <package
             uri="http://www.smeup.org/asup/os/splf"
-            class="org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage"
+            class="org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage"
             genModel="model/os-splf.genmodel"/>
    </extension>
 

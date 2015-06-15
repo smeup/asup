@@ -9,7 +9,6 @@ package org.smeup.sys.os.splf.impl;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -19,7 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
-import org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage;
+import org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage;
 import org.smeup.sys.os.splf.QSpoolFile;
 import org.smeup.sys.os.splf.QSpoolFileRow;
 
@@ -215,7 +214,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QOperatingSystemSpoolfilePackage.Literals.SPOOL_FILE;
+		return QOperatingSystemSpoolFilePackage.Literals.SPOOL_FILE;
 	}
 
 	/**
@@ -236,7 +235,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldFileName = fileName;
 		fileName = newFileName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__FILE_NAME, oldFileName, fileName));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME, oldFileName, fileName));
 	}
 
 	/**
@@ -257,7 +256,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldJobName = jobName;
 		jobName = newJobName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NAME, oldJobName, jobName));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME, oldJobName, jobName));
 	}
 
 	/**
@@ -278,7 +277,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		int oldJobNumber = jobNumber;
 		jobNumber = newJobNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NUMBER, oldJobNumber, jobNumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER, oldJobNumber, jobNumber));
 	}
 
 	/**
@@ -299,7 +298,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldJobUser = jobUser;
 		jobUser = newJobUser;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_USER, oldJobUser, jobUser));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER, oldJobUser, jobUser));
 	}
 
 	/**
@@ -320,7 +319,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldOutQueue = outQueue;
 		outQueue = newOutQueue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__OUT_QUEUE, oldOutQueue, outQueue));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE, oldOutQueue, outQueue));
 	}
 
 	/**
@@ -341,7 +340,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldSpoolID = spoolID;
 		spoolID = newSpoolID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__SPOOL_ID, oldSpoolID, spoolID));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__SPOOL_ID, oldSpoolID, spoolID));
 	}
 
 	/**
@@ -362,7 +361,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 		String oldUserData = userData;
 		userData = newUserData;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE__USER_DATA, oldUserData, userData));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE__USER_DATA, oldUserData, userData));
 	}
 
 	/**
@@ -372,7 +371,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	 */
 	public List<QSpoolFileRow> getRows() {
 		if (rows == null) {
-			rows = new EObjectContainmentWithInverseEList<QSpoolFileRow>(QSpoolFileRow.class, this, QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS, QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE);
+			rows = new EObjectContainmentWithInverseEList<QSpoolFileRow>(QSpoolFileRow.class, this, QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS, QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE);
 		}
 		return rows;
 	}
@@ -386,7 +385,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -400,7 +399,7 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -414,21 +413,21 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__FILE_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				return getFileName();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
 				return getJobName();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NUMBER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
 				return getJobNumber();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_USER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
 				return getJobUser();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__OUT_QUEUE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				return getOutQueue();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				return getRows();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__SPOOL_ID:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__SPOOL_ID:
 				return getSpoolID();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__USER_DATA:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__USER_DATA:
 				return getUserData();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -443,29 +442,29 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__FILE_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				setFileName((String)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
 				setJobName((String)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NUMBER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
 				setJobNumber((Integer)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_USER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
 				setJobUser((String)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__OUT_QUEUE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				setOutQueue((String)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				getRows().clear();
 				getRows().addAll((Collection<? extends QSpoolFileRow>)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__SPOOL_ID:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__SPOOL_ID:
 				setSpoolID((String)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__USER_DATA:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__USER_DATA:
 				setUserData((String)newValue);
 				return;
 		}
@@ -480,28 +479,28 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__FILE_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				setFileName(FILE_NAME_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
 				setJobName(JOB_NAME_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NUMBER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
 				setJobNumber(JOB_NUMBER_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_USER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
 				setJobUser(JOB_USER_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__OUT_QUEUE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				setOutQueue(OUT_QUEUE_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				getRows().clear();
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__SPOOL_ID:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__SPOOL_ID:
 				setSpoolID(SPOOL_ID_EDEFAULT);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__USER_DATA:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__USER_DATA:
 				setUserData(USER_DATA_EDEFAULT);
 				return;
 		}
@@ -516,21 +515,21 @@ public class SpoolFileImpl extends ObjectNameableImpl implements QSpoolFile {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__FILE_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__FILE_NAME:
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NAME:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NAME:
 				return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_NUMBER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_NUMBER:
 				return jobNumber != JOB_NUMBER_EDEFAULT;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__JOB_USER:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__JOB_USER:
 				return JOB_USER_EDEFAULT == null ? jobUser != null : !JOB_USER_EDEFAULT.equals(jobUser);
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__OUT_QUEUE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__OUT_QUEUE:
 				return OUT_QUEUE_EDEFAULT == null ? outQueue != null : !OUT_QUEUE_EDEFAULT.equals(outQueue);
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS:
 				return rows != null && !rows.isEmpty();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__SPOOL_ID:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__SPOOL_ID:
 				return SPOOL_ID_EDEFAULT == null ? spoolID != null : !SPOOL_ID_EDEFAULT.equals(spoolID);
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE__USER_DATA:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE__USER_DATA:
 				return USER_DATA_EDEFAULT == null ? userData != null : !USER_DATA_EDEFAULT.equals(userData);
 		}
 		return super.eIsSet(featureID);

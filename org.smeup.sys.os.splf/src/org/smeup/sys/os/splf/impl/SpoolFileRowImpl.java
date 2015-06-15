@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.impl.ObjectImpl;
-import org.smeup.sys.os.splf.QOperatingSystemSpoolfilePackage;
+import org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage;
 import org.smeup.sys.os.splf.QSpoolFile;
 import org.smeup.sys.os.splf.QSpoolFileRow;
 
@@ -75,7 +75,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QOperatingSystemSpoolfilePackage.Literals.SPOOL_FILE_ROW;
+		return QOperatingSystemSpoolFilePackage.Literals.SPOOL_FILE_ROW;
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	 * @generated
 	 */
 	public QSpoolFile getSpoolFile() {
-		if (eContainerFeatureID() != QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE) return null;
+		if (eContainerFeatureID() != QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE) return null;
 		return (QSpoolFile)eInternalContainer();
 	}
 
@@ -94,7 +94,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	 * @generated
 	 */
 	public NotificationChain basicSetSpoolFile(QSpoolFile newSpoolFile, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newSpoolFile, QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newSpoolFile, QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE, msgs);
 		return msgs;
 	}
 
@@ -104,19 +104,19 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	 * @generated
 	 */
 	public void setSpoolFile(QSpoolFile newSpoolFile) {
-		if (newSpoolFile != eInternalContainer() || (eContainerFeatureID() != QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE && newSpoolFile != null)) {
+		if (newSpoolFile != eInternalContainer() || (eContainerFeatureID() != QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE && newSpoolFile != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject)newSpoolFile))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSpoolFile != null)
-				msgs = ((InternalEObject)newSpoolFile).eInverseAdd(this, QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS, QSpoolFile.class, msgs);
+				msgs = ((InternalEObject)newSpoolFile).eInverseAdd(this, QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS, QSpoolFile.class, msgs);
 			msgs = basicSetSpoolFile(newSpoolFile, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE, newSpoolFile, newSpoolFile));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE, newSpoolFile, newSpoolFile));
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 		String oldContent = content;
 		content = newContent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__CONTENT, oldContent, content));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__CONTENT, oldContent, content));
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSpoolFile((QSpoolFile)otherEnd, msgs);
@@ -164,7 +164,7 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				return basicSetSpoolFile(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -178,8 +178,8 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
-				return eInternalContainer().eInverseRemove(this, QOperatingSystemSpoolfilePackage.SPOOL_FILE__ROWS, QSpoolFile.class, msgs);
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+				return eInternalContainer().eInverseRemove(this, QOperatingSystemSpoolFilePackage.SPOOL_FILE__ROWS, QSpoolFile.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -192,9 +192,9 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				return getSpoolFile();
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__CONTENT:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__CONTENT:
 				return getContent();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -208,10 +208,10 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				setSpoolFile((QSpoolFile)newValue);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__CONTENT:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__CONTENT:
 				setContent((String)newValue);
 				return;
 		}
@@ -226,10 +226,10 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				setSpoolFile((QSpoolFile)null);
 				return;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__CONTENT:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__CONTENT:
 				setContent(CONTENT_EDEFAULT);
 				return;
 		}
@@ -244,9 +244,9 @@ public class SpoolFileRowImpl extends ObjectImpl implements QSpoolFileRow {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__SPOOL_FILE:
 				return getSpoolFile() != null;
-			case QOperatingSystemSpoolfilePackage.SPOOL_FILE_ROW__CONTENT:
+			case QOperatingSystemSpoolFilePackage.SPOOL_FILE_ROW__CONTENT:
 				return CONTENT_EDEFAULT == null ? content != null : !CONTENT_EDEFAULT.equals(content);
 		}
 		return super.eIsSet(featureID);
