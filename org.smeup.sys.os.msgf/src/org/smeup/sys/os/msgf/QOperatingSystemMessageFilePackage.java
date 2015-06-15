@@ -152,6 +152,15 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_DATA_FIELD__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_DATA_FIELD__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
+
+	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,6 +195,15 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_DATA_FIELD__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_DATA_FIELD__MANDATORY = QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute.
@@ -416,11 +434,11 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	EAttribute getMessageDataField_OutputMask();
 
 	/**
-	 * Returns the meta object for data type '{@link org.smeup.sys.os.msgf.MessageException <em>Message Exception</em>}'.
+	 * Returns the meta object for data type '{@link org.smeup.sys.os.core.OperatingSystemMessageException <em>Message Exception</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Message Exception</em>'.
-	 * @see org.smeup.sys.os.msgf.MessageException
-	 * @model instanceClass="org.smeup.sys.os.msgf.MessageException"
+	 * @see org.smeup.sys.os.core.OperatingSystemMessageException
+	 * @model instanceClass="org.smeup.sys.os.core.OperatingSystemMessageException"
 	 * @generated
 	 */
 	EDataType getMessageException();
@@ -555,7 +573,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em>Message Exception</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.msgf.MessageException
+		 * @see org.smeup.sys.os.core.OperatingSystemMessageException
 		 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageException()
 		 * @generated
 		 */

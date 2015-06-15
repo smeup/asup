@@ -22,8 +22,8 @@ import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
-import org.smeup.sys.os.msgf.MessageException;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
@@ -395,7 +395,7 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 
 		// Initialize data types
 		initEDataType(messageVariableListEDataType, Object[].class, "MessageVariableList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(messageExceptionEDataType, MessageException.class, "MessageException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(messageExceptionEDataType, OperatingSystemMessageException.class, "MessageException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

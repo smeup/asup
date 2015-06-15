@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.msgf.*;
-import org.smeup.sys.os.msgf.MessageException;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
 import org.smeup.sys.os.msgf.QOperatingSystemMessageFileFactory;
@@ -153,8 +153,8 @@ public class OperatingSystemMessageFileFactoryImpl extends EFactoryImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MessageException createMessageExceptionFromString(EDataType eDataType, String initialValue) {
-		return (MessageException)super.createFromString(eDataType, initialValue);
+	public OperatingSystemMessageException createMessageExceptionFromString(EDataType eDataType, String initialValue) {
+		return (OperatingSystemMessageException)super.createFromString(eDataType, initialValue);
 	}
 
 	/**

@@ -838,6 +838,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(this.getBufferedData());
 		g1.getETypeArguments().add(g2);
 		bufferedDataDelegatorEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getBufferedData());
+		bufferedDataDelegatorEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getList());
 		g2 = createEGenericType(bufferedListEClass_D);
 		g1.getETypeArguments().add(g2);

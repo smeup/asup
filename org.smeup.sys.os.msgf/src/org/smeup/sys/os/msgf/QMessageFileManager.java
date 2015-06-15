@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.msgf;
 
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 
@@ -27,7 +28,7 @@ public interface QMessageFileManager {
 	 * @model dataType="org.smeup.sys.os.msgf.MessageException" messageNameType="org.smeup.sys.il.core.java.JavaEnum" messageNameRequired="true" variablesDataType="org.smeup.sys.os.msgf.MessageVariableList" variablesRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>> MessageException prepareException(QJob job, Enum<E> messageName, Object[] variables);
+	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> messageName, Object[] variables);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -16,12 +16,12 @@ import java.util.regex.Matcher;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.msgf.MessageException;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
 import org.smeup.sys.os.msgf.QMessageFileManager;
@@ -42,7 +42,7 @@ public class BaseMessageFileManagerImpl implements QMessageFileManager {
 	}
 
 	@Override
-	public <E extends Enum<E>> MessageException prepareException(QJob job, Enum<E> messageName, Object[] variables) {
+	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> messageName, Object[] variables) {
 
 		QMessageFile qMessageFile = messageFileReader.lookup(messageName.getClass().getSimpleName());
 
@@ -64,10 +64,10 @@ public class BaseMessageFileManagerImpl implements QMessageFileManager {
 		if (variables[0] != null && variables.length > 0)
 			messageText = messageText.replaceFirst("&1", Matcher.quoteReplacement(variables[0].toString()));
 
-		MessageException messageException = new MessageException(name, messageText, severity);
+		OperatingSystemMessageException messageException = new OperatingSystemMessageException(name, messageText, severity);
 
-		// MessageException messageException = new
-		// MessageException(messageDescription.getName(),
+		// OperatingSystemMessageException messageException = new
+		// OperatingSystemMessageException(messageDescription.getName(),
 		// messageText,
 		// messageDescription.getSeverity());
 

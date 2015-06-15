@@ -5,18 +5,9 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.os.msgf;
+package org.smeup.sys.os.core;
 
-/**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Message Exception</b></em>'. <!-- end-user-doc -->
- *
- *
- * @see org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage#getMessageException()
- * @model
- * @generated NOT
- */
-public class MessageException extends RuntimeException {
+public class OperatingSystemMessageException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,7 +15,7 @@ public class MessageException extends RuntimeException {
 	private String messageText;
 	private int severity;
 
-	public MessageException(String messageName, String messageText, int severity) {
+	public OperatingSystemMessageException(String messageName, String messageText, int severity) {
 		super(messageText);
 		this.messageName = messageName;
 		this.messageText = messageText;
@@ -43,4 +34,4 @@ public class MessageException extends RuntimeException {
 		return severity;
 	}
 
-} // QMessageException
+}

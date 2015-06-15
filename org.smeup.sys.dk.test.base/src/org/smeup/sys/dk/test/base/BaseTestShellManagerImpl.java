@@ -14,12 +14,25 @@ package org.smeup.sys.dk.test.base;
 import java.util.Map;
 
 import org.smeup.sys.co.shell.QShellManager;
+import org.smeup.sys.il.data.QDataContainer;
 
 public class BaseTestShellManagerImpl implements QShellManager {
 
 	@Override
-	public void execute(String authenticationID, String command, Map<String, Object> variables, boolean defaults) {
+	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
 
 		System.out.println(command);
+	}
+
+	@Override
+	public QDataContainer decodeCommand(String contextID, String command) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String encodeCommand(String contextID, QDataContainer container, boolean useDefaults) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -11,8 +11,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ShellOutputWrapper" abstract="true"
       interface="true" eSuperTypes="../../org.smeup.sys.co.core/model/co-core.ecore#//OutputWrapper"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellManager" abstract="true" interface="true">
-    <eOperations name="execute" lowerBound="1">
-      <eParameters name="authenticationID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="executeCommand" lowerBound="1">
+      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="variables">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
@@ -21,6 +21,15 @@
         </eGenericType>
       </eParameters>
       <eParameters name="defaults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="decodeCommand" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContainer">
+      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="encodeCommand" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="container" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContainer"/>
+      <eParameters name="useDefaults" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
   </eClassifiers>
 </ecore:EPackage>

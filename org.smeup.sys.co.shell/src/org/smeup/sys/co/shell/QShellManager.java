@@ -8,6 +8,7 @@
 package org.smeup.sys.co.shell;
 
 import java.util.Map;
+import org.smeup.sys.il.data.QDataContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,9 +24,25 @@ public interface QShellManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model authenticationIDRequired="true" commandRequired="true"
+	 * @model contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	void execute(String authenticationID, String command, Map<String, Object> variables, boolean defaults);
+	void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextIDRequired="true" commandRequired="true"
+	 * @generated
+	 */
+	QDataContainer decodeCommand(String contextID, String command);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextIDRequired="true" containerRequired="true" useDefaultsRequired="true"
+	 * @generated
+	 */
+	String encodeCommand(String contextID, QDataContainer container, boolean useDefaults);
 
 } // QShellManager

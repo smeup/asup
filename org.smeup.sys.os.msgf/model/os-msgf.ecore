@@ -66,5 +66,5 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.msgf.MessageException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
 </ecore:EPackage>

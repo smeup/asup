@@ -1153,7 +1153,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		unaryDataDefEClass_D.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		g1 = createEGenericType(this.getUnaryAtomicDataDef());
+		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getAdapter());
 		g1.getETypeArguments().add(g2);
 		adapterDefEClass.getEGenericSuperTypes().add(g1);
