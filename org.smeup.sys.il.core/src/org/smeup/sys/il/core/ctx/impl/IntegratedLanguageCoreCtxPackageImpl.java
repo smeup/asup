@@ -336,7 +336,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		initEClass(contextEClass, QContext.class, "Context", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(contextEClass, QContext.class, "Context", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(contextEClass, null, "close", 1, 1, IS_UNIQUE, IS_ORDERED);
 

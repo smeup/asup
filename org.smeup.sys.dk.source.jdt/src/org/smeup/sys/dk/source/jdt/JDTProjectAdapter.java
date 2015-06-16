@@ -21,7 +21,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
-import org.smeup.sys.dk.source.QSourceEntry;
+import org.smeup.sys.dk.source.QSourceNode;
 
 public class JDTProjectAdapter implements QProject {
 
@@ -33,6 +33,10 @@ public class JDTProjectAdapter implements QProject {
 		this.project = project;
 	}
 
+	protected IProject getIProject() {
+		return this.project;
+	}
+	
 	@Override
 	public String getName() {
 		// URIUtil.lastSegment(project.getLocationURI());
@@ -73,16 +77,16 @@ public class JDTProjectAdapter implements QProject {
 
 	@Override
 	public URI getLocation() {
-		return project.getRawLocationURI();
+		return project.getLocationURI();
 	}
 
 	@Override
-	public QSourceEntry getParent() {
-		return null;
+	public QSourceNode getRoot() {
+		return this;
 	}
 
 	@Override
-	public QSourceEntry getRoot() {
+	public QSourceNode getParent() {
 		return null;
 	}
 
@@ -90,5 +94,4 @@ public class JDTProjectAdapter implements QProject {
 	public boolean isRoot() {
 		return true;
 	}
-
 }

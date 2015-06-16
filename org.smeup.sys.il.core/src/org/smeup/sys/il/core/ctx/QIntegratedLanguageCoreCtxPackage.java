@@ -75,9 +75,9 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int ADAPTER_FACTORY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContext <em>Context</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.impl.ContextImpl <em>Context</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.ctx.QContext
+	 * @see org.smeup.sys.il.core.ctx.impl.ContextImpl
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContext()
 	 * @generated
 	 */
@@ -318,9 +318,9 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		EClass ADAPTER_FACTORY = eINSTANCE.getAdapterFactory();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QContext <em>Context</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.impl.ContextImpl <em>Context</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.ctx.QContext
+		 * @see org.smeup.sys.il.core.ctx.impl.ContextImpl
 		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContext()
 		 * @generated
 		 */

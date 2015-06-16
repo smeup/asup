@@ -8,7 +8,6 @@
 package org.smeup.sys.il.core.ctx;
 
 import java.lang.annotation.Annotation;
-
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 
 /**
@@ -17,7 +16,7 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContext()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface QContext {

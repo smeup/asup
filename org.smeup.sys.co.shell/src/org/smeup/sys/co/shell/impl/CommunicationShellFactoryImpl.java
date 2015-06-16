@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.co.shell.*;
 import org.smeup.sys.co.shell.QCommunicationShellFactory;
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellData;
@@ -58,10 +59,21 @@ public class CommunicationShellFactoryImpl extends EFactoryImpl implements QComm
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QCommunicationShellPackage.SHELL_CREDENTIALS: return (EObject)createShellCredentials();
 			case QCommunicationShellPackage.SHELL_DATA: return (EObject)createShellData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QShellCredentials createShellCredentials() {
+		ShellCredentialsImpl shellCredentials = new ShellCredentialsImpl();
+		return shellCredentials;
 	}
 
 	/**

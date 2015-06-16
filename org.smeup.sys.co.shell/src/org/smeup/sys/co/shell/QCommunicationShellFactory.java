@@ -25,6 +25,15 @@ public interface QCommunicationShellFactory extends EFactory {
 	QCommunicationShellFactory eINSTANCE = org.smeup.sys.co.shell.impl.CommunicationShellFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Shell Credentials</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shell Credentials</em>'.
+	 * @generated
+	 */
+	QShellCredentials createShellCredentials();
+
+	/**
 	 * Returns a new object of class '<em>Shell Data</em>'.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->

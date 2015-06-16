@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.eclipse.emf.ecore.EObject;
+import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
+import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -24,6 +26,7 @@ import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.core.resources.ResourceEventType;
+import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.type.QTypedObject;
 
 public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourceReaderImpl<T> implements QResourceWriter<T> {
@@ -70,11 +73,23 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			}
 
 			fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
-
+			
+			if(QLibrary.class.isAssignableFrom(klass) && object.getName().equals(getJob().getSystem().getSystemLibrary())) {
+				try {
+					QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
+					projectDef.setName(object.getName());
+					sourceManager.createProject(getJob().getContext(), projectDef, replace);
+				}
+				catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			QSourceEntry entry = sourceManager.createObjectEntry(getJob().getContext(), getContainer(), klass, object.getName(), replace);
 			OutputStream outpuStream = entry.getOutputStream();
 			emfConverter.writeToStream((EObject) object, outpuStream);
 			outpuStream.close();
+			
 			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
 		} catch (IOException e) {
 			throw new OperatingSystemRuntimeException(e);

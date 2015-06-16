@@ -428,7 +428,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetContext(QContext newContext, NotificationChain msgs) {

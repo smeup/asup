@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.lib.e4;
+package org.smeup.sys.os.lib.base;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 
-public class E4LibraryManagerImpl implements QLibraryManager {
+public class BaseLibraryManagerImpl implements QLibraryManager {
 
 	private QResourceManager resourceManager;
 
@@ -35,7 +35,7 @@ public class E4LibraryManagerImpl implements QLibraryManager {
 	// private Map<String, Long> bundleMap;
 
 	@Inject
-	public E4LibraryManagerImpl(QSystemManager systemManager, QResourceManager resourceManager) {
+	public BaseLibraryManagerImpl(QSystemManager systemManager, QResourceManager resourceManager) {
 
 		this.systemLibrary = systemManager.getSystem().getSystemLibrary();
 		this.resourceManager = resourceManager;

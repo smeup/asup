@@ -90,7 +90,7 @@ public class BaseResourceManagerImpl implements QResourceManager {
 
 		QResourceProvider resourceProvider = providers.get(klass);
 		if (resourceProvider == null)
-			// resourceProvider = providers.get(QTypedObject.class);
+//			resourceProvider = providers.get(QTypedObject.class);
 			resourceProvider = providers.get(QObjectNameable.class);
 
 		return resourceProvider;

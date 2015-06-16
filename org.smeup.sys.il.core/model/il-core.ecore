@@ -113,7 +113,7 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true" interface="true">
+    <eClassifiers xsi:type="ecore:EClass" name="Context" abstract="true">
       <eOperations name="close" lowerBound="1"/>
       <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

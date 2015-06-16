@@ -5,5 +5,6 @@ Bundle-SymbolicName: org.smeup.sys.os.lib.e4
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.smeup.sys.os.lib
+Require-Bundle: org.smeup.sys.os.lib,
+ org.smeup.sys.dk.source
 Export-Package: org.smeup.sys.os.lib.e4

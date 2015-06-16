@@ -10,6 +10,7 @@ package org.smeup.sys.co.shell;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.co.core.QCommunicationCorePackage;
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 
 /**
@@ -57,6 +58,43 @@ public interface QCommunicationShellPackage extends EPackage {
 	QCommunicationShellPackage eINSTANCE = org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.co.shell.impl.ShellCredentialsImpl <em>Shell Credentials</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.co.shell.impl.ShellCredentialsImpl
+	 * @see org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl#getShellCredentials()
+	 * @generated
+	 */
+	int SHELL_CREDENTIALS = 0;
+
+	/**
+	 * The feature id for the '<em><b>User</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHELL_CREDENTIALS__USER = QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHELL_CREDENTIALS__PASSWORD = QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD;
+
+	/**
+	 * The number of structural features of the '<em>Shell Credentials</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHELL_CREDENTIALS_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CREDENTIALS_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.shell.QShellOutputWrapper <em>Shell Output Wrapper</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -64,7 +102,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @see org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl#getShellOutputWrapper()
 	 * @generated
 	 */
-	int SHELL_OUTPUT_WRAPPER = 1;
+	int SHELL_OUTPUT_WRAPPER = 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.shell.QShellManager <em>Shell Manager</em>}' class.
@@ -74,7 +112,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @see org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl#getShellManager()
 	 * @generated
 	 */
-	int SHELL_MANAGER = 2;
+	int SHELL_MANAGER = 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.shell.impl.ShellDataImpl
@@ -85,7 +123,7 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @see org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl#getShellData()
 	 * @generated
 	 */
-	int SHELL_DATA = 0;
+	int SHELL_DATA = 1;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -201,6 +239,16 @@ public interface QCommunicationShellPackage extends EPackage {
 	int SHELL_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.co.shell.QShellCredentials <em>Shell Credentials</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shell Credentials</em>'.
+	 * @see org.smeup.sys.co.shell.QShellCredentials
+	 * @generated
+	 */
+	EClass getShellCredentials();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.co.shell.QShellOutputWrapper <em>Shell Output Wrapper</em>}'.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -251,6 +299,15 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.co.shell.impl.ShellCredentialsImpl <em>Shell Credentials</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.co.shell.impl.ShellCredentialsImpl
+		 * @see org.smeup.sys.co.shell.impl.CommunicationShellPackageImpl#getShellCredentials()
+		 * @generated
+		 */
+		EClass SHELL_CREDENTIALS = eINSTANCE.getShellCredentials();
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.co.shell.QShellOutputWrapper <em>Shell Output Wrapper</em>}' class.
 		 * <!-- begin-user-doc --> <!--
