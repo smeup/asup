@@ -327,7 +327,6 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		resource.getContents().add(object);
 
 		resource.save(stream, Collections.EMPTY_MAP);
-		
 	}
 
 	private <T extends QObjectNameable> String getFolderName(Class<T> type) {

@@ -18,11 +18,15 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
+import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.rt.core.QApplicationComponent;
+import org.smeup.sys.rt.core.QRuntimeCoreFactory;
 
 @Test(category = "dk.source", object = "Manager")
 public class SourceTester {
@@ -39,14 +43,23 @@ public class SourceTester {
 	@TestStarted
 	public void main() throws IOException {
 
+		QContext context = testRunner.getContext();
+		
 		QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 		projectDef.setName("P_TEST");
 		projectDef.setText("Test project P_TEST");
 		
-		QProject project = sourceManager.createProject(testRunner.getContext(), projectDef, true);
+		QProject project = sourceManager.createProject(context, projectDef, true);
 		
 		testAsserter.assertTrue("Project creation", project != null);
 		testAsserter.assertEquals("Project name", projectDef.getName(), project.getName());
 		testAsserter.assertEquals("Project description", projectDef.getText(), project.getText());
+		
+		QApplicationComponent applicationComponent = QRuntimeCoreFactory.eINSTANCE.createApplicationComponent();
+		applicationComponent.setName("test");
+		
+		QSourceEntry objectEntry = sourceManager.createObjectEntry(context, project.getName(), QApplicationComponent.class, "test", true, applicationComponent);
+		testAsserter.assertNotNull("Test sourceEntry creation", objectEntry);
+
 	}
 }
