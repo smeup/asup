@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language ESAM
+Bundle-SymbolicName: org.smeup.sys.il.esam;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: www.smeup.com
+Export-Package: org.smeup.sys.il.esam,
+ org.smeup.sys.il.esam.annotation,
+ org.smeup.sys.il.esam.impl
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.smeup.sys.il.core;visibility:=reexport,
+ org.smeup.sys.il.data;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

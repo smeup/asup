@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language ESAM Test
+Bundle-SymbolicName: org.smeup.sys.il.esam.test
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.dk.test,
+ org.smeup.sys.il.esam,
+ org.smeup.sys.dk.test.e4,
+ org.smeup.sys.db.core
+Export-Package: org.smeup.sys.il.esam.test,
+ org.smeup.sys.il.esam.test.dbf,
+ org.smeup.sys.il.esam.test.runner
+Import-Package: javax.inject
