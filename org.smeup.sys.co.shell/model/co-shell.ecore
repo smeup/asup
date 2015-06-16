@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="shell" nsURI="http://www.smeup.org/asup/co/shell" nsPrefix="co-shell">
+  <eClassifiers xsi:type="ecore:EClass" name="ShellCredentials" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Credentials"/>
   <eClassifiers xsi:type="ecore:EClass" name="ShellData">
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
       <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/BufferedDataDef">

@@ -97,4 +97,18 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.smeup.sys.il.lock"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.il.lock.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

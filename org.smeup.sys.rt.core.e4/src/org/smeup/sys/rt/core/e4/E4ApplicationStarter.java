@@ -177,6 +177,14 @@ public class E4ApplicationStarter {
 			return;
 		}
 
+		println("+service " + serviceRef);
+		// service references
+		for (QServiceRef serviceChildRef : serviceRef.getServices()) {
+			messageLevel++;
+			registerService(application, component, componentContext, serviceChildRef);
+			messageLevel--;
+		}
+
 		// load service
 		Object service = loadObject(componentContext, serviceRef.getClassName());
 
@@ -192,15 +200,6 @@ public class E4ApplicationStarter {
 			dictionary.put("org.smeup.sys.rt.core.plugin.vendor", servicePlugin.getVendor());
 			dictionary.put("org.smeup.sys.rt.core.plugin.version", servicePlugin.getVersion());
 
-		} else
-			println("+service " + serviceRef);
-
-		// service references
-		for (QServiceRef serviceChildRef : serviceRef.getServices()) {
-			messageLevel++;
-			println("+child " + serviceChildRef);
-			registerService(application, component, componentContext, serviceChildRef);
-			messageLevel--;
 		}
 
 		// service registry

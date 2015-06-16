@@ -11,13 +11,15 @@
  */
 package org.smeup.sys.dk.test.base;
 
+import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.rt.core.auth.QAuthenticationManager;
 import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
 public class BaseTestAuthenticationManagerImpl implements QAuthenticationManager {
 
 	@Override
-	public QAuthenticationToken createAuthenticationToken() {
+	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
+		
 		return new QAuthenticationToken() {
 			
 			@Override

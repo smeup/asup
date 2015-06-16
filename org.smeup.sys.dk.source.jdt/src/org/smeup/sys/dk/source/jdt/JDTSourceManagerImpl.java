@@ -163,7 +163,6 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		return listChildEntries(context, parent, null, null);
 	}
 
-
 	@Override
 	public void refreshEntry(QContext context, QSourceEntry entry) {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -290,7 +289,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IProject project = root.getProject(URIUtil.lastSegment(parent.getRoot().getLocation()));
-
+		
 		// TODO da eliminare
 		if (parent.isRoot() && type == null)
 			return project.getFolder("src");

@@ -19,8 +19,10 @@ import java.net.Socket;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.co.shell.QCommunicationShellFactory;
 import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
+import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.rt.core.auth.QAuthenticationManager;
 import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
@@ -116,8 +118,10 @@ public class BaseShellSocketHandler extends Thread {
 		// retrieve user
 		user = command;
 
+		QCredentials credentials = QCommunicationShellFactory.eINSTANCE.createShellCredentials();
+		credentials.setUser(user);
 		// connect
-		return authenticationManager.createAuthenticationToken();
+		return authenticationManager.createAuthenticationToken(credentials);
 	}
 
 	private void executeCommand(String command) {

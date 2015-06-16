@@ -30,7 +30,6 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceSetReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.type.QTypedObject;
 
 public class CDOResourceProviderImpl implements QResourceProvider {
 
@@ -45,7 +44,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 
 	@PostConstruct
 	public void init() {
-		resourceManager.registerProvider(QTypedObject.class, this);
+		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		// job context
 		QContext jobContext = createContext(job.getJobName());
 		job.setContext(jobContext);
-
+		
 		jobContext.set(QJob.class, job);
 
 		return job;

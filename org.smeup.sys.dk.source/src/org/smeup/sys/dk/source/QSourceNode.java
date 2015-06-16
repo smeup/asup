@@ -36,7 +36,7 @@ public interface QSourceNode extends QObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	QSourceEntry getParent();
+	QSourceNode getParent();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public interface QSourceNode extends QObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	QSourceEntry getRoot();
+	QSourceNode getRoot();
 
 	/**
 	 * <!-- begin-user-doc -->

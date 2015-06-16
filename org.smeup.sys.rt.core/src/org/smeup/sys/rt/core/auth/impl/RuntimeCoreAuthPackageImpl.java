@@ -8,12 +8,14 @@
 package org.smeup.sys.rt.core.auth.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 
 import org.smeup.sys.rt.core.auth.QAuthenticationManager;
@@ -190,6 +192,9 @@ public class RuntimeCoreAuthPackageImpl extends EPackageImpl implements QRuntime
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -203,7 +208,8 @@ public class RuntimeCoreAuthPackageImpl extends EPackageImpl implements QRuntime
 
 		initEClass(authenticationManagerEClass, QAuthenticationManager.class, "AuthenticationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(authenticationManagerEClass, this.getAuthenticationToken(), "createAuthenticationToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(authenticationManagerEClass, this.getAuthenticationToken(), "createAuthenticationToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getCredentials(), "credentials", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } //RuntimeCoreAuthPackageImpl

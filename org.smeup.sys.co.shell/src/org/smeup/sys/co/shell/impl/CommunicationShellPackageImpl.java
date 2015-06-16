@@ -15,9 +15,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.co.core.QCommunicationCorePackage;
 import org.smeup.sys.co.shell.QCommunicationShellFactory;
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
+import org.smeup.sys.co.shell.QShellCredentials;
 import org.smeup.sys.co.shell.QShellData;
 import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
@@ -28,6 +30,13 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * @generated
  */
 public class CommunicationShellPackageImpl extends EPackageImpl implements QCommunicationShellPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shellCredentialsEClass = null;
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -112,6 +121,15 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShellCredentials() {
+		return shellCredentialsEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -166,6 +184,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		isCreated = true;
 
 		// Create classes and their features
+		shellCredentialsEClass = createEClass(SHELL_CREDENTIALS);
+
 		shellDataEClass = createEClass(SHELL_DATA);
 
 		shellOutputWrapperEClass = createEClass(SHELL_OUTPUT_WRAPPER);
@@ -196,6 +216,7 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QCommunicationCorePackage theCommunicationCorePackage = (QCommunicationCorePackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationCorePackage.eNS_URI);
@@ -206,6 +227,7 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		shellCredentialsEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCredentials());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		EGenericType g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
@@ -215,6 +237,8 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		shellOutputWrapperEClass.getESuperTypes().add(theCommunicationCorePackage.getOutputWrapper());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(shellCredentialsEClass, QShellCredentials.class, "ShellCredentials", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(shellDataEClass, QShellData.class, "ShellData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(shellOutputWrapperEClass, QShellOutputWrapper.class, "ShellOutputWrapper", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.rt.core.auth;
 
+import org.smeup.sys.il.core.ctx.QCredentials;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -22,9 +24,9 @@ public interface QAuthenticationManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model credentialsRequired="true"
 	 * @generated
 	 */
-	QAuthenticationToken createAuthenticationToken();
+	QAuthenticationToken createAuthenticationToken(QCredentials credentials);
 
 } // QAuthenticationManager

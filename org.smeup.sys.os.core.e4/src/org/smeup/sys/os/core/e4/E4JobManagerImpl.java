@@ -20,6 +20,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -35,8 +36,11 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
+import org.smeup.sys.rt.core.QApplication;
+import org.smeup.sys.rt.core.auth.QAuthenticationManager;
+import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
-public class E4JobManagerImpl implements QJobManager {
+public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	private Map<String, QJob> activeJobs;
 
@@ -46,12 +50,14 @@ public class E4JobManagerImpl implements QJobManager {
 	private QExpressionParser expressionParser;
 
 	@Inject
-	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager) {
+	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QApplication application) {
 		this.systemManager = (E4SystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
 		this.activeJobs = new HashMap<String, QJob>();
 
 		new E4JobCloser(this).start();
+		
+		application.getContext().set(QAuthenticationManager.class, this);
 	}
 
 	@PostConstruct
@@ -145,5 +151,19 @@ public class E4JobManagerImpl implements QJobManager {
 		this.activeJobs.remove(job.getJobID());
 
 		job.getContext().close();
+	}
+
+	@Override
+	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
+
+		final QJob job = create(credentials.getUser(), credentials.getPassword());
+		
+		return new QAuthenticationToken() {
+			
+			@Override
+			public String getID() {
+				return job.getJobID();
+			}
+		};
 	}
 }

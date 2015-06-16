@@ -21,7 +21,6 @@ import java.util.Dictionary;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;

@@ -33,9 +33,10 @@ import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.impl.ContextImpl;
 
 @SuppressWarnings("restriction")
-public abstract class E4ContextImpl implements QContext {
+public abstract class E4ContextImpl extends ContextImpl {
 
 	private static final String ADAPTER_FACTORIES_NAME = "org.asup.fw.core.e4.context.adapterFactories";
 
