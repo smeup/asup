@@ -319,8 +319,8 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 
 		// Obtain other dependent packages
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter dataTermEClass_DD = addETypeParameter(dataTermEClass, "DD");
@@ -332,8 +332,8 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		dataTermEClass_DD.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		dataTermEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		dataTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
+		dataTermEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		g1 = createEGenericType(theIntegratedLanguageCoreTermPackage.getTermContainer());
 		g2 = createEGenericType(this.getDataTerm());
 		g1.getETypeArguments().add(g2);

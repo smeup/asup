@@ -24,14 +24,14 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QDisplayTerm;
-import org.smeup.sys.il.isam.QKeyListTerm;
-import org.smeup.sys.il.isam.QPrintTerm;
 
 /**
  * <!-- begin-user-doc -->

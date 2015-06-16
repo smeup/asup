@@ -8,23 +8,12 @@
 package org.smeup.sys.il.data.term.impl;
 
 import java.net.URI;
-import java.util.Collection;
-import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QNameable;
-import org.smeup.sys.il.core.QNamedNode;
-import org.smeup.sys.il.core.QNode;
-import org.smeup.sys.il.core.impl.ObjectImpl;
-import org.smeup.sys.il.core.meta.QFacet;
-import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.core.impl.NamedNodeImpl;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.DataTermType;
@@ -38,7 +27,6 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getFacets <em>Facets</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefinition <em>Definition</em>}</li>
@@ -53,17 +41,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  *
  * @generated
  */
-public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl implements QDataTerm<DD> {
-	/**
-	 * The cached value of the '{@link #getFacets() <em>Facets</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFacets()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<QFacet> facets;
-
+public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #isConstant() <em>Constant</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -241,19 +219,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageDataTermPackage.Literals.DATA_TERM;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public List<QFacet> getFacets() {
-		if (facets == null) {
-			facets = new EObjectContainmentEList<QFacet>(QFacet.class, this, QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS);
-		}
-		return facets;
 	}
 
 	/**
@@ -529,50 +494,12 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QNode getParent() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isChild() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public <F extends QFacet> F getFacet(Class<F> klass) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS:
-				return getFacets();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				return isConstant();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
@@ -603,10 +530,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS:
-				getFacets().clear();
-				getFacets().addAll((Collection<? extends QFacet>)newValue);
-				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				setConstant((Boolean)newValue);
 				return;
@@ -645,9 +568,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS:
-				getFacets().clear();
-				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				setConstant(CONSTANT_EDEFAULT);
 				return;
@@ -686,8 +606,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS:
-				return facets != null && !facets.isEmpty();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				return constant != CONSTANT_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
@@ -708,68 +626,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == QNode.class) {
-			switch (derivedFeatureID) {
-				case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS: return QIntegratedLanguageCorePackage.NODE__FACETS;
-				default: return -1;
-			}
-		}
-		if (baseClass == QNameable.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == QNamedNode.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == QTerm.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == QNode.class) {
-			switch (baseFeatureID) {
-				case QIntegratedLanguageCorePackage.NODE__FACETS: return QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
-				default: return -1;
-			}
-		}
-		if (baseClass == QNameable.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == QNamedNode.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == QTerm.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -828,8 +684,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends ObjectImpl im
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS:
-				return ((InternalEList<?>)getFacets()).basicRemove(otherEnd, msgs);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return basicSetDefinition(null, msgs);
 		}

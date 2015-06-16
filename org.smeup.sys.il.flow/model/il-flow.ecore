@@ -70,10 +70,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FileSection" eSuperTypes="#//UnitSection">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataSets" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DataSetTerm"
+        eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//DataSetTerm"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="keyLists" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//KeyListTerm"
+        eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//KeyListTerm"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cursors" upperBound="-1"
         eType="ecore:EClass ../../org.smeup.sys.db.esql/model/db-esql.ecore#//CursorTerm"
@@ -82,10 +82,10 @@
         eType="ecore:EClass ../../org.smeup.sys.db.esql/model/db-esql.ecore#//StatementTerm"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="displays" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DisplayTerm"
+        eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//DisplayTerm"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="printers" upperBound="-1"
-        eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//PrintTerm"
+        eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//PrintTerm"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FlowData">

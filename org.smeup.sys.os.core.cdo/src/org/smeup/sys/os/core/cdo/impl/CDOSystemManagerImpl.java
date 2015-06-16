@@ -41,6 +41,10 @@ import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.resources.QResourceManager;
+import org.smeup.sys.os.core.resources.QResourceWriter;
+import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
 
@@ -48,6 +52,8 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 
 	@Inject
 	private QApplication application;
+	@Inject
+	private QResourceManager resourceManager;
 	@Inject
 	private QLockManager lockManager;
 	
@@ -79,6 +85,19 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		application.getContext().set(QSystem.class, systemManager.getSystem());
 
 		application.getContext().set(QJob.class, qJob);
+		
+		QSystem system = systemManager.getSystem();
+		
+		// Library
+		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(qJob, QLibrary.class, system.getSystemLibrary());
+		if (!resourceLibrary.exists(system.getSystemLibrary())) {
+			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
+			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
+			library.setLibrary(system.getSystemLibrary());
+			library.setName(system.getSystemLibrary());
+			library.setText("As.UP System Library");
+			resourceLibrary.save(library);
+		}
 	}
 
 	@Override

@@ -7,7 +7,7 @@ Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.pgm.base
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.os.pgm;visibility:=reexport,
- org.smeup.sys.il.isam,
- org.smeup.sys.dk.core
+ org.smeup.sys.dk.core,
+ org.smeup.sys.il.esam
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

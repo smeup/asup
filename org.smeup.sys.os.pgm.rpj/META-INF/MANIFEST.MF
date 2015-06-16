@@ -7,5 +7,5 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.smeup.sys.os.pgm.rpj
 Require-Bundle: org.smeup.sys.os.pgm,
- org.smeup.sys.il.isam,
+ org.smeup.sys.il.esam,
  org.smeup.sys.os.cmd

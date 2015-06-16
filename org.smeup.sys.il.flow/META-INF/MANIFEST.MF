@@ -13,6 +13,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.db.esql;visibility:=reexport,
- org.smeup.sys.il.isam;visibility:=reexport
+ org.smeup.sys.il.esam;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

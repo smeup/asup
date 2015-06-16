@@ -216,25 +216,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
-
-	/**
-	 * The number of structural features of the '<em>Unary Atomic Buffered Data Def</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTER_DEF__FORMULAS = UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS;
+	int ADAPTER_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
 
 	/**
 	 * The number of structural features of the '<em>Adapter Def</em>' class.
@@ -242,7 +224,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADAPTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
+	int ADAPTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -383,6 +365,24 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATOMIC_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
+
+	/**
+	 * The number of structural features of the '<em>Unary Atomic Buffered Data Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl <em>Binary Def</em>}' class.

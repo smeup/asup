@@ -76,8 +76,10 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			
 			if(QLibrary.class.isAssignableFrom(klass) && object.getName().equals(getJob().getSystem().getSystemLibrary())) {
 				try {
+					QLibrary library = (QLibrary)object;
 					QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 					projectDef.setName(object.getName());
+					projectDef.setText(library.getText());
 					sourceManager.createProject(getJob().getContext(), projectDef, replace);
 				}
 				catch(IOException e) {

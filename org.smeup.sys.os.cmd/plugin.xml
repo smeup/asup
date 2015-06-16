@@ -10,7 +10,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
 
       <package
-            uri="http://www.smeup.org/asup/os/type/cmd"
+            uri="http://www.smeup.org/asup/os/cmd"
             class="org.smeup.sys.os.cmd.QOperatingSystemCommandPackage"
             genModel="model/os-cmd.genmodel"/>                        
    </extension>

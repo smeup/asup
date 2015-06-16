@@ -6,8 +6,8 @@
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-data="http://www.smeup.org/asup/il/data"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xmlns:il-isam="http://www.smeup.org/asup/il/isam"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore http://www.smeup.org/asup/il/isam ../../org.smeup.sys.il.isam/model/il-isam.ecore"
+    xmlns:il-esam="http://www.smeup.org/asup/il/esam"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore"
     name="*RPJ">
   <dataSection>
     <datas xsi:type="il-data:UnaryCompoundDataTerm"
@@ -1351,7 +1351,7 @@
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-isam:DataSetTerm"
+              xsi:type="il-esam:DataSetTerm"
               fileName="dataSet"/>
         </parameters>
       </entry>
@@ -1366,7 +1366,7 @@
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-isam:DataSetTerm"
+              xsi:type="il-esam:DataSetTerm"
               fileName="dataSet"/>
         </parameters>
       </entry>
@@ -1381,7 +1381,7 @@
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-isam:DataSetTerm"
+              xsi:type="il-esam:DataSetTerm"
               fileName="dataSet"/>
         </parameters>
       </entry>
@@ -1396,7 +1396,7 @@
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-isam:DataSetTerm"
+              xsi:type="il-esam:DataSetTerm"
               fileName="dataSet"/>
         </parameters>
       </entry>
@@ -1697,7 +1697,7 @@
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-isam:DataSetTerm"
+              xsi:type="il-esam:DataSetTerm"
               fileName="dataSet"/>
         </parameters>
       </entry>

@@ -32,8 +32,8 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
-import org.smeup.sys.il.isam.QIntegratedLanguageIsamPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
@@ -394,7 +394,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
-		QIntegratedLanguageIsamPackage theIntegratedLanguageIsamPackage = (QIntegratedLanguageIsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageIsamPackage.eNS_URI);
+		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageFlowPackage theIntegratedLanguageFlowPackage = (QIntegratedLanguageFlowPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageFlowPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
@@ -433,7 +433,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(compilationUnitEClass, this.getCompilationUnit(), "getChildCompilationUnits", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(compilationUnitEClass, theIntegratedLanguageIsamPackage.getDataSetTerm(), "getDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(compilationUnitEClass, theIntegratedLanguageEsamPackage.getDataSetTerm(), "getDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -445,11 +445,11 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(compilationUnitEClass, theIntegratedLanguageIsamPackage.getDisplayTerm(), "getDisplay", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(compilationUnitEClass, theIntegratedLanguageEsamPackage.getDisplayTerm(), "getDisplay", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(compilationUnitEClass, theIntegratedLanguageIsamPackage.getKeyListTerm(), "getKeyList", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(compilationUnitEClass, theIntegratedLanguageEsamPackage.getKeyListTerm(), "getKeyList", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -461,7 +461,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(compilationUnitEClass, theIntegratedLanguageIsamPackage.getPrintTerm(), "getPrinter", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(compilationUnitEClass, theIntegratedLanguageEsamPackage.getPrintTerm(), "getPrinter", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 

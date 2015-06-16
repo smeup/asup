@@ -148,6 +148,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLockManager() {
 		return lockManagerEClass;
 	}
@@ -157,6 +158,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLockRead() {
 		return lockReadEClass;
 	}
@@ -166,6 +168,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLockWrite() {
 		return lockWriteEClass;
 	}
@@ -175,6 +178,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getObjectLockable() {
 		return objectLockableEClass;
 	}
@@ -184,6 +188,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getObjectLockable_LockRead() {
 		return (EReference)objectLockableEClass.getEStructuralFeatures().get(0);
 	}
@@ -193,6 +198,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getObjectLockable_LockWrite() {
 		return (EReference)objectLockableEClass.getEStructuralFeatures().get(1);
 	}
@@ -202,6 +208,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getObjectLocker() {
 		return objectLockerEClass;
 	}
@@ -211,6 +218,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getLockType() {
 		return lockTypeEEnum;
 	}
@@ -220,6 +228,7 @@ public class IntegratedLanguageLockPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QIntegratedLanguageLockFactory getIntegratedLanguageLockFactory() {
 		return (QIntegratedLanguageLockFactory)getEFactoryInstance();
 	}

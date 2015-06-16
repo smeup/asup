@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.flow.QFileSection;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QDisplayTerm;
-import org.smeup.sys.il.isam.QKeyListTerm;
-import org.smeup.sys.il.isam.QPrintTerm;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

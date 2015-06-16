@@ -11,10 +11,10 @@ import java.util.List;
 
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QDisplayTerm;
-import org.smeup.sys.il.isam.QKeyListTerm;
-import org.smeup.sys.il.isam.QPrintTerm;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.esam.QPrintTerm;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -40,7 +40,7 @@ public interface QFileSection extends QUnitSection {
 
 	/**
 	 * Returns the value of the '<em><b>Data Sets</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.isam.QDataSetTerm}.
+	 * The list contents are of type {@link org.smeup.sys.il.esam.QDataSetTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Sets</em>' containment reference list
@@ -56,7 +56,7 @@ public interface QFileSection extends QUnitSection {
 
 	/**
 	 * Returns the value of the '<em><b>Key Lists</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.isam.QKeyListTerm}.
+	 * The list contents are of type {@link org.smeup.sys.il.esam.QKeyListTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Key Lists</em>' containment reference list
@@ -104,7 +104,7 @@ public interface QFileSection extends QUnitSection {
 
 	/**
 	 * Returns the value of the '<em><b>Displays</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.isam.QDisplayTerm}.
+	 * The list contents are of type {@link org.smeup.sys.il.esam.QDisplayTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Displays</em>' containment reference list
@@ -120,7 +120,7 @@ public interface QFileSection extends QUnitSection {
 
 	/**
 	 * Returns the value of the '<em><b>Printers</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.isam.QPrintTerm}.
+	 * The list contents are of type {@link org.smeup.sys.il.esam.QPrintTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Printers</em>' containment reference list

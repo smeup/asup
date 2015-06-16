@@ -12,7 +12,7 @@
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="getChildCompilationUnits" upperBound="-1" eType="#//CompilationUnit"/>
-    <eOperations name="getDataSet" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DataSetTerm">
+    <eOperations name="getDataSet" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//DataSetTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
@@ -23,11 +23,11 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="getDisplay" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//DisplayTerm">
+    <eOperations name="getDisplay" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//DisplayTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="getKeyList" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//KeyListTerm">
+    <eOperations name="getKeyList" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//KeyListTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
@@ -39,7 +39,7 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="getPrinter" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.isam/model/il-isam.ecore#//PrintTerm">
+    <eOperations name="getPrinter" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.esam/model/il-esam.ecore#//PrintTerm">
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>

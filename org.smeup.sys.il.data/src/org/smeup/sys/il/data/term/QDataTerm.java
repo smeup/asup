@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  * @model abstract="true"
  * @generated
  */
-public interface QDataTerm<DD extends QDataDef<?>> extends QObject, QTerm {
+public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	/**
 	 * Returns the value of the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc -->

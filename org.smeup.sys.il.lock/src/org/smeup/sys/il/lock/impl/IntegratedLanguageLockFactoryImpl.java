@@ -104,6 +104,7 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QLockRead createLockRead() {
 		LockReadImpl lockRead = new LockReadImpl();
 		return lockRead;
@@ -114,6 +115,7 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QLockWrite createLockWrite() {
 		LockWriteImpl lockWrite = new LockWriteImpl();
 		return lockWrite;
@@ -144,6 +146,7 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QIntegratedLanguageLockPackage getIntegratedLanguageLockPackage() {
 		return (QIntegratedLanguageLockPackage)getEPackage();
 	}

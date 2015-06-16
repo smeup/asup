@@ -7,7 +7,7 @@
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.il.flow.edit"
     editorPluginID="org.smeup.sys.il.flow.editor" testsPluginID="org.asup.il.flow.tests"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.isam/model/il-isam.genmodel#//isam"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam"
     interfaceNamePattern="Q{0}">
   <foreignModel>il-flow.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageFlow" basePackage="org.smeup.sys.il" disposableProviderFactory="true"

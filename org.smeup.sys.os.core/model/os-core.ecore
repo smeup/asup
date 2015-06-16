@@ -66,7 +66,7 @@
   <eSubpackages name="jobs" nsURI="http://www.smeup.org/asup/os/core/jobs" nsPrefix="os-core-jobs">
     <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
       <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
-          eType="#//System"/>
+          eType="#//System" transient="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
           transient="true" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"

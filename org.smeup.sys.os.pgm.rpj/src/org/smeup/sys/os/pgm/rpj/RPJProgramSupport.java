@@ -36,9 +36,9 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.def.DecimalType;
-import org.smeup.sys.il.isam.QDataSet;
-import org.smeup.sys.il.isam.QDisplay;
-import org.smeup.sys.il.isam.QPrint;
+import org.smeup.sys.il.esam.QDataSet;
+import org.smeup.sys.il.esam.QDisplay;
+import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
 

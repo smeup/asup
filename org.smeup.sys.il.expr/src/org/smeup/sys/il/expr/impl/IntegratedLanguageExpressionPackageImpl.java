@@ -436,6 +436,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getExpressionParserRegistry() {
 		return expressionParserRegistryEClass;
 	}

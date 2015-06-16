@@ -20,6 +20,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.co.shell.QShellManager;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserFactory;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserInterface;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmAbstractComponent;
@@ -65,8 +66,9 @@ import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceSetReader;
 import org.smeup.sys.os.pgm.QProgramManager;
+import org.smeup.sys.rt.core.QApplication;
 
-public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
+public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QShellManager {
 
 	protected QJobManager jobManager;
 	protected QDataManager dataManager;
@@ -74,19 +76,14 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 	protected ParserInterface<?> clParser;
 
 	@Inject
-	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager) {
+	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager, QApplication application) {
 		super(resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
 		this.clParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL);
-	}
-
-	@Override
-	public String decodeCommand(String contextID, QCallableCommand callableCommand, boolean defaults) {
-
-		return IBMiCommandDecoder.decodeCommand(contextID, callableCommand, defaults);
-
+		
+		application.getContext().set(QShellManager.class, this);
 	}
 
 	@Override
@@ -675,4 +672,24 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl {
 			data.accept(writer.set(value.toString()));
 	}
 
+	@Override
+	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
+		
+		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, defaults);
+		executeCommand(contextID, callableCommand);
+	}
+
+	@Override
+	public QDataContainer decodeCommand(String contextID, String command) {
+		
+		QCallableCommand callableCommand = prepareCommand(contextID, command, null, false);
+		
+		return callableCommand.getDataContainer();
+	}
+
+	@Override
+	public String encodeCommand(String contextID, QDataContainer dataContainer, boolean useDefaults) {
+
+		return IBMiCommandEncoder.encodeCommand(contextID, dataContainer, useDefaults);
+	}
 }

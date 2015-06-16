@@ -42,13 +42,13 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.impl.DataWriterImpl.Specials;
-import org.smeup.sys.il.isam.AccessMode;
-import org.smeup.sys.il.isam.QDataSet;
-import org.smeup.sys.il.isam.QIsamFactory;
-import org.smeup.sys.il.isam.QIsamManager;
-import org.smeup.sys.il.isam.QKSDataSet;
-import org.smeup.sys.il.isam.QSMDataSet;
-import org.smeup.sys.il.isam.annotation.FileDef;
+import org.smeup.sys.il.esam.AccessMode;
+import org.smeup.sys.il.esam.QDataSet;
+import org.smeup.sys.il.esam.QAccessFactory;
+import org.smeup.sys.il.esam.QAccessManager;
+import org.smeup.sys.il.esam.QKSDataSet;
+import org.smeup.sys.il.esam.QSMDataSet;
+import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
@@ -58,7 +58,7 @@ public class BaseCallableInjector {
 	@Inject
 	private QDataManager dataManager;
 	@Inject
-	private QIsamManager isamManager;
+	private QAccessManager esamManager;
 	@Inject
 	private QJob job;
 
@@ -309,10 +309,10 @@ public class BaseCallableInjector {
 	private void injectDataSet(QJob job, QDataFactory dataFactory, Object callable, Class<QDataSet<QRecord>> fieldKlass, Class<QRecord> recordKlass, Field field) throws IllegalArgumentException,
 			IllegalAccessException {
 
-		QIsamFactory isamFactory = job.getContext().get(QIsamFactory.class);
-		if (isamFactory == null) {
-			isamFactory = isamManager.createFactory(job);
-			job.getContext().set(QIsamFactory.class, isamFactory);
+		QAccessFactory esamFactory = job.getContext().get(QAccessFactory.class);
+		if (esamFactory == null) {
+			esamFactory = esamManager.createFactory(job);
+			job.getContext().set(QAccessFactory.class, esamFactory);
 		}
 
 		FileDef fileDef = field.getAnnotation(FileDef.class);
@@ -321,11 +321,11 @@ public class BaseCallableInjector {
 			QDataSet<QRecord> dataSet = null;
 
 			if (QKSDataSet.class.isAssignableFrom(fieldKlass)) {
-				dataSet = isamFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
+				dataSet = esamFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
 			} else if (QSMDataSet.class.isAssignableFrom(fieldKlass)) {
 				dataSet = null;
 			} else {
-				dataSet = isamFactory.createRelativeRecordDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
+				dataSet = esamFactory.createRelativeRecordDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
 			}
 
 			field.set(callable, dataSet);

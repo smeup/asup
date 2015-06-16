@@ -86,6 +86,7 @@ public abstract class ObjectLockableImpl extends ObjectImpl implements QObjectLo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QLockRead getLockRead() {
 		return lockRead;
 	}
@@ -110,6 +111,7 @@ public abstract class ObjectLockableImpl extends ObjectImpl implements QObjectLo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLockRead(QLockRead newLockRead) {
 		if (newLockRead != lockRead) {
 			NotificationChain msgs = null;
@@ -129,6 +131,7 @@ public abstract class ObjectLockableImpl extends ObjectImpl implements QObjectLo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QLockWrite getLockWrite() {
 		return lockWrite;
 	}
@@ -153,6 +156,7 @@ public abstract class ObjectLockableImpl extends ObjectImpl implements QObjectLo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLockWrite(QLockWrite newLockWrite) {
 		if (newLockWrite != lockWrite) {
 			NotificationChain msgs = null;

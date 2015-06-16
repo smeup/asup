@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.dk.compiler/src" modelPluginID="org.smeup.sys.dk.compiler"
     modelName="As.UP Devolopment Kit Compiler" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.flow/model/il-flow.genmodel#//flow ../../org.smeup.sys.il.isam/model/il-isam.genmodel#//isam ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.file/model/os-file.genmodel#//file ../../org.smeup.sys.os.module/model/os-module.genmodel#//module ../../org.smeup.sys.os.pgm/model/os-pgm.genmodel#//pgm ../../org.smeup.sys.os.type/model/os-type.genmodel#//type"
+    complianceLevel="7.0" copyrightFields="false" language="" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.db.esql/model/db-esql.genmodel#//esql ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.flow/model/il-flow.genmodel#//flow ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.file/model/os-file.genmodel#//file ../../org.smeup.sys.os.module/model/os-module.genmodel#//module ../../org.smeup.sys.os.pgm/model/os-pgm.genmodel#//pgm ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.esam/model/il-esam.genmodel#//esam"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>dk-compiler.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitCompiler" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
@@ -19,7 +19,7 @@
       <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//CaseSensitiveType/Ignore"/>
     </genEnums>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//CompilationUnit">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-compiler.ecore#//CompilationUnit/trashcan"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-compiler.ecore#//CompilationUnit/trashCan"/>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/equalsTermName">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/equalsTermName/source"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/equalsTermName/target"/>

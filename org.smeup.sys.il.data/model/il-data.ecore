@@ -1344,7 +1344,7 @@
   </eClassifiers>
   <eSubpackages name="def" nsURI="http://www.smeup.org/asup/il/data/def" nsPrefix="il-data-def">
     <eClassifiers xsi:type="ecore:EClass" name="AdapterDef">
-      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
         <eTypeArguments eClassifier="#//Adapter"/>
       </eGenericSuperTypes>
     </eClassifiers>
@@ -1743,7 +1743,7 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/data/term" nsPrefix="il-data-term">
-    <eClassifiers xsi:type="ecore:EClass" name="DataTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object ../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
+    <eClassifiers xsi:type="ecore:EClass" name="DataTerm" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term ../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
       <eTypeParameters name="DD">
         <eBounds eClassifier="#//def/DataDef">
           <eTypeArguments/>

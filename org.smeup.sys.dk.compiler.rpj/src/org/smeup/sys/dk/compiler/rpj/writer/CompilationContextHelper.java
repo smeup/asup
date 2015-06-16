@@ -20,6 +20,8 @@ import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QBooleanExpression;
@@ -28,8 +30,6 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QKeyListTerm;
 import org.smeup.sys.os.file.QExternalFile;
 
 public class CompilationContextHelper {

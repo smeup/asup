@@ -35,12 +35,4 @@ public interface QCommandManager {
 	 */
 	void executeCommand(String contextID, QCallableCommand command);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" callableCommandRequired="true" defaultsRequired="true"
-	 * @generated
-	 */
-	String decodeCommand(String contextID, QCallableCommand callableCommand, boolean defaults);
-
 } // QCommandManager

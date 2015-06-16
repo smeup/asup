@@ -51,6 +51,10 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.esam.QDataSet;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QExpression;
@@ -83,10 +87,6 @@ import org.smeup.sys.il.flow.QStatement;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
-import org.smeup.sys.il.isam.QDataSet;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QDisplayTerm;
-import org.smeup.sys.il.isam.QPrintTerm;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class JDTStatementWriter extends StatementVisitorImpl {

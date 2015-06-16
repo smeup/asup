@@ -28,6 +28,11 @@ import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.esam.QDataSetTerm;
+import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QFileTerm;
+import org.smeup.sys.il.esam.QKeyListTerm;
+import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.il.expr.ArithmeticOperator;
 import org.smeup.sys.il.expr.AssignmentOperator;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
@@ -46,11 +51,6 @@ import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.isam.QDataSetTerm;
-import org.smeup.sys.il.isam.QDisplayTerm;
-import org.smeup.sys.il.isam.QFileTerm;
-import org.smeup.sys.il.isam.QKeyListTerm;
-import org.smeup.sys.il.isam.QPrint;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 

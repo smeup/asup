@@ -10,7 +10,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
             
       <package
-            uri="http://www.smeup.org/asup/os/type/pgm"
+            uri="http://www.smeup.org/asup/os/pgm"
             class="org.smeup.sys.os.pgm.QOperatingSystemProgramPackage"
             genModel="model/os-pgm.genmodel"/>                        
    </extension>

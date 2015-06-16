@@ -11,11 +11,8 @@
  */
 package org.smeup.sys.os.lib.base;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
-import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
@@ -23,7 +20,6 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
-import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 
 public class BaseLibraryManagerImpl implements QLibraryManager {
 
@@ -40,25 +36,6 @@ public class BaseLibraryManagerImpl implements QLibraryManager {
 		this.systemLibrary = systemManager.getSystem().getSystemLibrary();
 		this.resourceManager = resourceManager;
 
-	}
-
-	@PostConstruct
-	public void init(QJob job) {
-
-		// bundleContext =
-		// FrameworkUtil.getBundle(job.getClass()).getBundleContext();
-
-		QSystem qSystem = job.getSystem();
-		// Library
-		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(job, QLibrary.class, qSystem.getSystemLibrary());
-		if (!resourceLibrary.exists(qSystem.getSystemLibrary())) {
-			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
-			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(qSystem));
-			library.setLibrary(qSystem.getSystemLibrary());
-			library.setName(qSystem.getSystemLibrary());
-			library.setText("As.UP System Library");
-			resourceLibrary.save(library);
-		}
 	}
 
 	@Override

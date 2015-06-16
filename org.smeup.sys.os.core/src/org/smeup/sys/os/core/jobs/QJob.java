@@ -51,7 +51,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @return the value of the '<em>System</em>' reference.
 	 * @see #setSystem(QSystem)
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_System()
-	 * @model required="true"
+	 * @model required="true" transient="true"
 	 * @generated
 	 */
 	QSystem getSystem();

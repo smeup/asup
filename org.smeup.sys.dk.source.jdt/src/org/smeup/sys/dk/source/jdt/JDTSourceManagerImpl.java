@@ -119,6 +119,13 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 		IProject project = (IProject) resource;
 
+/*		try {
+			project.refreshLocal(IContainer.DEPTH_INFINITE, null);
+		} catch (CoreException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		
 		return new JDTProjectAdapter(project);
 	}
 

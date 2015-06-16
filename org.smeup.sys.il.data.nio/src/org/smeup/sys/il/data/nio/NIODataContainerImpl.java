@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.smeup.sys.il.core.QNode;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataFactory;
@@ -26,7 +27,7 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.term.QDataTerm;
 
-public class NIODataContainerImpl implements QDataContainer, Serializable {
+public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
 
 	private static final long serialVersionUID = 1L;
 

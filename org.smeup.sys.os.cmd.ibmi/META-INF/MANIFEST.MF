@@ -8,5 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.os.cmd,
  org.smeup.sys.os.cmd.base,
  org.smeup.sys.dk.parser.ibmi,
- org.smeup.sys.os.pgm
+ org.smeup.sys.os.pgm,
+ org.smeup.sys.rt.core,
+ org.smeup.sys.co.shell
 Export-Package: org.smeup.sys.os.cmd.ibmi
