@@ -21,6 +21,10 @@
          id="org.smeup.sys.ft.lang.base"
          version="0.0.0"/>
 
+   <includes
+         id="org.smeup.sys.ft.eclipse.dtp"
+         version="0.0.0"/>
+
    <plugin
          id="org.smeup.sys.db.core"
          download-size="0"
@@ -44,6 +48,25 @@
 
    <plugin
          id="org.smeup.sys.db.syntax.base"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.smeup.sys.il.esam"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.smeup.sys.il.esam.jdbc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.smeup.sys.et.osgi"
          download-size="0"
          install-size="0"
          version="0.0.0"

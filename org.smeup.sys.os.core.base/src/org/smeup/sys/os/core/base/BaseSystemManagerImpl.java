@@ -12,7 +12,6 @@
 package org.smeup.sys.os.core.base;
 
 import java.text.SimpleDateFormat;
-import java.util.UUID;
 
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
@@ -32,7 +31,6 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 
 		// job
 		QJob job = QOperatingSystemJobsFactory.eINSTANCE.createJob();
-		job.setJobID(UUID.randomUUID().toString());
 
 		job.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(getSystem()));
 		job.setJobType(jobType);
@@ -48,6 +46,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 
 		// job context
 		QContext jobContext = createContext(job.getJobName());
+		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
 		
 		jobContext.set(QJob.class, job);
