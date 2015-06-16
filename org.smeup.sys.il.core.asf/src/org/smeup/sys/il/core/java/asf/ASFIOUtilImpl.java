@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.smeup.sys.il.core.QStreams;
+import org.smeup.sys.il.core.java.QStreams;
 
 
 public class ASFIOUtilImpl implements QStreams {

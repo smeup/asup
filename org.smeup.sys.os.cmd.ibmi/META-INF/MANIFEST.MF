@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Operating System Command IBMi
+Bundle-SymbolicName: org.smeup.sys.os.cmd.ibmi
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.os.cmd,
+ org.smeup.sys.os.cmd.base,
+ org.smeup.sys.dk.parser.ibmi,
+ org.smeup.sys.os.pgm
+Export-Package: org.smeup.sys.os.cmd.ibmi

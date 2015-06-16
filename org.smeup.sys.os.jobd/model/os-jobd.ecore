@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jobd" nsURI="http://www.smeup.org/asup/os/jobd" nsPrefix="os-jobd">
+  <eClassifiers xsi:type="ecore:EClass" name="JobDescription" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobQueue" containment="true">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.type/model/os-type.ecore#//TypedRef">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobPriorityOnJobq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outQueue" containment="true">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.type/model/os-type.ecore#//TypedRef">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputPriorityOnOutq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="libraries" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JobDescriptionManager" abstract="true"
+      interface="true"/>
+</ecore:EPackage>

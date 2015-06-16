@@ -125,6 +125,6 @@ public class BaseShellSocketHandler extends Thread {
 		if (command == null || command.trim().length() == 0)
 			return;
 
-		shellManager.execute(authenticationToken.getID(), command, null, true);
+		shellManager.executeCommand(authenticationToken.getID(), command, null, true);
 	}
 }

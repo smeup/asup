@@ -14,8 +14,8 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QIteration#getBody <em>Body</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QIteration#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QIteration#getBody <em>Body</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QIteration#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,7 +62,6 @@ public interface QIteration extends QStatement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Body</em>' containment reference.
 	 * @see #setBody(QStatement)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getIteration_Body()
@@ -72,12 +71,10 @@ public interface QIteration extends QStatement {
 	QStatement getBody();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIteration#getBody
-	 * <em>Body</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIteration#getBody <em>Body</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Body</em>' containment reference.
+	 * @param value the new value of the '<em>Body</em>' containment reference.
 	 * @see #getBody()
 	 * @generated
 	 */

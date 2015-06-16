@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP External Tool ASM
+Bundle-SymbolicName: org.smeup.sys.et.asm
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: lib/asm-all-3.3.1.jar,
+ .
+Export-Package: org.objectweb.asm,
+ org.objectweb.asm.commons

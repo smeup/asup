@@ -151,23 +151,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int ADAPTER_DEF = 0;
 
 	/**
-	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTER_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
-
-	/**
-	 * The number of structural features of the '<em>Adapter Def</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADAPTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleDataDefImpl <em>Multiple Data Def</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -176,6 +159,90 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 */
 	int MULTIPLE_DATA_DEF = 21;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl <em>Multiple Atomic Data Def</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicDataDef()
+	 * @generated
+	 */
+	int MULTIPLE_ATOMIC_DATA_DEF = 18;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl <em>Multiple Atomic Buffered Data Def</em>}' class.
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicBufferedDataDef()
+	 * @generated
+	 */
+	int MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = 19;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.ArrayDefImpl <em>Array Def</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.ArrayDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getArrayDef()
+	 * @generated
+	 */
+	int ARRAY_DEF = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl <em>Atomic Data Def</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
+	 * @generated
+	 */
+	int ATOMIC_DATA_DEF = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl <em>Unary Atomic Buffered Data Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicBufferedDataDef()
+	 * @generated
+	 */
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF = 28;
+
+	/**
+	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
+
+	/**
+	 * The number of structural features of the '<em>Unary Atomic Buffered Data Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTER_DEF__FORMULAS = UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS;
+
+	/**
+	 * The number of structural features of the '<em>Adapter Def</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADAPTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -204,16 +271,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int MULTIPLE_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl <em>Multiple Atomic Data Def</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
-	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicDataDef()
-	 * @generated
-	 */
-	int MULTIPLE_ATOMIC_DATA_DEF = 18;
-
-	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -239,16 +296,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @ordered
 	 */
 	int MULTIPLE_ATOMIC_DATA_DEF_FEATURE_COUNT = MULTIPLE_DATA_DEF_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl <em>Multiple Atomic Buffered Data Def</em>}' class.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl
-	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicBufferedDataDef()
-	 * @generated
-	 */
-	int MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = 19;
 
 	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
@@ -286,15 +333,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int MULTIPLE_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT = MULTIPLE_ATOMIC_DATA_DEF_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.ArrayDefImpl <em>Array Def</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.ArrayDefImpl
-	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getArrayDef()
-	 * @generated
-	 */
-	int ARRAY_DEF = 1;
-
-	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -330,16 +368,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int ARRAY_DEF_FEATURE_COUNT = MULTIPLE_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl <em>Atomic Data Def</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
-	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
-	 * @generated
-	 */
-	int ATOMIC_DATA_DEF = 2;
-
-	/**
 	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -355,34 +383,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATOMIC_DATA_DEF_FEATURE_COUNT = DATA_DEF_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl <em>Unary Atomic Buffered Data Def</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
-	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicBufferedDataDef()
-	 * @generated
-	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF = 28;
-
-	/**
-	 * The feature id for the '<em><b>Formulas</b></em>' attribute list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
-
-	/**
-	 * The number of structural features of the '<em>Unary Atomic Buffered Data Def</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl <em>Binary Def</em>}' class.

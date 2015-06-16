@@ -14,14 +14,10 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QCallableUnit#getSetupSection <em>Setup Section
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QCallableUnit#getDataSection <em>Data Section
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFileSection <em>File Section
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFlowSection <em>Flow Section
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getSetupSection <em>Setup Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getDataSection <em>Data Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFileSection <em>File Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFlowSection <em>Flow Section</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,14 +28,13 @@ package org.smeup.sys.il.flow;
 public interface QCallableUnit extends QUnit {
 
 	/**
-	 * Returns the value of the '<em><b>Data Section</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Section</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Data Section</em>' containment reference.
 	 * @see #setDataSection(QDataSection)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCallableUnit_DataSection()
@@ -49,28 +44,23 @@ public interface QCallableUnit extends QUnit {
 	QDataSection getDataSection();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QCallableUnit#getDataSection
-	 * <em>Data Section</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCallableUnit#getDataSection <em>Data Section</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Data Section</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Data Section</em>' containment reference.
 	 * @see #getDataSection()
 	 * @generated
 	 */
 	void setDataSection(QDataSection value);
 
 	/**
-	 * Returns the value of the '<em><b>File Section</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>File Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>File Section</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>File Section</em>' containment reference.
 	 * @see #setFileSection(QFileSection)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCallableUnit_FileSection()
@@ -80,28 +70,23 @@ public interface QCallableUnit extends QUnit {
 	QFileSection getFileSection();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QCallableUnit#getFileSection
-	 * <em>File Section</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCallableUnit#getFileSection <em>File Section</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>File Section</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>File Section</em>' containment reference.
 	 * @see #getFileSection()
 	 * @generated
 	 */
 	void setFileSection(QFileSection value);
 
 	/**
-	 * Returns the value of the '<em><b>Flow Section</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Flow Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Flow Section</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Flow Section</em>' containment reference.
 	 * @see #setFlowSection(QFlowSection)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCallableUnit_FlowSection()
@@ -111,28 +96,23 @@ public interface QCallableUnit extends QUnit {
 	QFlowSection getFlowSection();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QCallableUnit#getFlowSection
-	 * <em>Flow Section</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCallableUnit#getFlowSection <em>Flow Section</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Flow Section</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Flow Section</em>' containment reference.
 	 * @see #getFlowSection()
 	 * @generated
 	 */
 	void setFlowSection(QFlowSection value);
 
 	/**
-	 * Returns the value of the '<em><b>Setup Section</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Setup Section</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Setup Section</em>' containment reference
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Setup Section</em>' containment reference.
 	 * @see #setSetupSection(QSetupSection)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCallableUnit_SetupSection()
@@ -142,14 +122,10 @@ public interface QCallableUnit extends QUnit {
 	QSetupSection getSetupSection();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QCallableUnit#getSetupSection
-	 * <em>Setup Section</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCallableUnit#getSetupSection <em>Setup Section</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Setup Section</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Setup Section</em>' containment reference.
 	 * @see #getSetupSection()
 	 * @generated
 	 */

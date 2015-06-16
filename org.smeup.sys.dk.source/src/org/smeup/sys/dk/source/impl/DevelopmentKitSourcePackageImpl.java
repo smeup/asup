@@ -298,7 +298,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createChildEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSourceEntry(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
@@ -335,7 +335,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "getChildEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSourceEntry(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "getObjectEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -356,7 +356,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "listChildEntries", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getSourceEntry(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "listObjectEntries", 0, -1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");

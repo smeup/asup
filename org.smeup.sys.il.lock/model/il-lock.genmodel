@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.il.lock/src" modelPluginID="org.smeup.sys.il.lock"
+    modelName="As.UP Integrated Language Lock" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>il-lock.ecore</foreignModel>
+  <genPackages prefix="IntegratedLanguageLock" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
+      adapterFactory="false" contentTypeIdentifier="" ecorePackage="il-lock.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-lock.ecore#//LockType">
+      <genEnumLiterals ecoreEnumLiteral="il-lock.ecore#//LockType/Read"/>
+      <genEnumLiterals ecoreEnumLiteral="il-lock.ecore#//LockType/Write"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="il-lock.ecore#//LockManager">
+      <genOperations ecoreOperation="il-lock.ecore#//LockManager/getLocker">
+        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker/context"/>
+        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker/klass"/>
+        <genTypeParameters ecoreTypeParameter="il-lock.ecore#//LockManager/getLocker/T"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="il-lock.ecore#//LockRead"/>
+    <genClasses ecoreClass="il-lock.ecore#//LockWrite"/>
+    <genClasses image="false" ecoreClass="il-lock.ecore#//ObjectLockable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-lock.ecore#//ObjectLockable/lockRead"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-lock.ecore#//ObjectLockable/lockWrite"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-lock.ecore#//Locker">
+      <genTypeParameters ecoreTypeParameter="il-lock.ecore#//Locker/T"/>
+      <genOperations ecoreOperation="il-lock.ecore#//Locker/lock">
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/lock/object"/>
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/lock/lockType"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//Locker/tryLock">
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/object"/>
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/time"/>
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/lockType"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//Locker/unlock">
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/unlock/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//Locker/isLocked">
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLocked/object"/>
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLocked/lockType"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//Locker/isLockedByOther">
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLockedByOther/object"/>
+        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLockedByOther/lockType"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

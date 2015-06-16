@@ -32,7 +32,7 @@ public interface QSourceManager {
 	 * @model required="true" exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" parentRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	QSourceEntry createChildEntry(QContext context, QSourceEntry parent, String name, boolean replace) throws IOException;
+	QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public interface QSourceManager {
 	 * @model required="true" contextRequired="true" parentRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	QSourceEntry getChildEntry(QContext context, QSourceEntry parent, String name);
+	QSourceEntry getChildEntry(QContext context, QSourceNode parent, String name);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,7 +80,7 @@ public interface QSourceManager {
 	 * @model contextRequired="true" parentRequired="true"
 	 * @generated
 	 */
-	List<QSourceEntry> listChildEntries(QContext context, QSourceEntry parent);
+	List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent);
 
 	/**
 	 * <!-- begin-user-doc -->

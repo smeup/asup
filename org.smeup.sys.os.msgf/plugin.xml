@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated os-msgf -->
+      <package
+            uri="http://www.smeup.org/asup/os/msgf"
+            class="org.smeup.sys.os.msgf.QOperatingSystemMessageFilePackage"
+            genModel="model/os-msgf.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+
+      <package
+            uri="http://www.smeup.org/asup/os/core"
+            class="org.smeup.sys.os.core.QOperatingSystemCorePackage"
+            genModel="model/os-core.genmodel"/>
+                        
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated os-core -->
+      <package
+            uri="http://www.smeup.org/asup/os/core/jobs"
+            class="org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage"
+            genModel="model/os-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated os-core -->
+      <package
+            uri="http://www.smeup.org/asup/os/core/resources"
+            class="org.smeup.sys.os.core.resources.QOperatingSystemResourcesPackage"
+            genModel="model/os-core.genmodel"/>
+   </extension>
+
+   <extension
+         id="cdo_store"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.asup.rt.core.e4.application"
+            name="As.UP CDO Store">
+         <property
+               name="appName"
+               value="As.UP CDO Store">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="application_cdo"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.asup.rt.core.e4.application"
+            name="As.UP Application CDO">
+         <property
+               name="appName"
+               value="As.UP Application CDO">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="application_e4"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.asup.rt.core.e4.application"
+            name="As.UP Application E4">
+         <property
+               name="appName"
+               value="As.UP Application E4">
+         </property>
+      </product>
+   </extension>
+</plugin>

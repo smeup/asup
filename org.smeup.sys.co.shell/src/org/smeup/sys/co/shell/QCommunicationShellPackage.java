@@ -105,6 +105,15 @@ public interface QCommunicationShellPackage extends EPackage {
 	int SHELL_DATA__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHELL_DATA__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
+
+	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -138,6 +147,15 @@ public interface QCommunicationShellPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHELL_DATA__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHELL_DATA__MANDATORY = QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--

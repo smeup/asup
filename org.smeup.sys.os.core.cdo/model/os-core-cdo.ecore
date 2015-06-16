@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cdo" nsURI="http://www.smeup.org/asup/os/core/cdo" nsPrefix="os-core-cdo">
+  <eClassifiers xsi:type="ecore:EClass" name="CDOStoreConfig">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapter" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="credentials" lowerBound="1"
+        eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//ConnectionCredentials"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="driver" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repository" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="socketConfig" lowerBound="1"
+        eType="ecore:EClass ../../org.smeup.sys.co.core/model/co-core.ecore#//ServerSocketConfig"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CDOSystemConfig">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
+        eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//System"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

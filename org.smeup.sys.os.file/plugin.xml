@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated os-file -->
+      <package
+            uri="http://www.smeup.org/asup/os/file"
+            class="org.smeup.sys.os.file.QOperatingSystemFilePackage"
+            genModel="model/os-file.genmodel"/>
+   </extension>
+
+</plugin>

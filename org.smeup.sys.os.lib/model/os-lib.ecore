@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="lib" nsURI="http://www.smeup.org/asup/os/lib" nsPrefix="os-lib">
+  <eClassifiers xsi:type="ecore:EClass" name="LibraryManager" abstract="true" interface="true">
+    <eOperations name="getLibraryReader">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//resources/ResourceReader">
+        <eTypeArguments eClassifier="#//Library"/>
+      </eGenericType>
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
+    <eOperations name="getLibraryWriter">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//resources/ResourceWriter">
+        <eTypeArguments eClassifier="#//Library"/>
+      </eGenericType>
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
+    <eOperations name="isRootLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isChildLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="getPackageURI" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dependencies" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parentLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

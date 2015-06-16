@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.os.file/src" modelPluginID="org.smeup.sys.os.file"
+    modelName="As.UP Operating System File" editPluginClass="" editorPluginClass=""
+    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    rootImplementsInterface="" suppressEMFTypes="true" featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false" providerRootExtendsClass="" language="EN"
+    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    interfaceNamePattern="Q{0}">
+  <foreignModel>os-file.ecore</foreignModel>
+  <genPackages prefix="OperatingSystemFile" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
+      adapterFactory="false" fileExtensions="" ecorePackage="os-file.ecore#/">
+    <genClasses image="false" ecoreClass="os-file.ecore#//DatabaseFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//DatabaseFile/databaseFormat"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//DatabaseFileField"/>
+    <genClasses ecoreClass="os-file.ecore#//DatabaseFileFormat">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//DatabaseFileFormat/formatKey"/>
+      <genOperations ecoreOperation="os-file.ecore#//DatabaseFileFormat/isEmpty"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//DatabaseFileFormatDef"/>
+    <genClasses ecoreClass="os-file.ecore#//DisplayFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//DisplayFile/displayFormats"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//DisplayFileField"/>
+    <genClasses ecoreClass="os-file.ecore#//DisplayFileFormat"/>
+    <genClasses ecoreClass="os-file.ecore#//DisplayFileFormatDef"/>
+    <genClasses ecoreClass="os-file.ecore#//ExternalFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//ExternalFile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//ExternalFile/format"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//File">
+      <genOperations ecoreOperation="os-file.ecore#//File/getClassURI"/>
+      <genOperations ecoreOperation="os-file.ecore#//File/getPackageInfoURI"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-file.ecore#//FileFormat">
+      <genTypeParameters ecoreTypeParameter="os-file.ecore#//FileFormat/DD"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-file.ecore#//FileFormatField"/>
+    <genClasses ecoreClass="os-file.ecore#//FileFormatKey">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileFormatKey/unique"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//FileFormatKey/keyFields"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//FileFormatKeyField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileFormatKeyField/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileFormatKeyField/descend"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-file.ecore#//FileManager">
+      <genOperations ecoreOperation="os-file.ecore#//FileManager/getFileOverride">
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/job"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/fileName"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileManager/setFileOverride">
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/job"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/fileFrom"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/fileTo"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//FileMember">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-file.ecore#//FileMember/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMember/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//FileMember/rows"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMember/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMember/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-file.ecore#//FileMemberManager">
+      <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/list">
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/library"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/file"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup">
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/library"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/file"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//FileMemberRow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMemberRow/sequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMemberRow/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileMemberRow/content"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-file.ecore#//FileMemberRow/fileMember"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="os-file.ecore#//FileMembered">
+      <genOperations ecoreOperation="os-file.ecore#//FileMembered/getName"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//LogicalFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//LogicalFile/creationStatement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//LogicalFile/tables"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//PhysicalFile"/>
+    <genClasses ecoreClass="os-file.ecore#//PrinterFile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-file.ecore#//PrinterFile/printerFormats"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//PrinterFileFormat"/>
+    <genClasses ecoreClass="os-file.ecore#//PrinterFileFormatDef"/>
+    <genClasses ecoreClass="os-file.ecore#//PrinterFileField"/>
+    <genClasses ecoreClass="os-file.ecore#//SourceFile"/>
+  </genPackages>
+</genmodel:GenModel>

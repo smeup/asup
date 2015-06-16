@@ -18,16 +18,12 @@ import org.smeup.sys.il.core.QAnnotation;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#getAnnotations <em>Annotations
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#getApplication <em>Application
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#getEncoding <em>Encoding</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#getExpressionType <em>Expression
- * Type</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#getModules <em>Modules</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QSetupSection#isTermSensitive <em>Term Sensitive
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getApplication <em>Application</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getEncoding <em>Encoding</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getExpressionType <em>Expression Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getModules <em>Modules</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QSetupSection#isTermSensitive <em>Term Sensitive</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,17 +33,15 @@ import org.smeup.sys.il.core.QAnnotation;
  */
 public interface QSetupSection extends QUnitSection {
 	/**
-	 * Returns the value of the '<em><b>Annotations</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link org.smeup.sys.il.core.QAnnotation}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.core.QAnnotation}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Annotations</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Annotations</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Annotations</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getSetupSection_Annotations()
 	 * @model containment="true"
 	 * @generated
@@ -72,13 +66,10 @@ public interface QSetupSection extends QUnitSection {
 	String getApplication();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QSetupSection#getApplication
-	 * <em>Application</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QSetupSection#getApplication <em>Application</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Application</em>' attribute.
+	 * @param value the new value of the '<em>Application</em>' attribute.
 	 * @see #getApplication()
 	 * @generated
 	 */
@@ -121,7 +112,6 @@ public interface QSetupSection extends QUnitSection {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Expression Type</em>' attribute.
 	 * @see #setExpressionType(String)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getSetupSection_ExpressionType()
@@ -131,28 +121,25 @@ public interface QSetupSection extends QUnitSection {
 	String getExpressionType();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QSetupSection#getExpressionType
-	 * <em>Expression Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QSetupSection#getExpressionType <em>Expression Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Expression Type</em>' attribute.
+	 * @param value the new value of the '<em>Expression Type</em>' attribute.
 	 * @see #getExpressionType()
 	 * @generated
 	 */
 	void setExpressionType(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Modules</b></em>' attribute list. The
-	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Modules</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Modules</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Modules</em>' attribute list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getSetupSection_Modules()
 	 * @model
@@ -178,13 +165,10 @@ public interface QSetupSection extends QUnitSection {
 	boolean isTermSensitive();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QSetupSection#isTermSensitive
-	 * <em>Term Sensitive</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QSetupSection#isTermSensitive <em>Term Sensitive</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Term Sensitive</em>' attribute.
+	 * @param value the new value of the '<em>Term Sensitive</em>' attribute.
 	 * @see #isTermSensitive()
 	 * @generated
 	 */

@@ -178,12 +178,10 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 		
 		return installableUnit;
 	}
-	
-	
-	
-////////////////////////////////////////////////////////////
-	private void internalTest() {
 
+		
+	@SuppressWarnings("unused")
+	private void internalTest() {
 		
 		IMetadataRepository repository = getMetadataRepository();
 		

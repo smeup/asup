@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<os-cmd:Command
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+    xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd os-cmd.ecore">
+  <parameters>
+    <dataTerm>
+      <definition
+          xsi:type="il-data-def:DataStructDef"/>
+    </dataTerm>
+  </parameters>
+</os-cmd:Command>

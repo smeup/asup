@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dtaara" nsURI="http://www.smeup.org/asup/os/dtaara" nsPrefix="os-dtaara">
+  <eClassifiers xsi:type="ecore:EClass" name="DataArea" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataAreaType" lowerBound="1"
+        eType="#//DataAreaType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentLength" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentDecimal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAreaManager" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataAreaType">
+    <eLiterals name="Character" value="10" literal="*CHAR"/>
+    <eLiterals name="Decimal" value="20" literal="*DEC"/>
+    <eLiterals name="Logical" value="30" literal="*LGL"/>
+    <eLiterals name="Distributed" value="40" literal="*DDM"/>
+  </eClassifiers>
+</ecore:EPackage>

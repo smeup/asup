@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data.term;
 
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.def.QDataDef;
 
@@ -18,10 +19,12 @@ import org.smeup.sys.il.data.def.QDataDef;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isInitialized <em>Initialized</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getLike <em>Like</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isRestricted <em>Restricted</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getText <em>Text</em>}</li>
  * </ul>
@@ -31,7 +34,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  * @model abstract="true"
  * @generated
  */
-public interface QDataTerm<DD extends QDataDef<?>> extends QTerm {
+public interface QDataTerm<DD extends QDataDef<?>> extends QObject, QTerm {
 	/**
 	 * Returns the value of the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -57,6 +60,32 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm {
 	 * @generated
 	 */
 	void setConstant(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default</em>' attribute.
+	 * @see #setDefault(String)
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Default()
+	 * @model
+	 * @generated
+	 */
+	String getDefault();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default</em>' attribute.
+	 * @see #getDefault()
+	 * @generated
+	 */
+	void setDefault(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Definition</b></em>' containment reference.
@@ -163,6 +192,32 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mandatory</em>' attribute.
+	 * @see #setMandatory(boolean)
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Mandatory()
+	 * @model
+	 * @generated
+	 */
+	boolean isMandatory();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QDataTerm#isMandatory <em>Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mandatory</em>' attribute.
+	 * @see #isMandatory()
+	 * @generated
+	 */
+	void setMandatory(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Restricted</b></em>' attribute. <!--

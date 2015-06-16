@@ -23,12 +23,12 @@ import org.smeup.sys.il.isam.QPrintTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getDataSets <em>Data Sets</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getKeyLists <em>Key Lists</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getCursors <em>Cursors</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getStatements <em>Statements</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getDisplays <em>Displays</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QFileSection#getPrinters <em>Printers</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getDataSets <em>Data Sets</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getKeyLists <em>Key Lists</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getCursors <em>Cursors</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getStatements <em>Statements</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getDisplays <em>Displays</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QFileSection#getPrinters <em>Printers</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,15 +39,14 @@ import org.smeup.sys.il.isam.QPrintTerm;
 public interface QFileSection extends QUnitSection {
 
 	/**
-	 * Returns the value of the '<em><b>Data Sets</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link org.smeup.sys.il.isam.QDataSetTerm}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data Sets</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.isam.QDataSetTerm}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Sets</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Data Sets</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_DataSets()
 	 * @model containment="true"
@@ -56,15 +55,14 @@ public interface QFileSection extends QUnitSection {
 	List<QDataSetTerm> getDataSets();
 
 	/**
-	 * Returns the value of the '<em><b>Key Lists</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link org.smeup.sys.il.isam.QKeyListTerm}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Key Lists</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.isam.QKeyListTerm}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Key Lists</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Key Lists</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_KeyLists()
 	 * @model containment="true"
@@ -73,15 +71,14 @@ public interface QFileSection extends QUnitSection {
 	List<QKeyListTerm> getKeyLists();
 
 	/**
-	 * Returns the value of the '<em><b>Cursors</b></em>' containment reference
-	 * list. The list contents are of type {@link org.smeup.sys.db.esql.QCursorTerm}.
+	 * Returns the value of the '<em><b>Cursors</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.db.esql.QCursorTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Cursors</em>' containment reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Cursors</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_Cursors()
 	 * @model containment="true"
@@ -90,17 +87,15 @@ public interface QFileSection extends QUnitSection {
 	List<QCursorTerm> getCursors();
 
 	/**
-	 * Returns the value of the '<em><b>Statements</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link org.smeup.sys.db.esql.QStatementTerm}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.db.esql.QStatementTerm}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Statements</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Statements</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Statements</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_Statements()
 	 * @model containment="true"
 	 * @generated
@@ -108,15 +103,14 @@ public interface QFileSection extends QUnitSection {
 	List<QStatementTerm> getStatements();
 
 	/**
-	 * Returns the value of the '<em><b>Displays</b></em>' containment reference
-	 * list. The list contents are of type {@link org.smeup.sys.il.isam.QDisplayTerm}
-	 * . <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Displays</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.isam.QDisplayTerm}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Displays</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Displays</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_Displays()
 	 * @model containment="true"
@@ -125,15 +119,14 @@ public interface QFileSection extends QUnitSection {
 	List<QDisplayTerm> getDisplays();
 
 	/**
-	 * Returns the value of the '<em><b>Printers</b></em>' containment reference
-	 * list. The list contents are of type {@link org.smeup.sys.il.isam.QPrintTerm}.
+	 * Returns the value of the '<em><b>Printers</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.isam.QPrintTerm}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Printers</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Printers</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection_Printers()
 	 * @model containment="true"

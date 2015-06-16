@@ -40,7 +40,7 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.dk.test.e4.E4TestHelper;
 import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
-import org.smeup.sys.il.core.QFiles;
+import org.smeup.sys.il.core.java.QFiles;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 
@@ -51,7 +51,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 	@Inject
 	private QDatabaseManager databaseManager;
 	@Inject
-	private QFiles fileUtil;
+	private QFiles files;
 
 	public void _createSchema(CommandInterpreter interpreter) throws SQLException {
 
@@ -75,7 +75,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 		while (tables.hasMoreElements()) {
 
 			URL tableURL = tables.nextElement();
-			String fileName = fileUtil.getBaseName(tableURL.getFile());
+			String fileName = files.getBaseName(tableURL.getFile());
 
 			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(tableURL);
 
@@ -94,7 +94,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 		while (views.hasMoreElements()) {
 
 			URL viewURL = views.nextElement();
-			String fileName = fileUtil.getBaseName(viewURL.getFile());
+			String fileName = files.getBaseName(viewURL.getFile());
 
 			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(viewURL);
 
@@ -113,7 +113,7 @@ public class DefinitionCommands extends E4TestProviderImpl {
 		while (indices.hasMoreElements()) {
 
 			URL indexURL = indices.nextElement();
-			String fileName = fileUtil.getBaseName(indexURL.getFile());
+			String fileName = files.getBaseName(indexURL.getFile());
 
 			QDatabaseObjectDef file = (QDatabaseObjectDef) E4TestHelper.load(indexURL);
 

@@ -26,7 +26,7 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.DataSectionImpl#getDatas <em>Datas</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.DataSectionImpl#getDatas <em>Datas</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,9 +34,8 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  */
 public class DataSectionImpl extends UnitSectionImpl implements QDataSection {
 	/**
-	 * The cached value of the '{@link #getDatas() <em>Datas</em>}' containment
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDatas() <em>Datas</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDatas()
 	 * @generated
 	 * @ordered
@@ -45,7 +44,6 @@ public class DataSectionImpl extends UnitSectionImpl implements QDataSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DataSectionImpl() {
@@ -54,7 +52,6 @@ public class DataSectionImpl extends UnitSectionImpl implements QDataSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -64,86 +61,81 @@ public class DataSectionImpl extends UnitSectionImpl implements QDataSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QDataTerm<?>> getDatas() {
-		if (datas == null)
+		if (datas == null) {
 			datas = new EObjectContainmentEList<QDataTerm<?>>(QDataTerm.class, this, QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS);
+		}
 		return datas;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
-			return ((InternalEList<?>) getDatas()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
+				return ((InternalEList<?>)getDatas()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
-			return getDatas();
+			case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
+				return getDatas();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
-			getDatas().clear();
-			getDatas().addAll((Collection<? extends QDataTerm<?>>) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
+				getDatas().clear();
+				getDatas().addAll((Collection<? extends QDataTerm<?>>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
-			getDatas().clear();
-			return;
+			case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
+				getDatas().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
-			return datas != null && !datas.isEmpty();
+			case QIntegratedLanguageFlowPackage.DATA_SECTION__DATAS:
+				return datas != null && !datas.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

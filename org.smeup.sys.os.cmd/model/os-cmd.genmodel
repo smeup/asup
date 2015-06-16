@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.os.cmd/src" editDirectory="/org.smeup.sys.os.cmd.edit/src"
+    editorDirectory="/org.smeup.sys.os.cmd.editor/src" modelPluginID="org.smeup.sys.os.cmd"
+    runtimeJar="true" modelName="As.UP Operating System Command" editPluginClass=""
+    editorPluginClass="" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    rootImplementsInterface="" suppressEMFTypes="true" testsDirectory="/org.smeup.sys.os.cmd.tests/src"
+    testSuiteClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false" editPluginID="org.smeup.sys.os.cmd.edit" editorPluginID="org.smeup.sys.os.cmd.editor"
+    language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    interfaceNamePattern="Q{0}">
+  <foreignModel>os-cmd.ecore</foreignModel>
+  <genPackages prefix="OperatingSystemCommand" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
+      adapterFactory="false" fileExtensions="" ecorePackage="os-cmd.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-cmd.ecore#//CommandStatus">
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandStatus/Possible"/>
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandStatus/Supported"/>
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandStatus/Unsupported"/>
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandStatus/Todo"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-cmd.ecore#//CommandParameterOrder">
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandParameterOrder/Name"/>
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandParameterOrder/Position"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-cmd.ecore#//CommandOrder">
+      <genEnumLiterals ecoreEnumLiteral="os-cmd.ecore#//CommandOrder/Name"/>
+    </genEnums>
+    <genClasses ecoreClass="os-cmd.ecore#//CallableCommand">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-cmd.ecore#//CallableCommand/command"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CallableCommand/commandString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CallableCommand/variables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-cmd.ecore#//CallableCommand/dataContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="os-cmd.ecore#//Command">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/address"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/allowBatch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/classCMD"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-cmd.ecore#//Command/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/program"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-cmd.ecore#//Command/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//Command/typeName"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//Command/getParameter">
+        <genParameters ecoreParameter="os-cmd.ecore#//Command/getParameter/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//Command/getParameters">
+        <genParameters ecoreParameter="os-cmd.ecore#//Command/getParameters/order"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//Command/isSupported"/>
+    </genClasses>
+    <genClasses ecoreClass="os-cmd.ecore#//CommandContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandContainer/typeName"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandContainer/getCommands">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandContainer/getCommands/order"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="os-cmd.ecore#//CommandData"/>
+    <genClasses image="false" ecoreClass="os-cmd.ecore#//CommandManager">
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/prepareCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/contextID"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/command"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/variables"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/prepareCommand/defaults"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/executeCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand/contextID"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/executeCommand/command"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandManager/decodeCommand">
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand/contextID"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand/callableCommand"/>
+        <genParameters ecoreParameter="os-cmd.ecore#//CommandManager/decodeCommand/defaults"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="os-cmd.ecore#//CommandParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandParameter/allowVariable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-cmd.ecore#//CommandParameter/dataTerm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandParameter/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandParameter/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandParameter/hidden"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandParameter/isCompound"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandParameter/isMany"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandParameter/isRequired"/>
+      <genOperations ecoreOperation="os-cmd.ecore#//CommandParameter/isSupported"/>
+    </genClasses>
+    <genClasses ecoreClass="os-cmd.ecore#//CommandSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandSource/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-cmd.ecore#//CommandSource/content"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

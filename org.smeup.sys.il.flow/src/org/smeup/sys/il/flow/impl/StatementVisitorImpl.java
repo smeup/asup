@@ -46,7 +46,6 @@ import org.smeup.sys.il.flow.QWhile;
 public abstract class StatementVisitorImpl extends MinimalEObjectImpl.Container implements QStatementVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected StatementVisitorImpl() {
@@ -55,7 +54,6 @@ public abstract class StatementVisitorImpl extends MinimalEObjectImpl.Container 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

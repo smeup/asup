@@ -29,18 +29,12 @@ import org.smeup.sys.il.flow.QSetupSection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getAnnotations <em>
- * Annotations</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getApplication <em>
- * Application</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getEncoding <em>Encoding
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getExpressionType <em>
- * Expression Type</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getModules <em>Modules
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#isTermSensitive <em>Term
- * Sensitive</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getApplication <em>Application</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getEncoding <em>Encoding</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getExpressionType <em>Expression Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getModules <em>Modules</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#isTermSensitive <em>Term Sensitive</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,9 +42,8 @@ import org.smeup.sys.il.flow.QSetupSection;
  */
 public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	/**
-	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAnnotations()
 	 * @generated
 	 * @ordered
@@ -58,9 +51,8 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected EList<QAnnotation> annotations;
 
 	/**
-	 * The default value of the '{@link #getApplication() <em>Application</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getApplication() <em>Application</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getApplication()
 	 * @generated
 	 * @ordered
@@ -68,9 +60,8 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected static final String APPLICATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getApplication() <em>Application</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getApplication() <em>Application</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getApplication()
 	 * @generated
 	 * @ordered
@@ -78,9 +69,8 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected String application = APPLICATION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEncoding() <em>Encoding</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -88,9 +78,8 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected static final String ENCODING_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEncoding() <em>Encoding</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -98,10 +87,9 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected String encoding = ENCODING_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getExpressionType()
-	 * <em>Expression Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getExpressionType() <em>Expression Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getExpressionType()
 	 * @generated
 	 * @ordered
@@ -109,10 +97,9 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected static final String EXPRESSION_TYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getExpressionType()
-	 * <em>Expression Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getExpressionType() <em>Expression Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getExpressionType()
 	 * @generated
 	 * @ordered
@@ -120,9 +107,8 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected String expressionType = EXPRESSION_TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getModules() <em>Modules</em>}'
-	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getModules() <em>Modules</em>}' attribute list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getModules()
 	 * @generated
 	 * @ordered
@@ -130,10 +116,9 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected EList<String> modules;
 
 	/**
-	 * The default value of the '{@link #isTermSensitive()
-	 * <em>Term Sensitive</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #isTermSensitive() <em>Term Sensitive</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #isTermSensitive()
 	 * @generated
 	 * @ordered
@@ -141,10 +126,9 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 	protected static final boolean TERM_SENSITIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isTermSensitive()
-	 * <em>Term Sensitive</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #isTermSensitive() <em>Term Sensitive</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #isTermSensitive()
 	 * @generated
 	 * @ordered
@@ -153,7 +137,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected SetupSectionImpl() {
@@ -162,7 +145,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -172,19 +154,18 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QAnnotation> getAnnotations() {
-		if (annotations == null)
+		if (annotations == null) {
 			annotations = new EObjectContainmentEList<QAnnotation>(QAnnotation.class, this, QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS);
+		}
 		return annotations;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -194,7 +175,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -207,7 +187,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -217,7 +196,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,7 +208,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -240,7 +217,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -253,19 +229,18 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<String> getModules() {
-		if (modules == null)
+		if (modules == null) {
 			modules = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES);
+		}
 		return modules;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -275,7 +250,6 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -288,138 +262,131 @@ public class SetupSectionImpl extends UnitSectionImpl implements QSetupSection {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
-			return ((InternalEList<?>) getAnnotations()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
+				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
-			return getAnnotations();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
-			return getApplication();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
-			return getEncoding();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
-			return getExpressionType();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
-			return getModules();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
-			return isTermSensitive();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
+				return getAnnotations();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
+				return getApplication();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
+				return getEncoding();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
+				return getExpressionType();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
+				return getModules();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
+				return isTermSensitive();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
-			getAnnotations().clear();
-			getAnnotations().addAll((Collection<? extends QAnnotation>) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
-			setApplication((String) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
-			setEncoding((String) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
-			setExpressionType((String) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
-			getModules().clear();
-			getModules().addAll((Collection<? extends String>) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
-			setTermSensitive((Boolean) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
+				getAnnotations().clear();
+				getAnnotations().addAll((Collection<? extends QAnnotation>)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
+				setApplication((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
+				setEncoding((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
+				setExpressionType((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
+				getModules().clear();
+				getModules().addAll((Collection<? extends String>)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
+				setTermSensitive((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
-			getAnnotations().clear();
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
-			setApplication(APPLICATION_EDEFAULT);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
-			setEncoding(ENCODING_EDEFAULT);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
-			setExpressionType(EXPRESSION_TYPE_EDEFAULT);
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
-			getModules().clear();
-			return;
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
-			setTermSensitive(TERM_SENSITIVE_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
+				getAnnotations().clear();
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
+				setApplication(APPLICATION_EDEFAULT);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
+				setEncoding(ENCODING_EDEFAULT);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
+				setExpressionType(EXPRESSION_TYPE_EDEFAULT);
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
+				getModules().clear();
+				return;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
+				setTermSensitive(TERM_SENSITIVE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
-			return annotations != null && !annotations.isEmpty();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
-			return APPLICATION_EDEFAULT == null ? application != null : !APPLICATION_EDEFAULT.equals(application);
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
-			return ENCODING_EDEFAULT == null ? encoding != null : !ENCODING_EDEFAULT.equals(encoding);
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
-			return EXPRESSION_TYPE_EDEFAULT == null ? expressionType != null : !EXPRESSION_TYPE_EDEFAULT.equals(expressionType);
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
-			return modules != null && !modules.isEmpty();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
-			return termSensitive != TERM_SENSITIVE_EDEFAULT;
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ANNOTATIONS:
+				return annotations != null && !annotations.isEmpty();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__APPLICATION:
+				return APPLICATION_EDEFAULT == null ? application != null : !APPLICATION_EDEFAULT.equals(application);
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__ENCODING:
+				return ENCODING_EDEFAULT == null ? encoding != null : !ENCODING_EDEFAULT.equals(encoding);
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__EXPRESSION_TYPE:
+				return EXPRESSION_TYPE_EDEFAULT == null ? expressionType != null : !EXPRESSION_TYPE_EDEFAULT.equals(expressionType);
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__MODULES:
+				return modules != null && !modules.isEmpty();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION__TERM_SENSITIVE:
+				return termSensitive != TERM_SENSITIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (application: ");

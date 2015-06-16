@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Development Kit Compiler Base
+Bundle-SymbolicName: org.smeup.sys.dk.compiler.base
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.dk.compiler,
+ org.smeup.sys.dk.source,
+ org.smeup.sys.os.lib,
+ org.smeup.sys.os.file
+Export-Package: org.smeup.sys.dk.compiler.base
+Import-Package: org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.ecore.xmi.impl

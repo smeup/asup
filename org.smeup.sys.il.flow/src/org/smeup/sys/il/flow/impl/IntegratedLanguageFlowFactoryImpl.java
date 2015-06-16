@@ -57,31 +57,32 @@ import org.smeup.sys.il.flow.QWhile;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements QIntegratedLanguageFlowFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageFlowFactory init() {
 		try {
-			QIntegratedLanguageFlowFactory theIntegratedLanguageFlowFactory = (QIntegratedLanguageFlowFactory) EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageFlowPackage.eNS_URI);
-			if (theIntegratedLanguageFlowFactory != null)
+			QIntegratedLanguageFlowFactory theIntegratedLanguageFlowFactory = (QIntegratedLanguageFlowFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageFlowPackage.eNS_URI);
+			if (theIntegratedLanguageFlowFactory != null) {
 				return theIntegratedLanguageFlowFactory;
-		} catch (Exception exception) {
+			}
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageFlowFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageFlowFactoryImpl() {
@@ -90,122 +91,84 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND:
-			return (EObject) createAnnotationCommand();
-		case QIntegratedLanguageFlowPackage.BLOCK:
-			return (EObject) createBlock();
-		case QIntegratedLanguageFlowPackage.BREAK:
-			return (EObject) createBreak();
-		case QIntegratedLanguageFlowPackage.CALL:
-			return (EObject) createCall();
-		case QIntegratedLanguageFlowPackage.COMMAND_EXEC:
-			return (EObject) createCommandExec();
-		case QIntegratedLanguageFlowPackage.CONTINUE:
-			return (EObject) createContinue();
-		case QIntegratedLanguageFlowPackage.DATA_SECTION:
-			return (EObject) createDataSection();
-		case QIntegratedLanguageFlowPackage.ENTRY:
-			return (EObject) createEntry();
-		case QIntegratedLanguageFlowPackage.ENTRY_PARAMETER:
-			return (EObject) createEntryParameter();
-		case QIntegratedLanguageFlowPackage.EVAL:
-			return (EObject) createEval();
-		case QIntegratedLanguageFlowPackage.FILE_SECTION:
-			return (EObject) createFileSection();
-		case QIntegratedLanguageFlowPackage.FLOW_DATA:
-			return (EObject) createFlowData();
-		case QIntegratedLanguageFlowPackage.FLOW_SECTION:
-			return (EObject) createFlowSection();
-		case QIntegratedLanguageFlowPackage.FOR:
-			return (EObject) createFor();
-		case QIntegratedLanguageFlowPackage.IF:
-			return (EObject) createIf();
-		case QIntegratedLanguageFlowPackage.JUMP:
-			return (EObject) createJump();
-		case QIntegratedLanguageFlowPackage.LABEL:
-			return (EObject) createLabel();
-		case QIntegratedLanguageFlowPackage.METHOD_EXEC:
-			return (EObject) createMethodExec();
-		case QIntegratedLanguageFlowPackage.MODULE:
-			return (EObject) createModule();
-		case QIntegratedLanguageFlowPackage.MONITOR:
-			return (EObject) createMonitor();
-		case QIntegratedLanguageFlowPackage.ON_ERROR:
-			return (EObject) createOnError();
-		case QIntegratedLanguageFlowPackage.PARAMETER_LIST:
-			return (EObject) createParameterList();
-		case QIntegratedLanguageFlowPackage.PROCEDURE:
-			return (EObject) createProcedure();
-		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC:
-			return (EObject) createProcedureExec();
-		case QIntegratedLanguageFlowPackage.PROGRAM:
-			return (EObject) createProgram();
-		case QIntegratedLanguageFlowPackage.PROTOTYPE:
-			return (EObject) createPrototype();
-		case QIntegratedLanguageFlowPackage.RESET:
-			return (EObject) createReset();
-		case QIntegratedLanguageFlowPackage.RETURN:
-			return (EObject) createReturn();
-		case QIntegratedLanguageFlowPackage.ROUTINE:
-			return (EObject) createRoutine();
-		case QIntegratedLanguageFlowPackage.ROUTINE_EXEC:
-			return (EObject) createRoutineExec();
-		case QIntegratedLanguageFlowPackage.SETUP_SECTION:
-			return (EObject) createSetupSection();
-		case QIntegratedLanguageFlowPackage.SQL_EXEC:
-			return (EObject) createSQLExec();
-		case QIntegratedLanguageFlowPackage.UNTIL:
-			return (EObject) createUntil();
-		case QIntegratedLanguageFlowPackage.WHILE:
-			return (EObject) createWhile();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND: return (EObject)createAnnotationCommand();
+			case QIntegratedLanguageFlowPackage.BLOCK: return (EObject)createBlock();
+			case QIntegratedLanguageFlowPackage.BREAK: return (EObject)createBreak();
+			case QIntegratedLanguageFlowPackage.CALL: return (EObject)createCall();
+			case QIntegratedLanguageFlowPackage.COMMAND_EXEC: return (EObject)createCommandExec();
+			case QIntegratedLanguageFlowPackage.CONTINUE: return (EObject)createContinue();
+			case QIntegratedLanguageFlowPackage.DATA_SECTION: return (EObject)createDataSection();
+			case QIntegratedLanguageFlowPackage.ENTRY: return (EObject)createEntry();
+			case QIntegratedLanguageFlowPackage.ENTRY_PARAMETER: return (EObject)createEntryParameter();
+			case QIntegratedLanguageFlowPackage.EVAL: return (EObject)createEval();
+			case QIntegratedLanguageFlowPackage.FILE_SECTION: return (EObject)createFileSection();
+			case QIntegratedLanguageFlowPackage.FLOW_DATA: return (EObject)createFlowData();
+			case QIntegratedLanguageFlowPackage.FLOW_SECTION: return (EObject)createFlowSection();
+			case QIntegratedLanguageFlowPackage.FOR: return (EObject)createFor();
+			case QIntegratedLanguageFlowPackage.IF: return (EObject)createIf();
+			case QIntegratedLanguageFlowPackage.JUMP: return (EObject)createJump();
+			case QIntegratedLanguageFlowPackage.LABEL: return (EObject)createLabel();
+			case QIntegratedLanguageFlowPackage.METHOD_EXEC: return (EObject)createMethodExec();
+			case QIntegratedLanguageFlowPackage.MODULE: return (EObject)createModule();
+			case QIntegratedLanguageFlowPackage.MONITOR: return (EObject)createMonitor();
+			case QIntegratedLanguageFlowPackage.ON_ERROR: return (EObject)createOnError();
+			case QIntegratedLanguageFlowPackage.PARAMETER_LIST: return (EObject)createParameterList();
+			case QIntegratedLanguageFlowPackage.PROCEDURE: return (EObject)createProcedure();
+			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC: return (EObject)createProcedureExec();
+			case QIntegratedLanguageFlowPackage.PROGRAM: return (EObject)createProgram();
+			case QIntegratedLanguageFlowPackage.PROTOTYPE: return (EObject)createPrototype();
+			case QIntegratedLanguageFlowPackage.RESET: return (EObject)createReset();
+			case QIntegratedLanguageFlowPackage.RETURN: return (EObject)createReturn();
+			case QIntegratedLanguageFlowPackage.ROUTINE: return (EObject)createRoutine();
+			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC: return (EObject)createRoutineExec();
+			case QIntegratedLanguageFlowPackage.SETUP_SECTION: return (EObject)createSetupSection();
+			case QIntegratedLanguageFlowPackage.SQL_EXEC: return (EObject)createSQLExec();
+			case QIntegratedLanguageFlowPackage.UNTIL: return (EObject)createUntil();
+			case QIntegratedLanguageFlowPackage.WHILE: return (EObject)createWhile();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
-			return createEvalOperatorFromString(eDataType, initialValue);
-		case QIntegratedLanguageFlowPackage.PASSING_TYPE:
-			return createPassingTypeFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
+				return createEvalOperatorFromString(eDataType, initialValue);
+			case QIntegratedLanguageFlowPackage.PASSING_TYPE:
+				return createPassingTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
-			return convertEvalOperatorToString(eDataType, instanceValue);
-		case QIntegratedLanguageFlowPackage.PASSING_TYPE:
-			return convertPassingTypeToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageFlowPackage.EVAL_OPERATOR:
+				return convertEvalOperatorToString(eDataType, instanceValue);
+			case QIntegratedLanguageFlowPackage.PASSING_TYPE:
+				return convertPassingTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,7 +179,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -227,7 +189,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -238,7 +199,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -249,7 +209,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -260,7 +219,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,7 +229,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -282,7 +239,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -293,7 +249,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -304,7 +259,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -315,7 +269,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -326,7 +279,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -337,7 +289,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -348,7 +299,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -359,7 +309,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -370,7 +319,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -381,7 +329,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -392,7 +339,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -403,7 +349,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -414,7 +359,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -425,7 +369,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -436,7 +379,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -447,7 +389,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -458,7 +399,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -469,7 +409,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -480,7 +419,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -491,7 +429,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -502,7 +439,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -513,7 +449,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -524,7 +459,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -535,7 +469,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -546,7 +479,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -557,7 +489,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -568,19 +499,16 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EvalOperator createEvalOperatorFromString(EDataType eDataType, String initialValue) {
 		EvalOperator result = EvalOperator.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertEvalOperatorToString(EDataType eDataType, Object instanceValue) {
@@ -589,19 +517,16 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public PassingType createPassingTypeFromString(EDataType eDataType, String initialValue) {
 		PassingType result = PassingType.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertPassingTypeToString(EDataType eDataType, Object instanceValue) {
@@ -610,17 +535,15 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageFlowPackage getIntegratedLanguageFlowPackage() {
-		return (QIntegratedLanguageFlowPackage) getEPackage();
+		return (QIntegratedLanguageFlowPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -631,7 +554,6 @@ public class IntegratedLanguageFlowFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */
