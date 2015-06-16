@@ -55,14 +55,12 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 
 	@PostConstruct
 	public void init() throws ProvisionException, URISyntaxException {
-		
 		String path = System.getProperty("osgi.instance.area");
 		this.agent = agentProvider.createAgent(new URI(path + "/p2"));		
 	}
 		
 	@Override
 	public boolean checkUpdates(QApplication application) {
-		
 		boolean result = false;
 		
 		for(QApplicationComponent component: application.getComponents()) {
@@ -71,12 +69,12 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 				break;
 			}
 		}
+		
 		return result;
 	}
 
 	@Override
 	public void updateApplication(QApplication application) {
-		
 		for(QApplicationComponent component: application.getComponents()) {
 			updateComponent(component);
 		}
@@ -84,7 +82,6 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 
 	@Override
 	public boolean checkUpdates(QApplicationComponent component) {
-
 		boolean result = false;
 		
 		for(QApplicationModule module: component.getModules()) {
@@ -99,28 +96,50 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 
 	@Override
 	public void updateComponent(QApplicationComponent component) {
-
 		for(QApplicationModule module: component.getModules()) {
 			updateModule(module);
 		}		
 	}
 
 	private boolean checkUpdates(QApplicationModule module) {
-		
 		boolean result = false;
 
 		result = getInstallableUnit(getMetadataRepository(), module) != null;
 		
 		return result;
-		
 	}
 
 	private void updateModule(QApplicationModule module) {
-		
+		UpdateOperation updateOperation = new UpdateOperation(new ProvisioningSession(agent));
+		updateOperation.setProfileId("ASUP");
+
+		try {
+			IStatus result = updateOperation.resolveModal(null);
+			if (result.isOK()) {
+				Update[] possibleUpdates = updateOperation.getPossibleUpdates();
+
+				System.out.println("********* Possible updates:" + possibleUpdates.length);
+
+				for(Update update: possibleUpdates) {
+					System.out.println(update);
+				}
+				
+/*				if (possibleUpdates.length > 100000) {
+					updateOperation.setSelectedUpdates(possibleUpdates);
+					Update[] selectedUpdates = updateOperation.getSelectedUpdates();
+
+					System.out.println("Updates: " + selectedUpdates);
+					updateOperation.getProvisioningJob(null).runModal(null);
+				}*/
+				System.out.println("*********");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 	
 	private IMetadataRepository getMetadataRepository() {
-		
 		IMetadataRepository repository = null;
 		try {
 
@@ -139,8 +158,6 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 	}
 	
 	private IInstallableUnit getInstallableUnit(IMetadataRepository repository, QApplicationModule module) {
-
-		
 		String moduleName = "org.smeup.sys.ft."+module.getName();
 		
 		// groups
@@ -164,22 +181,7 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+////////////////////////////////////////////////////////////
 	private void internalTest() {
 
 		
