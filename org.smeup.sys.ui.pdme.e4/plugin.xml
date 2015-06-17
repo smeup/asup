@@ -43,7 +43,7 @@
                class="org.smeup.sys.ui.pdme.e4.actions.NormalizeCommandsAction"
                enablesFor="1"
                id="org.asup.ui.pdme.e4.ecore.normalizeCommands"
-               label="Create genmodel file"
+               label="Normalize Commands"
                menubarPath="org.asup.ui.pdme.e4.ecore.menu2/generator">
          </action>
       </objectContribution>

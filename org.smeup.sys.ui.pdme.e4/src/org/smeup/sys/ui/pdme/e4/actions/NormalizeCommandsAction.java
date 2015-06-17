@@ -17,13 +17,20 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.smeup.sys.il.core.meta.QCardinality;
+import org.smeup.sys.il.core.meta.QDefault;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
+import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.QCommandContainer;
+import org.smeup.sys.os.cmd.QCommandParameter;
 
 public class NormalizeCommandsAction implements IObjectActionDelegate {
 
 	private Shell shell;
 	
+	private Resource resource;
 	private QCommandContainer commandContainer;
 	
 	/**
@@ -47,6 +54,16 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 
 		for(QCommand command: commandContainer.getContents()) {
 			System.out.println(command.getName());
+			
+			for(QCommandParameter commandParameter: command.getParameters()) {
+				commandParameter.getDataTerm().accept(new CommandsVisitor());
+			}
+		}
+		
+		try {
+			this.resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			MessageDialog.openError(shell, "Save resource", e.getMessage());
 		}
 	}
 
@@ -55,6 +72,9 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		action.setEnabled(false);		
+		
+		this.commandContainer = null;
+		this.resource = null;
 		
 		if(selection instanceof TreeSelection) {
 			TreeSelection treeSelection = (TreeSelection) selection;
@@ -83,6 +103,47 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 		
 		QCommandContainer commandContainer = (QCommandContainer) resource.getContents().get(0);
 		
+		this.resource = resource;
+		
 		return commandContainer;
+	}
+	
+	private class CommandsVisitor extends DataTermVisitorImpl {
+
+		@Override
+		public boolean visit(QDataTerm<?> term) {
+			
+			if(term.isMandatory()) {
+				System.out.println("\t"+term);
+				
+				QCardinality cardinality = term.getFacet(QCardinality.class);
+				if(cardinality == null) {						
+					cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
+					term.getFacets().add(cardinality);
+				}
+				
+				if(cardinality.getMin()==0)
+					cardinality.setMin(1);
+				
+				term.setMandatory(false);
+			}
+			
+			if(term.getDefault() != null) {
+				System.out.println("\t"+term);
+				
+				QDefault _default = term.getFacet(QDefault.class);
+				if(_default == null) {
+					_default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
+					term.getFacets().add(_default);
+				}
+				
+				if(_default.getValue() == null) 
+					_default.setValue(term.getDefault());
+
+				term.setDefault(null);
+			}
+			
+			return super.visit(term);
+		}		
 	}
 }
