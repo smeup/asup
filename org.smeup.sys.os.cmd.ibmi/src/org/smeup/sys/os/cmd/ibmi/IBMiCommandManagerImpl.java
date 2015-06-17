@@ -11,11 +11,9 @@
  */
 package org.smeup.sys.os.cmd.ibmi;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -116,17 +114,15 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		// prepare data terms
 		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
-		List<QDataTerm<?>> arrayTerms = new ArrayList<>();
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
 
 			// data term
 			QDataTerm<?> dataTerm = commandParameter.getDataTerm();
 			dataTerms.put(commandParameter.getName(), dataTerm);
-			arrayTerms.add(dataTerm);
 		}
 
 		// data container
-		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), arrayTerms);
+		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms);
 		callableCommand.setDataContainer(dataContainer);
 
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
@@ -161,9 +157,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 			// Assign value
 			QDataTerm<?> dataTerm = dataTerms.get(commandParameter.getName());
-
-			// reset default
-			// dataContext.resetData(dataTerm);
 
 			QData data = null;
 			if (value.isEmpty() == false || value.startsWith("&") || defaults)

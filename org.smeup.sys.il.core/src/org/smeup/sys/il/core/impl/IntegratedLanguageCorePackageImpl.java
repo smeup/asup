@@ -735,7 +735,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		initEClass(objectEClass, QObject.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(objectEClass, QObject.class, "Object", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(objectContainerEClass, QObjectContainer.class, "ObjectContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(objectContainerEClass_T);

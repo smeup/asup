@@ -7,8 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
-import java.util.List;
-
+import java.lang.String;
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -27,10 +27,10 @@ public interface QDataManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextRequired="true" dataTermsMany="true"
+	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QContext context, List<QDataTerm<?>> dataTerms);
+	QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms);
 
 	/**
 	 * <!-- begin-user-doc -->

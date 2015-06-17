@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,13 +34,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private transient QDataFactory dataFactory;
 
-	private List<QDataTerm<?>> dataTerms;
+	private Map<String, QDataTerm<?>> dataTerms;
 
 	private Map<String, QData> datas;
 
 	private QDataWriter dataWriter;
 
-	protected NIODataContainerImpl(QDataFactory dataFactory, List<QDataTerm<?>> dataTerms) {
+	protected NIODataContainerImpl(QDataFactory dataFactory, Map<String, QDataTerm<?>> dataTerms) {
 		this.dataFactory = dataFactory;
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
@@ -47,9 +48,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public boolean isSet(String name) {
+	public boolean isSet(String key) {
 
-		QDataTerm<?> dataTerm = _getDataTerm(name);
+		QDataTerm<?> dataTerm = dataTerms.get(key);
 
 		return isSet(dataTerm);
 	}
@@ -93,7 +94,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			if (data == null) {
 				data = datas.get(qualifier);
 				if (data == null) {
-					QDataTerm<?> dataTerm = _getDataTerm(qualifier);
+					QDataTerm<?> dataTerm = dataTerms.get(qualifier);
 
 					if (dataTerm == null)
 						return null;
@@ -143,13 +144,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	@Override
 	public List<QDataTerm<?>> getTerms() {
-		return dataTerms;
+		return new ArrayList<QDataTerm<?>>(dataTerms.values());
 	}
 
 	@Override
 	public void clearData() {
 
-		for (QDataTerm<?> dataTerm : dataTerms) {
+		for (QDataTerm<?> dataTerm : dataTerms.values()) {
 
 			QData data = datas.get(dataTerm.getName());
 			if (data == null) {
@@ -163,7 +164,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void resetData() {
 
-		for (QDataTerm<?> dataTerm : dataTerms)
+		for (QDataTerm<?> dataTerm : dataTerms.values())
 			resetData(dataTerm.getName());
 
 	}
@@ -183,9 +184,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public void resetData(String name) {
+	public void resetData(String key) {
 
-		QDataTerm<?> dataTerm = _getDataTerm(name);
+		QDataTerm<?> dataTerm = dataTerms.get(key);
 
 		if (dataTerm == null)
 			return;
@@ -193,15 +194,15 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		resetData(dataTerm);
 	}
 
-	private QDataTerm<?> _getDataTerm(String name) {
-		QDataTerm<?> dataTerm = null;
-
-		for (QDataTerm<?> dt : dataTerms)
-			if (dt.getName().equals(name)) {
-				dataTerm = dt;
-				break;
-			}
-
+	@Override
+	public QDataTerm<?> getDataTerm(String key) {
+		QDataTerm<?> dataTerm = dataTerms.get(key);
+		
 		return dataTerm;
+	}
+
+	@Override
+	public List<String> getKeys() {
+		return new ArrayList<String>(dataTerms.keySet());
 	}
 }

@@ -11,8 +11,8 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -45,7 +45,7 @@ public class NIODataManagerImpl implements QDataManager {
 	private QFrameManager frameManager;
 	
 	@Override
-	public QDataContainer createDataContainer(QContext context, List<QDataTerm<?>> dataTerms) {
+	public QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms) {
 		return new NIODataContainerImpl(createFactory(context), dataTerms);
 	}
 
@@ -54,7 +54,7 @@ public class NIODataManagerImpl implements QDataManager {
 		
 		QFrame<?> frame = frameManager.getFrame(object);
 		
-		List<QDataTerm<?>> dataTerms = buildDataTerms(frame, frameManager.getFrame(term)); 
+		Map<String, QDataTerm<?>> dataTerms = buildDataTerms(frame, frameManager.getFrame(term)); 
 		
 		return new NIODataContainerImpl(createFactory(context), dataTerms);
 	}
@@ -72,9 +72,9 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 	
 	@SuppressWarnings({ "unchecked"})
-	private <DD extends QDataDef<?>> List<QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
+	private <DD extends QDataDef<?>> Map<String, QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
 
-		List<QDataTerm<?>> dataTerms = new ArrayList<>();
+		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
 
 		for (QSlot slot : frame.getSlots()) {
 
@@ -135,7 +135,7 @@ public class NIODataManagerImpl implements QDataManager {
 					default_.getValues().add(slot.getDefaultValue().toString());
 			}
 
-			dataTerms.add(dataTerm);
+			dataTerms.put(slot.getName(), dataTerm);
 		}
 
 		return dataTerms;

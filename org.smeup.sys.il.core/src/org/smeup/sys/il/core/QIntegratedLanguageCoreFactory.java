@@ -61,15 +61,6 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	QFormat createFormat();
 
 	/**
-	 * Returns a new object of class '<em>Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object</em>'.
-	 * @generated
-	 */
-	QObject createObject();
-
-	/**
 	 * Returns a new object of class '<em>Overlay</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

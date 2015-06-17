@@ -1068,7 +1068,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(dataContainerEClass, null, "clearData", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, this.getData(), "getData", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, this.getData(), "getData", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
@@ -1076,8 +1076,17 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataContainerEClass, null, "getDataTerm", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		addEOperation(dataContainerEClass, ecorePackage.getEString(), "getKeys", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isSet", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isSet", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
@@ -1088,7 +1097,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(dataContainerEClass, null, "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, null, "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, null, "resetData", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
@@ -1284,10 +1293,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType();
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEString());
 		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "dataTerms", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g2 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		addEParameter(op, g1, "dataTerms", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);

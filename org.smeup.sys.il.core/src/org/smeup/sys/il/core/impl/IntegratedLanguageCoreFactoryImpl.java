@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.QSpecial;
@@ -73,7 +72,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 			case QIntegratedLanguageCorePackage.CONVERSION: return (EObject)createConversion();
 			case QIntegratedLanguageCorePackage.DERIVED: return (EObject)createDerived();
 			case QIntegratedLanguageCorePackage.FORMAT: return (EObject)createFormat();
-			case QIntegratedLanguageCorePackage.OBJECT: return (EObject)createObject();
 			case QIntegratedLanguageCorePackage.OVERLAY: return (EObject)createOverlay();
 			case QIntegratedLanguageCorePackage.REMAP: return (EObject)createRemap();
 			case QIntegratedLanguageCorePackage.SPECIAL: return (EObject)createSpecial();
@@ -153,16 +151,6 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	public QFormat createFormat() {
 		FormatImpl format = new FormatImpl();
 		return format;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QObject createObject() {
-		ObjectImpl object = new ObjectImpl();
-		return object;
 	}
 
 	/**

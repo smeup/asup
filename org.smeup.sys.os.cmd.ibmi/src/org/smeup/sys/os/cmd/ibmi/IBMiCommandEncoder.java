@@ -35,7 +35,7 @@ public class IBMiCommandEncoder {
 
 		String result = "";
 		
-		for (QDataTerm<?> dataTerm: dataContainer.getTerms()) {
+		for (String key: dataContainer.getKeys()) {
 
 
 			/*
@@ -44,10 +44,11 @@ public class IBMiCommandEncoder {
 			 * QDataTerm<?> dataTerm = dataContext.getTerms().get(position);
 			 */
 
-			if (defaults || dataContainer.isSet(dataTerm)) {
+			if (defaults || dataContainer.isSet(key)) {
 
-				result += dataTerm.getName() + "(";
+				result += key + "(";
 
+				QDataTerm<?> dataTerm = dataContainer.getDataTerm(key);
 				result = writeDataTermString(result, dataTerm, dataContainer.getData(dataTerm));
 
 				result += ")" + SPACE;

@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data;
 
 import java.lang.String;
+import java.util.List;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermContainer;
 
@@ -30,10 +31,10 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model nameRequired="true"
+	 * @model keyRequired="true"
 	 * @generated
 	 */
-	QData getData(String name);
+	QData getData(String key);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -43,11 +44,27 @@ public interface QDataContainer extends QDataTermContainer {
 	QData getData(QDataTerm<?> dataTerm);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model nameRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyRequired="true"
 	 * @generated
 	 */
-	boolean isSet(String name);
+	QDataTerm<?> getDataTerm(String key);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	List<String> getKeys();
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @model keyRequired="true"
+	 * @generated
+	 */
+	boolean isSet(String key);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -65,10 +82,10 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model nameRequired="true"
+	 * @model keyRequired="true"
 	 * @generated
 	 */
-	void resetData(String name);
+	void resetData(String key);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

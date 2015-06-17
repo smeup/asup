@@ -204,7 +204,7 @@
       eSuperTypes="#//term/DataTermContainer">
     <eOperations name="clearData"/>
     <eOperations name="getData" eType="#//Data">
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getData" eType="#//Data">
       <eParameters name="dataTerm" lowerBound="1">
@@ -213,8 +213,15 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="getDataTerm">
+      <eGenericType eClassifier="#//term/DataTerm">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getKeys" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isSet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="isSet" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="dataTerm" lowerBound="1">
@@ -225,7 +232,7 @@
     </eOperations>
     <eOperations name="resetData"/>
     <eOperations name="resetData">
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="resetData">
       <eParameters name="dataTerm" lowerBound="1">
@@ -424,9 +431,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
-      <eParameters name="dataTerms" upperBound="-1">
-        <eGenericType eClassifier="#//term/DataTerm">
-          <eTypeArguments/>
+      <eParameters name="dataTerms">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eTypeArguments eClassifier="#//term/DataTerm">
+            <eTypeArguments/>
+          </eTypeArguments>
         </eGenericType>
       </eParameters>
     </eOperations>
