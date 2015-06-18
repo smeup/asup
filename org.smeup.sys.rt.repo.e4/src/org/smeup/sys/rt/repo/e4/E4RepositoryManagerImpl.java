@@ -124,13 +124,6 @@ public class E4RepositoryManagerImpl implements QRepositoryManager {
 					System.out.println(update);
 				}
 				
-/*				if (possibleUpdates.length > 100000) {
-					updateOperation.setSelectedUpdates(possibleUpdates);
-					Update[] selectedUpdates = updateOperation.getSelectedUpdates();
-
-					System.out.println("Updates: " + selectedUpdates);
-					updateOperation.getProvisioningJob(null).runModal(null);
-				}*/
 				System.out.println("*********");
 			}
 		} catch (Exception e) {
