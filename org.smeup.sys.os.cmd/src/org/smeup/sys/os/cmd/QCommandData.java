@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.os.cmd;
 
-import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
@@ -20,5 +20,5 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model
  * @generated
  */
-public interface QCommandData extends QDataTerm<QDataDef<?>> {
+public interface QCommandData extends QDataTerm<QBufferedDataDef<?>> {
 } // QCommandData

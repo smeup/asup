@@ -41,17 +41,17 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QDataDef;
-import org.smeup.sys.il.data.impl.DataWriterImpl.Specials;
 import org.smeup.sys.il.esam.AccessMode;
-import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
+import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 
 public class BaseCallableInjector {
 
@@ -332,4 +332,5 @@ public class BaseCallableInjector {
 		}
 
 	}
+	
 }

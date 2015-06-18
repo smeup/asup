@@ -24,7 +24,7 @@
                   <elements name="*LIBL" value="*LIBL"/>
                   <elements name="*CURLIB" value="*CURLIB"/>
                 </facets>
-                <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+                <default value="*LIBL"/>
                 <definition xsi:type="il-data-def:CharacterDef" length="10"/>
               </elements>
             </definition>
@@ -33,7 +33,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" unary="true" value="0"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:DataStructDef">
               <elements xsi:type="os-cmd:CommandData" name="posiz.InizialeSottostringa">
                 <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
@@ -73,7 +73,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*CURLIB"/>
+            <default value="*CURLIB"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -150,7 +150,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*LOC" value="*LOC"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*LOC"/>
+        <default value="*LOC"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -161,7 +161,7 @@
           <elements name="*LOC" value="*LOC"/>
           <elements name="*NETATR" value="*NETATR"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*LOC"/>
+        <default value="*LOC"/>
         <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
@@ -171,7 +171,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*NETATR" value="*NETATR"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NETATR"/>
+        <default value="*NETATR"/>
         <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
@@ -183,7 +183,7 @@
           <elements name="*NETATR" value="*NETATR"/>
           <elements name="*NONE" value="*NONE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*LOC"/>
+        <default value="*LOC"/>
         <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
@@ -192,7 +192,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*BLANK" value=""/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*BLANK"/>
+        <default value="*BLANK"/>
         <definition xsi:type="il-data-def:CharacterDef" length="50"/>
       </dataTerm>
     </parameters>
@@ -206,7 +206,7 @@
           <elements name="*USE" value="*USE"/>
           <elements name="*EXCLUDE" value="*EXCLUDE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*LIBCRTAUT"/>
+        <default value="*LIBCRTAUT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -236,7 +236,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -248,7 +248,7 @@
           <elements name="*" value="*"/>
           <elements name="*PRINT" value="L"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -258,7 +258,7 @@
           <elements name="*CHAR" value="C"/>
           <elements name="*HEX" value="H"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CHAR"/>
+        <default value="*CHAR"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -268,7 +268,7 @@
           <elements name="*LCL" value="L"/>
           <elements name="*RMT" value="R"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*LCL"/>
+        <default value="*LCL"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -296,7 +296,7 @@
               <elements name="*ALLUSR" value="*ALLUSR"/>
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>

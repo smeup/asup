@@ -726,7 +726,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:			
-			QDefault default_ = dataTerm.getFacet(QDefault.class);
+			QDefault default_ = dataTerm.getDefault();
 			
 			if (default_ == null || default_.isEmpty()) {
 
@@ -751,7 +751,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cbe7xcb59vbnfg4533");
 
 		case UNARY_ATOMIC:
-			default_ = dataTerm.getFacet(QDefault.class);
+			default_ = dataTerm.getDefault();
 			
 			if (default_ == null || default_.isEmpty()) {
 
@@ -772,7 +772,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			break;
 		case UNARY_COMPOUND:
-			default_ = dataTerm.getFacet(QDefault.class);
+			default_ = dataTerm.getDefault();
 			
 			if (default_ == null || default_.isEmpty()) {
 
@@ -792,7 +792,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cbe7xcb59vbnfg7733");
 
 				QDataTerm<?> dataElement = (QDataTerm<?>) element;
-				QDefault defaultElement = dataElement.getFacet(QDefault.class);
+				QDefault defaultElement = dataElement.getDefault();
 				if (defaultElement == null || defaultElement.isEmpty())
 					continue;
 

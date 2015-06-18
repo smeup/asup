@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" xsi:schemaLocation="http://www.smeup.org/asup/il/core/meta http://www.smeup.org/asup/il/core#//meta http://www.smeup.org/asup/il/data/def http://www.smeup.org/asup/il/data#//def">
+<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" xsi:schemaLocation="http://www.smeup.org/asup/il/data/def http://www.smeup.org/asup/il/data#//def">
   <contents xsi:type="os-cmd:Command" application="" library="" name="CRTXMIDBF" text="Create XMI DatabaseFile" program="QASCRTXB">
     <parameters name="FILE" position="1" status="TODO">
       <dataTerm name="file">
@@ -22,7 +22,7 @@
               <elements name="*ALLUSR" value="*ALLUSR"/>
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -51,7 +51,7 @@
               <elements name="*ALLUSR" value="*ALLUSR"/>
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -80,7 +80,7 @@
               <elements name="*ALLUSR" value="*ALLUSR"/>
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>

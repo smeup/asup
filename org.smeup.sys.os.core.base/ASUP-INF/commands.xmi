@@ -12,7 +12,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*NULL" value="*NULL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NULL"/>
+        <default value="*NULL"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1024"/>
       </dataTerm>
     </parameters>
@@ -23,7 +23,7 @@
           <elements name="*JOB" value="0"/>
           <elements name="*HEX" value="65535"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOB"/>
+        <default value="*JOB"/>
         <definition xsi:type="il-data-def:BinaryDef" type="INTEGER"/>
       </dataTerm>
     </parameters>
@@ -33,7 +33,7 @@
           <elements name="*JOB"/>
           <elements name="*SYS"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOB"/>
+        <default value="*JOB"/>
         <definition xsi:type="il-data-def:CharacterDef" length="4"/>
       </dataTerm>
     </parameters>
@@ -43,7 +43,7 @@
           <elements name="*NO"/>
           <elements name="*YES"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NO"/>
+        <default value="*NO"/>
         <definition xsi:type="il-data-def:CharacterDef" length="4"/>
       </dataTerm>
     </parameters>
@@ -55,7 +55,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*" unary="true" value="*"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -81,7 +81,7 @@
           <elements name="*APIDFN" value="M"/>
           <elements name="*OUTFILE" value="N"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -99,7 +99,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -113,7 +113,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*FIRST" value="*FIRST"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*FIRST"/>
+            <default value="*FIRST"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="replaceOrAddRecords" restricted="true">
@@ -121,7 +121,7 @@
               <elements name="*REPLACE" value="REPLACE"/>
               <elements name="*ADD" value="ADD"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*REPLACE"/>
+            <default value="*REPLACE"/>
             <definition xsi:type="il-data-def:CharacterDef" length="7"/>
           </elements>
         </definition>
@@ -159,14 +159,14 @@
           <elements name="*CNTRLD" value="C"/>
           <elements name="*IMMED" value="I"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*IMMED"/>
+        <default value="*IMMED"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
     <parameters allowVariable="true" name="DELAY" position="3" status="POS">
       <dataTerm name="controlledEndDelayTime">
         <facets xsi:type="il-core-meta:Range" max="999999" min="1"/>
-        <facets xsi:type="il-core-meta:Default" value="30"/>
+        <default value="30"/>
         <definition xsi:type="il-data-def:BinaryDef" type="INTEGER"/>
       </dataTerm>
     </parameters>
@@ -176,7 +176,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NO"/>
+        <default value="*NO"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -186,7 +186,7 @@
           <elements name="*SAME" value="-2"/>
           <elements name="*NOMAX" value="-1"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="0"/>
+        <default value="0"/>
         <definition xsi:type="il-data-def:BinaryDef" type="INTEGER"/>
       </dataTerm>
     </parameters>
@@ -197,7 +197,7 @@
           <elements name="*GRPJOB" value="GRP"/>
           <elements name="*ALL" value="ALL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NONE"/>
+        <default value="*NONE"/>
         <definition xsi:type="il-data-def:CharacterDef" length="7"/>
       </dataTerm>
     </parameters>
@@ -207,7 +207,7 @@
           <elements name="*SELECT" value="*SELECT"/>
           <elements name="*MSG" value="*MSG"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*SELECT"/>
+        <default value="*SELECT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -240,7 +240,7 @@
           <elements name="*SELECT" value="*SELECT"/>
           <elements name="*MSG" value="*MSG"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*SELECT"/>
+        <default value="*SELECT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -263,7 +263,7 @@
           <elements name="*NORMAL" value="N"/>
           <elements name="*ABNORMAL" value="A"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NORMAL"/>
+        <default value="*NORMAL"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -276,7 +276,7 @@
           <elements name="*" value="*"/>
           <elements name="*CALLER" value="C"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -286,7 +286,7 @@
           <elements name="*NORMAL" value="N"/>
           <elements name="*ABNORMAL" value="A"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NORMAL"/>
+        <default value="*NORMAL"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -606,7 +606,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Default" value="QRPGSRC"/>
+            <default value="QRPGSRC"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -615,7 +615,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -624,7 +624,7 @@
     <parameters allowVariable="true" name="MBR" position="2" status="POS">
       <dataTerm name="sourceMember">
         <facets xsi:type="il-core:Format" type="NAME"/>
-        <facets xsi:type="il-core-meta:Default" value="*PGM"/>
+        <default value="*PGM"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -637,7 +637,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*JOBD" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -646,7 +646,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*USRPRF" unary="true" value="*USRPRF"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*USRPRF"/>
+        <default value="*USRPRF"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -658,7 +658,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -671,7 +671,7 @@
           <elements name="*CURRENT" value="*CURRENT"/>
           <elements name="*JOBD" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -680,7 +680,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*JOBD" unary="true" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -693,7 +693,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -705,7 +705,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*JOBD" value="*"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -715,7 +715,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*JOBD" value="*"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -727,7 +727,7 @@
           <elements name="*SYSVAL" value="*SYSVAL"/>
           <elements name="*BLANK" value="*BLANK"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="30"/>
       </dataTerm>
     </parameters>
@@ -737,7 +737,7 @@
           <elements name="*JOBD" value="*JOBD"/>
           <elements name="*RQSDTA" value="*RQSDTA"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="QCMDB"/>
+        <default value="QCMDB"/>
         <definition xsi:type="il-data-def:CharacterDef" length="80"/>
       </dataTerm>
     </parameters>
@@ -755,7 +755,7 @@
           <elements name="*NONE" value="*NONE"/>
           <elements name="*RTGDTA" value="*RTGDTA"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CMD"/>
+        <default value="*CMD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="3000"/>
       </dataTerm>
     </parameters>
@@ -765,7 +765,7 @@
           <elements name="*CURRENT" value="*CURRENT"/>
           <elements name="*SYSVAL" value="*SYSVAL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -777,7 +777,7 @@
           <elements name="*USRPRF" value="*USRPRF"/>
           <elements name="*CRTDFT" value="*CRTDFT"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -790,8 +790,8 @@
           <elements name="*SYSVAL" unary="true" value="*SYSVAL"/>
           <elements name="*NONE" unary="true" value="*NONE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
         <cardinality max="250"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:ScrollerDef" dimension="250">
           <argument xsi:type="il-data-def:CharacterDef" length="10"/>
         </definition>
@@ -805,7 +805,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*JOBD" value="*"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+            <default value="*JOBD"/>
             <definition xsi:type="il-data-def:CharacterDef" length="1"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="severity">
@@ -813,7 +813,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*JOBD" value="-2"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+            <default value="*JOBD"/>
             <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="text" restricted="true">
@@ -823,7 +823,7 @@
               <elements name="*SECLVL" value="S"/>
               <elements name="*NOLIST" value="N"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+            <default value="*JOBD"/>
             <definition xsi:type="il-data-def:CharacterDef" length="1"/>
           </elements>
         </definition>
@@ -836,7 +836,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -848,7 +848,7 @@
           <elements name="*DFT" value="X'01'"/>
           <elements name="*SYSRPYL" value="X'02'"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -861,7 +861,7 @@
           <elements name="*SYSVAL" value="*SYSVAL"/>
           <elements name="*JOBD" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -873,7 +873,7 @@
           <elements name="*DEV" unary="true" value="*DEV"/>
           <elements name="*JOBD" unary="true" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -886,7 +886,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -899,7 +899,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -917,7 +917,7 @@
           <elements name="*SAT" value="0000016"/>
           <elements name="*SUN" value="0000017"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:DatetimeDef"/>
       </dataTerm>
     </parameters>
@@ -926,7 +926,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*CURRENT" value="999999"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
       </dataTerm>
     </parameters>
@@ -936,7 +936,7 @@
           <elements name="*JOBD" value="0020000"/>
           <elements name="*SYSVAL" value="0010000"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:DatetimeDef"/>
       </dataTerm>
     </parameters>
@@ -945,7 +945,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*JOBD" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
@@ -955,7 +955,7 @@
           <elements name="*YES" value="Y"/>
           <elements name="*NO" value="N"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*YES"/>
+        <default value="*YES"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -966,7 +966,7 @@
           <elements name="*WRKSTN" unary="true" value="*WRKSTN"/>
           <elements name="*NONE" unary="true" value="*NONE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*USRPRF"/>
+        <default value="*USRPRF"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -979,7 +979,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -995,7 +995,7 @@
           <elements name="*LANGIDUNQ" unary="true" value="*LANGIDUNQ"/>
           <elements name="*LANGIDSHR" unary="true" value="*LANGIDSHR"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -1008,7 +1008,7 @@
               <elements name="*LIBL" value="*LIBL"/>
               <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <default value="*LIBL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -1021,7 +1021,7 @@
           <elements name="*USRPRF" value="*US"/>
           <elements name="*SYSVAL" value="*SY"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="3"/>
       </dataTerm>
     </parameters>
@@ -1032,7 +1032,7 @@
           <elements name="*USRPRF" value="*U"/>
           <elements name="*SYSVAL" value="*S"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="2"/>
       </dataTerm>
     </parameters>
@@ -1045,7 +1045,7 @@
           <elements name="*SYSVAL" value="-2"/>
           <elements name="*HEX" value="65535"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:BinaryDef" type="INTEGER"/>
       </dataTerm>
     </parameters>
@@ -1054,7 +1054,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*CURRENT" unary="true" value="*CURRENT"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -1081,7 +1081,7 @@
           <elements name="*JOBD" value="1"/>
           <elements name="*SYSVAL" value="0"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
       </dataTerm>
     </parameters>
@@ -1094,7 +1094,7 @@
           <elements name="*WRAP" value="W"/>
           <elements name="*PRTWRAP" value="P"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -1104,7 +1104,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*YES"/>
+        <default value="*YES"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -1115,7 +1115,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -1127,7 +1127,7 @@
           <elements name="*JOBD" value="*JOBD"/>
           <elements name="*NONE" value="*NONE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -1140,7 +1140,7 @@
           <elements name="*KEEP" value="*KEEP"/>
           <elements name="*DETACH" value="*DETACH"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -1153,7 +1153,7 @@
           <elements name="*JOBEND" value="*JOBEND"/>
           <elements name="*PND" value="*PND"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*JOBD"/>
+        <default value="*JOBD"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -1164,7 +1164,7 @@
           <elements name="*USRPRF" value="*USRPRF"/>
           <elements name="*JOBD" value="*JOBD"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <default value="*CURRENT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="15"/>
       </dataTerm>
     </parameters>
@@ -1177,7 +1177,7 @@
           <elements name="*" value="*"/>
           <elements name="*PRINT" value="L"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -1187,7 +1187,7 @@
           <elements name="*NO" value="N"/>
           <elements name="*YES" value="Y"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NO"/>
+        <default value="*NO"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -1197,8 +1197,8 @@
         <facets xsi:type="il-core:Special">
           <elements name="*ALL" unary="true" value="*ALL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*ALL"/>
         <cardinality max="25"/>
+        <default value="*ALL"/>
         <definition xsi:type="il-data-def:ScrollerDef" dimension="25">
           <argument xsi:type="il-data-def:CharacterDef" length="10"/>
         </definition>
@@ -1210,7 +1210,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*NONE" value="-1.0"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NONE"/>
+        <default value="*NONE"/>
         <definition xsi:type="il-data-def:DecimalDef" precision="3" scale="1"/>
       </dataTerm>
     </parameters>
@@ -1220,7 +1220,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*NONE" value="-1.0"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*NONE"/>
+        <default value="*NONE"/>
         <definition xsi:type="il-data-def:DecimalDef" precision="4" scale="1"/>
       </dataTerm>
     </parameters>
@@ -1244,7 +1244,7 @@
           <elements name="*TYPE" value="3"/>
           <elements name="*USER" value="13"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*SBS"/>
+        <default value="*SBS"/>
         <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
       </dataTerm>
     </parameters>
@@ -1258,7 +1258,7 @@
               <elements name="*SYS" value="*SYS"/>
               <elements name="*SBS" value="*SBS"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -1270,7 +1270,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*PRV" value="-1"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*PRV"/>
+        <default value="*PRV"/>
         <definition xsi:type="il-data-def:DecimalDef" precision="3"/>
       </dataTerm>
     </parameters>
@@ -1282,7 +1282,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*" unary="true" value="*"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
@@ -1306,7 +1306,7 @@
           <elements name="*" value="*"/>
           <elements name="*PRINT" value="L"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -1332,7 +1332,7 @@
           <elements name="*MLBA" value="18"/>
           <elements name="*ALL" value="12"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*SELECT"/>
+        <default value="*SELECT"/>
         <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
       </dataTerm>
     </parameters>
@@ -1342,7 +1342,7 @@
           <elements name="*SELECT" value="*SELECT"/>
           <elements name="*MSG" value="*MSG"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*SELECT"/>
+        <default value="*SELECT"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>

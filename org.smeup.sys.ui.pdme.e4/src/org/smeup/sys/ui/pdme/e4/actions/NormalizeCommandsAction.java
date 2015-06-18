@@ -114,7 +114,7 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 
 			if (term.getDefault() == null) {
 
-				QDefault _default = term.getFacet(QDefault.class);
+				QDefault _default = term.getDefault();
 				if (_default != null) 
 					term.getFacets().remove(_default);
 

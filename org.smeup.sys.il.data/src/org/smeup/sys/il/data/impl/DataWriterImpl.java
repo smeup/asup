@@ -264,19 +264,4 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	}
 
-	public static enum Specials {
-		NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, MS;
-
-		public boolean asBoolean() {
-			return this.toString().equals("ON");
-		}
-
-		public boolean b() {
-			return this.asBoolean();
-		}
-
-		public String asString() {
-			return this.toString();
-		}
-	}
 } // DataWriterImpl

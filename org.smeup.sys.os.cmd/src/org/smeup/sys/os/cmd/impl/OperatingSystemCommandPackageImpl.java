@@ -556,7 +556,7 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		commandContainerEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
+		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);

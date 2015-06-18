@@ -10,7 +10,7 @@
               <elements name="*CURRENT" value="*CURRENT"/>
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+            <default value="*CURRENT"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="printDevice">
@@ -19,7 +19,7 @@
               <elements name="*ALL" value="*ALL"/>
               <elements name="*OUTQ" value="*OUTQ"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="formType">
@@ -27,14 +27,14 @@
               <elements name="*ALL" value="*ALL"/>
               <elements name="*STD" value="*STD"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="userData">
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="aSP">
@@ -43,7 +43,7 @@
               <elements name="*ALL" value="0"/>
               <elements name="*ASPDEV" value="-1"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="spooledFile">
@@ -51,7 +51,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
@@ -62,7 +62,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*ALL" unary="true" value="*ALL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+        <default value="*ALL"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
             <facets xsi:type="il-core:Format" type="GENERIC"/>
@@ -74,7 +74,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="number">
@@ -82,7 +82,7 @@
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <default value="*ALL"/>
             <definition xsi:type="il-data-def:CharacterDef" length="6"/>
           </elements>
         </definition>
@@ -97,14 +97,14 @@
                 <facets xsi:type="il-core:Special">
                   <elements name="*AVAIL" value="000000"/>
                 </facets>
-                <facets xsi:type="il-core-meta:Default" value="*AVAIL"/>
+                <default value="*AVAIL"/>
                 <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
               </elements>
               <elements xsi:type="os-cmd:CommandData" name="beginningDate">
                 <facets xsi:type="il-core:Special">
                   <elements name="*BEGIN" value="0000000"/>
                 </facets>
-                <facets xsi:type="il-core-meta:Default" value="*BEGIN"/>
+                <default value="*BEGIN"/>
                 <definition xsi:type="il-data-def:DatetimeDef"/>
               </elements>
             </definition>
@@ -115,14 +115,14 @@
                 <facets xsi:type="il-core:Special">
                   <elements name="*AVAIL" value="235959"/>
                 </facets>
-                <facets xsi:type="il-core-meta:Default" value="*AVAIL"/>
+                <default value="*AVAIL"/>
                 <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
               </elements>
               <elements xsi:type="os-cmd:CommandData" name="endingDate">
                 <facets xsi:type="il-core:Special">
                   <elements name="*END" value="0000000"/>
                 </facets>
-                <facets xsi:type="il-core-meta:Default" value="*END"/>
+                <default value="*END"/>
                 <definition xsi:type="il-data-def:DatetimeDef"/>
               </elements>
             </definition>
@@ -138,7 +138,7 @@
           <elements name="*SYSBAS" value="*SYSBAS"/>
           <elements name="*CURASPGRP" value="*CURASPGRP"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -148,7 +148,7 @@
           <elements name="*" value="*"/>
           <elements name="*PRINT" value="L"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <default value="*"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -159,7 +159,7 @@
           <elements name="*S36FMT" value="*S36FMT"/>
           <elements name="*NORMAL" value="*NORMAL"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*INLENV"/>
+        <default value="*INLENV"/>
         <definition xsi:type="il-data-def:CharacterDef" length="7"/>
       </dataTerm>
     </parameters>
@@ -171,7 +171,7 @@
           <elements name="*BASIC" value="*BASIC"/>
           <elements name="*INTERMED" value="*INTERMED"/>
         </facets>
-        <facets xsi:type="il-core-meta:Default" value="*PRV"/>
+        <default value="*PRV"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>

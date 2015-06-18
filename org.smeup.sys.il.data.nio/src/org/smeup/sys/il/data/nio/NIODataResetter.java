@@ -42,7 +42,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 		case MULTIPLE_ATOMIC:
 			result = true;
 
-			QDefault default_ = term.getFacet(QDefault.class);
+			QDefault default_ = term.getDefault();
 			if (default_ == null || default_.isEmpty()) {
 				data.clear();
 				break;
@@ -74,7 +74,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			result = true;
 
 			list = (QList<?>) data;
-			default_ = term.getFacet(QDefault.class);
+			default_ = term.getDefault();
 			if (default_ != null) {
 				i = 1;
 				for (String value : default_.getValues()) {
@@ -108,7 +108,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 		case UNARY_ATOMIC:
 			result = true;
 
-			default_ = term.getFacet(QDefault.class);
+			default_ = term.getDefault();
 			if (default_ == null) {
 				data.clear();
 				break;
@@ -126,7 +126,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 		default:
 			result = true;
 
-			default_ = term.getFacet(QDefault.class);
+			default_ = term.getDefault();
 			QStruct<?> struct = (QStruct<?>) data;
 
 			if (default_ != null) {

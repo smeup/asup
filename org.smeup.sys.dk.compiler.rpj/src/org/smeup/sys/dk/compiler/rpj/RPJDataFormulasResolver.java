@@ -79,7 +79,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		if (dataTerm.getDataTermType().isMultiple()) 
 			return;
 
-		QDefault default_ = dataTerm.getFacet(QDefault.class);
+		QDefault default_ = dataTerm.getDefault();
 		if(default_ == null)
 			return;
 		
@@ -183,7 +183,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 					if (!dataValue.isConstant())
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdget9qbt23423");
 
-					QDefault default_ = target.getFacet(QDefault.class);
+					QDefault default_ = target.getDefault();
 					if(default_ != null) {
 						String defaultValue = default_.getValue();
 

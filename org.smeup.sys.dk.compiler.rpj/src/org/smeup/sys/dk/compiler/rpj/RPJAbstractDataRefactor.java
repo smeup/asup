@@ -129,10 +129,6 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 						multipleAtomicBufferedDataDef.setArgument(multipleDataDef.getArgument());
 						multipleAtomicDataTerm.setDefinition(multipleAtomicBufferedDataDef);
 
-//						QDefault default_ = termTo.getFacet(QDefault.class);
-//						if (default_ != null)
-//							multipleAtomicDataTerm.getDefault().addAll(termTo.getDefault());
-
 						dataTerm = multipleAtomicDataTerm;
 						break;
 					case UNARY_ATOMIC:

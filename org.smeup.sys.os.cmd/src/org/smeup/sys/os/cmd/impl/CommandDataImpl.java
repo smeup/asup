@@ -7,9 +7,10 @@
  */
 package org.smeup.sys.os.cmd.impl;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
-import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 import org.smeup.sys.os.cmd.QCommandData;
@@ -24,7 +25,7 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
  *
  * @generated
  */
-public class CommandDataImpl extends DataTermImpl<QDataDef<?>> implements QCommandData {
+public class CommandDataImpl extends DataTermImpl<QBufferedDataDef<?>> implements QCommandData {
 	/**
 	 * 
 	 */
@@ -47,6 +48,17 @@ public class CommandDataImpl extends DataTermImpl<QDataDef<?>> implements QComma
 	@Override
 	protected EClass eStaticClass() {
 		return QOperatingSystemCommandPackage.Literals.COMMAND_DATA;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * This is specialized for the more specific type known in this context.
+	 * @generated
+	 */
+	@Override
+	public NotificationChain basicSetDefinition(QBufferedDataDef<?> newDefinition, NotificationChain msgs) {
+		return super.basicSetDefinition(newDefinition, msgs);
 	}
 
 } //CommandDataImpl

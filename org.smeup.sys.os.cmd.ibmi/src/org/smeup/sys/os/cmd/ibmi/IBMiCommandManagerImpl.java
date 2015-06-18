@@ -405,7 +405,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		String defValue = null;
 
-		QDefault default_ = dataTerm.getFacet(QDefault.class);
+		QDefault default_ = dataTerm.getDefault();
 		if (default_ != null) {
 			if (dataTerm.getDataTermType().isUnary())
 				defValue = default_.getValue();

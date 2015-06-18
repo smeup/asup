@@ -117,7 +117,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		writeDataDefAnnotation(field, dataTerm.getDefinition());
 
 		// default
-		QDefault default_ = dataTerm.getFacet(QDefault.class);
+		QDefault default_ = dataTerm.getDefault();
 		if (default_ != null && !default_.isEmpty()) {
 			if (dataTerm.getDataTermType().isUnary())
 				writeAnnotation(field, DataDef.class, "value", default_.getValue());
