@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.impl.NamedNodeImpl;
 import org.smeup.sys.il.core.meta.QCardinality;
+import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.DataTermType;
@@ -35,7 +36,6 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isInitialized <em>Initialized</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getLike <em>Like</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isRestricted <em>Restricted</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getText <em>Text</em>}</li>
  * </ul>
@@ -73,24 +73,14 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	protected boolean constant = CONSTANT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
+	 * The cached value of the '{@link #getDefault() <em>Default</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DEFAULT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefault() <em>Default</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefault()
-	 * @generated
-	 * @ordered
-	 */
-	protected String default_ = DEFAULT_EDEFAULT;
+	protected QDefault default_;
 
 	/**
 	 *
@@ -159,26 +149,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMandatory()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean MANDATORY_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMandatory()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean mandatory = MANDATORY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isRestricted() <em>Restricted</em>}' attribute.
@@ -305,7 +275,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	 * @generated
 	 */
 	@Override
-	public String getDefault() {
+	public QDefault getDefault() {
 		return default_;
 	}
 
@@ -314,12 +284,34 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setDefault(String newDefault) {
-		String oldDefault = default_;
+	public NotificationChain basicSetDefault(QDefault newDefault, NotificationChain msgs) {
+		QDefault oldDefault = default_;
 		default_ = newDefault;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, oldDefault, default_));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, oldDefault, newDefault);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDefault(QDefault newDefault) {
+		if (newDefault != default_) {
+			NotificationChain msgs = null;
+			if (default_ != null)
+				msgs = ((InternalEObject)default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, null, msgs);
+			if (newDefault != null)
+				msgs = ((InternalEObject)newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, null, msgs);
+			msgs = basicSetDefault(newDefault, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, newDefault, newDefault));
 	}
 
 	/**
@@ -428,29 +420,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isMandatory() {
-		return mandatory;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setMandatory(boolean newMandatory) {
-		boolean oldMandatory = mandatory;
-		mandatory = newMandatory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY, oldMandatory, mandatory));
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -527,9 +496,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 			break;
 		case SCROLLER:
 		case ARRAY:
+		case LIST:
 			dataTermType = DataTermType.MULTIPLE_ATOMIC;
 			break;
-		case LIST:
 		case STROLLER:
 			dataTermType = DataTermType.MULTIPLE_COMPOUND;
 			break;
@@ -571,8 +540,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return getLike();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__NAME:
 				return getName();
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY:
-				return isMandatory();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED:
 				return isRestricted();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT:
@@ -596,7 +563,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				setConstant((Boolean)newValue);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
-				setDefault((String)newValue);
+				setDefault((QDefault)newValue);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				setDefinition((DD)newValue);
@@ -609,9 +576,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__NAME:
 				setName((String)newValue);
-				return;
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY:
-				setMandatory((Boolean)newValue);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED:
 				setRestricted((Boolean)newValue);
@@ -637,7 +601,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				setConstant(CONSTANT_EDEFAULT);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
-				setDefault(DEFAULT_EDEFAULT);
+				setDefault((QDefault)null);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				setDefinition((DD)null);
@@ -650,9 +614,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__NAME:
 				setName(NAME_EDEFAULT);
-				return;
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY:
-				setMandatory(MANDATORY_EDEFAULT);
 				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED:
 				setRestricted(RESTRICTED_EDEFAULT);
@@ -676,7 +637,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				return constant != CONSTANT_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
-				return DEFAULT_EDEFAULT == null ? default_ != null : !DEFAULT_EDEFAULT.equals(default_);
+				return default_ != null;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return definition != null;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
@@ -685,8 +646,6 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 				return LIKE_EDEFAULT == null ? like != null : !LIKE_EDEFAULT.equals(like);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY:
-				return mandatory != MANDATORY_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED:
 				return restricted != RESTRICTED_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT:
@@ -706,16 +665,12 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (constant: ");
 		result.append(constant);
-		result.append(", default: ");
-		result.append(default_);
 		result.append(", initialized: ");
 		result.append(initialized);
 		result.append(", like: ");
 		result.append(like);
 		result.append(", name: ");
 		result.append(name);
-		result.append(", mandatory: ");
-		result.append(mandatory);
 		result.append(", restricted: ");
 		result.append(restricted);
 		result.append(", text: ");
@@ -753,6 +708,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		switch (featureID) {
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 				return basicSetCardinality(null, msgs);
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
+				return basicSetDefault(null, msgs);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return basicSetDefinition(null, msgs);
 		}

@@ -420,6 +420,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getParameterList() {
 		return parameterListEDataType;
 	}

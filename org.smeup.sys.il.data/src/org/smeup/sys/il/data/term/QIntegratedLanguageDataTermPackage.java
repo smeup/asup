@@ -94,7 +94,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM__CONSTANT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -138,22 +138,13 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM__NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TERM__MANDATORY = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__RESTRICTED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 8;
+	int DATA_TERM__RESTRICTED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -162,7 +153,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__TEXT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 9;
+	int DATA_TERM__TEXT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Data Term</em>' class. <!--
@@ -171,7 +162,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 10;
+	int DATA_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.QDataTermContainer <em>Data Term Container</em>}' class.
@@ -251,15 +242,15 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EAttribute getDataTerm_Constant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default</em>'.
+	 * @return the meta object for the containment reference '<em>Default</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#getDefault()
 	 * @see #getDataTerm()
 	 * @generated
 	 */
-	EAttribute getDataTerm_Default();
+	EReference getDataTerm_Default();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getDefinition <em>Definition</em>}'.
@@ -304,17 +295,6 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataTerm_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isMandatory <em>Mandatory</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Mandatory</em>'.
-	 * @see org.smeup.sys.il.data.term.QDataTerm#isMandatory()
-	 * @see #getDataTerm()
-	 * @generated
-	 */
-	EAttribute getDataTerm_Mandatory();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isRestricted <em>Restricted</em>}'.
@@ -421,12 +401,12 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		EAttribute DATA_TERM__CONSTANT = eINSTANCE.getDataTerm_Constant();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_TERM__DEFAULT = eINSTANCE.getDataTerm_Default();
+		EReference DATA_TERM__DEFAULT = eINSTANCE.getDataTerm_Default();
 
 		/**
 		 * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
@@ -456,14 +436,6 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_TERM__NAME = eINSTANCE.getDataTerm_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATA_TERM__MANDATORY = eINSTANCE.getDataTerm_Mandatory();
 
 		/**
 		 * The meta object literal for the '<em><b>Restricted</b></em>' attribute feature.

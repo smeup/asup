@@ -143,6 +143,15 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_DATA_FIELD__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_DATA_FIELD__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,7 +161,7 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_DATA_FIELD__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,15 +204,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_DATA_FIELD__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_DATA_FIELD__MANDATORY = QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute.

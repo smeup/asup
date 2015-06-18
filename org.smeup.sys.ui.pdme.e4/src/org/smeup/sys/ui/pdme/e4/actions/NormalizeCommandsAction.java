@@ -17,9 +17,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QDefault;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 import org.smeup.sys.os.cmd.QCommand;
@@ -113,41 +111,14 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 		@Override
 		public boolean visit(QDataTerm<?> term) {
 
-			System.out.println(term);
-			
-			QCardinality cardinality = term.getCardinality();
-			if (cardinality == null) {
 
-				cardinality = term.getFacet(QCardinality.class);
-				if (cardinality != null) {
-					term.setCardinality(cardinality);
-					term.getFacets().remove(cardinality);
-				} else {
-					if (term.isMandatory()) {
-
-						cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
-						term.setCardinality(cardinality);
-
-						if (cardinality.getMin() == 0)
-							cardinality.setMin(1);
-
-						term.setMandatory(false);
-					}
-				}
-			}
-			
-			if (term.getDefault() != null) {
+			if (term.getDefault() == null) {
 
 				QDefault _default = term.getFacet(QDefault.class);
-				if (_default == null) {
-					_default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
-					term.getFacets().add(_default);
-				}
+				if (_default != null) 
+					term.getFacets().remove(_default);
 
-				if (_default.getValue() == null)
-					_default.setValue(term.getDefault());
-
-				term.setDefault(null);
+				term.setDefault(_default);
 			}
 
 			return super.visit(term);

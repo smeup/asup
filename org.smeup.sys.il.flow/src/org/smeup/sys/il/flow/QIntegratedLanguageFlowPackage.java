@@ -756,6 +756,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int FLOW_DATA__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_DATA__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -765,7 +774,7 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int FLOW_DATA__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -807,15 +816,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOW_DATA__NAME = QIntegratedLanguageDataTermPackage.DATA_TERM__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOW_DATA__MANDATORY = QIntegratedLanguageDataTermPackage.DATA_TERM__MANDATORY;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
