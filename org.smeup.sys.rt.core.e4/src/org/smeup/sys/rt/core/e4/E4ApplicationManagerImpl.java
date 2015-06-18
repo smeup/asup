@@ -37,12 +37,12 @@ public class E4ApplicationManagerImpl implements QApplicationManager {
 	}
 
 	@Override
-	public synchronized void restart() {
+	public void restart() {
 		restart = true;
 	}
 
 	@Override
-	public synchronized boolean restartCalled() {
+	public boolean restartCalled() {
 		return restart;
 	}
 
