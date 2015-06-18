@@ -1,419 +1,186 @@
-<os-cmd:CommandContainer
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
-    xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
-  <contents
-      xsi:type="os-cmd:Command"
-      name="WRKSPLF"
-      text="Work with Spooled Files"
-      program="QSPWRKF"
-      status="TODO">
-    <parameters
-        allowVariable="true"
-        name="SELECT"
-        position="1"
-        status="TODO">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="selectFilesFor">
-        <definition
-            xsi:type="il-data-def:DataStructDef">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="user"
-              default="*CURRENT">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*CURRENT"
-                  value="*CURRENT"/>
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" xsi:schemaLocation="http://www.smeup.org/asup/il/core/meta http://www.smeup.org/asup/il/core#//meta http://www.smeup.org/asup/il/data/def http://www.smeup.org/asup/il/data#//def">
+  <contents xsi:type="os-cmd:Command" name="WRKSPLF" text="Work with Spooled Files" program="QSPWRKF" status="TODO">
+    <parameters allowVariable="true" name="SELECT" position="1" status="TODO">
+      <dataTerm name="selectFilesFor">
+        <definition xsi:type="il-data-def:DataStructDef">
+          <elements xsi:type="os-cmd:CommandData" name="user">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*CURRENT" value="*CURRENT"/>
+              <elements name="*ALL" value="*ALL"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="printDevice"
-              default="*ALL">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
-              <elements
-                  name="*OUTQ"
-                  value="*OUTQ"/>
+          <elements xsi:type="os-cmd:CommandData" name="printDevice">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
+              <elements name="*OUTQ" value="*OUTQ"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="formType"
-              default="*ALL">
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
-              <elements
-                  name="*STD"
-                  value="*STD"/>
+          <elements xsi:type="os-cmd:CommandData" name="formType">
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
+              <elements name="*STD" value="*STD"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="userData"
-              default="*ALL">
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="userData">
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="aSP"
-              default="*ALL">
-            <facets
-                xsi:type="il-core-meta:Range"
-                max="32"
-                min="1"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="0"/>
-              <elements
-                  name="*ASPDEV"
-                  value="-1"/>
+          <elements xsi:type="os-cmd:CommandData" name="aSP">
+            <facets xsi:type="il-core-meta:Range" max="32" min="1"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="0"/>
+              <elements name="*ASPDEV" value="-1"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:BinaryDef"
-                type="SHORT"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="spooledFile"
-              default="*ALL">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="spooledFile">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="JOB"
-        position="2"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="jobName"
-          default="*ALL">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*ALL"
-              unary="true"
-              value="*ALL"/>
+    <parameters allowVariable="true" name="JOB" position="2" status="POS">
+      <dataTerm name="jobName">
+        <facets xsi:type="il-core:Special">
+          <elements name="*ALL" unary="true" value="*ALL"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="nameGeneric"
-              mandatory="true">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+        <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <cardinality min="1"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="user"
-              default="*ALL">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="user">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="number"
-              default="*ALL">
-            <facets
-                xsi:type="il-core-meta:Range"
-                max="999999"
-                min="000000"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="number">
+            <facets xsi:type="il-core-meta:Range" max="999999" min="000000"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="6"/>
+            <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="6"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="PERIOD"
-        position="3"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="timePeriod">
-        <definition
-            xsi:type="il-data-def:DataStructDef">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="startTimeAndDate">
-            <definition
-                xsi:type="il-data-def:DataStructDef">
-              <elements
-                  xsi:type="os-cmd:CommandData"
-                  name="beginningTime"
-                  default="*AVAIL">
-                <facets
-                    xsi:type="il-core:Special">
-                  <elements
-                      name="*AVAIL"
-                      value="000000"/>
+    <parameters allowVariable="true" name="PERIOD" position="3" status="POS">
+      <dataTerm name="timePeriod">
+        <definition xsi:type="il-data-def:DataStructDef">
+          <elements xsi:type="os-cmd:CommandData" name="startTimeAndDate">
+            <definition xsi:type="il-data-def:DataStructDef">
+              <elements xsi:type="os-cmd:CommandData" name="beginningTime">
+                <facets xsi:type="il-core:Special">
+                  <elements name="*AVAIL" value="000000"/>
                 </facets>
-                <definition
-                    xsi:type="il-data-def:DatetimeDef"
-                    type="TIME"/>
+                <facets xsi:type="il-core-meta:Default" value="*AVAIL"/>
+                <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
               </elements>
-              <elements
-                  xsi:type="os-cmd:CommandData"
-                  name="beginningDate"
-                  default="*BEGIN">
-                <facets
-                    xsi:type="il-core:Special">
-                  <elements
-                      name="*BEGIN"
-                      value="0000000"/>
+              <elements xsi:type="os-cmd:CommandData" name="beginningDate">
+                <facets xsi:type="il-core:Special">
+                  <elements name="*BEGIN" value="0000000"/>
                 </facets>
-                <definition
-                    xsi:type="il-data-def:DatetimeDef"/>
+                <facets xsi:type="il-core-meta:Default" value="*BEGIN"/>
+                <definition xsi:type="il-data-def:DatetimeDef"/>
               </elements>
             </definition>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="endTimeAndDate">
-            <definition
-                xsi:type="il-data-def:DataStructDef">
-              <elements
-                  xsi:type="os-cmd:CommandData"
-                  name="endingTime"
-                  default="*AVAIL">
-                <facets
-                    xsi:type="il-core:Special">
-                  <elements
-                      name="*AVAIL"
-                      value="235959"/>
+          <elements xsi:type="os-cmd:CommandData" name="endTimeAndDate">
+            <definition xsi:type="il-data-def:DataStructDef">
+              <elements xsi:type="os-cmd:CommandData" name="endingTime">
+                <facets xsi:type="il-core:Special">
+                  <elements name="*AVAIL" value="235959"/>
                 </facets>
-                <definition
-                    xsi:type="il-data-def:DatetimeDef"
-                    type="TIME"/>
+                <facets xsi:type="il-core-meta:Default" value="*AVAIL"/>
+                <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
               </elements>
-              <elements
-                  xsi:type="os-cmd:CommandData"
-                  name="endingDate"
-                  default="*END">
-                <facets
-                    xsi:type="il-core:Special">
-                  <elements
-                      name="*END"
-                      value="0000000"/>
+              <elements xsi:type="os-cmd:CommandData" name="endingDate">
+                <facets xsi:type="il-core:Special">
+                  <elements name="*END" value="0000000"/>
                 </facets>
-                <definition
-                    xsi:type="il-data-def:DatetimeDef"/>
+                <facets xsi:type="il-core-meta:Default" value="*END"/>
+                <definition xsi:type="il-data-def:DatetimeDef"/>
               </elements>
             </definition>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="ASPDEV"
-        position="4"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="aSPDevice"
-          default="*">
-        <facets
-            xsi:type="il-core:Format"
-            type="NAME"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*"
-              value="*"/>
-          <elements
-              name="*SYSBAS"
-              value="*SYSBAS"/>
-          <elements
-              name="*CURASPGRP"
-              value="*CURASPGRP"/>
+    <parameters allowVariable="true" name="ASPDEV" position="4" status="POS">
+      <dataTerm name="aSPDevice">
+        <facets xsi:type="il-core:Format" type="NAME"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*" value="*"/>
+          <elements name="*SYSBAS" value="*SYSBAS"/>
+          <elements name="*CURASPGRP" value="*CURASPGRP"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="10"/>
+        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="OUTPUT"
-        position="5"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="output"
-          restricted="true"
-          default="*">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*"
-              value="*"/>
-          <elements
-              name="*PRINT"
-              value="L"/>
+    <parameters allowVariable="true" name="OUTPUT" position="5" status="POS">
+      <dataTerm name="output" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*" value="*"/>
+          <elements name="*PRINT" value="L"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+        <facets xsi:type="il-core-meta:Default" value="*"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="DSPFMT"
-        position="6"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="displayFormat"
-          restricted="true"
-          default="*INLENV">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*INLENV"
-              value="*INLENV"/>
-          <elements
-              name="*S36FMT"
-              value="*S36FMT"/>
-          <elements
-              name="*NORMAL"
-              value="*NORMAL"/>
+    <parameters allowVariable="true" name="DSPFMT" position="6" status="POS">
+      <dataTerm name="displayFormat" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*INLENV" value="*INLENV"/>
+          <elements name="*S36FMT" value="*S36FMT"/>
+          <elements name="*NORMAL" value="*NORMAL"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="7"/>
+        <facets xsi:type="il-core-meta:Default" value="*INLENV"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="7"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="ASTLVL"
-        position="7"
-        status="POS">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="assistanceLevel"
-          restricted="true"
-          default="*PRV">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*PRV"
-              value="*PRV"/>
-          <elements
-              name="*USRPRF"
-              value="*USRPRF"/>
-          <elements
-              name="*BASIC"
-              value="*BASIC"/>
-          <elements
-              name="*INTERMED"
-              value="*INTERMED"/>
+    <parameters allowVariable="true" name="ASTLVL" position="7" status="POS">
+      <dataTerm name="assistanceLevel" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*PRV" value="*PRV"/>
+          <elements name="*USRPRF" value="*USRPRF"/>
+          <elements name="*BASIC" value="*BASIC"/>
+          <elements name="*INTERMED" value="*INTERMED"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="10"/>
+        <facets xsi:type="il-core-meta:Default" value="*PRV"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;WRKSPLF&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHSPCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;WRKSPLF&quot; MaxPos=&quot;2&quot; Prompt=&quot;Work with Spooled Files&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;SELECT&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Select files for&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;*CURRENT&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Print device&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*OUTQ&quot; MapTo=&quot;*OUTQ&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Form type&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Form type, *ALL, *STD&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*STD&quot; MapTo=&quot;*STD&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User data&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;User data, generic*, *ALL&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;ASP&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;32&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-32&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*ASPDEV&quot; MapTo=&quot;-1&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Spooled file&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;DSPFMT&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Display format&quot; Len=&quot;7&quot; Rstd=&quot;YES&quot; Dft=&quot;*INLENV&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*INLENV, *S36FMT, *NORMAL&quot; >&lt;SpcVal>&lt;Value Val=&quot;*INLENV&quot; MapTo=&quot;*INLENV&quot;/>&lt;Value Val=&quot;*S36FMT&quot; MapTo=&quot;*S36FMT&quot;/>&lt;Value Val=&quot;*NORMAL&quot; MapTo=&quot;*NORMAL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;ASTLVL&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Assistance level&quot; Len=&quot;10&quot; Rstd=&quot;YES&quot; Dft=&quot;*PRV&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*PRV, *USRPRF, *BASIC...&quot; >&lt;SpcVal>&lt;Value Val=&quot;*PRV&quot; MapTo=&quot;*PRV&quot;/>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;Value Val=&quot;*BASIC&quot; MapTo=&quot;*BASIC&quot;/>&lt;Value Val=&quot;*INTERMED&quot; MapTo=&quot;*INTERMED&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ALL&quot; >&lt;SngVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;Qual Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Number&quot; Len=&quot;6&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; RangeMinVal=&quot;000000&quot; RangeMaxVal=&quot;999999&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;YES&quot; DspInput=&quot;YES&quot; Choice=&quot;000000-999999&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;PERIOD&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Time period&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Start time and date&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Beginning time&quot; Rstd=&quot;NO&quot; Dft=&quot;*AVAIL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*AVAIL&quot; MapTo=&quot;000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Beginning date&quot; Rstd=&quot;NO&quot; Dft=&quot;*BEGIN&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BEGIN&quot; MapTo=&quot;0000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Elem>&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;End time and date&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ending time&quot; Rstd=&quot;NO&quot; Dft=&quot;*AVAIL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*AVAIL&quot; MapTo=&quot;235959&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ending date&quot; Rstd=&quot;NO&quot; Dft=&quot;*END&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*END&quot; MapTo=&quot;0000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;ASPDEV&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;ASP device&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*SYSBAS&quot; MapTo=&quot;*SYSBAS&quot;/>&lt;Value Val=&quot;*CURASPGRP&quot; MapTo=&quot;*CURASPGRP&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;OUTPUT&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*, *PRINT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*PRINT&quot; MapTo=&quot;L&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;NE&quot; CtlKwd=&quot;SELECT&quot; CmpVal=&quot;*ALL&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD33BE&quot;>&lt;DepParm Kwd=&quot;JOB&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*ALL&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;WRKSPLF&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHSPCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;WRKSPLF&quot; MaxPos=&quot;2&quot; Prompt=&quot;Work with Spooled Files&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;SELECT&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Select files for&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;*CURRENT&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Print device&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*OUTQ&quot; MapTo=&quot;*OUTQ&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Form type&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Form type, *ALL, *STD&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*STD&quot; MapTo=&quot;*STD&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User data&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;User data, generic*, *ALL&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;ASP&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;32&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-32&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*ASPDEV&quot; MapTo=&quot;-1&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Spooled file&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;DSPFMT&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Display format&quot; Len=&quot;7&quot; Rstd=&quot;YES&quot; Dft=&quot;*INLENV&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*INLENV, *S36FMT, *NORMAL&quot; >&lt;SpcVal>&lt;Value Val=&quot;*INLENV&quot; MapTo=&quot;*INLENV&quot;/>&lt;Value Val=&quot;*S36FMT&quot; MapTo=&quot;*S36FMT&quot;/>&lt;Value Val=&quot;*NORMAL&quot; MapTo=&quot;*NORMAL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;ASTLVL&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Assistance level&quot; Len=&quot;10&quot; Rstd=&quot;YES&quot; Dft=&quot;*PRV&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*PRV, *USRPRF, *BASIC...&quot; >&lt;SpcVal>&lt;Value Val=&quot;*PRV&quot; MapTo=&quot;*PRV&quot;/>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;Value Val=&quot;*BASIC&quot; MapTo=&quot;*BASIC&quot;/>&lt;Value Val=&quot;*INTERMED&quot; MapTo=&quot;*INTERMED&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ALL&quot; >&lt;SngVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;Qual Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Number&quot; Len=&quot;6&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; RangeMinVal=&quot;000000&quot; RangeMaxVal=&quot;999999&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;YES&quot; DspInput=&quot;YES&quot; Choice=&quot;000000-999999&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;PERIOD&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Time period&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Start time and date&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Beginning time&quot; Rstd=&quot;NO&quot; Dft=&quot;*AVAIL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*AVAIL&quot; MapTo=&quot;000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Beginning date&quot; Rstd=&quot;NO&quot; Dft=&quot;*BEGIN&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BEGIN&quot; MapTo=&quot;0000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Elem>&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;End time and date&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ending time&quot; Rstd=&quot;NO&quot; Dft=&quot;*AVAIL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*AVAIL&quot; MapTo=&quot;235959&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;Elem Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ending date&quot; Rstd=&quot;NO&quot; Dft=&quot;*END&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*END&quot; MapTo=&quot;0000000&quot;/>&lt;/SpcVal>&lt;/Elem>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;ASPDEV&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;ASP device&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*SYSBAS&quot; MapTo=&quot;*SYSBAS&quot;/>&lt;Value Val=&quot;*CURASPGRP&quot; MapTo=&quot;*CURASPGRP&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;OUTPUT&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*, *PRINT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*PRINT&quot; MapTo=&quot;L&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;NE&quot; CtlKwd=&quot;SELECT&quot; CmpVal=&quot;*ALL&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD33BE&quot;>&lt;DepParm Kwd=&quot;JOB&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*ALL&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents
-      xsi:type="os-cmd:Command"
-      name="PRTSPLF"
-      text="Print Spooled File"
-      program="QMUSPLFP"
-      status="TODO">
-    <parameters
-        allowVariable="true"
-        name="SPOOLID"
-        position="1">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="spoolID">
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="255"/>
+  <contents xsi:type="os-cmd:Command" name="PRTSPLF" text="Print Spooled File" program="QMUSPLFP" status="TODO">
+    <parameters allowVariable="true" name="SPOOLID" position="1">
+      <dataTerm name="spoolID">
+        <definition xsi:type="il-data-def:CharacterDef" length="255"/>
       </dataTerm>
     </parameters>
   </contents>

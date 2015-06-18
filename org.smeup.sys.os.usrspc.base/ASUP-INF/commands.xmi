@@ -1,86 +1,36 @@
-<os-cmd:CommandContainer
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
-    xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
-  <contents
-      xsi:type="os-cmd:Command"
-      name="DLTUSRSPC"
-      text="Delete User Space"
-      program="QLIDLOBJ">
-    <parameters
-        allowVariable="true"
-        name="USRSPC"
-        position="1">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="userSpace"
-          mandatory="true">
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="nameGeneric"
-              mandatory="true">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" xsi:schemaLocation="http://www.smeup.org/asup/il/core/meta http://www.smeup.org/asup/il/core#//meta http://www.smeup.org/asup/il/data/def http://www.smeup.org/asup/il/data#//def">
+  <contents xsi:type="os-cmd:Command" name="DLTUSRSPC" text="Delete User Space" program="QLIDLOBJ">
+    <parameters allowVariable="true" name="USRSPC" position="1">
+      <dataTerm name="userSpace">
+        <cardinality min="1"/>
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <cardinality min="1"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library"
-              default="*LIBL">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
-              <elements
-                  name="*USRLIBL"
-                  value="*USRLIBL"/>
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
-              <elements
-                  name="*ALLUSR"
-                  value="*ALLUSR"/>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*LIBL" value="*LIBL"/>
+              <elements name="*CURLIB" value="*CURLIB"/>
+              <elements name="*USRLIBL" value="*USRLIBL"/>
+              <elements name="*ALL" value="*ALL"/>
+              <elements name="*ALLUSR" value="*ALLUSR"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <facets xsi:type="il-core-meta:Default" value="*LIBL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        name="OBJTYPE"
-        position="2"
-        hidden="true">
-      <dataTerm
-          xsi:type="os-cmd:CommandData"
-          name="objectType"
-          default="*USRSPC">
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="7"/>
+    <parameters name="OBJTYPE" position="2" hidden="true">
+      <dataTerm name="objectType">
+        <facets xsi:type="il-core-meta:Default" value="*USRSPC"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="7"/>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DLTUSRSPC&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHUSCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DLTUSRSPC&quot; MaxPos=&quot;1&quot; Prompt=&quot;Delete User Space&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;USRSPC&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;User space&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DLTUSRSPC&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHUSCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DLTUSRSPC&quot; MaxPos=&quot;1&quot; Prompt=&quot;Delete User Space&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;USRSPC&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;User space&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
 </os-cmd:CommandContainer>

@@ -14,7 +14,7 @@
          <menu
                icon="icons/asup_24.png"
                id="org.asup.ui.pdme.e4.ecore.menu1"
-               label="As.UP Model Management"
+               label="As.UP"
                path="additions">
             <separator name="generator"/>
          </menu>
@@ -33,7 +33,7 @@
          <menu
                icon="icons/asup_24.png"
                id="org.asup.ui.pdme.e4.ecore.menu2"
-               label="As.UP Commands Management"
+               label="As.UP"
                path="additions">
             <separator
                   name="generator">

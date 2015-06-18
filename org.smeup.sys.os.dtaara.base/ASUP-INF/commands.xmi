@@ -3,7 +3,7 @@
   <contents xsi:type="os-cmd:Command" name="CHGDTAARA" text="Modifica area dati" program="QWCCCHVC" status="TODO">
     <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
       <dataTerm name="specificaAreaDati">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef">
           <elements xsi:type="os-cmd:CommandData" name="areaDati">
             <facets xsi:type="il-core:Special">
@@ -11,11 +11,11 @@
               <elements name="*GDA" unary="true" value="*GDA"/>
               <elements name="*PDA" unary="true" value="*PDA"/>
             </facets>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:DataStructDef" qualified="true">
               <elements xsi:type="os-cmd:CommandData" name="nome">
                 <facets xsi:type="il-core:Format" type="NAME"/>
-                <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+                <cardinality min="1"/>
                 <definition xsi:type="il-data-def:CharacterDef" length="10"/>
               </elements>
               <elements xsi:type="os-cmd:CommandData" name="libreria">
@@ -37,12 +37,12 @@
             <definition xsi:type="il-data-def:DataStructDef">
               <elements xsi:type="os-cmd:CommandData" name="posiz.InizialeSottostringa">
                 <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
-                <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+                <cardinality min="1"/>
                 <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
               </elements>
               <elements xsi:type="os-cmd:CommandData" name="lunghezzaSottostringa">
                 <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
-                <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+                <cardinality min="1"/>
                 <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
               </elements>
             </definition>
@@ -52,7 +52,7 @@
     </parameters>
     <parameters allowVariable="true" name="VALUE" position="2" status="TODO">
       <dataTerm name="nuovoValore">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:AdapterDef"/>
       </dataTerm>
     </parameters>
@@ -61,11 +61,11 @@
   <contents xsi:type="os-cmd:Command" name="CRTDTAARA" text="Creazione area dati" classCMD="true" program="QWCCCRVC" status="TODO">
     <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
       <dataTerm name="areaDati">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="nome">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="libreria">
@@ -87,7 +87,7 @@
           <elements name="*LGL" value="L"/>
           <elements name="*DDM" value="R"/>
         </facets>
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
@@ -96,7 +96,7 @@
         <definition xsi:type="il-data-def:DataStructDef">
           <elements xsi:type="os-cmd:CommandData" name="lunghezza">
             <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="posizioniDecimali">
@@ -223,11 +223,11 @@
           <elements name="*GDA" unary="true" value="*GDA"/>
           <elements name="*PDA" unary="true" value="*PDA"/>
         </facets>
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -277,14 +277,14 @@
   <contents xsi:type="os-cmd:Command" name="WRKDTAARA" text="Work with Data Areas" allowBatch="false" classCMD="true" program="QMNWRKXX" status="POS">
     <parameters allowVariable="true" name="DTAARA" position="1" status="POS">
       <dataTerm name="dataArea">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
             <facets xsi:type="il-core:Format" type="GENERIC"/>
             <facets xsi:type="il-core:Special">
               <elements name="*ALL" value="*ALL"/>
             </facets>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">

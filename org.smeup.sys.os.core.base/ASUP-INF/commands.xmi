@@ -1,18 +1,9 @@
-<os-cmd:CommandContainer
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
-    xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" xsi:schemaLocation="http://www.smeup.org/asup/il/core/meta http://www.smeup.org/asup/il/core#//meta http://www.smeup.org/asup/il/data/def http://www.smeup.org/asup/il/data#//def">
   <contents xsi:type="os-cmd:Command" name="ADDENVVAR" text="Add Environment Variable" program="QP0ZADDE" status="POS">
     <parameters allowVariable="true" name="ENVVAR" position="1" status="POS">
       <dataTerm name="environmentVariable">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:CharacterDef" length="128"/>
       </dataTerm>
     </parameters>
@@ -68,7 +59,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="user">
@@ -99,7 +90,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -144,11 +135,11 @@
         <facets xsi:type="il-core:Special">
           <elements name="*" unary="true" value="*"/>
         </facets>
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="user">
@@ -225,11 +216,11 @@
   <contents xsi:type="os-cmd:Command" name="ENDJOBABN" text="End Job Abnormal" program="QWTCCCNJ" status="POS">
     <parameters allowVariable="true" name="JOB" position="1" status="POS">
       <dataTerm name="jobName">
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="user">
@@ -262,7 +253,7 @@
         <facets xsi:type="il-core:Special">
           <elements name="*ELIGIBLE" value="*ELIGIBLE"/>
         </facets>
-        <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+        <cardinality min="1"/>
         <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
@@ -693,7 +684,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -792,7 +783,6 @@
     </parameters>
     <parameters allowVariable="true" name="INLLIBL" position="16" status="TODO">
       <dataTerm name="initialLibraryList">
-        <facets xsi:type="il-core-meta:Cardinality" max="250"/>
         <facets xsi:type="il-core:Format" type="NAME"/>
         <facets xsi:type="il-core:Special">
           <elements name="*CURRENT" unary="true" value="*CURRENT"/>
@@ -801,6 +791,7 @@
           <elements name="*NONE" unary="true" value="*NONE"/>
         </facets>
         <facets xsi:type="il-core-meta:Default" value="*CURRENT"/>
+        <cardinality max="250"/>
         <definition xsi:type="il-data-def:ScrollerDef" dimension="250">
           <argument xsi:type="il-data-def:CharacterDef" length="10"/>
         </definition>
@@ -886,7 +877,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -979,7 +970,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -1008,7 +999,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="library">
@@ -1067,17 +1058,17 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="user">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="number">
             <facets xsi:type="il-core-meta:Range" max="999999" min="000000"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="6"/>
           </elements>
         </definition>
@@ -1202,12 +1193,12 @@
     </parameters>
     <parameters allowVariable="true" name="SBS" position="3" status="POS">
       <dataTerm name="subsystem">
-        <facets xsi:type="il-core-meta:Cardinality" max="25"/>
         <facets xsi:type="il-core:Format" type="NAME"/>
         <facets xsi:type="il-core:Special">
           <elements name="*ALL" unary="true" value="*ALL"/>
         </facets>
         <facets xsi:type="il-core-meta:Default" value="*ALL"/>
+        <cardinality max="25"/>
         <definition xsi:type="il-data-def:ScrollerDef" dimension="25">
           <argument xsi:type="il-data-def:CharacterDef" length="10"/>
         </definition>
@@ -1295,7 +1286,7 @@
         <definition xsi:type="il-data-def:DataStructDef" qualified="true">
           <elements xsi:type="os-cmd:CommandData" name="name">
             <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core-meta:Cardinality" min="1"/>
+            <cardinality min="1"/>
             <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
           <elements xsi:type="os-cmd:CommandData" name="user">
