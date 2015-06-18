@@ -113,14 +113,22 @@ public class NormalizeCommandsAction implements IObjectActionDelegate {
 		@Override
 		public boolean visit(QDataTerm<?> term) {
 			
+			QCardinality cardinality = term.getCardinality();
+			if(cardinality != null)
+				return true;
+			
+			cardinality = term.getFacet(QCardinality.class);
+			if(cardinality != null) {
+				term.setCardinality(cardinality);
+				term.getFacets().remove(cardinality);
+				return true;
+			}
+			
 			if(term.isMandatory()) {
 				System.out.println("\t"+term);
 				
-				QCardinality cardinality = term.getFacet(QCardinality.class);
-				if(cardinality == null) {						
-					cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
-					term.getFacets().add(cardinality);
-				}
+				cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
+				term.setCardinality(cardinality);
 				
 				if(cardinality.getMin()==0)
 					cardinality.setMin(1);

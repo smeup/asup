@@ -4,7 +4,8 @@ Bundle-Name: As.UP Operating System Program Base
 Bundle-SymbolicName: org.smeup.sys.os.pgm.base
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
-Export-Package: org.smeup.sys.os.pgm.base
+Export-Package: org.smeup.sys.os.pgm.base,
+ org.smeup.sys.os.pgm.base.api
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.os.pgm;visibility:=reexport,
  org.smeup.sys.dk.core,

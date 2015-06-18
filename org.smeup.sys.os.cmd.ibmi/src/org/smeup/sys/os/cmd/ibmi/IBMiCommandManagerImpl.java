@@ -11,8 +11,8 @@
  */
 package org.smeup.sys.os.cmd.ibmi;
 
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -74,13 +74,14 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	protected ParserInterface<?> clParser;
 
 	@Inject
-	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager, QApplication application) {
+	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
+			QApplication application) {
 		super(resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
 		this.clParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL);
-		
+
 		application.getContext().set(QShellManager.class, this);
 	}
 
@@ -113,7 +114,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		callableCommand.setVariables(variables);
 
 		// prepare data terms
-		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
+		Map<String, QDataTerm<?>> dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
+
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
 
 			// data term
@@ -322,9 +324,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 				/*
 				 * Parser response structure:
 				 * 
-				 * CLParamList | CLParamValue | (CLParmToken OR
-				 * CLPArmVariable OR CLParmSpecial OR CLParmString OR
-				 * CLParmFunction)
+				 * CLParamList | CLParamValue | (CLParmToken OR CLPArmVariable
+				 * OR CLParmSpecial OR CLParmString OR CLParmFunction)
 				 */
 
 				paramComp = (CLParmAbstractComponent) clParameterParser.parse(value);
@@ -667,16 +668,16 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 	@Override
 	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
-		
+
 		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, defaults);
 		executeCommand(contextID, callableCommand);
 	}
 
 	@Override
 	public QDataContainer decodeCommand(String contextID, String command) {
-		
+
 		QCallableCommand callableCommand = prepareCommand(contextID, command, null, false);
-		
+
 		return callableCommand.getDataContainer();
 	}
 

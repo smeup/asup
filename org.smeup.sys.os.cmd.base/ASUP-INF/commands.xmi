@@ -710,7 +710,7 @@
                 type="SHORT"/>
           </elements>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -802,7 +802,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="SHORT"/>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -857,7 +857,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="SHORT"/>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1822,7 +1822,7 @@
                 type="SHORT"/>
           </elements>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1909,7 +1909,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="SHORT"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1961,7 +1961,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="SHORT"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.os.pgm.*;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
@@ -165,7 +166,8 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public QData[] createParameterListFromString(EDataType eDataType, String initialValue) {
@@ -173,7 +175,8 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertParameterListToString(EDataType eDataType, Object instanceValue) {

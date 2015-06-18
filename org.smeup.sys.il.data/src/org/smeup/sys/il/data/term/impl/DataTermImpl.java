@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.impl.NamedNodeImpl;
+import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.DataTermType;
@@ -27,6 +28,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefinition <em>Definition</em>}</li>
@@ -42,6 +44,16 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * @generated
  */
 public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl implements QDataTerm<DD> {
+	/**
+	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCardinality()
+	 * @generated
+	 * @ordered
+	 */
+	protected QCardinality cardinality;
+
 	/**
 	 * The default value of the '{@link #isConstant() <em>Constant</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -219,6 +231,51 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageDataTermPackage.Literals.DATA_TERM;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public QCardinality getCardinality() {
+		return cardinality;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCardinality(QCardinality newCardinality, NotificationChain msgs) {
+		QCardinality oldCardinality = cardinality;
+		cardinality = newCardinality;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, oldCardinality, newCardinality);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCardinality(QCardinality newCardinality) {
+		if (newCardinality != cardinality) {
+			NotificationChain msgs = null;
+			if (cardinality != null)
+				msgs = ((InternalEObject)cardinality).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, null, msgs);
+			if (newCardinality != null)
+				msgs = ((InternalEObject)newCardinality).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, null, msgs);
+			msgs = basicSetCardinality(newCardinality, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, newCardinality, newCardinality));
 	}
 
 	/**
@@ -500,6 +557,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
+				return getCardinality();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				return isConstant();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
@@ -530,6 +589,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
+				setCardinality((QCardinality)newValue);
+				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				setConstant((Boolean)newValue);
 				return;
@@ -568,6 +630,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
+				setCardinality((QCardinality)null);
+				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				setConstant(CONSTANT_EDEFAULT);
 				return;
@@ -606,6 +671,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
+				return cardinality != null;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
 				return constant != CONSTANT_EDEFAULT;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT:
@@ -684,6 +751,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
+				return basicSetCardinality(null, msgs);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION:
 				return basicSetDefinition(null, msgs);
 		}

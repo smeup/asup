@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -140,12 +141,22 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDataTerm_Cardinality() {
+		return (EReference)dataTermEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public EAttribute getDataTerm_Constant() {
-		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -155,7 +166,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 */
 	@Override
 	public EAttribute getDataTerm_Default() {
-		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -164,7 +175,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 */
 	@Override
 	public EReference getDataTerm_Definition() {
-		return (EReference)dataTermEClass.getEStructuralFeatures().get(2);
+		return (EReference)dataTermEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -173,15 +184,6 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 */
 	@Override
 	public EAttribute getDataTerm_Initialized() {
-		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDataTerm_Like() {
 		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -190,8 +192,17 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataTerm_Name() {
+	public EAttribute getDataTerm_Like() {
 		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataTerm_Name() {
+		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -201,15 +212,6 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 */
 	@Override
 	public EAttribute getDataTerm_Mandatory() {
-		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDataTerm_Restricted() {
 		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -218,8 +220,17 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataTerm_Text() {
+	public EAttribute getDataTerm_Restricted() {
 		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataTerm_Text() {
+		return (EAttribute)dataTermEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -277,6 +288,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 
 		// Create classes and their features
 		dataTermEClass = createEClass(DATA_TERM);
+		createEReference(dataTermEClass, DATA_TERM__CARDINALITY);
 		createEAttribute(dataTermEClass, DATA_TERM__CONSTANT);
 		createEAttribute(dataTermEClass, DATA_TERM__DEFAULT);
 		createEReference(dataTermEClass, DATA_TERM__DEFINITION);
@@ -321,6 +333,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter dataTermEClass_DD = addETypeParameter(dataTermEClass, "DD");
@@ -343,6 +356,7 @@ public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implemen
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataTermEClass, QDataTerm.class, "DataTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataTerm_Cardinality(), theIntegratedLanguageCoreMetaPackage.getCardinality(), null, "cardinality", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataTerm_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataTerm_Default(), ecorePackage.getEString(), "default", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(dataTermEClass_DD);

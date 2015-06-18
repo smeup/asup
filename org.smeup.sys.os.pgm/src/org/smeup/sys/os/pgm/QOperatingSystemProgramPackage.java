@@ -441,9 +441,9 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_STATUS_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '<em>Parameter List</em>' data type. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The meta object id for the '<em>Parameter List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 	 * @generated
 	 */
@@ -734,9 +734,9 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EReference getProgramStatus_CallableProgram();
 
 	/**
-	 * Returns the meta object for data type '<em>Parameter List</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the meta object for data type '<em>Parameter List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Parameter List</em>'.
 	 * @model instanceClass="org.smeup.sys.il.data.QData[]"
 	 * @generated
@@ -988,7 +988,8 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '<em>Parameter List</em>' data type.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 		 * @generated
 		 */

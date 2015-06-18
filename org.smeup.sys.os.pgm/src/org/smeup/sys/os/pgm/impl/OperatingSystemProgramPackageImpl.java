@@ -103,7 +103,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	private EClass programStatusEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EDataType parameterListEDataType = null;
@@ -415,10 +416,10 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EDataType getParameterList() {
 		return parameterListEDataType;
 	}

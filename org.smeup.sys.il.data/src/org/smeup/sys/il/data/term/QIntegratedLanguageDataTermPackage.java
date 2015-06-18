@@ -76,13 +76,22 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM__FACETS = QIntegratedLanguageCoreTermPackage.TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TERM__CARDINALITY = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__CONSTANT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
+	int DATA_TERM__CONSTANT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' attribute.
@@ -91,7 +100,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__DEFAULT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
+	int DATA_TERM__DEFAULT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -99,7 +108,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__DEFINITION = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
+	int DATA_TERM__DEFINITION = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Initialized</b></em>' attribute. <!--
@@ -108,7 +117,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__INITIALIZED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 3;
+	int DATA_TERM__INITIALIZED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Like</b></em>' attribute. <!--
@@ -117,7 +126,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__LIKE = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 4;
+	int DATA_TERM__LIKE = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -126,7 +135,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 5;
+	int DATA_TERM__NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -135,7 +144,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__MANDATORY = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 6;
+	int DATA_TERM__MANDATORY = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Restricted</b></em>' attribute. <!--
@@ -144,7 +153,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__RESTRICTED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 7;
+	int DATA_TERM__RESTRICTED = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -153,7 +162,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM__TEXT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 8;
+	int DATA_TERM__TEXT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Data Term</em>' class. <!--
@@ -162,7 +171,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 9;
+	int DATA_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.term.QDataTermContainer <em>Data Term Container</em>}' class.
@@ -219,6 +228,17 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDataTerm();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cardinality</em>'.
+	 * @see org.smeup.sys.il.data.term.QDataTerm#getCardinality()
+	 * @see #getDataTerm()
+	 * @generated
+	 */
+	EReference getDataTerm_Cardinality();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}'.
@@ -384,6 +404,14 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DATA_TERM = eINSTANCE.getDataTerm();
+
+		/**
+		 * The meta object literal for the '<em><b>Cardinality</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_TERM__CARDINALITY = eINSTANCE.getDataTerm_Cardinality();
 
 		/**
 		 * The meta object literal for the '<em><b>Constant</b></em>' attribute feature.

@@ -6,3 +6,4 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.os.module;visibility:=reexport
+Export-Package: org.smeup.sys.os.module.base

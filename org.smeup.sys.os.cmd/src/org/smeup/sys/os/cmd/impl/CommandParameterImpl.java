@@ -277,7 +277,7 @@ public class CommandParameterImpl extends ObjectImpl implements QCommandParamete
 	 */
 	@Override
 	public boolean isRequired() {
-		QCardinality cardinality = getDataTerm().getFacet(QCardinality.class);
+		QCardinality cardinality = getDataTerm().getCardinality();
 		if (cardinality != null && cardinality.getMin() > 0)
 			return true;
 		else

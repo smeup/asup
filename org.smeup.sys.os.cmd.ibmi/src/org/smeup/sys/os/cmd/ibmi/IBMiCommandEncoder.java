@@ -67,8 +67,8 @@ public class IBMiCommandEncoder {
 			QList<?> list = (QList<?>) data;
 
 			int c = 1;
-			if (dataTerm.getFacet(QCardinality.class) != null)
-				c = dataTerm.getFacet(QCardinality.class).getMax();
+			if (dataTerm.getCardinality() != null)
+				c = dataTerm.getCardinality().getMax();
 
 			for (int i = 0; i < c; i++) {
 
@@ -88,7 +88,7 @@ public class IBMiCommandEncoder {
 			QStroller<?> stroller = (QStroller<?>) data;
 
 			c = 1;
-			QCardinality cardinality = multipleCompoundDataTerm.getFacet(QCardinality.class);
+			QCardinality cardinality = multipleCompoundDataTerm.getCardinality();
 			if (cardinality != null)
 				c = cardinality.getMax();
 

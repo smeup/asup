@@ -350,7 +350,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1270,7 +1270,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*SYSVAL</default>
+        <default value="*SYSVAL"/>
       </dataTerm>
     </parameters>
     <parameters

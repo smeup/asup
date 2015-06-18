@@ -61,12 +61,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		this.programReaders = new WeakHashMap<Thread, QResourceSetReader<QProgram>>();
 		this.programStacks = new HashMap<String, QProgramStack>();
 	}
-	
-	
-	@Override
-	public void callProgram(String ContextID, String library, String name, QData[] params) {
 
-		QJob job = jobManager.lookup(ContextID);
+	@Override
+	public void callProgram(String contextID, String library, String name, QData[] params) {
+
+		QJob job = jobManager.lookup(contextID);
 
 		QProgram program = getProgram(job, library, name);
 		

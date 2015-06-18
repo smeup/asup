@@ -60,7 +60,7 @@ public class BaseFileManagerImpl implements QFileManager {
 		 * if(qFile != null) return qFile;
 		 * 
 		 * QResourceReader<QFile> fileReader =
-		 * resourceFactory.getResourceReader(job, QFile.class,
+		 * resourceManager.getResourceReader(job, QFile.class,
 		 * QScope.LIBRARY_LIST); qFile = fileReader.lookup(fileName);
 		 * 
 		 * if(qFile == null) throw new

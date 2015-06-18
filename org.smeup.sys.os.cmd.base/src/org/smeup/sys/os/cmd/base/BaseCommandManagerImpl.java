@@ -44,6 +44,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		QDataContainer dataContainer = callableCommand.getDataContainer();
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
+		
 		for (QCommandParameter commandParameter : callableCommand.getCommand().getParameters()) {
 			int position = commandParameter.getPosition() - 1;
 			parameters[position] = dataContainer.getData(dataContainer.getTerms().get(position));

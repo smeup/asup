@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data.term;
 
 import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.def.QDataDef;
 
@@ -18,6 +19,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefinition <em>Definition</em>}</li>
@@ -35,6 +37,32 @@ import org.smeup.sys.il.data.def.QDataDef;
  * @generated
  */
 public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
+	/**
+	 * Returns the value of the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cardinality</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cardinality</em>' containment reference.
+	 * @see #setCardinality(QCardinality)
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Cardinality()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QCardinality getCardinality();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cardinality</em>' containment reference.
+	 * @see #getCardinality()
+	 * @generated
+	 */
+	void setCardinality(QCardinality value);
+
 	/**
 	 * Returns the value of the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc -->

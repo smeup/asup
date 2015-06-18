@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -74,7 +74,7 @@ public class NIODataManagerImpl implements QDataManager {
 	@SuppressWarnings({ "unchecked"})
 	private <DD extends QDataDef<?>> Map<String, QDataTerm<?>> buildDataTerms(QFrame<?> frame, QFrame<?> term) {
 
-		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
+		Map<String, QDataTerm<?>> dataTerms = new LinkedHashMap<String, QDataTerm<?>>();
 
 		for (QSlot slot : frame.getSlots()) {
 

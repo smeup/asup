@@ -490,7 +490,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1002,7 +1002,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -1577,7 +1577,7 @@
                 length="1"/>
           </elements>
         </definition>
-        <default>*SAME</default>
+        <default value="*SAME"/>
       </dataTerm>
     </parameters>
     <source
@@ -3524,7 +3524,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="SHORT"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -4089,7 +4089,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <source
@@ -7098,7 +7098,7 @@
               xsi:type="il-data-def:HexadecimalDef"
               length="4"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -10180,7 +10180,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*CHANGE</default>
+        <default value="*CHANGE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -12270,7 +12270,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="32"/>
         </definition>
-        <default>*MOUNTED</default>
+        <default value="*MOUNTED"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -12506,7 +12506,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="INTEGER"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -12947,7 +12947,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="6"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -13585,7 +13585,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -13617,7 +13617,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="32"/>
         </definition>
-        <default>*MOUNTED</default>
+        <default value="*MOUNTED"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -13824,7 +13824,7 @@
                   xsi:type="il-data-def:CharacterDef"
                   length="10"/>
             </definition>
-            <default>*ALL</default>
+            <default value="*ALL"/>
           </elements>
         </definition>
       </dataTerm>
@@ -13997,7 +13997,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="1"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -14362,7 +14362,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -14612,7 +14612,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -14815,7 +14815,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="8"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -16655,7 +16655,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*CHANGE</default>
+        <default value="*CHANGE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -16944,7 +16944,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="32"/>
         </definition>
-        <default>*MOUNTED</default>
+        <default value="*MOUNTED"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -17344,7 +17344,7 @@
               xsi:type="il-data-def:BinaryDef"
               type="INTEGER"/>
         </definition>
-        <default>*NO</default>
+        <default value="*NO"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -18717,7 +18717,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -18808,7 +18808,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="32"/>
         </definition>
-        <default>*MOUNTED</default>
+        <default value="*MOUNTED"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -19540,7 +19540,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -19982,7 +19982,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -20010,7 +20010,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="32"/>
         </definition>
-        <default>*MOUNTED</default>
+        <default value="*MOUNTED"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -20586,7 +20586,7 @@
                   xsi:type="il-data-def:CharacterDef"
                   length="10"/>
             </definition>
-            <default>*ALL</default>
+            <default value="*ALL"/>
           </elements>
         </definition>
       </dataTerm>
@@ -20830,7 +20830,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -21257,7 +21257,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -23773,7 +23773,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="7"/>
         </definition>
-        <default>*ALL</default>
+        <default value="*ALL"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -23827,7 +23827,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="10"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -24416,7 +24416,7 @@
                   xsi:type="il-data-def:CharacterDef"
                   length="10"/>
             </definition>
-            <default>*ALL</default>
+            <default value="*ALL"/>
           </elements>
         </definition>
       </dataTerm>
@@ -24670,7 +24670,7 @@
               xsi:type="il-data-def:CharacterDef"
               length="1"/>
         </definition>
-        <default>*NONE</default>
+        <default value="*NONE"/>
       </dataTerm>
     </parameters>
     <parameters
