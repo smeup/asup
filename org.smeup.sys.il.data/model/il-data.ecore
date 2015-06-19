@@ -1354,7 +1354,7 @@
   </eClassifiers>
   <eSubpackages name="def" nsURI="http://www.smeup.org/asup/il/data/def" nsPrefix="il-data-def">
     <eClassifiers xsi:type="ecore:EClass" name="AdapterDef">
-      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
         <eTypeArguments eClassifier="#//Adapter"/>
       </eGenericSuperTypes>
     </eClassifiers>
