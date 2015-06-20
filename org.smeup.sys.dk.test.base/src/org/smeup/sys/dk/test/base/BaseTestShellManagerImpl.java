@@ -35,4 +35,10 @@ public class BaseTestShellManagerImpl implements QShellManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void setDefaultWriter(String contextID, String name) {
+		// TODO Auto-generated method stub
+		
+	}
 }

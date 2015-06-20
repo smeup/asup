@@ -45,4 +45,12 @@ public interface QShellManager {
 	 */
 	String encodeCommand(String contextID, QDataContainer container, boolean useDefaults);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextIDRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	void setDefaultWriter(String contextID, String name);
+
 } // QShellManager

@@ -83,7 +83,12 @@ public class BaseShellSocketHandler extends Thread {
 					try {
 						if (authenticationToken == null) {
 							authenticationToken = connect(request);
+							
 							shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
+							
+							// set Looc.UP as default objectWriter on server
+							shellManager.setDefaultWriter(authenticationToken.getID(), "S");
+
 						} else
 							executeCommand(request);
 					} catch (Exception e) {

@@ -35,6 +35,7 @@ import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.meta.QDefault;
+import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
@@ -68,6 +69,7 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QShellManager {
 
+	protected QOutputManager outputManager;
 	protected QJobManager jobManager;
 	protected QDataManager dataManager;
 	protected ParserInterface<?> clParameterParser;
@@ -685,5 +687,17 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	public String encodeCommand(String contextID, QDataContainer dataContainer, boolean useDefaults) {
 
 		return IBMiCommandEncoder.encodeCommand(contextID, dataContainer, useDefaults);
+	}
+
+	@Override
+	public void setDefaultWriter(String contextID, String name) {
+
+		// retrieve job
+		QJob job = jobManager.lookup(contextID);
+		if (job == null)
+			throw new OperatingSystemRuntimeException("Invalid contextID");
+
+		outputManager.setDefaultWriter(job.getContext(), name);
+		
 	}
 }

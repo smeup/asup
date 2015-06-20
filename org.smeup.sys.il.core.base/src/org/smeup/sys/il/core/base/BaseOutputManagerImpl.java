@@ -33,7 +33,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 		if (objectWriter == null) {
 
-			QObjectWriterFactory objectWriterFactory = objectWriterFactoryRegistry.lookup("SHELL");
+			QObjectWriterFactory objectWriterFactory = objectWriterFactoryRegistry.lookup("S");
 			objectWriter = objectWriterFactory.createObjectWriter(context);
 
 			context.set(QObjectWriter.class, objectWriter);
@@ -86,7 +86,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 			jobWriters = new JobToObjectWriterMap();
 			context.set(JobToObjectWriterMap.class, jobWriters);
 		}
-		context.set(QObjectWriter.class, getObjectWriter(context, name));
+		context.set(QObjectWriter.class, getObjectWriter(context, name));		
 	}
 
 	private class JobToObjectWriterMap extends HashMap<String, QObjectWriter>  {

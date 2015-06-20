@@ -265,6 +265,10 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		addEParameter(op, theIntegratedLanguageDataPackage.getDataContainer(), "container", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "useDefaults", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(shellManagerEClass, null, "setDefaultWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 	}
