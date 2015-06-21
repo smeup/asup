@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.meta;
 
 import org.smeup.sys.il.core.QNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -73,5 +74,5 @@ public interface QSlot extends QNameable {
 	 * @model nsPrefixRequired="true"
 	 * @generated
 	 */
-	QFacet getFacet(String nsPrefix);
+	QObject getValue(String nsPrefix);
 } // QSlot

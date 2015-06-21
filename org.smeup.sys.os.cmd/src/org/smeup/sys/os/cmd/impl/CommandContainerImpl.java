@@ -35,6 +35,10 @@ import org.smeup.sys.os.type.impl.TypedContainerImpl;
  */
 public class CommandContainerImpl extends TypedContainerImpl<QCommand> implements QCommandContainer {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * The default value of the '{@link #getTypeName() <em>Type Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTypeName()

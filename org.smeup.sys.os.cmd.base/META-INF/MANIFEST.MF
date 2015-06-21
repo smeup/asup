@@ -10,4 +10,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.cmd,
  org.smeup.sys.os.pgm,
- org.smeup.sys.os.type
+ org.smeup.sys.os.type,
+ org.smeup.sys.co.shell

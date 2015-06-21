@@ -26,6 +26,11 @@ import org.smeup.sys.os.type.QTypedObject;
  */
 public abstract class TypedContainerImpl<T extends QTypedObject> extends ObjectContainerImpl<T> implements QTypedContainer<T> {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

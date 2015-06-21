@@ -13,10 +13,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.os.type.*;
-import org.smeup.sys.os.type.QOperatingSystemTypeFactory;
-import org.smeup.sys.os.type.QOperatingSystemTypePackage;
-import org.smeup.sys.os.type.QType;
-import org.smeup.sys.os.type.QTypedObject;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -62,16 +58,17 @@ public class OperatingSystemTypeFactoryImpl extends EFactoryImpl implements QOpe
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemTypePackage.TYPE: return (EObject)createType();
 			case QOperatingSystemTypePackage.TYPED_REF: return (EObject)createTypedRef();
+			case QOperatingSystemTypePackage.TYPE_CONTAINER: return (EObject)createTypeContainer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T extends QTypedObject> QType<T> createType() {
 		TypeImpl<T> type = new TypeImpl<T>();
 		return type;
@@ -85,6 +82,16 @@ public class OperatingSystemTypeFactoryImpl extends EFactoryImpl implements QOpe
 	public <T extends QTypedObject> QTypedRef<T> createTypedRef() {
 		TypedRefImpl<T> typedRef = new TypedRefImpl<T>();
 		return typedRef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QTypeContainer createTypeContainer() {
+		TypeContainerImpl typeContainer = new TypeContainerImpl();
+		return typeContainer;
 	}
 
 	/**

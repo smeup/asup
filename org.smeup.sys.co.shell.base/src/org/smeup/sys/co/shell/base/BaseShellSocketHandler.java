@@ -93,9 +93,9 @@ public class BaseShellSocketHandler extends Thread {
 							executeCommand(request);
 					} catch (Exception e) {
 						if (e.getCause() == null)
-							outputStreamWriter.write(e.getMessage() + "\n");
+							outputStreamWriter.write(e + "\n");
 						else
-							outputStreamWriter.write(e.getCause().getMessage() + "\n");
+							outputStreamWriter.write(e.getCause() + "\n");
 					}
 
 				if (authenticationToken != null)

@@ -69,18 +69,19 @@ import org.smeup.sys.rt.core.QApplication;
 
 public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QShellManager {
 
-	protected QOutputManager outputManager;
+	private QOutputManager outputManager;
+	
 	protected QJobManager jobManager;
 	protected QDataManager dataManager;
 	protected ParserInterface<?> clParameterParser;
 	protected ParserInterface<?> clParser;
 
 	@Inject
-	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
-			QApplication application) {
+	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager, QOutputManager outputManager, QApplication application) {
 		super(resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
+		this.outputManager = outputManager;
 		this.clParameterParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL_PARAMETER);
 		this.clParser = ParserFactory.getInstance().getParser(ParserFactory.ScriptType.CL);
 

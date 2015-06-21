@@ -24,7 +24,7 @@ import java.util.List;
  * @model abstract="true"
  * @generated
  */
-public interface QObjectContainer<T extends QObject> {
+public interface QObjectContainer<T extends QObject> extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->

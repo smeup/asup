@@ -17,13 +17,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.type.QOperatingSystemTypeFactory;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.type.QType;
+import org.smeup.sys.os.type.QTypeContainer;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedContainer;
 import org.smeup.sys.os.type.QTypedObject;
@@ -56,6 +55,12 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass typedRefEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeContainerEClass = null;
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -134,6 +139,15 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getType_TypedClassName() {
+		return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -195,6 +209,15 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	 */
 	public EAttribute getTypedRef_Name() {
 		return (EAttribute)typedRefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTypeContainer() {
+		return typeContainerEClass;
 	}
 
 	/**
@@ -261,6 +284,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 
 		// Create classes and their features
 		typeEClass = createEClass(TYPE);
+		createEAttribute(typeEClass, TYPE__TYPED_CLASS_NAME);
 
 		typeRegistryEClass = createEClass(TYPE_REGISTRY);
 
@@ -276,6 +300,8 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		typedRefEClass = createEClass(TYPED_REF);
 		createEAttribute(typedRefEClass, TYPED_REF__LIBRARY);
 		createEAttribute(typedRefEClass, TYPED_REF__NAME);
+
+		typeContainerEClass = createEClass(TYPE_CONTAINER);
 	}
 
 	/**
@@ -301,8 +327,6 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QOperatingSystemCorePackage theOperatingSystemCorePackage = (QOperatingSystemCorePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI);
 
@@ -320,27 +344,23 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		typedRefEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		g1 = createEGenericType(this.getTypedObject());
-		typeEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreMetaPackage.getFrame());
-		EGenericType g2 = createEGenericType(typeEClass_T);
-		g1.getETypeArguments().add(g2);
-		typeEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
-		g2 = createEGenericType(this.getType());
-		g1.getETypeArguments().add(g2);
-		EGenericType g3 = createEGenericType();
-		g2.getETypeArguments().add(g3);
-		typeRegistryEClass.getEGenericSuperTypes().add(g1);
+		typeEClass.getESuperTypes().add(this.getTypedObject());
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectContainer());
-		g2 = createEGenericType(typedContainerEClass_T);
+		EGenericType g2 = createEGenericType(typedContainerEClass_T);
 		g1.getETypeArguments().add(g2);
 		typedContainerEClass.getEGenericSuperTypes().add(g1);
 		typedObjectEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		typedRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		g1 = createEGenericType(this.getTypedContainer());
+		g2 = createEGenericType(this.getType());
+		g1.getETypeArguments().add(g2);
+		EGenericType g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		typeContainerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(typeEClass, QType.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getType_TypedClassName(), ecorePackage.getEString(), "typedClassName", null, 1, 1, QType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(typeEClass, null, "getTypedClass", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
@@ -360,6 +380,19 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(typeRegistryEClass, null, "lookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getType());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(typeRegistryEClass, null, "list", 1, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getType());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(typedContainerEClass, QTypedContainer.class, "TypedContainer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(typedObjectEClass, QTypedObject.class, "TypedObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -374,6 +407,8 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		initEClass(typedRefEClass, QTypedRef.class, "TypedRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypedRef_Library(), ecorePackage.getEString(), "library", null, 1, 1, QTypedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypedRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, QTypedRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeContainerEClass, QTypeContainer.class, "TypeContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

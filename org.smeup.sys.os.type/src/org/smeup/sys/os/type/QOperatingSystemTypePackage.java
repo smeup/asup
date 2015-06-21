@@ -11,10 +11,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +72,36 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPED_OBJECT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.type.impl.TypeImpl <em>Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.type.impl.TypeImpl
+	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getType()
+	 * @generated
+	 */
+	int TYPE = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.type.QTypeRegistry
+	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypeRegistry()
+	 * @generated
+	 */
+	int TYPE_REGISTRY = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.type.impl.TypedContainerImpl <em>Typed Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.type.impl.TypedContainerImpl
+	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypedContainer()
+	 * @generated
+	 */
+	int TYPED_CONTAINER = 2;
+
+	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,16 +156,6 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPED_OBJECT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.type.impl.TypeImpl <em>Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.type.impl.TypeImpl
-	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getType()
-	 * @generated
-	 */
-	int TYPE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,23 +201,22 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPE__CREATION_INFO = TYPED_OBJECT__CREATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Typed Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__TYPED_CLASS_NAME = TYPED_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = TYPED_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.type.QTypeRegistry
-	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypeRegistry()
-	 * @generated
-	 */
-	int TYPE_REGISTRY = 1;
+	int TYPE_FEATURE_COUNT = TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Type Registry</em>' class.
@@ -209,17 +225,7 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.type.impl.TypedContainerImpl <em>Typed Container</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.type.impl.TypedContainerImpl
-	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypedContainer()
-	 * @generated
-	 */
-	int TYPED_CONTAINER = 2;
+	int TYPE_REGISTRY_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -277,6 +283,34 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPED_REF_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.type.impl.TypeContainerImpl <em>Type Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.type.impl.TypeContainerImpl
+	 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypeContainer()
+	 * @generated
+	 */
+	int TYPE_CONTAINER = 5;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONTAINER__CONTENTS = TYPED_CONTAINER__CONTENTS;
+
+	/**
+	 * The number of structural features of the '<em>Type Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_CONTAINER_FEATURE_COUNT = TYPED_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.type.QType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -285,6 +319,17 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.type.QType#getTypedClassName <em>Typed Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Typed Class Name</em>'.
+	 * @see org.smeup.sys.os.type.QType#getTypedClassName()
+	 * @see #getType()
+	 * @generated
+	 */
+	EAttribute getType_TypedClassName();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}'.
@@ -404,6 +449,16 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	EAttribute getTypedRef_Name();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.type.QTypeContainer <em>Type Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Type Container</em>'.
+	 * @see org.smeup.sys.os.type.QTypeContainer
+	 * @generated
+	 */
+	EClass getTypeContainer();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,6 +489,14 @@ public interface QOperatingSystemTypePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TYPE = eINSTANCE.getType();
+
+		/**
+		 * The meta object literal for the '<em><b>Typed Class Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE__TYPED_CLASS_NAME = eINSTANCE.getType_TypedClassName();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}' class.
@@ -530,6 +593,16 @@ public interface QOperatingSystemTypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPED_REF__NAME = eINSTANCE.getTypedRef_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.type.impl.TypeContainerImpl <em>Type Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.type.impl.TypeContainerImpl
+		 * @see org.smeup.sys.os.type.impl.OperatingSystemTypePackageImpl#getTypeContainer()
+		 * @generated
+		 */
+		EClass TYPE_CONTAINER = eINSTANCE.getTypeContainer();
 
 	}
 

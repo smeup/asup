@@ -31,6 +31,11 @@ import org.smeup.sys.os.type.impl.TypedContainerImpl;
 public class ProgramContainerImpl extends TypedContainerImpl<QProgram> implements QProgramContainer {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getBasePackage()

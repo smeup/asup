@@ -7,18 +7,51 @@
  */
 package org.smeup.sys.os.type;
 
-import org.smeup.sys.il.core.meta.QFrame;
+
+
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Type</b></em>'. <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.smeup.sys.os.type.QType#getTypedClassName <em>Typed Class Name</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getType()
  * @model
  * @generated
  */
-public interface QType<T extends QTypedObject> extends QTypedObject, QFrame<T> {
+public interface QType<T extends QTypedObject> extends QTypedObject {
+
+	/**
+	 * Returns the value of the '<em><b>Typed Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Typed Class Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Typed Class Name</em>' attribute.
+	 * @see #setTypedClassName(String)
+	 * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getType_TypedClassName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getTypedClassName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.type.QType#getTypedClassName <em>Typed Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Typed Class Name</em>' attribute.
+	 * @see #getTypedClassName()
+	 * @generated
+	 */
+	void setTypedClassName(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

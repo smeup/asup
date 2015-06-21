@@ -483,7 +483,7 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 
 		addEOperation(slotEClass, ecorePackage.getEBoolean(), "isVolatile", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(slotEClass, this.getFacet(), "getFacet", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(slotEClass, theIntegratedLanguageCorePackage.getObject(), "getValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "nsPrefix", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="type" nsURI="http://www.smeup.org/asup/os/type" nsPrefix="os-type">
-  <eClassifiers xsi:type="ecore:EClass" name="Type">
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//TypedObject">
     <eTypeParameters name="T">
       <eBounds eClassifier="#//TypedObject"/>
     </eTypeParameters>
@@ -10,10 +10,8 @@
         <eTypeArguments eTypeParameter="#//Type/T"/>
       </eGenericType>
     </eOperations>
-    <eGenericSuperTypes eClassifier="#//TypedObject"/>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Frame">
-      <eTypeArguments eTypeParameter="#//Type/T"/>
-    </eGenericSuperTypes>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typedClassName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeRegistry" abstract="true" interface="true">
     <eOperations name="lookup" lowerBound="1">
@@ -26,11 +24,17 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
-      <eTypeArguments eClassifier="#//Type">
+    <eOperations name="lookup" lowerBound="1">
+      <eGenericType eClassifier="#//Type">
         <eTypeArguments/>
-      </eTypeArguments>
-    </eGenericSuperTypes>
+      </eGenericType>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="list" lowerBound="1" upperBound="-1">
+      <eGenericType eClassifier="#//Type">
+        <eTypeArguments/>
+      </eGenericType>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypedContainer" abstract="true">
     <eTypeParameters name="T">
@@ -89,5 +93,12 @@
         <details key="length" value="10"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeContainer">
+    <eGenericSuperTypes eClassifier="#//TypedContainer">
+      <eTypeArguments eClassifier="#//Type">
+        <eTypeArguments/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
   </eClassifiers>
 </ecore:EPackage>

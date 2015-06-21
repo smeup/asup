@@ -294,7 +294,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CONTAINER__CONTENTS = 0;
+	int OBJECT_CONTAINER__CONTENTS = OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Object Container</em>' class.
@@ -302,7 +302,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_CONTAINER_FEATURE_COUNT = 1;
+	int OBJECT_CONTAINER_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.QObjectIterator <em>Object Iterator</em>}' class.

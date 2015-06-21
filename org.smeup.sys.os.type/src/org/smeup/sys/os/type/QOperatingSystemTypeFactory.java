@@ -43,6 +43,15 @@ public interface QOperatingSystemTypeFactory extends EFactory {
 	<T extends QTypedObject> QTypedRef<T> createTypedRef();
 
 	/**
+	 * Returns a new object of class '<em>Type Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Type Container</em>'.
+	 * @generated
+	 */
+	QTypeContainer createTypeContainer();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

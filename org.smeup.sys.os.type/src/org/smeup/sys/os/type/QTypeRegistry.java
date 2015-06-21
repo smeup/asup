@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.os.type;
 
-import org.smeup.sys.il.core.ctx.QPluginRegistry;
+import java.util.List;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.ctx.QPluginRegistry;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QTypeRegistry extends QPluginRegistry<QType<?>> {
+public interface QTypeRegistry {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -26,5 +26,21 @@ public interface QTypeRegistry extends QPluginRegistry<QType<?>> {
 	 * @generated
 	 */
 	QType<?> lookup(Class<?> typedClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	QType<?> lookup(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	List<QType<?>> list();
 
 } // QTypeRegistry

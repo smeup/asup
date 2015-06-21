@@ -29,6 +29,11 @@ import org.smeup.sys.os.module.QOperatingSystemModulePackage;
  */
 public class ModuleContainerImpl extends org.smeup.sys.os.type.impl.TypedContainerImpl<QModule> implements QModuleContainer {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getBasePackage()

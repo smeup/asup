@@ -38,8 +38,8 @@ public class CDOResourceUtil {
 
 	public static EPackage getEPackage(CDOSession session, Class<? extends QObjectNameable> klass) {
 
-		Object object = session.getPackageRegistry().get(CDOResourceUtil.getPackageURI(klass));
-		;
+		Object object = session.getPackageRegistry().get(getPackageURI(klass));
+
 		EPackage ePackage;
 		if (object instanceof EPackage)
 			ePackage = (EPackage) object;

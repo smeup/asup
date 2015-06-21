@@ -12,10 +12,13 @@
 package org.smeup.sys.il.core.meta.e4;
 
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QDomain;
-import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.core.meta.QSlot;
 
 public class E4SlotAdapter implements QSlot {
@@ -58,13 +61,27 @@ public class E4SlotAdapter implements QSlot {
 	}
 
 	@Override
-	public QFacet getFacet(String nsPrefix) {
+	public QObject getValue(String nsPrefix) {
 		
-		EAnnotation annotation = this.structuralFeature.getEAnnotation(nsPrefix);
+		EAnnotation eAnnotation = this.structuralFeature.getEAnnotation(nsPrefix);
 
-		if(annotation != null) 
-			return new E4FacetAdapter(annotation);
+		if(eAnnotation == null)
+			return null;
 
-		return null;
+		EObject eObject = EcoreUtil.create((EClass) eAnnotation.getReferences().get(0));
+
+		for (String key : eAnnotation.getDetails().keySet()) {
+			EStructuralFeature dataDefFeature = eObject.eClass().getEStructuralFeature(key);
+
+			if (dataDefFeature == null)
+				continue;
+
+			if (dataDefFeature.getDefaultValue() instanceof Number)
+				eObject.eSet(dataDefFeature, Integer.parseInt(eAnnotation.getDetails().get(key)));
+			else
+				eObject.eSet(dataDefFeature, eAnnotation.getDetails().get(key));
+		}
+
+		return (QObject) eObject;  
 	}
 }

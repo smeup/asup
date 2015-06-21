@@ -52,7 +52,7 @@
         eType="#//meta/Facet" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectContainer" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectContainer" abstract="true" eSuperTypes="#//Object">
     <eTypeParameters name="T">
       <eBounds eClassifier="#//Object"/>
     </eTypeParameters>
@@ -411,7 +411,7 @@
       <eOperations name="getDomain" eType="#//meta/Domain"/>
       <eOperations name="isTransient" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="isVolatile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eOperations name="getFacet" eType="#//meta/Facet">
+      <eOperations name="getValue" eType="#//Object">
         <eParameters name="nsPrefix" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
     </eClassifiers>

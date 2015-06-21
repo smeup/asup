@@ -688,6 +688,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		formatEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(this.getNameable());
+		objectContainerEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getNameable());
 		overlayEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());

@@ -7,31 +7,52 @@
  */
 package org.smeup.sys.os.type.impl;
 
-import java.util.List;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.smeup.sys.il.core.meta.QFrame;
-import org.smeup.sys.il.core.meta.QSlot;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypedObject;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Type</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Type</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.smeup.sys.os.type.impl.TypeImpl#getTypedClassName <em>Typed Class Name</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
  */
 public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements QType<T> {
 	/**
-	 *
+	 * The default value of the '{@link #getTypedClassName() <em>Typed Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypedClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TYPED_CLASS_NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getTypedClassName() <em>Typed Class Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypedClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String typedClassName = TYPED_CLASS_NAME_EDEFAULT;
+	/**
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TypeImpl() {
@@ -39,7 +60,8 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -52,7 +74,27 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public String getTypedClassName() {
+		return typedClassName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypedClassName(String newTypedClassName) {
+		String oldTypedClassName = typedClassName;
+		typedClassName = newTypedClassName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME, oldTypedClassName, typedClassName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Class<T> getTypedClass() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -65,10 +107,12 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public QFrame<?> ako() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
+				return getTypedClassName();
+		}
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -77,14 +121,58 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	 * @generated
 	 */
 	@Override
-	public List<QSlot> getSlots() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
+				setTypedClassName((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
-	public String getAttribute() {
-		return null;
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
+				setTypedClassName(TYPED_CLASS_NAME_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
 	}
-} // TypeImpl
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
+				return TYPED_CLASS_NAME_EDEFAULT == null ? typedClassName != null : !TYPED_CLASS_NAME_EDEFAULT.equals(typedClassName);
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (typedClassName: ");
+		result.append(typedClassName);
+		result.append(')');
+		return result.toString();
+	}
+
+} //TypeImpl

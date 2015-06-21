@@ -9,12 +9,10 @@ package org.smeup.sys.il.core.impl;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -33,7 +31,11 @@ import org.smeup.sys.il.core.QObjectContainer;
  *
  * @generated
  */
-public abstract class ObjectContainerImpl<T extends QObject> extends MinimalEObjectImpl.Container implements QObjectContainer<T> {
+public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl implements QObjectContainer<T> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The cached value of the '{@link #getContents() <em>Contents</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
