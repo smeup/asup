@@ -10,9 +10,9 @@ package org.smeup.sys.il.core.ctx.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -27,7 +27,12 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
  *
  * @generated
  */
-public abstract class CredentialsImpl extends MinimalEObjectImpl.Container implements QCredentials {
+public abstract class CredentialsImpl extends ObjectImpl implements QCredentials {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

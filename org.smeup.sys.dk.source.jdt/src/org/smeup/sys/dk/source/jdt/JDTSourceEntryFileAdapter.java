@@ -19,15 +19,18 @@ import java.io.OutputStream;
 import java.net.URI;
 
 import org.eclipse.core.resources.IFile;
+import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 
 public class JDTSourceEntryFileAdapter implements QSourceEntry {
 
 	private static final long serialVersionUID = 1L;
 	
+	private QProject project;
 	private transient IFile file;
 	
-	public JDTSourceEntryFileAdapter(IFile file) {
+	public JDTSourceEntryFileAdapter(QProject project, IFile file) {
+		this.project = project;
 		this.file = file;
 	}
 	
@@ -43,9 +46,8 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 	}
 
 	@Override
-	public QSourceEntry getRoot() {
-		// TODO Auto-generated method stub
-		return null;
+	public QProject getProject() {
+		return project;
 	}
 
 	@Override

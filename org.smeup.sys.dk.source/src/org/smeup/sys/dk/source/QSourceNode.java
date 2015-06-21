@@ -44,7 +44,7 @@ public interface QSourceNode extends QObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	QSourceNode getRoot();
+	QProject getProject();
 
 	/**
 	 * <!-- begin-user-doc -->

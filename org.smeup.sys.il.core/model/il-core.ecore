@@ -211,7 +211,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="ContextProvider" abstract="true" interface="true">
       <eOperations name="getContext" lowerBound="1" eType="#//ctx/Context"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Credentials" abstract="true">
+    <eClassifiers xsi:type="ecore:EClass" name="Credentials" abstract="true" eSuperTypes="#//Object">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"

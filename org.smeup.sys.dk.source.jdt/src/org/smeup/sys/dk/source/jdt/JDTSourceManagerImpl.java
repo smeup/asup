@@ -188,10 +188,10 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		assert entry != null;
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IProject project = root.getProject(URIUtil.lastSegment(entry.getRoot().getLocation()));
+		IProject project = root.getProject(entry.getProject().getName());
 
 		java.net.URI location = entry.getLocation(); // URIUtil.removeFileExtension(entry.getLocation());
-		location = URIUtil.makeRelative(location, entry.getRoot().getLocation());
+		location = URIUtil.makeRelative(location, entry.getProject().getLocation());
 
 		IFile file = project.getFile(location.getRawPath());
 
@@ -228,7 +228,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			}
 		}
 
-		return new JDTSourceEntryFileAdapter(file);
+		return new JDTSourceEntryFileAdapter(parent.getProject(), file);
 	}
 
 	private <T extends QObjectNameable> QSourceEntry getChildEntry(QContext context, QSourceNode parent, Class<T> type, String name) {
@@ -240,7 +240,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		if (!file.exists())
 			return null;
 
-		return new JDTSourceEntryFileAdapter(file);
+		return new JDTSourceEntryFileAdapter(parent.getProject(), file);
 	}
 
 	private <T extends QObjectNameable> List<QSourceEntry> listChildEntries(QContext context, QSourceNode parent, Class<T> type, String nameFilter) {
@@ -282,7 +282,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 				}
 
-				entries.add(new JDTSourceEntryFileAdapter((IFile) resource));
+				entries.add(new JDTSourceEntryFileAdapter(parent.getProject(), (IFile) resource));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -295,7 +295,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	private <T extends QObjectNameable> IFolder getFolder(QSourceNode parent, Class<T> type, boolean create) {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IProject project = root.getProject(URIUtil.lastSegment(parent.getRoot().getLocation()));
+		IProject project = root.getProject(parent.getProject().getName());
 		
 		// TODO da eliminare
 		if (parent.isRoot() && type == null)
@@ -308,7 +308,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			location = URIUtil.append(location, getFolderName(type));
 		}
 
-		location = URIUtil.makeRelative(location, parent.getRoot().getLocation());
+		location = URIUtil.makeRelative(location, parent.getProject().getLocation());
 
 		IFolder folder = project.getFolder(location.toString());
 		if (!folder.exists() && create) {

@@ -114,7 +114,7 @@
       eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eOperations name="getLocation" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
     <eOperations name="getParent" eType="#//SourceNode"/>
-    <eOperations name="getRoot" eType="#//SourceNode"/>
+    <eOperations name="getProject" eType="#//Project"/>
     <eOperations name="isRoot" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

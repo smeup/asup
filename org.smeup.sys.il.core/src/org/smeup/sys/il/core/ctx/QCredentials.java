@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.core.ctx;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Credentials</b></em>'. <!-- end-user-doc -->
@@ -23,7 +25,7 @@ package org.smeup.sys.il.core.ctx;
  * @model abstract="true"
  * @generated
  */
-public interface QCredentials {
+public interface QCredentials extends QObject {
 	/**
 	 * Returns the value of the '<em><b>User</b></em>' attribute. <!--
 	 * begin-user-doc -->

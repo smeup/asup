@@ -25,6 +25,11 @@ import org.smeup.sys.il.core.ctx.impl.CredentialsImpl;
  */
 public class ShellCredentialsImpl extends CredentialsImpl implements QShellCredentials {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -81,7 +81,7 @@ public class JDTProjectAdapter implements QProject {
 	}
 
 	@Override
-	public QSourceNode getRoot() {
+	public QProject getProject() {
 		return this;
 	}
 

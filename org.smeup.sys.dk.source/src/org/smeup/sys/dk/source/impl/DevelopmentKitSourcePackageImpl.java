@@ -388,7 +388,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		addEOperation(sourceNodeEClass, this.getSourceNode(), "getParent", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(sourceNodeEClass, this.getSourceNode(), "getRoot", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sourceNodeEClass, this.getProject(), "getProject", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(sourceNodeEClass, ecorePackage.getEBoolean(), "isRoot", 0, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -312,6 +312,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter pluginRegistryEClass_T = addETypeParameter(pluginRegistryEClass, "T");
@@ -319,6 +320,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		credentialsEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(adapterFactoryEClass, QAdapterFactory.class, "AdapterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
