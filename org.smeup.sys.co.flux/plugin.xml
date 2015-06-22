@@ -15,7 +15,7 @@
       <!-- @generated co-flux -->
       <package
             uri="http://www.asup.org/co/flux"
-            class="org.smeup.sys.co.flux.FluxPackage"
+            class="org.smeup.sys.co.flux.QFluxPackage"
             genModel="model/co-flux.genmodel"/>
    </extension>
 

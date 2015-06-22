@@ -9,7 +9,6 @@ package org.smeup.sys.co.flux;
 
 import org.smeup.sys.il.core.QObject;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Server Connection Config</b></em>'.
@@ -18,19 +17,19 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getChannelID <em>Channel ID</em>}</li>
- *   <li>{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getHost <em>Host</em>}</li>
- *   <li>{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}</li>
- *   <li>{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getToken <em>Token</em>}</li>
- *   <li>{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getUserName <em>User Name</em>}</li>
+ *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getChannelID <em>Channel ID</em>}</li>
+ *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getHost <em>Host</em>}</li>
+ *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}</li>
+ *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getToken <em>Token</em>}</li>
+ *   <li>{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getUserName <em>User Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig()
+ * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig()
  * @model
  * @generated
  */
-public interface FluxServerConnectionConfig extends QObject {
+public interface QFluxServerConnectionConfig extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Channel ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,14 +40,14 @@ public interface FluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channel ID</em>' attribute.
 	 * @see #setChannelID(String)
-	 * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig_ChannelID()
+	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_ChannelID()
 	 * @model
 	 * @generated
 	 */
 	String getChannelID();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getChannelID <em>Channel ID</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getChannelID <em>Channel ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Channel ID</em>' attribute.
@@ -67,14 +66,14 @@ public interface FluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Host</em>' attribute.
 	 * @see #setHost(String)
-	 * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig_Host()
+	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_Host()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getHost();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getHost <em>Host</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getHost <em>Host</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Host</em>' attribute.
@@ -93,14 +92,14 @@ public interface FluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lazy Start</em>' attribute.
 	 * @see #setLazyStart(boolean)
-	 * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig_LazyStart()
+	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_LazyStart()
 	 * @model
 	 * @generated
 	 */
 	boolean isLazyStart();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lazy Start</em>' attribute.
@@ -108,32 +107,6 @@ public interface FluxServerConnectionConfig extends QObject {
 	 * @generated
 	 */
 	void setLazyStart(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>User Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>User Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>User Name</em>' attribute.
-	 * @see #setUserName(String)
-	 * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig_UserName()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getUserName();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getUserName <em>User Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>User Name</em>' attribute.
-	 * @see #getUserName()
-	 * @generated
-	 */
-	void setUserName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Token</b></em>' attribute.
@@ -145,14 +118,14 @@ public interface FluxServerConnectionConfig extends QObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Token</em>' attribute.
 	 * @see #setToken(String)
-	 * @see org.smeup.sys.co.flux.FluxPackage#getFluxServerConnectionConfig_Token()
+	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_Token()
 	 * @model
 	 * @generated
 	 */
 	String getToken();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getToken <em>Token</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getToken <em>Token</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Token</em>' attribute.
@@ -161,4 +134,30 @@ public interface FluxServerConnectionConfig extends QObject {
 	 */
 	void setToken(String value);
 
-} // FluxServerConnectionConfig
+	/**
+	 * Returns the value of the '<em><b>User Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>User Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>User Name</em>' attribute.
+	 * @see #setUserName(String)
+	 * @see org.smeup.sys.co.flux.QFluxPackage#getFluxServerConnectionConfig_UserName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getUserName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getUserName <em>User Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>User Name</em>' attribute.
+	 * @see #getUserName()
+	 * @generated
+	 */
+	void setUserName(String value);
+
+} // QFluxServerConnectionConfig

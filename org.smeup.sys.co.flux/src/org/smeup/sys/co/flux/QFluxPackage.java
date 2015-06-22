@@ -10,6 +10,7 @@ package org.smeup.sys.co.flux;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
@@ -23,11 +24,11 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.co.flux.FluxFactory
+ * @see org.smeup.sys.co.flux.QFluxFactory
  * @model kind="package"
  * @generated
  */
-public interface FluxPackage extends EPackage {
+public interface QFluxPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -58,7 +59,7 @@ public interface FluxPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	FluxPackage eINSTANCE = org.smeup.sys.co.flux.impl.FluxPackageImpl.init();
+	QFluxPackage eINSTANCE = org.smeup.sys.co.flux.impl.FluxPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.co.flux.impl.FluxServerConnectionConfigImpl <em>Server Connection Config</em>}' class.
@@ -126,69 +127,69 @@ public interface FluxPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig <em>Server Connection Config</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig <em>Server Connection Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Server Connection Config</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig
 	 * @generated
 	 */
 	EClass getFluxServerConnectionConfig();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getChannelID <em>Channel ID</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getChannelID <em>Channel ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Channel ID</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig#getChannelID()
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig#getChannelID()
 	 * @see #getFluxServerConnectionConfig()
 	 * @generated
 	 */
 	EAttribute getFluxServerConnectionConfig_ChannelID();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getHost <em>Host</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getHost <em>Host</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Host</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig#getHost()
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig#getHost()
 	 * @see #getFluxServerConnectionConfig()
 	 * @generated
 	 */
 	EAttribute getFluxServerConnectionConfig_Host();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#isLazyStart <em>Lazy Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lazy Start</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig#isLazyStart()
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig#isLazyStart()
 	 * @see #getFluxServerConnectionConfig()
 	 * @generated
 	 */
 	EAttribute getFluxServerConnectionConfig_LazyStart();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getUserName <em>User Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>User Name</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig#getUserName()
-	 * @see #getFluxServerConnectionConfig()
-	 * @generated
-	 */
-	EAttribute getFluxServerConnectionConfig_UserName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.FluxServerConnectionConfig#getToken <em>Token</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getToken <em>Token</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Token</em>'.
-	 * @see org.smeup.sys.co.flux.FluxServerConnectionConfig#getToken()
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig#getToken()
 	 * @see #getFluxServerConnectionConfig()
 	 * @generated
 	 */
 	EAttribute getFluxServerConnectionConfig_Token();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.co.flux.QFluxServerConnectionConfig#getUserName <em>User Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>User Name</em>'.
+	 * @see org.smeup.sys.co.flux.QFluxServerConnectionConfig#getUserName()
+	 * @see #getFluxServerConnectionConfig()
+	 * @generated
+	 */
+	EAttribute getFluxServerConnectionConfig_UserName();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -197,7 +198,7 @@ public interface FluxPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	FluxFactory getFluxFactory();
+	QFluxFactory getFluxFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,14 +248,6 @@ public interface FluxPackage extends EPackage {
 		EAttribute FLUX_SERVER_CONNECTION_CONFIG__LAZY_START = eINSTANCE.getFluxServerConnectionConfig_LazyStart();
 
 		/**
-		 * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute FLUX_SERVER_CONNECTION_CONFIG__USER_NAME = eINSTANCE.getFluxServerConnectionConfig_UserName();
-
-		/**
 		 * The meta object literal for the '<em><b>Token</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -262,6 +255,14 @@ public interface FluxPackage extends EPackage {
 		 */
 		EAttribute FLUX_SERVER_CONNECTION_CONFIG__TOKEN = eINSTANCE.getFluxServerConnectionConfig_Token();
 
+		/**
+		 * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FLUX_SERVER_CONNECTION_CONFIG__USER_NAME = eINSTANCE.getFluxServerConnectionConfig_UserName();
+
 	}
 
-} //FluxPackage
+} //QFluxPackage
