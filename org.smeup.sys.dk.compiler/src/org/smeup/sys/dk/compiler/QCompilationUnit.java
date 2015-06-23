@@ -8,9 +8,9 @@
 package org.smeup.sys.dk.compiler;
 
 import java.util.List;
-
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
+import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -184,7 +184,7 @@ public interface QCompilationUnit extends QContextProvider {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	QNamedNode getRoot();
+	QNameable getRoot();
 
 	/**
 	 * <!-- begin-user-doc -->

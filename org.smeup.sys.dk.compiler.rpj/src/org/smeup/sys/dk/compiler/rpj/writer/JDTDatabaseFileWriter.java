@@ -59,7 +59,7 @@ public class JDTDatabaseFileWriter extends JDTDataStructureWriter {
 	@SuppressWarnings("unchecked")
 	public void writeIndex(QFileFormatKey fileFormatKey) {
 
-		if (fileFormatKey.getKeyFields().isEmpty())
+		if (fileFormatKey == null || fileFormatKey.getKeyFields().isEmpty())
 			return;
 
 		EnumDeclaration enumType = getAST().newEnumDeclaration();

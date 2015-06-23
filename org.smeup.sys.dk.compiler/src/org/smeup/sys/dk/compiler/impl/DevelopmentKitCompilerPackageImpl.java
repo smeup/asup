@@ -480,7 +480,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(compilationUnitEClass, ecorePackage.getEString(), "getQualifiedName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCorePackage.getNamedNode(), "namedNode", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(compilationUnitEClass, theIntegratedLanguageCorePackage.getNamedNode(), "getRoot", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(compilationUnitEClass, theIntegratedLanguageCorePackage.getNameable(), "getRoot", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageFlowPackage.getRoutine(), "getRoutine", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -19,10 +19,10 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.os.file.QDisplayFile;
-import org.smeup.sys.os.file.QFileFormat;
+import org.smeup.sys.os.file.QDisplayFileFormat;
 
 public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 
@@ -38,15 +38,17 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 
 	public void writeDisplayFile(QDisplayFile displayFile) throws IOException {
 
-		for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
-
-
-			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
-			elements.add(fileFormat);
-
-			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), fileFormat.getName(), QDataStructWrapper.class, true);
-			dataStructureWriter.writeElements(elements);
+		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
+			writePublicField(fileFormat, false);			
 		}
 
+		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
+			
+			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
+			elements.addAll(fileFormat.getDefinition().getElements());
+
+			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), fileFormat.getName(), QRecordWrapper.class, true);
+			dataStructureWriter.writeElements(elements);
+		}
 	}
 }

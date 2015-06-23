@@ -68,7 +68,7 @@ public class JDTProjectUtil {
 		attributes.putValue("Bundle-Name", projectDef.getText());
 		attributes.putValue("Bundle-SymbolicName", projectDef.getName());		
 		attributes.putValue("Bundle-Version", "0.7.0.qualifier");
-//		attributes.putValue("Require-Bundle", "org.asup.os.core, org.asup.db.core, org.smeup.sys.il.data, org.asup.il.esam, org.asup.il.flow, org.asup.os.pgm, org.asup.os.pgm.rpj, org.asup.os.file, com.smeup.erp.gen.file.dbf, com.smeup.erp.gen.file.dspf, com.smeup.erp.gen.file.prtf, com.smeup.erp.gen.sqlpkg, com.smeup.erp.gen.module, com.smeup.erp.gen.pgm");
+		attributes.putValue("Require-Bundle", "org.smeup.sys.il.data, org.asup.il.esam");
 		attributes.putValue("Bundle-RequiredExecutionEnvironment", "JavaSE-1.7");
 		attributes.putValue("Export-Package", ".");
 		

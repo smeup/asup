@@ -115,21 +115,13 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FILE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>File</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
+	int FILE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '
@@ -186,14 +178,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE__CREATION_INFO = FILE__CREATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATABASE_FILE__FACETS = FILE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Database Format</b></em>' containment reference.
@@ -349,6 +333,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE_FORMAT_FIELD__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT_FIELD__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -356,6 +349,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE_FORMAT_FIELD__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT_FIELD__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -437,6 +439,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DATABASE_FILE_FIELD__FACETS = FILE_FORMAT_FIELD__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FIELD__CARDINALITY = FILE_FORMAT_FIELD__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -444,6 +455,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE_FIELD__CONSTANT = FILE_FORMAT_FIELD__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FIELD__DEFAULT = FILE_FORMAT_FIELD__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -515,6 +535,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE_FORMAT__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT__CARDINALITY = QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -522,6 +551,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE_FORMAT__CONSTANT = QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_FORMAT__DEFAULT = QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -613,6 +651,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DATABASE_FILE_FORMAT__FACETS = FILE_FORMAT__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FORMAT__CARDINALITY = FILE_FORMAT__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -620,6 +667,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE_FORMAT__CONSTANT = FILE_FORMAT__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE_FORMAT__DEFAULT = FILE_FORMAT__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -798,14 +854,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE__CREATION_INFO = FILE__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISPLAY_FILE__FACETS = FILE__FACETS;
-
-	/**
 	 * The feature id for the '<em><b>Display Formats</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -830,6 +878,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE_FIELD__FACETS = FILE_FORMAT_FIELD__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FIELD__CARDINALITY = FILE_FORMAT_FIELD__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -837,6 +894,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_FILE_FIELD__CONSTANT = FILE_FORMAT_FIELD__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FIELD__DEFAULT = FILE_FORMAT_FIELD__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -908,6 +974,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE_FORMAT__FACETS = FILE_FORMAT__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FORMAT__CARDINALITY = FILE_FORMAT__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -915,6 +990,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_FILE_FORMAT__CONSTANT = FILE_FORMAT__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE_FORMAT__DEFAULT = FILE_FORMAT__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -1301,14 +1385,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int LOGICAL_FILE__CREATION_INFO = DATABASE_FILE__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_FILE__FACETS = DATABASE_FILE__FACETS;
-
-	/**
 	 * The feature id for the '<em><b>Database Format</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1386,14 +1462,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PHYSICAL_FILE__CREATION_INFO = DATABASE_FILE__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_FILE__FACETS = DATABASE_FILE__FACETS;
-
-	/**
 	 * The feature id for the '<em><b>Database Format</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1454,14 +1522,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PRINTER_FILE__CREATION_INFO = FILE__CREATION_INFO;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINTER_FILE__FACETS = FILE__FACETS;
-
-	/**
 	 * The feature id for the '<em><b>Printer Formats</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -1496,6 +1556,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PRINTER_FILE_FORMAT__FACETS = FILE_FORMAT__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FORMAT__CARDINALITY = FILE_FORMAT__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1503,6 +1572,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINTER_FILE_FORMAT__CONSTANT = FILE_FORMAT__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FORMAT__DEFAULT = FILE_FORMAT__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -1647,6 +1725,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PRINTER_FILE_FIELD__FACETS = FILE_FORMAT_FIELD__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FIELD__CARDINALITY = FILE_FORMAT_FIELD__CARDINALITY;
+
+	/**
 	 * The feature id for the '<em><b>Constant</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1654,6 +1741,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINTER_FILE_FIELD__CONSTANT = FILE_FORMAT_FIELD__CONSTANT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE_FIELD__DEFAULT = FILE_FORMAT_FIELD__DEFAULT;
 
 	/**
 	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -1768,14 +1864,6 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE_FILE__CREATION_INFO = FILE__CREATION_INFO;
-
-	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE_FILE__FACETS = FILE__FACETS;
 
 	/**
 	 * The number of structural features of the '<em>Source File</em>' class.

@@ -19,7 +19,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.QPrinterFileFormat;
@@ -39,11 +39,15 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 	public void writerPrinterFile(QPrinterFile printerFile) throws IOException {
 
 		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {
+			writePublicField(printerFileFormat, false);
+		}
+		
+		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {
 
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
-			elements.add(printerFileFormat);
+			elements.addAll(printerFileFormat.getDefinition().getElements());
 
-			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QDataStructWrapper.class, true);
+			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QRecordWrapper.class, true);
 			dataStructureWriter.writeElements(elements);
 		}
 

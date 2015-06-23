@@ -8,7 +8,6 @@
 package org.smeup.sys.dk.compiler.impl;
 
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -21,6 +20,7 @@ import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.QCompilationTrashCan;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
+import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -436,7 +436,7 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * @generated
 	 */
 	@Override
-	public QNamedNode getRoot() {
+	public QNameable getRoot() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -25,6 +25,7 @@ import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.impl.CompilationUnitImpl;
+import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.QRemap;
@@ -48,7 +49,7 @@ import org.smeup.sys.il.flow.QRoutine;
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QContext context;
-	private QNamedNode root;
+	private QNameable root;
 
 	private List<QCompilationUnit> compilationUnits;
 	private CaseSensitiveType caseSensitive;
@@ -66,7 +67,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
 	private Map<String, QPrototype<?>> cachedPrototypes = new HashMap<String, QPrototype<?>>();
 
-	public RPJCompilationUnitImpl(QContext context, QNamedNode root, List<QCompilationUnit> compilationUnits, CaseSensitiveType caseSensitive) {
+	public RPJCompilationUnitImpl(QContext context, QNameable root, List<QCompilationUnit> compilationUnits, CaseSensitiveType caseSensitive) {
 
 		this.context = context;
 		this.compilationUnits = compilationUnits;
@@ -731,7 +732,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
-	public QNamedNode getRoot() {
+	public QNameable getRoot() {
 		return this.root;
 	}
 

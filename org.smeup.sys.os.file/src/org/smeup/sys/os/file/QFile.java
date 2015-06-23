@@ -9,7 +9,6 @@ package org.smeup.sys.os.file;
 
 import java.net.URI;
 
-import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.os.type.QTypedObject;
 
 /**
@@ -21,7 +20,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * @model abstract="true"
  * @generated
  */
-public interface QFile extends QTypedObject, QNamedNode {
+public interface QFile extends QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
