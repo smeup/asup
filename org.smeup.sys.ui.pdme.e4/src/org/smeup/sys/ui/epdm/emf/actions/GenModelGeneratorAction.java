@@ -1,4 +1,4 @@
-package org.smeup.sys.ui.pdme.e4.actions;
+package org.smeup.sys.ui.epdm.emf.actions;
 
 import java.io.IOException;
 import java.util.Collections;

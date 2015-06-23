@@ -9,7 +9,7 @@
  * Contributors: 
  *   Mattia Rocchi - Initial API and implementation 
  */
-package org.smeup.sys.ui.pdme.e4;
+package org.smeup.sys.ui.epdm.emf;
 
 
 import org.eclipse.jface.resource.ImageDescriptor;
