@@ -22,7 +22,7 @@
          version="0.0.0"/>
 
    <includes
-         id="org.smeup.erp.ft.comp.base"
+         id="org.smeup.sys.ft.comp.base"
          version="0.0.0"/>
 
    <plugin
