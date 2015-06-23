@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.co.flux.FluxFactory;
-import org.smeup.sys.co.flux.FluxPackage;
-import org.smeup.sys.co.flux.FluxServerConnectionConfig;
+import org.smeup.sys.co.flux.QFluxFactory;
+import org.smeup.sys.co.flux.QFluxPackage;
+import org.smeup.sys.co.flux.QFluxServerConnectionConfig;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
@@ -22,7 +22,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
+public class FluxPackageImpl extends EPackageImpl implements QFluxPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,12 +40,12 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.co.flux.FluxPackage#eNS_URI
+	 * @see org.smeup.sys.co.flux.QFluxPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
 	private FluxPackageImpl() {
-		super(eNS_URI, FluxFactory.eINSTANCE);
+		super(eNS_URI, QFluxFactory.eINSTANCE);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link FluxPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QFluxPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,8 +67,8 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static FluxPackage init() {
-		if (isInited) return (FluxPackage)EPackage.Registry.INSTANCE.getEPackage(FluxPackage.eNS_URI);
+	public static QFluxPackage init() {
+		if (isInited) return (QFluxPackage)EPackage.Registry.INSTANCE.getEPackage(QFluxPackage.eNS_URI);
 
 		// Obtain or create and register package
 		FluxPackageImpl theFluxPackage = (FluxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof FluxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new FluxPackageImpl());
@@ -89,7 +89,7 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(FluxPackage.eNS_URI, theFluxPackage);
+		EPackage.Registry.INSTANCE.put(QFluxPackage.eNS_URI, theFluxPackage);
 		return theFluxPackage;
 	}
 
@@ -152,8 +152,8 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FluxFactory getFluxFactory() {
-		return (FluxFactory)getEFactoryInstance();
+	public QFluxFactory getFluxFactory() {
+		return (QFluxFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -217,12 +217,12 @@ public class FluxPackageImpl extends EPackageImpl implements FluxPackage {
 		fluxServerConnectionConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(fluxServerConnectionConfigEClass, FluxServerConnectionConfig.class, "FluxServerConnectionConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFluxServerConnectionConfig_ChannelID(), ecorePackage.getEString(), "channelID", null, 0, 1, FluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFluxServerConnectionConfig_Host(), ecorePackage.getEString(), "host", null, 1, 1, FluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFluxServerConnectionConfig_LazyStart(), ecorePackage.getEBoolean(), "lazyStart", null, 0, 1, FluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFluxServerConnectionConfig_Token(), ecorePackage.getEString(), "token", null, 0, 1, FluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFluxServerConnectionConfig_UserName(), ecorePackage.getEString(), "userName", null, 1, 1, FluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(fluxServerConnectionConfigEClass, QFluxServerConnectionConfig.class, "FluxServerConnectionConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFluxServerConnectionConfig_ChannelID(), ecorePackage.getEString(), "channelID", null, 0, 1, QFluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFluxServerConnectionConfig_Host(), ecorePackage.getEString(), "host", null, 1, 1, QFluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFluxServerConnectionConfig_LazyStart(), ecorePackage.getEBoolean(), "lazyStart", null, 0, 1, QFluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFluxServerConnectionConfig_Token(), ecorePackage.getEString(), "token", null, 0, 1, QFluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFluxServerConnectionConfig_UserName(), ecorePackage.getEString(), "userName", null, 1, 1, QFluxServerConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

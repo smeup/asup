@@ -5,7 +5,7 @@
     modelName="As.UP Container Flux" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
-    importOrganizing="true">
+    interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>co-flux.ecore</foreignModel>
   <genPackages prefix="Flux" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
       adapterFactory="false" utilityPackageSuffix="" ecorePackage="co-flux.ecore#/">
