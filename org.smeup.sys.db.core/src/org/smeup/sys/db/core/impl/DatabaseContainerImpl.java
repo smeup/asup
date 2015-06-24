@@ -9,7 +9,6 @@ package org.smeup.sys.db.core.impl;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -17,12 +16,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.db.core.QCatalogContainer;
 import org.smeup.sys.db.core.QDatabaseContainer;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +38,12 @@ import org.smeup.sys.db.core.QDatabaseCorePackage;
  *
  * @generated
  */
-public class DatabaseContainerImpl extends MinimalEObjectImpl.Container implements QDatabaseContainer {
+public class DatabaseContainerImpl extends ObjectImpl implements QDatabaseContainer {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The cached value of the '{@link #getCatalogContainers()
 	 * <em>Catalog Containers</em>}' containment reference list. <!--

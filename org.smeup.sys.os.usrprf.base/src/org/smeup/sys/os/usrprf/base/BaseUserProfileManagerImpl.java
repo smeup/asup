@@ -40,7 +40,6 @@ public class BaseUserProfileManagerImpl implements QUserProfileManager {
 			QUserProfile userProfile = QOperatingSystemUserProfileFactory.eINSTANCE.createUserProfile();
 			userProfile.setName(qSystem.getSystemUser());
 			userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-			userProfile.setLibrary(qSystem.getSystemLibrary());
 			userProfile.setText("As.UP System User Profile");
 			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(job, QUserProfile.class, qSystem.getSystemLibrary());
 			resourceUserProfile.save(userProfile);

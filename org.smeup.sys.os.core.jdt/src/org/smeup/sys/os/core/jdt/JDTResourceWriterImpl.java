@@ -27,7 +27,8 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.core.resources.ResourceEventType;
 import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.type.QTypedObject;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
+import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourceReaderImpl<T> implements QResourceWriter<T> {
 
@@ -60,12 +61,12 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 	public synchronized void save(T object, boolean replace) {
 
 		try {
-			if (object instanceof QTypedObject) {
-				QTypedObject typedObject = (QTypedObject) object;
-
+			if (object instanceof TypedObjectImpl) {
+				TypedObjectImpl typedObject = (TypedObjectImpl) object;
+				
 				// library
-				typedObject.setLibrary(getContainer());
-
+				typedObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), getContainer());
+				
 				// creation info
 				if (typedObject.getCreationInfo() == null)
 					typedObject.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));

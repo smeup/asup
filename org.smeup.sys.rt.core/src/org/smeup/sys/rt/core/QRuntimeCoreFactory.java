@@ -63,15 +63,6 @@ public interface QRuntimeCoreFactory extends EFactory {
 	QServiceHook createServiceHook();
 
 	/**
-	 * Returns a new object of class '<em>Service Plugin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Service Plugin</em>'.
-	 * @generated
-	 */
-	QServicePlugin createServicePlugin();
-
-	/**
 	 * Returns a new object of class '<em>Service Ref</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +70,15 @@ public interface QRuntimeCoreFactory extends EFactory {
 	 * @generated
 	 */
 	QServiceRef createServiceRef();
+
+	/**
+	 * Returns a new object of class '<em>Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plugin</em>'.
+	 * @generated
+	 */
+	QPlugin createPlugin();
 
 	/**
 	 * Returns the package supported by this factory.

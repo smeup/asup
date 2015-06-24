@@ -167,10 +167,6 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 			return delegate.getLibrary();
 		}
 
-		public void setLibrary(String value) {
-			delegate.setLibrary(value);
-		}
-
 		public String getAttribute() {
 			return delegate.getAttribute();
 		}

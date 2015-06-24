@@ -8,28 +8,38 @@
 package org.smeup.sys.rt.core.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.smeup.sys.il.core.meta.impl.FacetImpl;
+
+import org.smeup.sys.rt.core.QPlugin;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
-import org.smeup.sys.rt.core.QServicePlugin;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Service Plugin</b></em>'.
+ * An implementation of the model object '<em><b>Plugin</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServicePluginImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServicePluginImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServicePluginImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.impl.ServicePluginImpl#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin {
+public class PluginImpl extends FacetImpl implements QPlugin {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,6 +49,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -48,6 +59,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,6 +69,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected static final String TEXT_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,6 +79,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected String text = TEXT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -75,6 +89,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected static final String VERSION_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -84,6 +99,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected String version = VERSION_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,6 +109,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * @ordered
 	 */
 	protected static final String VENDOR_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getVendor() <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -108,7 +125,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ServicePluginImpl() {
+	protected PluginImpl() {
 		super();
 	}
 
@@ -119,7 +136,7 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QRuntimeCorePackage.Literals.SERVICE_PLUGIN;
+		return QRuntimeCorePackage.Literals.PLUGIN;
 	}
 
 	/**
@@ -127,7 +144,6 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -137,12 +153,11 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_PLUGIN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__NAME, oldName, name));
 	}
 
 	/**
@@ -150,7 +165,6 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getText() {
 		return text;
 	}
@@ -160,12 +174,11 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setText(String newText) {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_PLUGIN__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__TEXT, oldText, text));
 	}
 
 	/**
@@ -173,7 +186,6 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -183,12 +195,11 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_PLUGIN__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -196,7 +207,6 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getVendor() {
 		return vendor;
 	}
@@ -206,12 +216,11 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setVendor(String newVendor) {
 		String oldVendor = vendor;
 		vendor = newVendor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.SERVICE_PLUGIN__VENDOR, oldVendor, vendor));
+			eNotify(new ENotificationImpl(this, Notification.SET, QRuntimeCorePackage.PLUGIN__VENDOR, oldVendor, vendor));
 	}
 
 	/**
@@ -222,13 +231,13 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_PLUGIN__NAME:
+			case QRuntimeCorePackage.PLUGIN__NAME:
 				return getName();
-			case QRuntimeCorePackage.SERVICE_PLUGIN__TEXT:
+			case QRuntimeCorePackage.PLUGIN__TEXT:
 				return getText();
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VERSION:
+			case QRuntimeCorePackage.PLUGIN__VERSION:
 				return getVersion();
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VENDOR:
+			case QRuntimeCorePackage.PLUGIN__VENDOR:
 				return getVendor();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -242,16 +251,16 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_PLUGIN__NAME:
+			case QRuntimeCorePackage.PLUGIN__NAME:
 				setName((String)newValue);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__TEXT:
+			case QRuntimeCorePackage.PLUGIN__TEXT:
 				setText((String)newValue);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VERSION:
+			case QRuntimeCorePackage.PLUGIN__VERSION:
 				setVersion((String)newValue);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VENDOR:
+			case QRuntimeCorePackage.PLUGIN__VENDOR:
 				setVendor((String)newValue);
 				return;
 		}
@@ -266,16 +275,16 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_PLUGIN__NAME:
+			case QRuntimeCorePackage.PLUGIN__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__TEXT:
+			case QRuntimeCorePackage.PLUGIN__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VERSION:
+			case QRuntimeCorePackage.PLUGIN__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VENDOR:
+			case QRuntimeCorePackage.PLUGIN__VENDOR:
 				setVendor(VENDOR_EDEFAULT);
 				return;
 		}
@@ -290,13 +299,13 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QRuntimeCorePackage.SERVICE_PLUGIN__NAME:
+			case QRuntimeCorePackage.PLUGIN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QRuntimeCorePackage.SERVICE_PLUGIN__TEXT:
+			case QRuntimeCorePackage.PLUGIN__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VERSION:
+			case QRuntimeCorePackage.PLUGIN__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case QRuntimeCorePackage.SERVICE_PLUGIN__VENDOR:
+			case QRuntimeCorePackage.PLUGIN__VENDOR:
 				return VENDOR_EDEFAULT == null ? vendor != null : !VENDOR_EDEFAULT.equals(vendor);
 		}
 		return super.eIsSet(featureID);
@@ -324,4 +333,4 @@ public class ServicePluginImpl extends ServiceRefImpl implements QServicePlugin 
 		return result.toString();
 	}
 
-} //ServicePluginImpl
+} //PluginImpl

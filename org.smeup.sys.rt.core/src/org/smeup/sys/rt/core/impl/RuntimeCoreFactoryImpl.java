@@ -63,8 +63,8 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 			case QRuntimeCorePackage.APPLICATION_COMPONENT: return (EObject)createApplicationComponent();
 			case QRuntimeCorePackage.APPLICATION_MODULE: return (EObject)createApplicationModule();
 			case QRuntimeCorePackage.SERVICE_HOOK: return (EObject)createServiceHook();
-			case QRuntimeCorePackage.SERVICE_PLUGIN: return (EObject)createServicePlugin();
 			case QRuntimeCorePackage.SERVICE_REF: return (EObject)createServiceRef();
+			case QRuntimeCorePackage.PLUGIN: return (EObject)createPlugin();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -150,9 +150,9 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
-	public QServicePlugin createServicePlugin() {
-		ServicePluginImpl servicePlugin = new ServicePluginImpl();
-		return servicePlugin;
+	public QServiceRef createServiceRef() {
+		ServiceRefImpl serviceRef = new ServiceRefImpl();
+		return serviceRef;
 	}
 
 	/**
@@ -160,10 +160,9 @@ public class RuntimeCoreFactoryImpl extends EFactoryImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public QServiceRef createServiceRef() {
-		ServiceRefImpl serviceRef = new ServiceRefImpl();
-		return serviceRef;
+	public QPlugin createPlugin() {
+		PluginImpl plugin = new PluginImpl();
+		return plugin;
 	}
 
 	/**

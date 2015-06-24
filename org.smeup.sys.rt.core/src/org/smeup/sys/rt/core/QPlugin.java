@@ -7,27 +7,28 @@
  */
 package org.smeup.sys.rt.core;
 
+import org.smeup.sys.il.core.meta.QFacet;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Service Plugin</b></em>'.
+ * A representation of the model object '<em><b>Plugin</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.QServicePlugin#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServicePlugin#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServicePlugin#getVersion <em>Version</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QServicePlugin#getVendor <em>Vendor</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServicePlugin()
+ * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin()
  * @model
  * @generated
  */
-public interface QServicePlugin extends QServiceRef {
+public interface QPlugin extends QFacet {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,14 +39,14 @@ public interface QServicePlugin extends QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServicePlugin_Name()
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServicePlugin#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -64,14 +65,14 @@ public interface QServicePlugin extends QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServicePlugin_Text()
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Text()
 	 * @model
 	 * @generated
 	 */
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServicePlugin#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.
@@ -90,14 +91,14 @@ public interface QServicePlugin extends QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServicePlugin_Version()
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Version()
 	 * @model
 	 * @generated
 	 */
 	String getVersion();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServicePlugin#getVersion <em>Version</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Version</em>' attribute.
@@ -116,14 +117,14 @@ public interface QServicePlugin extends QServiceRef {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Vendor</em>' attribute.
 	 * @see #setVendor(String)
-	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServicePlugin_Vendor()
+	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Vendor()
 	 * @model
 	 * @generated
 	 */
 	String getVendor();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QServicePlugin#getVendor <em>Vendor</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Vendor</em>' attribute.
@@ -132,4 +133,4 @@ public interface QServicePlugin extends QServiceRef {
 	 */
 	void setVendor(String value);
 
-} // QServicePlugin
+} // QPlugin

@@ -45,7 +45,6 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 			QUserProfile userProfile = QOperatingSystemUserProfileFactory.eINSTANCE.createUserProfile();
 			userProfile.setName(root.getId());
 			userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-			userProfile.setLibrary(qSystem.getSystemLibrary());
 			userProfile.setText("FB root  : " + root.getName());
 			QResourceWriter<QUserProfile> resourceUserProfile = resourceManager.getResourceWriter(job, QUserProfile.class, qSystem.getSystemLibrary());
 			resourceUserProfile.save(userProfile);

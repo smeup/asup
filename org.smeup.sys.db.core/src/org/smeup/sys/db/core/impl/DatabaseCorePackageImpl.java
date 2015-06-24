@@ -67,6 +67,7 @@ import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -1003,6 +1004,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		SQLConstraintsPackage theSQLConstraintsPackage = (SQLConstraintsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLConstraintsPackage.eNS_URI);
 		SQLTablesPackage theSQLTablesPackage = (SQLTablesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLTablesPackage.eNS_URI);
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
@@ -1013,6 +1015,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		// Add supertypes to classes
 		connectionEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		connectionCredentialsEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getCredentials());
+		databaseContainerEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		indexDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		indexColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		preparedStatementEClass.getESuperTypes().add(this.getStatement());
@@ -1252,8 +1255,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		addEOperation(databaseManagerEClass, ecorePackage.getEBoolean(), "isStarted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(databaseManagerEClass, null, "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDatabaseContainer(), "databaseContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(databaseManagerEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataSourceFactoryEClass, DataSourceFactory.class, "DataSourceFactory", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

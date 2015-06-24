@@ -162,7 +162,7 @@
       <eParameters name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatabaseContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseContainer" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EReference" name="catalogContainers" lowerBound="1"
         upperBound="-1" eType="#//CatalogContainer" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultCatalogContainer"
@@ -221,9 +221,7 @@
       <eParameters name="view" lowerBound="1" eType="ecore:EClass ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/ViewTable"/>
     </eOperations>
     <eOperations name="isStarted" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="start" lowerBound="1">
-      <eParameters name="databaseContainer" lowerBound="1" eType="#//DatabaseContainer"/>
-    </eOperations>
+    <eOperations name="start"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DatabaseResultSet" instanceClassName="java.sql.ResultSet"
       serializable="false"/>

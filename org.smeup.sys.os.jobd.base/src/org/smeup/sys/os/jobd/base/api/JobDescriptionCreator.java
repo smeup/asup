@@ -88,7 +88,6 @@ public class JobDescriptionCreator {
 		qJobDescription = QOperatingSystemJobDescriptionFactory.eINSTANCE.createJobDescription();
 
 		qJobDescription.setName(jobDescription.name.trimR());
-		qJobDescription.setLibrary(library);
 
 		// TEXT
 		switch (textDescription.asEnum()) {

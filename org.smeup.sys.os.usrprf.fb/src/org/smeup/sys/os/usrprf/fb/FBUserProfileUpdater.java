@@ -55,7 +55,6 @@ public class FBUserProfileUpdater extends Thread {
 					QUserProfile userProfile = QOperatingSystemUserProfileFactory.eINSTANCE.createUserProfile();
 					userProfile.setName(friend.getId());
 					userProfile.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-					userProfile.setLibrary(job.getSystem().getSystemLibrary());
 					userProfile.setText("FB friend: " + friend.getName());
 					userProfileWriter.save(userProfile, true);
 					tempFriends.add(friend);

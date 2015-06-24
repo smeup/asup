@@ -86,8 +86,8 @@ public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
 	public T lookupByVendorVersion(String vendor, String version) {
 
 		// search plugin
-		String serviceFilter = "(org.smeup.sys.rt.core.plugin.vendor=" + vendor + ") "
-							 + "(org.smeup.sys.rt.core.plugin.version=" + version + ")";
+		String serviceFilter = "(&(org.smeup.sys.rt.core.plugin.vendor=" + vendor + ")"
+							 + "(org.smeup.sys.rt.core.plugin.version=" + version + "))";
 		
 		
 		Collection<ServiceReference<T>> pluginReferences;

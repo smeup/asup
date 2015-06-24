@@ -35,8 +35,8 @@ import org.smeup.sys.rt.core.ComponentStarting;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationModule;
+import org.smeup.sys.rt.core.QPlugin;
 import org.smeup.sys.rt.core.QServiceHook;
-import org.smeup.sys.rt.core.QServicePlugin;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.ServiceRegistering;
 import org.smeup.sys.rt.core.ServiceStatus;
@@ -191,14 +191,14 @@ public class E4ApplicationStarter {
 		// register on context
 		Dictionary<String, Object> dictionary = new Hashtable<String, Object>();
 
-		if (serviceRef instanceof QServicePlugin) {
-			QServicePlugin servicePlugin = (QServicePlugin) serviceRef;
+		if (serviceRef.getFacet(QPlugin.class) != null) {
+			QPlugin plugin = serviceRef.getFacet(QPlugin.class);
 
 			// register on context
-			dictionary.put("org.smeup.sys.rt.core.plugin.name", servicePlugin.getName());
-			dictionary.put("org.smeup.sys.rt.core.plugin.text", servicePlugin.getText());
-			dictionary.put("org.smeup.sys.rt.core.plugin.vendor", servicePlugin.getVendor());
-			dictionary.put("org.smeup.sys.rt.core.plugin.version", servicePlugin.getVersion());
+			dictionary.put("org.smeup.sys.rt.core.plugin.name", plugin.getName());
+			dictionary.put("org.smeup.sys.rt.core.plugin.text", plugin.getText());
+			dictionary.put("org.smeup.sys.rt.core.plugin.vendor", plugin.getVendor());
+			dictionary.put("org.smeup.sys.rt.core.plugin.version", plugin.getVersion());
 
 		}
 

@@ -67,7 +67,7 @@ public class MessageFileCreator {
 
 		// MSGF
 		qMessageFile.setName(messageFile.name.trimR());
-		qMessageFile.setLibrary(library);
+//		qMessageFile.setLibrary(library);
 
 		// TEXT
 		switch (textDescription.asEnum()) {

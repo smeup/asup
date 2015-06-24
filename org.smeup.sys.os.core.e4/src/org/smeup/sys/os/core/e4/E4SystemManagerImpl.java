@@ -65,7 +65,6 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		if (!resourceLibrary.exists(this.system.getSystemLibrary())) {
 			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(this.system));
-			library.setLibrary(this.system.getSystemLibrary());
 			library.setName(this.system.getSystemLibrary());
 			library.setText("As.UP System Library");
 			resourceLibrary.save(library);

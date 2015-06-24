@@ -41,8 +41,7 @@ public interface QTypedObject extends QObjectNameable {
 	 * @return the value of the '<em>Application</em>' attribute.
 	 * @see #setApplication(String)
 	 * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedObject_Application()
-	 * @model derived="true"
-	 *        annotation="il-data length='10'"
+	 * @model annotation="il-data length='10'"
 	 * @generated
 	 */
 	String getApplication();
@@ -70,12 +69,10 @@ public interface QTypedObject extends QObjectNameable {
 	String getLibrary();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.type.QTypedObject#getLibrary
-	 * <em>Library</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Library</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.type.QTypedObject#getLibrary <em>Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Library</em>' attribute.
 	 * @see #getLibrary()
 	 * @generated
 	 */

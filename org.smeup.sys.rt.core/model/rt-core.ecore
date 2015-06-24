@@ -104,13 +104,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceHook" eSuperTypes="#//ServiceRef"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ServicePlugin" eSuperTypes="#//ServiceRef">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef">
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceRef" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Node">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interfaceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -125,6 +119,12 @@
     <eLiterals name="Active" literal="ACT"/>
     <eLiterals name="Stopped" value="20" literal="STP"/>
     <eLiterals name="Testing" value="30" literal="TST"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Plugin" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vendor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eSubpackages name="auth" nsURI="http://www.smeup.org/asup/rt/core/auth" nsPrefix="rt-core-auth">
     <eClassifiers xsi:type="ecore:EClass" name="AuthenticationToken" abstract="true"
