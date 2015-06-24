@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="ASCII"?>
-<co-flux:FluxServerConnectionConfig xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co-flux="http://www.asup.org/co/flux" xsi:schemaLocation="http://www.asup.org/co/flux co-flux.ecore"/>
+<co-flux:FluxServerConnectionConfig xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co-flux="http://www.smeup.org/asup/co/flux" xsi:schemaLocation="http://www.smeup.org/asup/co/flux co-flux.ecore"/>
