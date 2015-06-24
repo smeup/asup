@@ -31,7 +31,8 @@ import org.smeup.sys.os.core.resources.QResourceEvent;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.core.resources.ResourceEventType;
 import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.type.QTypedObject;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
+import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourceReaderImpl<T> implements QResourceWriter<T> {
 
@@ -117,11 +118,11 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 				}
 		}
 
-		if (object instanceof QTypedObject) {
-			QTypedObject typedObject = (QTypedObject) object;
-
+		if (object instanceof TypedObjectImpl) {
+			TypedObjectImpl typedObject = (TypedObjectImpl) object;
+			
 			// library
-			typedObject.setLibrary(getContainer());
+			typedObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), getContainer());
 
 			// creation info
 			if (typedObject.getCreationInfo() == null)

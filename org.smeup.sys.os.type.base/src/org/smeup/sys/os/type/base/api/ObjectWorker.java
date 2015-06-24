@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
@@ -99,21 +100,24 @@ public class ObjectWorker {
 
 			}
 
-			QTypedObject qObject = null;
+			QObject qObject = null;
 			while (objectIterator.hasNext())
 				try {
-					qObject = (QTypedObject) objectIterator.next();
+					qObject = objectIterator.next();
 
-					// text
-					if (!text.isNull() && !text.isEmpty())
-						if (qObject.getText() == null || qObject.getText().toUpperCase().indexOf(text.trimR().toUpperCase()) < 0)
-							continue;
+					if (qObject instanceof QTypedObject) {
+						QTypedObject qTypedObject = (QTypedObject) qObject;
+						// text
+						if (!text.isNull() && !text.isEmpty())
+							if (qTypedObject.getText() == null || qTypedObject.getText().toUpperCase().indexOf(text.trimR().toUpperCase()) < 0)
+								continue;
 
-					// application
-					if (!application.isNull() && !application.isEmpty())
-						if (qObject.getApplication() == null || qObject.getApplication().toUpperCase().indexOf(application.trimR().toUpperCase()) < 0)
-							continue;
+						// application
+						if (!application.isNull() && !application.isEmpty())
+							if (qTypedObject.getApplication() == null || qTypedObject.getApplication().toUpperCase().indexOf(application.trimR().toUpperCase()) < 0)
+								continue;
 
+					}
 					objectWriter.write(qObject);
 
 				} catch (Exception e) {

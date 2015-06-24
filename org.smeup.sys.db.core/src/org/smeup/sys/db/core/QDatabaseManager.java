@@ -103,10 +103,11 @@ public interface QDatabaseManager {
 	boolean isStarted();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model databaseContainerRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
 	 * @generated
 	 */
-	void start(QDatabaseContainer databaseContainer);
+	void start();
 
 } // DatabaseManager

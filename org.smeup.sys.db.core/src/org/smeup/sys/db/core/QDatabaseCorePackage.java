@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 /**
@@ -359,7 +360,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_CONTAINER__CATALOG_CONTAINERS = 0;
+	int DATABASE_CONTAINER__CATALOG_CONTAINERS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Default Catalog Container</b></em>' reference.
@@ -367,7 +368,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_CONTAINER__DEFAULT_CATALOG_CONTAINER = 1;
+	int DATABASE_CONTAINER__DEFAULT_CATALOG_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Vendor</b></em>' attribute. <!--
@@ -376,7 +377,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_CONTAINER__VENDOR = 2;
+	int DATABASE_CONTAINER__VENDOR = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute. <!--
@@ -385,7 +386,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_CONTAINER__VERSION = 3;
+	int DATABASE_CONTAINER__VERSION = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Database Container</em>' class.
@@ -393,7 +394,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_CONTAINER_FEATURE_COUNT = 4;
+	int DATABASE_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.DatabaseObjectDefImpl <em>Database Object Def</em>}' class.

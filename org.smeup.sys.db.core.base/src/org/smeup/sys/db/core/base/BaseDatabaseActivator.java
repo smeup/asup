@@ -11,15 +11,14 @@
  */
 package org.smeup.sys.db.core.base;
 
-import org.smeup.sys.db.core.QDatabaseContainer;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.rt.core.ComponentStarted;
 
-public class BaseDatabaseActivatorHook {
+public class BaseDatabaseActivator {
 
 	@ComponentStarted
-	public void init(QDatabaseManager databaseManager, QDatabaseContainer databaseContainer) {
-
-		databaseManager.start(databaseContainer);
-	}
+	public void start(QDatabaseManager databaseManager) {
+		
+		databaseManager.start();
+	}	
 }

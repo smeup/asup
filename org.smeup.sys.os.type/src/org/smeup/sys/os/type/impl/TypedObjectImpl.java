@@ -56,27 +56,29 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	protected String application = APPLICATION_EDEFAULT;
 
 	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
 	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getLibrary()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LIBRARY_EDEFAULT = null;
+	protected static final String LIBRARY_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #getLibrary()
 	 * @generated
 	 * @ordered
 	 */
 	protected String library = LIBRARY_EDEFAULT;
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -282,10 +284,10 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setLibrary(String newLibrary) {
 		String oldLibrary = library;
 		library = newLibrary;

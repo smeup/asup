@@ -8,6 +8,7 @@
 package org.smeup.sys.db.core;
 
 import java.util.List;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -27,7 +28,7 @@ import java.util.List;
  * @model
  * @generated
  */
-public interface QDatabaseContainer {
+public interface QDatabaseContainer extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Catalog Containers</b></em>' containment reference list.
 	 * The list contents are of type {@link org.smeup.sys.db.core.QCatalogContainer}.

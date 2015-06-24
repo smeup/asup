@@ -8,6 +8,7 @@
 package org.smeup.sys.rt.core;
 
 import java.util.List;
+import org.smeup.sys.il.core.QNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +30,7 @@ import java.util.List;
  * @model
  * @generated
  */
-public interface QServiceRef {
+public interface QServiceRef extends QNode {
 	/**
 	 * Returns the value of the '<em><b>Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

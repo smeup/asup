@@ -54,7 +54,6 @@ public class CDODataQueueManagerImpl implements QDataQueueManager {
 		if (dataQueue == null) {
 			// Queue do not exists. Create and register.
 			dataQueue = QOperatingSystemDataQueueFactory.eINSTANCE.createDataQueue();
-			dataQueue.setLibrary(library);
 			dataQueue.setName(name);
 			dataQueue.setDataQueueType(type);
 			dataQueue.setMaxEntryLength(maxEntryLength);

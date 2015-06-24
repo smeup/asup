@@ -63,20 +63,17 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 	private QDefinitionParserRegistry definitionParserRegistry;
 	@Inject
 	private QQueryParserRegistry queryParserRegistry;
-
+	@Inject
 	private QDatabaseContainer databaseContainer;
 
+	private boolean started;
+	
 	protected QDatabaseContainer getDatabaseContainer() {
 		return this.databaseContainer;
 	}
 
 	@Override
-	public boolean isStarted() {
-		return getDatabaseContainer() != null;
-	}
-
-	@Override
-	public void start(QDatabaseContainer databaseContainer) {
+	public void start() {
 
 		if (isStarted())
 			throw new DatabaseCoreRuntimeException("Database Manager already started: " + this.databaseContainer);
@@ -90,9 +87,15 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 		// database loader
 		BaseDatabaseLoader databaseStarter = application.getContext().make(BaseDatabaseLoader.class);
 		databaseStarter.loadDatabase(databaseContainer);
-
-		this.databaseContainer = databaseContainer;
+		
+		this.started = false;
 	}
+
+	@Override
+	public boolean isStarted() {
+		return this.started;
+	}
+
 
 	@Override
 	public Schema createSchema(QConnection connection, String name, QSchemaDef schemaDef) throws SQLException {

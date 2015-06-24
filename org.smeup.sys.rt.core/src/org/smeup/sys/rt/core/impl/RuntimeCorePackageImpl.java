@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QApplicationManager;
@@ -25,10 +26,10 @@ import org.smeup.sys.rt.core.QApplicationModule;
 import org.smeup.sys.rt.core.QBundleManager;
 import org.smeup.sys.rt.core.QBundleVisitor;
 import org.smeup.sys.rt.core.QLogger;
+import org.smeup.sys.rt.core.QPlugin;
 import org.smeup.sys.rt.core.QRuntimeCoreFactory;
 import org.smeup.sys.rt.core.QRuntimeCorePackage;
 import org.smeup.sys.rt.core.QServiceHook;
-import org.smeup.sys.rt.core.QServicePlugin;
 import org.smeup.sys.rt.core.QServiceRef;
 import org.smeup.sys.rt.core.ServiceStatus;
 import org.smeup.sys.rt.core.auth.QRuntimeCoreAuthPackage;
@@ -102,14 +103,14 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass servicePluginEClass = null;
+	private EClass serviceRefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass serviceRefEClass = null;
+	private EClass pluginEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -373,56 +374,6 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	 * @generated
 	 */
 	@Override
-	public EClass getServicePlugin() {
-		return servicePluginEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getServicePlugin_Name() {
-		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getServicePlugin_Text() {
-		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getServicePlugin_Version() {
-		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getServicePlugin_Vendor() {
-		return (EAttribute)servicePluginEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getServiceRef() {
 		return serviceRefEClass;
 	}
@@ -475,6 +426,51 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 	@Override
 	public EReference getServiceRef_Services() {
 		return (EReference)serviceRefEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlugin() {
+		return pluginEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_Name() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_Text() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_Version() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_Vendor() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -542,18 +538,18 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 
 		serviceHookEClass = createEClass(SERVICE_HOOK);
 
-		servicePluginEClass = createEClass(SERVICE_PLUGIN);
-		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__NAME);
-		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__TEXT);
-		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__VERSION);
-		createEAttribute(servicePluginEClass, SERVICE_PLUGIN__VENDOR);
-
 		serviceRefEClass = createEClass(SERVICE_REF);
 		createEAttribute(serviceRefEClass, SERVICE_REF__CLASS_NAME);
 		createEAttribute(serviceRefEClass, SERVICE_REF__INTERFACE_NAME);
 		createEAttribute(serviceRefEClass, SERVICE_REF__REMOTE_EXPORT);
 		createEAttribute(serviceRefEClass, SERVICE_REF__STATUS);
 		createEReference(serviceRefEClass, SERVICE_REF__SERVICES);
+
+		pluginEClass = createEClass(PLUGIN);
+		createEAttribute(pluginEClass, PLUGIN__NAME);
+		createEAttribute(pluginEClass, PLUGIN__TEXT);
+		createEAttribute(pluginEClass, PLUGIN__VERSION);
+		createEAttribute(pluginEClass, PLUGIN__VENDOR);
 
 		// Create enums
 		serviceStatusEEnum = createEEnum(SERVICE_STATUS);
@@ -587,6 +583,7 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theRuntimeCoreAuthPackage);
@@ -602,7 +599,8 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 		applicationComponentEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		applicationModuleEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		serviceHookEClass.getESuperTypes().add(this.getServiceRef());
-		servicePluginEClass.getESuperTypes().add(this.getServiceRef());
+		serviceRefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNode());
+		pluginEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(applicationEClass, QApplication.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -699,18 +697,18 @@ public class RuntimeCorePackageImpl extends EPackageImpl implements QRuntimeCore
 
 		initEClass(serviceHookEClass, QServiceHook.class, "ServiceHook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(servicePluginEClass, QServicePlugin.class, "ServicePlugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getServicePlugin_Name(), ecorePackage.getEString(), "name", null, 1, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServicePlugin_Text(), ecorePackage.getEString(), "text", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServicePlugin_Version(), ecorePackage.getEString(), "version", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getServicePlugin_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QServicePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(serviceRefEClass, QServiceRef.class, "ServiceRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceRef_ClassName(), ecorePackage.getEString(), "className", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRef_InterfaceName(), ecorePackage.getEString(), "interfaceName", null, 0, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRef_RemoteExport(), ecorePackage.getEBoolean(), "remoteExport", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceRef_Status(), this.getServiceStatus(), "status", null, 1, 1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServiceRef_Services(), this.getServiceRef(), null, "services", null, 0, -1, QServiceRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pluginEClass, QPlugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPlugin_Name(), ecorePackage.getEString(), "name", null, 1, 1, QPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_Text(), ecorePackage.getEString(), "text", null, 0, 1, QPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_Version(), ecorePackage.getEString(), "version", null, 0, 1, QPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_Vendor(), ecorePackage.getEString(), "vendor", null, 0, 1, QPlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(serviceStatusEEnum, ServiceStatus.class, "ServiceStatus");

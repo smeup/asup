@@ -17,26 +17,28 @@
       <genEnumLiterals ecoreEnumLiteral="rt-core.ecore#//ServiceStatus/Testing"/>
     </genEnums>
     <genClasses ecoreClass="rt-core.ecore#//Application">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//Application/components"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//Application/hooks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//Application/levels"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Application/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Application/text"/>
     </genClasses>
     <genClasses ecoreClass="rt-core.ecore#//ApplicationComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationComponent/configs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationComponent/hooks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationComponent/modules"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ApplicationComponent/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationComponent/services"/>
-    </genClasses>
-    <genClasses ecoreClass="rt-core.ecore#//ApplicationLevel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationLevel/hooks"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ApplicationLevel/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationLevel/components"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ApplicationLevel/value"/>
     </genClasses>
     <genClasses image="false" ecoreClass="rt-core.ecore#//ApplicationManager">
       <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/start">
         <genParameters ecoreParameter="rt-core.ecore#//ApplicationManager/start/application"/>
         <genParameters ecoreParameter="rt-core.ecore#//ApplicationManager/start/output"/>
       </genOperations>
+      <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/restart"/>
+      <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/restartCalled"/>
+    </genClasses>
+    <genClasses ecoreClass="rt-core.ecore#//ApplicationModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ApplicationModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ApplicationModule/services"/>
     </genClasses>
     <genClasses image="false" ecoreClass="rt-core.ecore#//BundleManager">
       <genOperations ecoreOperation="rt-core.ecore#//BundleManager/isRegisterable">
@@ -99,26 +101,28 @@
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="rt-core.ecore#//ServiceHook"/>
-    <genClasses ecoreClass="rt-core.ecore#//ServicePlugin">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServicePlugin/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ServicePlugin/services"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServicePlugin/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServicePlugin/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServicePlugin/vendor"/>
+    <genClasses ecoreClass="rt-core.ecore#//ServiceRef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/className"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/interfaceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/remoteExport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceRef/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rt-core.ecore#//ServiceRef/services"/>
     </genClasses>
-    <genClasses ecoreClass="rt-core.ecore#//ServiceReference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceReference/className"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceReference/interfaceName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceReference/remoteExport"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ServiceReference/status"/>
+    <genClasses ecoreClass="rt-core.ecore#//Plugin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//Plugin/vendor"/>
     </genClasses>
-    <nestedGenPackages prefix="RuntimeCoreAuth" disposableProviderFactory="true" adapterFactory="false"
-        ecorePackage="rt-core.ecore#//auth">
+    <nestedGenPackages prefix="RuntimeCoreAuth" basePackage="org.smeup.sys.rt.core"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="rt-core.ecore#//auth">
       <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationToken">
         <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationToken/getID"/>
       </genClasses>
       <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationManager">
-        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken"/>
+        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken">
+          <genParameters ecoreParameter="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken/credentials"/>
+        </genOperations>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

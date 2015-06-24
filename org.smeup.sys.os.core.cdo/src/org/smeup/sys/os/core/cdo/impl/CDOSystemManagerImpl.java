@@ -93,7 +93,6 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		if (!resourceLibrary.exists(system.getSystemLibrary())) {
 			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
-			library.setLibrary(system.getSystemLibrary());
 			library.setName(system.getSystemLibrary());
 			library.setText("As.UP System Library");
 			resourceLibrary.save(library);
