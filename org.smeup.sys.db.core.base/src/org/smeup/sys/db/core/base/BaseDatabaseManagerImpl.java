@@ -52,6 +52,7 @@ import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.db.syntax.QQueryParserRegistry;
 import org.smeup.sys.db.syntax.QQueryWriter;
 import org.smeup.sys.il.data.def.QDecimalDef;
+import org.smeup.sys.il.data.def.QIdentityDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.rt.core.QApplication;
 
@@ -133,9 +134,8 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 				tableDef = (QTableDef) EcoreUtil.copy((EObject) tableDef);
 
 				QTableColumnDef pkTableComColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
-				QDecimalDef decimalDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
-				decimalDef.setPrecision(10);
-				pkTableComColumnDef.setDefinition(decimalDef);
+				QIdentityDef identityDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createIdentityDef();
+				pkTableComColumnDef.setDefinition(identityDef);
 
 				pkTableComColumnDef.setName(TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME);
 
@@ -198,9 +198,9 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 				}
 
 				QTableColumnDef pkTableComColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
-				QDecimalDef decimalDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
-				decimalDef.setPrecision(10);
-				pkTableComColumnDef.setDefinition(decimalDef);
+				QIdentityDef identityDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createIdentityDef();
+				pkTableComColumnDef.setDefinition(identityDef);
+
 				pkTableComColumnDef.setName(TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME);
 
 				viewDef.getColumns().add(pkTableComColumnDef);

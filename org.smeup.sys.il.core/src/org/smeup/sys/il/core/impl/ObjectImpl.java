@@ -20,7 +20,7 @@ import org.smeup.sys.il.core.QObject;
  *
  * @generated
  */
-public abstract class ObjectImpl extends MinimalEObjectImpl.Container implements QObject {
+public class ObjectImpl extends MinimalEObjectImpl.Container implements QObject {
 	/**
 	 *
 	 */

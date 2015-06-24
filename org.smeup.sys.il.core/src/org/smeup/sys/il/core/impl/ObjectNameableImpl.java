@@ -19,7 +19,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * @generated
  */
-public abstract class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
+public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 	/**
 	 *
 	 */

@@ -13,7 +13,7 @@ package org.smeup.sys.il.core;
  *
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectNameable()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface QObjectNameable extends QObject, QNameable {

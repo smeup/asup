@@ -51,7 +51,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="facets" upperBound="-1"
         eType="#//meta/Facet" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectContainer" abstract="true" eSuperTypes="#//Object">
     <eTypeParameters name="T">
       <eBounds eClassifier="#//Object"/>
@@ -76,7 +76,7 @@
     </eOperations>
     <eOperations name="remove"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" abstract="true" eSuperTypes="#//Object #//Nameable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" eSuperTypes="#//Object #//Nameable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Overlay" eSuperTypes="#//meta/Facet">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" lowerBound="1"

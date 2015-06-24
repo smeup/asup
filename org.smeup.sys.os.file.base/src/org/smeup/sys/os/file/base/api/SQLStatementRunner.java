@@ -153,7 +153,6 @@ public class SQLStatementRunner {
 			eAttribute.getEAnnotations().add(eAnnotation);
 
 			eClass.getEStructuralFeatures().add(eAttribute);
-
 		}
 
 		return eClass;
