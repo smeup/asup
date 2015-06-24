@@ -43,7 +43,7 @@ public interface QFluxPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.asup.org/co/flux";
+	String eNS_URI = "http://www.smeup.org/asup/co/flux";
 
 	/**
 	 * The package namespace name.

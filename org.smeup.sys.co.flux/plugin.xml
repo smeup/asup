@@ -14,7 +14,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated co-flux -->
       <package
-            uri="http://www.asup.org/co/flux"
+            uri="http://www.smeup.org/asup/co/flux"
             class="org.smeup.sys.co.flux.QFluxPackage"
             genModel="model/co-flux.genmodel"/>
    </extension>
