@@ -98,7 +98,10 @@ public class JDTSourceManagerImpl implements QSourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String projectName, Class<T> type, String name, boolean replace) throws IOException {
+
 		QProject project = getProject(context, projectName);
+		if(project == null)
+			throw new IOException("Invalid project: "+projectName);
 		
 		return createEntry(project, type, name + ".XMI", replace);
 	}

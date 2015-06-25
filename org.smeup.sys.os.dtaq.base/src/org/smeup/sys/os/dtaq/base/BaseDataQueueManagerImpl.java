@@ -64,9 +64,9 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	}
 
 	@Override
-	public void createDataQueue(String ContextID, String library, String name, DataQueueType aType, int aMaxEntryLength) {
+	public void createDataQueue(String contextID, String library, String name, DataQueueType aType, int aMaxEntryLength) {
 
-		QJob job = jobManager.lookup(ContextID);
+		QJob job = jobManager.lookup(contextID);
 		QResourceWriter<QDataQueue> resource = resourceManager.getResourceWriter(job, QDataQueue.class, library);
 		QDataQueue dataQueue = resource.lookup(name);
 		if (dataQueue == null) {
@@ -78,7 +78,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 
 			resource.save(dataQueue);
 
-			System.out.println(ContextID + "\t" + "Queue " + name + " created");
+			System.out.println(contextID + "\t" + "Queue " + name + " created");
 
 			dataQueueManager.createQueue(library, name);
 		} else
