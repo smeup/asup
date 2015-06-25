@@ -11,8 +11,13 @@ import org.smeup.sys.rt.core.impl.ServiceRefImpl;
 
 public class FluxServerConnectorHook extends ServiceRefImpl {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ComponentStarted
-	public void start(QApplication application, QFluxServerConnectionConfig config) {
+	public void start(QApplication application) {
 
 		initProjectConnections();		
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(new WorkspaceListener());
