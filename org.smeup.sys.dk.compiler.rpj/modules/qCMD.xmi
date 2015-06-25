@@ -3,31 +3,41 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-data="http://www.smeup.org/asup/il/data"
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    xmlns:db-esam="http://www.smeup.org/asup/db/esam"
+    xsi:schemaLocation="
+    http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore 
+    http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore 
+    http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def
+    http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il-flow/model/il-flow.ecore
+    http://www.smeup.org/asup/db/esam ../../org.smeup.sys.db.esam/model/db-esam.ecore"
     name="*CMD">
+
   <flowSection>
     <prototypes>
       <delegate
-          xsi:type="il-data:UnaryAtomicDataTerm"
+          xsi:type="il-flow:FlowData"
           name="%execute"/>
       <entry>
         <parameters>
           <delegate
-              xsi:type="il-data:UnaryAtomicDataTerm"
+              xsi:type="il-flow:FlowData"
               name="caller"
-              default=""
-              mandatory="true"/>
+              default="">
+              <cardinality min="1"/>
+          </delegate>
         </parameters>
         <parameters>
           <delegate
-              xsi:type="il-data:UnaryAtomicDataTerm"
+              xsi:type="il-flow:FlowData"
               name="command"
-              default=""
-              mandatory="true">
+              default="">
+              <cardinality min="1"/>
             <definition
-                xsi:type="il-data:StringDef"/>
+                xsi:type="il-data-def:StringDef"/>
           </delegate>
         </parameters>
       </entry>
