@@ -57,6 +57,9 @@ public class LibraryDeleter {
 
 		for (QType<?> type : typeRegistry.list()) {
 
+			if(QType.class.isAssignableFrom(type.getTypedClass()))
+				continue;
+			
 			if (QFile.class.isAssignableFrom(type.getTypedClass()))
 				deleteFileType(type, qLibrary.getName());
 			else
