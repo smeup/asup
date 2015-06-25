@@ -34,6 +34,6 @@ public class BaseDataQueueSender {
 	@Entry
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
 		
-		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, data.getTarget().asString());
+		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, data.getTarget().toString());
 	}
 } // QSNDDTAQImpl

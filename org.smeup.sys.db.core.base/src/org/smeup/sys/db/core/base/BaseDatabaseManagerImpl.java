@@ -51,7 +51,6 @@ import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.db.syntax.QQueryParserRegistry;
 import org.smeup.sys.db.syntax.QQueryWriter;
-import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QIdentityDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.rt.core.QApplication;
