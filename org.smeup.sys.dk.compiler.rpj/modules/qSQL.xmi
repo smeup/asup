@@ -55,8 +55,8 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="statement"
-              default=""
-              mandatory="true">
+              default="">
+              <cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -72,8 +72,8 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="query"
-              default=""
-              mandatory="true">
+              default="">
+              <cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -82,8 +82,8 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="into"
-              default=""
-              mandatory="true">
+              default="">
+              <cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>

@@ -7,13 +7,14 @@
     xmlns:il-data="http://www.smeup.org/asup/il/data"
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:il-flow="http://www.smeup.org/asup/il/flow"
+    xmlns:il-esam="http://www.smeup.org/asup/il/esam"
     xmlns:db-esam="http://www.smeup.org/asup/db/esam"
     xsi:schemaLocation="
     http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore 
     http://www.smeup.org/asup/il/data ../../org.smeup.sys.il.data/model/il-data.ecore 
     http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def
     http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il-flow/model/il-flow.ecore
-    http://www.smeup.org/asup/db/esam ../../org.smeup.sys.db.esam/model/db-esam.ecore"
+    http://www.smeup.org/asup/il/esam ../../org.smeup.sys.il.esam/model/il-esam.ecore"
     name="*RPJ">
   <dataSection>
     <datas xsi:type="il-flow:FlowData"
@@ -839,7 +840,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -859,7 +860,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -879,7 +880,7 @@
               xsi:type="il-flow:FlowData"
               name="op1"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:DatetimeDef"/>
           </delegate>
@@ -889,7 +890,7 @@
               xsi:type="il-flow:FlowData"
               name="op2"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -900,7 +901,7 @@
               constant="true"
               name="format"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -939,7 +940,7 @@
               constant="true"
               name="size"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -959,7 +960,7 @@
               xsi:type="il-flow:FlowData"
               name="secondString"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -969,7 +970,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -990,7 +991,7 @@
               constant="true"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1000,7 +1001,7 @@
               xsi:type="il-flow:FlowData"
               name="length"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1010,7 +1011,7 @@
               xsi:type="il-flow:FlowData"
               name="int2"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1030,7 +1031,7 @@
               xsi:type="il-flow:FlowData"
               name="secondString"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1040,7 +1041,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1060,7 +1061,7 @@
               xsi:type="il-flow:FlowData"
               name="numeric"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1081,7 +1082,7 @@
               constant="true"
               name="comparator"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1091,7 +1092,7 @@
               xsi:type="il-flow:FlowData"
               name="base"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1122,7 +1123,7 @@
               constant="true"
               name="comparator"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1132,7 +1133,7 @@
               xsi:type="il-flow:FlowData"
               name="base"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1159,7 +1160,7 @@
               xsi:type="il-flow:FlowData"
               name="size"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:PointerDef"/>
           </delegate>
@@ -1179,7 +1180,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1190,7 +1191,7 @@
               constant="true"
               name="precision"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1220,7 +1221,7 @@
               xsi:type="il-flow:FlowData"
               name="op1"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:DatetimeDef"/>
           </delegate>
@@ -1230,7 +1231,7 @@
               xsi:type="il-flow:FlowData"
               name="op2"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:DatetimeDef"/>
           </delegate>
@@ -1241,7 +1242,7 @@
               constant="true"
               name="format"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1259,7 +1260,7 @@
               constant="true"
               name="text"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1279,7 +1280,7 @@
               xsi:type="il-flow:FlowData"
               name="numeric"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1290,7 +1291,7 @@
               constant="true"
               name="editcode"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1310,7 +1311,7 @@
               xsi:type="il-flow:FlowData"
               name="numeric"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1321,7 +1322,7 @@
               constant="true"
               name="editword"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1420,7 +1421,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1441,7 +1442,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1460,7 +1461,7 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="argument"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1480,7 +1481,7 @@
               constant="true"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1509,7 +1510,7 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="argument"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1529,7 +1530,7 @@
               constant="true"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1558,7 +1559,7 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="argument"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1578,7 +1579,7 @@
               constant="true"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1607,7 +1608,7 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="argument"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1627,7 +1628,7 @@
               constant="true"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1656,7 +1657,7 @@
           <delegate
               xsi:type="il-flow:FlowData"
               name="argument"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1676,7 +1677,7 @@
               constant="true"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1721,7 +1722,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1759,7 +1760,7 @@
               constant="true"
               name="size"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1779,7 +1780,7 @@
               xsi:type="il-flow:FlowData"
               name="op1"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1789,7 +1790,7 @@
               xsi:type="il-flow:FlowData"
               name="op2"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1811,7 +1812,7 @@
               constant="true"
               name="replacement"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1822,7 +1823,7 @@
               constant="true"
               name="source"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1863,7 +1864,7 @@
               constant="true"
               name="argument"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1873,7 +1874,7 @@
               xsi:type="il-flow:FlowData"
               name="source"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1914,7 +1915,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -1935,7 +1936,7 @@
               constant="true"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -1945,7 +1946,7 @@
               xsi:type="il-flow:FlowData"
               name="startIndex"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1955,7 +1956,7 @@
               xsi:type="il-flow:FlowData"
               name="length"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -1993,7 +1994,7 @@
               constant="true"
               name="length"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -2030,7 +2031,7 @@
               constant="true"
               name="start"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -2060,7 +2061,7 @@
               xsi:type="il-flow:FlowData"
               name="op1"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:DatetimeDef"/>
           </delegate>
@@ -2070,7 +2071,7 @@
               xsi:type="il-flow:FlowData"
               name="op2"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -2081,7 +2082,7 @@
               constant="true"
               name="format"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2101,7 +2102,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2112,7 +2113,7 @@
               constant="true"
               name="start"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -2143,7 +2144,7 @@
               constant="true"
               name="switches"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2163,7 +2164,7 @@
               xsi:type="il-flow:FlowData"
               name="secondString"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2173,7 +2174,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2193,7 +2194,7 @@
               xsi:type="il-flow:FlowData"
               name="expression"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:BufferDef"/>
           </delegate>
@@ -2213,7 +2214,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2233,7 +2234,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2253,7 +2254,7 @@
               xsi:type="il-flow:FlowData"
               name="string"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2273,7 +2274,7 @@
               xsi:type="il-flow:FlowData"
               like=""
               name="string"
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2299,7 +2300,7 @@
               xsi:type="il-flow:FlowData"
               name="target"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:NumericDef"/>
           </delegate>
@@ -2320,7 +2321,7 @@
               constant="true"
               name="oldString"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
@@ -2331,7 +2332,7 @@
               constant="true"
               name="newString"
               default=""
-              mandatory="true">
+              ><cardinality min="1"/>
             <definition
                 xsi:type="il-data-def:StringDef"/>
           </delegate>
