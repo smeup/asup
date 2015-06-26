@@ -12,8 +12,9 @@
  */
 package org.smeup.sys.os.core.jdt;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
@@ -88,10 +89,10 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 				}
 			}
 			
-			QSourceEntry entry = sourceManager.createObjectEntry(getJob().getContext(), getContainer(), klass, object.getName(), replace);
-			OutputStream outpuStream = entry.getOutputStream();
+			ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
 			emfConverter.writeToStream((EObject) object, outpuStream);
-			outpuStream.close();
+
+			sourceManager.createObjectEntry(getJob().getContext(), getContainer(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
 			
 			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
 		} catch (IOException e) {
