@@ -32,6 +32,10 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 	
 	@Override
 	public boolean visit(QDataTerm<?> dataTerm) {
+
+		//TODO Rimuovere presto una volta capito cosa succede
+		if(dataTerm.getDataTermType()==null)
+			return false;
 		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
