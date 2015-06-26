@@ -731,7 +731,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		boolean first = true;
 		int i = 0;
 		for(String parm : params){
-			// salto il promo parametro
+			// salto il primo parametro
 			if(i==0){
 				i++;
 				continue;
@@ -746,66 +746,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
 	}
-
-	@SuppressWarnings("unused")
-	private void writePrototype(QPrototype<?> prototype, QCompoundTermExpression expression, String name) {
-		StringBuffer value = new StringBuffer();
-
-		value.append(name);
-		value.append("(");
-
-		if (prototype.getEntry() != null) {
-			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
-
-			// parameters
-			JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-			boolean first = true;
-			for (QExpression element : expression.getElements()) {
-
-				if (!entryParameters.hasNext())
-					throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + name);
-
-				QEntryParameter<?> entryParameter = entryParameters.next();
-				QTerm parameterDelegate = entryParameter.getDelegate();
-
-				parameterBuilder.clear();
-				if (parameterDelegate instanceof QDataTerm) {
-					QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-					if (dataTerm.isConstant())
-						parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
-					else
-						parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
-				} else if (parameterDelegate instanceof QFileTerm) {
-					parameterBuilder.setTarget(QFileTerm.class);
-				}
-
-				element.accept(parameterBuilder);
-
-				if (!first)
-					value.append(", ");
-
-				value.append(parameterBuilder.getResult());
-
-				first = false;
-			}
-
-			while (entryParameters.hasNext()) {
-				QEntryParameter<?> entryParameter = entryParameters.next();
-				if (!first)
-					value.append(", ");
-				value.append("null");
-				first = false;
-			}
-		} else {
-			if (!expression.getElements().isEmpty())
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + name);
-		}
-
-		value.append(")");
-
-		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
-	}
-	
 
 	public void writeValue(Class<?> source, Class<?> target, String value) {
 
