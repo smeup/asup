@@ -13,8 +13,6 @@
       eSuperTypes="#//SourceNode">
     <eOperations name="getInputStream" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"
         eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException"/>
-    <eOperations name="getOutputStream" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"
-        eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceManager" abstract="true" interface="true">
     <eOperations name="createProject" lowerBound="1" eType="#//Project" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
@@ -27,6 +25,7 @@
       <eParameters name="parent" lowerBound="1" eType="#//SourceNode"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="replace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="content" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"/>
     </eOperations>
     <eOperations name="createObjectEntry" lowerBound="1" eType="#//SourceEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
       <eTypeParameters name="T">
@@ -41,6 +40,7 @@
       </eParameters>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="content" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"/>
     </eOperations>
     <eOperations name="createObjectEntry" lowerBound="1" eType="#//SourceEntry" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
       <eTypeParameters name="T">

@@ -12,8 +12,9 @@
  */
 package org.smeup.sys.dk.compiler.base.api;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.URI;
 
 import javax.inject.Inject;
@@ -24,7 +25,6 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
-import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -103,9 +103,6 @@ public class XMIDatabaseFileCompiler {
 		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
 
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
-		QSourceEntry javaEntry = sourceManager.createChildEntry(job.getContext(), project, javaName, true);
-
-		OutputStream output = javaEntry.getOutputStream();
 
 		// compilation unit
 		QCompilationUnit compilationUnit = compilerManager.createCompilationUnit(job, file, CaseSensitiveType.LOWER);
@@ -115,7 +112,11 @@ public class XMIDatabaseFileCompiler {
 		URI packageURI = library.getPackageURI().resolve(file.getPackageInfoURI());
 		setup.setBasePackage(packageURI.toString().replaceAll("/", "."));
 
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		
 		compilerManager.writeDatabaseFile(compilationUnit, setup, output);
+		
+		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
 
 		output.close();
 

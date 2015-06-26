@@ -11,14 +11,12 @@
  */
 package org.smeup.sys.dk.source.jdt;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceEntry;
 
@@ -56,13 +54,13 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 	}
 
 	@Override
-	public OutputStream getOutputStream() throws IOException {
-		return new FileOutputStream(getLocation().getRawPath());
-	}
-
-	@Override
 	public InputStream getInputStream() throws IOException {
-		return new FileInputStream(getLocation().getRawPath());
+		try {
+			return this.file.getContents();
+		} catch (CoreException e) {
+			throw new IOException(e);
+		}
+//		return new FileInputStream(getLocation().getRawPath());
 	}
 
 }

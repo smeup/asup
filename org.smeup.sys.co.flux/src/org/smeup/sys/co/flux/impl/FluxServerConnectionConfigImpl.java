@@ -33,6 +33,11 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  */
 public class FluxServerConnectionConfigImpl extends ObjectImpl implements QFluxServerConnectionConfig {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getChannelID() <em>Channel ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

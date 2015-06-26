@@ -11,8 +11,10 @@
  */
 package org.smeup.sys.dk.source.jdt;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -87,28 +89,32 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace, T content) throws IOException {
 
-		QSourceEntry sourceEntry = createObjectEntry(context, project, type, name, replace);
+		URI uri = EcoreUtil.getURI((EObject) content);
 
-		OutputStream stream = sourceEntry.getOutputStream();
-		writeToStream((EObject) content, stream);
-		stream.close();
+		Resource resource = resourceSet.createResource(uri);
+		resource.getContents().add((EObject)content);
 
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		resource.save(output, Collections.EMPTY_MAP);
+		
+		QSourceEntry sourceEntry = createObjectEntry(context, project, type, name, replace, new ByteArrayInputStream(output.toByteArray()));
+		
 		return sourceEntry;
 	}
 
 	@Override
-	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String projectName, Class<T> type, String name, boolean replace) throws IOException {
+	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String projectName, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
 		QProject project = getProject(context, projectName);
 		if(project == null)
 			throw new IOException("Invalid project: "+projectName);
 		
-		return createEntry(project, type, name + ".XMI", replace);
+		return createEntry(project, type, name + ".XMI", replace, content);
 	}
 
 	@Override
-	public QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace) throws IOException {
-		return createEntry(parent, null, name, replace);
+	public QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace, InputStream content) throws IOException {
+		return createEntry(parent, null, name, replace, content);
 	}
 
 	@Override
@@ -207,7 +213,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		}
 	}
 
-	private <T extends QObjectNameable> QSourceEntry createEntry(QSourceNode parent, Class<T> type, String name, boolean replace) throws IOException {
+	private <T extends QObjectNameable> QSourceEntry createEntry(QSourceNode parent, Class<T> type, String name, boolean replace, InputStream content) throws IOException {
 
 		IFolder folder = getFolder(parent, type, true);
 		IFile file = folder.getFile(name);
@@ -225,7 +231,7 @@ public class JDTSourceManagerImpl implements QSourceManager {
 		if (!file.exists()) {
 			try {
 				mkDirs(file);
-				file.create(null, true, null);
+				file.create(content, true, null);
 			} catch (CoreException e) {
 				throw new IOException(e);
 			}
@@ -325,18 +331,6 @@ public class JDTSourceManagerImpl implements QSourceManager {
 			return null;
 
 		return folder;
-	}
-
-	private void writeToStream(EObject object, OutputStream stream) throws IOException {
-
-		// String uri =
-		// "asup://"+job.getSystem().getName()+"/"+container+"/"+klass.getSimpleName().toLowerCase().substring(1);
-		URI uri = EcoreUtil.getURI(object);
-
-		Resource resource = resourceSet.createResource(uri);
-		resource.getContents().add(object);
-
-		resource.save(stream, Collections.EMPTY_MAP);
 	}
 
 	private <T extends QObjectNameable> String getFolderName(Class<T> type) {

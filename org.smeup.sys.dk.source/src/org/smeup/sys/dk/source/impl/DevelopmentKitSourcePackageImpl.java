@@ -285,9 +285,6 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		EOperation op = addEOperation(sourceEntryEClass, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "getInputStream", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
 
-		op = addEOperation(sourceEntryEClass, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "getOutputStream", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
-
 		initEClass(sourceManagerEClass, QSourceManager.class, "SourceManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(sourceManagerEClass, this.getProject(), "createProject", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -301,6 +298,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createObjectEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -315,6 +313,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		addEParameter(op, g1, "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createObjectEntry", 1, 1, IS_UNIQUE, IS_ORDERED);

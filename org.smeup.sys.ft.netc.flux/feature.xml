@@ -45,13 +45,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.flux.jdt.service"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.commons.codec"
          download-size="0"
          install-size="0"
@@ -60,27 +53,6 @@
 
    <plugin
          id="org.apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.jface"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.swt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.jface.text"
          download-size="0"
          install-size="0"
          version="0.0.0"

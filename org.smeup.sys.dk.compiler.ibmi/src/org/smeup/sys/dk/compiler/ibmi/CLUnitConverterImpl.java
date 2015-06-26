@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.smeup.sys.dk.compiler.QUnitConverter;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
-import org.smeup.sys.il.core.java.QStreams;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionException;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
@@ -48,8 +47,6 @@ public class CLUnitConverterImpl implements QUnitConverter {
 
 	@Inject
 	private QSourceManager sourceManager;
-	@Inject
-	private QStreams streams;
 
 	@Override
 	public QModule convertModule(QJob job, org.smeup.sys.os.module.QModule module) {
@@ -69,15 +66,13 @@ public class CLUnitConverterImpl implements QUnitConverter {
 
 			// extract and save
 			InputStream inputStream = extractContent(program.getSource());
-			QSourceEntry memberExtracted = sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_extracted.XML", true);
-			streams.copy(inputStream, memberExtracted.getOutputStream());
+			QSourceEntry memberExtracted = sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_extracted.XML", true, inputStream);
 
 			Document docFrom = loadDocument(memberExtracted.getInputStream());
 			StringBuffer source = extractSource(job, docFrom);
 
 			// save
-			QSourceEntry memberSourced = sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_sourced.TXT", true);
-			streams.copy(new ByteArrayInputStream(source.toString().getBytes("ISO-8859-1")), memberSourced.getOutputStream());
+			sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_sourced.TXT", true, new ByteArrayInputStream(source.toString().getBytes("ISO-8859-1")));
 
 			QProgram flowProgram = QIntegratedLanguageFlowFactory.eINSTANCE.createProgram();
 			flowProgram.setName(program.getName());

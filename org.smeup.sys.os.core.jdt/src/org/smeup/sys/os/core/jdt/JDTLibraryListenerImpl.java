@@ -16,6 +16,8 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.flux.core.Repository;
 import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
@@ -55,7 +57,13 @@ public class JDTLibraryListenerImpl implements QResourceListener<QLibrary> {
 				projectDef.setText(library.getText());
 				projectDef.setName(library.getName());
 				try {
-					project = sourceManager.createProject(job.getContext(), projectDef, false);
+					project = sourceManager.createProject(job.getContext(), projectDef, false);					
+					
+					Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
+					if (repository.getProject(project.getName()) == null) {
+						repository.addProject(ResourcesPlugin.getWorkspace().getRoot().getProject(project.getName()));
+					}
+
 				} catch (IOException e) {
 					throw new OperatingSystemRuntimeException(e);
 				}
@@ -67,4 +75,6 @@ public class JDTLibraryListenerImpl implements QResourceListener<QLibrary> {
 			break;
 		}
 	}
+	
+
 }

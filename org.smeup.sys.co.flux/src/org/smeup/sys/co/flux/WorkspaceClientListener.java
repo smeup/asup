@@ -10,9 +10,9 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.flux.core.Repository;
 
-public class WorkspaceListener implements IResourceChangeListener {
-	
-	private boolean log = false;
+public class WorkspaceClientListener implements IResourceChangeListener {
+
+	private boolean log = true;
 
 	@Override
 	public void resourceChanged(IResourceChangeEvent event) {
@@ -32,7 +32,8 @@ public class WorkspaceListener implements IResourceChangeListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
+			} else
+				"".toCharArray();
 
 			break;
 
@@ -51,6 +52,8 @@ public class WorkspaceListener implements IResourceChangeListener {
 		case IResourceChangeEvent.PRE_REFRESH:
 
 			break;
+		default:
+			"".toCharArray();
 
 		}
 	}
@@ -79,17 +82,19 @@ public class WorkspaceListener implements IResourceChangeListener {
 				type = "FOLDER";
 				break;
 
+			default:
+				"".toCharArray();
 			}
 
 			switch (delta.getKind()) {
 
 			case IResourceDelta.ADDED:
-				if (log) System.out.println("ADDED " + type + ": " + delta.toString());
+				if (log)
+					System.out.println("ADDED " + type + ": " + delta.toString());
 
 				if (delta.getResource().getType() == IResource.PROJECT) {
 					IProject project = (IProject) delta.getResource();
-					Repository repository = org.eclipse.flux.core.Activator
-							.getDefault().getRepository();
+					Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
 					if (repository.getProject(project.getName()) == null) {
 						repository.addProject(project);
 					}
@@ -97,11 +102,15 @@ public class WorkspaceListener implements IResourceChangeListener {
 
 				break;
 			case IResourceDelta.REMOVED:
-				if (log) System.out.println("REMOVED " + type + ": " + delta.toString());
+				if (log)
+					System.out.println("REMOVED " + type + ": " + delta);
 				break;
 			case IResourceDelta.CHANGED:
-				if (log) System.out.println("CHANGED " + type + ": " + delta.toString());
+				if (log)
+					System.out.println("CHANGED " + type + ": " + delta);
 				break;
+			default:
+				"".toCharArray();				
 			}
 			return true;
 		}

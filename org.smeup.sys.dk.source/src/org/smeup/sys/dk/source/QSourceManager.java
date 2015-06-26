@@ -3,6 +3,7 @@
 package org.smeup.sys.dk.source;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectNameable;
@@ -29,18 +30,18 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" parentRequired="true" nameRequired="true"
+	 * @model required="true" exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" parentRequired="true" nameRequired="true" contentDataType="org.smeup.sys.il.core.java.JavaInputStream" contentRequired="true"
 	 * @generated
 	 */
-	QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace) throws IOException;
+	QSourceEntry createChildEntry(QContext context, QSourceNode parent, String name, boolean replace, InputStream content) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" replaceRequired="true"
+	 * @model required="true" exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" projectRequired="true" typeRequired="true" nameRequired="true" replaceRequired="true" contentDataType="org.smeup.sys.il.core.java.JavaInputStream" contentRequired="true"
 	 * @generated
 	 */
-	<T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace) throws IOException;
+	<T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace, InputStream content) throws IOException;
 
 	/**
 	 * <!-- begin-user-doc -->

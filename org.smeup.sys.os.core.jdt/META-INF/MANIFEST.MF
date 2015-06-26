@@ -7,5 +7,9 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.os.type,
  org.smeup.sys.dk.source.jdt,
- org.smeup.sys.os.lib
+ org.smeup.sys.os.lib,
+ org.eclipse.flux.core,
+ org.eclipse.core.resources;bundle-version="3.9.0"
 Export-Package: org.smeup.sys.os.core.jdt
+Bundle-ClassPath: lib/java-json.jar,
+ .
