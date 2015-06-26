@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.dk.compiler.rpj.writer;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -318,60 +319,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		}
 		// prototype
 		else if (namedNode instanceof QPrototype) {
-			QPrototype<?> prototype = (QPrototype<?>) namedNode;
 
-			StringBuffer value = new StringBuffer();
+			writeAssignment((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
+			
+		//	vecchia scrittura qRPJ
+		//	writePrototype((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
 
-			value.append(compilationUnit.getQualifiedName(namedNode));
-			value.append("(");
-
-			if (prototype.getEntry() != null) {
-				Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
-
-				// parameters
-				JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-				boolean first = true;
-				for (QExpression element : expression.getElements()) {
-
-					if (!entryParameters.hasNext())
-						throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + namedNode.getName());
-
-					QEntryParameter<?> entryParameter = entryParameters.next();
-					QTerm parameterDelegate = entryParameter.getDelegate();
-
-					parameterBuilder.clear();
-					if (parameterDelegate instanceof QDataTerm) {
-						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-						if (dataTerm.isConstant())
-							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
-						else
-							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
-					} else if (parameterDelegate instanceof QFileTerm)
-						parameterBuilder.setTarget(QFileTerm.class);
-
-					element.accept(parameterBuilder);
-
-					if (!first)
-						value.append(", ");
-
-					value.append(parameterBuilder.getResult());
-
-					first = false;
-				}
-
-				while (entryParameters.hasNext()) {
-					entryParameters.next();
-					if (!first)
-						value.append(", ");
-					value.append("null");
-					first = false;
-				}
-			} else if (!expression.getElements().isEmpty())
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + namedNode.getName());
-
-			value.append(")");
-
-			writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
 		} else
 			System.err.println("Unexpected condition: xm4t609543m487mxz");
 
@@ -735,6 +688,124 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return result;
 	}
+	
+	private void writeAssignment(QPrototype<?> prototype, QCompoundTermExpression expression, String name) {
+		
+		List<String> params = new ArrayList<String>();
+		if (prototype.getEntry() != null) {
+			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
+
+			// parameters
+			JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+			for (QExpression element : expression.getElements()) {
+				if (!entryParameters.hasNext())
+					throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + name);
+				
+				QEntryParameter<?> entryParameter = entryParameters.next();
+				QTerm parameterDelegate = entryParameter.getDelegate();
+
+				parameterBuilder.clear();
+				if (parameterDelegate instanceof QDataTerm) {
+					QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
+					if (dataTerm.isConstant())
+						parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
+					else
+						parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
+				} else if (parameterDelegate instanceof QFileTerm) {
+					parameterBuilder.setTarget(QFileTerm.class);
+				}
+				element.accept(parameterBuilder);
+				params.add(parameterBuilder.getResult());
+			}
+
+		} else {
+			if (!expression.getElements().isEmpty())
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + name);
+		}
+
+		StringBuffer value = new StringBuffer();
+		value.append(params.get(0));
+		value.append(".");
+		value.append(name);
+		value.append("(");
+		boolean first = true;
+		int i = 0;
+		for(String parm : params){
+			// salto il promo parametro
+			if(i==0){
+				i++;
+				continue;
+			}
+			
+			if (!first)
+				value.append(", ");
+			value.append(parm);
+			first = false;
+		}
+		value.append(")");
+
+		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
+	}
+
+	@SuppressWarnings("unused")
+	private void writePrototype(QPrototype<?> prototype, QCompoundTermExpression expression, String name) {
+		StringBuffer value = new StringBuffer();
+
+		value.append(name);
+		value.append("(");
+
+		if (prototype.getEntry() != null) {
+			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
+
+			// parameters
+			JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+			boolean first = true;
+			for (QExpression element : expression.getElements()) {
+
+				if (!entryParameters.hasNext())
+					throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + name);
+
+				QEntryParameter<?> entryParameter = entryParameters.next();
+				QTerm parameterDelegate = entryParameter.getDelegate();
+
+				parameterBuilder.clear();
+				if (parameterDelegate instanceof QDataTerm) {
+					QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
+					if (dataTerm.isConstant())
+						parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
+					else
+						parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
+				} else if (parameterDelegate instanceof QFileTerm) {
+					parameterBuilder.setTarget(QFileTerm.class);
+				}
+
+				element.accept(parameterBuilder);
+
+				if (!first)
+					value.append(", ");
+
+				value.append(parameterBuilder.getResult());
+
+				first = false;
+			}
+
+			while (entryParameters.hasNext()) {
+				QEntryParameter<?> entryParameter = entryParameters.next();
+				if (!first)
+					value.append(", ");
+				value.append("null");
+				first = false;
+			}
+		} else {
+			if (!expression.getElements().isEmpty())
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + name);
+		}
+
+		value.append(")");
+
+		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
+	}
+	
 
 	public void writeValue(Class<?> source, Class<?> target, String value) {
 
