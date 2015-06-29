@@ -5,12 +5,11 @@ import org.eclipse.flux.client.MessageConnector;
 import org.eclipse.flux.client.MessageConstants;
 import org.eclipse.flux.core.ChannelSwitcher;
 import org.eclipse.flux.core.KeepAliveConnector;
-import org.eclipse.flux.core.LiveEditCoordinator;
 import org.eclipse.flux.core.Repository;
 import org.eclipse.flux.core.ServiceDiscoveryConnector;
 
 public class FluxComponent {
-	public static final String JDT_SERVICE_ID = "org.eclipse.flux.jdt";
+	public static final String JDT_SERVICE_ID = "org.smeup.sys.co.flux";
 	private static long WAIT_TIME_PERIOD = 100;
 
 	private ServiceDiscoveryConnector discoveryConnector;
@@ -81,9 +80,9 @@ public class FluxComponent {
 			}
 			MessageConnector messagingConnector = org.eclipse.flux.core.Activator.getDefault().getMessageConnector();
 			Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
-			LiveEditCoordinator liveEditCoordinator = org.eclipse.flux.core.Activator.getDefault().getLiveEditCoordinator();
+//			LiveEditCoordinator liveEditCoordinator = org.eclipse.flux.core.Activator.getDefault().getLiveEditCoordinator();
 
-			this.liveEditUnits = new LiveEditUnits(messagingConnector, liveEditCoordinator, repository);
+//			this.liveEditUnits = new LiveEditUnits(messagingConnector, liveEditCoordinator, repository);
 
 			String initJdtStr = System.getProperty("flux-initjdt") == null ? System.getenv("FLUX_INIT_JDT") : System.getProperty("flux-initjdt");
 			if (initJdtStr != null && Boolean.valueOf(initJdtStr)) {

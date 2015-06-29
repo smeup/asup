@@ -125,6 +125,7 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getShellCredentials() {
 		return shellCredentialsEClass;
 	}

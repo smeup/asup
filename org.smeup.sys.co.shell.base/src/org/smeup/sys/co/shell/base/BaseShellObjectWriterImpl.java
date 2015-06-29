@@ -72,6 +72,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 			dataFactory = dataManager.createFactory(context);
 
 			for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
+				
 				QData data = dataContainer.getData(dataTerm);
 				if (data instanceof QString) {
 					data.accept(dataWriter.set(strings.firstToUpper(dataTerm.getName())));
@@ -95,14 +96,18 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 			if (value == null) {
 				data.clear();
 				streamWrite(data + "|");
-			} 
+				
+				continue;
+			}
+			
 			/*else if (value instanceof QCreationInfo) {
 				QCreationInfo qCreationInfo = (QCreationInfo) value;
 				data.accept(dataWriter.set(qCreationInfo.getCreationDate()));
 				streamWrite(data + "|");
 			}
 			*/
-			else if (value instanceof QObjectNameable) {
+			
+			if (value instanceof QObjectNameable) {
 				QObjectNameable qValue = (QObjectNameable) value;
 				data.accept(dataWriter.set(qValue.getName()));
 				streamWrite(data + "|");

@@ -133,7 +133,7 @@ public class NIODataManagerImpl implements QDataManager {
 				else
 					default_.getValues().add(slot.getDefaultValue().toString());
 			}
-
+			
 			dataTerms.put(slot.getName(), dataTerm);
 		}
 

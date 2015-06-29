@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<os-file:PhysicalFile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" 
+xmlns:os-file="http://www.smeup.org/asup/os/file" name="BRARTI0F" 
+text="Dati base articolo" application="BR">
+<databaseFormat name="BRARTIR">
+<definition xsi:type="os-file:DatabaseFileFormatDef">
+<elements name="AÂ§ARTI" text="Codice articolo" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§DEAR" text="Descrizione articolo" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="35"/>
+</elements>
+<elements name="AÂ§DEA2" text="Descrizione aggiuntiva" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="35"/>
+</elements>
+<elements name="AÂ§TIAR" text="Tipo articolo" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§TPAR" text="Tipo parte" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="3"/>
+</elements>
+<elements name="AÂ§UNMS" text="UnitÃ  di misura gestione" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="2"/>
+</elements>
+<elements name="AÂ§PESO" text="Peso" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="12" scale="5"/>
+</elements>
+<elements name="AÂ§VOLU" text="Volume" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="12" scale="5"/>
+</elements>
+<elements name="AÂ§CALT" text="Codice alternativo" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§ARRI" text="Articolo di riferimento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§DISE" text="Disegno" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="20"/>
+</elements>
+<elements name="AÂ§BARC" text="Barcode" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§STAT" text="Stato" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="2"/>
+</elements>
+<elements name="AÂ§LIVE" text="Livello" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§GRDI" text="Gruppo distinta" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§GRCI" text="Gruppo ciclo" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§NOMC" text="Nome configurazione" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="20"/>
+</elements>
+<elements name="AÂ§CSVQ" text="Cod. Sviluppo qtÃ " xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CSVA" text="Cod. svil. varianti" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§ENIR" text="Ente interno responsabile" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="3"/>
+</elements>
+<elements name="AÂ§LOTR" text="Lotto di riferimento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="11" scale="3"/>
+</elements>
+<elements name="AÂ§CONT" text="Contenitore" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§RCDV" text="Rif. catalogo di vendita" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§CASI" text="Assoggettamento IVA" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="2"/>
+</elements>
+<elements name="AÂ§NCOM" text="Nomenclatura combinata" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="10"/>
+</elements>
+<elements name="AÂ§CESP" text="Cespite" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§CLMA" text="Classe materiale" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CLPR" text="Classe programmazione" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CLGE" text="Classe gestione" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CLCO" text="Classe contabile" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CDLF" text="Classe fiscale" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CLVA" text="Classe valore" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§CLFU" text="Classe funzionale" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="5"/>
+</elements>
+<elements name="AÂ§TC01" text="Tipo classificazione 1" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="12"/>
+</elements>
+<elements name="AÂ§TC02" text="Tipo classificazione 2" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="12"/>
+</elements>
+<elements name="AÂ§TC03" text="Tipo classificazione 3" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="12"/>
+</elements>
+<elements name="AÂ§CL01" text="Codice classificazione 1" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§CL02" text="Codice classificazione 2" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§CL03" text="Codice classificazione 3" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§COD1" text="Codice 1" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§COD2" text="Codice 2" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§COD3" text="Codice 3" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§COD4" text="Codice 4" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§COD5" text="Codice 5" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="15"/>
+</elements>
+<elements name="AÂ§NUM1" text="Numero 1" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="15" scale="5"/>
+</elements>
+<elements name="AÂ§NUM2" text="Numero 2" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="15" scale="5"/>
+</elements>
+<elements name="AÂ§NUM3" text="Numero 3" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="15" scale="5"/>
+</elements>
+<elements name="AÂ§NUM4" text="Numero 4" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="15" scale="5"/>
+</elements>
+<elements name="AÂ§NUM5" text="Numero 5" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="15" scale="5"/>
+</elements>
+<elements name="AÂ§DT01" text="Data 1" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§DT02" text="Data 2" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§DT03" text="Data 3" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§DT04" text="Data 4" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§DT05" text="Data 5" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§FL01" text="Articolo non di magazzino" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL02" text="Codice da PDM" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL03" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL04" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL05" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL06" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL07" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL08" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL09" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL10" text="Riservato SMEUP" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL11" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL12" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL13" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL14" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL15" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL16" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL17" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL18" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL19" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§FL20" text="Libero" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="1"/>
+</elements>
+<elements name="AÂ§USIN" text="Utente inserimento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="10"/>
+</elements>
+<elements name="AÂ§DTIN" text="Data inserimento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§ORIN" text="Ora inserimento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="6" scale="0"/>
+</elements>
+<elements name="AÂ§USAG" text="Utente aggiornamento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:CharacterDef" length="10"/>
+</elements>
+<elements name="AÂ§DTAG" text="Data aggiornamento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="8" scale="0"/>
+</elements>
+<elements name="AÂ§ORAG" text="Ora aggiornamento" xsi:type="os-file:DatabaseFileField">
+<definition xsi:type="il-data-def:DecimalDef" precision="6" scale="0"/>
+</elements>
+</definition>
+</databaseFormat>
+</os-file:PhysicalFile>
