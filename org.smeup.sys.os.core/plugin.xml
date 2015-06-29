@@ -61,10 +61,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.smeup.sys.rt.core.e4.application"
-            name="As.UP Application E4">
+            name="As.UP Application E4 Flux">
          <property
                name="appName"
-               value="As.UP Application E4">
+               value="As.UP Application E4 Flux">
          </property>
       </product>
    </extension>
