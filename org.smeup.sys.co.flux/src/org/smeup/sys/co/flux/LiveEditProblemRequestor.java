@@ -8,6 +8,7 @@ import org.eclipse.jdt.core.IProblemRequestor;
 import org.eclipse.jdt.core.compiler.IProblem;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.smeup.sys.co.flux.hook.FluxComponent;
 
 /**
  * Accepts computed compilation problems from JDT and forwards them to the message bus.

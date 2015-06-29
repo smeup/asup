@@ -1,4 +1,4 @@
-package org.smeup.sys.co.flux;
+package org.smeup.sys.co.flux.hook;
 
 import org.eclipse.flux.client.IChannelListener;
 import org.eclipse.flux.client.MessageConnector;
@@ -7,6 +7,8 @@ import org.eclipse.flux.core.ChannelSwitcher;
 import org.eclipse.flux.core.KeepAliveConnector;
 import org.eclipse.flux.core.Repository;
 import org.eclipse.flux.core.ServiceDiscoveryConnector;
+import org.smeup.sys.co.flux.InitializeServiceEnvironment;
+import org.smeup.sys.co.flux.LiveEditUnits;
 
 public class FluxComponent {
 	public static final String JDT_SERVICE_ID = "org.smeup.sys.co.flux";
