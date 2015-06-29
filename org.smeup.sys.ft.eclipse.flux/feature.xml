@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.smeup.sys.ft.eclipse.flux"
-      label="As.UP Eclipse Flux Plugins"
+      label="Eclipse Flux"
       version="0.7.0.qualifier"
       provider-name="www.smeup.com">
 

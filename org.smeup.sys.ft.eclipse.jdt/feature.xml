@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.smeup.sys.ft.eclipse.jdt"
-      label="As.UP Eclipse JDT"
+      label="Eclipse JDT"
       version="0.7.0.qualifier"
       provider-name="www.smeup.com">
 

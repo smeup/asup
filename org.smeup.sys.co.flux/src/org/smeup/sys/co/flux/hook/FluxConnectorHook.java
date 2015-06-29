@@ -1,4 +1,4 @@
-package org.smeup.sys.co.flux;
+package org.smeup.sys.co.flux.hook;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -8,7 +8,7 @@ import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
 
 
-public class FluxClientConnectorHook {
+public class FluxConnectorHook {
 
 	@ComponentStarted
 	public void start(QApplication application) throws Exception {

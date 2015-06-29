@@ -71,6 +71,7 @@ public class CommunicationShellFactoryImpl extends EFactoryImpl implements QComm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QShellCredentials createShellCredentials() {
 		ShellCredentialsImpl shellCredentials = new ShellCredentialsImpl();
 		return shellCredentials;
