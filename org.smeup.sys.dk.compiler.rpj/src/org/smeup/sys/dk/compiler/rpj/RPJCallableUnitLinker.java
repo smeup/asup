@@ -418,7 +418,8 @@ public class RPJCallableUnitLinker {
 
 		String attribute = file.getAttribute();
 		if (attribute != null && (attribute.equals("PF") || attribute.equals("LF")))
-			attribute = "dbf";
+//			attribute = "dbf";
+			attribute = "dbf.gen";
 
 		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "file." + attribute.toLowerCase() + "/";
 		URI packageURI = library.getPackageURI().resolve(file.getPackageInfoURI());
@@ -458,7 +459,9 @@ public class RPJCallableUnitLinker {
 		// TODO
 		QLibrary library = libraryReader.lookup(module.getLibrary());
 
-		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "module/";
+//		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "module/";
+		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "module.gen/";
+		
 		URI packageURI = library.getPackageURI().resolve(module.getPackageInfoURI());
 
 		String address = "asup:/omac/" + pathURI + packageURI.toString().replaceAll("/", ".") + "." + module.getName();

@@ -114,7 +114,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		// @DataDef
-		writeDataDefAnnotation(field, dataTerm.getDefinition());
+		if(dataTerm.getDefinition()!=null)
+			writeDataDefAnnotation(field, dataTerm.getDefinition());
 
 		// default
 		QDefault default_ = dataTerm.getDefault();

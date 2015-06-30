@@ -168,7 +168,8 @@ public class ModuleImpl extends org.smeup.sys.os.type.impl.TypedObjectImpl imple
 	@Override
 	public URI getPackageInfoURI() {
 		try {
-			String classURI = "module/" + getApplication();
+//			String classURI = "module/" + getApplication();
+			String classURI = "module/" + getApplication() + "/gen";
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {
