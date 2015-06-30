@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: As.UP External Tool AntLR
 Bundle-SymbolicName: org.smeup.sys.et.antlr
 Bundle-Version: 0.7.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/antlr-3.4.jar
 Bundle-Vendor: www.smeup.com
@@ -10,4 +11,4 @@ Export-Package: org.antlr.runtime,
  org.antlr.runtime.debug,
  org.antlr.runtime.misc,
  org.antlr.runtime.tree
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+ 
