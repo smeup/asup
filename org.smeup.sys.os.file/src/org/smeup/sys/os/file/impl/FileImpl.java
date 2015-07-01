@@ -56,7 +56,7 @@ public abstract class FileImpl extends TypedObjectImpl implements QFile {
 		try {
 			// TODO
 			// eClass().getEPackage().getNsURI();
-			String classURI = "file/" + getAttribute().toLowerCase() + "/" + getApplication() + "/" + getName();
+			String classURI = "file/" + getAttribute().toLowerCase() + "/" + getApplication() + "/gen/" + getName();
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {

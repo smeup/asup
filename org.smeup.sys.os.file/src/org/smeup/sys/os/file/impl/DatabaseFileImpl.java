@@ -125,7 +125,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 		try {
 			// TODO
 			// eClass().getEPackage().getNsURI();
-			String classURI = "file/dbf/" + getApplication() + "/" + getName();
+			String classURI = "file/dbf/" + getApplication() + "/gen/" + getName();
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {

@@ -13,6 +13,8 @@ package org.smeup.sys.os.file.base;
 
 import java.sql.SQLException;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.db.core.OrderingType;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionManager;
@@ -27,6 +29,7 @@ import org.smeup.sys.db.syntax.QDefinitionParser;
 import org.smeup.sys.db.syntax.ddl.QCreateViewStatement;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -101,7 +104,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 			QUnaryAtomicBufferedDataDef<?> dataDef = field.getDefinition();
 			QTableColumnDef tableColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
 			tableColumnDef.setName(field.getName());
-			tableColumnDef.setDefinition(dataDef);
+			tableColumnDef.setDefinition((QDataDef<?>) EcoreUtil.copy((EObject)dataDef));
 			tableDef.getColumns().add(tableColumnDef);
 		}
 
@@ -115,11 +118,12 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 
 		QViewDef viewDef = QDatabaseCoreFactory.eINSTANCE.createViewDef();
 		QDatabaseFileFormat databaseFileFormat = file.getDatabaseFormat();
+		
 		for (QDatabaseFileField field : databaseFileFormat.getDefinition().getElements()) {
 			QUnaryAtomicBufferedDataDef<?> dataDef = field.getDefinition();
 			QTableColumnDef tableColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
 			tableColumnDef.setName(field.getName());
-			tableColumnDef.setDefinition(dataDef);
+			tableColumnDef.setDefinition((QDataDef<?>) EcoreUtil.copy((EObject)dataDef));
 			viewDef.getColumns().add(tableColumnDef);
 		}
 
