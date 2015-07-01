@@ -13,6 +13,8 @@ package org.smeup.sys.db.syntax.mysql;
 
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.schema.helper.SQLObjectNameHelper;
+import org.smeup.sys.db.core.QSchemaDef;
+import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.syntax.base.BaseDefinitionWriterImpl;
 
 
@@ -25,5 +27,24 @@ public class MySQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	@Override
 	public String dropSchema(Schema schema, boolean ignoreFailOnNonEmpty) {
 		return dropSchema(schema);
+	}
+	
+	@Override
+	public String createLabel(String name, QSchemaDef schema) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String createLabel(Schema schema, String name, QTableDef table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String createLabelForFields(Schema schema, String name,
+			QTableDef table) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

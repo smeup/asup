@@ -106,10 +106,16 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 
 		try {
 			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
-			String command = definitionWriter.createSchema(name, schemaDef);
-
 			statement = connection.createStatement(true);
+			
+			// definition
+			String command = definitionWriter.createSchema(name, schemaDef);
 			statement.execute(command);
+			
+			// label
+			command = definitionWriter.createLabel(name, schemaDef);
+			if(command != null)
+				statement.execute(command);
 
 		} finally {
 			if (statement != null)
@@ -141,12 +147,23 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 				tableDef.getColumns().add(pkTableComColumnDef);
 			}
 
-			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
-			String command = definitionWriter.createTable(schema, name, tableDef);
-
 			statement = connection.createStatement(true);
+			
+			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
+			
+			// definition
+			String command = definitionWriter.createTable(schema, name, tableDef);
 			statement.execute(command);
+			
+			// label
+			command = definitionWriter.createLabel(schema, name, tableDef);
+			if(command != null)
+				statement.execute(command);
 
+			command = definitionWriter.createLabelForFields(schema, name, tableDef);
+			if(command != null)
+				statement.execute(command);
+			
 		} finally {
 			if (statement != null)
 				statement.close();
@@ -243,11 +260,16 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 			viewDef.setQuerySelect(sqlQuerySelect);
 
 			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
-			String command = definitionWriter.createView(schema, name, viewDef);
-
 			statement = connection.createStatement(true);
-
+			
+			// definition
+			String command = definitionWriter.createView(schema, name, viewDef);
 			statement.execute(command);
+			
+			// label
+			command = definitionWriter.createLabel(schema, name, viewDef);
+			if(command != null)
+				statement.execute(command);
 
 		} finally {
 			if (statement != null)
