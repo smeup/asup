@@ -272,7 +272,7 @@
     <parameters allowVariable="true" name="PARM" position="2" status="TODO">
       <dataTerm name="parameters">
         <cardinality max="255"/>
-        <definition xsi:type="il-data-def:ArrayDef" dimension="255">
+        <definition xsi:type="il-data-def:ListDef" dimension="255">
           <argument xsi:type="il-data-def:AdapterDef"/>
         </definition>
       </dataTerm>

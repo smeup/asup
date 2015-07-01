@@ -18,5 +18,5 @@ import org.smeup.sys.il.data.QAdapter;
  * @model
  * @generated
  */
-public interface QAdapterDef extends QUnaryAtomicBufferedDataDef<QAdapter> {
+public interface QAdapterDef extends QUnaryAtomicDataDef<QAdapter> {
 } // QAdapterDef
