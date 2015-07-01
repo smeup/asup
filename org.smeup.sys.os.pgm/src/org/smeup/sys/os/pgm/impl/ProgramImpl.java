@@ -226,7 +226,7 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 		try {
 			// TODO
 			// eClass().getEPackage().getNsURI();
-			String classURI = "pgm/" + getApplication() + "/" + getName();
+			String classURI = "pgm/" + getApplication() + "/gen/" + getName();
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {

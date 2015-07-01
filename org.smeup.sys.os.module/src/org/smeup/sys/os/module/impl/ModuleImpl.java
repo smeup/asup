@@ -152,7 +152,7 @@ public class ModuleImpl extends org.smeup.sys.os.type.impl.TypedObjectImpl imple
 		try {
 			// TODO
 			// eClass().getEPackage().getNsURI();
-			String classURI = "module/" + getApplication() + "/" + getName();
+			String classURI = "module/" + getApplication() + "/gen/" + getName();
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {

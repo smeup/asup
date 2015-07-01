@@ -104,6 +104,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 			tableColumnDef.setName(field.getName());
 			tableColumnDef.setLabel(field.getText());
 			tableColumnDef.setDefinition(dataDef);
+			
 			tableDef.getColumns().add(tableColumnDef);
 		}
 
@@ -126,6 +127,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 			tableColumnDef.setName(field.getName());
 			tableColumnDef.setLabel(field.getText());
 			tableColumnDef.setDefinition(dataDef);
+			
 			viewDef.getColumns().add(tableColumnDef);
 		}
 
