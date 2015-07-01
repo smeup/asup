@@ -407,12 +407,21 @@ public interface QDatabaseCorePackage extends EPackage {
 	int DATABASE_OBJECT_DEF = 9;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_OBJECT_DEF__LABEL = 0;
+
+	/**
 	 * The number of structural features of the '<em>Database Object Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_OBJECT_DEF_FEATURE_COUNT = 0;
+	int DATABASE_OBJECT_DEF_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.DatabaseManagerImpl <em>Database Manager</em>}' class.
@@ -460,6 +469,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	int INDEX_DEF = 12;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDEX_DEF__LABEL = DATABASE_OBJECT_DEF__LABEL;
+
+	/**
 	 * The feature id for the '<em><b>Clustered</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -503,6 +521,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	int INDEX_COLUMN_DEF = 13;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INDEX_COLUMN_DEF__LABEL = DATABASE_OBJECT_DEF__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -613,6 +640,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	int QUALIFIED_NAME_FEATURE_COUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA_DEF__LABEL = DATABASE_OBJECT_DEF__LABEL;
+
+	/**
 	 * The number of structural features of the '<em>Schema Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -628,6 +664,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	int TABLE_DEF = 18;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_DEF__LABEL = DATABASE_OBJECT_DEF__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -655,6 +700,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	int TABLE_COLUMN_DEF = 19;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_COLUMN_DEF__LABEL = DATABASE_OBJECT_DEF__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' attribute. <!--
@@ -707,6 +761,15 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	int VIEW_DEF = 20;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_DEF__LABEL = TABLE_DEF__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -1085,6 +1148,17 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDatabaseObjectDef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.core.QDatabaseObjectDef#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.smeup.sys.db.core.QDatabaseObjectDef#getLabel()
+	 * @see #getDatabaseObjectDef()
+	 * @generated
+	 */
+	EAttribute getDatabaseObjectDef_Label();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QDatabaseManager <em>Database Manager</em>}'.
@@ -1661,6 +1735,14 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass DATABASE_OBJECT_DEF = eINSTANCE.getDatabaseObjectDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATABASE_OBJECT_DEF__LABEL = eINSTANCE.getDatabaseObjectDef_Label();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.DatabaseManagerImpl <em>Database Manager</em>}' class.

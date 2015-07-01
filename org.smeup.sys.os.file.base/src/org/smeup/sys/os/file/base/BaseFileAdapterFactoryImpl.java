@@ -93,7 +93,8 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 	private QTableDef adaptDatabaseFileToTableDef(QDatabaseFile file) {
 
 		QTableDef tableDef = QDatabaseCoreFactory.eINSTANCE.createTableDef();
-
+		tableDef.setLabel(file.getText());
+		
 		QDatabaseFileFormat databaseFileFormat = file.getDatabaseFormat();
 
 		for (QDatabaseFileField field : databaseFileFormat.getDefinition().getElements()) {
@@ -101,6 +102,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 			QUnaryAtomicBufferedDataDef<?> dataDef = field.getDefinition();
 			QTableColumnDef tableColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
 			tableColumnDef.setName(field.getName());
+			tableColumnDef.setLabel(field.getText());
 			tableColumnDef.setDefinition(dataDef);
 			tableDef.getColumns().add(tableColumnDef);
 		}
@@ -114,11 +116,15 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 			return null;
 
 		QViewDef viewDef = QDatabaseCoreFactory.eINSTANCE.createViewDef();
+		viewDef.setLabel(file.getText());
+		
 		QDatabaseFileFormat databaseFileFormat = file.getDatabaseFormat();
+		
 		for (QDatabaseFileField field : databaseFileFormat.getDefinition().getElements()) {
 			QUnaryAtomicBufferedDataDef<?> dataDef = field.getDefinition();
 			QTableColumnDef tableColumnDef = QDatabaseCoreFactory.eINSTANCE.createTableColumnDef();
 			tableColumnDef.setName(field.getName());
+			tableColumnDef.setLabel(field.getText());
 			tableColumnDef.setDefinition(dataDef);
 			viewDef.getColumns().add(tableColumnDef);
 		}

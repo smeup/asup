@@ -599,6 +599,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDatabaseObjectDef_Label() {
+		return (EAttribute)databaseObjectDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDatabaseManager() {
 		return databaseManagerEClass;
 	}
@@ -929,6 +938,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		createEAttribute(databaseContainerEClass, DATABASE_CONTAINER__VERSION);
 
 		databaseObjectDefEClass = createEClass(DATABASE_OBJECT_DEF);
+		createEAttribute(databaseObjectDefEClass, DATABASE_OBJECT_DEF__LABEL);
 
 		databaseManagerEClass = createEClass(DATABASE_MANAGER);
 
@@ -1202,6 +1212,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEAttribute(getDatabaseContainer_Version(), ecorePackage.getEString(), "version", null, 1, 1, QDatabaseContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(databaseObjectDefEClass, QDatabaseObjectDef.class, "DatabaseObjectDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDatabaseObjectDef_Label(), ecorePackage.getEString(), "label", null, 0, 1, QDatabaseObjectDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(databaseManagerEClass, QDatabaseManager.class, "DatabaseManager", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

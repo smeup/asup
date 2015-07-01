@@ -172,7 +172,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DatabaseObjectDef" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseObjectDef" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DatabaseException" instanceClassName="java.sql.SQLException"
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EClass" name="DatabaseManager" abstract="true">
