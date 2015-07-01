@@ -63,4 +63,9 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 	protected EClass getEClass() {
 		return this.eClass;
 	}
+
+	@Override
+	public String toString() {
+		return eClass.toString();
+	}
 }

@@ -84,4 +84,9 @@ public class E4SlotAdapter implements QSlot {
 
 		return (QObject) eObject;  
 	}
+
+	@Override
+	public String toString() {
+		return this.structuralFeature.toString();
+	}
 }

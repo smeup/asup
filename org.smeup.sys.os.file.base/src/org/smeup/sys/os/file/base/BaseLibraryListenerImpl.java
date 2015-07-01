@@ -97,6 +97,6 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		if (schema == null)
 			throw new SQLException("Schema not found: " + library.getName());
 
-		databaseManager.dropSchema(connection, schema, false);
+		databaseManager.dropSchema(connection, schema, true);
 	}
 }

@@ -100,7 +100,7 @@ public class JobLogDisplayer {
 	public static enum OutputEnum {
 		@Special(value = "*")
 		TERM_STAR, @Special(value = "L")
-		PRINT, @Special(value = "M")
+		PRINT, @Special(value = "P")
 		APIDFN, @Special(value = "N")
 		OUTFILE
 	}

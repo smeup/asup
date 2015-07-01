@@ -118,7 +118,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			address = program.getAddress(); 
 		// Program
 		else				
-			address = "asup:/omac/com.smeup.erp.gen.pgm/com.smeup.erp.gen.pgm."+program.getApplication()+"."+program.getName();
+			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm."+program.getApplication()+".gen."+program.getName();
 
 		Class<?> klass = job.getContext().loadClass(address);
 		
