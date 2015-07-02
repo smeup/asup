@@ -170,9 +170,11 @@ indicator
 	:
 		IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
 		|
-		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 	// Caso *INnn
+		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 			// Caso *INnn
 		|
-		INNU -> ^(INDICATOR[$INNU.text])				        // Caso *INU0 - *INU8
+		INNU -> ^(INDICATOR[$INNU.text])				        					// Caso *INU0 - *INU8
+		|
+		IN -> ^(INDICATOR[$IN.text])												// Caso *IN
 	;		
 	
 filler	:	
