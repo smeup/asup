@@ -253,16 +253,17 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QExpression rightExpression = relationalExpression.getRightOperand();
 
 		if (leftExpression.getExpressionType() == ExpressionType.ATOMIC) {
-			QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) leftExpression;
+			QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
+			QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
 
-			if (atomicTermExpression.isSpecial())
-				System.out.println(atomicTermExpression);
+			if (atomicTermExpressionLeft.isSpecial())
+				System.out.println(atomicTermExpressionLeft);
 
-			if (atomicTermExpression.getValue().equalsIgnoreCase("*BLANKS"))
-				atomicTermExpression.toString();
+			if (atomicTermExpressionLeft.getValue().equalsIgnoreCase("*BLANKS"))
+				atomicTermExpressionLeft.toString();
 
 			// special founded on left -> reverse operands
-			if (atomicTermExpression.isSpecial() && !atomicTermExpression.isFunction()) {
+			if (atomicTermExpressionLeft.isSpecial() && !atomicTermExpressionLeft.isFunction()) {
 				relationalExpression.setLeftOperand(rightExpression);
 				relationalExpression.setRightOperand(leftExpression);
 
@@ -271,7 +272,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				return expressionStringBuilder.getResult();
 			}
 			// STRING founded on left -> reverse operands and operator
-			if (atomicTermExpression.getType().equals(AtomicType.STRING)) {
+			if (atomicTermExpressionLeft.getType().equals(AtomicType.STRING) && !atomicTermExpressionRight.getType().equals(AtomicType.STRING)) {
 				relationalExpression.setLeftOperand(rightExpression);
 				relationalExpression.setRightOperand(leftExpression);
 				// operator
