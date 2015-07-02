@@ -84,7 +84,8 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		Schema schema = connection.getCatalogMetaData().getSchema(library.getName());
 		if (schema == null) {
 			QSchemaDef schemaDef = QDatabaseCoreFactory.eINSTANCE.createSchemaDef();
-
+			schemaDef.setLabel(library.getText());
+			
 			databaseManager.createSchema(connection, library.getName(), schemaDef);
 		} else
 			System.err.println("Schema already exists: " + library.getName());

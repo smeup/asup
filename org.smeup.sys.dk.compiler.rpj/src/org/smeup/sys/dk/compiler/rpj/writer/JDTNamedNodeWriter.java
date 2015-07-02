@@ -323,7 +323,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		 * 
 		 * }
 		 */
-		if (QDataStructDef.class.isAssignableFrom(klassDef)) {
+		else if (QDataStructDef.class.isAssignableFrom(klassDef)) {
 			QDataStructDef dataStructureDef = (QDataStructDef) dataDef;
 
 			if (dataStructureDef.isQualified())

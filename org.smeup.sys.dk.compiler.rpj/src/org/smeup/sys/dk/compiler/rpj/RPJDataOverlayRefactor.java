@@ -26,14 +26,16 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 	public RPJDataOverlayRefactor(QCompilationUnit compilationUnit) {
 		super(compilationUnit);
 	}
-	
+
 	@Override
 	public boolean visit(QDataTerm<?> dataTerm) {
-		
+
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
+			super.visit(dataTerm);
 			break;
 		case MULTIPLE_COMPOUND:
+			super.visit(dataTerm);
 			break;
 		case UNARY_ATOMIC:
 			// overlay
@@ -44,7 +46,7 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 					throw new RuntimeException("Unexpected condition: 57as43534dftgasd8764xm0437");
 
 				if (overlayTerm.getDataTermType().isMultiple())
-					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject)dataTerm).eClass()));
+					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject) dataTerm).eClass()));
 				else
 					super.visit(dataTerm);
 
@@ -65,16 +67,16 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: b8r6w8er6wver87w61");
 
 				if (overlayTerm.getDataTermType().isMultiple())
-					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject)dataTerm).eClass()));
+					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject) dataTerm).eClass()));
 				else
 					super.visit(dataTerm);
 
 			} else
 				super.visit(dataTerm);
 
-			break;		
+			break;
 		}
-		
+
 		return false;
 	}
 

@@ -35,6 +35,30 @@ public interface QDefinitionWriter extends QStatementWriter {
 	 * @model required="true" nameRequired="true" schemaRequired="true"
 	 * @generated
 	 */
+	String createLabel(String name, QSchemaDef schema);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" schemaRequired="true" nameRequired="true" tableRequired="true"
+	 * @generated
+	 */
+	String createLabel(Schema schema, String name, QTableDef table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" schemaRequired="true" nameRequired="true" tableRequired="true"
+	 * @generated
+	 */
+	String createLabelForFields(Schema schema, String name, QTableDef table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true" schemaRequired="true"
+	 * @generated
+	 */
 	String createSchema(String name, QSchemaDef schema);
 
 	/**

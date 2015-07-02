@@ -20,6 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.impl.TableImpl;
 import org.smeup.sys.db.core.OrderingType;
 import org.smeup.sys.db.core.QIndexColumnDef;
 import org.smeup.sys.db.core.QIndexDef;
+import org.smeup.sys.db.core.QSchemaDef;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.syntax.base.BaseDefinitionWriterImpl;
@@ -150,5 +151,48 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 
 			return sql;
 		}
+	}
+
+	@Override
+	public String createLabel(String name, QSchemaDef schema) {
+		String label = schema.getLabel();
+		if (label != null && label.trim() != "") 
+			return "COMMENT ON SCHEMA  " + schema + " IS " + getNameInSQLFormat(label);
+		else 
+			return null;
+	}
+
+	@Override
+	public String createLabel(Schema schema, String name, QTableDef table) {
+		return null;
+//		String label = schema.getLabel();
+//		if (label != null && label.trim() != "") { 
+//			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + getNameInSQLFormat(label);
+//		} else {
+//			return null;
+//		}
+	}
+
+
+	@Override
+	public String createLabelForFields(Schema schema, String name, QTableDef table) {
+		return null;
+//		StringBuffer result = new StringBuffer();
+//		for (QTableColumnDef column : table.getColumns()) {
+//			String label = column.getLabel();
+//			if (label != null && label.trim() != "") {
+//				if (result.length() > 0)
+//					result.append(", ");
+//				result.append(getNameInSQLFormat(column))
+//					  .append(" IS ")
+//				      .append(getNameInSQLFormat(label));
+//			}
+//		}
+//		
+//		if (result.length() > 0) {
+//			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
+//		} else {
+//			return null;
+//		}
 	}
 }
