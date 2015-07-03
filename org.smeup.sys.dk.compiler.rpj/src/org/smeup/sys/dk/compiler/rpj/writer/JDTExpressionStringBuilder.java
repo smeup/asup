@@ -49,9 +49,12 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
+import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.flow.QEntryParameter;
+import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
+import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QPrototype;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
@@ -225,7 +228,34 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QCompoundTermExpression expression) {
 		
-		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);		
+		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
+		
+		if(namedNode == null && !expression.getElements().isEmpty()) {
+			
+			QExpression expressionChild = expression.getElements().get(0);
+			if(expressionChild instanceof QTermExpression) {
+				QTermExpression termExpresssion = (QTermExpression) expressionChild;
+				
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+				methodExec.setObject(termExpresssion.getValue());
+				methodExec.setMethod(expression.getValue());
+
+				for(QExpression elementExpression: expression.getElements()) {
+					if(elementExpression == expressionChild)
+						continue;
+					
+					if(!(elementExpression instanceof QTermExpression)) 
+						throw new IntegratedLanguageExpressionRuntimeException("Invalid term method: " + expression.getValue());
+
+					QTermExpression elementTermExpression = (QTermExpression) elementExpression;
+					
+					methodExec.getParameters().add(elementTermExpression.getValue());
+				}
+				
+				return false;
+			}			
+		}		
+		
 		if (namedNode == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
 		
