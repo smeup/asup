@@ -832,11 +832,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			return;
 		}
 
-		if (QData.class.isAssignableFrom(source)) {
-			buffer.append(value);
-			return;
-		}
-
 		// TODO remove?
 		// Hexadecimal
 		if (source.isAssignableFrom(QHexadecimal.class))
