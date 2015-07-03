@@ -257,8 +257,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				statementWriter.setAST(getAST());
 				Block block = getAST().newBlock();
 				statementWriter.getBlocks().push(block);
+
 				
 				methodExec.accept(statementWriter);
+				if(!block.statements().isEmpty())
+					this.buffer.append(block.statements().get(0));				
 				
 				statementWriter.getBlocks().pop();				
 				return false;
