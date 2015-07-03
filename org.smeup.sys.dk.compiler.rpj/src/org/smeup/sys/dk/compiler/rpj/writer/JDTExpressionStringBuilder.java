@@ -374,7 +374,63 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// prototype
 		else if (namedNode instanceof QPrototype) {
 
-			writePrototype((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
+			QPrototype<?> prototype = (QPrototype<?>) namedNode;
+
+			StringBuffer value = new StringBuffer();
+
+			value.append(compilationUnit.getQualifiedName(namedNode));
+			value.append("(");
+
+			if (prototype.getEntry() != null) {
+				Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
+
+				// parameters
+				JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+				boolean first = true;
+				for (QExpression element : expression.getElements()) {
+
+					if (!entryParameters.hasNext())
+						throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + namedNode.getName());
+
+					QEntryParameter<?> entryParameter = entryParameters.next();
+					QTerm parameterDelegate = entryParameter.getDelegate();
+
+					parameterBuilder.clear();
+					if (parameterDelegate instanceof QDataTerm) {
+						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
+						if (dataTerm.isConstant())
+							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
+						else
+							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
+					} else if (parameterDelegate instanceof QFileTerm) {
+						parameterBuilder.setTarget(QFileTerm.class);
+					}
+
+					element.accept(parameterBuilder);
+
+					if (!first)
+						value.append(", ");
+
+					value.append(parameterBuilder.getResult());
+
+					first = false;
+				}
+
+				while (entryParameters.hasNext()) {
+					QEntryParameter<?> entryParameter = entryParameters.next();
+					if (!first)
+						value.append(", ");
+					value.append("null");
+					first = false;
+				}
+			} else {
+				if (!expression.getElements().isEmpty())
+					throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + namedNode.getName());
+			}
+
+			value.append(")");
+
+			writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
 
 		} else
 			System.err.println("Unexpected condition: xm4t609543m487mxz");
