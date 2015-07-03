@@ -19,6 +19,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.java.QStrings;
@@ -234,10 +235,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			
 			QExpression expressionChild = expression.getElements().get(0);
 			if(expressionChild instanceof QTermExpression) {
-				QTermExpression termExpresssion = (QTermExpression) expressionChild;
+				QTermExpression termExpression = (QTermExpression) expressionChild;
 				
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-				methodExec.setObject(termExpresssion.getValue());
+				methodExec.setObject(termExpression.getValue());
 				methodExec.setMethod(expression.getValue());
 
 				for(QExpression elementExpression: expression.getElements()) {
@@ -252,6 +253,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					methodExec.getParameters().add(elementTermExpression.getValue());
 				}
 				
+				JDTStatementWriter statementWriter = compilationUnit.getContext().make(JDTStatementWriter.class);
+				statementWriter.setAST(getAST());
+				Block block = getAST().newBlock();
+				statementWriter.getBlocks().push(block);
+				
+				methodExec.accept(statementWriter);
+				
+				statementWriter.getBlocks().pop();				
 				return false;
 			}			
 		}		
@@ -805,7 +814,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
 	}
 
-	public void writeValue(Class<?> source, Class<?> target, String value) {
+	private void writeValue(Class<?> source, Class<?> target, String value) {
 
 		if (value == null)
 			return;

@@ -18,6 +18,7 @@ public class JDTStatementHelper {
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setTarget(target);
+		builder.setAST(ast);
 		expression.accept(builder);
 		String value = builder.getResult();
 
@@ -26,10 +27,7 @@ public class JDTStatementHelper {
 		if (node.getLength() == 0)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid java conversion: " + value);
 
-		Expression jdtExpression = (Expression) node;
-
-		return (Expression) ASTNode.copySubtree(ast, jdtExpression);
+		return (Expression) ASTNode.copySubtree(ast, (Expression) node);
 	}
-
 
 }
