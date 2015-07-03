@@ -146,7 +146,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: wstt9rewtb043b5t9072349");
 
 				nodeName = expressionValue.substring(0, 3);
-				indicatorIndex = expressionValue.substring(3, 5);
+				// TODO 
+				// modifica resa necessaria quando si incontra *IN e non *IN(xx)
+				// è giusto fare cosi?
+				if(nodeName.length()>3)
+					indicatorIndex = expressionValue.substring(3, 5);
 				// }
 
 			} else
@@ -724,7 +728,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		}
 
 		StringBuffer value = new StringBuffer();
-		value.append(params.get(0));
+
+			// TODO togliere dopo decisione su built-in function
+		if(!params.isEmpty()){
+			value.append(params.get(0));
+		}else{
+			value.append("qRPJ");
+			name = "q" + strings.firstToUpper(name);
+		}
 		value.append(".");
 		value.append(name);
 		value.append("(");
@@ -762,6 +773,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			return;
 		}
 
+		if (QData.class.isAssignableFrom(source)) {
+			buffer.append(value);
+			return;
+		}
+		
+		
 		// TODO remove?
 		// Hexadecimal
 		if (source.isAssignableFrom(QHexadecimal.class))
