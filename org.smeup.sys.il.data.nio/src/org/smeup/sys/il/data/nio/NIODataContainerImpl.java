@@ -68,7 +68,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 		dataTerm.accept(resetter);
 		try {
-			result = !getData(dataTerm).toString().equals(data.toString());
+			
+			String s1 = getData(dataTerm).toString();
+			String s2 = data.toString();
+			
+			result = !s1.equals(s2);
+			if(result)
+				"".toString();
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			result = false;
@@ -218,7 +224,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		}
 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-		dataTerm.accept(resetter);
-		
+		dataTerm.accept(resetter);		
 	}
 }

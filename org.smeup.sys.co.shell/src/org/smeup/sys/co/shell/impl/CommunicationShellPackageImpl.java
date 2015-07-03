@@ -255,11 +255,12 @@ public class CommunicationShellPackageImpl extends EPackageImpl implements QComm
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "defaults", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "useDefaults", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(shellManagerEClass, theIntegratedLanguageDataPackage.getDataContainer(), "decodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "useDefaults", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(shellManagerEClass, ecorePackage.getEString(), "encodeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
