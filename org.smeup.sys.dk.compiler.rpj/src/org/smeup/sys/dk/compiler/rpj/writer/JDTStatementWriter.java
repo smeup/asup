@@ -18,8 +18,6 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ArrayCreation;
 import org.eclipse.jdt.core.dom.ArrayInitializer;
 import org.eclipse.jdt.core.dom.Block;
@@ -661,23 +659,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	}
 
 	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
-
-		ASTParser parser = ASTParser.newParser(AST.JLS8);
-		parser.setKind(ASTParser.K_EXPRESSION);
-
-		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-		builder.setTarget(target);
-		expression.accept(builder);
-		String value = builder.getResult();
-
-		parser.setSource(value.toCharArray());
-		ASTNode node = parser.createAST(null);
-		if (node.getLength() == 0)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid java conversion: " + value);
-
-		Expression jdtExpression = (Expression) node;
-
-		return (Expression) ASTNode.copySubtree(ast, jdtExpression);
+		return JDTStatementHelper.buildExpression(ast, compilationUnit, expression, target);
 	}
 
 	@SuppressWarnings("unchecked")

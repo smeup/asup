@@ -883,22 +883,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
-
-		ASTParser parser = ASTParser.newParser(AST.JLS8);
-		parser.setKind(ASTParser.K_EXPRESSION);
-
-		JDTExpressionStringBuilder builder = getCompilationUnit().getContext().make(JDTExpressionStringBuilder.class);
-		builder.setTarget(target);
-		expression.accept(builder);
-		String value = builder.getResult();
-
-		parser.setSource(value.toCharArray());
-		ASTNode node = parser.createAST(null);
-		if (node.getLength() == 0)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid java conversion: " + value);
-
-		Expression jdtExpression = (Expression) node;
-
-		return (Expression) ASTNode.copySubtree(ast, jdtExpression);
+		return JDTStatementHelper.buildExpression(ast, getCompilationUnit(), expression, target);
 	}
 }

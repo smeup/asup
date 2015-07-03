@@ -13,8 +13,6 @@
 package org.smeup.sys.dk.compiler.rpj.writer;
 
 import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
@@ -22,7 +20,6 @@ import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.StringLiteral;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.QAnnotationTest;
-import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
@@ -129,26 +126,8 @@ public class JDTAssertionTestWriter {
 		target.statements().add(assertStatement);
 	}
 	
-
-		// TODO bisognerebbe farne una classe
 	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
-	
-		ASTParser parser = ASTParser.newParser(AST.JLS8);
-		parser.setKind(ASTParser.K_EXPRESSION);
-	
-		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-		builder.setTarget(target);
-		expression.accept(builder);
-		String value = builder.getResult();
-	
-		parser.setSource(value.toCharArray());
-		ASTNode node = parser.createAST(null);
-		if (node.getLength() == 0)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid java conversion: " + value);
-	
-		Expression jdtExpression = (Expression) node;
-	
-		return (Expression) ASTNode.copySubtree(ast, jdtExpression);
+		return JDTStatementHelper.buildExpression(ast, compilationUnit, expression, target);
 	}
 
 	private String normalizeMessage(String message) {

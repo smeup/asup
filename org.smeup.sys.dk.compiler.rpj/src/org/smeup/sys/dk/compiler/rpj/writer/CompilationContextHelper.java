@@ -218,7 +218,7 @@ public class CompilationContextHelper {
 			if (dataTerm != null)
 				if (dataTerm.getDataTermType().isMultiple() && dataTerm.getDataTermType().isAtomic()) {
 					QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
-					return multipleAtomicDataDef.getArgument().getJavaClass();				
+					return multipleAtomicDataDef.getArgument().getJavaClass();
 				} else
 					return dataTerm.getDefinition().getJavaClass();
 
