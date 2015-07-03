@@ -379,7 +379,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			StringBuffer value = new StringBuffer();
 
-			value.append(compilationUnit.getQualifiedName(namedNode));
+//			value.append(compilationUnit.getQualifiedName(namedNode));
+//			TODO non mi piace affatto
+			String name = "q" + strings.firstToUpper(strings.removeFirstChar(namedNode.getName()));
+			value.append("qRPJ." + name);
 			value.append("(");
 
 			if (prototype.getEntry() != null) {
