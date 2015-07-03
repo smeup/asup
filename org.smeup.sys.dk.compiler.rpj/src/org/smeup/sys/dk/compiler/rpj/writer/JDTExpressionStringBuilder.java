@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.dk.compiler.rpj.writer;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -349,9 +348,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
 				else
 					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-
 			}
-
 		}
 		// dataSet
 		else if (namedNode instanceof QDataSetTerm) {
@@ -377,10 +374,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// prototype
 		else if (namedNode instanceof QPrototype) {
 
-			writeAssignment((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
-			
-		//	vecchia scrittura qRPJ
-		//	writePrototype((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
+			writePrototype((QPrototype<?>) namedNode, expression, compilationUnit.normalizeTermName(namedNode.getName()));
 
 		} else
 			System.err.println("Unexpected condition: xm4t609543m487mxz");
@@ -751,17 +745,20 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		return result;
 	}
 
-	private void writeAssignment(QPrototype<?> prototype, QCompoundTermExpression expression, String name) {
+	private void writePrototype(QPrototype<?> prototype, QCompoundTermExpression expression, String name) {
+		StringBuffer value = new StringBuffer();
 
-		List<String> params = new ArrayList<String>();
+		value.append(name);
+		value.append("(");
+
 		if (prototype.getEntry() != null) {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
 
 			// parameters
 			JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-			parameterBuilder.setAST(getAST());
-			
+			boolean first = true;
 			for (QExpression element : expression.getElements()) {
+
 				if (!entryParameters.hasNext())
 					throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + name);
 
@@ -778,41 +775,28 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				} else if (parameterDelegate instanceof QFileTerm) {
 					parameterBuilder.setTarget(QFileTerm.class);
 				}
+
 				element.accept(parameterBuilder);
-				params.add(parameterBuilder.getResult());
+
+				if (!first)
+					value.append(", ");
+
+				value.append(parameterBuilder.getResult());
+
+				first = false;
 			}
 
+			while (entryParameters.hasNext()) {
+				if (!first)
+					value.append(", ");
+				value.append("null");
+				first = false;
+			}
 		} else {
 			if (!expression.getElements().isEmpty())
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + name);
 		}
 
-		StringBuffer value = new StringBuffer();
-
-		// TODO togliere dopo decisione su built-in function
-		if (!params.isEmpty()) {
-			value.append(params.get(0));
-		} else {
-			value.append("qRPJ");
-			name = "q" + strings.firstToUpper(name);
-		}
-		value.append(".");
-		value.append(name);
-		value.append("(");
-		boolean first = true;
-		int i = 0;
-		for (String parm : params) {
-			// salto il primo parametro
-			if (i == 0) {
-				i++;
-				continue;
-			}
-
-			if (!first)
-				value.append(", ");
-			value.append(parm);
-			first = false;
-		}
 		value.append(")");
 
 		writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
