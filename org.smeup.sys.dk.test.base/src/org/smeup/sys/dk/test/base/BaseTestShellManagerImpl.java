@@ -19,13 +19,13 @@ import org.smeup.sys.il.data.QDataContainer;
 public class BaseTestShellManagerImpl implements QShellManager {
 
 	@Override
-	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
+	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean useDefaults) {
 
 		System.out.println(command);
 	}
 
 	@Override
-	public QDataContainer decodeCommand(String contextID, String command) {
+	public QDataContainer decodeCommand(String contextID, String command, boolean useDefaults) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -677,9 +677,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	}
 
 	@Override
-	public QDataContainer decodeCommand(String contextID, String command) {
+	public QDataContainer decodeCommand(String contextID, String command, boolean useDefaults) {
 
-		QCallableCommand callableCommand = prepareCommand(contextID, command, null, false);
+		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);
 
 		return callableCommand.getDataContainer();
 	}

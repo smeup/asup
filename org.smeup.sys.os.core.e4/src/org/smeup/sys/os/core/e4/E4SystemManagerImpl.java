@@ -14,33 +14,18 @@ package org.smeup.sys.os.core.e4;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
-import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
-import org.smeup.sys.rt.core.QApplication;
 
 public class E4SystemManagerImpl extends BaseSystemManagerImpl {
-
-	@Inject
-	private QApplication application;
-	@Inject
-	private QResourceManager resourceManager;
 	
 	private QSystem system;
 
 	private QJob startupJob;
-
-	private QContext systemContext;
 
 	private int nextJobNumber = Integer.parseInt(HHMMSS.format(Calendar.getInstance().getTime()));
 
@@ -54,22 +39,6 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		this.system.setSystemLibrary("QSYS");
 		this.system.setInstallPath(System.getProperty("osgi.instance.area"));
 
-		QJob qJob = start();
-
-		application.getContext().set(QSystem.class, getSystem());
-
-		application.getContext().set(QJob.class, qJob);
-		
-		// Library
-		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(qJob, QLibrary.class, this.system.getSystemLibrary());
-		if (!resourceLibrary.exists(this.system.getSystemLibrary())) {
-			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
-			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(this.system));
-			library.setName(this.system.getSystemLibrary());
-			library.setText("As.UP System Library");
-			resourceLibrary.save(library);
-		}
-
 	}
 
 	@Override
@@ -80,12 +49,8 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	public QJob start() {
 
-		this.systemContext = this.application.getContext().createChildContext(this.system.getName());
-
 		this.startupJob = createJob(JobType.KERNEL, "QASUP");
-
-		getSystem().setContext(systemContext);
-
+		
 		return startupJob;
 	}
 
@@ -109,10 +74,5 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	protected QJob createJob(JobType jobType, String user) {
 		return super.createJob(jobType, user);
-	}
-
-	@Override
-	protected QContext createContext(String name) {
-		return this.systemContext.createChildContext(name);
 	}
 }
