@@ -157,7 +157,7 @@ public class CompilationContextHelper {
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
 			QDataTerm<?> dataTerm = getDataTerm(namedNode);
 			if (dataTerm == null)
-				return true;
+				return false;
 
 			return dataTerm.getDefinition() instanceof QPointerDef;
 		default:
