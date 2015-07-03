@@ -23,7 +23,6 @@ import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.emf.cdo.view.CDOView;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
@@ -31,7 +30,6 @@ import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
-import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
 import org.smeup.sys.os.core.cdo.CDOSystemConfig;
@@ -40,25 +38,12 @@ import org.smeup.sys.os.core.cdo.util.CDOSessionUtil;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobManager;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 import org.smeup.sys.rt.core.ComponentStarted;
-import org.smeup.sys.rt.core.QApplication;
 
 public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
-
-	@Inject
-	private QApplication application;
-	@Inject
-	private QResourceManager resourceManager;
 	@Inject
 	private QLockManager lockManager;
 	
-	private QContext systemContext;
-
 	private static final String CDO_CORE = "os/core";
 
 	private CDONet4jSession session;
@@ -79,33 +64,12 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 	}
 
 	@ComponentStarted
-	public void init(QApplication application, QSystemManager systemManager, QJobManager jobManager) throws OperatingSystemException {
-		QJob qJob = systemManager.start();
-
-		application.getContext().set(QSystem.class, systemManager.getSystem());
-
-		application.getContext().set(QJob.class, qJob);
-		
-		QSystem system = systemManager.getSystem();
-		
-		// Library
-		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(qJob, QLibrary.class, system.getSystemLibrary());
-		if (!resourceLibrary.exists(system.getSystemLibrary())) {
-			QLibrary library = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
-			library.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
-			library.setName(system.getSystemLibrary());
-			library.setText("As.UP System Library");
-			resourceLibrary.save(library);
-		}
+	public void init() {
+		this.viewSystem = prepareSystem();		
 	}
 
 	@Override
 	public QJob start() {
-
-		// prepare system
-		viewSystem = prepareSystem();
-
-		this.systemContext = this.application.getContext().createChildContext(viewSystem.getName());
 
 		// acquire system lock
 		QObjectLocker<QSystem> locker = lockManager.getLocker(startupJob.getContext(), transactionSystem);
@@ -113,7 +77,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		while (!locker.tryLock(QSystem.LOCK_TIMEOUT, LockType.WRITE));
 
 		// create job kernel
-		startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser());
+		this.startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser());
 
 		// save
 		CDOResource resource = transaction.getOrCreateResource(CDO_CORE);
@@ -141,8 +105,6 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		} finally {
 			locker.unlock(LockType.WRITE);
 		}
-
-		getSystem().setContext(systemContext);
 
 		return startupJob;
 	}
@@ -292,10 +254,5 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	protected QJob createJob(JobType jobType, String user){
 		return super.createJob(jobType, user);
-	}
-
-	@Override
-	protected QContext createContext(String name){
-		return this.systemContext.createChildContext(name);
 	}
 }

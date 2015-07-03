@@ -13,7 +13,6 @@ package org.smeup.sys.os.msgf.base;
 
 import java.util.regex.Matcher;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.os.core.OperatingSystemMessageException;
@@ -31,19 +30,12 @@ public class BaseMessageFileManagerImpl implements QMessageFileManager {
 	@Inject
 	private QResourceManager resourceManager;
 
-	@Inject
-	private QJob job;
-
-	private QResourceReader<QMessageFile> messageFileReader = null;
-
-	@PostConstruct
-	public void init() {
-		messageFileReader = resourceManager.getResourceReader(job, QMessageFile.class, Scope.ALL);
-	}
 
 	@Override
 	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> messageName, Object[] variables) {
 
+		QResourceReader<QMessageFile> messageFileReader = resourceManager.getResourceReader(job, QMessageFile.class, Scope.ALL);
+		
 		QMessageFile qMessageFile = messageFileReader.lookup(messageName.getClass().getSimpleName());
 
 		QMessageDescription messageDescription = null;

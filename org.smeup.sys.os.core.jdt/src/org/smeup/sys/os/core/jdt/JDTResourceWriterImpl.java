@@ -17,8 +17,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
-import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
-import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -27,7 +25,6 @@ import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
@@ -75,19 +72,6 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			}
 
 			fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
-			
-			if(QLibrary.class.isAssignableFrom(klass) && object.getName().equals(getJob().getSystem().getSystemLibrary())) {
-				try {
-					QLibrary library = (QLibrary)object;
-					QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
-					projectDef.setName(object.getName());
-					projectDef.setText(library.getText());
-					sourceManager.createProject(getJob().getContext(), projectDef, replace);
-				}
-				catch(IOException e) {
-					e.printStackTrace();
-				}
-			}
 			
 			ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
 			emfConverter.writeToStream((EObject) object, outpuStream);

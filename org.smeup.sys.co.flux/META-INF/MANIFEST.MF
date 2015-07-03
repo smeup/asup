@@ -19,5 +19,4 @@ Export-Package: org.smeup.sys.co.flux,
  org.smeup.sys.co.flux.hook,
  org.smeup.sys.co.flux.impl
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.flux.core.Activator
 Import-Package: org.apache.commons.codec.digest;version="1.6.0"

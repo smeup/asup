@@ -54,8 +54,11 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		return job;
 	}
 
+	private QContext createContext(String name) {
+		return getSystem().getContext().createChildContext(name);
+	}
+
 	protected abstract int nextJobID();
 
-	protected abstract QContext createContext(String name);
-
+	
 }

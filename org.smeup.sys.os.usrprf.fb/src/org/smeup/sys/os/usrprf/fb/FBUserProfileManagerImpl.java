@@ -30,7 +30,6 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 	@Inject
 	private QResourceManager resourceManager;
 
-	@Override
 	public void init(QJob job) {
 
 		QSystem qSystem = job.getSystem();

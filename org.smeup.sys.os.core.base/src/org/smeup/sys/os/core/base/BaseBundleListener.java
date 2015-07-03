@@ -10,7 +10,6 @@
  */
 package org.smeup.sys.os.core.base;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.osgi.framework.console.CommandInterpreter;
@@ -31,12 +30,13 @@ public class BaseBundleListener implements BundleListener, CommandProvider {
 
 	private QJob job;
 
-	@PostConstruct
 	public void init(QJob job) {
 		this.job = job;
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
 		bundleContext.addBundleListener(this);
+		
+		bundleContext.registerService(CommandProvider.class, this, null);
 	}
 
 	@Override
