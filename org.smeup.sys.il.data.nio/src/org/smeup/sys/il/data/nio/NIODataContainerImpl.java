@@ -40,13 +40,53 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private Map<String, QData> datas;
 
 	private QDataWriter dataWriter;
-
-	protected NIODataContainerImpl(QDataFactory dataFactory, Map<String, QDataTerm<?>> dataTerms) {
+	
+	private boolean useDefault;
+	
+	protected NIODataContainerImpl(QDataFactory dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataFactory = dataFactory;
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+		this.useDefault = useDefault;
 	}
+
+	@Override
+	public boolean isDefault(String key) {
+
+		QDataTerm<?> dataTerm = dataTerms.get(key);
+
+		return isDefault(dataTerm);
+	}
+
+	@Override
+	public boolean isDefault(QDataTerm<?> dataTerm) {
+		boolean result = false;
+
+		if (dataTerm == null)
+			return false;
+
+		QData data = dataFactory.createData(dataTerm, true);
+		data.clear();
+		
+		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+		dataTerm.accept(resetter);
+		
+		try {
+			
+			String s1 = getData(dataTerm).toString();
+			String s2 = data.toString();
+			
+			result = s1.equals(s2);
+			if(result)
+				"".toString();
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+	
 
 	@Override
 	public boolean isSet(String key) {
@@ -65,8 +105,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			return false;
 
 		QData data = dataFactory.createData(dataTerm, true);
-		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-		dataTerm.accept(resetter);
+		data.clear();
+		
+		if(useDefault) {
+			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+			dataTerm.accept(resetter);
+		}
+		
 		try {
 			
 			String s1 = getData(dataTerm).toString();

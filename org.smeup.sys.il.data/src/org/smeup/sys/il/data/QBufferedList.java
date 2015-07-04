@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
-import java.lang.String;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -23,6 +21,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -30,6 +29,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -37,6 +37,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -44,6 +45,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -51,6 +53,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -58,6 +61,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */

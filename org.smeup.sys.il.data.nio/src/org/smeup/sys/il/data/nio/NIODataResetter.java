@@ -122,8 +122,6 @@ public class NIODataResetter extends DataTermVisitorImpl {
 
 			break;
 		case UNARY_COMPOUND:
-			break;
-		default:
 			result = true;
 
 			default_ = term.getDefault();

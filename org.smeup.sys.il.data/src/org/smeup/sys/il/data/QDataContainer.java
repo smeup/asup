@@ -7,8 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 import java.util.List;
+
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermContainer;
 
@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.term.QDataTermContainer;
 public interface QDataContainer extends QDataTermContainer {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -31,6 +32,7 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyRequired="true"
 	 * @generated
 	 */
@@ -38,22 +40,23 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model dataTermRequired="true"
 	 * @generated
 	 */
 	QData getData(QDataTerm<?> dataTerm);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyRequired="true"
 	 * @generated
 	 */
 	QDataTerm<?> getDataTerm(String key);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -61,6 +64,23 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model keyRequired="true"
+	 * @generated
+	 */
+	boolean isDefault(String key);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model dataTermRequired="true"
+	 * @generated
+	 */
+	boolean isDefault(QDataTerm<?> dataTerm);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyRequired="true"
 	 * @generated
 	 */
@@ -68,6 +88,7 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model dataTermRequired="true"
 	 * @generated
 	 */
@@ -75,6 +96,7 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -82,6 +104,7 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyRequired="true"
 	 * @generated
 	 */
@@ -89,6 +112,7 @@ public interface QDataContainer extends QDataTermContainer {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model dataTermRequired="true"
 	 * @generated
 	 */

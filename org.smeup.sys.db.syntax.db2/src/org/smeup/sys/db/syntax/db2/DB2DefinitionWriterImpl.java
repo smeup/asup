@@ -155,11 +155,13 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 
 	@Override
 	public String createLabel(String name, QSchemaDef schema) {
-		String label = schema.getLabel();
+		return null;
+		
+/*		String label = schema.getLabel();
 		if (label != null && label.trim() != "") 
-			return "COMMENT ON SCHEMA  " + schema + " IS " + getNameInSQLFormat(label);
+			return "COMMENT ON SCHEMA  " + name + " IS " + getNameInSQLFormat(label);
 		else 
-			return null;
+			return null;*/
 	}
 
 	@Override

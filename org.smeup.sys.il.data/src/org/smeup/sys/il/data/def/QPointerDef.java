@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QPointer;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,9 +44,12 @@ public interface QPointerDef extends QUnaryAtomicBufferedDataDef<QPointer> {
 	String getTarget();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Target</em>' attribute.
 	 * @see #getTarget()
 	 * @generated
 	 */

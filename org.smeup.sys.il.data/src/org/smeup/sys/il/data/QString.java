@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,6 +20,7 @@ import java.lang.String;
 public interface QString extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -28,6 +28,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -35,6 +36,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -42,6 +44,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -49,6 +52,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -56,6 +60,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -63,6 +68,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -70,20 +76,27 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * 
+	 * @model factor1Required="true" factor2Required="true"
+	 *        spaceType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, QString factor2, Number space);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * 
+	 * @model factor1Required="true" factor2Required="true"
+	 *        spaceType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, String factor2, Number space);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true"
 	 * @generated
 	 */
@@ -91,6 +104,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true"
 	 * @generated
 	 */
@@ -98,6 +112,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true"
 	 * @generated
 	 */
@@ -105,6 +120,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" factor2Required="true"
 	 * @generated
 	 */
@@ -112,6 +128,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true"
 	 * @generated
 	 */
@@ -119,20 +136,27 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * 
+	 * @model factor1Required="true"
+	 *        spaceType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, Number space);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * 
+	 * @model factor1Required="true"
+	 *        spaceType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        spaceRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, Number space);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -140,6 +164,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true" spaceRequired="true"
 	 * @generated
 	 */
@@ -147,6 +172,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model factor1Required="true"
 	 * @generated
 	 */
@@ -154,6 +180,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -161,6 +188,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -168,6 +196,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -175,6 +204,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -182,6 +212,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -189,6 +220,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -196,6 +228,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -203,6 +236,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -210,6 +244,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -217,6 +252,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -224,6 +260,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -231,6 +268,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -238,6 +276,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -245,6 +284,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -252,6 +292,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -259,6 +300,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -266,6 +308,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -273,6 +316,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -280,6 +324,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -287,6 +332,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -294,6 +340,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -301,6 +348,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -308,6 +356,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -315,6 +364,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model fromRequired="true" toRequired="true" targetRequired="true"
 	 * @generated
 	 */
@@ -322,6 +372,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model fromRequired="true" toRequired="true" targetRequired="true"
 	 * @generated
 	 */
@@ -329,6 +380,7 @@ public interface QString extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model fromRequired="true" toRequired="true" targetRequired="true"
 	 * @generated
 	 */

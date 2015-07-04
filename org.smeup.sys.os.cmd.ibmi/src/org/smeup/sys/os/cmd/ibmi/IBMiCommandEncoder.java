@@ -44,7 +44,7 @@ public class IBMiCommandEncoder {
 			 * QDataTerm<?> dataTerm = dataContext.getTerms().get(position);
 			 */
 
-			if (defaults || dataContainer.isSet(key)) {
+			if (dataContainer.isSet(key) || defaults) {
 
 				result += key + "(";
 
@@ -57,7 +57,6 @@ public class IBMiCommandEncoder {
 		}
 
 		return result.trim();
-
 	}
 
 	private static String writeDataTermString(String result, QDataTerm<?> dataTerm, QData data) {
@@ -288,5 +287,4 @@ public class IBMiCommandEncoder {
 
 		return result;
 	}
-
 }

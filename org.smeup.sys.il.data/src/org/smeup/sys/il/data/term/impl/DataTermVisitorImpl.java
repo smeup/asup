@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 public abstract class DataTermVisitorImpl extends MinimalEObjectImpl.Container implements QDataTermVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataTermVisitorImpl() {
@@ -32,6 +33,7 @@ public abstract class DataTermVisitorImpl extends MinimalEObjectImpl.Container i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

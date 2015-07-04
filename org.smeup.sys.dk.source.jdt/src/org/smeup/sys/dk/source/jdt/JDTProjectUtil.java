@@ -78,7 +78,6 @@ public class JDTProjectUtil {
 		if(!file.exists())
 			file.create(new ByteArrayInputStream(stream.toByteArray()), true, null);
 		
-		
 		file = project.getFile("build.properties"); //$NON-NLS-1$
 		
 		StringWriter sw = new StringWriter();

@@ -34,7 +34,6 @@ import org.smeup.sys.il.core.FormatType;
 import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
-import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
@@ -127,8 +126,12 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		}
 
 		// data container
-		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms);
+		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms, defaults);
+		dataContainer.clearData();
 		callableCommand.setDataContainer(dataContainer);
+		
+		if(defaults)
+			dataContainer.resetData();
 
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
@@ -164,8 +167,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			QDataTerm<?> dataTerm = dataTerms.get(commandParameter.getName());
 
 			QData data = null;
-			if (value.isEmpty() == false || value.startsWith("&") || defaults)
-				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables, defaults);
+			if (value.startsWith("&") || value.isEmpty() == false)
+				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables);
 
 			// required
 			if (data != null && data.isEmpty() && commandParameter.isRequired())
@@ -174,7 +177,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		return callableCommand;
 	}
 
-	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables, boolean defaults) {
+	private QData assignValue(QDataTerm<?> dataTerm, QDataContainer dataContainer, QDataWriter writer, String value, Map<String, Object> variables) {
 
 		String tokValue = null;
 
@@ -211,11 +214,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		switch (dataTerm.getDataTermType()) {
 
 		case MULTIPLE_ATOMIC:
-
+/*
 			if (defaults && useDefault(dataTerm, value)) {
 				value = buildDefault(dataTerm);
 				defaults = false;
-			}
+			}*/
 
 			QList<?> listAtomic = (QList<?>) data;
 
@@ -267,10 +270,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		case MULTIPLE_COMPOUND:
 
-			if (defaults && useDefault(dataTerm, value)) {
+/*			if (defaults && useDefault(dataTerm, value)) {
 				value = buildDefault(dataTerm);
 				defaults = false;
-			}
+			}*/
 
 			QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
@@ -296,7 +299,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 				if (isSpecialValue(dataTerm, tmpValue))
 					assignValue(writer, data, resolveSpecialValue(dataTerm, tmpValue));
 				else
-					buildStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables, defaults);
+					buildStructValue(multipleCompoundDataDef, dataContainer, writer, tmpValue, variables);
 
 				i++;
 			}
@@ -306,8 +309,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		case UNARY_ATOMIC:
 
-			if (defaults && useDefault(dataTerm, value))
-				value = buildDefault(dataTerm);
+//			if (defaults && useDefault(dataTerm, value))
+//				value = buildDefault(dataTerm);
 
 			if (value.isEmpty() == false) {
 
@@ -360,10 +363,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			break;
 		case UNARY_COMPOUND:
 
-			if (defaults && useDefault(dataTerm, value)) {
+/*			if (defaults && useDefault(dataTerm, value)) {
 				value = buildDefault(dataTerm);
 				defaults = false;
-			}
+			}*/
 
 			// Manage Struct specials
 			value = resolveSpecialValue(dataTerm, value);
@@ -378,7 +381,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			if (isSpecialValue(dataTerm, value))
 				assignValue(writer, data, resolveSpecialValue(dataTerm, value));
 			else
-				buildStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables, defaults);
+				buildStructValue(unaryCompoundDataDef, dataContainer, writer, value, variables);
 
 			dbgString = dataTerm.toString();
 
@@ -388,38 +391,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		return data;
 	}
 
-	private boolean useDefault(QDataTerm<?> dataTerm, String value) {
-
-		boolean useDefault = false;
-
-		if (value == null || value.isEmpty()) {
-
-			String defValue = buildDefault(dataTerm);
-
-			if (defValue != null && defValue.isEmpty() == false)
-				useDefault = true;
-		}
-
-		return useDefault;
-
-	}
-
-	private String buildDefault(QDataTerm<?> dataTerm) {
-
-		String defValue = null;
-
-		QDefault default_ = dataTerm.getDefault();
-		if (default_ != null) {
-			if (dataTerm.getDataTermType().isUnary())
-				defValue = default_.getValue();
-			else if (!default_.getValues().isEmpty())
-				defValue = default_.getValues().get(0);
-		}
-
-		return defValue;
-	}
-
-	private String buildStructValue(QCompoundDataDef<?, ?> compoundDataDef, QDataContainer dataContext, QDataWriter writer, String parmValue, Map<String, Object> variables, boolean defaults) {
+	private String buildStructValue(QCompoundDataDef<?, ?> compoundDataDef, QDataContainer dataContext, QDataWriter writer, String parmValue, Map<String, Object> variables) {
 
 		String structValue = "";
 		CLParmAbstractComponent paramComp;
@@ -433,7 +405,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			for (int j = values.length; j > 0; j--) {
 
 				// Recursive Call
-				QData assignValue = assignValue(compoundDataDef.getElements().get(j - 1), dataContext, writer, values[values.length - j], variables, defaults);
+				QData assignValue = assignValue(compoundDataDef.getElements().get(j - 1), dataContext, writer, values[values.length - j], variables);
 
 				// assignValue(struct.getElement(j), assignValue.toString());
 				if (assignValue instanceof QString)
@@ -459,7 +431,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 					tmpValue = "";
 
 				// Recursive Call
-				QData assignValue = assignValue(elementIterator.next(), dataContext, writer, tmpValue, variables, defaults);
+				QData assignValue = assignValue(elementIterator.next(), dataContext, writer, tmpValue, variables);
 				if (assignValue instanceof QString)
 					structValue += ((QString) assignValue).toString();
 				else

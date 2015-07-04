@@ -21,7 +21,8 @@ import org.smeup.sys.il.data.def.QPointerDef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.PointerDefImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.PointerDefImpl#getTarget <em>Target
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -29,8 +30,9 @@ import org.smeup.sys.il.data.def.QPointerDef;
  */
 public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> implements QPointerDef {
 	/**
-	 * The default value of the '{@link #getTarget() <em>Target</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getTarget() <em>Target</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -39,6 +41,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -51,6 +54,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PointerDefImpl() {
@@ -59,6 +63,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,6 +73,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,6 +83,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,65 +96,71 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
-				return getTarget();
+		case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
+			return getTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
-				setTarget((String)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
+			setTarget((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
-				setTarget(TARGET_EDEFAULT);
-				return;
+		case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
+			setTarget(TARGET_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
-				return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
+		case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
+			return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (target: ");

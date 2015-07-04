@@ -48,32 +48,32 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataDefFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataDefFactory init() {
 		try {
-			QIntegratedLanguageDataDefFactory theIntegratedLanguageDataDefFactory = (QIntegratedLanguageDataDefFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageDataDefPackage.eNS_URI);
-			if (theIntegratedLanguageDataDefFactory != null) {
+			QIntegratedLanguageDataDefFactory theIntegratedLanguageDataDefFactory = (QIntegratedLanguageDataDefFactory) EPackage.Registry.INSTANCE
+					.getEFactory(QIntegratedLanguageDataDefPackage.eNS_URI);
+			if (theIntegratedLanguageDataDefFactory != null)
 				return theIntegratedLanguageDataDefFactory;
-			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageDataDefFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataDefFactoryImpl() {
@@ -82,84 +82,106 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageDataDefPackage.ADAPTER_DEF: return (EObject)createAdapterDef();
-			case QIntegratedLanguageDataDefPackage.ARRAY_DEF: return (EObject)createArrayDef();
-			case QIntegratedLanguageDataDefPackage.BINARY_DEF: return (EObject)createBinaryDef();
-			case QIntegratedLanguageDataDefPackage.BUFFER_DEF: return (EObject)createBufferDef();
-			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF: return (EObject)createCharacterDef();
-			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF: return (EObject)createDataStructDef();
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF: return (EObject)createDatetimeDef();
-			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF: return (EObject)createDecimalDef();
-			case QIntegratedLanguageDataDefPackage.FLOATING_DEF: return (EObject)createFloatingDef();
-			case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF: return (EObject)createHexadecimalDef();
-			case QIntegratedLanguageDataDefPackage.IDENTITY_DEF: return (EObject)createIdentityDef();
-			case QIntegratedLanguageDataDefPackage.INDICATOR_DEF: return (EObject)createIndicatorDef();
-			case QIntegratedLanguageDataDefPackage.LIST_DEF: return (EObject)createListDef();
-			case QIntegratedLanguageDataDefPackage.NUMERIC_DEF: return (EObject)createNumericDef();
-			case QIntegratedLanguageDataDefPackage.POINTER_DEF: return (EObject)createPointerDef();
-			case QIntegratedLanguageDataDefPackage.SCROLLER_DEF: return (EObject)createScrollerDef();
-			case QIntegratedLanguageDataDefPackage.STRING_DEF: return (EObject)createStringDef();
-			case QIntegratedLanguageDataDefPackage.STROLLER_DEF: return (EObject)createStrollerDef();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageDataDefPackage.ADAPTER_DEF:
+			return (EObject) createAdapterDef();
+		case QIntegratedLanguageDataDefPackage.ARRAY_DEF:
+			return (EObject) createArrayDef();
+		case QIntegratedLanguageDataDefPackage.BINARY_DEF:
+			return (EObject) createBinaryDef();
+		case QIntegratedLanguageDataDefPackage.BUFFER_DEF:
+			return (EObject) createBufferDef();
+		case QIntegratedLanguageDataDefPackage.CHARACTER_DEF:
+			return (EObject) createCharacterDef();
+		case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF:
+			return (EObject) createDataStructDef();
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF:
+			return (EObject) createDatetimeDef();
+		case QIntegratedLanguageDataDefPackage.DECIMAL_DEF:
+			return (EObject) createDecimalDef();
+		case QIntegratedLanguageDataDefPackage.FLOATING_DEF:
+			return (EObject) createFloatingDef();
+		case QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF:
+			return (EObject) createHexadecimalDef();
+		case QIntegratedLanguageDataDefPackage.IDENTITY_DEF:
+			return (EObject) createIdentityDef();
+		case QIntegratedLanguageDataDefPackage.INDICATOR_DEF:
+			return (EObject) createIndicatorDef();
+		case QIntegratedLanguageDataDefPackage.LIST_DEF:
+			return (EObject) createListDef();
+		case QIntegratedLanguageDataDefPackage.NUMERIC_DEF:
+			return (EObject) createNumericDef();
+		case QIntegratedLanguageDataDefPackage.POINTER_DEF:
+			return (EObject) createPointerDef();
+		case QIntegratedLanguageDataDefPackage.SCROLLER_DEF:
+			return (EObject) createScrollerDef();
+		case QIntegratedLanguageDataDefPackage.STRING_DEF:
+			return (EObject) createStringDef();
+		case QIntegratedLanguageDataDefPackage.STROLLER_DEF:
+			return (EObject) createStrollerDef();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageDataDefPackage.BINARY_TYPE:
-				return createBinaryTypeFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataDefPackage.DATA_DEF_TYPE:
-				return createDataDefTypeFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataDefPackage.DATETIME_TYPE:
-				return createDatetimeTypeFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataDefPackage.DATE_FORMAT:
-				return createDateFormatFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataDefPackage.DECIMAL_TYPE:
-				return createDecimalTypeFromString(eDataType, initialValue);
-			case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
-				return createFloatingTypeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageDataDefPackage.BINARY_TYPE:
+			return createBinaryTypeFromString(eDataType, initialValue);
+		case QIntegratedLanguageDataDefPackage.DATA_DEF_TYPE:
+			return createDataDefTypeFromString(eDataType, initialValue);
+		case QIntegratedLanguageDataDefPackage.DATETIME_TYPE:
+			return createDatetimeTypeFromString(eDataType, initialValue);
+		case QIntegratedLanguageDataDefPackage.DATE_FORMAT:
+			return createDateFormatFromString(eDataType, initialValue);
+		case QIntegratedLanguageDataDefPackage.DECIMAL_TYPE:
+			return createDecimalTypeFromString(eDataType, initialValue);
+		case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
+			return createFloatingTypeFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageDataDefPackage.BINARY_TYPE:
-				return convertBinaryTypeToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataDefPackage.DATA_DEF_TYPE:
-				return convertDataDefTypeToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataDefPackage.DATETIME_TYPE:
-				return convertDatetimeTypeToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataDefPackage.DATE_FORMAT:
-				return convertDateFormatToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataDefPackage.DECIMAL_TYPE:
-				return convertDecimalTypeToString(eDataType, instanceValue);
-			case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
-				return convertFloatingTypeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageDataDefPackage.BINARY_TYPE:
+			return convertBinaryTypeToString(eDataType, instanceValue);
+		case QIntegratedLanguageDataDefPackage.DATA_DEF_TYPE:
+			return convertDataDefTypeToString(eDataType, instanceValue);
+		case QIntegratedLanguageDataDefPackage.DATETIME_TYPE:
+			return convertDatetimeTypeToString(eDataType, instanceValue);
+		case QIntegratedLanguageDataDefPackage.DATE_FORMAT:
+			return convertDateFormatToString(eDataType, instanceValue);
+		case QIntegratedLanguageDataDefPackage.DECIMAL_TYPE:
+			return convertDecimalTypeToString(eDataType, instanceValue);
+		case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
+			return convertFloatingTypeToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -170,6 +192,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -180,6 +203,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,6 +214,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,6 +225,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -210,6 +236,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -220,6 +247,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,6 +258,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -240,6 +269,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -250,6 +280,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -260,6 +291,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -270,6 +302,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -280,6 +313,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -290,6 +324,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -300,6 +335,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -310,6 +346,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -320,6 +357,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -330,6 +368,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -340,16 +379,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public BinaryType createBinaryTypeFromString(EDataType eDataType, String initialValue) {
 		BinaryType result = BinaryType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertBinaryTypeToString(EDataType eDataType, Object instanceValue) {
@@ -358,16 +400,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DataDefType createDataDefTypeFromString(EDataType eDataType, String initialValue) {
 		DataDefType result = DataDefType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertDataDefTypeToString(EDataType eDataType, Object instanceValue) {
@@ -376,16 +421,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DatetimeType createDatetimeTypeFromString(EDataType eDataType, String initialValue) {
 		DatetimeType result = DatetimeType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertDatetimeTypeToString(EDataType eDataType, Object instanceValue) {
@@ -394,16 +442,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DateFormat createDateFormatFromString(EDataType eDataType, String initialValue) {
 		DateFormat result = DateFormat.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertDateFormatToString(EDataType eDataType, Object instanceValue) {
@@ -412,16 +463,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public DecimalType createDecimalTypeFromString(EDataType eDataType, String initialValue) {
 		DecimalType result = DecimalType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertDecimalTypeToString(EDataType eDataType, Object instanceValue) {
@@ -430,16 +484,19 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FloatingType createFloatingTypeFromString(EDataType eDataType, String initialValue) {
 		FloatingType result = FloatingType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertFloatingTypeToString(EDataType eDataType, Object instanceValue) {
@@ -448,15 +505,17 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageDataDefPackage getIntegratedLanguageDataDefPackage() {
-		return (QIntegratedLanguageDataDefPackage)getEPackage();
+		return (QIntegratedLanguageDataDefPackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

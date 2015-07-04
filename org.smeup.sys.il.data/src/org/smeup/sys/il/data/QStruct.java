@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 import java.util.List;
 
 /**
@@ -22,6 +21,7 @@ import java.util.List;
 public interface QStruct<D extends QData> extends QData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -29,6 +29,7 @@ public interface QStruct<D extends QData> extends QData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model positionRequired="true"
 	 * @generated
 	 */
@@ -36,6 +37,7 @@ public interface QStruct<D extends QData> extends QData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
