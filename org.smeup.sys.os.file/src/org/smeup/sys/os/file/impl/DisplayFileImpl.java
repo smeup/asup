@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.file.impl;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
 
@@ -86,6 +88,39 @@ public class DisplayFileImpl extends FileImpl implements QDisplayFile {
 		return getDisplayFormats();
 	}
 
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public URI getClassURI() {
+
+		try {
+			String classURI = "file/dspf/" + getApplication() + "/gen/" + getName();
+			URI uri = new URI(classURI);
+			return uri;
+		} catch (URISyntaxException e) {
+			return null;
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public URI getPackageInfoURI() {
+		try {
+			String classURI = "file/dspf/" + getApplication() + "/gen";
+			URI uri = new URI(classURI);
+			return uri;
+		} catch (URISyntaxException e) {
+			return null;
+		}
+	}
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
