@@ -381,10 +381,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 //			value.append(compilationUnit.getQualifiedName(namedNode));
 //			TODO non mi piace affatto
-			String name = "q" + strings.firstToUpper(strings.removeFirstChar(namedNode.getName()));
-			value.append("qRPJ." + name);
-			value.append("(");
+			if(namedNode.getName().startsWith("%")){
+				String name = "q" + strings.firstToUpper(strings.removeFirstChar(namedNode.getName()));
+				value.append("qRPJ." + name);
+			}else{
+				value.append(compilationUnit.getQualifiedName(namedNode));				
+			}
 
+			value.append("(");
 			if (prototype.getEntry() != null) {
 				Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
 
