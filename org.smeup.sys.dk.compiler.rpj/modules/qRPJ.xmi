@@ -1841,7 +1841,7 @@
     <prototypes>
       <delegate
           xsi:type="il-flow:FlowData"
-          name="%scan_o">
+          name="%scan">
         <definition
             xsi:type="il-data-def:NumericDef"/>
       </delegate>
