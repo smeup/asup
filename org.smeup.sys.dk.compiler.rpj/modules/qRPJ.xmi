@@ -1841,7 +1841,7 @@
     <prototypes>
       <delegate
           xsi:type="il-flow:FlowData"
-          name="%scan">
+          name="%scan_o">
         <definition
             xsi:type="il-data-def:NumericDef"/>
       </delegate>
@@ -2208,7 +2208,7 @@
     <prototypes>
       <delegate
           xsi:type="il-flow:FlowData"
-          name="%triml">
+          name="%triml_o">
         <definition
             xsi:type="il-data-def:StringDef"/>
       </delegate>
@@ -2228,7 +2228,7 @@
     <prototypes>
       <delegate
           xsi:type="il-flow:FlowData"
-          name="%trimr">
+          name="%trimr_o">
         <definition
             xsi:type="il-data-def:StringDef"/>
       </delegate>
