@@ -228,11 +228,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@SuppressWarnings("unused")
 	@Override
 	public boolean visit(QCompoundTermExpression expression) {
-		
+
 		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 		
 		if(namedNode == null && !expression.getElements().isEmpty()) {
-			
 			QExpression expressionChild = expression.getElements().get(0);
 			if(expressionChild instanceof QTermExpression) {
 				QTermExpression termExpression = (QTermExpression) expressionChild;
@@ -333,6 +332,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 				JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 				indexBuilder.setTarget(null);
+				indexBuilder.setAST(getAST());
 				for (QExpression element : expression.getElements())
 					element.accept(indexBuilder);
 				value.append(indexBuilder.getResult());
@@ -382,6 +382,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 //			value.append(compilationUnit.getQualifiedName(namedNode));
 //			TODO non mi piace affatto
 			if(namedNode.getName().startsWith("%")){
+				System.out.println("Verificare in qRPJ " + namedNode.getName());
 				String name = "q" + strings.firstToUpper(strings.removeFirstChar(namedNode.getName()));
 				value.append("qRPJ." + name);
 			}else{
@@ -406,12 +407,16 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					parameterBuilder.clear();
 					if (parameterDelegate instanceof QDataTerm) {
 						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-						if (dataTerm.isConstant())
+						if (dataTerm.isConstant()){
 							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
-						else
+							parameterBuilder.setAST(getAST());
+						}else{
 							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
+							parameterBuilder.setAST(getAST());
+						}
 					} else if (parameterDelegate instanceof QFileTerm) {
 						parameterBuilder.setTarget(QFileTerm.class);
+						parameterBuilder.setAST(getAST());
 					}
 
 					element.accept(parameterBuilder);
@@ -460,6 +465,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QArithmeticExpression expression) {
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+		builder.setAST(getAST());
 		builder.setAST(getAST());
 		
 		// pointer
