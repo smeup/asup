@@ -70,9 +70,9 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	QObject createObject();
 
 	/**
-	 * Returns a new object of class '<em>Object Nameable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>Object Nameable</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Object Nameable</em>'.
 	 * @generated
 	 */

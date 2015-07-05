@@ -33,7 +33,7 @@ public class JumpTransformer extends ClassAdapter {
 			public void visitMethodInsn(int opcode, String owner, String name, String desc) {
 
 				// filtered class
-				if (!owner.startsWith(filterClass) && !owner.equals("org/asup/os/type/pgm/rpj/RPJProgramSupport")) {
+				if (!owner.startsWith(filterClass) && !owner.equals("org/smeup/sys/os/pgm/rpj/RPJProgramSupport")) {
 					super.visitMethodInsn(opcode, owner, name, desc);
 					return;
 				}

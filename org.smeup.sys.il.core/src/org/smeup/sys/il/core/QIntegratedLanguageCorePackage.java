@@ -68,15 +68,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int NAMEABLE = 5;
 
 	/**
-	 * The number of structural features of the '<em>Nameable</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int NAMEABLE_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.AnnotationImpl <em>Annotation</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.impl.AnnotationImpl
@@ -84,14 +75,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	int ANNOTATION = 0;
-
-	/**
-	 * The number of structural features of the '<em>Annotation</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.AnnotationTestImpl <em>Annotation Test</em>}' class.
@@ -102,32 +85,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	int ANNOTATION_TEST = 1;
-
-	/**
-	 * The feature id for the '<em><b>Expression</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_TEST__EXPRESSION = ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_TEST__MESSAGE = ANNOTATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Test</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_TEST_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.NodeImpl <em>Node</em>}' class.
@@ -157,6 +114,76 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int CONVERSION = 2;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.DerivedImpl <em>Derived</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.impl.DerivedImpl
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getDerived()
+	 * @generated
+	 */
+	int DERIVED = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.FormatImpl <em>Format</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.impl.FormatImpl
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getFormat()
+	 * @generated
+	 */
+	int FORMAT = 4;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectImpl <em>Object</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.impl.ObjectImpl
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObject()
+	 * @generated
+	 */
+	int OBJECT = 8;
+
+	/**
+	 * The number of structural features of the '<em>Object</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Annotation</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST__EXPRESSION = ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST__MESSAGE = ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Test</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_TEST_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -174,15 +201,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int CONVERSION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.DerivedImpl <em>Derived</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.DerivedImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getDerived()
-	 * @generated
-	 */
-	int DERIVED = 3;
-
-	/**
 	 * The number of structural features of the '<em>Derived</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -190,15 +208,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int DERIVED_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.FormatImpl <em>Format</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.FormatImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getFormat()
-	 * @generated
-	 */
-	int FORMAT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute. <!--
@@ -226,6 +235,15 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int FORMAT_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Nameable</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int NAMEABLE_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -259,24 +277,6 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectImpl <em>Object</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.impl.ObjectImpl
-	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObject()
-	 * @generated
-	 */
-	int OBJECT = 8;
-
-	/**
-	 * The number of structural features of the '<em>Object</em>' class. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectContainerImpl <em>Object Container</em>}' class.

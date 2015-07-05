@@ -9,6 +9,7 @@ package org.smeup.sys.il.core.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -33,7 +34,7 @@ import org.smeup.sys.il.core.QObjectContainer;
  */
 public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl implements QObjectContainer<T> {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**

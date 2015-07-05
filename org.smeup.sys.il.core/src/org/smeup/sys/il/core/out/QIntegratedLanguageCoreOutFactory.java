@@ -10,18 +10,16 @@ package org.smeup.sys.il.core.out;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Factory</b> for the model.
- * It provides a create method for each non-abstract class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
+ * create method for each non-abstract class of the model. <!-- end-user-doc -->
  * @see org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage
  * @generated
  */
 public interface QIntegratedLanguageCoreOutFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	QIntegratedLanguageCoreOutFactory eINSTANCE = org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutFactoryImpl.init();
@@ -35,4 +33,4 @@ public interface QIntegratedLanguageCoreOutFactory extends EFactory {
 	 */
 	QIntegratedLanguageCoreOutPackage getIntegratedLanguageCoreOutPackage();
 
-} //QIntegratedLanguageCoreOutFactory
+} // QIntegratedLanguageCoreOutFactory

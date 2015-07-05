@@ -492,21 +492,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString target) {
-		delegate.xlate(from, to, target);
-	}
-
-	@Override
-	public void xlate(String from, String to, QString target) {
-		delegate.xlate(from, to, target);
-	}
-
-	@Override
-	public void xlate(byte from, String to, QString target) {
-		delegate.xlate(from, to, target);
-	}
-
-	@Override
 	public void cat(QString factor1, QNumeric space) {
 		delegate.cat(factor1, space);
 	}
@@ -569,5 +554,50 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public void move(QDecimal value, boolean clear) {
 		delegate.move(value, clear);
+	}
+
+	@Override
+	public String subst(QNumeric start, QNumeric length) {
+		return delegate.subst(start, length);
+	}
+
+	@Override
+	public String subst(QNumeric start) {
+		return delegate.subst(start);
+	}
+
+	@Override
+	public String subst(Number start, Number length) {
+		return delegate.subst(start, length);
+	}
+
+	@Override
+	public String subst(Number start) {
+		return delegate.subst(start);
+	}
+
+	@Override
+	public String subst(QNumeric start, Number length) {
+		return delegate.subst(start, length);
+	}
+
+	@Override
+	public String subst(Number start, QNumeric length) {
+		return delegate.subst(start, length);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString target) {
+		delegate.xlate(from, to, target);
+	}
+
+	@Override
+	public void xlate(String from, String to, QString target) {
+		delegate.xlate(from, to, target);
+	}
+
+	@Override
+	public void xlate(byte from, String to, QString target) {
+		delegate.xlate(from, to, target);
 	}
 }

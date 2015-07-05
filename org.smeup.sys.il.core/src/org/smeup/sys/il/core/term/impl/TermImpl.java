@@ -30,7 +30,7 @@ public abstract class TermImpl extends NamedNodeImpl implements QTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TermImpl() {
@@ -39,7 +39,7 @@ public abstract class TermImpl extends NamedNodeImpl implements QTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -49,7 +49,7 @@ public abstract class TermImpl extends NamedNodeImpl implements QTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -61,7 +61,7 @@ public abstract class TermImpl extends NamedNodeImpl implements QTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

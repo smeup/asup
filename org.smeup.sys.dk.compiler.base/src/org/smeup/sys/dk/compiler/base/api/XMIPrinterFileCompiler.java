@@ -78,8 +78,13 @@ public class XMIPrinterFileCompiler {
 			if (!(qFile instanceof QPrinterFile))
 				continue;
 
+			QPrinterFile printerFile = (QPrinterFile) qFile;
+			if (printerFile.getPrinterFormats().isEmpty() || 
+				printerFile.getPrinterFormats().get(0).getName().equals(printerFile.getName()))
+				continue;
+
 			try {
-				createJavaFile((QPrinterFile) qFile, library);
+				createJavaFile(printerFile, library);
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -101,14 +106,13 @@ public class XMIPrinterFileCompiler {
 		URI packageURI = library.getPackageURI().resolve(file.getPackageInfoURI());
 		setup.setBasePackage(packageURI.toString().replaceAll("/", "."));
 
-
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
 
 		compilerManager.writePrinterFile(compilationUnit, setup, output);
 
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
-		
+
 		compilationUnit.close();
 	}
 }

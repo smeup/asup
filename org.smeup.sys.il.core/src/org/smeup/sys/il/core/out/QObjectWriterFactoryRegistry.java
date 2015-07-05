@@ -9,11 +9,9 @@ package org.smeup.sys.il.core.out;
 
 import org.smeup.sys.il.core.ctx.QPluginRegistry;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Object Writer Factory Registry</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Object Writer Factory Registry</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage#getObjectWriterFactoryRegistry()

@@ -11,81 +11,64 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-
 import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
-
 import org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl;
-
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
-
 import org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl;
-
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-
 import org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl;
-
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutFactory;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
-
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
  * @generated
  */
 public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implements QIntegratedLanguageCoreOutPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass objectWriterEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass objectWriterFactoryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass objectWriterFactoryRegistryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass outputManagerEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage#eNS_URI
 	 * @see #init()
@@ -96,8 +79,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -155,8 +137,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -165,8 +146,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -175,8 +155,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -185,8 +164,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -195,8 +173,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -205,8 +182,7 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -233,17 +209,16 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -307,4 +282,4 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
-} //IntegratedLanguageCoreOutPackageImpl
+} // IntegratedLanguageCoreOutPackageImpl

@@ -398,7 +398,7 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		cardinalityEClass.getESuperTypes().add(this.getFacet());
 		defaultEClass.getESuperTypes().add(this.getFacet());
 		domainEClass.getESuperTypes().add(this.getFacet());
-		facetEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
+		facetEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		frameEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());
 		rangeEClass.getESuperTypes().add(this.getFacet());
 		slotEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());

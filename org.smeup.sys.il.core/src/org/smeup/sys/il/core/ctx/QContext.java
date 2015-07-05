@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.ctx;
 
 import java.lang.annotation.Annotation;
+
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 
 /**
@@ -56,8 +57,7 @@ public interface QContext {
 	<T extends Object> T getAdapter(Object adaptable, Class<T> adapter);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */

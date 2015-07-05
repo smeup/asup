@@ -53,9 +53,4 @@ public class E4CardinalityAdapter implements QCardinality {
 	public void setMax(int value) {
 		throw new UnsupportedOperationException();
 	}
-
-	@Override
-	public String getName() {
-		return "carinality";
-	}
 }

@@ -147,7 +147,7 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	@Override
 	public void close(QJob job) {
-
+		
 		this.activeJobs.remove(job.getJobID());
 
 		job.getContext().close();

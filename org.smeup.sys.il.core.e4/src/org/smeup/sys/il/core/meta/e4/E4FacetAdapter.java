@@ -18,15 +18,10 @@ public class E4FacetAdapter implements QFacet {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	private EAnnotation annotation;
 	
 	public E4FacetAdapter(EAnnotation annotation) {
 		this.annotation = annotation;
 	}
-	
-	@Override
-	public String getName() {
-		return this.annotation.toString();
-	}
-
 }

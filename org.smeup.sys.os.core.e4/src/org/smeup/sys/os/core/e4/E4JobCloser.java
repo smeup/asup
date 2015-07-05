@@ -50,8 +50,8 @@ public class E4JobCloser extends Thread {
 
 					long seconds = (now.getTime() - creationDate.getTime()) / 1000;
 
-					// 3 hour
-					if (seconds > 3 * 60 * 60)
+					// 12 hour
+					if (seconds > 12 * 60 * 60)
 						try {
 							jobManager.updateStatus(tmpJob, JobStatus.END);
 							jobManager.close(tmpJob);

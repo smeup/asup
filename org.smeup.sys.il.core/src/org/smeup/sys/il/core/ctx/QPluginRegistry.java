@@ -19,24 +19,21 @@ import java.util.List;
  */
 public interface QPluginRegistry<T> {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
 	T lookup(String name);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
 	List<T> list();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" vendorRequired="true" versionRequired="true"
 	 * @generated
 	 */

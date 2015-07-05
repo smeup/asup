@@ -7,11 +7,9 @@
  */
 package org.smeup.sys.il.core.ctx;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Plugin Registry Factory</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Plugin Registry Factory</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getPluginRegistryFactory()
@@ -20,8 +18,7 @@ package org.smeup.sys.il.core.ctx;
  */
 public interface QPluginRegistryFactory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */

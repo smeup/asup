@@ -141,8 +141,10 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.term.QTerm <em>Term</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.term.QTerm <em>Term</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.term.QTerm
 		 * @see org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl#getTerm()
 		 * @generated

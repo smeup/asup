@@ -7,11 +7,9 @@
  */
 package org.smeup.sys.il.core.java;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Files</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Files</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getFiles()
@@ -20,8 +18,7 @@ package org.smeup.sys.il.core.java;
  */
 public interface QFiles {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" fileNameRequired="true"
 	 * @generated
 	 */

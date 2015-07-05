@@ -20,32 +20,28 @@ import org.smeup.sys.il.core.ctx.QContext;
  */
 public interface QOutputManager {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
 	QObjectWriter getDefaultWriter(QContext context);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
 	QObjectWriter getObjectWriter(QContext context, String name);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model contextRequired="true" nameRequired="true" writerRequired="true"
 	 * @generated
 	 */
 	void registerWriter(QContext context, String name, QObjectWriter writer);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model contextRequired="true" nameRequired="true"
 	 * @generated
 	 */

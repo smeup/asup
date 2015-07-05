@@ -356,7 +356,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Facet" abstract="true" eSuperTypes="#//Nameable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Facet" abstract="true" eSuperTypes="#//Object"/>
     <eClassifiers xsi:type="ecore:EClass" name="Frame" abstract="true" interface="true"
         eSuperTypes="#//Nameable">
       <eTypeParameters name="O">

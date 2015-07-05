@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>String</b></em>'. <!-- end-user-doc -->
@@ -337,6 +336,61 @@ public interface QString extends QBufferedData {
 	 * @generated
 	 */
 	void out();
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	String subst(QNumeric start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startRequired="true"
+	 * @generated
+	 */
+	String subst(QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        startRequired="true"
+	 *        lengthType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        lengthRequired="true"
+	 * @generated
+	 */
+	String subst(Number start, Number length);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        startRequired="true"
+	 * @generated
+	 */
+	String subst(Number start);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startRequired="true"
+	 *        lengthType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        lengthRequired="true"
+	 * @generated
+	 */
+	String subst(QNumeric start, Number length);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	String subst(Number start, QNumeric length);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -10,24 +10,21 @@ package org.smeup.sys.il.core.out.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.smeup.sys.il.core.out.*;
+import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutFactory;
+import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
  * @generated
  */
 public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreOutFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreOutFactory init() {
@@ -45,8 +42,8 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public IntegratedLanguageCoreOutFactoryImpl() {
@@ -54,8 +51,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -67,8 +63,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -77,8 +72,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -87,4 +81,4 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 		return QIntegratedLanguageCoreOutPackage.eINSTANCE;
 	}
 
-} //IntegratedLanguageCoreOutFactoryImpl
+} // IntegratedLanguageCoreOutFactoryImpl

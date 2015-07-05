@@ -129,8 +129,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.java.QFiles
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
 	 * @generated
@@ -138,9 +137,9 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int FILES = 4;
 
 	/**
-	 * The number of structural features of the '<em>Files</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Files</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -148,8 +147,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.java.QStreams
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
 	 * @generated
@@ -157,9 +155,9 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int STREAMS = 5;
 
 	/**
-	 * The number of structural features of the '<em>Streams</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Streams</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -167,8 +165,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.java.QLists
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
 	 * @generated
@@ -176,9 +173,9 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int LISTS = 6;
 
 	/**
-	 * The number of structural features of the '<em>Lists</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Lists</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -186,8 +183,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.java.QStrings
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
 	 * @generated
@@ -195,9 +191,9 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int STRINGS = 7;
 
 	/**
-	 * The number of structural features of the '<em>Strings</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Strings</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -205,8 +201,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.java.QURIs
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
 	 * @generated
@@ -214,9 +209,9 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int UR_IS = 8;
 
 	/**
-	 * The number of structural features of the '<em>UR Is</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>UR Is</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -436,9 +431,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	EClass getJavaNumber();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Files</em>'.
 	 * @see org.smeup.sys.il.core.java.QFiles
 	 * @generated
@@ -446,9 +442,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	EClass getFiles();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Streams</em>'.
 	 * @see org.smeup.sys.il.core.java.QStreams
 	 * @generated
@@ -456,9 +453,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	EClass getStreams();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Lists</em>'.
 	 * @see org.smeup.sys.il.core.java.QLists
 	 * @generated
@@ -466,9 +464,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	EClass getLists();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Strings</em>'.
 	 * @see org.smeup.sys.il.core.java.QStrings
 	 * @generated
@@ -476,9 +475,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	EClass getStrings();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>UR Is</em>'.
 	 * @see org.smeup.sys.il.core.java.QURIs
 	 * @generated
@@ -727,9 +727,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		EClass JAVA_NUMBER = eINSTANCE.getJavaNumber();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.java.QFiles
 		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
 		 * @generated
@@ -738,8 +739,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.core.java.QStreams
 		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
 		 * @generated
@@ -747,9 +747,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		EClass STREAMS = eINSTANCE.getStreams();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.java.QLists
 		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
 		 * @generated
@@ -758,8 +759,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.core.java.QStrings
 		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
 		 * @generated
@@ -767,9 +767,10 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		EClass STRINGS = eINSTANCE.getStrings();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.java.QURIs
 		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
 		 * @generated

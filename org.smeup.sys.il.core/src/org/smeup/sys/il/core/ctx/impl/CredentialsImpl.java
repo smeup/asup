@@ -29,7 +29,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  */
 public abstract class CredentialsImpl extends ObjectImpl implements QCredentials {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

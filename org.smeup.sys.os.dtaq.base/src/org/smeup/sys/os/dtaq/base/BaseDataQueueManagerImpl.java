@@ -42,6 +42,7 @@ public class BaseDataQueueManagerImpl implements QDataQueueManager {
 	
 	@Override
 	public void writeDataQueue(String contextID, String library, String name, String key, QString value) {
+		dataQueueManager.writeToQueue(library, name, value.toString());
 	}
 	
 	

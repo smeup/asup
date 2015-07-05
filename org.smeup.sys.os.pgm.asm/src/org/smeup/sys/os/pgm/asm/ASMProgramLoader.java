@@ -21,7 +21,8 @@ public class ASMProgramLoader implements WeavingHook {
 
 		// ASUP project
 		// TODO for performances reason, check a single file not directory
-		if (bundle.getSymbolicName().startsWith("com.smeup.erp.gen") || bundle.getSymbolicName().startsWith("com.smeup.erp.ovr")) {
+		if (bundle.getSymbolicName().startsWith("com.smeup.erp") && 
+		   (bundle.getSymbolicName().endsWith(".gen") || bundle.getSymbolicName().endsWith(".ovr"))) {
 			completeClass(wovenClass);
 		}
 	}

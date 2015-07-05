@@ -8,7 +8,7 @@
 package org.smeup.sys.il.core.meta.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 
@@ -20,7 +20,7 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  *
  * @generated
  */
-public abstract class FacetImpl extends MinimalEObjectImpl.Container implements QFacet {
+public abstract class FacetImpl extends ObjectImpl implements QFacet {
 	/**
 	 *
 	 */
@@ -41,17 +41,6 @@ public abstract class FacetImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageCoreMetaPackage.Literals.FACET;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 } // FacetImpl

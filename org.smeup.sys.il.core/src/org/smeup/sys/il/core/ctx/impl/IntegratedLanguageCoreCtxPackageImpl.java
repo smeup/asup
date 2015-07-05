@@ -72,8 +72,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	private EClass pluginRegistryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass pluginRegistryFactoryEClass = null;
@@ -225,8 +224,7 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

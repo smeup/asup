@@ -78,8 +78,13 @@ public class XMIDisplayFileCompiler {
 			if (!(qFile instanceof QDisplayFile))
 				continue;
 
+			QDisplayFile displayFile = (QDisplayFile) qFile;
+			if (displayFile.getDisplayFormats().isEmpty() || 
+				displayFile.getDisplayFormats().get(0).getName().equals(displayFile.getName()))
+				continue;
+
 			try {
-				createJavaFile((QDisplayFile) qFile, library);
+				createJavaFile(displayFile, library);
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -94,7 +99,6 @@ public class XMIDisplayFileCompiler {
 
 		// create java source
 		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
-
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 

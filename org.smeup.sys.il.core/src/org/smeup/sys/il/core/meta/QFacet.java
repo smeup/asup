@@ -7,18 +7,17 @@
  */
 package org.smeup.sys.il.core.meta;
 
-import java.io.Serializable;
-
-import org.smeup.sys.il.core.QNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Facet</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Facet</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getFacet()
+ * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getFacet()
  * @model abstract="true"
- * @generated NOT
+ * @generated
  */
-public interface QFacet extends QNameable, Serializable {
+public interface QFacet extends QObject {
 } // QFacet

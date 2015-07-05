@@ -169,8 +169,8 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QPluginRegistryFactory <em>Plugin Registry Factory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see org.smeup.sys.il.core.ctx.QPluginRegistryFactory
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistryFactory()
 	 * @generated
@@ -179,8 +179,8 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Plugin Registry Factory</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -268,8 +268,8 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QPluginRegistryFactory <em>Plugin Registry Factory</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @return the meta object for class '<em>Plugin Registry Factory</em>'.
 	 * @see org.smeup.sys.il.core.ctx.QPluginRegistryFactory
 	 * @generated

@@ -11,9 +11,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Streams</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Streams</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getStreams()
@@ -22,8 +21,7 @@ import java.io.OutputStream;
  */
 public interface QStreams {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model inputDataType="org.smeup.sys.il.core.java.JavaInputStream" inputRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */

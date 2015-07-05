@@ -10,9 +10,8 @@ package org.smeup.sys.il.core.java;
 import java.net.URI;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>UR Is</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>UR Is</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getURIs()
@@ -21,8 +20,7 @@ import java.net.URI;
  */
 public interface QURIs {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" uriDataType="org.smeup.sys.il.core.java.JavaURI" uriRequired="true"
 	 * @generated
 	 */

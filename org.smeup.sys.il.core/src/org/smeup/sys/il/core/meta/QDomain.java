@@ -7,9 +7,11 @@
  */
 package org.smeup.sys.il.core.meta;
 
+
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Domain</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Domain</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -25,26 +27,25 @@ package org.smeup.sys.il.core.meta;
  */
 public interface QDomain extends QFacet {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
-	 * should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getDomain_Name()
+	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDomain_Name()
 	 * @model
 	 * @generated
 	 */
-	@Override
 	String getName();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -52,17 +53,16 @@ public interface QDomain extends QFacet {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear, there really
-	 * should be more of a description here...
+	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
-	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getDomain_Text()
+	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDomain_Text()
 	 * @model
 	 * @generated
 	 */
@@ -70,7 +70,8 @@ public interface QDomain extends QFacet {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
 	 * @generated

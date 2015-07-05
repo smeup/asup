@@ -158,20 +158,20 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QObject createObject() {
 		ObjectImpl object = new ObjectImpl();
 		return object;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QObjectNameable createObjectNameable() {
 		ObjectNameableImpl objectNameable = new ObjectNameableImpl();
 		return objectNameable;

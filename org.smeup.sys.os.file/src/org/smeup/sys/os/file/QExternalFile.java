@@ -10,8 +10,9 @@ package org.smeup.sys.os.file;
 import org.smeup.sys.il.core.meta.QFacet;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>External File</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>External File</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -27,26 +28,25 @@ import org.smeup.sys.il.core.meta.QFacet;
  */
 public interface QExternalFile extends QFacet {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
-	 * should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getExternalFile_Name()
 	 * @model required="true"
 	 * @generated
 	 */
-	@Override
 	String getName();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.file.QExternalFile#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -54,14 +54,13 @@ public interface QExternalFile extends QFacet {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Format</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Format</em>' attribute isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of the '<em>Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Format</em>' attribute.
 	 * @see #setFormat(String)
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getExternalFile_Format()
@@ -72,7 +71,8 @@ public interface QExternalFile extends QFacet {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.file.QExternalFile#getFormat <em>Format</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Format</em>' attribute.
 	 * @see #getFormat()
 	 * @generated

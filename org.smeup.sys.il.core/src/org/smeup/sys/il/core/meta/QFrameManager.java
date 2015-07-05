@@ -21,24 +21,21 @@ import org.smeup.sys.il.core.QObject;
  */
 public interface QFrameManager {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" objectRequired="true"
 	 * @generated
 	 */
 	<O extends QObject> QFrame<O> getFrame(O object);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" eClassRequired="true"
 	 * @generated
 	 */
 	QFrame<?> getFrame(EClass eClass);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" frameRequired="true"
 	 * @generated
 	 */

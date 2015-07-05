@@ -480,4 +480,43 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public String subst(QNumeric start, QNumeric length) {
+		return subst(start.i(), length.i());
+	}
+
+	@Override
+	public String subst(QNumeric start) {
+		return subst(start.i());
+	}
+
+	@Override
+	public String subst(QNumeric start, Number length) {
+		return subst(start.i(), length);
+	}
+
+	@Override
+	public String subst(Number start, QNumeric length) {
+		return subst(start, length.i());
+	}
+	
+	@Override
+	public String subst(Number start) {
+		return subst(start, 0);
+	}
+
+	@Override
+	public String subst(Number start, Number length) {
+
+		if (start == null)
+			start = 1;
+
+		if (length == null)
+			length = getLength();
+
+		String str = asString().substring(start.intValue() - 1, length.intValue()-1);
+
+		return str;
+	}
 }

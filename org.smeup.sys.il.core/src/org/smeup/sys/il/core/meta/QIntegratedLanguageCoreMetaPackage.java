@@ -72,7 +72,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FACET_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
+	int FACET_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '
