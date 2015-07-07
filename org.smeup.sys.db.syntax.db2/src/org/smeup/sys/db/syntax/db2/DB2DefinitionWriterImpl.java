@@ -166,35 +166,33 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 
 	@Override
 	public String createLabel(Schema schema, String name, QTableDef table) {
-		return null;
-//		String label = schema.getLabel();
-//		if (label != null && label.trim() != "") { 
-//			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + getNameInSQLFormat(label);
-//		} else {
-//			return null;
-//		}
+		String label = schema.getLabel();
+		if (label != null && label.trim() != "") { 
+			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + getNameInSQLFormat(label);
+		} else {
+			return null;
+		}
 	}
 
 
 	@Override
 	public String createLabelForFields(Schema schema, String name, QTableDef table) {
-		return null;
-//		StringBuffer result = new StringBuffer();
-//		for (QTableColumnDef column : table.getColumns()) {
-//			String label = column.getLabel();
-//			if (label != null && label.trim() != "") {
-//				if (result.length() > 0)
-//					result.append(", ");
-//				result.append(getNameInSQLFormat(column))
-//					  .append(" IS ")
-//				      .append(getNameInSQLFormat(label));
-//			}
-//		}
-//		
-//		if (result.length() > 0) {
-//			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
-//		} else {
-//			return null;
-//		}
+		StringBuffer result = new StringBuffer();
+		for (QTableColumnDef column : table.getColumns()) {
+			String label = column.getLabel();
+			if (label != null && label.trim() != "") {
+				if (result.length() > 0)
+					result.append(", ");
+				result.append(getNameInSQLFormat(column))
+					  .append(" IS ")
+				      .append(getNameInSQLFormat(label));
+			}
+		}
+		
+		if (result.length() > 0) {
+			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
+		} else {
+			return null;
+		}
 	}
 }
