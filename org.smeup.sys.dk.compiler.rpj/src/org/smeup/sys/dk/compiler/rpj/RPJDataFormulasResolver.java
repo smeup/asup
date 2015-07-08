@@ -144,8 +144,8 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				case "%size":
 					if (dataValue.getDataTermType().isAtomic())
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f82343");
-
-					QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataTerm.getDefinition();
+					
+					QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
 
 					QDataStruct dataStruct = dataFactory.createDataStruct(compoundDataDef.getElements(), 0, false);
 					default_.setValue(Integer.toString(dataStruct.getSize()));

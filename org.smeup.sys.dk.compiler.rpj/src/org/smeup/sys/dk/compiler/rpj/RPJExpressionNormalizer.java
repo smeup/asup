@@ -108,9 +108,9 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		}
 
-		if(dataTerm == null)
+		if (dataTerm == null)
 			dataTerm = compilationUnit.getPrototype(leftExpression.getValue(), true);
-		
+
 		if (dataTerm == null)
 			dataTerm = compilationUnit.getDataTerm(leftExpression.getValue(), true);
 
@@ -126,22 +126,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		switch (rightExpression.getExpressionType()) {
 		case ARITHMETIC:
 			QArithmeticExpression arithmeticExpression = (QArithmeticExpression) rightExpression;
-
-			/*
-			 * String result =
-			 * normalizeArithmeticExpression(arithmeticExpression); if (result
-			 * != null) { RPJExpressionStringBuilder expressionStringBuilder =
-			 * new RPJExpressionStringBuilder();
-			 * expressionStringBuilder.visit(assignmentExpression);
-			 * statement.setAssignment(expressionStringBuilder.getResult());
-			 * 
-			 * statement.setAssignment(value); }
-			 */
-
-			// Mirandola
-			// array element
-			// if (leftExpression.isFunction())
-			// return false;
 
 			if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_ATOMIC) {
 
@@ -269,10 +253,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		if (leftExpression.getExpressionType() == ExpressionType.ATOMIC) {
 			QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
-			QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
-
-			if (atomicTermExpressionLeft.getValue().equalsIgnoreCase("*BLANKS"))
-				atomicTermExpressionLeft.toString();
 
 			// special founded on left -> reverse operands (*BLANKS <> A -> A <>
 			// *BLANKS)
@@ -284,32 +264,42 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				expressionStringBuilder.visit(relationalExpression);
 				return expressionStringBuilder.getResult();
 			}
+
 			// STRING founded on left -> reverse operands and operator
-			if (atomicTermExpressionLeft.getType().equals(AtomicType.STRING) && !atomicTermExpressionRight.getType().equals(AtomicType.STRING)) {
-				relationalExpression.setLeftOperand(rightExpression);
-				relationalExpression.setRightOperand(leftExpression);
-				// operator
-				switch (relationalExpression.getOperator()) {
-				case EQUAL:
-					break;
-				case GREATER_THAN:
-					relationalExpression.setOperator(RelationalOperator.LESS_THAN);
-					break;
-				case GREATER_THAN_EQUAL:
-					relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
-					break;
-				case LESS_THAN:
-					relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
-					break;
-				case LESS_THAN_EQUAL:
-					relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
-					break;
-				case NOT_EQUAL:
-					break;
+			if (atomicTermExpressionLeft.getType().equals(AtomicType.STRING)) {
+
+				if (rightExpression instanceof QAtomicTermExpression) {
+					QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
+
+					if (!atomicTermExpressionRight.getType().equals(AtomicType.STRING)) {
+						relationalExpression.setLeftOperand(rightExpression);
+						relationalExpression.setRightOperand(leftExpression);
+
+						// operator
+						switch (relationalExpression.getOperator()) {
+						case EQUAL:
+							break;
+						case GREATER_THAN:
+							relationalExpression.setOperator(RelationalOperator.LESS_THAN);
+							break;
+						case GREATER_THAN_EQUAL:
+							relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
+							break;
+						case LESS_THAN:
+							relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
+							break;
+						case LESS_THAN_EQUAL:
+							relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
+							break;
+						case NOT_EQUAL:
+							break;
+						}
+
+						RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+						expressionStringBuilder.visit(relationalExpression);
+						return expressionStringBuilder.getResult();
+					}
 				}
-				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-				expressionStringBuilder.visit(relationalExpression);
-				return expressionStringBuilder.getResult();
 			}
 
 		}

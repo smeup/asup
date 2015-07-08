@@ -130,7 +130,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	 */
 	@Override
 	public void clear() {
-		values.clear();
+		getValues().clear();
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return value.isEmpty();
+		return getValues().isEmpty();
 	}
 
 	/**
