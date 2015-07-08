@@ -71,7 +71,7 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 		case CLExprLexer.CAT:
 		case CLExprLexer.BCAT:
 		case CLExprLexer.TCAT:
-			expressionType = ExpressionType.COMPOUND;
+			expressionType = ExpressionType.FUNCTION;
 			break;
 		}
 
@@ -163,38 +163,6 @@ public class CLExpressionHelper implements BaseExpressionHelper {
 		default:
 			System.err.println(node.getType());
 			return null;
-		}
-	}
-
-	@Override
-	public boolean isFunction(Tree node) {
-		switch (node.getType()) {
-
-		case CLExprLexer.SST_FUN:
-		case CLExprLexer.BINARY_FUN:
-		case CLExprLexer.SWITCH_FUN:
-		case CLExprLexer.CAT:
-		case CLExprLexer.BCAT:
-		case CLExprLexer.TCAT:
-			return true;
-
-		default:
-			return false;
-		}
-	}
-
-	@Override
-	public boolean isSpecial(Tree node) {
-
-		switch (node.getType()) {
-
-		case CLExprLexer.SST_FUN:
-		case CLExprLexer.BINARY_FUN:
-		case CLExprLexer.SWITCH_FUN:
-			return true;
-
-		default:
-			return false;
 		}
 	}
 

@@ -59,9 +59,10 @@ public class RPGExpressionHelper implements BaseExpressionHelper {
 			return ExpressionType.RELATIONAL;
 
 		case RPGExprLexer.QUALIFIED:
+			return ExpressionType.QUALIFIED;
 		case RPGExprLexer.USER_FUNCTION:
 		case RPGExprLexer.BI_FUNCTION:
-			return ExpressionType.COMPOUND;
+			return ExpressionType.FUNCTION;
 
 		case RPGExprLexer.SP_VALUE:
 		case RPGExprLexer.INDICATOR:
@@ -145,30 +146,6 @@ public class RPGExpressionHelper implements BaseExpressionHelper {
 		default:
 			System.err.println(node.getType());
 			return null;
-		}
-	}
-
-	@Override
-	public boolean isFunction(Tree node) {
-
-		switch (node.getType()) {
-		case RPGExprLexer.BI_FUNCTION:
-		case RPGExprLexer.USER_FUNCTION:
-			return true;
-		default:
-			return false;
-		}
-	}
-
-	@Override
-	public boolean isSpecial(Tree node) {
-
-		switch (node.getType()) {
-		case RPGExprLexer.BI_FUNCTION:
-		case RPGExprLexer.SP_VALUE:
-			return true;
-		default:
-			return false;
 		}
 	}
 
