@@ -5,9 +5,9 @@
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
- * 
- * Contributors: 
- *   Mattia Rocchi - Initial API and implementation 
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.il.core.base;
 
@@ -24,6 +24,6 @@ public class BaseListsImpl implements QLists {
 
 	@Override
 	public <E> void addLast(List<E> list, E element) {
-		list.add(list.size()-1, element);
+		list.add(list.size() - 1, element);
 	}
 }

@@ -102,8 +102,7 @@ public class NIODataManagerImpl implements QDataManager {
 			QDataTerm<DD> dataTerm = (QDataTerm<DD>) frameManager.createObject(term);
 
 			// multiple
-			if (cardinality.isMultiple()) {
-
+			if (cardinality.isMultiple())
 				if (dataDef instanceof QUnaryAtomicBufferedDataDef) {
 					QScrollerDef<?> scrollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createScrollerDef();
 					scrollerDef.setDimension(cardinality.getMax());
@@ -117,7 +116,6 @@ public class NIODataManagerImpl implements QDataManager {
 
 				} else
 					throw new RuntimeException("Unexpected condition dwe765lkdg87dsfsd0 " + dataDef);
-			}
 
 			// name
 			dataTerm.setName(slot.getName());
@@ -133,7 +131,7 @@ public class NIODataManagerImpl implements QDataManager {
 				else
 					default_.getValues().add(slot.getDefaultValue().toString());
 			}
-			
+
 			dataTerms.put(slot.getName(), dataTerm);
 		}
 
@@ -142,7 +140,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 	private QDataDef<?> buildDataDef(QSlot slot) {
 
-		QDataDef<?> dataDef = (QDataDef<?>) slot.getValue(QIntegratedLanguageDataPackage.eNS_PREFIX);				
+		QDataDef<?> dataDef = (QDataDef<?>) slot.getValue(QIntegratedLanguageDataPackage.eNS_PREFIX);
 		if (dataDef == null) {
 
 			// TODO build dataDef from java primitive

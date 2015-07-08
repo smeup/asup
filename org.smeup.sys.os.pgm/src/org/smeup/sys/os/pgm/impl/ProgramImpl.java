@@ -242,7 +242,7 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 	@Override
 	public URI getPackageInfoURI() {
 		try {
-			String classURI = "pgm/" + getApplication();
+			String classURI = "pgm/" + getApplication() +"/gen";
 			URI uri = new URI(classURI);
 			return uri;
 		} catch (URISyntaxException e) {

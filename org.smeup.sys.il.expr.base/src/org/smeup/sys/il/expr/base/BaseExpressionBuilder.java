@@ -20,11 +20,12 @@ import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QBooleanExpression;
-import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 
@@ -34,7 +35,7 @@ public class BaseExpressionBuilder {
 
 	private static final String[] ASS_STR_OP = { "**=", "*=", "+=", "-=", "/=", "=" };
 	private static final AssignmentOperator[] ASS_OP = { AssignmentOperator.POWER_ASSIGN, AssignmentOperator.TIMES_ASSIGN, AssignmentOperator.PLUS_ASSIGN, AssignmentOperator.MINUS_ASSIGN,
-		AssignmentOperator.DIVIDE_ASSIGN, AssignmentOperator.ASSIGN };
+			AssignmentOperator.DIVIDE_ASSIGN, AssignmentOperator.ASSIGN };
 
 	public BaseExpressionBuilder(BaseExpressionHelper expressionHelper) {
 		this.expressionHelper = expressionHelper;
@@ -51,7 +52,8 @@ public class BaseExpressionBuilder {
 		case ASSIGNMENT:
 			return buildAsAssignment(expression);
 		case ATOMIC:
-		case COMPOUND:
+		case QUALIFIED:
+		case FUNCTION:
 			return buildAsTerm(tree);
 		case BLOCK:
 			return buildAsBlock(tree);
@@ -93,16 +95,16 @@ public class BaseExpressionBuilder {
 			throw new IntegratedLanguageExpressionRuntimeException("Attempted to analyze as assignment an incompatible expression");
 
 		// TODO remove and change parser
-		if (leftString.startsWith("&"))
-			leftString = removeFirstChar(leftString);
+		// if (leftString.startsWith("&"))
+		// leftString = removeFirstChar(leftString);
 
 		// left side
 		QTermExpression leftExpression = buildAsTerm(leftString);
 		ast.setLeftOperand(leftExpression);
 
 		// TODO remove and change parser
-		if (rightString.startsWith("&"))
-			rightString = removeFirstChar(rightString);
+		// if (rightString.startsWith("&"))
+		// rightString = removeFirstChar(rightString);
 
 		Tree rightAntAst = expressionHelper.parse(rightString);
 		ExpressionType rightExpType = expressionHelper.getExpressionType(rightAntAst);
@@ -120,7 +122,8 @@ public class BaseExpressionBuilder {
 			rightExpression = buildAsArithmetic(rightAntAst);
 			break;
 		case ATOMIC:
-		case COMPOUND:
+		case QUALIFIED:
+		case FUNCTION:
 			rightExpression = buildAsTerm(rightAntAst);
 			break;
 		case BLOCK:
@@ -164,7 +167,8 @@ public class BaseExpressionBuilder {
 			booleanExpression.setOperand(termExpression);
 
 			return booleanExpression;
-		case COMPOUND:
+		case QUALIFIED:
+		case FUNCTION:
 			termExpression = (QTermExpression) buildChildExpression(node);
 			booleanExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBooleanExpression();
 			booleanExpression.setOperand(termExpression);
@@ -195,7 +199,8 @@ public class BaseExpressionBuilder {
 		case BOOLEAN:
 		case ASSIGNMENT:
 		case ATOMIC:
-		case COMPOUND:
+		case QUALIFIED:
+		case FUNCTION:
 			throw new IntegratedLanguageExpressionRuntimeException("Attempted to analyze as arithmetic an incompatible expression: " + node);
 
 		case ARITHMETIC:
@@ -213,7 +218,8 @@ public class BaseExpressionBuilder {
 		case ARITHMETIC:
 		case ASSIGNMENT:
 		case ATOMIC:
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 		case LOGICAL:
 		case RELATIONAL:
 		case BOOLEAN:
@@ -245,7 +251,8 @@ public class BaseExpressionBuilder {
 
 		case ATOMIC:
 			return (QTermExpression) buildChildExpression(node);
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 			return (QTermExpression) buildChildExpression(node);
 		case BOOLEAN:
 
@@ -280,8 +287,6 @@ public class BaseExpressionBuilder {
 			QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 
 			atomicTermExpression.setType(expressionHelper.getTermType(node));
-			atomicTermExpression.setFunction(expressionHelper.isFunction(node));
-			atomicTermExpression.setSpecial(expressionHelper.isSpecial(node));
 			String text = expressionHelper.normalizeText(node.getText());
 			atomicTermExpression.setValue(text);
 
@@ -295,18 +300,27 @@ public class BaseExpressionBuilder {
 
 			expression = blockExpression;
 			break;
-		case COMPOUND:
-			QCompoundTermExpression compoundTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createCompoundTermExpression();
+		case QUALIFIED:
+			QQualifiedTermExpression qualifiedTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createQualifiedTermExpression();
 
-			compoundTermExpression.setFunction(expressionHelper.isFunction(node));
-			compoundTermExpression.setSpecial(expressionHelper.isSpecial(node));
-			compoundTermExpression.setValue(expressionHelper.getFunctionName(node));
+			qualifiedTermExpression.setValue(expressionHelper.getFunctionName(node));
 
 			for (int i = 0; i < node.getChildCount(); i++)
-				compoundTermExpression.getElements().add(buildChildExpression(node.getChild(i)));
+				qualifiedTermExpression.getElements().add(buildChildExpression(node.getChild(i)));
 
-			expression = compoundTermExpression;
+			expression = qualifiedTermExpression;
 			break;
+		case FUNCTION:
+			QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
+
+			functionTermExpression.setValue(expressionHelper.getFunctionName(node));
+
+			for (int i = 0; i < node.getChildCount(); i++)
+				functionTermExpression.getElements().add(buildChildExpression(node.getChild(i)));
+
+			expression = functionTermExpression;
+			break;
+
 		case LOGICAL:
 			QLogicalExpression logicalExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createLogicalExpression();
 

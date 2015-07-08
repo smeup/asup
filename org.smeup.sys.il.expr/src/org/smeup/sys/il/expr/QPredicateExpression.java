@@ -7,11 +7,9 @@
  */
 package org.smeup.sys.il.expr;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Predicate Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Predicate Expression</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getPredicateExpression()

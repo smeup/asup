@@ -99,27 +99,27 @@ public class NIODecimalHelper {
 	 * specifies a number of digits not a number of bytes) without decimals.
 	 */
 	public static final BigInteger[] MAX_DIGIT_ORIENTED_BI_VALUES = { BigInteger.ZERO, BigInteger.valueOf(9), BigInteger.valueOf(99), BigInteger.valueOf(999), BigInteger.valueOf(9999),
-		BigInteger.valueOf(99999), BigInteger.valueOf(999999), BigInteger.valueOf(9999999), BigInteger.valueOf(99999999), BigInteger.valueOf(999999999), BigInteger.valueOf(9999999999L),
-		BigInteger.valueOf(99999999999L), BigInteger.valueOf(999999999999L), BigInteger.valueOf(9999999999999L), BigInteger.valueOf(99999999999999L), BigInteger.valueOf(999999999999999L),
-		BigInteger.valueOf(9999999999999999L), BigInteger.valueOf(99999999999999999L), BigInteger.valueOf(999999999999999999L), new BigInteger("9999999999999999999"),
-		new BigInteger("99999999999999999999"), new BigInteger("999999999999999999999"), new BigInteger("9999999999999999999999"), new BigInteger("99999999999999999999999"),
-		new BigInteger("999999999999999999999999"), new BigInteger("9999999999999999999999999"), new BigInteger("99999999999999999999999999"), new BigInteger("999999999999999999999999999"),
-		new BigInteger("9999999999999999999999999999"), new BigInteger("99999999999999999999999999999"), new BigInteger("999999999999999999999999999999"),
-		new BigInteger("9999999999999999999999999999999"), new BigInteger("99999999999999999999999999999999"), new BigInteger("999999999999999999999999999999999") };
+			BigInteger.valueOf(99999), BigInteger.valueOf(999999), BigInteger.valueOf(9999999), BigInteger.valueOf(99999999), BigInteger.valueOf(999999999), BigInteger.valueOf(9999999999L),
+			BigInteger.valueOf(99999999999L), BigInteger.valueOf(999999999999L), BigInteger.valueOf(9999999999999L), BigInteger.valueOf(99999999999999L), BigInteger.valueOf(999999999999999L),
+			BigInteger.valueOf(9999999999999999L), BigInteger.valueOf(99999999999999999L), BigInteger.valueOf(999999999999999999L), new BigInteger("9999999999999999999"),
+			new BigInteger("99999999999999999999"), new BigInteger("999999999999999999999"), new BigInteger("9999999999999999999999"), new BigInteger("99999999999999999999999"),
+			new BigInteger("999999999999999999999999"), new BigInteger("9999999999999999999999999"), new BigInteger("99999999999999999999999999"), new BigInteger("999999999999999999999999999"),
+			new BigInteger("9999999999999999999999999999"), new BigInteger("99999999999999999999999999999"), new BigInteger("999999999999999999999999999999"),
+			new BigInteger("9999999999999999999999999999999"), new BigInteger("99999999999999999999999999999999"), new BigInteger("999999999999999999999999999999999") };
 
 	/**
 	 * An array used for the lower limits of digit-oriented items (their length
 	 * specifies a number of digits not a number of bytes) without decimals.
 	 */
 	public static final BigInteger[] MIN_DIGIT_ORIENTED_BI_VALUES = { BigInteger.ZERO, MAX_DIGIT_ORIENTED_BI_VALUES[1].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[2].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[3].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[4].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[5].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[6].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[7].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[8].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[9].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[10].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[11].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[12].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[13].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[14].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[15].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[16].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[17].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[18].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[19].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[20].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[21].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[22].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[23].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[24].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[25].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[26].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[27].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[28].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[29].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[30].negate(),
-		MAX_DIGIT_ORIENTED_BI_VALUES[31].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[32].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[33].negate() };
+			MAX_DIGIT_ORIENTED_BI_VALUES[3].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[4].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[5].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[6].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[7].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[8].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[9].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[10].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[11].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[12].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[13].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[14].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[15].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[16].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[17].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[18].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[19].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[20].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[21].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[22].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[23].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[24].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[25].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[26].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[27].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[28].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[29].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[30].negate(),
+			MAX_DIGIT_ORIENTED_BI_VALUES[31].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[32].negate(), MAX_DIGIT_ORIENTED_BI_VALUES[33].negate() };
 
 	public static BigDecimal asDecimal(Integer value, Integer... args) {
 		if (value == null)
@@ -204,10 +204,10 @@ public class NIODecimalHelper {
 		if (ignoreOverflow)
 			return result;
 		else // Now make sure the value isn't too big for the target.
-			if ((result.compareTo(max) <= 0 && result.compareTo(min) >= 0))
-				return result;
-			else
-				return handleNumericOverflow(value, precision, scale, ignoreOverflow);
+		if ((result.compareTo(max) <= 0 && result.compareTo(min) >= 0))
+			return result;
+		else
+			return handleNumericOverflow(value, precision, scale, ignoreOverflow);
 	}
 
 	/**
@@ -281,17 +281,17 @@ public class NIODecimalHelper {
 		for (offset++; offset < byteOfSeventeethDigit; offset++) {
 			// Add in the digit from the high nibble.
 			nextDigit = (buffer[offset] & 0xF0) >> 4;
-		if (nextDigit < 10)
-			top = top * 10 + nextDigit;
-		else
-			throw new IntegratedLanguageCoreRuntimeException("Invalid conversion");
+			if (nextDigit < 10)
+				top = top * 10 + nextDigit;
+			else
+				throw new IntegratedLanguageCoreRuntimeException("Invalid conversion");
 
-		// Add in the digit from the low nibble.
-		nextDigit = buffer[offset] & 0xF;
-		if (nextDigit < 10)
-			top = top * 10 + nextDigit;
-		else
-			throw new IntegratedLanguageCoreRuntimeException("Invalid conversion");
+			// Add in the digit from the low nibble.
+			nextDigit = buffer[offset] & 0xF;
+			if (nextDigit < 10)
+				top = top * 10 + nextDigit;
+			else
+				throw new IntegratedLanguageCoreRuntimeException("Invalid conversion");
 		}
 
 		// Now merge bottom and top into a BigInteger.

@@ -37,7 +37,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 	/**
 	 * The cached value of the '{@link #getArgument() <em>Argument</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getArgument()
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ListDefImpl() {
@@ -59,7 +59,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,7 +69,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetArgument(QUnaryAtomicDataDef<?> newArgument, NotificationChain msgs) {
@@ -97,7 +97,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -160,7 +160,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class ListDefImpl<D extends QList<?>> extends MultipleAtomicDataDefImpl<D
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

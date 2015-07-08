@@ -42,7 +42,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The default value of the '{@link #getPrecision() <em>Precision</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The cached value of the '{@link #getPrecision() <em>Precision</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -72,7 +72,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -82,7 +82,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -92,7 +92,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DecimalDefImpl() {
@@ -110,7 +110,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -120,7 +120,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -130,7 +130,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -166,7 +166,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -176,7 +176,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -199,7 +199,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -217,7 +217,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -238,7 +238,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -259,7 +259,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -277,7 +277,7 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

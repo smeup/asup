@@ -25,8 +25,9 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getProgram <em>Program</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getProgram <em>Program</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getParameters <em>Parameters
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -39,8 +40,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getProgram() <em>Program</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getProgram() <em>Program</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getProgram()
 	 * @generated
 	 * @ordered
@@ -48,8 +50,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 	protected static final String PROGRAM_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getProgram() <em>Program</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProgram() <em>Program</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getProgram()
 	 * @generated
 	 * @ordered
@@ -57,8 +60,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 	protected String program = PROGRAM_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
+	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -67,6 +71,7 @@ public class CallImpl extends InvokeImpl implements QCall {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected CallImpl() {
@@ -75,6 +80,7 @@ public class CallImpl extends InvokeImpl implements QCall {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -84,6 +90,7 @@ public class CallImpl extends InvokeImpl implements QCall {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,6 +100,7 @@ public class CallImpl extends InvokeImpl implements QCall {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,89 +113,95 @@ public class CallImpl extends InvokeImpl implements QCall {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public List<String> getParameters() {
-		if (parameters == null) {
+		if (parameters == null)
 			parameters = new EDataTypeEList<String>(String.class, this, QIntegratedLanguageFlowPackage.CALL__PARAMETERS);
-		}
 		return parameters;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
-				return getProgram();
-			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
-				return getParameters();
+		case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
+			return getProgram();
+		case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
+			return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
-				setProgram((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
+			setProgram((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
-				setProgram(PROGRAM_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
-				getParameters().clear();
-				return;
+		case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
+			setProgram(PROGRAM_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
+			getParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
-				return PROGRAM_EDEFAULT == null ? program != null : !PROGRAM_EDEFAULT.equals(program);
-			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+		case QIntegratedLanguageFlowPackage.CALL__PROGRAM:
+			return PROGRAM_EDEFAULT == null ? program != null : !PROGRAM_EDEFAULT.equals(program);
+		case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (program: ");

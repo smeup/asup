@@ -25,7 +25,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 	@Inject
 	private QObjectWriterFactoryRegistry objectWriterFactoryRegistry;
-	
+
 	@Override
 	public QObjectWriter getDefaultWriter(QContext context) {
 
@@ -47,7 +47,7 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 		if (name == null || name.isEmpty())
 			name = "*";
-	
+
 		JobToObjectWriterMap jobWriters = context.get(JobToObjectWriterMap.class);
 		if (jobWriters == null) {
 			jobWriters = new JobToObjectWriterMap();
@@ -86,12 +86,12 @@ public class BaseOutputManagerImpl implements QOutputManager {
 			jobWriters = new JobToObjectWriterMap();
 			context.set(JobToObjectWriterMap.class, jobWriters);
 		}
-		context.set(QObjectWriter.class, getObjectWriter(context, name));		
+		context.set(QObjectWriter.class, getObjectWriter(context, name));
 	}
 
-	private class JobToObjectWriterMap extends HashMap<String, QObjectWriter>  {
+	private class JobToObjectWriterMap extends HashMap<String, QObjectWriter> {
 
 		private static final long serialVersionUID = 1L;
-		
+
 	}
 }

@@ -32,171 +32,187 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionVisitor;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implements QIntegratedLanguageExpressionPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass arithmeticExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass assignmentExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass atomicTermExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass booleanExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass blockExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass compoundTermExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass expressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass expressionParserEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass expressionParserRegistryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass expressionVisitorEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass functionTermExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass logicalExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass predicateExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	private EClass qualifiedTermExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass relationalExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EClass termExpressionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum arithmeticOperatorEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum assignmentOperatorEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum atomicTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum expressionTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum logicalOperatorEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private EEnum relationalOperatorEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#eNS_URI
 	 * @see #init()
@@ -207,29 +223,35 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link QIntegratedLanguageExpressionPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
+	 * Creates, registers, and initializes the <b>Package</b> for this model,
+	 * and for any others upon which it depends.
+	 *
+	 * <p>
+	 * This method is used to initialize
+	 * {@link QIntegratedLanguageExpressionPackage#eINSTANCE} when that field is
+	 * accessed. Clients should not invoke it directly. Instead, they should
+	 * simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static QIntegratedLanguageExpressionPackage init() {
-		if (isInited) return (QIntegratedLanguageExpressionPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageExpressionPackage.eNS_URI);
+		if (isInited)
+			return (QIntegratedLanguageExpressionPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageExpressionPackage.eNS_URI);
 
 		// Obtain or create and register package
-		IntegratedLanguageExpressionPackageImpl theIntegratedLanguageExpressionPackage = (IntegratedLanguageExpressionPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageExpressionPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new IntegratedLanguageExpressionPackageImpl());
+		IntegratedLanguageExpressionPackageImpl theIntegratedLanguageExpressionPackage = (IntegratedLanguageExpressionPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageExpressionPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new IntegratedLanguageExpressionPackageImpl());
 
 		isInited = true;
 
@@ -245,15 +267,14 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		// Mark meta-data to indicate it can't be changed
 		theIntegratedLanguageExpressionPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QIntegratedLanguageExpressionPackage.eNS_URI, theIntegratedLanguageExpressionPackage);
 		return theIntegratedLanguageExpressionPackage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -262,38 +283,38 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getArithmeticExpression_LeftOperand() {
-		return (EReference)arithmeticExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) arithmeticExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getArithmeticExpression_Operator() {
-		return (EAttribute)arithmeticExpressionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) arithmeticExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getArithmeticExpression_RightOperand() {
-		return (EReference)arithmeticExpressionEClass.getEStructuralFeatures().get(2);
+		return (EReference) arithmeticExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -302,38 +323,38 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getAssignmentExpression_LeftOperand() {
-		return (EReference)assignmentExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) assignmentExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getAssignmentExpression_Operator() {
-		return (EAttribute)assignmentExpressionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) assignmentExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getAssignmentExpression_RightOperand() {
-		return (EReference)assignmentExpressionEClass.getEStructuralFeatures().get(2);
+		return (EReference) assignmentExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -342,18 +363,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getAtomicTermExpression_Type() {
-		return (EAttribute)atomicTermExpressionEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) atomicTermExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -362,18 +383,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getBooleanExpression_Operand() {
-		return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) booleanExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -382,18 +403,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getBlockExpression_Expression() {
-		return (EReference)blockExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) blockExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -402,18 +423,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getCompoundTermExpression_Elements() {
-		return (EReference)compoundTermExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) compoundTermExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -422,8 +443,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -432,8 +453,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -442,8 +463,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -452,8 +473,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public EClass getFunctionTermExpression() {
+		return functionTermExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -462,38 +493,38 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getLogicalExpression_LeftOperand() {
-		return (EReference)logicalExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) logicalExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getLogicalExpression_Operator() {
-		return (EAttribute)logicalExpressionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) logicalExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getLogicalExpression_RightOperand() {
-		return (EReference)logicalExpressionEClass.getEStructuralFeatures().get(2);
+		return (EReference) logicalExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -502,8 +533,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Override
+	public EClass getQualifiedTermExpression() {
+		return qualifiedTermExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -512,38 +553,38 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getRelationalExpression_LeftOperand() {
-		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(0);
+		return (EReference) relationalExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getRelationalExpression_Operator() {
-		return (EAttribute)relationalExpressionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) relationalExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getRelationalExpression_RightOperand() {
-		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(2);
+		return (EReference) relationalExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -552,38 +593,18 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTermExpression_Function() {
-		return (EAttribute)termExpressionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTermExpression_Special() {
-		return (EAttribute)termExpressionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getTermExpression_Value() {
-		return (EAttribute)termExpressionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) termExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -592,8 +613,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -602,8 +623,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -612,8 +633,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -622,8 +643,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -632,8 +653,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -642,31 +663,32 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageExpressionFactory getIntegratedLanguageExpressionFactory() {
-		return (QIntegratedLanguageExpressionFactory)getEFactoryInstance();
+		return (QIntegratedLanguageExpressionFactory) getEFactoryInstance();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+	 * Creates the meta-model objects for the package. This method is guarded to
+	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -700,6 +722,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		expressionVisitorEClass = createEClass(EXPRESSION_VISITOR);
 
+		functionTermExpressionEClass = createEClass(FUNCTION_TERM_EXPRESSION);
+
 		logicalExpressionEClass = createEClass(LOGICAL_EXPRESSION);
 		createEReference(logicalExpressionEClass, LOGICAL_EXPRESSION__LEFT_OPERAND);
 		createEAttribute(logicalExpressionEClass, LOGICAL_EXPRESSION__OPERATOR);
@@ -707,14 +731,14 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		predicateExpressionEClass = createEClass(PREDICATE_EXPRESSION);
 
+		qualifiedTermExpressionEClass = createEClass(QUALIFIED_TERM_EXPRESSION);
+
 		relationalExpressionEClass = createEClass(RELATIONAL_EXPRESSION);
 		createEReference(relationalExpressionEClass, RELATIONAL_EXPRESSION__LEFT_OPERAND);
 		createEAttribute(relationalExpressionEClass, RELATIONAL_EXPRESSION__OPERATOR);
 		createEReference(relationalExpressionEClass, RELATIONAL_EXPRESSION__RIGHT_OPERAND);
 
 		termExpressionEClass = createEClass(TERM_EXPRESSION);
-		createEAttribute(termExpressionEClass, TERM_EXPRESSION__FUNCTION);
-		createEAttribute(termExpressionEClass, TERM_EXPRESSION__SPECIAL);
 		createEAttribute(termExpressionEClass, TERM_EXPRESSION__VALUE);
 
 		// Create enums
@@ -727,21 +751,22 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -750,8 +775,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -769,33 +794,45 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		EGenericType g2 = createEGenericType(this.getExpressionParser());
 		g1.getETypeArguments().add(g2);
 		expressionParserRegistryEClass.getEGenericSuperTypes().add(g1);
+		functionTermExpressionEClass.getESuperTypes().add(this.getCompoundTermExpression());
 		logicalExpressionEClass.getESuperTypes().add(this.getPredicateExpression());
 		predicateExpressionEClass.getESuperTypes().add(this.getExpression());
+		qualifiedTermExpressionEClass.getESuperTypes().add(this.getCompoundTermExpression());
 		relationalExpressionEClass.getESuperTypes().add(this.getPredicateExpression());
 		termExpressionEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(arithmeticExpressionEClass, QArithmeticExpression.class, "ArithmeticExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getArithmeticExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getArithmeticExpression_Operator(), this.getArithmeticOperator(), "operator", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArithmeticExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArithmeticExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getArithmeticExpression_Operator(), this.getArithmeticOperator(), "operator", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArithmeticExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentExpressionEClass, QAssignmentExpression.class, "AssignmentExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignmentExpression_LeftOperand(), this.getTermExpression(), null, "leftOperand", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAssignmentExpression_Operator(), this.getAssignmentOperator(), "operator", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignmentExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssignmentExpression_LeftOperand(), this.getTermExpression(), null, "leftOperand", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssignmentExpression_Operator(), this.getAssignmentOperator(), "operator", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssignmentExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QAssignmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atomicTermExpressionEClass, QAtomicTermExpression.class, "AtomicTermExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAtomicTermExpression_Type(), this.getAtomicType(), "type", null, 1, 1, QAtomicTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAtomicTermExpression_Type(), this.getAtomicType(), "type", null, 1, 1, QAtomicTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanExpressionEClass, QBooleanExpression.class, "BooleanExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanExpression_Operand(), this.getExpression(), null, "operand", null, 1, 1, QBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBooleanExpression_Operand(), this.getExpression(), null, "operand", null, 1, 1, QBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(blockExpressionEClass, QBlockExpression.class, "BlockExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlockExpression_Expression(), this.getExpression(), null, "expression", null, 1, 1, QBlockExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlockExpression_Expression(), this.getExpression(), null, "expression", null, 1, 1, QBlockExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(compoundTermExpressionEClass, QCompoundTermExpression.class, "CompoundTermExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCompoundTermExpression_Elements(), this.getExpression(), null, "elements", null, 0, -1, QCompoundTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(compoundTermExpressionEClass, QCompoundTermExpression.class, "CompoundTermExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompoundTermExpression_Elements(), this.getExpression(), null, "elements", null, 0, -1, QCompoundTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, QExpression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -841,7 +878,10 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEParameter(op, this.getBooleanExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCompoundTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFunctionTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getQualifiedTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLogicalExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -865,30 +905,42 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEParameter(op, this.getBooleanExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCompoundTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getLogicalExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getLogicalExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getQualifiedTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFunctionTermExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(expressionVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRelationalExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(functionTermExpressionEClass, QFunctionTermExpression.class, "FunctionTermExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(logicalExpressionEClass, QLogicalExpression.class, "LogicalExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLogicalExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLogicalExpression_Operator(), this.getLogicalOperator(), "operator", null, 0, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLogicalExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 0, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLogicalExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogicalExpression_Operator(), this.getLogicalOperator(), "operator", null, 0, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLogicalExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 0, 1, QLogicalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(predicateExpressionEClass, QPredicateExpression.class, "PredicateExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(qualifiedTermExpressionEClass, QQualifiedTermExpression.class, "QualifiedTermExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(relationalExpressionEClass, QRelationalExpression.class, "RelationalExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRelationalExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRelationalExpression_Operator(), this.getRelationalOperator(), "operator", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRelationalExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationalExpression_LeftOperand(), this.getExpression(), null, "leftOperand", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRelationalExpression_Operator(), this.getRelationalOperator(), "operator", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationalExpression_RightOperand(), this.getExpression(), null, "rightOperand", null, 1, 1, QRelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(termExpressionEClass, QTermExpression.class, "TermExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTermExpression_Function(), ecorePackage.getEBoolean(), "function", null, 0, 1, QTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTermExpression_Special(), ecorePackage.getEBoolean(), "special", null, 0, 1, QTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTermExpression_Value(), ecorePackage.getEString(), "value", "", 0, 1, QTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTermExpression_Value(), ecorePackage.getEString(), "value", "", 0, 1, QTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(arithmeticOperatorEEnum, ArithmeticOperator.class, "ArithmeticOperator");
@@ -927,7 +979,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.RELATIONAL);
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.BOOLEAN);
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.ATOMIC);
-		addEEnumLiteral(expressionTypeEEnum, ExpressionType.COMPOUND);
+		addEEnumLiteral(expressionTypeEEnum, ExpressionType.QUALIFIED);
+		addEEnumLiteral(expressionTypeEEnum, ExpressionType.FUNCTION);
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.BLOCK);
 
 		initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
@@ -947,4 +1000,4 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		createResource(eNS_URI);
 	}
 
-} //IntegratedLanguageExpressionPackageImpl
+} // IntegratedLanguageExpressionPackageImpl

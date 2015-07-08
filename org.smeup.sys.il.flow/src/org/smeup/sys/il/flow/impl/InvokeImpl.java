@@ -28,6 +28,7 @@ public abstract class InvokeImpl extends StatementImpl implements QInvoke {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected InvokeImpl() {
@@ -36,6 +37,7 @@ public abstract class InvokeImpl extends StatementImpl implements QInvoke {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

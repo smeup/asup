@@ -41,7 +41,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 	/**
 	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDelegate()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 	/**
 	 * The cached value of the '{@link #getKlass() <em>Klass</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getKlass()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected EnumDefImpl() {
@@ -69,7 +69,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,7 +79,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -89,7 +89,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetDelegate(QBufferedDataDef<D> newDelegate, NotificationChain msgs) {
@@ -107,7 +107,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -137,7 +137,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -150,7 +150,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -180,7 +180,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -199,7 +199,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -217,7 +217,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -233,7 +233,7 @@ public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

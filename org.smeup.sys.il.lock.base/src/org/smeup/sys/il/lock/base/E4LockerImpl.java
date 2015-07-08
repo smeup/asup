@@ -53,7 +53,7 @@ public class E4LockerImpl<T extends QObjectLockable> implements QObjectLocker<T>
 		} catch (InterruptedException e) {
 			logger.warning(null, e);
 		}
-		
+
 		return false;
 	}
 
@@ -70,14 +70,14 @@ public class E4LockerImpl<T extends QObjectLockable> implements QObjectLocker<T>
 
 	@Override
 	public boolean isLocked(LockType lockType) {
-		
+
 		switch (lockType) {
 		case READ:
-//			return lock.readLock().
+			// return lock.readLock().
 		case WRITE:
-//			return lockWrite.tryLock();
+			// return lockWrite.tryLock();
 		}
-		
+
 		return false;
 	}
 

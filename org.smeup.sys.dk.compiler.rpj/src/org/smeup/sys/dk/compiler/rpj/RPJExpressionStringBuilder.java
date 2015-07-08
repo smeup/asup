@@ -19,9 +19,10 @@ import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QBooleanExpression;
-import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QLogicalExpression;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 
@@ -223,8 +224,9 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 		} else
 			result += expression.getValue();
 
-		if (expression.isFunction())
-			result += "()";
+		// Mirandola
+//		if (expression.isFunction())
+//			result += "()";
 
 		return false;
 	}
@@ -240,35 +242,36 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 	}
 
 	@Override
-	public boolean visit(QCompoundTermExpression expression) {
+	public boolean visit(QFunctionTermExpression expression) {
 
-		if (expression.isFunction()) {
-			if (expression.isSpecial())
-				result += " %" + expression.getValue().substring(1);
-			else
-				result += " " + expression.getValue();
+		result += expression.getValue();
 
-			if (!expression.getElements().isEmpty()) {
-				boolean first = true;
-				result += "(";
-				for (QExpression child : expression.getElements()) {
-					if (!first)
-						result += ": ";
-					child.accept(this);
-					first = false;
-				}
-				result += ")";
+		if (!expression.getElements().isEmpty()) {
+			boolean first = true;
+			result += "(";
+			for (QExpression child : expression.getElements()) {
+				if (!first)
+					result += ": ";
+				child.accept(this);
+				first = false;
 			}
-		} else {
-
-			result += " " + expression.getValue();
-
-			if (!result.contains("."))
-				for (QExpression child : expression.getElements()) {
-					result += ".";
-					child.accept(this);
-				}
+			result += ")";
 		}
+
+		return false;
+	}
+	
+
+	@Override
+	public boolean visit(QQualifiedTermExpression expression) {
+
+		result += " " + expression.getValue();
+
+		if (!result.contains("."))
+			for (QExpression child : expression.getElements()) {
+				result += ".";
+				child.accept(this);
+			}
 
 		return false;
 	}

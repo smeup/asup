@@ -23,10 +23,8 @@ import org.smeup.sys.il.core.test.runner.FrameTester;
 
 public class LanguageCoreTestProviderImpl extends E4TestProviderImpl {
 
-
 	@Inject
 	private QTestManager testManager;
-
 
 	public void _testILCore(CommandInterpreter interpreter) throws Exception {
 
@@ -35,13 +33,12 @@ public class LanguageCoreTestProviderImpl extends E4TestProviderImpl {
 		try {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, FrameTester.class);
 			QTestResult testResult = testRunner.call();
-			
+
 			printTestResult(testResult);
-		}
-		finally {
-			if(testContext != null)
+		} finally {
+			if (testContext != null)
 				testContext.close();
 		}
-	
+
 	}
 }

@@ -48,7 +48,7 @@ public interface QStrollerDef<D extends QStroller<?>> extends QMultipleCompoundD
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Length</em>' attribute.
 	 * @see #getLength()

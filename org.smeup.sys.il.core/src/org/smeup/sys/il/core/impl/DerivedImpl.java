@@ -28,6 +28,7 @@ public class DerivedImpl extends FacetImpl implements QDerived {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DerivedImpl() {
@@ -36,6 +37,7 @@ public class DerivedImpl extends FacetImpl implements QDerived {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -24,10 +24,8 @@ import org.smeup.sys.il.data.test.runner.HexadecimalTester;
 
 public class LanguageDataTestProviderImpl extends E4TestProviderImpl {
 
-
 	@Inject
 	private QTestManager testManager;
-
 
 	public void _testILData(CommandInterpreter interpreter) throws Exception {
 
@@ -37,16 +35,15 @@ public class LanguageDataTestProviderImpl extends E4TestProviderImpl {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, DataStructureTester.class);
 			QTestResult testResult = testRunner.call();
 			printTestResult(testResult);
-			
+
 			testRunner = testManager.prepareRunner(testContext, HexadecimalTester.class);
 			testResult = testRunner.call();
-			
+
 			printTestResult(testResult);
-		}
-		finally {
-			if(testContext != null)
+		} finally {
+			if (testContext != null)
 				testContext.close();
 		}
-	
+
 	}
 }

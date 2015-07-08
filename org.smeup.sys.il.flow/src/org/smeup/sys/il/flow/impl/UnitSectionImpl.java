@@ -23,6 +23,7 @@ import org.smeup.sys.il.flow.QUnitSection;
 public abstract class UnitSectionImpl extends MinimalEObjectImpl.Container implements QUnitSection {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected UnitSectionImpl() {
@@ -31,6 +32,7 @@ public abstract class UnitSectionImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

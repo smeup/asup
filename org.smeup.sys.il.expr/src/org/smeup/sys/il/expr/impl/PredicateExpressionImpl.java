@@ -12,9 +12,8 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.expr.QPredicateExpression;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Predicate Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Predicate Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -22,13 +21,13 @@ import org.smeup.sys.il.expr.QPredicateExpression;
  */
 public abstract class PredicateExpressionImpl extends ExpressionImpl implements QPredicateExpression {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PredicateExpressionImpl() {
@@ -36,12 +35,12 @@ public abstract class PredicateExpressionImpl extends ExpressionImpl implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageExpressionPackage.Literals.PREDICATE_EXPRESSION;
 	}
-} //PredicateExpressionImpl
+} // PredicateExpressionImpl

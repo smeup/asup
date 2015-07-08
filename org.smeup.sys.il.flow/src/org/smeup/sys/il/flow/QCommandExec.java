@@ -14,7 +14,8 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QCommandExec#getStatement <em>Statement</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QCommandExec#getStatement <em>Statement
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -42,7 +43,8 @@ public interface QCommandExec extends QInvoke {
 	String getStatement();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCommandExec#getStatement
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.flow.QCommandExec#getStatement
 	 * <em>Statement</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 *

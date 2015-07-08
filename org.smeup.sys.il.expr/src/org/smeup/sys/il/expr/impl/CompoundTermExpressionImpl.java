@@ -16,42 +16,41 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
-import org.smeup.sys.il.expr.QExpressionVisitor;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Compound Term Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Compound Term Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl#getElements <em>Elements</em>}</li>
+ * <li>{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl#getElements
+ * <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CompoundTermExpressionImpl extends TermExpressionImpl implements QCompoundTermExpression {
+public abstract class CompoundTermExpressionImpl extends TermExpressionImpl implements QCompoundTermExpression {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
 	protected EList<QExpression> elements;
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CompoundTermExpressionImpl() {
@@ -59,8 +58,8 @@ public class CompoundTermExpressionImpl extends TermExpressionImpl implements QC
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,116 +68,89 @@ public class CompoundTermExpressionImpl extends TermExpressionImpl implements QC
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QExpression> getElements() {
-		if (elements == null) {
+		if (elements == null)
 			elements = new EObjectContainmentEList<QExpression>(QExpression.class, this, QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS);
-		}
 		return elements;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-				return getElements();
+		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+			return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends QExpression>)newValue);
-				return;
+		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+			getElements().clear();
+			getElements().addAll((Collection<? extends QExpression>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-				getElements().clear();
-				return;
+		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+			getElements().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-				return elements != null && !elements.isEmpty();
+		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+			return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public void accept(QExpressionVisitor visitor) {
-		
-		if(visitor.visit(this)) {
-			
-			for(QExpression child: getElements())
-				child.accept(visitor);
-		}
-		
-		visitor.endVisit(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public ExpressionType getExpressionType() {
-		return ExpressionType.COMPOUND;
-	}
-} //CompoundTermExpressionImpl
+} // CompoundTermExpressionImpl

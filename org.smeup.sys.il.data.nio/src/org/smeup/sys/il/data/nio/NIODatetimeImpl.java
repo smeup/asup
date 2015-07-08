@@ -55,7 +55,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	 * NIOBufferHelper.movel(getBuffer(), getPosition(), length(), _value, true,
 	 * INIT); else Arrays.fill(getBuffer().array(), getPosition(), getPosition()
 	 * + length(), INIT);
-	 * 
+	 *
 	 * }
 	 */
 

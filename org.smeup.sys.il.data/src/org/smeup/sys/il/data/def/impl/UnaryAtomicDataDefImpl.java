@@ -28,7 +28,7 @@ public abstract class UnaryAtomicDataDefImpl<D extends QData> extends UnaryDataD
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected UnaryAtomicDataDefImpl() {
@@ -37,7 +37,7 @@ public abstract class UnaryAtomicDataDefImpl<D extends QData> extends UnaryDataD
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

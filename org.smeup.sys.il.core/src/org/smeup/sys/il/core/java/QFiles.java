@@ -19,6 +19,7 @@ package org.smeup.sys.il.core.java;
 public interface QFiles {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" fileNameRequired="true"
 	 * @generated
 	 */

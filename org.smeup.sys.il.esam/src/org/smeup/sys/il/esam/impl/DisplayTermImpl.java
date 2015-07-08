@@ -27,6 +27,7 @@ public class DisplayTermImpl extends FileTermImpl implements QDisplayTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DisplayTermImpl() {
@@ -35,6 +36,7 @@ public class DisplayTermImpl extends FileTermImpl implements QDisplayTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

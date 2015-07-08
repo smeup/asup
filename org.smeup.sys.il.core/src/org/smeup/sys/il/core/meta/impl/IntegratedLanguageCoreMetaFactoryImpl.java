@@ -22,32 +22,32 @@ import org.smeup.sys.il.core.meta.QRange;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreMetaFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreMetaFactory init() {
 		try {
-			QIntegratedLanguageCoreMetaFactory theIntegratedLanguageCoreMetaFactory = (QIntegratedLanguageCoreMetaFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageCoreMetaPackage.eNS_URI);
-			if (theIntegratedLanguageCoreMetaFactory != null) {
+			QIntegratedLanguageCoreMetaFactory theIntegratedLanguageCoreMetaFactory = (QIntegratedLanguageCoreMetaFactory) EPackage.Registry.INSTANCE
+					.getEFactory(QIntegratedLanguageCoreMetaPackage.eNS_URI);
+			if (theIntegratedLanguageCoreMetaFactory != null)
 				return theIntegratedLanguageCoreMetaFactory;
-			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageCoreMetaFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageCoreMetaFactoryImpl() {
@@ -56,22 +56,28 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY: return (EObject)createCardinality();
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT: return (EObject)createDefault();
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN: return (EObject)createDomain();
-			case QIntegratedLanguageCoreMetaPackage.RANGE: return (EObject)createRange();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY:
+			return (EObject) createCardinality();
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT:
+			return (EObject) createDefault();
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN:
+			return (EObject) createDomain();
+		case QIntegratedLanguageCoreMetaPackage.RANGE:
+			return (EObject) createRange();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,6 +88,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,6 +99,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,6 +110,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,15 +121,17 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageCoreMetaPackage getIntegratedLanguageCoreMetaPackage() {
-		return (QIntegratedLanguageCoreMetaPackage)getEPackage();
+		return (QIntegratedLanguageCoreMetaPackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

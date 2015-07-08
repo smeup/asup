@@ -46,10 +46,8 @@
     </datas>
   </dataSection>
   <flowSection>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%execute"/>
+    <prototypes
+          name="%execute">
       <entry>
         <parameters>
           <delegate
@@ -63,10 +61,8 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%execute"/>
+    <prototypes
+          name="%execute">
       <entry>
         <parameters>
           <delegate

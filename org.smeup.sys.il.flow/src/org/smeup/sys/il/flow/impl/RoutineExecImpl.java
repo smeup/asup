@@ -20,7 +20,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.RoutineExecImpl#getRoutine <em>Routine</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.RoutineExecImpl#getRoutine <em>Routine
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -33,8 +34,9 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getRoutine() <em>Routine</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getRoutine() <em>Routine</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getRoutine()
 	 * @generated
 	 * @ordered
@@ -42,8 +44,9 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 	protected static final String ROUTINE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getRoutine() <em>Routine</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRoutine() <em>Routine</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getRoutine()
 	 * @generated
 	 * @ordered
@@ -52,6 +55,7 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected RoutineExecImpl() {
@@ -60,6 +64,7 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,6 +74,7 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,6 +84,7 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,65 +97,71 @@ public class RoutineExecImpl extends InvokeImpl implements QRoutineExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
-				return getRoutine();
+		case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
+			return getRoutine();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
-				setRoutine((String)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
+			setRoutine((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
-				setRoutine(ROUTINE_EDEFAULT);
-				return;
+		case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
+			setRoutine(ROUTINE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
-				return ROUTINE_EDEFAULT == null ? routine != null : !ROUTINE_EDEFAULT.equals(routine);
+		case QIntegratedLanguageFlowPackage.ROUTINE_EXEC__ROUTINE:
+			return ROUTINE_EDEFAULT == null ? routine != null : !ROUTINE_EDEFAULT.equals(routine);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (routine: ");

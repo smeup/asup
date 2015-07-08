@@ -7,19 +7,20 @@
  */
 package org.smeup.sys.il.esam;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Data Set Term</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Data Set Term</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName <em>Format Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName <em>Format Name
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,14 +30,12 @@ package org.smeup.sys.il.esam;
  */
 public interface QDataSetTerm extends QFileTerm {
 	/**
-	 * Returns the value of the '<em><b>Access Mode</b></em>' attribute.
-	 * The default value is <code>"I"</code>.
-	 * The literals are from the enumeration {@link org.smeup.sys.il.esam.AccessMode}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Imposta il tipo di accesso al data set.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Access Mode</b></em>' attribute. The
+	 * default value is <code>"I"</code>. The literals are from the enumeration
+	 * {@link org.smeup.sys.il.esam.AccessMode}. <!-- begin-user-doc --> <!--
+	 * end-user-doc --> <!-- begin-model-doc --> Imposta il tipo di accesso al
+	 * data set. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Access Mode</em>' attribute.
 	 * @see org.smeup.sys.il.esam.AccessMode
 	 * @see #setAccessMode(AccessMode)
@@ -47,10 +46,13 @@ public interface QDataSetTerm extends QFileTerm {
 	AccessMode getAccessMode();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Access Mode</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode
+	 * <em>Access Mode</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Access Mode</em>' attribute.
 	 * @see org.smeup.sys.il.esam.AccessMode
 	 * @see #getAccessMode()
 	 * @generated
@@ -58,13 +60,14 @@ public interface QDataSetTerm extends QFileTerm {
 	void setAccessMode(AccessMode value);
 
 	/**
-	 * Returns the value of the '<em><b>Format Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Format Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Format Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Format Name</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Format Name</em>' attribute.
 	 * @see #setFormatName(String)
 	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm_FormatName()
@@ -74,22 +77,23 @@ public interface QDataSetTerm extends QFileTerm {
 	String getFormatName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName <em>Format Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Format Name</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName
+	 * <em>Format Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Format Name</em>' attribute.
 	 * @see #getFormatName()
 	 * @generated
 	 */
 	void setFormatName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Keyed Access</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Imposta il tipo di accesso al data set.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Keyed Access</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Imposta
+	 * il tipo di accesso al data set. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Keyed Access</em>' attribute.
 	 * @see #setKeyedAccess(boolean)
 	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm_KeyedAccess()
@@ -99,23 +103,27 @@ public interface QDataSetTerm extends QFileTerm {
 	boolean isKeyedAccess();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Keyed Access</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess
+	 * <em>Keyed Access</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Keyed Access</em>' attribute.
 	 * @see #isKeyedAccess()
 	 * @generated
 	 */
 	void setKeyedAccess(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Prefix</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Prefix</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Prefix</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Prefix</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Prefix</em>' attribute.
 	 * @see #setPrefix(String)
 	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm_Prefix()
@@ -125,10 +133,12 @@ public interface QDataSetTerm extends QFileTerm {
 	String getPrefix();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Prefix</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Prefix</em>' attribute.
 	 * @see #getPrefix()
 	 * @generated
 	 */

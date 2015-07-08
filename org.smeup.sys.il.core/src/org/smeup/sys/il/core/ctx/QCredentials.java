@@ -16,8 +16,9 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getPassword <em>Password</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getPassword <em>Password
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -44,9 +45,12 @@ public interface QCredentials extends QObject {
 	String getUser();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>User</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>User</em>' attribute.
 	 * @see #getUser()
 	 * @generated
 	 */

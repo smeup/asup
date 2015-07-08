@@ -19,8 +19,8 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getText <em>Text</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,6 +35,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -44,6 +45,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,6 +55,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -62,6 +65,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -70,6 +74,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DomainImpl() {
@@ -78,6 +83,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,6 +93,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -96,6 +103,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,6 +116,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,6 +126,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,75 +139,81 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
-				return getName();
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
-				return getText();
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
+			return getName();
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
+			return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
-				setName((String)newValue);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
-				setText((String)newValue);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
+			setName((String) newValue);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
+			setText((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
+			setText(TEXT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case QIntegratedLanguageCoreMetaPackage.DOMAIN__TEXT:
+			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

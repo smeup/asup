@@ -233,7 +233,7 @@ public class JDBCAccessHelper {
 			if (opRead.equals(OperationRead.READ_PRIOR) || opRead.equals(OperationRead.READ_PRIOR_EQUAL))
 				sbWhere.append(sbFields).append("<'").append(sbValues).append("'");
 
-		// reader forward
+			// reader forward
 			else
 				sbWhere.append(sbFields).append(">='").append(sbValues).append("'");
 
@@ -243,7 +243,7 @@ public class JDBCAccessHelper {
 			if (opRead.equals(OperationRead.READ_PRIOR) || opRead.equals(OperationRead.READ_PRIOR_EQUAL))
 				sbWhere.append(sbFields).append("<='").append(sbValues).append("'");
 
-		// reader forward
+			// reader forward
 			else
 				sbWhere.append(sbFields).append(">'").append(sbValues).append("'");
 	}

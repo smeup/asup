@@ -32,7 +32,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 	/**
 	 * The default value of the '{@link #getTarget() <em>Target</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -41,7 +41,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -54,7 +54,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected PointerDefImpl() {
@@ -63,7 +63,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -73,7 +73,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -83,7 +83,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -96,7 +96,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -110,7 +110,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -125,7 +125,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -154,7 +154,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

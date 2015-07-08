@@ -12,61 +12,57 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Package</b> for the model.
- * It contains accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
+ * accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageEsamPackage extends EPackage {
 	/**
-	 * The package name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNAME = "esam";
 
 	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/esam";
 
 	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-esam";
 
 	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	QIntegratedLanguageEsamPackage eINSTANCE = org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDataSet <em>Data Set</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDataSet
+	 * <em>Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QDataSet
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSet()
 	 * @generated
@@ -74,18 +70,19 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DATA_SET = 0;
 
 	/**
-	 * The number of structural features of the '<em>Data Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Data Set</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.FileTermImpl
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileTerm()
 	 * @generated
@@ -93,45 +90,46 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int FILE_TERM = 4;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_TERM__FACETS = QIntegratedLanguageCoreTermPackage.TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>File Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_TERM__FILE_NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_TERM__USER_OPEN = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>File Term</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>File Term</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FILE_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}
+	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.DataSetTermImpl
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSetTerm()
 	 * @generated
@@ -139,63 +137,63 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DATA_SET_TERM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__FACETS = FILE_TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>File Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
 
 	/**
-	 * The feature id for the '<em><b>Access Mode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Access Mode</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__ACCESS_MODE = FILE_TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Format Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Format Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__FORMAT_NAME = FILE_TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Keyed Access</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Keyed Access</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM__KEYED_ACCESS = FILE_TERM_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Prefix</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Prefix</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -203,17 +201,17 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Data Set Term</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_SET_TERM_FEATURE_COUNT = FILE_TERM_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDisplay
+	 * <em>Display</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QDisplay
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplay()
 	 * @generated
@@ -221,18 +219,19 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DISPLAY = 2;
 
 	/**
-	 * The number of structural features of the '<em>Display</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Display</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DISPLAY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DisplayTermImpl <em>Display Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.impl.DisplayTermImpl <em>Display Term</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.DisplayTermImpl
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplayTerm()
 	 * @generated
@@ -240,27 +239,27 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DISPLAY_TERM = 3;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DISPLAY_TERM__FACETS = FILE_TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>File Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DISPLAY_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -268,17 +267,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Display Term</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DISPLAY_TERM_FEATURE_COUNT = FILE_TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}
+	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.KeyListTermImpl
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyListTerm()
 	 * @generated
@@ -286,27 +286,27 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int KEY_LIST_TERM = 5;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int KEY_LIST_TERM__FACETS = QIntegratedLanguageCoreTermPackage.TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int KEY_LIST_TERM__NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Key Fields</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Key Fields</b></em>' attribute list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -314,17 +314,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Key List Term</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int KEY_LIST_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QKSDataSet <em>KS Data Set</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QKSDataSet
+	 * <em>KS Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QKSDataSet
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKSDataSet()
 	 * @generated
@@ -333,17 +334,17 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>KS Data Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int KS_DATA_SET_FEATURE_COUNT = DATA_SET_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndex
+	 * <em>Index</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QIndex
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndex()
 	 * @generated
@@ -351,18 +352,19 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int INDEX = 7;
 
 	/**
-	 * The number of structural features of the '<em>Index</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Index</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INDEX_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndexColumn <em>Index Column</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndexColumn
+	 * <em>Index Column</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QIndexColumn
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndexColumn()
 	 * @generated
@@ -371,17 +373,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Index Column</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int INDEX_COLUMN_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessManager
+	 * <em>Access Manager</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QAccessManager
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessManager()
 	 * @generated
@@ -390,17 +393,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Access Manager</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACCESS_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessFactory
+	 * <em>Access Factory</em>}' class. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QAccessFactory
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessFactory()
 	 * @generated
@@ -409,17 +413,17 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Access Factory</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int ACCESS_FACTORY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QPrint <em>Print</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QPrint
+	 * <em>Print</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QPrint
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrint()
 	 * @generated
@@ -427,18 +431,19 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int PRINT = 11;
 
 	/**
-	 * The number of structural features of the '<em>Print</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Print</em>' class. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PRINT_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.PrintTermImpl <em>Print Term</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.impl.PrintTermImpl <em>Print Term</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.PrintTermImpl
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrintTerm()
 	 * @generated
@@ -446,27 +451,27 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int PRINT_TERM = 12;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PRINT_TERM__FACETS = FILE_TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>File Name</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PRINT_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -474,17 +479,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>Print Term</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int PRINT_TERM_FEATURE_COUNT = FILE_TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QRRDataSet <em>RR Data Set</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QRRDataSet
+	 * <em>RR Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QRRDataSet
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getRRDataSet()
 	 * @generated
@@ -493,17 +499,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>RR Data Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int RR_DATA_SET_FEATURE_COUNT = DATA_SET_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QSMDataSet <em>SM Data Set</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QSMDataSet
+	 * <em>SM Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.QSMDataSet
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getSMDataSet()
 	 * @generated
@@ -512,17 +519,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	/**
 	 * The number of structural features of the '<em>SM Data Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int SM_DATA_SET_FEATURE_COUNT = RR_DATA_SET_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.AccessMode <em>Access Mode</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.AccessMode
+	 * <em>Access Mode</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.AccessMode
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessMode()
 	 * @generated
@@ -530,9 +538,11 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int ACCESS_MODE = 15;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationDirection <em>Operation Direction</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.esam.OperationDirection
+	 * <em>Operation Direction</em>}' enum. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.OperationDirection
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationDirection()
 	 * @generated
@@ -540,9 +550,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int OPERATION_DIRECTION = 16;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationSet <em>Operation Set</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationSet
+	 * <em>Operation Set</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.OperationSet
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationSet()
 	 * @generated
@@ -550,9 +561,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int OPERATION_SET = 17;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationRead <em>Operation Read</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.OperationRead
+	 * <em>Operation Read</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see org.smeup.sys.il.esam.OperationRead
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationRead()
 	 * @generated
@@ -560,19 +572,18 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int OPERATION_READ = 18;
 
 	/**
-	 * The meta object id for the '<em>Key List</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The meta object id for the '<em>Key List</em>' data type. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyList()
 	 * @generated
 	 */
 	int KEY_LIST = 19;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDataSet <em>Data Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDataSet
+	 * <em>Data Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Data Set</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSet
 	 * @generated
@@ -580,9 +591,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getDataSet();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDataSetTerm <em>Data Set Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm <em>Data Set Term</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Data Set Term</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSetTerm
 	 * @generated
@@ -590,9 +602,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getDataSetTerm();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode
+	 * <em>Access Mode</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Access Mode</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSetTerm#getAccessMode()
 	 * @see #getDataSetTerm()
@@ -601,9 +614,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getDataSetTerm_AccessMode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName <em>Format Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName
+	 * <em>Format Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Format Name</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSetTerm#getFormatName()
 	 * @see #getDataSetTerm()
@@ -612,9 +626,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getDataSetTerm_FormatName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess
+	 * <em>Keyed Access</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Keyed Access</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess()
 	 * @see #getDataSetTerm()
@@ -623,9 +638,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getDataSetTerm_KeyedAccess();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Prefix</em>'.
 	 * @see org.smeup.sys.il.esam.QDataSetTerm#getPrefix()
 	 * @see #getDataSetTerm()
@@ -634,9 +650,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getDataSetTerm_Prefix();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDisplay
+	 * <em>Display</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Display</em>'.
 	 * @see org.smeup.sys.il.esam.QDisplay
 	 * @generated
@@ -644,9 +660,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getDisplay();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QDisplayTerm <em>Display Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QDisplayTerm <em>Display Term</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Display Term</em>'.
 	 * @see org.smeup.sys.il.esam.QDisplayTerm
 	 * @generated
@@ -654,9 +671,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getDisplayTerm();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QFileTerm <em>File Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QFileTerm <em>File Term</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>File Term</em>'.
 	 * @see org.smeup.sys.il.esam.QFileTerm
 	 * @generated
@@ -664,9 +682,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getFileTerm();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>File Name</em>'.
 	 * @see org.smeup.sys.il.esam.QFileTerm#getFileName()
 	 * @see #getFileTerm()
@@ -675,9 +694,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getFileTerm_FileName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>User Open</em>'.
 	 * @see org.smeup.sys.il.esam.QFileTerm#isUserOpen()
 	 * @see #getFileTerm()
@@ -686,9 +706,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getFileTerm_UserOpen();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QKeyListTerm <em>Key List Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QKeyListTerm <em>Key List Term</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Key List Term</em>'.
 	 * @see org.smeup.sys.il.esam.QKeyListTerm
 	 * @generated
@@ -696,9 +717,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getKeyListTerm();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.smeup.sys.il.esam.QKeyListTerm#getName()
 	 * @see #getKeyListTerm()
@@ -707,9 +729,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getKeyListTerm_Name();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.il.esam.QKeyListTerm#getKeyFields <em>Key Fields</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for the attribute list '
+	 * {@link org.smeup.sys.il.esam.QKeyListTerm#getKeyFields
+	 * <em>Key Fields</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute list '<em>Key Fields</em>'.
 	 * @see org.smeup.sys.il.esam.QKeyListTerm#getKeyFields()
 	 * @see #getKeyListTerm()
@@ -718,9 +741,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EAttribute getKeyListTerm_KeyFields();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QKSDataSet <em>KS Data Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QKSDataSet <em>KS Data Set</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>KS Data Set</em>'.
 	 * @see org.smeup.sys.il.esam.QKSDataSet
 	 * @generated
@@ -728,9 +752,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getKSDataSet();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QIndex
+	 * <em>Index</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Index</em>'.
 	 * @see org.smeup.sys.il.esam.QIndex
 	 * @generated
@@ -738,9 +762,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getIndex();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QIndexColumn <em>Index Column</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QIndexColumn <em>Index Column</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Index Column</em>'.
 	 * @see org.smeup.sys.il.esam.QIndexColumn
 	 * @generated
@@ -748,9 +773,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getIndexColumn();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Access Manager</em>'.
 	 * @see org.smeup.sys.il.esam.QAccessManager
 	 * @generated
@@ -758,9 +784,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getAccessManager();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Access Factory</em>'.
 	 * @see org.smeup.sys.il.esam.QAccessFactory
 	 * @generated
@@ -768,9 +795,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getAccessFactory();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QPrint <em>Print</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QPrint
+	 * <em>Print</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Print</em>'.
 	 * @see org.smeup.sys.il.esam.QPrint
 	 * @generated
@@ -778,9 +805,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getPrint();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QPrintTerm <em>Print Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QPrintTerm <em>Print Term</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Print Term</em>'.
 	 * @see org.smeup.sys.il.esam.QPrintTerm
 	 * @generated
@@ -788,9 +816,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getPrintTerm();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QRRDataSet <em>RR Data Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QRRDataSet <em>RR Data Set</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>RR Data Set</em>'.
 	 * @see org.smeup.sys.il.esam.QRRDataSet
 	 * @generated
@@ -798,9 +827,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getRRDataSet();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.esam.QSMDataSet <em>SM Data Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.esam.QSMDataSet <em>SM Data Set</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>SM Data Set</em>'.
 	 * @see org.smeup.sys.il.esam.QSMDataSet
 	 * @generated
@@ -808,9 +838,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EClass getSMDataSet();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.esam.AccessMode <em>Access Mode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '
+	 * {@link org.smeup.sys.il.esam.AccessMode <em>Access Mode</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for enum '<em>Access Mode</em>'.
 	 * @see org.smeup.sys.il.esam.AccessMode
 	 * @generated
@@ -818,9 +849,11 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EEnum getAccessMode();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.esam.OperationDirection <em>Operation Direction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '
+	 * {@link org.smeup.sys.il.esam.OperationDirection
+	 * <em>Operation Direction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @return the meta object for enum '<em>Operation Direction</em>'.
 	 * @see org.smeup.sys.il.esam.OperationDirection
 	 * @generated
@@ -828,9 +861,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EEnum getOperationDirection();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.esam.OperationSet <em>Operation Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '
+	 * {@link org.smeup.sys.il.esam.OperationSet <em>Operation Set</em>}'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for enum '<em>Operation Set</em>'.
 	 * @see org.smeup.sys.il.esam.OperationSet
 	 * @generated
@@ -838,9 +872,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EEnum getOperationSet();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.esam.OperationRead <em>Operation Read</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for enum '
+	 * {@link org.smeup.sys.il.esam.OperationRead <em>Operation Read</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for enum '<em>Operation Read</em>'.
 	 * @see org.smeup.sys.il.esam.OperationRead
 	 * @generated
@@ -848,9 +883,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EEnum getOperationRead();
 
 	/**
-	 * Returns the meta object for data type '<em>Key List</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the meta object for data type '<em>Key List</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for data type '<em>Key List</em>'.
 	 * @model instanceClass="java.lang.Object[]"
 	 * @generated
@@ -858,31 +893,33 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	EDataType getKeyList();
 
 	/**
-	 * Returns the factory that creates the instances of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the factory that creates the instances of the model. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	QIntegratedLanguageEsamFactory getIntegratedLanguageEsamFactory();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
+	 * <!-- begin-user-doc --> Defines literals for the meta objects that
+	 * represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QDataSet <em>Data Set</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QDataSet <em>Data Set</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QDataSet
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSet()
 		 * @generated
@@ -890,9 +927,11 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass DATA_SET = eINSTANCE.getDataSet();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.impl.DataSetTermImpl
+		 * <em>Data Set Term</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.DataSetTermImpl
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSetTerm()
 		 * @generated
@@ -900,41 +939,42 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass DATA_SET_TERM = eINSTANCE.getDataSetTerm();
 
 		/**
-		 * The meta object literal for the '<em><b>Access Mode</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Access Mode</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DATA_SET_TERM__ACCESS_MODE = eINSTANCE.getDataSetTerm_AccessMode();
 
 		/**
-		 * The meta object literal for the '<em><b>Format Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Format Name</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DATA_SET_TERM__FORMAT_NAME = eINSTANCE.getDataSetTerm_FormatName();
 
 		/**
-		 * The meta object literal for the '<em><b>Keyed Access</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Keyed Access</b></em>'
+		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DATA_SET_TERM__KEYED_ACCESS = eINSTANCE.getDataSetTerm_KeyedAccess();
 
 		/**
-		 * The meta object literal for the '<em><b>Prefix</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Prefix</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DATA_SET_TERM__PREFIX = eINSTANCE.getDataSetTerm_Prefix();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}' class. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QDisplay
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplay()
 		 * @generated
@@ -942,9 +982,11 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass DISPLAY = eINSTANCE.getDisplay();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.DisplayTermImpl <em>Display Term</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.impl.DisplayTermImpl
+		 * <em>Display Term</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.DisplayTermImpl
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplayTerm()
 		 * @generated
@@ -952,9 +994,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass DISPLAY_TERM = eINSTANCE.getDisplayTerm();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.FileTermImpl
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileTerm()
 		 * @generated
@@ -962,25 +1005,27 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass FILE_TERM = eINSTANCE.getFileTerm();
 
 		/**
-		 * The meta object literal for the '<em><b>File Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>File Name</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute FILE_TERM__FILE_NAME = eINSTANCE.getFileTerm_FileName();
 
 		/**
-		 * The meta object literal for the '<em><b>User Open</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>User Open</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute FILE_TERM__USER_OPEN = eINSTANCE.getFileTerm_UserOpen();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.impl.KeyListTermImpl
+		 * <em>Key List Term</em>}' class. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.KeyListTermImpl
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyListTerm()
 		 * @generated
@@ -988,25 +1033,26 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass KEY_LIST_TERM = eINSTANCE.getKeyListTerm();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute KEY_LIST_TERM__NAME = eINSTANCE.getKeyListTerm_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Key Fields</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Key Fields</b></em>'
+		 * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute KEY_LIST_TERM__KEY_FIELDS = eINSTANCE.getKeyListTerm_KeyFields();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QKSDataSet <em>KS Data Set</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QKSDataSet <em>KS Data Set</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QKSDataSet
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKSDataSet()
 		 * @generated
@@ -1014,9 +1060,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass KS_DATA_SET = eINSTANCE.getKSDataSet();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QIndex
+		 * <em>Index</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QIndex
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndex()
 		 * @generated
@@ -1024,9 +1070,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass INDEX = eINSTANCE.getIndex();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QIndexColumn <em>Index Column</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QIndexColumn <em>Index Column</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QIndexColumn
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndexColumn()
 		 * @generated
@@ -1034,9 +1081,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass INDEX_COLUMN = eINSTANCE.getIndexColumn();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QAccessManager
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessManager()
 		 * @generated
@@ -1044,9 +1092,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass ACCESS_MANAGER = eINSTANCE.getAccessManager();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QAccessFactory
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessFactory()
 		 * @generated
@@ -1054,9 +1103,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass ACCESS_FACTORY = eINSTANCE.getAccessFactory();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QPrint <em>Print</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QPrint
+		 * <em>Print</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QPrint
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrint()
 		 * @generated
@@ -1064,9 +1113,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass PRINT = eINSTANCE.getPrint();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.PrintTermImpl <em>Print Term</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.impl.PrintTermImpl <em>Print Term</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.PrintTermImpl
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getPrintTerm()
 		 * @generated
@@ -1074,9 +1124,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass PRINT_TERM = eINSTANCE.getPrintTerm();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QRRDataSet <em>RR Data Set</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QRRDataSet <em>RR Data Set</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QRRDataSet
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getRRDataSet()
 		 * @generated
@@ -1084,9 +1135,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass RR_DATA_SET = eINSTANCE.getRRDataSet();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.QSMDataSet <em>SM Data Set</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.QSMDataSet <em>SM Data Set</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.QSMDataSet
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getSMDataSet()
 		 * @generated
@@ -1094,9 +1146,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EClass SM_DATA_SET = eINSTANCE.getSMDataSet();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.AccessMode <em>Access Mode</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.AccessMode <em>Access Mode</em>}' enum.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.AccessMode
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessMode()
 		 * @generated
@@ -1104,9 +1157,11 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EEnum ACCESS_MODE = eINSTANCE.getAccessMode();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.OperationDirection <em>Operation Direction</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.OperationDirection
+		 * <em>Operation Direction</em>}' enum. <!-- begin-user-doc --> <!--
+		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.OperationDirection
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationDirection()
 		 * @generated
@@ -1114,9 +1169,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EEnum OPERATION_DIRECTION = eINSTANCE.getOperationDirection();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.OperationSet <em>Operation Set</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.OperationSet <em>Operation Set</em>}'
+		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.OperationSet
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationSet()
 		 * @generated
@@ -1124,9 +1180,10 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EEnum OPERATION_SET = eINSTANCE.getOperationSet();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.esam.OperationRead <em>Operation Read</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.esam.OperationRead <em>Operation Read</em>}'
+		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.OperationRead
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getOperationRead()
 		 * @generated
@@ -1134,9 +1191,9 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		EEnum OPERATION_READ = eINSTANCE.getOperationRead();
 
 		/**
-		 * The meta object literal for the '<em>Key List</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 * The meta object literal for the '<em>Key List</em>' data type. <!--
+		 * begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyList()
 		 * @generated
 		 */
@@ -1144,4 +1201,4 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 
 	}
 
-} //QIntegratedLanguageEsamPackage
+} // QIntegratedLanguageEsamPackage

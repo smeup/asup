@@ -31,7 +31,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	/**
 	 * The default value of the '{@link #getDimension() <em>Dimension</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDimension()
 	 * @generated
 	 * @ordered
@@ -40,7 +40,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 	/**
 	 * The cached value of the '{@link #getDimension() <em>Dimension</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDimension()
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultipleDataDefImpl() {
@@ -62,7 +62,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -72,7 +72,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +82,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +95,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -109,7 +109,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -124,7 +124,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

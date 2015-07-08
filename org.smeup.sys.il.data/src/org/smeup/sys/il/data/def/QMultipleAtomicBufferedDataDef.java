@@ -35,7 +35,7 @@ public interface QMultipleAtomicBufferedDataDef<D extends QBufferedList<?>> exte
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Argument</em>' containment reference.
 	 * @see #setArgument(QUnaryAtomicBufferedDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleAtomicBufferedDataDef_Argument()
@@ -50,7 +50,7 @@ public interface QMultipleAtomicBufferedDataDef<D extends QBufferedList<?>> exte
 	 * {@link org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef#getArgument
 	 * <em>Argument</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Argument</em>' containment
 	 *            reference.

@@ -20,7 +20,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */

@@ -16,8 +16,8 @@ import org.smeup.sys.il.core.QNamedNode;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QUnit#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QUnit#getMain <em>Main</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QUnit#getName <em>Name</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QUnit#getMain <em>Main</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,9 +45,11 @@ public interface QUnit extends QNamedNode {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QUnit#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QUnit#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
@@ -61,6 +63,7 @@ public interface QUnit extends QNamedNode {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Main</em>' containment reference.
 	 * @see #setMain(QStatement)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getUnit_Main()
@@ -70,10 +73,12 @@ public interface QUnit extends QNamedNode {
 	QStatement getMain();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QUnit#getMain <em>Main</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QUnit#getMain
+	 * <em>Main</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Main</em>' containment reference.
+	 *
+	 * @param value
+	 *            the new value of the '<em>Main</em>' containment reference.
 	 * @see #getMain()
 	 * @generated
 	 */

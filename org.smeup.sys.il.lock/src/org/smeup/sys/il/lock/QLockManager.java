@@ -10,9 +10,8 @@ package org.smeup.sys.il.lock;
 import org.smeup.sys.il.core.ctx.QContext;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Lock Manager</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Lock Manager</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getLockManager()
@@ -21,8 +20,8 @@ import org.smeup.sys.il.core.ctx.QContext;
  */
 public interface QLockManager {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model contextRequired="true"
 	 * @generated
 	 */

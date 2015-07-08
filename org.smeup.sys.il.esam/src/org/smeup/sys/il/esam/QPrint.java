@@ -15,12 +15,14 @@ import org.smeup.sys.il.data.QIndicator;
  *
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getPrint()
- * @model interface="true" abstract="true" DBounds="org.eclipse.emf.ecore.EJavaObject"
+ * @model interface="true" abstract="true"
+ *        DBounds="org.eclipse.emf.ecore.EJavaObject"
  * @generated
  */
 public interface QPrint<D extends Object> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -28,6 +30,7 @@ public interface QPrint<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -35,6 +38,7 @@ public interface QPrint<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -42,6 +46,7 @@ public interface QPrint<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -49,6 +54,7 @@ public interface QPrint<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -56,6 +62,7 @@ public interface QPrint<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */

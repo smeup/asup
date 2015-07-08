@@ -18,8 +18,9 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QSpecial#getElements <em>Elements</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.core.QSpecial#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,24 +47,28 @@ public interface QSpecial extends QFacet {
 	String getClassDelegate();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.core.QSpecial#getClassDelegate
+	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Class Delegate</em>' attribute.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Class Delegate</em>' attribute.
 	 * @see #getClassDelegate()
 	 * @generated
 	 */
 	void setClassDelegate(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.core.QSpecialElement}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Elements</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link org.smeup.sys.il.core.QSpecialElement}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecial_Elements()
 	 * @model containment="true"

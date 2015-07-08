@@ -17,15 +17,16 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Conversion Status</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
+ * 
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getConversionStatus()
  * @model
  * @generated
  */
 public enum ConversionStatus implements Enumerator {
 	/**
-	 * The '<em><b>Possible</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Possible</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #POSSIBLE_VALUE
 	 * @generated
 	 * @ordered
@@ -33,9 +34,9 @@ public enum ConversionStatus implements Enumerator {
 	POSSIBLE(0, "Possible", "POS"),
 
 	/**
-	 * The '<em><b>Supported</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Supported</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SUPPORTED_VALUE
 	 * @generated
 	 * @ordered
@@ -43,9 +44,9 @@ public enum ConversionStatus implements Enumerator {
 	SUPPORTED(10, "Supported", "SUP"),
 
 	/**
-	 * The '<em><b>Unsupported</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Unsupported</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #UNSUPPORTED_VALUE
 	 * @generated
 	 * @ordered
@@ -53,9 +54,9 @@ public enum ConversionStatus implements Enumerator {
 	UNSUPPORTED(20, "Unsupported", "UNS"),
 
 	/**
-	 * The '<em><b>Todo</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>Todo</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #TODO_VALUE
 	 * @generated
 	 * @ordered
@@ -63,13 +64,13 @@ public enum ConversionStatus implements Enumerator {
 	TODO(30, "Todo", "TODO");
 
 	/**
-	 * The '<em><b>Possible</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Possible</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Possible</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #POSSIBLE
 	 * @model name="Possible" literal="POS"
 	 * @generated
@@ -78,13 +79,13 @@ public enum ConversionStatus implements Enumerator {
 	public static final int POSSIBLE_VALUE = 0;
 
 	/**
-	 * The '<em><b>Supported</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Supported</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Supported</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SUPPORTED
 	 * @model name="Supported" literal="SUP"
 	 * @generated
@@ -93,13 +94,13 @@ public enum ConversionStatus implements Enumerator {
 	public static final int SUPPORTED_VALUE = 10;
 
 	/**
-	 * The '<em><b>Unsupported</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Unsupported</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Unsupported</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #UNSUPPORTED
 	 * @model name="Unsupported" literal="UNS"
 	 * @generated
@@ -108,13 +109,13 @@ public enum ConversionStatus implements Enumerator {
 	public static final int UNSUPPORTED_VALUE = 20;
 
 	/**
-	 * The '<em><b>Todo</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Todo</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ToDo</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #TODO
 	 * @model name="Todo" literal="TODO"
 	 * @generated
@@ -128,87 +129,89 @@ public enum ConversionStatus implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final ConversionStatus[] VALUES_ARRAY = new ConversionStatus[] {
-			POSSIBLE,
-			SUPPORTED,
-			UNSUPPORTED,
-			TODO,
-		};
+	private static final ConversionStatus[] VALUES_ARRAY = new ConversionStatus[] { POSSIBLE, SUPPORTED, UNSUPPORTED, TODO, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Conversion Status</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Conversion Status</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final List<ConversionStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Conversion Status</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
+	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ConversionStatus get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ConversionStatus result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
+		for (ConversionStatus result : VALUES_ARRAY) {
+			if (result.toString().equals(literal))
 				return result;
-			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Conversion Status</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
+	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ConversionStatus getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ConversionStatus result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
+		for (ConversionStatus result : VALUES_ARRAY) {
+			if (result.getName().equals(name))
 				return result;
-			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Conversion Status</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
+	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ConversionStatus get(int value) {
 		switch (value) {
-			case POSSIBLE_VALUE: return POSSIBLE;
-			case SUPPORTED_VALUE: return SUPPORTED;
-			case UNSUPPORTED_VALUE: return UNSUPPORTED;
-			case TODO_VALUE: return TODO;
+		case POSSIBLE_VALUE:
+			return POSSIBLE;
+		case SUPPORTED_VALUE:
+			return SUPPORTED;
+		case UNSUPPORTED_VALUE:
+			return UNSUPPORTED;
+		case TODO_VALUE:
+			return TODO;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ConversionStatus(int value, String name, String literal) {
@@ -219,34 +222,38 @@ public enum ConversionStatus implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

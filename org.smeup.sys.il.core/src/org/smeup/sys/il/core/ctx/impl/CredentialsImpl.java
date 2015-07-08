@@ -20,8 +20,10 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getUser <em>User</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getPassword <em>Password</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getUser <em>User
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getPassword <em>
+ * Password</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,6 +38,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -45,6 +48,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The cached value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -52,8 +56,9 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	protected String user = USER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getPassword() <em>Password</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -61,8 +66,9 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	protected static final String PASSWORD_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPassword() <em>Password</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -71,6 +77,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CredentialsImpl() {
@@ -79,6 +86,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,6 +96,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -97,6 +106,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,6 +119,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,6 +129,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,75 +142,81 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
-				return getUser();
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
-				return getPassword();
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
+			return getUser();
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
+			return getPassword();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
-				setUser((String)newValue);
-				return;
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
-				setPassword((String)newValue);
-				return;
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
+			setUser((String) newValue);
+			return;
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
+			setPassword((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
-				setUser(USER_EDEFAULT);
-				return;
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
-				setPassword(PASSWORD_EDEFAULT);
-				return;
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
+			setUser(USER_EDEFAULT);
+			return;
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
+			setPassword(PASSWORD_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
-				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
-			case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
-				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__USER:
+			return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
+		case QIntegratedLanguageCoreCtxPackage.CREDENTIALS__PASSWORD:
+			return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (user: ");

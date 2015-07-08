@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QRecord;
 public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -30,6 +31,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -37,6 +39,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -44,6 +47,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -51,6 +55,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -58,6 +63,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -65,6 +71,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -72,6 +79,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
 	 */
@@ -79,34 +87,43 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean chain(Object[] keyList);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean chain(Object[] keyList, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean chain(Object[] keyList, QIndicator notFound, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean chain(Object[] keyList, QIndicator notFound, Boolean lock, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -114,6 +131,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -121,6 +139,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -128,6 +147,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -135,6 +155,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -142,6 +163,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -149,6 +171,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -156,6 +179,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -163,34 +187,43 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean reade(Object[] keyList);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean reade(Object[] keyList, QIndicator endOfData);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean reade(Object[] keyList, QIndicator endOfData, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean reade(Object[] keyList, QIndicator endOfData, Boolean lock, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -198,6 +231,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -205,6 +239,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -212,6 +247,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -219,6 +255,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -226,6 +263,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -233,6 +271,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -240,6 +279,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -247,34 +287,43 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean readpe(Object[] keyList);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean readpe(Object[] keyList, QIndicator beginningOfData);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean readpe(Object[] keyList, QIndicator beginningOfData, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	boolean readpe(Object[] keyList, QIndicator beginningOfData, Boolean lock, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -282,6 +331,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -289,6 +339,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -296,6 +347,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -303,6 +355,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -310,6 +363,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -317,6 +371,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -324,6 +379,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -331,34 +387,43 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setll(Object[] keyList);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setll(Object[] keyList, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setll(Object[] keyList, QIndicator found, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setll(Object[] keyList, QIndicator found, QIndicator equal, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -366,6 +431,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -373,6 +439,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -380,6 +447,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -387,6 +455,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -394,6 +463,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -401,21 +471,27 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setgt(Object[] keyList);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setgt(Object[] keyList, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * 
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList"
+	 *        keyListRequired="true"
 	 * @generated
 	 */
 	void setgt(Object[] keyList, QIndicator found, QIndicator error);

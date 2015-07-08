@@ -9,11 +9,9 @@ package org.smeup.sys.il.expr;
 
 import org.smeup.sys.il.core.QNode;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Expression</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getExpression()
@@ -23,16 +21,16 @@ import org.smeup.sys.il.core.QNode;
 public interface QExpression extends QNode {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model visitorRequired="true"
 	 * @generated
 	 */
 	void accept(QExpressionVisitor visitor);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

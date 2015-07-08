@@ -15,7 +15,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" valueRequired="true"
 	 * @generated
 	 */
@@ -23,7 +23,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -31,7 +31,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -39,7 +39,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -47,7 +47,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -55,7 +55,7 @@ public interface QCharacter extends QString {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model clearRequired="true"
 	 * @generated
 	 */

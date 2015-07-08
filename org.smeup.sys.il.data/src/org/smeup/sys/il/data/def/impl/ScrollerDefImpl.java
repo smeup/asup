@@ -32,7 +32,7 @@ public class ScrollerDefImpl<D extends QScroller<QBufferedData>> extends Multipl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ScrollerDefImpl() {
@@ -41,7 +41,7 @@ public class ScrollerDefImpl<D extends QScroller<QBufferedData>> extends Multipl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

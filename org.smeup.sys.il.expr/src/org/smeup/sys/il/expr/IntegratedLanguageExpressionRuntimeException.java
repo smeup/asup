@@ -7,15 +7,17 @@
 package org.smeup.sys.il.expr;
 
 public class IntegratedLanguageExpressionRuntimeException extends RuntimeException {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public IntegratedLanguageExpressionRuntimeException(Throwable cause) {
 		this(cause.getMessage(), cause.getCause());
 	}
+
 	public IntegratedLanguageExpressionRuntimeException(String message) {
 		this(message, null);
 	}
+
 	public IntegratedLanguageExpressionRuntimeException(String message, Throwable cause) {
 		super(message, cause);
 	}

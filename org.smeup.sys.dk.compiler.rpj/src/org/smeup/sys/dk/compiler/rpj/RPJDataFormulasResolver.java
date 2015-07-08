@@ -93,7 +93,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		else
 			value = expressionParser.parseExpression(default_.getValue());
 
-		if (value.getExpressionType() == ExpressionType.COMPOUND) {
+		if (value.getExpressionType() == ExpressionType.FUNCTION) {
 
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
 			if (compoundTermExpression.getValue().toLowerCase().equals("%addr")) {
@@ -213,7 +213,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 			break;
 
-		case COMPOUND:
+		case FUNCTION:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
 			switch (compoundTermExpression.getValue().toLowerCase()) {
 			case "%elem":
@@ -243,6 +243,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		case ARITHMETIC:
 		case LOGICAL:
 		case RELATIONAL:
+		case QUALIFIED:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564q56pbdn7d6srre8r");
 		}
 
@@ -265,7 +266,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 			break;
 
-		case COMPOUND:
+		case FUNCTION:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
 
 			if (compoundTermExpression.getElements().size() != 1)
@@ -291,6 +292,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		case ARITHMETIC:
 		case LOGICAL:
 		case RELATIONAL:
+		case QUALIFIED:
 			throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564q56pbdn7d6srre33r");
 		}
 

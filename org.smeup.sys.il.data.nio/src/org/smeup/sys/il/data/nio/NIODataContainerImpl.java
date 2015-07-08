@@ -40,9 +40,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private Map<String, QData> datas;
 
 	private QDataWriter dataWriter;
-	
+
 	private boolean useDefault;
-	
+
 	protected NIODataContainerImpl(QDataFactory dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataFactory = dataFactory;
 		this.dataTerms = dataTerms;
@@ -68,17 +68,17 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QData data = dataFactory.createData(dataTerm, true);
 		data.clear();
-		
+
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 		dataTerm.accept(resetter);
-		
+
 		try {
-			
+
 			String s1 = getData(dataTerm).toString();
 			String s2 = data.toString();
-			
+
 			result = s1.equals(s2);
-			if(result)
+			if (result)
 				"".toString();
 		} catch (Exception exc) {
 			exc.printStackTrace();
@@ -86,7 +86,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		}
 		return result;
 	}
-	
 
 	@Override
 	public boolean isSet(String key) {
@@ -106,19 +105,19 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QData data = dataFactory.createData(dataTerm, true);
 		data.clear();
-		
-		if(useDefault) {
+
+		if (useDefault) {
 			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 			dataTerm.accept(resetter);
 		}
-		
+
 		try {
-			
+
 			String s1 = getData(dataTerm).toString();
 			String s2 = data.toString();
-			
+
 			result = !s1.equals(s2);
-			if(result)
+			if (result)
 				"".toString();
 		} catch (Exception exc) {
 			exc.printStackTrace();
@@ -202,7 +201,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void clearData() {
 
-		for(Entry<String, QDataTerm<?>> entry: dataTerms.entrySet()) {
+		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
 
 			QData data = datas.get(entry.getKey());
 			if (data == null) {
@@ -216,7 +215,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void resetData() {
 
-		for(Entry<String, QDataTerm<?>> entry: dataTerms.entrySet()) 
+		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet())
 			resetData(entry.getKey(), entry.getValue());
 	}
 
@@ -224,7 +223,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public void resetData(QDataTerm<?> dataTerm) {
 		resetData(getKey(dataTerm), dataTerm);
 	}
-	
+
 	@Override
 	public void resetData(String key) {
 
@@ -239,7 +238,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public QDataTerm<?> getDataTerm(String key) {
 		QDataTerm<?> dataTerm = dataTerms.get(key);
-		
+
 		return dataTerm;
 	}
 
@@ -247,18 +246,15 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public List<String> getKeys() {
 		return new ArrayList<String>(dataTerms.keySet());
 	}
-	
+
 	private String getKey(QDataTerm<?> dataTerm) {
-		
-		for(Entry<String, QDataTerm<?>> entry: dataTerms.entrySet()) {
-			
-			if(entry.getValue().equals(dataTerm))
+
+		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet())
+			if (entry.getValue().equals(dataTerm))
 				return entry.getKey();
-		}
-		
+
 		return null;
 	}
-	
 
 	private void resetData(String key, QDataTerm<?> dataTerm) {
 
@@ -269,6 +265,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		}
 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-		dataTerm.accept(resetter);		
+		dataTerm.accept(resetter);
 	}
 }

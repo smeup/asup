@@ -106,7 +106,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		} 
 
 		callProgram(job, callableProgram, params);
-		
 	}
 	
 	@Override

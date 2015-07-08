@@ -21,7 +21,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.ConversionImpl#getStatus <em>Status</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.impl.ConversionImpl#getStatus <em>Status
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -34,8 +35,9 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getStatus() <em>Status</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -45,6 +47,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -53,6 +56,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConversionImpl() {
@@ -61,6 +65,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -70,6 +75,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,6 +85,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,65 +98,71 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
-				return getStatus();
+		case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
+			return getStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
-				setStatus((ConversionStatus)newValue);
-				return;
+		case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
+			setStatus((ConversionStatus) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
-				setStatus(STATUS_EDEFAULT);
-				return;
+		case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
+			setStatus(STATUS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
-				return status != STATUS_EDEFAULT;
+		case QIntegratedLanguageCorePackage.CONVERSION__STATUS:
+			return status != STATUS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (status: ");

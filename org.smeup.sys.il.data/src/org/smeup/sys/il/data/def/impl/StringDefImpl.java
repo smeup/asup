@@ -29,7 +29,7 @@ public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected StringDefImpl() {
@@ -38,7 +38,7 @@ public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

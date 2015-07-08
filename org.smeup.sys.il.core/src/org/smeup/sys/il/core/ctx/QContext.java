@@ -23,6 +23,7 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 public interface QContext {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -30,6 +31,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
@@ -37,13 +39,16 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" injectionStrategyRequired="true"
+	 * 
+	 * @model required="true" nameRequired="true"
+	 *        injectionStrategyRequired="true"
 	 * @generated
 	 */
 	QContext createChildContext(String name, ContextInjectionStrategy injectionStrategy) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" clazzRequired="true"
 	 * @generated
 	 */
@@ -51,13 +56,16 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model adaptableRequired="true" adapterRequired="true" TBounds="org.eclipse.emf.ecore.EJavaObject"
+	 * 
+	 * @model adaptableRequired="true" adapterRequired="true"
+	 *        TBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */
 	<T extends Object> T getAdapter(Object adaptable, Class<T> adapter);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -65,6 +73,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -72,6 +81,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model objectRequired="true"
 	 * @generated
 	 */
@@ -79,6 +89,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" addressRequired="true"
 	 * @generated
 	 */
@@ -86,13 +97,16 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model objectRequired="true" qualifierRequired="true" ABounds="org.smeup.sys.il.core.java.JavaAnnotation"
+	 * 
+	 * @model objectRequired="true" qualifierRequired="true"
+	 *        ABounds="org.smeup.sys.il.core.java.JavaAnnotation"
 	 * @generated
 	 */
 	<A extends Annotation> void invoke(Object object, Class<A> qualifier) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */
@@ -100,13 +114,16 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model factoryRequired="true" adapterTypeRequired="true" TBounds="org.eclipse.emf.ecore.EJavaObject"
+	 * 
+	 * @model factoryRequired="true" adapterTypeRequired="true"
+	 *        TBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */
 	<T extends Object> void registerAdapterFactory(QAdapterFactory factory, Class<T> adapterType);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model klassRequired="true" objectRequired="true"
 	 * @generated
 	 */
@@ -114,6 +131,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model nameRequired="true" objectRequired="true"
 	 * @generated
 	 */

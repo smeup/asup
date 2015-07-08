@@ -8,16 +8,13 @@
 package org.smeup.sys.il.lock.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.smeup.sys.il.core.impl.ObjectImpl;
-
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.lock.QLockRead;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lock Read</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Lock Read</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -25,13 +22,13 @@ import org.smeup.sys.il.lock.QLockRead;
  */
 public class LockReadImpl extends ObjectImpl implements QLockRead {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LockReadImpl() {
@@ -39,8 +36,8 @@ public class LockReadImpl extends ObjectImpl implements QLockRead {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +45,4 @@ public class LockReadImpl extends ObjectImpl implements QLockRead {
 		return QIntegratedLanguageLockPackage.Literals.LOCK_READ;
 	}
 
-} //LockReadImpl
+} // LockReadImpl

@@ -28,6 +28,7 @@ public class WhileImpl extends IterationImpl implements QWhile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected WhileImpl() {
@@ -36,6 +37,7 @@ public class WhileImpl extends IterationImpl implements QWhile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

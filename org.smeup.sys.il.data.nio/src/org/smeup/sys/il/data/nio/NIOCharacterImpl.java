@@ -482,32 +482,32 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public String subst(QNumeric start, QNumeric length) {
-		return subst(start.i(), length.i());
+	public QCharacter qSubst(QNumeric start, QNumeric length) {
+		return qSubst(start.i(), length.i());
 	}
 
 	@Override
-	public String subst(QNumeric start) {
-		return subst(start.i());
+	public QCharacter qSubst(QNumeric start) {
+		return qSubst(start.i());
 	}
 
 	@Override
-	public String subst(QNumeric start, Number length) {
-		return subst(start.i(), length);
+	public QCharacter qSubst(QNumeric start, Number length) {
+		return qSubst(start.i(), length);
 	}
 
 	@Override
-	public String subst(Number start, QNumeric length) {
-		return subst(start, length.i());
-	}
-	
-	@Override
-	public String subst(Number start) {
-		return subst(start, 0);
+	public QCharacter qSubst(Number start, QNumeric length) {
+		return qSubst(start, length.i());
 	}
 
 	@Override
-	public String subst(Number start, Number length) {
+	public QCharacter qSubst(Number start) {
+		return qSubst(start, 0);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start, Number length) {
 
 		if (start == null)
 			start = 1;
@@ -515,8 +515,77 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		if (length == null)
 			length = getLength();
 
-		String str = asString().substring(start.intValue() - 1, length.intValue()-1);
+		// String str = asString().substring(start.intValue() - 1,
+		// length.intValue()-1);
 
-		return str;
+		QCharacter character = new NIOCharacterImpl(length.intValue());
+		slice(character, start.intValue());
+
+		return character;
+	}
+
+	@Override
+	public QCharacter qTrim() {
+
+		String str = trim();
+
+		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		character.allocate();
+		character.eval(str);
+
+		return character;
+	}
+
+	@Override
+	public QCharacter qTriml() {
+		String str = trimL();
+
+		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		character.allocate();
+		character.eval(str);
+
+		return character;
+	}
+
+	@Override
+	public QCharacter qTrimr() {
+		String str = trimR();
+
+		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		character.allocate();
+		character.eval(str);
+
+		return character;
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start) {
+		return qScan(argument.s(), start.i());
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start) {
+		return qScan(argument, start.i());
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start) {
+		return qScan(argument.s(), start);
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument) {
+		return qScan(argument.s(), (Number) null);
+	}
+
+	@Override
+	public QNumeric qScan(String argument) {
+		return qScan(argument, (Number) null);
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start) {
+		return null;
+
 	}
 }

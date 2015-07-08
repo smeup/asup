@@ -69,7 +69,8 @@ public class CompilationContextHelper {
 			QBlockExpression blockExpression = (QBlockExpression) expression;
 
 			return isPrimitive(compilationUnit, blockExpression.getExpression());
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
 
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
@@ -96,7 +97,8 @@ public class CompilationContextHelper {
 		switch (expression.getExpressionType()) {
 		case ARITHMETIC:
 		case ASSIGNMENT:
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 		case LOGICAL:
 		case RELATIONAL:
 		case BOOLEAN:
@@ -151,7 +153,8 @@ public class CompilationContextHelper {
 
 				return dataTerm.getDefinition() instanceof QPointerDef;
 			}
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
 
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
@@ -210,7 +213,8 @@ public class CompilationContextHelper {
 			QBlockExpression blockExpression = (QBlockExpression) expression;
 
 			return getJavaClass(compilationUnit, blockExpression.getExpression());
-		case COMPOUND:
+		case FUNCTION:
+		case QUALIFIED:
 			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) expression;
 
 			QNamedNode namedNode = compilationUnit.getNamedNode(compoundTermExpression.getValue(), true);
@@ -241,8 +245,8 @@ public class CompilationContextHelper {
 		QDataTerm<?> dataTerm = null;
 
 		if (namedNode instanceof QPrototype) {
-			QPrototype<?> prototype = (QPrototype<?>) namedNode;
-			dataTerm = prototype.getDelegate();
+			QPrototype prototype = (QPrototype) namedNode;
+			dataTerm = prototype;
 		} else if (namedNode instanceof QDataTerm<?>)
 			dataTerm = (QDataTerm<?>) namedNode;
 		else

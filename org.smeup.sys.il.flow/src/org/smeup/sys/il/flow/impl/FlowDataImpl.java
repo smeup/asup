@@ -29,6 +29,7 @@ public class FlowDataImpl extends DataTermImpl<QDataDef<?>> implements QFlowData
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected FlowDataImpl() {
@@ -37,6 +38,7 @@ public class FlowDataImpl extends DataTermImpl<QDataDef<?>> implements QFlowData
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

@@ -24,7 +24,7 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 	private EClass eClass;
 	private List<QSlot> slots;
-	
+
 	public E4FrameAdapter(EClass eClass) {
 		this.eClass = eClass;
 	}
@@ -36,30 +36,28 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 	@Override
 	public List<QSlot> getSlots() {
-	
-		if(this.slots == null) {
+
+		if (this.slots == null)
 			synchronized (this) {
-				if(slots == null) {
+				if (slots == null) {
 					this.slots = new ArrayList<QSlot>();
-					
-					for(EStructuralFeature structuralFeature: eClass.getEAllStructuralFeatures()) {
+
+					for (EStructuralFeature structuralFeature : eClass.getEAllStructuralFeatures())
 						this.slots.add(new E4SlotAdapter(structuralFeature));
-					}
 				}
 			}
-		}
-		
+
 		return this.slots;
 	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public QFrame<?> ako() {
-		
+
 		EClass eAko = this.eClass.getESuperTypes().get(0);
 		return new E4FrameAdapter(eAko);
-	}	
-	
+	}
+
 	protected EClass getEClass() {
 		return this.eClass;
 	}

@@ -23,10 +23,10 @@ import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 public class BaseObjectWriterFactoryRegistryImpl implements QObjectWriterFactoryRegistry {
 
 	private QPluginRegistry<QObjectWriterFactory> pluginRegistry;
-	
+
 	@Inject
 	public BaseObjectWriterFactoryRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QObjectWriterFactory.class);
+		this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QObjectWriterFactory.class);
 	}
 
 	@Override
@@ -43,6 +43,5 @@ public class BaseObjectWriterFactoryRegistryImpl implements QObjectWriterFactory
 	public QObjectWriterFactory lookupByVendorVersion(String vendor, String version) {
 		return this.pluginRegistry.lookupByVendorVersion(vendor, version);
 	}
-
 
 }

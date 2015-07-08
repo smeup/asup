@@ -20,14 +20,14 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataTermFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataTermFactory init() {
@@ -45,7 +45,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageDataTermFactoryImpl() {
@@ -54,7 +54,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,7 +67,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +82,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public DataTermType createDataTermTypeFromString(EDataType eDataType, String initialValue) {
@@ -109,7 +109,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertDataTermTypeToString(EDataType eDataType, Object instanceValue) {
@@ -118,7 +118,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

@@ -428,7 +428,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			/*
 			 * this.resultSet.moveToCurrentRow();
 			 * this.record.accept(this.dataWriter); this.resultSet.updateRow();
-			 * 
+			 *
 			 * this.resultSet.moveToCurrentRow();
 			 */
 			this.statement.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.rrn));
@@ -460,7 +460,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			/*
 			 * this.resultSet.moveToInsertRow();
 			 * this.record.accept(this.dataWriter); this.resultSet.insertRow();
-			 * 
+			 *
 			 * this.resultSet.moveToCurrentRow();
 			 */
 

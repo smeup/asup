@@ -28,6 +28,7 @@ public class BreakImpl extends StatementImpl implements QBreak {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected BreakImpl() {
@@ -36,6 +37,7 @@ public class BreakImpl extends StatementImpl implements QBreak {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

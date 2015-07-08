@@ -28,6 +28,7 @@ import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
@@ -36,7 +37,6 @@ import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
 import org.smeup.sys.il.flow.QMethodExec;
-import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
@@ -88,13 +88,30 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QTermExpression leftExpression = assignmentExpression.getLeftOperand();
 
 		QDataTerm<?> dataTerm = null;
-		if (leftExpression.isFunction() && leftExpression.isSpecial()) {
-			QPrototype<?> prototype = compilationUnit.getPrototype(leftExpression.getValue(), true);
-			if (prototype != null)
-				dataTerm = prototype.getDelegate();
-			else
-				dataTerm = compilationUnit.getDataTerm(leftExpression.getValue(), true);
-		} else
+
+		if (leftExpression.getExpressionType() == ExpressionType.FUNCTION) {
+
+			dataTerm = compilationUnit.getMethod(leftExpression.getValue());
+
+			// first parameter as object method
+			if (dataTerm != null) {
+				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+				expressionStringBuilder.visit((QFunctionTermExpression) leftExpression);
+				assignmentExpression.setLeftOperand((QTermExpression) expressionParser.parseExpression(expressionStringBuilder.getResult()));
+
+				expressionStringBuilder = new RPJExpressionStringBuilder();
+				expressionStringBuilder.visit(assignmentExpression);
+				statement.setAssignment(expressionStringBuilder.getResult());
+
+				return true;
+			}
+
+		}
+
+		if(dataTerm == null)
+			dataTerm = compilationUnit.getPrototype(leftExpression.getValue(), true);
+		
+		if (dataTerm == null)
 			dataTerm = compilationUnit.getDataTerm(leftExpression.getValue(), true);
 
 		if (dataTerm == null)
@@ -117,13 +134,14 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			 * new RPJExpressionStringBuilder();
 			 * expressionStringBuilder.visit(assignmentExpression);
 			 * statement.setAssignment(expressionStringBuilder.getResult());
-			 *
+			 * 
 			 * statement.setAssignment(value); }
 			 */
 
+			// Mirandola
 			// array element
-			if (leftExpression.isFunction())
-				return false;
+			// if (leftExpression.isFunction())
+			// return false;
 
 			if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_ATOMIC) {
 
@@ -189,13 +207,10 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			}
 			break;
 		case BLOCK:
-			break;
 		case BOOLEAN:
-			break;
-		case COMPOUND:
-			break;
+		case QUALIFIED:
+		case FUNCTION:
 		case LOGICAL:
-			break;
 		case RELATIONAL:
 			break;
 		}
@@ -256,14 +271,12 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
 			QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
 
-			if (atomicTermExpressionLeft.isSpecial())
-				System.out.println(atomicTermExpressionLeft);
-
 			if (atomicTermExpressionLeft.getValue().equalsIgnoreCase("*BLANKS"))
 				atomicTermExpressionLeft.toString();
 
-			// special founded on left -> reverse operands
-			if (atomicTermExpressionLeft.isSpecial() && !atomicTermExpressionLeft.isFunction()) {
+			// special founded on left -> reverse operands (*BLANKS <> A -> A <>
+			// *BLANKS)
+			if (atomicTermExpressionLeft.getType() == AtomicType.SPECIAL) {
 				relationalExpression.setLeftOperand(rightExpression);
 				relationalExpression.setRightOperand(leftExpression);
 

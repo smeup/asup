@@ -5,9 +5,9 @@
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
- * 
- * Contributors: 
- *   Mattia Rocchi - Initial API and implementation 
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.il.core.java.asf;
 

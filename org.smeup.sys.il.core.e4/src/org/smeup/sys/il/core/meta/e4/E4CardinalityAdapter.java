@@ -17,13 +17,13 @@ import org.smeup.sys.il.core.meta.QCardinality;
 public class E4CardinalityAdapter implements QCardinality {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private EStructuralFeature structuralFeature;
 
 	public E4CardinalityAdapter(EStructuralFeature structuralFeature) {
 		this.structuralFeature = structuralFeature;
 	}
-	
+
 	@Override
 	public int getMin() {
 		return this.structuralFeature.getLowerBound();

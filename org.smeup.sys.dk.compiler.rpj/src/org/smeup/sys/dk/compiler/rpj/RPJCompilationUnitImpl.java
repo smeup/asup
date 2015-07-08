@@ -18,19 +18,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EParameter;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.impl.CompilationUnitImpl;
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.meta.QCardinality;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -41,6 +51,7 @@ import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
+import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
@@ -62,10 +73,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	private List<QPrintTerm> printers;
 	private List<QRoutine> routines;
 	private List<QProcedure> procedures;
-	private List<QPrototype<?>> prototypes;
+	private List<QPrototype> prototypes;
 
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
-	private Map<String, QPrototype<?>> cachedPrototypes = new HashMap<String, QPrototype<?>>();
+	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
 
 	public RPJCompilationUnitImpl(QContext context, QNameable root, List<QCompilationUnit> compilationUnits, CaseSensitiveType caseSensitive) {
 
@@ -111,7 +122,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (procedures == null)
 			procedures = new ArrayList<QProcedure>();
 		if (prototypes == null)
-			prototypes = new ArrayList<QPrototype<?>>();
+			prototypes = new ArrayList<QPrototype>();
 
 		refresh();
 	}
@@ -120,7 +131,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	public void refresh() {
 
 		this.cachedTerms = new HashMap<String, QDataTerm<?>>();
-		this.cachedPrototypes = new HashMap<String, QPrototype<?>>();
+		this.cachedPrototypes = new HashMap<String, QPrototype>();
 
 		for (QCompilationUnit compilationUnit : compilationUnits)
 			if (compilationUnit.getRoot() instanceof QCallableUnit) {
@@ -284,18 +295,18 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	@SuppressWarnings("unused")
 	private QDataTerm<?> findDataTerm(List<QDataTerm<QCompoundDataDef<?, ?>>> formats, String name) {
-		
+
 		QDataTerm<?> dataTerm = null;
-		
-		for(QDataTerm<QCompoundDataDef<?, ?>> format: formats) {
+
+		for (QDataTerm<QCompoundDataDef<?, ?>> format : formats) {
 			dataTerm = findDataTerm(format.getDefinition(), name);
-			if(dataTerm != null)
+			if (dataTerm != null)
 				break;
 		}
-		
+
 		return dataTerm;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private QDataTerm<?> findDataTerm(QCompoundDataDef<?, ?> compoundDataDef, String name) {
 
@@ -421,13 +432,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
-	public QPrototype<?> getPrototype(String name, boolean deep) {
+	public QPrototype getPrototype(String name, boolean deep) {
 
-		QPrototype<?> prototype = cachedPrototypes.get(name);
+		QPrototype prototype = cachedPrototypes.get(name);
 		if (prototype != null)
 			return prototype;
 
-		for (QPrototype<?> p : prototypes)
+		for (QPrototype p : prototypes)
 			if (equalsTermName(p.getName(), name)) {
 				prototype = p;
 				break;
@@ -441,6 +452,29 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (prototype != null)
 					break;
 			}
+
+		/*
+		 * if(prototype == null) { if(name.equalsIgnoreCase("%subst")) {
+		 * QDataTerm<QCharacterDef> charTerm = new DataTermImpl<QCharacterDef>()
+		 * { private static final long serialVersionUID = 1L; };
+		 * charTerm.setName(name); charTerm.setConstant(true); QCardinality
+		 * cardinality =
+		 * QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
+		 * charTerm.setCardinality(cardinality); charTerm.setText("Substring");
+		 * 
+		 * QCharacterDef characterDef =
+		 * QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+		 * charTerm.setDefinition(characterDef);
+		 * 
+		 * QPrototype<QDataTerm<?>> prototype2 =
+		 * QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
+		 * prototype2.setDelegate(charTerm); prototype2.setEntry(null);
+		 * 
+		 * QEntry entry =
+		 * QIntegratedLanguageFlowFactory.eINSTANCE.createEntry();
+		 * 
+		 * QEntryParameter<?> entryParameter = null; } }
+		 */
 
 		if (prototype != null)
 			cachedPrototypes.put(name, prototype);
@@ -614,12 +648,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		while (node.isChild()) {
 			node = node.getParent();
 
-			if(node instanceof QDataTerm<?>) {
+			if (node instanceof QDataTerm<?>) {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
 				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
-					name = "current()." + name;				
-			}
-			else if (node instanceof QFileTerm)
+					name = "current()." + name;
+			} else if (node instanceof QFileTerm)
 				name = "get()." + name;
 			else if (node instanceof QEntry)
 				name = "qEN." + name;
@@ -634,7 +667,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		return name;
 	}
-
 
 	@Override
 	public String normalizeTermName(String name) {
@@ -657,8 +689,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			else if (c == '&') {
 				// nameBuffer.append('');
 			} else if (c == '%') {
-//				nameBuffer.append('q');
-//				firstToUpper = true;
+				nameBuffer.append('q');
+				firstToUpper = true;
 			} else if (c == '*') {
 				nameBuffer.append('q');
 				allToUpper = true;
@@ -763,5 +795,59 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@Override
 	public void close() {
 		getContext().close();
+	}
+
+	@Override
+	public QPrototype getMethod(String name) {
+
+		QPrototype prototype = null;
+		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
+			if (!(eClassifier instanceof EClass))
+				continue;
+
+			EClass eClass = (EClass) eClassifier;
+
+			EOperation eOperation = null;
+			for (EOperation eOp : eClass.getEAllOperations()) {
+				if (eOp.getName().equalsIgnoreCase(normalizeTermName(name))) {
+					eOperation = eOp;
+					break;
+				}
+			}
+
+			if (eOperation != null) {
+
+				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
+				prototype.setName(name);
+
+				QCardinality cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
+				cardinality.setMin(eOperation.getLowerBound());
+				cardinality.setMax(eOperation.getUpperBound());
+				prototype.setCardinality(cardinality);
+
+				prototype.setText(eOperation.getName() + " text");
+
+				if(eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
+					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+					prototype.setDefinition(characterDef);
+				}
+				else
+					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s23456bve8ft8fsdfc");
+
+				if(!eOperation.getEParameters().isEmpty()) {
+					QEntry entry = QIntegratedLanguageFlowFactory.eINSTANCE.createEntry();
+					prototype.setEntry(entry);
+					
+					for(@SuppressWarnings("unused") EParameter eParameter: eOperation.getEParameters()) {
+						QEntryParameter<?> entryParameter = QIntegratedLanguageFlowFactory.eINSTANCE.createEntryParameter();
+						// TODO
+						entry.getParameters().add(entryParameter);
+					}
+				}
+				
+				break;
+			}
+		}
+		return prototype;
 	}
 }

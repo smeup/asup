@@ -21,6 +21,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QObjectWriterFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */

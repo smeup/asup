@@ -28,6 +28,7 @@ public class ContinueImpl extends StatementImpl implements QContinue {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ContinueImpl() {
@@ -36,6 +37,7 @@ public class ContinueImpl extends StatementImpl implements QContinue {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

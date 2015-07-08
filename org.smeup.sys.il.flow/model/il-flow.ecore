@@ -101,11 +101,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="procedures" upperBound="-1"
         eType="#//Procedure" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="prototypes" upperBound="-1"
-        containment="true">
-      <eGenericType eClassifier="#//Prototype">
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
+        eType="#//Prototype" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routines" upperBound="-1"
         eType="#//Routine" containment="true"/>
   </eClassifiers>
@@ -184,17 +180,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Prototype" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
-    <eTypeParameters name="DT">
-      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
-        <eTypeArguments/>
-      </eBounds>
-    </eTypeParameters>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" containment="true">
-      <eGenericType eTypeParameter="#//Prototype/DT"/>
-    </eStructuralFeatures>
+  <eClassifiers xsi:type="ecore:EClass" name="Prototype">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Entry"
         containment="true"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+      <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/DataDef">
+        <eTypeArguments/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reset" eSuperTypes="#//Invoke">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -22,43 +22,46 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	/**
-	 * The package name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNAME = "meta";
 
 	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/core/meta";
 
 	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-core-meta";
 
 	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	QIntegratedLanguageCoreMetaPackage eINSTANCE = org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.FacetImpl <em>Facet</em>}' class.
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.core.meta.impl.FacetImpl <em>Facet</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.impl.FacetImpl
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFacet()
 	 * @generated
@@ -107,14 +110,17 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Cardinality</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int CARDINALITY_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.DefaultImpl <em>Default</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.core.meta.impl.DefaultImpl <em>Default</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.impl.DefaultImpl
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDefault()
 	 * @generated
@@ -149,8 +155,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int DEFAULT_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.impl.DomainImpl
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDomain()
 	 * @generated
@@ -185,8 +193,9 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int DOMAIN_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QFrame <em>Frame</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QFrame
+	 * <em>Frame</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.QFrame
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFrame()
 	 * @generated
@@ -203,8 +212,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int FRAME_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.QFrameManager
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFrameManager()
 	 * @generated
@@ -214,14 +225,17 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Frame Manager</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int FRAME_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}' class.
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.impl.RangeImpl
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getRange()
 	 * @generated
@@ -256,8 +270,9 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int RANGE_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QSlot <em>Slot</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.QSlot
+	 * <em>Slot</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.smeup.sys.il.core.meta.QSlot
 	 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getSlot()
 	 * @generated
@@ -274,8 +289,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	int SLOT_FEATURE_COUNT = QIntegratedLanguageCorePackage.NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.meta.QCardinality <em>Cardinality</em>}'.
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.meta.QCardinality <em>Cardinality</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Cardinality</em>'.
 	 * @see org.smeup.sys.il.core.meta.QCardinality
 	 * @generated
@@ -283,8 +300,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	EClass getCardinality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Max</em>'.
 	 * @see org.smeup.sys.il.core.meta.QCardinality#getMax()
 	 * @see #getCardinality()
@@ -293,8 +312,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	EAttribute getCardinality_Max();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Min</em>'.
 	 * @see org.smeup.sys.il.core.meta.QCardinality#getMin()
 	 * @see #getCardinality()
@@ -314,8 +335,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	EClass getDefault();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.smeup.sys.il.core.meta.QDefault#getValue()
 	 * @see #getDefault()
@@ -324,8 +347,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	EAttribute getDefault_Value();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.il.core.meta.QDefault#getValues <em>Values</em>}'.
+	 * Returns the meta object for the attribute list '
+	 * {@link org.smeup.sys.il.core.meta.QDefault#getValues <em>Values</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for the attribute list '<em>Values</em>'.
 	 * @see org.smeup.sys.il.core.meta.QDefault#getValues()
 	 * @see #getDefault()
@@ -391,8 +416,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	EClass getFrame();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}'.
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return the meta object for class '<em>Frame Manager</em>'.
 	 * @see org.smeup.sys.il.core.meta.QFrameManager
 	 * @generated
@@ -464,13 +491,16 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.CardinalityImpl <em>Cardinality</em>}' class.
-		 * <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.impl.CardinalityImpl
+		 * <em>Cardinality</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.impl.CardinalityImpl
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getCardinality()
 		 * @generated
@@ -478,22 +508,26 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass CARDINALITY = eINSTANCE.getCardinality();
 
 		/**
-		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute CARDINALITY__MAX = eINSTANCE.getCardinality_Max();
 
 		/**
-		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute CARDINALITY__MIN = eINSTANCE.getCardinality_Min();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.DefaultImpl <em>Default</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.impl.DefaultImpl <em>Default</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.impl.DefaultImpl
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDefault()
 		 * @generated
@@ -501,22 +535,26 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass DEFAULT = eINSTANCE.getDefault();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DEFAULT__VALUE = eINSTANCE.getDefault_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Values</b></em>' attribute
+		 * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DEFAULT__VALUES = eINSTANCE.getDefault_Values();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.impl.DomainImpl
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getDomain()
 		 * @generated
@@ -524,22 +562,26 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass DOMAIN = eINSTANCE.getDomain();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DOMAIN__NAME = eINSTANCE.getDomain_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute DOMAIN__TEXT = eINSTANCE.getDomain_Text();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.FacetImpl <em>Facet</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.impl.FacetImpl <em>Facet</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.impl.FacetImpl
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFacet()
 		 * @generated
@@ -558,9 +600,11 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass FRAME = eINSTANCE.getFrame();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.QFrameManager <em>Frame Manager</em>}' class.
-		 * <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.QFrameManager
+		 * <em>Frame Manager</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.QFrameManager
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getFrameManager()
 		 * @generated
@@ -568,8 +612,10 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass FRAME_MANAGER = eINSTANCE.getFrameManager();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.core.meta.impl.RangeImpl <em>Range</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @see org.smeup.sys.il.core.meta.impl.RangeImpl
 		 * @see org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl#getRange()
 		 * @generated
@@ -577,15 +623,17 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 		EClass RANGE = eINSTANCE.getRange();
 
 		/**
-		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RANGE__MAX = eINSTANCE.getRange_Max();
 
 		/**
-		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute
+		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * 
 		 * @generated
 		 */
 		EAttribute RANGE__MIN = eINSTANCE.getRange_Min();

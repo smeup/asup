@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QRecord;
 public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -30,6 +31,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -37,6 +39,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -44,6 +47,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -51,6 +55,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -58,6 +63,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -65,6 +71,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -72,6 +79,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -79,6 +87,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -86,6 +95,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -93,13 +103,16 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * 
+	 * @model keyFieldRequired="true"
+	 *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void setll(E keyField);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
@@ -107,6 +120,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -114,6 +128,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -121,6 +136,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -128,6 +144,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -135,6 +152,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -142,6 +160,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -149,7 +168,9 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * 
+	 * @model keyFieldRequired="true"
+	 *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void setgt(E keyField);

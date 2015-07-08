@@ -27,6 +27,7 @@ public abstract class NamedNodeImpl extends NodeImpl implements QNamedNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected NamedNodeImpl() {
@@ -35,6 +36,7 @@ public abstract class NamedNodeImpl extends NodeImpl implements QNamedNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

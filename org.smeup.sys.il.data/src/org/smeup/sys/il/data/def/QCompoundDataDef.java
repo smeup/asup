@@ -44,7 +44,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Class Delegator</em>' attribute.
 	 * @see #setClassDelegator(String)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_ClassDelegator()
@@ -58,7 +58,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Class Delegator</em>' attribute.
 	 * @see #getClassDelegator()
@@ -74,7 +74,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_Elements()
 	 * @model containment="true"

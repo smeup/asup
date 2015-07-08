@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -447,32 +448,77 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public String subst(QNumeric start, QNumeric length) {
-		return current().subst(start, length);
+	public QCharacter qSubst(QNumeric start, QNumeric length) {
+		return current().qSubst(start, length);
 	}
 
 	@Override
-	public String subst(QNumeric start) {
-		return current().subst(start);
+	public QCharacter qSubst(QNumeric start) {
+		return current().qSubst(start);
 	}
 
 	@Override
-	public String subst(Number start, Number length) {
-		return current().subst(start, length);
+	public QCharacter qSubst(Number start, Number length) {
+		return current().qSubst(start, length);
 	}
 
 	@Override
-	public String subst(Number start) {
-		return current().subst(start);
+	public QCharacter qSubst(Number start) {
+		return current().qSubst(start);
 	}
 
 	@Override
-	public String subst(QNumeric start, Number length) {
-		return current().subst(start, length);
+	public QCharacter qSubst(QNumeric start, Number length) {
+		return current().qSubst(start, length);
 	}
 
 	@Override
-	public String subst(Number start, QNumeric length) {
-		return current().subst(start, length);
+	public QCharacter qSubst(Number start, QNumeric length) {
+		return current().qSubst(start, length);
+	}
+
+	@Override
+	public QCharacter qTrim() {
+		return current().qTrim();
+	}
+
+	@Override
+	public QCharacter qTriml() {
+		return current().qTriml();
+	}
+
+	@Override
+	public QCharacter qTrimr() {
+		return current().qTrimr();
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start) {
+		return current().qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start) {
+		return current().qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start) {
+		return current().qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start) {
+		return current().qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument) {
+		return current().qScan(argument);
+	}
+
+	@Override
+	public QNumeric qScan(String argument) {
+		return current().qScan(argument);
 	}
 }

@@ -45,7 +45,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	private BundleContext bundleContext;
 	private String name;
 	private String contextID;
-	
+
 	public E4ContextImpl(BundleContext bundleContext, String contextID, String name) {
 		this.bundleContext = bundleContext;
 		this.contextID = contextID;

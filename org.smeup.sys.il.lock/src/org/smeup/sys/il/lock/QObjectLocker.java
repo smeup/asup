@@ -7,11 +7,9 @@
  */
 package org.smeup.sys.il.lock;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Locker</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Locker</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getObjectLocker()
@@ -20,48 +18,48 @@ package org.smeup.sys.il.lock;
  */
 public interface QObjectLocker<T extends QObjectLockable> {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
 	void lock(LockType lockType);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
 	boolean tryLock(long time, LockType lockType);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
 	void unlock(LockType lockType);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
 	boolean isLocked(LockType lockType);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
 	boolean isLockedByOther(LockType lockType);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

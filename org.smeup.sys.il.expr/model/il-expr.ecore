@@ -57,7 +57,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompoundTermExpression" eSuperTypes="#//TermExpression">
+  <eClassifiers xsi:type="ecore:EClass" name="CompoundTermExpression" abstract="true"
+      eSuperTypes="#//TermExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
@@ -97,7 +98,8 @@
     <eLiterals name="Relational" value="32" literal="REL"/>
     <eLiterals name="Boolean" value="33" literal="BOOL"/>
     <eLiterals name="Atomic" value="41" literal="ATOM"/>
-    <eLiterals name="Compound" value="42" literal="COMP"/>
+    <eLiterals name="Qualified" value="42" literal="QUAL"/>
+    <eLiterals name="Function" value="43" literal="FUNC"/>
     <eLiterals name="Block" value="50" literal="BLC"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionVisitor" abstract="true">
@@ -117,7 +119,10 @@
       <eParameters name="expression" lowerBound="1" eType="#//BooleanExpression"/>
     </eOperations>
     <eOperations name="endVisit">
-      <eParameters name="expression" lowerBound="1" eType="#//CompoundTermExpression"/>
+      <eParameters name="expression" lowerBound="1" eType="#//FunctionTermExpression"/>
+    </eOperations>
+    <eOperations name="endVisit">
+      <eParameters name="expression" lowerBound="1" eType="#//QualifiedTermExpression"/>
     </eOperations>
     <eOperations name="endVisit">
       <eParameters name="expression" lowerBound="1" eType="#//LogicalExpression"/>
@@ -141,15 +146,19 @@
       <eParameters name="expression" lowerBound="1" eType="#//BooleanExpression"/>
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="expression" lowerBound="1" eType="#//CompoundTermExpression"/>
+      <eParameters name="expression" lowerBound="1" eType="#//LogicalExpression"/>
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="expression" lowerBound="1" eType="#//LogicalExpression"/>
+      <eParameters name="expression" lowerBound="1" eType="#//QualifiedTermExpression"/>
+    </eOperations>
+    <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="expression" lowerBound="1" eType="#//FunctionTermExpression"/>
     </eOperations>
     <eOperations name="visit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="expression" lowerBound="1" eType="#//RelationalExpression"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionTermExpression" eSuperTypes="#//CompoundTermExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalExpression" eSuperTypes="#//PredicateExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" lowerBound="1"
         eType="#//Expression" containment="true"/>
@@ -164,6 +173,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PredicateExpression" abstract="true"
       eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedTermExpression" eSuperTypes="#//CompoundTermExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="RelationalExpression" eSuperTypes="#//PredicateExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" lowerBound="1"
         eType="#//Expression" containment="true"/>
@@ -181,8 +191,6 @@
     <eLiterals name="GreaterThanEqual" value="205" literal="GE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TermExpression" abstract="true" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="special" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
   </eClassifiers>

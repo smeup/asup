@@ -21,12 +21,12 @@ import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
 public class BaseExpressionParserRegistryImpl implements QExpressionParserRegistry {
-	
+
 	private QPluginRegistry<QExpressionParser> pluginRegistry;
-	
+
 	@Inject
 	public BaseExpressionParserRegistryImpl(QPluginRegistryFactory pluginRegistryFactory) {
-		 this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QExpressionParser.class);
+		this.pluginRegistry = pluginRegistryFactory.createPluginRegistry(QExpressionParser.class);
 	}
 
 	@Override

@@ -20,10 +20,14 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getAccessMode <em>Access Mode</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getFormatName <em>Format Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#isKeyedAccess <em>Keyed Access</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getPrefix <em>Prefix</em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getAccessMode <em>
+ * Access Mode</em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getFormatName <em>
+ * Format Name</em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#isKeyedAccess <em>Keyed
+ * Access</em>}</li>
+ * <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getPrefix <em>Prefix
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -31,56 +35,63 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  */
 public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 	/**
-	 * The default value of the '{@link #getAccessMode() <em>Access Mode</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getAccessMode() <em>Access Mode</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccessMode()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final AccessMode ACCESS_MODE_EDEFAULT = AccessMode.INPUT;
 	/**
-	 * The cached value of the '{@link #getAccessMode() <em>Access Mode</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAccessMode() <em>Access Mode</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccessMode()
 	 * @generated
 	 * @ordered
 	 */
 	protected AccessMode accessMode = ACCESS_MODE_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getFormatName() <em>Format Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getFormatName() <em>Format Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFormatName()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String FORMAT_NAME_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getFormatName() <em>Format Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFormatName() <em>Format Name</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFormatName()
 	 * @generated
 	 * @ordered
 	 */
 	protected String formatName = FORMAT_NAME_EDEFAULT;
 	/**
-	 * The default value of the '{@link #isKeyedAccess() <em>Keyed Access</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #isKeyedAccess() <em>Keyed Access</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isKeyedAccess()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final boolean KEYED_ACCESS_EDEFAULT = false;
 	/**
-	 * The cached value of the '{@link #isKeyedAccess() <em>Keyed Access</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #isKeyedAccess() <em>Keyed Access</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isKeyedAccess()
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean keyedAccess = KEYED_ACCESS_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -89,6 +100,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 	/**
 	 * The cached value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -101,6 +113,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataSetTermImpl() {
@@ -109,6 +122,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,6 +132,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -127,6 +142,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -139,6 +155,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -148,6 +165,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,6 +178,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -169,6 +188,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,6 +201,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,6 +211,7 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -202,95 +224,101 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
-				return getAccessMode();
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
-				return getFormatName();
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
-				return isKeyedAccess();
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
-				return getPrefix();
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
+			return getAccessMode();
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
+			return getFormatName();
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
+			return isKeyedAccess();
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
+			return getPrefix();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
-				setAccessMode((AccessMode)newValue);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
-				setFormatName((String)newValue);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
-				setKeyedAccess((Boolean)newValue);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
-				setPrefix((String)newValue);
-				return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
+			setAccessMode((AccessMode) newValue);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
+			setFormatName((String) newValue);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
+			setKeyedAccess((Boolean) newValue);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
+			setPrefix((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
-				setAccessMode(ACCESS_MODE_EDEFAULT);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
-				setFormatName(FORMAT_NAME_EDEFAULT);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
-				setKeyedAccess(KEYED_ACCESS_EDEFAULT);
-				return;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
-				setPrefix(PREFIX_EDEFAULT);
-				return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
+			setAccessMode(ACCESS_MODE_EDEFAULT);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
+			setFormatName(FORMAT_NAME_EDEFAULT);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
+			setKeyedAccess(KEYED_ACCESS_EDEFAULT);
+			return;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
+			setPrefix(PREFIX_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
-				return accessMode != ACCESS_MODE_EDEFAULT;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
-				return FORMAT_NAME_EDEFAULT == null ? formatName != null : !FORMAT_NAME_EDEFAULT.equals(formatName);
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
-				return keyedAccess != KEYED_ACCESS_EDEFAULT;
-			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
-				return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
+			return accessMode != ACCESS_MODE_EDEFAULT;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
+			return FORMAT_NAME_EDEFAULT == null ? formatName != null : !FORMAT_NAME_EDEFAULT.equals(formatName);
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
+			return keyedAccess != KEYED_ACCESS_EDEFAULT;
+		case QIntegratedLanguageEsamPackage.DATA_SET_TERM__PREFIX:
+			return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accessMode: ");

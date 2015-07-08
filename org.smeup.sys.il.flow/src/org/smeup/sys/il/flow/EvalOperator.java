@@ -17,15 +17,16 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Eval Operator</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
+ *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEvalOperator()
  * @model
  * @generated
  */
 public enum EvalOperator implements Enumerator {
 	/**
-	 * The '<em><b>Assign</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>Assign</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see #ASSIGN_VALUE
 	 * @generated
 	 * @ordered
@@ -33,9 +34,9 @@ public enum EvalOperator implements Enumerator {
 	ASSIGN(10, "Assign", "="),
 
 	/**
-	 * The '<em><b>Plus Assign</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Plus Assign</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #PLUS_ASSIGN_VALUE
 	 * @generated
 	 * @ordered
@@ -43,9 +44,9 @@ public enum EvalOperator implements Enumerator {
 	PLUS_ASSIGN(20, "PlusAssign", "+="),
 
 	/**
-	 * The '<em><b>Minus Assign</b></em>' literal object.
-	 * <!-- begin-user-doc
+	 * The '<em><b>Minus Assign</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 *
 	 * @see #MINUS_ASSIGN_VALUE
 	 * @generated
 	 * @ordered
@@ -53,9 +54,9 @@ public enum EvalOperator implements Enumerator {
 	MINUS_ASSIGN(30, "MinusAssign", "-="),
 
 	/**
-	 * The '<em><b>Times Assign</b></em>' literal object.
-	 * <!-- begin-user-doc
+	 * The '<em><b>Times Assign</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 *
 	 * @see #TIMES_ASSIGN_VALUE
 	 * @generated
 	 * @ordered
@@ -63,9 +64,9 @@ public enum EvalOperator implements Enumerator {
 	TIMES_ASSIGN(40, "TimesAssign", "*="),
 
 	/**
-	 * The '<em><b>Divide Assign</b></em>' literal object.
-	 * <!-- begin-user-doc
+	 * The '<em><b>Divide Assign</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 *
 	 * @see #DIVIDE_ASSIGN_VALUE
 	 * @generated
 	 * @ordered
@@ -73,13 +74,13 @@ public enum EvalOperator implements Enumerator {
 	DIVIDE_ASSIGN(50, "DivideAssign", "/=");
 
 	/**
-	 * The '<em><b>Assign</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Assign</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Assign</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #ASSIGN
 	 * @model name="Assign" literal="="
 	 * @generated
@@ -88,13 +89,13 @@ public enum EvalOperator implements Enumerator {
 	public static final int ASSIGN_VALUE = 10;
 
 	/**
-	 * The '<em><b>Plus Assign</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Plus Assign</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Plus Assign</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #PLUS_ASSIGN
 	 * @model name="PlusAssign" literal="+="
 	 * @generated
@@ -103,13 +104,13 @@ public enum EvalOperator implements Enumerator {
 	public static final int PLUS_ASSIGN_VALUE = 20;
 
 	/**
-	 * The '<em><b>Minus Assign</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Minus Assign</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Minus Assign</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #MINUS_ASSIGN
 	 * @model name="MinusAssign" literal="-="
 	 * @generated
@@ -118,13 +119,13 @@ public enum EvalOperator implements Enumerator {
 	public static final int MINUS_ASSIGN_VALUE = 30;
 
 	/**
-	 * The '<em><b>Times Assign</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Times Assign</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Times Assign</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #TIMES_ASSIGN
 	 * @model name="TimesAssign" literal="*="
 	 * @generated
@@ -133,14 +134,14 @@ public enum EvalOperator implements Enumerator {
 	public static final int TIMES_ASSIGN_VALUE = 40;
 
 	/**
-	 * The '<em><b>Divide Assign</b></em>' literal value.
-	 * <!-- begin-user-doc
+	 * The '<em><b>Divide Assign</b></em>' literal value. <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of '<em><b>Divide Assign</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #DIVIDE_ASSIGN
 	 * @model name="DivideAssign" literal="/="
 	 * @generated
@@ -154,89 +155,89 @@ public enum EvalOperator implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final EvalOperator[] VALUES_ARRAY = new EvalOperator[] {
-			ASSIGN,
-			PLUS_ASSIGN,
-			MINUS_ASSIGN,
-			TIMES_ASSIGN,
-			DIVIDE_ASSIGN,
-		};
+	private static final EvalOperator[] VALUES_ARRAY = new EvalOperator[] { ASSIGN, PLUS_ASSIGN, MINUS_ASSIGN, TIMES_ASSIGN, DIVIDE_ASSIGN, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Eval Operator</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Eval Operator</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static final List<EvalOperator> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static EvalOperator get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EvalOperator result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
+		for (EvalOperator result : VALUES_ARRAY)
+			if (result.toString().equals(literal))
 				return result;
-			}
-		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static EvalOperator getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			EvalOperator result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
+		for (EvalOperator result : VALUES_ARRAY)
+			if (result.getName().equals(name))
 				return result;
-			}
-		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static EvalOperator get(int value) {
 		switch (value) {
-			case ASSIGN_VALUE: return ASSIGN;
-			case PLUS_ASSIGN_VALUE: return PLUS_ASSIGN;
-			case MINUS_ASSIGN_VALUE: return MINUS_ASSIGN;
-			case TIMES_ASSIGN_VALUE: return TIMES_ASSIGN;
-			case DIVIDE_ASSIGN_VALUE: return DIVIDE_ASSIGN;
+		case ASSIGN_VALUE:
+			return ASSIGN;
+		case PLUS_ASSIGN_VALUE:
+			return PLUS_ASSIGN;
+		case MINUS_ASSIGN_VALUE:
+			return MINUS_ASSIGN;
+		case TIMES_ASSIGN_VALUE:
+			return TIMES_ASSIGN;
+		case DIVIDE_ASSIGN_VALUE:
+			return DIVIDE_ASSIGN;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private EvalOperator(int value, String name, String literal) {
@@ -247,34 +248,38 @@ public enum EvalOperator implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

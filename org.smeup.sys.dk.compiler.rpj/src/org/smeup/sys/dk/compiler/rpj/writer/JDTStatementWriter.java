@@ -345,7 +345,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
-		QPrototype<?> prototype = compilationUnit.getPrototype(statement.getProcedure(), true);
+		QPrototype prototype = compilationUnit.getPrototype(statement.getProcedure(), true);
 		if (prototype == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Binding error: " + statement.getProcedure());
 
@@ -502,6 +502,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			return false;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
 		}
 	}

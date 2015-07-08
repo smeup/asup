@@ -25,8 +25,10 @@ import org.smeup.sys.il.flow.QParameterList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getName <em>Name
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getParameters <em>
+ * Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,6 +38,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -44,6 +47,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -54,8 +58,9 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
+	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -64,6 +69,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ParameterListImpl() {
@@ -72,6 +78,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -81,6 +88,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,6 +98,7 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -102,89 +111,95 @@ public class ParameterListImpl extends NodeImpl implements QParameterList {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public List<String> getParameters() {
-		if (parameters == null) {
+		if (parameters == null)
 			parameters = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS);
-		}
 		return parameters;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
-				return getName();
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
-				return getParameters();
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
+			return getName();
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
+			return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
-				setName((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
+			setName((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
-				getParameters().clear();
-				return;
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
+			getParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case QIntegratedLanguageFlowPackage.PARAMETER_LIST__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

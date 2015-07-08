@@ -15,9 +15,8 @@ import org.smeup.sys.il.expr.QExpressionVisitor;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -25,13 +24,13 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  */
 public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExpressionImpl() {
@@ -39,8 +38,8 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,8 +48,8 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -61,11 +60,11 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
 	public abstract ExpressionType getExpressionType();
 
-} //ExpressionImpl
+} // ExpressionImpl

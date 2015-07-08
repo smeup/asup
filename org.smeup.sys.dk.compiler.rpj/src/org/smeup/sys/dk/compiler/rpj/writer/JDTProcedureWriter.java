@@ -88,7 +88,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 				writeRoutine(routine);
 
 			// prototype
-			for (QPrototype<?> prototype : procedure.getFlowSection().getPrototypes())
+			for (QPrototype prototype : procedure.getFlowSection().getPrototypes())
 				writePrototype(prototype);
 		}
 

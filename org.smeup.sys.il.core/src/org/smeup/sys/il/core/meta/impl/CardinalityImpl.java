@@ -19,8 +19,10 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.CardinalityImpl#getMax <em>Max</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.CardinalityImpl#getMin <em>Min</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.CardinalityImpl#getMax <em>Max
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.CardinalityImpl#getMin <em>Min
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -74,6 +76,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CardinalityImpl() {
@@ -82,6 +85,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,6 +95,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,6 +105,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -132,6 +138,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -141,6 +148,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -153,75 +161,81 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
-				return getMax();
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
-				return getMin();
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
+			return getMax();
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
+			return getMin();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
-				setMax((Integer)newValue);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
-				setMin((Integer)newValue);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
+			setMax((Integer) newValue);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
+			setMin((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
-				setMax(MAX_EDEFAULT);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
-				setMin(MIN_EDEFAULT);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
+			setMax(MAX_EDEFAULT);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
+			setMin(MIN_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
-				return max != MAX_EDEFAULT;
-			case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
-				return min != MIN_EDEFAULT;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MAX:
+			return max != MAX_EDEFAULT;
+		case QIntegratedLanguageCoreMetaPackage.CARDINALITY__MIN:
+			return min != MIN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (max: ");

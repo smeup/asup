@@ -57,7 +57,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getCardinality()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #isConstant() <em>Constant</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isConstant()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #isConstant() <em>Constant</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isConstant()
 	 * @generated
 	 * @ordered
@@ -87,7 +87,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
@@ -102,7 +102,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
@@ -112,7 +112,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isInitialized()
 	 * @generated
 	 * @ordered
@@ -122,7 +122,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #isInitialized() <em>Initialized</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isInitialized()
 	 * @generated
 	 * @ordered
@@ -132,7 +132,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #getLike() <em>Like</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLike()
 	 * @generated
 	 * @ordered
@@ -142,7 +142,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getLike() <em>Like</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getLike()
 	 * @generated
 	 * @ordered
@@ -152,7 +152,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -162,7 +162,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -172,7 +172,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #isRestricted() <em>Restricted</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isRestricted()
 	 * @generated
 	 * @ordered
@@ -182,7 +182,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #isRestricted() <em>Restricted</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isRestricted()
 	 * @generated
 	 * @ordered
@@ -192,7 +192,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -202,7 +202,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -211,7 +211,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DataTermImpl() {
@@ -220,7 +220,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -230,7 +230,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -240,7 +240,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetCardinality(QCardinality newCardinality, NotificationChain msgs) {
@@ -258,7 +258,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -278,7 +278,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -288,7 +288,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -301,7 +301,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -311,7 +311,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetDefault(QDefault newDefault, NotificationChain msgs) {
@@ -329,7 +329,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -349,7 +349,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -359,7 +359,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetDefinition(DD newDefinition, NotificationChain msgs) {
@@ -377,7 +377,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -397,7 +397,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -407,7 +407,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -420,7 +420,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -430,7 +430,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -443,7 +443,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -453,7 +453,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -466,7 +466,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -476,7 +476,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -489,7 +489,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -499,7 +499,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -558,7 +558,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -570,7 +570,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -600,7 +600,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -640,7 +640,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -679,7 +679,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -709,7 +709,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

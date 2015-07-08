@@ -30,10 +30,6 @@ public interface BaseExpressionHelper {
 
 	public RelationalOperator getRelationalOperator(Tree node);
 
-	public boolean isSpecial(Tree node);
-
-	public boolean isFunction(Tree node);
-
 	public Tree parse(String expression);
 
 	public String normalizeText(String text);

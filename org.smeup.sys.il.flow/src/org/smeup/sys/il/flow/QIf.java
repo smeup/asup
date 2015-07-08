@@ -14,9 +14,9 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QIf#getThen <em>Then</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QIf#getElse <em>Else</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QIf#getCondition <em>Condition</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QIf#getThen <em>Then</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QIf#getElse <em>Else</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QIf#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +63,7 @@ public interface QIf extends QStatement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Else</em>' containment reference.
 	 * @see #setElse(QStatement)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getIf_Else()
@@ -72,9 +73,12 @@ public interface QIf extends QStatement {
 	QStatement getElse();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIf#getElse <em>Else</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Else</em>' containment reference.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIf#getElse
+	 * <em>Else</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Else</em>' containment reference.
 	 * @see #getElse()
 	 * @generated
 	 */
@@ -88,6 +92,7 @@ public interface QIf extends QStatement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Then</em>' containment reference.
 	 * @see #setThen(QStatement)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getIf_Then()
@@ -97,9 +102,12 @@ public interface QIf extends QStatement {
 	QStatement getThen();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIf#getThen <em>Then</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Then</em>' containment reference.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QIf#getThen
+	 * <em>Then</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Then</em>' containment reference.
 	 * @see #getThen()
 	 * @generated
 	 */

@@ -14,7 +14,7 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QSQLExec#getStatement <em>Statement</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QSQLExec#getStatement <em>Statement</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,9 +42,9 @@ public interface QSQLExec extends QInvoke {
 	String getStatement();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QSQLExec#getStatement
-	 * <em>Statement</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.flow.QSQLExec#getStatement <em>Statement</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @param value
 	 *            the new value of the '<em>Statement</em>' attribute.

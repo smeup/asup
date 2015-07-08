@@ -22,7 +22,6 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.expr.ibmi.test.runner.CLExpressionTester;
 import org.smeup.sys.il.expr.ibmi.test.runner.RPGExpressionTester;
 
-
 public class LanguageExpressionTestProviderImpl extends E4TestProviderImpl {
 
 	@Inject
@@ -36,15 +35,14 @@ public class LanguageExpressionTestProviderImpl extends E4TestProviderImpl {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, RPGExpressionTester.class);
 			QTestResult testResult = testRunner.call();
 			printTestResult(testResult);
-			
+
 			testRunner = testManager.prepareRunner(testContext, CLExpressionTester.class);
 			testResult = testRunner.call();
 			printTestResult(testResult);
-		}
-		finally {
-			if(testContext != null)
+		} finally {
+			if (testContext != null)
 				testContext.close();
 		}
-	
+
 	}
 }

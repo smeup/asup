@@ -16,8 +16,8 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QProgram#getEntry <em>Entry</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QProgram#getMessages <em>Messages</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QProgram#getEntry <em>Entry</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QProgram#getMessages <em>Messages</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,6 +35,7 @@ public interface QProgram extends QCallableUnit {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(QParameterList)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getProgram_Entry()
@@ -44,25 +45,27 @@ public interface QProgram extends QCallableUnit {
 	QParameterList getEntry();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QProgram#getEntry <em>Entry</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QProgram#getEntry
+	 * <em>Entry</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Entry</em>' containment reference.
+	 *
+	 * @param value
+	 *            the new value of the '<em>Entry</em>' containment reference.
 	 * @see #getEntry()
 	 * @generated
 	 */
 	void setEntry(QParameterList value);
 
 	/**
-	 * Returns the value of the '<em><b>Messages</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Messages</b></em>' attribute list. The
+	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Messages</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Messages</em>' attribute list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getProgram_Messages()
 	 * @model

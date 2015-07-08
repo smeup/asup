@@ -19,8 +19,8 @@ import org.smeup.sys.il.core.meta.QRange;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMax <em>Max</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMin <em>Min</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMax <em>Max</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMin <em>Min</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,6 +74,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected RangeImpl() {
@@ -82,6 +83,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,6 +93,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,6 +103,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,6 +116,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,6 +126,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,75 +139,81 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
-				return getMax();
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
-				return getMin();
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
+			return getMax();
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
+			return getMin();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
-				setMax((String)newValue);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
-				setMin((String)newValue);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
+			setMax((String) newValue);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
+			setMin((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
-				setMax(MAX_EDEFAULT);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
-				setMin(MIN_EDEFAULT);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
+			setMax(MAX_EDEFAULT);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
+			setMin(MIN_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
-				return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
-			case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
-				return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MAX:
+			return MAX_EDEFAULT == null ? max != null : !MAX_EDEFAULT.equals(max);
+		case QIntegratedLanguageCoreMetaPackage.RANGE__MIN:
+			return MIN_EDEFAULT == null ? min != null : !MIN_EDEFAULT.equals(min);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (max: ");

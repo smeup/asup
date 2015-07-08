@@ -7,11 +7,9 @@
  */
 package org.smeup.sys.il.expr;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Expression Parser</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Expression Parser</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getExpressionParser()
@@ -20,40 +18,40 @@ package org.smeup.sys.il.expr;
  */
 public interface QExpressionParser {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
 	QExpression parseExpression(String expression);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
 	QArithmeticExpression parseArithmetic(String expression);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
 	QAssignmentExpression parseAssignment(String expression);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
 	QPredicateExpression parsePredicate(String expression);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */

@@ -50,7 +50,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Cardinality</em>' containment reference.
 	 * @see #setCardinality(QCardinality)
 	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Cardinality()
@@ -64,7 +64,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getCardinality
 	 * <em>Cardinality</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Cardinality</em>' containment
 	 *            reference.
@@ -94,7 +94,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}
 	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Constant</em>' attribute.
 	 * @see #isConstant()
@@ -110,7 +110,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Default</em>' containment reference.
 	 * @see #setDefault(QDefault)
 	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Default()
@@ -123,7 +123,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Default</em>' containment reference.
 	 * @see #getDefault()
@@ -139,7 +139,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Definition</em>' containment reference.
 	 * @see #setDefinition(QDataDef)
 	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Definition()
@@ -153,7 +153,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getDefinition
 	 * <em>Definition</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Definition</em>' containment
 	 *            reference.
@@ -184,7 +184,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#isInitialized
 	 * <em>Initialized</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Initialized</em>' attribute.
 	 * @see #isInitialized()
@@ -213,7 +213,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getLike <em>Like</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Like</em>' attribute.
 	 * @see #getLike()
@@ -243,7 +243,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getName <em>Name</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -273,7 +273,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#isRestricted
 	 * <em>Restricted</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Restricted</em>' attribute.
 	 * @see #isRestricted()
@@ -303,7 +303,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.term.QDataTerm#getText <em>Text</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
@@ -313,7 +313,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -321,7 +321,7 @@ public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model visitorRequired="true"
 	 * @generated
 	 */

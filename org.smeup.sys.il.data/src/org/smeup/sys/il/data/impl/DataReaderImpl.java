@@ -30,7 +30,7 @@ public class DataReaderImpl extends DataVisitorImpl implements QDataReader {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DataReaderImpl() {
@@ -39,7 +39,7 @@ public class DataReaderImpl extends DataVisitorImpl implements QDataReader {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

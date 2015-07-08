@@ -10,9 +10,8 @@ package org.smeup.sys.il.lock;
 import org.smeup.sys.il.core.QObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Lock Read</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Lock Read</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getLockRead()

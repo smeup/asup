@@ -14,8 +14,10 @@ package org.smeup.sys.il.core;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.QAnnotationTest#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.QAnnotationTest#getMessage <em>Message</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.QAnnotationTest#getExpression <em>Expression
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.core.QAnnotationTest#getMessage <em>Message</em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -42,10 +44,13 @@ public interface QAnnotationTest extends QAnnotation {
 	String getExpression();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QAnnotationTest#getExpression <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.core.QAnnotationTest#getExpression
+	 * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' attribute.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Expression</em>' attribute.
 	 * @see #getExpression()
 	 * @generated
 	 */
@@ -69,9 +74,12 @@ public interface QAnnotationTest extends QAnnotation {
 	String getMessage();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QAnnotationTest#getMessage <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.core.QAnnotationTest#getMessage <em>Message</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Message</em>' attribute.
 	 * @see #getMessage()
 	 * @generated
 	 */

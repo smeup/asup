@@ -20,8 +20,10 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getIncrement <em>Increment</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getInitialization <em>Initialization</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getIncrement <em>Increment
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getInitialization <em>
+ * Initialization</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,8 +31,9 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class ForImpl extends IterationImpl implements QFor {
 	/**
-	 * The default value of the '{@link #getIncrement() <em>Increment</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getIncrement() <em>Increment</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getIncrement()
 	 * @generated
 	 * @ordered
@@ -43,8 +46,9 @@ public class ForImpl extends IterationImpl implements QFor {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getIncrement() <em>Increment</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIncrement() <em>Increment</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getIncrement()
 	 * @generated
 	 * @ordered
@@ -52,9 +56,10 @@ public class ForImpl extends IterationImpl implements QFor {
 	protected String increment = INCREMENT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getInitialization() <em>Initialization</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getInitialization()
+	 * <em>Initialization</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see #getInitialization()
 	 * @generated
 	 * @ordered
@@ -62,9 +67,10 @@ public class ForImpl extends IterationImpl implements QFor {
 	protected static final String INITIALIZATION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getInitialization() <em>Initialization</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getInitialization()
+	 * <em>Initialization</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see #getInitialization()
 	 * @generated
 	 * @ordered
@@ -73,6 +79,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ForImpl() {
@@ -81,6 +88,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,6 +98,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -99,6 +108,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -111,6 +121,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -120,6 +131,7 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -132,75 +144,81 @@ public class ForImpl extends IterationImpl implements QFor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
-				return getIncrement();
-			case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
-				return getInitialization();
+		case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
+			return getIncrement();
+		case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
+			return getInitialization();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
-				setIncrement((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
-				setInitialization((String)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
+			setIncrement((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
+			setInitialization((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
-				setIncrement(INCREMENT_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
-				setInitialization(INITIALIZATION_EDEFAULT);
-				return;
+		case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
+			setIncrement(INCREMENT_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
+			setInitialization(INITIALIZATION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
-				return INCREMENT_EDEFAULT == null ? increment != null : !INCREMENT_EDEFAULT.equals(increment);
-			case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
-				return INITIALIZATION_EDEFAULT == null ? initialization != null : !INITIALIZATION_EDEFAULT.equals(initialization);
+		case QIntegratedLanguageFlowPackage.FOR__INCREMENT:
+			return INCREMENT_EDEFAULT == null ? increment != null : !INCREMENT_EDEFAULT.equals(increment);
+		case QIntegratedLanguageFlowPackage.FOR__INITIALIZATION:
+			return INITIALIZATION_EDEFAULT == null ? initialization != null : !INITIALIZATION_EDEFAULT.equals(initialization);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (increment: ");

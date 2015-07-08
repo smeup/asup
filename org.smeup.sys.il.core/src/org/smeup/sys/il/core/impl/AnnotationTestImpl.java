@@ -19,8 +19,10 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getExpression <em>Expression</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getMessage <em>Message</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getExpression <em>
+ * Expression</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getMessage <em>
+ * Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,8 +30,9 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  */
 public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTest {
 	/**
-	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getExpression() <em>Expression</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -37,8 +40,9 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	protected static final String EXPRESSION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -51,8 +55,9 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getMessage() <em>Message</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -60,8 +65,9 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	protected static final String MESSAGE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -70,6 +76,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AnnotationTestImpl() {
@@ -78,6 +85,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,6 +95,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -96,6 +105,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,6 +118,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,6 +128,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,75 +141,81 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
-				return getExpression();
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
-				return getMessage();
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
+			return getExpression();
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
+			return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
-				setExpression((String)newValue);
-				return;
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
-				setMessage((String)newValue);
-				return;
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
+			setExpression((String) newValue);
+			return;
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
+			setMessage((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
-				setExpression(EXPRESSION_EDEFAULT);
-				return;
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
-				setMessage(MESSAGE_EDEFAULT);
-				return;
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
+			setExpression(EXPRESSION_EDEFAULT);
+			return;
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
+			setMessage(MESSAGE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
-				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
-				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__EXPRESSION:
+			return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST__MESSAGE:
+			return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (expression: ");

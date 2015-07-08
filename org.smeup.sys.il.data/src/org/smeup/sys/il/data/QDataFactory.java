@@ -34,7 +34,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
 public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" argumentRequired="true" dimensionRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -43,7 +43,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" typeRequired="true" unsignedRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -52,7 +52,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" lengthRequired="true" varyingRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -61,7 +61,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" dataDefRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -69,7 +69,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" dataTermRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -77,7 +77,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" typeDataType="org.smeup.sys.il.core.java.JavaType"
 	 *        typeRequired="true"
 	 *        annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation"
@@ -88,7 +88,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" elementsMany="true" lengthRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -97,7 +97,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -105,7 +105,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" typeRequired="true" formatRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -114,7 +114,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" precisionRequired="true" scaleRequired="true"
 	 *        typeRequired="true" initializeRequired="true"
 	 * @generated
@@ -123,7 +123,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" dataDelegateRequired="true"
 	 *        initializeRequired="true"
 	 *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
@@ -133,7 +133,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" typeRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -141,7 +141,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -149,7 +149,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -157,7 +157,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" argumentRequired="true" dimensionRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -166,7 +166,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" targetRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -174,7 +174,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" argumentRequired="true" dimensionRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -183,7 +183,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" argumentRequired="true" dimensionRequired="true"
 	 *        initializeRequired="true"
 	 * @generated
@@ -192,7 +192,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -200,7 +200,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */

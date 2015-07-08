@@ -25,9 +25,12 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getObject <em>Object</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getObject <em>Object
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getMethod <em>Method
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.MethodExecImpl#getParameters <em>
+ * Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,8 +43,9 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getObject() <em>Object</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getObject() <em>Object</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getObject()
 	 * @generated
 	 * @ordered
@@ -51,6 +55,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getObject()
 	 * @generated
 	 * @ordered
@@ -58,8 +63,9 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 	protected String object = OBJECT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getMethod() <em>Method</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getMethod()
 	 * @generated
 	 * @ordered
@@ -69,6 +75,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 	/**
 	 * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getMethod()
 	 * @generated
 	 * @ordered
@@ -76,8 +83,9 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 	protected String method = METHOD_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
+	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -86,6 +94,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected MethodExecImpl() {
@@ -94,6 +103,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,6 +113,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,6 +123,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -124,6 +136,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -133,6 +146,7 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,99 +159,105 @@ public class MethodExecImpl extends InvokeImpl implements QMethodExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public List<String> getParameters() {
-		if (parameters == null) {
+		if (parameters == null)
 			parameters = new EDataTypeEList<String>(String.class, this, QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS);
-		}
 		return parameters;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
-				return getObject();
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
-				return getMethod();
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
-				return getParameters();
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
+			return getObject();
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
+			return getMethod();
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
+			return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
-				setObject((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
-				setMethod((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
+			setObject((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
+			setMethod((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
-				setObject(OBJECT_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
-				setMethod(METHOD_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
-				getParameters().clear();
-				return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
+			setObject(OBJECT_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
+			setMethod(METHOD_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
+			getParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
-				return OBJECT_EDEFAULT == null ? object != null : !OBJECT_EDEFAULT.equals(object);
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
-				return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
-			case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__OBJECT:
+			return OBJECT_EDEFAULT == null ? object != null : !OBJECT_EDEFAULT.equals(object);
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__METHOD:
+			return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
+		case QIntegratedLanguageFlowPackage.METHOD_EXEC__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (object: ");

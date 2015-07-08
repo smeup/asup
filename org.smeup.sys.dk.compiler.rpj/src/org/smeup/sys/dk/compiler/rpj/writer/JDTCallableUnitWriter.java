@@ -177,8 +177,9 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			if (dataTerm.getDefinition() == null)
 				continue;
-
+// Mirandola
 			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), true);
+			
 			writePublicField(dataTerm, false);
 		}
 
@@ -443,7 +444,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writePrototype(QPrototype<?> prototype) {
+	public void writePrototype(QPrototype prototype) {
 
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 		getTarget().bodyDeclarations().add(methodDeclaration);
@@ -453,8 +454,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		// writeSuppressWarning(methodDeclaration);
 
-		if (prototype.getDelegate() != null) {
-			Type type = getJavaType(prototype.getDelegate());
+		if(prototype.getDefinition() != null) {
+			Type type = getJavaType(prototype);
 			methodDeclaration.setReturnType2(type);
 		}
 
@@ -505,7 +506,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		statementWriter.getBlocks().push(block);
 
-		if (prototype.getDelegate() != null) {
+		if (prototype.getDefinition() != null) {
 			ReturnStatement returnStatement = getAST().newReturnStatement();
 
 			// returnStatement.setExpression(getAST().newNullLiteral());
@@ -822,7 +823,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	private ReturnStatement getReturnStatement(ReturnStatement returnStatement, QPrototype<?> prototype, MethodDeclaration methodDeclaration) {
+	private ReturnStatement getReturnStatement(ReturnStatement returnStatement, QPrototype prototype, MethodDeclaration methodDeclaration) {
 
 		String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
 		MethodInvocation methodInvocation = getAST().newMethodInvocation();

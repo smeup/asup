@@ -14,7 +14,7 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QJump#getLabel <em>Label</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QJump#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,9 +42,11 @@ public interface QJump extends QStatement {
 	String getLabel();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QJump#getLabel <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Label</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QJump#getLabel
+	 * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Label</em>' attribute.
 	 * @see #getLabel()
 	 * @generated
 	 */

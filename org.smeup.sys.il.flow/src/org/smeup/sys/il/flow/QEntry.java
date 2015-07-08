@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.QNode;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QEntry#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QEntry#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,15 +28,18 @@ import org.smeup.sys.il.core.QNode;
  */
 public interface QEntry extends QNode {
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.flow.QEntryParameter}&lt;?>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link org.smeup.sys.il.flow.QEntryParameter}&lt;?>. <!-- begin-user-doc
+	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 *
+	 * @return the value of the '<em>Parameters</em>' containment reference
+	 *         list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEntry_Parameters()
 	 * @model containment="true" required="true"
 	 * @generated

@@ -557,36 +557,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public String subst(QNumeric start, QNumeric length) {
-		return delegate.subst(start, length);
-	}
-
-	@Override
-	public String subst(QNumeric start) {
-		return delegate.subst(start);
-	}
-
-	@Override
-	public String subst(Number start, Number length) {
-		return delegate.subst(start, length);
-	}
-
-	@Override
-	public String subst(Number start) {
-		return delegate.subst(start);
-	}
-
-	@Override
-	public String subst(QNumeric start, Number length) {
-		return delegate.subst(start, length);
-	}
-
-	@Override
-	public String subst(Number start, QNumeric length) {
-		return delegate.subst(start, length);
-	}
-
-	@Override
 	public void xlate(QString from, QString to, QString target) {
 		delegate.xlate(from, to, target);
 	}
@@ -599,5 +569,80 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public void xlate(byte from, String to, QString target) {
 		delegate.xlate(from, to, target);
+	}
+
+	@Override
+	public QCharacter qSubst(QNumeric start, QNumeric length) {
+		return delegate.qSubst(start, length);
+	}
+
+	@Override
+	public QCharacter qSubst(QNumeric start) {
+		return delegate.qSubst(start);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start, Number length) {
+		return delegate.qSubst(start, length);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start) {
+		return delegate.qSubst(start);
+	}
+
+	@Override
+	public QCharacter qSubst(QNumeric start, Number length) {
+		return delegate.qSubst(start, length);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start, QNumeric length) {
+		return delegate.qSubst(start, length);
+	}
+
+	@Override
+	public QCharacter qTrim() {
+		return delegate.qTrim();
+	}
+
+	@Override
+	public QCharacter qTriml() {
+		return delegate.qTriml();
+	}
+
+	@Override
+	public QCharacter qTrimr() {
+		return delegate.qTrimr();
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start) {
+		return delegate.qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start) {
+		return delegate.qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start) {
+		return delegate.qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start) {
+		return delegate.qScan(argument, start);
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument) {
+		return delegate.qScan(argument);
+	}
+
+	@Override
+	public QNumeric qScan(String argument) {
+		return delegate.qScan(argument);
 	}
 }

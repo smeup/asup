@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.dk.compiler.rpj.writer;
 
+import java.nio.Buffer;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +21,7 @@ import javax.inject.Inject;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.rpj.RPJExpressionStringBuilder;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.core.term.QTerm;
@@ -48,6 +50,8 @@ import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QLogicalExpression;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
@@ -69,7 +73,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private StringBuffer buffer = new StringBuffer();
 	private Class<?> target;
 	private AST ast;
-	
+
 	public void setTarget(Class<?> target) {
 		this.target = target;
 	}
@@ -77,11 +81,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public void setAST(AST ast) {
 		this.ast = ast;
 	}
-	
+
 	public AST getAST() {
 		return this.ast;
 	}
-	
+
 	public String getResult() {
 		return buffer.toString();
 	}
@@ -225,232 +229,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		return false;
 	}
 
-	@SuppressWarnings("unused")
-	@Override
-	public boolean visit(QCompoundTermExpression expression) {
-
-		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
-		
-		if(namedNode == null && !expression.getElements().isEmpty()) {
-			QExpression expressionChild = expression.getElements().get(0);
-			if(expressionChild instanceof QTermExpression) {
-				QTermExpression termExpression = (QTermExpression) expressionChild;
-				
-				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
-				methodExec.setObject(termExpression.getValue());
-				methodExec.setMethod(expression.getValue());
-
-				for(QExpression elementExpression: expression.getElements()) {
-					if(elementExpression == expressionChild)
-						continue;
-					
-					if(!(elementExpression instanceof QTermExpression)) 
-						throw new IntegratedLanguageExpressionRuntimeException("Invalid term method: " + expression.getValue());
-
-					QTermExpression elementTermExpression = (QTermExpression) elementExpression;
-					
-					methodExec.getParameters().add(elementTermExpression.getValue());
-				}
-				
-				JDTStatementWriter statementWriter = compilationUnit.getContext().make(JDTStatementWriter.class);
-				statementWriter.setAST(getAST());
-				Block block = getAST().newBlock();
-				statementWriter.getBlocks().push(block);
-				
-				methodExec.accept(statementWriter);
-				if(!block.statements().isEmpty()) {
-					String content = block.statements().get(0).toString().trim();					
-					this.buffer.append(strings.removeLastChar(content));
-				}
-				
-				statementWriter.getBlocks().pop();				
-				return false;
-			}			
-		}		
-		
-		if (namedNode == null)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
-		
-		// unary
-		if(namedNode instanceof QDataTerm<?>) {
-			QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
-			
-			if (dataTerm.getDataTermType().isUnary()) {
-				
-				// atomic
-				if(dataTerm.getDataTermType().isAtomic())
-					writeValue(dataTerm.getDefinition().getDataClass(), this.target, compilationUnit.getQualifiedName(namedNode));
-				
-				// compound
-				else {
-
-					// TODO remove
-					if (namedNode.getName().toString().equalsIgnoreCase("*IN")) {
-
-						StringBuffer value = new StringBuffer();
-						value.append(compilationUnit.getQualifiedName(namedNode));
-						value.append(".get");
-						value.append("(");
-
-						JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-						indexBuilder.setTarget(null);
-						indexBuilder.setAST(getAST());
-						
-						for (QExpression element : expression.getElements())
-							element.accept(indexBuilder);
-						value.append(indexBuilder.getResult());
-
-						value.append(")");
-
-						if (this.target == null)
-							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-						else if (this.target != null && Integer.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else if (this.target != null && String.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else if (this.target != null && Boolean.class.isAssignableFrom(this.target))
-							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-						else
-							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-
-						return false;
-					} else {
-						this.buffer.append(compilationUnit.getQualifiedName(namedNode));
-						return true;
-					}
-					
-				}
-
-			}
-			// multiple
-			else {
-
-				StringBuffer value = new StringBuffer();
-				value.append(compilationUnit.getQualifiedName(namedNode));
-				value.append(".get");
-				value.append("(");
-
-				JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-				indexBuilder.setTarget(null);
-				indexBuilder.setAST(getAST());
-				for (QExpression element : expression.getElements())
-					element.accept(indexBuilder);
-				value.append(indexBuilder.getResult());
-
-				value.append(")");
-
-				if (this.target == null)
-					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-				else if (this.target != null && Integer.class.isAssignableFrom(this.target))
-					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-				else if (this.target != null && String.class.isAssignableFrom(this.target))
-					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-				else if (this.target != null && Boolean.class.isAssignableFrom(this.target))
-					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
-				else
-					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
-			}
-		}
-		// dataSet
-		else if (namedNode instanceof QDataSetTerm) {
-			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
-			this.buffer.append(".get");
-			this.buffer.append("(");
-			this.buffer.append(")");
-		}
-		// display
-		else if (namedNode instanceof QDisplayTerm) {
-			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
-			this.buffer.append(".get");
-			this.buffer.append("(");
-			this.buffer.append(")");
-		}
-		// print
-		else if (namedNode instanceof QPrint) {
-			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
-			this.buffer.append(".get");
-			this.buffer.append("(");
-			this.buffer.append(")");
-		}
-		// prototype
-		else if (namedNode instanceof QPrototype) {
-
-			QPrototype<?> prototype = (QPrototype<?>) namedNode;
-
-			StringBuffer value = new StringBuffer();
-
-//			value.append(compilationUnit.getQualifiedName(namedNode));
-//			TODO non mi piace affatto
-			if(namedNode.getName().startsWith("%")){
-				System.out.println("Verificare in qRPJ " + namedNode.getName());
-				String name = "q" + strings.firstToUpper(strings.removeFirstChar(namedNode.getName()));
-				value.append("qRPJ." + name);
-			}else{
-				value.append(compilationUnit.getQualifiedName(namedNode));				
-			}
-
-			value.append("(");
-			if (prototype.getEntry() != null) {
-				Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
-
-				// parameters
-				JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-				boolean first = true;
-				for (QExpression element : expression.getElements()) {
-
-					if (!entryParameters.hasNext())
-						throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + namedNode.getName());
-
-					QEntryParameter<?> entryParameter = entryParameters.next();
-					QTerm parameterDelegate = entryParameter.getDelegate();
-
-					parameterBuilder.clear();
-					if (parameterDelegate instanceof QDataTerm) {
-						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-						if (dataTerm.isConstant()){
-							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
-							parameterBuilder.setAST(getAST());
-						}else{
-							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
-							parameterBuilder.setAST(getAST());
-						}
-					} else if (parameterDelegate instanceof QFileTerm) {
-						parameterBuilder.setTarget(QFileTerm.class);
-						parameterBuilder.setAST(getAST());
-					}
-
-					element.accept(parameterBuilder);
-
-					if (!first)
-						value.append(", ");
-
-					value.append(parameterBuilder.getResult());
-
-					first = false;
-				}
-
-				while (entryParameters.hasNext()) {
-					QEntryParameter<?> entryParameter = entryParameters.next();
-					if (!first)
-						value.append(", ");
-					value.append("null");
-					first = false;
-				}
-			} else {
-				if (!expression.getElements().isEmpty())
-					throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + namedNode.getName());
-			}
-
-			value.append(")");
-
-			writeValue(prototype.getDelegate().getDefinition().getDataClass(), this.target, value.toString());
-
-		} else
-			System.err.println("Unexpected condition: xm4t609543m487mxz");
-
-		return false;
-	}
-
 	@Override
 	public boolean visit(QAssignmentExpression expression) {
 
@@ -467,7 +245,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setAST(getAST());
 		builder.setAST(getAST());
-		
+
 		// pointer
 		if (CompilationContextHelper.isPointer(compilationUnit, expression.getLeftOperand())) {
 
@@ -534,20 +312,22 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			if (expression.getOperand() instanceof QAtomicTermExpression) {
 
 				QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) expression.getOperand();
-				if (atomicTermExpression.isSpecial() && !atomicTermExpression.isFunction())
-					if (atomicTermExpression.getValue().equalsIgnoreCase("*ON")) {
-						buffer.append("true");
-						return false;
-					} else if (atomicTermExpression.getValue().equalsIgnoreCase("*OFF")) {
-						buffer.append("false");
-						return false;
-					}
+				// Mirandola
+				// if (atomicTermExpression.isSpecial() &&
+				// !atomicTermExpression.isFunction())
+				if (atomicTermExpression.getValue().equalsIgnoreCase("*ON")) {
+					buffer.append("true");
+					return false;
+				} else if (atomicTermExpression.getValue().equalsIgnoreCase("*OFF")) {
+					buffer.append("false");
+					return false;
+				}
 			}
 
 			JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 			builder.setTarget(Boolean.class);
 			builder.setAST(getAST());
-			
+
 			/*
 			 * if(!CompilationContextHelper.isPrimitive(compilationUnit,
 			 * expression.getOperand())) builder.setTarget(Boolean.class); else
@@ -567,7 +347,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setAST(getAST());
-		
+
 		// and/or
 		if (expression.getRightOperand() != null) {
 
@@ -620,7 +400,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QRelationalExpression expression) {
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setAST(getAST());
-		
+
 		if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
 
 			// left
@@ -796,7 +576,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		case ASSIGNMENT:
 			result = ((QAssignmentExpression) expression).getOperator().getLiteral().toLowerCase();
 			break;
-		case COMPOUND:
+		case QUALIFIED:
+		case FUNCTION:
 			break;
 		case LOGICAL:
 			result = ((QLogicalExpression) expression).getOperator().getLiteral().toLowerCase();
@@ -826,6 +607,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		}
 
 		if (target.isAssignableFrom(source)) {
+			buffer.append(value);
+			return;
+		}
+
+		if (target.isAssignableFrom(Buffer.class)) {
 			buffer.append(value);
 			return;
 		}
@@ -881,7 +667,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		JDTExpressionStringBuilder fieldBuilder = this.compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		fieldBuilder.setAST(getAST());
-		
+
 		int i = 0;
 		for (String keyField : keyList.getKeyFields()) {
 
@@ -903,4 +689,248 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return stringBuffer.toString();
 	}
+
+	@Override
+	public boolean visit(QQualifiedTermExpression expression) {
+
+		return visit((QCompoundTermExpression) expression);
+	}
+
+	@Override
+	public boolean visit(QFunctionTermExpression expression) {
+
+		if (expression.getValue().equalsIgnoreCase("*ALL"))
+			expression.setValue("%all");
+
+		if(compilationUnit.getMethod(expression.getValue()) != null  && !expression.getElements().isEmpty()) {
+			QExpression expressionChild = expression.getElements().get(0);
+			if (expressionChild instanceof QTermExpression) {
+				QTermExpression termExpression = (QTermExpression) expressionChild;
+
+				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+
+				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+				termExpression.accept(expressionStringBuilder);
+				methodExec.setObject(expressionStringBuilder.getResult());
+
+				methodExec.setMethod(expression.getValue());
+
+				for (QExpression elementExpression : expression.getElements()) {
+					if (elementExpression == expressionChild)
+						continue;
+
+					// if(!(elementExpression instanceof QTermExpression))
+					// throw new
+					// IntegratedLanguageExpressionRuntimeException("Invalid term method: "
+					// + expression.getValue());
+
+					// QTermExpression elementTermExpression = (QTermExpression)
+					// elementExpression;
+					expressionStringBuilder = new RPJExpressionStringBuilder();
+					elementExpression.accept(expressionStringBuilder);
+
+					methodExec.getParameters().add(expressionStringBuilder.getResult());
+				}
+
+				JDTStatementWriter statementWriter = compilationUnit.getContext().make(JDTStatementWriter.class);
+				statementWriter.setAST(getAST());
+				Block block = getAST().newBlock();
+				statementWriter.getBlocks().push(block);
+
+				methodExec.accept(statementWriter);
+				if (!block.statements().isEmpty()) {
+					String content = block.statements().get(0).toString().trim();
+					this.buffer.append(strings.removeLastChar(content));
+				}
+
+				statementWriter.getBlocks().pop();
+				return false;
+			}			
+		}
+		
+		return visit((QCompoundTermExpression) expression);
+	}
+
+	private boolean visit(QCompoundTermExpression expression) {
+
+		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
+
+		if (namedNode == null)
+			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
+
+		// unary
+
+		// dataSet
+		if (namedNode instanceof QDataSetTerm) {
+			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
+			this.buffer.append(".get");
+			this.buffer.append("(");
+			this.buffer.append(")");
+		}
+		// display
+		else if (namedNode instanceof QDisplayTerm) {
+			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
+			this.buffer.append(".get");
+			this.buffer.append("(");
+			this.buffer.append(")");
+		}
+		// print
+		else if (namedNode instanceof QPrint) {
+			this.buffer.append(compilationUnit.getQualifiedName(namedNode));
+			this.buffer.append(".get");
+			this.buffer.append("(");
+			this.buffer.append(")");
+		}
+		// prototype
+		else if (namedNode instanceof QPrototype) {
+
+			QPrototype prototype = (QPrototype) namedNode;
+
+			StringBuffer value = new StringBuffer();
+
+			if (namedNode.getName().startsWith("%"))
+				System.out.println("Verificare in qRPJ " + namedNode.getName());
+			
+			value.append(compilationUnit.getQualifiedName(namedNode));
+
+			value.append("(");
+			if (prototype.getEntry() != null) {
+				Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
+
+				// parameters
+				JDTExpressionStringBuilder parameterBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+				boolean first = true;
+				for (QExpression element : expression.getElements()) {
+
+					if (!entryParameters.hasNext())
+						throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure invocation: " + namedNode.getName());
+
+					QEntryParameter<?> entryParameter = entryParameters.next();
+					QTerm parameterDelegate = entryParameter.getDelegate();
+
+					parameterBuilder.clear();
+					if (parameterDelegate instanceof QDataTerm) {
+						QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
+						if (dataTerm.isConstant()) {
+							parameterBuilder.setTarget(dataTerm.getDefinition().getJavaClass());
+							parameterBuilder.setAST(getAST());
+						} else {
+							parameterBuilder.setTarget(dataTerm.getDefinition().getDataClass());
+							parameterBuilder.setAST(getAST());
+						}
+					} else if (parameterDelegate instanceof QFileTerm) {
+						parameterBuilder.setTarget(QFileTerm.class);
+						parameterBuilder.setAST(getAST());
+					}
+
+					element.accept(parameterBuilder);
+
+					if (!first)
+						value.append(", ");
+
+					value.append(parameterBuilder.getResult());
+
+					first = false;
+				}
+
+				while (entryParameters.hasNext()) {
+					entryParameters.next();
+					if (!first)
+						value.append(", ");
+					value.append("null");
+					first = false;
+				}
+			} else {
+				if (!expression.getElements().isEmpty())
+					throw new IntegratedLanguageExpressionRuntimeException("Invalid parameters number binding  procedure: " + namedNode.getName());
+			}
+
+			value.append(")");
+
+			writeValue(prototype.getDefinition().getDataClass(), this.target, value.toString());
+
+		} else if (namedNode instanceof QDataTerm<?>) {
+			QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
+
+			if (dataTerm.getDataTermType().isUnary()) {
+
+				// atomic
+				if (dataTerm.getDataTermType().isAtomic())
+					writeValue(dataTerm.getDefinition().getDataClass(), this.target, compilationUnit.getQualifiedName(namedNode));
+
+				// compound
+				else {
+
+					// TODO remove
+					if (namedNode.getName().toString().equalsIgnoreCase("*IN")) {
+
+						StringBuffer value = new StringBuffer();
+						value.append(compilationUnit.getQualifiedName(namedNode));
+						value.append(".get");
+						value.append("(");
+
+						JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+						indexBuilder.setTarget(null);
+						indexBuilder.setAST(getAST());
+
+						for (QExpression element : expression.getElements())
+							element.accept(indexBuilder);
+						value.append(indexBuilder.getResult());
+
+						value.append(")");
+
+						if (this.target == null)
+							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
+						else if (this.target != null && Integer.class.isAssignableFrom(this.target))
+							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+						else if (this.target != null && String.class.isAssignableFrom(this.target))
+							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+						else if (this.target != null && Boolean.class.isAssignableFrom(this.target))
+							writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+						else
+							writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
+
+						return false;
+					} else {
+						this.buffer.append(compilationUnit.getQualifiedName(namedNode));
+						return true;
+					}
+
+				}
+
+			}
+			// multiple
+			else {
+
+				StringBuffer value = new StringBuffer();
+				value.append(compilationUnit.getQualifiedName(namedNode));
+				value.append(".get");
+				value.append("(");
+
+				JDTExpressionStringBuilder indexBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+				indexBuilder.setTarget(null);
+				indexBuilder.setAST(getAST());
+				for (QExpression element : expression.getElements())
+					element.accept(indexBuilder);
+				value.append(indexBuilder.getResult());
+
+				value.append(")");
+
+				if (this.target == null)
+					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
+				else if (this.target != null && Integer.class.isAssignableFrom(this.target))
+					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+				else if (this.target != null && String.class.isAssignableFrom(this.target))
+					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+				else if (this.target != null && Boolean.class.isAssignableFrom(this.target))
+					writeValue(dataTerm.getDefinition().getDataClass(), this.target, value.toString());
+				else
+					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
+			}
+		} else
+			System.err.println("Unexpected condition: xm4t609543m487mxz");
+
+		return false;
+	}
+
 }

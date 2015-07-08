@@ -18,32 +18,32 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreOutFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreOutFactory init() {
 		try {
-			QIntegratedLanguageCoreOutFactory theIntegratedLanguageCoreOutFactory = (QIntegratedLanguageCoreOutFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageCoreOutPackage.eNS_URI);
-			if (theIntegratedLanguageCoreOutFactory != null) {
+			QIntegratedLanguageCoreOutFactory theIntegratedLanguageCoreOutFactory = (QIntegratedLanguageCoreOutFactory) EPackage.Registry.INSTANCE
+					.getEFactory(QIntegratedLanguageCoreOutPackage.eNS_URI);
+			if (theIntegratedLanguageCoreOutFactory != null)
 				return theIntegratedLanguageCoreOutFactory;
-			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageCoreOutFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageCoreOutFactoryImpl() {
@@ -52,27 +52,30 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageCoreOutPackage getIntegratedLanguageCoreOutPackage() {
-		return (QIntegratedLanguageCoreOutPackage)getEPackage();
+		return (QIntegratedLanguageCoreOutPackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

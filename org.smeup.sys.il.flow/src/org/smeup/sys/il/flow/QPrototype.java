@@ -7,7 +7,7 @@
  */
 package org.smeup.sys.il.flow;
 
-import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
@@ -17,8 +17,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QPrototype#getDelegate <em>Delegate</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,33 +25,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model
  * @generated
  */
-public interface QPrototype<DT extends QDataTerm<?>> extends QTerm {
-
-	/**
-	 * Returns the value of the '<em><b>Delegate</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Delegate</em>' reference isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Delegate</em>' containment reference.
-	 * @see #setDelegate(QDataTerm)
-	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getPrototype_Delegate()
-	 * @model containment="true"
-	 * @generated
-	 */
-	DT getDelegate();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QPrototype#getDelegate <em>Delegate</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Delegate</em>' containment reference.
-	 * @see #getDelegate()
-	 * @generated
-	 */
-	void setDelegate(DT value);
+public interface QPrototype extends QDataTerm<QDataDef<?>> {
 
 	/**
 	 * Returns the value of the '<em><b>Entry</b></em>' containment reference.
@@ -62,6 +35,7 @@ public interface QPrototype<DT extends QDataTerm<?>> extends QTerm {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(QEntry)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getPrototype_Entry()
@@ -71,10 +45,12 @@ public interface QPrototype<DT extends QDataTerm<?>> extends QTerm {
 	QEntry getEntry();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QPrototype#getEntry
+	 * <em>Entry</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Entry</em>' containment reference.
+	 *
+	 * @param value
+	 *            the new value of the '<em>Entry</em>' containment reference.
 	 * @see #getEntry()
 	 * @generated
 	 */

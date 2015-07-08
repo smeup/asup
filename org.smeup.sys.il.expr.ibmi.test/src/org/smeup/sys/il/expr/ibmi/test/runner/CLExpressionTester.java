@@ -27,17 +27,16 @@ public class CLExpressionTester {
 
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
-	
+
 	@Inject
 	private QTestAsserter testAsserter;
-	
+
 	@TestStarted
 	public void main() throws IOException {
-		
+
 		QExpressionParser expressionParser = expressionParserRegistry.lookup("CL");
-		
-		for(String expression: E4TestHelper.readTextResource(this, "/resources/cl/expressions.txt")) {
-			testAsserter.assertNotNull("Parse "+expression, expressionParser.parseExpression(expression));
-		}
+
+		for (String expression : E4TestHelper.readTextResource(this, "/resources/cl/expressions.txt"))
+			testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
 	}
 }

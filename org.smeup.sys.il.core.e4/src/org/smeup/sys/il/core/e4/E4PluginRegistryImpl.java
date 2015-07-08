@@ -26,7 +26,7 @@ public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
 
 	private BundleContext bundleContext;
 	private Class<T> klass;
-	
+
 	public E4PluginRegistryImpl(Class<T> klass) {
 		this.bundleContext = FrameworkUtil.getBundle(QObject.class).getBundleContext();
 		this.klass = klass;
@@ -56,7 +56,7 @@ public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
 			return null;
 
 		T plugin = bundleContext.getService(pluginReference);
-	
+
 		return plugin;
 	}
 
@@ -86,10 +86,8 @@ public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
 	public T lookupByVendorVersion(String vendor, String version) {
 
 		// search plugin
-		String serviceFilter = "(&(org.smeup.sys.rt.core.plugin.vendor=" + vendor + ")"
-							 + "(org.smeup.sys.rt.core.plugin.version=" + version + "))";
-		
-		
+		String serviceFilter = "(&(org.smeup.sys.rt.core.plugin.vendor=" + vendor + ")" + "(org.smeup.sys.rt.core.plugin.version=" + version + "))";
+
 		Collection<ServiceReference<T>> pluginReferences;
 		try {
 			pluginReferences = bundleContext.getServiceReferences(klass, serviceFilter);
@@ -108,7 +106,7 @@ public class E4PluginRegistryImpl<T> implements QPluginRegistry<T> {
 			return null;
 
 		T plugin = bundleContext.getService(pluginReference);
-	
+
 		return plugin;
 	}
 }

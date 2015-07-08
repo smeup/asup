@@ -40,7 +40,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The default value of the '{@link #isUnsigned() <em>Unsigned</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The cached value of the '{@link #isUnsigned() <em>Unsigned</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -79,7 +79,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected BinaryDefImpl() {
@@ -88,7 +88,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -108,7 +108,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -121,7 +121,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -172,7 +172,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -188,7 +188,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -206,7 +206,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -224,7 +224,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -240,7 +240,7 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

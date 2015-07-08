@@ -24,29 +24,29 @@ import org.smeup.sys.il.data.QDataManager;
 
 @Test(category = "il.data", object = "Hexadecimal")
 public class HexadecimalTester {
-	
+
 	@Inject
 	private QDataManager dataManager;
 	@Inject
 	private QTestRunner testRunner;
-	
+
 	private static String ENCODING = "IBM-280";
-	
+
 	@TestStarted
 	public void main() throws UnsupportedEncodingException {
-		
+
 		QDataFactory dataFactory = dataManager.createFactory(testRunner.getContext());
-		
+
 		String inputHex = "C1A24BE4D7";
-		
-		byte[] bytes = new byte[inputHex.length()/2];
-		for(int i=0; i<bytes.length; i++) {
-			String hex = new String(inputHex.substring(2*i, 2*i+2));
-			bytes[i] = (byte) Integer.parseInt(hex,16);
+
+		byte[] bytes = new byte[inputHex.length() / 2];
+		for (int i = 0; i < bytes.length; i++) {
+			String hex = new String(inputHex.substring(2 * i, 2 * i + 2));
+			bytes[i] = (byte) Integer.parseInt(hex, 16);
 		}
 
 		QCharacter character = dataFactory.createCharacter(15, false, true);
 		character.movel(new String(bytes, ENCODING));
-		
+
 	}
 }

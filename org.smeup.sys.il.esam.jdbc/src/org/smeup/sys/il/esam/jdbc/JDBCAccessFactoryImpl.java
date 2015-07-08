@@ -24,9 +24,9 @@ import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
+import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
-import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.annotation.Descend;
@@ -156,13 +156,11 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 			Class<?> keyKlass = null;
 
-			for (Class<?> declaredClass : object.getClass().getDeclaredClasses()) {
-
+			for (Class<?> declaredClass : object.getClass().getDeclaredClasses())
 				if (declaredClass.getAnnotation(Index.class) != null) {
 					keyKlass = declaredClass;
 					break;
 				}
-			}
 
 			if (keyKlass == null)
 				return null;
@@ -188,10 +186,9 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		@Override
 		public List<QIndexColumn> getColumns() {
 
-			if (this.columns.isEmpty()) {
+			if (this.columns.isEmpty())
 				synchronized (this.columns) {
-					for (Field field : klass.getFields()) {
-
+					for (Field field : klass.getFields())
 						try {
 
 							DataDef dataDef = field.getAnnotation(DataDef.class);
@@ -208,9 +205,9 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 								continue;
 
 							int length = dataDef.precision();
-							if(length == 0)
+							if (length == 0)
 								length = dataDef.length();
-							
+
 							OperationDirection operationDirection = null;
 							if (field.getAnnotation(Descend.class) != null)
 								operationDirection = OperationDirection.BACKWARD;
@@ -222,10 +219,8 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 						} catch (NoSuchFieldException | SecurityException e1) {
 							e1.printStackTrace();
 						}
-					}
 
 				}
-			}
 			return this.columns;
 		}
 	}
@@ -244,7 +239,6 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		private int length;
 		private boolean isNumeric;
 		private OperationDirection operationDirection;
-
 
 		@Override
 		public String getName() {

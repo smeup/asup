@@ -24,18 +24,18 @@ import org.smeup.sys.il.core.meta.QSlot;
 public class E4SlotAdapter implements QSlot {
 
 	private EStructuralFeature structuralFeature;
-	
+
 	public E4SlotAdapter(EStructuralFeature structuralFeature) {
 		this.structuralFeature = structuralFeature;
 	}
-	
+
 	@Override
 	public String getName() {
 		return structuralFeature.getName();
 	}
 
 	@Override
-	public QCardinality getCardinality() {	
+	public QCardinality getCardinality() {
 		return new E4CardinalityAdapter(this.structuralFeature);
 	}
 
@@ -62,10 +62,10 @@ public class E4SlotAdapter implements QSlot {
 
 	@Override
 	public QObject getValue(String nsPrefix) {
-		
+
 		EAnnotation eAnnotation = this.structuralFeature.getEAnnotation(nsPrefix);
 
-		if(eAnnotation == null)
+		if (eAnnotation == null)
 			return null;
 
 		EObject eObject = EcoreUtil.create((EClass) eAnnotation.getReferences().get(0));
@@ -82,7 +82,7 @@ public class E4SlotAdapter implements QSlot {
 				eObject.eSet(dataDefFeature, eAnnotation.getDetails().get(key));
 		}
 
-		return (QObject) eObject;  
+		return (QObject) eObject;
 	}
 
 	@Override

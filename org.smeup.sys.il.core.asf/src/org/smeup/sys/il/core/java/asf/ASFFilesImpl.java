@@ -5,17 +5,16 @@
  *  which accompanies this distribution, and is available at
  *  http://www.eclipse.org/legal/epl-v10.html
  *
- * 
- * Contributors: 
- *   Mattia Rocchi - Initial API and implementation 
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
  */
 package org.smeup.sys.il.core.java.asf;
 
 import org.smeup.sys.il.core.java.QFiles;
 
-
 public class ASFFilesImpl implements QFiles {
-	
+
 	@Override
 	public String getBaseName(String name) {
 		return org.apache.commons.io.FilenameUtils.getBaseName(name);

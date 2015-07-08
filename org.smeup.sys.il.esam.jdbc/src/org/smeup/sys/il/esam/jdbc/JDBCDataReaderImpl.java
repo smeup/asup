@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.impl.DataReaderImpl;
 
 public class JDBCDataReaderImpl extends DataReaderImpl {
 
-//	private static DecimalFormat[][] decimalFormats = new DecimalFormat[32][9];
+	// private static DecimalFormat[][] decimalFormats = new
+	// DecimalFormat[32][9];
 
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
@@ -53,13 +54,13 @@ public class JDBCDataReaderImpl extends DataReaderImpl {
 				 * (QString) bufferedData; string.eval(resultSet.getString(c));
 				 * } else if(bufferedData instanceof QDecimal) { QDecimal
 				 * decimal = (QDecimal) bufferedData;
-				 * 
+				 *
 				 * // BigDecimal bigDecimal = resultSet.getBigDecimal(c); //
 				 * decimal.eval(bigDecimal);
-				 * 
+				 *
 				 * // bufferedData.move(formatBigDecimal(bigDecimal, decimal),
 				 * true);
-				 * 
+				 *
 				 * System.out.println(resultSet.getObject(c));
 				 * decimal.eval(resultSet.getDouble(c)); } else {
 				 * bufferedData.movel(resultSet.getObject(c).toString(), true);

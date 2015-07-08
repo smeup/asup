@@ -99,7 +99,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 				writeRoutine(routine);
 
 			// prototype
-			for (QPrototype<?> prototype : module.getFlowSection().getPrototypes())
+			for (QPrototype prototype : module.getFlowSection().getPrototypes())
 				writePrototype(prototype);
 		}
 

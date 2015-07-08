@@ -820,13 +820,10 @@
     </datas>
   </dataSection>
   <flowSection>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%abs">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%abs">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -840,13 +837,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%addr">
-        <definition
-            xsi:type="il-data-def:PointerDef"/>
-      </delegate>
+    <prototypes
+        name="%addr">
+      <definition
+          xsi:type="il-data-def:PointerDef"/>
       <entry>
         <parameters>
           <delegate
@@ -860,13 +854,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%adddur">
-        <definition
-            xsi:type="il-data-def:DatetimeDef"/>
-      </delegate>
+    <prototypes
+        name="%adddur">
+      <definition
+          xsi:type="il-data-def:DatetimeDef"/>
       <entry>
         <parameters>
           <delegate
@@ -901,17 +892,15 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%all">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%all">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
+              constant="true"
               name="expression">
             <definition
                 xsi:type="il-data-def:BufferDef"/>
@@ -919,13 +908,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%alloc">
-        <definition
-            xsi:type="il-data-def:PointerDef"/>
-      </delegate>
+    <prototypes
+        name="%alloc">
+      <definition
+          xsi:type="il-data-def:PointerDef"/>
       <entry>
         <parameters>
           <delegate
@@ -940,13 +926,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%bcat">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%bcat">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -970,13 +953,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%bin">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%bin">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1011,13 +991,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%cat">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%cat">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1041,13 +1018,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%char">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%char">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1061,13 +1035,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%check">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%check">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1101,13 +1072,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%checkr">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%checkr">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1141,10 +1109,8 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%dealloc"/>
+    <prototypes
+        name="%dealloc">
       <entry>
         <parameters>
           <delegate
@@ -1158,13 +1124,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%dec">
-        <definition
-            xsi:type="il-data-def:DecimalDef"/>
-      </delegate>
+    <prototypes
+        name="%dec">
+      <definition
+          xsi:type="il-data-def:DecimalDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1198,13 +1161,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%diff">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%diff">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1239,10 +1199,8 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%display"/>
+    <prototypes
+        name="%display">
       <entry>
         <parameters>
           <delegate
@@ -1257,13 +1215,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%editc">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%editc">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1288,13 +1243,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%editw">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%editw">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1319,13 +1271,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%elem">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%elem">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1338,13 +1287,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%eof">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%eof">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1353,13 +1299,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%equal">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%equal">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1368,13 +1311,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%error">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%error">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1383,13 +1323,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%found">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%found">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1398,13 +1335,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%int">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%int">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1418,14 +1352,11 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%len">
-        <definition
-            xsi:type="il-data-def:DecimalDef"
-            precision="5"/>
-      </delegate>
+    <prototypes
+        name="%len">
+      <definition
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1439,13 +1370,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%lookup">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%lookup">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1488,13 +1416,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%lookuplt">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%lookuplt">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1537,13 +1462,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%lookuple">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%lookuple">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1586,13 +1508,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%lookupgt">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%lookupgt">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1635,13 +1554,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%lookupge">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%lookupge">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1684,13 +1600,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%open">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%open">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1699,13 +1612,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%paddr">
-        <definition
-            xsi:type="il-data-def:PointerDef"/>
-      </delegate>
+    <prototypes
+        name="%paddr">
+      <definition
+          xsi:type="il-data-def:PointerDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1719,22 +1629,16 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%parms">
-        <definition
-            xsi:type="il-data-def:DecimalDef"
-            precision="3"/>
-      </delegate>
+    <prototypes
+        name="%parms">
+      <definition
+          xsi:type="il-data-def:DecimalDef"
+          precision="3"/>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%realloc">
-        <definition
-            xsi:type="il-data-def:PointerDef"/>
-      </delegate>
+    <prototypes
+        name="%realloc">
+      <definition
+          xsi:type="il-data-def:PointerDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1757,13 +1661,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%rem">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%rem">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1787,14 +1688,11 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%replace">
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            varying="true"/>
-      </delegate>
+    <prototypes
+        name="%replace">
+      <definition
+          xsi:type="il-data-def:CharacterDef"
+          varying="true"/>
       <entry>
         <parameters>
           <delegate
@@ -1838,13 +1736,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%scan">
-        <definition
-            xsi:type="il-data-def:NumericDef"/>
-      </delegate>
+    <prototypes
+        name="%scan_o">
+      <definition
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1887,14 +1782,11 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%size">
-        <definition
-            xsi:type="il-data-def:DecimalDef"
-            precision="5"/>
-      </delegate>
+    <prototypes
+        name="%size">
+      <definition
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1908,13 +1800,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%sst">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%sst">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -1949,22 +1838,16 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%status">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%status">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%str">
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            varying="true"/>
-      </delegate>
+    <prototypes
+        name="%str">
+      <definition
+          xsi:type="il-data-def:CharacterDef"
+          varying="true"/>
       <entry>
         <parameters>
           <delegate
@@ -1987,17 +1870,14 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%subarr">
-        <definition
-            xsi:type="il-data-def:ArrayDef"
-            dimension="-1">
-          <argument
-              xsi:type="il-data-def:BufferDef"/>
-        </definition>
-      </delegate>
+    <prototypes
+        name="%subarr">
+      <definition
+          xsi:type="il-data-def:ArrayDef"
+          dimension="-1">
+        <argument
+            xsi:type="il-data-def:BufferDef"/>
+      </definition>
       <entry>
         <parameters>
           <delegate
@@ -2033,13 +1913,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%subdur">
-        <definition
-            xsi:type="il-data-def:DatetimeDef"/>
-      </delegate>
+    <prototypes
+        name="%subdur_o">
+      <definition
+          xsi:type="il-data-def:DatetimeDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2074,13 +1951,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%subst_o">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%subst_o">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2114,13 +1988,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%switch">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%switch">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2135,13 +2006,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%tcat">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+    <prototypes
+        name="%tcat">
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2165,13 +2033,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%time">
-        <definition
-            xsi:type="il-data-def:DatetimeDef"/>
-      </delegate>
+    <prototypes
+        name="%time">
+      <definition
+          xsi:type="il-data-def:DatetimeDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2185,73 +2050,10 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%trim_o">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="string">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%triml_o">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="string">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%trimr_o">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="string">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%testn">
-        <definition
-            xsi:type="il-data-def:IndicatorDef"/>
-      </delegate>
+    <prototypes
+        name="%testn">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
       <entry>
         <parameters>
           <delegate
@@ -2266,10 +2068,8 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%xfoot"/>
+    <prototypes
+        name="%xfoot">
       <entry>
         <parameters>
           <delegate
@@ -2293,12 +2093,8 @@
       </entry>
     </prototypes>
     <prototypes>
-      <delegate
-          xsi:type="il-flow:FlowData"
-          name="%xlate">
-        <definition
-            xsi:type="il-data-def:StringDef"/>
-      </delegate>
+      <definition
+          xsi:type="il-data-def:StringDef"/>
       <entry>
         <parameters>
           <delegate

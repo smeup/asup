@@ -8,16 +8,13 @@
 package org.smeup.sys.il.lock.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.smeup.sys.il.core.impl.ObjectImpl;
-
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.il.lock.QLockWrite;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lock Write</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Lock Write</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -25,13 +22,13 @@ import org.smeup.sys.il.lock.QLockWrite;
  */
 public class LockWriteImpl extends ObjectImpl implements QLockWrite {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LockWriteImpl() {
@@ -39,8 +36,8 @@ public class LockWriteImpl extends ObjectImpl implements QLockWrite {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,4 +45,4 @@ public class LockWriteImpl extends ObjectImpl implements QLockWrite {
 		return QIntegratedLanguageLockPackage.Literals.LOCK_WRITE;
 	}
 
-} //LockWriteImpl
+} // LockWriteImpl

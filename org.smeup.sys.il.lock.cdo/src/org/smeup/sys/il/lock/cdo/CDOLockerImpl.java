@@ -25,7 +25,7 @@ public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T
 	public T getObject() {
 		return object;
 	}
-	
+
 	@Override
 	public void lock(LockType lockType) {
 
@@ -64,7 +64,7 @@ public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T
 		} catch (InterruptedException e) {
 			logger.warning(null, e);
 		}
-		
+
 		return false;
 	}
 
@@ -72,7 +72,7 @@ public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T
 	public void unlock(LockType lockType) {
 
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
-		
+
 		CDOLock lock = null;
 		switch (lockType) {
 		case READ:
@@ -88,9 +88,9 @@ public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T
 
 	@Override
 	public boolean isLocked(LockType lockType) {
-		
+
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
-		
+
 		CDOLock lock = null;
 		switch (lockType) {
 		case READ:
@@ -106,9 +106,9 @@ public class CDOLockerImpl<T extends QObjectLockable> implements QObjectLocker<T
 
 	@Override
 	public boolean isLockedByOther(LockType lockType) {
-		
+
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
-		
+
 		CDOLock lock = null;
 		switch (lockType) {
 		case READ:

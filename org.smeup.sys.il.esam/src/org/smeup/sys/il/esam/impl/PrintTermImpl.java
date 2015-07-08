@@ -27,6 +27,7 @@ public class PrintTermImpl extends FileTermImpl implements QPrintTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrintTermImpl() {
@@ -35,6 +36,7 @@ public class PrintTermImpl extends FileTermImpl implements QPrintTerm {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

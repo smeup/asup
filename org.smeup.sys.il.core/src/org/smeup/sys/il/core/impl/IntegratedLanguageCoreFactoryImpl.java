@@ -31,32 +31,31 @@ import org.smeup.sys.il.core.QSpecialElement;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreFactory init() {
 		try {
-			QIntegratedLanguageCoreFactory theIntegratedLanguageCoreFactory = (QIntegratedLanguageCoreFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageCorePackage.eNS_URI);
-			if (theIntegratedLanguageCoreFactory != null) {
+			QIntegratedLanguageCoreFactory theIntegratedLanguageCoreFactory = (QIntegratedLanguageCoreFactory) EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageCorePackage.eNS_URI);
+			if (theIntegratedLanguageCoreFactory != null)
 				return theIntegratedLanguageCoreFactory;
-			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageCoreFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageCoreFactoryImpl() {
@@ -65,60 +64,74 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.ANNOTATION_TEST: return (EObject)createAnnotationTest();
-			case QIntegratedLanguageCorePackage.CONVERSION: return (EObject)createConversion();
-			case QIntegratedLanguageCorePackage.DERIVED: return (EObject)createDerived();
-			case QIntegratedLanguageCorePackage.FORMAT: return (EObject)createFormat();
-			case QIntegratedLanguageCorePackage.OBJECT: return (EObject)createObject();
-			case QIntegratedLanguageCorePackage.OBJECT_NAMEABLE: return (EObject)createObjectNameable();
-			case QIntegratedLanguageCorePackage.OVERLAY: return (EObject)createOverlay();
-			case QIntegratedLanguageCorePackage.REMAP: return (EObject)createRemap();
-			case QIntegratedLanguageCorePackage.SPECIAL: return (EObject)createSpecial();
-			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT: return (EObject)createSpecialElement();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageCorePackage.ANNOTATION_TEST:
+			return (EObject) createAnnotationTest();
+		case QIntegratedLanguageCorePackage.CONVERSION:
+			return (EObject) createConversion();
+		case QIntegratedLanguageCorePackage.DERIVED:
+			return (EObject) createDerived();
+		case QIntegratedLanguageCorePackage.FORMAT:
+			return (EObject) createFormat();
+		case QIntegratedLanguageCorePackage.OBJECT:
+			return (EObject) createObject();
+		case QIntegratedLanguageCorePackage.OBJECT_NAMEABLE:
+			return (EObject) createObjectNameable();
+		case QIntegratedLanguageCorePackage.OVERLAY:
+			return (EObject) createOverlay();
+		case QIntegratedLanguageCorePackage.REMAP:
+			return (EObject) createRemap();
+		case QIntegratedLanguageCorePackage.SPECIAL:
+			return (EObject) createSpecial();
+		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT:
+			return (EObject) createSpecialElement();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
-				return createConversionStatusFromString(eDataType, initialValue);
-			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
-				return createFormatTypeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
+			return createConversionStatusFromString(eDataType, initialValue);
+		case QIntegratedLanguageCorePackage.FORMAT_TYPE:
+			return createFormatTypeFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
-				return convertConversionStatusToString(eDataType, instanceValue);
-			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
-				return convertFormatTypeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case QIntegratedLanguageCorePackage.CONVERSION_STATUS:
+			return convertConversionStatusToString(eDataType, instanceValue);
+		case QIntegratedLanguageCorePackage.FORMAT_TYPE:
+			return convertFormatTypeToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,6 +142,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -139,6 +153,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -149,6 +164,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,6 +175,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -169,6 +186,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,6 +197,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -189,6 +208,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -199,6 +219,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -209,6 +230,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -219,16 +241,19 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public ConversionStatus createConversionStatusFromString(EDataType eDataType, String initialValue) {
 		ConversionStatus result = ConversionStatus.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertConversionStatusToString(EDataType eDataType, Object instanceValue) {
@@ -237,16 +262,19 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public FormatType createFormatTypeFromString(EDataType eDataType, String initialValue) {
 		FormatType result = FormatType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String convertFormatTypeToString(EDataType eDataType, Object instanceValue) {
@@ -255,15 +283,17 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageCorePackage getIntegratedLanguageCorePackage() {
-		return (QIntegratedLanguageCorePackage)getEPackage();
+		return (QIntegratedLanguageCorePackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

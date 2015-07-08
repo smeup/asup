@@ -25,8 +25,10 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getProcedure <em>Procedure</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getProcedure <em>
+ * Procedure</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getParameters <em>
+ * Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,8 +36,9 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 	/**
-	 * The default value of the '{@link #getProcedure() <em>Procedure</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getProcedure() <em>Procedure</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getProcedure()
 	 * @generated
 	 * @ordered
@@ -43,8 +46,9 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 	protected static final String PROCEDURE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getProcedure() <em>Procedure</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProcedure() <em>Procedure</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getProcedure()
 	 * @generated
 	 * @ordered
@@ -57,8 +61,9 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}'
+	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -67,6 +72,7 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ProcedureExecImpl() {
@@ -75,6 +81,7 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -84,6 +91,7 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,6 +101,7 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,89 +114,95 @@ public class ProcedureExecImpl extends InvokeImpl implements QProcedureExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public List<String> getParameters() {
-		if (parameters == null) {
+		if (parameters == null)
 			parameters = new EDataTypeEList<String>(String.class, this, QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS);
-		}
 		return parameters;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
-				return getProcedure();
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
-				return getParameters();
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
+			return getProcedure();
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
+			return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
-				setProcedure((String)newValue);
-				return;
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
+			setProcedure((String) newValue);
+			return;
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
-				setProcedure(PROCEDURE_EDEFAULT);
-				return;
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
-				getParameters().clear();
-				return;
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
+			setProcedure(PROCEDURE_EDEFAULT);
+			return;
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
+			getParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
-				return PROCEDURE_EDEFAULT == null ? procedure != null : !PROCEDURE_EDEFAULT.equals(procedure);
-			case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PROCEDURE:
+			return PROCEDURE_EDEFAULT == null ? procedure != null : !PROCEDURE_EDEFAULT.equals(procedure);
+		case QIntegratedLanguageFlowPackage.PROCEDURE_EXEC__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (procedure: ");

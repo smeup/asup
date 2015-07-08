@@ -16,10 +16,13 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getParameterLists <em>Parameter Lists</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getProcedures <em>Procedures</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getPrototypes <em>Prototypes</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getRoutines <em>Routines</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QFlowSection#getParameterLists <em>Parameter
+ * Lists</em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QFlowSection#getProcedures <em>Procedures
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QFlowSection#getPrototypes <em>Prototypes
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.flow.QFlowSection#getRoutines <em>Routines</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,15 +32,17 @@ import java.util.List;
  */
 public interface QFlowSection extends QUnitSection {
 	/**
-	 * Returns the value of the '<em><b>Parameter Lists</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.flow.QParameterList}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Parameter Lists</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link org.smeup.sys.il.flow.QParameterList}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameter Lists</em>' reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameter Lists</em>' containment reference list.
+	 *
+	 * @return the value of the '<em>Parameter Lists</em>' containment reference
+	 *         list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFlowSection_ParameterLists()
 	 * @model containment="true"
 	 * @generated
@@ -45,15 +50,17 @@ public interface QFlowSection extends QUnitSection {
 	List<QParameterList> getParameterLists();
 
 	/**
-	 * Returns the value of the '<em><b>Procedures</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.flow.QProcedure}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Procedures</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link org.smeup.sys.il.flow.QProcedure}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Procedures</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Procedures</em>' containment reference list.
+	 *
+	 * @return the value of the '<em>Procedures</em>' containment reference
+	 *         list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFlowSection_Procedures()
 	 * @model containment="true"
 	 * @generated
@@ -61,30 +68,33 @@ public interface QFlowSection extends QUnitSection {
 	List<QProcedure> getProcedures();
 
 	/**
-	 * Returns the value of the '<em><b>Prototypes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.flow.QPrototype}&lt;?>.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Prototypes</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link org.smeup.sys.il.flow.QPrototype}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Prototypes</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Prototypes</em>' containment reference list.
+	 *
+	 * @return the value of the '<em>Prototypes</em>' containment reference
+	 *         list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFlowSection_Prototypes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<QPrototype<?>> getPrototypes();
+	List<QPrototype> getPrototypes();
 
 	/**
-	 * Returns the value of the '<em><b>Routines</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.il.flow.QRoutine}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Routines</b></em>' containment reference
+	 * list. The list contents are of type
+	 * {@link org.smeup.sys.il.flow.QRoutine}. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Routines</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Routines</em>' containment reference list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFlowSection_Routines()
 	 * @model containment="true"

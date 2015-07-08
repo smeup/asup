@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Data Def Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTermType()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum DataTermType implements Enumerator {
 	/**
 	 * The '<em><b>Unary Atomic</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNARY_ATOMIC_VALUE
 	 * @generated
 	 * @ordered
@@ -35,7 +35,7 @@ public enum DataTermType implements Enumerator {
 	 * The '
 	 * <em><b>Unary Compound</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNARY_COMPOUND_VALUE
 	 * @generated
 	 * @ordered
@@ -44,7 +44,7 @@ public enum DataTermType implements Enumerator {
 	 * The '
 	 * <em><b>Multiple Atomic</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #MULTIPLE_ATOMIC_VALUE
 	 * @generated
 	 * @ordered
@@ -53,7 +53,7 @@ public enum DataTermType implements Enumerator {
 	 * The '
 	 * <em><b>Multiple Compound</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #MULTIPLE_COMPOUND_VALUE
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public enum DataTermType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNARY_ATOMIC
 	 * @model name="UnaryAtomic" literal="UNARY_ATOM"
 	 * @generated
@@ -83,7 +83,7 @@ public enum DataTermType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNARY_COMPOUND
 	 * @model name="UnaryCompound" literal="UNARY_COMP"
 	 * @generated
@@ -99,7 +99,7 @@ public enum DataTermType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #MULTIPLE_ATOMIC
 	 * @model name="MultipleAtomic" literal="MULT_ATOM"
 	 * @generated
@@ -134,7 +134,7 @@ public enum DataTermType implements Enumerator {
 	/**
 	 * A public read-only list of all the '<em><b>Data Term Type</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<DataTermType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -142,35 +142,33 @@ public enum DataTermType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Data Term Type</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static DataTermType get(String literal) {
-		for (DataTermType result : VALUES_ARRAY) {
+		for (DataTermType result : VALUES_ARRAY)
 			if (result.toString().equals(literal))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Data Term Type</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static DataTermType getByName(String name) {
-		for (DataTermType result : VALUES_ARRAY) {
+		for (DataTermType result : VALUES_ARRAY)
 			if (result.getName().equals(name))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Data Term Type</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static DataTermType get(int value) {
@@ -189,21 +187,21 @@ public enum DataTermType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -211,7 +209,7 @@ public enum DataTermType implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private DataTermType(int value, String name, String literal) {
@@ -222,7 +220,7 @@ public enum DataTermType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -232,7 +230,7 @@ public enum DataTermType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -242,7 +240,7 @@ public enum DataTermType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,7 +251,7 @@ public enum DataTermType implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

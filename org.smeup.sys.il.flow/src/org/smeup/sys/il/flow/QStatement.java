@@ -22,6 +22,7 @@ public interface QStatement extends QNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model visitorRequired="true"
 	 * @generated
 	 */

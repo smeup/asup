@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QString;
@@ -15,9 +16,9 @@ import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
-import org.smeup.sys.il.expr.QCompoundTermExpression;
+import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
-import org.smeup.sys.il.flow.QPrototype;
 
 public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 
@@ -119,37 +120,55 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 	}
 
 	@Override
-	public boolean visit(QCompoundTermExpression expression) {
+	public boolean visit(QQualifiedTermExpression expression) {
 
-		QDataTerm<?> dataTerm = null;
-		if (expression.isFunction() && expression.isSpecial()) {
-
-			QPrototype<?> prototype = compilationUnit.getPrototype(expression.getValue(), true);
-			if (prototype != null)
-				dataTerm = prototype.getDelegate();
-		}
+		QDataTerm<?> dataTerm = compilationUnit.getDataTerm(expression.getValue(), true);
 
 		if (dataTerm == null)
-			dataTerm = compilationUnit.getDataTerm(expression.getValue(), true);
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: bwr9wxe7r9wefisgde");
 
-		if (dataTerm != null) {
 
-			if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
+		if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
 
-				if (dataTerm.getDataTermType().isMultiple()) {
-					QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
-					getClasses().add(multipleCompoundDataDef.getDataClass());
-				} else
-					getClasses().add(dataTerm.getDefinition().getDataClass());
+			if (dataTerm.getDataTermType().isMultiple()) {
+				QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
+				getClasses().add(multipleCompoundDataDef.getDataClass());
 			} else
 				getClasses().add(dataTerm.getDefinition().getDataClass());
-
 		} else
-			"".toCharArray();
+			getClasses().add(dataTerm.getDefinition().getDataClass());
 
 		return super.visit(expression);
 	}
 
+
+	@Override
+	public boolean visit(QFunctionTermExpression expression) {
+
+		QDataTerm<?> dataTerm = null;
+		
+		dataTerm = compilationUnit.getPrototype(expression.getValue(), true);
+		
+		if(dataTerm == null)
+			dataTerm = compilationUnit.getMethod(expression.getValue());
+		
+		if (dataTerm == null)
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: bwr9wxe7r9we9brw9e");
+
+		if (dataTerm.getDefinition().getDataClass().isAssignableFrom(QArray.class)) {
+
+			if (dataTerm.getDataTermType().isMultiple()) {
+				QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
+				getClasses().add(multipleCompoundDataDef.getDataClass());
+			} else
+				getClasses().add(dataTerm.getDefinition().getDataClass());
+			
+		} else
+			getClasses().add(dataTerm.getDefinition().getDataClass());
+
+		return super.visit(expression);
+	}
+	
 	public QCompilationUnit getCompilationUnit() {
 		return compilationUnit;
 	}

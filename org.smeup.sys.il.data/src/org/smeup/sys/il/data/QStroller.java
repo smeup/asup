@@ -20,7 +20,7 @@ public interface QStroller<D extends QDataStruct> extends QScroller<D>, QDataStr
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */

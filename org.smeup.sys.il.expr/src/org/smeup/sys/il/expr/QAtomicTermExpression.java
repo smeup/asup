@@ -7,16 +7,15 @@
  */
 package org.smeup.sys.il.expr;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Atomic Term Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Atomic Term Expression</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}</li>
+ * <li>{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}
+ * </li>
  * </ul>
  * </p>
  *
@@ -27,14 +26,15 @@ package org.smeup.sys.il.expr;
 public interface QAtomicTermExpression extends QTermExpression {
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.il.expr.AtomicType}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. The literals
+	 * are from the enumeration {@link org.smeup.sys.il.expr.AtomicType}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.expr.AtomicType
 	 * @see #setType(AtomicType)
@@ -45,10 +45,12 @@ public interface QAtomicTermExpression extends QTermExpression {
 	AtomicType getType();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.expr.AtomicType
 	 * @see #getType()
 	 * @generated

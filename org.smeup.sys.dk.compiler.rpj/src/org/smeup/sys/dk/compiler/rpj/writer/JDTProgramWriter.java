@@ -122,7 +122,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			}
 
 			// prototype
-			for (QPrototype<?> prototype : program.getFlowSection().getPrototypes())
+			for (QPrototype prototype : program.getFlowSection().getPrototypes())
 				writePrototype(prototype);
 		}
 

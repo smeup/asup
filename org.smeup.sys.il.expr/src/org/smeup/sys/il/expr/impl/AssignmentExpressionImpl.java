@@ -21,15 +21,19 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.expr.QTermExpression;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Assignment Expression</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Assignment Expression</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
- *   <li>{@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
+ * <li>
+ * {@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getLeftOperand
+ * <em>Left Operand</em>}</li>
+ * <li>{@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getOperator
+ * <em>Operator</em>}</li>
+ * <li>
+ * {@link org.smeup.sys.il.expr.impl.AssignmentExpressionImpl#getRightOperand
+ * <em>Right Operand</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,14 +41,14 @@ import org.smeup.sys.il.expr.QTermExpression;
  */
 public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignmentExpression {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLeftOperand()
 	 * @generated
 	 * @ordered
@@ -52,9 +56,9 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	protected QTermExpression leftOperand;
 
 	/**
-	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getOperator() <em>Operator</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -62,9 +66,9 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	protected static final AssignmentOperator OPERATOR_EDEFAULT = AssignmentOperator.ASSIGN;
 
 	/**
-	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOperator() <em>Operator</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -72,9 +76,10 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	protected AssignmentOperator operator = OPERATOR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRightOperand() <em>Right Operand</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRightOperand()
+	 * <em>Right Operand</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getRightOperand()
 	 * @generated
 	 * @ordered
@@ -82,8 +87,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	protected QExpression rightOperand;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AssignmentExpressionImpl() {
@@ -91,8 +96,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,8 +106,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,8 +116,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -124,8 +129,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -134,8 +139,8 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetLeftOperand(QTermExpression newLeftOperand, NotificationChain msgs) {
@@ -143,14 +148,17 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 		leftOperand = newLeftOperand;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, oldLeftOperand, newLeftOperand);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,19 +166,19 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 		if (newLeftOperand != leftOperand) {
 			NotificationChain msgs = null;
 			if (leftOperand != null)
-				msgs = ((InternalEObject)leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject) leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, null, msgs);
 			if (newLeftOperand != null)
-				msgs = ((InternalEObject)newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject) newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, null, msgs);
 			msgs = basicSetLeftOperand(newLeftOperand, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND, newLeftOperand, newLeftOperand));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,23 +187,27 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetRightOperand(QExpression newRightOperand, NotificationChain msgs) {
 		QExpression oldRightOperand = rightOperand;
 		rightOperand = newRightOperand;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, oldRightOperand, newRightOperand);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, oldRightOperand,
+					newRightOperand);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,118 +215,119 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 		if (newRightOperand != rightOperand) {
 			NotificationChain msgs = null;
 			if (rightOperand != null)
-				msgs = ((InternalEObject)rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject) rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, null, msgs);
 			if (newRightOperand != null)
-				msgs = ((InternalEObject)newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject) newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, null, msgs);
 			msgs = basicSetRightOperand(newRightOperand, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND, newRightOperand, newRightOperand));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
-				return basicSetLeftOperand(null, msgs);
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
-				return basicSetRightOperand(null, msgs);
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
+			return basicSetLeftOperand(null, msgs);
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
+			return basicSetRightOperand(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
-				return getLeftOperand();
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
-				return getOperator();
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
-				return getRightOperand();
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
+			return getLeftOperand();
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
+			return getOperator();
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
+			return getRightOperand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
-				setLeftOperand((QTermExpression)newValue);
-				return;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
-				setOperator((AssignmentOperator)newValue);
-				return;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
-				setRightOperand((QExpression)newValue);
-				return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
+			setLeftOperand((QTermExpression) newValue);
+			return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
+			setOperator((AssignmentOperator) newValue);
+			return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
+			setRightOperand((QExpression) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
-				setLeftOperand((QTermExpression)null);
-				return;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
-				setOperator(OPERATOR_EDEFAULT);
-				return;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
-				setRightOperand((QExpression)null);
-				return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
+			setLeftOperand((QTermExpression) null);
+			return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
+			setOperator(OPERATOR_EDEFAULT);
+			return;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
+			setRightOperand((QExpression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
-				return leftOperand != null;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
-				return operator != OPERATOR_EDEFAULT;
-			case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
-				return rightOperand != null;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__LEFT_OPERAND:
+			return leftOperand != null;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__OPERATOR:
+			return operator != OPERATOR_EDEFAULT;
+		case QIntegratedLanguageExpressionPackage.ASSIGNMENT_EXPRESSION__RIGHT_OPERAND:
+			return rightOperand != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operator: ");
@@ -323,35 +336,34 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 		return result.toString();
 	}
 
-
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
 	public void accept(QExpressionVisitor visitor) {
-		
-		if(visitor.visit(this)) {
-			
-			if(getLeftOperand() != null)
+
+		if (visitor.visit(this)) {
+
+			if (getLeftOperand() != null)
 				getLeftOperand().accept(visitor);
-			
-			if(getRightOperand() != null)
-				getRightOperand().accept(visitor);			
+
+			if (getRightOperand() != null)
+				getRightOperand().accept(visitor);
 		}
-		
+
 		visitor.endVisit(this);
 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
 	public ExpressionType getExpressionType() {
 		return ExpressionType.ASSIGNMENT;
 	}
-} //AssignmentExpressionImpl
+} // AssignmentExpressionImpl

@@ -28,7 +28,7 @@ public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected UnaryAtomicBufferedDataDefImpl() {
@@ -37,7 +37,7 @@ public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -47,7 +47,7 @@ public abstract class UnaryAtomicBufferedDataDefImpl<D extends QBufferedData> ex
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

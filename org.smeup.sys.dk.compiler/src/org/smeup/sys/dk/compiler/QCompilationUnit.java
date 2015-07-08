@@ -136,6 +136,14 @@ public interface QCompilationUnit extends QContextProvider {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
+	QPrototype getMethod(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
 	QModule getModule(String name, boolean deep);
 
 	/**
@@ -168,7 +176,7 @@ public interface QCompilationUnit extends QContextProvider {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
-	QPrototype<?> getPrototype(String name, boolean deep);
+	QPrototype getPrototype(String name, boolean deep);
 
 	/**
 	 * <!-- begin-user-doc -->

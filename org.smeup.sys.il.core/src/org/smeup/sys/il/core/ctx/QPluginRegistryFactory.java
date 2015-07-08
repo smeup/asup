@@ -19,6 +19,7 @@ package org.smeup.sys.il.core.ctx;
 public interface QPluginRegistryFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */

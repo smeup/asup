@@ -40,7 +40,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 	/**
 	 * The cached value of the '{@link #getArgument() <em>Argument</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getArgument()
 	 * @generated
 	 * @ordered
@@ -49,7 +49,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected MultipleAtomicBufferedDataDefImpl() {
@@ -58,7 +58,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,7 +68,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -78,7 +78,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetArgument(QUnaryAtomicBufferedDataDef<?> newArgument, NotificationChain msgs) {
@@ -96,7 +96,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,7 +156,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -171,7 +171,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

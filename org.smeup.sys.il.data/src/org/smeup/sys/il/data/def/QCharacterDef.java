@@ -50,7 +50,7 @@ public interface QCharacterDef extends QUnaryAtomicBufferedDataDef<QCharacter> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}
 	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Length</em>' attribute.
 	 * @see #getLength()
