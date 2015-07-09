@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.il.data.term.*;
 import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
