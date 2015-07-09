@@ -1662,7 +1662,7 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%rem">
+        name="%rem_o">
       <definition
           xsi:type="il-data-def:NumericDef"/>
       <entry>

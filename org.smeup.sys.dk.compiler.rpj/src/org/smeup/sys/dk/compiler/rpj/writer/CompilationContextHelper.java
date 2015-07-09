@@ -223,8 +223,14 @@ public class CompilationContextHelper {
 				if (dataTerm.getDataTermType().isMultiple() && dataTerm.getDataTermType().isAtomic()) {
 					QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataTerm.getDefinition();
 					return multipleAtomicDataDef.getArgument().getJavaClass();
-				} else
-					return dataTerm.getDefinition().getJavaClass();
+				} else {
+					// TODO verify
+					if(compoundTermExpression.getValue().startsWith("*IN")){
+						return Boolean.class;
+					}else{
+						return dataTerm.getDefinition().getJavaClass();
+					}
+				}
 
 			break;
 		case LOGICAL:

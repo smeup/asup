@@ -699,9 +699,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		if (expression.getValue().equalsIgnoreCase("*ALL"))
-			expression.setValue("%all");
-
+//		if (expression.getValue().equalsIgnoreCase("*ALL"))
+//			expression.setValue("%all");
+		
 		if(compilationUnit.getMethod(expression.getValue()) != null  && !expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 			if (expressionChild instanceof QTermExpression) {
@@ -740,7 +740,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				methodExec.accept(statementWriter);
 				if (!block.statements().isEmpty()) {
 					String content = block.statements().get(0).toString().trim();
-					this.buffer.append(strings.removeLastChar(content));
+//					this.buffer.append(strings.removeLastChar(content));
+					writeValue(block.statements().get(0).getClass(), target, strings.removeLastChar(content));
 				}
 
 				statementWriter.getBlocks().pop();
