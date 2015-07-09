@@ -562,13 +562,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// data
 		if (name.startsWith("*"))
-			order = "EDPMCSFK";
+			order = "EDPTMCSFK";
 		// prototype
 		else if (name.startsWith("%"))
-			order = "EPDMCSFK";
+			order = "EPTDMCSFK";
 		// other
 		else
-			order = "EMCSFKPD";
+			order = "EMCSFKTPD";
 
 		QNamedNode namedNode = getNamedNode(name, deep, order);
 
@@ -603,6 +603,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			// prototype
 			case 'P':
 				namedNode = getPrototype(name, deep);
+				break;
+			// method
+			case 'T':
+				namedNode = getMethod(name);
 				break;
 			// module
 			case 'M':
@@ -828,28 +832,27 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 				prototype.setText(eOperation.getName() + " text");
 
-				if(eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
+				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
-				}
-				else if(eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getNumeric())) {
+				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getNumeric())) {
 					QDecimalDef decimalDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDecimalDef();
 					prototype.setDefinition(decimalDef);
-				}
-				else
+				} else
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s23456bve8ft8fsdfc");
 
-				if(!eOperation.getEParameters().isEmpty()) {
+				if (!eOperation.getEParameters().isEmpty()) {
 					QEntry entry = QIntegratedLanguageFlowFactory.eINSTANCE.createEntry();
 					prototype.setEntry(entry);
-					
-					for(@SuppressWarnings("unused") EParameter eParameter: eOperation.getEParameters()) {
+
+					for (@SuppressWarnings("unused")
+					EParameter eParameter : eOperation.getEParameters()) {
 						QEntryParameter<?> entryParameter = QIntegratedLanguageFlowFactory.eINSTANCE.createEntryParameter();
 						// TODO
 						entry.getParameters().add(entryParameter);
 					}
 				}
-				
+
 				break;
 			}
 		}
