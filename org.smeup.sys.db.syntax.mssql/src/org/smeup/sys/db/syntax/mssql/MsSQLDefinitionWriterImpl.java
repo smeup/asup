@@ -104,4 +104,10 @@ public class MsSQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String hasLogicals(Table table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

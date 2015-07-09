@@ -13,6 +13,7 @@ package org.smeup.sys.db.syntax.mysql;
 
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.schema.helper.SQLObjectNameHelper;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QSchemaDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.syntax.base.BaseDefinitionWriterImpl;
@@ -44,6 +45,12 @@ public class MySQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	@Override
 	public String createLabelForFields(Schema schema, String name,
 			QTableDef table) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String hasLogicals(Table table) {
 		// TODO Auto-generated method stub
 		return null;
 	}
