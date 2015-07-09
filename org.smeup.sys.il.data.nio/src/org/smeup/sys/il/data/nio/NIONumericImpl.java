@@ -368,6 +368,31 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		return this;
 	}
 
+	@Override
+	public QNumeric qRem(int value) {
+		eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public QNumeric qRem(long value) {
+		eval(asDouble() % value);
+		return this;
+	}
+
+	@Override
+	public QNumeric qRem(QNumeric value) {
+		eval(asDouble() % value.asDouble());
+		return this;
+	}
+
+	@Override
+	public QNumeric qRem(short value) {
+		eval(asDouble() % value);
+		return this;
+	}
+	
+	
 	public abstract Number readNumber();
 
 	@Override

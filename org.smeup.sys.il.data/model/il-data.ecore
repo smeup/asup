@@ -1080,6 +1080,18 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pointer" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">
