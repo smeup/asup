@@ -15,6 +15,7 @@ Require-Bundle: org.smeup.sys.os.file,
  org.smeup.sys.os.core,
  org.smeup.sys.os.lib,
  org.smeup.sys.il.core,
- org.smeup.sys.os.cmd
+ org.smeup.sys.os.cmd,
+ org.smeup.sys.dk.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
