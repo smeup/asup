@@ -195,4 +195,10 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 			return null;
 		}
 	}
+
+
+	@Override
+	public String hasLogicals(Table table) {
+		return "SELECT * FROM SYSCAT.TABDEP WHERE BSCHEMA = '"+ table.getSchema().getName().trim() + "' AND BNAME = '" + table.getName().trim() + "'";
+	}
 }

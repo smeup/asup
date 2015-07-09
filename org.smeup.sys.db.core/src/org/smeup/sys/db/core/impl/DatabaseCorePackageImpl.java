@@ -1264,6 +1264,11 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		addEParameter(op, theSQLTablesPackage.getViewTable(), "view", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
 
+		op = addEOperation(databaseManagerEClass, ecorePackage.getEBoolean(), "hasLogicals", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConnection(), "connection", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theSQLTablesPackage.getTable(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, this.getDatabaseException());
+
 		addEOperation(databaseManagerEClass, ecorePackage.getEBoolean(), "isStarted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(databaseManagerEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);

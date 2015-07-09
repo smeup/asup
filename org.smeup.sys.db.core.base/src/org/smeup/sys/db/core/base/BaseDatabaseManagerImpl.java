@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.db.core.base;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -385,6 +386,28 @@ public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
 		catalogContainer.removeIndex(index);
 	}
 
+	@Override
+	public boolean hasLogicals(QConnection connection, Table table) throws SQLException {
+		QCatalogContainer catalogContainer = getCatalogContainer(connection);
+
+		QStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
+			String command = definitionWriter.hasLogicals(table);
+
+			statement = connection.createStatement(true);
+			resultSet = statement.executeQuery(command);
+			return resultSet.next();
+		} finally {
+			if (resultSet != null)
+				resultSet.close();
+			
+			if (statement != null)
+				statement.close();
+		}
+	}
+	
 	private QCatalogContainer getCatalogContainer(QConnection connection) throws SQLException {
 		return getCatalogContainer(connection.getCatalog());
 	}

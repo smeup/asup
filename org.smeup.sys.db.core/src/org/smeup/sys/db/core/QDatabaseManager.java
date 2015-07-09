@@ -96,6 +96,14 @@ public interface QDatabaseManager {
 	void dropView(QConnection connection, ViewTable view) throws SQLException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" tableRequired="true"
+	 * @generated
+	 */
+	boolean hasLogicals(QConnection connection, Table table) throws SQLException;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
