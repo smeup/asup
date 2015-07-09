@@ -41,7 +41,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -60,7 +60,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected StrollerDefImpl() {
@@ -69,7 +69,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -79,7 +79,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,7 +89,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -102,7 +102,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,7 +160,7 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

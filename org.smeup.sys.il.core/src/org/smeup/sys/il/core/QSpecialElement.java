@@ -48,7 +48,7 @@ public interface QSpecialElement extends QNamedNode {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QSpecialElement#getName <em>Name</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -77,7 +77,7 @@ public interface QSpecialElement extends QNamedNode {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QSpecialElement#getText <em>Text</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
@@ -106,7 +106,7 @@ public interface QSpecialElement extends QNamedNode {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QSpecialElement#isUnary <em>Unary</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Unary</em>' attribute.
 	 * @see #isUnary()
@@ -135,7 +135,7 @@ public interface QSpecialElement extends QNamedNode {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QSpecialElement#getValue <em>Value</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()

@@ -28,7 +28,7 @@ public interface QSlot extends QNameable {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -41,7 +41,7 @@ public interface QSlot extends QNameable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -49,7 +49,7 @@ public interface QSlot extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -57,7 +57,7 @@ public interface QSlot extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -65,7 +65,7 @@ public interface QSlot extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -73,7 +73,7 @@ public interface QSlot extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model nsPrefixRequired="true"
 	 * @generated
 	 */

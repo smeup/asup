@@ -38,7 +38,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -48,7 +48,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected FormatImpl() {
@@ -86,7 +86,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -96,7 +96,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -106,7 +106,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -129,7 +129,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -158,7 +158,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -176,7 +176,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -194,7 +194,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -210,7 +210,7 @@ public class FormatImpl extends FacetImpl implements QFormat {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

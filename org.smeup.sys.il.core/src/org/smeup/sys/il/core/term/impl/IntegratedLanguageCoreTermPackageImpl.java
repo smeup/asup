@@ -31,20 +31,20 @@ import org.smeup.sys.il.core.term.QTermContainer;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implements QIntegratedLanguageCoreTermPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass termEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass termContainerEClass = null;
@@ -70,7 +70,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -85,7 +85,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 	 * accessed. Clients should not invoke it directly. Instead, they should
 	 * simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -106,16 +106,16 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 				.getEPackage(QIntegratedLanguageCorePackage.eNS_URI) : QIntegratedLanguageCorePackage.eINSTANCE);
 		IntegratedLanguageCoreCtxPackageImpl theIntegratedLanguageCoreCtxPackage = (IntegratedLanguageCoreCtxPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) instanceof IntegratedLanguageCoreCtxPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
 		IntegratedLanguageCoreJavaPackageImpl theIntegratedLanguageCoreJavaPackage = (IntegratedLanguageCoreJavaPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) instanceof IntegratedLanguageCoreJavaPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) : QIntegratedLanguageCoreJavaPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) : QIntegratedLanguageCoreJavaPackage.eINSTANCE);
 		IntegratedLanguageCoreMetaPackageImpl theIntegratedLanguageCoreMetaPackage = (IntegratedLanguageCoreMetaPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) instanceof IntegratedLanguageCoreMetaPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
 		IntegratedLanguageCoreOutPackageImpl theIntegratedLanguageCoreOutPackage = (IntegratedLanguageCoreOutPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) instanceof IntegratedLanguageCoreOutPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageCoreTermPackage.createPackageContents();
@@ -143,7 +143,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -163,7 +163,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -173,7 +173,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -182,7 +182,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 	 * Creates the meta-model objects for the package. This method is guarded to
 	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -198,7 +198,7 @@ public class IntegratedLanguageCoreTermPackageImpl extends EPackageImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;

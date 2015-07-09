@@ -74,7 +74,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RangeImpl() {
@@ -83,7 +83,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,7 +93,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -173,7 +173,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -191,7 +191,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -207,7 +207,7 @@ public class RangeImpl extends FacetImpl implements QRange {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

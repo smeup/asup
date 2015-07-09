@@ -36,7 +36,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 	/**
 	 * The cached value of the '{@link #getFormulas() <em>Formulas</em>}'
 	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getFormulas()
 	 * @generated
 	 * @ordered
@@ -49,7 +49,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataDefImpl() {
@@ -58,7 +58,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,7 +68,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -104,7 +104,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,7 +118,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -135,7 +135,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,7 +150,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

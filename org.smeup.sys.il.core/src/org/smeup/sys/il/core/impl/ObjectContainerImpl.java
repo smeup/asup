@@ -41,7 +41,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 	/**
 	 * The cached value of the '{@link #getContents() <em>Contents</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getContents()
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ObjectContainerImpl() {
@@ -59,7 +59,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,7 +69,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -81,7 +81,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,7 +93,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -107,7 +107,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -121,7 +121,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -138,7 +138,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

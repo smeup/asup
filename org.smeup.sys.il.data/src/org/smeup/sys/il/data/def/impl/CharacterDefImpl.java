@@ -39,7 +39,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -49,7 +49,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	/**
 	 * The default value of the '{@link #isVarying() <em>Varying</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isVarying()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 	/**
 	 * The cached value of the '{@link #isVarying() <em>Varying</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isVarying()
 	 * @generated
 	 * @ordered
@@ -78,7 +78,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected CharacterDefImpl() {
@@ -87,7 +87,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -107,7 +107,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,7 +120,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,7 +130,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -143,7 +143,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,7 +159,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,7 +177,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,7 +195,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,7 +211,7 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

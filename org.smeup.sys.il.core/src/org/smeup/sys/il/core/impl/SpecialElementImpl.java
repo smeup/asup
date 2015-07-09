@@ -41,7 +41,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -61,7 +61,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -71,7 +71,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -81,7 +81,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #isUnary() <em>Unary</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUnary()
 	 * @generated
 	 * @ordered
@@ -91,7 +91,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #isUnary() <em>Unary</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #isUnary()
 	 * @generated
 	 * @ordered
@@ -101,7 +101,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -111,7 +111,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -120,7 +120,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected SpecialElementImpl() {
@@ -129,7 +129,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +149,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -162,7 +162,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -172,7 +172,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -185,7 +185,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -195,7 +195,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -218,7 +218,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,7 +231,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -251,7 +251,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -275,7 +275,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -299,7 +299,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -319,7 +319,7 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

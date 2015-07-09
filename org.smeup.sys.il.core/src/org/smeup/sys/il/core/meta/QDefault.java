@@ -47,7 +47,7 @@ public interface QDefault extends QFacet {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
@@ -64,7 +64,7 @@ public interface QDefault extends QFacet {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDefault_Values()
 	 * @model
@@ -74,7 +74,7 @@ public interface QDefault extends QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -82,7 +82,7 @@ public interface QDefault extends QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

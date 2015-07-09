@@ -48,14 +48,14 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
 public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataDefFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataDefFactory init() {
@@ -73,7 +73,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataDefFactoryImpl() {
@@ -82,7 +82,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -156,7 +156,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,7 +181,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -192,7 +192,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,7 +203,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -214,7 +214,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -225,7 +225,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -236,7 +236,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -247,7 +247,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -258,7 +258,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -269,7 +269,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -280,7 +280,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -291,7 +291,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -302,7 +302,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -313,7 +313,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -324,7 +324,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -335,7 +335,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -346,7 +346,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -357,7 +357,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -368,7 +368,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -379,7 +379,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public BinaryType createBinaryTypeFromString(EDataType eDataType, String initialValue) {
@@ -391,7 +391,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertBinaryTypeToString(EDataType eDataType, Object instanceValue) {
@@ -400,7 +400,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public DataDefType createDataDefTypeFromString(EDataType eDataType, String initialValue) {
@@ -412,7 +412,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertDataDefTypeToString(EDataType eDataType, Object instanceValue) {
@@ -421,7 +421,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public DatetimeType createDatetimeTypeFromString(EDataType eDataType, String initialValue) {
@@ -433,7 +433,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertDatetimeTypeToString(EDataType eDataType, Object instanceValue) {
@@ -442,7 +442,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public DateFormat createDateFormatFromString(EDataType eDataType, String initialValue) {
@@ -454,7 +454,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertDateFormatToString(EDataType eDataType, Object instanceValue) {
@@ -463,7 +463,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public DecimalType createDecimalTypeFromString(EDataType eDataType, String initialValue) {
@@ -475,7 +475,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertDecimalTypeToString(EDataType eDataType, Object instanceValue) {
@@ -484,7 +484,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public FloatingType createFloatingTypeFromString(EDataType eDataType, String initialValue) {
@@ -496,7 +496,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public String convertFloatingTypeToString(EDataType eDataType, Object instanceValue) {
@@ -505,7 +505,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -515,7 +515,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

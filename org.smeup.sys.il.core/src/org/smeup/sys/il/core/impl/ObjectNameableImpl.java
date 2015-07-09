@@ -27,7 +27,7 @@ public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ObjectNameableImpl() {
@@ -36,7 +36,7 @@ public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -46,7 +46,7 @@ public class ObjectNameableImpl extends ObjectImpl implements QObjectNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

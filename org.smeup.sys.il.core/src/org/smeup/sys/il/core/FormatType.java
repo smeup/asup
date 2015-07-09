@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Format Type</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getFormatType()
  * @model
  * @generated
@@ -35,7 +35,7 @@ public enum FormatType implements Enumerator {
 	 * The '
 	 * <em><b>Command String</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #COMMAND_STRING_VALUE
 	 * @generated
 	 * @ordered
@@ -43,7 +43,7 @@ public enum FormatType implements Enumerator {
 	COMMAND_STRING(60, "CommandString", "SCMD"), /**
 	 * The '<em><b>Generic</b></em>
 	 * ' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #GENERIC_VALUE
 	 * @generated
 	 * @ordered
@@ -51,7 +51,7 @@ public enum FormatType implements Enumerator {
 	GENERIC(50, "Generic", "GENERIC"), /**
 	 * The '<em><b>Name</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #NAME_VALUE
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public enum FormatType implements Enumerator {
 	NAME(10, "Name", "NAME"), /**
 	 * The '<em><b>Path Name</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #PATH_NAME_VALUE
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public enum FormatType implements Enumerator {
 	 * The '
 	 * <em><b>Regular Expression</b></em>' literal object. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #REGULAR_EXPRESSION_VALUE
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public enum FormatType implements Enumerator {
 	 * The '
 	 * <em><b>Simple Name</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #SIMPLE_NAME_VALUE
 	 * @generated
 	 * @ordered
@@ -108,7 +108,7 @@ public enum FormatType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #COMMAND_STRING
 	 * @model name="CommandString" literal="SCMD"
 	 * @generated
@@ -123,7 +123,7 @@ public enum FormatType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #GENERIC
 	 * @model name="Generic" literal="GENERIC"
 	 * @generated
@@ -138,7 +138,7 @@ public enum FormatType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #NAME
 	 * @model name="Name" literal="NAME"
 	 * @generated
@@ -153,7 +153,7 @@ public enum FormatType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #PATH_NAME
 	 * @model name="PathName" literal="PNAME"
 	 * @generated
@@ -184,7 +184,7 @@ public enum FormatType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #SIMPLE_NAME
 	 * @model name="SimpleName" literal="SNAME"
 	 * @generated
@@ -203,7 +203,7 @@ public enum FormatType implements Enumerator {
 	/**
 	 * A public read-only list of all the '<em><b>Format Type</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<FormatType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -211,35 +211,33 @@ public enum FormatType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Format Type</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static FormatType get(String literal) {
-		for (FormatType result : VALUES_ARRAY) {
+		for (FormatType result : VALUES_ARRAY)
 			if (result.toString().equals(literal))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Format Type</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static FormatType getByName(String name) {
-		for (FormatType result : VALUES_ARRAY) {
+		for (FormatType result : VALUES_ARRAY)
 			if (result.getName().equals(name))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Format Type</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static FormatType get(int value) {
@@ -264,21 +262,21 @@ public enum FormatType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -286,7 +284,7 @@ public enum FormatType implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private FormatType(int value, String name, String literal) {
@@ -297,7 +295,7 @@ public enum FormatType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -307,7 +305,7 @@ public enum FormatType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -317,7 +315,7 @@ public enum FormatType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -328,7 +326,7 @@ public enum FormatType implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

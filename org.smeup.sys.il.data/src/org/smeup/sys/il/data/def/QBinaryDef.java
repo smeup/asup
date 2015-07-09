@@ -36,7 +36,7 @@ public interface QBinaryDef extends QUnaryAtomicBufferedDataDef<QBinary> {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.BinaryType
 	 * @see #setType(BinaryType)
@@ -50,7 +50,7 @@ public interface QBinaryDef extends QUnaryAtomicBufferedDataDef<QBinary> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QBinaryDef#getType <em>Type</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.BinaryType
@@ -80,7 +80,7 @@ public interface QBinaryDef extends QUnaryAtomicBufferedDataDef<QBinary> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QBinaryDef#isUnsigned <em>Unsigned</em>}
 	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Unsigned</em>' attribute.
 	 * @see #isUnsigned()

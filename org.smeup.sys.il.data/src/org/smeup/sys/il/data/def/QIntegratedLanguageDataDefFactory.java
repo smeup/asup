@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.QStroller;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage
  * @generated
  */
@@ -25,7 +25,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	QIntegratedLanguageDataDefFactory eINSTANCE = org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefFactoryImpl.init();
@@ -33,7 +33,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Adapter Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Adapter Def</em>'.
 	 * @generated
 	 */
@@ -42,7 +42,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Array Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Array Def</em>'.
 	 * @generated
 	 */
@@ -51,7 +51,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Binary Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Binary Def</em>'.
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Buffer Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Buffer Def</em>'.
 	 * @generated
 	 */
@@ -96,7 +96,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Decimal Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Decimal Def</em>'.
 	 * @generated
 	 */
@@ -141,7 +141,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>List Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>List Def</em>'.
 	 * @generated
 	 */
@@ -150,7 +150,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Numeric Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Numeric Def</em>'.
 	 * @generated
 	 */
@@ -159,7 +159,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Pointer Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>Pointer Def</em>'.
 	 * @generated
 	 */
@@ -177,7 +177,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>String Def</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return a new object of class '<em>String Def</em>'.
 	 * @generated
 	 */
@@ -195,7 +195,7 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

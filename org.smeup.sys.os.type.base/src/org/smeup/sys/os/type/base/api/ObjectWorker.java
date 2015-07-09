@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.out.QObjectWriter;

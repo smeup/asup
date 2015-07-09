@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
 public interface QDataManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
@@ -34,7 +34,7 @@ public interface QDataManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true" contextRequired="true" objectRequired="true"
 	 *        termRequired="true"
 	 * @generated
@@ -43,7 +43,7 @@ public interface QDataManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
@@ -51,7 +51,7 @@ public interface QDataManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model containerRequired="true"
 	 * @generated
 	 */

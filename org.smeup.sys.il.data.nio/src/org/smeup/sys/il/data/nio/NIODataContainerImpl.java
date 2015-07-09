@@ -267,4 +267,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 		dataTerm.accept(resetter);
 	}
+
+	@Override
+	public void removeDataTerm(QDataTerm<?> dataTerm) {
+		String key = getKey(dataTerm);
+		this.dataTerms.remove(key);
+		this.datas.remove(key);
+	}
 }

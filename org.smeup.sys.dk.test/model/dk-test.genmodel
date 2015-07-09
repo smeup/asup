@@ -2,9 +2,9 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.dk.test/src" modelPluginID="org.smeup.sys.dk.test"
-    modelName="As.UP Development Kit Test" rootExtendsInterface="" suppressEMFTypes="true"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    modelName="As.UP Development Kit Test" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>dk-test.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitTest" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
@@ -119,6 +119,9 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-test.ecore#//TestManager">
+      <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareContext">
+        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareContext/klass"/>
+      </genOperations>
       <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareRunner">
         <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/context"/>
         <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/klass"/>
@@ -137,12 +140,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/time"/>
     </genClasses>
     <genClasses ecoreClass="dk-test.ecore#//TestRunner">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestRunner/testListeners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestRunner/listeners"/>
     </genClasses>
-    <genClasses ecoreClass="dk-test.ecore#//UnitTestRunner">
-      <genOperations ecoreOperation="dk-test.ecore#//UnitTestRunner/executeTest">
-        <genParameters ecoreParameter="dk-test.ecore#//UnitTestRunner/executeTest/context"/>
-      </genOperations>
-    </genClasses>
+    <genClasses ecoreClass="dk-test.ecore#//UnitTestRunner"/>
   </genPackages>
 </genmodel:GenModel>

@@ -29,7 +29,7 @@ public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected AdapterDefImpl() {
@@ -38,7 +38,7 @@ public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

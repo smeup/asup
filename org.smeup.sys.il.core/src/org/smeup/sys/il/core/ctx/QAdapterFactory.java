@@ -19,7 +19,7 @@ package org.smeup.sys.il.core.ctx;
 public interface QAdapterFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model contextRequired="true" adaptableRequired="true"
 	 *        adapterTypeRequired="true"
 	 *        TBounds="org.eclipse.emf.ecore.EJavaObject"

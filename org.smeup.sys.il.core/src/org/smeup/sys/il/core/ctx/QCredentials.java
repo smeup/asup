@@ -48,7 +48,7 @@ public interface QCredentials extends QObject {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>User</em>' attribute.
 	 * @see #getUser()

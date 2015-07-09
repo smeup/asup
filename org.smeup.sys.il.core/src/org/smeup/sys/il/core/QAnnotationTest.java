@@ -48,7 +48,7 @@ public interface QAnnotationTest extends QAnnotation {
 	 * {@link org.smeup.sys.il.core.QAnnotationTest#getExpression
 	 * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Expression</em>' attribute.
 	 * @see #getExpression()
@@ -77,7 +77,7 @@ public interface QAnnotationTest extends QAnnotation {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QAnnotationTest#getMessage <em>Message</em>}
 	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Message</em>' attribute.
 	 * @see #getMessage()

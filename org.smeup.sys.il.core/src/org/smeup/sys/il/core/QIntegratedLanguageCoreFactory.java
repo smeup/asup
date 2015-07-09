@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage
  * @generated
  */
@@ -20,7 +20,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	QIntegratedLanguageCoreFactory eINSTANCE = org.smeup.sys.il.core.impl.IntegratedLanguageCoreFactoryImpl.init();
@@ -37,7 +37,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Conversion</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Conversion</em>'.
 	 * @generated
 	 */
@@ -46,7 +46,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Derived</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Derived</em>'.
 	 * @generated
 	 */
@@ -55,7 +55,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Format</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Format</em>'.
 	 * @generated
 	 */
@@ -64,7 +64,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Object</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Object</em>'.
 	 * @generated
 	 */
@@ -82,7 +82,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Overlay</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Overlay</em>'.
 	 * @generated
 	 */
@@ -91,7 +91,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Remap</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Remap</em>'.
 	 * @generated
 	 */
@@ -100,7 +100,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns a new object of class '<em>Special</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return a new object of class '<em>Special</em>'.
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

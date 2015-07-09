@@ -37,7 +37,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -47,7 +47,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getStatus()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ConversionImpl() {
@@ -65,7 +65,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,7 +75,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -85,7 +85,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -98,7 +98,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +112,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,7 +156,7 @@ public class ConversionImpl extends FacetImpl implements QConversion {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

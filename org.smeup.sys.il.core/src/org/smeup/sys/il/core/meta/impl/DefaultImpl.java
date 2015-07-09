@@ -42,7 +42,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -62,7 +62,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	/**
 	 * The cached value of the '{@link #getValues() <em>Values</em>}' attribute
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getValues()
 	 * @generated
 	 * @ordered
@@ -71,7 +71,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DefaultImpl() {
@@ -80,7 +80,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,7 +90,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -100,7 +100,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -125,7 +125,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -135,7 +135,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -161,7 +161,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -181,7 +181,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -199,7 +199,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -215,7 +215,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -22,14 +22,14 @@ import org.smeup.sys.il.core.meta.QRange;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreMetaFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreMetaFactory init() {
@@ -47,7 +47,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageCoreMetaFactoryImpl() {
@@ -56,7 +56,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -88,7 +88,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -99,7 +99,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -110,7 +110,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -121,7 +121,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class IntegratedLanguageCoreMetaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

@@ -38,7 +38,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -48,7 +48,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The cached value of the '{@link #getUser() <em>User</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getUser()
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The default value of the '{@link #getPassword() <em>Password</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -68,7 +68,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 	/**
 	 * The cached value of the '{@link #getPassword() <em>Password</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPassword()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected CredentialsImpl() {
@@ -86,7 +86,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -96,7 +96,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -106,7 +106,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,7 +119,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -129,7 +129,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -158,7 +158,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -176,7 +176,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -194,7 +194,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -210,7 +210,7 @@ public abstract class CredentialsImpl extends ObjectImpl implements QCredentials
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

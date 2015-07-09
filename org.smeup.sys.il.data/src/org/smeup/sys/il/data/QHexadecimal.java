@@ -20,7 +20,7 @@ public interface QHexadecimal extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -28,7 +28,7 @@ public interface QHexadecimal extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

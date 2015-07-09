@@ -20,14 +20,14 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreCtxFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreCtxFactory init() {
@@ -45,7 +45,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageCoreCtxFactoryImpl() {
@@ -54,7 +54,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,7 +67,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +82,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ContextInjectionStrategy createContextInjectionStrategyFromString(EDataType eDataType, String initialValue) {
@@ -109,7 +109,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertContextInjectionStrategyToString(EDataType eDataType, Object instanceValue) {
@@ -118,7 +118,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class IntegratedLanguageCoreCtxFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

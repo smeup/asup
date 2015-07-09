@@ -10,5 +10,6 @@ Require-Bundle: org.smeup.sys.os.cmd,
  org.smeup.sys.os.pgm,
  org.smeup.sys.rt.core,
  org.smeup.sys.co.shell,
- org.smeup.sys.os.cmd.base
+ org.smeup.sys.os.cmd.base,
+ org.smeup.sys.dk.core
 Export-Package: org.smeup.sys.os.cmd.ibmi

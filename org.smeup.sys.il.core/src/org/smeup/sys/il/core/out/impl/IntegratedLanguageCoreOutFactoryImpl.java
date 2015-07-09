@@ -18,14 +18,14 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreOutFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreOutFactory init() {
@@ -43,7 +43,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageCoreOutFactoryImpl() {
@@ -52,7 +52,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -65,7 +65,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,7 +75,7 @@ public class IntegratedLanguageCoreOutFactoryImpl extends EFactoryImpl implement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

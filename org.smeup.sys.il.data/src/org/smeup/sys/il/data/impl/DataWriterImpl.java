@@ -50,7 +50,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataWriterImpl() {
@@ -59,7 +59,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

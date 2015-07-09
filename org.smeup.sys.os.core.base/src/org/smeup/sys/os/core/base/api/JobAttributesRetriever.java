@@ -13,7 +13,7 @@ package org.smeup.sys.os.core.base.api;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Context Injection Strategy</b></em>', and utility methods for working
  * with them. <!-- end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContextInjectionStrategy()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * The '<em><b>Local</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #LOCAL_VALUE
 	 * @generated
 	 * @ordered
@@ -36,7 +36,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * The '<em><b>Remote</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #REMOTE_VALUE
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #LOCAL
 	 * @model name="Local" literal="LOCAL"
 	 * @generated
@@ -65,7 +65,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #REMOTE
 	 * @model name="Remote" literal="REMOTE"
 	 * @generated
@@ -76,7 +76,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * An array of all the '<em><b>Context Injection Strategy</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final ContextInjectionStrategy[] VALUES_ARRAY = new ContextInjectionStrategy[] { LOCAL, REMOTE, };
@@ -93,35 +93,33 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
 	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ContextInjectionStrategy get(String literal) {
-		for (ContextInjectionStrategy result : VALUES_ARRAY) {
+		for (ContextInjectionStrategy result : VALUES_ARRAY)
 			if (result.toString().equals(literal))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
 	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ContextInjectionStrategy getByName(String name) {
-		for (ContextInjectionStrategy result : VALUES_ARRAY) {
+		for (ContextInjectionStrategy result : VALUES_ARRAY)
 			if (result.getName().equals(name))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
 	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ContextInjectionStrategy get(int value) {
@@ -136,21 +134,21 @@ public enum ContextInjectionStrategy implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -158,7 +156,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private ContextInjectionStrategy(int value, String name, String literal) {
@@ -169,7 +167,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -179,7 +177,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -189,7 +187,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -200,7 +198,7 @@ public enum ContextInjectionStrategy implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

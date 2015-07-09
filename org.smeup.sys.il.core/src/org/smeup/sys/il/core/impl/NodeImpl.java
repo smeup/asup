@@ -43,7 +43,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	/**
 	 * The cached value of the '{@link #getFacets() <em>Facets</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getFacets()
 	 * @generated
 	 * @ordered
@@ -52,7 +52,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected NodeImpl() {
@@ -61,7 +61,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -71,7 +71,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -130,7 +130,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -144,7 +144,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -158,7 +158,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -175,7 +175,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -190,7 +190,7 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

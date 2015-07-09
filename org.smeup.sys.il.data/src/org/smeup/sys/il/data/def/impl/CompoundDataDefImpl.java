@@ -53,7 +53,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	 * The default value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -64,7 +64,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	 * The cached value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -84,7 +84,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -94,7 +94,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The cached value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -104,7 +104,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The default value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -114,7 +114,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The cached value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected CompoundDataDefImpl() {
@@ -132,7 +132,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,7 +152,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -165,7 +165,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -177,7 +177,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -187,7 +187,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +200,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -210,7 +210,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -223,7 +223,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -237,7 +237,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -257,7 +257,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -283,7 +283,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -307,7 +307,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -327,7 +327,7 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

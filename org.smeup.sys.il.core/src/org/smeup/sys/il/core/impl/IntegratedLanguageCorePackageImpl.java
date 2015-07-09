@@ -50,132 +50,132 @@ import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements QIntegratedLanguageCorePackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass annotationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass annotationTestEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass conversionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass derivedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass formatEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass nameableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass namedNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass nodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass objectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass objectContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass objectIteratorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass objectNameableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass overlayEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass remapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass specialEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EClass specialElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EEnum conversionStatusEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private EEnum formatTypeEEnum = null;
@@ -201,7 +201,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -216,7 +216,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * accessed. Clients should not invoke it directly. Instead, they should
 	 * simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -235,19 +235,19 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Obtain or create and register interdependencies
 		IntegratedLanguageCoreCtxPackageImpl theIntegratedLanguageCoreCtxPackage = (IntegratedLanguageCoreCtxPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) instanceof IntegratedLanguageCoreCtxPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
 		IntegratedLanguageCoreJavaPackageImpl theIntegratedLanguageCoreJavaPackage = (IntegratedLanguageCoreJavaPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) instanceof IntegratedLanguageCoreJavaPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) : QIntegratedLanguageCoreJavaPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) : QIntegratedLanguageCoreJavaPackage.eINSTANCE);
 		IntegratedLanguageCoreMetaPackageImpl theIntegratedLanguageCoreMetaPackage = (IntegratedLanguageCoreMetaPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) instanceof IntegratedLanguageCoreMetaPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
 		IntegratedLanguageCoreOutPackageImpl theIntegratedLanguageCoreOutPackage = (IntegratedLanguageCoreOutPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) instanceof IntegratedLanguageCoreOutPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
 		IntegratedLanguageCoreTermPackageImpl theIntegratedLanguageCoreTermPackage = (IntegratedLanguageCoreTermPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) instanceof IntegratedLanguageCoreTermPackageImpl ? EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) : QIntegratedLanguageCoreTermPackage.eINSTANCE);
+						.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) : QIntegratedLanguageCoreTermPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageCorePackage.createPackageContents();
@@ -275,7 +275,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -285,7 +285,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -295,7 +295,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -305,7 +305,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -315,7 +315,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -325,7 +325,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -335,7 +335,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -345,7 +345,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -355,7 +355,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -365,7 +365,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -375,7 +375,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -385,7 +385,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -395,7 +395,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -405,7 +405,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -415,7 +415,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -425,7 +425,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -435,7 +435,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -445,7 +445,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -455,7 +455,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -465,7 +465,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -475,7 +475,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -485,7 +485,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -495,7 +495,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -505,7 +505,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -515,7 +515,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -525,7 +525,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -535,7 +535,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -545,7 +545,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -555,7 +555,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -565,7 +565,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -575,7 +575,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -585,7 +585,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -595,7 +595,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -605,7 +605,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -615,7 +615,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -625,7 +625,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -635,7 +635,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -644,7 +644,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * Creates the meta-model objects for the package. This method is guarded to
 	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -709,7 +709,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;

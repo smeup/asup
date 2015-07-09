@@ -34,7 +34,7 @@ public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QU
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Delegate</em>' containment reference.
 	 * @see #setDelegate(QBufferedDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getEnumDef_Delegate()
@@ -47,7 +47,7 @@ public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QU
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QEnumDef#getDelegate <em>Delegate</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Delegate</em>' containment
 	 *            reference.
@@ -77,7 +77,7 @@ public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QU
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QEnumDef#getKlass <em>Klass</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Klass</em>' attribute.
 	 * @see #getKlass()

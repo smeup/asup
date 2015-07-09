@@ -240,6 +240,13 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="removeDataTerm">
+      <eParameters name="dataTerm" lowerBound="1">
+        <eGenericType eClassifier="#//term/DataTerm">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="resetData"/>
     <eOperations name="resetData">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -19,7 +19,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;

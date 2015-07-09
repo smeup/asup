@@ -76,7 +76,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected CardinalityImpl() {
@@ -85,7 +85,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +95,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -148,7 +148,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -161,7 +161,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -177,7 +177,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -195,7 +195,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -213,7 +213,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -229,7 +229,7 @@ public class CardinalityImpl extends FacetImpl implements QCardinality {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

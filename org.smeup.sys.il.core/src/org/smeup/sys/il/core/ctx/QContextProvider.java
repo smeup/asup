@@ -19,7 +19,7 @@ package org.smeup.sys.il.core.ctx;
 public interface QContextProvider {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

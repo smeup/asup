@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Conversion Status</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getConversionStatus()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * The '<em><b>Possible</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #POSSIBLE_VALUE
 	 * @generated
 	 * @ordered
@@ -36,7 +36,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * The '<em><b>Supported</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #SUPPORTED_VALUE
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * The '<em><b>Unsupported</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNSUPPORTED_VALUE
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * The '<em><b>Todo</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #TODO_VALUE
 	 * @generated
 	 * @ordered
@@ -70,7 +70,7 @@ public enum ConversionStatus implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #POSSIBLE
 	 * @model name="Possible" literal="POS"
 	 * @generated
@@ -85,7 +85,7 @@ public enum ConversionStatus implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #SUPPORTED
 	 * @model name="Supported" literal="SUP"
 	 * @generated
@@ -100,7 +100,7 @@ public enum ConversionStatus implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #UNSUPPORTED
 	 * @model name="Unsupported" literal="UNS"
 	 * @generated
@@ -115,7 +115,7 @@ public enum ConversionStatus implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #TODO
 	 * @model name="Todo" literal="TODO"
 	 * @generated
@@ -134,7 +134,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * A public read-only list of all the '<em><b>Conversion Status</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<ConversionStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
@@ -142,35 +142,33 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
 	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ConversionStatus get(String literal) {
-		for (ConversionStatus result : VALUES_ARRAY) {
+		for (ConversionStatus result : VALUES_ARRAY)
 			if (result.toString().equals(literal))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
 	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ConversionStatus getByName(String name) {
-		for (ConversionStatus result : VALUES_ARRAY) {
+		for (ConversionStatus result : VALUES_ARRAY)
 			if (result.getName().equals(name))
 				return result;
-		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Conversion Status</b></em>' literal with the
 	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static ConversionStatus get(int value) {
@@ -189,21 +187,21 @@ public enum ConversionStatus implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -211,7 +209,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private ConversionStatus(int value, String name, String literal) {
@@ -222,7 +220,7 @@ public enum ConversionStatus implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -232,7 +230,7 @@ public enum ConversionStatus implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -242,7 +240,7 @@ public enum ConversionStatus implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,7 +251,7 @@ public enum ConversionStatus implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;

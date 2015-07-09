@@ -29,7 +29,7 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected IdentityDefImpl() {
@@ -38,7 +38,7 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

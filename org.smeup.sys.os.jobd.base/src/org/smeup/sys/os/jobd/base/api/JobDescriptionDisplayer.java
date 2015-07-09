@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.core.Supported;
+import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;

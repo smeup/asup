@@ -51,7 +51,7 @@ public interface QSpecial extends QFacet {
 	 * {@link org.smeup.sys.il.core.QSpecial#getClassDelegate
 	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Class Delegate</em>' attribute.
 	 * @see #getClassDelegate()
@@ -68,7 +68,7 @@ public interface QSpecial extends QFacet {
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecial_Elements()
 	 * @model containment="true"

@@ -35,7 +35,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -45,7 +45,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -55,7 +55,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -65,7 +65,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -74,7 +74,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected DomainImpl() {
@@ -83,7 +83,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,7 +93,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,7 +103,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -116,7 +116,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -126,7 +126,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +139,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -173,7 +173,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -191,7 +191,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -207,7 +207,7 @@ public class DomainImpl extends FacetImpl implements QDomain {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

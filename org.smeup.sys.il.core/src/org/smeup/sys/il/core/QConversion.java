@@ -34,7 +34,7 @@ public interface QConversion extends QFacet {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Status</em>' attribute.
 	 * @see org.smeup.sys.il.core.ConversionStatus
 	 * @see #setStatus(ConversionStatus)
@@ -48,7 +48,7 @@ public interface QConversion extends QFacet {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Status</em>' attribute.
 	 * @see org.smeup.sys.il.core.ConversionStatus

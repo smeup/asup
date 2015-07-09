@@ -36,7 +36,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -75,7 +75,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected RemapImpl() {
@@ -84,7 +84,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -94,7 +94,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -104,7 +104,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,7 +140,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,7 +156,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -174,7 +174,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -192,7 +192,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

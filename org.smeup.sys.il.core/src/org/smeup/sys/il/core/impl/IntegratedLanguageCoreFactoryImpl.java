@@ -31,14 +31,14 @@ import org.smeup.sys.il.core.QSpecialElement;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreFactory init() {
@@ -55,7 +55,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageCoreFactoryImpl() {
@@ -64,7 +64,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -114,7 +114,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -131,7 +131,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,7 +142,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -153,7 +153,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -186,7 +186,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -197,7 +197,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +208,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -219,7 +219,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -230,7 +230,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -241,7 +241,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ConversionStatus createConversionStatusFromString(EDataType eDataType, String initialValue) {
@@ -253,7 +253,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertConversionStatusToString(EDataType eDataType, Object instanceValue) {
@@ -262,7 +262,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public FormatType createFormatTypeFromString(EDataType eDataType, String initialValue) {
@@ -274,7 +274,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertFormatTypeToString(EDataType eDataType, Object instanceValue) {
@@ -283,7 +283,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -293,7 +293,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

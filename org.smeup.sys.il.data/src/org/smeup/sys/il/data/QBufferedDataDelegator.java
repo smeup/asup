@@ -19,7 +19,7 @@ package org.smeup.sys.il.data;
 public interface QBufferedDataDelegator extends QDataDelegator<QBufferedData>, QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

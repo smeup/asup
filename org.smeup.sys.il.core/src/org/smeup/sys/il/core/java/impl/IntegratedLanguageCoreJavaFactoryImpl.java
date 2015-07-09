@@ -33,14 +33,14 @@ import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implements QIntegratedLanguageCoreJavaFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static QIntegratedLanguageCoreJavaFactory init() {
@@ -58,7 +58,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IntegratedLanguageCoreJavaFactoryImpl() {
@@ -67,7 +67,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -80,7 +80,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +127,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -174,7 +174,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Annotation createJavaAnnotationFromString(EDataType eDataType, String initialValue) {
@@ -183,7 +183,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaAnnotationToString(EDataType eDataType, Object instanceValue) {
@@ -192,7 +192,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Closeable createJavaCloseableFromString(EDataType eDataType, String initialValue) {
@@ -201,7 +201,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaCloseableToString(EDataType eDataType, Object instanceValue) {
@@ -210,7 +210,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Dictionary<?, ?> createJavaDictionaryFromString(EDataType eDataType, String initialValue) {
@@ -219,7 +219,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaDictionaryToString(EDataType eDataType, Object instanceValue) {
@@ -228,7 +228,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Exception createJavaExceptionFromString(EDataType eDataType, String initialValue) {
@@ -237,7 +237,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaExceptionToString(EDataType eDataType, Object instanceValue) {
@@ -246,7 +246,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public InputStream createJavaInputStreamFromString(EDataType eDataType, String initialValue) {
@@ -255,7 +255,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaInputStreamToString(EDataType eDataType, Object instanceValue) {
@@ -264,7 +264,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IOException createJavaIOExceptionFromString(EDataType eDataType, String initialValue) {
@@ -273,7 +273,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaIOExceptionToString(EDataType eDataType, Object instanceValue) {
@@ -282,7 +282,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -292,7 +292,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaIterableToString(EDataType eDataType, Object instanceValue) {
@@ -301,7 +301,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -311,7 +311,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaIteratorToString(EDataType eDataType, Object instanceValue) {
@@ -320,7 +320,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Map<?, ?> createJavaMapFromString(EDataType eDataType, String initialValue) {
@@ -329,7 +329,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaMapToString(EDataType eDataType, Object instanceValue) {
@@ -338,7 +338,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public OutputStream createJavaOutputStreamFromString(EDataType eDataType, String initialValue) {
@@ -347,7 +347,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaOutputStreamToString(EDataType eDataType, Object instanceValue) {
@@ -356,7 +356,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Properties createJavaPropertiesFromString(EDataType eDataType, String initialValue) {
@@ -365,7 +365,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaPropertiesToString(EDataType eDataType, Object instanceValue) {
@@ -374,7 +374,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Runnable createJavaRunnableFromString(EDataType eDataType, String initialValue) {
@@ -383,7 +383,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaRunnableToString(EDataType eDataType, Object instanceValue) {
@@ -392,7 +392,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Throwable createJavaThrowableFromString(EDataType eDataType, String initialValue) {
@@ -401,7 +401,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaThrowableToString(EDataType eDataType, Object instanceValue) {
@@ -410,7 +410,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Type createJavaTypeFromString(EDataType eDataType, String initialValue) {
@@ -419,7 +419,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaTypeToString(EDataType eDataType, Object instanceValue) {
@@ -428,7 +428,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public URI createJavaURIFromString(EDataType eDataType, String initialValue) {
@@ -437,7 +437,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaURIToString(EDataType eDataType, Object instanceValue) {
@@ -446,7 +446,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public URL createJavaURLFromString(EDataType eDataType, String initialValue) {
@@ -455,7 +455,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaURLToString(EDataType eDataType, Object instanceValue) {
@@ -464,7 +464,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Writer createJavaWriterFromString(EDataType eDataType, String initialValue) {
@@ -473,7 +473,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public String convertJavaWriterToString(EDataType eDataType, Object instanceValue) {
@@ -482,7 +482,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -492,7 +492,7 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @deprecated
 	 * @generated
 	 */

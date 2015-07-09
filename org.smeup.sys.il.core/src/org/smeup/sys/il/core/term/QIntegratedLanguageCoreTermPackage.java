@@ -21,7 +21,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermFactory
  * @model kind="package"
  * @generated
@@ -29,21 +29,21 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	/**
 	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNAME = "term";
 
 	/**
 	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/core/term";
 
 	/**
 	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-core-term";
@@ -51,7 +51,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	/**
 	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	QIntegratedLanguageCoreTermPackage eINSTANCE = org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl.init();
@@ -59,7 +59,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.term.QTerm
 	 * <em>Term</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.smeup.sys.il.core.term.QTerm
 	 * @see org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl#getTerm()
 	 * @generated
@@ -69,7 +69,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -88,7 +88,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.core.term.QTermContainer <em>Term Container</em>}
 	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see org.smeup.sys.il.core.term.QTermContainer
 	 * @see org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl#getTermContainer()
 	 * @generated
@@ -98,7 +98,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Term Container</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -119,7 +119,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.core.term.QTermContainer <em>Term Container</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the meta object for class '<em>Term Container</em>'.
 	 * @see org.smeup.sys.il.core.term.QTermContainer
 	 * @generated
@@ -145,7 +145,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	interface Literals {
@@ -165,7 +165,7 @@ public interface QIntegratedLanguageCoreTermPackage extends EPackage {
 		 * {@link org.smeup.sys.il.core.term.QTermContainer
 		 * <em>Term Container</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
+		 *
 		 * @see org.smeup.sys.il.core.term.QTermContainer
 		 * @see org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl#getTermContainer()
 		 * @generated

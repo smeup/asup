@@ -19,7 +19,7 @@ package org.smeup.sys.il.data;
 public interface QIndicator extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -27,7 +27,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -35,7 +35,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -43,7 +43,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -51,7 +51,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -59,7 +59,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -68,7 +68,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -76,7 +76,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -84,7 +84,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -92,7 +92,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -100,7 +100,7 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */

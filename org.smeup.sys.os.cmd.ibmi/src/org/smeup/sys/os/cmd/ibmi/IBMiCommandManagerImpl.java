@@ -19,6 +19,9 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.smeup.sys.co.shell.QShellManager;
+import org.smeup.sys.dk.core.DevelopmentStatusType;
+import org.smeup.sys.dk.core.QDevelopmentKitCoreFactory;
+import org.smeup.sys.dk.core.QDevelopmentStatus;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserFactory;
 import org.smeup.sys.dk.parser.ibmi.cl.ParserInterface;
 import org.smeup.sys.dk.parser.ibmi.cl.model.parm.CLParmAbstractComponent;
@@ -69,14 +72,15 @@ import org.smeup.sys.rt.core.QApplication;
 public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QShellManager {
 
 	private QOutputManager outputManager;
-	
+
 	protected QJobManager jobManager;
 	protected QDataManager dataManager;
 	protected ParserInterface<?> clParameterParser;
 	protected ParserInterface<?> clParser;
 
 	@Inject
-	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager, QOutputManager outputManager, QApplication application) {
+	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
+			QOutputManager outputManager, QApplication application) {
 		super(resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
@@ -120,8 +124,26 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		for (QCommandParameter commandParameter : qCommand.getParameters(CommandParameterOrder.POSITION)) {
 
+			QDevelopmentStatus developmentStatus = QDevelopmentKitCoreFactory.eINSTANCE.createDevelopmentStatus();
+
 			// data term
 			QDataTerm<?> dataTerm = commandParameter.getDataTerm();
+			switch (commandParameter.getStatus()) {
+			case POSSIBLE:
+				break;
+			case SUPPORTED:
+				developmentStatus.setValue(DevelopmentStatusType.SUPPORTED);
+				dataTerm.getFacets().add(developmentStatus);
+				break;
+			case TODO:
+				developmentStatus.setValue(DevelopmentStatusType.TO_DO);
+				dataTerm.getFacets().add(developmentStatus);
+				break;
+			case UNSUPPORTED:
+				developmentStatus.setValue(DevelopmentStatusType.UNSUPPORTED);
+				dataTerm.getFacets().add(developmentStatus);				
+				break;
+			}
 			dataTerms.put(commandParameter.getName(), dataTerm);
 		}
 
@@ -129,8 +151,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms, defaults);
 		dataContainer.clearData();
 		callableCommand.setDataContainer(dataContainer);
-		
-		if(defaults)
+
+		if (defaults)
 			dataContainer.resetData();
 
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
@@ -214,11 +236,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		switch (dataTerm.getDataTermType()) {
 
 		case MULTIPLE_ATOMIC:
-/*
-			if (defaults && useDefault(dataTerm, value)) {
-				value = buildDefault(dataTerm);
-				defaults = false;
-			}*/
+			/*
+			 * if (defaults && useDefault(dataTerm, value)) { value =
+			 * buildDefault(dataTerm); defaults = false; }
+			 */
 
 			QList<?> listAtomic = (QList<?>) data;
 
@@ -270,10 +291,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		case MULTIPLE_COMPOUND:
 
-/*			if (defaults && useDefault(dataTerm, value)) {
-				value = buildDefault(dataTerm);
-				defaults = false;
-			}*/
+			/*
+			 * if (defaults && useDefault(dataTerm, value)) { value =
+			 * buildDefault(dataTerm); defaults = false; }
+			 */
 
 			QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = (QMultipleCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
@@ -309,8 +330,8 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		case UNARY_ATOMIC:
 
-//			if (defaults && useDefault(dataTerm, value))
-//				value = buildDefault(dataTerm);
+			// if (defaults && useDefault(dataTerm, value))
+			// value = buildDefault(dataTerm);
 
 			if (value.isEmpty() == false) {
 
@@ -363,10 +384,10 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			break;
 		case UNARY_COMPOUND:
 
-/*			if (defaults && useDefault(dataTerm, value)) {
-				value = buildDefault(dataTerm);
-				defaults = false;
-			}*/
+			/*
+			 * if (defaults && useDefault(dataTerm, value)) { value =
+			 * buildDefault(dataTerm); defaults = false; }
+			 */
 
 			// Manage Struct specials
 			value = resolveSpecialValue(dataTerm, value);
@@ -671,6 +692,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			throw new OperatingSystemRuntimeException("Invalid contextID");
 
 		outputManager.setDefaultWriter(job.getContext(), name);
-		
+
 	}
 }

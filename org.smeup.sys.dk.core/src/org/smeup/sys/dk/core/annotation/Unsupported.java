@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.dk.core;
+package org.smeup.sys.dk.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

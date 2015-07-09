@@ -19,7 +19,7 @@ package org.smeup.sys.il.core.java;
 public interface QStrings {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true" charsRequired="true"
 	 *        timesRequired="true" beforeRequired="true"
 	 * @generated
@@ -28,7 +28,7 @@ public interface QStrings {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
@@ -36,7 +36,7 @@ public interface QStrings {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
@@ -44,7 +44,7 @@ public interface QStrings {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
@@ -52,7 +52,7 @@ public interface QStrings {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
@@ -60,7 +60,7 @@ public interface QStrings {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */

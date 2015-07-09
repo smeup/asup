@@ -34,7 +34,7 @@ public interface QRemap extends QFacet {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getRemap_Name()
@@ -46,7 +46,7 @@ public interface QRemap extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.QRemap#getName
 	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -62,7 +62,7 @@ public interface QRemap extends QFacet {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Index</em>' attribute.
 	 * @see #setIndex(String)
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getRemap_Index()
@@ -74,7 +74,7 @@ public interface QRemap extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.QRemap#getIndex
 	 * <em>Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Index</em>' attribute.
 	 * @see #getIndex()

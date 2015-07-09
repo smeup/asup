@@ -115,7 +115,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	/*
 	 * public void eval(Object value) {
-	 *
+	 * 
 	 * if (value == null) { clear(); return; } else if(value instanceof
 	 * QSpecialElement) { QSpecialElement specialElement = (QSpecialElement)
 	 * value; eval(Long.parseLong(specialElement.getValue())); } else

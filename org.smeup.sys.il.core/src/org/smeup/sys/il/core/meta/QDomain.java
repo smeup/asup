@@ -32,7 +32,7 @@ public interface QDomain extends QFacet {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDomain_Name()
@@ -44,7 +44,7 @@ public interface QDomain extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getName
 	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -60,7 +60,7 @@ public interface QDomain extends QFacet {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDomain_Text()
@@ -72,7 +72,7 @@ public interface QDomain extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getText
 	 * <em>Text</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()

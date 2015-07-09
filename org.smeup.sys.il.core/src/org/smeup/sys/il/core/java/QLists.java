@@ -21,7 +21,7 @@ import java.util.List;
 public interface QLists {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true"
 	 *        elementRequired="true"
 	 * @generated
@@ -30,7 +30,7 @@ public interface QLists {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true"
 	 *        elementRequired="true"
 	 * @generated

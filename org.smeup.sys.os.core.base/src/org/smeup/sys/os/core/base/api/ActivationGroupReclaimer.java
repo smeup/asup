@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import org.smeup.sys.dk.core.ToDo;
+import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;

@@ -32,7 +32,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -42,7 +42,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -57,7 +57,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	/**
 	 * The default value of the '{@link #getMessage() <em>Message</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 	/**
 	 * The cached value of the '{@link #getMessage() <em>Message</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getMessage()
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AnnotationTestImpl() {
@@ -85,7 +85,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +95,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -141,7 +141,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,7 +157,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -193,7 +193,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -209,7 +209,7 @@ public class AnnotationTestImpl extends AnnotationImpl implements QAnnotationTes
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

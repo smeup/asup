@@ -34,7 +34,7 @@ public interface QObjectContainer<T extends QObject> extends QObject {
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Contents</em>' containment reference list.
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectContainer_Contents()
 	 * @model containment="true"
@@ -44,7 +44,7 @@ public interface QObjectContainer<T extends QObject> extends QObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */

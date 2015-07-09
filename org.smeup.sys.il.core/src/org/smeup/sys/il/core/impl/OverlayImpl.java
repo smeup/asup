@@ -32,7 +32,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -42,7 +42,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -57,7 +57,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPosition()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getPosition()
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected OverlayImpl() {
@@ -85,7 +85,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +95,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +105,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -141,7 +141,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,7 +157,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -175,7 +175,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -193,7 +193,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -209,7 +209,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

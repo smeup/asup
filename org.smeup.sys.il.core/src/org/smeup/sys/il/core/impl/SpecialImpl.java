@@ -48,7 +48,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	 * The default value of the '{@link #getClassDelegate()
 	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getClassDelegate()
 	 * @generated
 	 * @ordered
@@ -59,7 +59,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	 * The cached value of the '{@link #getClassDelegate()
 	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @see #getClassDelegate()
 	 * @generated
 	 * @ordered
@@ -69,7 +69,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	/**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -78,7 +78,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected SpecialImpl() {
@@ -87,7 +87,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,7 +97,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -107,7 +107,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -120,7 +120,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -132,7 +132,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,7 +146,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -162,7 +162,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -182,7 +182,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -200,7 +200,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -216,7 +216,7 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

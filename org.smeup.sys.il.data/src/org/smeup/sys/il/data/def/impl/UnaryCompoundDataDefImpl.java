@@ -56,7 +56,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	 * The default value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -67,7 +67,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	 * The cached value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -77,7 +77,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	/**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -87,7 +87,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	/**
 	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -97,7 +97,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	/**
 	 * The cached value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -107,7 +107,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	/**
 	 * The default value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -117,7 +117,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 	/**
 	 * The cached value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -126,7 +126,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected UnaryCompoundDataDefImpl() {
@@ -135,7 +135,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,7 +145,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -155,7 +155,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -168,7 +168,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -180,7 +180,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,7 +190,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,7 +203,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -213,7 +213,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -226,7 +226,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -240,7 +240,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -260,7 +260,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -286,7 +286,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -310,7 +310,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -330,7 +330,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -353,7 +353,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -376,7 +376,7 @@ public abstract class UnaryCompoundDataDefImpl<D extends QStruct<?>, E extends Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

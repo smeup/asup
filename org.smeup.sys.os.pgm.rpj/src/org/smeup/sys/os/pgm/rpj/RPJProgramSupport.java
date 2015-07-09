@@ -765,7 +765,7 @@ public class RPJProgramSupport {
 		if (length != null)
 			position = qSubst(source, 1, length).toString().indexOf(argument, start - 1) + 1;
 		else
-			position = source.toString().indexOf(argument, start - 1) + 1;
+			position = source.asString().indexOf(argument, start - 1) + 1;
 
 		return qBox(position);
 	}

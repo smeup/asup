@@ -20,7 +20,7 @@ import java.util.List;
 public interface QPluginRegistry<T> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
@@ -28,7 +28,7 @@ public interface QPluginRegistry<T> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -36,7 +36,7 @@ public interface QPluginRegistry<T> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @model required="true" vendorRequired="true" versionRequired="true"
 	 * @generated
 	 */

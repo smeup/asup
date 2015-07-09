@@ -34,7 +34,7 @@ public interface QOverlay extends QFacet {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getOverlay_Name()
@@ -46,7 +46,7 @@ public interface QOverlay extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.QOverlay#getName
 	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
@@ -62,7 +62,7 @@ public interface QOverlay extends QFacet {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Position</em>' attribute.
 	 * @see #setPosition(String)
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getOverlay_Position()
@@ -75,7 +75,7 @@ public interface QOverlay extends QFacet {
 	 * Sets the value of the '{@link org.smeup.sys.il.core.QOverlay#getPosition
 	 * <em>Position</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Position</em>' attribute.
 	 * @see #getPosition()

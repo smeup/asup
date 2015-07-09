@@ -124,59 +124,59 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 			+ "909192939495969798999A9B9C9D9E9F" + "A0A1A2A3A4A5A6A7A8A9AAABACADAEAF" + "B0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF" + "C0C1C2C3C4C5C6C7C8C9CACBCCCDCECF" + "D0D1D2D3D4D5D6D7D8D9DADBDCDDDEDF"
 			+ "E0E1E2E3E4E5E6E7E8E9EAEBECEDEEEF" + "F0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF").toCharArray();;
 
-	public static String getHexString(byte[] bytes) {
-		final int len = bytes.length;
-		final char[] chars = new char[len << 1];
-		int hexIndex;
-		int idx = 0;
-		int ofs = 0;
-		while (ofs < len) {
-			hexIndex = (bytes[ofs++] & 0xFF) << 1;
-			chars[idx++] = BYTE2HEX[hexIndex++];
-			chars[idx++] = BYTE2HEX[hexIndex];
-		}
-		return new String(chars);
+			public static String getHexString(byte[] bytes) {
+				final int len = bytes.length;
+				final char[] chars = new char[len << 1];
+				int hexIndex;
+				int idx = 0;
+				int ofs = 0;
+				while (ofs < len) {
+					hexIndex = (bytes[ofs++] & 0xFF) << 1;
+					chars[idx++] = BYTE2HEX[hexIndex++];
+					chars[idx++] = BYTE2HEX[hexIndex];
+				}
+				return new String(chars);
 
-	}
+			}
 
-	@Override
-	public void eval(QHexadecimal value) {
-		value.eval(this);
-	}
+			@Override
+			public void eval(QHexadecimal value) {
+				value.eval(this);
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean eq(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean eq(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean ge(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean gt(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean le(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean lt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean lt(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 
-	@Override
-	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+			@Override
+			public <E extends Enum<E>> boolean ne(E value) {
+				// TODO Auto-generated method stub
+				return false;
+			}
 }

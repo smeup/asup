@@ -44,7 +44,7 @@ public interface QRange extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMin
 	 * <em>Min</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Min</em>' attribute.
 	 * @see #getMin()
@@ -60,7 +60,7 @@ public interface QRange extends QFacet {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(String)
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getRange_Max()
@@ -72,7 +72,7 @@ public interface QRange extends QFacet {
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMax
 	 * <em>Max</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the new value of the '<em>Max</em>' attribute.
 	 * @see #getMax()

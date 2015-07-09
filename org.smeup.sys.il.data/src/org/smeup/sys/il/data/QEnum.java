@@ -20,7 +20,7 @@ package org.smeup.sys.il.data;
 public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -28,7 +28,7 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -36,7 +36,7 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -44,7 +44,7 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
