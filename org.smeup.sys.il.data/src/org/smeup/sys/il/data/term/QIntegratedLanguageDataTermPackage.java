@@ -24,46 +24,43 @@ import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "term";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/data/term";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-data-term";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	QIntegratedLanguageDataTermPackage eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl.init();
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.data.term.impl.DataTermImpl <em>Data Term</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.DataTermImpl <em>Data Term</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.data.term.impl.DataTermImpl
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTerm()
 	 * @generated
@@ -71,18 +68,16 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Facets</b></em>' containment reference
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_TERM__FACETS = QIntegratedLanguageCoreTermPackage.TERM__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Cardinality</b></em>' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -100,16 +95,14 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_TERM__DEFAULT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Definition</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -170,11 +163,9 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 9;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.data.term.QDataTermContainer
-	 * <em>Data Term Container</em>}' class. <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.QDataTermContainer <em>Data Term Container</em>}' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see org.smeup.sys.il.data.term.QDataTermContainer
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermContainer()
 	 * @generated
@@ -182,20 +173,17 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM_CONTAINER = 1;
 
 	/**
-	 * The number of structural features of the '<em>Data Term Container</em>'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The number of structural features of the '<em>Data Term Container</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_TERM_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.data.term.impl.DataTermVisitorImpl
-	 * <em>Data Term Visitor</em>}' class. <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.impl.DataTermVisitorImpl <em>Data Term Visitor</em>}' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see org.smeup.sys.il.data.term.impl.DataTermVisitorImpl
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermVisitor()
 	 * @generated
@@ -203,19 +191,16 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	int DATA_TERM_VISITOR = 2;
 
 	/**
-	 * The number of structural features of the '<em>Data Term Visitor</em>'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The number of structural features of the '<em>Data Term Visitor</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_TERM_VISITOR_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}'
-	 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}' enum.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.data.term.DataTermType
 	 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermType()
 	 * @generated
@@ -234,12 +219,9 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EClass getDataTerm();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#getCardinality
-	 * <em>Cardinality</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the containment reference '
-	 *         <em>Cardinality</em>'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cardinality</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#getCardinality()
 	 * @see #getDataTerm()
 	 * @generated
@@ -247,10 +229,8 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EReference getDataTerm_Cardinality();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}
-	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Constant</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#isConstant()
 	 * @see #getDataTerm()
@@ -259,10 +239,8 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EAttribute getDataTerm_Constant();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}
-	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Default</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#getDefault()
 	 * @see #getDataTerm()
@@ -271,12 +249,9 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EReference getDataTerm_Default();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#getDefinition
-	 * <em>Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the containment reference '
-	 *         <em>Definition</em>'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.data.term.QDataTerm#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Definition</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#getDefinition()
 	 * @see #getDataTerm()
 	 * @generated
@@ -284,10 +259,8 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EReference getDataTerm_Definition();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#isInitialized
-	 * <em>Initialized</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isInitialized <em>Initialized</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Initialized</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#isInitialized()
 	 * @see #getDataTerm()
@@ -320,10 +293,8 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EAttribute getDataTerm_Name();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.smeup.sys.il.data.term.QDataTerm#isRestricted
-	 * <em>Restricted</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.term.QDataTerm#isRestricted <em>Restricted</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Restricted</em>'.
 	 * @see org.smeup.sys.il.data.term.QDataTerm#isRestricted()
 	 * @see #getDataTerm()
@@ -368,10 +339,8 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	EClass getDataTermVisitor();
 
 	/**
-	 * Returns the meta object for enum '
-	 * {@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}'.
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for enum '<em>Data Term Type</em>'.
 	 * @see org.smeup.sys.il.data.term.DataTermType
 	 * @generated
@@ -397,7 +366,6 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
@@ -414,85 +382,74 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		EClass DATA_TERM = eINSTANCE.getDataTerm();
 
 		/**
-		 * The meta object literal for the '<em><b>Cardinality</b></em>'
-		 * containment reference feature. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em><b>Cardinality</b></em>' containment reference feature.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference DATA_TERM__CARDINALITY = eINSTANCE.getDataTerm_Cardinality();
 
 		/**
-		 * The meta object literal for the '<em><b>Constant</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Constant</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__CONSTANT = eINSTANCE.getDataTerm_Constant();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' containment
-		 * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference DATA_TERM__DEFAULT = eINSTANCE.getDataTerm_Default();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>'
-		 * containment reference feature. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference DATA_TERM__DEFINITION = eINSTANCE.getDataTerm_Definition();
 
 		/**
-		 * The meta object literal for the '<em><b>Initialized</b></em>'
-		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Initialized</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__INITIALIZED = eINSTANCE.getDataTerm_Initialized();
 
 		/**
-		 * The meta object literal for the '<em><b>Like</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Like</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__LIKE = eINSTANCE.getDataTerm_Like();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__NAME = eINSTANCE.getDataTerm_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Restricted</b></em>'
-		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Restricted</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__RESTRICTED = eINSTANCE.getDataTerm_Restricted();
 
 		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DATA_TERM__TEXT = eINSTANCE.getDataTerm_Text();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.data.term.QDataTermContainer
-		 * <em>Data Term Container</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.QDataTermContainer <em>Data Term Container</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see org.smeup.sys.il.data.term.QDataTermContainer
 		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermContainer()
 		 * @generated
@@ -500,11 +457,9 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		EClass DATA_TERM_CONTAINER = eINSTANCE.getDataTermContainer();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.data.term.impl.DataTermVisitorImpl
-		 * <em>Data Term Visitor</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.impl.DataTermVisitorImpl <em>Data Term Visitor</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see org.smeup.sys.il.data.term.impl.DataTermVisitorImpl
 		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermVisitor()
 		 * @generated
@@ -512,11 +467,9 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 		EClass DATA_TERM_VISITOR = eINSTANCE.getDataTermVisitor();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.data.term.DataTermType
-		 * <em>Data Term Type</em>}' enum. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.term.DataTermType <em>Data Term Type</em>}' enum.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see org.smeup.sys.il.data.term.DataTermType
 		 * @see org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl#getDataTermType()
 		 * @generated
