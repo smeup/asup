@@ -79,6 +79,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
+	public QNumeric divide(double value) {
+		eval(asDouble() / value);
+		return this;
+	}
+	
+	@Override
 	public <E extends Enum<E>> boolean eq(E value) {
 		return eq(getPrimitive(value));
 	}
@@ -252,6 +258,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
+	public QNumeric minus(double value) {
+		eval(asDouble() - value);
+		return this;
+	}
+	
+	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
 	}
@@ -306,6 +318,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
+	public QNumeric mult(double value) {
+		eval(asDouble() * value);
+		return this;
+	}
+	
+	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
 		return !eq(value);
 	}
@@ -344,6 +362,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		return this;
 	}
 
+	@Override
+	public QNumeric plus(double value) {
+		eval(asDouble() + value);
+		return this;
+	}
+	
 	@Override
 	public QNumeric power(int value) {
 		eval(asLong() ^ value);
@@ -392,6 +416,11 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		return this;
 	}
 	
+	@Override
+	public QNumeric qRem(double value) {
+		eval(asDouble() % value);
+		return this;
+	}
 	
 	public abstract Number readNumber();
 

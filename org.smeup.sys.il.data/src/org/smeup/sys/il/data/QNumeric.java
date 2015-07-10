@@ -64,6 +64,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric divide(int value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(double value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -265,6 +273,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric minus(int value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(double value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -291,6 +307,14 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	QNumeric mult(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(double value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -341,6 +365,14 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	QNumeric plus(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(double value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -400,6 +432,14 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	QNumeric qRem(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	QNumeric qRem(double value);
 
 	/**
 	 * <!-- begin-user-doc -->
