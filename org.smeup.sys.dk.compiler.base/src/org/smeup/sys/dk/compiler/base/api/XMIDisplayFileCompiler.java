@@ -79,9 +79,6 @@ public class XMIDisplayFileCompiler {
 				continue;
 
 			QDisplayFile displayFile = (QDisplayFile) qFile;
-			if (displayFile.getDisplayFormats().isEmpty() || 
-				displayFile.getDisplayFormats().get(0).getName().equals(displayFile.getName()))
-				continue;
 
 			try {
 				createJavaFile(displayFile, library);

@@ -79,9 +79,6 @@ public class XMIPrinterFileCompiler {
 				continue;
 
 			QPrinterFile printerFile = (QPrinterFile) qFile;
-			if (printerFile.getPrinterFormats().isEmpty() || 
-				printerFile.getPrinterFormats().get(0).getName().equals(printerFile.getName()))
-				continue;
 
 			try {
 				createJavaFile(printerFile, library);

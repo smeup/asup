@@ -39,10 +39,14 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 	public void writerPrinterFile(QPrinterFile printerFile) throws IOException {
 
 		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {
+			if(printerFileFormat.getName().equals(printerFile.getName()))
+				continue;
 			writePublicField(printerFileFormat, false);
 		}
 		
 		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {
+			if(printerFileFormat.getName().equals(printerFile.getName()))
+				continue;
 
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 			elements.addAll(printerFileFormat.getDefinition().getElements());

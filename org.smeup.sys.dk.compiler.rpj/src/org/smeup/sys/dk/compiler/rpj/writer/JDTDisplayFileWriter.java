@@ -39,10 +39,14 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 	public void writeDisplayFile(QDisplayFile displayFile) throws IOException {
 
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
+			if(fileFormat.getName().equals(displayFile.getName()))
+				continue;
 			writePublicField(fileFormat, false);			
 		}
 
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
+			if(fileFormat.getName().equals(displayFile.getName()))
+				continue;
 			
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 			elements.addAll(fileFormat.getDefinition().getElements());
