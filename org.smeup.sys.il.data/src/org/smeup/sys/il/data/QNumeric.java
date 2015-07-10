@@ -129,6 +129,14 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(double value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -145,10 +153,34 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(short value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(long value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	void eval(int value);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(int value, boolean halfRounding);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -161,6 +193,14 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(QNumeric value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -169,10 +209,26 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(BigInteger value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	void eval(BigDecimal value);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	void eval(BigDecimal value, boolean halfRounding);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -90,7 +90,7 @@ public class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 	}
 
 	@Override
-	public void eval(BigInteger value) {
+	public void eval(BigInteger value, boolean halfRounding) {
 
 		AS400ZonedDecimal zoned = getDecimal(getPrecision(), getScale());
 
@@ -100,7 +100,7 @@ public class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 	}
 
 	@Override
-	public void eval(BigDecimal value) {
+	public void eval(BigDecimal value, boolean halfRounding) {
 
 		AS400ZonedDecimal zoned = getDecimal(getPrecision(), getScale());
 
@@ -110,7 +110,7 @@ public class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 	}
 
 	@Override
-	public void writeNumber(Number number) {
+	public void writeNumber(Number number, boolean halfRounding) {
 
 		AS400ZonedDecimal zoned = getDecimal(getPrecision(), getScale());
 

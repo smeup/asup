@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
@@ -97,7 +95,7 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	}
 
 	@Override
-	public void writeNumber(Number number) {
+	public void writeNumber(Number number, boolean halfRounding) {
 
 		ByteBuffer buffer = getBuffer();
 		int position = getPosition();
@@ -147,22 +145,5 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public double asDouble() {
 		return asInteger();
-	}
-
-	@Override
-	public void eval(double value) {
-		eval((int) value);
-	}
-
-	@Override
-	public void eval(BigInteger value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eval(BigDecimal value) {
-		// TODO Auto-generated method stub
-
 	}
 }

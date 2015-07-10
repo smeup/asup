@@ -41,14 +41,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public QNumeric qLen() {
-		
+
 		NIODecimalImpl decimalImpl = new NIODecimalImpl(5, 0);
 		decimalImpl.allocate();
 		decimalImpl.eval(getLength());
-		
+
 		return decimalImpl;
 	}
-
 
 	protected abstract byte getFiller();
 

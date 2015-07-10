@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QNumeric;
 
@@ -83,7 +86,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() / value);
 		return this;
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> boolean eq(E value) {
 		return eq(getPrimitive(value));
@@ -97,61 +100,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	@Override
 	public boolean eq(QNumeric value) {
 		return compareNumber(value.asDouble()) == 0;
-	}
-
-	@Override
-	public void eval(double value) {
-		writeNumber(value);
-	}
-
-	@Override
-	public <E extends Enum<E>> void eval(E value) {
-		Integer number = getPrimitive(value);
-		eval(number);
-	}
-
-	@Override
-	public void eval(int value) {
-		try {
-			writeNumber(value);
-		} catch (Exception e) {
-			System.out.println("Unexpcted condition: bq5804q956943534");
-		}
-	}
-
-	/*
-	 * public void eval(Object value) {
-	 * 
-	 * if (value == null) { clear(); return; } else if(value instanceof
-	 * QSpecialElement) { QSpecialElement specialElement = (QSpecialElement)
-	 * value; eval(Long.parseLong(specialElement.getValue())); } else
-	 * if(value.toString().isEmpty()) { clear(); } else {
-	 * eval(Long.parseLong(value.toString())); } }
-	 */
-
-	@Override
-	public void eval(long value) {
-		writeNumber(value);
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
-		move(value, true);
-	}
-
-	@Override
-	public void eval(QNumeric value) {
-
-		// TODO remove
-		if (value == null)
-			writeNumber(0);
-		else
-			writeNumber(value.asDouble());
-	}
-
-	@Override
-	public void eval(short value) {
-		writeNumber(value);
 	}
 
 	@Override
@@ -262,7 +210,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() - value);
 		return this;
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
@@ -322,7 +270,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() * value);
 		return this;
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
 		return !eq(value);
@@ -367,7 +315,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() + value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric power(int value) {
 		eval(asLong() ^ value);
@@ -415,20 +363,14 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() % value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric qRem(double value) {
 		eval(asDouble() % value);
 		return this;
 	}
-	
-	public abstract Number readNumber();
 
-	@Override
-	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public abstract Number readNumber();
 
 	@Override
 	public String toString() {
@@ -440,7 +382,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		}
 	}
 
-	public abstract void writeNumber(Number number);
+	public abstract void writeNumber(Number number, boolean halfRounding);
 
 	@Override
 	public double d() {
@@ -461,5 +403,107 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	protected byte getFiller() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public <E extends Enum<E>> void eval(E value) {
+		Integer number = getPrimitive(value);
+		eval(number);
+	}
+
+	@Override
+	public void eval(double value) {
+		eval(value, false);
+	}
+
+	@Override
+	public void eval(int value) {
+		eval(value, false);
+	}
+
+	@Override
+	public void eval(long value) {
+		eval(value, false);
+	}
+
+	@Override
+	public void eval(QBufferedData value) {
+		move(value, true);
+	}
+
+	@Override
+	public void eval(QNumeric value) {
+		eval(value, false);
+		;
+	}
+
+	@Override
+	public void eval(short value) {
+		eval(value, false);
+	}
+
+	@Override
+	public void eval(BigInteger value) {
+
+	}
+
+	@Override
+	public void eval(BigDecimal value) {
+		eval(value, false);
+	}
+
+	@Override
+	public void eval(double value, boolean halfRounding) {
+		try {
+			writeNumber(value, halfRounding);
+		} catch (Exception e) {
+			System.out.println("Unexpcted condition: bq5804q956943534");
+		}
+	}
+
+	@Override
+	public void eval(short value, boolean halfRounding) {
+		try {
+			writeNumber(value, halfRounding);
+		} catch (Exception e) {
+			System.out.println("Unexpcted condition: bq5804q956943534");
+		}
+	}
+
+	@Override
+	public void eval(long value, boolean halfRounding) {
+		try {
+			writeNumber(value, halfRounding);
+		} catch (Exception e) {
+			System.out.println("Unexpcted condition: bq5804q956943534");
+		}
+	}
+
+	@Override
+	public void eval(int value, boolean halfRounding) {
+		try {
+			writeNumber(value, halfRounding);
+		} catch (Exception e) {
+			System.out.println("Unexpcted condition: bq5804q956943534");
+		}
+	}
+
+	@Override
+	public void eval(QNumeric value, boolean halfRounding) {
+		// TODO remove
+		if (value == null)
+			writeNumber(0, false);
+		else
+			writeNumber(value.asDouble(), halfRounding);
+	}
+
+	@Override
+	public void eval(BigInteger value, boolean halfRounding) {
+		writeNumber(value, halfRounding);
+	}
+
+	@Override
+	public void eval(BigDecimal value, boolean halfRounding) {
+		writeNumber(value, halfRounding);
 	}
 }
