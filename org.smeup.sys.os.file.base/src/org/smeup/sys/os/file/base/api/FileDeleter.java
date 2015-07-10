@@ -2,7 +2,6 @@ package org.smeup.sys.os.file.base.api;
 
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -26,10 +25,7 @@ import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.file.QDatabaseFile;
-import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
-import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 
 @Program(name = "QASDLTF")

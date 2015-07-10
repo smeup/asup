@@ -45,7 +45,6 @@ import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
-import org.smeup.sys.db.core.impl.DatabaseManagerImpl;
 import org.smeup.sys.db.syntax.QDefinitionParser;
 import org.smeup.sys.db.syntax.QDefinitionParserRegistry;
 import org.smeup.sys.db.syntax.QDefinitionWriter;
@@ -56,7 +55,7 @@ import org.smeup.sys.il.data.def.QIdentityDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.rt.core.QApplication;
 
-public class BaseDatabaseManagerImpl extends DatabaseManagerImpl {
+public class BaseDatabaseManagerImpl implements QDatabaseManager {
 
 	@Inject
 	private QApplication application;

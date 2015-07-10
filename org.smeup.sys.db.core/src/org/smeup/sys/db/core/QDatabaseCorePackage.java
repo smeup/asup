@@ -424,10 +424,10 @@ public interface QDatabaseCorePackage extends EPackage {
 	int DATABASE_OBJECT_DEF_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.DatabaseManagerImpl <em>Database Manager</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.db.core.QDatabaseManager <em>Database Manager</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @see org.smeup.sys.db.core.impl.DatabaseManagerImpl
+	 * @see org.smeup.sys.db.core.QDatabaseManager
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseManager()
 	 * @generated
 	 */
@@ -1745,10 +1745,10 @@ public interface QDatabaseCorePackage extends EPackage {
 		EAttribute DATABASE_OBJECT_DEF__LABEL = eINSTANCE.getDatabaseObjectDef_Label();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.DatabaseManagerImpl <em>Database Manager</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.db.core.QDatabaseManager <em>Database Manager</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * @see org.smeup.sys.db.core.impl.DatabaseManagerImpl
+		 * @see org.smeup.sys.db.core.QDatabaseManager
 		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseManager()
 		 * @generated
 		 */
