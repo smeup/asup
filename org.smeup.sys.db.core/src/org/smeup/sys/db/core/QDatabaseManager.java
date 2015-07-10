@@ -20,7 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
  *
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getDatabaseManager()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface QDatabaseManager {

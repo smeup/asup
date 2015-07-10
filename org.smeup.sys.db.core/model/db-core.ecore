@@ -177,7 +177,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DatabaseException" instanceClassName="java.sql.SQLException"
       serializable="false"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DatabaseManager" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="DatabaseManager" abstract="true" interface="true">
     <eOperations name="createIndex" eType="ecore:EClass ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//constraints/Index"
         eExceptions="#//DatabaseException">
       <eParameters name="connection" eType="#//Connection"/>
