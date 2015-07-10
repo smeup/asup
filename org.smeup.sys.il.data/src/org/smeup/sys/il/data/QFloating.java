@@ -19,7 +19,7 @@ package org.smeup.sys.il.data;
 public interface QFloating extends QNumeric {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -27,7 +27,7 @@ public interface QFloating extends QNumeric {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

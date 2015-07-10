@@ -20,15 +20,14 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
-public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl
-implements QIntegratedLanguageDataTermFactory {
+public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataTermFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataTermFactory init() {
@@ -46,7 +45,7 @@ implements QIntegratedLanguageDataTermFactory {
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataTermFactoryImpl() {
@@ -55,21 +54,20 @@ implements QIntegratedLanguageDataTermFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -78,14 +76,13 @@ implements QIntegratedLanguageDataTermFactory {
 		case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
 			return createDataTermTypeFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -94,39 +91,34 @@ implements QIntegratedLanguageDataTermFactory {
 		case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
 			return convertDataTermTypeToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public DataTermType createDataTermTypeFromString(EDataType eDataType,
-			String initialValue) {
+	public DataTermType createDataTermTypeFromString(EDataType eDataType, String initialValue) {
 		DataTermType result = DataTermType.get(initialValue);
 		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public String convertDataTermTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertDataTermTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -136,7 +128,7 @@ implements QIntegratedLanguageDataTermFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

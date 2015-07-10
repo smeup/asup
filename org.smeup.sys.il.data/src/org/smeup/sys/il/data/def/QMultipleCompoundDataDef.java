@@ -19,6 +19,5 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model abstract="true"
  * @generated
  */
-public interface QMultipleCompoundDataDef<D extends QStroller<?>, E extends QDataTerm<?>>
-extends QMultipleDataDef<D>, QCompoundDataDef<D, E> {
+public interface QMultipleCompoundDataDef<D extends QStroller<?>, E extends QDataTerm<?>> extends QMultipleDataDef<D>, QCompoundDataDef<D, E> {
 } // QMultipleCompoundDataDef

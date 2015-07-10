@@ -605,6 +605,9 @@ public class RPJProgramSupport {
 	public QDataWriter qAll(String string) {
 		return QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter().set(string);
 	}
+	public QDataWriter qAll(int numeric) {
+		return this.dataWriter.set(numeric);
+	}
 
 	public QNumeric qAbs(Integer numeric) {
 		return qBox(Math.abs(numeric));

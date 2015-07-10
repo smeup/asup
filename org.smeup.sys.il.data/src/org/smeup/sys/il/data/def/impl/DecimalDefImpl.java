@@ -33,8 +33,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal>
-implements QDecimalDef {
+public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> implements QDecimalDef {
 	/**
 	 *
 	 */
@@ -43,7 +42,7 @@ implements QDecimalDef {
 	/**
 	 * The default value of the '{@link #getPrecision() <em>Precision</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -53,7 +52,7 @@ implements QDecimalDef {
 	/**
 	 * The cached value of the '{@link #getPrecision() <em>Precision</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrecision()
 	 * @generated
 	 * @ordered
@@ -63,7 +62,7 @@ implements QDecimalDef {
 	/**
 	 * The default value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -73,7 +72,7 @@ implements QDecimalDef {
 	/**
 	 * The cached value of the '{@link #getScale() <em>Scale</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getScale()
 	 * @generated
 	 * @ordered
@@ -83,7 +82,7 @@ implements QDecimalDef {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -93,7 +92,7 @@ implements QDecimalDef {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -102,7 +101,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DecimalDefImpl() {
@@ -111,7 +110,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,7 +120,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,7 +130,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -139,14 +138,12 @@ implements QDecimalDef {
 		int oldPrecision = precision;
 		precision = newPrecision;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION,
-					oldPrecision, precision));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__PRECISION, oldPrecision, precision));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -156,7 +153,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,14 +161,12 @@ implements QDecimalDef {
 		int oldScale = scale;
 		scale = newScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE,
-					oldScale, scale));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__SCALE, oldScale, scale));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,7 +176,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -189,9 +184,7 @@ implements QDecimalDef {
 		DecimalType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE,
-					oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DECIMAL_DEF__TYPE, oldType, type));
 	}
 
 	/**
@@ -206,7 +199,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -224,7 +217,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -245,7 +238,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -266,7 +259,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -284,7 +277,7 @@ implements QDecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

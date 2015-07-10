@@ -129,8 +129,7 @@ public enum DataTermType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final DataTermType[] VALUES_ARRAY = new DataTermType[] {
-		UNARY_ATOMIC, UNARY_COMPOUND, MULTIPLE_ATOMIC, MULTIPLE_COMPOUND, };
+	private static final DataTermType[] VALUES_ARRAY = new DataTermType[] { UNARY_ATOMIC, UNARY_COMPOUND, MULTIPLE_ATOMIC, MULTIPLE_COMPOUND, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Data Term Type</b></em>'
@@ -138,8 +137,7 @@ public enum DataTermType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	public static final List<DataTermType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DataTermType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Data Term Type</b></em>' literal with the specified
@@ -268,8 +266,7 @@ public enum DataTermType implements Enumerator {
 	}
 
 	public boolean isCompound() {
-		return (this == UNARY_COMPOUND || this == MULTIPLE_COMPOUND) ? true
-				: false;
+		return (this == UNARY_COMPOUND || this == MULTIPLE_COMPOUND) ? true : false;
 	}
 
 	public boolean isUnary() {
@@ -277,7 +274,6 @@ public enum DataTermType implements Enumerator {
 	}
 
 	public boolean isMultiple() {
-		return (this == MULTIPLE_ATOMIC || this == MULTIPLE_COMPOUND) ? true
-				: false;
+		return (this == MULTIPLE_ATOMIC || this == MULTIPLE_COMPOUND) ? true : false;
 	}
 } // DataDefType

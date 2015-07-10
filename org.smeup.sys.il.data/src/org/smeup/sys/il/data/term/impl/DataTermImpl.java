@@ -53,12 +53,11 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  *
  * @generated
  */
-public abstract class DataTermImpl<DD extends QDataDef<?>> extends
-NamedNodeImpl implements QDataTerm<DD> {
+public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getCardinality()
 	 * @generated
 	 * @ordered
@@ -68,7 +67,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #isConstant() <em>Constant</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isConstant()
 	 * @generated
 	 * @ordered
@@ -78,7 +77,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #isConstant() <em>Constant</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isConstant()
 	 * @generated
 	 * @ordered
@@ -88,7 +87,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDefault()
 	 * @generated
 	 * @ordered
@@ -103,7 +102,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
@@ -113,7 +112,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #isInitialized() <em>Initialized</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isInitialized()
 	 * @generated
 	 * @ordered
@@ -123,7 +122,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #isInitialized() <em>Initialized</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isInitialized()
 	 * @generated
 	 * @ordered
@@ -133,7 +132,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #getLike() <em>Like</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLike()
 	 * @generated
 	 * @ordered
@@ -143,7 +142,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getLike() <em>Like</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLike()
 	 * @generated
 	 * @ordered
@@ -153,7 +152,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -163,7 +162,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -173,7 +172,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #isRestricted() <em>Restricted</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isRestricted()
 	 * @generated
 	 * @ordered
@@ -183,7 +182,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #isRestricted() <em>Restricted</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isRestricted()
 	 * @generated
 	 * @ordered
@@ -193,7 +192,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -203,7 +202,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -212,7 +211,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataTermImpl() {
@@ -221,7 +220,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -231,7 +230,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -241,18 +240,14 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetCardinality(QCardinality newCardinality,
-			NotificationChain msgs) {
+	public NotificationChain basicSetCardinality(QCardinality newCardinality, NotificationChain msgs) {
 		QCardinality oldCardinality = cardinality;
 		cardinality = newCardinality;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY,
-					oldCardinality, newCardinality);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, oldCardinality, newCardinality);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -263,7 +258,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -271,31 +266,19 @@ NamedNodeImpl implements QDataTerm<DD> {
 		if (newCardinality != cardinality) {
 			NotificationChain msgs = null;
 			if (cardinality != null)
-				msgs = ((InternalEObject) cardinality)
-				.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY,
-						null, msgs);
+				msgs = ((InternalEObject) cardinality).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, null, msgs);
 			if (newCardinality != null)
-				msgs = ((InternalEObject) newCardinality)
-				.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY,
-						null, msgs);
+				msgs = ((InternalEObject) newCardinality).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, null, msgs);
 			msgs = basicSetCardinality(newCardinality, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY,
-					newCardinality, newCardinality));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY, newCardinality, newCardinality));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -305,7 +288,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -313,14 +296,12 @@ NamedNodeImpl implements QDataTerm<DD> {
 		boolean oldConstant = constant;
 		constant = newConstant;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT,
-					oldConstant, constant));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT, oldConstant, constant));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -330,18 +311,14 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDefault(QDefault newDefault,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDefault(QDefault newDefault, NotificationChain msgs) {
 		QDefault oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT,
-					oldDefault, newDefault);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, oldDefault, newDefault);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -352,7 +329,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -360,31 +337,19 @@ NamedNodeImpl implements QDataTerm<DD> {
 		if (newDefault != default_) {
 			NotificationChain msgs = null;
 			if (default_ != null)
-				msgs = ((InternalEObject) default_)
-				.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT,
-						null, msgs);
+				msgs = ((InternalEObject) default_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, null, msgs);
 			if (newDefault != null)
-				msgs = ((InternalEObject) newDefault)
-				.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT,
-						null, msgs);
+				msgs = ((InternalEObject) newDefault).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, null, msgs);
 			msgs = basicSetDefault(newDefault, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT,
-					newDefault, newDefault));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFAULT, newDefault, newDefault));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -394,18 +359,14 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDefinition(DD newDefinition,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDefinition(DD newDefinition, NotificationChain msgs) {
 		DD oldDefinition = definition;
 		definition = newDefinition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION,
-					oldDefinition, newDefinition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION, oldDefinition, newDefinition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -416,7 +377,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -424,31 +385,19 @@ NamedNodeImpl implements QDataTerm<DD> {
 		if (newDefinition != definition) {
 			NotificationChain msgs = null;
 			if (definition != null)
-				msgs = ((InternalEObject) definition)
-				.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION,
-						null, msgs);
+				msgs = ((InternalEObject) definition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION, null, msgs);
 			if (newDefinition != null)
-				msgs = ((InternalEObject) newDefinition)
-				.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION,
-						null, msgs);
+				msgs = ((InternalEObject) newDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION, null, msgs);
 			msgs = basicSetDefinition(newDefinition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION,
-					newDefinition, newDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__DEFINITION, newDefinition, newDefinition));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -458,7 +407,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -466,14 +415,12 @@ NamedNodeImpl implements QDataTerm<DD> {
 		boolean oldInitialized = initialized;
 		initialized = newInitialized;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED,
-					oldInitialized, initialized));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED, oldInitialized, initialized));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -483,7 +430,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -491,14 +438,12 @@ NamedNodeImpl implements QDataTerm<DD> {
 		String oldLike = like;
 		like = newLike;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE,
-					oldLike, like));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE, oldLike, like));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -508,7 +453,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -516,14 +461,12 @@ NamedNodeImpl implements QDataTerm<DD> {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__NAME,
-					oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__NAME, oldName, name));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -533,7 +476,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -541,14 +484,12 @@ NamedNodeImpl implements QDataTerm<DD> {
 		boolean oldRestricted = restricted;
 		restricted = newRestricted;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED,
-					oldRestricted, restricted));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED, oldRestricted, restricted));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -558,7 +499,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -566,9 +507,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT,
-					oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT, oldText, text));
 	}
 
 	/**
@@ -619,7 +558,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -631,7 +570,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -661,7 +600,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -701,7 +640,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -740,7 +679,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -757,23 +696,20 @@ NamedNodeImpl implements QDataTerm<DD> {
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__INITIALIZED:
 			return initialized != INITIALIZED_EDEFAULT;
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__LIKE:
-			return LIKE_EDEFAULT == null ? like != null : !LIKE_EDEFAULT
-			.equals(like);
+			return LIKE_EDEFAULT == null ? like != null : !LIKE_EDEFAULT.equals(like);
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-			.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__RESTRICTED:
 			return restricted != RESTRICTED_EDEFAULT;
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__TEXT:
-			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT
-			.equals(text);
+			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -823,8 +759,7 @@ NamedNodeImpl implements QDataTerm<DD> {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 			return basicSetCardinality(null, msgs);

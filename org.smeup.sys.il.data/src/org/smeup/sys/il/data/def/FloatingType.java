@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Floating Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getFloatingType()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum FloatingType implements Enumerator {
 	/**
 	 * The '<em><b>Single</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #SINGLE_VALUE
 	 * @generated
 	 * @ordered
@@ -36,7 +36,7 @@ public enum FloatingType implements Enumerator {
 	/**
 	 * The '<em><b>Double</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #DOUBLE_VALUE
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public enum FloatingType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #SINGLE
 	 * @model name="Single" literal="SINGLE"
 	 * @generated
@@ -65,7 +65,7 @@ public enum FloatingType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DOUBLE
 	 * @model name="Double" literal="DOUBLE"
 	 * @generated
@@ -79,48 +79,48 @@ public enum FloatingType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final FloatingType[] VALUES_ARRAY = new FloatingType[] {
-			SINGLE, DOUBLE, };
+	private static final FloatingType[] VALUES_ARRAY = new FloatingType[] { SINGLE, DOUBLE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Floating Type</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public static final List<FloatingType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FloatingType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Floating Type</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static FloatingType get(String literal) {
-		for (FloatingType result : VALUES_ARRAY)
+		for (FloatingType result : VALUES_ARRAY) {
 			if (result.toString().equals(literal))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Floating Type</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static FloatingType getByName(String name) {
-		for (FloatingType result : VALUES_ARRAY)
+		for (FloatingType result : VALUES_ARRAY) {
 			if (result.getName().equals(name))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Floating Type</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static FloatingType get(int value) {
@@ -135,21 +135,21 @@ public enum FloatingType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String literal;
@@ -157,7 +157,7 @@ public enum FloatingType implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private FloatingType(int value, String name, String literal) {
@@ -168,7 +168,7 @@ public enum FloatingType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,7 +178,7 @@ public enum FloatingType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,7 +188,7 @@ public enum FloatingType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -199,7 +199,7 @@ public enum FloatingType implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

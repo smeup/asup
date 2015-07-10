@@ -28,12 +28,11 @@ import org.smeup.sys.il.data.def.QPointerDef;
  *
  * @generated
  */
-public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer>
-implements QPointerDef {
+public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> implements QPointerDef {
 	/**
 	 * The default value of the '{@link #getTarget() <em>Target</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -42,7 +41,7 @@ implements QPointerDef {
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -55,7 +54,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected PointerDefImpl() {
@@ -64,7 +63,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -74,7 +73,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -84,7 +83,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -92,14 +91,12 @@ implements QPointerDef {
 		String oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET,
-					oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET, oldTarget, target));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +110,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -128,7 +125,7 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -143,22 +140,21 @@ implements QPointerDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case QIntegratedLanguageDataDefPackage.POINTER_DEF__TARGET:
-			return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT
-			.equals(target);
+			return TARGET_EDEFAULT == null ? target != null : !TARGET_EDEFAULT.equals(target);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

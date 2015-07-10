@@ -31,8 +31,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary>
-implements QBinaryDef {
+public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> implements QBinaryDef {
 	/**
 	 *
 	 */
@@ -41,7 +40,7 @@ implements QBinaryDef {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -51,7 +50,7 @@ implements QBinaryDef {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -61,7 +60,7 @@ implements QBinaryDef {
 	/**
 	 * The default value of the '{@link #isUnsigned() <em>Unsigned</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -71,7 +70,7 @@ implements QBinaryDef {
 	/**
 	 * The cached value of the '{@link #isUnsigned() <em>Unsigned</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -80,7 +79,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected BinaryDefImpl() {
@@ -89,7 +88,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,7 +98,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,7 +108,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,14 +116,12 @@ implements QBinaryDef {
 		BinaryType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE,
-					oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE, oldType, type));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -134,7 +131,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,9 +139,7 @@ implements QBinaryDef {
 		boolean oldUnsigned = unsigned;
 		unsigned = newUnsigned;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED,
-					oldUnsigned, unsigned));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED, oldUnsigned, unsigned));
 	}
 
 	/**
@@ -177,7 +172,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -193,7 +188,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -211,7 +206,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -229,7 +224,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -245,7 +240,7 @@ implements QBinaryDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

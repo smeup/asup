@@ -33,8 +33,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime>
-implements QDatetimeDef {
+public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> implements QDatetimeDef {
 	/**
 	 *
 	 */
@@ -43,7 +42,7 @@ implements QDatetimeDef {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -53,7 +52,7 @@ implements QDatetimeDef {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -63,7 +62,7 @@ implements QDatetimeDef {
 	/**
 	 * The default value of the '{@link #getFormat() <em>Format</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -73,7 +72,7 @@ implements QDatetimeDef {
 	/**
 	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -82,7 +81,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DatetimeDefImpl() {
@@ -91,7 +90,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -101,7 +100,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,7 +110,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -119,14 +118,12 @@ implements QDatetimeDef {
 		DatetimeType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE,
-					oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE, oldType, type));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -136,7 +133,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,14 +141,12 @@ implements QDatetimeDef {
 		String oldFormat = format;
 		format = newFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT,
-					oldFormat, format));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT, oldFormat, format));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -167,7 +162,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -185,7 +180,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -203,7 +198,7 @@ implements QDatetimeDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -212,15 +207,14 @@ implements QDatetimeDef {
 		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 			return type != TYPE_EDEFAULT;
 		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-			return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT
-			.equals(format);
+			return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

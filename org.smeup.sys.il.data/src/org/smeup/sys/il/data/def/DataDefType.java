@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Data Def Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataDefType()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * The '<em><b>Adapter</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ADAPTER_VALUE
 	 * @generated
 	 * @ordered
@@ -34,7 +34,7 @@ public enum DataDefType implements Enumerator {
 	ADAPTER(10, "Adapter", "ADAPTER"), /**
 	 * The '<em><b>Array</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ARRAY_VALUE
 	 * @generated
 	 * @ordered
@@ -42,7 +42,7 @@ public enum DataDefType implements Enumerator {
 	ARRAY(20, "Array", "ARRAY"), /**
 	 * The '<em><b>Binary</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #BINARY_VALUE
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public enum DataDefType implements Enumerator {
 	BINARY(30, "Binary", "BINARY"), /**
 	 * The '<em><b>Buffer</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #BUFFER_VALUE
 	 * @generated
 	 * @ordered
@@ -58,7 +58,7 @@ public enum DataDefType implements Enumerator {
 	BUFFER(40, "Buffer", "BUFFER"), /**
 	 * The '<em><b>Character</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #CHARACTER_VALUE
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public enum DataDefType implements Enumerator {
 	CHARACTER(50, "Character", "CHAR"), /**
 	 * The '<em><b>Data Struct</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DATA_STRUCT_VALUE
 	 * @generated
 	 * @ordered
@@ -75,7 +75,7 @@ public enum DataDefType implements Enumerator {
 	 * The '
 	 * <em><b>Datetime</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #DATETIME_VALUE
 	 * @generated
 	 * @ordered
@@ -83,7 +83,7 @@ public enum DataDefType implements Enumerator {
 	DATETIME(70, "Datetime", "DATETIME"), /**
 	 * The '<em><b>Decimal</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DECIMAL_VALUE
 	 * @generated
 	 * @ordered
@@ -91,7 +91,7 @@ public enum DataDefType implements Enumerator {
 	DECIMAL(80, "Decimal", "DECIMAL"), /**
 	 * The '<em><b>Floating</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #FLOATING_VALUE
 	 * @generated
 	 * @ordered
@@ -99,7 +99,7 @@ public enum DataDefType implements Enumerator {
 	FLOATING(90, "Floating", "FLOAT"), /**
 	 * The '<em><b>Hexadecimal</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #HEXADECIMAL_VALUE
 	 * @generated
 	 * @ordered
@@ -107,7 +107,7 @@ public enum DataDefType implements Enumerator {
 	HEXADECIMAL(100, "Hexadecimal", "HEX"), /**
 	 * The '<em><b>Identity</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #IDENTITY_VALUE
 	 * @generated
 	 * @ordered
@@ -115,7 +115,7 @@ public enum DataDefType implements Enumerator {
 	IDENTITY(105, "Identity", "IDN"), /**
 	 * The '<em><b>Indicator</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #INDICATOR_VALUE
 	 * @generated
 	 * @ordered
@@ -123,7 +123,7 @@ public enum DataDefType implements Enumerator {
 	INDICATOR(110, "Indicator", "IND"), /**
 	 * The '<em><b>List</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #LIST_VALUE
 	 * @generated
 	 * @ordered
@@ -131,7 +131,7 @@ public enum DataDefType implements Enumerator {
 	LIST(120, "List", "LIST"), /**
 	 * The '<em><b>Pointer</b></em>' literal object.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #POINTER_VALUE
 	 * @generated
 	 * @ordered
@@ -139,7 +139,7 @@ public enum DataDefType implements Enumerator {
 	POINTER(140, "Pointer", "POINTER"), /**
 	 * The '<em><b>Scroller</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #SCROLLER_VALUE
 	 * @generated
 	 * @ordered
@@ -147,7 +147,7 @@ public enum DataDefType implements Enumerator {
 	SCROLLER(150, "Scroller", "SCROLLER"), /**
 	 * The '<em><b>String</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
@@ -155,7 +155,7 @@ public enum DataDefType implements Enumerator {
 	STRING(160, "String", "STRING"), /**
 	 * The '<em><b>Stroller</b></em>' literal
 	 * object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STROLLER_VALUE
 	 * @generated
 	 * @ordered
@@ -163,7 +163,7 @@ public enum DataDefType implements Enumerator {
 	STROLLER(170, "Stroller", "STROLLER"), /**
 	 * The '<em><b>Struct</b></em>'
 	 * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STRUCT_VALUE
 	 * @generated
 	 * @ordered
@@ -177,7 +177,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ADAPTER
 	 * @model name="Adapter" literal="ADAPTER"
 	 * @generated
@@ -192,7 +192,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ARRAY
 	 * @model name="Array" literal="ARRAY"
 	 * @generated
@@ -207,7 +207,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #BINARY
 	 * @model name="Binary" literal="BINARY"
 	 * @generated
@@ -222,7 +222,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #BUFFER
 	 * @model name="Buffer" literal="BUFFER"
 	 * @generated
@@ -237,7 +237,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #CHARACTER
 	 * @model name="Character" literal="CHAR"
 	 * @generated
@@ -252,7 +252,7 @@ public enum DataDefType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DATA_STRUCT
 	 * @model name="DataStruct" literal="DATASTRUCT"
 	 * @generated
@@ -267,7 +267,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DATETIME
 	 * @model name="Datetime" literal="DATETIME"
 	 * @generated
@@ -282,7 +282,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DECIMAL
 	 * @model name="Decimal" literal="DECIMAL"
 	 * @generated
@@ -297,7 +297,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #FLOATING
 	 * @model name="Floating" literal="FLOAT"
 	 * @generated
@@ -312,7 +312,7 @@ public enum DataDefType implements Enumerator {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #HEXADECIMAL
 	 * @model name="Hexadecimal" literal="HEX"
 	 * @generated
@@ -327,7 +327,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #IDENTITY
 	 * @model name="Identity" literal="IDN"
 	 * @generated
@@ -342,7 +342,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #INDICATOR
 	 * @model name="Indicator" literal="IND"
 	 * @generated
@@ -357,7 +357,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #LIST
 	 * @model name="List" literal="LIST"
 	 * @generated
@@ -372,7 +372,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #POINTER
 	 * @model name="Pointer" literal="POINTER"
 	 * @generated
@@ -387,7 +387,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #SCROLLER
 	 * @model name="Scroller" literal="SCROLLER"
 	 * @generated
@@ -402,7 +402,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STRING
 	 * @model name="String" literal="STRING"
 	 * @generated
@@ -417,7 +417,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STROLLER
 	 * @model name="Stroller" literal="STROLLER"
 	 * @generated
@@ -432,7 +432,7 @@ public enum DataDefType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #STRUCT
 	 * @model name="Struct" literal="STRUCT"
 	 * @generated
@@ -446,50 +446,49 @@ public enum DataDefType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final DataDefType[] VALUES_ARRAY = new DataDefType[] {
-			ADAPTER, ARRAY, BINARY, BUFFER, CHARACTER, DATA_STRUCT, DATETIME,
-			DECIMAL, FLOATING, HEXADECIMAL, IDENTITY, INDICATOR, LIST, POINTER,
-			SCROLLER, STRING, STROLLER, STRUCT, };
+	private static final DataDefType[] VALUES_ARRAY = new DataDefType[] { ADAPTER, ARRAY, BINARY, BUFFER, CHARACTER, DATA_STRUCT, DATETIME, DECIMAL, FLOATING, HEXADECIMAL, IDENTITY, INDICATOR,
+		LIST, POINTER, SCROLLER, STRING, STROLLER, STRUCT, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Data Def Type</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public static final List<DataDefType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DataDefType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DataDefType get(String literal) {
-		for (DataDefType result : VALUES_ARRAY)
+		for (DataDefType result : VALUES_ARRAY) {
 			if (result.toString().equals(literal))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DataDefType getByName(String name) {
-		for (DataDefType result : VALUES_ARRAY)
+		for (DataDefType result : VALUES_ARRAY) {
 			if (result.getName().equals(name))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DataDefType get(int value) {
@@ -536,21 +535,21 @@ public enum DataDefType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String literal;
@@ -558,7 +557,7 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private DataDefType(int value, String name, String literal) {
@@ -569,7 +568,7 @@ public enum DataDefType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -579,7 +578,7 @@ public enum DataDefType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -589,7 +588,7 @@ public enum DataDefType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -600,7 +599,7 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

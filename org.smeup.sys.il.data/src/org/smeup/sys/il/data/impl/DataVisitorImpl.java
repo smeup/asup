@@ -42,11 +42,10 @@ import org.smeup.sys.il.data.QStroller;
  *
  * @generated
  */
-public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container
-implements QDataVisitor {
+public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container implements QDataVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataVisitorImpl() {
@@ -55,7 +54,7 @@ implements QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -72,8 +71,7 @@ implements QDataVisitor {
 	public void endVisit(QData data) {
 		try {
 			@SuppressWarnings("unchecked")
-			Method method = getMethod("endVisit",
-					(Class<QNode>) data.getClass());
+			Method method = getMethod("endVisit", (Class<QNode>) data.getClass());
 			if (method == null)
 				System.out.println(data);
 			method.invoke(this, new Object[] { data });

@@ -21,8 +21,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
  *
  * @generated
  */
-public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends
-MultipleDataDefImpl<D> implements QMultipleAtomicDataDef<D> {
+public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends MultipleDataDefImpl<D> implements QMultipleAtomicDataDef<D> {
 	/**
 	 *
 	 */
@@ -30,7 +29,7 @@ MultipleDataDefImpl<D> implements QMultipleAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MultipleAtomicDataDefImpl() {
@@ -39,7 +38,7 @@ MultipleDataDefImpl<D> implements QMultipleAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,7 +48,7 @@ MultipleDataDefImpl<D> implements QMultipleAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Buffered Data</b></em>'. <!-- end-user-doc -->
@@ -19,7 +20,7 @@ package org.smeup.sys.il.data;
 public interface QBufferedData extends QData, QMoveable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -27,7 +28,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -35,7 +36,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -43,7 +44,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true" positionRequired="true"
 	 * @generated
 	 */
@@ -51,7 +52,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -59,7 +60,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -67,7 +68,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -75,7 +76,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -83,7 +84,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -91,7 +92,7 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -99,7 +100,15 @@ public interface QBufferedData extends QData, QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
+	 * @model required="true"
+	 * @generated
+	 */
+	QNumeric qLen();
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */

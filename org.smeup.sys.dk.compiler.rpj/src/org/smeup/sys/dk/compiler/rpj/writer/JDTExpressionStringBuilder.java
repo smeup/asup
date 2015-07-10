@@ -719,13 +719,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					if (elementExpression == expressionChild)
 						continue;
 
-					// if(!(elementExpression instanceof QTermExpression))
-					// throw new
-					// IntegratedLanguageExpressionRuntimeException("Invalid term method: "
-					// + expression.getValue());
-
-					// QTermExpression elementTermExpression = (QTermExpression)
-					// elementExpression;
 					expressionStringBuilder = new RPJExpressionStringBuilder();
 					elementExpression.accept(expressionStringBuilder);
 

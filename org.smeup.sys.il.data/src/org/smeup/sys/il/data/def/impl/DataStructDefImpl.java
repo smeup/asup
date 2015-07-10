@@ -30,13 +30,11 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * @generated
  */
-public class DataStructDefImpl extends
-UnaryCompoundDataDefImpl<QDataStruct, QDataTerm<QBufferedDataDef<?>>>
-implements QDataStructDef {
+public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDataTerm<QBufferedDataDef<?>>> implements QDataStructDef {
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -45,7 +43,7 @@ implements QDataStructDef {
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -58,7 +56,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataStructDefImpl() {
@@ -67,7 +65,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -77,7 +75,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -87,7 +85,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -95,14 +93,12 @@ implements QDataStructDef {
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH,
-					oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,7 +112,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,7 +127,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,7 +142,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,7 +156,7 @@ implements QDataStructDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -21,8 +21,7 @@ import org.smeup.sys.il.data.def.QNumericDef;
  *
  * @generated
  */
-public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric>
-implements QNumericDef {
+public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric> implements QNumericDef {
 	/**
 	 *
 	 */
@@ -30,7 +29,7 @@ implements QNumericDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected NumericDefImpl() {
@@ -39,7 +38,7 @@ implements QNumericDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

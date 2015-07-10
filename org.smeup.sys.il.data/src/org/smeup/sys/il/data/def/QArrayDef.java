@@ -18,7 +18,6 @@ import org.smeup.sys.il.data.QArray;
  * @model
  * @generated
  */
-public interface QArrayDef<D extends QArray<?>> extends
-QMultipleAtomicBufferedDataDef<D> {
+public interface QArrayDef<D extends QArray<?>> extends QMultipleAtomicBufferedDataDef<D> {
 
 } // QArrayDef

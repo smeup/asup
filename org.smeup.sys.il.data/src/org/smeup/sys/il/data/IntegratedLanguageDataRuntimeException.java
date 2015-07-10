@@ -18,8 +18,7 @@ public class IntegratedLanguageDataRuntimeException extends RuntimeException {
 		this(message, null);
 	}
 
-	public IntegratedLanguageDataRuntimeException(String message,
-			Throwable cause) {
+	public IntegratedLanguageDataRuntimeException(String message, Throwable cause) {
 		super(message, cause);
 	}
 }

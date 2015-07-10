@@ -34,7 +34,7 @@ public interface QListDef<D extends QList<?>> extends QMultipleAtomicDataDef<D> 
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Argument</em>' containment reference.
 	 * @see #setArgument(QUnaryAtomicDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getListDef_Argument()
@@ -48,7 +48,7 @@ public interface QListDef<D extends QList<?>> extends QMultipleAtomicDataDef<D> 
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Argument</em>' containment
 	 *            reference.

@@ -18,8 +18,7 @@ import org.smeup.sys.il.data.QList;
  * @model abstract="true"
  * @generated
  */
-public interface QMultipleAtomicDataDef<D extends QList<?>> extends
-QMultipleDataDef<D>, QAtomicDataDef<D> {
+public interface QMultipleAtomicDataDef<D extends QList<?>> extends QMultipleDataDef<D>, QAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ QMultipleDataDef<D>, QAtomicDataDef<D> {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

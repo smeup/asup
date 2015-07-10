@@ -26,8 +26,7 @@ import org.smeup.sys.il.data.QBufferedList;
  * @model abstract="true"
  * @generated
  */
-public interface QMultipleAtomicBufferedDataDef<D extends QBufferedList<?>>
-extends QMultipleAtomicDataDef<D>, QBufferedDataDef<D> {
+public interface QMultipleAtomicBufferedDataDef<D extends QBufferedList<?>> extends QMultipleAtomicDataDef<D>, QBufferedDataDef<D> {
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment
 	 * reference. <!-- begin-user-doc -->
@@ -36,7 +35,7 @@ extends QMultipleAtomicDataDef<D>, QBufferedDataDef<D> {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Argument</em>' containment reference.
 	 * @see #setArgument(QUnaryAtomicBufferedDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleAtomicBufferedDataDef_Argument()
@@ -51,7 +50,7 @@ extends QMultipleAtomicDataDef<D>, QBufferedDataDef<D> {
 	 * {@link org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef#getArgument
 	 * <em>Argument</em>}' containment reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Argument</em>' containment
 	 *            reference.

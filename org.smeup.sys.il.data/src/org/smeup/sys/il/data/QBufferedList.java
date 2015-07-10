@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Buffered List</b></em>'. <!-- end-user-doc -->
@@ -16,12 +17,11 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBufferedList<D extends QBufferedData> extends QList<D>,
-QBufferedData {
+public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -29,7 +29,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -37,7 +37,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -45,7 +45,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -53,7 +53,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */

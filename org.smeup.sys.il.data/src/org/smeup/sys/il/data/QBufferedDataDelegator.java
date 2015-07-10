@@ -16,11 +16,10 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBufferedDataDelegator extends QDataDelegator<QBufferedData>,
-QBufferedData {
+public interface QBufferedDataDelegator extends QDataDelegator<QBufferedData>, QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

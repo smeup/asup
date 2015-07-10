@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Decimal Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDecimalType()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum DecimalType implements Enumerator {
 	/**
 	 * The '<em><b>Zoned</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #ZONED_VALUE
 	 * @generated
 	 * @ordered
@@ -36,7 +36,7 @@ public enum DecimalType implements Enumerator {
 	/**
 	 * The '<em><b>Packed</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #PACKED_VALUE
 	 * @generated
 	 * @ordered
@@ -50,7 +50,7 @@ public enum DecimalType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ZONED
 	 * @model name="Zoned" literal="ZONED"
 	 * @generated
@@ -65,7 +65,7 @@ public enum DecimalType implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #PACKED
 	 * @model name="Packed" literal="PACKED"
 	 * @generated
@@ -79,48 +79,48 @@ public enum DecimalType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final DecimalType[] VALUES_ARRAY = new DecimalType[] {
-			ZONED, PACKED, };
+	private static final DecimalType[] VALUES_ARRAY = new DecimalType[] { ZONED, PACKED, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Decimal Type</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public static final List<DecimalType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DecimalType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DecimalType get(String literal) {
-		for (DecimalType result : VALUES_ARRAY)
+		for (DecimalType result : VALUES_ARRAY) {
 			if (result.toString().equals(literal))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DecimalType getByName(String name) {
-		for (DecimalType result : VALUES_ARRAY)
+		for (DecimalType result : VALUES_ARRAY) {
 			if (result.getName().equals(name))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DecimalType get(int value) {
@@ -135,21 +135,21 @@ public enum DecimalType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String literal;
@@ -157,7 +157,7 @@ public enum DecimalType implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private DecimalType(int value, String name, String literal) {
@@ -168,7 +168,7 @@ public enum DecimalType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -178,7 +178,7 @@ public enum DecimalType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -188,7 +188,7 @@ public enum DecimalType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -199,7 +199,7 @@ public enum DecimalType implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

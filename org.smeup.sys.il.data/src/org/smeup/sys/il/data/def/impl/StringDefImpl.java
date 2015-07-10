@@ -21,8 +21,7 @@ import org.smeup.sys.il.data.def.QStringDef;
  *
  * @generated
  */
-public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString>
-implements QStringDef {
+public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString> implements QStringDef {
 	/**
 	 *
 	 */
@@ -30,7 +29,7 @@ implements QStringDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected StringDefImpl() {
@@ -39,7 +38,7 @@ implements QStringDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

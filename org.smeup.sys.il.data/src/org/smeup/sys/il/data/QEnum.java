@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Enum</b></em>'. <!-- end-user-doc -->
@@ -17,11 +18,10 @@ package org.smeup.sys.il.data;
  *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
  * @generated
  */
-public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends
-QBufferedData {
+public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -29,7 +29,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -37,7 +37,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -45,7 +45,7 @@ QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

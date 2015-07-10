@@ -454,29 +454,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					break;
 			}
 
-		/*
-		 * if(prototype == null) { if(name.equalsIgnoreCase("%subst")) {
-		 * QDataTerm<QCharacterDef> charTerm = new DataTermImpl<QCharacterDef>()
-		 * { private static final long serialVersionUID = 1L; };
-		 * charTerm.setName(name); charTerm.setConstant(true); QCardinality
-		 * cardinality =
-		 * QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
-		 * charTerm.setCardinality(cardinality); charTerm.setText("Substring");
-		 * 
-		 * QCharacterDef characterDef =
-		 * QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
-		 * charTerm.setDefinition(characterDef);
-		 * 
-		 * QPrototype<QDataTerm<?>> prototype2 =
-		 * QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
-		 * prototype2.setDelegate(charTerm); prototype2.setEntry(null);
-		 * 
-		 * QEntry entry =
-		 * QIntegratedLanguageFlowFactory.eINSTANCE.createEntry();
-		 * 
-		 * QEntryParameter<?> entryParameter = null; } }
-		 */
-
 		if (prototype != null)
 			cachedPrototypes.put(name, prototype);
 

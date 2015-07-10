@@ -65,266 +65,265 @@ import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
-public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl
-implements QIntegratedLanguageDataDefPackage {
+public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implements QIntegratedLanguageDataDefPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass adapterDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass arrayDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass atomicDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass binaryDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass bufferDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass bufferedDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass characterDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass compoundDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass dataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass dataStructDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass datetimeDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass decimalDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass enumDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass floatingDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass hexadecimalDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass identityDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass indicatorDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass listDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass multipleAtomicDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass multipleAtomicBufferedDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass multipleCompoundDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass multipleDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass numericDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass pointerDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass scrollerDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass stringDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass strollerDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass unaryAtomicDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass unaryAtomicBufferedDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass unaryCompoundDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass unaryDataDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum binaryTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum dataDefTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum datetimeTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum dateFormatEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum decimalTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum floatingTypeEEnum = null;
@@ -350,7 +349,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -365,7 +364,7 @@ implements QIntegratedLanguageDataDefPackage {
 	 * accessed. Clients should not invoke it directly. Instead, they should
 	 * simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -373,13 +372,11 @@ implements QIntegratedLanguageDataDefPackage {
 	 */
 	public static QIntegratedLanguageDataDefPackage init() {
 		if (isInited)
-			return (QIntegratedLanguageDataDefPackage) EPackage.Registry.INSTANCE
-					.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+			return (QIntegratedLanguageDataDefPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Obtain or create and register package
-		IntegratedLanguageDataDefPackageImpl theIntegratedLanguageDataDefPackage = (IntegratedLanguageDataDefPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof IntegratedLanguageDataDefPackageImpl ? EPackage.Registry.INSTANCE
-						.get(eNS_URI) : new IntegratedLanguageDataDefPackageImpl());
+		IntegratedLanguageDataDefPackageImpl theIntegratedLanguageDataDefPackage = (IntegratedLanguageDataDefPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageDataDefPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new IntegratedLanguageDataDefPackageImpl());
 
 		isInited = true;
 
@@ -387,14 +384,11 @@ implements QIntegratedLanguageDataDefPackage {
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		IntegratedLanguageDataPackageImpl theIntegratedLanguageDataPackage = (IntegratedLanguageDataPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) instanceof IntegratedLanguageDataPackageImpl ? EPackage.Registry.INSTANCE
-						.getEPackage(QIntegratedLanguageDataPackage.eNS_URI)
-						: QIntegratedLanguageDataPackage.eINSTANCE);
+		IntegratedLanguageDataPackageImpl theIntegratedLanguageDataPackage = (IntegratedLanguageDataPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) instanceof IntegratedLanguageDataPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) : QIntegratedLanguageDataPackage.eINSTANCE);
 		IntegratedLanguageDataTermPackageImpl theIntegratedLanguageDataTermPackage = (IntegratedLanguageDataTermPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI) instanceof IntegratedLanguageDataTermPackageImpl ? EPackage.Registry.INSTANCE
-						.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI)
-						: QIntegratedLanguageDataTermPackage.eINSTANCE);
+				.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI) : QIntegratedLanguageDataTermPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageDataDefPackage.createPackageContents();
@@ -410,15 +404,13 @@ implements QIntegratedLanguageDataDefPackage {
 		theIntegratedLanguageDataDefPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(
-				QIntegratedLanguageDataDefPackage.eNS_URI,
-				theIntegratedLanguageDataDefPackage);
+		EPackage.Registry.INSTANCE.put(QIntegratedLanguageDataDefPackage.eNS_URI, theIntegratedLanguageDataDefPackage);
 		return theIntegratedLanguageDataDefPackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -428,7 +420,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -438,7 +430,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -448,7 +440,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -458,7 +450,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -468,7 +460,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -478,7 +470,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -488,7 +480,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -498,7 +490,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -508,7 +500,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -518,7 +510,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -528,7 +520,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -538,51 +530,47 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCompoundDataDef_ClassDelegator() {
-		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(
-				0);
+		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getCompoundDataDef_Elements() {
-		return (EReference) compoundDataDefEClass.getEStructuralFeatures().get(
-				1);
+		return (EReference) compoundDataDefEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCompoundDataDef_Prefix() {
-		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(
-				2);
+		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCompoundDataDef_Qualified() {
-		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(
-				3);
+		return (EAttribute) compoundDataDefEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -592,7 +580,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -602,7 +590,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -612,7 +600,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -622,7 +610,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -632,7 +620,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -642,7 +630,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -652,7 +640,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -662,7 +650,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -672,7 +660,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -682,7 +670,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -692,7 +680,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -702,7 +690,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -712,7 +700,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -722,7 +710,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -732,7 +720,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -742,7 +730,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -752,18 +740,17 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getHexadecimalDef_Length() {
-		return (EAttribute) hexadecimalDefEClass.getEStructuralFeatures()
-				.get(0);
+		return (EAttribute) hexadecimalDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -773,7 +760,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -783,7 +770,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -793,7 +780,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -803,7 +790,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -813,7 +800,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -823,18 +810,17 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EReference getMultipleAtomicBufferedDataDef_Argument() {
-		return (EReference) multipleAtomicBufferedDataDefEClass
-				.getEStructuralFeatures().get(0);
+		return (EReference) multipleAtomicBufferedDataDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -844,7 +830,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -854,18 +840,17 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public EAttribute getMultipleDataDef_Dimension() {
-		return (EAttribute) multipleDataDefEClass.getEStructuralFeatures().get(
-				0);
+		return (EAttribute) multipleDataDefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -875,7 +860,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -885,7 +870,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -895,7 +880,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -905,7 +890,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -915,7 +900,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -925,7 +910,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -935,7 +920,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -945,7 +930,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -955,7 +940,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -965,7 +950,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -975,7 +960,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -985,7 +970,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -995,7 +980,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -1005,7 +990,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -1015,7 +1000,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -1025,7 +1010,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -1035,7 +1020,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -1045,7 +1030,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -1054,7 +1039,7 @@ implements QIntegratedLanguageDataDefPackage {
 	 * Creates the meta-model objects for the package. This method is guarded to
 	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -1082,8 +1067,7 @@ implements QIntegratedLanguageDataDefPackage {
 		createEAttribute(characterDefEClass, CHARACTER_DEF__VARYING);
 
 		compoundDataDefEClass = createEClass(COMPOUND_DATA_DEF);
-		createEAttribute(compoundDataDefEClass,
-				COMPOUND_DATA_DEF__CLASS_DELEGATOR);
+		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__CLASS_DELEGATOR);
 		createEReference(compoundDataDefEClass, COMPOUND_DATA_DEF__ELEMENTS);
 		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__PREFIX);
 		createEAttribute(compoundDataDefEClass, COMPOUND_DATA_DEF__QUALIFIED);
@@ -1123,8 +1107,7 @@ implements QIntegratedLanguageDataDefPackage {
 		multipleAtomicDataDefEClass = createEClass(MULTIPLE_ATOMIC_DATA_DEF);
 
 		multipleAtomicBufferedDataDefEClass = createEClass(MULTIPLE_ATOMIC_BUFFERED_DATA_DEF);
-		createEReference(multipleAtomicBufferedDataDefEClass,
-				MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT);
+		createEReference(multipleAtomicBufferedDataDefEClass, MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT);
 
 		multipleCompoundDataDefEClass = createEClass(MULTIPLE_COMPOUND_DATA_DEF);
 
@@ -1162,7 +1145,7 @@ implements QIntegratedLanguageDataDefPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -1185,81 +1168,58 @@ implements QIntegratedLanguageDataDefPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
+		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage) EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage) EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter arrayDefEClass_D = addETypeParameter(arrayDefEClass, "D");
-		ETypeParameter atomicDataDefEClass_D = addETypeParameter(
-				atomicDataDefEClass, "D");
-		ETypeParameter bufferedDataDefEClass_D = addETypeParameter(
-				bufferedDataDefEClass, "D");
-		ETypeParameter compoundDataDefEClass_D = addETypeParameter(
-				compoundDataDefEClass, "D");
-		ETypeParameter compoundDataDefEClass_E = addETypeParameter(
-				compoundDataDefEClass, "E");
+		ETypeParameter atomicDataDefEClass_D = addETypeParameter(atomicDataDefEClass, "D");
+		ETypeParameter bufferedDataDefEClass_D = addETypeParameter(bufferedDataDefEClass, "D");
+		ETypeParameter compoundDataDefEClass_D = addETypeParameter(compoundDataDefEClass, "D");
+		ETypeParameter compoundDataDefEClass_E = addETypeParameter(compoundDataDefEClass, "E");
 		ETypeParameter dataDefEClass_D = addETypeParameter(dataDefEClass, "D");
 		ETypeParameter enumDefEClass_E = addETypeParameter(enumDefEClass, "E");
 		ETypeParameter enumDefEClass_D = addETypeParameter(enumDefEClass, "D");
 		ETypeParameter listDefEClass_D = addETypeParameter(listDefEClass, "D");
-		ETypeParameter multipleAtomicDataDefEClass_D = addETypeParameter(
-				multipleAtomicDataDefEClass, "D");
-		ETypeParameter multipleAtomicBufferedDataDefEClass_D = addETypeParameter(
-				multipleAtomicBufferedDataDefEClass, "D");
-		ETypeParameter multipleCompoundDataDefEClass_D = addETypeParameter(
-				multipleCompoundDataDefEClass, "D");
-		ETypeParameter multipleCompoundDataDefEClass_E = addETypeParameter(
-				multipleCompoundDataDefEClass, "E");
-		ETypeParameter multipleDataDefEClass_D = addETypeParameter(
-				multipleDataDefEClass, "D");
-		ETypeParameter scrollerDefEClass_D = addETypeParameter(
-				scrollerDefEClass, "D");
-		ETypeParameter strollerDefEClass_D = addETypeParameter(
-				strollerDefEClass, "D");
-		ETypeParameter unaryAtomicDataDefEClass_D = addETypeParameter(
-				unaryAtomicDataDefEClass, "D");
-		ETypeParameter unaryAtomicBufferedDataDefEClass_D = addETypeParameter(
-				unaryAtomicBufferedDataDefEClass, "D");
-		ETypeParameter unaryCompoundDataDefEClass_D = addETypeParameter(
-				unaryCompoundDataDefEClass, "D");
-		ETypeParameter unaryCompoundDataDefEClass_E = addETypeParameter(
-				unaryCompoundDataDefEClass, "E");
-		ETypeParameter unaryDataDefEClass_D = addETypeParameter(
-				unaryDataDefEClass, "D");
+		ETypeParameter multipleAtomicDataDefEClass_D = addETypeParameter(multipleAtomicDataDefEClass, "D");
+		ETypeParameter multipleAtomicBufferedDataDefEClass_D = addETypeParameter(multipleAtomicBufferedDataDefEClass, "D");
+		ETypeParameter multipleCompoundDataDefEClass_D = addETypeParameter(multipleCompoundDataDefEClass, "D");
+		ETypeParameter multipleCompoundDataDefEClass_E = addETypeParameter(multipleCompoundDataDefEClass, "E");
+		ETypeParameter multipleDataDefEClass_D = addETypeParameter(multipleDataDefEClass, "D");
+		ETypeParameter scrollerDefEClass_D = addETypeParameter(scrollerDefEClass, "D");
+		ETypeParameter strollerDefEClass_D = addETypeParameter(strollerDefEClass, "D");
+		ETypeParameter unaryAtomicDataDefEClass_D = addETypeParameter(unaryAtomicDataDefEClass, "D");
+		ETypeParameter unaryAtomicBufferedDataDefEClass_D = addETypeParameter(unaryAtomicBufferedDataDefEClass, "D");
+		ETypeParameter unaryCompoundDataDefEClass_D = addETypeParameter(unaryCompoundDataDefEClass, "D");
+		ETypeParameter unaryCompoundDataDefEClass_E = addETypeParameter(unaryCompoundDataDefEClass, "E");
+		ETypeParameter unaryDataDefEClass_D = addETypeParameter(unaryDataDefEClass, "D");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(theIntegratedLanguageDataPackage
-				.getArray());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageDataPackage.getArray());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		arrayDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		atomicDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		bufferedDataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getStruct());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage
-				.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		dataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage
-				.getJavaEnum());
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
 		enumDefEClass_E.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		enumDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getList());
 		g2 = createEGenericType();
@@ -1269,8 +1229,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		multipleAtomicDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedList());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedList());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		multipleAtomicBufferedDataDefEClass_D.getEBounds().add(g1);
@@ -1278,8 +1237,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		multipleCompoundDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage
-				.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		multipleCompoundDataDefEClass_E.getEBounds().add(g1);
@@ -1288,8 +1246,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g1.getETypeArguments().add(g2);
 		multipleDataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getScroller());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedData());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		g1.getETypeArguments().add(g2);
 		scrollerDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getStroller());
@@ -1298,15 +1255,13 @@ implements QIntegratedLanguageDataDefPackage {
 		strollerDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		unaryAtomicDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedData());
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		unaryAtomicBufferedDataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getStruct());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		unaryCompoundDataDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage
-				.getDataTerm());
+		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		unaryCompoundDataDefEClass_E.getEBounds().add(g1);
@@ -1331,8 +1286,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g1.getETypeArguments().add(g2);
 		binaryDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage
-				.getBufferedData());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		g1.getETypeArguments().add(g2);
 		bufferDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getDataDef());
@@ -1347,14 +1301,11 @@ implements QIntegratedLanguageDataDefPackage {
 		g2 = createEGenericType(compoundDataDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass.getEGenericSuperTypes().add(g1);
-		dataDefEClass.getESuperTypes().add(
-				theIntegratedLanguageCorePackage.getObject());
+		dataDefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		g1 = createEGenericType(this.getUnaryCompoundDataDef());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage
-				.getDataStruct());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDataStruct());
 		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(theIntegratedLanguageDataTermPackage
-				.getDataTerm());
+		g2 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType(this.getBufferedDataDef());
 		g2.getETypeArguments().add(g3);
@@ -1362,8 +1313,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g3.getETypeArguments().add(g4);
 		dataStructDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getBufferedDataDef());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage
-				.getDataStruct());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDataStruct());
 		g1.getETypeArguments().add(g2);
 		dataStructDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
@@ -1383,8 +1333,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g1.getETypeArguments().add(g2);
 		floatingDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
-		g2 = createEGenericType(theIntegratedLanguageDataPackage
-				.getHexadecimal());
+		g2 = createEGenericType(theIntegratedLanguageDataPackage.getHexadecimal());
 		g1.getETypeArguments().add(g2);
 		hexadecimalDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
@@ -1448,8 +1397,7 @@ implements QIntegratedLanguageDataDefPackage {
 		g1 = createEGenericType(this.getMultipleCompoundDataDef());
 		g2 = createEGenericType(strollerDefEClass_D);
 		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(theIntegratedLanguageDataTermPackage
-				.getDataTerm());
+		g2 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g1.getETypeArguments().add(g2);
 		g3 = createEGenericType(this.getBufferedDataDef());
 		g2.getETypeArguments().add(g3);
@@ -1492,248 +1440,149 @@ implements QIntegratedLanguageDataDefPackage {
 		unaryDataDefEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(adapterDefEClass, QAdapterDef.class, "AdapterDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(adapterDefEClass, QAdapterDef.class, "AdapterDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(arrayDefEClass, QArrayDef.class, "ArrayDef", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(arrayDefEClass, QArrayDef.class, "ArrayDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(atomicDataDefEClass, QAtomicDataDef.class, "AtomicDataDef",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(atomicDataDefEClass, QAtomicDataDef.class, "AtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(binaryDefEClass, QBinaryDef.class, "BinaryDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBinaryDef_Type(), this.getBinaryType(), "type", null,
-				1, 1, QBinaryDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+		initEClass(binaryDefEClass, QBinaryDef.class, "BinaryDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBinaryDef_Type(), this.getBinaryType(), "type", null, 1, 1, QBinaryDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getBinaryDef_Unsigned(), ecorePackage.getEBoolean(),
-				"unsigned", null, 0, 1, QBinaryDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getBinaryDef_Unsigned(), ecorePackage.getEBoolean(), "unsigned", null, 0, 1, QBinaryDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(bufferDefEClass, QBufferDef.class, "BufferDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(bufferDefEClass, QBufferDef.class, "BufferDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(bufferedDataDefEClass, QBufferedDataDef.class,
-				"BufferedDataDef", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(bufferedDataDefEClass, QBufferedDataDef.class, "BufferedDataDef", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(bufferedDataDefEClass, ecorePackage.getEInt(),
-				"getLength", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(bufferedDataDefEClass, ecorePackage.getEInt(), "getLength", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(characterDefEClass, QCharacterDef.class, "CharacterDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCharacterDef_Length(), ecorePackage.getEInt(),
-				"length", null, 1, 1, QCharacterDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(characterDefEClass, QCharacterDef.class, "CharacterDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCharacterDef_Length(), ecorePackage.getEInt(), "length", null, 1, 1, QCharacterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCharacterDef_Varying(), ecorePackage.getEBoolean(),
-				"varying", null, 0, 1, QCharacterDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterDef_Varying(), ecorePackage.getEBoolean(), "varying", null, 0, 1, QCharacterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(compoundDataDefEClass, QCompoundDataDef.class,
-				"CompoundDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCompoundDataDef_ClassDelegator(),
-				ecorePackage.getEString(), "classDelegator", null, 0, 1,
-				QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEClass(compoundDataDefEClass, QCompoundDataDef.class, "CompoundDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCompoundDataDef_ClassDelegator(), ecorePackage.getEString(), "classDelegator", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(compoundDataDefEClass_E);
-		initEReference(getCompoundDataDef_Elements(), g1, null, "elements",
-				null, 0, -1, QCompoundDataDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getCompoundDataDef_Elements(), g1, null, "elements", null, 0, -1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompoundDataDef_Prefix(), ecorePackage.getEString(),
-				"prefix", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompoundDataDef_Qualified(),
-				ecorePackage.getEBoolean(), "qualified", null, 0, 1,
-				QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getCompoundDataDef_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompoundDataDef_Qualified(), ecorePackage.getEBoolean(), "qualified", null, 0, 1, QCompoundDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataDefEClass, QDataDef.class, "DataDef", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataDef_Formulas(), ecorePackage.getEString(),
-				"formulas", null, 0, -1, QDataDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(dataDefEClass, QDataDef.class, "DataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataDef_Formulas(), ecorePackage.getEString(), "formulas", null, 0, -1, QDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(dataDefEClass, null, "getDataClass", 1,
-				1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(dataDefEClass, null, "getDataClass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType(dataDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(dataDefEClass, null, "getJavaClass", 1, 1,
-				IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataDefEClass, null, "getJavaClass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		addEOperation(dataDefEClass, this.getDataDefType(), "getDataDefType",
-				1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(dataDefEClass, this.getDataDefType(), "getDataDefType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(dataStructDefEClass, QDataStructDef.class, "DataStructDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataStructDef_Length(), ecorePackage.getEInt(),
-				"length", null, 0, 1, QDataStructDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(dataStructDefEClass, QDataStructDef.class, "DataStructDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataStructDef_Length(), ecorePackage.getEInt(), "length", null, 0, 1, QDataStructDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(datetimeDefEClass, QDatetimeDef.class, "DatetimeDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDatetimeDef_Type(), this.getDatetimeType(), "type",
-				null, 1, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getDatetimeDef_Format(), ecorePackage.getEString(),
-				"format", null, 0, 1, QDatetimeDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(datetimeDefEClass, QDatetimeDef.class, "DatetimeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDatetimeDef_Type(), this.getDatetimeType(), "type", null, 1, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatetimeDef_Format(), ecorePackage.getEString(), "format", null, 0, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(decimalDefEClass, QDecimalDef.class, "DecimalDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDecimalDef_Precision(), ecorePackage.getEInt(),
-				"precision", null, 1, 1, QDecimalDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(decimalDefEClass, QDecimalDef.class, "DecimalDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDecimalDef_Precision(), ecorePackage.getEInt(), "precision", null, 1, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDecimalDef_Scale(), ecorePackage.getEInt(), "scale",
-				null, 0, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getDecimalDef_Type(), this.getDecimalType(), "type",
-				null, 0, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getDecimalDef_Scale(), ecorePackage.getEInt(), "scale", null, 0, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecimalDef_Type(), this.getDecimalType(), "type", null, 0, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(enumDefEClass, QEnumDef.class, "EnumDef", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(enumDefEClass, QEnumDef.class, "EnumDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getBufferedDataDef());
 		g2 = createEGenericType(enumDefEClass_D);
 		g1.getETypeArguments().add(g2);
-		initEReference(getEnumDef_Delegate(), g1, null, "delegate", null, 1, 1,
-				QEnumDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getEnumDef_Delegate(), g1, null, "delegate", null, 1, 1, QEnumDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType(enumDefEClass_E);
 		g1.getETypeArguments().add(g2);
-		initEAttribute(getEnumDef_Klass(), g1, "klass", null, 1, 1,
-				QEnumDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnumDef_Klass(), g1, "klass", null, 1, 1, QEnumDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(floatingDefEClass, QFloatingDef.class, "FloatingDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFloatingDef_Type(), this.getFloatingType(), "type",
-				null, 1, 1, QFloatingDef.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-
-		initEClass(hexadecimalDefEClass, QHexadecimalDef.class,
-				"HexadecimalDef", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHexadecimalDef_Length(), ecorePackage.getEInt(),
-				"length", null, 1, 1, QHexadecimalDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(floatingDefEClass, QFloatingDef.class, "FloatingDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFloatingDef_Type(), this.getFloatingType(), "type", null, 1, 1, QFloatingDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(identityDefEClass, QIdentityDef.class, "IdentityDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(hexadecimalDefEClass, QHexadecimalDef.class, "HexadecimalDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getHexadecimalDef_Length(), ecorePackage.getEInt(), "length", null, 1, 1, QHexadecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(indicatorDefEClass, QIndicatorDef.class, "IndicatorDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(identityDefEClass, QIdentityDef.class, "IdentityDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(listDefEClass, QListDef.class, "ListDef", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(indicatorDefEClass, QIndicatorDef.class, "IndicatorDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(listDefEClass, QListDef.class, "ListDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getUnaryAtomicDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getListDef_Argument(), g1, null, "argument", null, 1, 1,
-				QListDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getListDef_Argument(), g1, null, "argument", null, 1, 1, QListDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(multipleAtomicDataDefEClass, QMultipleAtomicDataDef.class,
-				"MultipleAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(multipleAtomicDataDefEClass, QMultipleAtomicDataDef.class, "MultipleAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(multipleAtomicDataDefEClass, null, "getArgument", 1,
-				1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(multipleAtomicDataDefEClass, null, "getArgument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getUnaryAtomicDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		initEClass(multipleAtomicBufferedDataDefEClass,
-				QMultipleAtomicBufferedDataDef.class,
-				"MultipleAtomicBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(multipleAtomicBufferedDataDefEClass, QMultipleAtomicBufferedDataDef.class, "MultipleAtomicBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getMultipleAtomicBufferedDataDef_Argument(), g1, null,
-				"argument", null, 1, 1, QMultipleAtomicBufferedDataDef.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getMultipleAtomicBufferedDataDef_Argument(), g1, null, "argument", null, 1, 1, QMultipleAtomicBufferedDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(multipleCompoundDataDefEClass,
-				QMultipleCompoundDataDef.class, "MultipleCompoundDataDef",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(multipleCompoundDataDefEClass, QMultipleCompoundDataDef.class, "MultipleCompoundDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(multipleDataDefEClass, QMultipleDataDef.class,
-				"MultipleDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMultipleDataDef_Dimension(), ecorePackage.getEInt(),
-				"dimension", null, 1, 1, QMultipleDataDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(multipleDataDefEClass, QMultipleDataDef.class, "MultipleDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMultipleDataDef_Dimension(), ecorePackage.getEInt(), "dimension", null, 1, 1, QMultipleDataDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(numericDefEClass, QNumericDef.class, "NumericDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(pointerDefEClass, QPointerDef.class, "PointerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPointerDef_Target(), ecorePackage.getEString(), "target", null, 0, 1, QPointerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(numericDefEClass, QNumericDef.class, "NumericDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(scrollerDefEClass, QScrollerDef.class, "ScrollerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(pointerDefEClass, QPointerDef.class, "PointerDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPointerDef_Target(), ecorePackage.getEString(),
-				"target", null, 0, 1, QPointerDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(stringDefEClass, QStringDef.class, "StringDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(strollerDefEClass, QStrollerDef.class, "StrollerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStrollerDef_Length(), ecorePackage.getEInt(), "length", null, 0, 1, QStrollerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(scrollerDefEClass, QScrollerDef.class, "ScrollerDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(unaryAtomicDataDefEClass, QUnaryAtomicDataDef.class, "UnaryAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(stringDefEClass, QStringDef.class, "StringDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(unaryAtomicBufferedDataDefEClass, QUnaryAtomicBufferedDataDef.class, "UnaryAtomicBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(strollerDefEClass, QStrollerDef.class, "StrollerDef",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStrollerDef_Length(), ecorePackage.getEInt(),
-				"length", null, 0, 1, QStrollerDef.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEClass(unaryCompoundDataDefEClass, QUnaryCompoundDataDef.class, "UnaryCompoundDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(unaryAtomicDataDefEClass, QUnaryAtomicDataDef.class,
-				"UnaryAtomicDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(unaryAtomicBufferedDataDefEClass,
-				QUnaryAtomicBufferedDataDef.class,
-				"UnaryAtomicBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(unaryCompoundDataDefEClass, QUnaryCompoundDataDef.class,
-				"UnaryCompoundDataDef", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(unaryDataDefEClass, QUnaryDataDef.class, "UnaryDataDef",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(unaryDataDefEClass, QUnaryDataDef.class, "UnaryDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(binaryTypeEEnum, BinaryType.class, "BinaryType");

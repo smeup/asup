@@ -34,7 +34,7 @@ public interface QFloatingDef extends QUnaryAtomicBufferedDataDef<QFloating> {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.FloatingType
 	 * @see #setType(FloatingType)
@@ -48,7 +48,7 @@ public interface QFloatingDef extends QUnaryAtomicBufferedDataDef<QFloating> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QFloatingDef#getType <em>Type</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.FloatingType

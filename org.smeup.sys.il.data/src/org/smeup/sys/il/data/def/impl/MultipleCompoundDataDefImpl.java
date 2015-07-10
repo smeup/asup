@@ -47,9 +47,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * @generated
  */
-public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E extends QDataTerm<?>>
-extends MultipleDataDefImpl<D> implements
-QMultipleCompoundDataDef<D, E> {
+public abstract class MultipleCompoundDataDefImpl<D extends QStroller<?>, E extends QDataTerm<?>> extends MultipleDataDefImpl<D> implements QMultipleCompoundDataDef<D, E> {
 	/**
 	 *
 	 */
@@ -59,7 +57,7 @@ QMultipleCompoundDataDef<D, E> {
 	 * The default value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -70,7 +68,7 @@ QMultipleCompoundDataDef<D, E> {
 	 * The cached value of the '{@link #getClassDelegator()
 	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -80,7 +78,7 @@ QMultipleCompoundDataDef<D, E> {
 	/**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
 	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -90,7 +88,7 @@ QMultipleCompoundDataDef<D, E> {
 	/**
 	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -100,7 +98,7 @@ QMultipleCompoundDataDef<D, E> {
 	/**
 	 * The cached value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -110,7 +108,7 @@ QMultipleCompoundDataDef<D, E> {
 	/**
 	 * The default value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -120,7 +118,7 @@ QMultipleCompoundDataDef<D, E> {
 	/**
 	 * The cached value of the '{@link #isQualified() <em>Qualified</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -129,7 +127,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MultipleCompoundDataDefImpl() {
@@ -138,7 +136,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -148,7 +146,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,7 +156,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -166,31 +164,24 @@ QMultipleCompoundDataDef<D, E> {
 		String oldClassDelegator = classDelegator;
 		classDelegator = newClassDelegator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__CLASS_DELEGATOR,
-					oldClassDelegator, classDelegator));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__CLASS_DELEGATOR, oldClassDelegator, classDelegator));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<E> getElements() {
 		if (elements == null)
-			elements = new EObjectContainmentEList<E>(
-					QDataTerm.class,
-					this,
-					QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS);
+			elements = new EObjectContainmentEList<E>(QDataTerm.class, this, QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS);
 		return elements;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +191,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -208,16 +199,12 @@ QMultipleCompoundDataDef<D, E> {
 		String oldPrefix = prefix;
 		prefix = newPrefix;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__PREFIX,
-					oldPrefix, prefix));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__PREFIX, oldPrefix, prefix));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -227,7 +214,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -235,32 +222,26 @@ QMultipleCompoundDataDef<D, E> {
 		boolean oldQualified = qualified;
 		qualified = newQualified;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED,
-					oldQualified, qualified));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED, oldQualified, qualified));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS:
-			return ((InternalEList<?>) getElements()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -280,7 +261,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -306,7 +287,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -330,20 +311,18 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__CLASS_DELEGATOR:
-			return CLASS_DELEGATOR_EDEFAULT == null ? classDelegator != null
-			: !CLASS_DELEGATOR_EDEFAULT.equals(classDelegator);
+			return CLASS_DELEGATOR_EDEFAULT == null ? classDelegator != null : !CLASS_DELEGATOR_EDEFAULT.equals(classDelegator);
 		case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__ELEMENTS:
 			return elements != null && !elements.isEmpty();
 		case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__PREFIX:
-			return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT
-			.equals(prefix);
+			return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
 		case QIntegratedLanguageDataDefPackage.MULTIPLE_COMPOUND_DATA_DEF__QUALIFIED:
 			return qualified != QUALIFIED_EDEFAULT;
 		}
@@ -352,7 +331,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -375,7 +354,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -398,7 +377,7 @@ QMultipleCompoundDataDef<D, E> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

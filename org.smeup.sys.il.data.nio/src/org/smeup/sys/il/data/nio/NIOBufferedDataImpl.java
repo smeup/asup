@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
 
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
@@ -37,6 +38,17 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public NIOBufferedDataImpl() {
 		super();
 	}
+
+	@Override
+	public QNumeric qLen() {
+		
+		NIODecimalImpl decimalImpl = new NIODecimalImpl(5, 0);
+		decimalImpl.allocate();
+		decimalImpl.eval(getLength());
+		
+		return decimalImpl;
+	}
+
 
 	protected abstract byte getFiller();
 

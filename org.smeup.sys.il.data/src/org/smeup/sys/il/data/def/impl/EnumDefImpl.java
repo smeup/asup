@@ -32,8 +32,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData>
-extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
+public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 	/**
 	 *
 	 */
@@ -42,7 +41,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 	/**
 	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}'
 	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDelegate()
 	 * @generated
 	 * @ordered
@@ -52,7 +51,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 	/**
 	 * The cached value of the '{@link #getKlass() <em>Klass</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getKlass()
 	 * @generated
 	 * @ordered
@@ -61,7 +60,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected EnumDefImpl() {
@@ -70,7 +69,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -80,7 +79,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -90,18 +89,14 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetDelegate(QBufferedDataDef<D> newDelegate,
-			NotificationChain msgs) {
+	public NotificationChain basicSetDelegate(QBufferedDataDef<D> newDelegate, NotificationChain msgs) {
 		QBufferedDataDef<D> oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET,
-					QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE,
-					oldDelegate, newDelegate);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, oldDelegate, newDelegate);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -112,7 +107,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,31 +115,19 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 		if (newDelegate != delegate) {
 			NotificationChain msgs = null;
 			if (delegate != null)
-				msgs = ((InternalEObject) delegate)
-				.eInverseRemove(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE,
-						null, msgs);
+				msgs = ((InternalEObject) delegate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, null, msgs);
 			if (newDelegate != null)
-				msgs = ((InternalEObject) newDelegate)
-				.eInverseAdd(
-						this,
-						EOPPOSITE_FEATURE_BASE
-						- QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE,
-						null, msgs);
+				msgs = ((InternalEObject) newDelegate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, null, msgs);
 			msgs = basicSetDelegate(newDelegate, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE,
-					newDelegate, newDelegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE, newDelegate, newDelegate));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -154,7 +137,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,19 +145,16 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 		Class<E> oldKlass = klass;
 		klass = newKlass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS,
-					oldKlass, klass));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.ENUM_DEF__KLASS, oldKlass, klass));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case QIntegratedLanguageDataDefPackage.ENUM_DEF__DELEGATE:
 			return basicSetDelegate(null, msgs);
@@ -184,7 +164,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +180,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -219,7 +199,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -237,7 +217,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -253,7 +233,7 @@ extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

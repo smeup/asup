@@ -32,12 +32,11 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
-QDataDef<D> {
+public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements QDataDef<D> {
 	/**
 	 * The cached value of the '{@link #getFormulas() <em>Formulas</em>}'
 	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getFormulas()
 	 * @generated
 	 * @ordered
@@ -50,7 +49,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected DataDefImpl() {
@@ -59,7 +58,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,14 +68,13 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<String> getFormulas() {
 		if (formulas == null)
-			formulas = new EDataTypeUniqueEList<String>(String.class, this,
-					QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS);
+			formulas = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS);
 		return formulas;
 	}
 
@@ -106,7 +104,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,7 +118,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -137,7 +135,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,7 +150,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -166,7 +164,7 @@ QDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

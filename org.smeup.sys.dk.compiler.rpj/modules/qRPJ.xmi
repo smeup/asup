@@ -1353,7 +1353,7 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%len">
+        name="%len_o">
       <definition
           xsi:type="il-data-def:DecimalDef"
           precision="5"/>

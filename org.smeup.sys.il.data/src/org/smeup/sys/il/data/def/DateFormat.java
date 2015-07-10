@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Date Format</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDateFormat()
  * @model
  * @generated
@@ -26,7 +26,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>MDY</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #MDY_VALUE
 	 * @generated
 	 * @ordered
@@ -36,7 +36,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>DMY</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #DMY_VALUE
 	 * @generated
 	 * @ordered
@@ -46,7 +46,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>YMD</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #YMD_VALUE
 	 * @generated
 	 * @ordered
@@ -56,7 +56,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>JUL</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #JUL_VALUE
 	 * @generated
 	 * @ordered
@@ -66,7 +66,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>ISO</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #ISO_VALUE
 	 * @generated
 	 * @ordered
@@ -76,7 +76,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>USA</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #USA_VALUE
 	 * @generated
 	 * @ordered
@@ -86,7 +86,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>EUR</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #EUR_VALUE
 	 * @generated
 	 * @ordered
@@ -96,7 +96,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>JIS</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #JIS_VALUE
 	 * @generated
 	 * @ordered
@@ -106,7 +106,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * The '<em><b>JOBRUN</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see #JOBRUN_VALUE
 	 * @generated
 	 * @ordered
@@ -120,7 +120,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #MDY
 	 * @model literal="*MDY"
 	 * @generated
@@ -135,7 +135,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #DMY
 	 * @model literal="*DMY"
 	 * @generated
@@ -150,7 +150,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #YMD
 	 * @model literal="*YMD"
 	 * @generated
@@ -165,7 +165,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #JUL
 	 * @model literal="*JUL"
 	 * @generated
@@ -180,7 +180,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #ISO
 	 * @model literal="*ISO"
 	 * @generated
@@ -195,7 +195,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #USA
 	 * @model literal="*USA"
 	 * @generated
@@ -210,7 +210,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #EUR
 	 * @model literal="*EUR"
 	 * @generated
@@ -225,7 +225,7 @@ public enum DateFormat implements Enumerator {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #JIS
 	 * @model literal="*JIS"
 	 * @generated
@@ -240,7 +240,7 @@ public enum DateFormat implements Enumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #JOBRUN
 	 * @model literal="*JOBRUN"
 	 * @generated
@@ -254,48 +254,48 @@ public enum DateFormat implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final DateFormat[] VALUES_ARRAY = new DateFormat[] { MDY,
-			DMY, YMD, JUL, ISO, USA, EUR, JIS, JOBRUN, };
+	private static final DateFormat[] VALUES_ARRAY = new DateFormat[] { MDY, DMY, YMD, JUL, ISO, USA, EUR, JIS, JOBRUN, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Date Format</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public static final List<DateFormat> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DateFormat> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Date Format</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DateFormat get(String literal) {
-		for (DateFormat result : VALUES_ARRAY)
+		for (DateFormat result : VALUES_ARRAY) {
 			if (result.toString().equals(literal))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Date Format</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DateFormat getByName(String name) {
-		for (DateFormat result : VALUES_ARRAY)
+		for (DateFormat result : VALUES_ARRAY) {
 			if (result.getName().equals(name))
 				return result;
+		}
 		return null;
 	}
 
 	/**
 	 * Returns the '<em><b>Date Format</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static DateFormat get(int value) {
@@ -324,21 +324,21 @@ public enum DateFormat implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private final String literal;
@@ -346,7 +346,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private DateFormat(int value, String name, String literal) {
@@ -357,7 +357,7 @@ public enum DateFormat implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -367,7 +367,7 @@ public enum DateFormat implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -377,7 +377,7 @@ public enum DateFormat implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -388,7 +388,7 @@ public enum DateFormat implements Enumerator {
 	/**
 	 * Returns the literal value of the enumerator, which is its string
 	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

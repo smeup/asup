@@ -21,21 +21,19 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
-public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements
-QIntegratedLanguageDataFactory {
+public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataFactory {
 	/**
 	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataFactory init() {
 		try {
-			QIntegratedLanguageDataFactory theIntegratedLanguageDataFactory = (QIntegratedLanguageDataFactory) EPackage.Registry.INSTANCE
-					.getEFactory(QIntegratedLanguageDataPackage.eNS_URI);
+			QIntegratedLanguageDataFactory theIntegratedLanguageDataFactory = (QIntegratedLanguageDataFactory) EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageDataPackage.eNS_URI);
 			if (theIntegratedLanguageDataFactory != null)
 				return theIntegratedLanguageDataFactory;
 		} catch (Exception exception) {
@@ -47,7 +45,7 @@ QIntegratedLanguageDataFactory {
 	/**
 	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataFactoryImpl() {
@@ -56,7 +54,7 @@ QIntegratedLanguageDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,14 +65,13 @@ QIntegratedLanguageDataFactory {
 		case QIntegratedLanguageDataPackage.DATA_WRITER:
 			return (EObject) createDataWriter();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,14 +80,13 @@ QIntegratedLanguageDataFactory {
 		case QIntegratedLanguageDataPackage.DATA_ARRAY:
 			return createDataArrayFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,14 +95,13 @@ QIntegratedLanguageDataFactory {
 		case QIntegratedLanguageDataPackage.DATA_ARRAY:
 			return convertDataArrayToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -117,7 +112,7 @@ QIntegratedLanguageDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -128,27 +123,25 @@ QIntegratedLanguageDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public Object[] createDataArrayFromString(EDataType eDataType,
-			String initialValue) {
+	public Object[] createDataArrayFromString(EDataType eDataType, String initialValue) {
 		return (Object[]) super.createFromString(initialValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	public String convertDataArrayToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertDataArrayToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,7 +151,7 @@ QIntegratedLanguageDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @deprecated
 	 * @generated
 	 */

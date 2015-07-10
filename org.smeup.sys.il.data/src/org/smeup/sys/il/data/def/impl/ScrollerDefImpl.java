@@ -24,8 +24,7 @@ import org.smeup.sys.il.data.def.QScrollerDef;
  *
  * @generated
  */
-public class ScrollerDefImpl<D extends QScroller<QBufferedData>> extends
-MultipleAtomicBufferedDataDefImpl<D> implements QScrollerDef<D> {
+public class ScrollerDefImpl<D extends QScroller<QBufferedData>> extends MultipleAtomicBufferedDataDefImpl<D> implements QScrollerDef<D> {
 	/**
 	 *
 	 */
@@ -33,7 +32,7 @@ MultipleAtomicBufferedDataDefImpl<D> implements QScrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected ScrollerDefImpl() {
@@ -42,7 +41,7 @@ MultipleAtomicBufferedDataDefImpl<D> implements QScrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

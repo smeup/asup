@@ -19,6 +19,5 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model abstract="true"
  * @generated
  */
-public interface QUnaryCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>>
-extends QUnaryDataDef<D>, QCompoundDataDef<D, E> {
+public interface QUnaryCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> extends QUnaryDataDef<D>, QCompoundDataDef<D, E> {
 } // QUnaryCompoundDataDef

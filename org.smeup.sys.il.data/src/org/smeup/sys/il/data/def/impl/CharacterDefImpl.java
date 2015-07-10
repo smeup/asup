@@ -30,8 +30,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class CharacterDefImpl extends
-UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
+public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 	/**
 	 *
 	 */
@@ -40,7 +39,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -50,7 +49,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -60,7 +59,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 	/**
 	 * The default value of the '{@link #isVarying() <em>Varying</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isVarying()
 	 * @generated
 	 * @ordered
@@ -70,7 +69,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 	/**
 	 * The cached value of the '{@link #isVarying() <em>Varying</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #isVarying()
 	 * @generated
 	 * @ordered
@@ -79,7 +78,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected CharacterDefImpl() {
@@ -88,7 +87,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,7 +97,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,7 +107,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -116,14 +115,12 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH,
-					oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.CHARACTER_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,7 +130,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -141,14 +138,12 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 		boolean oldVarying = varying;
 		varying = newVarying;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING,
-					oldVarying, varying));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.CHARACTER_DEF__VARYING, oldVarying, varying));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,7 +159,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -182,7 +177,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +195,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,7 +211,7 @@ UnaryAtomicBufferedDataDefImpl<QCharacter> implements QCharacterDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

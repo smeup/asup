@@ -20,8 +20,7 @@ import org.smeup.sys.il.data.def.QUnaryDataDef;
  *
  * @generated
  */
-public abstract class UnaryDataDefImpl<D extends QData> extends DataDefImpl<D>
-implements QUnaryDataDef<D> {
+public abstract class UnaryDataDefImpl<D extends QData> extends DataDefImpl<D> implements QUnaryDataDef<D> {
 	/**
 	 *
 	 */
@@ -29,7 +28,7 @@ implements QUnaryDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected UnaryDataDefImpl() {
@@ -38,7 +37,7 @@ implements QUnaryDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

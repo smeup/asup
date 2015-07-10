@@ -79,7 +79,7 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Scale</em>' attribute.
 	 * @see #getScale()
@@ -96,7 +96,7 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DecimalType
 	 * @see #setType(DecimalType)
@@ -110,7 +110,7 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	 * Sets the value of the '
 	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @param value
 	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DecimalType

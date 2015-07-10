@@ -21,8 +21,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class IndicatorDefImpl extends
-UnaryAtomicBufferedDataDefImpl<QIndicator> implements QIndicatorDef {
+public class IndicatorDefImpl extends UnaryAtomicBufferedDataDefImpl<QIndicator> implements QIndicatorDef {
 	/**
 	 *
 	 */
@@ -30,7 +29,7 @@ UnaryAtomicBufferedDataDefImpl<QIndicator> implements QIndicatorDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected IndicatorDefImpl() {
@@ -39,7 +38,7 @@ UnaryAtomicBufferedDataDefImpl<QIndicator> implements QIndicatorDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

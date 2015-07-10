@@ -20,8 +20,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
  *
  * @generated
  */
-public abstract class UnaryAtomicDataDefImpl<D extends QData> extends
-UnaryDataDefImpl<D> implements QUnaryAtomicDataDef<D> {
+public abstract class UnaryAtomicDataDefImpl<D extends QData> extends UnaryDataDefImpl<D> implements QUnaryAtomicDataDef<D> {
 	/**
 	 *
 	 */
@@ -29,7 +28,7 @@ UnaryDataDefImpl<D> implements QUnaryAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected UnaryAtomicDataDefImpl() {
@@ -38,7 +37,7 @@ UnaryDataDefImpl<D> implements QUnaryAtomicDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

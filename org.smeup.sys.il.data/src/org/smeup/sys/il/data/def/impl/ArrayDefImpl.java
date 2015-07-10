@@ -23,8 +23,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class ArrayDefImpl<D extends QArray<?>> extends
-MultipleAtomicBufferedDataDefImpl<D> implements QArrayDef<D> {
+public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDataDefImpl<D> implements QArrayDef<D> {
 	/**
 	 *
 	 */
@@ -32,7 +31,7 @@ MultipleAtomicBufferedDataDefImpl<D> implements QArrayDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected ArrayDefImpl() {
@@ -41,7 +40,7 @@ MultipleAtomicBufferedDataDefImpl<D> implements QArrayDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

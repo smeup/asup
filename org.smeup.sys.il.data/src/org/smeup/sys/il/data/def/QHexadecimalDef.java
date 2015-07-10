@@ -25,8 +25,7 @@ import org.smeup.sys.il.data.QHexadecimal;
  * @model
  * @generated
  */
-public interface QHexadecimalDef extends
-QUnaryAtomicBufferedDataDef<QHexadecimal> {
+public interface QHexadecimalDef extends QUnaryAtomicBufferedDataDef<QHexadecimal> {
 	/**
 	 * Returns the value of the '<em><b>Length</b></em>' attribute. <!--
 	 * begin-user-doc -->

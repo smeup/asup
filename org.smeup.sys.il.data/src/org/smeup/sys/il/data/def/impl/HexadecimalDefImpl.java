@@ -28,8 +28,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class HexadecimalDefImpl extends
-UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
+public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 	/**
 	 *
 	 */
@@ -38,7 +37,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -48,7 +47,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -57,7 +56,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected HexadecimalDefImpl() {
@@ -66,7 +65,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +75,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -86,7 +85,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -94,14 +93,12 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH,
-					oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.HEXADECIMAL_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -115,7 +112,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,7 +127,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -145,7 +142,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,7 +156,7 @@ UnaryAtomicBufferedDataDefImpl<QHexadecimal> implements QHexadecimalDef {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -708,9 +708,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		// FrameworkCoreUnexpectedConditionException("cbe7xcb59vbnfg4535");
 
 		switch (dataTerm.getDataTermType()) {
-		case MULTIPLE_ATOMIC:			
+		case MULTIPLE_ATOMIC:
 			QDefault default_ = dataTerm.getDefault();
-			
+
 			if (default_ == null || default_.isEmpty()) {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
@@ -735,7 +735,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		case UNARY_ATOMIC:
 			default_ = dataTerm.getDefault();
-			
+
 			if (default_ == null || default_.isEmpty()) {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
@@ -756,7 +756,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			break;
 		case UNARY_COMPOUND:
 			default_ = dataTerm.getDefault();
-			
+
 			if (default_ == null || default_.isEmpty()) {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
@@ -767,7 +767,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				break;
 
 			}
-			
+
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 			for (QDataTerm<?> element : compoundDataDef.getElements()) {
 
@@ -797,9 +797,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	private MethodInvocation buildAssignmentMethod(QAssignmentExpression assignmentExpression) {
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
-
-		Expression expression = buildExpression(ast, assignmentExpression.getLeftOperand(), null);
-		methodInvocation.setExpression(expression);
 
 		int p = 0;
 		switch (assignmentExpression.getOperator()) {
@@ -832,21 +829,11 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// p++;
 			break;
 		}
-		/*
-		 * if (assignmentExpression.getLeftOperand().getExpressionType() !=
-		 * ExpressionType.COMPOUND &&
-		 * this.compilationUnit.getDataTerm(assignmentExpression
-		 * .getLeftOperand().getValue(), true) instanceof QMultipleDataTerm<?>)
-		 * { if (!CompilationContextHelper.isSpecial(compilationUnit,
-		 * assignmentExpression.getRightOperand())) expression =
-		 * buildExpression(ast, assignmentExpression.getRightOperand(), null);
-		 * else expression = buildExpression(ast,
-		 * assignmentExpression.getRightOperand(), null); } else expression =
-		 * buildExpression(ast, assignmentExpression.getRightOperand(), null);
-		 */
 
+		Expression expression = buildExpression(ast, assignmentExpression.getLeftOperand(), null);
+		methodInvocation.setExpression(expression);
+		
 		expression = buildExpression(ast, assignmentExpression.getRightOperand(), null);
-
 		methodInvocation.arguments().add(p, expression);
 
 		return methodInvocation;

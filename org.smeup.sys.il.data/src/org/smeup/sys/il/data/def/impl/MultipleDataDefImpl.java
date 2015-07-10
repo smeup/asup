@@ -27,12 +27,11 @@ import org.smeup.sys.il.data.def.QMultipleDataDef;
  *
  * @generated
  */
-public abstract class MultipleDataDefImpl<D extends QList<?>> extends
-DataDefImpl<D> implements QMultipleDataDef<D> {
+public abstract class MultipleDataDefImpl<D extends QList<?>> extends DataDefImpl<D> implements QMultipleDataDef<D> {
 	/**
 	 * The default value of the '{@link #getDimension() <em>Dimension</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDimension()
 	 * @generated
 	 * @ordered
@@ -41,7 +40,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 	/**
 	 * The cached value of the '{@link #getDimension() <em>Dimension</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getDimension()
 	 * @generated
 	 * @ordered
@@ -54,7 +53,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected MultipleDataDefImpl() {
@@ -63,7 +62,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -73,7 +72,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,7 +82,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,16 +90,12 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 		int oldDimension = dimension;
 		dimension = newDimension;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION,
-					oldDimension, dimension));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_DATA_DEF__DIMENSION, oldDimension, dimension));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -114,7 +109,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -129,7 +124,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -144,7 +139,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,7 +153,7 @@ DataDefImpl<D> implements QMultipleDataDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

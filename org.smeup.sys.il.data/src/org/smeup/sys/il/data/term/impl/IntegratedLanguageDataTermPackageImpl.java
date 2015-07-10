@@ -33,35 +33,34 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
+ * 
  * @generated
  */
-public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl
-implements QIntegratedLanguageDataTermPackage {
+public class IntegratedLanguageDataTermPackageImpl extends EPackageImpl implements QIntegratedLanguageDataTermPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass dataTermEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass dataTermContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EClass dataTermVisitorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private EEnum dataTermTypeEEnum = null;
@@ -87,7 +86,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -102,7 +101,7 @@ implements QIntegratedLanguageDataTermPackage {
 	 * accessed. Clients should not invoke it directly. Instead, they should
 	 * simply access that field to obtain the package. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -110,13 +109,11 @@ implements QIntegratedLanguageDataTermPackage {
 	 */
 	public static QIntegratedLanguageDataTermPackage init() {
 		if (isInited)
-			return (QIntegratedLanguageDataTermPackage) EPackage.Registry.INSTANCE
-					.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
+			return (QIntegratedLanguageDataTermPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 
 		// Obtain or create and register package
-		IntegratedLanguageDataTermPackageImpl theIntegratedLanguageDataTermPackage = (IntegratedLanguageDataTermPackageImpl) (EPackage.Registry.INSTANCE
-				.get(eNS_URI) instanceof IntegratedLanguageDataTermPackageImpl ? EPackage.Registry.INSTANCE
-						.get(eNS_URI) : new IntegratedLanguageDataTermPackageImpl());
+		IntegratedLanguageDataTermPackageImpl theIntegratedLanguageDataTermPackage = (IntegratedLanguageDataTermPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageDataTermPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new IntegratedLanguageDataTermPackageImpl());
 
 		isInited = true;
 
@@ -124,14 +121,11 @@ implements QIntegratedLanguageDataTermPackage {
 		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		IntegratedLanguageDataPackageImpl theIntegratedLanguageDataPackage = (IntegratedLanguageDataPackageImpl) (EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) instanceof IntegratedLanguageDataPackageImpl ? EPackage.Registry.INSTANCE
-						.getEPackage(QIntegratedLanguageDataPackage.eNS_URI)
-						: QIntegratedLanguageDataPackage.eINSTANCE);
+		IntegratedLanguageDataPackageImpl theIntegratedLanguageDataPackage = (IntegratedLanguageDataPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) instanceof IntegratedLanguageDataPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(QIntegratedLanguageDataPackage.eNS_URI) : QIntegratedLanguageDataPackage.eINSTANCE);
 		IntegratedLanguageDataDefPackageImpl theIntegratedLanguageDataDefPackage = (IntegratedLanguageDataDefPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI) instanceof IntegratedLanguageDataDefPackageImpl ? EPackage.Registry.INSTANCE
-						.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI)
-						: QIntegratedLanguageDataDefPackage.eINSTANCE);
+				.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI) : QIntegratedLanguageDataDefPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageDataTermPackage.createPackageContents();
@@ -147,15 +141,13 @@ implements QIntegratedLanguageDataTermPackage {
 		theIntegratedLanguageDataTermPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(
-				QIntegratedLanguageDataTermPackage.eNS_URI,
-				theIntegratedLanguageDataTermPackage);
+		EPackage.Registry.INSTANCE.put(QIntegratedLanguageDataTermPackage.eNS_URI, theIntegratedLanguageDataTermPackage);
 		return theIntegratedLanguageDataTermPackage;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -165,7 +157,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -175,7 +167,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -185,7 +177,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -195,7 +187,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -205,7 +197,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,7 +207,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -225,7 +217,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -235,7 +227,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -245,7 +237,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -255,7 +247,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -265,7 +257,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -275,7 +267,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -285,7 +277,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -295,7 +287,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -304,7 +296,7 @@ implements QIntegratedLanguageDataTermPackage {
 	 * Creates the meta-model objects for the package. This method is guarded to
 	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -334,7 +326,7 @@ implements QIntegratedLanguageDataTermPackage {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -357,33 +349,26 @@ implements QIntegratedLanguageDataTermPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage) EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage) EPackage.Registry.INSTANCE
 				.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter dataTermEClass_DD = addETypeParameter(dataTermEClass,
-				"DD");
+		ETypeParameter dataTermEClass_DD = addETypeParameter(dataTermEClass, "DD");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(theIntegratedLanguageDataDefPackage
-				.getDataDef());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		dataTermEClass_DD.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		dataTermEClass.getESuperTypes().add(
-				theIntegratedLanguageCoreTermPackage.getTerm());
-		dataTermEClass.getESuperTypes().add(
-				theIntegratedLanguageCorePackage.getObject());
-		g1 = createEGenericType(theIntegratedLanguageCoreTermPackage
-				.getTermContainer());
+		dataTermEClass.getESuperTypes().add(theIntegratedLanguageCoreTermPackage.getTerm());
+		dataTermEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		g1 = createEGenericType(theIntegratedLanguageCoreTermPackage.getTermContainer());
 		g2 = createEGenericType(this.getDataTerm());
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
@@ -391,73 +376,43 @@ implements QIntegratedLanguageDataTermPackage {
 		dataTermContainerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(dataTermEClass, QDataTerm.class, "DataTerm", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDataTerm_Cardinality(),
-				theIntegratedLanguageCoreMetaPackage.getCardinality(), null,
-				"cardinality", null, 0, 1, QDataTerm.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataTerm_Constant(), ecorePackage.getEBoolean(),
-				"constant", null, 0, 1, QDataTerm.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEClass(dataTermEClass, QDataTerm.class, "DataTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataTerm_Cardinality(), theIntegratedLanguageCoreMetaPackage.getCardinality(), null, "cardinality", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataTerm_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getDataTerm_Default(),
-				theIntegratedLanguageCoreMetaPackage.getDefault(), null,
-				"default", null, 0, 1, QDataTerm.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataTerm_Default(), theIntegratedLanguageCoreMetaPackage.getDefault(), null, "default", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(dataTermEClass_DD);
-		initEReference(getDataTerm_Definition(), g1, null, "definition", null,
-				0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataTerm_Initialized(), ecorePackage.getEBoolean(),
-				"initialized", null, 1, 1, QDataTerm.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEReference(getDataTerm_Definition(), g1, null, "definition", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataTerm_Initialized(), ecorePackage.getEBoolean(), "initialized", null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataTerm_Like(), ecorePackage.getEString(), "like", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataTerm_Like(), ecorePackage.getEString(), "like",
-				null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getDataTerm_Name(), ecorePackage.getEString(), "name",
-				null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getDataTerm_Restricted(), ecorePackage.getEBoolean(),
-				"restricted", null, 0, 1, QDataTerm.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getDataTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataTerm_Text(), ecorePackage.getEString(), "text",
-				null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getDataTerm_Restricted(), ecorePackage.getEBoolean(), "restricted", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataTerm_Text(), ecorePackage.getEString(), "text", null, 0, 1, QDataTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(dataTermEClass, null, "accept", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getDataTermVisitor(), "visitor", 1, 1,
-				IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(dataTermEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDataTermVisitor(), "visitor", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(dataTermEClass, this.getDataTermType(),
-				"getDataTermType", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(dataTermEClass, this.getDataTermType(), "getDataTermType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(dataTermContainerEClass, QDataTermContainer.class,
-				"DataTermContainer", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataTermContainerEClass, QDataTermContainer.class, "DataTermContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dataTermVisitorEClass, QDataTermVisitor.class,
-				"DataTermVisitor", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataTermVisitorEClass, QDataTermVisitor.class, "DataTermVisitor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(dataTermVisitorEClass, null, "endVisit", 0, 1,
-				IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataTermVisitorEClass, null, "endVisit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "term", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataTermVisitorEClass, ecorePackage.getEBoolean(),
-				"visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataTermVisitorEClass, ecorePackage.getEBoolean(), "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);

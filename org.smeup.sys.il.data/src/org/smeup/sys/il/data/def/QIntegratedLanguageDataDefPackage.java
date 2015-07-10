@@ -24,7 +24,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory
  * @model kind="package"
  * @generated
@@ -32,21 +32,21 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	String eNAME = "def";
 
 	/**
 	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/data/def";
 
 	/**
 	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-data-def";
@@ -54,17 +54,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
-	QIntegratedLanguageDataDefPackage eINSTANCE = org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl
-			.init();
+	QIntegratedLanguageDataDefPackage eINSTANCE = org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl.init();
 
 	/**
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.DataDefImpl <em>Data Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.DataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataDef()
 	 * @generated
@@ -94,7 +93,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.UnaryDataDefImpl
 	 * <em>Unary Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.UnaryDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryDataDef()
 	 * @generated
@@ -113,7 +112,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Unary Data Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -124,7 +123,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.UnaryAtomicDataDefImpl
 	 * <em>Unary Atomic Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicDataDef()
 	 * @generated
@@ -143,7 +142,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Unary Atomic Data Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -166,7 +165,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.MultipleDataDefImpl
 	 * <em>Multiple Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.MultipleDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleDataDef()
 	 * @generated
@@ -178,7 +177,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
 	 * <em>Multiple Atomic Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicDataDef()
 	 * @generated
@@ -190,7 +189,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl
 	 * <em>Multiple Atomic Buffered Data Def</em>}' class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicBufferedDataDef()
 	 * @generated
@@ -201,7 +200,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.ArrayDefImpl <em>Array Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.ArrayDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getArrayDef()
 	 * @generated
@@ -213,7 +212,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
 	 * <em>Atomic Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
 	 * @generated
@@ -225,7 +224,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
 	 * <em>Unary Atomic Buffered Data Def</em>}' class. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicBufferedDataDef()
 	 * @generated
@@ -244,7 +243,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Adapter Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -271,7 +270,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Multiple Data Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -299,7 +298,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The number of structural features of the '
 	 * <em>Multiple Atomic Data Def</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -326,7 +325,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -336,7 +335,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The number of structural features of the '
 	 * <em>Multiple Atomic Buffered Data Def</em>' class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -363,7 +362,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -390,7 +389,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Atomic Data Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -409,7 +408,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The number of structural features of the '
 	 * <em>Unary Atomic Buffered Data Def</em>' class. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -419,7 +418,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.BinaryDefImpl <em>Binary Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.BinaryDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBinaryDef()
 	 * @generated
@@ -456,7 +455,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Binary Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -466,7 +465,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.BufferDefImpl <em>Buffer Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.BufferDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBufferDef()
 	 * @generated
@@ -485,7 +484,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Buffer Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -496,7 +495,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QBufferedDataDef
 	 * <em>Buffered Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.QBufferedDataDef
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBufferedDataDef()
 	 * @generated
@@ -515,7 +514,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Buffered Data Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -563,7 +562,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Character Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -574,7 +573,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl
 	 * <em>Compound Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.CompoundDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getCompoundDataDef()
 	 * @generated
@@ -602,7 +601,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -629,7 +628,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Compound Data Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -640,7 +639,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl
 	 * <em>Unary Compound Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryCompoundDataDef()
 	 * @generated
@@ -668,7 +667,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -696,7 +695,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The number of structural features of the '
 	 * <em>Unary Compound Data Def</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -707,7 +706,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.DataStructDefImpl
 	 * <em>Data Struct Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.DataStructDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataStructDef()
 	 * @generated
@@ -735,7 +734,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -771,7 +770,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Struct Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -819,7 +818,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Datetime Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -876,7 +875,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Decimal Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -886,7 +885,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.EnumDefImpl <em>Enum Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.EnumDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getEnumDef()
 	 * @generated
@@ -905,7 +904,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -962,7 +961,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Floating Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -973,7 +972,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl
 	 * <em>Hexadecimal Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.HexadecimalDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getHexadecimalDef()
 	 * @generated
@@ -1001,7 +1000,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Hexadecimal Def</em>'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1031,7 +1030,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Identity Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1061,7 +1060,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Indicator Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1071,7 +1070,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.ListDefImpl <em>List Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.ListDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getListDef()
 	 * @generated
@@ -1099,7 +1098,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1119,7 +1118,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl
 	 * <em>Multiple Compound Data Def</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleCompoundDataDef()
 	 * @generated
@@ -1156,7 +1155,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1184,7 +1183,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The number of structural features of the '
 	 * <em>Multiple Compound Data Def</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1214,7 +1213,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Numeric Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1253,7 +1252,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Pointer Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1292,7 +1291,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Argument</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1301,7 +1300,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Scroller Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1311,7 +1310,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.impl.StringDefImpl <em>String Def</em>}'
 	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.impl.StringDefImpl
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getStringDef()
 	 * @generated
@@ -1330,7 +1329,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>String Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1378,7 +1377,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference
 	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1414,7 +1413,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Stroller Def</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 * @ordered
 	 */
@@ -1446,7 +1445,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.DatetimeType <em>Datetime Type</em>}'
 	 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.DatetimeType
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDatetimeType()
 	 * @generated
@@ -1479,7 +1478,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * The meta object id for the '
 	 * {@link org.smeup.sys.il.data.def.FloatingType <em>Floating Type</em>}'
 	 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see org.smeup.sys.il.data.def.FloatingType
 	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getFloatingType()
 	 * @generated
@@ -1512,7 +1511,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QAtomicDataDef <em>Atomic Data Def</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Atomic Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QAtomicDataDef
 	 * @generated
@@ -1546,7 +1545,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QBinaryDef#isUnsigned <em>Unsigned</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Unsigned</em>'.
 	 * @see org.smeup.sys.il.data.def.QBinaryDef#isUnsigned()
 	 * @see #getBinaryDef()
@@ -1581,7 +1580,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QCharacterDef <em>Character Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Character Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QCharacterDef
 	 * @generated
@@ -1592,7 +1591,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Length</em>'.
 	 * @see org.smeup.sys.il.data.def.QCharacterDef#getLength()
 	 * @see #getCharacterDef()
@@ -1604,7 +1603,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QCharacterDef#isVarying
 	 * <em>Varying</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Varying</em>'.
 	 * @see org.smeup.sys.il.data.def.QCharacterDef#isVarying()
 	 * @see #getCharacterDef()
@@ -1628,7 +1627,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator
 	 * <em>Class Delegator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Class Delegator</em>'.
 	 * @see org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator()
 	 * @see #getCompoundDataDef()
@@ -1640,7 +1639,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the containment reference list '
 	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#getElements
 	 * <em>Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference list '
 	 *         <em>Elements</em>'.
 	 * @see org.smeup.sys.il.data.def.QCompoundDataDef#getElements()
@@ -1653,7 +1652,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix
 	 * <em>Prefix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Prefix</em>'.
 	 * @see org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix()
 	 * @see #getCompoundDataDef()
@@ -1665,7 +1664,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#isQualified
 	 * <em>Qualified</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Qualified</em>'.
 	 * @see org.smeup.sys.il.data.def.QCompoundDataDef#isQualified()
 	 * @see #getCompoundDataDef()
@@ -1688,7 +1687,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute list '
 	 * {@link org.smeup.sys.il.data.def.QDataDef#getFormulas <em>Formulas</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute list '<em>Formulas</em>'.
 	 * @see org.smeup.sys.il.data.def.QDataDef#getFormulas()
 	 * @see #getDataDef()
@@ -1700,7 +1699,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QDataStructDef <em>Data Struct Def</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Data Struct Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QDataStructDef
 	 * @generated
@@ -1711,7 +1710,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDataStructDef#getLength
 	 * <em>Length</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Length</em>'.
 	 * @see org.smeup.sys.il.data.def.QDataStructDef#getLength()
 	 * @see #getDataStructDef()
@@ -1723,7 +1722,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QDatetimeDef <em>Datetime Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Datetime Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QDatetimeDef
 	 * @generated
@@ -1734,7 +1733,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDatetimeDef#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.smeup.sys.il.data.def.QDatetimeDef#getType()
 	 * @see #getDatetimeDef()
@@ -1746,7 +1745,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDatetimeDef#getFormat <em>Format</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Format</em>'.
 	 * @see org.smeup.sys.il.data.def.QDatetimeDef#getFormat()
 	 * @see #getDatetimeDef()
@@ -1769,7 +1768,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getPrecision
 	 * <em>Precision</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Precision</em>'.
 	 * @see org.smeup.sys.il.data.def.QDecimalDef#getPrecision()
 	 * @see #getDecimalDef()
@@ -1781,7 +1780,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Scale</em>'.
 	 * @see org.smeup.sys.il.data.def.QDecimalDef#getScale()
 	 * @see #getDecimalDef()
@@ -1793,7 +1792,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.smeup.sys.il.data.def.QDecimalDef#getType()
 	 * @see #getDecimalDef()
@@ -1816,7 +1815,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the containment reference '
 	 * {@link org.smeup.sys.il.data.def.QEnumDef#getDelegate <em>Delegate</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference '<em>Delegate</em>
 	 *         '.
 	 * @see org.smeup.sys.il.data.def.QEnumDef#getDelegate()
@@ -1841,7 +1840,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QFloatingDef <em>Floating Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Floating Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QFloatingDef
 	 * @generated
@@ -1852,7 +1851,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QFloatingDef#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Type</em>'.
 	 * @see org.smeup.sys.il.data.def.QFloatingDef#getType()
 	 * @see #getFloatingDef()
@@ -1864,7 +1863,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QHexadecimalDef
 	 * <em>Hexadecimal Def</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Hexadecimal Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QHexadecimalDef
 	 * @generated
@@ -1875,7 +1874,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QHexadecimalDef#getLength
 	 * <em>Length</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Length</em>'.
 	 * @see org.smeup.sys.il.data.def.QHexadecimalDef#getLength()
 	 * @see #getHexadecimalDef()
@@ -1887,7 +1886,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QIdentityDef <em>Identity Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Identity Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QIdentityDef
 	 * @generated
@@ -1898,7 +1897,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QIndicatorDef <em>Indicator Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Indicator Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QIndicatorDef
 	 * @generated
@@ -1920,7 +1919,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the containment reference '
 	 * {@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference '<em>Argument</em>
 	 *         '.
 	 * @see org.smeup.sys.il.data.def.QListDef#getArgument()
@@ -1934,7 +1933,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QMultipleAtomicDataDef
 	 * <em>Multiple Atomic Data Def</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Multiple Atomic Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QMultipleAtomicDataDef
 	 * @generated
@@ -1946,7 +1945,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef
 	 * <em>Multiple Atomic Buffered Data Def</em>}'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '
 	 *         <em>Multiple Atomic Buffered Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef
@@ -1958,7 +1957,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the containment reference '
 	 * {@link org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef#getArgument
 	 * <em>Argument</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the containment reference '<em>Argument</em>
 	 *         '.
 	 * @see org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef#getArgument()
@@ -1972,7 +1971,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QMultipleCompoundDataDef
 	 * <em>Multiple Compound Data Def</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Multiple Compound Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QMultipleCompoundDataDef
 	 * @generated
@@ -1995,7 +1994,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QMultipleDataDef#getDimension
 	 * <em>Dimension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Dimension</em>'.
 	 * @see org.smeup.sys.il.data.def.QMultipleDataDef#getDimension()
 	 * @see #getMultipleDataDef()
@@ -2029,7 +2028,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Target</em>'.
 	 * @see org.smeup.sys.il.data.def.QPointerDef#getTarget()
 	 * @see #getPointerDef()
@@ -2041,7 +2040,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QScrollerDef <em>Scroller Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Scroller Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QScrollerDef
 	 * @generated
@@ -2063,7 +2062,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QStrollerDef <em>Stroller Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Stroller Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QStrollerDef
 	 * @generated
@@ -2074,7 +2073,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for the attribute '
 	 * {@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}
 	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for the attribute '<em>Length</em>'.
 	 * @see org.smeup.sys.il.data.def.QStrollerDef#getLength()
 	 * @see #getStrollerDef()
@@ -2087,7 +2086,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QUnaryAtomicDataDef
 	 * <em>Unary Atomic Data Def</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Unary Atomic Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QUnaryAtomicDataDef
 	 * @generated
@@ -2099,7 +2098,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef
 	 * <em>Unary Atomic Buffered Data Def</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '
 	 *         <em>Unary Atomic Buffered Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef
@@ -2112,7 +2111,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * {@link org.smeup.sys.il.data.def.QUnaryCompoundDataDef
 	 * <em>Unary Compound Data Def</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Unary Compound Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QUnaryCompoundDataDef
 	 * @generated
@@ -2123,7 +2122,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QUnaryDataDef <em>Unary Data Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for class '<em>Unary Data Def</em>'.
 	 * @see org.smeup.sys.il.data.def.QUnaryDataDef
 	 * @generated
@@ -2145,7 +2144,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for enum '
 	 * {@link org.smeup.sys.il.data.def.DataDefType <em>Data Def Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for enum '<em>Data Def Type</em>'.
 	 * @see org.smeup.sys.il.data.def.DataDefType
 	 * @generated
@@ -2156,7 +2155,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for enum '
 	 * {@link org.smeup.sys.il.data.def.DatetimeType <em>Datetime Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for enum '<em>Datetime Type</em>'.
 	 * @see org.smeup.sys.il.data.def.DatetimeType
 	 * @generated
@@ -2178,7 +2177,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for enum '
 	 * {@link org.smeup.sys.il.data.def.DecimalType <em>Decimal Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for enum '<em>Decimal Type</em>'.
 	 * @see org.smeup.sys.il.data.def.DecimalType
 	 * @generated
@@ -2189,7 +2188,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * Returns the meta object for enum '
 	 * {@link org.smeup.sys.il.data.def.FloatingType <em>Floating Type</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @return the meta object for enum '<em>Floating Type</em>'.
 	 * @see org.smeup.sys.il.data.def.FloatingType
 	 * @generated
@@ -2215,7 +2214,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	interface Literals {
@@ -2224,7 +2223,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.AdapterDefImpl
 		 * <em>Adapter Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.AdapterDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAdapterDef()
 		 * @generated
@@ -2248,7 +2247,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
 		 * <em>Atomic Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.AtomicDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getAtomicDataDef()
 		 * @generated
@@ -2260,7 +2259,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.BinaryDefImpl
 		 * <em>Binary Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.BinaryDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBinaryDef()
 		 * @generated
@@ -2270,7 +2269,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute BINARY_DEF__TYPE = eINSTANCE.getBinaryDef_Type();
@@ -2278,7 +2277,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Unsigned</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute BINARY_DEF__UNSIGNED = eINSTANCE.getBinaryDef_Unsigned();
@@ -2288,7 +2287,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.BufferDefImpl
 		 * <em>Buffer Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.BufferDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBufferDef()
 		 * @generated
@@ -2300,7 +2299,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.QBufferedDataDef
 		 * <em>Buffered Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.QBufferedDataDef
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBufferedDataDef()
 		 * @generated
@@ -2312,7 +2311,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.CharacterDefImpl
 		 * <em>Character Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.CharacterDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getCharacterDef()
 		 * @generated
@@ -2322,7 +2321,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Length</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute CHARACTER_DEF__LENGTH = eINSTANCE.getCharacterDef_Length();
@@ -2330,7 +2329,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Varying</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute CHARACTER_DEF__VARYING = eINSTANCE.getCharacterDef_Varying();
@@ -2340,7 +2339,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl
 		 * <em>Compound Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.CompoundDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getCompoundDataDef()
 		 * @generated
@@ -2350,45 +2349,41 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Class Delegator</b></em>'
 		 * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute COMPOUND_DATA_DEF__CLASS_DELEGATOR = eINSTANCE
-				.getCompoundDataDef_ClassDelegator();
+		EAttribute COMPOUND_DATA_DEF__CLASS_DELEGATOR = eINSTANCE.getCompoundDataDef_ClassDelegator();
 
 		/**
 		 * The meta object literal for the '<em><b>Elements</b></em>'
 		 * containment reference list feature. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EReference COMPOUND_DATA_DEF__ELEMENTS = eINSTANCE
-				.getCompoundDataDef_Elements();
+		EReference COMPOUND_DATA_DEF__ELEMENTS = eINSTANCE.getCompoundDataDef_Elements();
 
 		/**
 		 * The meta object literal for the '<em><b>Prefix</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute COMPOUND_DATA_DEF__PREFIX = eINSTANCE
-				.getCompoundDataDef_Prefix();
+		EAttribute COMPOUND_DATA_DEF__PREFIX = eINSTANCE.getCompoundDataDef_Prefix();
 
 		/**
 		 * The meta object literal for the '<em><b>Qualified</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute COMPOUND_DATA_DEF__QUALIFIED = eINSTANCE
-				.getCompoundDataDef_Qualified();
+		EAttribute COMPOUND_DATA_DEF__QUALIFIED = eINSTANCE.getCompoundDataDef_Qualified();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.DataDefImpl <em>Data Def</em>}'
 		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.DataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataDef()
 		 * @generated
@@ -2398,7 +2393,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Formulas</b></em>' attribute
 		 * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DATA_DEF__FORMULAS = eINSTANCE.getDataDef_Formulas();
@@ -2408,7 +2403,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.DataStructDefImpl
 		 * <em>Data Struct Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.DataStructDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataStructDef()
 		 * @generated
@@ -2418,18 +2413,17 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Length</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute DATA_STRUCT_DEF__LENGTH = eINSTANCE
-				.getDataStructDef_Length();
+		EAttribute DATA_STRUCT_DEF__LENGTH = eINSTANCE.getDataStructDef_Length();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl
 		 * <em>Datetime Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.DatetimeDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDatetimeDef()
 		 * @generated
@@ -2439,7 +2433,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DATETIME_DEF__TYPE = eINSTANCE.getDatetimeDef_Type();
@@ -2447,7 +2441,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Format</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DATETIME_DEF__FORMAT = eINSTANCE.getDatetimeDef_Format();
@@ -2457,7 +2451,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.DecimalDefImpl
 		 * <em>Decimal Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.DecimalDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDecimalDef()
 		 * @generated
@@ -2467,7 +2461,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Precision</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DECIMAL_DEF__PRECISION = eINSTANCE.getDecimalDef_Precision();
@@ -2475,7 +2469,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Scale</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DECIMAL_DEF__SCALE = eINSTANCE.getDecimalDef_Scale();
@@ -2483,7 +2477,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute DECIMAL_DEF__TYPE = eINSTANCE.getDecimalDef_Type();
@@ -2492,7 +2486,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.EnumDefImpl <em>Enum Def</em>}'
 		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.EnumDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getEnumDef()
 		 * @generated
@@ -2503,7 +2497,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Delegate</b></em>'
 		 * containment reference feature. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference ENUM_DEF__DELEGATE = eINSTANCE.getEnumDef_Delegate();
@@ -2511,7 +2505,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Klass</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute ENUM_DEF__KLASS = eINSTANCE.getEnumDef_Klass();
@@ -2521,7 +2515,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.FloatingDefImpl
 		 * <em>Floating Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.FloatingDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getFloatingDef()
 		 * @generated
@@ -2531,7 +2525,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute FLOATING_DEF__TYPE = eINSTANCE.getFloatingDef_Type();
@@ -2541,7 +2535,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.HexadecimalDefImpl
 		 * <em>Hexadecimal Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.HexadecimalDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getHexadecimalDef()
 		 * @generated
@@ -2551,18 +2545,17 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Length</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute HEXADECIMAL_DEF__LENGTH = eINSTANCE
-				.getHexadecimalDef_Length();
+		EAttribute HEXADECIMAL_DEF__LENGTH = eINSTANCE.getHexadecimalDef_Length();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.IdentityDefImpl
 		 * <em>Identity Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.IdentityDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getIdentityDef()
 		 * @generated
@@ -2574,7 +2567,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.IndicatorDefImpl
 		 * <em>Indicator Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.IndicatorDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getIndicatorDef()
 		 * @generated
@@ -2585,7 +2578,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.ListDefImpl <em>List Def</em>}'
 		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.ListDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getListDef()
 		 * @generated
@@ -2596,7 +2589,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Argument</b></em>'
 		 * containment reference feature. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EReference LIST_DEF__ARGUMENT = eINSTANCE.getListDef_Argument();
@@ -2606,7 +2599,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
 		 * <em>Multiple Atomic Data Def</em>}' class. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.MultipleAtomicDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicDataDef()
 		 * @generated
@@ -2623,38 +2616,35 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleAtomicBufferedDataDef()
 		 * @generated
 		 */
-		EClass MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = eINSTANCE
-				.getMultipleAtomicBufferedDataDef();
+		EClass MULTIPLE_ATOMIC_BUFFERED_DATA_DEF = eINSTANCE.getMultipleAtomicBufferedDataDef();
 
 		/**
 		 * The meta object literal for the '<em><b>Argument</b></em>'
 		 * containment reference feature. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EReference MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT = eINSTANCE
-				.getMultipleAtomicBufferedDataDef_Argument();
+		EReference MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT = eINSTANCE.getMultipleAtomicBufferedDataDef_Argument();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl
 		 * <em>Multiple Compound Data Def</em>}' class. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleCompoundDataDef()
 		 * @generated
 		 */
-		EClass MULTIPLE_COMPOUND_DATA_DEF = eINSTANCE
-				.getMultipleCompoundDataDef();
+		EClass MULTIPLE_COMPOUND_DATA_DEF = eINSTANCE.getMultipleCompoundDataDef();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.MultipleDataDefImpl
 		 * <em>Multiple Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.MultipleDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getMultipleDataDef()
 		 * @generated
@@ -2664,18 +2654,17 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Dimension</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
-		EAttribute MULTIPLE_DATA_DEF__DIMENSION = eINSTANCE
-				.getMultipleDataDef_Dimension();
+		EAttribute MULTIPLE_DATA_DEF__DIMENSION = eINSTANCE.getMultipleDataDef_Dimension();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.NumericDefImpl
 		 * <em>Numeric Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.NumericDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getNumericDef()
 		 * @generated
@@ -2687,7 +2676,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.PointerDefImpl
 		 * <em>Pointer Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.PointerDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getPointerDef()
 		 * @generated
@@ -2697,7 +2686,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute POINTER_DEF__TARGET = eINSTANCE.getPointerDef_Target();
@@ -2707,7 +2696,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.ScrollerDefImpl
 		 * <em>Scroller Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.ScrollerDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getScrollerDef()
 		 * @generated
@@ -2719,7 +2708,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.StringDefImpl
 		 * <em>String Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.StringDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getStringDef()
 		 * @generated
@@ -2731,7 +2720,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.StrollerDefImpl
 		 * <em>Stroller Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.StrollerDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getStrollerDef()
 		 * @generated
@@ -2741,7 +2730,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		/**
 		 * The meta object literal for the '<em><b>Length</b></em>' attribute
 		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @generated
 		 */
 		EAttribute STROLLER_DEF__LENGTH = eINSTANCE.getStrollerDef_Length();
@@ -2751,7 +2740,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.UnaryAtomicDataDefImpl
 		 * <em>Unary Atomic Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicDataDef()
 		 * @generated
@@ -2763,20 +2752,19 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
 		 * <em>Unary Atomic Buffered Data Def</em>}' class. <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.UnaryAtomicBufferedDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryAtomicBufferedDataDef()
 		 * @generated
 		 */
-		EClass UNARY_ATOMIC_BUFFERED_DATA_DEF = eINSTANCE
-				.getUnaryAtomicBufferedDataDef();
+		EClass UNARY_ATOMIC_BUFFERED_DATA_DEF = eINSTANCE.getUnaryAtomicBufferedDataDef();
 
 		/**
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl
 		 * <em>Unary Compound Data Def</em>}' class. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryCompoundDataDef()
 		 * @generated
@@ -2788,7 +2776,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * {@link org.smeup.sys.il.data.def.impl.UnaryDataDefImpl
 		 * <em>Unary Data Def</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.impl.UnaryDataDefImpl
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getUnaryDataDef()
 		 * @generated
@@ -2799,7 +2787,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.BinaryType <em>Binary Type</em>}'
 		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.BinaryType
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getBinaryType()
 		 * @generated
@@ -2810,7 +2798,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.DataDefType <em>Data Def Type</em>}'
 		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.DataDefType
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDataDefType()
 		 * @generated
@@ -2821,7 +2809,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.DatetimeType <em>Datetime Type</em>}
 		 * ' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.DatetimeType
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDatetimeType()
 		 * @generated
@@ -2832,7 +2820,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.DateFormat <em>Date Format</em>}'
 		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.DateFormat
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDateFormat()
 		 * @generated
@@ -2843,7 +2831,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.DecimalType <em>Decimal Type</em>}'
 		 * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.DecimalType
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getDecimalType()
 		 * @generated
@@ -2854,7 +2842,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * The meta object literal for the '
 		 * {@link org.smeup.sys.il.data.def.FloatingType <em>Floating Type</em>}
 		 * ' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 *
+		 * 
 		 * @see org.smeup.sys.il.data.def.FloatingType
 		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getFloatingType()
 		 * @generated

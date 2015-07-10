@@ -32,9 +32,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * @generated
  */
-public class StrollerDefImpl<D extends QStroller<?>> extends
-MultipleCompoundDataDefImpl<D, QDataTerm<QBufferedDataDef<?>>>
-implements QStrollerDef<D> {
+public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDataDefImpl<D, QDataTerm<QBufferedDataDef<?>>> implements QStrollerDef<D> {
 	/**
 	 *
 	 */
@@ -43,7 +41,7 @@ implements QStrollerDef<D> {
 	/**
 	 * The default value of the '{@link #getLength() <em>Length</em>}'
 	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -53,7 +51,7 @@ implements QStrollerDef<D> {
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -62,7 +60,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	protected StrollerDefImpl() {
@@ -71,7 +69,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -81,7 +79,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,7 +89,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,14 +97,12 @@ implements QStrollerDef<D> {
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH,
-					oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.STROLLER_DEF__LENGTH, oldLength, length));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,7 +116,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -135,7 +131,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -150,7 +146,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -164,7 +160,7 @@ implements QStrollerDef<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * 
 	 * @generated
 	 */
 	@Override

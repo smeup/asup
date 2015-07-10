@@ -23,8 +23,7 @@ public interface QIntegratedLanguageDataTermFactory extends EFactory {
 	 * 
 	 * @generated
 	 */
-	QIntegratedLanguageDataTermFactory eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermFactoryImpl
-			.init();
+	QIntegratedLanguageDataTermFactory eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory. <!-- begin-user-doc -->

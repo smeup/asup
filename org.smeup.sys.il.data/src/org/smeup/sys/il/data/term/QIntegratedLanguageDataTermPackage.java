@@ -57,8 +57,7 @@ public interface QIntegratedLanguageDataTermPackage extends EPackage {
 	 * 
 	 * @generated
 	 */
-	QIntegratedLanguageDataTermPackage eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl
-			.init();
+	QIntegratedLanguageDataTermPackage eINSTANCE = org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl.init();
 
 	/**
 	 * The meta object id for the '
