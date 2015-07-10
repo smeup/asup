@@ -19,5 +19,6 @@ import org.smeup.sys.il.data.QScroller;
  * @model
  * @generated
  */
-public interface QScrollerDef<D extends QScroller<QBufferedData>> extends QMultipleAtomicBufferedDataDef<D> {
+public interface QScrollerDef<D extends QScroller<QBufferedData>> extends
+QMultipleAtomicBufferedDataDef<D> {
 } // QScrollerDataDef

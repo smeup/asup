@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data.impl;
 
-import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;
@@ -51,6 +50,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected DataWriterImpl() {
@@ -59,6 +59,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

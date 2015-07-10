@@ -17,15 +17,16 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Decimal Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
+ *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDecimalType()
  * @model
  * @generated
  */
 public enum DecimalType implements Enumerator {
 	/**
-	 * The '<em><b>Zoned</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>Zoned</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see #ZONED_VALUE
 	 * @generated
 	 * @ordered
@@ -33,9 +34,9 @@ public enum DecimalType implements Enumerator {
 	ZONED(10, "Zoned", "ZONED"),
 
 	/**
-	 * The '<em><b>Packed</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>Packed</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see #PACKED_VALUE
 	 * @generated
 	 * @ordered
@@ -43,13 +44,13 @@ public enum DecimalType implements Enumerator {
 	PACKED(20, "Packed", "PACKED");
 
 	/**
-	 * The '<em><b>Zoned</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Zoned</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Zoned</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #ZONED
 	 * @model name="Zoned" literal="ZONED"
 	 * @generated
@@ -58,13 +59,13 @@ public enum DecimalType implements Enumerator {
 	public static final int ZONED_VALUE = 10;
 
 	/**
-	 * The '<em><b>Packed</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>Packed</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Packed</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #PACKED
 	 * @model name="Packed" literal="PACKED"
 	 * @generated
@@ -79,82 +80,84 @@ public enum DecimalType implements Enumerator {
 	 * @generated
 	 */
 	private static final DecimalType[] VALUES_ARRAY = new DecimalType[] {
-			ZONED,
-			PACKED,
-		};
+			ZONED, PACKED, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Decimal Type</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Decimal Type</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	public static final List<DecimalType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DecimalType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static DecimalType get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			DecimalType result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
+		for (DecimalType result : VALUES_ARRAY)
+			if (result.toString().equals(literal))
 				return result;
-			}
-		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static DecimalType getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			DecimalType result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
+		for (DecimalType result : VALUES_ARRAY)
+			if (result.getName().equals(name))
 				return result;
-			}
-		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Decimal Type</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static DecimalType get(int value) {
 		switch (value) {
-			case ZONED_VALUE: return ZONED;
-			case PACKED_VALUE: return PACKED;
+		case ZONED_VALUE:
+			return ZONED;
+		case PACKED_VALUE:
+			return PACKED;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private DecimalType(int value, String name, String literal) {
@@ -165,34 +168,38 @@ public enum DecimalType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-	  return value;
+		return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-	  return name;
+		return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-	  return literal;
+		return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

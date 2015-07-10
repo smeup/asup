@@ -23,16 +23,20 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.DataStructDefImpl#getLength <em>Length</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.DataStructDefImpl#getLength <em>
+ * Length</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDataTerm<QBufferedDataDef<?>>> implements QDataStructDef {
+public class DataStructDefImpl extends
+UnaryCompoundDataDefImpl<QDataStruct, QDataTerm<QBufferedDataDef<?>>>
+implements QDataStructDef {
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getLength() <em>Length</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -41,6 +45,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -53,6 +58,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected DataStructDefImpl() {
@@ -61,6 +67,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -70,6 +77,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -79,6 +87,7 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -86,70 +95,78 @@ public class DataStructDefImpl extends UnaryCompoundDataDefImpl<QDataStruct, QDa
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH,
+					oldLength, length));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
-				return getLength();
+		case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
+			return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
-				setLength((Integer)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
+			setLength((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
-				setLength(LENGTH_EDEFAULT);
-				return;
+		case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
+			setLength(LENGTH_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
-				return length != LENGTH_EDEFAULT;
+		case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF__LENGTH:
+			return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (length: ");

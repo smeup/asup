@@ -20,7 +20,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D> implements QAtomicDataDef<D> {
+public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D>
+implements QAtomicDataDef<D> {
 	/**
 	 *
 	 */
@@ -28,6 +29,7 @@ public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D> 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected AtomicDataDefImpl() {
@@ -36,6 +38,7 @@ public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D> 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

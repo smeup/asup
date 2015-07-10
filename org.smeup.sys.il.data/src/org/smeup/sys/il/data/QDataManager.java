@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -27,20 +26,26 @@ import org.smeup.sys.il.data.term.QDataTerm;
 public interface QDataManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms, boolean useDefault);
+	QDataContainer createDataContainer(QContext context,
+			Map<String, QDataTerm<?>> dataTerms, boolean useDefault);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" contextRequired="true" objectRequired="true" termRequired="true"
+	 *
+	 * @model required="true" contextRequired="true" objectRequired="true"
+	 *        termRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QContext context, QObject object, EClass term);
+	QDataContainer createDataContainer(QContext context, QObject object,
+			EClass term);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
@@ -48,6 +53,7 @@ public interface QDataManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model containerRequired="true"
 	 * @generated
 	 */

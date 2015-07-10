@@ -19,6 +19,7 @@ package org.smeup.sys.il.data.term;
 public interface QDataTermVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model termRequired="true"
 	 * @generated
 	 */
@@ -26,6 +27,7 @@ public interface QDataTermVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model termRequired="true"
 	 * @generated
 	 */

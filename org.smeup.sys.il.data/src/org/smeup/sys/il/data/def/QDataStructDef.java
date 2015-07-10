@@ -17,7 +17,8 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QDataStructDef#getLength <em>Length</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QDataStructDef#getLength <em>Length
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -25,7 +26,9 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model
  * @generated
  */
-public interface QDataStructDef extends QUnaryCompoundDataDef<QDataStruct, QDataTerm<QBufferedDataDef<?>>>, QBufferedDataDef<QDataStruct> {
+public interface QDataStructDef extends
+QUnaryCompoundDataDef<QDataStruct, QDataTerm<QBufferedDataDef<?>>>,
+QBufferedDataDef<QDataStruct> {
 
 	/**
 	 * Returns the value of the '<em><b>Length</b></em>' attribute. <!--

@@ -16,10 +16,12 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QStroller<D extends QDataStruct> extends QScroller<D>, QDataStruct {
+public interface QStroller<D extends QDataStruct> extends QScroller<D>,
+QDataStruct {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */

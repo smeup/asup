@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QData;
  * @model abstract="true"
  * @generated
  */
-public interface QUnaryAtomicDataDef<D extends QData> extends QUnaryDataDef<D>, QAtomicDataDef<D> {
+public interface QUnaryAtomicDataDef<D extends QData> extends QUnaryDataDef<D>,
+QAtomicDataDef<D> {
 
 } // QUnaryAtomicDataDef

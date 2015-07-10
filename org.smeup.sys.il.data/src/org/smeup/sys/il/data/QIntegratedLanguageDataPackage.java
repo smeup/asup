@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
@@ -23,43 +22,46 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ *
  * @see org.smeup.sys.il.data.QIntegratedLanguageDataFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
-	 * The package name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	String eNAME = "data";
 
 	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/data";
 
 	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-data";
 
 	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
-	QIntegratedLanguageDataPackage eINSTANCE = org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl.init();
+	QIntegratedLanguageDataPackage eINSTANCE = org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl
+			.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QData <em>Data</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QData
+	 * <em>Data</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QData
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getData()
 	 * @generated
@@ -78,8 +80,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int BUFFERED_DATA = 4;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QNumeric <em>Numeric</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QNumeric
+	 * <em>Numeric</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QNumeric
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getNumeric()
 	 * @generated
@@ -87,8 +90,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int NUMERIC = 27;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QBinary <em>Binary</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QBinary
+	 * <em>Binary</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QBinary
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBinary()
 	 * @generated
@@ -96,8 +100,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int BINARY = 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QBoolean <em>Boolean</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QBoolean
+	 * <em>Boolean</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QBoolean
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBoolean()
 	 * @generated
@@ -105,8 +110,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int BOOLEAN = 3;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QString <em>String</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QString
+	 * <em>String</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QString
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getString()
 	 * @generated
@@ -114,8 +120,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STRING = 31;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QCharacter
+	 * <em>Character</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QCharacter
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getCharacter()
 	 * @generated
@@ -145,8 +152,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_MANAGER = 12;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QDatetime <em>Datetime</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QDatetime
+	 * <em>Datetime</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QDatetime
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDatetime()
 	 * @generated
@@ -154,8 +162,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATETIME = 17;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QDecimal <em>Decimal</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QDecimal
+	 * <em>Decimal</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QDecimal
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDecimal()
 	 * @generated
@@ -163,8 +172,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DECIMAL = 18;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QEnum <em>Enum</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QEnum
+	 * <em>Enum</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QEnum
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getEnum()
 	 * @generated
@@ -172,8 +182,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int ENUM = 19;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QFloating <em>Floating</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QFloating
+	 * <em>Floating</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QFloating
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getFloating()
 	 * @generated
@@ -181,8 +192,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int FLOATING = 20;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QGraphic <em>Graphic</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QGraphic
+	 * <em>Graphic</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QGraphic
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getGraphic()
 	 * @generated
@@ -201,8 +213,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int HEXADECIMAL = 22;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QIndicator <em>Indicator</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QIndicator
+	 * <em>Indicator</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QIndicator
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getIndicator()
 	 * @generated
@@ -210,8 +223,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int INDICATOR = 24;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QMoveable
+	 * <em>Moveable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QMoveable
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getMoveable()
 	 * @generated
@@ -219,8 +233,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int MOVEABLE = 26;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QList <em>List</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QList
+	 * <em>List</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QList
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getList()
 	 * @generated
@@ -228,8 +243,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int LIST = 25;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QArray <em>Array</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QArray
+	 * <em>Array</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QArray
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getArray()
 	 * @generated
@@ -246,8 +262,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QAdapter
+	 * <em>Adapter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QAdapter
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getAdapter()
 	 * @generated
@@ -286,6 +303,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Buffered List</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -303,6 +321,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Buffered Data</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -327,8 +346,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int BINARY_FEATURE_COUNT = NUMERIC_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QPointer <em>Pointer</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QPointer
+	 * <em>Pointer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QPointer
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getPointer()
 	 * @generated
@@ -336,8 +356,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int POINTER = 28;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QScroller <em>Scroller</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QScroller
+	 * <em>Scroller</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QScroller
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScroller()
 	 * @generated
@@ -345,8 +366,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int SCROLLER = 30;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QStruct <em>Struct</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QStruct
+	 * <em>Struct</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QStruct
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStruct()
 	 * @generated
@@ -354,8 +376,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STRUCT = 33;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QStroller
+	 * <em>Stroller</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QStroller
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStroller()
 	 * @generated
@@ -374,9 +397,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_STRUCT = 14;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataDelegator <em>Data Delegator</em>}' class.
-	 * <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataDelegator
+	 * <em>Data Delegator</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QDataDelegator
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataDelegator()
 	 * @generated
@@ -384,8 +408,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_DELEGATOR = 10;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.impl.DataVisitorImpl <em>Data Visitor</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.data.impl.DataVisitorImpl <em>Data Visitor</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.impl.DataVisitorImpl
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataVisitor()
 	 * @generated
@@ -404,15 +430,18 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Delegator</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_DELEGATOR_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QBufferedDataDelegator <em>Buffered Data Delegator</em>}' class.
-	 * <!-- begin-user-doc --> <!--
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.data.QBufferedDataDelegator
+	 * <em>Buffered Data Delegator</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QBufferedDataDelegator
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataDelegator()
 	 * @generated
@@ -420,9 +449,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int BUFFERED_DATA_DELEGATOR = 5;
 
 	/**
-	 * The number of structural features of the '<em>Buffered Data Delegator</em>' class.
-	 * <!-- begin-user-doc --> <!--
+	 * The number of structural features of the '
+	 * <em>Buffered Data Delegator</em>' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -447,9 +477,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int CHARACTER_FEATURE_COUNT = STRING_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}' class.
-	 * <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataContainer
+	 * <em>Data Container</em>}' class. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QDataContainer
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataContainer()
 	 * @generated
@@ -459,14 +490,17 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Container</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int DATA_CONTAINER_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.impl.DataReaderImpl <em>Data Reader</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.data.impl.DataReaderImpl <em>Data Reader</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.impl.DataReaderImpl
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataReader()
 	 * @generated
@@ -474,8 +508,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_READER = 13;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.impl.DataWriterImpl <em>Data Writer</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '
+	 * {@link org.smeup.sys.il.data.impl.DataWriterImpl <em>Data Writer</em>}'
+	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.impl.DataWriterImpl
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataWriter()
 	 * @generated
@@ -485,6 +521,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Factory</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -493,6 +530,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Manager</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -501,6 +539,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Visitor</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -509,6 +548,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Reader</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -517,6 +557,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Struct</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -525,6 +566,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Data Writer</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -578,14 +620,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Hexadecimal</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int HEXADECIMAL_FEATURE_COUNT = BUFFERED_DATA_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QIdentity <em>Identity</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QIdentity
+	 * <em>Identity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QIdentity
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getIdentity()
 	 * @generated
@@ -638,8 +682,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STRUCT_FEATURE_COUNT = DATA_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QRecord <em>Record</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QRecord
+	 * <em>Record</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see org.smeup.sys.il.data.QRecord
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getRecord()
 	 * @generated
@@ -683,8 +728,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int DATA_ARRAY = 34;
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter
+	 * <em>Adapter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Adapter</em>'.
 	 * @see org.smeup.sys.il.data.QAdapter
 	 * @generated
@@ -692,8 +738,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getAdapter();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QArray <em>Array</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QArray
+	 * <em>Array</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Array</em>'.
 	 * @see org.smeup.sys.il.data.QArray
 	 * @generated
@@ -701,8 +748,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getArray();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QBinary <em>Binary</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QBinary
+	 * <em>Binary</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Binary</em>'.
 	 * @see org.smeup.sys.il.data.QBinary
 	 * @generated
@@ -710,8 +758,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getBinary();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QBoolean <em>Boolean</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QBoolean
+	 * <em>Boolean</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Boolean</em>'.
 	 * @see org.smeup.sys.il.data.QBoolean
 	 * @generated
@@ -730,9 +779,11 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getBufferedData();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QBufferedDataDelegator <em>Buffered Data Delegator</em>}'.
-	 * <!-- begin-user-doc --> <!--
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.data.QBufferedDataDelegator
+	 * <em>Buffered Data Delegator</em>}'. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Buffered Data Delegator</em>'.
 	 * @see org.smeup.sys.il.data.QBufferedDataDelegator
 	 * @generated
@@ -762,8 +813,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getCharacter();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QData <em>Data</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QData
+	 * <em>Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Data</em>'.
 	 * @see org.smeup.sys.il.data.QData
 	 * @generated
@@ -771,8 +823,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getData();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}'.
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Data Container</em>'.
 	 * @see org.smeup.sys.il.data.QDataContainer
 	 * @generated
@@ -780,8 +834,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getDataContainer();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QDataDelegator <em>Data Delegator</em>}'.
+	 * Returns the meta object for class '
+	 * {@link org.smeup.sys.il.data.QDataDelegator <em>Data Delegator</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Data Delegator</em>'.
 	 * @see org.smeup.sys.il.data.QDataDelegator
 	 * @generated
@@ -866,8 +922,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getDatetime();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QDecimal <em>Decimal</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QDecimal
+	 * <em>Decimal</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Decimal</em>'.
 	 * @see org.smeup.sys.il.data.QDecimal
 	 * @generated
@@ -875,8 +932,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getDecimal();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QEnum <em>Enum</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QEnum
+	 * <em>Enum</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Enum</em>'.
 	 * @see org.smeup.sys.il.data.QEnum
 	 * @generated
@@ -895,8 +953,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getFloating();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QGraphic <em>Graphic</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QGraphic
+	 * <em>Graphic</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Graphic</em>'.
 	 * @see org.smeup.sys.il.data.QGraphic
 	 * @generated
@@ -948,8 +1007,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getMoveable();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QList <em>List</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QList
+	 * <em>List</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>List</em>'.
 	 * @see org.smeup.sys.il.data.QList
 	 * @generated
@@ -957,8 +1017,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getList();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QNumeric <em>Numeric</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QNumeric
+	 * <em>Numeric</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Numeric</em>'.
 	 * @see org.smeup.sys.il.data.QNumeric
 	 * @generated
@@ -966,8 +1027,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getNumeric();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QPointer <em>Pointer</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QPointer
+	 * <em>Pointer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Pointer</em>'.
 	 * @see org.smeup.sys.il.data.QPointer
 	 * @generated
@@ -975,8 +1037,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getPointer();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QRecord <em>Record</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QRecord
+	 * <em>Record</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Record</em>'.
 	 * @see org.smeup.sys.il.data.QRecord
 	 * @generated
@@ -995,8 +1058,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getScroller();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QString <em>String</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QString
+	 * <em>String</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>String</em>'.
 	 * @see org.smeup.sys.il.data.QString
 	 * @generated
@@ -1004,8 +1068,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getString();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QStruct <em>Struct</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QStruct
+	 * <em>Struct</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Struct</em>'.
 	 * @see org.smeup.sys.il.data.QStruct
 	 * @generated
@@ -1052,6 +1117,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	interface Literals {
@@ -1067,8 +1133,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass ADAPTER = eINSTANCE.getAdapter();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QArray <em>Array</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QArray
+		 * <em>Array</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QArray
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getArray()
 		 * @generated
@@ -1098,8 +1165,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass BOOLEAN = eINSTANCE.getBoolean();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QBufferedData <em>Buffered Data</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QBufferedData <em>Buffered Data</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QBufferedData
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedData()
 		 * @generated
@@ -1107,9 +1176,11 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass BUFFERED_DATA = eINSTANCE.getBufferedData();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QBufferedDataDelegator <em>Buffered Data Delegator</em>}' class.
-		 * <!-- begin-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QBufferedDataDelegator
+		 * <em>Buffered Data Delegator</em>}' class. <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QBufferedDataDelegator
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedDataDelegator()
 		 * @generated
@@ -1117,8 +1188,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass BUFFERED_DATA_DELEGATOR = eINSTANCE.getBufferedDataDelegator();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QBufferedList <em>Buffered List</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QBufferedList <em>Buffered List</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QBufferedList
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getBufferedList()
 		 * @generated
@@ -1126,8 +1199,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass BUFFERED_LIST = eINSTANCE.getBufferedList();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QCharacter
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getCharacter()
 		 * @generated
@@ -1135,8 +1210,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass CHARACTER = eINSTANCE.getCharacter();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QData <em>Data</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QData
+		 * <em>Data</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QData
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getData()
 		 * @generated
@@ -1144,8 +1220,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA = eINSTANCE.getData();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDataContainer
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataContainer()
 		 * @generated
@@ -1153,8 +1231,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_CONTAINER = eINSTANCE.getDataContainer();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDataDelegator <em>Data Delegator</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDataDelegator <em>Data Delegator</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDataDelegator
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataDelegator()
 		 * @generated
@@ -1162,9 +1242,11 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_DELEGATOR = eINSTANCE.getDataDelegator();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.impl.DataWriterImpl <em>Data Writer</em>}' class.
-		 * <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.impl.DataWriterImpl
+		 * <em>Data Writer</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.impl.DataWriterImpl
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataWriter()
 		 * @generated
@@ -1172,8 +1254,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_WRITER = eINSTANCE.getDataWriter();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDataFactory <em>Data Factory</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDataFactory <em>Data Factory</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDataFactory
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataFactory()
 		 * @generated
@@ -1181,8 +1265,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_FACTORY = eINSTANCE.getDataFactory();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDataManager <em>Data Manager</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDataManager <em>Data Manager</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDataManager
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataManager()
 		 * @generated
@@ -1190,9 +1276,11 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_MANAGER = eINSTANCE.getDataManager();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.impl.DataReaderImpl <em>Data Reader</em>}' class.
-		 * <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.impl.DataReaderImpl
+		 * <em>Data Reader</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.impl.DataReaderImpl
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataReader()
 		 * @generated
@@ -1200,8 +1288,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_READER = eINSTANCE.getDataReader();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDataStruct <em>Data Struct</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDataStruct <em>Data Struct</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDataStruct
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataStruct()
 		 * @generated
@@ -1209,9 +1299,11 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_STRUCT = eINSTANCE.getDataStruct();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.impl.DataVisitorImpl <em>Data Visitor</em>}' class.
-		 * <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.impl.DataVisitorImpl
+		 * <em>Data Visitor</em>}' class. <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.impl.DataVisitorImpl
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataVisitor()
 		 * @generated
@@ -1219,8 +1311,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DATA_VISITOR = eINSTANCE.getDataVisitor();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QDatetime <em>Datetime</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QDatetime <em>Datetime</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QDatetime
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDatetime()
 		 * @generated
@@ -1239,8 +1333,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass DECIMAL = eINSTANCE.getDecimal();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QEnum <em>Enum</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QEnum
+		 * <em>Enum</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QEnum
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getEnum()
 		 * @generated
@@ -1248,8 +1343,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass ENUM = eINSTANCE.getEnum();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QFloating <em>Floating</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QFloating <em>Floating</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QFloating
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getFloating()
 		 * @generated
@@ -1268,8 +1365,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass GRAPHIC = eINSTANCE.getGraphic();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QHexadecimal <em>Hexadecimal</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QHexadecimal <em>Hexadecimal</em>}'
+		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QHexadecimal
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getHexadecimal()
 		 * @generated
@@ -1277,8 +1376,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass HEXADECIMAL = eINSTANCE.getHexadecimal();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QIdentity <em>Identity</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QIdentity <em>Identity</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QIdentity
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getIdentity()
 		 * @generated
@@ -1286,8 +1387,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass IDENTITY = eINSTANCE.getIdentity();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QIndicator <em>Indicator</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QIndicator <em>Indicator</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QIndicator
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getIndicator()
 		 * @generated
@@ -1295,8 +1398,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass INDICATOR = eINSTANCE.getIndicator();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QMoveable <em>Moveable</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QMoveable
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getMoveable()
 		 * @generated
@@ -1304,8 +1409,9 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass MOVEABLE = eINSTANCE.getMoveable();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QList <em>List</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QList
+		 * <em>List</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QList
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getList()
 		 * @generated
@@ -1346,8 +1452,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass RECORD = eINSTANCE.getRecord();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QScroller <em>Scroller</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QScroller <em>Scroller</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QScroller
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScroller()
 		 * @generated
@@ -1377,8 +1485,10 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass STRUCT = eINSTANCE.getStruct();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
+		 * The meta object literal for the '
+		 * {@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 *
 		 * @see org.smeup.sys.il.data.QStroller
 		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStroller()
 		 * @generated

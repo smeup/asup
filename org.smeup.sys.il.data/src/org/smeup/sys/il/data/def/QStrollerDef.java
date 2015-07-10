@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,7 +25,9 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model
  * @generated
  */
-public interface QStrollerDef<D extends QStroller<?>> extends QMultipleCompoundDataDef<D, QDataTerm<QBufferedDataDef<?>>>, QBufferedDataDef<D> {
+public interface QStrollerDef<D extends QStroller<?>> extends
+QMultipleCompoundDataDef<D, QDataTerm<QBufferedDataDef<?>>>,
+QBufferedDataDef<D> {
 	/**
 	 * Returns the value of the '<em><b>Length</b></em>' attribute. <!--
 	 * begin-user-doc -->
@@ -45,9 +47,12 @@ public interface QStrollerDef<D extends QStroller<?>> extends QMultipleCompoundD
 	int getLength();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Length</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param value
+	 *            the new value of the '<em>Length</em>' attribute.
 	 * @see #getLength()
 	 * @generated
 	 */

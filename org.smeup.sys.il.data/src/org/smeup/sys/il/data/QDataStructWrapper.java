@@ -9,7 +9,8 @@ package org.smeup.sys.il.data;
 
 import java.util.List;
 
-public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDelegator {
+public abstract class QDataStructWrapper implements QDataStruct,
+QBufferedDataDelegator {
 
 	private static final long serialVersionUID = 1L;
 

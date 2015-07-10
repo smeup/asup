@@ -19,6 +19,7 @@ package org.smeup.sys.il.data;
 public interface QDataVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -26,6 +27,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -33,6 +35,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -40,6 +43,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -47,6 +51,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -54,6 +59,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -61,6 +67,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -68,6 +75,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -75,6 +83,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -82,6 +91,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -89,6 +99,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -96,6 +107,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -103,6 +115,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -110,6 +123,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -117,6 +131,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -124,6 +139,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -131,6 +147,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -138,6 +155,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -145,6 +163,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -152,6 +171,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -159,6 +179,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -166,6 +187,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -173,6 +195,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -180,6 +203,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -187,6 +211,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -194,6 +219,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -201,6 +227,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -208,6 +235,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -215,6 +243,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -222,6 +251,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -229,6 +259,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -236,6 +267,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -243,6 +275,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -250,6 +283,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -257,6 +291,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -264,6 +299,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -271,6 +307,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */
@@ -278,6 +315,7 @@ public interface QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model dataRequired="true"
 	 * @generated
 	 */

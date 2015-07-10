@@ -24,14 +24,17 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getFormat <em>Format</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getType <em>Type
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getFormat <em>
+ * Format</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> implements QDatetimeDef {
+public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime>
+implements QDatetimeDef {
 	/**
 	 *
 	 */
@@ -40,6 +43,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -49,6 +53,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -56,8 +61,9 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	protected DatetimeType type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getFormat() <em>Format</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -67,6 +73,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	/**
 	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -75,6 +82,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected DatetimeDefImpl() {
@@ -83,6 +91,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -92,6 +101,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -101,6 +111,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -108,11 +119,14 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		DatetimeType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE,
+					oldType, type));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -122,6 +136,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -129,80 +144,89 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		String oldFormat = format;
 		format = newFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT, oldFormat, format));
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT,
+					oldFormat, format));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
-				return getType();
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				return getFormat();
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
+			return getType();
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
+			return getFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
-				setType((DatetimeType)newValue);
-				return;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				setFormat((String)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
+			setType((DatetimeType) newValue);
+			return;
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
+			setFormat((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				setFormat(FORMAT_EDEFAULT);
-				return;
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
+			setFormat(FORMAT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
-				return type != TYPE_EDEFAULT;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
+			return type != TYPE_EDEFAULT;
+		case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
+			return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT
+			.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");

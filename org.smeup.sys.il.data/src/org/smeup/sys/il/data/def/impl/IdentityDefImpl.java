@@ -21,7 +21,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> implements QIdentityDef {
+public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity>
+implements QIdentityDef {
 	/**
 	 *
 	 */
@@ -29,6 +30,7 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IdentityDefImpl() {
@@ -37,6 +39,7 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

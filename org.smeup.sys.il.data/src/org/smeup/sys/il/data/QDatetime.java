@@ -21,6 +21,7 @@ import java.util.Date;
 public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -28,6 +29,7 @@ public interface QDatetime extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -35,6 +37,7 @@ public interface QDatetime extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */

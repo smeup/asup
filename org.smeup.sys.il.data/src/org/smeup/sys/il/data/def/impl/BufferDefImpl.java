@@ -23,7 +23,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData> implements QBufferDef {
+public class BufferDefImpl extends
+UnaryAtomicBufferedDataDefImpl<QBufferedData> implements QBufferDef {
 	/**
 	 *
 	 */
@@ -31,6 +32,7 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected BufferDefImpl() {
@@ -39,6 +41,7 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

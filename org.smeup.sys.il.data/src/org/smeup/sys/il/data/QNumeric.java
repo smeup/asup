@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -23,6 +22,7 @@ import java.math.BigInteger;
 public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -30,6 +30,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -37,6 +38,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -44,6 +46,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -51,6 +54,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -58,14 +62,15 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric divide(int value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -73,6 +78,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -80,6 +86,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -87,13 +94,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean eq(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -101,6 +111,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -109,6 +120,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -116,6 +128,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -123,6 +136,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -130,6 +144,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -137,6 +152,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -144,6 +160,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -151,6 +168,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -158,13 +176,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean ge(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -172,6 +193,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -180,13 +202,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean gt(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -194,6 +219,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -202,6 +228,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -209,13 +236,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean le(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -223,6 +253,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -231,13 +262,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean lt(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -245,6 +279,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -253,6 +288,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -260,6 +296,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -267,14 +304,15 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric minus(int value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -282,6 +320,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -289,6 +328,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -296,6 +336,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -303,14 +344,15 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric mult(int value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -318,6 +360,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -325,13 +368,16 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 *
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 *        valueRequired="true"
 	 * @generated
 	 */
 	boolean ne(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -339,6 +385,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -347,6 +394,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -354,6 +402,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -361,14 +410,15 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric plus(int value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -376,6 +426,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -383,6 +434,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -390,6 +442,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -397,6 +450,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -404,46 +458,47 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric power(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric qRem(short value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric qRem(long value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric qRem(int value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric qRem(double value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -451,6 +506,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -458,6 +514,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -465,6 +522,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @model required="true"
 	 * @generated
 	 */

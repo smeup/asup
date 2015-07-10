@@ -21,7 +21,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements QAdapterDef {
+public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements
+QAdapterDef {
 	/**
 	 *
 	 */
@@ -29,6 +30,7 @@ public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected AdapterDefImpl() {
@@ -37,6 +39,7 @@ public class AdapterDefImpl extends UnaryAtomicDataDefImpl<QAdapter> implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

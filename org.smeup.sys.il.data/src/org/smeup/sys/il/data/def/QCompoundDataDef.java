@@ -19,10 +19,14 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator <em>Class Delegator</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getElements <em>Elements</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix <em>Prefix</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isQualified <em>Qualified</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator <em>
+ * Class Delegator</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getElements <em>
+ * Elements</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix <em>Prefix
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isQualified <em>
+ * Qualified</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,7 +34,8 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @model abstract="true"
  * @generated
  */
-public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> extends QDataDef<D> {
+public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>>
+extends QDataDef<D> {
 
 	/**
 	 * Returns the value of the '<em><b>Class Delegator</b></em>' attribute.
@@ -40,6 +45,7 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Class Delegator</em>' attribute.
 	 * @see #setClassDelegator(String)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_ClassDelegator()
@@ -49,23 +55,27 @@ public interface QCompoundDataDef<D extends QStruct<?>, E extends QDataTerm<?>> 
 	String getClassDelegator();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator <em>Class Delegator</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator
+	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Class Delegator</em>' attribute.
+	 *
+	 * @param value
+	 *            the new value of the '<em>Class Delegator</em>' attribute.
 	 * @see #getClassDelegator()
 	 * @generated
 	 */
 	void setClassDelegator(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Elements</b></em>' containment reference
+	 * list. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef_Elements()
 	 * @model containment="true"

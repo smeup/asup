@@ -18,5 +18,6 @@ import org.smeup.sys.il.data.QBufferedData;
  * @model abstract="true"
  * @generated
  */
-public interface QUnaryAtomicBufferedDataDef<D extends QBufferedData> extends QUnaryAtomicDataDef<D>, QBufferedDataDef<D> {
+public interface QUnaryAtomicBufferedDataDef<D extends QBufferedData> extends
+QUnaryAtomicDataDef<D>, QBufferedDataDef<D> {
 } // QUnaryAtomicBufferedDataDef

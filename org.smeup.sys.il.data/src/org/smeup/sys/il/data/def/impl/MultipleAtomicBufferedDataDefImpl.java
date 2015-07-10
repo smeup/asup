@@ -23,21 +23,26 @@ import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl#getArgument <em>Argument</em>}</li>
+ * <li>
+ * {@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl#getArgument
+ * <em>Argument</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<?>> extends MultipleAtomicDataDefImpl<D> implements QMultipleAtomicBufferedDataDef<D> {
+public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<?>>
+extends MultipleAtomicDataDefImpl<D> implements
+QMultipleAtomicBufferedDataDef<D> {
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArgument() <em>Argument</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @see #getArgument()
 	 * @generated
 	 * @ordered
@@ -46,6 +51,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected MultipleAtomicBufferedDataDefImpl() {
@@ -54,6 +60,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -63,6 +70,7 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -72,20 +80,30 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	public NotificationChain basicSetArgument(QUnaryAtomicBufferedDataDef<?> newArgument, NotificationChain msgs) {
+	public NotificationChain basicSetArgument(
+			QUnaryAtomicBufferedDataDef<?> newArgument, NotificationChain msgs) {
 		QUnaryAtomicBufferedDataDef<?> oldArgument = argument;
 		argument = newArgument;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT, oldArgument, newArgument);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(
+					this,
+					Notification.SET,
+					QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT,
+					oldArgument, newArgument);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -93,18 +111,33 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 		if (newArgument != argument) {
 			NotificationChain msgs = null;
 			if (argument != null)
-				msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject) argument)
+				.eInverseRemove(
+						this,
+						EOPPOSITE_FEATURE_BASE
+						- QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT,
+						null, msgs);
 			if (newArgument != null)
-				msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT, null, msgs);
+				msgs = ((InternalEObject) newArgument)
+				.eInverseAdd(
+						this,
+						EOPPOSITE_FEATURE_BASE
+						- QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT,
+						null, msgs);
 			msgs = basicSetArgument(newArgument, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT, newArgument, newArgument));
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(
+					this,
+					Notification.SET,
+					QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT,
+					newArgument, newArgument));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -116,67 +149,73 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
-				return basicSetArgument(null, msgs);
+		case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
+			return basicSetArgument(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
-				return getArgument();
+		case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
+			return getArgument();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
-				setArgument((QUnaryAtomicBufferedDataDef<?>)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
+			setArgument((QUnaryAtomicBufferedDataDef<?>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
-				setArgument((QUnaryAtomicBufferedDataDef<?>)null);
-				return;
+		case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
+			setArgument((QUnaryAtomicBufferedDataDef<?>) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
-				return argument != null;
+		case QIntegratedLanguageDataDefPackage.MULTIPLE_ATOMIC_BUFFERED_DATA_DEF__ARGUMENT:
+			return argument != null;
 		}
 		return super.eIsSet(featureID);
 	}
