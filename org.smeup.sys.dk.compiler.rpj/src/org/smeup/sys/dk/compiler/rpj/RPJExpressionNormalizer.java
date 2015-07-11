@@ -79,8 +79,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QEval statement) {
 
-		System.out.println(statement);
-		
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 				
 		switch (assignmentExpression.getLeftOperand().getExpressionType()) {
@@ -235,6 +233,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		return super.visit(statement);
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isConcatExpression(QArithmeticExpression arithmeticExpression) {
 
 		RPJArithmeticExpressionAnalyzer arithmeticExpressionAnalyzer = compilationUnit.getContext().make(RPJArithmeticExpressionAnalyzer.class);
@@ -243,6 +242,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		return arithmeticExpressionAnalyzer.isStringConcatExpression();
 	}
 
+	@SuppressWarnings("unused")
 	private void checkSpecialString(QAtomicTermExpression atomicTermExpression, QEval statement, QAssignmentExpression assignmentExpression) {
 
 		if (atomicTermExpression.getValue().isEmpty()) {
@@ -256,6 +256,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void checkSpecialInteger(QAtomicTermExpression atomicTermExpression, QEval statement, QAssignmentExpression assignmentExpression) {
 
 		int i = Integer.parseInt(atomicTermExpression.getValue());
@@ -270,6 +271,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isNumeric(String s) {
 		try {
 			Integer.parseInt(s);

@@ -8,6 +8,8 @@
 package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.core.term.QTerm;
+import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -16,8 +18,9 @@ import org.smeup.sys.il.core.term.QTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}</li>
- * <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,12 +47,9 @@ public interface QFileTerm extends QTerm {
 	String getFileName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>File Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>File Name</em>' attribute.
 	 * @see #getFileName()
 	 * @generated
 	 */
@@ -79,5 +79,31 @@ public interface QFileTerm extends QTerm {
 	 * @generated
 	 */
 	void setUserOpen(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Format</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Format</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Format</em>' containment reference.
+	 * @see #setFormat(QDataTerm)
+	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getFileTerm_Format()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> getFormat();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QFileTerm#getFormat <em>Format</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Format</em>' containment reference.
+	 * @see #getFormat()
+	 * @generated
+	 */
+	void setFormat(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> value);
 
 } // QFileTerm

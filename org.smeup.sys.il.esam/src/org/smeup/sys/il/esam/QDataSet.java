@@ -22,7 +22,6 @@ import org.smeup.sys.il.data.QRecord;
 public interface QDataSet<R extends QRecord> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -30,7 +29,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -38,7 +36,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -46,7 +43,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -54,7 +50,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -62,7 +57,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -70,7 +64,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -78,7 +71,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -86,7 +78,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -94,7 +85,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -102,7 +92,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -110,7 +99,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -118,7 +106,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -126,7 +113,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -134,7 +120,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -142,7 +127,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -150,7 +134,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -158,7 +141,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -166,7 +148,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -174,7 +155,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -182,7 +162,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -190,7 +169,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -198,7 +176,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -206,7 +183,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -214,7 +190,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -222,7 +197,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -230,7 +204,6 @@ public interface QDataSet<R extends QRecord> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true"
 	 * @generated
 	 */

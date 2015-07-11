@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 public interface QAccessManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" contextProviderRequired="true"
 	 * @generated
 	 */

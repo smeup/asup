@@ -174,7 +174,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				nodeName = expressionValue;
 
 			namedNode = compilationUnit.getNamedNode(nodeName, true);
-			if (namedNode == null)
+			if (namedNode == null) 
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
 
 			value = compilationUnit.getQualifiedName(namedNode);
@@ -243,7 +243,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QArithmeticExpression expression) {
 
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-		builder.setAST(getAST());
 		builder.setAST(getAST());
 
 		// pointer
@@ -709,9 +708,17 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
-				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-				termExpression.accept(expressionStringBuilder);
-				methodExec.setObject(expressionStringBuilder.getResult());
+				if(CompilationContextHelper.isPrimitive(compilationUnit, termExpression)) {
+					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+					termExpression.accept(expressionStringBuilder);
+					methodExec.setObject("%box("+expressionStringBuilder.getResult()+")");					
+				}
+				else {
+					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+					termExpression.accept(expressionStringBuilder);
+					methodExec.setObject(expressionStringBuilder.getResult());					
+				}
+				
 
 				methodExec.setMethod(expression.getValue());
 
@@ -719,7 +726,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					if (elementExpression == expressionChild)
 						continue;
 
-					expressionStringBuilder = new RPJExpressionStringBuilder();
+					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 					elementExpression.accept(expressionStringBuilder);
 
 					methodExec.getParameters().add(expressionStringBuilder.getResult());

@@ -21,7 +21,6 @@ import org.smeup.sys.il.data.QRecord;
 public interface QAccessFactory {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
@@ -29,7 +28,6 @@ public interface QAccessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
@@ -37,7 +35,6 @@ public interface QAccessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
@@ -45,7 +42,6 @@ public interface QAccessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
@@ -53,7 +49,6 @@ public interface QAccessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
@@ -61,7 +56,6 @@ public interface QAccessFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */

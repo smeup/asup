@@ -58,6 +58,6 @@ public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric> imp
 
 	@Override
 	public DataDefType getDataDefType() {
-		return null;
+		return DataDefType.DECIMAL;
 	}
 } // NumericDefImpl

@@ -240,7 +240,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QEval statement) {
 
 		Block block = blocks.peek();
-
+		
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression);
 

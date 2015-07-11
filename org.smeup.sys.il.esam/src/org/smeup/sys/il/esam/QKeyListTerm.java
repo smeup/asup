@@ -18,9 +18,8 @@ import org.smeup.sys.il.core.term.QTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getKeyFields <em>Key Fields
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getKeyFields <em>Key Fields</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,26 +47,24 @@ public interface QKeyListTerm extends QTerm {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QKeyListTerm#getName
-	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Key Fields</b></em>' attribute list. The
-	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Key Fields</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Key Fields</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Key Fields</em>' attribute list.
 	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getKeyListTerm_KeyFields()
 	 * @model required="true"

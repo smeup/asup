@@ -57,6 +57,7 @@ import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
+import org.smeup.sys.os.file.QExternalFile;
 
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
@@ -242,6 +243,74 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				}
 		}
 
+
+		// search on dataSet
+		if (dataTerm == null) {
+
+			List<QDataSetTerm> renamedFiles = new ArrayList<QDataSetTerm>();
+
+			for (QDataSetTerm dataSetTerm : dataSets) {
+
+				QExternalFile externalFile = dataSetTerm.getFacet(QExternalFile.class);
+
+				if (externalFile == null && dataSetTerm.getFormatName() != null && !dataSetTerm.getFormatName().isEmpty()) {
+					renamedFiles.add(dataSetTerm);
+					continue;
+				}
+
+				if (externalFile != null && !externalFile.getFormat().equals(dataSetTerm.getFormatName())) {
+					renamedFiles.add(dataSetTerm);
+					continue;
+				}
+
+				if(dataSetTerm.getFormat() == null)
+					continue;
+				
+				// search on primary dataSet
+				dataTerm = findDataTerm(dataSetTerm.getFormat().getDefinition(), name);
+
+				if (dataTerm != null)
+					break;
+			}
+
+			// search on renamed dataSet
+			if (dataTerm == null) {
+				for (QDataSetTerm dataSetTerm : renamedFiles) {
+					if(dataSetTerm.getFormat() == null)
+						continue;
+
+					dataTerm = findDataTerm(dataSetTerm.getFormat().getDefinition(), name);
+					if (dataTerm != null)
+						break;
+				}
+			}
+
+		}
+
+		// search on display
+		if (dataTerm == null) {
+			for (QDisplayTerm displayTerm : displays) {
+				if(displayTerm.getFormat() == null)
+					continue;
+
+				dataTerm = findDataTerm(displayTerm.getFormat().getDefinition(), name);
+				if (dataTerm != null)
+					break;
+			}
+		}
+
+		// search on printers
+		if (dataTerm == null) {
+			for (QPrintTerm printTerm : printers) {
+				if(printTerm.getFormat() == null)
+					continue;
+				
+				dataTerm = findDataTerm(printTerm.getFormat().getDefinition(), name);
+				if (dataTerm != null)
+					break;
+			}
+		}
+		
 		if (dataTerm != null)
 			cachedTerms.put(normalizeTermName(name), dataTerm);
 
@@ -254,7 +323,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		QDisplayTerm displayTerm = null;
 
 		for (QDisplayTerm d : displays)
-			if (equalsTermName(d.getFileName(), name)) {
+			if (equalsTermName(d.getName(), name)) {
 				displayTerm = d;
 				break;
 			}
@@ -277,7 +346,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		QPrintTerm printerTerm = null;
 
 		for (QPrintTerm d : printers)
-			if (equalsTermName(d.getFileName(), name)) {
+			if (equalsTermName(d.getName(), name)) {
 				printerTerm = d;
 				break;
 			}
@@ -545,7 +614,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			order = "EPTDMCSFK";
 		// other
 		else
-			order = "EMCSFKTPD";
+			order = "EMCSFKPDT";
 
 		QNamedNode namedNode = getNamedNode(name, deep, order);
 

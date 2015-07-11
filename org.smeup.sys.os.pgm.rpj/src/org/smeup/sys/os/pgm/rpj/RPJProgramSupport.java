@@ -798,7 +798,7 @@ public class RPJProgramSupport {
 
 	/* Substring */
 	public QCharacter qSubst(QArray<QCharacter> source, Integer startIndex) {
-		return qSubst(source.toString(), startIndex, null);
+		return qSubst(source, startIndex, null);
 	}
 
 	public QCharacter qSubst(QArray<QCharacter> source, Integer startIndex, Integer length) {

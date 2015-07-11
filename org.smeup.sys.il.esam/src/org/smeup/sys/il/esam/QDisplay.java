@@ -16,14 +16,12 @@ import org.smeup.sys.il.data.QNumeric;
  *
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDisplay()
- * @model interface="true" abstract="true"
- *        DBounds="org.eclipse.emf.ecore.EJavaObject"
+ * @model interface="true" abstract="true" DBounds="org.eclipse.emf.ecore.EJavaObject"
  * @generated
  */
 public interface QDisplay<D extends Object> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -31,7 +29,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -39,7 +36,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -47,7 +43,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -55,7 +50,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -63,7 +57,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -71,7 +64,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -79,7 +71,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true"
 	 * @generated
 	 */
@@ -87,7 +78,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true"
 	 * @generated
 	 */
@@ -95,7 +85,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true"
 	 * @generated
 	 */
@@ -103,7 +92,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model formatRequired="true"
 	 * @generated
 	 */
@@ -111,7 +99,6 @@ public interface QDisplay<D extends Object> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true"
 	 * @generated
 	 */

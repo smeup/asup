@@ -2128,5 +2128,23 @@
         </parameters>
       </entry>
     </prototypes>
+    <prototypes
+        name="%box">
+      <definition
+          xsi:type="il-data-def:BufferDef"/>
+      <entry>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              constant="true"
+              name="expression">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:BufferDef"/>
+          </delegate>
+        </parameters>
+      </entry>
+    </prototypes>
   </flowSection>
 </il-flow:Module>

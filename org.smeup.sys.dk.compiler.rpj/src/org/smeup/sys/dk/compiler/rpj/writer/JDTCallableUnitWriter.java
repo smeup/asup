@@ -55,6 +55,7 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.core.QNamedNode;
+import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -192,7 +193,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		for (QDataSetTerm dataSet : dataSets) {
 
-			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
+ 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", dataSet.getFileName());
 			writeAnnotation(field, FileDef.class, "userOpen", dataSet.isUserOpen());
@@ -606,57 +607,42 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					QTerm primaryRecord = CompilationContextHelper.getPrimaryRecord(callableUnit, dataSetTerm);
 					if (!dataSetTerm.equals(primaryRecord)) {
 
-						System.out.println(primaryRecord);
-
 						MethodInvocation methodInvocation = getAST().newMethodInvocation();
 						methodInvocation.setName(getAST().newSimpleName("assign"));
-						methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(primaryRecord)));
+						methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(primaryRecord) +".get()"));
 
-						methodInvocation.arguments().add(buildExpression(getCompilationUnit().getQualifiedName(dataSetTerm) + ".get()"));
+						methodInvocation.arguments().add(buildExpression(getCompilationUnit().getQualifiedName(dataSetTerm) +".get()"));
 						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 						block.statements().add(expressionStatement);
 
 					}
 
-					/*
-					 * // remap for (QDataTerm<?> element :
-					 * dataSetTerm.getRecord().getElements()) { QRemap remap =
-					 * element.getFacet(QRemap.class); if (remap == null)
-					 * continue;
-					 * 
-					 * MethodInvocation methodInvocation =
-					 * getAST().newMethodInvocation();
-					 * methodInvocation.setName(getAST
-					 * ().newSimpleName("assign"));
-					 * 
-					 * QDataTerm<?> remapDataTerm =
-					 * getCompilationUnit().getDataTerm(remap.getName(), true);
-					 * if (remapDataTerm == null) throw new
-					 * IntegratedLanguageExpressionRuntimeException
-					 * ("Invalid term: " + remap);
-					 * 
-					 * if
-					 * (getCompilationUnit().equalsTermName(element.getName(),
-					 * remapDataTerm.getName())) continue;
-					 * 
-					 * if (remap.getIndex() == null ||
-					 * remap.getIndex().isEmpty())
-					 * methodInvocation.setExpression
-					 * (buildExpression(getCompilationUnit
-					 * ().getQualifiedName(remapDataTerm))); else
-					 * methodInvocation
-					 * .setExpression(buildExpression(getCompilationUnit
-					 * ().getQualifiedName(remapDataTerm) + ".get(" +
-					 * Integer.parseInt(remap.getIndex()) + ")"));
-					 * 
-					 * methodInvocation.arguments().add(buildExpression(
-					 * getCompilationUnit().getQualifiedName(element)));
-					 * ExpressionStatement expressionStatement =
-					 * getAST().newExpressionStatement(methodInvocation);
-					 * block.statements().add(expressionStatement);
-					 * 
-					 * }
-					 */
+					// remap
+					for (QDataTerm<?> element : dataSetTerm.getFormat().getDefinition().getElements()) {
+						QRemap remap = element.getFacet(QRemap.class);
+						if (remap == null)
+							continue;
+
+						MethodInvocation methodInvocation = getAST().newMethodInvocation();
+						methodInvocation.setName(getAST().newSimpleName("assign"));
+
+						QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), true);
+						if (remapDataTerm == null)
+							throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + remap);
+
+						if (getCompilationUnit().equalsTermName(element.getName(), remapDataTerm.getName()))
+							continue;
+
+						if (remap.getIndex() == null || remap.getIndex().isEmpty())
+							methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm)));
+						else
+							methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName(remapDataTerm) + ".get(" + Integer.parseInt(remap.getIndex()) + ")"));
+
+						methodInvocation.arguments().add(buildExpression(getCompilationUnit().getQualifiedName(element)));
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+						block.statements().add(expressionStatement);
+
+					}
 				}
 		}
 

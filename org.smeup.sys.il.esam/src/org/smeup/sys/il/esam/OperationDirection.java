@@ -17,16 +17,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Operation Direction</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getOperationDirection()
  * @model
  * @generated
  */
 public enum OperationDirection implements Enumerator {
 	/**
-	 * The '<em><b>Forward</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>Forward</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #FORWARD_VALUE
 	 * @generated
 	 * @ordered
@@ -34,9 +33,9 @@ public enum OperationDirection implements Enumerator {
 	FORWARD(10, "Forward", "F"),
 
 	/**
-	 * The '<em><b>Backward</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>Backward</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #BACKWARD_VALUE
 	 * @generated
 	 * @ordered
@@ -44,13 +43,13 @@ public enum OperationDirection implements Enumerator {
 	BACKWARD(20, "Backward", "B");
 
 	/**
-	 * The '<em><b>Forward</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Forward</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Forward</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #FORWARD
 	 * @model name="Forward" literal="F"
 	 * @generated
@@ -59,13 +58,13 @@ public enum OperationDirection implements Enumerator {
 	public static final int FORWARD_VALUE = 10;
 
 	/**
-	 * The '<em><b>Backward</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Backward</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Backward</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #BACKWARD
 	 * @model name="Backward" literal="B"
 	 * @generated
@@ -76,88 +75,85 @@ public enum OperationDirection implements Enumerator {
 	/**
 	 * An array of all the '<em><b>Operation Direction</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final OperationDirection[] VALUES_ARRAY = new OperationDirection[] { FORWARD, BACKWARD, };
+	private static final OperationDirection[] VALUES_ARRAY = new OperationDirection[] {
+			FORWARD,
+			BACKWARD,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Operation Direction</b></em>'
-	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * A public read-only list of all the '<em><b>Operation Direction</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<OperationDirection> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Operation Direction</b></em>' literal with the
-	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Operation Direction</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static OperationDirection get(String literal) {
-		for (OperationDirection result : VALUES_ARRAY) {
-			if (result.toString().equals(literal))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			OperationDirection result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Operation Direction</b></em>' literal with the
-	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Operation Direction</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static OperationDirection getByName(String name) {
-		for (OperationDirection result : VALUES_ARRAY) {
-			if (result.getName().equals(name))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			OperationDirection result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Operation Direction</b></em>' literal with the
-	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Operation Direction</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static OperationDirection get(int value) {
 		switch (value) {
-		case FORWARD_VALUE:
-			return FORWARD;
-		case BACKWARD_VALUE:
-			return BACKWARD;
+			case FORWARD_VALUE: return FORWARD;
+			case BACKWARD_VALUE: return BACKWARD;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private OperationDirection(int value, String name, String literal) {
@@ -168,38 +164,34 @@ public enum OperationDirection implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
