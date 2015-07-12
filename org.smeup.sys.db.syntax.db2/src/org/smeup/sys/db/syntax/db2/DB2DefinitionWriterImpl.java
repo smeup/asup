@@ -166,18 +166,21 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 
 	@Override
 	public String createLabel(Schema schema, String name, QTableDef table) {
-		String label = schema.getLabel();
+		return null;
+		
+/*		String label = schema.getLabel();
 		if (label != null && label.trim() != "") { 
 			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + getNameInSQLFormat(label);
 		} else {
 			return null;
-		}
+		}*/
 	}
-
 
 	@Override
 	public String createLabelForFields(Schema schema, String name, QTableDef table) {
-		StringBuffer result = new StringBuffer();
+		return null;
+		
+		/*StringBuffer result = new StringBuffer();
 		for (QTableColumnDef column : table.getColumns()) {
 			String label = column.getLabel();
 			if (label != null && label.trim() != "") {
@@ -193,7 +196,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
 		} else {
 			return null;
-		}
+		}*/
 	}
 
 
