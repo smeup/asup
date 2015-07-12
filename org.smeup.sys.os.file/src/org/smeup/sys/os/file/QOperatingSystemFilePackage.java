@@ -1874,6 +1874,43 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int SOURCE_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.file.impl.FileOverrideImpl <em>File Override</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.file.impl.FileOverrideImpl
+	 * @see org.smeup.sys.os.file.impl.OperatingSystemFilePackageImpl#getFileOverride()
+	 * @generated
+	 */
+	int FILE_OVERRIDE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_OVERRIDE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>File To</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_OVERRIDE__FILE_TO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>File Override</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_OVERRIDE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.os.file.QDatabaseFile <em>Database File</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -2348,6 +2385,38 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	EClass getSourceFile();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.file.QFileOverride <em>File Override</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>File Override</em>'.
+	 * @see org.smeup.sys.os.file.QFileOverride
+	 * @generated
+	 */
+	EClass getFileOverride();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.os.file.QFileOverride#getName()
+	 * @see #getFileOverride()
+	 * @generated
+	 */
+	EAttribute getFileOverride_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>File To</em>'.
+	 * @see org.smeup.sys.os.file.QFileOverride#getFileTo()
+	 * @see #getFileOverride()
+	 * @generated
+	 */
+	EReference getFileOverride_FileTo();
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.os.file.QExternalFile <em>External File</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -2788,6 +2857,32 @@ public interface QOperatingSystemFilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOURCE_FILE = eINSTANCE.getSourceFile();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.file.impl.FileOverrideImpl <em>File Override</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.file.impl.FileOverrideImpl
+		 * @see org.smeup.sys.os.file.impl.OperatingSystemFilePackageImpl#getFileOverride()
+		 * @generated
+		 */
+		EClass FILE_OVERRIDE = eINSTANCE.getFileOverride();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_OVERRIDE__NAME = eINSTANCE.getFileOverride_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>File To</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FILE_OVERRIDE__FILE_TO = eINSTANCE.getFileOverride_FileTo();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.file.impl.ExternalFileImpl <em>External File</em>}' class.

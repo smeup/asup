@@ -54,8 +54,17 @@ public class JobAttributesRetriever {
 			@ToDo @DataDef(length = 5) QCharacter cLVarForDDMCNV5, @ToDo @DataDef(length = 10) QCharacter cLVarForTSEPOOL10, @ToDo @DataDef(length = 20) QCharacter cLVarForTHDRSCAFN20,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForRSCAFNGRP10) {
 
-		userLibraries.eval("P_MULT    ");
+		userLibraries.clear();
+		int length = 0;
+		for (String library : job.getLibraries()) {
+			
+			if (userLibraries.isEmpty())
+				userLibraries.cat(library);
+			else
+				userLibraries.cat(library, 10 - length);
+			
+			length = library.length();
+		}
 
-		"".toCharArray();
 	}
 }

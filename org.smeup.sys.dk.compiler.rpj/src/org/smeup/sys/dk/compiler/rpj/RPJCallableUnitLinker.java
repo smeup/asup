@@ -52,6 +52,7 @@ import org.smeup.sys.os.file.QExternalFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileFormat;
 import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QOperatingSystemFileFactory;
 import org.smeup.sys.os.file.QPrinterFile;
@@ -417,10 +418,13 @@ public class RPJCallableUnitLinker {
 
 	private QFile getFile(String name) {
 
-		QFile file = fileManager.getFileOverride(job, name);
-		if (file == null)
+		QFile file = null;
+		QFileOverride fileOverride = fileManager.getFileOverride(job, name);
+		if (fileOverride == null)
 			file = fileReader.lookup(name);
-
+		else
+			file = fileOverride.getFileTo();
+		
 		return file;
 	}
 

@@ -24,6 +24,8 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
+import org.smeup.sys.os.file.QOperatingSystemFileFactory;
 
 @Program(name = "QDMOVERD")
 public class OverrideDatabaseFile {
@@ -45,7 +47,11 @@ public class OverrideDatabaseFile {
 		if (qFile == null)
 			throw new OperatingSystemRuntimeException("File not found: " + fileTo);
 
-		fileManager.setFileOverride(job, file.trimR(), qFile);
+		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
+		fileOverride.setName(file.trimR());
+		fileOverride.setFileTo(qFile);
+		
+		fileManager.setFileOverride(job, fileOverride);
 
 	}
 

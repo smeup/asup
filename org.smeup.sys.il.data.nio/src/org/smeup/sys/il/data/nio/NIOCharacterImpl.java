@@ -189,11 +189,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void cat(String factor1, Number space) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void cat(QString factor1, QNumeric space) {
 		// TODO Auto-generated method stub
 	}
@@ -255,6 +250,24 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		else
 			eval(factor1.toString() + factor2.toString());
 
+	}
+
+	@Override
+	public void cat(String factor1, Number space) {
+
+		if (space.intValue() == 0)
+			eval(trimR() + factor1);
+		else {
+			try {
+				String value = trimR();
+				int length = value.length() + space.intValue();
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(ENCODING), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(ENCODING), false, INIT);
+			} catch (UnsupportedEncodingException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
 	}
 
 	@Override

@@ -41,6 +41,7 @@ import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
 import org.smeup.sys.os.file.QFileMemberRow;
 import org.smeup.sys.os.file.QFileMembered;
+import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QOperatingSystemFileFactory;
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
@@ -207,6 +208,13 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass sourceFileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fileOverrideEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -674,6 +682,33 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFileOverride() {
+		return fileOverrideEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFileOverride_Name() {
+		return (EAttribute)fileOverrideEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFileOverride_FileTo() {
+		return (EReference)fileOverrideEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -799,6 +834,10 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		printerFileFieldEClass = createEClass(PRINTER_FILE_FIELD);
 
 		sourceFileEClass = createEClass(SOURCE_FILE);
+
+		fileOverrideEClass = createEClass(FILE_OVERRIDE);
+		createEAttribute(fileOverrideEClass, FILE_OVERRIDE__NAME);
+		createEReference(fileOverrideEClass, FILE_OVERRIDE__FILE_TO);
 	}
 
 	/**
@@ -900,6 +939,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		printerFileFieldEClass.getESuperTypes().add(this.getFileFormatField());
 		sourceFileEClass.getESuperTypes().add(this.getFile());
 		sourceFileEClass.getESuperTypes().add(this.getFileMembered());
+		fileOverrideEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(databaseFileEClass, QDatabaseFile.class, "DatabaseFile", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -947,14 +987,16 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(fileManagerEClass, QFileManager.class, "FileManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(fileManagerEClass, this.getFile(), "getFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(fileManagerEClass, this.getFileOverride(), "getFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "fileName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(fileManagerEClass, null, "setFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "fileFrom", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getFile(), "fileTo", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFileOverride(), "fileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileManagerEClass, this.getFileOverride(), "listFileOverride", 1, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileMemberEClass, QFileMember.class, "FileMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFileMember_File(), this.getFileMembered(), null, "file", null, 1, 1, QFileMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1002,6 +1044,10 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		initEClass(printerFileFieldEClass, QPrinterFileField.class, "PrinterFileField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sourceFileEClass, QSourceFile.class, "SourceFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fileOverrideEClass, QFileOverride.class, "FileOverride", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFileOverride_Name(), ecorePackage.getEString(), "name", null, 1, 1, QFileOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileOverride_FileTo(), this.getFile(), null, "fileTo", null, 1, 1, QFileOverride.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

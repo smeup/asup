@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.file.base;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -18,8 +20,8 @@ import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.rt.core.QApplication;
@@ -43,33 +45,20 @@ public class BaseFileManagerImpl implements QFileManager {
 	}
 
 	@Override
-	public void setFileOverride(QJob job, String fileFrom, QFile fileTo) throws OperatingSystemRuntimeException {
+	public void setFileOverride(QJob job, QFileOverride fileOverride) {
 
 		BaseFileOverrideMap overrideFileMap = getFileMapOverride(job);
-		overrideFileMap.registerFile(fileFrom, fileTo);
+		overrideFileMap.set(fileOverride.getName(), fileOverride);
 	}
 
 	@Override
-	public QFile getFileOverride(QJob job, String fileName) throws OperatingSystemRuntimeException {
+	public QFileOverride getFileOverride(QJob job, String fileName) throws OperatingSystemRuntimeException {
 
 		BaseFileOverrideMap overrideFileMap = getFileMapOverride(job);
 
-		QFile qFile = overrideFileMap.getFile(fileName);
+		QFileOverride fileOverride = overrideFileMap.get(fileName);
 
-		/*
-		 * if(qFile != null) return qFile;
-		 * 
-		 * QResourceReader<QFile> fileReader =
-		 * resourceManager.getResourceReader(job, QFile.class,
-		 * QScope.LIBRARY_LIST); qFile = fileReader.lookup(fileName);
-		 * 
-		 * if(qFile == null) throw new
-		 * OperatingSystemRuntimeException("File not found: "+fileName);
-		 * 
-		 * fileReader.close();
-		 */
-
-		return qFile;
+		return fileOverride;
 	}
 
 	private BaseFileOverrideMap getFileMapOverride(QJob job) {
@@ -79,5 +68,11 @@ public class BaseFileManagerImpl implements QFileManager {
 			job.getContext().set(BaseFileOverrideMap.class, overrideFileMap);
 		}
 		return overrideFileMap;
+	}
+
+	@Override
+	public List<QFileOverride> listFileOverride(QJob job) {
+
+		return getFileMapOverride(job).list();
 	}
 }

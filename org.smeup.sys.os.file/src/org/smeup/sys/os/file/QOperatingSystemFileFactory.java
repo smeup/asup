@@ -169,6 +169,15 @@ public interface QOperatingSystemFileFactory extends EFactory {
 	QSourceFile createSourceFile();
 
 	/**
+	 * Returns a new object of class '<em>File Override</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>File Override</em>'.
+	 * @generated
+	 */
+	QFileOverride createFileOverride();
+
+	/**
 	 * Returns a new object of class '<em>External File</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

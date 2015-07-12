@@ -11,25 +11,35 @@
  */
 package org.smeup.sys.os.file.base;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QFileOverride;
 
 public class BaseFileOverrideMap {
 
-	private Map<String, QFile> files = null;
+	private Map<String, QFileOverride> files = null;
 
 	public BaseFileOverrideMap() {
-		this.files = new HashMap<String, QFile>();
+		this.files = new HashMap<String, QFileOverride>();
 	}
 
-	public QFile getFile(String name) {
-		QFile file = files.get(name);
-		return file;
+	public QFileOverride get(String name) {
+		QFileOverride fileOverride = files.get(name);
+		return fileOverride;
 	}
 
-	public void registerFile(String name, QFile file) {
-		this.files.put(name, file);
+	public void set(String name, QFileOverride fileOverride) {
+		this.files.put(name, fileOverride);
+	}
+	
+	public List<QFileOverride> list() {
+		return new ArrayList<QFileOverride>(this.files.values());
+	}
+	
+	public void remove(String name) {
+		this.files.remove(name);
 	}
 }

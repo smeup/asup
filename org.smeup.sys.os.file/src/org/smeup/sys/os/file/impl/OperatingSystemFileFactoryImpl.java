@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.os.file.*;
 import org.smeup.sys.os.file.QDatabaseFileField;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
 import org.smeup.sys.os.file.QDatabaseFileFormatDef;
@@ -95,6 +96,7 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 			case QOperatingSystemFilePackage.PRINTER_FILE_FORMAT_DEF: return (EObject)createPrinterFileFormatDef();
 			case QOperatingSystemFilePackage.PRINTER_FILE_FIELD: return (EObject)createPrinterFileField();
 			case QOperatingSystemFilePackage.SOURCE_FILE: return (EObject)createSourceFile();
+			case QOperatingSystemFilePackage.FILE_OVERRIDE: return (EObject)createFileOverride();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -258,6 +260,16 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 	public QSourceFile createSourceFile() {
 		SourceFileImpl sourceFile = new SourceFileImpl();
 		return sourceFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QFileOverride createFileOverride() {
+		FileOverrideImpl fileOverride = new FileOverrideImpl();
+		return fileOverride;
 	}
 
 	/**
