@@ -563,6 +563,46 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(short value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(long value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(int value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(double value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model valueRequired="true" halfRoundingRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(QNumeric value, boolean halfRounding);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */

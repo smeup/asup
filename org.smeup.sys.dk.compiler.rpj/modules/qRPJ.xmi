@@ -992,6 +992,24 @@
       </entry>
     </prototypes>
     <prototypes
+        name="%box">
+      <definition
+          xsi:type="il-data-def:BufferDef"/>
+      <entry>
+        <parameters>
+          <delegate
+              xsi:type="il-flow:FlowData"
+              constant="true"
+              name="expression">
+            <cardinality
+                min="1"/>
+            <definition
+                xsi:type="il-data-def:BufferDef"/>
+          </delegate>
+        </parameters>
+      </entry>
+    </prototypes>
+    <prototypes
         name="%cat">
       <definition
           xsi:type="il-data-def:StringDef"/>
@@ -2092,7 +2110,8 @@
         </parameters>
       </entry>
     </prototypes>
-    <prototypes>
+    <prototypes
+        name="%xlate">
       <definition
           xsi:type="il-data-def:StringDef"/>
       <entry>
@@ -2124,24 +2143,6 @@
               name="length">
             <definition
                 xsi:type="il-data-def:StringDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
-        name="%box">
-      <definition
-          xsi:type="il-data-def:BufferDef"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              constant="true"
-              name="expression">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:BufferDef"/>
           </delegate>
         </parameters>
       </entry>

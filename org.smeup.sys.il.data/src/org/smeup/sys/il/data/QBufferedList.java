@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Buffered List</b></em>'. <!-- end-user-doc -->

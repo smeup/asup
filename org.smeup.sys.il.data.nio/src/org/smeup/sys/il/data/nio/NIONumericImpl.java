@@ -58,36 +58,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	public abstract int compareNumber(Number value);
 
 	@Override
-	public QNumeric divide(int value) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(long value) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(QNumeric value) {
-		eval(asDouble() / value.asDouble());
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(short value) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
-	public QNumeric divide(double value) {
-		eval(asDouble() / value);
-		return this;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean eq(E value) {
 		return eq(getPrimitive(value));
 	}
@@ -505,5 +475,61 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	@Override
 	public void eval(BigDecimal value, boolean halfRounding) {
 		writeNumber(value, halfRounding);
+	}
+
+	@Override
+	public QNumeric divide(short value) {
+		return divide(value, false);
+	}
+
+	@Override
+	public QNumeric divide(long value) {
+		return divide(value, false);
+	}
+
+	@Override
+	public QNumeric divide(int value) {
+		return divide(value, false);
+	}
+
+	@Override
+	public QNumeric divide(double value) {
+		return divide(value, false);
+	}
+
+	@Override
+	public QNumeric divide(QNumeric value) {
+		return divide(value, false);
+	}
+	
+
+	@Override
+	public QNumeric divide(int value, boolean haslRounding) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(long value, boolean haslRounding) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(QNumeric value, boolean haslRounding) {
+		eval(asDouble() / value.asDouble());
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(short value, boolean haslRounding) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(double value, boolean haslRounding) {
+		eval(asDouble() / value);
+		return this;
 	}
 }
