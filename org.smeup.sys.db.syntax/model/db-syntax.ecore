@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="syntax" nsURI="http://www.smeup.org/asup/db/syntax" nsPrefix="db-syntax">
+  <eClassifiers xsi:type="ecore:EClass" name="AliasResolver" abstract="true" interface="true">
+    <eOperations name="resolveQuery" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
+      <eParameters name="connection" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.db.core/model/db-core.ecore#//Connection"/>
+      <eParameters name="query" lowerBound="1" eType="#//SQLQueryParseResult"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BindingParseError"/>
   <eClassifiers xsi:type="ecore:EClass" name="BindingParser" abstract="true" interface="true"
       eSuperTypes="#//StatementParser">

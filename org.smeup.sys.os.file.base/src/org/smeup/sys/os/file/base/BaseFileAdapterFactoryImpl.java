@@ -24,6 +24,7 @@ import org.smeup.sys.db.core.QIndexDef;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
+import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QDefinitionParseResult;
 import org.smeup.sys.db.syntax.QDefinitionParser;
 import org.smeup.sys.db.syntax.ddl.QCreateViewStatement;
@@ -85,6 +86,9 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 						// TODO credentials
 						connection = connectionManager.createConnection();
 						job.getContext().set(QConnection.class, connection);
+
+						connection.getContext().set(QAliasResolver.class, new BaseAliasResolverImpl());
+						
 					} catch (SQLException e) {
 						throw new OperatingSystemRuntimeException(e);
 					}

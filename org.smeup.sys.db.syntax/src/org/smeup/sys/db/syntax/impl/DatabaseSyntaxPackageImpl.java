@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QBindingParseError;
 import org.smeup.sys.db.syntax.QBindingParseResult;
 import org.smeup.sys.db.syntax.QBindingParser;
@@ -62,6 +63,13 @@ import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
  * @generated
  */
 public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabaseSyntaxPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass aliasResolverEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -297,6 +305,15 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QDatabaseSyntaxPackage.eNS_URI, theDatabaseSyntaxPackage);
 		return theDatabaseSyntaxPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAliasResolver() {
+		return aliasResolverEClass;
 	}
 
 	/**
@@ -579,6 +596,8 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		isCreated = true;
 
 		// Create classes and their features
+		aliasResolverEClass = createEClass(ALIAS_RESOLVER);
+
 		bindingParseErrorEClass = createEClass(BINDING_PARSE_ERROR);
 
 		bindingParserEClass = createEClass(BINDING_PARSER);
@@ -660,8 +679,8 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		QDatabaseSyntaxDDLPackage theDatabaseSyntaxDDLPackage = (QDatabaseSyntaxDDLPackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseSyntaxDDLPackage.eNS_URI);
 		QDatabaseSyntaxDMLPackage theDatabaseSyntaxDMLPackage = (QDatabaseSyntaxDMLPackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseSyntaxDMLPackage.eNS_URI);
 		QDatabaseSyntaxDBLPackage theDatabaseSyntaxDBLPackage = (QDatabaseSyntaxDBLPackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseSyntaxDBLPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QDatabaseCorePackage theDatabaseCorePackage = (QDatabaseCorePackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseCorePackage.eNS_URI);
+		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
@@ -711,11 +730,18 @@ public class DatabaseSyntaxPackageImpl extends EPackageImpl implements QDatabase
 		queryParserRegistryEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(aliasResolverEClass, QAliasResolver.class, "AliasResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(aliasResolverEClass, null, "resolveQuery", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theDatabaseCorePackage.getConnection(), "connection", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getSQLQueryParseResult(), "query", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theDatabaseCorePackage.getDatabaseException());
+
 		initEClass(bindingParseErrorEClass, QBindingParseError.class, "BindingParseError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(bindingParserEClass, QBindingParser.class, "BindingParser", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(bindingParserEClass, this.getBindingParseResult(), "parseBinding", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(bindingParserEClass, this.getBindingParseResult(), "parseBinding", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theDatabaseCorePackage.getDatabaseException());
 

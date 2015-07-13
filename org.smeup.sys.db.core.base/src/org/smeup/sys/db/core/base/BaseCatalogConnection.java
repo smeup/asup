@@ -40,6 +40,7 @@ public class BaseCatalogConnection {
 		return this.catalogContainer;
 	}
 
+	
 	public QQueryWriter getQueryWriter() {
 		return queryWriter;
 	}

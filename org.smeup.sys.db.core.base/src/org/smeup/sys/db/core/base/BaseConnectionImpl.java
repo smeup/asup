@@ -42,6 +42,7 @@ import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QDatabaseContainer;
+import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.il.core.ctx.QContext;
 
@@ -51,7 +52,8 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	private QDatabaseContainer databaseContainer;
 
 	private QQueryParser queryParser;
-
+	private QAliasResolver aliasResolver;
+	
 	private String virtualCatalog;
 	private BaseCatalogConnection currentCatalogConnection;
 	private List<BaseCatalogConnection> catalogConnections;
@@ -61,7 +63,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.context = context;
 		this.databaseContainer = databaseContainer;
 		this.queryParser = context.get(QQueryParser.class);
-
+		
 		this.catalogConnections = new ArrayList<BaseCatalogConnection>();
 	}
 
@@ -502,6 +504,12 @@ public class BaseConnectionImpl implements QConnection, Connection {
 			SQLQueryParseResult query = queryParser.parseQuery(sql);
 			BaseCatalogConnection connection = getCatalogConnection();
 
+			if(aliasResolver == null)
+				aliasResolver = context.get(QAliasResolver.class);
+			
+			if(aliasResolver != null) 
+				aliasResolver.resolveQuery(this, query);
+			
 			sql = connection.getQueryWriter().writeQuery(query.getQueryStatement());
 		} catch (Exception e) {
 			throw new SQLException(e);

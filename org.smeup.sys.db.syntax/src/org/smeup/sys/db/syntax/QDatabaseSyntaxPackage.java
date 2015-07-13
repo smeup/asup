@@ -63,6 +63,25 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	QDatabaseSyntaxPackage eINSTANCE = org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QAliasResolver <em>Alias Resolver</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.syntax.QAliasResolver
+	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getAliasResolver()
+	 * @generated
+	 */
+	int ALIAS_RESOLVER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Alias Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALIAS_RESOLVER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.impl.BindingParseErrorImpl <em>Binding Parse Error</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,7 +89,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getBindingParseError()
 	 * @generated
 	 */
-	int BINDING_PARSE_ERROR = 0;
+	int BINDING_PARSE_ERROR = 1;
 
 	/**
 	 * The number of structural features of the '<em>Binding Parse Error</em>' class.
@@ -89,7 +108,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getStatementParser()
 	 * @generated
 	 */
-	int STATEMENT_PARSER = 20;
+	int STATEMENT_PARSER = 21;
 
 	/**
 	 * The number of structural features of the '<em>Statement Parser</em>' class.
@@ -108,7 +127,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getBindingParser()
 	 * @generated
 	 */
-	int BINDING_PARSER = 1;
+	int BINDING_PARSER = 2;
 
 	/**
 	 * The number of structural features of the '<em>Binding Parser</em>' class.
@@ -127,7 +146,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getBindingParserRegistry()
 	 * @generated
 	 */
-	int BINDING_PARSER_REGISTRY = 2;
+	int BINDING_PARSER_REGISTRY = 3;
 
 	/**
 	 * The number of structural features of the '<em>Binding Parser Registry</em>' class.
@@ -146,7 +165,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getBindingParseResult()
 	 * @generated
 	 */
-	int BINDING_PARSE_RESULT = 3;
+	int BINDING_PARSE_RESULT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Binding Statement</b></em>' reference.
@@ -183,7 +202,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getBindingStatement()
 	 * @generated
 	 */
-	int BINDING_STATEMENT = 4;
+	int BINDING_STATEMENT = 5;
 
 	/**
 	 * The number of structural features of the '<em>Binding Statement</em>' class.
@@ -202,7 +221,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionParser()
 	 * @generated
 	 */
-	int DEFINITION_PARSER = 5;
+	int DEFINITION_PARSER = 6;
 
 	/**
 	 * The number of structural features of the '<em>Definition Parser</em>' class.
@@ -221,7 +240,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionParserRegistry()
 	 * @generated
 	 */
-	int DEFINITION_PARSER_REGISTRY = 6;
+	int DEFINITION_PARSER_REGISTRY = 7;
 
 	/**
 	 * The number of structural features of the '<em>Definition Parser Registry</em>' class.
@@ -240,7 +259,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionParseError()
 	 * @generated
 	 */
-	int DEFINITION_PARSE_ERROR = 7;
+	int DEFINITION_PARSE_ERROR = 8;
 
 	/**
 	 * The number of structural features of the '<em>Definition Parse Error</em>' class.
@@ -259,7 +278,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionParseResult()
 	 * @generated
 	 */
-	int DEFINITION_PARSE_RESULT = 8;
+	int DEFINITION_PARSE_RESULT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Definition Statement</b></em>' reference.
@@ -296,7 +315,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getStatementWriter()
 	 * @generated
 	 */
-	int STATEMENT_WRITER = 19;
+	int STATEMENT_WRITER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name Helper</b></em>' reference.
@@ -324,7 +343,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionWriter()
 	 * @generated
 	 */
-	int DEFINITION_WRITER = 9;
+	int DEFINITION_WRITER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name Helper</b></em>' reference.
@@ -352,7 +371,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionWriterRegistry()
 	 * @generated
 	 */
-	int DEFINITION_WRITER_REGISTRY = 10;
+	int DEFINITION_WRITER_REGISTRY = 11;
 
 	/**
 	 * The number of structural features of the '<em>Definition Writer Registry</em>' class.
@@ -371,7 +390,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getDefinitionStatement()
 	 * @generated
 	 */
-	int DEFINITION_STATEMENT = 11;
+	int DEFINITION_STATEMENT = 12;
 
 	/**
 	 * The number of structural features of the '<em>Definition Statement</em>' class.
@@ -390,7 +409,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getNameHelper()
 	 * @generated
 	 */
-	int NAME_HELPER = 12;
+	int NAME_HELPER = 13;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QNameHelperRegistry <em>Name Helper Registry</em>}' class.
@@ -400,7 +419,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getNameHelperRegistry()
 	 * @generated
 	 */
-	int NAME_HELPER_REGISTRY = 13;
+	int NAME_HELPER_REGISTRY = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QQueryWriter <em>Query Writer</em>}' class.
@@ -410,7 +429,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getQueryWriter()
 	 * @generated
 	 */
-	int QUERY_WRITER = 14;
+	int QUERY_WRITER = 15;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QQueryWriterRegistry <em>Query Writer Registry</em>}' class.
@@ -420,7 +439,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getQueryWriterRegistry()
 	 * @generated
 	 */
-	int QUERY_WRITER_REGISTRY = 15;
+	int QUERY_WRITER_REGISTRY = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QQueryParser <em>Query Parser</em>}' class.
@@ -430,7 +449,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getQueryParser()
 	 * @generated
 	 */
-	int QUERY_PARSER = 16;
+	int QUERY_PARSER = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.QQueryParserRegistry <em>Query Parser Registry</em>}' class.
@@ -440,7 +459,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getQueryParserRegistry()
 	 * @generated
 	 */
-	int QUERY_PARSER_REGISTRY = 17;
+	int QUERY_PARSER_REGISTRY = 18;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.helper.ISQLObjectNameHelper <em>SQL Object Name Helper</em>}' class.
@@ -450,7 +469,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getSQLObjectNameHelper()
 	 * @generated
 	 */
-	int SQL_OBJECT_NAME_HELPER = 18;
+	int SQL_OBJECT_NAME_HELPER = 19;
 
 	/**
 	 * The number of structural features of the '<em>SQL Object Name Helper</em>' class.
@@ -532,7 +551,7 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getStatementType()
 	 * @generated
 	 */
-	int STATEMENT_TYPE = 21;
+	int STATEMENT_TYPE = 22;
 
 	/**
 	 * The meta object id for the '<em>SQL Query Parse Result</em>' data type.
@@ -542,8 +561,18 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getSQLQueryParseResult()
 	 * @generated
 	 */
-	int SQL_QUERY_PARSE_RESULT = 22;
+	int SQL_QUERY_PARSE_RESULT = 23;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.QAliasResolver <em>Alias Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Alias Resolver</em>'.
+	 * @see org.smeup.sys.db.syntax.QAliasResolver
+	 * @generated
+	 */
+	EClass getAliasResolver();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.QBindingParseError <em>Binding Parse Error</em>}'.
@@ -854,6 +883,16 @@ public interface QDatabaseSyntaxPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.QAliasResolver <em>Alias Resolver</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.syntax.QAliasResolver
+		 * @see org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl#getAliasResolver()
+		 * @generated
+		 */
+		EClass ALIAS_RESOLVER = eINSTANCE.getAliasResolver();
+
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.impl.BindingParseErrorImpl <em>Binding Parse Error</em>}' class.
 		 * <!-- begin-user-doc -->

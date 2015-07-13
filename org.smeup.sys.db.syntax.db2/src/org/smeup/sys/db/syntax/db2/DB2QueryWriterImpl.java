@@ -23,7 +23,7 @@ public class DB2QueryWriterImpl extends StatementWriterImpl implements QQueryWri
 		super();
 		this.querySourceWriter = new DB2QuerySourceWriter();
 	}
-	
+
 	@Override
 	public String writeQuery(QueryStatement query) {
 		return querySourceWriter.getSQL(query);
