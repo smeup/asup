@@ -14,7 +14,8 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,15 +42,39 @@ public interface QEval extends QInvoke {
 	String getAssignment();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getAssignment
-	 * <em>Assignment</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Assignment</em>' attribute.
+	 * @param value the new value of the '<em>Assignment</em>' attribute.
 	 * @see #getAssignment()
 	 * @generated
 	 */
 	void setAssignment(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rounding Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rounding Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rounding Mode</em>' attribute.
+	 * @see #setRoundingMode(String)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_RoundingMode()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getRoundingMode();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rounding Mode</em>' attribute.
+	 * @see #getRoundingMode()
+	 * @generated
+	 */
+	void setRoundingMode(String value);
 
 } // QEval

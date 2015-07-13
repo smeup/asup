@@ -16,8 +16,8 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QCall#getProgram <em>Program</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QCall#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCall#getProgram <em>Program</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCall#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,15 +56,15 @@ public interface QCall extends QInvoke {
 	void setProgram(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' attribute list. The
-	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Parameters</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Parameters</em>' attribute list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCall_Parameters()
 	 * @model unique="false"

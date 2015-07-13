@@ -23,10 +23,9 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getThen <em>Then</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getElse <em>Else</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getCondition <em>Condition</em>}
- * </li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getThen <em>Then</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getElse <em>Else</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,36 +33,32 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class IfImpl extends StatementImpl implements QIf {
 	/**
-	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getThen()
 	 * @generated
 	 * @ordered
 	 */
 	protected QStatement then;
 	/**
-	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getElse()
 	 * @generated
 	 * @ordered
 	 */
 	protected QStatement else_;
 	/**
-	 * The default value of the '{@link #getCondition() <em>Condition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String CONDITION_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCondition()
 	 * @generated
 	 * @ordered
@@ -76,7 +71,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected IfImpl() {
@@ -85,7 +79,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +88,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +97,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -118,7 +109,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +118,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetElse(QStatement newElse, NotificationChain msgs) {
@@ -136,17 +125,13 @@ public class IfImpl extends StatementImpl implements QIf {
 		else_ = newElse;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.IF__ELSE, oldElse, newElse);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -154,35 +139,33 @@ public class IfImpl extends StatementImpl implements QIf {
 		if (newElse != else_) {
 			NotificationChain msgs = null;
 			if (else_ != null)
-				msgs = ((InternalEObject) else_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__ELSE, null, msgs);
+				msgs = ((InternalEObject)else_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__ELSE, null, msgs);
 			if (newElse != null)
-				msgs = ((InternalEObject) newElse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__ELSE, null, msgs);
+				msgs = ((InternalEObject)newElse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__ELSE, null, msgs);
 			msgs = basicSetElse(newElse, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.IF__ELSE, newElse, newElse));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.IF__THEN:
-			return basicSetThen(null, msgs);
-		case QIntegratedLanguageFlowPackage.IF__ELSE:
-			return basicSetElse(null, msgs);
+			case QIntegratedLanguageFlowPackage.IF__THEN:
+				return basicSetThen(null, msgs);
+			case QIntegratedLanguageFlowPackage.IF__ELSE:
+				return basicSetElse(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -192,7 +175,6 @@ public class IfImpl extends StatementImpl implements QIf {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetThen(QStatement newThen, NotificationChain msgs) {
@@ -200,17 +182,13 @@ public class IfImpl extends StatementImpl implements QIf {
 		then = newThen;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.IF__THEN, oldThen, newThen);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -218,103 +196,97 @@ public class IfImpl extends StatementImpl implements QIf {
 		if (newThen != then) {
 			NotificationChain msgs = null;
 			if (then != null)
-				msgs = ((InternalEObject) then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__THEN, null, msgs);
+				msgs = ((InternalEObject)then).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__THEN, null, msgs);
 			if (newThen != null)
-				msgs = ((InternalEObject) newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__THEN, null, msgs);
+				msgs = ((InternalEObject)newThen).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.IF__THEN, null, msgs);
 			msgs = basicSetThen(newThen, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.IF__THEN, newThen, newThen));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.IF__THEN:
-			return getThen();
-		case QIntegratedLanguageFlowPackage.IF__ELSE:
-			return getElse();
-		case QIntegratedLanguageFlowPackage.IF__CONDITION:
-			return getCondition();
+			case QIntegratedLanguageFlowPackage.IF__THEN:
+				return getThen();
+			case QIntegratedLanguageFlowPackage.IF__ELSE:
+				return getElse();
+			case QIntegratedLanguageFlowPackage.IF__CONDITION:
+				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.IF__THEN:
-			setThen((QStatement) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.IF__ELSE:
-			setElse((QStatement) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.IF__CONDITION:
-			setCondition((String) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.IF__THEN:
+				setThen((QStatement)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.IF__ELSE:
+				setElse((QStatement)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.IF__CONDITION:
+				setCondition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.IF__THEN:
-			setThen((QStatement) null);
-			return;
-		case QIntegratedLanguageFlowPackage.IF__ELSE:
-			setElse((QStatement) null);
-			return;
-		case QIntegratedLanguageFlowPackage.IF__CONDITION:
-			setCondition(CONDITION_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.IF__THEN:
+				setThen((QStatement)null);
+				return;
+			case QIntegratedLanguageFlowPackage.IF__ELSE:
+				setElse((QStatement)null);
+				return;
+			case QIntegratedLanguageFlowPackage.IF__CONDITION:
+				setCondition(CONDITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.IF__THEN:
-			return then != null;
-		case QIntegratedLanguageFlowPackage.IF__ELSE:
-			return else_ != null;
-		case QIntegratedLanguageFlowPackage.IF__CONDITION:
-			return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+			case QIntegratedLanguageFlowPackage.IF__THEN:
+				return then != null;
+			case QIntegratedLanguageFlowPackage.IF__ELSE:
+				return else_ != null;
+			case QIntegratedLanguageFlowPackage.IF__CONDITION:
+				return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (condition: ");

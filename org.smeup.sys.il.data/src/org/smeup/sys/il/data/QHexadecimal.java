@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.String;
+
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,7 +23,6 @@ public interface QHexadecimal extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -29,7 +30,6 @@ public interface QHexadecimal extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

@@ -28,7 +28,6 @@ public class UntilImpl extends IterationImpl implements QUntil {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected UntilImpl() {
@@ -37,7 +36,6 @@ public class UntilImpl extends IterationImpl implements QUntil {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

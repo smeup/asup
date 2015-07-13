@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,7 +35,6 @@ public interface QPrototype extends QDataTerm<QDataDef<?>> {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(QEntry)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getPrototype_Entry()
@@ -45,12 +44,10 @@ public interface QPrototype extends QDataTerm<QDataDef<?>> {
 	QEntry getEntry();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QPrototype#getEntry
-	 * <em>Entry</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QPrototype#getEntry <em>Entry</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Entry</em>' containment reference.
+	 * @param value the new value of the '<em>Entry</em>' containment reference.
 	 * @see #getEntry()
 	 * @generated
 	 */

@@ -23,9 +23,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getBody <em>Body</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getCondition <em>
- * Condition</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getCondition <em>Condition</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,27 +32,24 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public abstract class IterationImpl extends StatementImpl implements QIteration {
 	/**
-	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getBody()
 	 * @generated
 	 * @ordered
 	 */
 	protected QStatement body;
 	/**
-	 * The default value of the '{@link #getCondition() <em>Condition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String CONDITION_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCondition()
 	 * @generated
 	 * @ordered
@@ -66,7 +62,6 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected IterationImpl() {
@@ -75,7 +70,6 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -85,7 +79,6 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +88,6 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -108,21 +100,19 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ITERATION__BODY:
-			return basicSetBody(null, msgs);
+			case QIntegratedLanguageFlowPackage.ITERATION__BODY:
+				return basicSetBody(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -132,7 +122,6 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetBody(QStatement newBody, NotificationChain msgs) {
@@ -140,17 +129,13 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 		body = newBody;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.ITERATION__BODY, oldBody, newBody);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -158,93 +143,87 @@ public abstract class IterationImpl extends StatementImpl implements QIteration 
 		if (newBody != body) {
 			NotificationChain msgs = null;
 			if (body != null)
-				msgs = ((InternalEObject) body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.ITERATION__BODY, null, msgs);
+				msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.ITERATION__BODY, null, msgs);
 			if (newBody != null)
-				msgs = ((InternalEObject) newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.ITERATION__BODY, null, msgs);
+				msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.ITERATION__BODY, null, msgs);
 			msgs = basicSetBody(newBody, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.ITERATION__BODY, newBody, newBody));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ITERATION__BODY:
-			return getBody();
-		case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
-			return getCondition();
+			case QIntegratedLanguageFlowPackage.ITERATION__BODY:
+				return getBody();
+			case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
+				return getCondition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ITERATION__BODY:
-			setBody((QStatement) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
-			setCondition((String) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.ITERATION__BODY:
+				setBody((QStatement)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
+				setCondition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ITERATION__BODY:
-			setBody((QStatement) null);
-			return;
-		case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
-			setCondition(CONDITION_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.ITERATION__BODY:
+				setBody((QStatement)null);
+				return;
+			case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
+				setCondition(CONDITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ITERATION__BODY:
-			return body != null;
-		case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
-			return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
+			case QIntegratedLanguageFlowPackage.ITERATION__BODY:
+				return body != null;
+			case QIntegratedLanguageFlowPackage.ITERATION__CONDITION:
+				return CONDITION_EDEFAULT == null ? condition != null : !CONDITION_EDEFAULT.equals(condition);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (condition: ");

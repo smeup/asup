@@ -13,15 +13,14 @@ import org.smeup.sys.il.core.term.QTerm;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage
  * @generated
  */
 public interface QIntegratedLanguageFlowFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory. <!-- begin-user-doc --> <!--
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @generated
 	 */
 	QIntegratedLanguageFlowFactory eINSTANCE = org.smeup.sys.il.flow.impl.IntegratedLanguageFlowFactoryImpl.init();
@@ -36,27 +35,27 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QAnnotationCommand createAnnotationCommand();
 
 	/**
-	 * Returns a new object of class '<em>Block</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Block</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Block</em>'.
 	 * @generated
 	 */
 	QBlock createBlock();
 
 	/**
-	 * Returns a new object of class '<em>Break</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Break</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Break</em>'.
 	 * @generated
 	 */
 	QBreak createBreak();
 
 	/**
-	 * Returns a new object of class '<em>Call</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Call</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Call</em>'.
 	 * @generated
 	 */
@@ -72,9 +71,9 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QCommandExec createCommandExec();
 
 	/**
-	 * Returns a new object of class '<em>Continue</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>Continue</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Continue</em>'.
 	 * @generated
 	 */
@@ -90,9 +89,9 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QDataSection createDataSection();
 
 	/**
-	 * Returns a new object of class '<em>Entry</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Entry</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Entry</em>'.
 	 * @generated
 	 */
@@ -108,9 +107,9 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	<T extends QTerm> QEntryParameter<T> createEntryParameter();
 
 	/**
-	 * Returns a new object of class '<em>Eval</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Eval</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Eval</em>'.
 	 * @generated
 	 */
@@ -126,9 +125,9 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QFileSection createFileSection();
 
 	/**
-	 * Returns a new object of class '<em>Flow Data</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>Flow Data</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Flow Data</em>'.
 	 * @generated
 	 */
@@ -144,63 +143,63 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QFlowSection createFlowSection();
 
 	/**
-	 * Returns a new object of class '<em>If</em>'. <!-- begin-user-doc --> <!--
+	 * Returns a new object of class '<em>If</em>'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @return a new object of class '<em>If</em>'.
 	 * @generated
 	 */
 	QIf createIf();
 
 	/**
-	 * Returns a new object of class '<em>Jump</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Jump</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Jump</em>'.
 	 * @generated
 	 */
 	QJump createJump();
 
 	/**
-	 * Returns a new object of class '<em>Label</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Label</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Label</em>'.
 	 * @generated
 	 */
 	QLabel createLabel();
 
 	/**
-	 * Returns a new object of class '<em>Method Exec</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>Method Exec</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Method Exec</em>'.
 	 * @generated
 	 */
 	QMethodExec createMethodExec();
 
 	/**
-	 * Returns a new object of class '<em>Module</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Module</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Module</em>'.
 	 * @generated
 	 */
 	QModule createModule();
 
 	/**
-	 * Returns a new object of class '<em>Monitor</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Monitor</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Monitor</em>'.
 	 * @generated
 	 */
 	QMonitor createMonitor();
 
 	/**
-	 * Returns a new object of class '<em>On Error</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>On Error</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>On Error</em>'.
 	 * @generated
 	 */
@@ -216,9 +215,9 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QParameterList createParameterList();
 
 	/**
-	 * Returns a new object of class '<em>Procedure</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>Procedure</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Procedure</em>'.
 	 * @generated
 	 */
@@ -234,45 +233,45 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QProcedureExec createProcedureExec();
 
 	/**
-	 * Returns a new object of class '<em>Program</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Program</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Program</em>'.
 	 * @generated
 	 */
 	QProgram createProgram();
 
 	/**
-	 * Returns a new object of class '<em>Prototype</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>Prototype</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Prototype</em>'.
 	 * @generated
 	 */
 	QPrototype createPrototype();
 
 	/**
-	 * Returns a new object of class '<em>Reset</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Reset</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Reset</em>'.
 	 * @generated
 	 */
 	QReset createReset();
 
 	/**
-	 * Returns a new object of class '<em>Return</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Return</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Return</em>'.
 	 * @generated
 	 */
 	QReturn createReturn();
 
 	/**
-	 * Returns a new object of class '<em>Routine</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Routine</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Routine</em>'.
 	 * @generated
 	 */
@@ -297,45 +296,45 @@ public interface QIntegratedLanguageFlowFactory extends EFactory {
 	QSetupSection createSetupSection();
 
 	/**
-	 * Returns a new object of class '<em>SQL Exec</em>'. <!-- begin-user-doc
+	 * Returns a new object of class '<em>SQL Exec</em>'.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>SQL Exec</em>'.
 	 * @generated
 	 */
 	QSQLExec createSQLExec();
 
 	/**
-	 * Returns a new object of class '<em>Until</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Until</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>Until</em>'.
 	 * @generated
 	 */
 	QUntil createUntil();
 
 	/**
-	 * Returns a new object of class '<em>While</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>While</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>While</em>'.
 	 * @generated
 	 */
 	QWhile createWhile();
 
 	/**
-	 * Returns the package supported by this factory. <!-- begin-user-doc -->
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	QIntegratedLanguageFlowPackage getIntegratedLanguageFlowPackage();
 
 	/**
-	 * Returns a new object of class '<em>For</em>'. <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>For</em>'.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @return a new object of class '<em>For</em>'.
 	 * @generated
 	 */

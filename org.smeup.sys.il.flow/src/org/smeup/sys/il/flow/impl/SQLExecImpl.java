@@ -20,8 +20,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.SQLExecImpl#getStatement <em>Statement
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.SQLExecImpl#getStatement <em>Statement</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,18 +28,16 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 	/**
-	 * The default value of the '{@link #getStatement() <em>Statement</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getStatement() <em>Statement</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStatement()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String STATEMENT_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getStatement() <em>Statement</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getStatement() <em>Statement</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getStatement()
 	 * @generated
 	 * @ordered
@@ -53,7 +50,6 @@ public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected SQLExecImpl() {
@@ -62,7 +58,6 @@ public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -72,7 +67,6 @@ public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +76,6 @@ public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -95,71 +88,65 @@ public class SQLExecImpl extends InvokeImpl implements QSQLExec {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
-			return getStatement();
+			case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
+				return getStatement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
-			setStatement((String) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
+				setStatement((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
-			setStatement(STATEMENT_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
+				setStatement(STATEMENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
-			return STATEMENT_EDEFAULT == null ? statement != null : !STATEMENT_EDEFAULT.equals(statement);
+			case QIntegratedLanguageFlowPackage.SQL_EXEC__STATEMENT:
+				return STATEMENT_EDEFAULT == null ? statement != null : !STATEMENT_EDEFAULT.equals(statement);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (statement: ");

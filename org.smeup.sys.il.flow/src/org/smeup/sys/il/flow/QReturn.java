@@ -14,7 +14,7 @@ package org.smeup.sys.il.flow;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QReturn#getValue <em>Value</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QReturn#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,11 +41,9 @@ public interface QReturn extends QStatement {
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QReturn#getValue
-	 * <em>Value</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Value</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QReturn#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */

@@ -27,7 +27,6 @@ public class ModuleImpl extends CallableUnitImpl implements QModule {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected ModuleImpl() {
@@ -36,7 +35,6 @@ public class ModuleImpl extends CallableUnitImpl implements QModule {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

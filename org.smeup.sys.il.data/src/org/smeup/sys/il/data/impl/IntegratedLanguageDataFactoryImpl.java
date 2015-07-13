@@ -21,31 +21,32 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataFactory init() {
 		try {
-			QIntegratedLanguageDataFactory theIntegratedLanguageDataFactory = (QIntegratedLanguageDataFactory) EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageDataPackage.eNS_URI);
-			if (theIntegratedLanguageDataFactory != null)
+			QIntegratedLanguageDataFactory theIntegratedLanguageDataFactory = (QIntegratedLanguageDataFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageDataPackage.eNS_URI);
+			if (theIntegratedLanguageDataFactory != null) {
 				return theIntegratedLanguageDataFactory;
-		} catch (Exception exception) {
+			}
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageDataFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataFactoryImpl() {
@@ -54,54 +55,48 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case QIntegratedLanguageDataPackage.DATA_READER:
-			return (EObject) createDataReader();
-		case QIntegratedLanguageDataPackage.DATA_WRITER:
-			return (EObject) createDataWriter();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageDataPackage.DATA_READER: return (EObject)createDataReader();
+			case QIntegratedLanguageDataPackage.DATA_WRITER: return (EObject)createDataWriter();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageDataPackage.DATA_ARRAY:
-			return createDataArrayFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageDataPackage.DATA_ARRAY:
+				return createDataArrayFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageDataPackage.DATA_ARRAY:
-			return convertDataArrayToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageDataPackage.DATA_ARRAY:
+				return convertDataArrayToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,7 +107,6 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,16 +117,14 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Object[] createDataArrayFromString(EDataType eDataType, String initialValue) {
-		return (Object[]) super.createFromString(initialValue);
+		return (Object[])super.createFromString(initialValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertDataArrayToString(EDataType eDataType, Object instanceValue) {
@@ -141,17 +133,15 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageDataPackage getIntegratedLanguageDataPackage() {
-		return (QIntegratedLanguageDataPackage) getEPackage();
+		return (QIntegratedLanguageDataPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

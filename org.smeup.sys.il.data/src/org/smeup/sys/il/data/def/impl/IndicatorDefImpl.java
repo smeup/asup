@@ -29,7 +29,6 @@ public class IndicatorDefImpl extends UnaryAtomicBufferedDataDefImpl<QIndicator>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IndicatorDefImpl() {
@@ -38,7 +37,6 @@ public class IndicatorDefImpl extends UnaryAtomicBufferedDataDefImpl<QIndicator>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

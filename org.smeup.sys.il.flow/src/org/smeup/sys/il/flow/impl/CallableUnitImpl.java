@@ -25,14 +25,10 @@ import org.smeup.sys.il.flow.QSetupSection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getSetupSection <em>
- * Setup Section</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getDataSection <em>
- * Data Section</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFileSection <em>
- * File Section</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFlowSection <em>
- * Flow Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getSetupSection <em>Setup Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getDataSection <em>Data Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFileSection <em>File Section</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFlowSection <em>Flow Section</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,37 +36,33 @@ import org.smeup.sys.il.flow.QSetupSection;
  */
 public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit {
 	/**
-	 * The cached value of the '{@link #getSetupSection()
-	 * <em>Setup Section</em>}' containment reference. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSetupSection() <em>Setup Section</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @see #getSetupSection()
 	 * @generated
 	 * @ordered
 	 */
 	protected QSetupSection setupSection;
 	/**
-	 * The cached value of the '{@link #getDataSection() <em>Data Section</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getDataSection() <em>Data Section</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDataSection()
 	 * @generated
 	 * @ordered
 	 */
 	protected QDataSection dataSection;
 	/**
-	 * The cached value of the '{@link #getFileSection() <em>File Section</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getFileSection() <em>File Section</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFileSection()
 	 * @generated
 	 * @ordered
 	 */
 	protected QFileSection fileSection;
 	/**
-	 * The cached value of the '{@link #getFlowSection() <em>Flow Section</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getFlowSection() <em>Flow Section</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFlowSection()
 	 * @generated
 	 * @ordered
@@ -83,7 +75,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected CallableUnitImpl() {
@@ -92,7 +83,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -102,7 +92,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -112,7 +101,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetDataSection(QDataSection newDataSection, NotificationChain msgs) {
@@ -120,17 +108,13 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		dataSection = newDataSection;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, oldDataSection, newDataSection);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -138,19 +122,18 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		if (newDataSection != dataSection) {
 			NotificationChain msgs = null;
 			if (dataSection != null)
-				msgs = ((InternalEObject) dataSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, null, msgs);
+				msgs = ((InternalEObject)dataSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, null, msgs);
 			if (newDataSection != null)
-				msgs = ((InternalEObject) newDataSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, null, msgs);
+				msgs = ((InternalEObject)newDataSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, null, msgs);
 			msgs = basicSetDataSection(newDataSection, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION, newDataSection, newDataSection));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -160,7 +143,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetFileSection(QFileSection newFileSection, NotificationChain msgs) {
@@ -168,17 +150,13 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		fileSection = newFileSection;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, oldFileSection, newFileSection);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -186,19 +164,18 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		if (newFileSection != fileSection) {
 			NotificationChain msgs = null;
 			if (fileSection != null)
-				msgs = ((InternalEObject) fileSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, null, msgs);
+				msgs = ((InternalEObject)fileSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, null, msgs);
 			if (newFileSection != null)
-				msgs = ((InternalEObject) newFileSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, null, msgs);
+				msgs = ((InternalEObject)newFileSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, null, msgs);
 			msgs = basicSetFileSection(newFileSection, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION, newFileSection, newFileSection));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +185,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetFlowSection(QFlowSection newFlowSection, NotificationChain msgs) {
@@ -216,17 +192,13 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		flowSection = newFlowSection;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, oldFlowSection, newFlowSection);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -234,19 +206,18 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		if (newFlowSection != flowSection) {
 			NotificationChain msgs = null;
 			if (flowSection != null)
-				msgs = ((InternalEObject) flowSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, null, msgs);
+				msgs = ((InternalEObject)flowSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, null, msgs);
 			if (newFlowSection != null)
-				msgs = ((InternalEObject) newFlowSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, null, msgs);
+				msgs = ((InternalEObject)newFlowSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, null, msgs);
 			msgs = basicSetFlowSection(newFlowSection, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION, newFlowSection, newFlowSection));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -256,7 +227,6 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetSetupSection(QSetupSection newSetupSection, NotificationChain msgs) {
@@ -264,17 +234,13 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		setupSection = newSetupSection;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, oldSetupSection, newSetupSection);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -282,120 +248,115 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 		if (newSetupSection != setupSection) {
 			NotificationChain msgs = null;
 			if (setupSection != null)
-				msgs = ((InternalEObject) setupSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, null, msgs);
+				msgs = ((InternalEObject)setupSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, null, msgs);
 			if (newSetupSection != null)
-				msgs = ((InternalEObject) newSetupSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, null, msgs);
+				msgs = ((InternalEObject)newSetupSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, null, msgs);
 			msgs = basicSetSetupSection(newSetupSection, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION, newSetupSection, newSetupSection));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
-			return basicSetSetupSection(null, msgs);
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
-			return basicSetDataSection(null, msgs);
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
-			return basicSetFileSection(null, msgs);
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
-			return basicSetFlowSection(null, msgs);
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
+				return basicSetSetupSection(null, msgs);
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
+				return basicSetDataSection(null, msgs);
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
+				return basicSetFileSection(null, msgs);
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
+				return basicSetFlowSection(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
-			return getSetupSection();
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
-			return getDataSection();
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
-			return getFileSection();
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
-			return getFlowSection();
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
+				return getSetupSection();
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
+				return getDataSection();
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
+				return getFileSection();
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
+				return getFlowSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
-			setSetupSection((QSetupSection) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
-			setDataSection((QDataSection) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
-			setFileSection((QFileSection) newValue);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
-			setFlowSection((QFlowSection) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
+				setSetupSection((QSetupSection)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
+				setDataSection((QDataSection)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
+				setFileSection((QFileSection)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
+				setFlowSection((QFlowSection)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
-			setSetupSection((QSetupSection) null);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
-			setDataSection((QDataSection) null);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
-			setFileSection((QFileSection) null);
-			return;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
-			setFlowSection((QFlowSection) null);
-			return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
+				setSetupSection((QSetupSection)null);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
+				setDataSection((QDataSection)null);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
+				setFileSection((QFileSection)null);
+				return;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
+				setFlowSection((QFlowSection)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
-			return setupSection != null;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
-			return dataSection != null;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
-			return fileSection != null;
-		case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
-			return flowSection != null;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__SETUP_SECTION:
+				return setupSection != null;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__DATA_SECTION:
+				return dataSection != null;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FILE_SECTION:
+				return fileSection != null;
+			case QIntegratedLanguageFlowPackage.CALLABLE_UNIT__FLOW_SECTION:
+				return flowSection != null;
 		}
 		return super.eIsSet(featureID);
 	}

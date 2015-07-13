@@ -20,8 +20,7 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl#getCommand <em>
- * Command</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl#getCommand <em>Command</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,18 +32,16 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The default value of the '{@link #getCommand() <em>Command</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCommand()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String COMMAND_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getCommand() <em>Command</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getCommand()
 	 * @generated
 	 * @ordered
@@ -53,7 +50,6 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected AnnotationCommandImpl() {
@@ -62,7 +58,6 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -72,7 +67,6 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -82,7 +76,6 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -95,71 +88,65 @@ public class AnnotationCommandImpl extends AnnotationImpl implements QAnnotation
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
-			return getCommand();
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
+				return getCommand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
-			setCommand((String) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
+				setCommand((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
-			setCommand(COMMAND_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
+				setCommand(COMMAND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
-			return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
+			case QIntegratedLanguageFlowPackage.ANNOTATION_COMMAND__COMMAND:
+				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (command: ");

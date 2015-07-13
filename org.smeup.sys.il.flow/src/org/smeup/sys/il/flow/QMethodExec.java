@@ -16,10 +16,9 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QMethodExec#getObject <em>Object</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QMethodExec#getMethod <em>Method</em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QMethodExec#getParameters <em>Parameters
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getObject <em>Object</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,12 +45,9 @@ public interface QMethodExec extends QInvoke {
 	String getObject();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QMethodExec#getObject <em>Object</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Object</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QMethodExec#getObject <em>Object</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Object</em>' attribute.
 	 * @see #getObject()
 	 * @generated
 	 */
@@ -75,27 +71,24 @@ public interface QMethodExec extends QInvoke {
 	String getMethod();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QMethodExec#getMethod <em>Method</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Method</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QMethodExec#getMethod <em>Method</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Method</em>' attribute.
 	 * @see #getMethod()
 	 * @generated
 	 */
 	void setMethod(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' attribute list. The
-	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Parameters</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Parameters</em>' attribute list.
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getMethodExec_Parameters()
 	 * @model unique="false"

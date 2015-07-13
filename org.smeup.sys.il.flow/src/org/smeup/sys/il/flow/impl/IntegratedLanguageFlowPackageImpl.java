@@ -71,307 +71,263 @@ import org.smeup.sys.il.flow.QWhile;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
  * end-user-doc -->
- *
  * @generated
  */
 public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements QIntegratedLanguageFlowPackage {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass annotationCommandEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass blockEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass breakEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass callEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass callableUnitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass commandExecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass continueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass dataSectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass entryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass entryParameterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass evalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass fileSectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass flowDataEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass flowSectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass ifEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass invokeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass iterationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass jumpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass labelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass methodExecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass moduleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass monitorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass onErrorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass parameterListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass procedureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass procedureExecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass programEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass prototypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass resetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass returnEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass routineEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass routineExecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass setupSectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass sqlExecEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass statementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass statementVisitorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass unitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass unitSectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass untilEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass whileEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EEnum evalOperatorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EEnum passingTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private EClass forEClass = null;
@@ -397,34 +353,27 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model,
-	 * and for any others upon which it depends.
-	 *
-	 * <p>
-	 * This method is used to initialize
-	 * {@link QIntegratedLanguageFlowPackage#eINSTANCE} when that field is
-	 * accessed. Clients should not invoke it directly. Instead, they should
-	 * simply access that field to obtain the package. <!-- begin-user-doc -->
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link QIntegratedLanguageFlowPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
 	public static QIntegratedLanguageFlowPackage init() {
-		if (isInited)
-			return (QIntegratedLanguageFlowPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageFlowPackage.eNS_URI);
+		if (isInited) return (QIntegratedLanguageFlowPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageFlowPackage.eNS_URI);
 
 		// Obtain or create and register package
-		IntegratedLanguageFlowPackageImpl theIntegratedLanguageFlowPackage = (IntegratedLanguageFlowPackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageFlowPackageImpl ? EPackage.Registry.INSTANCE
-				.get(eNS_URI) : new IntegratedLanguageFlowPackageImpl());
+		IntegratedLanguageFlowPackageImpl theIntegratedLanguageFlowPackage = (IntegratedLanguageFlowPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntegratedLanguageFlowPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new IntegratedLanguageFlowPackageImpl());
 
 		isInited = true;
 
@@ -441,6 +390,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		// Mark meta-data to indicate it can't be changed
 		theIntegratedLanguageFlowPackage.freeze();
 
+  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QIntegratedLanguageFlowPackage.eNS_URI, theIntegratedLanguageFlowPackage);
 		return theIntegratedLanguageFlowPackage;
@@ -448,7 +398,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -458,17 +407,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getAnnotationCommand_Command() {
-		return (EAttribute) annotationCommandEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)annotationCommandEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -478,17 +425,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getBlock_Statements() {
-		return (EReference) blockEClass.getEStructuralFeatures().get(0);
+		return (EReference)blockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -498,7 +443,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -508,27 +452,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCall_Program() {
-		return (EAttribute) callEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)callEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCall_Parameters() {
-		return (EAttribute) callEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)callEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -538,47 +479,42 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getCallableUnit_DataSection() {
-		return (EReference) callableUnitEClass.getEStructuralFeatures().get(1);
+		return (EReference)callableUnitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getCallableUnit_FileSection() {
-		return (EReference) callableUnitEClass.getEStructuralFeatures().get(2);
+		return (EReference)callableUnitEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getCallableUnit_FlowSection() {
-		return (EReference) callableUnitEClass.getEStructuralFeatures().get(3);
+		return (EReference)callableUnitEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getCallableUnit_SetupSection() {
-		return (EReference) callableUnitEClass.getEStructuralFeatures().get(0);
+		return (EReference)callableUnitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -588,17 +524,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getCommandExec_Statement() {
-		return (EAttribute) commandExecEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)commandExecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -608,7 +542,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -618,17 +551,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getDataSection_Datas() {
-		return (EReference) dataSectionEClass.getEStructuralFeatures().get(0);
+		return (EReference)dataSectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -638,17 +569,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getEntry_Parameters() {
-		return (EReference) entryEClass.getEStructuralFeatures().get(0);
+		return (EReference)entryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -658,37 +587,33 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getEntryParameter_Delegate() {
-		return (EReference) entryParameterEClass.getEStructuralFeatures().get(0);
+		return (EReference)entryParameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getEntryParameter_Nullable() {
-		return (EAttribute) entryParameterEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)entryParameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getEntryParameter_PassingType() {
-		return (EAttribute) entryParameterEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)entryParameterEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -698,17 +623,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getEval_Assignment() {
-		return (EAttribute) evalEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)evalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEval_RoundingMode() {
+		return (EAttribute)evalEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -718,67 +650,60 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_DataSets() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(0);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_KeyLists() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(1);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_Cursors() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(2);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_Statements() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(3);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_Displays() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(4);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFileSection_Printers() {
-		return (EReference) fileSectionEClass.getEStructuralFeatures().get(5);
+		return (EReference)fileSectionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -788,7 +713,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -798,47 +722,42 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFlowSection_ParameterLists() {
-		return (EReference) flowSectionEClass.getEStructuralFeatures().get(0);
+		return (EReference)flowSectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFlowSection_Procedures() {
-		return (EReference) flowSectionEClass.getEStructuralFeatures().get(1);
+		return (EReference)flowSectionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFlowSection_Prototypes() {
-		return (EReference) flowSectionEClass.getEStructuralFeatures().get(2);
+		return (EReference)flowSectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getFlowSection_Routines() {
-		return (EReference) flowSectionEClass.getEStructuralFeatures().get(3);
+		return (EReference)flowSectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -848,37 +767,33 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getIf_Condition() {
-		return (EAttribute) ifEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)ifEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getIf_Else() {
-		return (EReference) ifEClass.getEStructuralFeatures().get(1);
+		return (EReference)ifEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getIf_Then() {
-		return (EReference) ifEClass.getEStructuralFeatures().get(0);
+		return (EReference)ifEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -888,7 +803,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -898,27 +812,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getIteration_Condition() {
-		return (EAttribute) iterationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)iterationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getIteration_Body() {
-		return (EReference) iterationEClass.getEStructuralFeatures().get(0);
+		return (EReference)iterationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -928,17 +839,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getJump_Label() {
-		return (EAttribute) jumpEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)jumpEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -948,17 +857,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getLabel_Name() {
-		return (EAttribute) labelEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -968,37 +875,33 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getMethodExec_Object() {
-		return (EAttribute) methodExecEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)methodExecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getMethodExec_Method() {
-		return (EAttribute) methodExecEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)methodExecEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getMethodExec_Parameters() {
-		return (EAttribute) methodExecEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)methodExecEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1008,7 +911,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1018,27 +920,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getMonitor_Body() {
-		return (EReference) monitorEClass.getEStructuralFeatures().get(0);
+		return (EReference)monitorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getMonitor_OnErrors() {
-		return (EReference) monitorEClass.getEStructuralFeatures().get(1);
+		return (EReference)monitorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1048,27 +947,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getOnError_Body() {
-		return (EReference) onErrorEClass.getEStructuralFeatures().get(0);
+		return (EReference)onErrorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getOnError_Error() {
-		return (EAttribute) onErrorEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)onErrorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1078,27 +974,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getParameterList_Name() {
-		return (EAttribute) parameterListEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)parameterListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getParameterList_Parameters() {
-		return (EAttribute) parameterListEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)parameterListEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1108,27 +1001,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getProcedure_Entry() {
-		return (EReference) procedureEClass.getEStructuralFeatures().get(0);
+		return (EReference)procedureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getProcedure_ReturnType() {
-		return (EReference) procedureEClass.getEStructuralFeatures().get(1);
+		return (EReference)procedureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1138,27 +1028,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getProcedureExec_Procedure() {
-		return (EAttribute) procedureExecEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)procedureExecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getProcedureExec_Parameters() {
-		return (EAttribute) procedureExecEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)procedureExecEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1168,27 +1055,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getProgram_Entry() {
-		return (EReference) programEClass.getEStructuralFeatures().get(0);
+		return (EReference)programEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getProgram_Messages() {
-		return (EAttribute) programEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)programEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1198,17 +1082,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getPrototype_Entry() {
-		return (EReference) prototypeEClass.getEStructuralFeatures().get(0);
+		return (EReference)prototypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1218,17 +1100,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getReset_Object() {
-		return (EAttribute) resetEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)resetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1238,17 +1118,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getReturn_Value() {
-		return (EAttribute) returnEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)returnEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1258,7 +1136,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1268,17 +1145,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getRoutineExec_Routine() {
-		return (EAttribute) routineExecEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)routineExecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1288,67 +1163,60 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getSetupSection_Annotations() {
-		return (EReference) setupSectionEClass.getEStructuralFeatures().get(0);
+		return (EReference)setupSectionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSetupSection_Application() {
-		return (EAttribute) setupSectionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)setupSectionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSetupSection_Encoding() {
-		return (EAttribute) setupSectionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)setupSectionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSetupSection_ExpressionType() {
-		return (EAttribute) setupSectionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)setupSectionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSetupSection_Modules() {
-		return (EAttribute) setupSectionEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)setupSectionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSetupSection_TermSensitive() {
-		return (EAttribute) setupSectionEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)setupSectionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1358,17 +1226,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getSQLExec_Statement() {
-		return (EAttribute) sqlExecEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)sqlExecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1378,7 +1244,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1388,7 +1253,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1398,27 +1262,24 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getUnit_Name() {
-		return (EAttribute) unitEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)unitEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EReference getUnit_Main() {
-		return (EReference) unitEClass.getEStructuralFeatures().get(1);
+		return (EReference)unitEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1428,7 +1289,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1438,7 +1298,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1448,7 +1307,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1458,7 +1316,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1468,17 +1325,15 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageFlowFactory getIntegratedLanguageFlowFactory() {
-		return (QIntegratedLanguageFlowFactory) getEFactoryInstance();
+		return (QIntegratedLanguageFlowFactory)getEFactoryInstance();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -1488,41 +1343,37 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getFor_Increment() {
-		return (EAttribute) forEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)forEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public EAttribute getFor_Initialization() {
-		return (EAttribute) forEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)forEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package. This method is guarded to
-	 * have no affect on any invocation but its first. <!-- begin-user-doc -->
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated)
-			return;
+		if (isCreated) return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -1562,6 +1413,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		evalEClass = createEClass(EVAL);
 		createEAttribute(evalEClass, EVAL__ASSIGNMENT);
+		createEAttribute(evalEClass, EVAL__ROUNDING_MODE);
 
 		fileSectionEClass = createEClass(FILE_SECTION);
 		createEReference(fileSectionEClass, FILE_SECTION__DATA_SETS);
@@ -1677,7 +1529,6 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -1690,8 +1541,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized)
-			return;
+		if (isInitialized) return;
 		isInitialized = true;
 
 		// Initialize package
@@ -1700,15 +1550,12 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
-		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
-		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
-		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage) EPackage.Registry.INSTANCE
-				.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
-		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage) EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
+		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
+		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
+		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
+		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter entryParameterEClass_T = addETypeParameter(entryParameterEClass, "T");
@@ -1770,34 +1617,25 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(annotationCommandEClass, QAnnotationCommand.class, "AnnotationCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAnnotationCommand_Command(), ecorePackage.getEString(), "command", null, 1, 1, QAnnotationCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotationCommand_Command(), ecorePackage.getEString(), "command", null, 1, 1, QAnnotationCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(blockEClass, QBlock.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlock_Statements(), this.getStatement(), null, "statements", null, 0, -1, QBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBlock_Statements(), this.getStatement(), null, "statements", null, 0, -1, QBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(breakEClass, QBreak.class, "Break", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(callEClass, QCall.class, "Call", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCall_Program(), ecorePackage.getEString(), "program", null, 0, 1, QCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getCall_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCall_Program(), ecorePackage.getEString(), "program", null, 0, 1, QCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCall_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callableUnitEClass, QCallableUnit.class, "CallableUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallableUnit_SetupSection(), this.getSetupSection(), null, "setupSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallableUnit_DataSection(), this.getDataSection(), null, "dataSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallableUnit_FileSection(), this.getFileSection(), null, "fileSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallableUnit_FlowSection(), this.getFlowSection(), null, "flowSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallableUnit_SetupSection(), this.getSetupSection(), null, "setupSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallableUnit_DataSection(), this.getDataSection(), null, "dataSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallableUnit_FileSection(), this.getFileSection(), null, "fileSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallableUnit_FlowSection(), this.getFlowSection(), null, "flowSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandExecEClass, QCommandExec.class, "CommandExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCommandExec_Statement(), ecorePackage.getEString(), "statement", null, 1, 1, QCommandExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCommandExec_Statement(), ecorePackage.getEString(), "statement", null, 1, 1, QCommandExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(continueEClass, QContinue.class, "Continue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1805,169 +1643,119 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getDataSection_Datas(), g1, null, "datas", null, 0, -1, QDataSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataSection_Datas(), g1, null, "datas", null, 0, -1, QDataSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entryEClass, QEntry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getEntryParameter());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getEntry_Parameters(), g1, null, "parameters", null, 1, -1, QEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntry_Parameters(), g1, null, "parameters", null, 1, -1, QEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entryParameterEClass, QEntryParameter.class, "EntryParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(entryParameterEClass_T);
-		initEReference(getEntryParameter_Delegate(), g1, null, "delegate", null, 0, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEntryParameter_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEntryParameter_PassingType(), this.getPassingType(), "passingType", "REF", 1, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntryParameter_Delegate(), g1, null, "delegate", null, 0, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntryParameter_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntryParameter_PassingType(), this.getPassingType(), "passingType", "REF", 1, 1, QEntryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(evalEClass, QEval.class, "Eval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEval_Assignment(), ecorePackage.getEString(), "assignment", null, 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEval_Assignment(), ecorePackage.getEString(), "assignment", null, 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEval_RoundingMode(), ecorePackage.getEString(), "roundingMode", null, 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fileSectionEClass, QFileSection.class, "FileSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFileSection_DataSets(), theIntegratedLanguageEsamPackage.getDataSetTerm(), null, "dataSets", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFileSection_KeyLists(), theIntegratedLanguageEsamPackage.getKeyListTerm(), null, "keyLists", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFileSection_Cursors(), theIntegratedLanguageEmbeddedSQLPackage.getCursorTerm(), null, "cursors", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFileSection_Statements(), theIntegratedLanguageEmbeddedSQLPackage.getStatementTerm(), null, "statements", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFileSection_Displays(), theIntegratedLanguageEsamPackage.getDisplayTerm(), null, "displays", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFileSection_Printers(), theIntegratedLanguageEsamPackage.getPrintTerm(), null, "printers", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_DataSets(), theIntegratedLanguageEsamPackage.getDataSetTerm(), null, "dataSets", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_KeyLists(), theIntegratedLanguageEsamPackage.getKeyListTerm(), null, "keyLists", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_Cursors(), theIntegratedLanguageEmbeddedSQLPackage.getCursorTerm(), null, "cursors", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_Statements(), theIntegratedLanguageEmbeddedSQLPackage.getStatementTerm(), null, "statements", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_Displays(), theIntegratedLanguageEsamPackage.getDisplayTerm(), null, "displays", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFileSection_Printers(), theIntegratedLanguageEsamPackage.getPrintTerm(), null, "printers", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(flowDataEClass, QFlowData.class, "FlowData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(flowSectionEClass, QFlowSection.class, "FlowSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFlowSection_ParameterLists(), this.getParameterList(), null, "parameterLists", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFlowSection_Procedures(), this.getProcedure(), null, "procedures", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFlowSection_Prototypes(), this.getPrototype(), null, "prototypes", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFlowSection_Routines(), this.getRoutine(), null, "routines", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlowSection_ParameterLists(), this.getParameterList(), null, "parameterLists", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlowSection_Procedures(), this.getProcedure(), null, "procedures", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlowSection_Prototypes(), this.getPrototype(), null, "prototypes", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlowSection_Routines(), this.getRoutine(), null, "routines", null, 0, -1, QFlowSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(forEClass, QFor.class, "For", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFor_Increment(), ecorePackage.getEString(), "increment", null, 1, 1, QFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFor_Initialization(), ecorePackage.getEString(), "initialization", null, 1, 1, QFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFor_Increment(), ecorePackage.getEString(), "increment", null, 1, 1, QFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFor_Initialization(), ecorePackage.getEString(), "initialization", null, 1, 1, QFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ifEClass, QIf.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIf_Then(), this.getStatement(), null, "then", null, 0, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIf_Else(), this.getStatement(), null, "else", null, 0, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIf_Condition(), ecorePackage.getEString(), "condition", null, 1, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getIf_Then(), this.getStatement(), null, "then", null, 0, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIf_Else(), this.getStatement(), null, "else", null, 0, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIf_Condition(), ecorePackage.getEString(), "condition", null, 1, 1, QIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(invokeEClass, QInvoke.class, "Invoke", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iterationEClass, QIteration.class, "Iteration", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIteration_Body(), this.getStatement(), null, "body", null, 0, 1, QIteration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIteration_Condition(), ecorePackage.getEString(), "condition", null, 1, 1, QIteration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getIteration_Body(), this.getStatement(), null, "body", null, 0, 1, QIteration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIteration_Condition(), ecorePackage.getEString(), "condition", null, 1, 1, QIteration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jumpEClass, QJump.class, "Jump", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJump_Label(), ecorePackage.getEString(), "label", null, 1, 1, QJump.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getJump_Label(), ecorePackage.getEString(), "label", null, 1, 1, QJump.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, QLabel.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLabel_Name(), ecorePackage.getEString(), "name", null, 1, 1, QLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getLabel_Name(), ecorePackage.getEString(), "name", null, 1, 1, QLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(methodExecEClass, QMethodExec.class, "MethodExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMethodExec_Object(), ecorePackage.getEString(), "object", null, 0, 1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMethodExec_Method(), ecorePackage.getEString(), "method", null, 0, 1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMethodExec_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMethodExec_Object(), ecorePackage.getEString(), "object", null, 0, 1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMethodExec_Method(), ecorePackage.getEString(), "method", null, 0, 1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMethodExec_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QMethodExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(moduleEClass, QModule.class, "Module", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(monitorEClass, QMonitor.class, "Monitor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMonitor_Body(), this.getStatement(), null, "body", null, 0, 1, QMonitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMonitor_OnErrors(), this.getOnError(), null, "onErrors", null, 0, -1, QMonitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMonitor_Body(), this.getStatement(), null, "body", null, 0, 1, QMonitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMonitor_OnErrors(), this.getOnError(), null, "onErrors", null, 0, -1, QMonitor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(onErrorEClass, QOnError.class, "OnError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOnError_Body(), this.getStatement(), null, "body", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOnError_Error(), ecorePackage.getEString(), "error", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getOnError_Body(), this.getStatement(), null, "body", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOnError_Error(), ecorePackage.getEString(), "error", null, 0, 1, QOnError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterListEClass, QParameterList.class, "ParameterList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameterList_Name(), ecorePackage.getEString(), "name", null, 0, 1, QParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameterList_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterList_Name(), ecorePackage.getEString(), "name", null, 0, 1, QParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterList_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(procedureEClass, QProcedure.class, "Procedure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcedure_Entry(), this.getEntry(), null, "entry", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcedure_Entry(), this.getEntry(), null, "entry", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getDataDef());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getProcedure_ReturnType(), g1, null, "returnType", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcedure_ReturnType(), g1, null, "returnType", null, 0, 1, QProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(procedureExecEClass, QProcedureExec.class, "ProcedureExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcedureExec_Procedure(), ecorePackage.getEString(), "procedure", null, 0, 1, QProcedureExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcedureExec_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QProcedureExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcedureExec_Procedure(), ecorePackage.getEString(), "procedure", null, 0, 1, QProcedureExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcedureExec_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, QProcedureExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProgram_Entry(), this.getParameterList(), null, "entry", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProgram_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getProgram_Entry(), this.getParameterList(), null, "entry", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProgram_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(prototypeEClass, QPrototype.class, "Prototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPrototype_Entry(), this.getEntry(), null, "entry", null, 0, 1, QPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrototype_Entry(), this.getEntry(), null, "entry", null, 0, 1, QPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resetEClass, QReset.class, "Reset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReset_Object(), ecorePackage.getEString(), "object", null, 0, 1, QReset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getReset_Object(), ecorePackage.getEString(), "object", null, 0, 1, QReset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(returnEClass, QReturn.class, "Return", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReturn_Value(), ecorePackage.getEString(), "value", null, 1, 1, QReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEAttribute(getReturn_Value(), ecorePackage.getEString(), "value", null, 1, 1, QReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(routineEClass, QRoutine.class, "Routine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(routineExecEClass, QRoutineExec.class, "RoutineExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRoutineExec_Routine(), ecorePackage.getEString(), "routine", null, 0, 1, QRoutineExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoutineExec_Routine(), ecorePackage.getEString(), "routine", null, 0, 1, QRoutineExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setupSectionEClass, QSetupSection.class, "SetupSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSetupSection_Annotations(), theIntegratedLanguageCorePackage.getAnnotation(), null, "annotations", null, 0, -1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetupSection_Application(), ecorePackage.getEString(), "application", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetupSection_Encoding(), ecorePackage.getEString(), "encoding", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetupSection_ExpressionType(), ecorePackage.getEString(), "expressionType", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetupSection_Modules(), ecorePackage.getEString(), "modules", null, 0, -1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSetupSection_TermSensitive(), ecorePackage.getEBoolean(), "termSensitive", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetupSection_Annotations(), theIntegratedLanguageCorePackage.getAnnotation(), null, "annotations", null, 0, -1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetupSection_Application(), ecorePackage.getEString(), "application", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetupSection_Encoding(), ecorePackage.getEString(), "encoding", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetupSection_ExpressionType(), ecorePackage.getEString(), "expressionType", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetupSection_Modules(), ecorePackage.getEString(), "modules", null, 0, -1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSetupSection_TermSensitive(), ecorePackage.getEBoolean(), "termSensitive", null, 0, 1, QSetupSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sqlExecEClass, QSQLExec.class, "SQLExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSQLExec_Statement(), ecorePackage.getEString(), "statement", null, 1, 1, QSQLExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSQLExec_Statement(), ecorePackage.getEString(), "statement", null, 1, 1, QSQLExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statementEClass, QStatement.class, "Statement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2097,10 +1885,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getReset(), "statement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unitEClass, QUnit.class, "Unit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, QUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getUnit_Main(), this.getStatement(), null, "main", null, 0, 1, QUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUnit_Name(), ecorePackage.getEString(), "name", null, 0, 1, QUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_Main(), this.getStatement(), null, "main", null, 0, 1, QUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitSectionEClass, QUnitSection.class, "UnitSection", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

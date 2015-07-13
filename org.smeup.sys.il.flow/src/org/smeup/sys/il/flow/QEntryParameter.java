@@ -17,12 +17,9 @@ import org.smeup.sys.il.core.term.QTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.QEntryParameter#getDelegate <em>Delegate
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QEntryParameter#isNullable <em>Nullable
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.flow.QEntryParameter#getPassingType <em>Passing
- * Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#getDelegate <em>Delegate</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#isNullable <em>Nullable</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#getPassingType <em>Passing Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,14 +29,13 @@ import org.smeup.sys.il.core.term.QTerm;
  */
 public interface QEntryParameter<T extends QTerm> extends QNamedNode {
 	/**
-	 * Returns the value of the '<em><b>Delegate</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Delegate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Delegate</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Delegate</em>' containment reference.
 	 * @see #setDelegate(QTerm)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEntryParameter_Delegate()
@@ -49,14 +45,10 @@ public interface QEntryParameter<T extends QTerm> extends QNamedNode {
 	T getDelegate();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QEntryParameter#getDelegate
-	 * <em>Delegate</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEntryParameter#getDelegate <em>Delegate</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Delegate</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Delegate</em>' containment reference.
 	 * @see #getDelegate()
 	 * @generated
 	 */
@@ -113,13 +105,10 @@ public interface QEntryParameter<T extends QTerm> extends QNamedNode {
 	PassingType getPassingType();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.flow.QEntryParameter#getPassingType
-	 * <em>Passing Type</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEntryParameter#getPassingType <em>Passing Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Passing Type</em>' attribute.
+	 * @param value the new value of the '<em>Passing Type</em>' attribute.
 	 * @see org.smeup.sys.il.flow.PassingType
 	 * @see #getPassingType()
 	 * @generated

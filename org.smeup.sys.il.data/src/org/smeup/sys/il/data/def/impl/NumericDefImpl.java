@@ -29,7 +29,6 @@ public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected NumericDefImpl() {
@@ -38,7 +37,6 @@ public class NumericDefImpl extends UnaryAtomicBufferedDataDefImpl<QNumeric> imp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

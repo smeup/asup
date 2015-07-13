@@ -7,6 +7,9 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
+import java.lang.String;
+
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,7 +23,6 @@ package org.smeup.sys.il.data;
 public interface QMoveable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -28,7 +30,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -36,7 +37,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -44,7 +44,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -52,7 +51,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -60,7 +58,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -68,7 +65,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -76,7 +72,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -84,7 +79,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -92,7 +86,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -100,7 +93,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
 	 * @generated
 	 */
@@ -108,16 +100,13 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
-	 *        clearRequired="true"
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" clearRequired="true"
 	 * @generated
 	 */
 	void move(Number value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -125,7 +114,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -133,7 +121,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -141,7 +128,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -149,7 +135,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -157,7 +142,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -165,7 +149,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -173,7 +156,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -181,7 +163,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -189,7 +170,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -197,7 +177,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model
 	 * @generated
 	 */
@@ -205,7 +184,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model clearRequired="true"
 	 * @generated
 	 */
@@ -213,7 +191,6 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
 	 * @generated
 	 */
@@ -221,9 +198,7 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
-	 *        clearRequired="true"
+	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" clearRequired="true"
 	 * @generated
 	 */
 	void movel(Number value, boolean clear);

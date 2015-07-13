@@ -244,6 +244,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression);
 
+		if(statement.getRoundingMode() != null) {
+			statement.toString();
+		}
+		
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 

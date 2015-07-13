@@ -352,7 +352,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		}
 	}
 
-	public abstract void writeNumber(Number number, boolean halfRounding);
+	public abstract void writeNumber(Number number, String roundingMode);
 
 	@Override
 	public double d() {
@@ -383,17 +383,17 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(double value) {
-		eval(value, false);
+		eval(value, null);
 	}
 
 	@Override
 	public void eval(int value) {
-		eval(value, false);
+		eval(value, null);
 	}
 
 	@Override
 	public void eval(long value) {
-		eval(value, false);
+		eval(value, null);
 	}
 
 	@Override
@@ -403,13 +403,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(QNumeric value) {
-		eval(value, false);
-		;
+		eval(value, null);
 	}
 
 	@Override
 	public void eval(short value) {
-		eval(value, false);
+		eval(value, null);
 	}
 
 	@Override
@@ -419,116 +418,116 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(BigDecimal value) {
-		eval(value, false);
+		eval(value, null);
 	}
 
 	@Override
-	public void eval(double value, boolean halfRounding) {
+	public void eval(double value, String roundingMode) {
 		try {
-			writeNumber(value, halfRounding);
+			writeNumber(value, roundingMode);
 		} catch (Exception e) {
 			System.out.println("Unexpcted condition: bq5804q956943534");
 		}
 	}
 
 	@Override
-	public void eval(short value, boolean halfRounding) {
+	public void eval(short value, String roundingMode) {
 		try {
-			writeNumber(value, halfRounding);
+			writeNumber(value, roundingMode);
 		} catch (Exception e) {
 			System.out.println("Unexpcted condition: bq5804q956943534");
 		}
 	}
 
 	@Override
-	public void eval(long value, boolean halfRounding) {
+	public void eval(long value, String roundingMode) {
 		try {
-			writeNumber(value, halfRounding);
+			writeNumber(value, roundingMode);
 		} catch (Exception e) {
 			System.out.println("Unexpcted condition: bq5804q956943534");
 		}
 	}
 
 	@Override
-	public void eval(int value, boolean halfRounding) {
+	public void eval(int value, String roundingMode) {
 		try {
-			writeNumber(value, halfRounding);
+			writeNumber(value, roundingMode);
 		} catch (Exception e) {
 			System.out.println("Unexpcted condition: bq5804q956943534");
 		}
 	}
 
 	@Override
-	public void eval(QNumeric value, boolean halfRounding) {
+	public void eval(QNumeric value, String roundingMode) {
 		// TODO remove
 		if (value == null)
-			writeNumber(0, false);
+			writeNumber(0, null);
 		else
-			writeNumber(value.asDouble(), halfRounding);
+			writeNumber(value.asDouble(), roundingMode);
 	}
 
 	@Override
-	public void eval(BigInteger value, boolean halfRounding) {
-		writeNumber(value, halfRounding);
+	public void eval(BigInteger value, String roundingMode) {
+		writeNumber(value, roundingMode);
 	}
 
 	@Override
-	public void eval(BigDecimal value, boolean halfRounding) {
-		writeNumber(value, halfRounding);
+	public void eval(BigDecimal value, String roundingMode) {
+		writeNumber(value, roundingMode);
 	}
 
 	@Override
 	public QNumeric divide(short value) {
-		return divide(value, false);
+		return divide(value, null);
 	}
 
 	@Override
 	public QNumeric divide(long value) {
-		return divide(value, false);
+		return divide(value, null);
 	}
 
 	@Override
 	public QNumeric divide(int value) {
-		return divide(value, false);
+		return divide(value, null);
 	}
 
 	@Override
 	public QNumeric divide(double value) {
-		return divide(value, false);
+		return divide(value, null);
 	}
 
 	@Override
 	public QNumeric divide(QNumeric value) {
-		return divide(value, false);
+		return divide(value, null);
 	}
 	
 
 	@Override
-	public QNumeric divide(int value, boolean haslRounding) {
+	public QNumeric divide(int value, String roundingMode) {
 		eval(asDouble() / value);
 		return this;
 	}
 
 	@Override
-	public QNumeric divide(long value, boolean haslRounding) {
+	public QNumeric divide(long value, String roundingMode) {
 		eval(asDouble() / value);
 		return this;
 	}
 
 	@Override
-	public QNumeric divide(QNumeric value, boolean haslRounding) {
+	public QNumeric divide(QNumeric value, String roundingMode) {
 		eval(asDouble() / value.asDouble());
 		return this;
 	}
 
 	@Override
-	public QNumeric divide(short value, boolean haslRounding) {
+	public QNumeric divide(short value, String roundingMode) {
 		eval(asDouble() / value);
 		return this;
 	}
 
 	@Override
-	public QNumeric divide(double value, boolean haslRounding) {
+	public QNumeric divide(double value, String haslRounding) {
 		eval(asDouble() / value);
 		return this;
 	}

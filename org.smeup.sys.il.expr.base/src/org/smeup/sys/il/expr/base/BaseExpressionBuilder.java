@@ -105,7 +105,7 @@ public class BaseExpressionBuilder {
 		// TODO remove and change parser
 		// if (rightString.startsWith("&"))
 		// rightString = removeFirstChar(rightString);
-
+		
 		Tree rightAntAst = expressionHelper.parse(rightString);
 		ExpressionType rightExpType = expressionHelper.getExpressionType(rightAntAst);
 

@@ -20,8 +20,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRoundingMode <em>Rounding Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,9 +29,8 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  */
 public class EvalImpl extends InvokeImpl implements QEval {
 	/**
-	 * The default value of the '{@link #getAssignment() <em>Assignment</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getAssignment() <em>Assignment</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssignment()
 	 * @generated
 	 * @ordered
@@ -39,14 +38,33 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	protected static final String ASSIGNMENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAssignment() <em>Assignment</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getAssignment() <em>Assignment</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssignment()
 	 * @generated
 	 * @ordered
 	 */
 	protected String assignment = ASSIGNMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRoundingMode() <em>Rounding Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoundingMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ROUNDING_MODE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRoundingMode() <em>Rounding Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRoundingMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected String roundingMode = ROUNDING_MODE_EDEFAULT;
 
 	/**
 	 *
@@ -55,7 +73,6 @@ public class EvalImpl extends InvokeImpl implements QEval {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected EvalImpl() {
@@ -64,7 +81,6 @@ public class EvalImpl extends InvokeImpl implements QEval {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -74,7 +90,6 @@ public class EvalImpl extends InvokeImpl implements QEval {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -84,7 +99,6 @@ public class EvalImpl extends InvokeImpl implements QEval {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -96,76 +110,103 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRoundingMode() {
+		return roundingMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoundingMode(String newRoundingMode) {
+		String oldRoundingMode = roundingMode;
+		roundingMode = newRoundingMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE, oldRoundingMode, roundingMode));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
-			return getAssignment();
+			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
+				return getAssignment();
+			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
+				return getRoundingMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
-			setAssignment((String) newValue);
-			return;
+			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
+				setAssignment((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
+				setRoundingMode((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
-			setAssignment(ASSIGNMENT_EDEFAULT);
-			return;
+			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
+				setAssignment(ASSIGNMENT_EDEFAULT);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
+				setRoundingMode(ROUNDING_MODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
-			return ASSIGNMENT_EDEFAULT == null ? assignment != null : !ASSIGNMENT_EDEFAULT.equals(assignment);
+			case QIntegratedLanguageFlowPackage.EVAL__ASSIGNMENT:
+				return ASSIGNMENT_EDEFAULT == null ? assignment != null : !ASSIGNMENT_EDEFAULT.equals(assignment);
+			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
+				return ROUNDING_MODE_EDEFAULT == null ? roundingMode != null : !ROUNDING_MODE_EDEFAULT.equals(roundingMode);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (assignment: ");
 		result.append(assignment);
+		result.append(", roundingMode: ");
+		result.append(roundingMode);
 		result.append(')');
 		return result.toString();
 	}

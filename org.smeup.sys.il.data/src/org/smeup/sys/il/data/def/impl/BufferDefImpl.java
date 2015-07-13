@@ -31,7 +31,6 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected BufferDefImpl() {
@@ -40,7 +39,6 @@ public class BufferDefImpl extends UnaryAtomicBufferedDataDefImpl<QBufferedData>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
