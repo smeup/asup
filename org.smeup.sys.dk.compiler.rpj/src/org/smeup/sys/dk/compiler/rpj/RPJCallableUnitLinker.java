@@ -308,8 +308,8 @@ public class RPJCallableUnitLinker {
 			} else if (file instanceof QDisplayFile) {
 
 				QDisplayTerm displayTerm = (QDisplayTerm)fileTerm;
-				
-				linkExternalFile(displayTerm.getFormat(), externalFile);
+				if(displayTerm.getFormat() != null)
+					linkExternalFile(displayTerm.getFormat(), externalFile);
 				
 			} else if (file instanceof QPrinterFile) {
 
