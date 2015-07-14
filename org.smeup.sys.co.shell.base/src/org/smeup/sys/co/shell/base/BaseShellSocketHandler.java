@@ -55,7 +55,7 @@ public class BaseShellSocketHandler extends Thread {
 
 	@Override
 	public void run() {
-
+		
 		try {
 
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.socket.getOutputStream());
@@ -99,7 +99,7 @@ public class BaseShellSocketHandler extends Thread {
 					}
 
 				if (authenticationToken != null)
-					outputStreamWriter.write(user.toLowerCase() + ">");
+					outputStreamWriter.write(user.toLowerCase() + "> ");
 				else
 					outputStreamWriter.write(LOGIN);
 

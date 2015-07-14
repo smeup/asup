@@ -153,34 +153,32 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		}
 	}
 
+	private String quoted(String s) {
+		return "'" + s.replace("'", "''") + "'";
+	}
+	
 	@Override
 	public String createLabel(String name, QSchemaDef schema) {
-		return null;
-		
-/*		String label = schema.getLabel();
+		String label = schema.getLabel();
 		if (label != null && label.trim() != "") 
-			return "COMMENT ON SCHEMA  " + name + " IS " + getNameInSQLFormat(label);
+			return "COMMENT ON SCHEMA  " + name + " IS " + quoted(label);
 		else 
-			return null;*/
+			return null;
 	}
 
 	@Override
 	public String createLabel(Schema schema, String name, QTableDef table) {
-		return null;
-		
-/*		String label = schema.getLabel();
+		String label = schema.getLabel();
 		if (label != null && label.trim() != "") { 
-			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + getNameInSQLFormat(label);
+			return "COMMENT ON TABLE " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + " IS " + quoted(label);
 		} else {
 			return null;
-		}*/
+		}
 	}
 
 	@Override
 	public String createLabelForFields(Schema schema, String name, QTableDef table) {
-		return null;
-		
-		/*StringBuffer result = new StringBuffer();
+		StringBuffer result = new StringBuffer();
 		for (QTableColumnDef column : table.getColumns()) {
 			String label = column.getLabel();
 			if (label != null && label.trim() != "") {
@@ -188,7 +186,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 					result.append(", ");
 				result.append(getNameInSQLFormat(column))
 					  .append(" IS ")
-				      .append(getNameInSQLFormat(label));
+				      .append(quoted(label));
 			}
 		}
 		
@@ -196,7 +194,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 			return "COMMENT ON " + getNameInSQLFormat(schema) + "." + getNameInSQLFormat(name) + "(" + result.toString() + ")";
 		} else {
 			return null;
-		}*/
+		}
 	}
 
 

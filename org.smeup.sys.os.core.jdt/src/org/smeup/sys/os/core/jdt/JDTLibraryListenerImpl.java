@@ -45,7 +45,7 @@ public class JDTLibraryListenerImpl implements QResourceListener<QLibrary> {
 		QJob job = event.getResource().getJob();
 		
 		QLibrary library = event.getSource();
-		
+
 		switch (event.getType()) {
 		case PRE_SAVE:
 			

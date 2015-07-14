@@ -121,13 +121,12 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	public QProject getProject(QContext context, String projectName) {
 
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-
 		IResource resource = root.findMember(projectName);
 		if (resource == null || !resource.exists() || !(resource instanceof IProject))
 			return null;
 
 		IProject project = (IProject) resource;
-
+		
 /*		try {
 			project.refreshLocal(IContainer.DEPTH_INFINITE, null);
 		} catch (CoreException e1) {

@@ -113,9 +113,8 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			statement.execute(command);
 			
 			// label
-			command = definitionWriter.createLabel(name, schemaDef);
-			if(command != null)
-				statement.execute(command);
+			String sql = definitionWriter.createLabel(name, schemaDef);
+			executeWithoutErrors(statement, sql);
 
 		} finally {
 			if (statement != null)
@@ -124,6 +123,15 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 
 		Schema schema = getCatalogContainer(connection).loadSchema(name);
 		return schema;
+	}
+
+	private void executeWithoutErrors(QStatement statement, String sql) {
+		try {
+			if(sql != null)
+				statement.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -157,12 +165,10 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			
 			// label
 			command = definitionWriter.createLabel(schema, name, tableDef);
-			if(command != null)
-				statement.execute(command);
+			executeWithoutErrors(statement, command);
 
 			command = definitionWriter.createLabelForFields(schema, name, tableDef);
-			if(command != null)
-				statement.execute(command);
+			executeWithoutErrors(statement, command);
 			
 		} finally {
 			if (statement != null)
@@ -268,8 +274,7 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 			
 			// label
 			command = definitionWriter.createLabel(schema, name, viewDef);
-			if(command != null)
-				statement.execute(command);
+			executeWithoutErrors(statement, command);
 
 		} finally {
 			if (statement != null)
