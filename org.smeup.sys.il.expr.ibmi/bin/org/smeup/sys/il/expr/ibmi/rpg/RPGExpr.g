@@ -287,7 +287,7 @@ INNR	:
 	;
 	
 INNU	:	
-	|
+	
 	MULT I N U ('1'..'8')
 	|
 	MULT I N H ('1'..'8')
@@ -301,6 +301,50 @@ INNU	:
 	MULT I N L R
 	|
 	MULT I N R T
+	|
+	MULT I N K A
+	|
+	MULT I N K B
+	|
+	MULT I N K C
+	|
+	MULT I N K D
+	|
+	MULT I N K E
+	|
+	MULT I N K F
+	|
+	MULT I N K G
+	|
+	MULT I N K H
+	|
+	MULT I N K I
+	|
+	MULT I N K L
+	|
+	MULT I N K M
+	|
+	MULT I N K N
+	|
+	MULT I N K P
+	|
+	MULT I N K Q
+	|
+	MULT I N K R
+	|
+	MULT I N K S
+	|
+	MULT I N K T
+	|
+	MULT I N K U
+	|
+	MULT I N K V
+	|
+	MULT I N K W
+	|	
+	MULT I N K X
+	|
+	MULT I N K Y	
 	
 	;	
 
