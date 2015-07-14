@@ -320,6 +320,10 @@ INNU	:
 	|
 	MULT I N K I
 	|
+	MULT I N K J
+	|
+	MULT I N K K
+	|
 	MULT I N K L
 	|
 	MULT I N K M
