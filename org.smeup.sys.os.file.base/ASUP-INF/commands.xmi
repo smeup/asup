@@ -31646,13 +31646,11 @@
       name="DSPPFM"
       text="Display Physical File Member"
       allowBatch="false"
-      program="QNFBROWS"
-      status="TODO">
+      program="QNFBROWS">
     <parameters
         allowVariable="true"
         name="FILE"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="file">
         <cardinality
@@ -31700,7 +31698,7 @@
         allowVariable="true"
         name="MBR"
         position="2"
-        status="TODO">
+        status="UNS">
       <dataTerm
           name="member">
         <facets
@@ -31725,8 +31723,7 @@
     <parameters
         allowVariable="true"
         name="FROMRCD"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="fromRecord">
         <facets
