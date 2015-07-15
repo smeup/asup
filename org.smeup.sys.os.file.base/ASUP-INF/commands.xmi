@@ -31698,7 +31698,7 @@
         allowVariable="true"
         name="MBR"
         position="2"
-        status="UNS">
+        status="POS">
       <dataTerm
           name="member">
         <facets

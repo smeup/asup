@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
@@ -520,5 +521,10 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public QNumeric qScan(String argument) {
 		return current().qScan(argument);
+	}
+
+	@Override
+	public void testn(QIndicator numeric) {
+		current().testn(numeric);
 	}
 }
