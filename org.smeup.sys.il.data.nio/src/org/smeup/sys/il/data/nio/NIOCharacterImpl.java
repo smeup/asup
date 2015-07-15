@@ -76,7 +76,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void move(QDecimal value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.asBytes(), true, INIT);
+		NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.asBytes(), clear, INIT);
 	}
 
 	@Override
@@ -526,7 +526,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			start = 1;
 
 		if (length == null)
-			length = getLength();
+			length = getLength()-start.intValue()+1;
 
 		// String str = asString().substring(start.intValue() - 1,
 		// length.intValue()-1);

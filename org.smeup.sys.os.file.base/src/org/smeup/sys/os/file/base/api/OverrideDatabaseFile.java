@@ -38,7 +38,7 @@ public class OverrideDatabaseFile {
 	private QJob job;
 
 	@Entry
-	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo) {
+	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo, @DataDef(length = 10) QCharacter member) {
 
 		// TODO Intercept library special value
 		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
@@ -50,9 +50,9 @@ public class OverrideDatabaseFile {
 		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
 		fileOverride.setName(file.trimR());
 		fileOverride.setFileTo(qFile);
+		fileOverride.setMemberTo(member.trimR());
 		
-		fileManager.setFileOverride(job, fileOverride);
-
+		fileManager.setFileOverride(job.getContext(), fileOverride);		
 	}
 
 }

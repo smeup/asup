@@ -8,7 +8,8 @@
 package org.smeup.sys.os.file;
 
 import java.util.List;
-import org.smeup.sys.os.core.jobs.QJob;
+
+import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,19 +22,19 @@ import org.smeup.sys.os.core.jobs.QJob;
  */
 public interface QFileMemberManager {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" libraryRequired="true" fileRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model contextRequired="true" libraryRequired="true" fileRequired="true"
 	 * @generated
 	 */
-	List<QFileMember> list(QJob job, String library, QFileMembered file);
+	List<QFileMember> list(QContext context, String library, QFileMembered file);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" fileRequired="true" nameRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model contextRequired="true" fileRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	QFileMember lookup(QJob job, String library, QFileMembered file, String name);
+	QFileMember lookup(QContext context, String library, QFileMembered file, String name);
 
 } // QFileMemberManager

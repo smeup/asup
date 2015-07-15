@@ -32,6 +32,13 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		super(size);
 	}
 
+
+	@Override
+	public void clear() {
+		super.clear();
+		this.length = 0;
+	}
+
 	@Override
 	public byte[] asBytes() {
 		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getLength());

@@ -31,11 +31,11 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getFile <em>File</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getRows <em>Rows</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getType <em>Type</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getFile <em>File</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getRows <em>Rows</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getText <em>Text</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileMemberImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +50,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The cached value of the '{@link #getFile() <em>File</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFile()
 	 * @generated
 	 * @ordered
@@ -59,6 +60,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -68,6 +70,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -75,8 +78,9 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRows() <em>Rows</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRows()
 	 * @generated
 	 * @ordered
@@ -86,6 +90,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -95,6 +100,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -104,6 +110,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -113,6 +120,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -121,6 +129,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FileMemberImpl() {
@@ -129,6 +138,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -138,6 +148,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -147,6 +158,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,20 +171,22 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRows()).basicAdd(otherEnd, msgs);
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRows()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -182,6 +196,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -194,35 +209,37 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QFileMemberRow> getRows() {
-		if (rows == null) {
-			rows = new EObjectContainmentWithInverseEList<QFileMemberRow>(QFileMemberRow.class, this, QOperatingSystemFilePackage.FILE_MEMBER__ROWS, QOperatingSystemFilePackage.FILE_MEMBER_ROW__FILE_MEMBER);
-		}
+		if (rows == null)
+			rows = new EObjectContainmentWithInverseEList<QFileMemberRow>(QFileMemberRow.class, this, QOperatingSystemFilePackage.FILE_MEMBER__ROWS,
+					QOperatingSystemFilePackage.FILE_MEMBER_ROW__FILE_MEMBER);
 		return rows;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public QFileMembered getFile() {
-		if (file != null && ((EObject)file).eIsProxy()) {
-			InternalEObject oldFile = (InternalEObject)file;
-			file = (QFileMembered)eResolveProxy(oldFile);
-			if (file != oldFile) {
+		if (file != null && ((EObject) file).eIsProxy()) {
+			InternalEObject oldFile = (InternalEObject) file;
+			file = (QFileMembered) eResolveProxy(oldFile);
+			if (file != oldFile)
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QOperatingSystemFilePackage.FILE_MEMBER__FILE, oldFile, file));
-			}
 		}
 		return file;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public QFileMembered basicGetFile() {
@@ -231,6 +248,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -243,6 +261,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -252,6 +271,7 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -264,121 +284,129 @@ public class FileMemberImpl extends ObjectImpl implements QFileMember {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				return ((InternalEList<?>)getRows()).basicRemove(otherEnd, msgs);
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			return ((InternalEList<?>) getRows()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
-				if (resolve) return getFile();
-				return basicGetFile();
-			case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
-				return getName();
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				return getRows();
-			case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
-				return getText();
-			case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
-				return getType();
+		case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
+			if (resolve)
+				return getFile();
+			return basicGetFile();
+		case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
+			return getName();
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			return getRows();
+		case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
+			return getText();
+		case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
+			return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
-				setFile((QFileMembered)newValue);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
-				setName((String)newValue);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				getRows().clear();
-				getRows().addAll((Collection<? extends QFileMemberRow>)newValue);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
-				setText((String)newValue);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
-				setType((String)newValue);
-				return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
+			setFile((QFileMembered) newValue);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
+			setName((String) newValue);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			getRows().clear();
+			getRows().addAll((Collection<? extends QFileMemberRow>) newValue);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
+			setText((String) newValue);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
+			setType((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
-				setFile((QFileMembered)null);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				getRows().clear();
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
-			case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
-				setType(TYPE_EDEFAULT);
-				return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
+			setFile((QFileMembered) null);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			getRows().clear();
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
+			setText(TEXT_EDEFAULT);
+			return;
+		case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
+			setType(TYPE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
-				return file != null;
-			case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
-				return rows != null && !rows.isEmpty();
-			case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+		case QOperatingSystemFilePackage.FILE_MEMBER__FILE:
+			return file != null;
+		case QOperatingSystemFilePackage.FILE_MEMBER__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case QOperatingSystemFilePackage.FILE_MEMBER__ROWS:
+			return rows != null && !rows.isEmpty();
+		case QOperatingSystemFilePackage.FILE_MEMBER__TEXT:
+			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+		case QOperatingSystemFilePackage.FILE_MEMBER__TYPE:
+			return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

@@ -61,4 +61,28 @@ public interface QAccessFactory {
 	 */
 	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen);
+
 } // QAccessFactory

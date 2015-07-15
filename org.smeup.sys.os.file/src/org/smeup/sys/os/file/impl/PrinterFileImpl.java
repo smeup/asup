@@ -28,7 +28,8 @@ import org.smeup.sys.os.file.QPrinterFileFormat;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.impl.PrinterFileImpl#getPrinterFormats <em>Printer Formats</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.PrinterFileImpl#getPrinterFormats <em>
+ * Printer Formats</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +53,7 @@ public class PrinterFileImpl extends FileImpl implements QPrinterFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrinterFileImpl() {
@@ -60,6 +62,7 @@ public class PrinterFileImpl extends FileImpl implements QPrinterFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,13 +72,13 @@ public class PrinterFileImpl extends FileImpl implements QPrinterFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QPrinterFileFormat> getPrinterFormats() {
-		if (printerFormats == null) {
+		if (printerFormats == null)
 			printerFormats = new EObjectContainmentEList<QPrinterFileFormat>(QPrinterFileFormat.class, this, QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS);
-		}
 		return printerFormats;
 	}
 
@@ -122,72 +125,77 @@ public class PrinterFileImpl extends FileImpl implements QPrinterFile {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
-				return ((InternalEList<?>)getPrinterFormats()).basicRemove(otherEnd, msgs);
+		case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
+			return ((InternalEList<?>) getPrinterFormats()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
-				return getPrinterFormats();
+		case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
+			return getPrinterFormats();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
-				getPrinterFormats().clear();
-				getPrinterFormats().addAll((Collection<? extends QPrinterFileFormat>)newValue);
-				return;
+		case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
+			getPrinterFormats().clear();
+			getPrinterFormats().addAll((Collection<? extends QPrinterFileFormat>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
-				getPrinterFormats().clear();
-				return;
+		case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
+			getPrinterFormats().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
-				return printerFormats != null && !printerFormats.isEmpty();
+		case QOperatingSystemFilePackage.PRINTER_FILE__PRINTER_FORMATS:
+			return printerFormats != null && !printerFormats.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

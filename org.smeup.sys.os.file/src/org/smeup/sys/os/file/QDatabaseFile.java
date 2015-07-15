@@ -14,7 +14,8 @@ package org.smeup.sys.os.file;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.QDatabaseFile#getDatabaseFormat <em>Database Format</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QDatabaseFile#getDatabaseFormat <em>Database
+ * Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,14 +26,16 @@ package org.smeup.sys.os.file;
 public interface QDatabaseFile extends QFile {
 
 	/**
-	 * Returns the value of the '<em><b>Database Format</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Database Format</b></em>' containment
+	 * reference. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Database Format</em>' containment reference
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Database Format</em>' containment reference.
+	 * 
+	 * @return the value of the '<em>Database Format</em>' containment
+	 *         reference.
 	 * @see #setDatabaseFormat(QDatabaseFileFormat)
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getDatabaseFile_DatabaseFormat()
 	 * @model containment="true"
@@ -41,10 +44,14 @@ public interface QDatabaseFile extends QFile {
 	QDatabaseFileFormat getDatabaseFormat();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QDatabaseFile#getDatabaseFormat <em>Database Format</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.os.file.QDatabaseFile#getDatabaseFormat
+	 * <em>Database Format</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Database Format</em>' containment reference.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Database Format</em>' containment
+	 *            reference.
 	 * @see #getDatabaseFormat()
 	 * @generated
 	 */

@@ -12,14 +12,15 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
+ * 
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage
  * @generated
  */
 public interface QOperatingSystemFileFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc --> <!--
+	 * The singleton instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	QOperatingSystemFileFactory eINSTANCE = org.smeup.sys.os.file.impl.OperatingSystemFileFactoryImpl.init();
@@ -88,9 +89,9 @@ public interface QOperatingSystemFileFactory extends EFactory {
 	QDisplayFileFormatDef createDisplayFileFormatDef();
 
 	/**
-	 * Returns a new object of class '<em>File Member</em>'.
-	 * <!-- begin-user-doc
+	 * Returns a new object of class '<em>File Member</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>File Member</em>'.
 	 * @generated
 	 */
@@ -160,18 +161,18 @@ public interface QOperatingSystemFileFactory extends EFactory {
 	QPrinterFileField createPrinterFileField();
 
 	/**
-	 * Returns a new object of class '<em>Source File</em>'.
-	 * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Source File</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>Source File</em>'.
 	 * @generated
 	 */
 	QSourceFile createSourceFile();
 
 	/**
-	 * Returns a new object of class '<em>File Override</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns a new object of class '<em>File Override</em>'. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @return a new object of class '<em>File Override</em>'.
 	 * @generated
 	 */
@@ -205,9 +206,9 @@ public interface QOperatingSystemFileFactory extends EFactory {
 	QFileFormatKeyField createFileFormatKeyField();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+	 * Returns the package supported by this factory. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the package supported by this factory.
 	 * @generated
 	 */

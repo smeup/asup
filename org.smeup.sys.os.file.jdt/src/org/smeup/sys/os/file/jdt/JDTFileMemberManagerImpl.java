@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
-import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
@@ -35,11 +35,11 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 	private QSourceManager sourceManager;
 
 	@Override
-	public List<QFileMember> list(QJob job, String library, QFileMembered file) {
+	public List<QFileMember> list(QContext context, String library, QFileMembered file) {
 
-		QSourceEntry fileEntry = sourceManager.getObjectEntry(job.getContext(), library, QFile.class, file.getName());
+		QSourceEntry fileEntry = sourceManager.getObjectEntry(context, library, QFile.class, file.getName());
 
-		List<QSourceEntry> entries = sourceManager.listChildEntries(job.getContext(), fileEntry);
+		List<QSourceEntry> entries = sourceManager.listChildEntries(context, fileEntry);
 
 		ResourceSet resSet = new ResourceSetImpl();
 		List<QFileMember> members = new ArrayList<QFileMember>();
@@ -56,13 +56,13 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 	}
 
 	@Override
-	public QFileMember lookup(QJob job, String library, QFileMembered file, String name) {
+	public QFileMember lookup(QContext context, String library, QFileMembered file, String name) {
 
-		QSourceEntry sourceFile = sourceManager.getObjectEntry(job.getContext(), library, QFile.class, file.getName());
+		QSourceEntry sourceFile = sourceManager.getObjectEntry(context, library, QFile.class, file.getName());
 		if (sourceFile == null)
 			return null;
 
-		QSourceEntry sourceMember = sourceManager.getChildEntry(job.getContext(), sourceFile, name);
+		QSourceEntry sourceMember = sourceManager.getChildEntry(context, sourceFile, name+".XMI");
 		if (sourceMember == null)
 			return null;
 

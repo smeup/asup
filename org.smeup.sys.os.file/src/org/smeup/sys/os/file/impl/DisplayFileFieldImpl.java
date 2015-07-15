@@ -27,6 +27,7 @@ public class DisplayFileFieldImpl extends FileFormatFieldImpl implements QDispla
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DisplayFileFieldImpl() {
@@ -35,6 +36,7 @@ public class DisplayFileFieldImpl extends FileFormatFieldImpl implements QDispla
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

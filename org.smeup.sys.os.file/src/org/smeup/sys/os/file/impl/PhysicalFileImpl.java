@@ -27,6 +27,7 @@ public class PhysicalFileImpl extends DatabaseFileImpl implements QPhysicalFile 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PhysicalFileImpl() {
@@ -35,6 +36,7 @@ public class PhysicalFileImpl extends DatabaseFileImpl implements QPhysicalFile 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

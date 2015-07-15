@@ -341,7 +341,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void eval(QDataWriter value) {
-		// TODO Auto-generated method stub
+		this.accept(value);
 	}
 
 	@Override

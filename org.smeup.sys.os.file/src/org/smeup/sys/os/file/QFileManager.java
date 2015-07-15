@@ -8,8 +8,8 @@
 package org.smeup.sys.os.file;
 
 import java.util.List;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
+
+import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -24,24 +24,25 @@ public interface QFileManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" jobRequired="true" nameRequired="true"
+	 * 
+	 * @model required="true" contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	QFileOverride getFileOverride(QJob job, String name) throws OperatingSystemRuntimeException;
+	QFileOverride getFileOverride(QContext context, String name);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" fileOverrideRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model contextRequired="true" fileOverrideRequired="true"
 	 * @generated
 	 */
-	void setFileOverride(QJob job, QFileOverride fileOverride);
+	void setFileOverride(QContext context, QFileOverride fileOverride);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" jobRequired="true"
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
-	List<QFileOverride> listFileOverride(QJob job);
+	List<QFileOverride> listFileOverride(QContext context);
 } // QFileManager

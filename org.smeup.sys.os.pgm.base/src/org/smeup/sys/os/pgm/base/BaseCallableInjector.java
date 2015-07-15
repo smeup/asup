@@ -182,8 +182,8 @@ public class BaseCallableInjector {
 
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
-				continue;
-
+				continue;			
+			
 			if (Modifier.isStatic(field.getModifiers())) {
 				if (Modifier.isFinal(field.getModifiers()))
 					continue;
@@ -323,7 +323,7 @@ public class BaseCallableInjector {
 			if (QKSDataSet.class.isAssignableFrom(fieldKlass)) {
 				dataSet = esamFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
 			} else if (QSMDataSet.class.isAssignableFrom(fieldKlass)) {
-				dataSet = null;
+				dataSet = esamFactory.createSourceMemberDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
 			} else {
 				dataSet = esamFactory.createRelativeRecordDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
 			}

@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="esam" nsURI="http://www.smeup.org/asup/il/esam" nsPrefix="il-esam">
+  <eClassifiers xsi:type="ecore:EClass" name="AccessFactory" abstract="true" interface="true">
+    <eOperations name="createKeySequencedDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//KSDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet/R"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="createKeySequencedDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//KSDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.1/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.1/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+    </eOperations>
+    <eOperations name="createKeySequencedDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//KSDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.2/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.2/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//RRDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet/R"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//RRDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.1/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.1/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+    </eOperations>
+    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//RRDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.2/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.2/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createSourceMemberDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//SMDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet/R"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="createSourceMemberDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//SMDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.1/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.1/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+    </eOperations>
+    <eOperations name="createSourceMemberDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//SMDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.2/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.2/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AccessManager" abstract="true" interface="true">
+    <eOperations name="createFactory" lowerBound="1" eType="#//AccessFactory">
+      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AccessMode">
     <eLiterals name="Input" value="10" literal="I"/>
     <eLiterals name="Output" value="20" literal="O"/>
@@ -444,97 +577,6 @@
     <eOperations name="getDirection" lowerBound="1" eType="#//OperationDirection"/>
     <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="isNumeric" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AccessManager" abstract="true" interface="true">
-    <eOperations name="createFactory" lowerBound="1" eType="#//AccessFactory">
-      <eParameters name="contextProvider" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
-    </eOperations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AccessFactory" abstract="true" interface="true">
-    <eOperations name="createKeySequencedDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//KSDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet/R"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="createKeySequencedDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//KSDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.1/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.1/R"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="accessMode" eType="#//AccessMode"/>
-    </eOperations>
-    <eOperations name="createKeySequencedDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//KSDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.2/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.2/R"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="accessMode" eType="#//AccessMode"/>
-      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//RRDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet/R"/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
-    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//RRDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.1/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.1/R"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="accessMode" eType="#//AccessMode"/>
-    </eOperations>
-    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
-      <eGenericType eClassifier="#//RRDataSet">
-        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.2/R"/>
-      </eGenericType>
-      <eTypeParameters name="R">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
-      </eTypeParameters>
-      <eParameters name="wrapper" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.2/R"/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="accessMode" eType="#//AccessMode"/>
-      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Print" abstract="true" interface="true">
     <eTypeParameters name="D">

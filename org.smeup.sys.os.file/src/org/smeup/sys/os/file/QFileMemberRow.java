@@ -16,10 +16,12 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getSequence <em>Sequence</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getDate <em>Date</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getContent <em>Content</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember <em>File Member</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileMemberRow#getSequence <em>Sequence
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileMemberRow#getDate <em>Date</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileMemberRow#getContent <em>Content</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember <em>File Member
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -76,9 +78,12 @@ public interface QFileMemberRow extends QObject {
 	int getDate();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMemberRow#getDate <em>Date</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Date</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.os.file.QFileMemberRow#getDate <em>Date</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Date</em>' attribute.
 	 * @see #getDate()
 	 * @generated
 	 */
@@ -102,9 +107,12 @@ public interface QFileMemberRow extends QObject {
 	String getContent();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMemberRow#getContent <em>Content</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Content</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.os.file.QFileMemberRow#getContent <em>Content</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Content</em>' attribute.
 	 * @see #getContent()
 	 * @generated
 	 */
@@ -131,10 +139,14 @@ public interface QFileMemberRow extends QObject {
 	QFileMember getFileMember();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember <em>File Member</em>}' container reference.
-	 * <!-- begin-user-doc --> <!--
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.os.file.QFileMemberRow#getFileMember
+	 * <em>File Member</em>}' container reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>File Member</em>' container reference.
+	 * 
+	 * @param value
+	 *            the new value of the '<em>File Member</em>' container
+	 *            reference.
 	 * @see #getFileMember()
 	 * @generated
 	 */

@@ -34,6 +34,7 @@ public class DisplayFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDisp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DisplayFileFormatDefImpl() {
@@ -42,6 +43,7 @@ public class DisplayFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDisp
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -57,9 +59,8 @@ public class DisplayFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDisp
 	 */
 	@Override
 	public List<QDisplayFileField> getElements() {
-		if (elements == null) {
+		if (elements == null)
 			elements = new EObjectContainmentEList<QDisplayFileField>(QDisplayFileField.class, this, QOperatingSystemFilePackage.DISPLAY_FILE_FORMAT_DEF__ELEMENTS);
-		}
 		return elements;
 	}
 

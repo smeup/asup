@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFileManager;
@@ -45,34 +46,34 @@ public class BaseFileManagerImpl implements QFileManager {
 	}
 
 	@Override
-	public void setFileOverride(QJob job, QFileOverride fileOverride) {
+	public void setFileOverride(QContext context, QFileOverride fileOverride) {
 
-		BaseFileOverrideMap overrideFileMap = getFileMapOverride(job);
+		BaseFileOverrideMap overrideFileMap = getFileMapOverride(context);
 		overrideFileMap.set(fileOverride.getName(), fileOverride);
 	}
 
 	@Override
-	public QFileOverride getFileOverride(QJob job, String fileName) throws OperatingSystemRuntimeException {
+	public QFileOverride getFileOverride(QContext context, String fileName) throws OperatingSystemRuntimeException {
 
-		BaseFileOverrideMap overrideFileMap = getFileMapOverride(job);
+		BaseFileOverrideMap overrideFileMap = getFileMapOverride(context);
 
 		QFileOverride fileOverride = overrideFileMap.get(fileName);
 
 		return fileOverride;
 	}
 
-	private BaseFileOverrideMap getFileMapOverride(QJob job) {
-		BaseFileOverrideMap overrideFileMap = job.getContext().get(BaseFileOverrideMap.class);
+	private BaseFileOverrideMap getFileMapOverride(QContext context) {
+		BaseFileOverrideMap overrideFileMap = context.get(BaseFileOverrideMap.class);
 		if (overrideFileMap == null) {
 			overrideFileMap = new BaseFileOverrideMap();
-			job.getContext().set(BaseFileOverrideMap.class, overrideFileMap);
+			context.set(BaseFileOverrideMap.class, overrideFileMap);
 		}
 		return overrideFileMap;
 	}
 
 	@Override
-	public List<QFileOverride> listFileOverride(QJob job) {
+	public List<QFileOverride> listFileOverride(QContext context) {
 
-		return getFileMapOverride(job).list();
+		return getFileMapOverride(context).list();
 	}
 }

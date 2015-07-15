@@ -30,6 +30,7 @@ public abstract class FileFormatFieldImpl extends DataTermImpl<QUnaryAtomicBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FileFormatFieldImpl() {
@@ -38,6 +39,7 @@ public abstract class FileFormatFieldImpl extends DataTermImpl<QUnaryAtomicBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

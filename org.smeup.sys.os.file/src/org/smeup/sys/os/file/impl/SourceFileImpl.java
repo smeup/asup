@@ -27,6 +27,7 @@ public class SourceFileImpl extends FileImpl implements QSourceFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SourceFileImpl() {
@@ -35,6 +36,7 @@ public class SourceFileImpl extends FileImpl implements QSourceFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -73,6 +73,9 @@ public class ObjectDescriptionRetriever {
 			QTypedObject typedObject = (QTypedObject) objectNameable;
 			if(typedObject != null) {
 				qusd0200.qustd12.eval(typedObject.getText());
+				qusd0200.qusrl02.eval(typedObject.getLibrary());
+				qusd0200.qusobjt01.eval(type.getName());
+
 				$$dati.eval(qusd0200);
 			}
 		}

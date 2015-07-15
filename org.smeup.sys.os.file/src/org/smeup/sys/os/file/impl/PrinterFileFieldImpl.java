@@ -27,6 +27,7 @@ public class PrinterFileFieldImpl extends FileFormatFieldImpl implements QPrinte
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrinterFileFieldImpl() {
@@ -35,6 +36,7 @@ public class PrinterFileFieldImpl extends FileFormatFieldImpl implements QPrinte
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
