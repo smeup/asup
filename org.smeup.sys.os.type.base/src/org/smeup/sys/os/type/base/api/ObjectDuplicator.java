@@ -9,6 +9,7 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
@@ -21,8 +22,10 @@ import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
+import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
+import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QLICRDUP")
 public @Supported class ObjectDuplicator {
@@ -52,6 +55,8 @@ public @Supported class ObjectDuplicator {
 		
 		List<QType<?>> types = typesFrom(objectTypes);
 
+		
+		
 		for (QType<?> type : types) {
 			QResourceReader<?> resourceReader = null;
 			switch (fromLibrary.asEnum()) {
@@ -66,7 +71,7 @@ public @Supported class ObjectDuplicator {
 				break;
 			}
 
-			QObjectIterator<?> objectIterator = null;
+			QObjectIterator<? extends QObjectNameable> objectIterator = null;
 
 			switch (fromObject.asEnum()) {
 			case ALL:
@@ -78,14 +83,54 @@ public @Supported class ObjectDuplicator {
 				break;
 
 			}
-			System.out.println("- Tipo oggetto " + type.getName());
+			
 			while (objectIterator.hasNext()) {
-				System.out.println("   DA DUPLICARE: " + objectIterator.next());
+				duplicate(toLibrary, newObject, type, (QTypedObject) objectIterator.next());
 			}
 		}
 		
 		///////////////////////////////
 		throw new UnsupportedOperationException("Da implementare");
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObject, QType<?> type, QTypedObject objToDuplicate) {
+		QResourceWriter resourceWriter = getWriter(toLibrary, type, objToDuplicate.getLibrary());
+		
+		switch (newObject.asEnum()) {
+		case SAME:
+		case OBJ:
+			//?????
+			break;
+
+		case OTHER:
+			//?????
+			break;
+		}
+
+		QObjectNameable duplicatedObject = null; //?????
+		resourceWriter.save(duplicatedObject);
+	}
+
+	private QResourceWriter<? extends QTypedObject> getWriter(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QType<?> type, String sourceLibraryName) {
+		QResourceWriter<? extends QTypedObject> resourceWriter = null;
+		
+		switch (toLibrary.asEnum()) {
+		case CURLIB:
+			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
+			break;
+		
+		case SAME:
+		case FROMLIB:
+			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), sourceLibraryName);
+			break;
+		
+		case OTHER:
+			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), toLibrary.asData().trimR());
+			break;
+		}	
+		
+		return resourceWriter;
 	}
 
 	private List<QType<?>> typesFrom(QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes) {
@@ -97,7 +142,10 @@ public @Supported class ObjectDuplicator {
 				result.addAll(typeRegistry.list());
 			    break;
 			} else {
-				result.add(typeRegistry.lookup("*" + objectTypeString));
+				QType<?> typeFound = typeRegistry.lookup("*" + objectTypeString);
+				if (typeFound != null) {
+					result.add(typeFound);
+				}
 			}
 		}
 
