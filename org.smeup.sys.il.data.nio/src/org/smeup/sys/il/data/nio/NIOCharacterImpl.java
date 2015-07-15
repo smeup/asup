@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 
@@ -76,7 +77,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void move(QDecimal value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.asBytes(), true, INIT);
+		NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.asBytes(), clear, INIT);
 	}
 
 	@Override
@@ -526,13 +527,13 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			start = 1;
 
 		if (length == null)
-			length = getLength();
+			length = getLength()-start.intValue()+1;
 
 		// String str = asString().substring(start.intValue() - 1,
 		// length.intValue()-1);
 
 		QCharacter character = new NIOCharacterImpl(length.intValue());
-		slice(character, start.intValue());
+		slice(character, start.intValue()-1);
 
 		return character;
 	}
@@ -600,5 +601,15 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QNumeric qScan(String argument, Number start) {
 		return null;
 
+	}
+
+	@Override
+	public void testn(QIndicator numeric) {
+		numeric.eval(true);
+		try {
+			Double.parseDouble(toString());
+		} catch (Exception e) {
+			numeric.eval(false);
+		}
 	}
 }

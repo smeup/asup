@@ -724,10 +724,8 @@ public class RPJProgramSupport {
 			numElements = list.capacity();
 
 		for (int i = startIndex; i <= numElements; i++) {
-			System.out.println(list.get(i));
 			if (list.get(i).eq(argument))
 				return qBox(i);
-//			if (list.get(i).toString().trim().equals(argument.toString().trim()))
 		}
 
 		return qBox(0);
@@ -822,17 +820,7 @@ public class RPJProgramSupport {
 	}
 
 	public QCharacter qSubst(QString source, Integer startIndex, Integer length) {
-
-		if (startIndex == null)
-			startIndex = 1;
-
-		if (length == null)
-			length = source.getLength() - startIndex;
-
-		QCharacter string = dataFactory.createCharacter(length, false, false);
-		source.assign(string, startIndex);
-
-		return string;
+		return source.qSubst(startIndex, length);		
 	}
 
 	public QCharacter qSubst(String source, Integer startIndex, Integer length) {

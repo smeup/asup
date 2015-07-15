@@ -18,8 +18,9 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.QFileFormatKey#isUnique <em>Unique</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.QFileFormatKey#getKeyFields <em>Key Fields</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileFormatKey#isUnique <em>Unique</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.QFileFormatKey#getKeyFields <em>Key Fields
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -46,25 +47,30 @@ public interface QFileFormatKey extends QObject {
 	boolean isUnique();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileFormatKey#isUnique <em>Unique</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unique</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.os.file.QFileFormatKey#isUnique <em>Unique</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Unique</em>' attribute.
 	 * @see #isUnique()
 	 * @generated
 	 */
 	void setUnique(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Key Fields</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.os.file.QFileFormatKeyField}.
-	 * <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Key Fields</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link org.smeup.sys.os.file.QFileFormatKeyField}. <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Key Fields</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Key Fields</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Key Fields</em>' containment reference
+	 *         list.
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileFormatKey_KeyFields()
 	 * @model containment="true"
 	 * @generated

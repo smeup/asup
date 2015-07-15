@@ -66,7 +66,119 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSet()
 	 * @generated
 	 */
-	int DATA_SET = 0;
+	int DATA_SET = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.impl.FileTermImpl
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileTerm()
+	 * @generated
+	 */
+	int FILE_TERM = 6;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.impl.DataSetTermImpl
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSetTerm()
+	 * @generated
+	 */
+	int DATA_SET_TERM = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.QDisplay
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplay()
+	 * @generated
+	 */
+	int DISPLAY = 4;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DisplayTermImpl <em>Display Term</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.impl.DisplayTermImpl
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplayTerm()
+	 * @generated
+	 */
+	int DISPLAY_TERM = 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.impl.KeyListTermImpl
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyListTerm()
+	 * @generated
+	 */
+	int KEY_LIST_TERM = 7;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QKSDataSet
+	 * <em>KS Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @see org.smeup.sys.il.esam.QKSDataSet
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKSDataSet()
+	 * @generated
+	 */
+	int KS_DATA_SET = 8;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.esam.QIndex
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndex()
+	 * @generated
+	 */
+	int INDEX = 9;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndexColumn
+	 * <em>Index Column</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @see org.smeup.sys.il.esam.QIndexColumn
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndexColumn()
+	 * @generated
+	 */
+	int INDEX_COLUMN = 10;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.esam.QAccessManager
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessManager()
+	 * @generated
+	 */
+	int ACCESS_MANAGER = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}' class.
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * @see org.smeup.sys.il.esam.QAccessFactory
+	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessFactory()
+	 * @generated
+	 */
+	int ACCESS_FACTORY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Access Factory</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCESS_FACTORY_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Access Manager</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCESS_MANAGER_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of structural features of the '<em>Data Set</em>' class. <!--
@@ -76,15 +188,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_SET_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.FileTermImpl <em>File Term</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.impl.FileTermImpl
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getFileTerm()
-	 * @generated
-	 */
-	int FILE_TERM = 4;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -129,15 +232,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int FILE_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DataSetTermImpl <em>Data Set Term</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.impl.DataSetTermImpl
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDataSetTerm()
-	 * @generated
-	 */
-	int DATA_SET_TERM = 1;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -219,15 +313,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DATA_SET_TERM_FEATURE_COUNT = FILE_TERM_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QDisplay <em>Display</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.QDisplay
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplay()
-	 * @generated
-	 */
-	int DISPLAY = 2;
-
-	/**
 	 * The number of structural features of the '<em>Display</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -235,15 +320,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.DisplayTermImpl <em>Display Term</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.impl.DisplayTermImpl
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getDisplayTerm()
-	 * @generated
-	 */
-	int DISPLAY_TERM = 3;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -289,15 +365,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DISPLAY_TERM_FEATURE_COUNT = FILE_TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.impl.KeyListTermImpl
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKeyListTerm()
-	 * @generated
-	 */
-	int KEY_LIST_TERM = 5;
-
-	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -332,32 +399,12 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int KEY_LIST_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QKSDataSet
-	 * <em>KS Data Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @see org.smeup.sys.il.esam.QKSDataSet
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getKSDataSet()
-	 * @generated
-	 */
-	int KS_DATA_SET = 6;
-
-	/**
 	 * The number of structural features of the '<em>KS Data Set</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int KS_DATA_SET_FEATURE_COUNT = DATA_SET_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndex <em>Index</em>}' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.esam.QIndex
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndex()
-	 * @generated
-	 */
-	int INDEX = 7;
 
 	/**
 	 * The number of structural features of the '<em>Index</em>' class. <!--
@@ -369,59 +416,12 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int INDEX_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QIndexColumn
-	 * <em>Index Column</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @see org.smeup.sys.il.esam.QIndexColumn
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getIndexColumn()
-	 * @generated
-	 */
-	int INDEX_COLUMN = 8;
-
-	/**
 	 * The number of structural features of the '<em>Index Column</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int INDEX_COLUMN_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessManager <em>Access Manager</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.esam.QAccessManager
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessManager()
-	 * @generated
-	 */
-	int ACCESS_MANAGER = 9;
-
-	/**
-	 * The number of structural features of the '<em>Access Manager</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCESS_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.esam.QAccessFactory <em>Access Factory</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.il.esam.QAccessFactory
-	 * @see org.smeup.sys.il.esam.impl.IntegratedLanguageEsamPackageImpl#getAccessFactory()
-	 * @generated
-	 */
-	int ACCESS_FACTORY = 10;
-
-	/**
-	 * The number of structural features of the '<em>Access Factory</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCESS_FACTORY_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.esam.QPrint <em>Print</em>}' class.

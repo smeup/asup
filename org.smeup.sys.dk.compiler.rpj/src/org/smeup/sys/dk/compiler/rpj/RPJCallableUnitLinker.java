@@ -364,11 +364,12 @@ public class RPJCallableUnitLinker {
 			for (QFileFormat<?> fileFormat : displayFile.getDisplayFormats()) {
 				fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
 
+				appendElements(qDataTerm, fileFormat);
+
 				QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
 				fileFormat.getFacets().add(derived);
 
 				qDataTerm.getDefinition().getElements().add(fileFormat);
-
 			}
 
 		} else if (file instanceof QPrinterFile) {
@@ -376,6 +377,8 @@ public class RPJCallableUnitLinker {
 
 			for (QFileFormat<?> fileFormat : printerFile.getPrinterFormats()) {
 				fileFormat = (QFileFormat<?>) EcoreUtil.copy((EObject) fileFormat);
+
+				appendElements(qDataTerm, fileFormat);
 
 				QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
 				fileFormat.getFacets().add(derived);
@@ -419,7 +422,7 @@ public class RPJCallableUnitLinker {
 	private QFile getFile(String name) {
 
 		QFile file = null;
-		QFileOverride fileOverride = fileManager.getFileOverride(job, name);
+		QFileOverride fileOverride = fileManager.getFileOverride(job.getContext(), name);
 		if (fileOverride == null)
 			file = fileReader.lookup(name);
 		else

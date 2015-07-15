@@ -29,8 +29,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#isUnique <em>Unique</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#getKeyFields <em>Key Fields</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#isUnique <em>Unique
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.FileFormatKeyImpl#getKeyFields <em>Key
+ * Fields</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +47,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 	/**
 	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -54,6 +57,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 	/**
 	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isUnique()
 	 * @generated
 	 * @ordered
@@ -61,8 +65,9 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 	protected boolean unique = UNIQUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getKeyFields() <em>Key Fields</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getKeyFields() <em>Key Fields</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getKeyFields()
 	 * @generated
 	 * @ordered
@@ -71,6 +76,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FileFormatKeyImpl() {
@@ -79,6 +85,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,6 +95,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -97,6 +105,7 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,102 +118,109 @@ public class FileFormatKeyImpl extends ObjectImpl implements QFileFormatKey {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QFileFormatKeyField> getKeyFields() {
-		if (keyFields == null) {
+		if (keyFields == null)
 			keyFields = new EObjectContainmentEList<QFileFormatKeyField>(QFileFormatKeyField.class, this, QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS);
-		}
 		return keyFields;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
-				return ((InternalEList<?>)getKeyFields()).basicRemove(otherEnd, msgs);
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
+			return ((InternalEList<?>) getKeyFields()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
-				return isUnique();
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
-				return getKeyFields();
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
+			return isUnique();
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
+			return getKeyFields();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
-				setUnique((Boolean)newValue);
-				return;
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
-				getKeyFields().clear();
-				getKeyFields().addAll((Collection<? extends QFileFormatKeyField>)newValue);
-				return;
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
+			setUnique((Boolean) newValue);
+			return;
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
+			getKeyFields().clear();
+			getKeyFields().addAll((Collection<? extends QFileFormatKeyField>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
-				setUnique(UNIQUE_EDEFAULT);
-				return;
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
-				getKeyFields().clear();
-				return;
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
+			setUnique(UNIQUE_EDEFAULT);
+			return;
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
+			getKeyFields().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
-				return unique != UNIQUE_EDEFAULT;
-			case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
-				return keyFields != null && !keyFields.isEmpty();
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__UNIQUE:
+			return unique != UNIQUE_EDEFAULT;
+		case QOperatingSystemFilePackage.FILE_FORMAT_KEY__KEY_FIELDS:
+			return keyFields != null && !keyFields.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (unique: ");

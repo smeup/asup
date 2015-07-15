@@ -24,6 +24,7 @@ public interface QFile extends QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
 	 * @generated
 	 */
@@ -31,6 +32,7 @@ public interface QFile extends QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
 	 * @generated
 	 */

@@ -8,5 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.il.esam,
  org.smeup.sys.il.data,
  org.smeup.sys.db.core,
- org.smeup.sys.rt.core
+ org.smeup.sys.rt.core,
+ org.smeup.sys.os.file.base,
+ org.smeup.sys.os.core
 Import-Package: javax.inject

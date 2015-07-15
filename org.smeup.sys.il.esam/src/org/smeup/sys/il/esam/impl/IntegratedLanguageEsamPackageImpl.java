@@ -522,6 +522,10 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		isCreated = true;
 
 		// Create classes and their features
+		accessFactoryEClass = createEClass(ACCESS_FACTORY);
+
+		accessManagerEClass = createEClass(ACCESS_MANAGER);
+
 		dataSetEClass = createEClass(DATA_SET);
 
 		dataSetTermEClass = createEClass(DATA_SET_TERM);
@@ -548,10 +552,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		indexEClass = createEClass(INDEX);
 
 		indexColumnEClass = createEClass(INDEX_COLUMN);
-
-		accessManagerEClass = createEClass(ACCESS_MANAGER);
-
-		accessFactoryEClass = createEClass(ACCESS_FACTORY);
 
 		printEClass = createEClass(PRINT);
 
@@ -595,10 +595,10 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		// Obtain other dependent packages
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 
 		// Create type parameters
@@ -643,13 +643,146 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		smDataSetEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(accessFactoryEClass, QAccessFactory.class, "AccessFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getKSDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getKSDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "userOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getKSDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getRRDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getRRDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "userOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getRRDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createSourceMemberDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSMDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createSourceMemberDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSMDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(accessFactoryEClass, null, "createSourceMemberDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "userOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getSMDataSet());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		initEClass(accessManagerEClass, QAccessManager.class, "AccessManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(accessManagerEClass, this.getAccessFactory(), "createFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(dataSetEClass, QDataSet.class, "DataSet", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(dataSetEClass, null, "clear", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataSetEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(dataSetEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataSetEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataSetEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1070,97 +1203,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEOperation(indexColumnEClass, ecorePackage.getEInt(), "getLength", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(indexColumnEClass, ecorePackage.getEBoolean(), "isNumeric", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(accessManagerEClass, QAccessManager.class, "AccessManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(accessManagerEClass, this.getAccessFactory(), "createFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(accessFactoryEClass, QAccessFactory.class, "AccessFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		ETypeParameter t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getKSDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getKSDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(accessFactoryEClass, null, "createKeySequencedDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "userOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getKSDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getRRDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getRRDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
-
-		op = addEOperation(accessFactoryEClass, null, "createRelativeRecordDataSet", 1, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "R");
-		g1 = createEGenericType(theIntegratedLanguageDataPackage.getRecord());
-		t1.getEBounds().add(g1);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "wrapper", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAccessMode(), "accessMode", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "userOpen", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getRRDataSet());
-		g2 = createEGenericType(t1);
-		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
 
 		initEClass(printEClass, QPrint.class, "Print", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

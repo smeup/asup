@@ -20,8 +20,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getFormat <em>Format</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getName <em>Name</em>}
+ * </li>
+ * <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getFormat <em>Format
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -36,6 +38,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -45,6 +48,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -52,8 +56,9 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The default value of the '{@link #getFormat() <em>Format</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -63,6 +68,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 	/**
 	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -71,6 +77,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExternalFileImpl() {
@@ -79,6 +86,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -88,6 +96,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -97,6 +106,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -109,6 +119,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -118,6 +129,7 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -130,75 +142,81 @@ public class ExternalFileImpl extends FacetImpl implements QExternalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
-				return getName();
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
-				return getFormat();
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
+			return getName();
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
+			return getFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
-				setName((String)newValue);
-				return;
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
-				setFormat((String)newValue);
-				return;
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
+			setName((String) newValue);
+			return;
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
+			setFormat((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
-				setFormat(FORMAT_EDEFAULT);
-				return;
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
+			setFormat(FORMAT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
-				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case QOperatingSystemFilePackage.EXTERNAL_FILE__FORMAT:
+			return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

@@ -22,7 +22,8 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	private D[] _elements;
 	private NIOBufferedDataImpl _model;
-
+	private int lengthSlot = 0;
+	
 	public NIOArrayImpl() {
 		super();
 	}
@@ -32,6 +33,22 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		super();
 		this._model = model;
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+	}
+
+	protected NIOBufferedDataImpl getModel() {
+		return _model;
+	}
+
+	protected void setModel(NIOBufferedDataImpl _model) {
+		this._model = _model;
+	}
+	
+	protected int getLengthSlot() {
+		return lengthSlot;
+	}
+
+	protected void setLengthSlot(int lengthSlot) {
+		this.lengthSlot = lengthSlot;
 	}
 
 	@Override
@@ -56,7 +73,13 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		D element = _elements[index - 1];
 		if (element == null) {
 			element = (D) _model.copy();
-			int position = _model.getSize() * (index - 1);
+			int position = 0;
+			
+			if(getLengthSlot() == 0)
+				position = _model.getSize() * (index - 1);
+			else
+				position = getLengthSlot() * (index - 1);
+			
 			slice(element, position);
 			_elements[index - 1] = element;
 		}

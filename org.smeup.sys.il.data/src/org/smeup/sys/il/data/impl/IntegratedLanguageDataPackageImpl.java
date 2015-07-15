@@ -2258,6 +2258,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(stringEClass, this.getCharacter(), "qTrimr", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(stringEClass, null, "testn", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "numeric", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(stringEClass, ecorePackage.getEString(), "trim", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(stringEClass, ecorePackage.getEString(), "trimL", 1, 1, IS_UNIQUE, IS_ORDERED);

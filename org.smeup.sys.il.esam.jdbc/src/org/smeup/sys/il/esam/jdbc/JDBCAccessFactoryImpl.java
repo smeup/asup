@@ -17,6 +17,7 @@ import java.util.List;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
@@ -29,53 +30,21 @@ import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QRRDataSet;
+import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.Descend;
 import org.smeup.sys.il.esam.annotation.Index;
+import org.smeup.sys.os.file.base.BaseFileMemberDataSetImpl;
+import org.smeup.sys.os.file.base.BaseFileMemberProvider;
 
 public class JDBCAccessFactoryImpl implements QAccessFactory {
 
+	private QContext context;
 	private QConnection connection;
 	private QDataFactory dataFactory;
 
-	private static final QIndex TABLE_INDEX_RELATIVE_RECORD_NUMBER = new QIndex() {
 
-		List<QIndexColumn> columns = new ArrayList<QIndexColumn>();
-
-		@Override
-		public List<QIndexColumn> getColumns() {
-
-			if (this.columns.isEmpty())
-				synchronized (this.columns) {
-					QIndexColumn indexColumn = new QIndexColumn() {
-
-						@Override
-						public OperationDirection getDirection() {
-							return OperationDirection.FORWARD;
-						}
-
-						@Override
-						public int getLength() {
-							return QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_LENGTH;
-						}
-
-						@Override
-						public String getName() {
-							return QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME;
-						}
-
-						@Override
-						public boolean isNumeric() {
-							return true;
-						}
-
-					};
-					this.columns.add(indexColumn);
-				}
-			return this.columns;
-		}
-	};
-
-	public JDBCAccessFactoryImpl(QConnection connection, QDataFactory dataFactory) {
+	public JDBCAccessFactoryImpl(QContext context, QConnection connection, QDataFactory dataFactory) {
+		this.context = context;
 		this.connection = connection;
 		this.dataFactory = dataFactory;
 	}
@@ -146,6 +115,23 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			return null;
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen) {
+		
+		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(context, wrapper.getSimpleName());
+		
+		R record = null;
+		if (QDataStruct.class.isAssignableFrom(wrapper))
+			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		else
+			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
+
+		
+		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen);
+		return dataSet;
 	}
 
 	public QIndex getIndex(Object object) {
@@ -261,4 +247,54 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 		}
 
 	}
+
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper) {
+		return createSourceMemberDataSet(wrapper, AccessMode.INPUT);
+	}
+
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode) {
+		return createSourceMemberDataSet(wrapper, accessMode, true);
+	}
+	
+	
+	private static final QIndex TABLE_INDEX_RELATIVE_RECORD_NUMBER = new QIndex() {
+
+		List<QIndexColumn> columns = new ArrayList<QIndexColumn>();
+
+		@Override
+		public List<QIndexColumn> getColumns() {
+
+			if (this.columns.isEmpty())
+				synchronized (this.columns) {
+					QIndexColumn indexColumn = new QIndexColumn() {
+
+						@Override
+						public OperationDirection getDirection() {
+							return OperationDirection.FORWARD;
+						}
+
+						@Override
+						public int getLength() {
+							return QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_LENGTH;
+						}
+
+						@Override
+						public String getName() {
+							return QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME;
+						}
+
+						@Override
+						public boolean isNumeric() {
+							return true;
+						}
+
+					};
+					this.columns.add(indexColumn);
+				}
+			return this.columns;
+		}
+	};
+
 }

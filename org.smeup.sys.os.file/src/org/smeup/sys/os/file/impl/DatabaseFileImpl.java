@@ -25,7 +25,8 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.file.impl.DatabaseFileImpl#getDatabaseFormat <em>Database Format</em>}</li>
+ * <li>{@link org.smeup.sys.os.file.impl.DatabaseFileImpl#getDatabaseFormat <em>
+ * Database Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,9 +34,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  */
 public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile {
 	/**
-	 * The cached value of the '{@link #getDatabaseFormat() <em>Database Format</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDatabaseFormat()
+	 * <em>Database Format</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getDatabaseFormat()
 	 * @generated
 	 * @ordered
@@ -48,6 +50,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DatabaseFileImpl() {
@@ -56,6 +59,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -65,6 +69,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -74,6 +79,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetDatabaseFormat(QDatabaseFileFormat newDatabaseFormat, NotificationChain msgs) {
@@ -81,13 +87,17 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 		databaseFormat = newDatabaseFormat;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, oldDatabaseFormat, newDatabaseFormat);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -95,13 +105,13 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 		if (newDatabaseFormat != databaseFormat) {
 			NotificationChain msgs = null;
 			if (databaseFormat != null)
-				msgs = ((InternalEObject)databaseFormat).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, null, msgs);
+				msgs = ((InternalEObject) databaseFormat).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, null, msgs);
 			if (newDatabaseFormat != null)
-				msgs = ((InternalEObject)newDatabaseFormat).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, null, msgs);
+				msgs = ((InternalEObject) newDatabaseFormat).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, null, msgs);
 			msgs = basicSetDatabaseFormat(newDatabaseFormat, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT, newDatabaseFormat, newDatabaseFormat));
 	}
 
@@ -141,7 +151,7 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 	@Override
 	public URI getPackageInfoURI() {
 		try {
-//			String classURI = "file/dbf/" + getApplication();
+			// String classURI = "file/dbf/" + getApplication();
 			String classURI = "file/dbf/" + getApplication() + "/gen";
 			URI uri = new URI(classURI);
 			return uri;
@@ -152,67 +162,72 @@ public abstract class DatabaseFileImpl extends FileImpl implements QDatabaseFile
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
-				return basicSetDatabaseFormat(null, msgs);
+		case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
+			return basicSetDatabaseFormat(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
-				return getDatabaseFormat();
+		case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
+			return getDatabaseFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
-				setDatabaseFormat((QDatabaseFileFormat)newValue);
-				return;
+		case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
+			setDatabaseFormat((QDatabaseFileFormat) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
-				setDatabaseFormat((QDatabaseFileFormat)null);
-				return;
+		case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
+			setDatabaseFormat((QDatabaseFileFormat) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
-				return databaseFormat != null;
+		case QOperatingSystemFilePackage.DATABASE_FILE__DATABASE_FORMAT:
+			return databaseFormat != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -9,6 +9,7 @@ package org.smeup.sys.os.file.impl;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
@@ -30,6 +31,7 @@ public abstract class FileImpl extends TypedObjectImpl implements QFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected FileImpl() {
@@ -38,6 +40,7 @@ public abstract class FileImpl extends TypedObjectImpl implements QFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

@@ -38,16 +38,20 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.DataType;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
@@ -403,7 +407,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QBufferedData dataElement = (QBufferedData) createData(dataDef, false);
 
 			// facets
-			for (Annotation annotation : field.getAnnotations())
+			for (Annotation annotation : field.getAnnotations()) {
+
 				if (annotation instanceof Overlay) {
 					Overlay overlay = (Overlay) annotation;
 
@@ -418,7 +423,16 @@ public class NIODataFactoryImpl implements QDataFactory {
 						} else
 							p = Integer.parseInt(position);
 
+					if (!overlay.name().equalsIgnoreCase(Overlay.OWNER)) {
+						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
+						if (overlayedData instanceof QArray<?>) {
+							NIOArrayImpl<?> arrayOverlayed = (NIOArrayImpl<?>) overlayedData;
+							NIOArrayImpl<?> arrayData = (NIOArrayImpl<?>) dataElement;
+							arrayData.setLengthSlot(arrayOverlayed.getModel().getLength());
+						}
+					}
 				}
+			}
 
 			dataStructureDelegate.addElement(field.getName(), dataElement, p - 1);
 			dataStructureDelegate.slice(dataElement, p - 1);
@@ -429,13 +443,57 @@ public class NIODataFactoryImpl implements QDataFactory {
 		if (dataStructure instanceof QDataStructWrapper)
 			((QDataStructWrapper) dataStructure).setDelegate(dataStructureDelegate);
 
-		if (initialize)
+		if (initialize) {
 			initialize(dataStructure);
+
+			for (Field field : classDelegator.getFields()) {
+
+				// facets
+				for (Annotation annotation : field.getAnnotations()) {
+
+					if (!(annotation instanceof DataDef))
+						continue;
+
+					DataDef annotationDef = (DataDef) annotation;
+					QData dataElement = dataStructure.getElement(field.getName());
+					if (dataElement == null)
+						continue;
+
+					QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+
+					// default
+					if (dataElement instanceof QList<?>) {
+						QList<?> array = (QList<?>) dataElement;
+						int i = 1;
+						for (String value : annotationDef.values()) {
+							array.get(i).accept(dataWriter.set(value));
+							i++;
+						}
+					} else {
+						if (!annotationDef.value().isEmpty()) {
+							if (dataElement instanceof QString) {
+
+								String value = annotationDef.value();
+								if (value.startsWith("'") && value.endsWith("'")) {
+									value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
+
+									dataElement.accept(dataWriter.set(value));
+								} else
+									dataElement.accept(dataWriter.set(value));
+							} else {
+								dataElement.accept(dataWriter.set(annotationDef.value()));
+							}
+						}
+					}
+
+				}
+			}
+		}
 
 		return dataStructure;
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings("unchecked")
 	@Override
 	public <D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> dataTerms, int length, boolean initialize) {
 
