@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
@@ -475,8 +476,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public boolean eq(QBufferedData value) {
-		return asBytes().equals(value.asBytes());
+	public boolean eq(QBufferedData value) {		
+		return Arrays.equals(asBytes(), value.asBytes());
 	}
 
 	@Override

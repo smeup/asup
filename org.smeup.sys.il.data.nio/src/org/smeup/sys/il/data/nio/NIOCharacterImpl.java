@@ -532,7 +532,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// length.intValue()-1);
 
 		QCharacter character = new NIOCharacterImpl(length.intValue());
-		slice(character, start.intValue());
+		slice(character, start.intValue()-1);
 
 		return character;
 	}

@@ -49,11 +49,10 @@ import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
-import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
-import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.flow.QEntryParameter;
@@ -703,19 +702,26 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		
 		if(compilationUnit.getMethod(expression.getValue()) != null  && !expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
-			if (expressionChild instanceof QTermExpression) {
-				QTermExpression termExpression = (QTermExpression) expressionChild;
+			
+			
+			switch (expressionChild.getExpressionType()) {
+			case ATOMIC:
+			case FUNCTION:
+			case QUALIFIED:
+			case ARITHMETIC:				
+			case BLOCK:
+			case BOOLEAN:
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
-				if(CompilationContextHelper.isPrimitive(compilationUnit, termExpression)) {
+				if(CompilationContextHelper.isPrimitive(compilationUnit, expressionChild)) {
 					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					termExpression.accept(expressionStringBuilder);
+					expressionChild.accept(expressionStringBuilder);
 					methodExec.setObject("%box("+expressionStringBuilder.getResult()+")");					
 				}
 				else {
 					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					termExpression.accept(expressionStringBuilder);
+					expressionChild.accept(expressionStringBuilder);
 					methodExec.setObject(expressionStringBuilder.getResult());					
 				}
 				
@@ -745,8 +751,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				}
 
 				statementWriter.getBlocks().pop();
-				return false;
-			}			
+				return false;							
+			case ASSIGNMENT:
+				break;				
+			case LOGICAL:
+				break;
+			case RELATIONAL:
+				break;
+			}
 		}
 		
 		return visit((QCompoundTermExpression) expression);
