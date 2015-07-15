@@ -1,6 +1,15 @@
 package org.smeup.sys.os.type.base.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
@@ -8,6 +17,12 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.resources.QResourceManager;
+import org.smeup.sys.os.core.resources.QResourceReader;
+import org.smeup.sys.os.type.QType;
+import org.smeup.sys.os.type.QTypeRegistry;
 
 @Program(name = "QLICRDUP")
 public @Supported class ObjectDuplicator {
@@ -15,10 +30,17 @@ public @Supported class ObjectDuplicator {
 		CPF2130
 	}
 
+	@Inject
+	private QTypeRegistry typeRegistry;
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QJob job;
+	
 	public @Entry void main(
 			@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject,
 			@Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
-			@Supported @DataDef(dimension = 57, length = 7) QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectType,
+			@Supported @DataDef(dimension=57,length=7) QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes,
 			@Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
 			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObject,
 			@DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
@@ -27,7 +49,59 @@ public @Supported class ObjectDuplicator {
 			@DataDef(length = 1) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints,
 			@DataDef(length = 1) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
 			@DataDef(length = 1) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
+		
+		List<QType<?>> types = typesFrom(objectTypes);
+
+		for (QType<?> type : types) {
+			QResourceReader<?> resourceReader = null;
+			switch (fromLibrary.asEnum()) {
+			case CURLIB:
+				resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
+				break;
+			case LIBL:
+				resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), Scope.LIBRARY_LIST);
+				break;
+			case OTHER:
+				resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), fromLibrary.asData().trimR());
+				break;
+			}
+
+			QObjectIterator<?> objectIterator = null;
+
+			switch (fromObject.asEnum()) {
+			case ALL:
+				objectIterator = resourceReader.find(null);
+				break;
+
+			case OTHER:
+				objectIterator = resourceReader.find(fromObject.asData().trimR());
+				break;
+
+			}
+			System.out.println("- Tipo oggetto " + type.getName());
+			while (objectIterator.hasNext()) {
+				System.out.println("   DA DUPLICARE: " + objectIterator.next());
+			}
+		}
+		
+		///////////////////////////////
 		throw new UnsupportedOperationException("Da implementare");
+	}
+
+	private List<QType<?>> typesFrom(QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes) {
+		List<QType<?>> result = new ArrayList<QType<?>>();
+		
+		for(QCharacter type: objectTypes.asData()) {
+			String objectTypeString = type.trimR();
+			if (objectTypeString.equals("*ALL")) {
+				result.addAll(typeRegistry.list());
+			    break;
+			} else {
+				result.add(typeRegistry.lookup("*" + objectTypeString));
+			}
+		}
+
+		return result;
 	}
 
 	public static enum FROMOBJECTEnum {
@@ -39,9 +113,9 @@ public @Supported class ObjectDuplicator {
 	}
 
 	public static enum OBJECTTYPEEnum {
-		ALL, @Special(value = "ALRTBL")
-		ALRTBL, @Special(value = "AUTL")
-		AUTL, @Special(value = "BNDDIR")
+		ALL, 
+		@Special(value = "ALRTBL") ALRTBL, 
+		@Special(value = "AUTL") AUTL, @Special(value = "BNDDIR")
 		BNDDIR, @Special(value = "CHTFMT")
 		CHTFMT, @Special(value = "CLD")
 		CLD, @Special(value = "CLS")

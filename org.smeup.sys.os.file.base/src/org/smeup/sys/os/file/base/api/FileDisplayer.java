@@ -1,9 +1,12 @@
 package org.smeup.sys.os.file.base.api;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.out.QObjectWriter;
@@ -21,6 +24,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QPhysicalFile;
 
 @Program(name = "QNFBROWS")
 public class FileDisplayer {
@@ -33,6 +37,7 @@ public class FileDisplayer {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+
 	
 	public @Entry void main(@DataDef(qualified = true) FILE file,
 			                @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
@@ -60,21 +65,35 @@ public class FileDisplayer {
 			break;
 		}
 
-		QObjectIterator<QFile> files = fileReader.find(file.nameGeneric.trimR());
-		if(!files.hasNext())
+		QFile qFile = fileReader.lookup(file.nameGeneric.trimR());
+		if(qFile == null)
 			throw new OperatingSystemRuntimeException("File " + file.nameGeneric.trimR() + " not found in library " + file.library);
+
+		if (!(qFile instanceof QPhysicalFile)) {
+			throw new OperatingSystemRuntimeException("File " + file.nameGeneric.trimR() + " in library " + file.library + " is not a physical file");
+		}
+
 		
-		QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), output.asData().trimR());
-		objectWriter.initialize();
+		display((QPhysicalFile)qFile, output);
 		
-		QObject record = null;
+		throw new UnsupportedOperationException("Da implementare");				
+	}
+
+	private void display(QPhysicalFile qFile, QEnum<OUTPUTEnum, QCharacter> output) {
 		try {
+			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+
+			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
+		
+			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), output.asData().trimR());
+			objectWriter.initialize();
+		
+			QObject record = null;
 			objectWriter.write(record);
-		} catch (IOException e) {
+			
+		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		}
-		
-		throw new UnsupportedOperationException("Da implementare");
 	}
 
 	public static class FILE extends QDataStructWrapper {
