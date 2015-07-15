@@ -5,12 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.core.annotation.Supported;
-import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
@@ -45,7 +44,7 @@ public @Supported class ObjectDuplicator {
 			@Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
 			@Supported @DataDef(dimension=57,length=7) QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes,
 			@Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
-			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObject,
+			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObjectName,
 			@DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
 			@DataDef(length = 10) QEnum<TOASPDEVICEEnum, QCharacter> toASPDevice,
 			@Supported @DataDef(length = 1) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
@@ -54,9 +53,6 @@ public @Supported class ObjectDuplicator {
 			@DataDef(length = 1) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
 		
 		List<QType<?>> types = typesFrom(objectTypes);
-
-		
-		
 		for (QType<?> type : types) {
 			QResourceReader<?> resourceReader = null;
 			switch (fromLibrary.asEnum()) {
@@ -85,30 +81,29 @@ public @Supported class ObjectDuplicator {
 			}
 			
 			while (objectIterator.hasNext()) {
-				duplicate(toLibrary, newObject, type, (QTypedObject) objectIterator.next());
+				duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next());
 			}
 		}
 		
-		///////////////////////////////
-		throw new UnsupportedOperationException("Da implementare");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObject, QType<?> type, QTypedObject objToDuplicate) {
+	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate) {
 		QResourceWriter resourceWriter = getWriter(toLibrary, type, objToDuplicate.getLibrary());
 		
-		switch (newObject.asEnum()) {
+		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject)objToDuplicate);
+
+		switch (newObjectName.asEnum()) {
 		case SAME:
 		case OBJ:
-			//?????
+			//Nulla
 			break;
 
 		case OTHER:
-			//?????
+			duplicatedObject.setName(newObjectName.asData().trimR());
 			break;
 		}
-
-		QObjectNameable duplicatedObject = null; //?????
+		
 		resourceWriter.save(duplicatedObject);
 	}
 
