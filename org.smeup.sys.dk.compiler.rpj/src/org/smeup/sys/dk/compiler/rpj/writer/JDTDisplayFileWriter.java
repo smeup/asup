@@ -22,6 +22,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.os.file.QDisplayFile;
+import org.smeup.sys.os.file.QDisplayFileField;
 import org.smeup.sys.os.file.QDisplayFileFormat;
 
 public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
@@ -43,7 +44,22 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 				continue;
 			writePublicField(fileFormat, false);			
 		}
-
+		// Distinct element
+		List<QDataTerm<?>> elementsField = new ArrayList<QDataTerm<?>>();
+		List<String> elementsName = new ArrayList<String>();
+		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
+			if(fileFormat.getName().equals(displayFile.getName()))
+				continue;
+			for(QDisplayFileField field  : fileFormat.getDefinition().getElements())
+				if(!elementsName.contains(field.getName())){
+					elementsField.add(field);
+					elementsName.add(field.getName());
+				}
+		}
+		for (QDataTerm<?> element : elementsField)
+			writePublicField(element, false);
+		
+		// Formats
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
 			if(fileFormat.getName().equals(displayFile.getName()))
 				continue;
