@@ -1419,6 +1419,9 @@
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>
+    <eOperations name="testn" lowerBound="1">
+      <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="trim" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="trimL" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="trimR" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

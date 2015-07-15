@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 
@@ -600,5 +601,15 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QNumeric qScan(String argument, Number start) {
 		return null;
 
+	}
+
+	@Override
+	public void testn(QIndicator numeric) {
+		numeric.eval(true);
+		try {
+			Double.parseDouble(toString());
+		} catch (Exception e) {
+			numeric.eval(false);
+		}
 	}
 }

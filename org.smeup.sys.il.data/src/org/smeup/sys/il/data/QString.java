@@ -420,6 +420,14 @@ public interface QString extends QBufferedData {
 	QNumeric qScan(String argument);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model numericRequired="true"
+	 * @generated
+	 */
+	void testn(QIndicator numeric);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
