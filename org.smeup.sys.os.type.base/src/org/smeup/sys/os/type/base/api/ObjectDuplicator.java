@@ -22,6 +22,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
+import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
@@ -81,14 +82,14 @@ public @Supported class ObjectDuplicator {
 			}
 			
 			while (objectIterator.hasNext()) {
-				duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next());
+				duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
 			}
 		}
 		
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate) {
+	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate, DUPLICATEDATAEnum duplicateData) {
 		QResourceWriter resourceWriter = getWriter(toLibrary, type, objToDuplicate.getLibrary());
 		
 		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject)objToDuplicate);
@@ -104,6 +105,9 @@ public @Supported class ObjectDuplicator {
 			break;
 		}
 		
+		if ((objToDuplicate instanceof QPhysicalFile) && duplicateData.equals(DUPLICATEDATAEnum.YES)) {
+			//TODO
+		}
 		resourceWriter.save(duplicatedObject);
 	}
 
