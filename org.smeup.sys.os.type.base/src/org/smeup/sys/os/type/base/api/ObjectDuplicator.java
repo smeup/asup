@@ -1,5 +1,7 @@
 package org.smeup.sys.os.type.base.api;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,9 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.QPreparedStatement;
+import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -19,6 +24,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
@@ -39,6 +45,8 @@ public @Supported class ObjectDuplicator {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;
 	
 	public @Entry void main(
 			@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject,
@@ -89,7 +97,11 @@ public @Supported class ObjectDuplicator {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate, DUPLICATEDATAEnum duplicateData) {
+	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	
+			               QEnum<NEWOBJECTEnum, QCharacter> newObjectName, 
+			               QType<?> type, 
+			               QTypedObject objToDuplicate, 
+			               DUPLICATEDATAEnum duplicateData) {
 		QResourceWriter resourceWriter = getWriter(toLibrary, type, objToDuplicate.getLibrary());
 		
 		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject)objToDuplicate);
@@ -105,10 +117,34 @@ public @Supported class ObjectDuplicator {
 			break;
 		}
 		
-		if ((objToDuplicate instanceof QPhysicalFile) && duplicateData.equals(DUPLICATEDATAEnum.YES)) {
-			//TODO
-		}
 		resourceWriter.save(duplicatedObject);
+		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
+			duplicateData(objToDuplicate, duplicatedObject);
+		}
+		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type);
+	}
+
+	private void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
+		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+		
+//		QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
+//
+//		Object command = definitionWriter.insertData(tableTo);
+//		QPreparedStatement stmTo = connectionTo.prepareStatement(command);
+//		
+//		// select
+//		Statement stmFrom = connectionFrom.getRawConnection().createStatement();
+//		command = "SELECT * FROM " + schemaFrom + "." + tableTo.getName();
+//		if (!where.isEmpty())
+//			command = command + " where " + where;
+//
+//		ResultSet rsFrom = stmFrom.executeQuery(command);
+//
+//		int columnsSize = 0;
+//		if(connectionTo.getCatalogGenerationStrategy().isCreateRelativeRecordNumber())
+//			columnsSize = tableTo.getColumns().size()-1;
+//		else
+//			columnsSize = tableTo.getColumns().size();	
 	}
 
 	private QResourceWriter<? extends QTypedObject> getWriter(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QType<?> type, String sourceLibraryName) {
@@ -137,13 +173,15 @@ public @Supported class ObjectDuplicator {
 		
 		for(QCharacter type: objectTypes.asData()) {
 			String objectTypeString = type.trimR();
-			if (objectTypeString.equals("*ALL")) {
-				result.addAll(typeRegistry.list());
-			    break;
-			} else {
-				QType<?> typeFound = typeRegistry.lookup("*" + objectTypeString);
-				if (typeFound != null) {
-					result.add(typeFound);
+			if (objectTypeString != null && !"".equals(objectTypeString.trim())) {
+				if (objectTypeString.equals("*ALL")) {
+					result.addAll(typeRegistry.list());
+				    break;
+				} else {
+					QType<?> typeFound = typeRegistry.lookup("*" + objectTypeString);
+					if (typeFound != null) {
+						result.add(typeFound);
+					}
 				}
 			}
 		}
