@@ -281,7 +281,7 @@ public class CompilationContextHelper {
 	public static QTerm getPrimaryRecord(QCallableUnit callableUnit, QDataSetTerm dataSetTerm) {
 
 		if (dataSetTerm.getFacet(QExternalFile.class) == null)
-			System.out.println("Unexpected condition: pxnqt9r87webr87we");
+			return null;
 
 		QTerm primaryRecord = null;
 
