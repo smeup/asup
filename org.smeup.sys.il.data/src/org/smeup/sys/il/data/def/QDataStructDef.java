@@ -17,7 +17,8 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QDataStructDef#getLength <em>Length</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QDataStructDef#getLength <em>Length
+ * </em>}</li>
  * </ul>
  * </p>
  *

@@ -19,6 +19,7 @@ package org.smeup.sys.il.data;
 public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model positionRequired="true"
 	 * @generated
 	 */
@@ -26,6 +27,7 @@ public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -33,6 +35,7 @@ public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -40,6 +43,7 @@ public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -47,6 +51,7 @@ public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -54,6 +59,7 @@ public interface QScroller<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true"
 	 * @generated
 	 */

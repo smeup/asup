@@ -25,7 +25,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.impl.DataDefImpl#getFormulas <em>Formulas</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.impl.DataDefImpl#getFormulas <em>
+ * Formulas</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,8 +34,9 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  */
 public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements QDataDef<D> {
 	/**
-	 * The cached value of the '{@link #getFormulas() <em>Formulas</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFormulas() <em>Formulas</em>}'
+	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFormulas()
 	 * @generated
 	 * @ordered
@@ -47,6 +49,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DataDefImpl() {
@@ -55,6 +58,7 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -64,13 +68,13 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public List<String> getFormulas() {
-		if (formulas == null) {
+		if (formulas == null)
 			formulas = new EDataTypeUniqueEList<String>(String.class, this, QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS);
-		}
 		return formulas;
 	}
 
@@ -100,67 +104,73 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
-				return getFormulas();
+		case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
+			return getFormulas();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
-				getFormulas().clear();
-				getFormulas().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
+			getFormulas().clear();
+			getFormulas().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
-				getFormulas().clear();
-				return;
+		case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
+			getFormulas().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
-				return formulas != null && !formulas.isEmpty();
+		case QIntegratedLanguageDataDefPackage.DATA_DEF__FORMULAS:
+			return formulas != null && !formulas.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (formulas: ");

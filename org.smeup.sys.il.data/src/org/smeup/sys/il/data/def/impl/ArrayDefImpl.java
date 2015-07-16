@@ -31,6 +31,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ArrayDefImpl() {
@@ -39,6 +40,7 @@ public class ArrayDefImpl<D extends QArray<?>> extends MultipleAtomicBufferedDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

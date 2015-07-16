@@ -28,6 +28,7 @@ public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D> 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AtomicDataDefImpl() {
@@ -36,6 +37,7 @@ public abstract class AtomicDataDefImpl<D extends QData> extends DataDefImpl<D> 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
