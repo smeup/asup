@@ -121,12 +121,17 @@ public class BaseShellSocketHandler extends Thread {
 
 	private QAuthenticationToken connect(String command) {
 		// retrieve user
-		user = command;
+		user = cleanup(command);
 
 		QCredentials credentials = QCommunicationShellFactory.eINSTANCE.createShellCredentials();
 		credentials.setUser(user);
 		// connect
 		return authenticationManager.createAuthenticationToken(credentials);
+	}
+
+	private String cleanup(String command) {
+		//Per problema primo collegamento da Windows
+		return command.toUpperCase().replaceAll("[^A-Z0-9§$£_]", "");
 	}
 
 	private void executeCommand(String command) {
