@@ -8,7 +8,6 @@
 package org.smeup.sys.il.esam.impl;
 
 import java.net.URI;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;

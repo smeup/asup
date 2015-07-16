@@ -16,8 +16,10 @@ import org.smeup.sys.il.data.QCharacter;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#isVarying <em>Varying</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}
+ * </li>
+ * <li>{@link org.smeup.sys.il.data.def.QCharacterDef#isVarying <em>Varying
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -45,9 +47,12 @@ public interface QCharacterDef extends QUnaryAtomicBufferedDataDef<QCharacter> {
 	int getLength();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Length</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Length</em>' attribute.
 	 * @see #getLength()
 	 * @generated
 	 */

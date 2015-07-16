@@ -714,6 +714,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				// no record name
 				if (!(((EObject) node).eContainer() instanceof QDataSetTerm)) {
 					QNamedNode namedChildNode = (QNamedNode) node;
+					if(namedChildNode.getName() == null)
+						continue;
 					name = normalizeTermName(namedChildNode.getName()) + "." + name;
 				}
 		}

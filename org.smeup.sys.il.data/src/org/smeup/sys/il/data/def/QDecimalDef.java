@@ -16,9 +16,10 @@ import org.smeup.sys.il.data.QDecimal;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getPrecision <em>Precision</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getPrecision <em>Precision
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,23 +76,27 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	int getScale();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scale</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getScale <em>Scale</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Scale</em>' attribute.
 	 * @see #getScale()
 	 * @generated
 	 */
 	void setScale(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.il.data.def.DecimalType}.
+	 * Returns the value of the '<em><b>Type</b></em>' attribute. The literals
+	 * are from the enumeration {@link org.smeup.sys.il.data.def.DecimalType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DecimalType
 	 * @see #setType(DecimalType)
@@ -102,9 +107,12 @@ public interface QDecimalDef extends QUnaryAtomicBufferedDataDef<QDecimal> {
 	DecimalType getType();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QDecimalDef#getType <em>Type</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.data.def.DecimalType
 	 * @see #getType()
 	 * @generated

@@ -171,9 +171,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			} else
 				nodeName = expressionValue;
-
-			if(nodeName.equals("SFC2"))
-				System.out.println(nodeName);
+			
 			namedNode = compilationUnit.getNamedNode(nodeName, true);
 			if (namedNode == null) 
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());

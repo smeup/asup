@@ -29,8 +29,12 @@ import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.impl.CompoundDataDefImpl;
+import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.impl.DataTermImpl;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QFileTerm;
@@ -239,7 +243,7 @@ public class RPJCallableUnitLinker {
 	}
 
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm) {
 
 		QFile file = getFile(fileTerm.getFileName());
@@ -310,14 +314,64 @@ public class RPJCallableUnitLinker {
 			} else if (file instanceof QDisplayFile) {
 
 				QDisplayTerm displayTerm = (QDisplayTerm)fileTerm;
-				if(displayTerm.getFormat() != null)
-					linkExternalFile(displayTerm.getFormat(), externalFile);
+				if(displayTerm.getFormat() == null) {
+					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?,QDataTerm<?>>>() {
+						private static final long serialVersionUID = 1L;
+					};
+					internalFormat.setDefinition(new CompoundDataDefImpl() {
+
+						@Override
+						public Class<?> getDataClass() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public Class<?> getJavaClass() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public DataDefType getDataDefType() {
+							return DataDefType.STRUCT;
+						}
+					});
+					displayTerm.setFormat(internalFormat);
+				}					
+										
+				linkExternalFile(displayTerm.getFormat(), externalFile);
 				
 			} else if (file instanceof QPrinterFile) {
 
 				QPrintTerm printTerm = (QPrintTerm)fileTerm;
-				if(printTerm.getFormat() != null)
-					linkExternalFile(printTerm.getFormat(), externalFile);
+				if(printTerm.getFormat() == null) {
+					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?,QDataTerm<?>>>() {
+						private static final long serialVersionUID = 1L;
+					};
+					internalFormat.setDefinition(new CompoundDataDefImpl() {
+
+						@Override
+						public Class<?> getDataClass() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public Class<?> getJavaClass() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public DataDefType getDataDefType() {
+							return DataDefType.STRUCT;
+						}
+					});
+					printTerm.setFormat(internalFormat);
+				}
+				
+				linkExternalFile(printTerm.getFormat(), externalFile);
 				
 			}
 		}
