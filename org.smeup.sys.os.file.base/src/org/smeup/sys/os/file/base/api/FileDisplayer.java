@@ -1,14 +1,14 @@
 package org.smeup.sys.os.file.base.api;
 
-import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.inject.Inject;
 
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QConnection;
-import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.db.core.QStatement;
+import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
@@ -25,6 +25,7 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
+import org.smeup.sys.os.file.base.api.tools.ResultsetDisplayer;
 
 @Program(name = "QNFBROWS")
 public class FileDisplayer {
@@ -75,8 +76,6 @@ public class FileDisplayer {
 
 		
 		display((QPhysicalFile)qFile, output);
-		
-		throw new UnsupportedOperationException("Da implementare");				
 	}
 
 	private void display(QPhysicalFile qFile, QEnum<OUTPUTEnum, QCharacter> output) {
@@ -86,10 +85,39 @@ public class FileDisplayer {
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 		
 			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), output.asData().trimR());
-			objectWriter.initialize();
-		
-			QObject record = null;
-			objectWriter.write(record);
+			
+			switch (output.asEnum()) {
+			case PRINT:
+				objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+				break;
+			case TERM_STAR:
+				objectWriter = outputManager.getDefaultWriter(job.getContext());
+				break;
+			}
+			
+			
+			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
+			String sql = definitionWriter.selectData(table);
+			
+			QStatement statement = null;
+			try {
+				statement = connection.createStatement(true);
+
+				ResultSet resultSet = statement.executeQuery(sql);
+
+				new ResultsetDisplayer().display(objectWriter, resultSet);
+
+			} catch (Exception e) {
+				throw new OperatingSystemRuntimeException(e);
+			} finally {
+				if (statement != null)
+					try {
+						statement.close();
+					} catch (SQLException e) {
+						throw new OperatingSystemRuntimeException(e);
+					}
+			}
+			
 			
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
