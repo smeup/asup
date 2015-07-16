@@ -14,6 +14,7 @@ package org.smeup.sys.dk.compiler.rpj;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +80,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
 	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
+	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "SET"));
 
 	public RPJCompilationUnitImpl(QContext context, QNameable root, List<QCompilationUnit> compilationUnits, CaseSensitiveType caseSensitive) {
 
@@ -87,7 +89,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		this.caseSensitive = caseSensitive;
 		this.root = root;
 		this.setTrashCan(QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationTrashCan());
-
+		
 		if (root instanceof QCallableUnit) {
 			QCallableUnit callableUnit = (QCallableUnit) root;
 
@@ -726,8 +728,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			return null;
 
 		// reserved keywords
-		if (name.equalsIgnoreCase("INT"))
-			name = "_INT";
+		if(reservedKeywords.contains(name))
+			name = "_" + name.trim();
 
 		StringBuffer nameBuffer = new StringBuffer();
 
@@ -877,7 +879,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				prototype.setCardinality(cardinality);
 
 				prototype.setText(eOperation.getName() + " text");
-
+				
 				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);

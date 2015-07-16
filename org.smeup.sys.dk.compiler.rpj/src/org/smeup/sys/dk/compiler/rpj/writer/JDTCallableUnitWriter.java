@@ -705,56 +705,58 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
-		for (String parameterName : parameterList.getParameters()) {
-			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
-
-			SingleVariableDeclaration parameterVariable = getAST().newSingleVariableDeclaration();
-			parameterVariable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
-			Type type = getJavaType(dataTerm);
-			parameterVariable.setType(type);
-
-			writeDataDefAnnotation(parameterVariable, dataTerm.getDefinition());
-
-			methodDeclaration.parameters().add(parameterVariable);
-		}
+		if(parameterList!=null)
+			for (String parameterName : parameterList.getParameters()) {
+				QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
+	
+				SingleVariableDeclaration parameterVariable = getAST().newSingleVariableDeclaration();
+				parameterVariable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
+				Type type = getJavaType(dataTerm);
+				parameterVariable.setType(type);
+	
+				writeDataDefAnnotation(parameterVariable, dataTerm.getDefinition());
+	
+				methodDeclaration.parameters().add(parameterVariable);
+			}
 
 		Block block = getAST().newBlock();
 		methodDeclaration.setBody(block);
 
-		for (String parameterName : parameterList.getParameters()) {
-
-			MethodInvocation methodInvocation = getAST().newMethodInvocation();
-			methodInvocation.setName(getAST().newSimpleName("assign"));
-
-			methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(parameterName)));
-
-			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
-
-			String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
-			String[] fieldNames = qualifiedName.split("\\.");
-			if (fieldNames.length > 1)
-				methodInvocation.arguments().add(buildExpression(qualifiedName));
-			else {
-				FieldAccess targetAccess = getAST().newFieldAccess();
-				targetAccess.setExpression(getAST().newThisExpression());
-
-				for (int i = 0; i < fieldNames.length; i++) {
-
-					targetAccess.setName(getAST().newSimpleName(fieldNames[i]));
-
-					if (i < fieldNames.length - 1) {
-						FieldAccess childAccess = getAST().newFieldAccess();
-						childAccess.setExpression(targetAccess);
-						targetAccess = childAccess;
-
+		if(parameterList!=null)
+			for (String parameterName : parameterList.getParameters()) {
+	
+				MethodInvocation methodInvocation = getAST().newMethodInvocation();
+				methodInvocation.setName(getAST().newSimpleName("assign"));
+	
+				methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(parameterName)));
+	
+				QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
+	
+				String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
+				String[] fieldNames = qualifiedName.split("\\.");
+				if (fieldNames.length > 1)
+					methodInvocation.arguments().add(buildExpression(qualifiedName));
+				else {
+					FieldAccess targetAccess = getAST().newFieldAccess();
+					targetAccess.setExpression(getAST().newThisExpression());
+	
+					for (int i = 0; i < fieldNames.length; i++) {
+	
+						targetAccess.setName(getAST().newSimpleName(fieldNames[i]));
+	
+						if (i < fieldNames.length - 1) {
+							FieldAccess childAccess = getAST().newFieldAccess();
+							childAccess.setExpression(targetAccess);
+							targetAccess = childAccess;
+	
+						}
 					}
+					methodInvocation.arguments().add(targetAccess);
 				}
-				methodInvocation.arguments().add(targetAccess);
+	
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+				block.statements().add(expressionStatement);
 			}
-
-			ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-			block.statements().add(expressionStatement);
-		}
 
 		QRoutine routine = getCompilationUnit().getRoutine("*ENTRY", false);
 		if (routine != null) {

@@ -135,7 +135,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		if (program.getEntry() != null)
 			writeEntry(program.getEntry(), "qEntry");
-		else
+		else{
+
+			boolean entry = false;
 			for (String module : modules) {
 
 				QModule flowModule = getCompilationUnit().getModule(module, true);
@@ -146,14 +148,20 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
 					if (pl.getName().equals("*ENTRY")) {
 						parameterList = pl;
+						entry = true;
 						break;
 					}
 
 				if (parameterList != null) {
 					writeEntry(parameterList, "qEntry");
+					entry = true;
 					break;
 				}
 			}
+			if(!entry)
+				writeEntry(null, "qEntry");
+		}
+		// scrivo una entry vuota
 	}
 
 	@SuppressWarnings("unchecked")

@@ -259,6 +259,8 @@ public class RPJCallableUnitLinker {
 
 			// remove redefined record
 			this.compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
+			
+			return;
 		} else {
 			QExternalFile externalFile = QOperatingSystemFileFactory.eINSTANCE.createExternalFile();
 			externalFile.setName(file.getName());
