@@ -144,6 +144,14 @@ public interface QDefinitionWriter extends QStatementWriter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" tableFromRequired="true" tableToRequired="true" isCreateRelativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	String copyTableData(Table tableFrom, Table tableTo, boolean isCreateRelativeRecordNumber);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" tableRequired="true"
 	 * @generated
 	 */

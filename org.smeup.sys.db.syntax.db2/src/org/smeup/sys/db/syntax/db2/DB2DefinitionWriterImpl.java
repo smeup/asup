@@ -17,6 +17,8 @@ import org.eclipse.datatools.modelbase.sql.schema.helper.SQLObjectNameHelper;
 import org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.impl.TableImpl;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.smeup.sys.db.core.OrderingType;
 import org.smeup.sys.db.core.QIndexColumnDef;
 import org.smeup.sys.db.core.QIndexDef;
@@ -201,5 +203,32 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	@Override
 	public String hasLogicals(Table table) {
 		return "SELECT * FROM SYSCAT.TABDEP WHERE BSCHEMA = '"+ table.getSchema().getName().trim() + "' AND BNAME = '" + table.getName().trim() + "'";
+	}
+
+	@Override
+	public String copyTableData(Table tableFrom, Table tableTo,	boolean isCreateRelativeRecordNumber) {
+		String fields = fields(tableTo, isCreateRelativeRecordNumber);
+		
+		return "INSERT INTO " + getQualifiedNameInSQLFormat(tableTo) + "(" + fields + ")" +
+			   " SELECT " + fields + " FROM "  + getQualifiedNameInSQLFormat(tableTo);
+	}
+
+	@SuppressWarnings("unchecked")
+	private String fields(Table tableTo, boolean isCreateRelativeRecordNumber) {
+		int columnsSize = 0;
+		EList<ENamedElement> columns = tableTo.getColumns();
+		if(isCreateRelativeRecordNumber)
+			columnsSize = columns.size() - 2;
+		else
+			columnsSize = columns.size() - 1;
+		
+		String fields = "";
+		for (int i = 0; i <= columnsSize; i++) {
+			fields += columns.get(i).getName();
+			if (i != columnsSize) {
+				fields += ", ";
+			}
+		}
+		return fields;
 	}
 }
