@@ -1,12 +1,14 @@
 package org.smeup.sys.os.type.base.api;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.db.core.QConnection;
@@ -22,6 +24,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -121,30 +124,33 @@ public @Supported class ObjectDuplicator {
 		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
 			duplicateData(objToDuplicate, duplicatedObject);
 		}
-		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type);
+		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type.getName());
 	}
 
 	private void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
-		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
-		
-//		QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
-//
-//		Object command = definitionWriter.insertData(tableTo);
-//		QPreparedStatement stmTo = connectionTo.prepareStatement(command);
-//		
-//		// select
-//		Statement stmFrom = connectionFrom.getRawConnection().createStatement();
-//		command = "SELECT * FROM " + schemaFrom + "." + tableTo.getName();
-//		if (!where.isEmpty())
-//			command = command + " where " + where;
-//
-//		ResultSet rsFrom = stmFrom.executeQuery(command);
-//
-//		int columnsSize = 0;
-//		if(connectionTo.getCatalogGenerationStrategy().isCreateRelativeRecordNumber())
-//			columnsSize = tableTo.getColumns().size()-1;
-//		else
-//			columnsSize = tableTo.getColumns().size();	
+		QPreparedStatement stmt = null;
+		try {
+			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+			
+			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
+
+			Table tableFrom = connection.getCatalogMetaData().getTable(objToDuplicate.getLibrary(), objToDuplicate.getName());
+			Table tableTo = connection.getCatalogMetaData().getTable(duplicatedObject.getLibrary(), duplicatedObject.getName());
+			
+			String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());
+			stmt = connection.prepareStatement(command);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new OperatingSystemRuntimeException(e);
+		} finally {
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
 	}
 
 	private QResourceWriter<? extends QTypedObject> getWriter(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QType<?> type, String sourceLibraryName) {

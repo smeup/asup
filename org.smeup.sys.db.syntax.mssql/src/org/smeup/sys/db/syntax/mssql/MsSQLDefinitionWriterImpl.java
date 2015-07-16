@@ -110,4 +110,11 @@ public class MsSQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String copyTableData(Table tableFrom, Table tableTo,
+			boolean isCreateRelativeRecordNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -88,7 +89,8 @@ public class BaseShellSocketHandler extends Thread {
 							
 							// set Looc.UP as default objectWriter on server
 							shellManager.setDefaultWriter(authenticationToken.getID(), "S");
-
+							
+							logConnection();
 						} else
 							executeCommand(request);
 					} catch (Exception e) {
@@ -119,6 +121,11 @@ public class BaseShellSocketHandler extends Thread {
 		}
 	}
 
+	private void logConnection() {
+		//TODO -> DSPLOG
+		System.out.println(new Date() + " User " + user + " connected from " + this.socket.getRemoteSocketAddress());
+	}
+
 	private QAuthenticationToken connect(String command) {
 		// retrieve user
 		user = cleanup(command);
@@ -130,7 +137,7 @@ public class BaseShellSocketHandler extends Thread {
 	}
 
 	private String cleanup(String command) {
-		//Per problema primo collegamento da Windows
+		//Solves the problem of the first connection from Windows machines
 		return command.toUpperCase().replaceAll("[^A-Z0-9§$£_]", "");
 	}
 
