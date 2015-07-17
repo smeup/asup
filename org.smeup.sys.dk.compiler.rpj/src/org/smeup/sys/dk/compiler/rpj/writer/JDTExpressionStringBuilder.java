@@ -152,6 +152,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			String indicatorIndex = null;
 
 			String expressionValue = expression.getValue();
+/*
 			if (expressionValue.toUpperCase().startsWith("*IN")) {
 				// if (!(compilationUnit.getDataTerm(expressionValue,
 				// true).getParent() instanceof QCompoundDataTerm<?>))
@@ -165,11 +166,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				// TODO
 				// modifica resa necessaria quando si incontra *IN e non *IN(xx)
 				// è giusto fare cosi?
-				if (nodeName.length() > 3)
+				if (expressionValue.length() > 3)
 					indicatorIndex = expressionValue.substring(3, 5);
 				// }
 
 			} else
+*/
 				nodeName = expressionValue;
 			
 			namedNode = compilationUnit.getNamedNode(nodeName, true);
