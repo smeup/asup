@@ -213,19 +213,19 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public QNumeric mult(int value) {
-		eval(asDouble() - value);
+		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
 	public QNumeric mult(long value) {
-		eval(asDouble() - value);
+		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
 	public QNumeric mult(QNumeric value) {
-		eval(asDouble() - value.asDouble());
+		eval(asDouble() * value.asDouble());
 		return this;
 	}
 

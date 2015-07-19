@@ -593,6 +593,10 @@ public class RPJProgramSupport {
 	}
 
 	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
+		target.clear();
+		for (int i=1; i<list.capacity(); i++) {
+			target.plus(list.get(i));
+		}
 	}
 
 	/* Abs */
