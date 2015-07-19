@@ -29,7 +29,6 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QHexadecimal;
-import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;

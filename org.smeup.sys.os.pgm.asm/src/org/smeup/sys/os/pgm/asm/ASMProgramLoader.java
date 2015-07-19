@@ -16,20 +16,22 @@ public class ASMProgramLoader implements WeavingHook {
 	@Override
 	public void weave(WovenClass wovenClass) {
 
+		if(wovenClass.getClassName().endsWith("B£G15G"))
+			return;
+		
 		BundleWiring bundleWiring = wovenClass.getBundleWiring();
 		Bundle bundle = bundleWiring.getBundle();
 
 		// ASUP project
 		// TODO for performances reason, check a single file not directory
-		if (bundle.getSymbolicName().startsWith("com.smeup.erp") && 
-		   (bundle.getSymbolicName().endsWith(".gen") || bundle.getSymbolicName().endsWith(".ovr"))) {
+		if (bundle.getSymbolicName().startsWith("com.smeup.erp") && (bundle.getSymbolicName().endsWith(".gen") || bundle.getSymbolicName().endsWith(".ovr"))) {
 			completeClass(wovenClass);
 		}
 	}
 
 	private void completeClass(WovenClass wovenClass) {
 
-//		System.out.println("Woven: "+wovenClass);
+		// System.out.println("Woven: "+wovenClass);
 
 		ClassReader cr = new ClassReader(wovenClass.getBytes());
 
@@ -37,9 +39,11 @@ public class ASMProgramLoader implements WeavingHook {
 		cr.accept(labelAnalyzer, 0);
 
 		Map<String, Label> tag2Label = labelAnalyzer.getTag2Label();
-/*		for (Entry<String, Label> entry : tag2Label.entrySet()) {
-			System.out.println(entry.getKey() + "=" + entry.getValue() + "(" + entry.getValue().info + ")");
-		}*/
+		/*
+		 * for (Entry<String, Label> entry : tag2Label.entrySet()) {
+		 * System.out.println(entry.getKey() + "=" + entry.getValue() + "(" +
+		 * entry.getValue().info + ")"); }
+		 */
 
 		ClassWriter cw = new ClassWriter(cr, 0);
 		ClassAdapter ca = new JumpTransformer(cw, wovenClass.getClassName().replace(".", "/"), tag2Label);

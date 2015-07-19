@@ -1,7 +1,5 @@
 package org.smeup.sys.os.file.base.api;
 
-import javax.inject.Inject;
-
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -11,17 +9,9 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.file.QFileManager;
-import org.smeup.sys.os.file.QFileMemberManager;
 
 @Program(name = "QUSRMBRD")
 public class MemberDescriptionRetriever {
-
-	@Inject
-	private QResourceManager resourceManager;
-	@Inject
-	private QFileMemberManager fileMemberManager;
 
 	public QUSM0100 qusm0100;
 	public QUSM0200 qusm0200;

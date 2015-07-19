@@ -32,7 +32,6 @@ import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.impl.CompoundDataDefImpl;
-import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 import org.smeup.sys.il.esam.QDataSetTerm;

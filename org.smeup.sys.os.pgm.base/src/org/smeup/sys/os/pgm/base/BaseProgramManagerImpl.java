@@ -241,6 +241,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	
 			}
 			catch(Exception e) {
+				e.printStackTrace();
 				throw new OperatingSystemRuntimeProgramException(e.getMessage(), e);
 			}		
 			finally {

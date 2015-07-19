@@ -1889,7 +1889,7 @@
       </entry>
     </prototypes>
     <prototypes
-        name="%subarr">
+        name="%subarr_o">
       <definition
           xsi:type="il-data-def:ArrayDef"
           dimension="-1">

@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.QCallableProgramDelegator;
@@ -60,6 +61,20 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 
 			if (params != null) {
 
+				int paramsLength=0;
+				for(QData param: params) {
+
+					if(!(param instanceof QBufferedData)) {
+						paramsLength++;
+						continue;
+					}
+					
+					if(((QBufferedData)param).isNull())
+						break;
+					
+					paramsLength++;
+				}
+
 				try {
 					Field £mubField = delegate.getClass().getDeclaredField("£mub");
 					if (£mubField != null) {
@@ -70,7 +85,7 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 							Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
 
 							Object £pdspr = £mu_£pds_1.getClass().getField("£pdspr").get(£mu_£pds_1);
-							£pdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£pdspr, new Object[] { params.length });
+							£pdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£pdspr, new Object[] { paramsLength });
 
 						} catch (NoSuchFieldException e) {
 							e.printStackTrace();
@@ -103,7 +118,7 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				if (£qpdsqqField != null) {
 					Object £qpdsqq = £qpdsqqField.get(delegate);
 					Object £qpdspr = £qpdsqq.getClass().getField("£qdspr").get(£qpdsqq);
-					£qpdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£qpdspr, new Object[] { params.length });
+					£qpdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£qpdspr, new Object[] { paramsLength });
 				}
 				if (getQEntry().length > 0) {
 					this.entry.invoke(delegate, (Object[]) params);

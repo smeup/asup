@@ -404,7 +404,7 @@ public class RPJProgramSupport {
 	}
 
 	public QPointer qAddr(QBufferedData bufferedData) {
-		return null;
+		return bufferedData.qAddr();
 	}
 
 	public QPointer qPaddr(QString string) {
@@ -412,11 +412,11 @@ public class RPJProgramSupport {
 	}
 
 	public QPointer qAlloc(QNumeric size) {
-		return null;
+		return qAlloc(size.asInteger());
 	}
 
 	public QPointer qAlloc(Integer size) {
-		return null;
+		return dataFactory.allocate(size.intValue());
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
@@ -452,12 +452,20 @@ public class RPJProgramSupport {
 
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {
 
-		return null;
+		StringBuffer sb = new StringBuffer();
+		sb.append(source.substring(0, from-1));
+		sb.append(replacement);
+		sb.append(source.substring(from+length-1));
+				
+		QCharacter character = dataFactory.createCharacter(source.length(), false, true);
+		character.eval(sb.toString());
+		
+		return character;
 	}
 
 	public QArray<?> qSubarr(QArray<?> array, int start, int elements) {
 		
-		return array;
+		return array.qSubarr(start, elements);
 	}
 
 	
@@ -581,11 +589,10 @@ public class RPJProgramSupport {
 
 	public QString qStr(QPointer source, Integer length) {
 
-		if (source.getTarget() instanceof QString)
-			return (QString) source.getTarget();
-		else
-			return null;
+		QCharacter character = dataFactory.createCharacter(source.getLength(), false, false);
+		source.assign(character);
 
+		return character;
 	}
 
 	public QString qXlate(String oldString, String newString, QString source) {
