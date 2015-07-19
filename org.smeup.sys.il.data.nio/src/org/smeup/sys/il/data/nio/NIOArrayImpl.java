@@ -21,34 +21,16 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-	private NIOBufferedDataImpl _model;
-	private int lengthSlot = 0;
+
 	
 	public NIOArrayImpl() {
 		super();
 	}
 
 	@SuppressWarnings({ "unchecked" })
-	public NIOArrayImpl(NIOBufferedDataImpl model, int dimension) {
-		super();
-		this._model = model;
+	public NIOArrayImpl(D model, int dimension) {
+		super(model);
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
-	}
-
-	protected NIOBufferedDataImpl getModel() {
-		return _model;
-	}
-
-	protected void setModel(NIOBufferedDataImpl _model) {
-		this._model = _model;
-	}
-	
-	protected int getLengthSlot() {
-		return lengthSlot;
-	}
-
-	protected void setLengthSlot(int lengthSlot) {
-		this.lengthSlot = lengthSlot;
 	}
 
 	@Override
@@ -72,11 +54,11 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 		D element = _elements[index - 1];
 		if (element == null) {
-			element = (D) _model.copy();
+			element = (D) getModel().copy();
 			int position = 0;
 			
 			if(getLengthSlot() == 0)
-				position = _model.getSize() * (index - 1);
+				position = getModel().getSize() * (index - 1);
 			else
 				position = getLengthSlot() * (index - 1);
 			
@@ -88,12 +70,12 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public int getLength() {
-		return _elements.length * _model.getLength();
+		return _elements.length * getModel().getLength();
 	}
 
 	@Override
 	public int getSize() {
-		return _elements.length * _model.getSize();
+		return _elements.length * getModel().getSize();
 	}
 
 	@Override
@@ -116,7 +98,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	protected byte getFiller() {
-		return _model.getFiller();
+		return getModel().getFiller();
 	}
 
 	@Override

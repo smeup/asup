@@ -25,10 +25,34 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	private static final long serialVersionUID = 1L;
 
+	private int lengthSlot = 0;
+	private D _model;
+	
 	public NIOBufferedListImpl() {
 		super();
 	}
+	
+	public NIOBufferedListImpl(D model) {
+		super();
+		this._model = model;
+	}
 
+	protected D getModel() {
+		return _model;
+	}
+
+	protected void setModel(D _model) {
+		this._model = _model;
+	}
+	
+	protected int getLengthSlot() {
+		return lengthSlot;
+	}
+
+	protected void setLengthSlot(int lengthSlot) {
+		this.lengthSlot = lengthSlot;
+	}
+	
 	@Override
 	public boolean isEmpty() {
 

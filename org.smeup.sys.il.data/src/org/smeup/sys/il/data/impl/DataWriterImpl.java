@@ -253,7 +253,9 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	@SuppressWarnings("unchecked")
 	private <E extends Enum<E>> void visitStringData(QString string) {
 
-		if (object instanceof QString)
+		if(object == null)
+			string.clear();
+		else if (object instanceof QString)
 			string.eval((QString) object);
 		else if (object instanceof String) {
 			String s = (String) object;

@@ -12,11 +12,14 @@
 package org.smeup.sys.os.file.base;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.db.core.OrderingType;
 import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.db.core.QDatabaseCoreFactory;
 import org.smeup.sys.db.core.QIndexColumnDef;
@@ -75,7 +78,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 		return adaptee;
 	}
 
-	private QConnection adaptJobToConnection(QJob job) {
+	private QConnection adaptJobToConnection(final QJob job) {
 
 		QConnection connection = job.getContext().get(QConnection.class);
 		if (connection == null)
@@ -87,6 +90,15 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 						connection = connectionManager.createConnection();
 						job.getContext().set(QConnection.class, connection);
 
+						QConnectionDescription connectionDescription = new QConnectionDescription() {
+							
+							@Override
+							public List<String> getSchemas() {
+								return new ArrayList<String>(job.getLibraries());
+							}
+						};
+						connection.getContext().set(QConnectionDescription.class, connectionDescription);
+						
 						connection.getContext().set(QAliasResolver.class, new BaseAliasResolverImpl());
 						
 					} catch (SQLException e) {

@@ -41,7 +41,6 @@ public class NIOBufferHelper {
 			if (clear)
 				fill(target, target.position(), target.limit(), filler);
 		}
-
 	}
 
 	public static void move(ByteBuffer buffer, int position, int length, byte[] bytes, boolean clear, byte filler) {

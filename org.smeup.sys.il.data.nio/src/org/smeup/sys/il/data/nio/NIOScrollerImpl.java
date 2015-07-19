@@ -19,7 +19,6 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 
 	private static final long serialVersionUID = 1L;
 
-	private D _model;
 	private int _dimension;
 	private int _lastIndex;
 
@@ -28,8 +27,7 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	public NIOScrollerImpl(D model, int dimension) {
-		super();
-		_model = model;
+		super(model);
 		_dimension = dimension;
 	}
 
@@ -56,26 +54,34 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	public D get(int index) {
 
 		if (_lastIndex == index)
-			return _model;
+			return (D) getModel();
 
-		int size = _model.getSize();
-		int position = size * (index - 1);
+//		int size = _model.getSize();	
+//		int position = size * (index - 1);
+		
+		int position = 0;
+		
+		if(getLengthSlot() == 0)
+			position = getModel().getSize() * (index - 1);
+		else
+			position = getLengthSlot() * (index - 1);
 
-		slice(_model, position);
+
+		slice(getModel(), position);
 
 		_lastIndex = index;
 
-		return _model;
+		return (D) getModel();
 	}
 
 	@Override
 	public int getLength() {
-		return _dimension * _model.getLength();
+		return _dimension * getModel().getLength();
 	}
 
 	@Override
 	public int getSize() {
-		return _dimension * _model.getSize();
+		return _dimension * getModel().getSize();
 	}
 
 	@Override
@@ -85,7 +91,7 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 
 	@Override
 	public D current() {
-		return _model;
+		return (D) getModel();
 	}
 
 	@Override
@@ -115,7 +121,7 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 
 	@Override
 	protected byte getFiller() {
-		return ((NIOBufferedDataImpl) _model).getFiller();
+		return ((NIOBufferedDataImpl)getModel()).getFiller();
 	}
 
 	@Override

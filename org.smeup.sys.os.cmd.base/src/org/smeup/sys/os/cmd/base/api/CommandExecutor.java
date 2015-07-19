@@ -52,6 +52,9 @@ public class CommandExecutor {
 		 * }
 		 */
 
+		if(commandString.startsWith("CRTDTAQ"))
+			commandString.toCharArray();
+		
 		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), commandString, programsVariables, true);
 		commandManager.executeCommand(job.getJobID(), callableCommand);
 	}

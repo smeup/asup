@@ -310,15 +310,26 @@ public class RPJProgramSupport {
 
 	public QString qEditc(QNumeric numeric, String format) {
 		// TODO
-		QCharacter character = null;
-		if (numeric.getLength() == 1) {
-			character = dataFactory.createCharacter(numeric.getLength(), false, true);
-			character.eval(Integer.toString(numeric.asInteger()));
+		QCharacter character = dataFactory.createCharacter(numeric.getLength(), false, true);
+		character.eval(numeric);
+
+/*		if (numeric.getLength() == 1) {
 		} else {
 			character = dataFactory.createCharacter(numeric.getLength(), true, true);
 			character.eval(Double.toString(numeric.asDouble()).replaceAll("\\.", ""));
-		}
+		}*/
 
+		switch (format) {
+		case "Z":
+			character.eval(character.s().replaceAll("0", " "));
+			break;
+		case "X":
+			break;
+		default:
+			System.out.println("Unexpected condition: sbdofsd8frRWE6R");
+			break;
+		}
+		
 		return character;
 	}
 

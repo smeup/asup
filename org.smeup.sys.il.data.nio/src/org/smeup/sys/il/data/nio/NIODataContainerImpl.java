@@ -202,7 +202,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public void clearData() {
 
 		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
-
 			QData data = datas.get(entry.getKey());
 			if (data == null) {
 				data = dataFactory.createData(entry.getValue(), true);

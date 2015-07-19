@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import javax.inject.Inject;
 
@@ -102,7 +103,13 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		CLObject result = null;
 		result = (CLObject) clParser.parse(command + "\n");
 
-		CLRow clRow = result.getRows().iterator().next();
+		CLRow clRow = null;
+		try {
+			clRow = result.getRows().iterator().next();
+		}
+		catch(NoSuchElementException e) {
+			result.toString();
+		}
 		CLCommand clCommand = clRow.getCommand();
 
 		// lookup command
@@ -213,11 +220,15 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 			if (!(variable instanceof QBufferedData))
 				return data;
-
-			if (!(data instanceof QBufferedData))
-				return data;
-
-			((QBufferedData) variable).assign((QBufferedData) data);
+			
+			if (data instanceof QBufferedData) {
+				((QBufferedData) variable).assign((QBufferedData) data);	
+			}
+			else if(data instanceof QList<?>) {			
+				QList<?> list = (QList<?>) data;
+				if(list.capacity()>0)
+					((QAdapter)list.get(1)).eval(variable);			
+			}
 
 			return data;
 		}

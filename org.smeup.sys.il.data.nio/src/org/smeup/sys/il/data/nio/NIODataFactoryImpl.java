@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedDataDelegator;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataFactory;
@@ -371,8 +372,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		}
 
-		QStroller<D> stroller = new NIOStrollerImpl(model, dimension);
-
+		QStroller<D> stroller = new NIOStrollerImpl(model, dimension);;
+		
 		if (initialize)
 			initialize(stroller);
 
@@ -395,6 +396,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(length, dataStructure);
 
 		int p = 1;
+		QBufferedData previousElement = null;
 		for (Field field : classDelegator.getFields()) {
 
 			// annotations field
@@ -425,10 +427,16 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 					if (!overlay.name().equalsIgnoreCase(Overlay.OWNER)) {
 						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
-						if (overlayedData instanceof QArray<?>) {
-							NIOArrayImpl<?> arrayOverlayed = (NIOArrayImpl<?>) overlayedData;
-							NIOArrayImpl<?> arrayData = (NIOArrayImpl<?>) dataElement;
+						if (overlayedData instanceof QBufferedList<?>) {
+							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
+							NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
+							
 							arrayData.setLengthSlot(arrayOverlayed.getModel().getLength());
+							
+							if(previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
+								NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
+								p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
+							}
 						}
 					}
 				}
@@ -438,6 +446,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 			dataStructureDelegate.slice(dataElement, p - 1);
 
 			p += dataElement.getSize();
+			
+			previousElement = dataElement;
 		}
 
 		if (dataStructure instanceof QDataStructWrapper)
