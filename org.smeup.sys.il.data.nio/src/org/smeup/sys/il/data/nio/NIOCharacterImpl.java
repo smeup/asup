@@ -421,20 +421,25 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	private <E extends Enum<E>> String getPrimitive(E value) {
-		if (value.name().equals("BLANKS"))
-			return "";
-		else if (value.name().equals("BLANK"))
-			return "";
-		else if (value.name().equals("HIVAL"))
-			return "1";
-		else if (value.name().equals("LOVAL"))
-			return "";
-		else if (value.name().equals("ON"))
-			return "1";
-		else if (value.name().equals("OFF"))
-			return "0";
+		
+		char[] charArray = new char[getLength()];
 
-		return null;
+		if (value.name().equals("BLANKS"))
+			Arrays.fill(charArray, ' ');
+		else if (value.name().equals("BLANK"))
+			return " ";
+		else if (value.name().equals("HIVAL"))
+			Arrays.fill(charArray, '9');
+		else if (value.name().equals("LOVAL"))
+			Arrays.fill(charArray, ' ');
+		else if (value.name().equals("ON"))
+			Arrays.fill(charArray, '1');
+		else if (value.name().equals("OFF"))
+			Arrays.fill(charArray, '0');
+		else
+			"".toCharArray();
+		
+		return new String(charArray);
 	}
 
 	public static String trimL(String str) {

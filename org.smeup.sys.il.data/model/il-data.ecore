@@ -21,6 +21,13 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="qSubarr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="elements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Array/D"/>
     </eGenericSuperTypes>
@@ -52,6 +59,7 @@
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
+    <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
     <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -267,6 +275,9 @@
     <eOperations name="getDelegate" lowerBound="1" eType="#//Data"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFactory" abstract="true" interface="true">
+    <eOperations name="allocate" lowerBound="1" eType="#//Pointer">
+      <eParameters name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eOperations name="createArray" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//DataFactory/createArray/D"/>
@@ -403,10 +414,6 @@
         </eGenericType>
       </eParameters>
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
-      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createScroller" lowerBound="1">
@@ -1171,7 +1178,9 @@
     <eOperations name="divide" eType="#//Pointer">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="getTarget" eType="#//BufferedData"/>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Pointer"/>
+    </eOperations>
     <eOperations name="minus" eType="#//Pointer">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>

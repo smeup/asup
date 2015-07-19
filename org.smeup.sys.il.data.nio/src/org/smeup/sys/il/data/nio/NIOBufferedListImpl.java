@@ -162,36 +162,48 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public String toString() {
-		try {
-			return super.toString();
-		} catch (Exception e) {
-			// TODO
-			return "";
+		
+		StringBuffer sb = new StringBuffer(getSize());
+
+		for (QBufferedData element : this) {
+			sb.append(element);
 		}
+
+		return sb.toString();
 	}
 
 	@Override
 	public <E extends Enum<E>> void move(E value) {
-		// TODO Auto-generated method stub
 
+		for (QBufferedData element : this) {
+			element.move(value);
+		}
 	}
 
 	@Override
 	public <E extends Enum<E>> void move(E value, boolean clear) {
-		// TODO Auto-generated method stub
+
+		for (QBufferedData element : this) {
+			element.move(value, clear);
+		}
+
 
 	}
 
 	@Override
 	public <E extends Enum<E>> void movel(E value) {
-		// TODO Auto-generated method stub
-
+		
+		for (QBufferedData element : this) {
+			element.movel(value);
+		}
 	}
 
 	@Override
 	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		// TODO Auto-generated method stub
-
+		
+		for (QBufferedData element : this) {
+			element.movel(value, clear);
+		}
 	}
 
 	@Override
@@ -208,8 +220,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
 
+		for (QBufferedData element : this) {
+			element.eval(value);
+		}
 	}
 
 	@Override
@@ -220,7 +234,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void sorta() {
 		// TODO Auto-generated method stub
-
+		"".toString();
 	}
 
 	@Override
@@ -230,6 +244,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QArray<?> value, boolean clear) {
+
 		if (getSize() == value.getSize())
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), false, (byte) 32);
 		else {
@@ -264,14 +279,14 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(String value) {
-		for (QBufferedData elementTarget : this)
-			elementTarget.movel(value, true);
+		for (QBufferedData element : this)
+			element.movel(value, true);
 	}
 
 	@Override
 	public <E extends Enum<E>> void movea(E value) {
-		for (QBufferedData elementTarget : this)
-			elementTarget.eval(value);
+		for (QBufferedData element : this)
+			element.eval(value);
 	}
 
 }

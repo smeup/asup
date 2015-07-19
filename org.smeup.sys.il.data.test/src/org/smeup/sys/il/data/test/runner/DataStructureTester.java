@@ -116,10 +116,9 @@ public class DataStructureTester {
 			character.accept(dataWriter.set(multElement));
 		testAsserter.assertEquals("Evaluation elements", true, true);
 
-		£MU_B£QQ50P_1 £B£qq50p_1 = dataFactory.createDataStruct(£MU_B£QQ50P_1.class, 0, true);
+		dataFactory.createDataStruct(£MU_B£QQ50P_1.class, 0, true);
 		
-		
-		
+		dataFactory.createDataStruct(£MU_£G90DA_1.class, 0, true);
 		
 		£MU_JAJ11G_2 jaj11g_2 = dataFactory.createDataStruct(£MU_JAJ11G_2.class, 0, true);
 
@@ -313,5 +312,33 @@ public class DataStructureTester {
 		public QDecimal f1orag;
 		@DataDef(length = 10)
 		public QCharacter f1ogag;
+	}
+	
+
+	public static class £MU_£G90DA_1 extends QDataStructWrapper {
+		private static final long serialVersionUID = 1L;
+		
+		@DataDef(dimension = 2000, length = 71)
+		public QArray<QCharacter> £g90at;
+		
+		@DataDef(dimension = 2000, length = 30)
+		@Overlay(name = "£G90AT", position = "1")
+		public QArray<QCharacter> £g90atk;
+		
+		@DataDef(dimension = 2000, length = 10)
+		@Overlay(name = "£G90AT", position = "1")
+		public QArray<QCharacter> £g90ats;
+		
+		@DataDef(dimension = 2000, length = 20)
+		@Overlay(name = "£G90AT", position = "11")
+		public QArray<QCharacter> £g90att;
+		
+		@DataDef(dimension = 2000, length = 40)
+		@Overlay(name = "£G90AT", position = "31")
+		public QArray<QCharacter> £g90ata;
+		
+		@DataDef(dimension = 2000, length = 1)
+		@Overlay(name = "£G90AT", position = "71")
+		public QArray<QCharacter> £g90ati;
 	}
 }

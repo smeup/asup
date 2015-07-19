@@ -29,15 +29,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getClassDelegator
- * <em>Class Delegator</em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getElements
- * <em>Elements</em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getPrefix <em>
- * Prefix</em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#isQualified
- * <em>Qualified</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getClassDelegator <em>Class Delegator</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,10 +45,9 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getClassDelegator()
-	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getClassDelegator() <em>Class Delegator</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -61,10 +55,9 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	protected static final String CLASS_DELEGATOR_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getClassDelegator()
-	 * <em>Class Delegator</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getClassDelegator() <em>Class Delegator</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getClassDelegator()
 	 * @generated
 	 * @ordered
@@ -72,9 +65,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	protected String classDelegator = CLASS_DELEGATOR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -82,9 +74,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	protected EList<E> elements;
 
 	/**
-	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -94,7 +85,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	/**
 	 * The cached value of the '{@link #getPrefix() <em>Prefix</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getPrefix()
 	 * @generated
 	 * @ordered
@@ -102,9 +92,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	protected String prefix = PREFIX_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isQualified() <em>Qualified</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #isQualified() <em>Qualified</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -112,9 +101,8 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 	protected static final boolean QUALIFIED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isQualified() <em>Qualified</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #isQualified() <em>Qualified</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isQualified()
 	 * @generated
 	 * @ordered
@@ -123,7 +111,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CompoundDataDefImpl() {
@@ -132,7 +119,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -142,7 +128,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -152,7 +137,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -165,19 +149,18 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<E> getElements() {
-		if (elements == null)
+		if (elements == null) {
 			elements = new EObjectContainmentEList<E>(QDataTerm.class, this, QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS);
+		}
 		return elements;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -187,7 +170,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -200,7 +182,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -210,7 +191,6 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -223,117 +203,110 @@ public abstract class CompoundDataDefImpl<D extends QStruct<?>, E extends QDataT
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
-			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
-			return getClassDelegator();
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
-			return getElements();
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
-			return getPrefix();
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
-			return isQualified();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+				return getClassDelegator();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
+				return getElements();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
+				return getPrefix();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
+				return isQualified();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
-			setClassDelegator((String) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
-			getElements().clear();
-			getElements().addAll((Collection<? extends E>) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
-			setPrefix((String) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
-			setQualified((Boolean) newValue);
-			return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+				setClassDelegator((String)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends E>)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
+				setPrefix((String)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
+				setQualified((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
-			setClassDelegator(CLASS_DELEGATOR_EDEFAULT);
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
-			getElements().clear();
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
-			setPrefix(PREFIX_EDEFAULT);
-			return;
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
-			setQualified(QUALIFIED_EDEFAULT);
-			return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+				setClassDelegator(CLASS_DELEGATOR_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
+				getElements().clear();
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
+				setPrefix(PREFIX_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
+				setQualified(QUALIFIED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
-			return CLASS_DELEGATOR_EDEFAULT == null ? classDelegator != null : !CLASS_DELEGATOR_EDEFAULT.equals(classDelegator);
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
-			return elements != null && !elements.isEmpty();
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
-			return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
-		case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
-			return qualified != QUALIFIED_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__CLASS_DELEGATOR:
+				return CLASS_DELEGATOR_EDEFAULT == null ? classDelegator != null : !CLASS_DELEGATOR_EDEFAULT.equals(classDelegator);
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__ELEMENTS:
+				return elements != null && !elements.isEmpty();
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__PREFIX:
+				return PREFIX_EDEFAULT == null ? prefix != null : !PREFIX_EDEFAULT.equals(prefix);
+			case QIntegratedLanguageDataDefPackage.COMPOUND_DATA_DEF__QUALIFIED:
+				return qualified != QUALIFIED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (classDelegator: ");

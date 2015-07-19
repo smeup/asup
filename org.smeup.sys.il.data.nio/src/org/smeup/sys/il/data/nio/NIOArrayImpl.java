@@ -146,4 +146,19 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public QArray<D> qSubarr(int start, int elements) {
+
+		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getModel(), elements);
+		slice(subArray, start+(getModel().getSize()*(start-1)));
+		
+		
+/*		subArray.allocate();		
+		for(int i=1; i<=elements;i++) {
+			subArray.get(i).eval(get(start+i-1));
+		}*/
+		
+		return subArray;
+	}
 }

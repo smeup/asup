@@ -186,8 +186,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		else if (dataDef instanceof QPointerDef) {
 			QPointerDef pointerDef = (QPointerDef) dataDef;
 			pointerDef.toString();
-			// TODO
-			data = (D) createPointer(null, initialize);
+			data = (D) allocate(0);
 		} else
 			throw new IntegratedLanguageCoreRuntimeException("Unknown dataType: " + dataDef);
 
@@ -372,8 +371,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		}
 
-		QStroller<D> stroller = new NIOStrollerImpl(model, dimension);;
-		
+		QStroller<D> stroller = new NIOStrollerImpl(model, dimension);
+		;
+
 		if (initialize)
 			initialize(stroller);
 
@@ -430,12 +430,14 @@ public class NIODataFactoryImpl implements QDataFactory {
 						if (overlayedData instanceof QBufferedList<?>) {
 							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 							NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
-							
+
 							arrayData.setLengthSlot(arrayOverlayed.getModel().getLength());
-							
-							if(previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
-								NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
-								p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
+
+							if (overlay.position().equals(Overlay.NEXT)) {
+								if (previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
+									NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
+									p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
+								}
 							}
 						}
 					}
@@ -446,7 +448,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			dataStructureDelegate.slice(dataElement, p - 1);
 
 			p += dataElement.getSize();
-			
+
 			previousElement = dataElement;
 		}
 
@@ -628,11 +630,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer createPointer(QBufferedData target, boolean initialize) {
-		return new NIOPointerImpl(target);
-	}
-
-	@Override
 	public QDatetime createTime(boolean initialize) {
 		// TODO Auto-generated method stub
 		return null;
@@ -743,5 +740,36 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		return list;
 
+	}
+
+	@Override
+	public QPointer allocate(final int size) {
+
+		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public int getSize() {
+				return size;
+			}
+
+			@Override
+			public int getLength() {
+				return size;
+			}
+
+			@Override
+			public void eval(QBufferedData value) {
+				value.toString();
+			}
+
+			@Override
+			protected byte getFiller() {
+				return 0;
+			}
+		};
+		bufferedData.allocate();
+		return new NIOPointerImpl(bufferedData);
 	}
 }

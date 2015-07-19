@@ -20,9 +20,16 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	void eval(QArray<D> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QArray<D> qSubarr(int start, int elements);
 } // QArray

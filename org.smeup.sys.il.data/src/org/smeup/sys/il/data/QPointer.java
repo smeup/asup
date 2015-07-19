@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import org.smeup.sys.il.core.QObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Pointer</b></em>'. <!-- end-user-doc -->
@@ -20,7 +22,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -28,7 +29,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -36,7 +36,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -44,23 +43,21 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QPointer divide(QNumeric value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @model kind="operation"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QBufferedData getTarget();
+	void eval(QPointer value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -68,7 +65,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -76,7 +72,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -84,7 +79,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -92,7 +86,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -100,7 +93,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -108,7 +100,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -116,7 +107,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -124,7 +114,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -132,7 +121,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -140,7 +128,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -148,7 +135,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -156,7 +142,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -164,7 +149,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -172,7 +156,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -180,7 +163,6 @@ public interface QPointer extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QPointer;
 
 public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QBufferedData, QBufferedDataDelegator {
 
@@ -358,5 +359,9 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	@Override
 	public QNumeric qLen() {
 		return _delegate.qLen();
+	}
+
+	public QPointer qAddr() {
+		return _delegate.qAddr();
 	}
 }

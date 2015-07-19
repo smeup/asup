@@ -25,6 +25,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
 
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
@@ -38,6 +39,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	public NIOBufferedDataImpl() {
 		super();
+	}
+
+	protected NIOBufferedDataImpl getParent() {
+		return _parent;
 	}
 
 	@Override
@@ -126,12 +131,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void assign(QBufferedData target, int position) {
-
-		if (target instanceof NIOPointerImpl) {
-			NIOPointerImpl nioPointer = (NIOPointerImpl) target;
-			nioPointer.setTarget(this);
-			return;
-		}
 
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 
@@ -476,8 +475,15 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public boolean eq(QBufferedData value) {		
-		return Arrays.equals(asBytes(), value.asBytes());
+	public boolean eq(QBufferedData value) {
+		
+		byte[] a = asBytes();
+		byte[] a2 = value.asBytes();
+		
+		if(a2.length > a.length)
+			a2 = Arrays.copyOfRange(a2, 0, a.length);
+		
+		return Arrays.equals(a, a2);
 	}
 
 	@Override
@@ -485,4 +491,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return !eq(value);
 	}
 
+	@Override
+	public QPointer qAddr() {
+		return new NIOPointerImpl(this);
+	}
 }
