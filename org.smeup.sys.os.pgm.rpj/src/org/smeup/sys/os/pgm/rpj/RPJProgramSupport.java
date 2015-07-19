@@ -254,6 +254,7 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters) {
+		System.out.println("Call program: " + program);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
