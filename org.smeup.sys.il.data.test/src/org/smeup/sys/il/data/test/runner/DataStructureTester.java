@@ -122,11 +122,6 @@ public class DataStructureTester {
 		
 		£MU_JAJ11G_2 jaj11g_2 = dataFactory.createDataStruct(£MU_JAJ11G_2.class, 0, true);
 
-		for (QCharacter c1 : jaj11g_2.liv)
-			System.out.println(c1);
-
-		for (QCharacter c2 : jaj11g_2.livky)
-			System.out.println(c2);
 	}
 
 	public static class DataStructure extends QDataStructWrapper {

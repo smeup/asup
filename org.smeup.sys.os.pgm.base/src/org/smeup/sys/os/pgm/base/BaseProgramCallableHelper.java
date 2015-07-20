@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -83,16 +84,16 @@ public class BaseProgramCallableHelper {
 			if(paramsFrom[i] == null)
 				continue;
 
-			if(paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QBufferedData) {
+			if(paramsTo[i] instanceof QAdapter) {
+				QAdapter adapter = (QAdapter) paramsTo[i];
+				adapter.eval(adapter.getDelegate());
+			}
+			else if(paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QBufferedData) {
 				QBufferedData bufferedData = (QBufferedData)paramsTo[i];
-				((QBufferedData) paramsFrom[i]).assign(bufferedData);
+				((QBufferedData) paramsFrom[i]).assign(bufferedData);				
 			}
 			else if(paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
 				assignList(paramsFrom[i], paramsTo[i]);
-			}
-			else if(paramsTo[i] instanceof QAdapter) {
-				QAdapter adapter = (QAdapter) paramsTo[i];
-				adapter.eval(adapter.getDelegate());
 			}
 			else
 				throw new OperatingSystemRuntimeProgramException("Unexpected condition: nxt057t024xn", null);

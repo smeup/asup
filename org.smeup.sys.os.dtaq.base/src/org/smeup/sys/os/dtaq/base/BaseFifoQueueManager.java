@@ -63,7 +63,7 @@ public class BaseFifoQueueManager {
 			try {
 				vResult = iQueueList.get(vQueueKey).pop(aTimeout);
 			} catch (InterruptedException vExc) {
-				vExc.printStackTrace();
+//				vExc.printStackTrace();
 			}
 		else
 			throw new BaseFifoQueueException(BaseFifoQueueException.QUEUE_DO_NOT_EXISTS);

@@ -49,24 +49,6 @@ public class JDBCDataReaderImpl extends DataReaderImpl {
 
 				dataWriter.set(resultSet.getObject(c));
 				bufferedData.accept(dataWriter);
-				/*
-				 * if(bufferedData instanceof QString) { QString string =
-				 * (QString) bufferedData; string.eval(resultSet.getString(c));
-				 * } else if(bufferedData instanceof QDecimal) { QDecimal
-				 * decimal = (QDecimal) bufferedData;
-				 *
-				 * // BigDecimal bigDecimal = resultSet.getBigDecimal(c); //
-				 * decimal.eval(bigDecimal);
-				 *
-				 * // bufferedData.move(formatBigDecimal(bigDecimal, decimal),
-				 * true);
-				 *
-				 * System.out.println(resultSet.getObject(c));
-				 * decimal.eval(resultSet.getDouble(c)); } else {
-				 * bufferedData.movel(resultSet.getObject(c).toString(), true);
-				 * }
-				 */
-
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

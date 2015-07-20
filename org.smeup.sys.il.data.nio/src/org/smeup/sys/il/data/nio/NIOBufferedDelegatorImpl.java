@@ -159,7 +159,12 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 			return true;
 
 		// TODO
-		return ((NIOBufferedDataImpl) _delegate).getBuffer() == null;
+		if(_delegate instanceof QBufferedDataDelegator) {
+			QBufferedDataDelegator bufferedDataDelegator = (QBufferedDataDelegator) _delegate;
+			return ((NIOBufferedDataImpl) bufferedDataDelegator.getDelegate()).getBuffer() == null;
+		}
+		else
+			return ((NIOBufferedDataImpl) _delegate).getBuffer() == null;
 	}
 
 	@Override

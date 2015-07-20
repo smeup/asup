@@ -216,11 +216,9 @@ public abstract class StatementVisitorImpl extends MinimalEObjectImpl.Container 
 		try {
 			@SuppressWarnings("unchecked")
 			Method method = getMethod("endVisit", (Class<QNode>) statement.getClass());
-			if (method == null)
-				System.out.println(statement);
 			method.invoke(this, new Object[] { statement });
 		} catch (Exception e) {
-			System.out.println(statement);
+
 		}
 	}
 
@@ -334,12 +332,10 @@ public abstract class StatementVisitorImpl extends MinimalEObjectImpl.Container 
 			@SuppressWarnings("unchecked")
 			Method method = getMethod("visit", (Class<QNode>) statement.getClass());
 			if (method == null) {
-				System.out.println(statement);
 				return false;
 			}
 			return (boolean) method.invoke(this, new Object[] { statement });
 		} catch (Exception e) {
-			System.out.println(statement);
 			return false;
 		}
 	}
