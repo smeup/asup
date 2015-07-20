@@ -14,6 +14,8 @@ package org.smeup.sys.os.core.base.api;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,7 +98,8 @@ public class JobSubmitter {
 		}
 
 		// add message to queue
-		job.getMessages().add(Integer.toString(childJob.getJobNumber()));
+		NumberFormat numberFormat = new DecimalFormat("000000");
+		job.getMessages().add(numberFormat.format(childJob.getJobNumber()));
 
 		// Submit command
 		new SubmittedCommand(childJob, commandToRun.trimR(), caller).start();

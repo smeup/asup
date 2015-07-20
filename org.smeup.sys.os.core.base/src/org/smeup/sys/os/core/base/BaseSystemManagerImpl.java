@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.core.base;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
 import org.smeup.sys.il.core.ctx.QContext;
@@ -39,7 +41,8 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		job.setJobNumber(nextJobID());
 		// Calendar CALENDAR = Calendar.getInstance();
 		// YYYYMMDD.format(CALENDAR.getTime())+"/"+HHMMSS.format(CALENDAR.getTime();
-		job.setJobName("QAS" + job.getJobNumber());
+		NumberFormat numberFormat = new DecimalFormat("000000");
+		job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
 
 		// system libraries
 		job.getLibraries().add(getSystem().getSystemLibrary());

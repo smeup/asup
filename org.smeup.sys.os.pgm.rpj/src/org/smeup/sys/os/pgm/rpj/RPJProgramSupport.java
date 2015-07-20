@@ -41,12 +41,16 @@ import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJProgramSupport {
 
 	@Inject
 	public QDataFactory dataFactory;
 
+	@Inject
+	public QLogger logger;
+	
 	@Inject
 	public QProgramManager programManager;
 //	@Inject
@@ -254,7 +258,7 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		System.out.println("Call program: " + program);
+//		System.out.println("call:\t" + program);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
@@ -602,8 +606,8 @@ public class RPJProgramSupport {
 
 	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
 		target.clear();
-		for (int i=1; i<list.capacity(); i++) {
-			target.plus(list.get(i));
+		for (QDecimal element: list) {
+			target.plus(element);
 		}
 	}
 
