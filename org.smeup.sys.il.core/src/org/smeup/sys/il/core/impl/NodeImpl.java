@@ -28,7 +28,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.NodeImpl#getFacets <em>Facets</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.NodeImpl#getFacets <em>Facets</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,9 +41,8 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getFacets() <em>Facets</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getFacets() <em>Facets</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFacets()
 	 * @generated
 	 * @ordered
@@ -52,7 +51,6 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected NodeImpl() {
@@ -61,7 +59,6 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -71,13 +68,13 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public List<QFacet> getFacets() {
-		if (facets == null)
+		if (facets == null) {
 			facets = new EObjectContainmentEList<QFacet>(QFacet.class, this, QIntegratedLanguageCorePackage.NODE__FACETS);
+		}
 		return facets;
 	}
 
@@ -130,74 +127,69 @@ public abstract class NodeImpl extends MinimalEObjectImpl.Container implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.NODE__FACETS:
-			return ((InternalEList<?>) getFacets()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageCorePackage.NODE__FACETS:
+				return ((InternalEList<?>)getFacets()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.NODE__FACETS:
-			return getFacets();
+			case QIntegratedLanguageCorePackage.NODE__FACETS:
+				return getFacets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.NODE__FACETS:
-			getFacets().clear();
-			getFacets().addAll((Collection<? extends QFacet>) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.NODE__FACETS:
+				getFacets().clear();
+				getFacets().addAll((Collection<? extends QFacet>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.NODE__FACETS:
-			getFacets().clear();
-			return;
+			case QIntegratedLanguageCorePackage.NODE__FACETS:
+				getFacets().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.NODE__FACETS:
-			return facets != null && !facets.isEmpty();
+			case QIntegratedLanguageCorePackage.NODE__FACETS:
+				return facets != null && !facets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

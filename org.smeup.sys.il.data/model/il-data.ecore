@@ -28,6 +28,27 @@
       <eParameters name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="elements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="qSubarr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="elements" eType="#//Decimal"/>
+    </eOperations>
+    <eOperations name="qSubarr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="start" eType="#//Decimal"/>
+      <eParameters name="elements" eType="#//Decimal"/>
+    </eOperations>
+    <eOperations name="qSubarr" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eTypeParameter="#//Array/D"/>
+      </eGenericType>
+      <eParameters name="start" eType="#//Decimal"/>
+      <eParameters name="elements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Array/D"/>
     </eGenericSuperTypes>

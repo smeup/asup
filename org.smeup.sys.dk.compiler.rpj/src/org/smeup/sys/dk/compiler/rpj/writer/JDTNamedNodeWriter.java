@@ -154,6 +154,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		}
 
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		
+
+		if(dataTerm.getName().equalsIgnoreCase("DSKEYO"))
+			System.out.println(dataTerm);
 		Type type = getJavaType(dataTerm);
 		field.setType(type);
 

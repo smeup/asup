@@ -20,9 +20,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getPosition <em>Position
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getPosition <em>Position</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,7 +31,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -42,7 +40,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -55,9 +52,8 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getPosition() <em>Position</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPosition()
 	 * @generated
 	 * @ordered
@@ -65,9 +61,8 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	protected static final String POSITION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPosition() <em>Position</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPosition()
 	 * @generated
 	 * @ordered
@@ -76,7 +71,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected OverlayImpl() {
@@ -85,7 +79,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -95,7 +88,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -105,7 +97,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -118,7 +109,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -128,7 +118,6 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -141,81 +130,75 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OVERLAY__NAME:
-			return getName();
-		case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-			return getPosition();
+			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+				return getName();
+			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+				return getPosition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OVERLAY__NAME:
-			setName((String) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-			setPosition((String) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+				setName((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+				setPosition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OVERLAY__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-			setPosition(POSITION_EDEFAULT);
-			return;
+			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OVERLAY__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-			return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

@@ -16,8 +16,8 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}</li>
- * <li>{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,11 +46,9 @@ public interface QFormat extends QFacet {
 	FormatType getType();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QFormat#getType
-	 * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.core.FormatType
 	 * @see #getType()
 	 * @generated
@@ -75,12 +73,9 @@ public interface QFormat extends QFacet {
 	String getExpression();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Expression</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Expression</em>' attribute.
 	 * @see #getExpression()
 	 * @generated
 	 */

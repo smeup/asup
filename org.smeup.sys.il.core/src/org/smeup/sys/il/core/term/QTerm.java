@@ -23,7 +23,6 @@ import org.smeup.sys.il.core.QNamedNode;
 public interface QTerm extends QNamedNode {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -31,7 +30,6 @@ public interface QTerm extends QNamedNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
 	 * @generated
 	 */

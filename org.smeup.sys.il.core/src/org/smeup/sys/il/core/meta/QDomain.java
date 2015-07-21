@@ -14,8 +14,8 @@ package org.smeup.sys.il.core.meta;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,11 +42,9 @@ public interface QDomain extends QFacet {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getName
-	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
@@ -70,11 +68,9 @@ public interface QDomain extends QFacet {
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getText
-	 * <em>Text</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Text</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
 	 * @generated
 	 */

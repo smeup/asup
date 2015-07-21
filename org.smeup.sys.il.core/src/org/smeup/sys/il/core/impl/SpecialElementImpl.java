@@ -19,14 +19,10 @@ import org.smeup.sys.il.core.QSpecialElement;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getName <em>Name
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getText <em>Text
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#isUnary <em>Unary
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getValue <em>Value
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#isUnary <em>Unary</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,7 +37,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -51,7 +46,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -61,7 +55,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -71,7 +64,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getText()
 	 * @generated
 	 * @ordered
@@ -81,7 +73,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #isUnary() <em>Unary</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #isUnary()
 	 * @generated
 	 * @ordered
@@ -91,7 +82,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #isUnary() <em>Unary</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #isUnary()
 	 * @generated
 	 * @ordered
@@ -101,7 +91,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -111,7 +100,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -120,7 +108,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected SpecialElementImpl() {
@@ -129,7 +116,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -139,7 +125,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -149,7 +134,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -162,7 +146,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -172,7 +155,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -185,7 +167,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -195,7 +176,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -208,7 +188,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -218,7 +197,6 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -231,101 +209,95 @@ public class SpecialElementImpl extends NamedNodeImpl implements QSpecialElement
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
-			return getName();
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
-			return getText();
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
-			return isUnary();
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
-			return getValue();
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+				return getName();
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+				return getText();
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+				return isUnary();
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
-			setName((String) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
-			setText((String) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
-			setUnary((Boolean) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
-			setValue((String) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+				setName((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+				setText((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+				setUnary((Boolean)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+				setValue((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
-			setText(TEXT_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
-			setUnary(UNARY_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+				setText(TEXT_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+				setUnary(UNARY_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
-			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
-			return unary != UNARY_EDEFAULT;
-		case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__UNARY:
+				return unary != UNARY_EDEFAULT;
+			case QIntegratedLanguageCorePackage.SPECIAL_ELEMENT__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

@@ -14,8 +14,8 @@ package org.smeup.sys.il.core.meta;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}</li>
- * <li>{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,25 +42,23 @@ public interface QRange extends QFacet {
 	String getMin();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMin
-	 * <em>Min</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Min</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Min</em>' attribute.
 	 * @see #getMin()
 	 * @generated
 	 */
 	void setMin(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Max</b></em>' attribute. The default
-	 * value is <code>"1"</code>. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Max</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max</em>' attribute isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(String)
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getRange_Max()
@@ -70,11 +68,9 @@ public interface QRange extends QFacet {
 	String getMax();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMax
-	 * <em>Max</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Max</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max</em>' attribute.
 	 * @see #getMax()
 	 * @generated
 	 */

@@ -52,6 +52,8 @@ public class BaseDataQueueReceiver {
 		// content
 		String content = dataQueueManager.readDataQueue(job.getJobID(), library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100, null, null);
 
+		System.out.println("dtaq:\t"+content);
+		
 		QCharacter character = dataFactory.createCharacter(content.length(), false, false);
 		data.assign(character);
 

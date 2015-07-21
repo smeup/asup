@@ -16,8 +16,8 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}</li>
- * <li>{@link org.smeup.sys.il.core.meta.QDefault#getValues <em>Values</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QDefault#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,37 +44,33 @@ public interface QDefault extends QFacet {
 	String getValue();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Value</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
 	 */
 	void setValue(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Values</b></em>' attribute list. The
-	 * list contents are of type {@link java.lang.String}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Values</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Values</em>' attribute list isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDefault_Values()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	List<String> getValues();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -82,7 +78,6 @@ public interface QDefault extends QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

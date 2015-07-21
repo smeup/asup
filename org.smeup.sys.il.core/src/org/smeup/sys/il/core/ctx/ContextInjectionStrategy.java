@@ -17,16 +17,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Context Injection Strategy</b></em>', and utility methods for working
  * with them. <!-- end-user-doc -->
- *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getContextInjectionStrategy()
  * @model
  * @generated
  */
 public enum ContextInjectionStrategy implements Enumerator {
 	/**
-	 * The '<em><b>Local</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Local</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @see #LOCAL_VALUE
 	 * @generated
 	 * @ordered
@@ -34,9 +33,9 @@ public enum ContextInjectionStrategy implements Enumerator {
 	LOCAL(10, "Local", "LOCAL"),
 
 	/**
-	 * The '<em><b>Remote</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Remote</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @see #REMOTE_VALUE
 	 * @generated
 	 * @ordered
@@ -44,13 +43,13 @@ public enum ContextInjectionStrategy implements Enumerator {
 	REMOTE(20, "Remote", "REMOTE");
 
 	/**
-	 * The '<em><b>Local</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Local</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Local</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @see #LOCAL
 	 * @model name="Local" literal="LOCAL"
 	 * @generated
@@ -59,13 +58,13 @@ public enum ContextInjectionStrategy implements Enumerator {
 	public static final int LOCAL_VALUE = 10;
 
 	/**
-	 * The '<em><b>Remote</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Remote</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Remote</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @see #REMOTE
 	 * @model name="Remote" literal="REMOTE"
 	 * @generated
@@ -74,12 +73,14 @@ public enum ContextInjectionStrategy implements Enumerator {
 	public static final int REMOTE_VALUE = 20;
 
 	/**
-	 * An array of all the '<em><b>Context Injection Strategy</b></em>'
-	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * An array of all the '<em><b>Context Injection Strategy</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ContextInjectionStrategy[] VALUES_ARRAY = new ContextInjectionStrategy[] { LOCAL, REMOTE, };
+	private static final ContextInjectionStrategy[] VALUES_ARRAY = new ContextInjectionStrategy[] {
+			LOCAL,
+			REMOTE,
+		};
 
 	/**
 	 * A public read-only list of all the '
@@ -91,72 +92,70 @@ public enum ContextInjectionStrategy implements Enumerator {
 	public static final List<ContextInjectionStrategy> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
-	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ContextInjectionStrategy get(String literal) {
-		for (ContextInjectionStrategy result : VALUES_ARRAY)
-			if (result.toString().equals(literal))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ContextInjectionStrategy result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
 				return result;
+			}
+		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
-	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ContextInjectionStrategy getByName(String name) {
-		for (ContextInjectionStrategy result : VALUES_ARRAY)
-			if (result.getName().equals(name))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			ContextInjectionStrategy result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
 				return result;
+			}
+		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the
-	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the '<em><b>Context Injection Strategy</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ContextInjectionStrategy get(int value) {
 		switch (value) {
-		case LOCAL_VALUE:
-			return LOCAL;
-		case REMOTE_VALUE:
-			return REMOTE;
+			case LOCAL_VALUE: return LOCAL;
+			case REMOTE_VALUE: return REMOTE;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @generated
 	 */
 	private ContextInjectionStrategy(int value, String name, String literal) {
@@ -167,38 +166,34 @@ public enum ContextInjectionStrategy implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

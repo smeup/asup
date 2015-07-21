@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,13 +27,14 @@ import org.smeup.sys.il.data.QList;
 public interface QListDef<D extends QList<?>> extends QMultipleAtomicDataDef<D> {
 
 	/**
-	 * Returns the value of the '<em><b>Argument</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Argument</b></em>' containment
+	 * reference. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Argument</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Argument</em>' containment reference.
 	 * @see #setArgument(QUnaryAtomicDataDef)
 	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getListDef_Argument()
@@ -44,9 +45,13 @@ public interface QListDef<D extends QList<?>> extends QMultipleAtomicDataDef<D> 
 	QUnaryAtomicDataDef<?> getArgument();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Argument</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Argument</em>' containment
+	 *            reference.
 	 * @see #getArgument()
 	 * @generated
 	 */

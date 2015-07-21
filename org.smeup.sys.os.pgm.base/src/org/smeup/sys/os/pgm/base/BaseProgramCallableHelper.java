@@ -15,7 +15,6 @@ import java.lang.reflect.Method;
 
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.annotation.Entry;

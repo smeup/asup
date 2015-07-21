@@ -16,7 +16,8 @@ import org.smeup.sys.il.data.QList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.data.def.QMultipleDataDef#getDimension <em>Dimension</em>}</li>
+ * <li>{@link org.smeup.sys.il.data.def.QMultipleDataDef#getDimension <em>
+ * Dimension</em>}</li>
  * </ul>
  * </p>
  *

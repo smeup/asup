@@ -23,7 +23,6 @@ import org.smeup.sys.il.core.QObject;
 public interface QObjectWriter {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -31,7 +30,6 @@ public interface QObjectWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -39,9 +37,7 @@ public interface QObjectWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException"
-	 *        objectRequired="true"
+	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" objectRequired="true"
 	 * @generated
 	 */
 	void write(QObject object) throws IOException;

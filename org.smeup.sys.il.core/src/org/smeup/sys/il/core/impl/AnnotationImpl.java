@@ -28,7 +28,6 @@ public abstract class AnnotationImpl extends FacetImpl implements QAnnotation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected AnnotationImpl() {
@@ -37,7 +36,6 @@ public abstract class AnnotationImpl extends FacetImpl implements QAnnotation {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

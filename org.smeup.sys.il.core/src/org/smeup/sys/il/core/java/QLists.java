@@ -21,18 +21,14 @@ import java.util.List;
 public interface QLists {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true"
-	 *        elementRequired="true"
+	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addFirst(List<E> list, E element);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true"
-	 *        elementRequired="true"
+	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addLast(List<E> list, E element);

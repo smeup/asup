@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.lang.reflect.Array;
 
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 
 public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
@@ -148,17 +149,26 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
+	public QArray<D> qSubarr(int start, QDecimal elements) {
+		return qSubarr(start, elements.asInteger());
+	}
+
+	@Override
+	public QArray<D> qSubarr(QDecimal start, QDecimal elements) {
+		return qSubarr(start.asInteger(), elements.asInteger());
+	}
+
+	@Override
+	public QArray<D> qSubarr(QDecimal start, int elements) {
+		return qSubarr(start.asInteger(), elements);
+	}
+
+	@Override
 	public QArray<D> qSubarr(int start, int elements) {
 
 		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getModel(), elements);
 		slice(subArray, start+(getModel().getSize()*(start-1)));
-		
-		
-/*		subArray.allocate();		
-		for(int i=1; i<=elements;i++) {
-			subArray.get(i).eval(get(start+i-1));
-		}*/
-		
+					
 		return subArray;
 	}
 }

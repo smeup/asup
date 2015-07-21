@@ -120,7 +120,7 @@ public class DataStructureTester {
 		
 		dataFactory.createDataStruct(£MU_£G90DA_1.class, 0, true);
 		
-		£MU_JAJ11G_2 jaj11g_2 = dataFactory.createDataStruct(£MU_JAJ11G_2.class, 0, true);
+		dataFactory.createDataStruct(£MU_JAJ11G_2.class, 0, true);
 
 	}
 

@@ -818,6 +818,12 @@
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
+    <datas xsi:type="il-flow:FlowData"
+        name="*LDA">
+      <definition
+          xsi:type="il-data-def:CharacterDef"
+          length="1024"/>
+    </datas>
   </dataSection>
   <flowSection>
     <prototypes

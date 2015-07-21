@@ -21,9 +21,7 @@ import java.net.URI;
 public interface QURIs {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model required="true" uriDataType="org.smeup.sys.il.core.java.JavaURI"
-	 *        uriRequired="true"
+	 * @model required="true" uriDataType="org.smeup.sys.il.core.java.JavaURI" uriRequired="true"
 	 * @generated
 	 */
 	String getBaseName(URI uri);

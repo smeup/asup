@@ -16,7 +16,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,15 +26,14 @@ import org.smeup.sys.il.core.meta.QFacet;
  */
 public interface QConversion extends QFacet {
 	/**
-	 * Returns the value of the '<em><b>Status</b></em>' attribute. The literals
-	 * are from the enumeration {@link org.smeup.sys.il.core.ConversionStatus}.
+	 * Returns the value of the '<em><b>Status</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.smeup.sys.il.core.ConversionStatus}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Status</em>' attribute isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Status</em>' attribute.
 	 * @see org.smeup.sys.il.core.ConversionStatus
 	 * @see #setStatus(ConversionStatus)
@@ -45,12 +44,9 @@ public interface QConversion extends QFacet {
 	ConversionStatus getStatus();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Status</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' attribute.
 	 * @see org.smeup.sys.il.core.ConversionStatus
 	 * @see #getStatus()
 	 * @generated

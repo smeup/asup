@@ -28,7 +28,6 @@ public abstract class FacetImpl extends ObjectImpl implements QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected FacetImpl() {
@@ -37,7 +36,6 @@ public abstract class FacetImpl extends ObjectImpl implements QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

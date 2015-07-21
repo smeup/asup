@@ -16,8 +16,7 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.QObjectContainer#getContents <em>Contents
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.QObjectContainer#getContents <em>Contents</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,14 +26,13 @@ import java.util.List;
  */
 public interface QObjectContainer<T extends QObject> extends QObject {
 	/**
-	 * Returns the value of the '<em><b>Contents</b></em>' containment reference
-	 * list. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contents</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Contents</em>' containment reference list.
 	 * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectContainer_Contents()
 	 * @model containment="true"
@@ -44,7 +42,6 @@ public interface QObjectContainer<T extends QObject> extends QObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */

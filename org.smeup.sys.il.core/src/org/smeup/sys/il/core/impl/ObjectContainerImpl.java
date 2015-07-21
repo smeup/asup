@@ -26,8 +26,7 @@ import org.smeup.sys.il.core.QObjectContainer;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.ObjectContainerImpl#getContents <em>
- * Contents</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.ObjectContainerImpl#getContents <em>Contents</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,9 +38,8 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The cached value of the '{@link #getContents() <em>Contents</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getContents() <em>Contents</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getContents()
 	 * @generated
 	 * @ordered
@@ -50,7 +48,6 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected ObjectContainerImpl() {
@@ -59,7 +56,6 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -69,19 +65,18 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public List<T> getContents() {
-		if (contents == null)
+		if (contents == null) {
 			contents = new EObjectContainmentEList<T>(QObject.class, this, QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS);
+		}
 		return contents;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -93,74 +88,69 @@ public abstract class ObjectContainerImpl<T extends QObject> extends ObjectImpl 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
-			return ((InternalEList<?>) getContents()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
+				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
-			return getContents();
+			case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
+				return getContents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
-			getContents().clear();
-			getContents().addAll((Collection<? extends T>) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
+				getContents().clear();
+				getContents().addAll((Collection<? extends T>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
-			getContents().clear();
-			return;
+			case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
+				getContents().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
-			return contents != null && !contents.isEmpty();
+			case QIntegratedLanguageCorePackage.OBJECT_CONTAINER__CONTENTS:
+				return contents != null && !contents.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

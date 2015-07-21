@@ -19,7 +19,6 @@ package org.smeup.sys.il.core;
 public interface QNameable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

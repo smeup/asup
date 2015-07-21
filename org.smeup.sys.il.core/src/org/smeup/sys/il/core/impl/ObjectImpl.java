@@ -28,7 +28,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements QObject 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected ObjectImpl() {
@@ -37,7 +36,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements QObject 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override

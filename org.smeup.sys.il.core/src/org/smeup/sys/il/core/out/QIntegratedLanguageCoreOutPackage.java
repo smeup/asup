@@ -21,46 +21,43 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
  * @see org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "out";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/core/out";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-core-out";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @generated
 	 */
 	QIntegratedLanguageCoreOutPackage eINSTANCE = org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl.init();
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.out.QObjectWriter
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriter()
 	 * @generated
@@ -70,18 +67,15 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Object Writer</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_WRITER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriterFactory
-	 * <em>Object Writer Factory</em>}' class. <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @see org.smeup.sys.il.core.out.QObjectWriterFactory
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactory()
 	 * @generated
@@ -89,20 +83,17 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	int OBJECT_WRITER_FACTORY = 1;
 
 	/**
-	 * The number of structural features of the '<em>Object Writer Factory</em>'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The number of structural features of the '<em>Object Writer Factory</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_WRITER_FACTORY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
-	 * <em>Object Writer Factory Registry</em>}' class. <!-- begin-user-doc -->
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry <em>Object Writer Factory Registry</em>}' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @see org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactoryRegistry()
 	 * @generated
@@ -110,20 +101,17 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	int OBJECT_WRITER_FACTORY_REGISTRY = 2;
 
 	/**
-	 * The number of structural features of the '
-	 * <em>Object Writer Factory Registry</em>' class. <!-- begin-user-doc -->
+	 * The number of structural features of the '<em>Object Writer Factory Registry</em>' class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 *
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_WRITER_FACTORY_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.out.QOutputManager
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getOutputManager()
 	 * @generated
@@ -133,17 +121,14 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Output Manager</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 * @ordered
 	 */
 	int OUTPUT_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @return the meta object for class '<em>Object Writer</em>'.
 	 * @see org.smeup.sys.il.core.out.QObjectWriter
 	 * @generated
@@ -151,11 +136,9 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	EClass getObjectWriter();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriterFactory
-	 * <em>Object Writer Factory</em>}'. <!-- begin-user-doc --> <!--
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @return the meta object for class '<em>Object Writer Factory</em>'.
 	 * @see org.smeup.sys.il.core.out.QObjectWriterFactory
 	 * @generated
@@ -163,23 +146,18 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	EClass getObjectWriterFactory();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
-	 * <em>Object Writer Factory Registry</em>}'. <!-- begin-user-doc --> <!--
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry <em>Object Writer Factory Registry</em>}'.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
-	 * @return the meta object for class '
-	 *         <em>Object Writer Factory Registry</em>'.
+	 * @return the meta object for class '<em>Object Writer Factory Registry</em>'.
 	 * @see org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
 	 * @generated
 	 */
 	EClass getObjectWriterFactoryRegistry();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}
-	 * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Output Manager</em>'.
 	 * @see org.smeup.sys.il.core.out.QOutputManager
 	 * @generated
@@ -205,16 +183,13 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.out.QObjectWriter
-		 * <em>Object Writer</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QObjectWriter <em>Object Writer</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
 		 * @see org.smeup.sys.il.core.out.QObjectWriter
 		 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriter()
 		 * @generated
@@ -222,11 +197,9 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 		EClass OBJECT_WRITER = eINSTANCE.getObjectWriter();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.out.QObjectWriterFactory
-		 * <em>Object Writer Factory</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
 		 * @see org.smeup.sys.il.core.out.QObjectWriterFactory
 		 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactory()
 		 * @generated
@@ -234,11 +207,9 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 		EClass OBJECT_WRITER_FACTORY = eINSTANCE.getObjectWriterFactory();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
-		 * <em>Object Writer Factory Registry</em>}' class. <!-- begin-user-doc
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry <em>Object Writer Factory Registry</em>}' class.
+		 * <!-- begin-user-doc
 		 * --> <!-- end-user-doc -->
-		 *
 		 * @see org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry
 		 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactoryRegistry()
 		 * @generated
@@ -246,11 +217,9 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 		EClass OBJECT_WRITER_FACTORY_REGISTRY = eINSTANCE.getObjectWriterFactoryRegistry();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.out.QOutputManager
-		 * <em>Output Manager</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QOutputManager <em>Output Manager</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 *
 		 * @see org.smeup.sys.il.core.out.QOutputManager
 		 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getOutputManager()
 		 * @generated

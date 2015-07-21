@@ -138,6 +138,8 @@ public class RPJProgramSupport {
 	public Date qDATE;
 	@DataDef
 	public Specials qSP;
+	@DataDef(length=1024)
+	public QCharacter qLDA;
 
 	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 

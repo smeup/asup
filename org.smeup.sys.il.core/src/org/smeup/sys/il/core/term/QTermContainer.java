@@ -21,7 +21,6 @@ import java.util.List;
 public interface QTermContainer<T extends QTerm> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation"
 	 * @generated
 	 */

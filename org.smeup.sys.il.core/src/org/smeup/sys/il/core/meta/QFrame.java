@@ -25,7 +25,6 @@ public interface QFrame<O extends QObject> extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -38,7 +37,6 @@ public interface QFrame<O extends QObject> extends QNameable {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @model kind="operation"
 	 * @generated
 	 */

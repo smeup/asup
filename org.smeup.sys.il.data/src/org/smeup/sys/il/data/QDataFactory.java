@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
-import java.lang.String;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -35,8 +33,8 @@ import org.smeup.sys.il.data.term.QDataTerm;
  */
 public interface QDataFactory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" sizeRequired="true"
 	 * @generated
 	 */
@@ -44,27 +42,34 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" argumentRequired="true" dimensionRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	<D extends QBufferedData> QArray<D> createArray(QUnaryAtomicDataDef<D> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" unsignedRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" typeRequired="true" unsignedRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	QBinary createBinary(BinaryType type, boolean unsigned, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" lengthRequired="true" varyingRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" lengthRequired="true" varyingRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	QCharacter createCharacter(int length, boolean varying, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" dataDefRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -72,6 +77,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" dataTermRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -79,20 +85,27 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * 
+	 * @model required="true" typeDataType="org.smeup.sys.il.core.java.JavaType"
+	 *        typeRequired="true"
+	 *        annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation"
+	 *        annotationsRequired="true" annotationsMany="true"
 	 * @generated
 	 */
 	QDataDef<?> createDataDef(Type type, List<Annotation> annotations);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" elementsMany="true" lengthRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" elementsMany="true" lengthRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	<D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -100,27 +113,35 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" formatRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" typeRequired="true" formatRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	QDatetime createDate(DatetimeType type, String format, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" precisionRequired="true" scaleRequired="true" typeRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" precisionRequired="true" scaleRequired="true"
+	 *        typeRequired="true" initializeRequired="true"
 	 * @generated
 	 */
 	QDecimal createDecimal(int precision, int scale, DecimalType type, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" dataDelegateRequired="true" initializeRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * 
+	 * @model required="true" dataDelegateRequired="true"
+	 *        initializeRequired="true"
+	 *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>, D extends QBufferedData> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" typeRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -128,6 +149,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -135,6 +157,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -142,27 +165,34 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" argumentRequired="true" dimensionRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	<D extends QData> QList<D> createList(QUnaryAtomicDataDef<D> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" argumentRequired="true" dimensionRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	<D extends QBufferedData> QScroller<D> createScroller(QAtomicDataDef<D> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" dimensionRequired="true" initializeRequired="true"
+	 * 
+	 * @model required="true" argumentRequired="true" dimensionRequired="true"
+	 *        initializeRequired="true"
 	 * @generated
 	 */
 	<D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -170,6 +200,7 @@ public interface QDataFactory {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */

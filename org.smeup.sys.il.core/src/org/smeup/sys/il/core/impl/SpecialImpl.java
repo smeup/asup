@@ -29,10 +29,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getClassDelegate <em>Class
- * Delegate</em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getElements <em>Elements
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getClassDelegate <em>Class Delegate</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,10 +43,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getClassDelegate()
-	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getClassDelegate() <em>Class Delegate</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @see #getClassDelegate()
 	 * @generated
 	 * @ordered
@@ -56,10 +53,9 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	protected static final String CLASS_DELEGATE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getClassDelegate()
-	 * <em>Class Delegate</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getClassDelegate() <em>Class Delegate</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 *
 	 * @see #getClassDelegate()
 	 * @generated
 	 * @ordered
@@ -67,9 +63,8 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 	protected String classDelegate = CLASS_DELEGATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -78,7 +73,6 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected SpecialImpl() {
@@ -87,7 +81,6 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -97,7 +90,6 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -107,7 +99,6 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -120,109 +111,102 @@ public class SpecialImpl extends FacetImpl implements QSpecial {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public List<QSpecialElement> getElements() {
-		if (elements == null)
+		if (elements == null) {
 			elements = new EObjectContainmentEList<QSpecialElement>(QSpecialElement.class, this, QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS);
+		}
 		return elements;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
-			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
-			return getClassDelegate();
-		case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
-			return getElements();
+			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+				return getClassDelegate();
+			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
-			setClassDelegate((String) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
-			getElements().clear();
-			getElements().addAll((Collection<? extends QSpecialElement>) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+				setClassDelegate((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends QSpecialElement>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
-			setClassDelegate(CLASS_DELEGATE_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
-			getElements().clear();
-			return;
+			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+				setClassDelegate(CLASS_DELEGATE_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+				getElements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
-			return CLASS_DELEGATE_EDEFAULT == null ? classDelegate != null : !CLASS_DELEGATE_EDEFAULT.equals(classDelegate);
-		case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
-			return elements != null && !elements.isEmpty();
+			case QIntegratedLanguageCorePackage.SPECIAL__CLASS_DELEGATE:
+				return CLASS_DELEGATE_EDEFAULT == null ? classDelegate != null : !CLASS_DELEGATE_EDEFAULT.equals(classDelegate);
+			case QIntegratedLanguageCorePackage.SPECIAL__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (classDelegate: ");

@@ -22,7 +22,6 @@ import org.smeup.sys.il.core.QObject;
 public interface QFrameManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" objectRequired="true"
 	 * @generated
 	 */
@@ -30,7 +29,6 @@ public interface QFrameManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" eClassRequired="true"
 	 * @generated
 	 */
@@ -38,7 +36,6 @@ public interface QFrameManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" frameRequired="true"
 	 * @generated
 	 */

@@ -14,8 +14,8 @@ package org.smeup.sys.il.core.meta;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}</li>
- * <li>{@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,12 +42,9 @@ public interface QCardinality extends QFacet {
 	int getMin();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Min</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QCardinality#getMin <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Min</em>' attribute.
 	 * @see #getMin()
 	 * @generated
 	 */
@@ -55,7 +52,6 @@ public interface QCardinality extends QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -63,21 +59,20 @@ public interface QCardinality extends QFacet {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isMultiple();
 
 	/**
-	 * Returns the value of the '<em><b>Max</b></em>' attribute. The default
-	 * value is <code>"1"</code>. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Max</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max</em>' attribute isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @return the value of the '<em>Max</em>' attribute.
 	 * @see #setMax(int)
 	 * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getCardinality_Max()
@@ -87,12 +82,9 @@ public interface QCardinality extends QFacet {
 	int getMax();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Max</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.meta.QCardinality#getMax <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max</em>' attribute.
 	 * @see #getMax()
 	 * @generated
 	 */

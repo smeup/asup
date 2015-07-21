@@ -20,8 +20,8 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getIndex <em>Index</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getIndex <em>Index</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,7 +36,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -46,7 +45,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -56,7 +54,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The default value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -66,7 +63,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 	/**
 	 * The cached value of the '{@link #getIndex() <em>Index</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @see #getIndex()
 	 * @generated
 	 * @ordered
@@ -75,7 +71,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	protected RemapImpl() {
@@ -84,7 +79,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -94,7 +88,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -104,7 +97,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -117,7 +109,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -127,7 +118,6 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
@@ -140,81 +130,75 @@ public class RemapImpl extends FacetImpl implements QRemap {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.REMAP__NAME:
-			return getName();
-		case QIntegratedLanguageCorePackage.REMAP__INDEX:
-			return getIndex();
+			case QIntegratedLanguageCorePackage.REMAP__NAME:
+				return getName();
+			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+				return getIndex();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.REMAP__NAME:
-			setName((String) newValue);
-			return;
-		case QIntegratedLanguageCorePackage.REMAP__INDEX:
-			setIndex((String) newValue);
-			return;
+			case QIntegratedLanguageCorePackage.REMAP__NAME:
+				setName((String)newValue);
+				return;
+			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+				setIndex((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.REMAP__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case QIntegratedLanguageCorePackage.REMAP__INDEX:
-			setIndex(INDEX_EDEFAULT);
-			return;
+			case QIntegratedLanguageCorePackage.REMAP__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+				setIndex(INDEX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageCorePackage.REMAP__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case QIntegratedLanguageCorePackage.REMAP__INDEX:
-			return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
+			case QIntegratedLanguageCorePackage.REMAP__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QIntegratedLanguageCorePackage.REMAP__INDEX:
+				return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT.equals(index);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

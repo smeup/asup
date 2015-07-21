@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QOutputManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
@@ -29,7 +28,6 @@ public interface QOutputManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true" contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
@@ -37,7 +35,6 @@ public interface QOutputManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model contextRequired="true" nameRequired="true" writerRequired="true"
 	 * @generated
 	 */
@@ -45,7 +42,6 @@ public interface QOutputManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
