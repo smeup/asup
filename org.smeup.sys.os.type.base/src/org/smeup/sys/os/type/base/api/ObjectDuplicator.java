@@ -1,17 +1,12 @@
 package org.smeup.sys.os.type.base.api;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.smeup.sys.db.core.QConnection;
-import org.smeup.sys.db.core.QPreparedStatement;
-import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -22,7 +17,6 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -120,36 +114,12 @@ public @Supported class ObjectDuplicator {
 		
 		resourceWriter.save(duplicatedObject);
 		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
-			duplicateData(objToDuplicate, duplicatedObject);
+			new DataDuplicator(job).duplicateData(objToDuplicate, duplicatedObject);
 		}
 		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type.getName());
 	}
 
-	private void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
-		QPreparedStatement stmt = null;
-		try {
-			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
-			
-			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 
-			Table tableFrom = connection.getCatalogMetaData().getTable(objToDuplicate.getLibrary(), objToDuplicate.getName());
-			Table tableTo = connection.getCatalogMetaData().getTable(duplicatedObject.getLibrary(), duplicatedObject.getName());
-			
-			String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());
-			stmt = connection.prepareStatement(command);
-			stmt.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new OperatingSystemRuntimeException(e);
-		} finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-				}
-			}
-		}
-	}
 
 	private QResourceWriter<? extends QTypedObject> getWriter(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QType<?> type, String sourceLibraryName) {
 		QResourceWriter<? extends QTypedObject> resourceWriter = null;

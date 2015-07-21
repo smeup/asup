@@ -30,6 +30,7 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QCPEX0FL")
@@ -82,17 +83,29 @@ public @ToDo class FileCopier {
 		}		
 		//
 		QResourceWriter<QFile> fileWriter = writerFor(toFile.library);
-		QFile qFileTo = fileWriter.lookup(fromFile.name.trimR());
+		String toFileName = toFile.name.asData().trimR();
+		QFile qFileTo = fileWriter.lookup(toFileName);
 		
 		if(qFileTo == null && createFile.asEnum().equals(CREATEFILEEnum.NO)) {
-			throw new OperatingSystemRuntimeException("File " + toFile.name.asData().trimR() + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
+			throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
 		}
 
 		//
-				
+		copy(qFileFrom, fileReader, toFileName, qFileTo, fileWriter);		
 		//
 		throw new UnsupportedOperationException("TODO");
 		//
+	}
+
+	private void copy(QFile qFileFrom, QResourceReader<QFile> fileReader, String toFileName, QFile qFileTo, QResourceWriter<QFile> fileWriter) {
+		if (qFileTo == null) {
+			qFileTo = (QFile) EcoreUtil.copy((EObject)qFileFrom);
+			qFileTo.setName(toFileName);
+			fileWriter.save(qFileTo);
+			jobLogManager.info(job, "File " + toFileName + " created in library " + qFileTo.getLibrary());
+		}
+		
+//		new DataDuplicator(job).duplicateData(qFileFrom, qFileTo);
 	}
 
 	private QResourceWriter<QFile> writerFor(QEnum<LIBRARYEnum, QCharacter> lib) {
