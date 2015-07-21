@@ -73,9 +73,9 @@ public class FileMemberRunner {
 
 		QFileMembered fileMembered = (QFileMembered) qFile;
 
-		QFileMember fileMember = fileMemberManager.lookup(job.getContext(), sourceFile.library.asData().trimR(), fileMembered, sourceMember.trimR() + ".XMI");
+		QFileMember fileMember = fileMemberManager.lookup(job.getContext(), sourceFile.library.asData().trimR(), fileMembered, sourceMember.trimR());
 		if (fileMember == null)
-			throw new OperatingSystemRuntimeException("File membe not found: " + sourceFile + "/" + sourceMember);
+			throw new OperatingSystemRuntimeException("File member not found: " + sourceFile + "/" + sourceMember);
 
 		for (QFileMemberRow fileMemberRow : fileMember.getRows()) {
 			String line = fileMemberRow.getContent();
