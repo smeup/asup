@@ -19,20 +19,28 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
-public class ResultsetDisplayer {
 
-	public void display(QObjectWriter objectWriter, ResultSet resultSet) throws SQLException {
+public class Dysplayer {
+
+	private QObjectWriter objectWriter;
+
+	public Dysplayer(QObjectWriter objectWriter) {
+		this.objectWriter = objectWriter;
+	}
+
+	public void display(ResultSet resultSet) throws SQLException {
 		try {
 			objectWriter.initialize();
+			
 			EClass eClass = createEClass(resultSet);
 			QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
 
-			while (resultSet.next()) {
+			boolean firstTime = true;
+			while(next(resultSet) || firstTime) {
+				firstTime = false;
 				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
-					String value = resultSet.getString(eStructuralFeature.getName());
-					((EObject) qObject).eSet(eStructuralFeature, value);
-				}
-
+					((EObject) qObject).eSet(eStructuralFeature, getString(resultSet, eStructuralFeature.getName()));
+				}	
 				try {
 					objectWriter.write(qObject);
 				} catch (IOException e) {
@@ -43,7 +51,23 @@ public class ResultsetDisplayer {
 			objectWriter.flush();
 		}
 	}
-	
+
+	private String getString(ResultSet resultSet, String name) {
+		try {
+			return resultSet.getString(name);
+		} catch (Exception e) {
+			return "";
+		}
+	}
+
+	private boolean next(ResultSet resultSet) {
+		try {
+			return resultSet.next();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	private EClass createEClass(ResultSet resultSet) throws SQLException {
 		EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
 
@@ -80,4 +104,5 @@ public class ResultsetDisplayer {
 
 		return eClass;
 	}
+
 }

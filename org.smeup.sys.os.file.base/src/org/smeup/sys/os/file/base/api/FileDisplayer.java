@@ -25,7 +25,7 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.file.base.api.tools.ResultsetDisplayer;
+import org.smeup.sys.os.file.base.api.tools.Dysplayer;
 
 @Program(name = "QNFBROWS")
 public class FileDisplayer {
@@ -84,7 +84,7 @@ public class FileDisplayer {
 
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 		
-			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), output.asData().trimR());
+			QObjectWriter objectWriter = null;
 			
 			switch (output.asEnum()) {
 			case PRINT:
@@ -105,7 +105,7 @@ public class FileDisplayer {
 
 				ResultSet resultSet = statement.executeQuery(sql);
 
-				new ResultsetDisplayer().display(objectWriter, resultSet);
+				new Dysplayer(objectWriter).display(resultSet);
 
 			} catch (Exception e) {
 				throw new OperatingSystemRuntimeException(e);
@@ -136,22 +136,6 @@ public class FileDisplayer {
 		}
 	}
 	
-//	public static class FILE extends QDataStructWrapper {
-//		private static final long serialVersionUID = 1L;
-//		@DataDef(length = 10)
-//		public QEnum<NAMEGENERICEnum, QCharacter> nameGeneric;
-//		@DataDef(length = 10)
-//		public QEnum<LIBRARYEnum, QCharacter> library;
-//
-//		public static enum NAMEGENERICEnum {
-//			ALL, OTHER
-//		}
-//
-//		public static enum LIBRARYEnum {
-//			LIBL, CURLIB, USRLIBL, ALL, ALLUSR, OTHER
-//		}
-//	}
-
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
 		TERM_STAR, @Special(value = "P")

@@ -29,7 +29,8 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.file.base.api.tools.ResultsetDisplayer;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.file.base.api.tools.Dysplayer;
 
 @Program(name = "QSQSCHEM", text = "Run SQL Statement")
 public class SQLStatementRunner {
@@ -40,6 +41,9 @@ public class SQLStatementRunner {
 	@Inject
 	private QJob job;
 
+	@Inject
+	private QJobLogManager jobLogManager;
+	
 	@Entry
 	public void main(@DataDef(length = 5000) QCharacter sql, @DataDef(length = 10) QEnum<COMMITMENTCONTROLEnum, QCharacter> commitmentControl,
 			@DataDef(length = 10) QEnum<NAMINGEnum, QCharacter> naming, @DataDef(length = 8) QEnum<DATEFORMATEnum, QCharacter> dateFormat, @DataDef(length = 8) QCharacter dateSeparatorCharacter,
@@ -68,10 +72,15 @@ public class SQLStatementRunner {
 		ResultSet resultSet = null;
 		try {
 			statement = databaseConnection.createStatement();
-
-			resultSet = statement.executeQuery(sql.trimR());
-
-			new ResultsetDisplayer().display(objectWriter, resultSet);
+			
+			Dysplayer displayer = new Dysplayer(objectWriter);
+			String sqlAsString = sql.trim();
+			if (isUpdateStatement(sqlAsString)) {
+				jobLogManager.info(job, "Result: " + statement.execute(sqlAsString));
+			} else {
+				resultSet = statement.executeQuery(sqlAsString);
+				displayer.display(resultSet);
+			}
 
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
@@ -94,7 +103,18 @@ public class SQLStatementRunner {
 
 	}
 
-
+	private boolean isUpdateStatement(String sqlAsString) {
+		//TODO: improve the algorithm
+		String[] tokens = sqlAsString.split("\\s+");
+		if (tokens.length == 0) {
+			return false;
+		}
+		String firstToken = tokens[0].toUpperCase();
+		return firstToken.equals("DELETE") ||
+			   firstToken.equals("INSERT")	||
+			   firstToken.equals("UPDATE") ||
+			   firstToken.equals("CALL");
+	}
 
 
 	public static enum COMMITMENTCONTROLEnum {
