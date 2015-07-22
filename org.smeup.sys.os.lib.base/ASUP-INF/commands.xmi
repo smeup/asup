@@ -284,6 +284,33 @@
             length="10"/>
       </dataTerm>
     </parameters>
+    <parameters
+        allowVariable="true"
+        name="SYNC"
+        position="6"
+        status="POS">
+      <dataTerm
+          name="synchronizedLib"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NO"
+              value="N"/>
+          <elements
+              name="*YES"
+              value="Y"/>
+          <elements
+              name="*SAME"
+              value="S"/>
+        </facets>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
     <source
         type="CMD"
         content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;CHGLIB&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHLICMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;CHGLIB&quot; MaxPos=&quot;2&quot; Prompt=&quot;Change Library&quot; PmtOvrPgm=&quot;QLICLPOP&quot; PmtOvrLib=&quot;QSYS&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;LIB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;YES&quot; Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;TYPE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library type&quot; Len=&quot;7&quot; Rstd=&quot;YES&quot; Dft=&quot;*SAME&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*SAME, *PROD, *TEST&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SAME&quot; MapTo=&quot;*SAME&quot;/>&lt;Value Val=&quot;*PROD&quot; MapTo=&quot;PROD&quot;/>&lt;Value Val=&quot;*TEST&quot; MapTo=&quot;TEST&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CRTAUT&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Create authority&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*SAME&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SAME&quot; MapTo=&quot;*SAME&quot;/>&lt;Value Val=&quot;*SYSVAL&quot; MapTo=&quot;*SYSVAL&quot;/>&lt;Value Val=&quot;*CHANGE&quot; MapTo=&quot;*CHANGE&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*USE&quot; MapTo=&quot;*USE&quot;/>&lt;Value Val=&quot;*EXCLUDE&quot; MapTo=&quot;*EXCLUDE&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CRTOBJAUD&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Create object auditing&quot; Len=&quot;10&quot; Rstd=&quot;YES&quot; Dft=&quot;*SAME&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*SAME, *SYSVAL, *NONE...&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SAME&quot; MapTo=&quot;*SAME&quot;/>&lt;Value Val=&quot;*SYSVAL&quot; MapTo=&quot;*SYSVAL&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;*NONE&quot;/>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;Value Val=&quot;*CHANGE&quot; MapTo=&quot;*CHANGE&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;TEXT&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Text &amp;apos;description&amp;apos;&quot; Len=&quot;50&quot; Rstd=&quot;NO&quot; Dft=&quot;*SAME&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SAME&quot; MapTo=&quot;*SAME&quot;/>&lt;Value Val=&quot;*BLANK&quot; MapTo=&quot;&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
@@ -859,6 +886,30 @@
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="10"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="SYNC"
+        position="9"
+        status="POS">
+      <dataTerm
+          name="synchronizedLib"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NO"
+              value="N"/>
+          <elements
+              name="*YES"
+              value="Y"/>
+        </facets>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
     <source
