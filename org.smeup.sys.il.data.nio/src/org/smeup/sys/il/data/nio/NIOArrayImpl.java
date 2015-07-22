@@ -52,7 +52,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	@SuppressWarnings("unchecked")
 	@Override
 	public D get(int index) {
-
+			
 		D element = _elements[index - 1];
 		if (element == null) {
 			element = (D) getModel().copy();

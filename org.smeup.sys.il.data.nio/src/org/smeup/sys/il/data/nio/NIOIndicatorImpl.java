@@ -93,7 +93,18 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 
 	@Override
 	public boolean eq(String value) {
-		return toString().equals(value);
+		
+		if(asBoolean()) {
+			if(value.equals("1"))
+				return true;
+			else 
+				return false;
+		}
+		else
+			if(!value.equals("1"))
+				return true;
+			else 
+				return false;
 	}
 
 	@Override
