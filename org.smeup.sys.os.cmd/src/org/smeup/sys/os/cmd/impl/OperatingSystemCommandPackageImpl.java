@@ -704,6 +704,15 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getCommandParameter_Name(), 
+		   source, 
+		   new String[] {
+			 "length", "15"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });
 	}
 
