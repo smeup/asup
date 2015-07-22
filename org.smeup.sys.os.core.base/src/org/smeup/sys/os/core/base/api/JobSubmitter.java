@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -56,6 +57,8 @@ public class JobSubmitter {
 	private QCommandManager commandManager;
 	@Inject
 	private QProgramManager programManager;
+	@Inject
+	private QOutputManager outputManager;
 
 	@Entry
 	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
@@ -82,7 +85,7 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
 		QCallableProgram caller = programManager.getCaller(job.getJobID(), this);
-		
+
 		// Job spawn
 		QJob childJob = jobManager.create(job);
 
@@ -91,8 +94,14 @@ public class JobSubmitter {
 		case JOBD:
 			break;
 		case OTHER:
-			if (!jobName.isEmpty())
+			if (!jobName.isEmpty()) {
 				childJob.setJobName(jobName.asData().trimR());
+
+				// TODO remove -> QJobListener
+				if (childJob.getJobName().startsWith("LO_")) {
+					outputManager.setDefaultWriter(job.getContext(), "L");
+				}
+			}
 
 			break;
 		}

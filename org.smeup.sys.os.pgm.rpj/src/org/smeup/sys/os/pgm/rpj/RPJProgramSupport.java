@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -142,7 +144,8 @@ public class RPJProgramSupport {
 	public QCharacter qLDA;
 
 	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-
+	NumberFormat numberFormat = new DecimalFormat();
+	
 	public static class ProgramStatus extends QDataStructWrapper {
 
 		private static final long serialVersionUID = 1L;
@@ -317,18 +320,13 @@ public class RPJProgramSupport {
 
 	public QString qEditc(QNumeric numeric, String format) {
 		// TODO
-		QCharacter character = dataFactory.createCharacter(numeric.getLength(), false, true);
+		QCharacter character = dataFactory.createCharacter(10, false, true);
 		character.eval(numeric);
 
-/*		if (numeric.getLength() == 1) {
-		} else {
-			character = dataFactory.createCharacter(numeric.getLength(), true, true);
-			character.eval(Double.toString(numeric.asDouble()).replaceAll("\\.", ""));
-		}*/
-
 		switch (format) {
-		case "Z":
-			character.eval(character.s().replaceAll("0", " "));
+		case "Z":			
+			character.eval(numberFormat.format(Double.parseDouble(character.s())));
+//			character.eval(character.s().replaceAll("0", " "));
 			break;
 		case "X":
 			break;
@@ -341,7 +339,7 @@ public class RPJProgramSupport {
 	}
 
 	public QString qEditc(int numeric, String format) {
-		return null;
+		return qEditc(qBox(numeric), format);
 	}
 
 	public QString qEditw(QNumeric numeric, String format) {
