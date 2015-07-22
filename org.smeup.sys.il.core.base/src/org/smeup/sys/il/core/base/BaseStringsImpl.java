@@ -84,9 +84,4 @@ public class BaseStringsImpl implements QStrings {
 			i--;
 		return string.substring(0, i + 1);
 	}
-
-	@Override
-	public Boolean isEmptyTrim(String string) {
-		return (string == null || string.trim().equals(""));
-	}
 }
