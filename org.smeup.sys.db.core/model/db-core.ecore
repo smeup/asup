@@ -130,6 +130,18 @@
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connections" abstract="true" interface="true">
+    <eOperations name="close">
+      <eParameters name="stmt" eType="#//Statement"/>
+    </eOperations>
+    <eOperations name="close">
+      <eParameters name="rs" eType="#//DatabaseResultSet"/>
+    </eOperations>
+    <eOperations name="getString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="rs" eType="#//DatabaseResultSet"/>
+      <eParameters name="fieldName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectionConfig">
     <eStructuralFeatures xsi:type="ecore:EReference" name="credentials" lowerBound="1"
         eType="#//ConnectionCredentials" containment="true"/>

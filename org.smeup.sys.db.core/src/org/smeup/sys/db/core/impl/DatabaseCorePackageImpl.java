@@ -52,6 +52,7 @@ import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.core.QConnectionCredentials;
 import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QConnectionManager;
+import org.smeup.sys.db.core.QConnections;
 import org.smeup.sys.db.core.QDatabaseContainer;
 import org.smeup.sys.db.core.QDatabaseCoreFactory;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
@@ -68,6 +69,7 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -108,6 +110,13 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * @generated
 	 */
 	private EClass connectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass connectionsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -439,6 +448,15 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 */
 	public EClass getConnection() {
 		return connectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConnections() {
+		return connectionsEClass;
 	}
 
 	/**
@@ -916,6 +934,8 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		connectionEClass = createEClass(CONNECTION);
 
+		connectionsEClass = createEClass(CONNECTIONS);
+
 		connectionConfigEClass = createEClass(CONNECTION_CONFIG);
 		createEReference(connectionConfigEClass, CONNECTION_CONFIG__CREDENTIALS);
 		createEAttribute(connectionConfigEClass, CONNECTION_CONFIG__VENDOR);
@@ -1171,6 +1191,18 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		op = addEOperation(connectionEClass, ecorePackage.getEString(), "translate", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
+
+		initEClass(connectionsEClass, QConnections.class, "Connections", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(connectionsEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStatement(), "stmt", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(connectionsEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDatabaseResultSet(), "rs", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(connectionsEClass, ecorePackage.getEString(), "getString", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDatabaseResultSet(), "rs", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "fieldName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(connectionConfigEClass, QConnectionConfig.class, "ConnectionConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnectionConfig_Credentials(), this.getConnectionCredentials(), null, "credentials", null, 1, 1, QConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
