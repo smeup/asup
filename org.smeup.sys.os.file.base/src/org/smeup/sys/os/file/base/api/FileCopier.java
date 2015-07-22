@@ -7,9 +7,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
-import org.smeup.sys.il.core.QObjectIterator;
-import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -30,8 +27,6 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QFile;
-import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
@@ -44,17 +39,16 @@ public @ToDo class FileCopier {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
-	@Inject
 	
 	public @Entry void main(
 			@Supported @DataDef(qualified = true) FROMFILE fromFile,
 			@Supported @DataDef(qualified = true) TOFILE toFile,
-			@Unsupported @DataDef(length = 10) QEnum<FROMMEMBEREnum, QCharacter> fromMember,
-			@Unsupported @DataDef(length = 10) QEnum<TOMEMBERORLABELEnum, QCharacter> toMemberOrLabel,
+			@Supported @DataDef(length = 10) QEnum<FROMMEMBEREnum, QCharacter> fromMember,
+			@Supported @DataDef(length = 10) QEnum<TOMEMBERORLABELEnum, QCharacter> toMemberOrLabel,
 			@Supported @DataDef(length = 1) QEnum<REPLACEORADDRECORDSEnum, QCharacter> replaceOrAddRecords,
 			@Supported @DataDef(length = 1) QEnum<CREATEFILEEnum, QCharacter> createFile,
-			@ToDo @DataDef(length = 1) QEnum<PRINTFORMATEnum, QCharacter> printFormat,
-			@ToDo @DataDef(dimension = 3, length = 1) QEnum<WHICHRECORDSTOPRINTEnum, QScroller<QCharacter>> whichRecordsToPrint,
+			@Unsupported @DataDef(length = 1) QEnum<PRINTFORMATEnum, QCharacter> printFormat,
+			@Unsupported @DataDef(dimension = 3, length = 1) QEnum<WHICHRECORDSTOPRINTEnum, QScroller<QCharacter>> whichRecordsToPrint,
 			@ToDo @DataDef(length = 10) QEnum<RECORDFORMATOFLOGICALFILEEnum, QCharacter> recordFormatOfLogicalFile,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYFROMRECORDNUMBEREnum, QBinary> copyFromRecordNumber,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYTORECORDNUMBEREnum, QBinary> copyToRecordNumber,
@@ -179,11 +173,10 @@ public @ToDo class FileCopier {
 	}
 
 	public static enum WHICHRECORDSTOPRINTEnum {
-		@Special(value = "N")
-		NONE, @Special(value = "E")
-		EXCLD, @Special(value = "C")
-		COPIED, @Special(value = "R")
-		ERROR
+		@Special(value = "N") NONE, 
+		@Special(value = "E") EXCLD, 
+		@Special(value = "C") COPIED, 
+		@Special(value = "R") ERROR
 	}
 
 	public static enum RECORDFORMATOFLOGICALFILEEnum {
