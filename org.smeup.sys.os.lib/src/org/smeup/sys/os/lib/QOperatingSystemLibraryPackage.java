@@ -142,13 +142,22 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	int LIBRARY__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>Base Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__BASE_PACKAGE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__DEPENDENCIES = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+	int LIBRARY__DEPENDENCIES = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parent Library</b></em>' attribute.
@@ -157,16 +166,16 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__PARENT_LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
+	int LIBRARY__PARENT_LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Base Package</b></em>' attribute.
+	 * The feature id for the '<em><b>Synchronized</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__BASE_PACKAGE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int LIBRARY__SYNCHRONIZED = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class.
@@ -175,7 +184,7 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
+	int LIBRARY_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.lib.QLibraryManager <em>Library Manager</em>}'.
@@ -218,6 +227,17 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLibrary_ParentLibrary();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Synchronized</em>'.
+	 * @see org.smeup.sys.os.lib.QLibrary#isSynchronized()
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	EAttribute getLibrary_Synchronized();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}'.
@@ -287,6 +307,14 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIBRARY__PARENT_LIBRARY = eINSTANCE.getLibrary_ParentLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Synchronized</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIBRARY__SYNCHRONIZED = eINSTANCE.getLibrary_Synchronized();
 
 		/**
 		 * The meta object literal for the '<em><b>Base Package</b></em>' attribute feature.

@@ -35,6 +35,7 @@ public class FluxConnectorHook {
 			if (project.isOpen()) {
 
 				Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
+
 				if (repository.getProject(projectName) == null) {
 					repository.addProject(project);
 				}

@@ -27,9 +27,10 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getParentLibrary <em>Parent Library</em>}</li>
- *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getBasePackage <em>Base Package</em>}</li>
+ *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,6 +48,24 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	 */
 	public static final String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
 
+	/**
+	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasePackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BASE_PACKAGE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasePackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String basePackage = BASE_PACKAGE_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -75,23 +94,23 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	 */
 	protected String parentLibrary = PARENT_LIBRARY_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * The default value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBasePackage()
+	 * @see #isSynchronized()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BASE_PACKAGE_EDEFAULT = null;
+	protected static final boolean SYNCHRONIZED_EDEFAULT = false;
 	/**
-	 * The cached value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
+	 * The cached value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBasePackage()
+	 * @see #isSynchronized()
 	 * @generated
 	 * @ordered
 	 */
-	protected String basePackage = BASE_PACKAGE_EDEFAULT;
+	protected boolean synchronized_ = SYNCHRONIZED_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,6 +161,27 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 		parentLibrary = newParentLibrary;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY, oldParentLibrary, parentLibrary));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSynchronized() {
+		return synchronized_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSynchronized(boolean newSynchronized) {
+		boolean oldSynchronized = synchronized_;
+		synchronized_ = newSynchronized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED, oldSynchronized, synchronized_));
 	}
 
 	/**
@@ -211,12 +251,14 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
+				return getBasePackage();
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				return getDependencies();
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				return getParentLibrary();
-			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
-				return getBasePackage();
+			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
+				return isSynchronized();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -230,6 +272,9 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
+				setBasePackage((String)newValue);
+				return;
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				getDependencies().clear();
 				getDependencies().addAll((Collection<? extends String>)newValue);
@@ -237,8 +282,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				setParentLibrary((String)newValue);
 				return;
-			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
-				setBasePackage((String)newValue);
+			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
+				setSynchronized((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,14 +297,17 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
+				setBasePackage(BASE_PACKAGE_EDEFAULT);
+				return;
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				getDependencies().clear();
 				return;
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				setParentLibrary(PARENT_LIBRARY_EDEFAULT);
 				return;
-			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
-				setBasePackage(BASE_PACKAGE_EDEFAULT);
+			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
+				setSynchronized(SYNCHRONIZED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -273,12 +321,14 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
+				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				return dependencies != null && !dependencies.isEmpty();
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				return PARENT_LIBRARY_EDEFAULT == null ? parentLibrary != null : !PARENT_LIBRARY_EDEFAULT.equals(parentLibrary);
-			case QOperatingSystemLibraryPackage.LIBRARY__BASE_PACKAGE:
-				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
+			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
+				return synchronized_ != SYNCHRONIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -293,12 +343,14 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (dependencies: ");
+		result.append(" (basePackage: ");
+		result.append(basePackage);
+		result.append(", dependencies: ");
 		result.append(dependencies);
 		result.append(", parentLibrary: ");
 		result.append(parentLibrary);
-		result.append(", basePackage: ");
-		result.append(basePackage);
+		result.append(", synchronized: ");
+		result.append(synchronized_);
 		result.append(')');
 		return result.toString();
 	}

@@ -40,7 +40,7 @@ public class FluxLibraryListenerImpl implements QResourceListener<QLibrary> {
 		case PRE_SAVE:
 			
 			Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
-			if (repository.getProject(library.getName()) == null) {
+			if (repository.getProject(library.getName()) == null && library.isSynchronized()) {
 				repository.addProject(ResourcesPlugin.getWorkspace().getRoot().getProject(library.getName()));
 			}
 			

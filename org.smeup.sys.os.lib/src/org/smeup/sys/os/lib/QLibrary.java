@@ -19,9 +19,10 @@ import org.smeup.sys.os.type.QTypedObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getParentLibrary <em>Parent Library</em>}</li>
- *   <li>{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}</li>
+ *   <li>{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,6 +80,33 @@ public interface QLibrary extends QTypedObject {
 	 * @generated
 	 */
 	void setParentLibrary(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Synchronized</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Synchronized</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Synchronized</em>' attribute.
+	 * @see #setSynchronized(boolean)
+	 * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary_Synchronized()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isSynchronized();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Synchronized</em>' attribute.
+	 * @see #isSynchronized()
+	 * @generated
+	 */
+	void setSynchronized(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Base Package</b></em>' attribute.

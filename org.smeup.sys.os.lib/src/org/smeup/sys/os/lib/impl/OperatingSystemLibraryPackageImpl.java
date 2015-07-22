@@ -138,15 +138,6 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public EAttribute getLibrary_Dependencies() {
-		return (EAttribute)libraryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLibrary_ParentLibrary() {
 		return (EAttribute)libraryEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -155,8 +146,26 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLibrary_BasePackage() {
+	public EAttribute getLibrary_ParentLibrary() {
 		return (EAttribute)libraryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLibrary_Synchronized() {
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLibrary_BasePackage() {
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -190,9 +199,10 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		libraryManagerEClass = createEClass(LIBRARY_MANAGER);
 
 		libraryEClass = createEClass(LIBRARY);
+		createEAttribute(libraryEClass, LIBRARY__BASE_PACKAGE);
 		createEAttribute(libraryEClass, LIBRARY__DEPENDENCIES);
 		createEAttribute(libraryEClass, LIBRARY__PARENT_LIBRARY);
-		createEAttribute(libraryEClass, LIBRARY__BASE_PACKAGE);
+		createEAttribute(libraryEClass, LIBRARY__SYNCHRONIZED);
 	}
 
 	/**
@@ -249,9 +259,10 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		initEClass(libraryEClass, QLibrary.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLibrary_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Dependencies(), ecorePackage.getEString(), "dependencies", null, 0, -1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_ParentLibrary(), ecorePackage.getEString(), "parentLibrary", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLibrary_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLibrary_Synchronized(), ecorePackage.getEBoolean(), "synchronized", "false", 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(libraryEClass, ecorePackage.getEBoolean(), "isRootLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 

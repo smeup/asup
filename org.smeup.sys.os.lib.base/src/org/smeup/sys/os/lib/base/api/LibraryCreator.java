@@ -40,17 +40,27 @@ public class LibraryCreator {
 	private QJob job;
 
 	@Entry
-	public void main(@DataDef(length = 10) QCharacter library, @DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
-			@DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription, @DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
-			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber, @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
-			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority, @DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing) {
+	public void main(
+			@DataDef(length = 10) QCharacter library,
+			@DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
+			@DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
+			@DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
+			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber,
+			@DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
+			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority,
+			@DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing,
+			@DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
 
-		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemManager.getSystem().getSystemLibrary());
+		QResourceWriter<QLibrary> libraryWriter = resourceManager
+				.getResourceWriter(job, QLibrary.class, systemManager
+						.getSystem().getSystemLibrary());
 
 		if (libraryWriter.exists(library.trimR()))
-			throw new OperatingSystemRuntimeException("Library already exists: " + library.trimR());
+			throw new OperatingSystemRuntimeException(
+					"Library already exists: " + library.trimR());
 
-		QLibrary qLibrary = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
+		QLibrary qLibrary = QOperatingSystemLibraryFactory.eINSTANCE
+				.createLibrary();
 		qLibrary.setName(library.trimR());
 
 		switch (textDescription.asEnum()) {
@@ -59,6 +69,19 @@ public class LibraryCreator {
 		case OTHER:
 			qLibrary.setText(textDescription.asData().trimR());
 			break;
+		}
+
+		switch (synchronizedLib.asEnum()) {
+		case NO:
+			qLibrary.setSynchronized(false);
+			break;
+		case YES:
+			qLibrary.setSynchronized(true);
+			break;
+		default:
+			qLibrary.setSynchronized(false);
+			break;
+
 		}
 
 		libraryWriter.save(qLibrary);
@@ -94,5 +117,11 @@ public class LibraryCreator {
 
 	public static enum CreateObjectAuditingEnum {
 		SYSVAL, NONE, USRPRF, CHANGE, ALL
+	}
+
+	public static enum SYNCHRONIZEDLIBEnum {
+		@Special(value = "N")
+		NO, @Special(value = "Y")
+		YES
 	}
 }
