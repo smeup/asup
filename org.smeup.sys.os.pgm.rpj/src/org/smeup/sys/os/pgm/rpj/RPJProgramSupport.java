@@ -437,8 +437,11 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qTestn(QString string) {
-		// TODO
-		return null;
+		
+		QIndicator indicator = dataFactory.createIndicator(true);
+		string.testn(indicator);
+		
+		return indicator;
 	}
 
 	public QDecimal qSize(QBufferedData bufferedData) {
