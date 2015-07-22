@@ -37,17 +37,19 @@ public class JumpTransformer extends ClassAdapter {
 					super.visitMethodInsn(opcode, owner, name, desc);
 					return;
 				}
-				
+
 				if (opcode == Opcodes.INVOKEVIRTUAL && name.equals(JUMP)) {
 
 					Label label = tag2Label.get(lastTag);
-					if (label == null)
+					if (label == null) {
 						System.err.println("Unexpected condition: nasd78qweablreq68u");
+						super.visitMethodInsn(opcode, owner, name, desc);
+					} else {
+						super.visitInsn(Opcodes.POP);
+						super.visitInsn(Opcodes.POP);
 
-					super.visitInsn(Opcodes.POP);
-					super.visitInsn(Opcodes.POP);
-
-					super.visitJumpInsn(Opcodes.GOTO, label);
+						super.visitJumpInsn(Opcodes.GOTO, label);
+					}
 				} else
 					super.visitMethodInsn(opcode, owner, name, desc);
 			}

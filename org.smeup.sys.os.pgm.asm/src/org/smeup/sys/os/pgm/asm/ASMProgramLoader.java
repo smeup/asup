@@ -21,7 +21,7 @@ public class ASMProgramLoader implements WeavingHook {
 		
 		BundleWiring bundleWiring = wovenClass.getBundleWiring();
 		Bundle bundle = bundleWiring.getBundle();
-
+		
 		// ASUP project
 		// TODO for performances reason, check a single file not directory
 		if (bundle.getSymbolicName().startsWith("com.smeup.erp") && (bundle.getSymbolicName().endsWith(".gen") || bundle.getSymbolicName().endsWith(".ovr"))) {
@@ -31,6 +31,8 @@ public class ASMProgramLoader implements WeavingHook {
 
 	private void completeClass(WovenClass wovenClass) {
 
+//		System.out.println("asm:\t"+wovenClass.getClassName());
+		
 		// System.out.println("Woven: "+wovenClass);
 
 		ClassReader cr = new ClassReader(wovenClass.getBytes());

@@ -59,12 +59,4 @@ public interface QStrings {
 	 */
 	String trimR(String string);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" stringRequired="true"
-	 * @generated
-	 */
-	Boolean isEmptyTrim(String string);
-
 } // QStrings

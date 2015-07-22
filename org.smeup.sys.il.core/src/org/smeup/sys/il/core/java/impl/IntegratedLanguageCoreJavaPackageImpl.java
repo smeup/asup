@@ -677,9 +677,6 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		op = addEOperation(stringsEClass, ecorePackage.getEString(), "trimR", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(stringsEClass, ecorePackage.getEBooleanObject(), "isEmptyTrim", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(urIsEClass, QURIs.class, "URIs", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(urIsEClass, ecorePackage.getEString(), "getBaseName", 1, 1, IS_UNIQUE, IS_ORDERED);

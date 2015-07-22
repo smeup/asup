@@ -29,6 +29,9 @@ public class LabelAnalyzer extends EmptyVisitor {
 		
 		if(opcode == Opcodes.INVOKEVIRTUAL && name.equals(LABEL))
 			tag2Label.put(lastTag, lastLabel);
+		else if(name.equals(LABEL))
+			"".toCharArray();
+			
 	}
 	
 	@Override
