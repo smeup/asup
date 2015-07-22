@@ -126,12 +126,13 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @generated
 	 */
 	@Override
 	public boolean isEmpty() {
-		return getValues().isEmpty();
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

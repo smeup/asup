@@ -58,7 +58,12 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 
 		QCatalogContainer catalogContainer = baseDatabaseManagerImpl.getCatalogContainer(catalog);
 
-		QContext context = catalogContainer.getCatalogContext().createChildContext(connectionID);
+		QContext context;
+		try {
+			context = catalogContainer.getCatalogContext().createChildContext(connectionID);
+		} catch (UnsupportedOperationException e) {
+			throw new SQLException("Unable to open a database connection");
+		}
 
 		QConnection connection = new BaseConnectionImpl(baseDatabaseManagerImpl.getDatabaseContainer(), context);
 		connection.setCatalog(catalog);

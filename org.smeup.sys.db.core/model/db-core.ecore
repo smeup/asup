@@ -94,6 +94,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Connection" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="close" eExceptions="#//DatabaseException"/>
+    <eOperations name="close">
+      <eParameters name="stmt" eType="#//Statement"/>
+    </eOperations>
+    <eOperations name="close">
+      <eParameters name="rs" eType="#//DatabaseResultSet"/>
+    </eOperations>
     <eOperations name="createStatement" lowerBound="1" eType="#//Statement" eExceptions="#//DatabaseException"/>
     <eOperations name="createStatement" lowerBound="1" eType="#//Statement" eExceptions="#//DatabaseException">
       <eParameters name="native" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

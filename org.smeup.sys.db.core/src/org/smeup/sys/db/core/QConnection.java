@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.core;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
@@ -27,6 +28,22 @@ public interface QConnection extends QContextProvider {
 	 * @generated
 	 */
 	void close() throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void close(QStatement stmt);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model rsDataType="org.smeup.sys.db.core.DatabaseResultSet"
+	 * @generated
+	 */
+	void close(ResultSet rs);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
