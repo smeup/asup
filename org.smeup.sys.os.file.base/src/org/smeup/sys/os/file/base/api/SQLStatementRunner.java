@@ -12,7 +12,6 @@
 package org.smeup.sys.os.file.base.api;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.inject.Inject;
 
@@ -54,7 +53,8 @@ public class SQLStatementRunner {
 			@DataDef(length = 10) QEnum<SQLRULESEnum, QCharacter> sQLRules, DECIMALRESULTOPTIONS decimalResultOptions, @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 
 		QObjectWriter objectWriter = null;
-
+		QConnection databaseConnection = null;
+		
 		switch (output.asEnum()) {
 		case PRINT:
 			objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
@@ -64,7 +64,7 @@ public class SQLStatementRunner {
 			break;
 		}
 
-		QConnection databaseConnection = job.getContext().getAdapter(job, QConnection.class);
+		databaseConnection = job.getContext().getAdapter(job, QConnection.class);
 
 		// fileManager.getDatabaseConnection(job);
 
@@ -85,20 +85,10 @@ public class SQLStatementRunner {
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
-			if (resultSet != null)
-				try {
-					resultSet.close();
-				} catch (SQLException e) {
-					throw new OperatingSystemRuntimeException(e);
-				}
-			
-			if (statement != null)
-				try {
-					statement.close();
-				} catch (SQLException e) {
-					throw new OperatingSystemRuntimeException(e);
-				}
-
+			if (databaseConnection != null) {
+				databaseConnection.close(resultSet);
+				databaseConnection.close(statement);
+			}
 		}
 
 	}

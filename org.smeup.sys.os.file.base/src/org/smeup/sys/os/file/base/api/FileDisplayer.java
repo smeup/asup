@@ -1,7 +1,6 @@
 package org.smeup.sys.os.file.base.api;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.inject.Inject;
 
@@ -79,8 +78,9 @@ public class FileDisplayer {
 	}
 
 	private void display(QPhysicalFile qFile, QEnum<OUTPUTEnum, QCharacter> output) {
+		QConnection connection = null;
 		try {
-			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+			connection = job.getContext().getAdapter(job, QConnection.class);
 
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 		
@@ -110,15 +110,9 @@ public class FileDisplayer {
 			} catch (Exception e) {
 				throw new OperatingSystemRuntimeException(e);
 			} finally {
-				if (statement != null)
-					try {
-						statement.close();
-					} catch (SQLException e) {
-						throw new OperatingSystemRuntimeException(e);
-					}
+				if (connection != null)
+					connection.close(statement);
 			}
-			
-			
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		}

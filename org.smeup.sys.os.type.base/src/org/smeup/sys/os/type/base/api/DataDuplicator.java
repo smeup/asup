@@ -20,8 +20,9 @@ public class DataDuplicator {
 
 	public void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
 		QPreparedStatement stmt = null;
+		QConnection connection = null;
 		try {
-			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+			 connection = job.getContext().getAdapter(job, QConnection.class);
 			
 			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 
@@ -35,11 +36,8 @@ public class DataDuplicator {
 			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-				}
+			if (connection != null) {
+				connection.close(stmt);
 			}
 		}
 	}

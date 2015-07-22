@@ -42,6 +42,7 @@ import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QDatabaseContainer;
+import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.syntax.QAliasResolver;
 import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -521,5 +522,25 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	@Override
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		return getRawConnection().unwrap(iface);
+	}
+
+	@Override
+	public void close(QStatement stmt) {
+		try {
+			if (stmt != null) { 
+				stmt.close(); 
+			}
+		} catch (Exception e) {
+		}  	
+	}
+
+	@Override
+	public void close(ResultSet rs) {
+		try {
+			if (rs != null) { 
+				rs.close(); 
+			}
+		} catch (Exception e) {
+		}  	
 	}
 }
