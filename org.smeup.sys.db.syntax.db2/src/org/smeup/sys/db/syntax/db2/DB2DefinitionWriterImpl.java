@@ -210,7 +210,7 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 		String fields = fields(tableTo, isCreateRelativeRecordNumber);
 		
 		return "INSERT INTO " + getQualifiedNameInSQLFormat(tableTo) + "(" + fields + ")" +
-			   " SELECT " + fields + " FROM "  + getQualifiedNameInSQLFormat(tableTo);
+			   " SELECT " + fields + " FROM "  + getQualifiedNameInSQLFormat(tableFrom);
 	}
 
 	@SuppressWarnings("unchecked")

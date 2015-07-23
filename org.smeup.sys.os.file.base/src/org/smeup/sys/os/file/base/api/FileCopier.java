@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -26,6 +27,7 @@ import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
+import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
 
 @Program(name = "QCPEX0FL")
@@ -49,9 +51,9 @@ public @ToDo class FileCopier {
 			@Supported @DataDef(length = 1) QEnum<CREATEFILEEnum, QCharacter> createFile,
 			@Unsupported @DataDef(length = 1) QEnum<PRINTFORMATEnum, QCharacter> printFormat,
 			@Unsupported @DataDef(dimension = 3, length = 1) QEnum<WHICHRECORDSTOPRINTEnum, QScroller<QCharacter>> whichRecordsToPrint,
-			@ToDo @DataDef(length = 10) QEnum<RECORDFORMATOFLOGICALFILEEnum, QCharacter> recordFormatOfLogicalFile,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYFROMRECORDNUMBEREnum, QBinary> copyFromRecordNumber,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYTORECORDNUMBEREnum, QBinary> copyToRecordNumber,
+			@Unsupported @DataDef(length = 10) QEnum<RECORDFORMATOFLOGICALFILEEnum, QCharacter> recordFormatOfLogicalFile,
+			@Supported @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYFROMRECORDNUMBEREnum, QBinary> copyFromRecordNumber,
+			@Supported @DataDef(binaryType = BinaryType.INTEGER) QEnum<COPYTORECORDNUMBEREnum, QBinary> copyToRecordNumber,
 			@ToDo COPYFROMRECORDKEY copyFromRecordKey,
 			@ToDo COPYTORECORDKEY copyToRecordKey,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<NUMBEROFRECORDSTOCOPYEnum, QBinary> numberOfRecordsToCopy,
@@ -69,39 +71,48 @@ public @ToDo class FileCopier {
 		QFile qFileFrom = fileReader.lookup(fromFile.name.trimR());
 		if(qFileFrom == null)
 			throw new OperatingSystemRuntimeException("File " + fromFile.name.trimR() + " not found in library " + fromFile.library.asData());
+		if(!(qFileFrom instanceof QDatabaseFile))
+			throw new OperatingSystemRuntimeException("File " + fromFile.name.trimR() + " in library " + fromFile.library.asData() + " is not a datbase file");
 		
 		//
 		if (toFile.name.asEnum().equals(TOFILE.NAMEEnum.PRINT)) {
 			//TODO
 			//Something like: objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
-			throw new UnsupportedOperationException("CPYF on a printer file in not yet supported");
+			//Or something like DSPPFM *PRINT
+			throw new UnsupportedOperationException("CPYF on a printer file is not yet supported");
 		}		
 		//
 		QResourceWriter<QFile> fileWriter = writerFor(toFile.library);
 		String toFileName = toFile.name.asData().trimR();
 		QFile qFileTo = fileWriter.lookup(toFileName);
 		
-		if(qFileTo == null && createFile.asEnum().equals(CREATEFILEEnum.NO)) {
-			throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
+		if(qFileTo == null) {
+			if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
+				throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
+			} else {
+				qFileTo = createFile(qFileFrom, toFileName, fileWriter);
+			}
 		}
 
 		//
-		copy(qFileFrom, fileReader, toFileName, qFileTo, fileWriter);		
-		//
-		//TODO
-		throw new UnsupportedOperationException("TODO");
+		FileDataDuplicator fileDataDuplicator = 
+				new FileDataDuplicator(job.getContext().getAdapter(job, QConnection.class),
+									   qFileFrom, 
+									   qFileTo);
+		if (replaceOrAddRecords.asEnum().equals(REPLACEORADDRECORDSEnum.REPLACE)) {
+			fileDataDuplicator.clearFileTo();
+		}
+		fileDataDuplicator.duplicateData(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());	
 		//
 	}
 
-	private void copy(QFile qFileFrom, QResourceReader<QFile> fileReader, String toFileName, QFile qFileTo, QResourceWriter<QFile> fileWriter) {
-		if (qFileTo == null) {
-			qFileTo = (QFile) EcoreUtil.copy((EObject)qFileFrom);
-			qFileTo.setName(toFileName);
-			fileWriter.save(qFileTo);
-			jobLogManager.info(job, "File " + toFileName + " created in library " + qFileTo.getLibrary());
-		}
-		
-//		new DataDuplicator(job).duplicateData(qFileFrom, qFileTo);
+
+	private QFile createFile(QFile qFileFrom, String toFileName, QResourceWriter<QFile> fileWriter) {
+		QFile qFileTo = (QFile) EcoreUtil.copy((EObject)qFileFrom);
+		qFileTo.setName(toFileName);
+		fileWriter.save(qFileTo);
+		jobLogManager.info(job, "File " + toFileName + " created in library " + qFileTo.getLibrary());
+		return qFileTo;
 	}
 
 	private QResourceWriter<QFile> writerFor(QEnum<LIBRARYEnum, QCharacter> lib) {

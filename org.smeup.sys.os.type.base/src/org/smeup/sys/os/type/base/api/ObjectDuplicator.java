@@ -115,7 +115,7 @@ public @Supported class ObjectDuplicator {
 		
 		resourceWriter.save(duplicatedObject);
 		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
-			new DataDuplicator(job.getContext().getAdapter(job, QConnection.class))
+			new ObjectDataDuplicator(job.getContext().getAdapter(job, QConnection.class))
 			.duplicateData(objToDuplicate, duplicatedObject);
 		}
 		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type.getName());

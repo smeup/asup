@@ -9,11 +9,11 @@ import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.type.QTypedObject;
 
-public class DataDuplicator {
+public class ObjectDataDuplicator {
 
 	private QConnection connection;
 
-	public DataDuplicator(QConnection connection) {
+	public ObjectDataDuplicator(QConnection connection) {
 		this.connection = connection;
 	}
 
