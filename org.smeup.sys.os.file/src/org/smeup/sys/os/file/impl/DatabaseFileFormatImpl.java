@@ -197,4 +197,12 @@ public class DatabaseFileFormatImpl extends FileFormatImpl<QDatabaseFileFormatDe
 		}
 		return super.eIsSet(featureID);
 	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public String toString() {
+		return name;
+	}
 } // DatabaseFileFormatImpl

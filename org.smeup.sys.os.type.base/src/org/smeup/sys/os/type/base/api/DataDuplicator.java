@@ -7,27 +7,27 @@ import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QPreparedStatement;
 import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.type.QTypedObject;
 
 public class DataDuplicator {
 
-	private QJob job;
+	private QConnection connection;
 
-	public DataDuplicator(QJob job) {
-		this.job = job;
+	public DataDuplicator(QConnection connection) {
+		this.connection = connection;
 	}
 
-	public void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
-		QPreparedStatement stmt = null;
-		QConnection connection = null;
-		try {
-			 connection = job.getContext().getAdapter(job, QConnection.class);
-			
-			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 
-			Table tableFrom = connection.getCatalogMetaData().getTable(objToDuplicate.getLibrary(), objToDuplicate.getName());
-			Table tableTo = connection.getCatalogMetaData().getTable(duplicatedObject.getLibrary(), duplicatedObject.getName());
+	public void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
+		Table tableFrom = connection.getCatalogMetaData().getTable(objToDuplicate.getLibrary(), objToDuplicate.getName());
+		Table tableTo = connection.getCatalogMetaData().getTable(duplicatedObject.getLibrary(), duplicatedObject.getName());
+		duplicateData(tableFrom, tableTo);
+	}
+	
+	public void duplicateData(Table tableFrom, Table tableTo) {
+		QPreparedStatement stmt = null;
+		try {
+			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 			
 			String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());
 			stmt = connection.prepareStatement(command);
@@ -36,9 +36,7 @@ public class DataDuplicator {
 			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
-			if (connection != null) {
-				connection.close(stmt);
-			}
+			connection.close(stmt);
 		}
 	}
 }

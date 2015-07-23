@@ -252,21 +252,17 @@ public class CreationInfoImpl extends ObjectImpl implements QCreationInfo {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (creationDate: ");
-		result.append(creationDate);
-		result.append(", creationUser: ");
-		result.append(creationUser);
-		result.append(", creationSystem: ");
-		result.append(creationSystem);
-		result.append(')');
-		return result.toString();
+		return new StringBuffer()
+		.append(creationUser)
+		.append(" ")
+		.append(creationDate)
+		.append(" ")
+		.append(creationSystem)
+		.toString();
 	}
 
 } // QCreationInfoImpl

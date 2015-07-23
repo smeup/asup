@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -114,7 +115,8 @@ public @Supported class ObjectDuplicator {
 		
 		resourceWriter.save(duplicatedObject);
 		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
-			new DataDuplicator(job).duplicateData(objToDuplicate, duplicatedObject);
+			new DataDuplicator(job.getContext().getAdapter(job, QConnection.class))
+			.duplicateData(objToDuplicate, duplicatedObject);
 		}
 		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type.getName());
 	}

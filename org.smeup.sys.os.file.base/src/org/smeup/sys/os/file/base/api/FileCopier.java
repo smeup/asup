@@ -72,6 +72,7 @@ public @ToDo class FileCopier {
 		
 		//
 		if (toFile.name.asEnum().equals(TOFILE.NAMEEnum.PRINT)) {
+			//TODO
 			//Something like: objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			throw new UnsupportedOperationException("CPYF on a printer file in not yet supported");
 		}		
@@ -87,6 +88,7 @@ public @ToDo class FileCopier {
 		//
 		copy(qFileFrom, fileReader, toFileName, qFileTo, fileWriter);		
 		//
+		//TODO
 		throw new UnsupportedOperationException("TODO");
 		//
 	}
