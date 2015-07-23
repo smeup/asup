@@ -95,7 +95,7 @@ public interface QCommandParameter extends QObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCommandParameter_Name()
-	 * @model required="true" annotation="il-data length='128'"
+	 * @model required="true" annotation="il-data length='15'"
 	 * @generated
 	 */
 	String getName();
