@@ -1,13 +1,19 @@
 package org.smeup.sys.os.file.base.api;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
+import org.smeup.sys.il.core.out.QObjectWriter;
+import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -29,6 +35,7 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.base.api.tools.Dysplayer;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
@@ -41,6 +48,8 @@ public @ToDo class FileCopier {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
+	@Inject
+	private QOutputManager outputManager;
 	
 	public @Entry void main(
 			@Supported @DataDef(qualified = true) FROMFILE fromFile,
@@ -75,35 +84,41 @@ public @ToDo class FileCopier {
 			throw new OperatingSystemRuntimeException("File " + fromFile.name.trimR() + " in library " + fromFile.library.asData() + " is not a datbase file");
 		
 		//
+		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+		FileDataDuplicator fileDataDuplicator = new FileDataDuplicator(connection, qFileFrom);
 		if (toFile.name.asEnum().equals(TOFILE.NAMEEnum.PRINT)) {
-			//TODO
-			//Something like: objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
-			//Or something like DSPPFM *PRINT
-			throw new UnsupportedOperationException("CPYF on a printer file is not yet supported");
-		}		
-		//
-		QResourceWriter<QFile> fileWriter = writerFor(toFile.library);
-		String toFileName = toFile.name.asData().trimR();
-		QFile qFileTo = fileWriter.lookup(toFileName);
-		
-		if(qFileTo == null) {
-			if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
-				throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
-			} else {
-				qFileTo = createFile(qFileFrom, toFileName, fileWriter);
+			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+			String sql = fileDataDuplicator.fileFromResultsetQry(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());
+			QStatement statement = null;
+			ResultSet rs = null;
+			try {
+				statement = connection.createStatement();
+				rs = statement.executeQuery(sql);
+				new Dysplayer(objectWriter).display(rs);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				connection.close(rs);
+				connection.close(statement);
 			}
+		} else {
+			//
+			String toFileName = toFile.name.asData().trimR();
+			QResourceWriter<QFile> fileWriter = writerFor(toFile.library);
+			QFile qFileTo = fileWriter.lookup(toFileName);
+			fileDataDuplicator.setFileTo(qFileTo);
+			if(qFileTo == null) {
+				if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
+					throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
+				} else {
+					qFileTo = createFile(qFileFrom, toFileName, fileWriter);
+				}
+			}
+			if (replaceOrAddRecords.asEnum().equals(REPLACEORADDRECORDSEnum.REPLACE)) {
+				fileDataDuplicator.clearFileTo();
+			}
+			fileDataDuplicator.duplicateData(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());	
 		}
-
-		//
-		FileDataDuplicator fileDataDuplicator = 
-				new FileDataDuplicator(job.getContext().getAdapter(job, QConnection.class),
-									   qFileFrom, 
-									   qFileTo);
-		if (replaceOrAddRecords.asEnum().equals(REPLACEORADDRECORDSEnum.REPLACE)) {
-			fileDataDuplicator.clearFileTo();
-		}
-		fileDataDuplicator.duplicateData(copyFromRecordNumber.asData().asInteger(), copyToRecordNumber.asData().asInteger());	
-		//
 	}
 
 

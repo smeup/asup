@@ -16,12 +16,13 @@ public class FileDataDuplicator {
 	private QDefinitionWriter definitionWriter;
 	private Table tableFrom;
 	private Table tableTo;
+	private boolean isRelativeRecordNumber;
 
-	public FileDataDuplicator(QConnection connection, QFile fileFrom, QFile fileTo) {
+	public FileDataDuplicator(QConnection connection, QFile fileFrom) {
 		this.connection = connection;
 		this.definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 		this.tableFrom = tableFor(fileFrom);
-		this.tableTo = tableFor(fileTo);
+		this.isRelativeRecordNumber = connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber();
 	}
 
 	private Table tableFor(QFile fileFrom) {
@@ -29,12 +30,8 @@ public class FileDataDuplicator {
 	}
 
 	public void duplicateData(int fromRecordNr, int toRecordNr) {
-		boolean isRelativeRecordNumber = connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber();
 		String command = definitionWriter.copyTableData(tableFrom, tableTo, isRelativeRecordNumber);
-		if (isRelativeRecordNumber && (fromRecordNr > 0 || toRecordNr > 0)) {
-			command += " WHERE " + where(fromRecordNr, toRecordNr);
-		}
-		execute(command);
+		execute(command + whereRRN(fromRecordNr, toRecordNr));
 	}
 
 	private String where(int fromRecordNr, int toRecordNr) {
@@ -66,4 +63,21 @@ public class FileDataDuplicator {
 			connection.close(stmt);
 		}
 	}
+
+	public void setFileTo(QFile qFileTo) {
+		this.tableTo = tableFor(qFileTo);
+	}
+
+	public String fileFromResultsetQry(int fromRecordNr, int toRecordNr) {
+		String command = definitionWriter.selectData(tableFrom);
+		return command + whereRRN(fromRecordNr, toRecordNr);
+	}
+
+	private String whereRRN(int fromRecordNr, int toRecordNr) {
+		if (isRelativeRecordNumber && (fromRecordNr > 0 || toRecordNr > 0)) {
+			return  " WHERE " + where(fromRecordNr, toRecordNr);
+		}
+		return "";
+	}
+	
 }
