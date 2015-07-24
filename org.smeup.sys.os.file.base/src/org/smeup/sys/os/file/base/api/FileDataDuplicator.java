@@ -22,7 +22,6 @@ public class FileDataDuplicator {
 		this.definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 		this.tableFrom = tableFor(fileFrom);
 		this.tableTo = tableFor(fileTo);
-//		QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME;
 	}
 
 	private Table tableFor(QFile fileFrom) {
