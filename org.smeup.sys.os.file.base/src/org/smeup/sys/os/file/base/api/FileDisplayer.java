@@ -24,7 +24,7 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.file.base.api.tools.Dysplayer;
+import org.smeup.sys.os.file.base.api.tools.Displayer;
 
 @Program(name = "QNFBROWS")
 public class FileDisplayer {
@@ -105,7 +105,7 @@ public class FileDisplayer {
 
 				ResultSet resultSet = statement.executeQuery(sql);
 
-				new Dysplayer(objectWriter).display(resultSet);
+				new Displayer(objectWriter).display(resultSet);
 
 			} catch (Exception e) {
 				throw new OperatingSystemRuntimeException(e);

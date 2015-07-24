@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
+import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -330,6 +331,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
@@ -365,7 +367,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		initEClass(spoolFileWriterEClass, QSpoolFileWriter.class, "SpoolFileWriter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(spoolFileWriterEClass, null, "writeSpoolFile", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSpoolFile(), "spoolFile", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(spoolFileDataEClass, QSpoolFileData.class, "SpoolFileData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -426,7 +428,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		  (getSpoolFile_SpoolID(), 
 		   source, 
 		   new String[] {
-			 "length", "13"
+			 "length", "36"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")

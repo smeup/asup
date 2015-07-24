@@ -177,7 +177,7 @@ public interface QSpoolFile extends QObjectNameable {
 	 * @see #setSpoolID(String)
 	 * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile_SpoolID()
 	 * @model id="true" required="true"
-	 *        annotation="il-data length='13'"
+	 *        annotation="il-data length='36'"
 	 * @generated
 	 */
 	String getSpoolID();

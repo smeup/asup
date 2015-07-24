@@ -28,7 +28,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="spoolID" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
-        <details key="length" value="13"/>
+        <details key="length" value="36"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="userData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -45,7 +45,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpoolFileWriter" abstract="true" interface="true">
     <eOperations name="writeSpoolFile">
-      <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="spoolFile" lowerBound="1" eType="#//SpoolFile"/>
     </eOperations>
   </eClassifiers>

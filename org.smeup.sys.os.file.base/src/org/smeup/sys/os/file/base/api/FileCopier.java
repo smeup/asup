@@ -35,7 +35,7 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
-import org.smeup.sys.os.file.base.api.tools.Dysplayer;
+import org.smeup.sys.os.file.base.api.tools.Displayer;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
@@ -94,7 +94,7 @@ public @ToDo class FileCopier {
 			try {
 				statement = connection.createStatement();
 				rs = statement.executeQuery(sql);
-				new Dysplayer(objectWriter).display(rs);
+				new Displayer(objectWriter).display(rs);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {

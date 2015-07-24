@@ -20,11 +20,11 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 
-public class Dysplayer {
+public class Displayer {
 
 	private QObjectWriter objectWriter;
 
-	public Dysplayer(QObjectWriter objectWriter) {
+	public Displayer(QObjectWriter objectWriter) {
 		this.objectWriter = objectWriter;
 	}
 

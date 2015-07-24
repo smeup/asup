@@ -29,7 +29,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
-import org.smeup.sys.os.file.base.api.tools.Dysplayer;
+import org.smeup.sys.os.file.base.api.tools.Displayer;
 
 @Program(name = "QSQSCHEM", text = "Run SQL Statement")
 public class SQLStatementRunner {
@@ -73,7 +73,7 @@ public class SQLStatementRunner {
 		try {
 			statement = databaseConnection.createStatement();
 			
-			Dysplayer displayer = new Dysplayer(objectWriter);
+			Displayer displayer = new Displayer(objectWriter);
 			String sqlAsString = sql.trim();
 			if (isUpdateStatement(sqlAsString)) {
 				jobLogManager.info(job, "Result: " + statement.execute(sqlAsString));

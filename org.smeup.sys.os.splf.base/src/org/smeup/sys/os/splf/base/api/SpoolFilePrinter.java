@@ -21,6 +21,8 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.os.core.OperatingSystemException;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
@@ -39,15 +41,18 @@ public @Program(name = "QMUSPLFP") class SpoolFilePrinter {
 
 	public @Entry void main(@DataDef(length = 255) QCharacter spoolID) {
 
+		BundleContext bundleContext = FrameworkUtil.getBundle(QJob.class).getBundleContext();
 		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
 		QSpoolFile spoolFile = spoolFileReader.lookup(spoolID.trimR());
-
-		BundleContext bundleContext = FrameworkUtil.getBundle(QJob.class).getBundleContext();
+		
+		if (spoolFile == null) {
+			throw new OperatingSystemRuntimeException("Invalid spool ID");
+		}
 
 		try {
 			for (ServiceReference<QSpoolFileWriter> sfw : bundleContext.getServiceReferences(QSpoolFileWriter.class, null)) {
 				QSpoolFileWriter sw = bundleContext.getService(sfw);
-				System.out.println(sw);
+				sw.writeSpoolFile(job.getContext(), spoolFile);
 			}
 		} catch (InvalidSyntaxException e) {
 			// TODO Auto-generated catch block

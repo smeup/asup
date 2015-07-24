@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.splf;
 
+import org.smeup.sys.il.core.ctx.QContext;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +25,8 @@ public interface QSpoolFileWriter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextIDRequired="true" spoolFileRequired="true"
+	 * @model contextRequired="true" spoolFileRequired="true"
 	 * @generated
 	 */
-	void writeSpoolFile(String contextID, QSpoolFile spoolFile);
+	void writeSpoolFile(QContext context, QSpoolFile spoolFile);
 } // QSpoolFileWriter
