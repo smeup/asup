@@ -100,6 +100,10 @@ public class CDOJobManagerImpl implements QJobManager {
 						job.getLibraries().add(library);
 			}
 
+			String library = userProfile.getLibrary();
+			if (library != null && !library.trim().equals("")) {
+				job.setCurrentLibrary(library);
+			}
 
 			QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 			jobEvent.setSource(job);

@@ -99,13 +99,11 @@
       xsi:type="os-cmd:Command"
       name="CHGCURLIB"
       text="Change Current Library"
-      program="QLICHLLE"
-      status="TODO">
+      program="QLICHLLE">
     <parameters
         allowVariable="true"
         name="CURLIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="currentLibrary">
         <facets
@@ -438,13 +436,12 @@
       xsi:type="os-cmd:Command"
       name="CLRLIB"
       text="Clear Library"
-      program="QLICLLIB"
-      status="TODO">
+      program="QLICLLIB1"
+      typeName="">
     <parameters
         allowVariable="true"
         name="LIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="library">
         <facets
@@ -920,7 +917,8 @@
       xsi:type="os-cmd:Command"
       name="DLTLIB"
       text="Delete library"
-      program="QLICLLIB">
+      program="QLICLLIB"
+      typeName="">
     <parameters
         allowVariable="true"
         name="LIB"

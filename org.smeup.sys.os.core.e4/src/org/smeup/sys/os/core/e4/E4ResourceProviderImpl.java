@@ -83,14 +83,20 @@ public class E4ResourceProviderImpl implements QResourceProvider {
 				resources.put(library.getName(), resource);
 			}
 			break;
+		
 		case LIBRARY_LIST:
-
+			resources.put(job.getCurrentLibrary(), getResource(job.getCurrentLibrary(), klass));
+			
 			for (String libraryName : job.getLibraries()) {
-				Resource resource = getResource(libraryName, klass);
-				resources.put(libraryName, resource);
+				resources.put(libraryName, getResource(libraryName, klass));
 			}
 
 			break;
+		
+		case CURRENT_LIBRARY:
+			resources.put(job.getCurrentLibrary(), getResource(job.getCurrentLibrary(), klass));
+			break;
+			
 		default:
 			throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 		}
@@ -111,7 +117,10 @@ public class E4ResourceProviderImpl implements QResourceProvider {
 
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
-		return null;
+		if (Scope.CURRENT_LIBRARY.equals(scope)) {
+			return getResourceWriter(job, klass, job.getCurrentLibrary());
+		}
+		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 	}
 
 	private <T extends QObjectNameable> Resource getResource(String repository, Class<T> klass) {

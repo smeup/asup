@@ -116,8 +116,14 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			}
 			break;
 		case LIBRARY_LIST:
+			resource.getContainers().add(job.getCurrentLibrary());
 			resource.getContainers().addAll(job.getLibraries());
 			break;
+			
+		case CURRENT_LIBRARY:
+			resource.getContainers().add(job.getCurrentLibrary());
+			break;
+			
 		default:
 			throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 		}
@@ -137,7 +143,9 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
-		// TODO Auto-generated method stub
-		return null;
+		if (Scope.CURRENT_LIBRARY.equals(scope)) {
+			return getResourceWriter(job, klass, job.getCurrentLibrary());
+		}
+		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 	}
 }

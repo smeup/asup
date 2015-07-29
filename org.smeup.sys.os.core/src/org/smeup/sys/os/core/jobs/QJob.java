@@ -32,6 +32,7 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}</li>
  * </ul>
  * </p>
  *
@@ -273,6 +274,34 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	List<String> getMessages();
+
+	/**
+	 * Returns the value of the '<em><b>Current Library</b></em>' attribute.
+	 * The default value is <code>"QGPL"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Library</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Library</em>' attribute.
+	 * @see #setCurrentLibrary(String)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_CurrentLibrary()
+	 * @model default="QGPL"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	String getCurrentLibrary();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Library</em>' attribute.
+	 * @see #getCurrentLibrary()
+	 * @generated
+	 */
+	void setCurrentLibrary(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

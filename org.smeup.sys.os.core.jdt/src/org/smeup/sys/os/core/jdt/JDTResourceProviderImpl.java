@@ -59,6 +59,14 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QJob job, Class<T> klass, Scope scope) {
 
+		List<String> containers = containers(job, scope);
+
+		QResourceSetReader<T> resourceReader = new JDTResourceSetReaderImpl<T>(job, sourceManager, containers, klass);
+
+		return resourceReader;
+	}
+
+	private List<String> containers(QJob job, Scope scope) {
 		List<String> containers = new ArrayList<>();
 
 		// set scope libraries
@@ -71,19 +79,21 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 				containers.add(libraryIterator.next().getName());
 			}
 			break;
+			
 		case LIBRARY_LIST:
-
+			containers.add(job.getCurrentLibrary());
 			for (String libraryName : job.getLibraries())
 				containers.add(libraryName);
-
 			break;
+
+		case CURRENT_LIBRARY:
+			containers.add(job.getCurrentLibrary());
+			break;
+			
 		default:
 			throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 		}
-
-		QResourceSetReader<T> resourceReader = new JDTResourceSetReaderImpl<T>(job, sourceManager, containers, klass);
-
-		return resourceReader;
+		return containers;
 	}
 
 	@Override
@@ -96,8 +106,10 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
-		// TODO Auto-generated method stub
-		return null;
+		if (Scope.CURRENT_LIBRARY.equals(scope)) {
+			return getResourceWriter(job, klass, job.getCurrentLibrary());
+		}
+		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 	}
 
 }
