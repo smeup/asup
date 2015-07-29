@@ -35,4 +35,12 @@ public interface QCommandManager {
 	 */
 	void executeCommand(String contextID, QCallableCommand command);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextIDRequired="true" commandRequired="true" defaultsRequired="true"
+	 * @generated
+	 */
+	void executeCommandImmediate(String contextID, String command, Map<String, Object> variables, boolean defaults);
+
 } // QCommandManager

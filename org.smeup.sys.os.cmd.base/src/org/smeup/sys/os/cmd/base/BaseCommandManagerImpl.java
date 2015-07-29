@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.cmd.base;
 
+import java.util.Map;
+
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.os.cmd.QCallableCommand;
@@ -51,5 +53,10 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		}
 
 		programManager.callProgram(contextID, null, callableCommand.getCommand().getProgram(), parameters);
+	}
+	@Override
+	public void executeCommandImmediate(String contextID, String command, Map<String, Object> variables, boolean defaults) {
+		QCallableCommand preparedCommand = prepareCommand(contextID, command, variables, defaults);
+		executeCommand(contextID, preparedCommand);
 	}
 }

@@ -497,13 +497,11 @@
       xsi:type="os-cmd:Command"
       name="CPYLIB"
       text="Copy Library"
-      program="QMNCPYL"
-      status="TODO">
+      program="QMNCPYL">
     <parameters
         allowVariable="true"
         name="FROMLIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="existingLibrary">
         <facets
@@ -519,8 +517,7 @@
     <parameters
         allowVariable="true"
         name="TOLIB"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="newLibrary">
         <facets
@@ -536,8 +533,7 @@
     <parameters
         allowVariable="true"
         name="CRTLIB"
-        position="3"
-        status="POS">
+        position="3">
       <dataTerm
           name="createLibrary"
           restricted="true">
@@ -560,8 +556,7 @@
     <parameters
         allowVariable="true"
         name="DATA"
-        position="4"
-        status="POS">
+        position="4">
       <dataTerm
           name="duplicateData"
           restricted="true">

@@ -41,6 +41,9 @@ public @Supported class LibraryClearer {
 		
 		QLibrary qLibrary = findLibrary(library);
 		
+		if (qLibrary == null)
+			throw new OperatingSystemRuntimeException("Library not found: " + library.asData());
+		
 		new LibraryHandler(qLibrary, job, typeRegistry, resourceManager).clear();
 		
 		jobLogManager.info(job, "Cleared library " + qLibrary.getName());
@@ -59,10 +62,7 @@ public @Supported class LibraryClearer {
 			qLibrary = libraryWriter.lookup(job.getCurrentLibrary());
 			break;
 		}
-		
-		if (qLibrary == null)
-			throw new OperatingSystemRuntimeException("Library not found: " + library);
-		
+			
 		return qLibrary;
 	}
 
