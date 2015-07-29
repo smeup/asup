@@ -22,9 +22,12 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
+import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobEvent;
+import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -81,6 +84,20 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass jobListenerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jobEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum jobStatusEEnum = null;
 
 	/**
@@ -89,6 +106,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EEnum jobTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jobEventTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -379,6 +403,42 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJobListener() {
+		return jobListenerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJobEvent() {
+		return jobEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJobEvent_Source() {
+		return (EReference)jobEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobEvent_Type() {
+		return (EAttribute)jobEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getJobStatus() {
 		return jobStatusEEnum;
@@ -392,6 +452,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	@Override
 	public EEnum getJobType() {
 		return jobTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getJobEventType() {
+		return jobEventTypeEEnum;
 	}
 
 	/**
@@ -436,6 +505,12 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(jobEClass, JOB__LIBRARIES);
 		createEAttribute(jobEClass, JOB__MESSAGES);
 
+		jobEventEClass = createEClass(JOB_EVENT);
+		createEReference(jobEventEClass, JOB_EVENT__SOURCE);
+		createEAttribute(jobEventEClass, JOB_EVENT__TYPE);
+
+		jobListenerEClass = createEClass(JOB_LISTENER);
+
 		jobLogEClass = createEClass(JOB_LOG);
 		createEReference(jobLogEClass, JOB_LOG__ENTRIES);
 		createEAttribute(jobLogEClass, JOB_LOG__JOB_ID);
@@ -450,6 +525,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobManagerEClass = createEClass(JOB_MANAGER);
 
 		// Create enums
+		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
 		jobStatusEEnum = createEEnum(JOB_STATUS);
 		jobTypeEEnum = createEEnum(JOB_TYPE);
 	}
@@ -506,6 +582,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getJob_Libraries(), ecorePackage.getEString(), "libraries", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(jobEventEClass, QJobEvent.class, "JobEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getJobEvent_Source(), this.getJob(), null, "source", null, 0, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJobEvent_Type(), this.getJobEventType(), "type", null, 1, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jobListenerEClass, QJobListener.class, "JobListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(jobListenerEClass, null, "handleEvent", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJobEvent(), "event", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(jobLogEClass, QJobLog.class, "JobLog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobLog_Entries(), this.getJobLogEntry(), null, "entries", null, 1, -1, QJobLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJobLog_JobID(), ecorePackage.getEString(), "jobID", null, 1, 1, QJobLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -517,7 +602,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(jobLogManagerEClass, QJobLogManager.class, "JobLogManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(jobLogManagerEClass, null, "info", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(jobLogManagerEClass, null, "info", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -565,11 +650,20 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		op = addEOperation(jobManagerEClass, this.getJob(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(jobManagerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJobListener(), "listener", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(jobManagerEClass, null, "updateStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(jobEventTypeEEnum, JobEventType.class, "JobEventType");
+		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STARTING);
+		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STARTED);
+		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STOPPING);
+		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STOPPED);
+
 		initEEnum(jobStatusEEnum, JobStatus.class, "JobStatus");
 		addEEnumLiteral(jobStatusEEnum, JobStatus.ACTIVE);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.TIME_WAITING);

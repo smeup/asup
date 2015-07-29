@@ -36,9 +36,9 @@ import org.smeup.sys.os.splf.QSpoolFileRow;
 import org.smeup.sys.os.splf.QSpoolFileWriter;
 
 public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
+
 	@Inject
 	private QOutputManager outputManager;
-
 
 	@Override
 	public void writeSpoolFile(QContext context, QSpoolFile spoolFile) {

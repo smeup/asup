@@ -27,10 +27,14 @@ import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobEvent;
+import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
@@ -49,6 +53,8 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	private QExpressionParser expressionParser;
 
+	private List<QJobListener> listeners = new ArrayList<QJobListener>();
+	
 	@Inject
 	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QApplication application) {
 		this.systemManager = (E4SystemManagerImpl) systemManager;
@@ -126,10 +132,22 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 					job.getLibraries().add(library);
 		}
 
+		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
+		jobEvent.setSource(job);
+		jobEvent.setType(JobEventType.STARTING);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
+		
 		// save
 		QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, job.getSystem().getSystemLibrary());
 		jobWriter.save(job);
 
+		jobEvent.setType(JobEventType.STARTED);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
+		
 		activeJobs.put(job.getJobID(), job);
 
 		return job;
@@ -148,9 +166,21 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 	@Override
 	public void close(QJob job) {
 		
+		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
+		jobEvent.setSource(job);
+		jobEvent.setType(JobEventType.STOPPING);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
+		
 		this.activeJobs.remove(job.getJobID());
-
+		
 		job.getContext().close();
+		
+		jobEvent.setType(JobEventType.STOPPED);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
 	}
 
 	@Override
@@ -165,5 +195,10 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 				return job.getJobID();
 			}
 		};
+	}
+
+	@Override
+	public void registerListener(QJobListener listener) {
+		this.listeners.add(listener);
 	}
 }

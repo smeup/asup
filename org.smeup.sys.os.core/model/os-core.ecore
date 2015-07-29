@@ -101,6 +101,22 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobEvent">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//jobs/Job"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//jobs/JobEventType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="JobEventType">
+      <eLiterals name="Starting" value="10" literal="STARTING"/>
+      <eLiterals name="Started" value="20" literal="STARTED"/>
+      <eLiterals name="Stopping" value="30" literal="STOPPING"/>
+      <eLiterals name="Stopped" value="40" literal="STOPPED"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobListener" abstract="true" interface="true">
+      <eOperations name="handleEvent">
+        <eParameters name="event" lowerBound="1" eType="#//jobs/JobEvent"/>
+      </eOperations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobLog" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
           upperBound="-1" eType="#//jobs/JobLogEntry" containment="true"/>
@@ -166,6 +182,9 @@
       </eOperations>
       <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="registerListener">
+        <eParameters name="listener" lowerBound="1" eType="#//jobs/JobListener"/>
       </eOperations>
       <eOperations name="updateStatus">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>

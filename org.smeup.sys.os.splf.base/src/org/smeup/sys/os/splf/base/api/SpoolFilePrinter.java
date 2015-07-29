@@ -13,15 +13,10 @@ package org.smeup.sys.os.splf.base.api;
 
 import javax.inject.Inject;
 
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
@@ -29,36 +24,29 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.splf.QSpoolFile;
 import org.smeup.sys.os.splf.QSpoolFileWriter;
 
-public @Program(name = "QMUSPLFP") class SpoolFilePrinter {
+public @Program(name = "QASSPLFP") class SpoolFilePrinter {
 
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
-
+	@Inject
+	private QSpoolFileWriter spoolFileWriter;
+	
 	public static enum QCPFMSG {
 	}
 
 	public @Entry void main(@DataDef(length = 255) QCharacter spoolID) {
 
-		BundleContext bundleContext = FrameworkUtil.getBundle(QJob.class).getBundleContext();
 		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
 		QSpoolFile spoolFile = spoolFileReader.lookup(spoolID.trimR());
 		
 		if (spoolFile == null) {
 			throw new OperatingSystemRuntimeException("Invalid spool ID");
 		}
-
-		try {
-			for (ServiceReference<QSpoolFileWriter> sfw : bundleContext.getServiceReferences(QSpoolFileWriter.class, null)) {
-				QSpoolFileWriter sw = bundleContext.getService(sfw);
-				sw.writeSpoolFile(job.getContext(), spoolFile);
-			}
-		} catch (InvalidSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
+		spoolFileWriter.writeSpoolFile(job.getContext(), spoolFile);
+				
 		System.out.println(spoolFile);
 	}
 }

@@ -63,6 +63,7 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemJobsPackage.JOB: return (EObject)createJob();
+			case QOperatingSystemJobsPackage.JOB_EVENT: return (EObject)createJobEvent();
 			case QOperatingSystemJobsPackage.JOB_LOG: return (EObject)createJobLog();
 			case QOperatingSystemJobsPackage.JOB_LOG_ENTRY: return (EObject)createJobLogEntry();
 			default:
@@ -78,6 +79,8 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemJobsPackage.JOB_EVENT_TYPE:
+				return createJobEventTypeFromString(eDataType, initialValue);
 			case QOperatingSystemJobsPackage.JOB_STATUS:
 				return createJobStatusFromString(eDataType, initialValue);
 			case QOperatingSystemJobsPackage.JOB_TYPE:
@@ -95,6 +98,8 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QOperatingSystemJobsPackage.JOB_EVENT_TYPE:
+				return convertJobEventTypeToString(eDataType, instanceValue);
 			case QOperatingSystemJobsPackage.JOB_STATUS:
 				return convertJobStatusToString(eDataType, instanceValue);
 			case QOperatingSystemJobsPackage.JOB_TYPE:
@@ -142,6 +147,16 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QJobEvent createJobEvent() {
+		JobEventImpl jobEvent = new JobEventImpl();
+		return jobEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public JobStatus createJobStatusFromString(EDataType eDataType, String initialValue) {
 		JobStatus result = JobStatus.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -174,6 +189,26 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	 * @generated
 	 */
 	public String convertJobTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JobEventType createJobEventTypeFromString(EDataType eDataType, String initialValue) {
+		JobEventType result = JobEventType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJobEventTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

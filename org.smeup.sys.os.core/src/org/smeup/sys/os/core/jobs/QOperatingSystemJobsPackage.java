@@ -189,7 +189,93 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobLog()
 	 * @generated
 	 */
-	int JOB_LOG = 1;
+	int JOB_LOG = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl <em>Job Log Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobLogEntry()
+	 * @generated
+	 */
+	int JOB_LOG_ENTRY = 4;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobLogManager <em>Job Log Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.QJobLogManager
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobLogManager()
+	 * @generated
+	 */
+	int JOB_LOG_MANAGER = 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobManager <em>Job Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.QJobManager
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobManager()
+	 * @generated
+	 */
+	int JOB_MANAGER = 6;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.QJobListener
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobListener()
+	 * @generated
+	 */
+	int JOB_LISTENER = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobEventImpl <em>Job Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.impl.JobEventImpl
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEvent()
+	 * @generated
+	 */
+	int JOB_EVENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_EVENT__SOURCE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_EVENT__TYPE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Job Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_EVENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of structural features of the '<em>Job Listener</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_LISTENER_FEATURE_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -217,16 +303,6 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOB_LOG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl <em>Job Log Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl
-	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobLogEntry()
-	 * @generated
-	 */
-	int JOB_LOG_ENTRY = 2;
 
 	/**
 	 * The feature id for the '<em><b>Gravity</b></em>' attribute.
@@ -265,16 +341,6 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_LOG_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobLogManager <em>Job Log Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.jobs.QJobLogManager
-	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobLogManager()
-	 * @generated
-	 */
-	int JOB_LOG_MANAGER = 3;
-
-	/**
 	 * The number of structural features of the '<em>Job Log Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -282,16 +348,6 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOB_LOG_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.QJobManager <em>Job Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.jobs.QJobManager
-	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobManager()
-	 * @generated
-	 */
-	int JOB_MANAGER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Job Manager</em>' class.
@@ -310,7 +366,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobStatus()
 	 * @generated
 	 */
-	int JOB_STATUS = 5;
+	int JOB_STATUS = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobType <em>Job Type</em>}' enum.
@@ -320,7 +376,18 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobType()
 	 * @generated
 	 */
-	int JOB_TYPE = 6;
+	int JOB_TYPE = 9;
+
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.JobEventType
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEventType()
+	 * @generated
+	 */
+	int JOB_EVENT_TYPE = 7;
 
 
 	/**
@@ -550,6 +617,48 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EClass getJobManager();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Job Listener</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobListener
+	 * @generated
+	 */
+	EClass getJobListener();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobEvent <em>Job Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Job Event</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobEvent
+	 * @generated
+	 */
+	EClass getJobEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJobEvent#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobEvent#getSource()
+	 * @see #getJobEvent()
+	 * @generated
+	 */
+	EReference getJobEvent_Source();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobEvent#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobEvent#getType()
+	 * @see #getJobEvent()
+	 * @generated
+	 */
+	EAttribute getJobEvent_Type();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -568,6 +677,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getJobType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Job Event Type</em>'.
+	 * @see org.smeup.sys.os.core.jobs.JobEventType
+	 * @generated
+	 */
+	EEnum getJobEventType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -770,6 +889,42 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EClass JOB_MANAGER = eINSTANCE.getJobManager();
 
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.QJobListener
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobListener()
+		 * @generated
+		 */
+		EClass JOB_LISTENER = eINSTANCE.getJobListener();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobEventImpl <em>Job Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.impl.JobEventImpl
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEvent()
+		 * @generated
+		 */
+		EClass JOB_EVENT = eINSTANCE.getJobEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB_EVENT__SOURCE = eINSTANCE.getJobEvent_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_EVENT__TYPE = eINSTANCE.getJobEvent_Type();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -788,6 +943,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum JOB_TYPE = eINSTANCE.getJobType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.JobEventType
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEventType()
+		 * @generated
+		 */
+		EEnum JOB_EVENT_TYPE = eINSTANCE.getJobEventType();
 
 	}
 
