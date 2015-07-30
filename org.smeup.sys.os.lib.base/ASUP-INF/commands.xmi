@@ -99,13 +99,11 @@
       xsi:type="os-cmd:Command"
       name="CHGCURLIB"
       text="Change Current Library"
-      program="QLICHLLE"
-      status="TODO">
+      program="QLICHLLE">
     <parameters
         allowVariable="true"
         name="CURLIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="currentLibrary">
         <facets
@@ -435,13 +433,12 @@
       xsi:type="os-cmd:Command"
       name="CLRLIB"
       text="Clear Library"
-      program="QLICLLIB"
-      status="TODO">
+      program="QLICLLIB1"
+      typeName="">
     <parameters
         allowVariable="true"
         name="LIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="library">
         <facets
@@ -497,13 +494,11 @@
       xsi:type="os-cmd:Command"
       name="CPYLIB"
       text="Copy Library"
-      program="QMNCPYL"
-      status="TODO">
+      program="QMNCPYL">
     <parameters
         allowVariable="true"
         name="FROMLIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="existingLibrary">
         <facets
@@ -519,8 +514,7 @@
     <parameters
         allowVariable="true"
         name="TOLIB"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="newLibrary">
         <facets
@@ -536,8 +530,7 @@
     <parameters
         allowVariable="true"
         name="CRTLIB"
-        position="3"
-        status="POS">
+        position="3">
       <dataTerm
           name="createLibrary"
           restricted="true">
@@ -560,8 +553,7 @@
     <parameters
         allowVariable="true"
         name="DATA"
-        position="4"
-        status="POS">
+        position="4">
       <dataTerm
           name="duplicateData"
           restricted="true">
@@ -917,7 +909,8 @@
       xsi:type="os-cmd:Command"
       name="DLTLIB"
       text="Delete library"
-      program="QLICLLIB">
+      program="QLICLLIB"
+      typeName="">
     <parameters
         allowVariable="true"
         name="LIB"

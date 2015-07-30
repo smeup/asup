@@ -78,4 +78,12 @@ public interface QJobManager {
 	 */
 	QJob lookup(String contextID);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model listenerRequired="true"
+	 * @generated
+	 */
+	void registerListener(QJobListener listener);
+
 } // QJobManager

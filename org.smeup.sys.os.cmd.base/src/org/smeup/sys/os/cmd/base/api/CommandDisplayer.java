@@ -9,7 +9,6 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
@@ -27,8 +26,7 @@ public class CommandDisplayer {
 							@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 		//TODO: this implementation is incomplete
 		String cmd = "CALL PGM(QASDSPCP) PARM('" + command.name + command.library +  "')";
-		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
-		commandManager.executeCommand(job.getJobID(), callableCommand);
+		commandManager.executeCommandImmediate(job.getJobID(), cmd, null, true);
 	}
 
 	public static class COMMAND extends QDataStructWrapper {

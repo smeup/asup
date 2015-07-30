@@ -9,7 +9,6 @@ package org.smeup.sys.os.core.jobs.impl;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -44,6 +43,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getMessages <em>Messages</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCurrentLibrary <em>Current Library</em>}</li>
  * </ul>
  * </p>
  *
@@ -210,6 +210,26 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected EList<String> messages;
+
+	/**
+	 * The default value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CURRENT_LIBRARY_EDEFAULT = "QGPL";
+
+	/**
+	 * The cached value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected String currentLibrary = CURRENT_LIBRARY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -419,6 +439,31 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCurrentLibrary() {
+		return currentLibrary;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setCurrentLibrary(String newCurrentLibrary) {
+		String oldCurrentLibrary = currentLibrary;
+		if (newCurrentLibrary == null || "".equals(newCurrentLibrary.trim())) {
+			currentLibrary = CURRENT_LIBRARY_EDEFAULT;
+		} else {
+			currentLibrary = newCurrentLibrary;
+		}
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY, oldCurrentLibrary, currentLibrary));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -551,6 +596,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getLibraries();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				return getMessages();
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				return getCurrentLibrary();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -598,6 +645,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				getMessages().clear();
 				getMessages().addAll((Collection<? extends String>)newValue);
 				return;
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				setCurrentLibrary((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -642,6 +692,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				getMessages().clear();
 				return;
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				setCurrentLibrary(CURRENT_LIBRARY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -675,6 +728,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return libraries != null && !libraries.isEmpty();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				return messages != null && !messages.isEmpty();
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				return CURRENT_LIBRARY_EDEFAULT == null ? currentLibrary != null : !CURRENT_LIBRARY_EDEFAULT.equals(currentLibrary);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -704,6 +759,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(libraries);
 		result.append(", messages: ");
 		result.append(messages);
+		result.append(", currentLibrary: ");
+		result.append(currentLibrary);
 		result.append(')');
 		return result.toString();
 	}

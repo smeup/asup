@@ -46,22 +46,22 @@ public class FileDisplayer {
 
 		switch (file.library.asEnum()) {
 		case CURLIB:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, Scope.CURRENT_LIBRARY);
+			fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.CURRENT_LIBRARY);
 			break;
 		case LIBL:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, Scope.LIBRARY_LIST);
+			fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
 			break;
 		case ALL:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, Scope.ALL);
+			fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.ALL);
 			break;
 		case ALLUSR:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, Scope.ALL_USER);
+			fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.ALL_USER);
 			break;
 		case USRLIBL:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, Scope.USER_LIBRARY_LIST);
+			fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.USER_LIBRARY_LIST);
 			break;
 		case OTHER:
-			fileReader = resourceManager.getResourceWriter(job, QFile.class, file.library.asData().trimR());
+			fileReader = resourceManager.getResourceReader(job, QFile.class, file.library.asData().trimR());
 			break;
 		}
 

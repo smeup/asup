@@ -70,7 +70,6 @@ public class ActiveJobWorker {
 			}
 
 		objectWriter.flush();
-
 	}
 
 	public static enum OutputEnum {

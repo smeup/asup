@@ -110,7 +110,10 @@ public class BaseResourceManagerImpl implements QResourceManager {
 
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
-		// TODO Auto-generated method stub
-		return null;
+		QResourceProvider resourceProvider = getResourceProvider(klass);
+		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(job, klass, scope);
+		prepareListener(resourceWriter, klass);
+
+		return resourceWriter;
 	}
 }

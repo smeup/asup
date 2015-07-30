@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.core.cdo.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +31,14 @@ import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
+import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobEvent;
+import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.jobd.QJobDescription;
@@ -48,6 +53,8 @@ public class CDOJobManagerImpl implements QJobManager {
 	private static final String CDO_RESOURCE = "os/core";
 
 	private Map<String, QJob> activeJobs;
+
+	private List<QJobListener> listeners = new ArrayList<QJobListener>();
 
 	@Inject
 	public CDOJobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
@@ -93,10 +100,27 @@ public class CDOJobManagerImpl implements QJobManager {
 						job.getLibraries().add(library);
 			}
 
+			String library = userProfile.getLibrary();
+			if (library != null && !library.trim().equals("")) {
+				job.setCurrentLibrary(library);
+			}
+
+			QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
+			jobEvent.setSource(job);
+			jobEvent.setType(JobEventType.STARTING);
+			
+			for(QJobListener jobListener: this.listeners)
+				jobListener.handleEvent(jobEvent);
+
 			// save job
 			CDOResource resource = systemManager.getTransaction().getOrCreateResource(CDO_RESOURCE);
 			resource.getContents().add((EObject) job);
 			systemManager.getTransaction().commit();
+
+			jobEvent.setType(JobEventType.STARTED);
+			
+			for(QJobListener jobListener: this.listeners)
+				jobListener.handleEvent(jobEvent);
 
 			activeJobs.put(job.getJobID(), job);
 
@@ -203,10 +227,27 @@ public class CDOJobManagerImpl implements QJobManager {
 
 	@Override
 	public void close(QJob job) {
-		QJob activeJob = this.activeJobs.get(job.getJobID());
-		if (activeJob != null)
-			this.activeJobs.remove(activeJob);
+
+		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
+		jobEvent.setSource(job);
+		jobEvent.setType(JobEventType.STOPPING);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
+	
+		this.activeJobs.remove(job);
 
 		job.getContext().close();
+				
+		jobEvent.setType(JobEventType.STOPPED);
+		
+		for(QJobListener jobListener: this.listeners)
+			jobListener.handleEvent(jobEvent);
+	}
+
+	@Override
+	public void registerListener(QJobListener listener) {
+		// TODO Auto-generated method stub
+		
 	}
 }

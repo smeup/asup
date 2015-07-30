@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data.impl;
 
-import static org.smeup.sys.il.data.QIntegratedLanguageDataPackage.ADAPTER;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;

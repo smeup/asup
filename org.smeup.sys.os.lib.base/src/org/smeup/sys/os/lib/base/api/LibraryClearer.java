@@ -1,18 +1,8 @@
-/**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *
- *
- * Contributors:
- *   Mattia Rocchi - Initial API and implementation
- */
 package org.smeup.sys.os.lib.base.api;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -29,9 +19,11 @@ import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.base.api.tools.LibraryHandler;
 import org.smeup.sys.os.type.QTypeRegistry;
 
-@Program(name = "QLICLLIB")
-public class LibraryDeleter {
-
+@Program(name = "QLICLLIB1")
+public @Supported class LibraryClearer {
+	public static enum QCPFMSG {
+	}
+	
 	@Inject
 	private QJob job;
 	@Inject
@@ -42,25 +34,43 @@ public class LibraryDeleter {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJobLogManager jobLogManager;
-
-	public @Entry void main(@DataDef(length = 10) QCharacter library, @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice) {
-
-		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
-
-		QLibrary qLibrary = libraryWriter.lookup(library.trimR());
-
+	
+	public @Entry void main(
+			@Supported @DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library,
+			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
+		
+		QLibrary qLibrary = findLibrary(library);
+		
 		if (qLibrary == null)
-			throw new OperatingSystemRuntimeException("Library not found: " + library);
+			throw new OperatingSystemRuntimeException("Library not found: " + library.asData());
 		
 		new LibraryHandler(qLibrary, job, typeRegistry, resourceManager).clear();
-
-		libraryWriter.delete(qLibrary);
 		
-		jobLogManager.info(job, "Deleted library " + qLibrary.getName());
+		jobLogManager.info(job, "Cleared library " + qLibrary.getName());
 	}
 
+	private QLibrary findLibrary(QEnum<LIBRARYEnum, QCharacter> library) {
+		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
+		QLibrary qLibrary = null;
+		
+		switch (library.asEnum()) {
+		case OTHER:
+			qLibrary = libraryWriter.lookup(library.asData().trimR());
+			break;
 
-	public static enum ASPDeviceEnum {
+		case CURLIB:
+			qLibrary = libraryWriter.lookup(job.getCurrentLibrary());
+			break;
+		}
+			
+		return qLibrary;
+	}
+
+	public static enum LIBRARYEnum {
+		CURLIB, OTHER
+	}
+
+	public static enum ASPDEVICEEnum {
 		@Special(value = "*")
 		TERM_STAR, CURASPGRP, SYSBAS, OTHER
 	}
