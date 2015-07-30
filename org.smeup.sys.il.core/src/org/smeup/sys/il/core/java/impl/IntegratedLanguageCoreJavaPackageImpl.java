@@ -654,6 +654,22 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(listsEClass, null, "addBefore", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		addEParameter(op, this.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "oldElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "newElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(listsEClass, null, "addAfter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addETypeParameter(op, "E");
+		addEParameter(op, this.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "oldElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "newElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(stringsEClass, QStrings.class, "Strings", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(stringsEClass, ecorePackage.getEString(), "appendChars", 1, 1, IS_UNIQUE, IS_ORDERED);

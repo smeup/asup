@@ -24,6 +24,19 @@ public class BaseListsImpl implements QLists {
 
 	@Override
 	public <E> void addLast(List<E> list, E element) {
-		list.add(list.size() - 1, element);
+		list.add(list.size(), element);
 	}
+
+	@Override
+	public <E> void addBefore(List<E> list, E oldElement, E newElement) {
+		int oldElementPosition = list.indexOf(oldElement);
+		list.add(oldElementPosition, newElement);
+	}
+
+	@Override
+	public <E> void addAfter(List<E> list, E oldElement, E newElement) {
+		int oldElementPosition = list.indexOf(oldElement);
+		list.add(oldElementPosition + 1, newElement);		
+	}
+	
 }

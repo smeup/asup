@@ -1,17 +1,7 @@
-/**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *
- *
- * Contributors:
- *   Mattia Rocchi - Initial API and implementation
- */
-package org.smeup.sys.os.splf.base;
+package org.smeup.sys.os.lib.base.api;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -26,34 +16,53 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
-import org.smeup.sys.os.splf.QSpoolFile;
-import org.smeup.sys.os.splf.QSpoolFileRow;
-import org.smeup.sys.os.splf.QSpoolFileWriter;
+import org.smeup.sys.os.core.jobs.QJob;
 
-public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
-
+@Program(name = "QLIDSPLL")
+public class LibraryListEntryDisplayer {
+	public static enum QCPFMSG {
+	}
+	
 	@Inject
 	private QOutputManager outputManager;
+	@Inject
+	private QJob job;
 
-	@Override
-	public void writeSpoolFile(QContext context, QSpoolFile spoolFile) {
-		QObjectWriter objectWriter = outputManager.getDefaultWriter(context);
-		List<QSpoolFileRow> rows = spoolFile.getRows();
+	public @Entry void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
+// TODO Non funziona con errore org.smeup.sys.os.core.OperatingSystemRuntimeException: java.lang.IllegalArgumentException: No enum constant org.smeup.sys.os.lib.base.api.Library.ListEntryDisplayer.OUTPUTEnum.OTHER
+//		QObjectWriter objectWriter = null;
+//
+//		if (output.asEnum().equals(OUTPUTEnum.PRINT)) {
+//			objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+//		} else {
+//			objectWriter = outputManager.getDefaultWriter(job.getContext());
+//		}
+
+		QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
+//
 		objectWriter.initialize();
 		
-		EClass eClass = createBaseObjectEClass(columnNameFor(spoolFile));
+		EClass eClass = createBaseObjectEClass("Library");
 		QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		
-	
-		for (QSpoolFileRow qSpoolFileRow : rows) {
+
+		List<String> libs = new ArrayList<String>();
+				
+		libs.add(job.getCurrentLibrary() + " - CUR") ;
+		libs.addAll(job.getLibraries());				
+		for (String lib : libs) {
 			try {
 				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
-					((EObject) qObject).eSet(eStructuralFeature, qSpoolFileRow.getContent());
+					((EObject) qObject).eSet(eStructuralFeature, lib);
 				}	
 
 				objectWriter.write(qObject);
@@ -61,16 +70,15 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 				e.printStackTrace();
 			}
 		}
-		
+				
 		objectWriter.flush();
 	}
 
-
-	private String columnNameFor(QSpoolFile spoolFile) {
-		return spoolFile.getJobUser() + "_" + spoolFile.getJobName() + "_" + spoolFile.getJobNumber();
+	public static enum OUTPUTEnum {
+		@Special(value = "*")
+		TERM_STAR, @Special(value = "L")PRINT
 	}
-
-
+	
 	private EClass createBaseObjectEClass(String columnName) {
 		EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
 
@@ -101,5 +109,4 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 		
 		return eClass;
 	}
-
 }

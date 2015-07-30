@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.os.lib.base.api;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.java.QLists;
@@ -21,20 +24,31 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.resources.QResourceWriter;
+import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.os.lib.QLibraryManager;
 
 @Program(name = "QLICUSRL")
 public class LibraryListEntryAdder {
 
 	@Inject
 	private QJob job;
-
+	@Inject
+	private QLibraryManager libraryManager;
 	@Inject
 	private QLists lists;
 
 	@Entry
 	public void main(@DataDef(length = 10) QCharacter library, QEnum<LibraryListPositionEnum, LibraryListPosition> libraryListPosition) {
-
+		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
+		String newLibName = library.trimR();
+		QLibrary qLib = libraryWriter.lookup(newLibName);
+		
+		if (qLib == null) {
+			throw new OperatingSystemRuntimeException("Library " + newLibName + " does not exists");			
+		}
 		switch (libraryListPosition.asEnum()) {
 		case FIRST:
 			lists.addFirst(job.getLibraries(), library.trimR());
@@ -43,21 +57,30 @@ public class LibraryListEntryAdder {
 			lists.addLast(job.getLibraries(), library.trimR());
 			break;
 		case OTHER:
-			switch (libraryListPosition.asData().listPosition.asEnum()) {
-
-			case AFTER:
-				break;
-
-			case BEFORE:
-				break;
-
-			case REPLACE:
-				break;
+			String oldLibName = libraryListPosition.asData().referenceLibrary.trimR();
+			if (!job.getLibraries().contains(oldLibName)) {
+				throw new OperatingSystemRuntimeException("Library " + oldLibName + " is not in library list");				
 			}
-
+			substitute(libraryListPosition.asData().listPosition.asEnum(), oldLibName, newLibName, job.getLibraries());
 			break;
 		}
+	}
 
+
+	private void substitute(LibraryListPosition.ListPositionEnum libPositionEnum, String oldLib, String newLib, List<String> libraries) {
+		switch (libPositionEnum) {
+		case AFTER:
+			lists.addAfter(libraries, oldLib, newLib);
+			break;
+
+		case BEFORE:
+			lists.addBefore(libraries, oldLib, newLib);
+			break;
+
+		case REPLACE:
+			Collections.replaceAll(job.getLibraries(), oldLib, newLib);
+			break;
+		}
 	}
 
 	public static class LibraryListPosition extends QDataStructWrapper {

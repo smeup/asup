@@ -8,7 +8,6 @@
 package org.smeup.sys.il.core.out;
 
 import java.io.IOException;
-
 import org.smeup.sys.il.core.QObject;
 
 /**

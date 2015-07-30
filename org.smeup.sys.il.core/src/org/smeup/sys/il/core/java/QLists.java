@@ -33,4 +33,20 @@ public interface QLists {
 	 */
 	<E> void addLast(List<E> list, E element);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @generated
+	 */
+	<E> void addBefore(List<E> list, E oldElement, E newElement);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @generated
+	 */
+	<E> void addAfter(List<E> list, E oldElement, E newElement);
+
 } // QLists
