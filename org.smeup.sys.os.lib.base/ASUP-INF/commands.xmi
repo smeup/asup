@@ -137,8 +137,7 @@
     <parameters
         allowVariable="true"
         name="LIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="library">
         <facets
@@ -190,8 +189,7 @@
     <parameters
         allowVariable="true"
         name="TEXT"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="textDescription">
         <facets
@@ -287,8 +285,7 @@
     <parameters
         allowVariable="true"
         name="SYNC"
-        position="6"
-        status="POS">
+        position="6">
       <dataTerm
           name="synchronizedLib"
           restricted="true">
