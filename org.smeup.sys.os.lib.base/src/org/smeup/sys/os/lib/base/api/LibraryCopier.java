@@ -38,6 +38,13 @@ public @Supported class LibraryCopier {
 			@DataDef(length = 4) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
 		
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
+
+		String existingLibName = existingLibrary.trimR();
+		QLibrary qExistingLibrary = libraryWriter.lookup(existingLibName);
+		
+		if (qExistingLibrary == null) {
+			throw new OperatingSystemRuntimeException("Source library " + existingLibName + " does not exists");			
+		}
 		
 		String newLibName = newLibrary.trimR();
 		QLibrary qNewLibrary = libraryWriter.lookup(newLibName);
