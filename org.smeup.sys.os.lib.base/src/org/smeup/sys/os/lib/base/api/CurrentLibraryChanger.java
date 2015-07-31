@@ -16,7 +16,7 @@ import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 
-@Program(name = "QLICHLLE")
+@Program(name = "QLICHLLE") 
 public @Supported class CurrentLibraryChanger {
 	public static enum QCPFMSG {
 	}

@@ -195,6 +195,10 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 			delegate.setCreationInfo(value);
 		}
 		
+		@Override
+		public String toString() {
+			return delegate.getTypedClassName();
+		}
 	}
 	
 	private class TypeResourceReader extends ResourceReaderImpl<QType<?>> {

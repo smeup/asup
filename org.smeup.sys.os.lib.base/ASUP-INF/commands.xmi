@@ -438,7 +438,7 @@
       xsi:type="os-cmd:Command"
       name="CLRLIB"
       text="Clear Library"
-      program="QLICLLIB"
+      program="QLICLLIB1"
       status="TODO">
     <parameters
         allowVariable="true"
