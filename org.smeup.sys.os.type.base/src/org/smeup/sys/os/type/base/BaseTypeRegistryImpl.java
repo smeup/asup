@@ -61,7 +61,10 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 				try {
 					Class<T> typedClass = (Class<T>) bundle.loadClass(type.getTypedClassName());
-					this.types.add(new InternalType<T>((QType<T>) type, typedClass));
+					//TODO: Verificare!!!
+					if (!typedClass.equals(QType.class)) {
+						this.types.add(new InternalType<T>((QType<T>) type, typedClass));
+					}
 					break;
 				} catch (ClassNotFoundException e) {
 				} 
@@ -197,7 +200,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		
 		@Override
 		public String toString() {
-			return delegate.getTypedClassName();
+			return delegate.getName();
 		}
 	}
 	
