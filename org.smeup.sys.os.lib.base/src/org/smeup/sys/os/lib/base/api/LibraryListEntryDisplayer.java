@@ -39,7 +39,6 @@ public class LibraryListEntryDisplayer {
 	private QJob job;
 
 	public @Entry void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
-// TODO Non funziona con errore org.smeup.sys.os.core.OperatingSystemRuntimeException: java.lang.IllegalArgumentException: No enum constant org.smeup.sys.os.lib.base.api.Library.ListEntryDisplayer.OUTPUTEnum.OTHER
 		QObjectWriter objectWriter = null;
 
 		if (output.asEnum().equals(OUTPUTEnum.PRINT)) {
@@ -48,8 +47,6 @@ public class LibraryListEntryDisplayer {
 			objectWriter = outputManager.getDefaultWriter(job.getContext());
 		}
 
-//		QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
-//
 		objectWriter.initialize();
 		
 		EClass eClass = createBaseObjectEClass("Library");

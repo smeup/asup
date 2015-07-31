@@ -13,6 +13,9 @@ package org.smeup.sys.os.lib.base.api;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
@@ -41,15 +44,15 @@ public class LibraryCreator {
 
 	@Entry
 	public void main(
-			@DataDef(length = 10) QCharacter library,
-			@DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
-			@DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
-			@DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
-			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber,
-			@DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
+			@Supported @DataDef(length = 10) QCharacter library,
+			@ToDo @DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
+			@Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
+		    @ToDo @DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
+			@Unsupported @DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber,
+			@Unsupported @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
 			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority,
 			@DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing,
-			@DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
+			@Supported @DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
 
 		QResourceWriter<QLibrary> libraryWriter = resourceManager
 				.getResourceWriter(job, QLibrary.class, systemManager

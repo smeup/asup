@@ -45,6 +45,9 @@
               unary="true"
               value="L"/>
         </facets>
+        <facets
+            xsi:type="il-core-meta:Default"
+            value="*FIRST"/>
         <definition
             xsi:type="il-data-def:DataStructDef">
           <elements
@@ -604,13 +607,11 @@
       text="Create Library"
       classCMD="true"
       program="QLICRLIB"
-      status="TODO"
       typeName="">
     <parameters
         allowVariable="true"
         name="LIB"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="library">
         <facets
@@ -649,8 +650,7 @@
     <parameters
         allowVariable="true"
         name="TEXT"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="textDescription">
         <facets
@@ -701,7 +701,7 @@
         allowVariable="true"
         name="ASP"
         position="5"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="aSPNumber">
         <facets
@@ -723,7 +723,7 @@
         allowVariable="true"
         name="ASPDEV"
         position="6"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="aSPDevice">
         <facets
@@ -813,8 +813,7 @@
     <parameters
         allowVariable="true"
         name="SYNC"
-        position="9"
-        status="POS">
+        position="9">
       <dataTerm
           name="synchronizedLib"
           restricted="true">
@@ -827,6 +826,9 @@
               name="*YES"
               value="Y"/>
         </facets>
+        <facets
+            xsi:type="il-core-meta:Default"
+            value="*"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="1"/>
