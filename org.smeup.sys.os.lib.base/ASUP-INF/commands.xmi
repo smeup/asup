@@ -1061,6 +1061,8 @@
               name="*PRINT"
               value="L"/>
         </facets>
+        <default
+            value="*"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="1"/>
