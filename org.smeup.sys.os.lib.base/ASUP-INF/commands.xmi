@@ -3565,13 +3565,11 @@
       text="Work with Libraries"
       allowBatch="false"
       classCMD="true"
-      program="QMNWRKXX"
-      status="POS">
+      program="QMNWRKXX1">
     <parameters
         allowVariable="true"
         name="LIB"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="library">
         <definition
@@ -3614,7 +3612,7 @@
         allowVariable="true"
         name="ASP"
         position="2"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="aSPNumber">
         <facets
@@ -3638,7 +3636,7 @@
         allowVariable="true"
         name="ASPDEV"
         position="3"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="aSPDevice">
         <facets
