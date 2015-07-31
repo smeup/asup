@@ -321,10 +321,10 @@
         <eTypeParameters name="E"/>
         <eParameters name="list" lowerBound="1" eType="#//java/JavaList"/>
         <eParameters name="oldElement" lowerBound="1">
-          <eGenericType eTypeParameter="#//java/Lists/addBefore/E"/>
+          <eGenericType eTypeParameter="#//java/Lists/addAfter/E"/>
         </eParameters>
         <eParameters name="newElement" lowerBound="1">
-          <eGenericType eTypeParameter="#//java/Lists/addBefore/E"/>
+          <eGenericType eTypeParameter="#//java/Lists/addAfter/E"/>
         </eParameters>
       </eOperations>
     </eClassifiers>

@@ -663,7 +663,7 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		addEParameter(op, g1, "newElement", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(listsEClass, null, "addAfter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addETypeParameter(op, "E");
+		t1 = addETypeParameter(op, "E");
 		addEParameter(op, this.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "oldElement", 1, 1, IS_UNIQUE, IS_ORDERED);
