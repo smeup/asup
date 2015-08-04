@@ -86,6 +86,8 @@ public class XMIPrinterFileCompiler {
 				System.err.println(e);
 			}
 		}
+		
+		files.close();
 	}
 
 	private void createJavaFile(QPrinterFile file, QLibrary library) throws IOException, OperatingSystemException {

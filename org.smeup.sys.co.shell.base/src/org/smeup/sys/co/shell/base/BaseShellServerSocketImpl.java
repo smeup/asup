@@ -43,6 +43,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 	public void run() {
 
 		ServerSocket serverSocket = null;
+		Socket socket = null;
 		try {
 			String systemAddress = ConnectorCoreHelper.resolveVariables(config.getAddress());
 			InetAddress inetAddress = InetAddress.getByName(systemAddress);
@@ -52,7 +53,7 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 			serverSocket.bind(socketAddress);
 
 			while (!Thread.currentThread().isInterrupted()) {
-				Socket socket = serverSocket.accept();
+				socket = serverSocket.accept();
 
 				// start thread handler
 				BaseShellSocketHandler shellThread = new BaseShellSocketHandler(socket);
@@ -66,6 +67,19 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
+			
+			try {
+				socket.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			try {
+				serverSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			serverSocket = null;
 		}
 	}

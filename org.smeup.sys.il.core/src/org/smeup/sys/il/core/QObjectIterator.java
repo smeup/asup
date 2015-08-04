@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.core;
 
+import java.io.Closeable;
 import java.util.Iterator;
 
 /**
@@ -15,13 +16,12 @@ import java.util.Iterator;
  *
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectIterator()
- * @model interface="true" abstract="true"
- * @generated NOT
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.java.JavaIterator<T> org.smeup.sys.il.core.java.JavaCloseable"
+ * @generated
  */
-public interface QObjectIterator<T extends QObject> extends Iterator<T> {
+public interface QObjectIterator<T extends QObject> extends Iterator<T>, Closeable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -29,7 +29,6 @@ public interface QObjectIterator<T extends QObject> extends Iterator<T> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -38,7 +37,6 @@ public interface QObjectIterator<T extends QObject> extends Iterator<T> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true"
 	 * @generated
 	 */
@@ -47,7 +45,6 @@ public interface QObjectIterator<T extends QObject> extends Iterator<T> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */

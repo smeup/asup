@@ -75,6 +75,10 @@
       <eGenericType eTypeParameter="#//ObjectIterator/T"/>
     </eOperations>
     <eOperations name="remove"/>
+    <eGenericSuperTypes eClassifier="#//java/JavaIterator">
+      <eTypeArguments eTypeParameter="#//ObjectIterator/T"/>
+    </eGenericSuperTypes>
+    <eGenericSuperTypes eClassifier="#//java/JavaCloseable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNameable" eSuperTypes="#//Object #//Nameable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Overlay" eSuperTypes="#//meta/Facet">
@@ -253,7 +257,8 @@
         abstract="true" interface="true">
       <eTypeParameters name="V"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EDataType" name="JavaCloseable" instanceClassName="java.io.Closeable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaCloseable" instanceClassName="java.io.Closeable"
+        abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EDataType" name="JavaDictionary" instanceClassName="java.util.Dictionary">
       <eTypeParameters name="K"/>
       <eTypeParameters name="V"/>
@@ -264,7 +269,10 @@
     <eClassifiers xsi:type="ecore:EDataType" name="JavaInputStream" instanceClassName="java.io.InputStream"/>
     <eClassifiers xsi:type="ecore:EDataType" name="JavaIOException" instanceClassName="java.io.IOException"/>
     <eClassifiers xsi:type="ecore:EDataType" name="JavaIterable" instanceTypeName="java.lang.Iterable&lt;T>"/>
-    <eClassifiers xsi:type="ecore:EDataType" name="JavaIterator" instanceTypeName="java.util.Iterator&lt;T>"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaIterator" instanceClassName="java.util.Iterator"
+        abstract="true" interface="true">
+      <eTypeParameters name="T"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JavaList" instanceTypeName="java.util.List&lt;E>"
         abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EDataType" name="JavaMap" instanceClassName="java.util.Map">

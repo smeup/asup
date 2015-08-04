@@ -192,7 +192,9 @@ public class TestCommands extends E4TestProviderImpl {
 		}
 
 		public List<String> readLinesFromFile(File file) throws IOException {
-			return readLinesFrom(new BufferedReader(new FileReader(file)));
+			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+				return readLinesFrom(br);
+			}
 		}
 
 		public List<String> readLinesFrom(BufferedReader in) throws IOException {

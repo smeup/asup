@@ -62,10 +62,24 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	private EClass javaCallableEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaCloseableEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass javaEnumEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaIteratorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -119,12 +133,6 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType javaCloseableEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType javaDictionaryEDataType = null;
 
 	/**
@@ -150,12 +158,6 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EDataType javaIterableEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType javaIteratorEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -383,8 +385,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EDataType getJavaCloseable() {
-		return javaCloseableEDataType;
+	public EClass getJavaCloseable() {
+		return javaCloseableEClass;
 	}
 
 	/**
@@ -437,8 +439,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EDataType getJavaIterator() {
-		return javaIteratorEDataType;
+	public EClass getJavaIterator() {
+		return javaIteratorEClass;
 	}
 
 	/**
@@ -551,7 +553,11 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		// Create classes and their features
 		javaCallableEClass = createEClass(JAVA_CALLABLE);
 
+		javaCloseableEClass = createEClass(JAVA_CLOSEABLE);
+
 		javaEnumEClass = createEClass(JAVA_ENUM);
+
+		javaIteratorEClass = createEClass(JAVA_ITERATOR);
 
 		javaListEClass = createEClass(JAVA_LIST);
 
@@ -569,13 +575,11 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 
 		// Create data types
 		javaAnnotationEDataType = createEDataType(JAVA_ANNOTATION);
-		javaCloseableEDataType = createEDataType(JAVA_CLOSEABLE);
 		javaDictionaryEDataType = createEDataType(JAVA_DICTIONARY);
 		javaExceptionEDataType = createEDataType(JAVA_EXCEPTION);
 		javaInputStreamEDataType = createEDataType(JAVA_INPUT_STREAM);
 		javaIOExceptionEDataType = createEDataType(JAVA_IO_EXCEPTION);
 		javaIterableEDataType = createEDataType(JAVA_ITERABLE);
-		javaIteratorEDataType = createEDataType(JAVA_ITERATOR);
 		javaMapEDataType = createEDataType(JAVA_MAP);
 		javaOutputStreamEDataType = createEDataType(JAVA_OUTPUT_STREAM);
 		javaPropertiesEDataType = createEDataType(JAVA_PROPERTIES);
@@ -611,6 +615,7 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 
 		// Create type parameters
 		addETypeParameter(javaCallableEClass, "V");
+		addETypeParameter(javaIteratorEClass, "T");
 		addETypeParameter(javaDictionaryEDataType, "K");
 		addETypeParameter(javaDictionaryEDataType, "V");
 		addETypeParameter(javaMapEDataType, "K");
@@ -623,7 +628,11 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		// Initialize classes and features; add operations and parameters
 		initEClass(javaCallableEClass, Callable.class, "JavaCallable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(javaCloseableEClass, Closeable.class, "JavaCloseable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(javaEnumEClass, Enum.class, "JavaEnum", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Enum<E>");
+
+		initEClass(javaIteratorEClass, Iterator.class, "JavaIterator", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaListEClass, List.class, "JavaList", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<E>");
 
@@ -703,13 +712,11 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 
 		// Initialize data types
 		initEDataType(javaAnnotationEDataType, Annotation.class, "JavaAnnotation", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(javaCloseableEDataType, Closeable.class, "JavaCloseable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaDictionaryEDataType, Dictionary.class, "JavaDictionary", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaExceptionEDataType, Exception.class, "JavaException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaInputStreamEDataType, InputStream.class, "JavaInputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaIOExceptionEDataType, IOException.class, "JavaIOException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaIterableEDataType, Iterable.class, "JavaIterable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Iterable<T>");
-		initEDataType(javaIteratorEDataType, Iterator.class, "JavaIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Iterator<T>");
 		initEDataType(javaMapEDataType, Map.class, "JavaMap", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaOutputStreamEDataType, OutputStream.class, "JavaOutputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaPropertiesEDataType, Properties.class, "JavaProperties", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

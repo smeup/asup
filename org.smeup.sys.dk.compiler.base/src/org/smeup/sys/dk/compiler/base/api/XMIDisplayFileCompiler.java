@@ -54,7 +54,31 @@ public class XMIDisplayFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Entry
-	public void main(FileRef fileRef) throws IOException {
+	public void main(FileRef fileRef) {
+
+		try (QObjectIterator<QFile> files = buildIterator(fileRef);) {
+
+			QResourceReader<QLibrary> libraryReader = libraryManager.getLibraryReader(job);
+			QLibrary library = libraryReader.lookup(fileRef.library.trimR());
+
+			while (files.hasNext()) {
+				QFile qFile = files.next();
+				if (!(qFile instanceof QDisplayFile))
+					continue;
+
+				QDisplayFile displayFile = (QDisplayFile) qFile;
+
+				try {
+					createJavaFile(displayFile, library);
+				} catch (Exception e) {
+					System.err.println(e);
+				}
+			}
+		}
+
+	}
+
+	private QObjectIterator<QFile> buildIterator(FileRef fileRef) {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -64,31 +88,15 @@ public class XMIDisplayFileCompiler {
 		else
 			fileReader = resourceManager.getResourceReader(job, QFile.class, fileRef.library.trimR());
 
-		QObjectIterator<QFile> files = null;
+		QObjectIterator<QFile> fileIterator = null;
 		if (fileRef.name.trimR().equals("*ALL"))
-			files = fileReader.find(null);
+			fileIterator = fileReader.find(null);
 		else
-			files = fileReader.find(fileRef.name.trimR());
+			fileIterator = fileReader.find(fileRef.name.trimR());
 
-		QResourceReader<QLibrary> libraryReader = libraryManager.getLibraryReader(job);
-		QLibrary library = libraryReader.lookup(fileRef.library.trimR());
-
-		while (files.hasNext()) {
-			QFile qFile = files.next();
-			if (!(qFile instanceof QDisplayFile))
-				continue;
-
-			QDisplayFile displayFile = (QDisplayFile) qFile;
-
-			try {
-				createJavaFile(displayFile, library);
-			} catch (Exception e) {
-				System.err.println(e);
-			}
-		}
-
+		return fileIterator;
 	}
-
+	
 	private void createJavaFile(QDisplayFile file, QLibrary library) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)

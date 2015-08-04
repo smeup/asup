@@ -689,6 +689,12 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(this.getNameable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaIterator());
+		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
+		g1.getETypeArguments().add(g2);
+		objectIteratorEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		objectIteratorEClass.getEGenericSuperTypes().add(g1);
 		objectNameableEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getNameable());
 		overlayEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
@@ -730,7 +736,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(theIntegratedLanguageCoreMetaPackage.getFacet());
 		t1.getEBounds().add(g1);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		EGenericType g2 = createEGenericType(t1);
+		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);

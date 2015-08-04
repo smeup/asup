@@ -54,7 +54,7 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 	private QExpressionParser expressionParser;
 
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
-	
+
 	@Inject
 	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QApplication application) {
 		this.systemManager = (E4SystemManagerImpl) systemManager;
@@ -62,7 +62,7 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		this.activeJobs = new HashMap<String, QJob>();
 
 		new E4JobCloser(this).start();
-		
+
 		application.getContext().set(QAuthenticationManager.class, this);
 	}
 
@@ -95,13 +95,14 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		QJob jobTarget = null;
 
 		QResourceReader<QJob> jobReader = resourceManager.getResourceReader(jobCaller, QJob.class, jobCaller.getSystem().getSystemLibrary());
-		QObjectIterator<QJob> jobs = jobReader.findByExpression(filter);
+		try (QObjectIterator<QJob> jobs = jobReader.findByExpression(filter);) {
 
-		// first element
-		if (jobs.hasNext())
-			jobTarget = jobs.next();
+			// first element
+			if (jobs.hasNext())
+				jobTarget = jobs.next();
 
-		return jobTarget;
+			return jobTarget;
+		}
 	}
 
 	@Override
@@ -131,28 +132,28 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 				for (String library : jobDescription.getLibraries())
 					job.getLibraries().add(library);
 		}
-		
+
 		String library = userProfile.getLibrary();
 		if (library != null && !library.trim().equals("")) {
 			job.setCurrentLibrary(library);
 		}
-		
+
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STARTING);
-		
-		for(QJobListener jobListener: this.listeners)
+
+		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
-		
+
 		// save
 		QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, job.getSystem().getSystemLibrary());
 		jobWriter.save(job);
 
 		jobEvent.setType(JobEventType.STARTED);
-		
-		for(QJobListener jobListener: this.listeners)
+
+		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
-		
+
 		activeJobs.put(job.getJobID(), job);
 
 		return job;
@@ -170,21 +171,21 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	@Override
 	public void close(QJob job) {
-		
+
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STOPPING);
-		
-		for(QJobListener jobListener: this.listeners)
+
+		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
-		
+
 		this.activeJobs.remove(job.getJobID());
-		
+
 		job.getContext().close();
-		
+
 		jobEvent.setType(JobEventType.STOPPED);
-		
-		for(QJobListener jobListener: this.listeners)
+
+		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
 	}
 
@@ -192,9 +193,9 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
 
 		final QJob job = create(credentials.getUser(), credentials.getPassword());
-		
+
 		return new QAuthenticationToken() {
-			
+
 			@Override
 			public String getID() {
 				return job.getJobID();

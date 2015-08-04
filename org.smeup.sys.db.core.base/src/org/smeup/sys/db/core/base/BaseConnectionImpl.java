@@ -89,6 +89,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		this.virtualCatalog = null;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void commit() throws SQLException {
 		Connection connection = getRawConnection();
@@ -130,6 +131,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		return createStatement(native_, false);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public BaseStatementImpl createStatement(boolean native_, boolean updatable) throws SQLException {
 
@@ -361,6 +363,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		return prepareStatement(sql, native_, false);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public BasePreparedStatementImpl prepareStatement(String sql, boolean native_, boolean updatable) throws SQLException {
 
@@ -408,6 +411,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		getRawConnection().releaseSavepoint(savepoint);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void rollback() throws SQLException {
 		Connection connection = getRawConnection();
@@ -419,6 +423,7 @@ public class BaseConnectionImpl implements QConnection, Connection {
 		getRawConnection().rollback(savepoint);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void setAutoCommit(boolean autoCommit) throws SQLException {
 		Connection connection = getRawConnection();

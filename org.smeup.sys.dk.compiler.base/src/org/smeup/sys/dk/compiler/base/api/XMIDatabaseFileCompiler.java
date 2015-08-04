@@ -92,6 +92,7 @@ public class XMIDatabaseFileCompiler {
 			}
 		}
 
+		files.close();
 	}
 
 	private void createJavaFile(QDatabaseFile file, QLibrary library) throws IOException, OperatingSystemException {

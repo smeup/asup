@@ -62,12 +62,11 @@ public class CLUnitConverterImpl implements QUnitConverter {
 			// TODO create and extract(materialize program source)
 			throw new OperatingSystemRuntimeException("Null resource for object " + program.getName(), null);
 
-		try {
+		try(InputStream inputStream = extractContent(program.getSource());) {
 
 			// extract and save
-			InputStream inputStream = extractContent(program.getSource());
 			QSourceEntry memberExtracted = sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_extracted.XML", true, inputStream);
-
+			
 			Document docFrom = loadDocument(memberExtracted.getInputStream());
 			StringBuffer source = extractSource(job, docFrom);
 

@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.core.java.impl;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,7 +17,6 @@ import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URL;
 import java.util.Dictionary;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import org.eclipse.emf.ecore.EClass;
@@ -86,8 +84,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageCoreJavaPackage.JAVA_ANNOTATION:
 				return createJavaAnnotationFromString(eDataType, initialValue);
-			case QIntegratedLanguageCoreJavaPackage.JAVA_CLOSEABLE:
-				return createJavaCloseableFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_DICTIONARY:
 				return createJavaDictionaryFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_EXCEPTION:
@@ -98,8 +94,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 				return createJavaIOExceptionFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_ITERABLE:
 				return createJavaIterableFromString(eDataType, initialValue);
-			case QIntegratedLanguageCoreJavaPackage.JAVA_ITERATOR:
-				return createJavaIteratorFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_MAP:
 				return createJavaMapFromString(eDataType, initialValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_OUTPUT_STREAM:
@@ -132,8 +126,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageCoreJavaPackage.JAVA_ANNOTATION:
 				return convertJavaAnnotationToString(eDataType, instanceValue);
-			case QIntegratedLanguageCoreJavaPackage.JAVA_CLOSEABLE:
-				return convertJavaCloseableToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_DICTIONARY:
 				return convertJavaDictionaryToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_EXCEPTION:
@@ -144,8 +136,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 				return convertJavaIOExceptionToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_ITERABLE:
 				return convertJavaIterableToString(eDataType, instanceValue);
-			case QIntegratedLanguageCoreJavaPackage.JAVA_ITERATOR:
-				return convertJavaIteratorToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_MAP:
 				return convertJavaMapToString(eDataType, instanceValue);
 			case QIntegratedLanguageCoreJavaPackage.JAVA_OUTPUT_STREAM:
@@ -182,22 +172,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 	 * @generated
 	 */
 	public String convertJavaAnnotationToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Closeable createJavaCloseableFromString(EDataType eDataType, String initialValue) {
-		return (Closeable)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJavaCloseableToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -279,23 +253,6 @@ public class IntegratedLanguageCoreJavaFactoryImpl extends EFactoryImpl implemen
 	 * @generated
 	 */
 	public String convertJavaIterableToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	public Iterator<Object> createJavaIteratorFromString(EDataType eDataType, String initialValue) {
-		return (Iterator<Object>)super.createFromString(initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJavaIteratorToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(instanceValue);
 	}
 
