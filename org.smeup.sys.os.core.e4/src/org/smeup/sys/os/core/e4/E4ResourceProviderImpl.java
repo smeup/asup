@@ -85,10 +85,12 @@ public class E4ResourceProviderImpl implements QResourceProvider {
 			break;
 		
 		case LIBRARY_LIST:
-			resources.put(job.getCurrentLibrary(), getResource(job.getCurrentLibrary(), klass));
-			
+			String curLib = job.getCurrentLibrary();
+			resources.put(curLib, getResource(curLib, klass));
 			for (String libraryName : job.getLibraries()) {
-				resources.put(libraryName, getResource(libraryName, klass));
+				if (!libraryName.equals(curLib)) {
+					resources.put(libraryName, getResource(libraryName, klass));
+				}
 			}
 
 			break;

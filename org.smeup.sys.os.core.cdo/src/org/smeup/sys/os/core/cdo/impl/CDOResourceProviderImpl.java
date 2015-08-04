@@ -11,7 +11,10 @@
  */
 package org.smeup.sys.os.core.cdo.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -116,8 +119,9 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			}
 			break;
 		case LIBRARY_LIST:
-			resource.getContainers().add(job.getCurrentLibrary());
-			resource.getContainers().addAll(job.getLibraries());
+			String curLib = job.getCurrentLibrary();
+			resource.getContainers().add(curLib);
+			resource.getContainers().addAll(filter(job.getLibraries(), curLib));
 			break;
 			
 		case CURRENT_LIBRARY:
@@ -128,6 +132,15 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 		}
 
+	}
+
+	private Collection<? extends String> filter(List<String> list, String element) {
+		if (list.contains(element)) {
+			ArrayList<String> result = new ArrayList<String>(list);
+			result.remove(element);
+			return result;
+		}
+		return list;
 	}
 
 	private CDONet4jSession getSession(QJob job) {

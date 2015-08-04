@@ -81,9 +81,13 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 			break;
 			
 		case LIBRARY_LIST:
-			containers.add(job.getCurrentLibrary());
-			for (String libraryName : job.getLibraries())
-				containers.add(libraryName);
+			String curLib = job.getCurrentLibrary();
+			containers.add(curLib);
+			for (String libraryName : job.getLibraries()) {
+				if (!libraryName.equals(curLib)) {
+					containers.add(libraryName);
+				}
+			}
 			break;
 
 		case CURRENT_LIBRARY:
