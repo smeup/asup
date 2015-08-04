@@ -22,6 +22,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypeImpl#getTypedClassName <em>Typed Class Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.type.impl.TypeImpl#isPersistent <em>Persistent</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,6 +47,24 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	 * @ordered
 	 */
 	protected String typedClassName = TYPED_CLASS_NAME_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isPersistent() <em>Persistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPersistent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PERSISTENT_EDEFAULT = true;
+	/**
+	 * The cached value of the '{@link #isPersistent() <em>Persistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPersistent()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean persistent = PERSISTENT_EDEFAULT;
 	/**
 	 * 
 	 */
@@ -95,6 +114,27 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isPersistent() {
+		return persistent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPersistent(boolean newPersistent) {
+		boolean oldPersistent = persistent;
+		persistent = newPersistent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemTypePackage.TYPE__PERSISTENT, oldPersistent, persistent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Class<T> getTypedClass() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -111,6 +151,8 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
 				return getTypedClassName();
+			case QOperatingSystemTypePackage.TYPE__PERSISTENT:
+				return isPersistent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -125,6 +167,9 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
 				setTypedClassName((String)newValue);
+				return;
+			case QOperatingSystemTypePackage.TYPE__PERSISTENT:
+				setPersistent((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -141,6 +186,9 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
 				setTypedClassName(TYPED_CLASS_NAME_EDEFAULT);
 				return;
+			case QOperatingSystemTypePackage.TYPE__PERSISTENT:
+				setPersistent(PERSISTENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -155,6 +203,8 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPE__TYPED_CLASS_NAME:
 				return TYPED_CLASS_NAME_EDEFAULT == null ? typedClassName != null : !TYPED_CLASS_NAME_EDEFAULT.equals(typedClassName);
+			case QOperatingSystemTypePackage.TYPE__PERSISTENT:
+				return persistent != PERSISTENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -171,6 +221,8 @@ public class TypeImpl<T extends QTypedObject> extends TypedObjectImpl implements
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (typedClassName: ");
 		result.append(typedClassName);
+		result.append(", persistent: ");
+		result.append(persistent);
 		result.append(')');
 		return result.toString();
 	}

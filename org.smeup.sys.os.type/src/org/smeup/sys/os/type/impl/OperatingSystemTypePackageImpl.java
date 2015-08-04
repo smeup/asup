@@ -148,6 +148,15 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getType_Persistent() {
+		return (EAttribute)typeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -285,6 +294,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		// Create classes and their features
 		typeEClass = createEClass(TYPE);
 		createEAttribute(typeEClass, TYPE__TYPED_CLASS_NAME);
+		createEAttribute(typeEClass, TYPE__PERSISTENT);
 
 		typeRegistryEClass = createEClass(TYPE_REGISTRY);
 
@@ -361,6 +371,7 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		// Initialize classes and features; add operations and parameters
 		initEClass(typeEClass, QType.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getType_TypedClassName(), ecorePackage.getEString(), "typedClassName", null, 1, 1, QType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getType_Persistent(), ecorePackage.getEBoolean(), "persistent", "true", 0, 1, QType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(typeEClass, null, "getTypedClass", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());

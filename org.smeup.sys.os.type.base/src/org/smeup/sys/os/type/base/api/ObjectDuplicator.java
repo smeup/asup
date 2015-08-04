@@ -43,22 +43,22 @@ public @Supported class ObjectDuplicator {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
-	
-	public @Entry void main(
-			@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject,
-			@Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
-			@Supported @DataDef(dimension=57,length=7) QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes,
-			@Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
-			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObjectName,
-			@DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
-			@DataDef(length = 10) QEnum<TOASPDEVICEEnum, QCharacter> toASPDevice,
-			@Supported @DataDef(length = 1) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
-			@DataDef(length = 1) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints,
-			@DataDef(length = 1) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
+
+	public @Entry void main(@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject, @Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
+			@Supported @DataDef(dimension = 57, length = 7) QScroller<QCharacter> objectTypes, @Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
+			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObjectName, @DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
+			@DataDef(length = 10) QEnum<TOASPDEVICEEnum, QCharacter> toASPDevice, @Supported @DataDef(length = 1) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
+			@DataDef(length = 1) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints, @DataDef(length = 1) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
 			@DataDef(length = 1) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
-		
+
 		List<QType<?>> types = typesFrom(objectTypes);
+		
+		
 		for (QType<?> type : types) {
+			
+			if(!type.isPersistent())
+				continue;
+			
 			QResourceReader<?> resourceReader = null;
 			switch (fromLibrary.asEnum()) {
 			case CURLIB:
@@ -84,75 +84,68 @@ public @Supported class ObjectDuplicator {
 				break;
 
 			}
-			
+
 			while (objectIterator.hasNext()) {
 				duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
 			}
 		}
-		
+
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary,	
-			               QEnum<NEWOBJECTEnum, QCharacter> newObjectName, 
-			               QType<?> type, 
-			               QTypedObject objToDuplicate, 
-			               DUPLICATEDATAEnum duplicateData) {
+	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate, DUPLICATEDATAEnum duplicateData) {
 		QResourceWriter resourceWriter = getWriter(toLibrary, type, objToDuplicate.getLibrary());
-		
-		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject)objToDuplicate);
+
+		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject) objToDuplicate);
 
 		switch (newObjectName.asEnum()) {
 		case SAME:
 		case OBJ:
-			//Nulla
+			// Nulla
 			break;
 
 		case OTHER:
 			duplicatedObject.setName(newObjectName.asData().trimR());
 			break;
 		}
-		
+
 		resourceWriter.save(duplicatedObject);
 		if ((objToDuplicate instanceof QPhysicalFile) && DUPLICATEDATAEnum.YES.equals(duplicateData)) {
-			new ObjectDataDuplicator(job.getContext().getAdapter(job, QConnection.class))
-			.duplicateData(objToDuplicate, duplicatedObject);
+			new ObjectDataDuplicator(job.getContext().getAdapter(job, QConnection.class)).duplicateData(objToDuplicate, duplicatedObject);
 		}
 		jobLogManager.info(job, "Object " + duplicatedObject.getName() + " created in library " + duplicatedObject.getLibrary() + " of type " + type.getName());
 	}
 
-
-
 	private QResourceWriter<? extends QTypedObject> getWriter(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QType<?> type, String sourceLibraryName) {
 		QResourceWriter<? extends QTypedObject> resourceWriter = null;
-		
+
 		switch (toLibrary.asEnum()) {
 		case CURLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
 			break;
-		
+
 		case SAME:
 		case FROMLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), sourceLibraryName);
 			break;
-		
+
 		case OTHER:
 			resourceWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), toLibrary.asData().trimR());
 			break;
-		}	
-		
+		}
+
 		return resourceWriter;
 	}
 
-	private List<QType<?>> typesFrom(QEnum<OBJECTTYPEEnum, QScroller<QCharacter>> objectTypes) {
+	private List<QType<?>> typesFrom(QScroller<QCharacter> objectTypes) {
 		List<QType<?>> result = new ArrayList<QType<?>>();
-		
-		for(QCharacter type: objectTypes.asData()) {
+
+		for (QCharacter type : objectTypes) {
 			String objectTypeString = type.trimR();
 			if (objectTypeString != null && !"".equals(objectTypeString.trim())) {
 				if (objectTypeString.equals("*ALL")) {
 					result.addAll(typeRegistry.list());
-				    break;
+					break;
 				} else {
 					QType<?> typeFound = typeRegistry.lookup("*" + objectTypeString);
 					if (typeFound != null) {
@@ -171,67 +164,6 @@ public @Supported class ObjectDuplicator {
 
 	public static enum FROMLIBRARYEnum {
 		LIBL, CURLIB, OTHER
-	}
-
-	public static enum OBJECTTYPEEnum {
-		ALL, 
-		@Special(value = "ALRTBL") ALRTBL, 
-		@Special(value = "AUTL") AUTL, @Special(value = "BNDDIR")
-		BNDDIR, @Special(value = "CHTFMT")
-		CHTFMT, @Special(value = "CLD")
-		CLD, @Special(value = "CLS")
-		CLS, @Special(value = "CMD")
-		CMD, @Special(value = "CRQD")
-		CRQD, @Special(value = "CSI")
-		CSI, @Special(value = "CSPMAP")
-		CSPMAP, @Special(value = "CSPTBL")
-		CSPTBL, @Special(value = "DTAARA")
-		DTAARA, @Special(value = "FCT")
-		FCT, @Special(value = "FILE")
-		FILE, @Special(value = "FNTRSC")
-		FNTRSC, @Special(value = "FNTTBL")
-		FNTTBL, @Special(value = "FORMDF")
-		FORMDF, @Special(value = "FTR")
-		FTR, @Special(value = "GSS")
-		GSS, @Special(value = "IGCDCT")
-		IGCDCT, @Special(value = "IGCSRT")
-		IGCSRT, @Special(value = "JOBD")
-		JOBD, @Special(value = "JOBQ")
-		JOBQ, @Special(value = "LOCALE")
-		LOCALE, @Special(value = "MEDDFN")
-		MEDDFN, @Special(value = "MENU")
-		MENU, @Special(value = "MGTCOL")
-		MGTCOL, @Special(value = "MODULE")
-		MODULE, @Special(value = "MSGF")
-		MSGF, @Special(value = "MSGQ")
-		MSGQ, @Special(value = "M36CFG")
-		M36CFG, @Special(value = "NODGRP")
-		NODGRP, @Special(value = "NODL")
-		NODL, @Special(value = "OUTQ")
-		OUTQ, @Special(value = "OVL")
-		OVL, @Special(value = "PAGDFN")
-		PAGDFN, @Special(value = "PAGSEG")
-		PAGSEG, @Special(value = "PDFMAP")
-		PDFMAP, @Special(value = "PDG")
-		PDG, @Special(value = "PGM")
-		PGM, @Special(value = "PNLGRP")
-		PNLGRP, @Special(value = "PRDAVL")
-		PRDAVL, @Special(value = "PRDDFN")
-		PRDDFN, @Special(value = "PRDLOD")
-		PRDLOD, @Special(value = "PSFCFG")
-		PSFCFG, @Special(value = "QMFORM")
-		QMFORM, @Special(value = "QMQRY")
-		QMQRY, @Special(value = "QRYDFN")
-		QRYDFN, @Special(value = "SBSD")
-		SBSD, @Special(value = "SCHIDX")
-		SCHIDX, @Special(value = "SRVPGM")
-		SRVPGM, @Special(value = "SSND")
-		SSND, @Special(value = "TBL")
-		TBL, @Special(value = "USRIDX")
-		USRIDX, @Special(value = "USRSPC")
-		USRSPC, @Special(value = "VLDL")
-		VLDL, @Special(value = "WSCST")
-		WSCST
 	}
 
 	public static enum TOLIBRARYEnum {

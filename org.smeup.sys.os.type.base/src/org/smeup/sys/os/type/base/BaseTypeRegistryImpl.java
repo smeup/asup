@@ -44,49 +44,48 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	@Inject
 	private QResourceManager resourceManager;
-	
+
 	private List<QType<?>> types;
-	
+
 	@SuppressWarnings("unchecked")
 	@PostConstruct
 	public void init(QTypeContainer typeContainer) {
-		
+
 		this.types = new ArrayList<QType<?>>();
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
-		
-		for(QType<?> type: typeContainer.getContents()) {
+
+		for (QType<?> type : typeContainer.getContents()) {
 
 			for (Bundle bundle : bundleContext.getBundles()) {
 
 				try {
 					Class<T> typedClass = (Class<T>) bundle.loadClass(type.getTypedClassName());
-					//TODO: Verificare!!!
-					if (!typedClass.equals(QType.class)) {
-						this.types.add(new InternalType<T>((QType<T>) type, typedClass));
-					}
+					// TODO: Verificare!!!
+					// if (!typedClass.equals(QType.class)) {
+					this.types.add(new InternalType<T>((QType<T>) type, typedClass));
+					// }
 					break;
 				} catch (ClassNotFoundException e) {
-				} 
+				}
 			}
 		}
 
 		this.resourceManager.registerProvider(QType.class, this);
 	}
-	
-	
 
 	@Override
 	public QType<?> lookup(String name) {
 		QType<?> type = null;
-		
-		for(QType<?> t: list()) {
-			if(t.getName().equals(name))  {
+
+		for (QType<?> t : list()) {
+
+			if (t.getName().equals(name)) {
 				type = t;
 				break;
 			}
 		}
-		
+
 		return type;
 	}
 
@@ -101,6 +100,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		for (QType<?> type : list())
 			if (type.getTypedClass().isAssignableFrom(typedClass))
 				return type;
+
 		return null;
 	}
 
@@ -132,15 +132,15 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		}
 
 	}
-	
+
 	@SuppressWarnings("hiding")
 	private class InternalType<T extends QTypedObject> extends TypeImpl<T> {
-		
+
 		private static final long serialVersionUID = 1L;
-		
+
 		private QType<T> delegate;
 		private Class<T> typedClass;
-		
+
 		private InternalType(QType<T> type, Class<T> typedClass) {
 			this.delegate = type;
 			this.typedClass = typedClass;
@@ -197,13 +197,18 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		public void setCreationInfo(QCreationInfo value) {
 			delegate.setCreationInfo(value);
 		}
-		
+
 		@Override
 		public String toString() {
 			return delegate.getName();
 		}
+
+		@Override
+		public boolean isPersistent() {
+			return delegate.isPersistent();
+		}
 	}
-	
+
 	private class TypeResourceReader extends ResourceReaderImpl<QType<?>> {
 
 		@Override
@@ -217,7 +222,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 			List<QType<?>> types = new ArrayList<>();
 			for (QType<?> type : list())
 				types.add(type);
-			
+
 			return new TypeIterator(types.iterator());
 		}
 
@@ -250,7 +255,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		}
 
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QJob job, Class<T> klass, String container) {

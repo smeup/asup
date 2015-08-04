@@ -12,6 +12,8 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typedClassName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeRegistry" abstract="true" interface="true">
     <eOperations name="lookup" lowerBound="1">

@@ -210,13 +210,22 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPE__TYPED_CLASS_NAME = TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__PERSISTENT = TYPED_OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = TYPED_OBJECT_FEATURE_COUNT + 1;
+	int TYPE_FEATURE_COUNT = TYPED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Type Registry</em>' class.
@@ -330,6 +339,17 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getType_TypedClassName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.type.QType#isPersistent <em>Persistent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistent</em>'.
+	 * @see org.smeup.sys.os.type.QType#isPersistent()
+	 * @see #getType()
+	 * @generated
+	 */
+	EAttribute getType_Persistent();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}'.
@@ -497,6 +517,14 @@ public interface QOperatingSystemTypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE__TYPED_CLASS_NAME = eINSTANCE.getType_TypedClassName();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE__PERSISTENT = eINSTANCE.getType_Persistent();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.type.QTypeRegistry <em>Type Registry</em>}' class.

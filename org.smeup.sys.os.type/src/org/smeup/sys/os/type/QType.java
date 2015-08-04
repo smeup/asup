@@ -18,6 +18,7 @@ package org.smeup.sys.os.type;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QType#getTypedClassName <em>Typed Class Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.type.QType#isPersistent <em>Persistent</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +53,33 @@ public interface QType<T extends QTypedObject> extends QTypedObject {
 	 * @generated
 	 */
 	void setTypedClassName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Persistent</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Persistent</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Persistent</em>' attribute.
+	 * @see #setPersistent(boolean)
+	 * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getType_Persistent()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isPersistent();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.type.QType#isPersistent <em>Persistent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Persistent</em>' attribute.
+	 * @see #isPersistent()
+	 * @generated
+	 */
+	void setPersistent(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->
