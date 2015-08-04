@@ -41,8 +41,28 @@ public class LibraryWorker {
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNUMBEREnum, QBinary> aSPNumber,
 			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
 		
-		QResourceReader<?> resourceReader = null;
+		try(QObjectIterator<?> objectIterator =  findIterator(library);) {
+			QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
+			objectWriter.initialize();
+	
+			QObject qObject = null;
+			while (objectIterator.hasNext()) {
+				try {
+					qObject = objectIterator.next();
+					objectWriter.write(qObject);
+				} catch (Exception e) {
+					jobLogManager.error(job, qObject + " " + e.getMessage());
+				}
+			}		
+			objectWriter.flush();
+		}
+	}
+		
+
+	@SuppressWarnings("resource")
+	private QObjectIterator<?> findIterator(LIBRARY library) {
 		QObjectIterator<?> objectIterator = null;
+		QResourceReader<?> resourceReader;
 		switch (library.nameGeneric.asEnum()) {
 		case ALL:
 			resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
@@ -69,21 +89,7 @@ public class LibraryWorker {
 			objectIterator = resourceReader.find(library.nameGeneric.asData().trimR());
 			break;
 		}
-
-		QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
-		objectWriter.initialize();
-
-		QObject qObject = null;
-		while (objectIterator.hasNext()) {
-			try {
-				qObject = objectIterator.next();
-				objectWriter.write(qObject);
-			} catch (Exception e) {
-				jobLogManager.error(job, qObject + " " + e.getMessage());
-			}
-		}		
-		objectWriter.flush();
-		objectIterator.close();
+		return objectIterator;
 	}
 
 	public static class LIBRARY extends QDataStructWrapper {

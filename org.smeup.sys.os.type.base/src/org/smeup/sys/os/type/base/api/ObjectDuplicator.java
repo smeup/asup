@@ -73,20 +73,24 @@ public @Supported class ObjectDuplicator {
 			}
 
 			QObjectIterator<? extends QObjectNameable> objectIterator = null;
-
-			switch (fromObject.asEnum()) {
-			case ALL:
-				objectIterator = resourceReader.find(null);
-				break;
-
-			case OTHER:
-				objectIterator = resourceReader.find(fromObject.asData().trimR());
-				break;
-
-			}
-
-			while (objectIterator.hasNext()) {
-				duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
+			try {
+				switch (fromObject.asEnum()) {
+				case ALL:
+					objectIterator = resourceReader.find(null);
+					break;
+	
+				case OTHER:
+					objectIterator = resourceReader.find(fromObject.asData().trimR());
+					break;
+				}
+	
+				while (objectIterator.hasNext()) {
+					duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
+				}
+			} finally {
+				if (objectIterator != null) {
+					objectIterator.close();
+				}
 			}
 		}
 

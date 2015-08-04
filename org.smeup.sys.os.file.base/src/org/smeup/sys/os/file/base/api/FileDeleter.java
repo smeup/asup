@@ -71,9 +71,10 @@ public @Supported class FileDeleter {
 		}
 
 		QObjectIterator<QFile> files = fileWriter.find(file.nameGeneric.trimR());
-		if(!files.hasNext())
+		if(!files.hasNext()) {
+			files.close();
 			throw new OperatingSystemRuntimeException("File " + file.nameGeneric.trimR() + " not found in library " + file.library);
-
+		}
 		SplittedSet splittedSet = new SplittedSet(files);
 		files.close();
 		
