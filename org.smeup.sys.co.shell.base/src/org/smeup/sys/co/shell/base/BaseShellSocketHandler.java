@@ -130,6 +130,8 @@ public class BaseShellSocketHandler extends Thread {
 		// retrieve user
 		user = cleanup(command);
 
+		System.out.println("Connection request for user " + user);
+		
 		QCredentials credentials = QCommunicationShellFactory.eINSTANCE.createShellCredentials();
 		credentials.setUser(user);
 		// connect
@@ -142,10 +144,10 @@ public class BaseShellSocketHandler extends Thread {
 	}
 
 	private void executeCommand(String command) {
-
 		if (command == null || command.trim().length() == 0)
 			return;
-
+		System.out.println("Executing " + command + "...");
 		shellManager.executeCommand(authenticationToken.getID(), command, null, true);
+		System.out.println(command + " terminated");
 	}
 }
