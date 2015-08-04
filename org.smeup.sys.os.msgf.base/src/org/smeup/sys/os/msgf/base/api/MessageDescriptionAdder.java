@@ -31,6 +31,7 @@ import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -39,7 +40,6 @@ import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
-import org.smeup.sys.os.msgf.QMessageFileManager;
 import org.smeup.sys.os.msgf.QOperatingSystemMessageFileFactory;
 
 @Supported
@@ -49,8 +49,7 @@ public class MessageDescriptionAdder {
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
-	private QMessageFileManager messageFileManager;
-	
+	private QExceptionManager exceptionManager;	
 	@Inject
 	private QJob job;
 	@Inject
@@ -85,12 +84,12 @@ public class MessageDescriptionAdder {
 
 		QMessageFile qMessageFile = resource.lookup(messageFile.name.trimR());
 		if (qMessageFile == null)
-			throw messageFileManager.prepareException(job, QCPFMSG.CPF2407, new String[] { messageFile.name.trimR(), messageFile.library.asData().trimR() });
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2407, new String[] { messageFile.name.trimR(), messageFile.library.asData().trimR() });
 
 		// TODO Come verifico l'esistenza???
 		for (QMessageDescription messageDescription : qMessageFile.getMessages())
 			if (messageDescription.getName().equals(messageIdentifier.trimR()))
-				throw messageFileManager.prepareException(job, QCPFMSG.CPF2412, new String[] { messageIdentifier.trimR(), messageFile.name.trimR(), messageFile.library.asData().trimR() });
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2412, new String[] { messageIdentifier.trimR(), messageFile.name.trimR(), messageFile.library.asData().trimR() });
 
 		QMessageDescription qMessageDescription = QOperatingSystemMessageFileFactory.eINSTANCE.createMessageDescription();
 

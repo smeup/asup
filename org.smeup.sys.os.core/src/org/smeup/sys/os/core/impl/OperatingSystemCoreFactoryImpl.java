@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.os.core.DateFormat;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
@@ -89,6 +90,10 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 				return createDateFormatFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.TIME_FORMAT:
 				return createTimeFormatFromString(eDataType, initialValue);
+			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
+				return createMessageVariableListFromString(eDataType, initialValue);
+			case QOperatingSystemCorePackage.MESSAGE_EXCEPTION:
+				return createMessageExceptionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +115,10 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 				return convertDateFormatToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.TIME_FORMAT:
 				return convertTimeFormatToString(eDataType, instanceValue);
+			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
+				return convertMessageVariableListToString(eDataType, instanceValue);
+			case QOperatingSystemCorePackage.MESSAGE_EXCEPTION:
+				return convertMessageExceptionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -215,6 +224,42 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	 */
 	public String convertTimeFormatToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object[] createMessageVariableListFromString(EDataType eDataType, String initialValue) {
+		return (Object[])super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMessageVariableListToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OperatingSystemMessageException createMessageExceptionFromString(EDataType eDataType, String initialValue) {
+		return (OperatingSystemMessageException)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMessageExceptionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

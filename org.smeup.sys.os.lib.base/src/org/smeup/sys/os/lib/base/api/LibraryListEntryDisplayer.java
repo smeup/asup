@@ -39,6 +39,7 @@ public class LibraryListEntryDisplayer {
 	private QJob job;
 
 	public @Entry void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
+
 		QObjectWriter objectWriter = null;
 
 		if (output.asEnum().equals(OUTPUTEnum.PRINT)) {

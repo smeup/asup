@@ -9,7 +9,6 @@ package org.smeup.sys.os.msgf;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
@@ -242,16 +241,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_DATA_FIELD_FEATURE_COUNT = QIntegratedLanguageDataTermPackage.DATA_TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '<em>Message Exception</em>' data type. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @see org.smeup.sys.os.msgf.MessageException
-	 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageException()
-	 * @generated
-	 */
-	int MESSAGE_EXCEPTION = 5;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.msgf.impl.MessageFileImpl <em>Message File</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.msgf.impl.MessageFileImpl
@@ -337,14 +326,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_FILE_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '<em>Message Variable List</em>' data type.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageVariableList()
-	 * @generated
-	 */
-	int MESSAGE_VARIABLE_LIST = 4;
 
 	/**
 	 * Returns the meta object for class '
@@ -434,16 +415,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	EAttribute getMessageDataField_OutputMask();
 
 	/**
-	 * Returns the meta object for data type '{@link org.smeup.sys.os.core.OperatingSystemMessageException <em>Message Exception</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Message Exception</em>'.
-	 * @see org.smeup.sys.os.core.OperatingSystemMessageException
-	 * @model instanceClass="org.smeup.sys.os.core.OperatingSystemMessageException"
-	 * @generated
-	 */
-	EDataType getMessageException();
-
-	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.os.msgf.QMessageFile <em>Message File</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -473,15 +444,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMessageFileManager();
-
-	/**
-	 * Returns the meta object for data type '<em>Message Variable List</em>'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Message Variable List</em>'.
-	 * @model instanceClass="java.lang.Object[]"
-	 * @generated
-	 */
-	EDataType getMessageVariableList();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -571,15 +533,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 		EAttribute MESSAGE_DATA_FIELD__OUTPUT_MASK = eINSTANCE.getMessageDataField_OutputMask();
 
 		/**
-		 * The meta object literal for the '<em>Message Exception</em>' data type.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.OperatingSystemMessageException
-		 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageException()
-		 * @generated
-		 */
-		EDataType MESSAGE_EXCEPTION = eINSTANCE.getMessageException();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.msgf.impl.MessageFileImpl <em>Message File</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -606,14 +559,6 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass MESSAGE_FILE_MANAGER = eINSTANCE.getMessageFileManager();
-
-		/**
-		 * The meta object literal for the '<em>Message Variable List</em>' data type.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.msgf.impl.OperatingSystemMessageFilePackageImpl#getMessageVariableList()
-		 * @generated
-		 */
-		EDataType MESSAGE_VARIABLE_LIST = eINSTANCE.getMessageVariableList();
 
 	}
 

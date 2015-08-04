@@ -10,7 +10,6 @@ package org.smeup.sys.os.msgf.impl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -22,7 +21,6 @@ import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
-import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
@@ -62,18 +60,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass messageFileManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType messageVariableListEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType messageExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -217,15 +203,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
-	public EDataType getMessageException() {
-		return messageExceptionEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getMessageFile() {
 		return messageFileEClass;
 	}
@@ -246,15 +223,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 	@Override
 	public EClass getMessageFileManager() {
 		return messageFileManagerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EDataType getMessageVariableList() {
-		return messageVariableListEDataType;
 	}
 
 	/**
@@ -298,10 +266,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		createEReference(messageFileEClass, MESSAGE_FILE__MESSAGES);
 
 		messageFileManagerEClass = createEClass(MESSAGE_FILE_MANAGER);
-
-		// Create data types
-		messageVariableListEDataType = createEDataType(MESSAGE_VARIABLE_LIST);
-		messageExceptionEDataType = createEDataType(MESSAGE_EXCEPTION);
 	}
 
 	/**
@@ -376,14 +340,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 
 		initEClass(messageFileManagerEClass, QMessageFileManager.class, "MessageFileManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(messageFileManagerEClass, this.getMessageException(), "prepareException", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
-		t1.getEBounds().add(g1);
-		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaEnum(), "messageName", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getMessageVariableList(), "variables", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(messageFileManagerEClass, null, "overrideMessageFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "messageFileFrom", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -392,10 +348,6 @@ public class OperatingSystemMessageFilePackageImpl extends EPackageImpl implemen
 		op = addEOperation(messageFileManagerEClass, this.getMessageFile(), "getOverrideMessageFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "messageFileName", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		// Initialize data types
-		initEDataType(messageVariableListEDataType, Object[].class, "MessageVariableList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(messageExceptionEDataType, OperatingSystemMessageException.class, "MessageException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

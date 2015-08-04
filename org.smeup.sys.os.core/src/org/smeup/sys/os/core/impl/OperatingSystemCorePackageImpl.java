@@ -9,17 +9,24 @@ package org.smeup.sys.os.core.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
+import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.DateFormat;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
@@ -65,6 +72,13 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass exceptionManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum scopeEEnum = null;
 
 	/**
@@ -87,6 +101,20 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EEnum timeFormatEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType messageVariableListEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType messageExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -307,6 +335,15 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExceptionManager() {
+		return exceptionManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getScope() {
 		return scopeEEnum;
@@ -340,6 +377,24 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	@Override
 	public EEnum getTimeFormat() {
 		return timeFormatEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getMessageVariableList() {
+		return messageVariableListEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getMessageException() {
+		return messageExceptionEDataType;
 	}
 
 	/**
@@ -388,11 +443,17 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		systemManagerEClass = createEClass(SYSTEM_MANAGER);
 
+		exceptionManagerEClass = createEClass(EXCEPTION_MANAGER);
+
 		// Create enums
 		scopeEEnum = createEEnum(SCOPE);
 		systemStatusEEnum = createEEnum(SYSTEM_STATUS);
 		dateFormatEEnum = createEEnum(DATE_FORMAT);
 		timeFormatEEnum = createEEnum(TIME_FORMAT);
+
+		// Create data types
+		messageVariableListEDataType = createEDataType(MESSAGE_VARIABLE_LIST);
+		messageExceptionEDataType = createEDataType(MESSAGE_EXCEPTION);
 	}
 
 	/**
@@ -424,6 +485,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageLockPackage theIntegratedLanguageLockPackage = (QIntegratedLanguageLockPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageLockPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theOperatingSystemJobsPackage);
@@ -463,6 +525,16 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(systemManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(exceptionManagerEClass, QExceptionManager.class, "ExceptionManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(exceptionManagerEClass, this.getMessageException(), "prepareException", 0, 1, IS_UNIQUE, IS_ORDERED);
+		ETypeParameter t1 = addETypeParameter(op, "E");
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaEnum(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getMessageVariableList(), "variables", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(scopeEEnum, Scope.class, "Scope");
 		addEEnumLiteral(scopeEEnum, Scope.ALL);
@@ -495,6 +567,10 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.EUR);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.JIS);
 		addEEnumLiteral(timeFormatEEnum, TimeFormat.JOBRUN);
+
+		// Initialize data types
+		initEDataType(messageVariableListEDataType, Object[].class, "MessageVariableList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(messageExceptionEDataType, OperatingSystemMessageException.class, "MessageException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

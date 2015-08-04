@@ -47,14 +47,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageFileManager" abstract="true"
       interface="true">
-    <eOperations name="prepareException" eType="#//MessageException">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
-      <eParameters name="messageName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
-      <eParameters name="variables" lowerBound="1" eType="#//MessageVariableList"/>
-    </eOperations>
     <eOperations name="overrideMessageFile">
       <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="messageFileFrom" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -65,6 +57,4 @@
       <eParameters name="messageFileName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
 </ecore:EPackage>
