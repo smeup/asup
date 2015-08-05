@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.file.base.api;
 
 import java.sql.ResultSet;
@@ -26,7 +37,7 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -40,6 +51,7 @@ import org.smeup.sys.os.file.base.api.tools.Displayer;
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
 	public static enum QCPFMSG {
+		CPF2802, CPF2801, CPF2861
 	}
 
 	@Inject
@@ -50,6 +62,8 @@ public @ToDo class FileCopier {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QOutputManager outputManager;
+	@Inject
+	private QExceptionManager exceptionManager;
 	
 	public @Entry void main(
 			@Supported @DataDef(qualified = true) FROMFILE fromFile,
@@ -79,9 +93,9 @@ public @ToDo class FileCopier {
 		
 		QFile qFileFrom = fileReader.lookup(fromFile.name.trimR());
 		if(qFileFrom == null)
-			throw new OperatingSystemRuntimeException("File " + fromFile.name.trimR() + " not found in library " + fromFile.library.asData());
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2802, new String[] {fromFile.name.trimR(), fromFile.library.asData().trimR()});	
 		if(!(qFileFrom instanceof QDatabaseFile))
-			throw new OperatingSystemRuntimeException("File " + fromFile.name.trimR() + " in library " + fromFile.library.asData() + " is not a datbase file");
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2801, new String[] {fromFile.name.trimR(), fromFile.library.asData().trimR()});	
 		
 		//
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
@@ -109,7 +123,7 @@ public @ToDo class FileCopier {
 			fileDataDuplicator.setFileTo(qFileTo);
 			if(qFileTo == null) {
 				if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
-					throw new OperatingSystemRuntimeException("File " + toFileName + " not found in library " + toFile.library.asData() + " and CRTFILE = *NO");
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF2861, new String[] {toFileName, toFile.library.asData().trimR()});	
 				} else {
 					qFileTo = createFile(qFileFrom, toFileName, fileWriter);
 				}

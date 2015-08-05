@@ -1,7 +1,20 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.file.base.api;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -21,6 +34,7 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
@@ -31,7 +45,7 @@ import org.smeup.sys.os.file.QPhysicalFile;
 @Program(name = "QASDLTF")
 public @Supported class FileDeleter {
 	public static enum QCPFMSG {
-		CPF2125, CPF2105
+		CPF2125, CPF2105, CPF3219
 	}
 
 
@@ -41,6 +55,8 @@ public @Supported class FileDeleter {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
 	
 	public @Entry void main(
 			@Supported @DataDef(qualified = true) FILE file,
@@ -73,27 +89,37 @@ public @Supported class FileDeleter {
 		QObjectIterator<QFile> files = fileWriter.find(file.nameGeneric.trimR());
 		if(!files.hasNext()) {
 			files.close();
-			throw new OperatingSystemRuntimeException("File " + file.nameGeneric.trimR() + " not found in library " + file.library);
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[] {file.nameGeneric.trimR(), file.library.asData().trimR(), "FILE"});	
 		}
 		SplittedSet splittedSet = new SplittedSet(files);
 		files.close();
 		
+		boolean deleteOccured = false;
 		for (QFile qFile : splittedSet.nonPhysicalFiles) {
 			fileWriter.delete(qFile);
+			deleteOccured = true;
 		}
 
-		StringBuffer warnings = new StringBuffer();
+		List<QPhysicalFile> warnings = new ArrayList<QPhysicalFile>();
 		for (QPhysicalFile qFile : splittedSet.physicalFiles) {
 			if (hasLogicals(qFile)) {
-				warnings.append(" ")
-				        .append(qFile.getLibrary().trim() + "/" + qFile.getName().trim());
+				warnings.add(qFile);
 			} else {
 				fileWriter.delete(qFile);
+				deleteOccured = true;
 			}
 		}
 
-		if (warnings.length() > 0) {
-			throw new OperatingSystemRuntimeException("Some files weren't deleted because they are connected to some logical files:" + warnings);
+		logLogicalsExceptions(warnings);
+		
+		if (!deleteOccured) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2125, new String[] {});							
+		}
+	}
+
+	private void logLogicalsExceptions(List<QPhysicalFile> warnings) {
+		for (QPhysicalFile qPhysicalFile : warnings) {
+			exceptionManager.prepareException(job, QCPFMSG.CPF3219, new String[] {qPhysicalFile.getName(), qPhysicalFile.getLibrary()});
 		}
 	}
 

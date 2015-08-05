@@ -27,38 +27,44 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
+import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 
 @Program(name = "QDBCLRPF")
 public class PhysicalFileClearer {
-
+	public static enum QCPFMSG {
+		CPF3142, CPF3136 
+	}
+	
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
 
+	
 	@Entry
-	public void main(FileRef file, @DataDef(length = 10) QEnum<Member, QCharacter> member) {
+	public void main(@DataDef(qualified = true) FILE file, @DataDef(length = 10) QEnum<Member, QCharacter> member) {
 
-		// TODO Intercept library special value
-		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
-		QFile qFile = fileReader.lookup(file.name.trimR());
+		FileFinder fileFinder = new FileFinder(job, resourceManager);
+		QFile qFile = fileFinder.lookup(file);
 
 		if (qFile == null)
-			throw new OperatingSystemRuntimeException("File not found: " + file);
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3142, new String[] {file.nameGeneric.trimR(), member.asData().trimR(),  file.library.asData().trimR()});		
 		
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 
-		// create
 		try {
 			if (qFile instanceof QPhysicalFile) {
 				Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
 				deleteData(connection, table);
+			} else {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF3136, new String[] {file.nameGeneric.trimR(), member.asData().trimR(), file.library.asData().trimR()});		
 			}
 		} catch (SQLException e) {
 			throw new OperatingSystemRuntimeException(e);
@@ -76,7 +82,7 @@ public class PhysicalFileClearer {
 
 		// persistent table only
 		if (table instanceof ViewTable)
-			return;
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3136, new String[] {table.getName(), table.getSchema().getName()});		
 
 		QStatement statement = null;
 		try {
