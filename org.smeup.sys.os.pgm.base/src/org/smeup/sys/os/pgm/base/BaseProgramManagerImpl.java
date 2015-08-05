@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -241,7 +242,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	
 			}
 			catch(Exception e) {
-				e.printStackTrace();
+				Throwable cause = e.getCause();
+				if (cause != null && (cause instanceof OperatingSystemMessageException)) {
+					System.err.println(cause);
+				} else {
+					e.printStackTrace();
+				}
 				throw new OperatingSystemRuntimeProgramException(e.getMessage(), e);
 			}		
 			finally {

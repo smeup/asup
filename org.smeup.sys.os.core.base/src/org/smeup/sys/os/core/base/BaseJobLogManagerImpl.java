@@ -46,7 +46,8 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 		addEntry(job, 30, message);
 	}
 
-	private void addEntry(QJob job, int gravity, String message) {
+	@Override
+	public void addEntry(QJob job, int gravity, String message) {
 
 		// job log
 		QJobLog jobLog = lookup(job);

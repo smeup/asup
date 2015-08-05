@@ -175,6 +175,11 @@
         <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="number" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eOperations>
+      <eOperations name="addEntry">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="gravity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobManager" abstract="true" interface="true">
       <eOperations name="close">

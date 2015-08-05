@@ -34,4 +34,8 @@ public class OperatingSystemMessageException extends RuntimeException {
 		return severity;
 	}
 
+	@Override
+	public String toString() {
+		return messageName + " " + messageText;
+	}
 }

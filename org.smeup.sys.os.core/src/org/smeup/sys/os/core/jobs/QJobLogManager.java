@@ -53,4 +53,12 @@ public interface QJobLogManager {
 	 */
 	QJobLog lookup(String contextID, String name, String user, int number);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" messageRequired="true"
+	 * @generated
+	 */
+	void addEntry(QJob job, int gravity, String message);
+
 } // QJobLogManager

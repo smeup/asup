@@ -8,6 +8,7 @@ import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.msgf.QMessageDescription;
@@ -18,6 +19,8 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QJobLogManager jobLogManager;
 	
 	@Override
 	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object[] variables) {
@@ -46,6 +49,8 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 		OperatingSystemMessageException messageException = new OperatingSystemMessageException(name, messageText, severity);
 
+		jobLogManager.addEntry(job, severity, messageText);
+		
 		return messageException;
 
 	}

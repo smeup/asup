@@ -22,4 +22,13 @@ public class OperatingSystemRuntimeException extends RuntimeException {
 	public OperatingSystemRuntimeException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+	@Override
+	public String toString() {
+		Throwable originalException = getCause();
+		if ( originalException != null && (originalException instanceof OperatingSystemMessageException)) {
+			return originalException.toString();
+		}
+		return super.toString();
+	}
 }
