@@ -24,7 +24,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
@@ -33,13 +33,19 @@ import org.smeup.sys.os.lib.QLibraryManager;
 @Program(name = "QLICUSRL")
 public class LibraryListEntryAdder {
 
+	public static enum QCPFMSG {
+		CPF2110, CPF2149
+	}
+	
 	@Inject
 	private QJob job;
 	@Inject
 	private QLibraryManager libraryManager;
 	@Inject
 	private QLists lists;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	@Entry
 	public void main(@DataDef(length = 10) QCharacter library, QEnum<LibraryListPositionEnum, LibraryListPosition> libraryListPosition) {
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
@@ -47,8 +53,9 @@ public class LibraryListEntryAdder {
 		QLibrary qLib = libraryWriter.lookup(newLibName);
 		
 		if (qLib == null) {
-			throw new OperatingSystemRuntimeException("Library " + newLibName + " does not exists");			
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {newLibName});	
 		}
+		
 		switch (libraryListPosition.asEnum()) {
 		case FIRST:
 			lists.addFirst(job.getLibraries(), library.trimR());
@@ -59,7 +66,7 @@ public class LibraryListEntryAdder {
 		case OTHER:
 			String oldLibName = libraryListPosition.asData().referenceLibrary.trimR();
 			if (!job.getLibraries().contains(oldLibName)) {
-				throw new OperatingSystemRuntimeException("Library " + oldLibName + " is not in library list");				
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2149, new String[] {oldLibName});				
 			}
 			substitute(libraryListPosition.asData().listPosition.asEnum(), oldLibName, newLibName, job.getLibraries());
 			break;

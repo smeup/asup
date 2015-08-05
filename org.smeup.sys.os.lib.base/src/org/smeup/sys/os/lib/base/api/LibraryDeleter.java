@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
@@ -32,6 +32,10 @@ import org.smeup.sys.os.type.QTypeRegistry;
 @Program(name = "QLICLLIB")
 public class LibraryDeleter {
 
+	public static enum QCPFMSG {
+		CPF2110
+	}
+	
 	@Inject
 	private QJob job;
 	@Inject
@@ -42,7 +46,9 @@ public class LibraryDeleter {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJobLogManager jobLogManager;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	public @Entry void main(@DataDef(length = 10) QCharacter library, @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice) {
 
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
@@ -50,7 +56,7 @@ public class LibraryDeleter {
 		QLibrary qLibrary = libraryWriter.lookup(library.trimR());
 
 		if (qLibrary == null)
-			throw new OperatingSystemRuntimeException("Library not found: " + library);
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {library.trimR()});	
 		
 		new LibraryHandler(qLibrary, job, typeRegistry, resourceManager).clear();
 

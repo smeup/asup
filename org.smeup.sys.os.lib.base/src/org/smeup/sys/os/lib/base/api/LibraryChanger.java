@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.lib.base.api;
 
 import javax.inject.Inject;
@@ -8,7 +19,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.lib.QLibrary;
@@ -17,13 +28,16 @@ import org.smeup.sys.os.lib.QLibraryManager;
 @Program(name = "QLICHGLB")
 public class LibraryChanger {
 
+	public static enum QCPFMSG {
+		CPF9810
+	}
+	
+	@Inject
+	private QExceptionManager exceptionManager;
 	@Inject
 	private QJob job;
 	@Inject
 	private QLibraryManager libraryManager;
-
-	public static enum QCPFMSG {
-	}
 
 	public @Entry void main(
 			@DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library,
@@ -50,9 +64,8 @@ public class LibraryChanger {
 					.getLibraryReader(job);
 
 			if (!libraryReader.exists(libraryName))
-				throw new OperatingSystemRuntimeException(
-						"Library do not exists: " + libraryName);
-
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {libraryName});		
+			
 			QLibrary qLibrary = libraryReader.lookup(libraryName);
 
 			String text = null;

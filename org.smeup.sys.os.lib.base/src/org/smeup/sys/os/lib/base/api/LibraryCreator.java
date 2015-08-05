@@ -24,7 +24,7 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
@@ -35,13 +35,19 @@ import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 @Program(name = "QLICRLIB")
 public class LibraryCreator {
 
+	public static enum QCPFMSG {
+		CPF2111
+	}
+	
 	@Inject
 	private QSystemManager systemManager;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	@Entry
 	public void main(
 			@Supported @DataDef(length = 10) QCharacter library,
@@ -59,11 +65,9 @@ public class LibraryCreator {
 						.getSystem().getSystemLibrary());
 
 		if (libraryWriter.exists(library.trimR()))
-			throw new OperatingSystemRuntimeException(
-					"Library already exists: " + library.trimR());
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] {library.trimR()});	
 
-		QLibrary qLibrary = QOperatingSystemLibraryFactory.eINSTANCE
-				.createLibrary();
+		QLibrary qLibrary = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 		qLibrary.setName(library.trimR());
 
 		switch (textDescription.asEnum()) {

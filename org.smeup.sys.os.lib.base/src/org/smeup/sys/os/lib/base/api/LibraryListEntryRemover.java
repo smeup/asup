@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.lib.base.api;
 
 import javax.inject.Inject;
@@ -14,14 +25,13 @@ import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QLICHLBL")
 public class LibraryListEntryRemover {
-	
-	@Inject
-	private QExceptionManager exceptionManager;
-	
+
 	public static enum QCPFMSG {
 		CPF2104, CPF2110, CPF9999
 	}
-
+	
+	@Inject
+	private QExceptionManager exceptionManager;
 	@Inject
 	private QJob job;
 	@Inject

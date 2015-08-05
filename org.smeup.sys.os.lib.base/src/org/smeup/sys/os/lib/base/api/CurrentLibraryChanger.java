@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.lib.base.api;
 
 import javax.inject.Inject;
@@ -9,7 +20,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceWriter;
@@ -18,9 +29,13 @@ import org.smeup.sys.os.lib.QLibraryManager;
 
 @Program(name = "QLICHLLE") 
 public @Supported class CurrentLibraryChanger {
-	public static enum QCPFMSG {
-	}
 	
+	public static enum QCPFMSG {
+		CPF2110
+	}
+
+	@Inject
+	private QExceptionManager exceptionManager;
 	@Inject
 	private QJob job;
 	@Inject
@@ -42,7 +57,7 @@ public @Supported class CurrentLibraryChanger {
 			QLibrary qLibrary = libraryWriter.lookup(libName);
 
 			if (qLibrary == null)
-				throw new OperatingSystemRuntimeException("Library not found: " + libName);
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});		
 			
 			job.setCurrentLibrary(libName);
 			break;
