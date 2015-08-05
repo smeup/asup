@@ -33,8 +33,11 @@ public class BaseStatementImpl implements QStatement, Statement {
 	}
 
 	@Override
-	public void close() throws SQLException {
-		rawStatement.close();
+	public void close() {
+		try {
+			rawStatement.close();
+		} catch (SQLException e) {
+		}
 	}
 
 	@Override

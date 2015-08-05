@@ -70,6 +70,7 @@ import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
+import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -1016,6 +1017,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Create type parameters
@@ -1030,6 +1032,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		indexColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		preparedStatementEClass.getESuperTypes().add(this.getStatement());
 		schemaDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
+		statementEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
 		tableDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		tableColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		viewDefEClass.getESuperTypes().add(this.getTableDef());
@@ -1127,6 +1130,12 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		op = addEOperation(connectionEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
+
+		op = addEOperation(connectionEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getStatement(), "stmt", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(connectionEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDatabaseResultSet(), "rs", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(connectionEClass, this.getStatement(), "createStatement", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
@@ -1323,8 +1332,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		initEClass(statementEClass, QStatement.class, "Statement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(statementEClass, null, "close", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getDatabaseException());
+		addEOperation(statementEClass, null, "close", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(statementEClass, ecorePackage.getEBoolean(), "execute", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);

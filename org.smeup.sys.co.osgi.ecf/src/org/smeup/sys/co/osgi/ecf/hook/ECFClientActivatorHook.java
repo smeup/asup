@@ -31,7 +31,6 @@ import org.smeup.sys.co.osgi.QCommunicationManager;
 import org.smeup.sys.co.osgi.ecf.impl.ECFCommunicationManagerImpl;
 import org.smeup.sys.rt.core.ApplicationStarting;
 
-@SuppressWarnings({ "deprecation" })
 public class ECFClientActivatorHook {
 
 	@SuppressWarnings("unused")

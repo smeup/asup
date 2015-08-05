@@ -43,6 +43,7 @@ public class SQLStatementRunner {
 	@Inject
 	private QJobLogManager jobLogManager;
 	
+	@SuppressWarnings("resource")
 	@Entry
 	public void main(@DataDef(length = 5000) QCharacter sql, @DataDef(length = 10) QEnum<COMMITMENTCONTROLEnum, QCharacter> commitmentControl,
 			@DataDef(length = 10) QEnum<NAMINGEnum, QCharacter> naming, @DataDef(length = 8) QEnum<DATEFORMATEnum, QCharacter> dateFormat, @DataDef(length = 8) QCharacter dateSeparatorCharacter,

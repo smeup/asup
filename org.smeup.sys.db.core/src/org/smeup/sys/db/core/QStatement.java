@@ -7,63 +7,73 @@
  */
 package org.smeup.sys.db.core;
 
+import java.io.Closeable;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Statement</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Statement</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getStatement()
- * @model interface="true" abstract="true"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.java.JavaCloseable"
  * @generated
  */
-public interface QStatement {
+public interface QStatement extends Closeable {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.db.core.DatabaseException"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
 	 * @generated
 	 */
-	void close() throws SQLException;
+	void close();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true"
 	 * @generated
 	 */
 	boolean execute(String sql) throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model dataType="org.smeup.sys.db.core.DatabaseResultSet" required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true"
 	 * @generated
 	 */
 	ResultSet executeQuery(String sql) throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true"
 	 * @generated
 	 */
 	int executeUpdate(String sql) throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" sqlRequired="true"
 	 * @generated
 	 */
 	void addBatch(String sql) throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model exceptions="org.smeup.sys.db.core.DatabaseException"
 	 * @generated
 	 */
 	void clearBatch() throws SQLException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model dataType="org.smeup.sys.db.core.StatementBatchResult" required="true" exceptions="org.smeup.sys.db.core.DatabaseException"
 	 * @generated
 	 */

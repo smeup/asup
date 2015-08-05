@@ -100,18 +100,16 @@ public class FileDisplayer {
 			String sql = definitionWriter.selectData(table);
 			
 			QStatement statement = null;
+			ResultSet resultSet =  null;
 			try {
 				statement = connection.createStatement(true);
-
-				ResultSet resultSet = statement.executeQuery(sql);
-
+				resultSet = statement.executeQuery(sql);
 				new Displayer(objectWriter).display(resultSet);
-
-			} catch (Exception e) {
-				throw new OperatingSystemRuntimeException(e);
 			} finally {
-				if (connection != null)
+				if (connection != null) {
+					connection.close(resultSet);
 					connection.close(statement);
+				}
 			}
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);

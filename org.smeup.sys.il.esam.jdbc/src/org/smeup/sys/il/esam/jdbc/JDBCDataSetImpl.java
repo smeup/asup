@@ -107,12 +107,8 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		init();
 
-		try {
-			if (this.statement != null)
-				this.statement.close();
-		} catch (SQLException e) {
-			handleSQLException(e);
-		}
+		if (this.statement != null)
+			this.statement.close();
 	}
 
 	@Override
