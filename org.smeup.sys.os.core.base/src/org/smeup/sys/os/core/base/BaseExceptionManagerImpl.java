@@ -43,9 +43,9 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 			severity = messageDescription.getSeverity();
 		}
 
-		// TODO
-		if (variables != null && variables.length > 0 && variables[0] != null)
-			messageText = messageText.replaceFirst("&1", Matcher.quoteReplacement(variables[0].toString()));
+		for (int i = 0; variables != null && i < variables.length; i++) {
+			messageText = messageText.replaceFirst("&" + (i + 1), Matcher.quoteReplacement("" + variables[i]));
+		}
 
 		OperatingSystemMessageException messageException = new OperatingSystemMessageException(name, messageText, severity);
 
