@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.base.api.tools.CommandDisplayerHandler;
 import org.smeup.sys.os.cmd.base.api.tools.CommandFinder;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 
@@ -30,10 +31,12 @@ public class CommandParameterDisplayer {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
 
 	@Entry
 	public void main(CommandRef command) {
-		CommandFinder commandFinder = new CommandFinder(job, resourceManager);
+		CommandFinder commandFinder = new CommandFinder(job, resourceManager, exceptionManager);
 		QCommand qCommand = commandFinder.find(command);
 
 		CommandDisplayerHandler displayer = new CommandDisplayerHandler(job, outputManager);

@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Franco Lombardo - Initial API and implementation
+ */
 package org.smeup.sys.os.cmd.base.api;
 
 import javax.inject.Inject;
@@ -13,13 +24,12 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.base.api.tools.CommandDisplayerHandler;
 import org.smeup.sys.os.cmd.base.api.tools.CommandFinder;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.resources.QResourceManager;
 
 @Program(name = "QCDDCMD")
 public class CommandDisplayer {
-	public static enum QCPFMSG {
-	}
 
 	@Inject
 	private QJob job;
@@ -27,10 +37,12 @@ public class CommandDisplayer {
 	private QOutputManager outputManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QExceptionManager exceptionManager;
 	
 	public @Entry void main(@DataDef(qualified = true) COMMAND command,
 							@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
-		CommandFinder commandFinder = new CommandFinder(job, resourceManager);
+		CommandFinder commandFinder = new CommandFinder(job, resourceManager, exceptionManager);
 		QCommand qCommand = commandFinder.find(command.name.trimR(), command.library.asData().trimR());
 
 		CommandDisplayerHandler displayer = null;
