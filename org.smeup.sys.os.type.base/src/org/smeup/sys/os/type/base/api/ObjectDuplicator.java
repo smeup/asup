@@ -38,7 +38,6 @@ import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.core.resources.QResourceSetReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QPhysicalFile;
-import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
@@ -123,7 +122,8 @@ public @Supported class ObjectDuplicator {
 
 
 	private void checkLibrary(String libName) {
-		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
+		QType<?> libType = typeRegistry.lookup("*LIB");
+		QResourceSetReader<?> resourceReader = resourceManager.getResourceReader(job, libType.getTypedClass(), Scope.ALL);
 		if (!resourceReader.exists(libName))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});	
 	}
