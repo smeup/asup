@@ -52,15 +52,11 @@ public class FileDataDuplicator {
 	}
 	
 	private void execute(String sql) {
-		QPreparedStatement stmt = null;
-		try {
-			stmt = connection.prepareStatement(sql);
+		try (QPreparedStatement stmt = connection.prepareStatement(sql);) {
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
-		} finally {
-			connection.close(stmt);
 		}
 	}
 

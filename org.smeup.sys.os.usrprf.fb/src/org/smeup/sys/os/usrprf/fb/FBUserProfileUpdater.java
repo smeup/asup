@@ -60,10 +60,11 @@ public class FBUserProfileUpdater extends Thread {
 					tempFriends.add(friend);
 				}
 
-				QObjectIterator<QUserProfile> userIterator = userProfileWriter.find(null);
 				List<QUserProfile> savedUser = new ArrayList<>();
-				while (userIterator.hasNext())
-					savedUser.add(userIterator.next());
+				try (QObjectIterator<QUserProfile> userIterator = userProfileWriter.find(null);) {
+					while (userIterator.hasNext())
+						savedUser.add(userIterator.next());
+				}
 
 				for (QUserProfile userProfile : savedUser)
 					if (!existsUser(tempFriends, userProfile.getName()))

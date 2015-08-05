@@ -25,18 +25,13 @@ public class ObjectDataDuplicator {
 	}
 	
 	public void duplicateData(Table tableFrom, Table tableTo) {
-		QPreparedStatement stmt = null;
-		try {
-			QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
-			
-			String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());
-			stmt = connection.prepareStatement(command);
+		QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
+		String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());
+		try (QPreparedStatement stmt = connection.prepareStatement(command);) {
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new OperatingSystemRuntimeException(e);
-		} finally {
-			connection.close(stmt);
 		}
 	}
 }

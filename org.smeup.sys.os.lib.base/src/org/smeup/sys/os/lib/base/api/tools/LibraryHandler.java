@@ -46,10 +46,11 @@ public class LibraryHandler {
 
 		QResourceWriter<T> typeWriter = resourceManager.getResourceWriter(job, type.getTypedClass(), library);
 
-		QObjectIterator<T> typedObjects = typeWriter.find(null);
-		while (typedObjects.hasNext()) {
-			T typedObject = typedObjects.next();
-			typeWriter.delete(typedObject);
+		try (QObjectIterator<T> typedObjects = typeWriter.find(null);) {
+			while (typedObjects.hasNext()) {
+				T typedObject = typedObjects.next();
+				typeWriter.delete(typedObject);
+			}
 		}
 
 	}
@@ -60,16 +61,16 @@ public class LibraryHandler {
 
 		List<T> physicalFiles = new ArrayList<T>();
 
-		QObjectIterator<T> typedObjects = typeWriter.find(null);
-		while (typedObjects.hasNext()) {
-			T typedObject = typedObjects.next();
-
-			if (typedObject instanceof QPhysicalFile)
-				physicalFiles.add(typedObject);
-			else
-				typeWriter.delete(typedObject);
+		try (QObjectIterator<T> typedObjects = typeWriter.find(null);) {
+			while (typedObjects.hasNext()) {
+				T typedObject = typedObjects.next();
+	
+				if (typedObject instanceof QPhysicalFile)
+					physicalFiles.add(typedObject);
+				else
+					typeWriter.delete(typedObject);
+			}
 		}
-
 		for (T physicalFile : physicalFiles)
 			typeWriter.delete(physicalFile);
 	}
