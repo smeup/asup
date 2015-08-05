@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.os.type.base.api;
 
 import java.util.ArrayList;
@@ -18,13 +29,16 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceReader;
+import org.smeup.sys.os.core.resources.QResourceSetReader;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QPhysicalFile;
+import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
@@ -32,7 +46,7 @@ import org.smeup.sys.os.type.QTypedObject;
 @Program(name = "QLICRDUP")
 public @Supported class ObjectDuplicator {
 	public static enum QCPFMSG {
-		CPF2130
+		CPF2130, CPF2110
 	}
 
 	@Inject
@@ -43,7 +57,9 @@ public @Supported class ObjectDuplicator {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	public @Entry void main(@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject, @Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
 			@Supported @DataDef(dimension = 57, length = 7) QScroller<QCharacter> objectTypes, @Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
 			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObjectName, @DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
@@ -51,8 +67,17 @@ public @Supported class ObjectDuplicator {
 			@DataDef(length = 1) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints, @DataDef(length = 1) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
 			@DataDef(length = 1) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
 
+		if (fromLibrary.asEnum().equals(FROMLIBRARYEnum.OTHER)) {
+			checkLibrary(fromLibrary.asData().trimR());
+		}
+		
+		if (toLibrary.asEnum().equals(TOLIBRARYEnum.OTHER)) {
+			checkLibrary(toLibrary.asData().trimR());
+		}
+
 		List<QType<?>> types = typesFrom(objectTypes);
 		
+		int duplicatedNr = 0;
 		
 		for (QType<?> type : types) {
 			
@@ -95,6 +120,14 @@ public @Supported class ObjectDuplicator {
 		}
 
 	}
+
+
+	private void checkLibrary(String libName) {
+		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
+		if (!resourceReader.exists(libName))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});	
+	}
+
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate, DUPLICATEDATAEnum duplicateData) {
@@ -145,13 +178,13 @@ public @Supported class ObjectDuplicator {
 		List<QType<?>> result = new ArrayList<QType<?>>();
 
 		for (QCharacter type : objectTypes) {
-			String objectTypeString = type.trimR();
-			if (objectTypeString != null && !"".equals(objectTypeString.trim())) {
+			String objectTypeString = type.toString().trim();
+			if (objectTypeString != null && !"".equals(objectTypeString)) {
 				if (objectTypeString.equals("*ALL")) {
 					result.addAll(typeRegistry.list());
 					break;
 				} else {
-					QType<?> typeFound = typeRegistry.lookup("*" + objectTypeString);
+					QType<?> typeFound = typeRegistry.lookup(objectTypeString);
 					if (typeFound != null) {
 						result.add(typeFound);
 					}
