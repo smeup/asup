@@ -247,7 +247,6 @@ public class CDOJobManagerImpl implements QJobManager {
 
 	@Override
 	public void registerListener(QJobListener listener) {
-		// TODO Auto-generated method stub
-		
+		this.listeners.add(listener);		
 	}
 }

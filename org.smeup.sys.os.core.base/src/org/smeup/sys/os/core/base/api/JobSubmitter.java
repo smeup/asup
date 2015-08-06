@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -37,7 +38,9 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.os.cmd.QCommandManager;
+import org.smeup.sys.os.core.base.api.tools.JobLogWriter;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
@@ -160,8 +163,14 @@ public class JobSubmitter {
 					}
 				}
 			}
-			// execute command
+
 			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables, true);
+			
+			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+			QJobLog jobLog = jobLogManager.lookup(qJob);
+			
+			new JobLogWriter(objectWriter).write(jobLog);
+			
 			jobManager.close(qJob);
 		}
 	}

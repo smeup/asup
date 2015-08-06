@@ -69,11 +69,9 @@ public @ToDo @Program(name = "QSPWRKF") class SpoolFileWorker {
 		try(QObjectIterator<QSpoolFile> spoolFileIterator = spoolFileReader.find(null);) {
 			while (spoolFileIterator.hasNext()) {
 				QSpoolFile spoolFile = spoolFileIterator.next();
-		
 				try {
 					objectWriter.write(spoolFile);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
