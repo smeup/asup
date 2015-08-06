@@ -36,7 +36,6 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
-import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
@@ -61,7 +60,8 @@ public class JobSubmitter {
 	private QOutputManager outputManager;
 
 	@Entry
-	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
+	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, 
+			@ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
 			@ToDo @DataDef(qualified = true) JobDescription jobDescription, @ToDo @DataDef(qualified = true) JobQueue jobQueue,
 			@ToDo @DataDef(length = 1) QEnum<JobPriorityonJOBQEnum, QCharacter> jobPriorityonJOBQ, @ToDo @DataDef(length = 1) QEnum<OutputPriorityonOUTQEnum, QCharacter> outputPriorityonOUTQ,
 			@ToDo @DataDef(length = 10) QEnum<PrintDeviceEnum, QCharacter> printDevice, @ToDo @DataDef(qualified = true) OutputQueue outputQueue,
@@ -88,7 +88,7 @@ public class JobSubmitter {
 
 		// Job spawn
 		QJob childJob = jobManager.create(job);
-
+		
 		switch (jobName.asEnum()) {
 		// TODO
 		case JOBD:
@@ -160,10 +160,9 @@ public class JobSubmitter {
 					}
 				}
 			}
-
 			// execute command
-			QCallableCommand callableCommand = commandManager.prepareCommand(qJob.getJobID(), commandString, variables, true);
-			commandManager.executeCommand(qJob.getJobID(), callableCommand);
+			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables, true);
+			jobManager.close(qJob);
 		}
 	}
 

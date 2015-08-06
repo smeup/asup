@@ -95,6 +95,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	@Override
 	public QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
 
+		if (command == null || command.trim().equals(""))
+			throw new OperatingSystemRuntimeException("Empty command line", null);
+		
 		// retrieve job
 		QJob job = jobManager.lookup(contextID);
 		if (job == null)

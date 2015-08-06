@@ -56,7 +56,11 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	}
 	@Override
 	public void executeCommandImmediate(String contextID, String command, Map<String, Object> variables, boolean defaults) {
-		QCallableCommand preparedCommand = prepareCommand(contextID, command, variables, defaults);
-		executeCommand(contextID, preparedCommand);
+		try {
+			QCallableCommand preparedCommand = prepareCommand(contextID, command, variables, defaults);
+			executeCommand(contextID, preparedCommand);
+		} catch (Exception e) {
+			jobLogManager.error(jobManager.lookup(contextID), e.getMessage());
+		}
 	}
 }
