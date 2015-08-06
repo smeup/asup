@@ -50,7 +50,7 @@ public class BaseShellSocketHandler extends Thread {
 	private static String LOGIN = "login> ";
 
 	public BaseShellSocketHandler(Socket socket) {
-		super();
+		super("Telnet " + socket.getRemoteSocketAddress());
 		this.socket = socket;
 	}
 
@@ -124,6 +124,7 @@ public class BaseShellSocketHandler extends Thread {
 	private void logConnection() {
 		//TODO -> DSPLOG
 		System.out.println(new Date() + " User " + user + " connected from " + this.socket.getRemoteSocketAddress());
+		setName("Telnet " +  this.socket.getRemoteSocketAddress() + " " + user);
 	}
 
 	private QAuthenticationToken connect(String command) {
