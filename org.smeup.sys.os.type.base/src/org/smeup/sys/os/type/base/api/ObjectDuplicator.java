@@ -76,8 +76,6 @@ public @Supported class ObjectDuplicator {
 
 		List<QType<?>> types = typesFrom(objectTypes);
 		
-		int duplicatedNr = 0;
-		
 		for (QType<?> type : types) {
 			
 			if(!type.isPersistent())
