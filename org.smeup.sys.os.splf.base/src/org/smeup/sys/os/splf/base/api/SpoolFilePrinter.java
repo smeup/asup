@@ -46,7 +46,5 @@ public @Program(name = "QASSPLFP") class SpoolFilePrinter {
 		}
 		
 		spoolFileWriter.writeSpoolFile(job.getContext(), spoolFile);
-				
-		System.out.println(spoolFile);
 	}
 }

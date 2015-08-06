@@ -429,4 +429,33 @@
       </dataTerm>
     </parameters>
   </contents>
+  <contents
+      xsi:type="os-cmd:Command"
+      name="DLTSPLF"
+      text="Print Spooled File"
+      program="QASSPLFPD"
+      status="TODO">
+    <parameters
+        allowVariable="true"
+        name="SPOOLID"
+        position="1">
+      <dataTerm
+          name="spoolID">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="255"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="USER"
+        position="2">
+      <dataTerm
+          name="user">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
+  </contents>
 </os-cmd:CommandContainer>
