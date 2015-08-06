@@ -7,10 +7,12 @@
  *
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Franco Lombardo - Initial API and implementation
  */
 package org.smeup.sys.os.core.base.api;
 
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -27,14 +29,12 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.base.api.tools.JobLogWriter;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobLog;
-import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.core.jobs.QJobManager;
 
 
-@Program(name = "QMHDSPJL")
-public class JobLogDisplayer {
+@Program(name = "QMHDSPJ")
+public class JobDisplayer {
 
 	public static enum QCPFMSG {
 		CPF1070
@@ -43,11 +43,11 @@ public class JobLogDisplayer {
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
-	private QJobLogManager jobLogManager;
-	@Inject
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
+	@Inject
+	private QJobManager jobManager;
 
 	@Entry
 	public void main(@Supported @DataDef(qualified = true) JobName jobName,
@@ -55,28 +55,34 @@ public class JobLogDisplayer {
 			         @ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, 
 			         @ToDo OutputMemberOptions outputMemberOptions) {
 
-		QJobLog jobLog = findJobLog(jobName);
-		QObjectWriter objectWriter = findWiter(output);		
-		new JobLogWriter(objectWriter).write(jobLog);
+		QJob jobFound = findJob(jobName);
+		QObjectWriter objectWriter = findWiter(output);
+		objectWriter.initialize();
+		try {
+			objectWriter.write(jobFound);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		objectWriter.flush();
 	}
 
 
-	private QJobLog findJobLog(JobName jobName) {
-		QJobLog jobLog = null;
+	private QJob findJob(JobName jobName) {
+		QJob result = null;
 		switch (jobName.name.asEnum()) {
 		case TERM_STAR:
-			jobLog = jobLogManager.lookup(job);
+			result = job;
 			break;
 		case OTHER:
-			jobLog = jobLogManager.lookup(job.getJobID(), jobName.name.asData().trimR(), jobName.user.trimR(), new Integer(jobName.number.trim()));
+			result = jobManager.lookup(job.getJobID(), jobName.name.asData().trimR(), jobName.user.trimR(), new Integer(jobName.number.trim()));
 			break;
 		}
 		
-		if (jobLog == null) {
+		if (result == null) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
 		}
 		
-		return jobLog;
+		return result;
 	}
 
 	private QObjectWriter findWiter(QEnum<OutputEnum, QCharacter> output) {
