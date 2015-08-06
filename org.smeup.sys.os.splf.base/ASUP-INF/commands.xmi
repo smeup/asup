@@ -432,8 +432,8 @@
   <contents
       xsi:type="os-cmd:Command"
       name="DLTSPLF"
-      text="Print Spooled File"
-      program="QASSPLFPD"
+      text="Delete Spooled File"
+      program="QSPHNMLT"
       status="TODO">
     <parameters
         allowVariable="true"

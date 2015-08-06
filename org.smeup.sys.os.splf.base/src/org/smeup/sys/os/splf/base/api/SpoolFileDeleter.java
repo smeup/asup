@@ -27,7 +27,7 @@ import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.splf.QSpoolFile;
 
-public @Program(name = "QASSPLFPD") class SpoolFileDeleter {
+public @Program(name = "QSPHNMLT") class SpoolFileDeleter {
 
 	public static enum QCPFMSG {
 		CPF3309, CPC3305
