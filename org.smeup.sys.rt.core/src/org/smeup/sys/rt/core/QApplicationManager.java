@@ -44,4 +44,20 @@ public interface QApplicationManager {
 	 */
 	boolean restartCalled();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void stop();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean stopCalled();
+
 } // QApplicationManager

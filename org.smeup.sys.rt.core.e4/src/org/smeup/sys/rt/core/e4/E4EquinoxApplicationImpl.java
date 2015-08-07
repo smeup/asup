@@ -90,6 +90,9 @@ public class E4EquinoxApplicationImpl implements IApplication {
 			    if (applicationManager.restartCalled()) {
 			    	return EXIT_RESTART;
 			    }
+			    if (applicationManager.stopCalled()) {
+			    	return EXIT_OK;
+			    }
 			} catch (InterruptedException e) {
 			}
 		}

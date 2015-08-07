@@ -28,6 +28,8 @@
     </eOperations>
     <eOperations name="restart"/>
     <eOperations name="restartCalled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="stop"/>
+    <eOperations name="stopCalled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationModule" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

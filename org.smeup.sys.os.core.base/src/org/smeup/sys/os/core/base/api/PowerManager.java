@@ -16,8 +16,11 @@ public  @Program(name = "QWCCSDSC")  class PowerManager {
 	private QApplicationManager applicationManager;
 	
 	public @Entry void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart) {
-		//TODO
-		applicationManager.restart();
+		if (RESTARTEnum.YES.equals(restart.asEnum())){
+			applicationManager.restart();
+		} else {
+			applicationManager.stop();			
+		}
 	}
 	
 	public static enum RESTARTEnum {
