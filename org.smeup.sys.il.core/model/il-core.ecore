@@ -259,6 +259,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JavaCloseable" instanceClassName="java.io.Closeable"
         abstract="true" interface="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaExecutorService" instanceClassName="java.util.concurrent.ExecutorService"
+        abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EDataType" name="JavaDictionary" instanceClassName="java.util.Dictionary">
       <eTypeParameters name="K"/>
       <eTypeParameters name="V"/>

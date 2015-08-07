@@ -213,6 +213,9 @@
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="status" lowerBound="1" eType="#//jobs/JobStatus"/>
       </eOperations>
+      <eOperations name="executorFor" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaExecutorService">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobStatus">
       <eLiterals name="Active" value="10" literal="ACT"/>

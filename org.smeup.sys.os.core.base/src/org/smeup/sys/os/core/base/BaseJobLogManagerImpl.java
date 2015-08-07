@@ -11,6 +11,9 @@
  */
 package org.smeup.sys.os.core.base;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
@@ -48,29 +51,39 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 
 	@Override
 	public void addEntry(QJob job, int gravity, String message) {
-
-		// job log
-		QJobLog jobLog = lookup(job);
-		if (jobLog == null) {
-			jobLog = QOperatingSystemJobsFactory.eINSTANCE.createJobLog();
-			jobLog.setJobID(job.getJobID());
-
-			job.getContext().set(QJobLog.class, jobLog);
-		}
-
-		// entry
-		QJobLogEntry entry = QOperatingSystemJobsFactory.eINSTANCE.createJobLogEntry();
-		entry.setGravity(gravity);
-		entry.setMessage(message);
-		entry.setCreationDate(QOperatingSystemCoreHelper.now());
-
-		// add
-		jobLog.getEntries().add(entry);
-
-		// save
-		QResourceWriter<QJobLog> jobLogWriter = resourceManager.getResourceWriter(job, QJobLog.class, job.getSystem().getSystemLibrary());
-		jobLogWriter.save(jobLog, true);
+		ExecutorService executor = jobManager.executorFor(job);
+		executor.submit(taskFor(job, gravity, message));
 	}
+
+	private Runnable taskFor(final QJob job, final int gravity, final String message) {
+		return new Runnable() {
+			@Override
+			public void run() {
+				// job log
+				QJobLog jobLog = lookup(job);
+				if (jobLog == null) {
+					jobLog = QOperatingSystemJobsFactory.eINSTANCE.createJobLog();
+					jobLog.setJobID(job.getJobID());
+
+					job.getContext().set(QJobLog.class, jobLog);
+				}
+
+				// entry
+				QJobLogEntry entry = QOperatingSystemJobsFactory.eINSTANCE.createJobLogEntry();
+				entry.setGravity(gravity);
+				entry.setMessage(message);
+				entry.setCreationDate(QOperatingSystemCoreHelper.now());
+				
+				// add
+				jobLog.getEntries().add(entry);
+
+				// save
+				QResourceWriter<QJobLog> jobLogWriter = resourceManager.getResourceWriter(job, QJobLog.class, job.getSystem().getSystemLibrary());
+				jobLogWriter.save(jobLog, true);
+			}
+		};
+	}
+
 
 	@Override
 	public QJobLog lookup(QJob job) {

@@ -81,7 +81,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaEnum()
 	 * @generated
 	 */
-	int JAVA_ENUM = 2;
+	int JAVA_ENUM = 3;
 
 	/**
 	 * The meta object id for the '{@link java.util.List<E> <em>Java List</em>}' class.
@@ -90,7 +90,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaList()
 	 * @generated
 	 */
-	int JAVA_LIST = 4;
+	int JAVA_LIST = 5;
 
 	/**
 	 * The meta object id for the '{@link java.lang.Number <em>Java Number</em>}' class.
@@ -99,7 +99,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaNumber()
 	 * @generated
 	 */
-	int JAVA_NUMBER = 5;
+	int JAVA_NUMBER = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class.
@@ -108,7 +108,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
 	 * @generated
 	 */
-	int FILES = 6;
+	int FILES = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}' class.
@@ -117,7 +117,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
 	 * @generated
 	 */
-	int STREAMS = 7;
+	int STREAMS = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class.
@@ -126,7 +126,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
 	 * @generated
 	 */
-	int LISTS = 8;
+	int LISTS = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}' class.
@@ -135,7 +135,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
 	 * @generated
 	 */
-	int STRINGS = 9;
+	int STRINGS = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class.
@@ -144,7 +144,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
 	 * @generated
 	 */
-	int UR_IS = 10;
+	int UR_IS = 11;
 
 	/**
 	 * The meta object id for the '<em>Java Annotation</em>' data type. <!--
@@ -154,7 +154,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaAnnotation()
 	 * @generated
 	 */
-	int JAVA_ANNOTATION = 11;
+	int JAVA_ANNOTATION = 12;
 
 	/**
 	 * The meta object id for the '<em>Java Closeable</em>' data type. <!--
@@ -176,6 +176,25 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	int JAVA_CLOSEABLE_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.concurrent.ExecutorService
+	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
+	 * @generated
+	 */
+	int JAVA_EXECUTOR_SERVICE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Java Executor Service</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JAVA_EXECUTOR_SERVICE_FEATURE_COUNT = 0;
+
+	/**
 	 * The number of structural features of the '<em>Java Enum</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -192,7 +211,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaDictionary()
 	 * @generated
 	 */
-	int JAVA_DICTIONARY = 12;
+	int JAVA_DICTIONARY = 13;
 
 	/**
 	 * The meta object id for the '<em>Java Exception</em>' data type. <!--
@@ -202,7 +221,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaException()
 	 * @generated
 	 */
-	int JAVA_EXCEPTION = 13;
+	int JAVA_EXCEPTION = 14;
 
 	/**
 	 * The meta object id for the '<em>Java Input Stream</em>' data type. <!--
@@ -212,7 +231,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaInputStream()
 	 * @generated
 	 */
-	int JAVA_INPUT_STREAM = 14;
+	int JAVA_INPUT_STREAM = 15;
 
 	/**
 	 * The meta object id for the '<em>Java IO Exception</em>' data type. <!--
@@ -222,7 +241,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIOException()
 	 * @generated
 	 */
-	int JAVA_IO_EXCEPTION = 15;
+	int JAVA_IO_EXCEPTION = 16;
 
 	/**
 	 * The meta object id for the '<em>Java Iterable</em>' data type. <!--
@@ -232,7 +251,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterable()
 	 * @generated
 	 */
-	int JAVA_ITERABLE = 16;
+	int JAVA_ITERABLE = 17;
 
 	/**
 	 * The meta object id for the '<em>Java Iterator</em>' data type. <!--
@@ -242,7 +261,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterator()
 	 * @generated
 	 */
-	int JAVA_ITERATOR = 3;
+	int JAVA_ITERATOR = 4;
 
 	/**
 	 * The number of structural features of the '<em>Java Iterator</em>' class.
@@ -323,7 +342,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaMap()
 	 * @generated
 	 */
-	int JAVA_MAP = 17;
+	int JAVA_MAP = 18;
 
 	/**
 	 * The meta object id for the '<em>Java Output Stream</em>' data type. <!--
@@ -333,7 +352,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaOutputStream()
 	 * @generated
 	 */
-	int JAVA_OUTPUT_STREAM = 18;
+	int JAVA_OUTPUT_STREAM = 19;
 
 	/**
 	 * The meta object id for the '<em>Java Properties</em>' data type. <!--
@@ -343,7 +362,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaProperties()
 	 * @generated
 	 */
-	int JAVA_PROPERTIES = 19;
+	int JAVA_PROPERTIES = 20;
 
 	/**
 	 * The meta object id for the '<em>Java Runnable</em>' data type. <!--
@@ -353,7 +372,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaRunnable()
 	 * @generated
 	 */
-	int JAVA_RUNNABLE = 20;
+	int JAVA_RUNNABLE = 21;
 
 	/**
 	 * The meta object id for the '<em>Java Throwable</em>' data type. <!--
@@ -363,7 +382,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
-	int JAVA_THROWABLE = 21;
+	int JAVA_THROWABLE = 22;
 
 	/**
 	 * The meta object id for the '<em>Java Type</em>' data type. <!--
@@ -373,7 +392,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaType()
 	 * @generated
 	 */
-	int JAVA_TYPE = 22;
+	int JAVA_TYPE = 23;
 
 	/**
 	 * The meta object id for the '<em>Java URI</em>' data type. <!--
@@ -383,7 +402,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURI()
 	 * @generated
 	 */
-	int JAVA_URI = 23;
+	int JAVA_URI = 24;
 
 	/**
 	 * The meta object id for the '<em>Java URL</em>' data type. <!--
@@ -393,7 +412,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURL()
 	 * @generated
 	 */
-	int JAVA_URL = 24;
+	int JAVA_URL = 25;
 
 	/**
 	 * The meta object id for the '<em>Java Writer</em>' data type. <!--
@@ -403,7 +422,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaWriter()
 	 * @generated
 	 */
-	int JAVA_WRITER = 25;
+	int JAVA_WRITER = 26;
 
 	/**
 	 * Returns the meta object for class '{@link java.util.concurrent.Callable
@@ -524,6 +543,17 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getJavaCloseable();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Java Executor Service</em>'.
+	 * @see java.util.concurrent.ExecutorService
+	 * @model instanceClass="java.util.concurrent.ExecutorService"
+	 * @generated
+	 */
+	EClass getJavaExecutorService();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.Dictionary <em>Java Dictionary</em>}'.
@@ -812,6 +842,16 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JAVA_CLOSEABLE = eINSTANCE.getJavaCloseable();
+
+		/**
+		 * The meta object literal for the '{@link java.util.concurrent.ExecutorService <em>Java Executor Service</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.concurrent.ExecutorService
+		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
+		 * @generated
+		 */
+		EClass JAVA_EXECUTOR_SERVICE = eINSTANCE.getJavaExecutorService();
 
 		/**
 		 * The meta object literal for the '<em>Java Dictionary</em>' data type.

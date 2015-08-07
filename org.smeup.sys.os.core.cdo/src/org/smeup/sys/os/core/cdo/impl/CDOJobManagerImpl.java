@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -53,6 +55,7 @@ public class CDOJobManagerImpl implements QJobManager {
 	private static final String CDO_RESOURCE = "os/core";
 
 	private Map<String, QJob> activeJobs;
+	private Map<String, ExecutorService> jobExecutorServices;
 
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
 
@@ -63,7 +66,8 @@ public class CDOJobManagerImpl implements QJobManager {
 		this.resourceManager = resourceManager;
 		this.lockManager = lockManager;
 		this.activeJobs = new HashMap<String, QJob>();
-
+		this.jobExecutorServices = new HashMap<String, ExecutorService>();  //TODO ConcurrentHashMap????
+		
 		new CDOJobCloser(this).start();
 	}
 
@@ -235,8 +239,9 @@ public class CDOJobManagerImpl implements QJobManager {
 		for(QJobListener jobListener: this.listeners)
 			jobListener.handleEvent(jobEvent);
 	
-		this.activeJobs.remove(job);
-
+		this.activeJobs.remove(job.getJobID());
+		this.jobExecutorServices.remove(job.getJobID());
+		
 		job.getContext().close();
 				
 		jobEvent.setType(JobEventType.STOPPED);
@@ -248,5 +253,15 @@ public class CDOJobManagerImpl implements QJobManager {
 	@Override
 	public void registerListener(QJobListener listener) {
 		this.listeners.add(listener);		
+	}
+	
+	@Override
+	public synchronized ExecutorService executorFor(QJob job) {
+		ExecutorService executorService = this.jobExecutorServices.get(job.getJobID());
+		if (executorService == null) {
+			executorService = Executors.newSingleThreadExecutor();
+			this.jobExecutorServices.put(job.getJobID(), executorService);
+		}
+		return executorService;
 	}
 }

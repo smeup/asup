@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Callable;
 
+import java.util.concurrent.ExecutorService;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
@@ -67,6 +68,13 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass javaCloseableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaExecutorServiceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -390,6 +398,15 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaExecutorService() {
+		return javaExecutorServiceEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -555,6 +572,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 
 		javaCloseableEClass = createEClass(JAVA_CLOSEABLE);
 
+		javaExecutorServiceEClass = createEClass(JAVA_EXECUTOR_SERVICE);
+
 		javaEnumEClass = createEClass(JAVA_ENUM);
 
 		javaIteratorEClass = createEClass(JAVA_ITERATOR);
@@ -629,6 +648,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		initEClass(javaCallableEClass, Callable.class, "JavaCallable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaCloseableEClass, Closeable.class, "JavaCloseable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaExecutorServiceEClass, ExecutorService.class, "JavaExecutorService", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaEnumEClass, Enum.class, "JavaEnum", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.lang.Enum<E>");
 

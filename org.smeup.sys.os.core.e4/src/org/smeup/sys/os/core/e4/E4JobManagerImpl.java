@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -47,7 +49,9 @@ import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	private Map<String, QJob> activeJobs;
+	private Map<String, ExecutorService> jobExecutorServices;
 
+	
 	private E4SystemManagerImpl systemManager;
 	private QResourceManager resourceManager;
 
@@ -59,8 +63,9 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QApplication application) {
 		this.systemManager = (E4SystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
-		this.activeJobs = new HashMap<String, QJob>();
-
+		this.activeJobs = new HashMap<String, QJob>();  //TODO ConcurrentHashMap????
+		this.jobExecutorServices = new HashMap<String, ExecutorService>();  //TODO ConcurrentHashMap????
+		
 		new E4JobCloser(this).start();
 
 		application.getContext().set(QAuthenticationManager.class, this);
@@ -180,6 +185,7 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 			jobListener.handleEvent(jobEvent);
 
 		this.activeJobs.remove(job.getJobID());
+		this.jobExecutorServices.remove(job.getJobID());
 
 		job.getContext().close();
 
@@ -206,5 +212,15 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 	@Override
 	public void registerListener(QJobListener listener) {
 		this.listeners.add(listener);
+	}
+
+	@Override
+	public synchronized ExecutorService executorFor(QJob job) {
+		ExecutorService executorService = this.jobExecutorServices.get(job.getJobID());
+		if (executorService == null) {
+			executorService = Executors.newSingleThreadExecutor();
+			this.jobExecutorServices.put(job.getJobID(), executorService);
+		}
+		return executorService;
 	}
 }
