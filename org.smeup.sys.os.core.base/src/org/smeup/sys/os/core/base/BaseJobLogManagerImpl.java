@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.core.base;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
