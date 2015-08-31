@@ -246,6 +246,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		if(statement.getRoundingMode() != null) {
 			statement.toString();
+			// TODO verificare se corretto qui
+			QExpression expression = expressionParser.parseExpression(statement.getRoundingMode());
+			Expression jdtExpression = buildExpression(ast, expression, null);
+			methodInvocation.arguments().add(jdtExpression);
 		}
 		
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
