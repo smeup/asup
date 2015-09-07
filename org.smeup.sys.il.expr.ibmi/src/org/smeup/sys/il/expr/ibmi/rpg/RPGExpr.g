@@ -241,6 +241,8 @@ SPECIAL
 		|
 		( Y E A R)
 		|
+		( Y E A R S)
+		|
 		( N E X T)
 	;
 
