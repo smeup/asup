@@ -11,11 +11,17 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
+import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
@@ -233,8 +239,25 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void sorta() {
-		// TODO Auto-generated method stub
-		"".toString();
+		// TODO Verificare con Mattia
+	
+		List<String> sortableList = new ArrayList<String>();		
+		for (QBufferedData elementTarget : this) {
+			sortableList.add(elementTarget.s());
+		}
+
+		Collections.sort(sortableList, new Comparator<String>() {
+			public int compare(String param1, String param2) {
+				return param1.compareTo(param2);
+			}
+		});
+		clear();
+
+		int i = 0;
+		for (QBufferedData elementTarget : this) {
+			elementTarget.movel(sortableList.get(i));
+			i++;
+		}
 	}
 
 	@Override
