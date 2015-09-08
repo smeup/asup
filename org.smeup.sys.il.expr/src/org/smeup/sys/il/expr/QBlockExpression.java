@@ -14,8 +14,7 @@ package org.smeup.sys.il.expr;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.QBlockExpression#getExpression <em>
- * Expression</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.QBlockExpression#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,14 +24,13 @@ package org.smeup.sys.il.expr;
  */
 public interface QBlockExpression extends QExpression {
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Expression</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(QExpression)
 	 * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getBlockExpression_Expression()
@@ -42,14 +40,10 @@ public interface QBlockExpression extends QExpression {
 	QExpression getExpression();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.expr.QBlockExpression#getExpression
-	 * <em>Expression</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.expr.QBlockExpression#getExpression <em>Expression</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Expression</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Expression</em>' containment reference.
 	 * @see #getExpression()
 	 * @generated
 	 */

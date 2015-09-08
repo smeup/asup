@@ -19,7 +19,6 @@ package org.smeup.sys.il.expr;
 public interface QExpressionVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -27,7 +26,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -35,7 +33,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -43,7 +40,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -51,7 +47,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -59,7 +54,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -67,7 +61,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -75,7 +68,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -83,7 +75,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -91,7 +82,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -99,7 +89,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -107,7 +96,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -115,7 +103,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -123,7 +110,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -131,7 +117,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -139,7 +124,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -147,7 +131,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */
@@ -155,7 +138,6 @@ public interface QExpressionVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model expressionRequired="true"
 	 * @generated
 	 */

@@ -30,7 +30,6 @@ public class QualifiedTermExpressionImpl extends CompoundTermExpressionImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected QualifiedTermExpressionImpl() {
@@ -39,7 +38,6 @@ public class QualifiedTermExpressionImpl extends CompoundTermExpressionImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

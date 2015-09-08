@@ -32,7 +32,6 @@ import org.smeup.sys.il.expr.QRelationalExpression;
 public abstract class ExpressionVisitorImpl extends MinimalEObjectImpl.Container implements QExpressionVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ExpressionVisitorImpl() {
@@ -41,7 +40,6 @@ public abstract class ExpressionVisitorImpl extends MinimalEObjectImpl.Container
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

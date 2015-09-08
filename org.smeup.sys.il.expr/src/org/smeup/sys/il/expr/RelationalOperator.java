@@ -17,16 +17,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Relational Operator</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
  * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getRelationalOperator()
  * @model
  * @generated
  */
 public enum RelationalOperator implements Enumerator {
 	/**
-	 * The '<em><b>Equal</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Equal</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #EQUAL_VALUE
 	 * @generated
 	 * @ordered
@@ -34,9 +33,9 @@ public enum RelationalOperator implements Enumerator {
 	EQUAL(200, "Equal", "EQ"),
 
 	/**
-	 * The '<em><b>Not Equal</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>Not Equal</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #NOT_EQUAL_VALUE
 	 * @generated
 	 * @ordered
@@ -44,9 +43,9 @@ public enum RelationalOperator implements Enumerator {
 	NOT_EQUAL(201, "NotEqual", "NE"),
 
 	/**
-	 * The '<em><b>Less Than</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>Less Than</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #LESS_THAN_VALUE
 	 * @generated
 	 * @ordered
@@ -54,9 +53,9 @@ public enum RelationalOperator implements Enumerator {
 	LESS_THAN(202, "LessThan", "LT"),
 
 	/**
-	 * The '<em><b>Less Than Equal</b></em>' literal object. <!-- begin-user-doc
+	 * The '<em><b>Less Than Equal</b></em>' literal object.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #LESS_THAN_EQUAL_VALUE
 	 * @generated
 	 * @ordered
@@ -64,9 +63,9 @@ public enum RelationalOperator implements Enumerator {
 	LESS_THAN_EQUAL(203, "LessThanEqual", "LE"),
 
 	/**
-	 * The '<em><b>Greater Than</b></em>' literal object. <!-- begin-user-doc
+	 * The '<em><b>Greater Than</b></em>' literal object.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #GREATER_THAN_VALUE
 	 * @generated
 	 * @ordered
@@ -84,13 +83,13 @@ public enum RelationalOperator implements Enumerator {
 	GREATER_THAN_EQUAL(205, "GreaterThanEqual", "GE");
 
 	/**
-	 * The '<em><b>Equal</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Equal</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Equal</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #EQUAL
 	 * @model name="Equal" literal="EQ"
 	 * @generated
@@ -99,13 +98,13 @@ public enum RelationalOperator implements Enumerator {
 	public static final int EQUAL_VALUE = 200;
 
 	/**
-	 * The '<em><b>Not Equal</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Not Equal</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Not Equal</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #NOT_EQUAL
 	 * @model name="NotEqual" literal="NE"
 	 * @generated
@@ -114,13 +113,13 @@ public enum RelationalOperator implements Enumerator {
 	public static final int NOT_EQUAL_VALUE = 201;
 
 	/**
-	 * The '<em><b>Less Than</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Less Than</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Less Than</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #LESS_THAN
 	 * @model name="LessThan" literal="LT"
 	 * @generated
@@ -129,14 +128,14 @@ public enum RelationalOperator implements Enumerator {
 	public static final int LESS_THAN_VALUE = 202;
 
 	/**
-	 * The '<em><b>Less Than Equal</b></em>' literal value. <!-- begin-user-doc
+	 * The '<em><b>Less Than Equal</b></em>' literal value.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of '<em><b>Less Than Equal</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #LESS_THAN_EQUAL
 	 * @model name="LessThanEqual" literal="LE"
 	 * @generated
@@ -145,13 +144,13 @@ public enum RelationalOperator implements Enumerator {
 	public static final int LESS_THAN_EQUAL_VALUE = 203;
 
 	/**
-	 * The '<em><b>Greater Than</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Greater Than</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Greater Than</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #GREATER_THAN
 	 * @model name="GreaterThan" literal="GT"
 	 * @generated
@@ -178,96 +177,93 @@ public enum RelationalOperator implements Enumerator {
 	/**
 	 * An array of all the '<em><b>Relational Operator</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	private static final RelationalOperator[] VALUES_ARRAY = new RelationalOperator[] { EQUAL, NOT_EQUAL, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL, };
+	private static final RelationalOperator[] VALUES_ARRAY = new RelationalOperator[] {
+			EQUAL,
+			NOT_EQUAL,
+			LESS_THAN,
+			LESS_THAN_EQUAL,
+			GREATER_THAN,
+			GREATER_THAN_EQUAL,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Relational Operator</b></em>'
-	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * A public read-only list of all the '<em><b>Relational Operator</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<RelationalOperator> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Relational Operator</b></em>' literal with the
-	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Relational Operator</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static RelationalOperator get(String literal) {
-		for (RelationalOperator result : VALUES_ARRAY) {
-			if (result.toString().equals(literal))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			RelationalOperator result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Relational Operator</b></em>' literal with the
-	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Relational Operator</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static RelationalOperator getByName(String name) {
-		for (RelationalOperator result : VALUES_ARRAY) {
-			if (result.getName().equals(name))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			RelationalOperator result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Relational Operator</b></em>' literal with the
-	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Relational Operator</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static RelationalOperator get(int value) {
 		switch (value) {
-		case EQUAL_VALUE:
-			return EQUAL;
-		case NOT_EQUAL_VALUE:
-			return NOT_EQUAL;
-		case LESS_THAN_VALUE:
-			return LESS_THAN;
-		case LESS_THAN_EQUAL_VALUE:
-			return LESS_THAN_EQUAL;
-		case GREATER_THAN_VALUE:
-			return GREATER_THAN;
-		case GREATER_THAN_EQUAL_VALUE:
-			return GREATER_THAN_EQUAL;
+			case EQUAL_VALUE: return EQUAL;
+			case NOT_EQUAL_VALUE: return NOT_EQUAL;
+			case LESS_THAN_VALUE: return LESS_THAN;
+			case LESS_THAN_EQUAL_VALUE: return LESS_THAN_EQUAL;
+			case GREATER_THAN_VALUE: return GREATER_THAN;
+			case GREATER_THAN_EQUAL_VALUE: return GREATER_THAN_EQUAL;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private RelationalOperator(int value, String name, String literal) {
@@ -278,38 +274,34 @@ public enum RelationalOperator implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

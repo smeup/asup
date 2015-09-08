@@ -25,12 +25,9 @@ import org.smeup.sys.il.expr.QLogicalExpression;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getLeftOperand
- * <em>Left Operand</em>}</li>
- * <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getOperator <em>
- * Operator</em>}</li>
- * <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getRightOperand
- * <em>Right Operand</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getLeftOperand <em>Left Operand</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,37 +39,33 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLeftOperand()
 	 * @generated
 	 * @ordered
 	 */
 	protected QExpression leftOperand;
 	/**
-	 * The default value of the '{@link #getOperator() <em>Operator</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final LogicalOperator OPERATOR_EDEFAULT = LogicalOperator.AND;
 	/**
-	 * The cached value of the '{@link #getOperator() <em>Operator</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
 	 */
 	protected LogicalOperator operator = OPERATOR_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getRightOperand()
-	 * <em>Right Operand</em>}' containment reference. <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRightOperand() <em>Right Operand</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #getRightOperand()
 	 * @generated
 	 * @ordered
@@ -81,7 +74,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LogicalExpressionImpl() {
@@ -90,7 +82,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -100,7 +91,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -110,7 +100,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,7 +112,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -133,7 +121,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetLeftOperand(QExpression newLeftOperand, NotificationChain msgs) {
@@ -141,17 +128,13 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 		leftOperand = newLeftOperand;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, oldLeftOperand, newLeftOperand);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -159,19 +142,18 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 		if (newLeftOperand != leftOperand) {
 			NotificationChain msgs = null;
 			if (leftOperand != null)
-				msgs = ((InternalEObject) leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, null, msgs);
 			if (newLeftOperand != null)
-				msgs = ((InternalEObject) newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, null, msgs);
 			msgs = basicSetLeftOperand(newLeftOperand, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND, newLeftOperand, newLeftOperand));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -181,7 +163,6 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetRightOperand(QExpression newRightOperand, NotificationChain msgs) {
@@ -189,17 +170,13 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 		rightOperand = newRightOperand;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, oldRightOperand, newRightOperand);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -207,119 +184,112 @@ public class LogicalExpressionImpl extends PredicateExpressionImpl implements QL
 		if (newRightOperand != rightOperand) {
 			NotificationChain msgs = null;
 			if (rightOperand != null)
-				msgs = ((InternalEObject) rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, null, msgs);
 			if (newRightOperand != null)
-				msgs = ((InternalEObject) newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, null, msgs);
+				msgs = ((InternalEObject)newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, null, msgs);
 			msgs = basicSetRightOperand(newRightOperand, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND, newRightOperand, newRightOperand));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
-			return basicSetLeftOperand(null, msgs);
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
-			return basicSetRightOperand(null, msgs);
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
+				return basicSetLeftOperand(null, msgs);
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
+				return basicSetRightOperand(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
-			return getLeftOperand();
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
-			return getOperator();
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
-			return getRightOperand();
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
+				return getLeftOperand();
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
+				return getOperator();
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
+				return getRightOperand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
-			setLeftOperand((QExpression) newValue);
-			return;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
-			setOperator((LogicalOperator) newValue);
-			return;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
-			setRightOperand((QExpression) newValue);
-			return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
+				setLeftOperand((QExpression)newValue);
+				return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
+				setOperator((LogicalOperator)newValue);
+				return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
+				setRightOperand((QExpression)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
-			setLeftOperand((QExpression) null);
-			return;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
-			setOperator(OPERATOR_EDEFAULT);
-			return;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
-			setRightOperand((QExpression) null);
-			return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
+				setLeftOperand((QExpression)null);
+				return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
+				setOperator(OPERATOR_EDEFAULT);
+				return;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
+				setRightOperand((QExpression)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
-			return leftOperand != null;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
-			return operator != OPERATOR_EDEFAULT;
-		case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
-			return rightOperand != null;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__LEFT_OPERAND:
+				return leftOperand != null;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__OPERATOR:
+				return operator != OPERATOR_EDEFAULT;
+			case QIntegratedLanguageExpressionPackage.LOGICAL_EXPRESSION__RIGHT_OPERAND:
+				return rightOperand != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (operator: ");

@@ -22,7 +22,6 @@ public interface QExpression extends QNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model visitorRequired="true"
 	 * @generated
 	 */
@@ -30,7 +29,6 @@ public interface QExpression extends QNode {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

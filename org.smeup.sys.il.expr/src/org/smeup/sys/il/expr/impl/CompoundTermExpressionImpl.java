@@ -26,8 +26,7 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl#getElements
- * <em>Elements</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.impl.CompoundTermExpressionImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,9 +38,8 @@ public abstract class CompoundTermExpressionImpl extends TermExpressionImpl impl
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getElements()
 	 * @generated
 	 * @ordered
@@ -50,7 +48,6 @@ public abstract class CompoundTermExpressionImpl extends TermExpressionImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected CompoundTermExpressionImpl() {
@@ -59,7 +56,6 @@ public abstract class CompoundTermExpressionImpl extends TermExpressionImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -69,86 +65,81 @@ public abstract class CompoundTermExpressionImpl extends TermExpressionImpl impl
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QExpression> getElements() {
-		if (elements == null)
+		if (elements == null) {
 			elements = new EObjectContainmentEList<QExpression>(QExpression.class, this, QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS);
+		}
 		return elements;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-			return ((InternalEList<?>) getElements()).basicRemove(otherEnd, msgs);
+			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-			return getElements();
+			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+				return getElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-			getElements().clear();
-			getElements().addAll((Collection<? extends QExpression>) newValue);
-			return;
+			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends QExpression>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-			getElements().clear();
-			return;
+			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+				getElements().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
-			return elements != null && !elements.isEmpty();
+			case QIntegratedLanguageExpressionPackage.COMPOUND_TERM_EXPRESSION__ELEMENTS:
+				return elements != null && !elements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

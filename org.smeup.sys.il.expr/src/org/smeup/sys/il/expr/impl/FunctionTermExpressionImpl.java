@@ -30,7 +30,6 @@ public class FunctionTermExpressionImpl extends CompoundTermExpressionImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FunctionTermExpressionImpl() {
@@ -39,7 +38,6 @@ public class FunctionTermExpressionImpl extends CompoundTermExpressionImpl imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

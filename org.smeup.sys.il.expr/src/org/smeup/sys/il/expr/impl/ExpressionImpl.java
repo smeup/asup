@@ -30,7 +30,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ExpressionImpl() {
@@ -39,7 +38,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,7 +47,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

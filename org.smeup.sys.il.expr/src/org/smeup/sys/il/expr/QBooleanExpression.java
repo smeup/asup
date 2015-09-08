@@ -14,8 +14,7 @@ package org.smeup.sys.il.expr;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.QBooleanExpression#getOperand <em>Operand
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.QBooleanExpression#getOperand <em>Operand</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,7 +31,6 @@ public interface QBooleanExpression extends QPredicateExpression {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Operand</em>' containment reference.
 	 * @see #setOperand(QExpression)
 	 * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getBooleanExpression_Operand()
@@ -42,13 +40,10 @@ public interface QBooleanExpression extends QPredicateExpression {
 	QExpression getOperand();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.expr.QBooleanExpression#getOperand
-	 * <em>Operand</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.expr.QBooleanExpression#getOperand <em>Operand</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Operand</em>' containment reference.
+	 * @param value the new value of the '<em>Operand</em>' containment reference.
 	 * @see #getOperand()
 	 * @generated
 	 */

@@ -14,8 +14,7 @@ package org.smeup.sys.il.expr;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}
- * </li>
+ *   <li>{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,12 +44,9 @@ public interface QAtomicTermExpression extends QTermExpression {
 	AtomicType getType();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}
-	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.expr.QAtomicTermExpression#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.smeup.sys.il.expr.AtomicType
 	 * @see #getType()
 	 * @generated

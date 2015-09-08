@@ -27,7 +27,6 @@ public abstract class PredicateExpressionImpl extends ExpressionImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PredicateExpressionImpl() {
@@ -36,7 +35,6 @@ public abstract class PredicateExpressionImpl extends ExpressionImpl implements 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

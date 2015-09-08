@@ -14,12 +14,9 @@ package org.smeup.sys.il.expr;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getLeftOperand <em>Left
- * Operand</em>}</li>
- * <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getOperator <em>Operator
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getRightOperand <em>Right
- * Operand</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getLeftOperand <em>Left Operand</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getOperator <em>Operator</em>}</li>
+ *   <li>{@link org.smeup.sys.il.expr.QLogicalExpression#getRightOperand <em>Right Operand</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,15 +27,14 @@ package org.smeup.sys.il.expr;
 public interface QLogicalExpression extends QPredicateExpression {
 
 	/**
-	 * Returns the value of the '<em><b>Operator</b></em>' attribute. The
-	 * literals are from the enumeration
-	 * {@link org.smeup.sys.il.expr.LogicalOperator}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Operator</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.smeup.sys.il.expr.LogicalOperator}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Operator</em>' attribute.
 	 * @see org.smeup.sys.il.expr.LogicalOperator
 	 * @see #setOperator(LogicalOperator)
@@ -63,14 +59,13 @@ public interface QLogicalExpression extends QPredicateExpression {
 	void setOperator(LogicalOperator value);
 
 	/**
-	 * Returns the value of the '<em><b>Left Operand</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Left Operand</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Left Operand</em>' containment reference.
 	 * @see #setLeftOperand(QExpression)
 	 * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getLogicalExpression_LeftOperand()
@@ -80,28 +75,23 @@ public interface QLogicalExpression extends QPredicateExpression {
 	QExpression getLeftOperand();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.expr.QLogicalExpression#getLeftOperand
-	 * <em>Left Operand</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.expr.QLogicalExpression#getLeftOperand <em>Left Operand</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Left Operand</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Left Operand</em>' containment reference.
 	 * @see #getLeftOperand()
 	 * @generated
 	 */
 	void setLeftOperand(QExpression value);
 
 	/**
-	 * Returns the value of the '<em><b>Right Operand</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Right Operand</em>' containment reference
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Right Operand</em>' containment reference.
 	 * @see #setRightOperand(QExpression)
 	 * @see org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage#getLogicalExpression_RightOperand()
@@ -111,14 +101,10 @@ public interface QLogicalExpression extends QPredicateExpression {
 	QExpression getRightOperand();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.expr.QLogicalExpression#getRightOperand
-	 * <em>Right Operand</em>}' containment reference. <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.smeup.sys.il.expr.QLogicalExpression#getRightOperand <em>Right Operand</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Right Operand</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Right Operand</em>' containment reference.
 	 * @see #getRightOperand()
 	 * @generated
 	 */

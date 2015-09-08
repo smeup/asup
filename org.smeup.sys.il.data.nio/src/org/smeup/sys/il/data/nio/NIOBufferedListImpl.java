@@ -12,7 +12,6 @@
 package org.smeup.sys.il.data.nio;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -21,7 +20,6 @@ import java.util.List;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
-import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
