@@ -7,20 +7,21 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
+import java.lang.String;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Enum</b></em>'. <!-- end-user-doc -->
  *
  *
  * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getEnum()
- * @model interface="true" abstract="true"
- *        EBounds="org.smeup.sys.il.core.java.JavaEnum"
+ * @model interface="true" abstract="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
  * @generated
  */
 public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -28,7 +29,6 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true"
 	 * @generated
 	 */
@@ -36,7 +36,6 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -44,7 +43,6 @@ public interface QEnum<E extends Enum<E>, D extends QBufferedData> extends QBuff
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

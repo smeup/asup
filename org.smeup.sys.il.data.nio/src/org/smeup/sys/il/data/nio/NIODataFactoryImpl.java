@@ -52,6 +52,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.DataType;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -113,7 +114,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QArrayDef<?> arrayDef = (QArrayDef<?>) dataDef;
 			QUnaryAtomicDataDef<QBufferedData> argument = (QUnaryAtomicDataDef<QBufferedData>) arrayDef.getArgument();
 
-			QBufferedData bufferedData = createArray(argument, arrayDef.getDimension(), initialize);
+			QBufferedData bufferedData = createArray(argument, arrayDef.getDimension(), arrayDef.getOrder(), initialize);
 			data = (D) bufferedData;
 		}
 		// scroller
@@ -121,13 +122,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QScrollerDef<?> scrollerDef = (QScrollerDef<?>) dataDef;
 			QUnaryAtomicBufferedDataDef<?> argument = scrollerDef.getArgument();
 
-			data = (D) createScroller(argument, scrollerDef.getDimension(), initialize);
+			data = (D) createScroller(argument, scrollerDef.getDimension(), scrollerDef.getOrder(), initialize);
 		}
 		// dataStroller
 		else if (dataDef instanceof QStrollerDef<?>) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
 
-			data = (D) createStroller(strollerDef, strollerDef.getDimension(), initialize);
+			data = (D) createStroller(strollerDef, strollerDef.getDimension(), strollerDef.getOrder(), initialize);
 		}
 		// list
 		else if (dataDef instanceof QListDef<?>) {
@@ -323,11 +324,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <D extends QBufferedData> QArray<D> createArray(QUnaryAtomicDataDef<D> argument, int dimension, boolean initialize) {
+	public <D extends QBufferedData> QArray<D> createArray(QUnaryAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
 		NIOBufferedDataImpl model = (NIOBufferedDataImpl) createData(argument, false);
 
-		QArray<D> array = new NIOArrayImpl(model, dimension);
+		QArray<D> array = new NIOArrayImpl(model, dimension, sortDirection);
 
 		if (initialize)
 			initialize(array);
@@ -337,11 +338,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QBufferedData> QScroller<D> createScroller(QAtomicDataDef<D> argument, int dimension, boolean initialize) {
+	public <D extends QBufferedData> QScroller<D> createScroller(QAtomicDataDef<D> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
 		QBufferedData model = createData(argument, false);
 
-		QScroller<D> scroller = new NIOScrollerImpl(model, dimension);
+		QScroller<D> scroller = new NIOScrollerImpl(model, dimension, sortDirection);
 
 		if (initialize)
 			initialize(scroller);
@@ -351,7 +352,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, boolean initialize) {
+	public <D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
 		QDataStruct model = null;
 
@@ -371,7 +372,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		}
 
-		QStroller<D> stroller = new NIOStrollerImpl(model, dimension);
+		QStroller<D> stroller = new NIOStrollerImpl(model, dimension, sortDirection);
 		;
 
 		if (initialize)

@@ -20,7 +20,6 @@ public interface QAdapter extends QData, QBufferedDataDelegator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -28,7 +27,6 @@ public interface QAdapter extends QData, QBufferedDataDelegator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

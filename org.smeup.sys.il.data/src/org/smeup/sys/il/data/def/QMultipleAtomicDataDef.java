@@ -27,7 +27,6 @@ public interface QMultipleAtomicDataDef<D extends QList<?>> extends QMultipleDat
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

@@ -24,6 +24,7 @@ import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.SortDirection;
 
 public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBufferedDataImpl implements QBufferedList<D>, QBufferedData {
 
@@ -31,14 +32,16 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	private int lengthSlot = 0;
 	private D _model;
+	private SortDirection sortDirection = null;
 	
 	public NIOBufferedListImpl() {
 		super();
 	}
-	
-	public NIOBufferedListImpl(D model) {
+
+	public NIOBufferedListImpl(D model, SortDirection sortDirection) {
 		super();
 		this._model = model;
+		this.sortDirection = sortDirection;
 	}
 
 	protected D getModel() {
@@ -48,6 +51,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	protected void setModel(D _model) {
 		this._model = _model;
 	}
+
+	protected SortDirection getSortDirection() {
+		return this.sortDirection;
+	}
 	
 	protected int getLengthSlot() {
 		return lengthSlot;
@@ -56,7 +63,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	protected void setLengthSlot(int lengthSlot) {
 		this.lengthSlot = lengthSlot;
 	}
-	
+
 	@Override
 	public boolean isEmpty() {
 
@@ -166,7 +173,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public String toString() {
-		
+
 		StringBuffer sb = new StringBuffer(getSize());
 
 		for (QBufferedData element : this) {
@@ -191,12 +198,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 			element.move(value, clear);
 		}
 
-
 	}
 
 	@Override
 	public <E extends Enum<E>> void movel(E value) {
-		
+
 		for (QBufferedData element : this) {
 			element.movel(value);
 		}
@@ -204,7 +210,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public <E extends Enum<E>> void movel(E value, boolean clear) {
-		
+
 		for (QBufferedData element : this) {
 			element.movel(value, clear);
 		}
@@ -237,24 +243,64 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void sorta() {
-		// TODO Verificare con Mattia
-	
-		List<String> sortableList = new ArrayList<String>();		
-		for (QBufferedData elementTarget : this) {
-			sortableList.add(elementTarget.s());
-		}
 
-		Collections.sort(sortableList, new Comparator<String>() {
-			public int compare(String param1, String param2) {
-				return param1.compareTo(param2);
-			}
-		});
-		clear();
-
+		if(getLengthSlot() > 0)
+			"".toCharArray();
+		
 		int i = 0;
-		for (QBufferedData elementTarget : this) {
-			elementTarget.movel(sortableList.get(i));
-			i++;
+		
+		switch (defaultComparator) {
+		case ASCII:
+			List<String> stringList = new ArrayList<String>();
+			for (QBufferedData elementTarget : this) {
+				stringList.add(elementTarget.s());
+			}
+
+			Collections.sort(stringList, new Comparator<String>() {
+				public int compare(String param1, String param2) {
+					
+					switch (getSortDirection()) {
+					case ASCEND:
+						return param1.compareTo(param2);	
+					case DESCEND:
+						return param1.compareTo(param2)*-1;	
+					}
+					
+					return param1.compareTo(param2);
+				}
+			});
+			
+			for (QBufferedData elementTarget : this) {
+				elementTarget.movel(stringList.get(i));
+				i++;
+			}
+
+			break;
+		case EBCDIC:
+			List<byte[]> dataList = new ArrayList<byte[]>();
+			for (QBufferedData elementTarget : this) {
+				dataList.add(elementTarget.asBytes());
+			}
+
+			Collections.sort(dataList, new Comparator<byte[]>() {
+				@Override
+				public int compare(byte[] param1, byte[] param2) {
+					
+					switch (getSortDirection()) {
+					case ASCEND:
+						return compareBytes(param1, param2);	
+					case DESCEND:
+						return compareBytes(param1, param2)*-1;	
+					}
+					
+					return compareBytes(param1, param2);
+				}
+			});
+
+			for(byte[] bd: dataList) {
+				((NIOBufferedDataImpl)this.get(i+1))._eval(bd);
+				i++;
+			}
 		}
 	}
 
@@ -309,5 +355,4 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 		for (QBufferedData element : this)
 			element.eval(value);
 	}
-
 }

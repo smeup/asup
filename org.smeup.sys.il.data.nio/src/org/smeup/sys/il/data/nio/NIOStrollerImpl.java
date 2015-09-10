@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.SortDirection;
 
 public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> implements QStroller<D> {
 
@@ -32,8 +33,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		super();
 	}
 
-	public NIOStrollerImpl(D model, int dimension) {
-		super(model, dimension);
+	public NIOStrollerImpl(D model, int dimension, SortDirection sortDirection) {
+		super(model, dimension, sortDirection);
 	}
 
 	@Override

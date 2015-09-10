@@ -29,7 +29,6 @@ public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends Mult
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected MultipleAtomicDataDefImpl() {
@@ -38,7 +37,6 @@ public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends Mult
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -48,7 +46,6 @@ public abstract class MultipleAtomicDataDefImpl<D extends QList<?>> extends Mult
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

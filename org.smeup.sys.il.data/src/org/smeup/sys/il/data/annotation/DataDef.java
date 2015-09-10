@@ -15,6 +15,7 @@ import java.lang.annotation.Target;
 
 import javax.inject.Qualifier;
 
+import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 
@@ -37,6 +38,9 @@ public @interface DataDef {
 
 	// multiple
 	int dimension() default 0;
+
+	// sortDirection
+	SortDirection order() default SortDirection.ASCEND;
 
 	String[] values() default {};
 

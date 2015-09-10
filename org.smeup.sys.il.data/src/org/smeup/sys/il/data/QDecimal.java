@@ -19,7 +19,6 @@ package org.smeup.sys.il.data;
 public interface QDecimal extends QNumeric {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -27,7 +26,6 @@ public interface QDecimal extends QNumeric {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

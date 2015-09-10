@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.String;
 import org.smeup.sys.il.core.QSpecialElement;
 
 /**
@@ -21,7 +22,6 @@ import org.smeup.sys.il.core.QSpecialElement;
 public interface QDataWriter extends QDataVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -29,7 +29,6 @@ public interface QDataWriter extends QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -37,7 +36,6 @@ public interface QDataWriter extends QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -45,7 +43,6 @@ public interface QDataWriter extends QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -53,7 +50,6 @@ public interface QDataWriter extends QDataVisitor {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model valueRequired="true"
 	 * @generated
 	 */

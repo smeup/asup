@@ -11,27 +11,32 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.SortDirection;
 
 public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
 
 	private static final long serialVersionUID = 1L;
 
-	private D[] _elements;
+//	private D[] _elements;
+	
+	private int dimension = 0;
 
 	
 	public NIOArrayImpl() {
 		super();
 	}
 
-	@SuppressWarnings({ "unchecked" })
-	public NIOArrayImpl(D model, int dimension) {
-		super(model);
-		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+	public NIOArrayImpl(D model, int dimension, SortDirection sortDirection) {
+		super(model, sortDirection);
+		this.dimension = dimension;
+//		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
 	}
 
 	@Override
@@ -41,7 +46,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public int capacity() {
-		return _elements.length;
+		return dimension;
 	}
 
 	@Override
@@ -53,7 +58,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	@Override
 	public D get(int index) {
 			
-		D element = _elements[index - 1];
+/*		D element = _elements[index - 1];
 		if (element == null) {
 			element = (D) getModel().copy();
 			int position = 0;
@@ -65,23 +70,41 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 			
 			slice(element, position);
 			_elements[index - 1] = element;
-		}
+		}*/
+		
+		D element = (D) getModel().copy();
+		int position = 0;
+		
+		if(getLengthSlot() == 0)
+			position = getModel().getSize() * (index - 1);
+		else
+			position = getLengthSlot() * (index - 1);
+		
+		slice(element, position);
+
 		return element;
 	}
 
 	@Override
 	public int getLength() {
-		return _elements.length * getModel().getLength();
+		return capacity() * getModel().getLength();
 	}
 
 	@Override
 	public int getSize() {
-		return _elements.length * getModel().getSize();
+		return capacity() * getModel().getSize();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public D[] asArray() {
-		return _elements;
+		
+		List<QBufferedData> dataList = new ArrayList<QBufferedData>();
+		for (QBufferedData elementTarget : this) {
+			dataList.add(elementTarget);
+		}
+
+		return (D[]) dataList.toArray();
 	}
 
 	@Override
@@ -166,7 +189,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	@Override
 	public QArray<D> qSubarr(int start, int elements) {
 
-		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getModel(), elements);
+		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getModel(), elements, getSortDirection());
 		slice(subArray, start+(getModel().getSize()*(start-1)));
 					
 		return subArray;

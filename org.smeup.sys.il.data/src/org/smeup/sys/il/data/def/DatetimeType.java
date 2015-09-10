@@ -17,16 +17,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Datetime Type</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
- * 
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeType()
  * @model
  * @generated
  */
 public enum DatetimeType implements Enumerator {
 	/**
-	 * The '<em><b>Date</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Date</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #DATE_VALUE
 	 * @generated
 	 * @ordered
@@ -34,9 +33,9 @@ public enum DatetimeType implements Enumerator {
 	DATE(10, "Date", "DATE"),
 
 	/**
-	 * The '<em><b>Time</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Time</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #TIME_VALUE
 	 * @generated
 	 * @ordered
@@ -44,9 +43,9 @@ public enum DatetimeType implements Enumerator {
 	TIME(20, "Time", "TIME"),
 
 	/**
-	 * The '<em><b>Time Stamp</b></em>' literal object. <!-- begin-user-doc -->
+	 * The '<em><b>Time Stamp</b></em>' literal object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #TIME_STAMP_VALUE
 	 * @generated
 	 * @ordered
@@ -54,13 +53,13 @@ public enum DatetimeType implements Enumerator {
 	TIME_STAMP(30, "TimeStamp", "TIMESTAMP");
 
 	/**
-	 * The '<em><b>Date</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Date</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Date</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #DATE
 	 * @model name="Date" literal="DATE"
 	 * @generated
@@ -69,13 +68,13 @@ public enum DatetimeType implements Enumerator {
 	public static final int DATE_VALUE = 10;
 
 	/**
-	 * The '<em><b>Time</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Time</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Time</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #TIME
 	 * @model name="Time" literal="TIME"
 	 * @generated
@@ -84,13 +83,13 @@ public enum DatetimeType implements Enumerator {
 	public static final int TIME_VALUE = 20;
 
 	/**
-	 * The '<em><b>Time Stamp</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Time Stamp</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Time Stamp</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #TIME_STAMP
 	 * @model name="TimeStamp" literal="TIMESTAMP"
 	 * @generated
@@ -104,87 +103,85 @@ public enum DatetimeType implements Enumerator {
 	 *
 	 * @generated
 	 */
-	private static final DatetimeType[] VALUES_ARRAY = new DatetimeType[] { DATE, TIME, TIME_STAMP, };
+	private static final DatetimeType[] VALUES_ARRAY = new DatetimeType[] {
+			DATE,
+			TIME,
+			TIME_STAMP,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Datetime Type</b></em>'
-	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * A public read-only list of all the '<em><b>Datetime Type</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<DatetimeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified
-	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static DatetimeType get(String literal) {
-		for (DatetimeType result : VALUES_ARRAY) {
-			if (result.toString().equals(literal))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			DatetimeType result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified
-	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static DatetimeType getByName(String name) {
-		for (DatetimeType result : VALUES_ARRAY) {
-			if (result.getName().equals(name))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			DatetimeType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified
-	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Datetime Type</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static DatetimeType get(int value) {
 		switch (value) {
-		case DATE_VALUE:
-			return DATE;
-		case TIME_VALUE:
-			return TIME;
-		case TIME_STAMP_VALUE:
-			return TIME_STAMP;
+			case DATE_VALUE: return DATE;
+			case TIME_VALUE: return TIME;
+			case TIME_STAMP_VALUE: return TIME_STAMP;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private DatetimeType(int value, String name, String literal) {
@@ -195,38 +192,34 @@ public enum DatetimeType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

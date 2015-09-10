@@ -17,8 +17,8 @@ import org.smeup.sys.il.data.QDataVisitor;
 
 public abstract class NIODataImpl implements QData {
 
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;	
+			
 	public NIODataImpl() {
 		super();
 	}
@@ -42,5 +42,9 @@ public abstract class NIODataImpl implements QData {
 		}
 
 		return nioBufferedData;
+	}
+	
+	public enum ComparatorType {
+		ASCII, EBCDIC;
 	}
 }

@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.SortDirection;
 
 public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImpl<D> implements QScroller<D> {
 
@@ -26,8 +27,8 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 		super();
 	}
 
-	public NIOScrollerImpl(D model, int dimension) {
-		super(model);
+	public NIOScrollerImpl(D model, int dimension, SortDirection sortDirection) {
+		super(model, sortDirection);
 		_dimension = dimension;
 	}
 

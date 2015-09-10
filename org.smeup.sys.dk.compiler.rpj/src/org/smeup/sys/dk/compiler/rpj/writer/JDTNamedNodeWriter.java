@@ -48,6 +48,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecordWrapper;
+import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -297,6 +298,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (arrayDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", arrayDef.getDimension());
 
+			if(arrayDef.getOrder() != null && arrayDef.getOrder() != SortDirection.ASCEND)
+				writeAnnotation(node, DataDef.class, "order", arrayDef.getOrder());
+			
 			writeDataDefAnnotation(node, arrayDef.getArgument());
 		} else if (QScrollerDef.class.isAssignableFrom(klassDef)) {
 			QScrollerDef<?> scrollerDef = (QScrollerDef<?>) dataDef;
@@ -304,12 +308,19 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (scrollerDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", scrollerDef.getDimension());
 
+			if(scrollerDef.getOrder() != null && scrollerDef.getOrder() != SortDirection.ASCEND)
+				writeAnnotation(node, DataDef.class, "order", scrollerDef.getOrder());
+			
 			writeDataDefAnnotation(node, scrollerDef.getArgument());
 		} else if (QStrollerDef.class.isAssignableFrom(klassDef)) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
+			
 			if (strollerDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", strollerDef.getDimension());
 
+			if(strollerDef.getOrder() != null && strollerDef.getOrder() != SortDirection.ASCEND)
+				writeAnnotation(node, DataDef.class, "order", strollerDef.getOrder());
+			
 		} else if (QBinaryDef.class.isAssignableFrom(klassDef)) {
 			QBinaryDef binaryDef = (QBinaryDef) dataDef;
 			writeImport(BinaryType.class);

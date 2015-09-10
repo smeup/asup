@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
@@ -31,6 +30,7 @@ import org.smeup.sys.il.data.impl.DataWriterImpl;
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
 
 	private static final long serialVersionUID = 1L;
+	protected static final ComparatorType defaultComparator = ComparatorType.EBCDIC;
 
 	private NIOBufferedDataImpl _parent;
 	private int _position;
@@ -127,9 +127,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target) {
 		assign(target, 1);
-		
+
 		// TODO remove
-		if(target instanceof NIOCharacterVaryingImpl) {
+		if (target instanceof NIOCharacterVaryingImpl) {
 			target.eval(this);
 		}
 	}
@@ -335,12 +335,25 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		if (value instanceof DataWriterImpl) {
 			DataWriterImpl dataWriterImpl = (DataWriterImpl) value;
 
-			if (dataWriterImpl.object instanceof QBufferedData)
-				return asString().equals(((QBufferedData) dataWriterImpl.object).asString());
-			else
-				return toString().equals(dataWriterImpl.object.toString());
-		} else
-			return false;
+			switch (defaultComparator) {
+			case ASCII:
+
+				if (dataWriterImpl.object instanceof QBufferedData)
+					return asString().equals(((QBufferedData) dataWriterImpl.object).asString());
+				else
+					return toString().equals(dataWriterImpl.object.toString());
+
+			case EBCDIC:
+
+				if (dataWriterImpl.object instanceof QBufferedData)
+					return eq((QBufferedData) dataWriterImpl.object);
+				else
+					return toString().equals(dataWriterImpl.object.toString());
+
+			}
+		}
+
+		return false;
 	}
 
 	@Override
@@ -481,14 +494,16 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public boolean eq(QBufferedData value) {
-		
-		byte[] a = asBytes();
-		byte[] a2 = value.asBytes();
-		
-		if(a2.length > a.length)
-			a2 = Arrays.copyOfRange(a2, 0, a.length);
-		
-		return Arrays.equals(a, a2);
+
+		return compareBytes(asBytes(), value.asBytes()) == 0;
+
+		/*
+		 * byte[] a = asBytes(); byte[] a2 = value.asBytes();
+		 * 
+		 * if(a2.length > a.length) a2 = Arrays.copyOfRange(a2, 0, a.length);
+		 * 
+		 * return Arrays.equals(a, a2);
+		 */
 	}
 
 	@Override
@@ -499,5 +514,62 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public QPointer qAddr() {
 		return new NIOPointerImpl(this);
+	}
+
+	public int compareBytes(byte[] b1, byte[] b2) {
+
+		if (b1 == null && b2 == null)
+			return 0;
+
+		if (b1 == null)
+			return -1;
+
+		if (b2 == null)
+			return 1;
+
+		if (b1.length == b2.length) {
+			for (int i = 0; i < b1.length; i++) {
+				if (b1[i] < b2[i])
+					return -1;
+				else if (b1[i] > b2[i])
+					return 1;
+			}
+		}
+		else if (b1.length > b2.length) {
+			for (int i = 0; i < b1.length; i++) {
+				
+				if(b1[i] == getFiller())
+					continue;
+				
+				if(i+1>b2.length)
+					return 1;
+				
+				if (b1[i] < b2[i])
+					return -1;
+				else if (b1[i] > b2[i])
+					return 1;
+			}			
+		}
+		else if (b2.length > b1.length) {
+			for (int i = 0; i < b1.length; i++) {
+				
+				if(b2[i] == getFiller())
+					continue;
+				
+				if(i+1>b1.length)
+					return -1;
+				
+				if (b1[i] < b2[i])
+					return -1;
+				else if (b1[i] > b2[i])
+					return 1;
+			}						
+		}
+
+		return 0;
+	}
+
+	protected void _eval(byte[] value) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
 	}
 }

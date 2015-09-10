@@ -45,7 +45,6 @@ import org.smeup.sys.il.data.QStroller;
 public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container implements QDataVisitor {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DataVisitorImpl() {
@@ -54,7 +53,6 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

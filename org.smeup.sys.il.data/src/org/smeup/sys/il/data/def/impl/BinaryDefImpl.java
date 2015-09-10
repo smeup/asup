@@ -22,10 +22,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#getType <em>Type
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#isUnsigned <em>
- * Unsigned</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#isUnsigned <em>Unsigned</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,7 +38,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -50,7 +47,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -58,9 +54,8 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	protected BinaryType type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isUnsigned() <em>Unsigned</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #isUnsigned() <em>Unsigned</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -68,9 +63,8 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 	protected static final boolean UNSIGNED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUnsigned() <em>Unsigned</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #isUnsigned() <em>Unsigned</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isUnsigned()
 	 * @generated
 	 * @ordered
@@ -79,7 +73,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected BinaryDefImpl() {
@@ -88,7 +81,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -98,7 +90,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -108,7 +99,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,7 +111,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -131,7 +120,6 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -172,81 +160,75 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
-			return getType();
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
-			return isUnsigned();
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
+				return getType();
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
+				return isUnsigned();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
-			setType((BinaryType) newValue);
-			return;
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
-			setUnsigned((Boolean) newValue);
-			return;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
+				setType((BinaryType)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
+				setUnsigned((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
-			setType(TYPE_EDEFAULT);
-			return;
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
-			setUnsigned(UNSIGNED_EDEFAULT);
-			return;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
+				setUnsigned(UNSIGNED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
-			return type != TYPE_EDEFAULT;
-		case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
-			return unsigned != UNSIGNED_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__TYPE:
+				return type != TYPE_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.BINARY_DEF__UNSIGNED:
+				return unsigned != UNSIGNED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");

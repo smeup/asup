@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data.def;
 
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
@@ -17,7 +18,8 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getOrder <em>Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,15 +47,42 @@ public interface QStrollerDef<D extends QStroller<?>> extends QMultipleCompoundD
 	int getLength();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Length</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Length</em>' attribute.
 	 * @see #getLength()
 	 * @generated
 	 */
 	void setLength(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Order</b></em>' attribute.
+	 * The default value is <code>"A"</code>.
+	 * The literals are from the enumeration {@link org.smeup.sys.il.data.SortDirection}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Order</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Order</em>' attribute.
+	 * @see org.smeup.sys.il.data.SortDirection
+	 * @see #setOrder(SortDirection)
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getStrollerDef_Order()
+	 * @model default="A"
+	 * @generated
+	 */
+	SortDirection getOrder();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QStrollerDef#getOrder <em>Order</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Order</em>' attribute.
+	 * @see org.smeup.sys.il.data.SortDirection
+	 * @see #getOrder()
+	 * @generated
+	 */
+	void setOrder(SortDirection value);
 
 } // QStrollerDef

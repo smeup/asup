@@ -20,32 +20,32 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implements QIntegratedLanguageDataTermFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageDataTermFactory init() {
 		try {
-			QIntegratedLanguageDataTermFactory theIntegratedLanguageDataTermFactory = (QIntegratedLanguageDataTermFactory) EPackage.Registry.INSTANCE
-					.getEFactory(QIntegratedLanguageDataTermPackage.eNS_URI);
-			if (theIntegratedLanguageDataTermFactory != null)
+			QIntegratedLanguageDataTermFactory theIntegratedLanguageDataTermFactory = (QIntegratedLanguageDataTermFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageDataTermPackage.eNS_URI);
+			if (theIntegratedLanguageDataTermFactory != null) {
 				return theIntegratedLanguageDataTermFactory;
-		} catch (Exception exception) {
+			}
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageDataTermFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageDataTermFactoryImpl() {
@@ -54,62 +54,56 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
-			return createDataTermTypeFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
+				return createDataTermTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
-			return convertDataTermTypeToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageDataTermPackage.DATA_TERM_TYPE:
+				return convertDataTermTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public DataTermType createDataTermTypeFromString(EDataType eDataType, String initialValue) {
 		DataTermType result = DataTermType.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertDataTermTypeToString(EDataType eDataType, Object instanceValue) {
@@ -118,17 +112,15 @@ public class IntegratedLanguageDataTermFactoryImpl extends EFactoryImpl implemen
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageDataTermPackage getIntegratedLanguageDataTermPackage() {
-		return (QIntegratedLanguageDataTermPackage) getEPackage();
+		return (QIntegratedLanguageDataTermPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

@@ -22,8 +22,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.il.data.def.impl.FloatingDefImpl#getType <em>Type
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.FloatingDefImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +37,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -48,7 +46,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -57,7 +54,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FloatingDefImpl() {
@@ -66,7 +62,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -76,7 +71,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -86,7 +80,6 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,71 +92,65 @@ public class FloatingDefImpl extends UnaryAtomicBufferedDataDefImpl<QFloating> i
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
-			return getType();
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
-			setType((FloatingType) newValue);
-			return;
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
+				setType((FloatingType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
-			setType(TYPE_EDEFAULT);
-			return;
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
-			return type != TYPE_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.FLOATING_DEF__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");

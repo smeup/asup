@@ -84,7 +84,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public void move(String value, boolean clear) {
 
 		try {
-			NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.getBytes(ENCODING), clear, INIT);
+			NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.getBytes(getEncoding()), clear, INIT);
 		} catch (UnsupportedEncodingException e) {
 			NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.getBytes(), clear, INIT);
 		}
@@ -115,7 +115,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			value = "";
 
 		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, value.getBytes(ENCODING), clear, INIT);
+			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, value.getBytes(getEncoding()), clear, INIT);
 		} catch (UnsupportedEncodingException e) {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, value.getBytes(), clear, INIT);
 		}
@@ -129,7 +129,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public String toString() {
 		try {
-			return new String(asBytes(), ENCODING);
+			return new String(asBytes(), getEncoding());
 		} catch (UnsupportedEncodingException e) {
 			return new String(asBytes());
 		} catch (Exception e) {
@@ -262,8 +262,8 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			try {
 				String value = trimR();
 				int length = value.length() + space.intValue();
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(ENCODING), false, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(ENCODING), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), false, INIT);
 			} catch (UnsupportedEncodingException e) {
 				throw new RuntimeException(e);
 			}
@@ -283,7 +283,18 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public boolean eq(String value) {
-		return trimR().equals(trimR(value));
+		
+		System.out.println(toString());
+		
+		switch (defaultComparator) {
+		case ASCII:
+			return trimR().equals(trimR(value));	
+
+		case EBCDIC:
+			return compareBytes(asBytes(), value) == 0;
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -293,28 +304,64 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public boolean ge(String value) {
-		return trimR().compareTo(trimR(value)) >= 0;
+	public boolean eq(byte value) {
+		return compareBytes(asBytes(), new byte[] { value }) == 0;
 	}
 
 	@Override
-	public boolean eq(byte value) {
-		return Arrays.equals(asBytes(), new byte[] { value });
+	public boolean ge(String value) {
+		
+		switch (defaultComparator) {
+		case ASCII:
+			return trimR().compareTo(trimR(value)) >= 0;	
+
+		case EBCDIC:
+			return compareBytes(asBytes(), value)  >= 0;
+		}
+		
+		return false;
 	}
 
 	@Override
 	public boolean gt(String value) {
-		return trimR().compareTo(trimR(value)) > 0;
+		
+		switch (defaultComparator) {
+		case ASCII:
+			return trimR().compareTo(trimR(value)) > 0;	
+
+		case EBCDIC:
+			return compareBytes(asBytes(), value)  > 0;
+		}
+		
+		return false;
 	}
 
 	@Override
 	public boolean le(String value) {
-		return trimR().compareTo(trimR(value)) <= 0;
+
+		switch (defaultComparator) {
+		case ASCII:
+			return trimR().compareTo(trimR(value)) <= 0;	
+
+		case EBCDIC:
+			return compareBytes(asBytes(), value)  <= 0;
+		}
+		
+		return false;
 	}
 
 	@Override
 	public boolean lt(String value) {
-		return trimR().compareTo(trimR(value)) <= 0;
+
+		switch (defaultComparator) {
+		case ASCII:
+			return trimR().compareTo(trimR(value)) <= 0;	
+
+		case EBCDIC:
+			return compareBytes(asBytes(), value)  <= 0;
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -622,4 +669,14 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			numeric.eval(false);
 		}
 	}
+	
+	public int compareBytes(byte[] b1, String b2) {
+		try {
+			return compareBytes(b1, b2.getBytes(getEncoding()));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		return 1;
+	}	
 }
