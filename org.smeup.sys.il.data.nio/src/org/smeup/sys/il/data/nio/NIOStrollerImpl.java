@@ -528,4 +528,52 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public void testn(QIndicator numeric) {
 		current().testn(numeric);
 	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start, Number length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start, Number length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start, QNumeric length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start, Number length) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

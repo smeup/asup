@@ -1478,16 +1478,56 @@
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
+      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="argument" lowerBound="1" eType="#//Character"/>

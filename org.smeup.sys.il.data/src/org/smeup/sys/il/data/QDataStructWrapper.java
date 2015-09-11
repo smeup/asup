@@ -660,4 +660,36 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public QPointer qAddr() {
 		return delegate.qAddr();
 	}
+
+	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(String argument, QNumeric start, Number length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(QCharacter argument, Number start, Number length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(String argument, Number start, QNumeric length) {
+		return delegate.qScan(argument, start, length);
+	}
+
+	public QNumeric qScan(String argument, Number start, Number length) {
+		return delegate.qScan(argument, start, length);
+	}
 }

@@ -384,11 +384,43 @@ public interface QString extends QBufferedData {
 	QNumeric qScan(QCharacter argument, QNumeric start);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(QCharacter argument, QNumeric start, Number length);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true" startRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(String argument, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, QNumeric start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, QNumeric start, Number length);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -398,11 +430,43 @@ public interface QString extends QBufferedData {
 	QNumeric qScan(QCharacter argument, Number start);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(QCharacter argument, Number start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(QCharacter argument, Number start, Number length);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(String argument, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, Number start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" argumentRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QNumeric qScan(String argument, Number start, Number length);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

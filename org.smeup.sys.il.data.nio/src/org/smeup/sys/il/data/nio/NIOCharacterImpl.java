@@ -635,8 +635,29 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
+		return qScan(argument.s(), start.i(), length.i());
+	}
+
+	@Override
+	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
+		return qScan(argument.s(), start.i(), length);
+	}
+
+	
+	@Override
 	public QNumeric qScan(String argument, QNumeric start) {
 		return qScan(argument, start.i());
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
+		return qScan(argument, start.i(), length.i());
+	}
+
+	@Override
+	public QNumeric qScan(String argument, QNumeric start, Number length) {
+		return qScan(argument, start.i(), length);
 	}
 
 	@Override
@@ -644,6 +665,17 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		return qScan(argument.s(), start);
 	}
 
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
+		return qScan(argument.s(), start, length.i());
+	}
+	
+	@Override
+	public QNumeric qScan(QCharacter argument, Number start, Number length) {
+		return qScan(argument.s(), start, length);
+	}
+	
+	
 	@Override
 	public QNumeric qScan(QCharacter argument) {
 		return qScan(argument.s(), (Number) null);
@@ -665,6 +697,23 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		return number;
 	}
 
+	@Override
+	public QNumeric qScan(String argument, Number start, Number length) {
+		// TODO revision trim???
+		NIODecimalImpl number = new NIODecimalImpl(5, 0);
+		if (start == null)
+			start = 1;
+	    String str = argument.substring(start.intValue()-1, (start.intValue()-1 + length.intValue()));
+		int a = str.indexOf(toString());
+		number.eval(a);
+		return number;
+	}
+
+	@Override
+	public QNumeric qScan(String argument, Number start, QNumeric length) {
+		return qScan(argument, start, length.i());
+	}
+	
 	@Override
 	public void testn(QIndicator numeric) {
 		numeric.eval(true);
@@ -694,4 +743,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		return result;
 	}
+
+
+
+
+
+
+
+
 }
