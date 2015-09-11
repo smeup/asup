@@ -286,8 +286,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public boolean eq(String value) {
 
-		System.out.println(toString());
-
 		switch (defaultComparator) {
 		case ASCII:
 			return trimR().equals(trimR(value));
@@ -682,7 +680,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		System.out.println(bytesToHex(asBytes()));
 		System.out.println(bytesToHex(value.getBytes(CHARSET)));*/
 		
-		int result = bytesToHex(asBytes()).compareTo(bytesToHex(value.getBytes(CHARSET)));
+		int result = compareBytes(asBytes(), value.getBytes(CHARSET));
 		
 		/*try {
 			return compareBytes(asBytes(), b2.getBytes(getEncoding()));

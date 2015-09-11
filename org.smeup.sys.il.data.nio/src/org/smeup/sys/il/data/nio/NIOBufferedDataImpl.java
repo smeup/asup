@@ -516,7 +516,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return new NIOPointerImpl(this);
 	}
 
-	public int compareBytes_old(byte[] b1, byte[] b2) {
+	public int compareBytes(byte[] b1, byte[] b2) {
 
 		if (b1 == null && b2 == null)
 			return 0;
@@ -529,9 +529,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		if (b1.length == b2.length) {
 			for (int i = 0; i < b1.length; i++) {
-				if (b1[i] < b2[i])
+				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
 					return -1;
-				else if (b1[i] > b2[i])
+				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
 					return 1;
 			}
 		} else if (b1.length > b2.length) {
@@ -543,13 +543,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 				if (i + 1 > b2.length)
 					return 1;
 
-				if (b1[i] < b2[i])
+				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
 					return -1;
-				else if (b1[i] > b2[i])
+				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
 					return 1;
 			}
 		} else if (b2.length > b1.length) {
-			for (int i = 0; i < b1.length; i++) {
+			for (int i = 0; i < b2.length; i++) {
 
 				if (b2[i] == getFiller())
 					continue;
@@ -557,9 +557,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 				if (i + 1 > b1.length)
 					return -1;
 
-				if (b1[i] < b2[i])
+				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
 					return -1;
-				else if (b1[i] > b2[i])
+				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
 					return 1;
 			}
 		}
@@ -567,24 +567,30 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return 0;
 	}
 
-	public int compareBytes(byte[] b1, byte[] b2) {
-		int result = bytesToHex(b1).compareTo(bytesToHex(b2));
-		
-		return result;
+	public String toHexString(byte b) {
+
+		final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+		char[] hexChars = new char[2];
+
+		int v = b & 0xFF;
+		hexChars[0] = hexArray[v >>> 4];
+		hexChars[1] = hexArray[v & 0x0F];
+
+		return new String(hexChars);
 	}
-	
+
 	public String bytesToHex(byte[] bytes) {
-	    final char[] hexArray = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-	    char[] hexChars = new char[bytes.length * 2];
-	    int v;
-	    for ( int j = 0; j < bytes.length; j++ ) {
-	        v = bytes[j] & 0xFF;
-	        hexChars[j * 2] = hexArray[v >>> 4];
-	        hexChars[j * 2 + 1] = hexArray[v & 0x0F];
-	    }
-	    return new String(hexChars);
+		final char[] hexArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+		char[] hexChars = new char[bytes.length * 2];
+		int v;
+		for (int j = 0; j < bytes.length; j++) {
+			v = bytes[j] & 0xFF;
+			hexChars[j * 2] = hexArray[v >>> 4];
+			hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+		}
+		return new String(hexChars);
 	}
-	
+
 	protected void _eval(byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
 	}
