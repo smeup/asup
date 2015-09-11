@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -30,10 +31,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	private static final long serialVersionUID = 1L;
 
-	private int lengthSlot = 0;
+	private NIOBufferedListImpl<?> listOwner;
 	private D _model;
 	private SortDirection sortDirection = null;
-	
+
 	public NIOBufferedListImpl() {
 		super();
 	}
@@ -55,13 +56,13 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	protected SortDirection getSortDirection() {
 		return this.sortDirection;
 	}
-	
-	protected int getLengthSlot() {
-		return lengthSlot;
+
+	protected NIOBufferedListImpl<?> getListOwner() {
+		return this.listOwner;
 	}
 
-	protected void setLengthSlot(int lengthSlot) {
-		this.lengthSlot = lengthSlot;
+	protected void setListOwner(NIOBufferedListImpl<?> listOwner) {
+		this.listOwner = listOwner;
 	}
 
 	@Override
@@ -244,11 +245,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void sorta() {
 
-		if(getLengthSlot() > 0)
-			"".toCharArray();
-		
 		int i = 0;
-		
+
 		switch (defaultComparator) {
 		case ASCII:
 			List<String> stringList = new ArrayList<String>();
@@ -258,18 +256,18 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 			Collections.sort(stringList, new Comparator<String>() {
 				public int compare(String param1, String param2) {
-					
+
 					switch (getSortDirection()) {
 					case ASCEND:
-						return param1.compareTo(param2);	
+						return param1.compareTo(param2);
 					case DESCEND:
-						return param1.compareTo(param2)*-1;	
+						return param1.compareTo(param2) * -1;
 					}
-					
+
 					return param1.compareTo(param2);
 				}
 			});
-			
+
 			for (QBufferedData elementTarget : this) {
 				elementTarget.movel(stringList.get(i));
 				i++;
@@ -277,29 +275,64 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 			break;
 		case EBCDIC:
-			List<byte[]> dataList = new ArrayList<byte[]>();
-			for (QBufferedData elementTarget : this) {
-				dataList.add(elementTarget.asBytes());
-			}
 
-			Collections.sort(dataList, new Comparator<byte[]>() {
-				@Override
-				public int compare(byte[] param1, byte[] param2) {
-					
-					switch (getSortDirection()) {
-					case ASCEND:
-						return compareBytes(param1, param2);	
-					case DESCEND:
-						return compareBytes(param1, param2)*-1;	
-					}
-					
-					return compareBytes(param1, param2);
+			if (getListOwner() != null) {
+				List<byte[]> dataList = new ArrayList<byte[]>();
+				
+				for (QBufferedData elementTarget : getListOwner()) {
+					dataList.add(elementTarget.asBytes());
 				}
-			});
+				
+				Collections.sort(dataList, new Comparator<byte[]>() {
+					@Override
+					public int compare(byte[] param1, byte[] param2) {
+						
+						byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition()+getModel().getLength());
+						byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition()+getModel().getLength());
+						
+						switch (getSortDirection()) {
+						case ASCEND:
+							return compareBytes(b1, b2);
+						case DESCEND:
+							return compareBytes(b1, b2) * -1;
+						}
 
-			for(byte[] bd: dataList) {
-				((NIOBufferedDataImpl)this.get(i+1))._eval(bd);
-				i++;
+						return compareBytes(b1, b2);
+					}
+				});
+				
+				for (byte[] bd : dataList) {
+					
+					((NIOBufferedDataImpl) getListOwner().get(i + 1))._eval(bd);
+					i++;
+				}
+
+			} else {
+
+				List<byte[]> dataList = new ArrayList<byte[]>();
+				for (QBufferedData elementTarget : this) {
+					dataList.add(elementTarget.asBytes());
+				}
+
+				Collections.sort(dataList, new Comparator<byte[]>() {
+					@Override
+					public int compare(byte[] param1, byte[] param2) {
+
+						switch (getSortDirection()) {
+						case ASCEND:
+							return compareBytes(param1, param2);
+						case DESCEND:
+							return compareBytes(param1, param2) * -1;
+						}
+
+						return compareBytes(param1, param2);
+					}
+				});
+
+				for (byte[] bd : dataList) {
+					((NIOBufferedDataImpl) this.get(i + 1))._eval(bd);
+					i++;
+				}
 			}
 		}
 	}

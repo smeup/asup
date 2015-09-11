@@ -62,11 +62,10 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 		
 		int position = 0;
 		
-		if(getLengthSlot() == 0)
+		if(getListOwner() == null)
 			position = getModel().getSize() * (index - 1);
 		else
-			position = getLengthSlot() * (index - 1);
-
+			position = getListOwner().getModel().getLength() * (index - 1);
 
 		slice(getModel(), position);
 

@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.QBufferedData;
@@ -28,7 +29,8 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	private static final long serialVersionUID = 1L;
 	private static final byte INIT = (byte) 64; // 32;
 	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
-
+	private static final Charset CHARSET = Charset.forName(ENCODING);
+	
 	protected int _length;
 
 	public NIOCharacterImpl() {
@@ -283,17 +285,17 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public boolean eq(String value) {
-		
+
 		System.out.println(toString());
-		
+
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().equals(trimR(value));	
+			return trimR().equals(trimR(value));
 
 		case EBCDIC:
-			return compareBytes(asBytes(), value) == 0;
+			return compareString(value) == 0;
 		}
-		
+
 		return false;
 	}
 
@@ -310,29 +312,30 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public boolean ge(String value) {
-		
+
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().compareTo(trimR(value)) >= 0;	
+			return trimR().compareTo(trimR(value)) >= 0;
 
 		case EBCDIC:
-			return compareBytes(asBytes(), value)  >= 0;
+			return compareString(value) >= 0;
 		}
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean gt(String value) {
-		
+
+
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().compareTo(trimR(value)) > 0;	
+			return trimR().compareTo(trimR(value)) > 0;
 
 		case EBCDIC:
-			return compareBytes(asBytes(), value)  > 0;
+			return compareString(value) > 0;
 		}
-		
+
 		return false;
 	}
 
@@ -341,12 +344,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().compareTo(trimR(value)) <= 0;	
+			return trimR().compareTo(trimR(value)) <= 0;
 
 		case EBCDIC:
-			return compareBytes(asBytes(), value)  <= 0;
+			return compareString(value) <= 0;
 		}
-		
+
 		return false;
 	}
 
@@ -355,12 +358,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().compareTo(trimR(value)) <= 0;	
+			return trimR().compareTo(trimR(value)) <= 0;
 
 		case EBCDIC:
-			return compareBytes(asBytes(), value)  <= 0;
+			return compareString(value) <= 0;
 		}
-		
+
 		return false;
 	}
 
@@ -468,7 +471,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	private <E extends Enum<E>> String getPrimitive(E value) {
-		
+
 		char[] charArray = new char[getLength()];
 
 		if (value.name().equals("BLANKS"))
@@ -485,7 +488,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			Arrays.fill(charArray, '0');
 		else
 			"".toCharArray();
-		
+
 		return new String(charArray);
 	}
 
@@ -579,13 +582,13 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			start = 1;
 
 		if (length == null)
-			length = getLength()-start.intValue()+1;
+			length = getLength() - start.intValue() + 1;
 
 		// String str = asString().substring(start.intValue() - 1,
 		// length.intValue()-1);
 
 		QCharacter character = new NIOCharacterImpl(length.intValue());
-		slice(character, start.intValue()-1);
+		slice(character, start.intValue() - 1);
 
 		return character;
 	}
@@ -652,7 +655,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public QNumeric qScan(String argument, Number start) {
 		// TODO revision
-		NIODecimalImpl number = new NIODecimalImpl(5,0);
+		NIODecimalImpl number = new NIODecimalImpl(5, 0);
 		if (start == null)
 			start = 1;
 		int a = toString().indexOf(start.intValue());
@@ -669,14 +672,24 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			numeric.eval(false);
 		}
 	}
-	
-	public int compareBytes(byte[] b1, String b2) {
-		try {
-			return compareBytes(b1, b2.getBytes(getEncoding()));
+
+	public int compareString(String value) {
+
+/*		ByteBuffer b1 = ByteBuffer.wrap(asBytes());
+		ByteBuffer b2 = ByteBuffer.wrap(value.getBytes(CHARSET));
+		int result = b1.compareTo(b2);
+
+		System.out.println(bytesToHex(asBytes()));
+		System.out.println(bytesToHex(value.getBytes(CHARSET)));*/
+		
+		int result = bytesToHex(asBytes()).compareTo(bytesToHex(value.getBytes(CHARSET)));
+		
+		/*try {
+			return compareBytes(asBytes(), b2.getBytes(getEncoding()));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		}
-		
-		return 1;
-	}	
+		}*/
+
+		return result;
+	}
 }

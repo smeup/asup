@@ -432,7 +432,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 							NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
 
-							arrayData.setLengthSlot(arrayOverlayed.getModel().getLength());
+							arrayData.setListOwner(arrayOverlayed);
 
 							if (overlay.position().equals(Overlay.NEXT)) {
 								if (previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
