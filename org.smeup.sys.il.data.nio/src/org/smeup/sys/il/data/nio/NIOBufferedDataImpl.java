@@ -537,11 +537,12 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		} else if (b1.length > b2.length) {
 			for (int i = 0; i < b1.length; i++) {
 
-				if (b1[i] == getFiller())
-					continue;
+				if (i + 1 > b2.length) {
+					if (b1[i] == getFiller())
+						continue;
 
-				if (i + 1 > b2.length)
 					return 1;
+				}
 
 				if(b1[i] == b2[i])
 					continue;
@@ -551,11 +552,12 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		} else if (b2.length > b1.length) {
 			for (int i = 0; i < b2.length; i++) {
 
-				if (b2[i] == getFiller())
-					continue;
+				if (i + 1 > b1.length) {
+					if (b2[i] == getFiller())
+						continue;
 
-				if (i + 1 > b1.length)
 					return -1;
+				}
 
 				if(b1[i] == b2[i])
 					continue;
