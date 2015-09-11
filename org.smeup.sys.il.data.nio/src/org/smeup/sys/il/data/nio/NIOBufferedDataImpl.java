@@ -529,10 +529,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		if (b1.length == b2.length) {
 			for (int i = 0; i < b1.length; i++) {
-				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
-					return -1;
-				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
-					return 1;
+				if(b1[i] == b2[i])
+					continue;
+				
+				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
 			}
 		} else if (b1.length > b2.length) {
 			for (int i = 0; i < b1.length; i++) {
@@ -543,10 +543,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 				if (i + 1 > b2.length)
 					return 1;
 
-				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
-					return -1;
-				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
-					return 1;
+				if(b1[i] == b2[i])
+					continue;
+
+				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
 			}
 		} else if (b2.length > b1.length) {
 			for (int i = 0; i < b2.length; i++) {
@@ -557,10 +557,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 				if (i + 1 > b1.length)
 					return -1;
 
-				if (toHexString(b1[i]).compareTo(toHexString(b2[i])) < 0)
-					return -1;
-				else if (toHexString(b1[i]).compareTo(toHexString(b2[i])) > 0)
-					return 1;
+				if(b1[i] == b2[i])
+					continue;
+				
+				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
 			}
 		}
 
