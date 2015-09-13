@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.il.memo/src" modelPluginID="org.smeup.sys.il.memo"
+    modelName="As.UP Integrated Language Memory" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr"
+    interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>il-memo.ecore</foreignModel>
+  <genPackages prefix="IntegratedLanguageMemory" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
+      adapterFactory="false" contentTypeIdentifier="" ecorePackage="il-memo.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-memo.ecore#//ResourceEventType">
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourceEventType/PreSave"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourceEventType/PostSave"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourceEventType/PostLoad"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourceEventType/PreDelete"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourceEventType/PostDelete"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-memo.ecore#//ResourcePath">
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourcePath/All"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourcePath/LibraryList"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourcePath/CurrentLibrary"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourcePath/UserLibraryList"/>
+      <genEnumLiterals ecoreEnumLiteral="il-memo.ecore#//ResourcePath/AllUser"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//Resource">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//Resource/T"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference il-memo.ecore#//Resource/context"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference il-memo.ecore#//Resource/notifier"/>
+      <genOperations ecoreOperation="il-memo.ecore#//Resource/fireEvent">
+        <genParameters ecoreParameter="il-memo.ecore#//Resource/fireEvent/event"/>
+        <genParameters ecoreParameter="il-memo.ecore#//Resource/fireEvent/eventType"/>
+        <genParameters ecoreParameter="il-memo.ecore#//Resource/fireEvent/object"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="il-memo.ecore#//ResourceEvent">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceEvent/T"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference il-memo.ecore#//ResourceEvent/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo.ecore#//ResourceEvent/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference il-memo.ecore#//ResourceEvent/resource"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceListener">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceListener/T"/>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceListener/handleEvent">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceListener/handleEvent/event"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceManager">
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceManager/registerListener">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerListener/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerListener/listener"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceManager/registerListener/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceManager/registerProvider">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerProvider/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceManager/registerProvider/provider"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceManager/registerProvider/T"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="il-memo.ecore#//ResourceNotifier">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceNotifier/T"/>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceNotifier/fireEvent">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceNotifier/fireEvent/event"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceNotifier/registerListener">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceNotifier/registerListener/listener"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceProvider">
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceProvider/getResourceReader">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader/context"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader/container"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceProvider/getResourceReader/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceProvider/getResourceReader.1">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader.1/context"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader.1/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceReader.1/path"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceProvider/getResourceReader.1/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceProvider/getResourceWriter">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter/context"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter/container"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceProvider/getResourceWriter/T"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceProvider/getResourceWriter.1">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter.1/context"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter.1/klass"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceProvider/getResourceWriter.1/path"/>
+        <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceProvider/getResourceWriter.1/T"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceReader">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceReader/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo.ecore#//ResourceReader/container"/>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/exists">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/exists/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/find">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/find/nameFilter"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/findByExpression">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/findByExpression/filter"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceReader/lookup">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceReader/lookup/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceSetReader">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceSetReader/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo.ecore#//ResourceSetReader/containers"/>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceSetReader/exists">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/exists/container"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/exists/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceSetReader/find">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/find/container"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/find/nameFilter"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceSetReader/lookup">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/lookup/container"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceSetReader/lookup/name"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-memo.ecore#//ResourceWriter">
+      <genTypeParameters ecoreTypeParameter="il-memo.ecore#//ResourceWriter/T"/>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceWriter/delete">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceWriter/delete/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceWriter/save">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceWriter/save/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-memo.ecore#//ResourceWriter/save.1">
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceWriter/save.1/object"/>
+        <genParameters ecoreParameter="il-memo.ecore#//ResourceWriter/save.1/replace"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

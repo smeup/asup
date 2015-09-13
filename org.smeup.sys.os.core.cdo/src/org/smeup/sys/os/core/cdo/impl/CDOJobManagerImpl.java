@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
@@ -41,8 +43,6 @@ import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceReader;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
 

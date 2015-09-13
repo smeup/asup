@@ -18,38 +18,38 @@ import java.util.Stack;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceSetReaderImpl;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 
 public class JDTResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
 
 	private List<JDTResourceReaderImpl<T>> resourceSet;
 	private QResourceEvent<T> resourceEvent;
 
-	public JDTResourceSetReaderImpl(QJob job, QSourceManager sourceManager, List<String> containers, Class<T> klass) {
+	public JDTResourceSetReaderImpl(QContextProvider contextProvider, QSourceManager sourceManager, List<String> resources, Class<T> klass) {
 
-		setJob(job);
+		setContextProvider(contextProvider);
 
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 
 		resourceSet = new ArrayList<JDTResourceReaderImpl<T>>();
-		for (String container : containers) {
-			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(job, sourceManager, container, klass);
+		for (String resource: resources) {
+			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, resource, klass);
 			resourceSet.add(resourceReader);
 		}
 	}
 
 	@Override
-	public T lookup(String library, String name) {
+	public T lookup(String resource, String name) {
 
 		T object = null;
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !library.isEmpty() && !resourceReader.getContainer().equals(library))
+			if (resource != null && !resource.isEmpty() && !resourceReader.getName().equals(resource))
 				continue;
 
 			object = resourceReader.lookup(name);
@@ -65,12 +65,12 @@ public class JDTResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 	}
 
 	@Override
-	public boolean exists(String library, String name) {
+	public boolean exists(String resource, String name) {
 
 		boolean exists = false;
 
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !resourceReader.getContainer().equals(library))
+			if (resource != null && !resourceReader.getName().equals(resource))
 				continue;
 
 			exists = resourceReader.exists(name);
@@ -82,11 +82,11 @@ public class JDTResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 	}
 
 	@Override
-	public QObjectIterator<T> find(String library, String nameFilter) {
+	public QObjectIterator<T> find(String resource, String nameFilter) {
 
 		Stack<QResourceReader<T>> readers = new Stack<QResourceReader<T>>();
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !resourceReader.getContainer().equals(library))
+			if (resource != null && !resourceReader.getName().equals(resource))
 				continue;
 			readers.add(resourceReader);
 		}

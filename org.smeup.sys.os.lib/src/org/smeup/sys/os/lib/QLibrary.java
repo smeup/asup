@@ -9,12 +9,12 @@ package org.smeup.sys.os.lib;
 
 import java.net.URI;
 import java.util.List;
+
 import org.smeup.sys.os.type.QTypedObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>QLibrary</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>QLibrary</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -33,21 +33,21 @@ import org.smeup.sys.os.type.QTypedObject;
 public interface QLibrary extends QTypedObject {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
 
 	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
+	 * The list contents are of type {@link java.lang.String}. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Dependencies</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Dependencies</em>' attribute list.
 	 * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary_Dependencies()
 	 * @model
@@ -56,13 +56,14 @@ public interface QLibrary extends QTypedObject {
 	List<String> getDependencies();
 
 	/**
-	 * Returns the value of the '<em><b>Parent Library</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Parent Library</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parent Library</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Parent Library</em>' attribute.
 	 * @see #setParentLibrary(String)
 	 * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary_ParentLibrary()
@@ -73,8 +74,8 @@ public interface QLibrary extends QTypedObject {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.lib.QLibrary#getParentLibrary <em>Parent Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Parent Library</em>' attribute.
 	 * @see #getParentLibrary()
 	 * @generated
@@ -100,8 +101,8 @@ public interface QLibrary extends QTypedObject {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Synchronized</em>' attribute.
 	 * @see #isSynchronized()
 	 * @generated
@@ -109,13 +110,14 @@ public interface QLibrary extends QTypedObject {
 	void setSynchronized(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Base Package</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Base Package</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Base Package</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Base Package</em>' attribute.
 	 * @see #setBasePackage(String)
 	 * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary_BasePackage()
@@ -126,8 +128,8 @@ public interface QLibrary extends QTypedObject {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Base Package</em>' attribute.
 	 * @see #getBasePackage()
 	 * @generated
@@ -135,24 +137,21 @@ public interface QLibrary extends QTypedObject {
 	void setBasePackage(String value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isRootLibrary();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isChildLibrary();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
 	 * @generated
 	 */

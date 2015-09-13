@@ -20,11 +20,11 @@ import org.smeup.sys.dk.source.QDevelopmentKitSourceFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QProjectDef;
 import org.smeup.sys.dk.source.QSourceManager;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceListener;
+import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceListener;
-import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class JDTLibraryListenerImpl implements QResourceListener<QLibrary> {
@@ -42,20 +42,19 @@ public class JDTLibraryListenerImpl implements QResourceListener<QLibrary> {
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 
-		QJob job = event.getResource().getJob();
-		
+		QContextProvider contextProvider = event.getResource().getContextProvider();
 		QLibrary library = event.getSource();
 
 		switch (event.getType()) {
 		case PRE_SAVE:
 			
-			QProject project = sourceManager.getProject(job.getContext(), library.getName());
+			QProject project = sourceManager.getProject(contextProvider.getContext(), library.getName());
 			if (project == null) {
 				QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 				projectDef.setText(library.getText());
 				projectDef.setName(library.getName());
 				try {
-					project = sourceManager.createProject(job.getContext(), projectDef, false);					
+					project = sourceManager.createProject(contextProvider.getContext(), projectDef, false);					
 					
 /*					Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
 					if (repository.getProject(project.getName()) == null) {

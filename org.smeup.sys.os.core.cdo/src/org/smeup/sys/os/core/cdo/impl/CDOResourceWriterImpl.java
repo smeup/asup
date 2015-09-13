@@ -23,16 +23,14 @@ import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.view.CDOView;
 import org.eclipse.emf.ecore.EObject;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.core.resources.ResourceEventType;
 import org.smeup.sys.os.lib.QLibrary;
-import org.smeup.sys.os.type.QOperatingSystemTypePackage;
-import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourceReaderImpl<T> implements QResourceWriter<T> {
 
@@ -40,11 +38,11 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 	private CDOResource resource;
 	private CDOTransaction transaction;
-	private QResourceEvent<T> resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+	private QResourceEvent<T> resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 	private Class<T> klass;
 
-	protected CDOResourceWriterImpl(QJob job, Class<T> klass, CDONet4jSession session) {
-		super(job, klass, session);
+	protected CDOResourceWriterImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+		super(contextProvider, klass, session);
 		this.klass = klass;
 		resourceEvent.setResource(this);
 	}
@@ -52,7 +50,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 	@Override
 	public void delete(T object) {
 
-		CDOTransaction transaction = getTransaction(getJob());
+		CDOTransaction transaction = getTransaction();
 		CDOResource resource = getResource(transaction);
 
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
@@ -92,7 +90,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 	@Override
 	public void save(T object, boolean replace) {
 
-		CDOTransaction transaction = getTransaction(getJob());
+		CDOTransaction transaction = getTransaction();
 		CDOResource resource = getResource(transaction);
 
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
@@ -118,17 +116,6 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 				}
 		}
 
-		if (object instanceof TypedObjectImpl) {
-			TypedObjectImpl typedObject = (TypedObjectImpl) object;
-			
-			// library
-			typedObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), getContainer());
-
-			// creation info
-			if (typedObject.getCreationInfo() == null)
-				typedObject.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-
-		}
 		// update object
 		resource.getContents().add((EObject) object);
 
@@ -147,11 +134,11 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 	}
 
 	@Override
-	protected CDOView getView(QJob job) {
-		return getTransaction(job);
+	protected CDOView getView(QContext context) {
+		return getTransaction();
 	}
 
-	protected CDOTransaction getTransaction(QJob job) {
+	protected CDOTransaction getTransaction() {
 		if (transaction == null)
 			transaction = getSession().openTransaction();
 		return transaction;
@@ -159,7 +146,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 	private CDOResource getResource(CDOTransaction transaction) {
 		if (resource == null)
-			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getContainer() + "/" + klass.getName());
+			resource = transaction.getOrCreateResource(CDO_OMAC + "/" + getName() + "/" + klass.getName());
 		return resource;
 	}
 }

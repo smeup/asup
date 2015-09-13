@@ -17,22 +17,19 @@ import java.util.Collections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.type.QOperatingSystemTypePackage;
-import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 public class E4ResourceWriterImpl<T extends QObjectNameable> extends E4ResourceReaderImpl<T> implements QResourceWriter<T> {
 
-	private QResourceEvent<T> resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+	private QResourceEvent<T> resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 
-	public E4ResourceWriterImpl(QJob job, String container, Class<T> klass, Resource resource) {
-		super(job, container, klass, resource);
+	public E4ResourceWriterImpl(QContextProvider contextProvider, String name, Class<T> klass, Resource resource) {
+		super(contextProvider, name, klass, resource);
 		resourceEvent.setResource(this);
 	}
 
@@ -71,20 +68,8 @@ public class E4ResourceWriterImpl<T extends QObjectNameable> extends E4ResourceR
 					resource.getContents().remove(oldObject);
 				else
 					throw new OperatingSystemRuntimeException("Object already exists: " + object);
-
-			if (object instanceof TypedObjectImpl) {
-				TypedObjectImpl typedObject = (TypedObjectImpl) object;
-				
-				// library
-				typedObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), getContainer());
-
-				// creation info
-				if (typedObject.getCreationInfo() == null)
-					typedObject.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-
-			}
-
 			resource.getContents().add((EObject) object);
+			
 			fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
 			resource.save(Collections.EMPTY_MAP);
 			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);

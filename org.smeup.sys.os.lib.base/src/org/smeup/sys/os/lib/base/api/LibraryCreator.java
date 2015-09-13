@@ -24,11 +24,11 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 

@@ -15,12 +15,12 @@ import java.util.Map;
 
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.cmd.QCommandParameter;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
-import org.smeup.sys.os.core.resources.QResourceManager;
 import org.smeup.sys.os.pgm.QProgramManager;
 
 

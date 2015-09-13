@@ -13,13 +13,14 @@ package org.smeup.sys.il.core.e4;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.osgi.framework.BundleContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 
 public class E4ContextChildImpl extends E4ContextImpl {
 
 	private IEclipseContext eclipseContext;
 
-	public E4ContextChildImpl(BundleContext bundleContext, IEclipseContext eclipseContext, String contextID, String name) {
-		super(bundleContext, contextID, name);
+	public E4ContextChildImpl(BundleContext bundleContext, IEclipseContext eclipseContext, String contextID, QContextDescription contextDescription) {
+		super(bundleContext, contextID, contextDescription);
 
 		this.eclipseContext = eclipseContext;
 	}

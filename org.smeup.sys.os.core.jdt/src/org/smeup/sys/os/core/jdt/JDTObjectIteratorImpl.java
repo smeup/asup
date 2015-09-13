@@ -15,8 +15,8 @@ import java.util.Iterator;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
 
 public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 

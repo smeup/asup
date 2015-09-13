@@ -10,15 +10,19 @@ package org.smeup.sys.il.core.ctx.impl;
 import java.lang.annotation.Annotation;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Context</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Context</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * </p>
  *
@@ -26,7 +30,8 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
  */
 public abstract class ContextImpl extends MinimalEObjectImpl.Container implements QContext {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ContextImpl() {
@@ -34,7 +39,8 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -43,10 +49,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void close() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -54,10 +60,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QContext createChildContext(String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -65,10 +71,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public QContext createChildContext(String name, ContextInjectionStrategy injectionStrategy) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -76,10 +82,21 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public <T> T get(Class<T> clazz) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -87,10 +104,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T extends Object> T getAdapter(Object adaptable, Class<T> adapter) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -98,10 +115,21 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public QContextDescription getContextDescription() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getID() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -109,21 +137,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public void inject(Object object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -131,10 +148,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Class<?> loadClass(String address) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -142,10 +159,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <A extends Annotation> void invoke(Object object, Class<A> qualifier) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -153,10 +170,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T> T make(Class<T> klass) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -164,10 +181,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T extends Object> void registerAdapterFactory(QAdapterFactory factory, Class<T> adapterType) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -175,10 +192,10 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T> void set(Class<T> klass, T object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -186,14 +203,14 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public <T> void set(String name, T object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
 	}
 
-} // ContextImpl
+} //ContextImpl

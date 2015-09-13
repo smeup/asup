@@ -16,9 +16,9 @@ import javax.inject.Inject;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.flux.core.Repository;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceListener;
-import org.smeup.sys.os.core.resources.QResourceManager;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceListener;
+import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class FluxLibraryListenerImpl implements QResourceListener<QLibrary> {

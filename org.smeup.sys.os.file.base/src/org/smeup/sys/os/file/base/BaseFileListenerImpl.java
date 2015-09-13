@@ -26,12 +26,12 @@ import org.smeup.sys.db.core.QIndexDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceListener;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceListener;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.ResourceEventType;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QLogicalFile;
@@ -60,13 +60,13 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		if (event.getType() != ResourceEventType.PRE_SAVE && event.getType() != ResourceEventType.PRE_DELETE)
 			return;
 
-		QJob job = event.getResource().getJob();
+		QContextProvider contextProvider = event.getResource().getContextProvider();
 
 		// file.setLibrary(((QResourceReader<QFile>)
 		// event.getResource()).getContainer());
 
-		QContext jobContext = job.getContext();
-		QConnection connection = jobContext.getAdapter(job, QConnection.class);
+		QContext jobContext = contextProvider.getContext();
+		QConnection connection = jobContext.getAdapter(contextProvider, QConnection.class);
 
 		Schema schema = connection.getCatalogMetaData().getSchema(file.getLibrary());
 		if (schema == null)

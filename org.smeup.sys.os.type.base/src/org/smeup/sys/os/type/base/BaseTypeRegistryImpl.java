@@ -23,16 +23,15 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceProvider;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.QResourceSetReader;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QCreationInfo;
-import org.smeup.sys.os.core.Scope;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceProvider;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.QResourceSetReader;
-import org.smeup.sys.os.core.resources.QResourceWriter;
-import org.smeup.sys.os.core.resources.impl.ResourceReaderImpl;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeContainer;
 import org.smeup.sys.os.type.QTypeRegistry;
@@ -232,7 +231,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 	private class TypeResourceSetReader extends TypeResourceReader implements QResourceSetReader<QType<?>> {
 
 		@Override
-		public List<String> getContainers() {
+		public List<String> getResources() {
 			return null;
 		}
 
@@ -255,25 +254,26 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QJob job, Class<T> klass, String container) {
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String container) {
 		return (QResourceReader<T>) new TypeResourceReader();
 	}
 
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
-	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QJob job, Class<T> klass, Scope scope) {
+	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
 		return (QResourceSetReader<T>) new TypeResourceSetReader();
 	}
 
 	@SuppressWarnings("hiding")
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, String container) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String container) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
 	}
 
 	@SuppressWarnings("hiding")
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
+	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, E path) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
 	}
+
 }

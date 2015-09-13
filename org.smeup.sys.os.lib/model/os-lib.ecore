@@ -3,13 +3,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="lib" nsURI="http://www.smeup.org/asup/os/lib" nsPrefix="os-lib">
   <eClassifiers xsi:type="ecore:EClass" name="LibraryManager" abstract="true" interface="true">
     <eOperations name="getLibraryReader">
-      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//resources/ResourceReader">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.memo/model/il-memo.ecore#//ResourceReader">
         <eTypeArguments eClassifier="#//Library"/>
       </eGenericType>
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
     </eOperations>
     <eOperations name="getLibraryWriter">
-      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//resources/ResourceWriter">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.memo/model/il-memo.ecore#//ResourceWriter">
         <eTypeArguments eClassifier="#//Library"/>
       </eGenericType>
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>

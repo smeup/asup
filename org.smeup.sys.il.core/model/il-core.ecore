@@ -126,6 +126,10 @@
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         <eParameters name="injectionStrategy" lowerBound="1" eType="#//ctx/ContextInjectionStrategy"/>
       </eOperations>
+      <eOperations name="createChildContext" lowerBound="1" eType="#//ctx/Context">
+        <eParameters name="contextDescription" lowerBound="1" eType="#//ctx/ContextDescription"/>
+        <eParameters name="injectionStrategy" lowerBound="1" eType="#//ctx/ContextInjectionStrategy"/>
+      </eOperations>
       <eOperations name="get" lowerBound="1">
         <eGenericType eTypeParameter="#//ctx/Context/get/T"/>
         <eTypeParameters name="T"/>
@@ -147,8 +151,8 @@
           </eGenericType>
         </eParameters>
       </eOperations>
+      <eOperations name="getContextDescription" lowerBound="1" eType="#//ctx/ContextDescription"/>
       <eOperations name="getID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eOperations name="getName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eOperations name="inject">
         <eParameters name="object" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </eOperations>
@@ -207,6 +211,13 @@
           <eGenericType eTypeParameter="#//ctx/Context/set.1/T"/>
         </eParameters>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ContextDescription" abstract="true"
+        interface="true">
+      <eOperations name="getCurrentLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="getLibraryPath" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="getName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="getSystemLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="ContextInjectionStrategy">
       <eLiterals name="Local" value="10" literal="LOCAL"/>

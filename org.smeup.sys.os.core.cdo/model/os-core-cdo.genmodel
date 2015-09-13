@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.os.core.cdo/src" modelPluginID="org.smeup.sys.os.core.cdo"
     modelName="As.UP Operating System CDO" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.db.core/model/db-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.genmodel#//sqlmodel"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.db.core/model/db-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.genmodel#//sqlmodel ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
     importOrganizing="true">
   <foreignModel>os-core-cdo.ecore</foreignModel>
   <genPackages prefix="CDOSystemCore" basePackage="org.smeup.sys.os.core" disposableProviderFactory="true"

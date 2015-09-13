@@ -10,24 +10,21 @@ package org.smeup.sys.os.lib;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Factory</b> for the model.
- * It provides a create method for each non-abstract class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
+ * create method for each non-abstract class of the model. <!-- end-user-doc -->
  * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage
  * @generated
  */
 public interface QOperatingSystemLibraryFactory extends EFactory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
 	/**
 	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	QOperatingSystemLibraryFactory eINSTANCE = org.smeup.sys.os.lib.impl.OperatingSystemLibraryFactoryImpl.init();
@@ -50,4 +47,4 @@ public interface QOperatingSystemLibraryFactory extends EFactory {
 	 */
 	QOperatingSystemLibraryPackage getOperatingSystemLibraryPackage();
 
-} //OSLibraryCoreFactory
+} // OSLibraryCoreFactory

@@ -15,6 +15,9 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
@@ -22,9 +25,6 @@ import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 
 public class BaseJobLogManagerImpl implements QJobLogManager {
 

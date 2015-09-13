@@ -19,6 +19,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxFactory;
@@ -52,6 +53,13 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass contextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contextDescriptionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -179,6 +187,15 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContextDescription() {
+		return contextDescriptionEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -272,6 +289,8 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 
 		contextEClass = createEClass(CONTEXT);
 
+		contextDescriptionEClass = createEClass(CONTEXT_DESCRIPTION);
+
 		contextProviderEClass = createEClass(CONTEXT_PROVIDER);
 
 		credentialsEClass = createEClass(CREDENTIALS);
@@ -347,6 +366,10 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getContextInjectionStrategy(), "injectionStrategy", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(contextEClass, this.getContext(), "createChildContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContextDescription(), "contextDescription", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getContextInjectionStrategy(), "injectionStrategy", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(contextEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
@@ -368,9 +391,9 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		addEOperation(contextEClass, ecorePackage.getEString(), "getID", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(contextEClass, this.getContextDescription(), "getContextDescription", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(contextEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(contextEClass, ecorePackage.getEString(), "getID", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(contextEClass, null, "inject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -425,6 +448,16 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(contextDescriptionEClass, QContextDescription.class, "ContextDescription", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getCurrentLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getLibraryPath", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(contextDescriptionEClass, ecorePackage.getEString(), "getSystemLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(contextProviderEClass, QContextProvider.class, "ContextProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

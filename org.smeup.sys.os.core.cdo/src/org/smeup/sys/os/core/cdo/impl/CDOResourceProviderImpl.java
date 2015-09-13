@@ -23,15 +23,17 @@ import javax.inject.Inject;
 import org.eclipse.emf.cdo.net4j.CDONet4jSession;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextDescription;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceProvider;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.QResourceSetReader;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.cdo.util.CDOSessionUtil;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceProvider;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.QResourceSetReader;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class CDOResourceProviderImpl implements QResourceProvider {
@@ -51,23 +53,25 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QJob job, Class<T> klass, String library) {
-		assert job != null;
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name) {
 
+		QJob job = contextProvider.getContext().get(QJob.class);
+		
 		// session
 		CDONet4jSession session = getSession(job);
 
 		// resource
 		QResourceReader<T> resource = new CDOResourceReaderImpl<T>(job, klass, session);
 
-		prepareResource(job, resource, library, klass);
+		prepareResource(job, resource, name, klass);
 
 		return resource;
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QJob job, Class<T> klass, Scope scope) {
-		assert job != null;
+	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
+
+		QJob job = contextProvider.getContext().get(QJob.class);
 
 		// session
 		CDONet4jSession session = getSession(job);
@@ -75,14 +79,17 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		// resource
 		QResourceSetReader<T> resource = new CDOResourceSetReaderImpl<T>(job, klass, session);
 
+		Scope scope = Scope.get(path.toString());
+		
 		prepareResource(job, resource, scope, klass);
 
 		return resource;
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, String library) {
-		assert job != null;
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String name) {
+
+		QJob job = contextProvider.getContext().get(QJob.class);
 
 		// session
 		CDONet4jSession session = getSession(job);
@@ -90,42 +97,44 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		// resource
 		QResourceWriter<T> resource = new CDOResourceWriterImpl<T>(job, klass, session);
 
-		prepareResource(job, resource, library, klass);
+		prepareResource(job, resource, name, klass);
 
 		return resource;
 	}
 
-	private <T extends QObjectNameable> void prepareResource(QJob job, QResourceReader<T> resource, String library, Class<T> klass) {
+	private <T extends QObjectNameable> void prepareResource(QContextProvider contextProvider, QResourceReader<T> resource, String name, Class<T> klass) {
 
-		resource.setJob(job);
+		resource.setContextProvider(contextProvider);
 
 		// set scope library
-		resource.setContainer(library);
+		resource.setName(name);
 	}
 
-	private <T extends QObjectNameable> void prepareResource(QJob job, QResourceSetReader<T> resource, Scope scope, Class<T> klass) {
+	private <T extends QObjectNameable> void prepareResource(QContextProvider contextProvider, QResourceSetReader<T> resource, Scope scope, Class<T> klass) {
 
-		resource.setJob(job);
+		resource.setContextProvider(contextProvider);
 
+		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
+		
 		// set scope libraries
 		switch (scope) {
 		case ALL:
-			QResourceReader<QLibrary> libraryReader = getResourceReader(job, QLibrary.class, job.getSystem().getSystemLibrary());
+			QResourceReader<QLibrary> libraryReader = getResourceReader(contextProvider, QLibrary.class, contextDescription.getSystemLibrary());
 
 			QObjectIterator<QLibrary> libraryIterator = libraryReader.find(null);
 			while (libraryIterator.hasNext()) {
 				QLibrary library = libraryIterator.next();
-				resource.getContainers().add(library.getName());
+				resource.getResources().add(library.getName());
 			}
 			break;
 		case LIBRARY_LIST:
-			String curLib = job.getCurrentLibrary();
-			resource.getContainers().add(curLib);
-			resource.getContainers().addAll(filter(job.getLibraries(), curLib));
+			String curLib = contextDescription.getCurrentLibrary();
+			resource.getResources().add(curLib);
+			resource.getResources().addAll(filter(contextDescription.getLibraryPath(), curLib));
 			break;
 			
 		case CURRENT_LIBRARY:
-			resource.getContainers().add(job.getCurrentLibrary());
+			resource.getResources().add(contextDescription.getCurrentLibrary());
 			break;
 			
 		default:
@@ -155,10 +164,15 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QJob job, Class<T> klass, Scope scope) {
-		if (Scope.CURRENT_LIBRARY.equals(scope)) {
-			return getResourceWriter(job, klass, job.getCurrentLibrary());
+	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, E path) {
+
+		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
+		
+		if (Scope.CURRENT_LIBRARY.equals(path.toString())) {
+			return getResourceWriter(contextProvider, klass, contextDescription.getCurrentLibrary());
 		}
-		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
+		throw new OperatingSystemRuntimeException("Unsupported scope " + path);
 	}
+
+
 }

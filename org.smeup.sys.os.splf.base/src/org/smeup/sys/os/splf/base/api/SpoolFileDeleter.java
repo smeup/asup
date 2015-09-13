@@ -21,10 +21,10 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.splf.QSpoolFile;
 
 public @Program(name = "QSPHNMLT") class SpoolFileDeleter {

@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceReaderImpl;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 
 public class E4ResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
 
@@ -27,12 +27,12 @@ public class E4ResourceReaderImpl<T extends QObjectNameable> extends ResourceRea
 	private Class<T> klass;
 	private Resource resource;
 
-	public E4ResourceReaderImpl(QJob job, String container, Class<T> klass, Resource resource) {
-		setJob(job);
-		setContainer(container);
+	public E4ResourceReaderImpl(QContextProvider contextProvider, String name, Class<T> klass, Resource resource) {
+		setContextProvider(contextProvider);
+		setName(name);
 		this.klass = klass;
 		this.resource = resource;
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 	}
 

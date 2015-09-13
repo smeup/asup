@@ -23,12 +23,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextDescription;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceSetReaderImpl;
 
 public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
 
@@ -41,15 +42,15 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 
 	private static Map<Thread, Map<String, CDOView>> views = new HashMap<Thread, Map<String, CDOView>>();
 
-	protected CDOResourceSetReaderImpl(QJob job, Class<T> klass, CDONet4jSession session) {
-		setJob(job);
+	protected CDOResourceSetReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+		setContextProvider(contextProvider);
 		this.session = session;
 		this.klass = klass;
 		this.klassName = CDOResourceUtil.getModelName(klass);
 		EPackage ePackage = CDOResourceUtil.getEPackage(session, klass);
 		this.eClass = CDOResourceUtil.getEClass(ePackage, klass);
 
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 	}
 
@@ -64,7 +65,9 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 		T object = null;
 		int objectIndex = Integer.MAX_VALUE;
 
-		List<String> libraries = getJob().getLibraries();
+		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
+		
+		List<String> libraries = contextDescription.getLibraryPath();
 
 		// select
 		String queryString = buildLookupOCLQuery(klassName, library);
@@ -109,7 +112,7 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(klassName + ".allInstances()");
 		queryString.append("->select(o:" + klassName + "|");
-		queryString.append(" (" + buildInLibraries(getContainers()) + ")");
+		queryString.append(" (" + buildInLibraries(getResources()) + ")");
 
 		if (nameFilter != null)
 			if (nameFilter.endsWith("*"))
@@ -192,7 +195,7 @@ public class CDOResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(className + ".allInstances()");
 		queryString.append("->select(o:" + className + "| o.name = name");
-		queryString.append(" and (" + buildInLibraries(getContainers()) + ")");
+		queryString.append(" and (" + buildInLibraries(getResources()) + ")");
 		if (library != null)
 			queryString.append(" and o.library = library");
 		queryString.append(")");

@@ -15,9 +15,9 @@ import java.util.Stack;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.ResourceEventType;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.ResourceEventType;
 
 public class E4ObjectIteratorSetImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 

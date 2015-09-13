@@ -6,13 +6,13 @@ import java.util.Stack;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 import org.smeup.sys.os.core.jdt.JDTResourceReaderIteratorImpl;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceReader;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceSetReaderImpl;
 
 public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
 
@@ -21,13 +21,13 @@ public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends Reso
 	private Class<T> klass;
 	private SystemObjectRepository repository;
 	
-	public MemoryResourceSetReaderImpl(QJob job, List<String> containers,	Class<T> klass, SystemObjectRepository repository) {
+	public MemoryResourceSetReaderImpl(QContextProvider contextProvider, List<String> containers,	Class<T> klass, SystemObjectRepository repository) {
 
-		setJob(job);
+		setContextProvider(contextProvider);
 		this.klass = klass;
 		this.repository = repository;
 
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 
 		resourceSet = new ArrayList<QResourceReader<T>>();
@@ -37,8 +37,8 @@ public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends Reso
 		}
 	}
 
-	protected QResourceReader<T> createReader(String container) {
-		return new MemoryResourceReaderImpl<T>(job, container, klass, repository);
+	protected QResourceReader<T> createReader(String name) {
+		return new MemoryResourceReaderImpl<T>(getContextProvider(), name, klass, repository);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends Reso
 
 		T object = null;
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !library.isEmpty() && !resourceReader.getContainer().equals(library))
+			if (library != null && !library.isEmpty() && !resourceReader.getName().equals(library))
 				continue;
 
 			object = resourceReader.lookup(name);
@@ -67,7 +67,7 @@ public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends Reso
 		boolean exists = false;
 
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !resourceReader.getContainer().equals(library))
+			if (library != null && !resourceReader.getName().equals(library))
 				continue;
 
 			exists = resourceReader.exists(name);
@@ -83,7 +83,7 @@ public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends Reso
 
 		Stack<QResourceReader<T>> readers = new Stack<QResourceReader<T>>();
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (library != null && !resourceReader.getContainer().equals(library))
+			if (library != null && !resourceReader.getName().equals(library))
 				continue;
 			readers.add(resourceReader);
 		}

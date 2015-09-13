@@ -43,6 +43,14 @@ public interface QContext {
 	QContext createChildContext(String name, ContextInjectionStrategy injectionStrategy) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextDescriptionRequired="true" injectionStrategyRequired="true"
+	 * @generated
+	 */
+	QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" clazzRequired="true"
 	 * @generated
@@ -50,11 +58,20 @@ public interface QContext {
 	<T> T get(Class<T> clazz);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model adaptableRequired="true" adapterRequired="true" TBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */
 	<T extends Object> T getAdapter(Object adaptable, Class<T> adapter);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QContextDescription getContextDescription();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -62,13 +79,6 @@ public interface QContext {
 	 * @generated
 	 */
 	String getID();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	String getName();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -99,7 +109,8 @@ public interface QContext {
 	<T> T make(Class<T> klass) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model factoryRequired="true" adapterTypeRequired="true" TBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */

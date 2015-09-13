@@ -21,12 +21,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceReaderImpl;
 
 public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
 
@@ -37,14 +38,14 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	private String klassName;
 	private EClass eClass;
 
-	protected CDOResourceReaderImpl(QJob job, Class<T> klass, CDONet4jSession session) {
-		setJob(job);
+	protected CDOResourceReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+		setContextProvider(contextProvider);
 		this.session = session;
 		this.klass = klass;
 		this.klassName = CDOResourceUtil.getModelName(klass);
 		EPackage ePackage = CDOResourceUtil.getEPackage(session, klass);
 		this.eClass = CDOResourceUtil.getEClass(ePackage, klass);
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 	}
 
@@ -64,10 +65,10 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		StringBuffer queryString = new StringBuffer();
 		queryString.append(klassName + ".allInstances()");
 		queryString.append("->select(o:" + klassName + "| o.library = library and o.name = name)");
-		CDOQuery query = getView(getJob()).createQuery("ocl", queryString.toString(), eClass);
+		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 		query.setMaxResults(1);
 		// library
-		query.setParameter("library", getContainer());
+		query.setParameter("library", getName());
 		// name
 		query.setParameter("name", name);
 
@@ -102,10 +103,10 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		queryString.append("->sortedBy(name)");
 
 		// query
-		CDOQuery query = getView(getJob()).createQuery("ocl", queryString.toString(), eClass);
+		CDOQuery query = getView(getContextProvider().getContext()).createQuery("ocl", queryString.toString(), eClass);
 
 		// parameters
-		query.setParameter("library", getContainer());
+		query.setParameter("library", getName());
 		if (nameFilter != null)
 			if (nameFilter.endsWith("*"))
 				query.setParameter("nameFilter", nameFilter.substring(0, nameFilter.length() - 1));
@@ -117,15 +118,15 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		return new CDOObjectIterator<T>(iterator, resourceEvent);
 	}
 
-	protected CDOView getView(QJob job) {
+	protected CDOView getView(QContext context) {
 
 		if (view == null) {
 
 			@SuppressWarnings("unchecked")
-			JobToViewMap typedViews = job.getContext().get(JobToViewMap.class);
+			JobToViewMap typedViews = context.get(JobToViewMap.class);
 			if (typedViews == null) {
 				typedViews = new JobToViewMap();
-				job.getContext().set(JobToViewMap.class, typedViews);
+				context.set(JobToViewMap.class, typedViews);
 			} else
 				view = typedViews.get(klass.getName());
 

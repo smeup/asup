@@ -24,14 +24,6 @@
             genModel="model/os-core.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated os-core -->
-      <package
-            uri="http://www.smeup.org/asup/os/core/resources"
-            class="org.smeup.sys.os.core.resources.QOperatingSystemResourcesPackage"
-            genModel="model/os-core.genmodel"/>
-   </extension>
-
    <extension
          id="cdo_store"
          point="org.eclipse.core.runtime.products">

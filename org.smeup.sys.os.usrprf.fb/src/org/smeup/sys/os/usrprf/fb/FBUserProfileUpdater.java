@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
 import org.smeup.sys.os.usrprf.QUserProfile;
 

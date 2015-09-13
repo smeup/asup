@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.co.core.QCommunicationCorePackage;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.cdo.CDOStoreConfig;
 import org.smeup.sys.os.core.cdo.CDOSystemConfig;
@@ -86,7 +88,7 @@ public class CDOSystemCorePackageImpl extends EPackageImpl implements CDOSystemC
 		isInited = true;
 
 		// Initialize simple dependencies
-		org.smeup.sys.co.core.QCommunicationCorePackage.eINSTANCE.eClass();
+		QCommunicationCorePackage.eINSTANCE.eClass();
 		QDatabaseCorePackage.eINSTANCE.eClass();
 		QOperatingSystemCorePackage.eINSTANCE.eClass();
 
@@ -248,8 +250,9 @@ public class CDOSystemCorePackageImpl extends EPackageImpl implements CDOSystemC
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QDatabaseCorePackage theDatabaseCorePackage = (QDatabaseCorePackage)EPackage.Registry.INSTANCE.getEPackage(QDatabaseCorePackage.eNS_URI);
-		org.smeup.sys.co.core.QCommunicationCorePackage theCommunicationCorePackage = (org.smeup.sys.co.core.QCommunicationCorePackage)EPackage.Registry.INSTANCE.getEPackage(org.smeup.sys.co.core.QCommunicationCorePackage.eNS_URI);
+		QCommunicationCorePackage theCommunicationCorePackage = (QCommunicationCorePackage)EPackage.Registry.INSTANCE.getEPackage(QCommunicationCorePackage.eNS_URI);
 		QOperatingSystemCorePackage theOperatingSystemCorePackage = (QOperatingSystemCorePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI);
 
 		// Create type parameters
@@ -257,6 +260,7 @@ public class CDOSystemCorePackageImpl extends EPackageImpl implements CDOSystemC
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		cdoStoreConfigEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(cdoStoreConfigEClass, CDOStoreConfig.class, "CDOStoreConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

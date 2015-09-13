@@ -54,6 +54,8 @@ import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.os.cmd.CommandParameterOrder;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommand;
@@ -65,8 +67,6 @@ import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceSetReader;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.rt.core.QApplication;
 

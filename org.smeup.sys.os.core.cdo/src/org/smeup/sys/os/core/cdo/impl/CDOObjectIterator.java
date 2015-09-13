@@ -14,9 +14,9 @@ package org.smeup.sys.os.core.cdo.impl;
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
 
 public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIterator<T> {
 

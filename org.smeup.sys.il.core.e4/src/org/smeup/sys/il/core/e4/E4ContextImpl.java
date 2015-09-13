@@ -13,6 +13,7 @@ package org.smeup.sys.il.core.e4;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,7 @@ import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.impl.ContextImpl;
 
 @SuppressWarnings("restriction")
@@ -43,24 +45,19 @@ public abstract class E4ContextImpl extends ContextImpl {
 	private static Boolean postConstruct = null;
 
 	private BundleContext bundleContext;
-	private String name;
+	private QContextDescription contextDescription;
 	private String contextID;
 
-	public E4ContextImpl(BundleContext bundleContext, String contextID, String name) {
+	public E4ContextImpl(BundleContext bundleContext, String contextID, QContextDescription contextDescription) {
 		this.bundleContext = bundleContext;
 		this.contextID = contextID;
-		this.name = name;
+		this.contextDescription = contextDescription;
 	}
 
 	abstract IEclipseContext getEclipseContext();
 
 	protected void initializeContext(IEclipseContext eclipseContext) {
 		eclipseContext.set(ADAPTER_FACTORIES_NAME, new HashMap<Class<?>, List<QAdapterFactory>>());
-	}
-
-	@Override
-	public String getName() {
-		return this.name;
 	}
 
 	@Override
@@ -223,31 +220,60 @@ public abstract class E4ContextImpl extends ContextImpl {
 	}
 
 	@Override
-	public QContext createChildContext(String name, ContextInjectionStrategy injectionStrategy) {
+	public QContext createChildContext(final String name, ContextInjectionStrategy injectionStrategy) {
+
+		QContextDescription contextDescription = new QContextDescription() {
+			
+			@Override
+			public String getSystemLibrary() {
+				return getName();
+			}
+			
+			@Override
+			public String getName() {
+				return name;
+			}
+			
+			@Override
+			public List<String> getLibraryPath() {
+				return Collections.singletonList(getName());
+			}
+			
+			@Override
+			public String getCurrentLibrary() {
+				return getName();
+			}
+		};
+
+		return createChildContext(contextDescription, injectionStrategy);
+	}
+
+
+	@Override
+	public QContext createChildContext(QContextDescription contextDescription, ContextInjectionStrategy injectionStrategy) {
 
 		switch (injectionStrategy) {
 		case LOCAL:
-			return createLocalContext(name);
+			return createLocalContext(contextDescription);
 		case REMOTE:
-			return createRemoteContext(name);
+			return createRemoteContext(contextDescription);
 		}
 
-		// TODO
 		return null;
 	}
-
-	private QContext createLocalContext(String name) {
+	
+	private QContext createLocalContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
 
 		initializeContext(eclipseChildContext);
 
-		QContext contextChild = new E4ContextChildImpl(bundleContext, eclipseChildContext, UUID.randomUUID().toString(), name);
+		QContext contextChild = new E4ContextChildImpl(bundleContext, eclipseChildContext, UUID.randomUUID().toString(), contextDescription);
 
 		return contextChild;
 	}
 
-	private QContext createRemoteContext(String name) {
+	private QContext createRemoteContext(QContextDescription contextDescription) {
 
 		IEclipseContext eclipseChildContext = getEclipseContext().createChild();
 
@@ -277,7 +303,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 
 		initializeContext(eclipseChildContext);
 
-		return new E4ContextChildImpl(bundleContext, eclipseChildContext, UUID.randomUUID().toString(), name);
+		return new E4ContextChildImpl(bundleContext, eclipseChildContext, UUID.randomUUID().toString(), contextDescription);
 	}
 
 	private boolean isActivePostConstruct() {
@@ -316,4 +342,8 @@ public abstract class E4ContextImpl extends ContextImpl {
 		return this.contextID;
 	}
 
+	@Override
+	public QContextDescription getContextDescription() {
+		return this.contextDescription;
+	}
 }

@@ -16,6 +16,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
@@ -27,6 +28,7 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.e4.E4ContextRootImpl;
 import org.smeup.sys.rt.core.ApplicationStarted;
 import org.smeup.sys.rt.core.ApplicationStarting;
@@ -61,8 +63,31 @@ public class E4ApplicationStarter {
 
 		println(">application " + application);
 
+		final String name = bundleContext.getBundle().getSymbolicName();
 		// root context
-		QContext contextApplication = new E4ContextRootImpl(bundleContext, UUID.randomUUID().toString(), bundleContext.getBundle().getSymbolicName());
+		QContextDescription contextDescription = new QContextDescription() {
+			
+			@Override
+			public String getSystemLibrary() {
+				return getSystemLibrary();
+			}
+			
+			@Override
+			public String getName() {
+				return name;
+			}
+			
+			@Override
+			public List<String> getLibraryPath() {
+				return Collections.singletonList(getSystemLibrary());
+			}
+			
+			@Override
+			public String getCurrentLibrary() {
+				return getSystemLibrary();
+			}
+		};
+		QContext contextApplication = new E4ContextRootImpl(bundleContext, UUID.randomUUID().toString(), contextDescription);
 
 		QApplication application = new E4ApplicationImpl(this.application, contextApplication);
 		bundleContext.registerService(QApplication.class, application, null);

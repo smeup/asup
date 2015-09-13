@@ -36,8 +36,6 @@ import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.TimeFormat;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesPackage;
-import org.smeup.sys.os.core.resources.impl.OperatingSystemResourcesPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -169,17 +167,14 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Obtain or create and register interdependencies
 		OperatingSystemJobsPackageImpl theOperatingSystemJobsPackage = (OperatingSystemJobsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI) instanceof OperatingSystemJobsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI) : QOperatingSystemJobsPackage.eINSTANCE);
-		OperatingSystemResourcesPackageImpl theOperatingSystemResourcesPackage = (OperatingSystemResourcesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemResourcesPackage.eNS_URI) instanceof OperatingSystemResourcesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemResourcesPackage.eNS_URI) : QOperatingSystemResourcesPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theOperatingSystemCorePackage.createPackageContents();
 		theOperatingSystemJobsPackage.createPackageContents();
-		theOperatingSystemResourcesPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theOperatingSystemCorePackage.initializePackageContents();
 		theOperatingSystemJobsPackage.initializePackageContents();
-		theOperatingSystemResourcesPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theOperatingSystemCorePackage.freeze();
@@ -481,7 +476,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Obtain other dependent packages
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
-		QOperatingSystemResourcesPackage theOperatingSystemResourcesPackage = (QOperatingSystemResourcesPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemResourcesPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageLockPackage theIntegratedLanguageLockPackage = (QIntegratedLanguageLockPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageLockPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
@@ -489,7 +483,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Add subpackages
 		getESubpackages().add(theOperatingSystemJobsPackage);
-		getESubpackages().add(theOperatingSystemResourcesPackage);
 
 		// Create type parameters
 

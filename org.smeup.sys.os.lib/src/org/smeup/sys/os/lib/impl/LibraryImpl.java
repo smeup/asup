@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -21,9 +22,8 @@ import org.smeup.sys.os.lib.QOperatingSystemLibraryPackage;
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QLibrary</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>QLibrary</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -38,20 +38,18 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  */
 public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
 
 	/**
 	 * The default value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getBasePackage()
 	 * @generated
 	 * @ordered
@@ -59,8 +57,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected static final String BASE_PACKAGE_EDEFAULT = null;
 	/**
 	 * The cached value of the '{@link #getBasePackage() <em>Base Package</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getBasePackage()
 	 * @generated
 	 * @ordered
@@ -68,8 +65,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected String basePackage = BASE_PACKAGE_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDependencies()
 	 * @generated
 	 * @ordered
@@ -77,8 +73,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected EList<String> dependencies;
 	/**
 	 * The default value of the '{@link #getParentLibrary() <em>Parent Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getParentLibrary()
 	 * @generated
 	 * @ordered
@@ -86,8 +82,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected static final String PARENT_LIBRARY_EDEFAULT = null;
 	/**
 	 * The cached value of the '{@link #getParentLibrary() <em>Parent Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getParentLibrary()
 	 * @generated
 	 * @ordered
@@ -95,8 +91,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected String parentLibrary = PARENT_LIBRARY_EDEFAULT;
 	/**
 	 * The default value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSynchronized()
 	 * @generated
 	 * @ordered
@@ -104,16 +99,15 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	protected static final boolean SYNCHRONIZED_EDEFAULT = false;
 	/**
 	 * The cached value of the '{@link #isSynchronized() <em>Synchronized</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isSynchronized()
 	 * @generated
 	 * @ordered
 	 */
 	protected boolean synchronized_ = SYNCHRONIZED_EDEFAULT;
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected LibraryImpl() {
@@ -121,8 +115,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -131,10 +124,10 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<String> getDependencies() {
 		if (dependencies == null) {
 			dependencies = new EDataTypeUniqueEList<String>(String.class, this, QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES);
@@ -143,19 +136,19 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getParentLibrary() {
 		return parentLibrary;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentLibrary(String newParentLibrary) {
 		String oldParentLibrary = parentLibrary;
 		parentLibrary = newParentLibrary;
@@ -164,19 +157,19 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSynchronized() {
 		return synchronized_;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSynchronized(boolean newSynchronized) {
 		boolean oldSynchronized = synchronized_;
 		synchronized_ = newSynchronized;
@@ -185,19 +178,19 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBasePackage() {
 		return basePackage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBasePackage(String newBasePackage) {
 		String oldBasePackage = basePackage;
 		basePackage = newBasePackage;
@@ -206,32 +199,35 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isRootLibrary() {
 		return getParentLibrary() == null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isChildLibrary() {
 		return getParentLibrary() != null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
+	@Override
 	public URI getPackageURI() {
 		try {
 			String packageURI = getBasePackage();
-			if(packageURI != null)
+			if (packageURI != null)
 				packageURI = packageURI.replaceAll("\\.", "/") + "/";
 			else
 				packageURI = "";
@@ -244,8 +240,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -264,8 +259,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -290,8 +284,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -314,8 +307,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -334,8 +326,7 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -359,4 +350,4 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	public String getAttribute() {
 		return null;
 	}
-} //QLibraryImpl
+} // QLibraryImpl

@@ -21,11 +21,11 @@ import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QOperatingSystemResourcesFactory;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.ResourceEventType;
-import org.smeup.sys.os.core.resources.impl.ResourceReaderImpl;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class JDTResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
@@ -35,14 +35,14 @@ public class JDTResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	protected QResourceEvent<T> resourceEvent;
 	protected EMFConverter emfConverter;
 
-	public JDTResourceReaderImpl(QJob job, QSourceManager sourceManager, String container, Class<T> klass) {
-		setJob(job);
-		setContainer(container);
+	public JDTResourceReaderImpl(QContextProvider contextProvider, QSourceManager sourceManager, String name, Class<T> klass) {
+		setContextProvider(contextProvider);
+		setName(name);
 		this.sourceManager = sourceManager;
 		this.klass = klass;
-		this.resourceEvent = QOperatingSystemResourcesFactory.eINSTANCE.createResourceEvent();
+		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
-		String uri = "asup://" + job.getSystem().getName() + "/" + container + "/" + klass.getSimpleName().toLowerCase().substring(1);
+		String uri = "asup://" + contextProvider.getContext().getContextDescription().getName() + "/" + getName() + "/" + klass.getSimpleName().toLowerCase().substring(1);
 		this.emfConverter = new EMFConverter(new ResourceSetImpl(), uri);
 
 		// sourceManager.refreshEntry(job, sourceManager.getLibraryEntry(job,
@@ -51,13 +51,13 @@ public class JDTResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 
 	@Override
 	public boolean exists(String name) {
-		return sourceManager.getObjectEntry(getJob().getContext(), getContainer(), klass, name) != null;
+		return sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, name) != null;
 	}
 
 	@Override
 	public QObjectIterator<T> find(String nameFilter) {
 
-		List<QSourceEntry> entries = sourceManager.listObjectEntries(getJob().getContext(), getContainer(), klass, nameFilter);
+		List<QSourceEntry> entries = sourceManager.listObjectEntries(getContextProvider().getContext(), getName(), klass, nameFilter);
 		if (entries == null)
 			entries = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class JDTResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	@Override
 	public T lookup(String name) {
 
-		QSourceEntry entry = sourceManager.getObjectEntry(getJob().getContext(), getContainer(), klass, name);
+		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, name);
 		if (entry == null)
 			return null;
 

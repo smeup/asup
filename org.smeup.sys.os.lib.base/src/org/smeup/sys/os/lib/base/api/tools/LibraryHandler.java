@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.QResourceWriter;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.lib.QLibrary;

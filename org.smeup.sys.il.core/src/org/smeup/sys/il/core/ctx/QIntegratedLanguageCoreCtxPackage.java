@@ -94,6 +94,25 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	int CONTEXT_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextDescription <em>Context Description</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ctx.QContextDescription
+	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextDescription()
+	 * @generated
+	 */
+	int CONTEXT_DESCRIPTION = 2;
+
+	/**
+	 * The number of structural features of the '<em>Context Description</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_DESCRIPTION_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ctx.QContextProvider <em>Context Provider</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -101,7 +120,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextProvider()
 	 * @generated
 	 */
-	int CONTEXT_PROVIDER = 2;
+	int CONTEXT_PROVIDER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Context Provider</em>' class.
@@ -121,7 +140,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getCredentials()
 	 * @generated
 	 */
-	int CREDENTIALS = 3;
+	int CREDENTIALS = 4;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute. <!--
@@ -157,7 +176,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistry()
 	 * @generated
 	 */
-	int PLUGIN_REGISTRY = 4;
+	int PLUGIN_REGISTRY = 5;
 
 	/**
 	 * The number of structural features of the '<em>Plugin Registry</em>' class.
@@ -175,7 +194,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getPluginRegistryFactory()
 	 * @generated
 	 */
-	int PLUGIN_REGISTRY_FACTORY = 5;
+	int PLUGIN_REGISTRY_FACTORY = 6;
 
 	/**
 	 * The number of structural features of the '<em>Plugin Registry Factory</em>' class.
@@ -194,7 +213,7 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextInjectionStrategy()
 	 * @generated
 	 */
-	int CONTEXT_INJECTION_STRATEGY = 6;
+	int CONTEXT_INJECTION_STRATEGY = 7;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QAdapterFactory <em>Adapter Factory</em>}'.
@@ -215,6 +234,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContext();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.ctx.QContextDescription <em>Context Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Context Description</em>'.
+	 * @see org.smeup.sys.il.core.ctx.QContextDescription
+	 * @generated
+	 */
+	EClass getContextDescription();
 
 	/**
 	 * Returns the meta object for class '
@@ -326,6 +355,16 @@ public interface QIntegratedLanguageCoreCtxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTEXT = eINSTANCE.getContext();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QContextDescription <em>Context Description</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.ctx.QContextDescription
+		 * @see org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl#getContextDescription()
+		 * @generated
+		 */
+		EClass CONTEXT_DESCRIPTION = eINSTANCE.getContextDescription();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ctx.QContextProvider <em>Context Provider</em>}' class.

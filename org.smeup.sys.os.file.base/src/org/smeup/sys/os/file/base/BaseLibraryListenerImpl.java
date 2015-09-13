@@ -21,12 +21,13 @@ import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseCoreFactory;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QSchemaDef;
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceListener;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceEvent;
-import org.smeup.sys.os.core.resources.QResourceListener;
-import org.smeup.sys.os.core.resources.QResourceManager;
-import org.smeup.sys.os.core.resources.ResourceEventType;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
@@ -48,18 +49,20 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 			return;
 
 		QLibrary library = event.getSource();
-		QJob job = event.getResource().getJob();
+		QContextProvider contextProvider = event.getResource().getContextProvider();
+		
+		QContext jobContext = contextProvider.getContext();
 
-		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+		QConnection connection = jobContext.getAdapter(contextProvider, QConnection.class);
 		if (connection == null)
-			throw new OperatingSystemRuntimeException("Database connection not found: " + job);
+			throw new OperatingSystemRuntimeException("Database connection not found: " + jobContext);
 
 		switch (event.getType()) {
 
 		case PRE_SAVE:
 
 			try {
-				createSchema(job, library, connection);
+				createSchema(jobContext, library, connection);
 			} catch (SQLException e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
@@ -67,7 +70,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 
 		case PRE_DELETE:
 			try {
-				dropSchema(job, library, connection);
+				dropSchema(jobContext, library, connection);
 			} catch (SQLException e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
@@ -78,7 +81,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		}
 	}
 
-	private void createSchema(QJob job, QLibrary library, QConnection connection) throws SQLException {
+	private void createSchema(QContext jobContext, QLibrary library, QConnection connection) throws SQLException {
 
 		// schema
 		Schema schema = connection.getCatalogMetaData().getSchema(library.getName());
@@ -91,7 +94,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 			System.err.println("Schema already exists: " + library.getName());
 	}
 
-	private void dropSchema(QJob job, QLibrary library, QConnection connection) throws SQLException {
+	private void dropSchema(QContext jobContext, QLibrary library, QConnection connection) throws SQLException {
 
 		// schema
 		Schema schema = connection.getCatalogMetaData().getSchema(library.getName());

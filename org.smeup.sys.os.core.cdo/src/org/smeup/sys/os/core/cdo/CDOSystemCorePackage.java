@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -83,7 +84,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__ADAPTER = 0;
+	int CDO_STORE_CONFIG__ADAPTER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Credentials</b></em>' containment reference.
@@ -91,7 +92,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__CREDENTIALS = 1;
+	int CDO_STORE_CONFIG__CREDENTIALS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Driver</b></em>' attribute. <!--
@@ -100,7 +101,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__DRIVER = 2;
+	int CDO_STORE_CONFIG__DRIVER = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Repository</b></em>' attribute. <!--
@@ -109,7 +110,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__REPOSITORY = 3;
+	int CDO_STORE_CONFIG__REPOSITORY = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Socket Config</b></em>' containment reference.
@@ -117,7 +118,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__SOCKET_CONFIG = 4;
+	int CDO_STORE_CONFIG__SOCKET_CONFIG = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Url</b></em>' attribute. <!--
@@ -126,7 +127,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG__URL = 5;
+	int CDO_STORE_CONFIG__URL = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>CDO Store Config</em>' class.
@@ -134,7 +135,7 @@ public interface CDOSystemCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CDO_STORE_CONFIG_FEATURE_COUNT = 6;
+	int CDO_STORE_CONFIG_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>System</b></em>' containment reference.

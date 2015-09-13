@@ -12,8 +12,9 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.db.core.QConnectionCredentials;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.core.cdo.CDOStoreConfig;
 import org.smeup.sys.os.core.cdo.CDOSystemCorePackage;
 
@@ -34,7 +35,11 @@ import org.smeup.sys.os.core.cdo.CDOSystemCorePackage;
  *
  * @generated
  */
-public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements CDOStoreConfig {
+public class CDOStoreConfigImpl extends ObjectImpl implements CDOStoreConfig {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -100,7 +105,7 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected org.smeup.sys.co.core.QServerSocketConfig socketConfig;
+	protected QServerSocketConfig socketConfig;
 	/**
 	 * The default value of the '{@link #getUrl() <em>Url</em>}' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -205,7 +210,7 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public org.smeup.sys.co.core.QServerSocketConfig getSocketConfig() {
+	public QServerSocketConfig getSocketConfig() {
 		return socketConfig;
 	}
 
@@ -214,8 +219,8 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSocketConfig(org.smeup.sys.co.core.QServerSocketConfig newSocketConfig, NotificationChain msgs) {
-		org.smeup.sys.co.core.QServerSocketConfig oldSocketConfig = socketConfig;
+	public NotificationChain basicSetSocketConfig(QServerSocketConfig newSocketConfig, NotificationChain msgs) {
+		QServerSocketConfig oldSocketConfig = socketConfig;
 		socketConfig = newSocketConfig;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CDOSystemCorePackage.CDO_STORE_CONFIG__SOCKET_CONFIG, oldSocketConfig, newSocketConfig);
@@ -229,8 +234,7 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setSocketConfig(org.smeup.sys.co.core.QServerSocketConfig newSocketConfig) {
+	public void setSocketConfig(QServerSocketConfig newSocketConfig) {
 		if (newSocketConfig != socketConfig) {
 			NotificationChain msgs = null;
 			if (socketConfig != null)
@@ -365,7 +369,7 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 				setRepository((String)newValue);
 				return;
 			case CDOSystemCorePackage.CDO_STORE_CONFIG__SOCKET_CONFIG:
-				setSocketConfig((org.smeup.sys.co.core.QServerSocketConfig)newValue);
+				setSocketConfig((QServerSocketConfig)newValue);
 				return;
 			case CDOSystemCorePackage.CDO_STORE_CONFIG__URL:
 				setUrl((String)newValue);
@@ -394,7 +398,7 @@ public class CDOStoreConfigImpl extends MinimalEObjectImpl.Container implements 
 				setRepository(REPOSITORY_EDEFAULT);
 				return;
 			case CDOSystemCorePackage.CDO_STORE_CONFIG__SOCKET_CONFIG:
-				setSocketConfig((org.smeup.sys.co.core.QServerSocketConfig)null);
+				setSocketConfig((QServerSocketConfig)null);
 				return;
 			case CDOSystemCorePackage.CDO_STORE_CONFIG__URL:
 				setUrl(URL_EDEFAULT);

@@ -21,12 +21,12 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.base.api.tools.CommandDisplayerHandler;
 import org.smeup.sys.os.cmd.base.api.tools.CommandFinder;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.resources.QResourceManager;
 
 @Program(name = "QCDDCMD")
 public class CommandDisplayer {

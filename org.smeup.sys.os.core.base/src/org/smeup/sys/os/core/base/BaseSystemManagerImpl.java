@@ -14,8 +14,11 @@ package org.smeup.sys.os.core.base;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -32,7 +35,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 	protected QJob createJob(JobType jobType, String user) {
 
 		// job
-		QJob job = QOperatingSystemJobsFactory.eINSTANCE.createJob();
+		final QJob job = QOperatingSystemJobsFactory.eINSTANCE.createJob();
 
 		job.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(getSystem()));
 		job.setJobType(jobType);
@@ -48,17 +51,37 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		job.getLibraries().add(getSystem().getSystemLibrary());
 
 		// job context
-		QContext jobContext = createContext(job.getJobName());
+		
+		QContextDescription contextDescription = new QContextDescription() {
+			
+			@Override
+			public String getSystemLibrary() {
+				return job.getSystem().getSystemLibrary();
+			}
+			
+			@Override
+			public String getName() {
+				return job.getJobName();
+			}
+			
+			@Override
+			public List<String> getLibraryPath() {
+				return job.getLibraries();
+			}
+			
+			@Override
+			public String getCurrentLibrary() {
+				return job.getCurrentLibrary();
+			}
+		};
+
+		QContext jobContext = getSystem().getContext().createChildContext(contextDescription, ContextInjectionStrategy.LOCAL);
 		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
 		
 		jobContext.set(QJob.class, job);
 		
 		return job;
-	}
-
-	private QContext createContext(String name) {
-		return getSystem().getContext().createChildContext(name);
 	}
 
 	protected abstract int nextJobID();

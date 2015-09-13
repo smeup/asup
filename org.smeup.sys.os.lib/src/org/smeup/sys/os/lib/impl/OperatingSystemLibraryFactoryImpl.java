@@ -10,31 +10,28 @@ package org.smeup.sys.os.lib.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.smeup.sys.os.lib.*;
+import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
+import org.smeup.sys.os.lib.QOperatingSystemLibraryPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
  * @generated
  */
 public class OperatingSystemLibraryFactoryImpl extends EFactoryImpl implements QOperatingSystemLibraryFactory {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
 
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static QOperatingSystemLibraryFactory init() {
@@ -52,8 +49,8 @@ public class OperatingSystemLibraryFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public OperatingSystemLibraryFactoryImpl() {
@@ -61,8 +58,7 @@ public class OperatingSystemLibraryFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -75,27 +71,26 @@ public class OperatingSystemLibraryFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QLibrary createLibrary() {
 		LibraryImpl library = new LibraryImpl();
 		return library;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QOperatingSystemLibraryPackage getOperatingSystemLibraryPackage() {
 		return (QOperatingSystemLibraryPackage)getEPackage();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -104,4 +99,4 @@ public class OperatingSystemLibraryFactoryImpl extends EFactoryImpl implements Q
 		return QOperatingSystemLibraryPackage.eINSTANCE;
 	}
 
-} //OperatingSystemLibraryFactoryImpl
+} // OperatingSystemLibraryFactoryImpl

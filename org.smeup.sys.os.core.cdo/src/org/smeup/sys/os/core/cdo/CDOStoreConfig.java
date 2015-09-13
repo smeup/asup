@@ -7,7 +7,9 @@
  */
 package org.smeup.sys.os.core.cdo;
 
+import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.db.core.QConnectionCredentials;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -29,7 +31,7 @@ import org.smeup.sys.db.core.QConnectionCredentials;
  * @model
  * @generated
  */
-public interface CDOStoreConfig {
+public interface CDOStoreConfig extends QObject {
 
 	/**
 	 * Returns the value of the '<em><b>Adapter</b></em>' attribute. <!--
@@ -119,12 +121,12 @@ public interface CDOStoreConfig {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Socket Config</em>' containment reference.
-	 * @see #setSocketConfig(org.smeup.sys.co.core.QServerSocketConfig)
+	 * @see #setSocketConfig(QServerSocketConfig)
 	 * @see org.smeup.sys.os.core.cdo.CDOSystemCorePackage#getCDOStoreConfig_SocketConfig()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	org.smeup.sys.co.core.QServerSocketConfig getSocketConfig();
+	QServerSocketConfig getSocketConfig();
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.os.core.cdo.CDOStoreConfig#getSocketConfig <em>Socket Config</em>}' containment reference.
@@ -134,7 +136,7 @@ public interface CDOStoreConfig {
 	 * @see #getSocketConfig()
 	 * @generated
 	 */
-	void setSocketConfig(org.smeup.sys.co.core.QServerSocketConfig value);
+	void setSocketConfig(QServerSocketConfig value);
 
 	/**
 	 * Returns the value of the '<em><b>Url</b></em>' attribute. <!--
