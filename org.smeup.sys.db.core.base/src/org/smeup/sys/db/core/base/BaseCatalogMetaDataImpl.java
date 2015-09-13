@@ -19,8 +19,8 @@ import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
-import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.impl.CatalogMetaDataImpl;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 
 public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 
@@ -51,9 +51,9 @@ public class BaseCatalogMetaDataImpl extends CatalogMetaDataImpl {
 	}
 
 	@Override
-	public Table getTable(QConnectionDescription connectionDescription, String tableName) {
+	public Table getTable(QContextDescription contextDescription, String tableName) {
 
-		for (String schema : connectionDescription.getSchemas()) {
+		for (String schema : contextDescription.getLibraryPath()) {
 			Table table = getTable(schema, tableName);
 			if (table != null)
 				return table;

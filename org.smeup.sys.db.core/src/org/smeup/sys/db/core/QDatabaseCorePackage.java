@@ -301,33 +301,6 @@ public interface QDatabaseCorePackage extends EPackage {
 	int CONNECTION_CREDENTIALS_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CREDENTIALS_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.db.core.QConnectionDescription <em>Connection Description</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.db.core.QConnectionDescription
-	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getConnectionDescription()
-	 * @generated
-	 */
-	int CONNECTION_DESCRIPTION = 6;
-
-	/**
-	 * The feature id for the '<em><b>Schemas</b></em>' attribute list. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION_DESCRIPTION__SCHEMAS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Connection Description</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION_DESCRIPTION_FEATURE_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.ConnectionManagerImpl <em>Connection Manager</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -335,7 +308,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getConnectionManager()
 	 * @generated
 	 */
-	int CONNECTION_MANAGER = 7;
+	int CONNECTION_MANAGER = 6;
 
 	/**
 	 * The number of structural features of the '<em>Connection Manager</em>' class.
@@ -353,7 +326,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseContainer()
 	 * @generated
 	 */
-	int DATABASE_CONTAINER = 8;
+	int DATABASE_CONTAINER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Catalog Containers</b></em>' containment reference list.
@@ -405,7 +378,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseObjectDef()
 	 * @generated
 	 */
-	int DATABASE_OBJECT_DEF = 9;
+	int DATABASE_OBJECT_DEF = 8;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -432,7 +405,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseManager()
 	 * @generated
 	 */
-	int DATABASE_MANAGER = 10;
+	int DATABASE_MANAGER = 9;
 
 	/**
 	 * The number of structural features of the '<em>Database Manager</em>' class.
@@ -450,7 +423,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDataSourceFactory()
 	 * @generated
 	 */
-	int DATA_SOURCE_FACTORY = 11;
+	int DATA_SOURCE_FACTORY = 10;
 
 	/**
 	 * The number of structural features of the '<em>Data Source Factory</em>' class.
@@ -467,7 +440,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getIndexDef()
 	 * @generated
 	 */
-	int INDEX_DEF = 12;
+	int INDEX_DEF = 11;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -521,7 +494,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getIndexColumnDef()
 	 * @generated
 	 */
-	int INDEX_COLUMN_DEF = 13;
+	int INDEX_COLUMN_DEF = 12;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -575,7 +548,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getPreparedStatement()
 	 * @generated
 	 */
-	int PREPARED_STATEMENT = 14;
+	int PREPARED_STATEMENT = 13;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.QualifiedNameImpl <em>Qualified Name</em>}' class.
@@ -584,7 +557,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getQualifiedName()
 	 * @generated
 	 */
-	int QUALIFIED_NAME = 15;
+	int QUALIFIED_NAME = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.impl.SchemaDefImpl
@@ -595,7 +568,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getSchemaDef()
 	 * @generated
 	 */
-	int SCHEMA_DEF = 16;
+	int SCHEMA_DEF = 15;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.core.QStatement <em>Statement</em>}' class.
@@ -604,7 +577,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatement()
 	 * @generated
 	 */
-	int STATEMENT = 17;
+	int STATEMENT = 16;
 
 	/**
 	 * The number of structural features of the '<em>Statement</em>' class. <!--
@@ -664,7 +637,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableDef()
 	 * @generated
 	 */
-	int TABLE_DEF = 18;
+	int TABLE_DEF = 17;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -700,7 +673,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getTableColumnDef()
 	 * @generated
 	 */
-	int TABLE_COLUMN_DEF = 19;
+	int TABLE_COLUMN_DEF = 18;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -761,7 +734,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getViewDef()
 	 * @generated
 	 */
-	int VIEW_DEF = 20;
+	int VIEW_DEF = 19;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -807,7 +780,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getOrderingType()
 	 * @generated
 	 */
-	int ORDERING_TYPE = 21;
+	int ORDERING_TYPE = 20;
 
 	/**
 	 * The meta object id for the '<em>Database Exception</em>' data type. <!--
@@ -817,7 +790,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseException()
 	 * @generated
 	 */
-	int DATABASE_EXCEPTION = 22;
+	int DATABASE_EXCEPTION = 21;
 
 	/**
 	 * The meta object id for the '<em>Database Result Set</em>' data type. <!--
@@ -827,7 +800,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseResultSet()
 	 * @generated
 	 */
-	int DATABASE_RESULT_SET = 23;
+	int DATABASE_RESULT_SET = 22;
 
 	/**
 	 * The meta object id for the '<em>Statement Batch Result</em>' data type.
@@ -835,7 +808,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getStatementBatchResult()
 	 * @generated
 	 */
-	int STATEMENT_BATCH_RESULT = 24;
+	int STATEMENT_BATCH_RESULT = 23;
 
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type. <!--
@@ -845,7 +818,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreException()
 	 * @generated
 	 */
-	int DATABASE_CORE_EXCEPTION = 25;
+	int DATABASE_CORE_EXCEPTION = 24;
 
 	/**
 	 * The meta object id for the '<em>Runtime Exception</em>' data type. <!--
@@ -855,7 +828,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getDatabaseCoreRuntimeException()
 	 * @generated
 	 */
-	int DATABASE_CORE_RUNTIME_EXCEPTION = 26;
+	int DATABASE_CORE_RUNTIME_EXCEPTION = 25;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QCatalogContainer <em>Catalog Container</em>}'.
@@ -1057,26 +1030,6 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConnectionCredentials();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QConnectionDescription <em>Connection Description</em>}'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return the meta object for class '<em>Connection Description</em>'.
-	 * @see org.smeup.sys.db.core.QConnectionDescription
-	 * @generated
-	 */
-	EClass getConnectionDescription();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.db.core.QConnectionDescription#getSchemas <em>Schemas</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Schemas</em>'.
-	 * @see org.smeup.sys.db.core.QConnectionDescription#getSchemas()
-	 * @see #getConnectionDescription()
-	 * @generated
-	 */
-	EAttribute getConnectionDescription_Schemas();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.core.QConnectionManager <em>Connection Manager</em>}'.
@@ -1658,23 +1611,6 @@ public interface QDatabaseCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONNECTION_CREDENTIALS = eINSTANCE.getConnectionCredentials();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.db.core.QConnectionDescription <em>Connection Description</em>}' class.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @see org.smeup.sys.db.core.QConnectionDescription
-		 * @see org.smeup.sys.db.core.impl.DatabaseCorePackageImpl#getConnectionDescription()
-		 * @generated
-		 */
-		EClass CONNECTION_DESCRIPTION = eINSTANCE.getConnectionDescription();
-
-		/**
-		 * The meta object literal for the '<em><b>Schemas</b></em>' attribute list feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONNECTION_DESCRIPTION__SCHEMAS = eINSTANCE.getConnectionDescription_Schemas();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.core.impl.ConnectionManagerImpl <em>Connection Manager</em>}' class.

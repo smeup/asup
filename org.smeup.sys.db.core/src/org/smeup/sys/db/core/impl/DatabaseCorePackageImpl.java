@@ -9,23 +9,14 @@ package org.smeup.sys.db.core.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
-
 import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
-
 import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
-
 import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage;
-
 import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage;
-
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
-
 import org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage;
-
 import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -36,11 +27,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.osgi.service.jdbc.DataSourceFactory;
-
 import org.smeup.sys.db.core.DatabaseCoreException;
 import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.OrderingType;
@@ -50,7 +38,6 @@ import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionConfig;
 import org.smeup.sys.db.core.QConnectionCredentials;
-import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.db.core.QDatabaseContainer;
 import org.smeup.sys.db.core.QDatabaseCoreFactory;
@@ -66,13 +53,10 @@ import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.core.QTableColumnDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 /**
@@ -123,13 +107,6 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 * @generated
 	 */
 	private EClass connectionCredentialsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass connectionDescriptionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -512,24 +489,6 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 	 */
 	public EClass getConnectionCredentials() {
 		return connectionCredentialsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getConnectionDescription() {
-		return connectionDescriptionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getConnectionDescription_Schemas() {
-		return (EAttribute)connectionDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -927,9 +886,6 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		connectionCredentialsEClass = createEClass(CONNECTION_CREDENTIALS);
 
-		connectionDescriptionEClass = createEClass(CONNECTION_DESCRIPTION);
-		createEAttribute(connectionDescriptionEClass, CONNECTION_DESCRIPTION__SCHEMAS);
-
 		connectionManagerEClass = createEClass(CONNECTION_MANAGER);
 
 		databaseContainerEClass = createEClass(DATABASE_CONTAINER);
@@ -1119,7 +1075,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		addEParameter(op, ecorePackage.getEString(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(catalogMetaDataEClass, theSQLTablesPackage.getTable(), "getTable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getConnectionDescription(), "connectionDescription", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextDescription(), "contextDescription", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "table", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(catalogMetaDataEClass, theSQLTablesPackage.getViewTable(), "getView", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1156,8 +1112,6 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 
 		addEOperation(connectionEClass, this.getCatalogMetaData(), "getCatalogMetaData", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(connectionEClass, this.getConnectionDescription(), "getConnectionDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(connectionEClass, this.getPreparedStatement(), "prepareStatement", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "sql", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
@@ -1190,9 +1144,6 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEAttribute(getConnectionConfig_Persistent(), ecorePackage.getEBoolean(), "persistent", null, 0, 1, QConnectionConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionCredentialsEClass, QConnectionCredentials.class, "ConnectionCredentials", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(connectionDescriptionEClass, QConnectionDescription.class, "ConnectionDescription", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConnectionDescription_Schemas(), ecorePackage.getEString(), "schemas", null, 0, -1, QConnectionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionManagerEClass, QConnectionManager.class, "ConnectionManager", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

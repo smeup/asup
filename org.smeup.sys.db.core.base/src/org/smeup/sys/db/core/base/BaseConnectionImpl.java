@@ -33,14 +33,12 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.sqltools.parsers.sql.query.SQLQueryParseResult;
 import org.smeup.sys.db.core.DatabaseCoreRuntimeException;
 import org.smeup.sys.db.core.QCatalogContainer;
 import org.smeup.sys.db.core.QCatalogGenerationStrategy;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
-import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QDatabaseContainer;
 import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.syntax.QAliasResolver;
@@ -237,28 +235,6 @@ public class BaseConnectionImpl implements QConnection, Connection {
 	@Override
 	public String getClientInfo(String name) throws SQLException {
 		return getRawConnection().getClientInfo(name);
-	}
-
-	@Override
-	public QConnectionDescription getConnectionDescription() {
-
-		QConnectionDescription connectionDescription = getContext().get(QConnectionDescription.class);
-		if (connectionDescription == null) {
-
-			final List<String> schemas = new ArrayList<String>();
-			for (Schema schema : getCatalogMetaData().getSchemas())
-				schemas.add(schema.getName());
-
-			connectionDescription = new QConnectionDescription() {
-
-				@Override
-				public List<String> getSchemas() {
-					return schemas;
-				}
-			};
-		}
-
-		return connectionDescription;
 	}
 
 	@Override

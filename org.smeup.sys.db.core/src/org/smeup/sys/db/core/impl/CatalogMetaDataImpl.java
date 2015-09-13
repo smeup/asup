@@ -8,7 +8,6 @@
 package org.smeup.sys.db.core.impl;
 
 import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
@@ -16,8 +15,8 @@ import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.db.core.QCatalogMetaData;
-import org.smeup.sys.db.core.QConnectionDescription;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -91,11 +90,11 @@ public abstract class CatalogMetaDataImpl extends MinimalEObjectImpl.Container i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Table getTable(QConnectionDescription connectionDescription, String table) {
+	public Table getTable(QContextDescription contextDescription, String table) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

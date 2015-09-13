@@ -13,6 +13,7 @@ import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -53,11 +54,12 @@ public interface QCatalogMetaData {
 	Table getTable(String schema, String table);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model connectionDescriptionRequired="true" tableRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextDescriptionRequired="true" tableRequired="true"
 	 * @generated
 	 */
-	Table getTable(QConnectionDescription connectionDescription, String table);
+	Table getTable(QContextDescription contextDescription, String table);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

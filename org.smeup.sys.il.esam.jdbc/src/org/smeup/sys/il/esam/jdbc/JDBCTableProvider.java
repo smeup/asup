@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QCatalogMetaData;
 import org.smeup.sys.db.core.QConnection;
-import org.smeup.sys.db.core.QConnectionDescription;
 
 public class JDBCTableProvider {
 
@@ -31,8 +30,7 @@ public class JDBCTableProvider {
 		QCatalogMetaData catalogMetaData = connection.getCatalogMetaData();
 
 		if (container == null) {
-			QConnectionDescription connectionDescription = connection.getConnectionDescription();
-			return catalogMetaData.getTable(connectionDescription, name);
+			return catalogMetaData.getTable(connection.getContext().getContextDescription(), name);
 		} else
 			return catalogMetaData.getTable(container, name);
 	}
