@@ -8,14 +8,14 @@ import org.smeup.sys.il.lock.QObjectLockable;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.rt.core.QLogger;
 
-public class E4LockerImpl<T extends QObjectLockable> implements QObjectLocker<T> {
+public class BaseLockerImpl<T extends QObjectLockable> implements QObjectLocker<T> {
 
 	private ReentrantReadWriteLock lock;
 
 	private T object;
 	private QLogger logger;
 
-	public E4LockerImpl(T object, QLogger logger) {
+	public BaseLockerImpl(T object, QLogger logger) {
 		this.object = object;
 		this.logger = logger;
 

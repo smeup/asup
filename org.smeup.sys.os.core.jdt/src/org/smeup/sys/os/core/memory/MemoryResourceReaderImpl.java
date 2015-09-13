@@ -13,8 +13,8 @@ import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
+import org.smeup.sys.il.memo.jdt.EMFConverter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.jdt.EMFConverter;
 
 public class MemoryResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
 

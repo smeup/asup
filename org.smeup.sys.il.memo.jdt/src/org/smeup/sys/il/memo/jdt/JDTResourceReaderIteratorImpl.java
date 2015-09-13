@@ -9,33 +9,36 @@
  *   Mattia Rocchi				- Initial API and implementation
  *
  */
-package org.smeup.sys.os.core.jdt;
+package org.smeup.sys.il.memo.jdt;
 
-import java.util.Iterator;
+import java.util.Stack;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.memo.QResourceEvent;
+import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.ResourceEventType;
 
-public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
+public class JDTResourceReaderIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 
-	private Class<T> klass;
-	private Iterator<T> iterator;
-
+	private Stack<QResourceReader<T>> readers;
+	private QObjectIterator<T> currentIterator;
+	private String namePrefix;
 	private T nextObject = null;
 	private QResourceEvent<T> resourceEvent;
 
-	public JDTObjectIteratorImpl(Class<T> klass, Iterator<T> iterator, QResourceEvent<T> resourceEvent) {
-		this.klass = klass;
-		this.iterator = iterator;
+	public JDTResourceReaderIteratorImpl(Stack<QResourceReader<T>> readers, String namePrefix, QResourceEvent<T> resourceEvent) {
+		this.readers = readers;
+		this.namePrefix = namePrefix;
 		this.resourceEvent = resourceEvent;
+		this.currentIterator = readers.pop().find(namePrefix);
 		doNext();
 	}
 
 	@Override
 	public void close() {
-		this.iterator = null;
+		this.currentIterator = null;
+		this.readers = null;
 	}
 
 	@Override
@@ -46,12 +49,10 @@ public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObject
 	@Override
 	public T next() {
 		T object = nextObject;
-
 		doNext();
 
 		if (object != null)
 			resourceEvent.getResource().fireEvent(resourceEvent, ResourceEventType.POST_LOAD, object);
-
 		return object;
 	}
 
@@ -61,17 +62,21 @@ public class JDTObjectIteratorImpl<T extends QObjectNameable> implements QObject
 	}
 
 	private void doNext() {
-
 		nextObject = null;
-		while (iterator.hasNext()) {
-			T eObject = iterator.next();
+		if (currentIterator == null)
+			return;
 
-			if (!klass.isInstance(eObject))
-				continue;
+		if (currentIterator.hasNext()) {
+			nextObject = currentIterator.next();
+			return;
+		}
 
-			T tempObject = klass.cast(eObject);
-			nextObject = tempObject;
-			break;
+		while (!readers.empty()) {
+			currentIterator = readers.pop().find(namePrefix);
+			while (currentIterator.hasNext()) {
+				nextObject = currentIterator.next();
+				return;
+			}
 		}
 	}
 }

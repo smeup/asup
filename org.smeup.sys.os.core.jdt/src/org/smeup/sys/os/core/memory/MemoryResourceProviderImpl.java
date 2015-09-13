@@ -16,7 +16,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class MemoryResourceProviderImpl implements QResourceProvider {
@@ -37,9 +37,7 @@ public class MemoryResourceProviderImpl implements QResourceProvider {
 	}
 
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
-		
-		Scope scope = Scope.get(path.toString());
+	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 		
 		return new MemoryResourceSetReaderImpl<T>(contextProvider, resources(contextProvider, scope), klass, repository);
 	}
@@ -85,13 +83,13 @@ public class MemoryResourceProviderImpl implements QResourceProvider {
 		return resources;
 	}
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, E path) {	
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {	
 
 		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
 
-		if (Scope.CURRENT_LIBRARY.equals(path.toString())) {
+		if (scope.equals(Scope.CURRENT_LIBRARY)) {
 			return getResourceWriter(contextProvider, klass, contextDescription.getCurrentLibrary());
 		}
-		throw new OperatingSystemRuntimeException("Unsupported scope " + path);
+		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 	}
 }

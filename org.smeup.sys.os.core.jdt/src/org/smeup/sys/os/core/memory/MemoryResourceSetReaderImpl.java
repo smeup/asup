@@ -12,7 +12,7 @@ import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
-import org.smeup.sys.os.core.jdt.JDTResourceReaderIteratorImpl;
+import org.smeup.sys.il.memo.jdt.JDTResourceReaderIteratorImpl;
 
 public class MemoryResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
 

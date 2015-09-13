@@ -19,7 +19,7 @@ import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
-import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.TimeFormat;
 

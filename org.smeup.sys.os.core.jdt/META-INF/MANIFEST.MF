@@ -5,9 +5,10 @@ Bundle-SymbolicName: org.smeup.sys.os.core.jdt
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.smeup.sys.os.type,
- org.smeup.sys.dk.source.jdt,
- org.eclipse.core.resources;bundle-version="3.9.0",
- org.smeup.sys.os.lib
+Require-Bundle: org.eclipse.core.resources;bundle-version="3.9.0",
+ org.smeup.sys.os.type,
+ org.smeup.sys.os.lib,
+ org.smeup.sys.il.memo.jdt,
+ org.smeup.sys.dk.source.jdt
 Export-Package: org.smeup.sys.os.core.jdt
 Bundle-ClassPath: .

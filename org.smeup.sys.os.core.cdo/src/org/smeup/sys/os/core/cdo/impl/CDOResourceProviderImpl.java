@@ -30,8 +30,8 @@ import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.cdo.util.CDOSessionUtil;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.lib.QLibrary;
@@ -69,7 +69,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	}
 
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
 		QJob job = contextProvider.getContext().get(QJob.class);
 
@@ -79,8 +79,6 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		// resource
 		QResourceSetReader<T> resource = new CDOResourceSetReaderImpl<T>(job, klass, session);
 
-		Scope scope = Scope.get(path.toString());
-		
 		prepareResource(job, resource, scope, klass);
 
 		return resource;
@@ -164,14 +162,14 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	}
 
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
 		QContextDescription contextDescription = contextProvider.getContext().getContextDescription();
 		
-		if (Scope.CURRENT_LIBRARY.equals(path.toString())) {
+		if (scope.equals(Scope.CURRENT_LIBRARY)) {
 			return getResourceWriter(contextProvider, klass, contextDescription.getCurrentLibrary());
 		}
-		throw new OperatingSystemRuntimeException("Unsupported scope " + path);
+		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
 	}
 
 

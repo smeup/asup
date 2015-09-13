@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Memory JDT
+Bundle-SymbolicName: org.smeup.sys.il.memo.jdt
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: javax.inject
+Require-Bundle: org.smeup.sys.il.memo,
+ org.smeup.sys.dk.source
+Export-Package: org.smeup.sys.il.memo.jdt

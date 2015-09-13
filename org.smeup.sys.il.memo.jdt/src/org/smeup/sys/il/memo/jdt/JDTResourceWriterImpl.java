@@ -10,7 +10,7 @@
  *   Giuliano Giancristoforo	- Implementation
  *
  */
-package org.smeup.sys.os.core.jdt;
+package org.smeup.sys.il.memo.jdt;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,9 +21,9 @@ import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.ResourceEventType;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourceReaderImpl<T> implements QResourceWriter<T> {
 
@@ -36,14 +36,14 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 
 		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName());
 		if (entry == null)
-			throw new OperatingSystemRuntimeException("Object " + object.getName() + " not found");
+			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
 
 		try {
 			fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, object);
 			sourceManager.removeEntry(getContextProvider().getContext(), entry);
 			fireEvent(resourceEvent, ResourceEventType.POST_DELETE, object);
 		} catch (IOException e) {
-			throw new OperatingSystemRuntimeException(e);
+			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 	}
 
@@ -66,7 +66,7 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 			
 			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
 		} catch (IOException e) {
-			throw new OperatingSystemRuntimeException(e);
+			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 	}
 }

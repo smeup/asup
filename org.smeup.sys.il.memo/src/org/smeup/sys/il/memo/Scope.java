@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.os.core;
+package org.smeup.sys.il.memo;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,18 +14,19 @@ import java.util.List;
 import org.eclipse.emf.common.util.Enumerator;
 
 /**
- * <!-- begin-user-doc --> A representation of the literals of the enumeration '
- * <em><b>QScope</b></em>', and utility methods for working with them. <!--
- * end-user-doc -->
- * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getScope()
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Scope</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
+ * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getScope()
  * @model
  * @generated
  */
 public enum Scope implements Enumerator {
 	/**
 	 * The '<em><b>All</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #ALL_VALUE
 	 * @generated
 	 * @ordered
@@ -34,8 +35,8 @@ public enum Scope implements Enumerator {
 
 	/**
 	 * The '<em><b>Library List</b></em>' literal object.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #LIBRARY_LIST_VALUE
 	 * @generated
 	 * @ordered
@@ -44,8 +45,8 @@ public enum Scope implements Enumerator {
 
 	/**
 	 * The '<em><b>Current Library</b></em>' literal object.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #CURRENT_LIBRARY_VALUE
 	 * @generated
 	 * @ordered
@@ -53,9 +54,9 @@ public enum Scope implements Enumerator {
 	CURRENT_LIBRARY(30, "CurrentLibrary", "*CURLIB"),
 
 	/**
-	 * The '<em><b>User Library List</b></em>' literal object. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The '<em><b>User Library List</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #USER_LIBRARY_LIST_VALUE
 	 * @generated
 	 * @ordered
@@ -76,8 +77,8 @@ public enum Scope implements Enumerator {
 	 * The '<em><b>All</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>All</b></em>' literal object isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of '<em><b>All</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALL
@@ -91,8 +92,8 @@ public enum Scope implements Enumerator {
 	 * The '<em><b>Library List</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Library List</b></em>' literal object isn't
-	 * clear, there really should be more of a description here...
+	 * If the meaning of '<em><b>Library List</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIBRARY_LIST
@@ -104,11 +105,10 @@ public enum Scope implements Enumerator {
 
 	/**
 	 * The '<em><b>Current Library</b></em>' literal value.
-	 * <!-- begin-user-doc
-	 * -->
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Current Library</b></em>' literal object isn't
-	 * clear, there really should be more of a description here...
+	 * If the meaning of '<em><b>Current Library</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CURRENT_LIBRARY
@@ -119,14 +119,13 @@ public enum Scope implements Enumerator {
 	public static final int CURRENT_LIBRARY_VALUE = 30;
 
 	/**
-	 * The '<em><b>User Library List</b></em>' literal value. <!--
-	 * begin-user-doc -->
+	 * The '<em><b>User Library List</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>User Library List</b></em>' literal object
-	 * isn't clear, there really should be more of a description here...
+	 * If the meaning of '<em><b>User Library List</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
 	 * @see #USER_LIBRARY_LIST
 	 * @model name="UserLibraryList" literal="*USRLIBL"
 	 * @generated
@@ -150,12 +149,13 @@ public enum Scope implements Enumerator {
 	public static final int ALL_USER_VALUE = 50;
 
 	/**
-	 * An array of all the '<em><b>Scope</b></em>' enumerators. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * An array of all the '<em><b>Scope</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Scope[] VALUES_ARRAY = new Scope[] {
+	private static final Scope[] VALUES_ARRAY =
+		new Scope[] {
 			ALL,
 			LIBRARY_LIST,
 			CURRENT_LIBRARY,
@@ -165,14 +165,16 @@ public enum Scope implements Enumerator {
 
 	/**
 	 * A public read-only list of all the '<em><b>Scope</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<Scope> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Scope</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static Scope get(String literal) {
@@ -186,9 +188,9 @@ public enum Scope implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Scope</b></em>' literal with the specified name. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * Returns the '<em><b>Scope</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static Scope getByName(String name) {
@@ -203,7 +205,8 @@ public enum Scope implements Enumerator {
 
 	/**
 	 * Returns the '<em><b>Scope</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static Scope get(int value) {
@@ -218,27 +221,30 @@ public enum Scope implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final int value;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String name;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private Scope(int value, String name, String literal) {
@@ -248,40 +254,41 @@ public enum Scope implements Enumerator {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getValue() {
 	  return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 	  return name;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getLiteral() {
 	  return literal;
 	}
 
 	/**
 	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return literal;
 	}
-
-} // QScope
+	
+} //Scope

@@ -252,9 +252,9 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int EXCEPTION_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.Scope <em>Scope</em>}' enum.
+	 * The meta object id for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.Scope
+	 * @see org.smeup.sys.il.memo.Scope
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getScope()
 	 * @generated
 	 */
@@ -467,10 +467,10 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EClass getExceptionManager();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.Scope <em>Scope</em>}'.
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Scope</em>'.
-	 * @see org.smeup.sys.os.core.Scope
+	 * @see org.smeup.sys.il.memo.Scope
 	 * @generated
 	 */
 	EEnum getScope();
@@ -673,9 +673,9 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		EClass EXCEPTION_MANAGER = eINSTANCE.getExceptionManager();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.core.Scope <em>Scope</em>}' enum.
+		 * The meta object literal for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.Scope
+		 * @see org.smeup.sys.il.memo.Scope
 		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getScope()
 		 * @generated
 		 */

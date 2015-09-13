@@ -9,7 +9,7 @@
  *   Mattia Rocchi				- Initial API and implementation
  *
  */
-package org.smeup.sys.os.core.jdt;
+package org.smeup.sys.il.memo.jdt;
 
 import java.io.IOException;
 import java.io.InputStream;

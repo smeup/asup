@@ -6,13 +6,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationSystem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Scope">
-    <eLiterals name="All" value="10" literal="*ALL"/>
-    <eLiterals name="LibraryList" value="20" literal="*LIBL"/>
-    <eLiterals name="CurrentLibrary" value="30" literal="*CURLIB"/>
-    <eLiterals name="UserLibraryList" value="40" literal="*USRLIBL"/>
-    <eLiterals name="AllUser" value="50" literal="*ALLUSR"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
         transient="true" containment="true"/>

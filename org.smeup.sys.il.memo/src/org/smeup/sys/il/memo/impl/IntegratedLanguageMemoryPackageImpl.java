@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
@@ -32,6 +31,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.ResourceEventType;
+import org.smeup.sys.il.memo.Scope;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,6 +100,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EEnum resourceEventTypeEEnum = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum scopeEEnum = null;
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
@@ -322,6 +328,15 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getScope() {
+		return scopeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QIntegratedLanguageMemoryFactory getIntegratedLanguageMemoryFactory() {
 		return (QIntegratedLanguageMemoryFactory)getEFactoryInstance();
 	}
@@ -372,6 +387,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Create enums
 		resourceEventTypeEEnum = createEEnum(RESOURCE_EVENT_TYPE);
+		scopeEEnum = createEEnum(SCOPE);
 	}
 
 	/**
@@ -400,7 +416,6 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageExpressionPackage theIntegratedLanguageExpressionPackage = (QIntegratedLanguageExpressionPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageExpressionPackage.eNS_URI);
 
 		// Create type parameters
@@ -529,7 +544,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceReader());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -539,16 +554,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
-		ETypeParameter t2 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
-		t2.getEBounds().add(g1);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t2);
-		addEParameter(op, g1, "path", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceSetReader());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -563,7 +574,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceWriter());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -573,16 +584,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		t1 = addETypeParameter(op, "T");
 		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
 		t1.getEBounds().add(g1);
-		t2 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
-		t2.getEBounds().add(g1);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t2);
-		addEParameter(op, g1, "path", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceWriter());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -655,6 +662,13 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_LOAD);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_DELETE);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_DELETE);
+
+		initEEnum(scopeEEnum, Scope.class, "Scope");
+		addEEnumLiteral(scopeEEnum, Scope.ALL);
+		addEEnumLiteral(scopeEEnum, Scope.LIBRARY_LIST);
+		addEEnumLiteral(scopeEEnum, Scope.CURRENT_LIBRARY);
+		addEEnumLiteral(scopeEEnum, Scope.USER_LIBRARY_LIST);
+		addEEnumLiteral(scopeEEnum, Scope.ALL_USER);
 
 		// Create resource
 		createResource(eNS_URI);

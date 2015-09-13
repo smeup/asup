@@ -33,7 +33,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
-import org.smeup.sys.os.core.Scope;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;

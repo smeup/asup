@@ -26,6 +26,7 @@ import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 
 public class BaseResourceManagerImpl implements QResourceManager {
 
@@ -56,30 +57,30 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String container) {
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name) {
 
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, container);
+		QResourceReader<T> resourceReader = resourceProvider.getResourceReader(contextProvider, klass, name);
 		prepareListener(resourceReader, klass);
 
 		return resourceReader;
 	}
 
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceSetReader<T> resourceSetReader = resourceProvider.getResourceReader(contextProvider, klass, path);
+		QResourceSetReader<T> resourceSetReader = resourceProvider.getResourceReader(contextProvider, klass, scope);
 		prepareListener(resourceSetReader, klass);
 
 		return resourceSetReader;
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String container) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String name) {
 
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, container);
+		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, name);
 		prepareListener(resourceWriter, klass);
 
 		return resourceWriter;
@@ -108,9 +109,9 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	}
 
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, path);
+		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, scope);
 		prepareListener(resourceWriter, klass);
 
 		return resourceWriter;

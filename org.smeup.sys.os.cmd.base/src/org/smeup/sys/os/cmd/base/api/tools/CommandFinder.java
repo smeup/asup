@@ -13,10 +13,10 @@ package org.smeup.sys.os.cmd.base.api.tools;
 
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.QCommand;
 import org.smeup.sys.os.cmd.base.api.CommandRef;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 
 public class CommandFinder {

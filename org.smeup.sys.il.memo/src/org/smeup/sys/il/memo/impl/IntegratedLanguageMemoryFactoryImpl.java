@@ -80,6 +80,8 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT_TYPE:
 				return createResourceEventTypeFromString(eDataType, initialValue);
+			case QIntegratedLanguageMemoryPackage.SCOPE:
+				return createScopeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +97,8 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 		switch (eDataType.getClassifierID()) {
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT_TYPE:
 				return convertResourceEventTypeToString(eDataType, instanceValue);
+			case QIntegratedLanguageMemoryPackage.SCOPE:
+				return convertScopeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -137,6 +141,26 @@ public class IntegratedLanguageMemoryFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public String convertResourceEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Scope createScopeFromString(EDataType eDataType, String initialValue) {
+		Scope result = Scope.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertScopeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

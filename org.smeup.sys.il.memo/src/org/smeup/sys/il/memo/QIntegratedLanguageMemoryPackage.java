@@ -388,6 +388,16 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_EVENT_TYPE = 9;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.memo.Scope
+	 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getScope()
+	 * @generated
+	 */
+	int SCOPE = 10;
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResource <em>Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -565,6 +575,16 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	EEnum getResourceEventType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Scope</em>'.
+	 * @see org.smeup.sys.il.memo.Scope
+	 * @generated
+	 */
+	EEnum getScope();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -725,6 +745,15 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum RESOURCE_EVENT_TYPE = eINSTANCE.getResourceEventType();
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.memo.Scope
+		 * @see org.smeup.sys.il.memo.impl.IntegratedLanguageMemoryPackageImpl#getScope()
+		 * @generated
+		 */
+		EEnum SCOPE = eINSTANCE.getScope();
 
 	}
 

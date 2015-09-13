@@ -29,6 +29,7 @@ import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QCreationInfo;
@@ -260,7 +261,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 		return (QResourceSetReader<T>) new TypeResourceSetReader();
 	}
 
@@ -272,7 +273,7 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	@SuppressWarnings("hiding")
 	@Override
-	public <T extends QObjectNameable, E extends Enum<E>> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, E path) {
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, Scope scope) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
 	}
 

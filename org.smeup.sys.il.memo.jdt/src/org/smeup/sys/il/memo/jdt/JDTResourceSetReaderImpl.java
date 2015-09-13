@@ -1,22 +1,21 @@
 /**
- *  Copyright (c) 2012, 2015 Sme.UP and others.
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *
+ * Copyright (c) 2012, 2015 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Mattia Rocchi				- Initial API and implementation
+ *
  */
-package org.smeup.sys.os.core.e4;
+package org.smeup.sys.il.memo.jdt;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
-import org.eclipse.emf.ecore.resource.Resource;
+import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -26,22 +25,21 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 
-public class E4ResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
+public class JDTResourceSetReaderImpl<T extends QObjectNameable> extends ResourceSetReaderImpl<T> {
 
-	private List<E4ResourceReaderImpl<T>> resourceSet;
+	private List<JDTResourceReaderImpl<T>> resourceSet;
 	private QResourceEvent<T> resourceEvent;
 
-	public E4ResourceSetReaderImpl(QContextProvider contextProvider, Map<String, Resource> resources, Class<T> klass) {
+	public JDTResourceSetReaderImpl(QContextProvider contextProvider, QSourceManager sourceManager, List<String> resources, Class<T> klass) {
 
 		setContextProvider(contextProvider);
 
 		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 
-		resourceSet = new ArrayList<E4ResourceReaderImpl<T>>();
-		for (String container : resources.keySet()) {
-			Resource resource = resources.get(container);
-			E4ResourceReaderImpl<T> resourceReader = new E4ResourceReaderImpl<T>(contextProvider, container, klass, resource);
+		resourceSet = new ArrayList<JDTResourceReaderImpl<T>>();
+		for (String resource: resources) {
+			JDTResourceReaderImpl<T> resourceReader = new JDTResourceReaderImpl<T>(contextProvider, sourceManager, resource, klass);
 			resourceSet.add(resourceReader);
 		}
 	}
@@ -51,7 +49,7 @@ public class E4ResourceSetReaderImpl<T extends QObjectNameable> extends Resource
 
 		T object = null;
 		for (QResourceReader<T> resourceReader : resourceSet) {
-			if (resource != null && !resourceReader.getName().equals(resource))
+			if (resource != null && !resource.isEmpty() && !resourceReader.getName().equals(resource))
 				continue;
 
 			object = resourceReader.lookup(name);
@@ -93,7 +91,7 @@ public class E4ResourceSetReaderImpl<T extends QObjectNameable> extends Resource
 			readers.add(resourceReader);
 		}
 
-		return new E4ObjectIteratorSetImpl<T>(readers, nameFilter, resourceEvent);
+		return new JDTResourceReaderIteratorImpl<T>(readers, nameFilter, resourceEvent);
 	}
 
 }
