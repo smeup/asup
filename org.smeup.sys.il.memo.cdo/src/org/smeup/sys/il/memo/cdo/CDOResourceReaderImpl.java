@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
+package org.smeup.sys.il.memo.cdo;
 
 import java.util.HashMap;
 
@@ -27,7 +27,6 @@ import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
-import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
 
 public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceReaderImpl<T> {
 
@@ -38,7 +37,7 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 	private String klassName;
 	private EClass eClass;
 
-	protected CDOResourceReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+	public CDOResourceReaderImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
 		setContextProvider(contextProvider);
 		this.session = session;
 		this.klass = klass;

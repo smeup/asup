@@ -9,14 +9,14 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
+package org.smeup.sys.il.memo.cdo;
 
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.ResourceEventType;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIterator<T> {
 
@@ -38,7 +38,7 @@ public class CDOObjectIterator<T extends QObjectNameable> implements QObjectIter
 		try {
 			return iterator.hasNext();
 		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e);
+			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 	}
 

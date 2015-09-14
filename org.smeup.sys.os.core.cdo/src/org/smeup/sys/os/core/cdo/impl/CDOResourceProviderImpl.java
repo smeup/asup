@@ -13,9 +13,7 @@ package org.smeup.sys.os.core.cdo.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -25,27 +23,24 @@ import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.core.cdo.util.CDOSessionUtil;
+import org.smeup.sys.il.memo.cdo.CDOResourceReaderImpl;
+import org.smeup.sys.il.memo.cdo.CDOResourceSetReaderImpl;
+import org.smeup.sys.il.memo.cdo.CDOResourceWriterImpl;
+import org.smeup.sys.il.memo.cdo.CDOSessionUtil;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class CDOResourceProviderImpl implements QResourceProvider {
 
-	private final Map<QJob, CDONet4jSession> sessions;
-
 	@Inject
 	private QResourceManager resourceManager;
-
-	public CDOResourceProviderImpl() {
-		this.sessions = new HashMap<QJob, CDONet4jSession>();
-	}
 
 	@PostConstruct
 	public void init() {
@@ -55,15 +50,13 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name) {
 
-		QJob job = contextProvider.getContext().get(QJob.class);
-		
 		// session
-		CDONet4jSession session = getSession(job);
+		CDONet4jSession session = getSession(contextProvider);
 
 		// resource
-		QResourceReader<T> resource = new CDOResourceReaderImpl<T>(job, klass, session);
+		QResourceReader<T> resource = new CDOResourceReaderImpl<T>(contextProvider, klass, session);
 
-		prepareResource(job, resource, name, klass);
+		prepareResource(contextProvider, resource, name, klass);
 
 		return resource;
 	}
@@ -71,15 +64,13 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
-		QJob job = contextProvider.getContext().get(QJob.class);
-
 		// session
-		CDONet4jSession session = getSession(job);
+		CDONet4jSession session = getSession(contextProvider);
 
 		// resource
-		QResourceSetReader<T> resource = new CDOResourceSetReaderImpl<T>(job, klass, session);
+		QResourceSetReader<T> resource = new CDOResourceSetReaderImpl<T>(contextProvider, klass, session);
 
-		prepareResource(job, resource, scope, klass);
+		prepareResource(contextProvider, resource, scope, klass);
 
 		return resource;
 	}
@@ -87,15 +78,13 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String name) {
 
-		QJob job = contextProvider.getContext().get(QJob.class);
-
 		// session
-		CDONet4jSession session = getSession(job);
+		CDONet4jSession session = getSession(contextProvider);
 
 		// resource
-		QResourceWriter<T> resource = new CDOResourceWriterImpl<T>(job, klass, session);
+		QResourceWriter<T> resource = new CDOResourceWriterImpl<T>(contextProvider, klass, session);
 
-		prepareResource(job, resource, name, klass);
+		prepareResource(contextProvider, resource, name, klass);
 
 		return resource;
 	}
@@ -136,7 +125,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			break;
 			
 		default:
-			throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
+			throw new IntegratedLanguageMemoryRuntimeException("Unsupported scope " + scope);
 		}
 
 	}
@@ -150,13 +139,14 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		return list;
 	}
 
-	private CDONet4jSession getSession(QJob job) {
+	private CDONet4jSession getSession(QContextProvider contextProvider) {
 
-		CDONet4jSession session = sessions.get(job);
+		QJob job = contextProvider.getContext().get(QJob.class);
+		
+		CDONet4jSession session = contextProvider.getContext().get(CDONet4jSession.class);
 		if (session == null) {
 			session = CDOSessionUtil.openSession("asup-db1:2036", job.getSystem().getName());
 			session.options().getNet4jProtocol().setTimeout(60000);
-			sessions.put(job, session);
 		}
 		return session;
 	}
@@ -169,7 +159,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		if (scope.equals(Scope.CURRENT_LIBRARY)) {
 			return getResourceWriter(contextProvider, klass, contextDescription.getCurrentLibrary());
 		}
-		throw new OperatingSystemRuntimeException("Unsupported scope " + scope);
+		throw new IntegratedLanguageMemoryRuntimeException("Unsupported scope " + scope);
 	}
 
 

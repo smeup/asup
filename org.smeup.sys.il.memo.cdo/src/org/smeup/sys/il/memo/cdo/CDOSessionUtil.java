@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.util;
+package org.smeup.sys.il.memo.cdo;
 
 import java.util.Map.Entry;
 

@@ -7,8 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.core.cdo,
- org.smeup.sys.os.core.cdo.impl,
- org.smeup.sys.os.core.cdo.util
+ org.smeup.sys.os.core.cdo.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.co.core;visibility:=reexport,
@@ -25,7 +24,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.os.usrprf,
  org.smeup.sys.os.core.base,
  org.smeup.sys.rt.core,
- org.smeup.sys.os.lib
+ org.smeup.sys.os.lib,
+ org.smeup.sys.il.memo.cdo
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.net4j.db,

@@ -15,9 +15,9 @@ import java.util.Date;
 
 import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.net4j.util.collection.CloseableIterator;
+import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
-import org.smeup.sys.os.core.cdo.util.CDOResourceUtil;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 

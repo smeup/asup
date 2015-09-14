@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Memory CDO
+Bundle-SymbolicName: org.smeup.sys.il.memo.cdo
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.il.memo,
+ org.eclipse.net4j.util,
+ org.eclipse.emf.cdo.net4j,
+ org.eclipse.net4j.tcp,
+ org.eclipse.net4j.jvm
+Export-Package: org.smeup.sys.il.memo.cdo

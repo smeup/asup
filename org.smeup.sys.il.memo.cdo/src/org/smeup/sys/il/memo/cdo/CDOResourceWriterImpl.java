@@ -9,10 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
-
-import java.io.IOException;
-import java.util.Collections;
+package org.smeup.sys.il.memo.cdo;
 
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.eresource.CDOResource;
@@ -25,12 +22,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryFactory;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.ResourceEventType;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.lib.QLibrary;
 
 public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourceReaderImpl<T> implements QResourceWriter<T> {
 
@@ -41,7 +37,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 	private QResourceEvent<T> resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 	private Class<T> klass;
 
-	protected CDOResourceWriterImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
+	public CDOResourceWriterImpl(QContextProvider contextProvider, Class<T> klass, CDONet4jSession session) {
 		super(contextProvider, klass, session);
 		this.klass = klass;
 		resourceEvent.setResource(this);
@@ -55,28 +51,16 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 
 		CDOObject cdoObject = CDOUtil.getCDOObject((EObject) object);
 		if (cdoObject.cdoID() == null)
-			throw new OperatingSystemRuntimeException("Object " + object.getName() + " not found");
+			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
 
 		resource.getContents().remove(object);
 		try {
 			fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, object);
 
-			if (klass.isAssignableFrom(QLibrary.class)) {
-				QLibrary qLibrary = (QLibrary) object;
-				CDOResource libraryResource = transaction.getOrCreateResource(CDO_OMAC + "/" + qLibrary.getName());
-				if (libraryResource != null)
-					try {
-						libraryResource.delete(Collections.EMPTY_MAP);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-
 			transaction.commit();
 			fireEvent(resourceEvent, ResourceEventType.POST_DELETE, object);
 		} catch (CommitException e) {
-			throw new OperatingSystemRuntimeException(e);
+			throw new IntegratedLanguageMemoryRuntimeException(e);
 		} catch (RuntimeException e) {
 			transaction.rollback();
 		}
@@ -101,9 +85,9 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 			// lock resource
 			try {
 				if (!resource.cdoWriteLock().tryLock(1000 * 60))
-					throw new OperatingSystemRuntimeException("Unable to lock resource: " + resource);
+					throw new IntegratedLanguageMemoryRuntimeException("Unable to lock resource: " + resource);
 			} catch (InterruptedException e) {
-				throw new OperatingSystemRuntimeException("Unable to lock resource: " + resource);
+				throw new IntegratedLanguageMemoryRuntimeException("Unable to lock resource: " + resource);
 			}
 
 			T oldObject = lookup(object.getName());
@@ -112,7 +96,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 					resource.getContents().remove(oldObject);
 				else {
 					resource.cdoWriteLock().unlock();
-					throw new OperatingSystemRuntimeException("Object already exists: " + object);
+					throw new IntegratedLanguageMemoryRuntimeException("Object already exists: " + object);
 				}
 		}
 
@@ -129,7 +113,7 @@ public class CDOResourceWriterImpl<T extends QObjectNameable> extends CDOResourc
 			if (insert)
 				resource.cdoWriteLock().unlock();
 
-			throw new OperatingSystemRuntimeException(e);
+			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
 	}
 

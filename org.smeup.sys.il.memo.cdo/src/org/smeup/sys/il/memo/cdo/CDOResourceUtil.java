@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.util;
+package org.smeup.sys.il.memo.cdo;
 
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.ecore.EClass;
