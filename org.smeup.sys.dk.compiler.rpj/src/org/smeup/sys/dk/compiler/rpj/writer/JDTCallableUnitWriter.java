@@ -47,9 +47,11 @@ import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatement;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.db.esql.annotation.CursorDef;
+import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -76,8 +78,10 @@ import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QDataSection;
+import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QParameterList;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QUnit;
@@ -460,44 +464,20 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			methodDeclaration.setReturnType2(type);
 		}
 
-		if (prototype.getEntry() != null) {
+		QEntry entry = null;
 
-			int p = 0;
-			for (QEntryParameter<?> entryParameter : prototype.getEntry().getParameters()) {
-
-				QTerm parameterDelegate = entryParameter.getDelegate();
-
-				SingleVariableDeclaration singleVar = getAST().newSingleVariableDeclaration();
-				String parameterName = parameterDelegate.getName();
-				if (parameterName == null)
-					parameterName = "arg" + p;
-				singleVar.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(parameterName)));
-
-				if (parameterDelegate instanceof QDataTerm) {
-					QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
-
-					// primitive
-					if (dataTerm.isConstant())
-						singleVar.setType(getJavaPrimitive(dataTerm));
-					else {
-						Type type = getJavaType(dataTerm);
-						singleVar.setType(type);
-					}
-				} else if (parameterDelegate instanceof QDataSetTerm) {
-
-					Type dataSet = getAST().newSimpleType(getAST().newSimpleName(QDataSet.class.getSimpleName()));
-					ParameterizedType parType = getAST().newParameterizedType(dataSet);
-					parType.typeArguments().add(getAST().newWildcardType());
-
-					singleVar.setType(parType);
-				}
-
-				methodDeclaration.parameters().add(singleVar);
-
-				p++;
-			}
+		PrototypeType prototypeType = PrototypeType.CALL;
+		QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), true);
+		if (procedure != null) {
+			prototypeType = PrototypeType.INNER;
+			entry = procedure.getEntry();
+		} else {
+			entry = prototype.getEntry();
 		}
 
+		if(entry != null)
+			writeEntry(methodDeclaration, entry);
+		
 		Block block = getAST().newBlock();
 		methodDeclaration.setBody(block);
 
@@ -510,13 +490,20 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		if (prototype.getDefinition() != null) {
 			ReturnStatement returnStatement = getAST().newReturnStatement();
 
-			// returnStatement.setExpression(getAST().newNullLiteral());
-			// block.statements().add(returnStatement);
 			block.statements().add(getReturnStatement(returnStatement, prototype, methodDeclaration));
 		}
-
 		statementWriter.getBlocks().pop();
 
+		if(prototypeType.equals(PrototypeType.INNER)) {
+			QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
+
+			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()));
+			try {
+				procedureWriter.writeProcedure(procedure);
+			} catch (IOException e) {
+				throw new DevelopmentKitCompilerRuntimeException("Invalid procedure: " + procedure, e);
+			}			 			
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -705,33 +692,33 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
-		if(parameterList!=null)
+		if (parameterList != null)
 			for (String parameterName : parameterList.getParameters()) {
 				QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
-	
+
 				SingleVariableDeclaration parameterVariable = getAST().newSingleVariableDeclaration();
 				parameterVariable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
 				Type type = getJavaType(dataTerm);
 				parameterVariable.setType(type);
-	
+
 				writeDataDefAnnotation(parameterVariable, dataTerm.getDefinition());
-	
+
 				methodDeclaration.parameters().add(parameterVariable);
 			}
 
 		Block block = getAST().newBlock();
 		methodDeclaration.setBody(block);
 
-		if(parameterList!=null)
+		if (parameterList != null)
 			for (String parameterName : parameterList.getParameters()) {
-	
+
 				MethodInvocation methodInvocation = getAST().newMethodInvocation();
 				methodInvocation.setName(getAST().newSimpleName("assign"));
-	
+
 				methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(parameterName)));
-	
+
 				QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
-	
+
 				String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
 				String[] fieldNames = qualifiedName.split("\\.");
 				if (fieldNames.length > 1)
@@ -739,21 +726,21 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				else {
 					FieldAccess targetAccess = getAST().newFieldAccess();
 					targetAccess.setExpression(getAST().newThisExpression());
-	
+
 					for (int i = 0; i < fieldNames.length; i++) {
-	
+
 						targetAccess.setName(getAST().newSimpleName(fieldNames[i]));
-	
+
 						if (i < fieldNames.length - 1) {
 							FieldAccess childAccess = getAST().newFieldAccess();
 							childAccess.setExpression(targetAccess);
 							targetAccess = childAccess;
-	
+
 						}
 					}
 					methodInvocation.arguments().add(targetAccess);
 				}
-	
+
 				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 				block.statements().add(expressionStatement);
 			}
@@ -875,5 +862,49 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
 		return JDTStatementHelper.buildExpression(ast, getCompilationUnit(), expression, target);
+	}
+
+	@SuppressWarnings("unchecked")
+	private void writeEntry(MethodDeclaration methodDeclaration, QEntry entry) {
+
+		int p = 0;
+		for (QEntryParameter<?> entryParameter : entry.getParameters()) {
+
+			QTerm parameterDelegate = entryParameter.getDelegate();
+
+			SingleVariableDeclaration singleVar = getAST().newSingleVariableDeclaration();
+			String parameterName = parameterDelegate.getName();
+			if (parameterName == null)
+				parameterName = "arg" + p;
+			singleVar.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(parameterName)));
+
+			if (parameterDelegate instanceof QDataTerm) {
+				QDataTerm<?> dataTerm = (QDataTerm<?>) parameterDelegate;
+
+				// primitive
+				if (dataTerm.isConstant())
+					singleVar.setType(getJavaPrimitive(dataTerm));
+				else {
+					Type type = getJavaType(dataTerm);
+					singleVar.setType(type);
+				}
+			} else if (parameterDelegate instanceof QDataSetTerm) {
+
+				Type dataSet = getAST().newSimpleType(getAST().newSimpleName(QDataSet.class.getSimpleName()));
+				ParameterizedType parType = getAST().newParameterizedType(dataSet);
+				parType.typeArguments().add(getAST().newWildcardType());
+
+				singleVar.setType(parType);
+			}
+
+			methodDeclaration.parameters().add(singleVar);
+
+			p++;
+		}
+	}
+
+
+	public static enum PrototypeType {
+		CALL, INNER;
 	}
 }
