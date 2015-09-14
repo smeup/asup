@@ -689,23 +689,34 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public QNumeric qScan(String argument, Number start) {
 		// TODO revision
+		return qScan(argument, start, 0);
+		/*
 		NIODecimalImpl number = new NIODecimalImpl(5, 0);
 		if (start == null)
 			start = 1;
-		int a = toString().indexOf(start.intValue());
+		int a = argument.indexOf(toString(), start.intValue());
 		number.eval(a);
 		return number;
+*/
 	}
 
 	@Override
 	public QNumeric qScan(String argument, Number start, Number length) {
-		// TODO revision trim???
+
 		NIODecimalImpl number = new NIODecimalImpl(5, 0);
 		if (start == null)
 			start = 1;
-	    String str = argument.substring(start.intValue()-1, (start.intValue()-1 + length.intValue()));
-		int a = str.indexOf(toString());
-		number.eval(a);
+		int a = 0;
+		if(length.intValue()==0)
+			a = argument.indexOf(toString(), start.intValue()-1);
+		else
+			a = argument.indexOf(toString().substring(0, length.intValue()), start.intValue()-1);
+	    number.eval(a);
+		if(a<0)
+	    	number.eval(0);
+		else
+	    	number.eval(a+1);
+		
 		return number;
 	}
 
