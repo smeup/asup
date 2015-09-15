@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
+package org.smeup.sys.il.memo.cdo;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,8 +18,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.emf.cdo.eresource.CDOResourceNode;
 import org.eclipse.emf.cdo.net4j.CDONet4jSession;
-import org.smeup.sys.il.core.QObjectIterator;
+import org.eclipse.emf.cdo.view.CDOView;
+import org.eclipse.emf.ecore.EObject;
+import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -30,20 +33,20 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.il.memo.cdo.CDOResourceReaderImpl;
-import org.smeup.sys.il.memo.cdo.CDOResourceSetReaderImpl;
-import org.smeup.sys.il.memo.cdo.CDOResourceWriterImpl;
-import org.smeup.sys.il.memo.cdo.CDOSessionUtil;
-import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.rt.core.QApplication;
 
 public class CDOResourceProviderImpl implements QResourceProvider {
 
 	@Inject
+	private QApplication application;
+	@Inject
 	private QResourceManager resourceManager;
 
+	private QServerSocketConfig socketConfig;
+	
 	@PostConstruct
-	public void init() {
+	public void init(QServerSocketConfig socketConfig) {
+		this.socketConfig = socketConfig;
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
 
@@ -106,13 +109,20 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		// set scope libraries
 		switch (scope) {
 		case ALL:
-			QResourceReader<QLibrary> libraryReader = getResourceReader(contextProvider, QLibrary.class, contextDescription.getSystemLibrary());
-
-			QObjectIterator<QLibrary> libraryIterator = libraryReader.find(null);
-			while (libraryIterator.hasNext()) {
-				QLibrary library = libraryIterator.next();
-				resource.getResources().add(library.getName());
+			
+			CDOView view = getSession(contextProvider).openView();
+			
+			CDOResourceNode rootResource = view.getRootResource(); // this is the root resource
+			for (EObject eObject : rootResource.eContents()) {
+				if (!(eObject instanceof CDOResourceNode)) {
+					continue;
+				}
+				CDOResourceNode cdoResource = (CDOResourceNode) eObject;
+				if (cdoResource.cdoRevision().getPermission().isReadable()) 
+					resource.getResources().add(resource.getName());
 			}
+			
+			view.close();
 			break;
 		case LIBRARY_LIST:
 			String curLib = contextDescription.getCurrentLibrary();
@@ -141,11 +151,9 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 
 	private CDONet4jSession getSession(QContextProvider contextProvider) {
 
-		QJob job = contextProvider.getContext().get(QJob.class);
-		
 		CDONet4jSession session = contextProvider.getContext().get(CDONet4jSession.class);
 		if (session == null) {
-			session = CDOSessionUtil.openSession("asup-db1:2036", job.getSystem().getName());
+			session = CDOSessionUtil.openSession(socketConfig.getAddress()+":"+socketConfig.getPort(), application.getName());
 			session.options().getNet4jProtocol().setTimeout(60000);
 		}
 		return session;

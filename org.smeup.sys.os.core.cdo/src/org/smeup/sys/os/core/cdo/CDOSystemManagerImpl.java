@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
+package org.smeup.sys.os.core.cdo;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -34,7 +34,6 @@ import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
-import org.smeup.sys.os.core.cdo.CDOSystemConfig;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -56,10 +55,10 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 	private CDOView view;
 	private CDOTransaction transaction;
 
-	private CDOSystemConfig systemConfig;
+	private QSystem systemConfig;
 	
 	@PostConstruct
-	public void init(CDOSystemConfig systemConfig) {
+	public void init(QSystem systemConfig) {
 		this.systemConfig = systemConfig;
 	}
 
@@ -170,7 +169,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		// properties.get("org.asup.os.system.address").toString();
 
 		// session
-		session = CDOSessionUtil.openSession("localhost:2036", systemConfig.getSystem().getName());
+		session = CDOSessionUtil.openSession("asup-db1:2036", systemConfig.getName());
 
 		// view
 		view = session.openView();
@@ -183,7 +182,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 
 		try {
 			CDOQuery query = transaction.createQuery("sql", queryString);
-			query.setParameter("name", systemConfig.getSystem().getName());
+			query.setParameter("name", systemConfig.getName());
 			query.setMaxResults(1);
 			transactionSystem = query.getResultValue(QSystem.class);
 		} catch (Exception e) {
@@ -192,7 +191,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 
 		// first run
 		if (transactionSystem == null) {
-			QSystem system = (QSystem) EcoreUtil.copy((EObject) systemConfig.getSystem());
+			QSystem system = (QSystem) EcoreUtil.copy((EObject) systemConfig);
 			system.setInstallPath(System.getProperty(system.getInstallPath()));
 			system.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(system));
 
@@ -214,7 +213,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		}
 
 		CDOQuery query = view.createQuery("sql", queryString);
-		query.setParameter("name", systemConfig.getSystem().getName());
+		query.setParameter("name", systemConfig.getName());
 		query.setMaxResults(1);
 		QSystem system = query.getResultValue(QSystem.class);
 

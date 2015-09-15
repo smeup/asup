@@ -9,7 +9,7 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.os.core.cdo.impl;
+package org.smeup.sys.os.core.cdo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

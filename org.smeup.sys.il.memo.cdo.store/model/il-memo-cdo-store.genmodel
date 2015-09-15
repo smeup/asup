@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.il.memo.cdo.store/src" modelPluginID="org.smeup.sys.il.memo.cdo.store"
+    modelName="As.UP Integrated Language Memory CDO Store" rootExtendsInterface=""
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.db.core/model/db-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.datatools.modelbase.sql/model/sqlmodel.genmodel#//sqlmodel"
+    importOrganizing="true">
+  <foreignModel>il-memo-cdo-store.ecore</foreignModel>
+  <genPackages prefix="CDOStore" basePackage="org.smeup.sys.il.memo.cdo" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="il-memo-cdo-store.ecore#/">
+    <genClasses ecoreClass="il-memo-cdo-store.ecore#//CDOStoreConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo-cdo-store.ecore#//CDOStoreConfig/adapter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-memo-cdo-store.ecore#//CDOStoreConfig/credentials"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo-cdo-store.ecore#//CDOStoreConfig/driver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo-cdo-store.ecore#//CDOStoreConfig/repository"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-memo-cdo-store.ecore#//CDOStoreConfig/socketConfig"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-memo-cdo-store.ecore#//CDOStoreConfig/url"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

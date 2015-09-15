@@ -8,7 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.core.resources;bundle-version="3.9.0",
  org.smeup.sys.os.type,
  org.smeup.sys.os.lib,
- org.smeup.sys.il.memo.jdt,
- org.smeup.sys.dk.source.jdt
-Export-Package: org.smeup.sys.os.core.jdt
+ org.smeup.sys.dk.source,
+ org.smeup.sys.il.memo.jdt
+Export-Package: org.smeup.sys.os.core.memory
 Bundle-ClassPath: .

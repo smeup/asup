@@ -11,13 +11,6 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated os-core-cdo -->
-      <package
-            uri="http://www.smeup.org/asup/os/core/cdo"
-            class="org.smeup.sys.os.core.cdo.CDOSystemCorePackage"
-            genModel="model/os-core-cdo.genmodel"/>
-   </extension>
    <extension
          id="org_asup_os_core_cdo_id"
          point="org.eclipse.core.runtime.products">
