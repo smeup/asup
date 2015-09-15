@@ -34,7 +34,7 @@ import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
-import org.smeup.sys.os.type.base.api.ObjectWorker.Object.NameGenericEnum;
+import org.smeup.sys.os.type.base.api.ObjectWorker.OBJECT.NameGenericEnum;
 
 @Program(name = "QMNWRKXX")
 public class ObjectWorker {
@@ -50,7 +50,7 @@ public class ObjectWorker {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@DataDef(qualified = true) Object object, 
+	public @Entry void main(@DataDef(qualified = true) OBJECT object, 
 							@DataDef(length = 7) QCharacter objectType,
 							@DataDef(length = 50) QCharacter text,
 							@DataDef(length = 2) QCharacter application) {
@@ -100,7 +100,7 @@ public class ObjectWorker {
 		return types;
 	}
 
-	private QResourceReader<?> findReader(Object object, QType<?> type) {
+	private QResourceReader<?> findReader(OBJECT object, QType<?> type) {
 		QResourceReader<?> resourceReader = null;
 		switch (object.library.asEnum()) {
 		case ALL:
@@ -139,10 +139,11 @@ public class ObjectWorker {
 		return result;
 	}
 
-	public static class Object extends QDataStructWrapper {
+	public static class OBJECT extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10)
 		public QEnum<NameGenericEnum, QCharacter> nameGeneric;
+		
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LibraryEnum, QCharacter> library;
 

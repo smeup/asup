@@ -12,13 +12,11 @@
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"
       text="Add Environment Variable"
-      program="QP0ZADDE"
-      status="POS">
+      program="QP0ZADDE">
     <parameters
         allowVariable="true"
         name="ENVVAR"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="environmentVariable">
         <cardinality
@@ -31,8 +29,7 @@
     <parameters
         allowVariable="true"
         name="VALUE"
-        position="2"
-        status="POS">
+        position="2">
       <dataTerm
           name="initialValue">
         <facets
@@ -78,8 +75,7 @@
     <parameters
         allowVariable="true"
         name="LEVEL"
-        position="4"
-        status="POS">
+        position="4">
       <dataTerm
           name="level"
           restricted="true">
@@ -100,8 +96,7 @@
     <parameters
         allowVariable="true"
         name="REPLACE"
-        position="5"
-        status="POS">
+        position="5">
       <dataTerm
           name="replaceExistingEntry"
           restricted="true">
