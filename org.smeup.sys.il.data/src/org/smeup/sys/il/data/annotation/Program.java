@@ -19,4 +19,6 @@ public @interface Program {
 	String name();
 
 	String text() default "";
+	
+	boolean generated() default true;
 }
