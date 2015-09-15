@@ -51,6 +51,7 @@ import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
@@ -496,8 +497,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		if(prototypeType.equals(PrototypeType.INNER)) {
 			QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
-
-			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()));
+			
+			QCompilerManager compilerManager = getCompilationUnit().getContext().get(QCompilerManager.class);
+			QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);
+						
+			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()));
 			try {
 				procedureWriter.writeProcedure(procedure);
 			} catch (IOException e) {

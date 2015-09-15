@@ -709,9 +709,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			} else if (node instanceof QFileTerm)
 				name = "get()." + name;
 			else if (node instanceof QEntry)
-				name = "qEN." + name;
+				"".toCharArray();
 
-			if (node != getRoot())
+			if (node != getRoot() && !(node instanceof QEntry))
 				// no record name
 				if (!(((EObject) node).eContainer() instanceof QDataSetTerm)) {
 					QNamedNode namedChildNode = (QNamedNode) node;
