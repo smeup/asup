@@ -3,7 +3,8 @@ package org.smeup.sys.os.type.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.dk.source.QSourceEntry;
+import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
@@ -18,8 +19,12 @@ import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QSourceFile;
+import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
+import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QLICKOBJ")
 public @ToDo class ObjectChecker {
@@ -38,6 +43,9 @@ public @ToDo class ObjectChecker {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QJobLogManager jobLogManager;
+	@Inject
+	private QSourceManager sourceManager;
+	
 	
 	public @Entry void main(@DataDef(qualified = true) OBJECT object,
 							@DataDef(length = 7) QCharacter objectType,
@@ -54,7 +62,7 @@ public @ToDo class ObjectChecker {
 			error("Wrong type: " + objectType.trimR());			
 		}
 		
-		QResourceReader<?> resourceReader = null;
+		QResourceReader<? extends QTypedObject> resourceReader = null;
 		
 		switch (object.library.asEnum()) {
 		case CURLIB:
@@ -69,10 +77,22 @@ public @ToDo class ObjectChecker {
 			break;
 		}
 
-		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());;
+		QTypedObject typedObject = resourceReader.lookup(object.name.trimR());;
 
-		if (objectNameable == null) {
+		if (typedObject == null) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9801, new String[] {"", object.name.trimR(), object.library.asData().trimR()});				
+		}
+		
+		if(!memberIfDataBaseFile.isEmpty()) {
+			if (typedObject instanceof QSourceFile) {
+				QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), typedObject.getLibrary(), QFile.class, typedObject.getName());
+				QSourceEntry fileMember = sourceManager.getChildEntry(job.getContext(), sourceEntry, memberIfDataBaseFile.asData().trimR()+".XMI");
+				if (fileMember == null) {
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF9815, new String[] {"", typedObject.getName(), typedObject.getLibrary(), "",  memberIfDataBaseFile.asData().trimR()});											
+				}
+			} else {
+				error("Invalid file type: "+ objectType.trimR());
+			}
 		}
 	}
 
@@ -82,8 +102,8 @@ public @ToDo class ObjectChecker {
 	}
 
 	private void checkLibrary(String libName) {
-		QType<?> libType = typeRegistry.lookup("*LIB");
-		QResourceSetReader<?> resourceReader = resourceManager.getResourceReader(job, libType.getTypedClass(), Scope.ALL);
+
+		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libName))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {libName});	
 	}

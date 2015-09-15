@@ -10,6 +10,8 @@ Require-Bundle: org.smeup.sys.il.data,
  org.smeup.sys.os.type,
  org.smeup.sys.dk.core,
  org.smeup.sys.os.file,
- org.smeup.sys.db.syntax
+ org.smeup.sys.db.syntax,
+ org.smeup.sys.dk.source,
+ org.smeup.sys.os.lib
 Export-Package: org.smeup.sys.os.type.base,
  org.smeup.sys.os.type.base.api
