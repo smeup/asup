@@ -27,6 +27,7 @@ import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.type.QTypedObject;
 
 public class BaseResourceManagerImpl implements QResourceManager {
 
@@ -47,7 +48,17 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		if (notifier == null) {
 			notifier = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceNotifier();
 			notifiers.put(klass, notifier);
+			
+			// TODO retrieve listener hierarchy
+			if(QTypedObject.class.isAssignableFrom(klass)) {
+				QResourceNotifier<T> typedNotifier = (QResourceNotifier<T>) notifiers.get(QTypedObject.class);
+				if(typedNotifier != null) {
+					for(QResourceListener<T> resourceListener: typedNotifier.getListeners()) 
+						notifier.registerListener(resourceListener);
+				}
+			}
 		}
+		
 		notifier.registerListener(listener);
 	}
 

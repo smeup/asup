@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.memo;
 
+import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 
 /**
@@ -26,6 +27,14 @@ public interface QResourceNotifier<T extends QObjectNameable> {
 	 * @generated
 	 */
 	void fireEvent(QResourceEvent<T> event);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	List<QResourceListener<T>> getListeners();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

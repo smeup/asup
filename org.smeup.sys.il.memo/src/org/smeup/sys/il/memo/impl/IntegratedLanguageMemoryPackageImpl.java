@@ -527,6 +527,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "event", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(resourceNotifierEClass, null, "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceListener());
+		g2 = createEGenericType(resourceNotifierEClass_T);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		op = addEOperation(resourceNotifierEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceListener());
 		g2 = createEGenericType(resourceNotifierEClass_T);

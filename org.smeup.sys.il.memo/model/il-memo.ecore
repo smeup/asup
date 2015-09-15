@@ -98,6 +98,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="getListeners" upperBound="-1">
+      <eGenericType eClassifier="#//ResourceListener">
+        <eTypeArguments eTypeParameter="#//ResourceNotifier/T"/>
+      </eGenericType>
+    </eOperations>
     <eOperations name="registerListener">
       <eParameters name="listener" lowerBound="1">
         <eGenericType eClassifier="#//ResourceListener">
