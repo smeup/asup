@@ -7,5 +7,6 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.inject
 Require-Bundle: org.smeup.sys.il.memo,
- org.smeup.sys.dk.source
+ org.smeup.sys.dk.source,
+ org.smeup.sys.dk.source.jdt
 Export-Package: org.smeup.sys.il.memo.jdt

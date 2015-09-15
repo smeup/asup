@@ -9,16 +9,15 @@
  *   Mattia Rocchi				- Initial API and implementation
  *
  */
-package org.smeup.sys.os.core.jdt;
+package org.smeup.sys.il.memo.jdt;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.jdt.JDTSourceManagerImpl;
-import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -28,27 +27,16 @@ import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.il.memo.jdt.JDTResourceReaderImpl;
-import org.smeup.sys.il.memo.jdt.JDTResourceSetReaderImpl;
-import org.smeup.sys.il.memo.jdt.JDTResourceWriterImpl;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.os.lib.QLibrary;
 
 public class JDTResourceProviderImpl implements QResourceProvider {
 
-	@Inject
-	private QResourceManager resourceManager;
-
 	private JDTSourceManagerImpl sourceManager;
 
-	public JDTResourceProviderImpl() {
-		super();
+	@Inject
+	public JDTResourceProviderImpl(QResourceManager resourceManager) {
 		this.sourceManager = new JDTSourceManagerImpl("asup-obj");
-
-	}
-
-	@PostConstruct
-	public void init() {
+		
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
 
@@ -99,12 +87,10 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 		// set scope libraries
 		switch (scope) {
 		case ALL:
-			QResourceReader<QLibrary> libraryReader = getResourceReader(contextProvider, QLibrary.class, contextDescription.getSystemLibrary());
+			
+			for(QProject project: sourceManager.listProjects(contextProvider.getContext())) 
+				resources.add(project.getName());
 
-			QObjectIterator<QLibrary> libraryIterator = libraryReader.find(null);
-			while (libraryIterator.hasNext()) {
-				resources.add(libraryIterator.next().getName());
-			}
 			break;
 			
 		case LIBRARY_LIST:
