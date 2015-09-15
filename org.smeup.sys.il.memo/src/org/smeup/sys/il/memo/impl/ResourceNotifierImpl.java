@@ -61,6 +61,15 @@ public class ResourceNotifierImpl<T extends QObjectNameable> extends MinimalEObj
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public List<QResourceListener<T>> getListeners() {
+		return this.listeners;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated NOT
