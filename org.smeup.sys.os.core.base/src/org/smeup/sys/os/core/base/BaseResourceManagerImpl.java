@@ -111,12 +111,16 @@ public class BaseResourceManagerImpl implements QResourceManager {
 	private <T extends QObjectNameable> void prepareListener(QResource<T> resource, Class<T> klass) {
 
 		QResourceNotifier<T> notifier = (QResourceNotifier<T>) notifiers.get(klass);
-		if (notifier == null)
-			return;
-
-		// TODO copy
-		resource.setNotifier(notifier);
-
+		if (notifier == null) {
+			// TODO retrieve listener hierarchy
+			if(QTypedObject.class.isAssignableFrom(klass)) {
+				QResourceNotifier<T> typedNotifier = (QResourceNotifier<T>) notifiers.get(QTypedObject.class);
+				if(typedNotifier != null) 
+					resource.setNotifier(typedNotifier);
+			}
+		}
+		else
+			resource.setNotifier(notifier);
 	}
 
 	@Override
