@@ -44,6 +44,7 @@ import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -892,6 +893,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
 					QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
 					prototype.setDefinition(arrayDef);
+				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getPointer())) {
+					QPointerDef pointerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createPointerDef();
+					prototype.setDefinition(pointerDef);
 				} else
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s23456bve8ft8fsdfc");
 
