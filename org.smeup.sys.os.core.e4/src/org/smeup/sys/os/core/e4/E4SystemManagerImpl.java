@@ -14,7 +14,10 @@ package org.smeup.sys.os.core.e4;
 import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
@@ -22,6 +25,9 @@ import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 
 public class E4SystemManagerImpl extends BaseSystemManagerImpl {
+	
+	@Inject
+	private QResourceManager resourceManager;
 	
 	private QSystem system;
 
@@ -38,7 +44,6 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		this.system.setSystemUser("QASUP");
 		this.system.setSystemLibrary("QSYS");
 		this.system.setInstallPath(System.getProperty("osgi.instance.area"));
-
 	}
 
 	@Override
@@ -50,6 +55,9 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	public QJob start() {
 
 		this.startupJob = createJob(JobType.KERNEL, "QASUP");
+	
+		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(this.startupJob, QSystem.class, getSystem().getSystemLibrary());
+		systemWriter.save(getSystem(), true);
 		
 		return startupJob;
 	}
