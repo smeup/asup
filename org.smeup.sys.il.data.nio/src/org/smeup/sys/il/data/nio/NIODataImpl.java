@@ -13,16 +13,23 @@ package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataVisitor;
 
 public abstract class NIODataImpl implements QData {
 
 	private static final long serialVersionUID = 1L;	
-			
-	public NIODataImpl() {
+	private QDataContainer dataContainer;
+	
+	public NIODataImpl(QDataContainer dataContainer) {
 		super();
+		this.dataContainer = dataContainer;
 	}
 
+	protected QDataContainer getDataContainer() {
+		return this.dataContainer;
+	}
+	
 	public abstract NIODataImpl copy();
 
 	@Override

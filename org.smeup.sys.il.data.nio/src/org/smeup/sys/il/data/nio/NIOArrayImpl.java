@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.SortDirection;
@@ -29,12 +30,12 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	private int dimension = 0;
 
 	
-	public NIOArrayImpl() {
-		super();
+	public NIOArrayImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOArrayImpl(D model, int dimension, SortDirection sortDirection) {
-		super(model, sortDirection);
+	public NIOArrayImpl(QDataContainer dataContainer, D model, int dimension, SortDirection sortDirection) {
+		super(dataContainer, model, sortDirection);
 		this.dimension = dimension;
 //		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
 	}
@@ -189,7 +190,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	@Override
 	public QArray<D> qSubarr(int start, int elements) {
 
-		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getModel(), elements, getSortDirection());
+		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContainer(), getModel(), elements, getSortDirection());
 		slice(subArray, start+(getModel().getSize()*(start-1)));
 					
 		return subArray;

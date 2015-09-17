@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QIndicator;
 
 public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator {
@@ -20,8 +21,8 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	protected static byte OFF = (byte) -16;
 	protected static byte ON = (byte) -15;
 
-	public NIOIndicatorImpl() {
-		super();
+	public NIOIndicatorImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
 	@Override

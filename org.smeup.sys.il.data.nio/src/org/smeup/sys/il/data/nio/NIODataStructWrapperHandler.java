@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
 
@@ -29,12 +30,12 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
 	private List<QBufferedData> cachedElements = null;
 
-	public NIODataStructWrapperHandler() {
-		super();
+	public NIODataStructWrapperHandler(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIODataStructWrapperHandler(int length, QDataStruct wrapped) {
-		super(length);
+	public NIODataStructWrapperHandler(QDataContainer dataContainer, int length, QDataStruct wrapped) {
+		super(dataContainer, length);
 
 		this._wrapped = wrapped;
 		this._dynamicLength = (length == 0 ? true : false);

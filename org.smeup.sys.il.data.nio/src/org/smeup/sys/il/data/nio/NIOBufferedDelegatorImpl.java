@@ -20,6 +20,7 @@ import java.io.ObjectOutputStream;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedDataDelegator;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
@@ -31,12 +32,12 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	private QBufferedData _delegate;
 
-	public NIOBufferedDelegatorImpl() {
-		super();
+	public NIOBufferedDelegatorImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	protected NIOBufferedDelegatorImpl(QBufferedData delegate) {
-		super();
+	protected NIOBufferedDelegatorImpl(QDataContainer dataContainer, QBufferedData delegate) {
+		super(dataContainer);
 		this._delegate = delegate;
 	}
 

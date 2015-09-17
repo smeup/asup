@@ -43,12 +43,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private boolean useDefault;
 
-	protected NIODataContainerImpl(QDataFactory dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
+	protected NIODataContainerImpl(NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataFactory = dataFactory;
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.useDefault = useDefault;
+		dataFactory.setDataContainer(this);
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.def.BinaryType;
 
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
@@ -26,12 +27,12 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	private BinaryType _type;
 	private boolean _unsigned;
 
-	public NIOBinaryImpl() {
-		super();
+	public NIOBinaryImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOBinaryImpl(BinaryType type, boolean unsigned) {
-		super();
+	public NIOBinaryImpl(QDataContainer dataContainer, BinaryType type, boolean unsigned) {
+		super(dataContainer);
 		this._type = type;
 		this._unsigned = unsigned;
 	}

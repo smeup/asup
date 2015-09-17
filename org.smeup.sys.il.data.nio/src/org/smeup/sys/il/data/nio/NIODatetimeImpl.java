@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.util.Date;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
@@ -26,12 +27,13 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	private DatetimeType _type;
 	private String _format;
 
-	public NIODatetimeImpl() {
-		super();
+	public NIODatetimeImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIODatetimeImpl(DatetimeType type, String format) {
-
+	public NIODatetimeImpl(QDataContainer dataContainer, DatetimeType type, String format) {
+		super(dataContainer);
+		
 		this._type = type;
 		this._format = format;
 

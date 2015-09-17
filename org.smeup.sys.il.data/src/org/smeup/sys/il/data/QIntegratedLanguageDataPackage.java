@@ -112,7 +112,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 31;
+	int STRING = 32;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
@@ -343,7 +343,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScroller()
 	 * @generated
 	 */
-	int SCROLLER = 30;
+	int SCROLLER = 31;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStruct <em>Struct</em>}' class.
@@ -352,7 +352,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStruct()
 	 * @generated
 	 */
-	int STRUCT = 33;
+	int STRUCT = 34;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
@@ -361,7 +361,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStroller()
 	 * @generated
 	 */
-	int STROLLER = 32;
+	int STROLLER = 33;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataStruct
@@ -657,6 +657,25 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int RECORD_FEATURE_COUNT = STRUCT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QScanner <em>Scanner</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.QScanner
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScanner()
+	 * @generated
+	 */
+	int SCANNER = 30;
+
+	/**
+	 * The number of structural features of the '<em>Scanner</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCANNER_FEATURE_COUNT = 0;
+
+	/**
 	 * The number of structural features of the '<em>Scroller</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -682,7 +701,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getSortDirection()
 	 * @generated
 	 */
-	int SORT_DIRECTION = 34;
+	int SORT_DIRECTION = 35;
 
 	/**
 	 * The meta object id for the '<em>Data Array</em>' data type. <!--
@@ -691,7 +710,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataArray()
 	 * @generated
 	 */
-	int DATA_ARRAY = 35;
+	int DATA_ARRAY = 36;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
@@ -993,6 +1012,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getRecord();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QScanner <em>Scanner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scanner</em>'.
+	 * @see org.smeup.sys.il.data.QScanner
+	 * @generated
+	 */
+	EClass getScanner();
 
 	/**
 	 * Returns the meta object for class '
@@ -1365,6 +1394,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RECORD = eINSTANCE.getRecord();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QScanner <em>Scanner</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.QScanner
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getScanner()
+		 * @generated
+		 */
+		EClass SCANNER = eINSTANCE.getScanner();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.QScroller <em>Scroller</em>}' class.
