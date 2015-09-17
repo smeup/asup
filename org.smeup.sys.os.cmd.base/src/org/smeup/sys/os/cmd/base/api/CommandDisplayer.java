@@ -31,6 +31,10 @@ import org.smeup.sys.os.core.jobs.QJob;
 @Program(name = "QCDDCMD")
 public class CommandDisplayer {
 
+	public static enum QCPFMSG {
+		CPF6210
+	}
+	
 	@Inject
 	private QJob job;
 	@Inject

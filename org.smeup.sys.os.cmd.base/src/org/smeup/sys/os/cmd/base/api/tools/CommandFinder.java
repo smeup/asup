@@ -15,14 +15,12 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.QCommand;
+import org.smeup.sys.os.cmd.base.api.CommandDisplayer;
 import org.smeup.sys.os.cmd.base.api.CommandRef;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 public class CommandFinder {
-	public static enum QCPFMSG {
-		CPF6210
-	}
 	
 	private QJob job;
 	private QResourceManager resourceManager;
@@ -49,7 +47,7 @@ public class CommandFinder {
 
 		QCommand qCommand = commandReader.lookup(commandName);
 		if (qCommand == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF6210, new String[] {commandName, commandLibrary});		
+			throw exceptionManager.prepareException(job, CommandDisplayer.QCPFMSG.CPF6210, new String[] {commandName, commandLibrary});		
 		return qCommand;
 	}
 
