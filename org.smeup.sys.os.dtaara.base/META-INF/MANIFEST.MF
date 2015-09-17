@@ -6,6 +6,12 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.os.dtaara.base;version="0.2.2.qualifier"
 Require-Bundle: org.smeup.sys.os.dtaara;visibility:=reexport,
- org.smeup.sys.os.pgm
+ org.smeup.sys.os.pgm,
+ org.smeup.sys.dk.core,
+ javax.inject,
+ org.smeup.sys.il.memo,
+ org.eclipse.jdt.core,
+ org.smeup.sys.os.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Import-Package: org.smeup.sys.os.lib
