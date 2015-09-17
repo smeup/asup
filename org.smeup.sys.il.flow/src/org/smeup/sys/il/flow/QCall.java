@@ -18,6 +18,7 @@ import java.util.List;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCall#getError <em>Error</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,5 +72,31 @@ public interface QCall extends QInvoke {
 	 * @generated
 	 */
 	List<String> getParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Error</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Error</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Error</em>' attribute.
+	 * @see #setError(String)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCall_Error()
+	 * @model
+	 * @generated
+	 */
+	String getError();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCall#getError <em>Error</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Error</em>' attribute.
+	 * @see #getError()
+	 * @generated
+	 */
+	void setError(String value);
 
 } // QCall

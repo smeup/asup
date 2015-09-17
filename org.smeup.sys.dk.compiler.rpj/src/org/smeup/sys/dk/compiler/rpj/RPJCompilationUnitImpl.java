@@ -58,6 +58,7 @@ import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
+import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.file.QExternalFile;
@@ -712,7 +713,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			else if (node instanceof QEntry)
 				"".toCharArray();
 
-			if (node != getRoot() && !(node instanceof QEntry))
+			if (node != getRoot() && !(node instanceof QEntry) && !(node instanceof QProgram))
 				// no record name
 				if (!(((EObject) node).eContainer() instanceof QDataSetTerm)) {
 					QNamedNode namedChildNode = (QNamedNode) node;
@@ -721,7 +722,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					name = normalizeTermName(namedChildNode.getName()) + "." + name;
 				}
 		}
-
+		
 		return name;
 	}
 

@@ -363,13 +363,22 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int CALL__PARAMETERS = INVOKE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Error</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL__ERROR = INVOKE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Call</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 2;
+	int CALL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -2109,6 +2118,17 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getCall_Parameters();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QCall#getError <em>Error</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Error</em>'.
+	 * @see org.smeup.sys.il.flow.QCall#getError()
+	 * @see #getCall()
+	 * @generated
+	 */
+	EAttribute getCall_Error();
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.flow.QCallableUnit <em>Callable Unit</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -3213,6 +3233,14 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CALL__PARAMETERS = eINSTANCE.getCall_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Error</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CALL__ERROR = eINSTANCE.getCall_Error();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.CallableUnitImpl <em>Callable Unit</em>}' class.

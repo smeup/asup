@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
+import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
@@ -67,7 +68,6 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 
 	@SuppressWarnings("unchecked")
 	protected QDataTerm<?> buildUnaryDataTerm(QDataTerm<?> termTo, QDataTerm<?> termFrom, EClass eTermClass) {
-
 		
 		if (termFrom.getDataTermType().isAtomic()) {
 
@@ -89,16 +89,35 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			return unaryAtomicDataTerm;
 		} else {
 
-			// term
-			QDataTerm<QUnaryCompoundDataDef<?, ?>> unaryCompoundDataTerm = (QDataTerm<QUnaryCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
-			copyDataTerm(termTo, unaryCompoundDataTerm);
+			// compound to atomic
+			if(termTo.getDataTermType().isAtomic()) {
 
-			// definition
-			QUnaryCompoundDataDef<?, ?> unaryCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataStructDef();
-			copyCompoundDataDef((QCompoundDataDef<?, ?>) termFrom.getDefinition(), unaryCompoundDataDef);
-			unaryCompoundDataTerm.setDefinition(unaryCompoundDataDef);
+				copyDataDef(termFrom.getDefinition(), termTo.getDefinition());
 
-			return unaryCompoundDataTerm;
+				if(termFrom.getDefinition() instanceof QBufferedDataDef && termTo.getDefinition() instanceof QCharacterDef) {
+					QBufferedDataDef<?> charDefFrom = (QBufferedDataDef<?>) termFrom.getDefinition();
+					QCharacterDef charDefTo = (QCharacterDef) termTo.getDefinition();
+					
+					if(charDefTo.getLength() == 0)
+						charDefTo.setLength(charDefFrom.getLength());
+					
+				}
+				
+				return termTo;				
+			}
+			// compound to compound
+			else {
+
+				QDataTerm<QUnaryCompoundDataDef<?, ?>> unaryCompoundDataTerm = (QDataTerm<QUnaryCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
+				copyDataTerm(termTo, unaryCompoundDataTerm);
+	
+				// definition
+				QUnaryCompoundDataDef<?, ?> unaryCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataStructDef();
+				copyCompoundDataDef((QCompoundDataDef<?, ?>) termFrom.getDefinition(), unaryCompoundDataDef);
+				unaryCompoundDataTerm.setDefinition(unaryCompoundDataDef);
+				
+				return unaryCompoundDataTerm;
+			}
 		}
 	}
 

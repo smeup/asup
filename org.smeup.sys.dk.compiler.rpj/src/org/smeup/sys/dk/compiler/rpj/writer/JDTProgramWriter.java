@@ -57,7 +57,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
 
-		// modules
+		// modules		
 		List<String> modules = new ArrayList<>();
 		if (program.getSetupSection() != null) {
 			for (String module : program.getSetupSection().getModules())
@@ -96,7 +96,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			writePrinters(program.getFileSection().getPrinters());
 
 		}
-
+		
 		writeInit();
 
 		writeEntry(program, modules);

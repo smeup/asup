@@ -406,6 +406,7 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	 */
 	@Override
 	public void setName(String newName) {
+		
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())

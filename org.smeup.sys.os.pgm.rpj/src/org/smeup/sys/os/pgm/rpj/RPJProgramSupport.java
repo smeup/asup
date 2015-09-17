@@ -52,14 +52,14 @@ public class RPJProgramSupport {
 
 	@Inject
 	public QLogger logger;
-	
+
 	@Inject
 	public QProgramManager programManager;
-//	@Inject
-//	public QCommandManager commandManager;
+	// @Inject
+	// public QCommandManager commandManager;
 	@Inject
 	public QJob job;
-	
+
 	@DataDef(dimension = 99)
 	public QArray<QIndicator> qIN;
 	@DataDef
@@ -140,12 +140,14 @@ public class RPJProgramSupport {
 	public Date qDATE;
 	@DataDef
 	public Specials qSP;
-	@DataDef(length=1024)
+	@DataDef(length = 1024)
 	public QCharacter qLDA;
+	@DataDef(precision = 3)
+	public QDecimal qParms;
 
 	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	NumberFormat numberFormat = new DecimalFormat();
-	
+
 	public static class ProgramStatus extends QDataStructWrapper {
 
 		private static final long serialVersionUID = 1L;
@@ -259,16 +261,39 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(QString program, QData[] parameters) {
+		this.qParms.eval(parameters.length);
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
 
 	public void qCall(String program, QData[] parameters) {
-//		System.out.println("call:\t" + program);
+		this.qParms.eval(parameters.length);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
+	public void qCall(QString program, QData[] parameters, QIndicator error) {
+		this.qParms.eval(parameters.length);
+
+		try {
+			error.eval(false);
+			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
+		} catch (RuntimeException e) {
+			error.eval(true);
+		}
+	}
+
+	public void qCall(String program, QData[] parameters, QIndicator error) {
+		this.qParms.eval(parameters.length);
+
+		try {
+			error.eval(false);
+			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+		} catch (RuntimeException e) {
+			error.eval(true);
+		}
+	}
+
 	public QString qChar(QDecimal numeric) {
-		if(numeric.getScale() > 0)
+		if (numeric.getScale() > 0)
 			return qBox(Double.toString(numeric.asDouble()));
 		else
 			return qBox(Long.toString(numeric.asLong()));
@@ -324,9 +349,9 @@ public class RPJProgramSupport {
 		character.eval(numeric);
 
 		switch (format) {
-		case "Z":			
+		case "Z":
 			character.eval(numberFormat.format(Double.parseDouble(character.s())));
-//			character.eval(character.s().replaceAll("0", " "));
+			// character.eval(character.s().replaceAll("0", " "));
 			break;
 		case "X":
 			break;
@@ -334,7 +359,7 @@ public class RPJProgramSupport {
 			System.out.println("Unexpected condition: sbdofsd8frRWE6R");
 			break;
 		}
-		
+
 		return character;
 	}
 
@@ -437,10 +462,10 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qTestn(QString string) {
-		
+
 		QIndicator indicator = dataFactory.createIndicator(true);
 		string.testn(indicator);
-		
+
 		return indicator;
 	}
 
@@ -458,47 +483,47 @@ public class RPJProgramSupport {
 		return qSTATUS.qStatus;
 	}
 
+	public QDecimal qParms() {
+		return qParms;
+	}
+
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(source.substring(0, from-1));
+		sb.append(source.substring(0, from - 1));
 		sb.append(replacement);
-		sb.append(source.substring(from+length-1));
-				
+		sb.append(source.substring(from + length - 1));
+
 		QCharacter character = dataFactory.createCharacter(source.length(), false, true);
 		character.eval(sb.toString());
-		
+
 		return character;
 	}
 
 	public QArray<?> qSubarr(QArray<?> array, int start, int elements) {
-		
+
 		return array.qSubarr(start, elements);
 	}
 
-	
 	// TODO remove return value
 	public QNumeric qTime(QDatetime datetime) {
-		
+
 		// TODO
-		
+
 		return null;
 	}
 
 	public void qTime(QNumeric datetime) {
 
-	    Calendar CALENDAR = Calendar.getInstance();
-		if(datetime.getLength() == 14) {
-			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));			
-		}
-		else if(datetime.getLength() == 12) {
+		Calendar CALENDAR = Calendar.getInstance();
+		if (datetime.getLength() == 14) {
+			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
+		} else if (datetime.getLength() == 12) {
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
-		}
-		else if(datetime.getLength() == 6) {
+		} else if (datetime.getLength() == 6) {
 			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
-		}
-		else
-			System.err.println("Unknown length: "+datetime.getLength());
+		} else
+			System.err.println("Unknown length: " + datetime.getLength());
 	}
 
 	public QString qTrim(String source) {
@@ -585,14 +610,14 @@ public class RPJProgramSupport {
 
 		return character;
 	}
-	
+
 	/*
 	 * Replicate definition of qSubst for %SST CL function implementation
 	 */
 	public QString qSst(String string1, QNumeric startIndex, QNumeric length) {
-		
+
 		return qSubst(string1, startIndex.asInteger(), length.asInteger());
-		
+
 	}
 
 	public QString qStr(QPointer source, Integer length) {
@@ -609,7 +634,7 @@ public class RPJProgramSupport {
 
 	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
 		target.clear();
-		for (QDecimal element: list) {
+		for (QDecimal element : list) {
 			target.plus(element);
 		}
 	}
@@ -635,6 +660,7 @@ public class RPJProgramSupport {
 	public QDataWriter qAll(String string) {
 		return QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter().set(string);
 	}
+
 	public QDataWriter qAll(int numeric) {
 		return this.dataWriter.set(numeric);
 	}
@@ -850,7 +876,7 @@ public class RPJProgramSupport {
 	}
 
 	public QCharacter qSubst(QString source, Integer startIndex, Integer length) {
-		return source.qSubst(startIndex, length);		
+		return source.qSubst(startIndex, length);
 	}
 
 	public QCharacter qSubst(String source, Integer startIndex, Integer length) {

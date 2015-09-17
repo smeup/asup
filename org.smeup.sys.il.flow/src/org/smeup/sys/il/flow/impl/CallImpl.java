@@ -27,6 +27,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getError <em>Error</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +65,26 @@ public class CallImpl extends InvokeImpl implements QCall {
 	 * @ordered
 	 */
 	protected EList<String> parameters;
+
+	/**
+	 * The default value of the '{@link #getError() <em>Error</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getError()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ERROR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getError() <em>Error</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getError()
+	 * @generated
+	 * @ordered
+	 */
+	protected String error = ERROR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -116,6 +137,27 @@ public class CallImpl extends InvokeImpl implements QCall {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getError() {
+		return error;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setError(String newError) {
+		String oldError = error;
+		error = newError;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALL__ERROR, oldError, error));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -126,6 +168,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 				return getProgram();
 			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
 				return getParameters();
+			case QIntegratedLanguageFlowPackage.CALL__ERROR:
+				return getError();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -145,6 +189,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends String>)newValue);
 				return;
+			case QIntegratedLanguageFlowPackage.CALL__ERROR:
+				setError((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -162,6 +209,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
 				getParameters().clear();
 				return;
+			case QIntegratedLanguageFlowPackage.CALL__ERROR:
+				setError(ERROR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -177,6 +227,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 				return PROGRAM_EDEFAULT == null ? program != null : !PROGRAM_EDEFAULT.equals(program);
 			case QIntegratedLanguageFlowPackage.CALL__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
+			case QIntegratedLanguageFlowPackage.CALL__ERROR:
+				return ERROR_EDEFAULT == null ? error != null : !ERROR_EDEFAULT.equals(error);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -194,6 +246,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 		result.append(program);
 		result.append(", parameters: ");
 		result.append(parameters);
+		result.append(", error: ");
+		result.append(error);
 		result.append(')');
 		return result.toString();
 	}
