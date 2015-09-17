@@ -661,35 +661,28 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.qAddr();
 	}
 
-	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(QCharacter source, QIndicator found) {
+		return delegate.qScan(source, found);
 	}
 
-	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
+		return delegate.qScan(source, start, found);
 	}
 
-	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(QCharacter source, Number start, QIndicator found) {
+		return delegate.qScan(source, start, found);
 	}
 
-	public QNumeric qScan(String argument, QNumeric start, Number length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(String source, QIndicator found) {
+		return delegate.qScan(source, found);
 	}
 
-	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(String source, QNumeric start, QIndicator found) {
+		return delegate.qScan(source, start, found);
 	}
 
-	public QNumeric qScan(QCharacter argument, Number start, Number length) {
-		return delegate.qScan(argument, start, length);
+	public QNumeric qScan(String source, Number start, QIndicator found) {
+		return delegate.qScan(source, start, found);
 	}
 
-	public QNumeric qScan(String argument, Number start, QNumeric length) {
-		return delegate.qScan(argument, start, length);
-	}
-
-	public QNumeric qScan(String argument, Number start, Number length) {
-		return delegate.qScan(argument, start, length);
-	}
 }

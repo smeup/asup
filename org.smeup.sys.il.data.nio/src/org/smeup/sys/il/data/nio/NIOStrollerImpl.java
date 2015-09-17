@@ -16,6 +16,7 @@ import java.util.List;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -29,12 +30,12 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOStrollerImpl() {
-		super();
+	public NIOStrollerImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOStrollerImpl(D model, int dimension, SortDirection sortDirection) {
-		super(model, dimension, sortDirection);
+	public NIOStrollerImpl(QDataContainer dataContainer, D model, int dimension, SortDirection sortDirection) {
+		super(dataContainer, model, dimension, sortDirection);
 	}
 
 	@Override
@@ -495,85 +496,56 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start) {
-		return current().qScan(argument, start);
-	}
-
-	@Override
-	public QNumeric qScan(String argument, QNumeric start) {
-		return current().qScan(argument, start);
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start) {
-		return current().qScan(argument, start);
-	}
-
-	@Override
-	public QNumeric qScan(String argument, Number start) {
-		return current().qScan(argument, start);
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument) {
-		return current().qScan(argument);
-	}
-
-	@Override
-	public QNumeric qScan(String argument) {
-		return current().qScan(argument);
-	}
-
-	@Override
 	public void testn(QIndicator numeric) {
 		current().testn(numeric);
 	}
 
-	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source) {
+		return current().qScan(source);
 	}
 
-	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source, QIndicator found) {
+		return current().qScan(source, found);
 	}
 
-	@Override
-	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source, QNumeric start) {
+		return current().qScan(source, start);
 	}
 
-	@Override
-	public QNumeric qScan(String argument, QNumeric start, Number length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
+		return current().qScan(source, start, found);
 	}
 
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source, Number start) {
+		return current().qScan(source, start);
 	}
 
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start, Number length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(QCharacter source, Number start, QIndicator found) {
+		return current().qScan(source, start, found);
 	}
 
-	@Override
-	public QNumeric qScan(String argument, Number start, QNumeric length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(String source) {
+		return current().qScan(source);
 	}
 
-	@Override
-	public QNumeric qScan(String argument, Number start, Number length) {
-		// TODO Auto-generated method stub
-		return null;
+	public QNumeric qScan(String source, QIndicator found) {
+		return current().qScan(source, found);
 	}
+
+	public QNumeric qScan(String source, QNumeric start) {
+		return current().qScan(source, start);
+	}
+
+	public QNumeric qScan(String source, QNumeric start, QIndicator found) {
+		return current().qScan(source, start, found);
+	}
+
+	public QNumeric qScan(String source, Number start) {
+		return current().qScan(source, start);
+	}
+
+	public QNumeric qScan(String source, Number start, QIndicator found) {
+		return current().qScan(source, start, found);
+	}
+
 }

@@ -21,6 +21,7 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
@@ -37,8 +38,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private transient ByteBuffer _buffer;
 
-	public NIOBufferedDataImpl() {
-		super();
+	public NIOBufferedDataImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
 	protected NIOBufferedDataImpl getParent() {
@@ -48,7 +49,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public QNumeric qLen() {
 
-		NIODecimalImpl decimalImpl = new NIODecimalImpl(5, 0);
+		NIODecimalImpl decimalImpl = new NIODecimalImpl(getDataContainer(), 5, 0);
 		decimalImpl.allocate();
 		decimalImpl.eval(getLength());
 
@@ -513,7 +514,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public QPointer qAddr() {
-		return new NIOPointerImpl(this);
+		return new NIOPointerImpl(getDataContainer(), this);
 	}
 
 	public int compareBytes(byte[] b1, byte[] b2) {

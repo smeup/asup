@@ -15,14 +15,15 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QNumeric;
 
 public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNumeric {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIONumericImpl() {
-		super();
+	public NIONumericImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
 	@Override

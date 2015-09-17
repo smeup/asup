@@ -21,6 +21,7 @@ import java.util.List;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
@@ -35,12 +36,12 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	private D _model;
 	private SortDirection sortDirection = null;
 
-	public NIOBufferedListImpl() {
-		super();
+	public NIOBufferedListImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOBufferedListImpl(D model, SortDirection sortDirection) {
-		super();
+	public NIOBufferedListImpl(QDataContainer dataContainer, D model, SortDirection sortDirection) {
+		super(dataContainer);
 		this._model = model;
 		this.sortDirection = sortDirection;
 	}

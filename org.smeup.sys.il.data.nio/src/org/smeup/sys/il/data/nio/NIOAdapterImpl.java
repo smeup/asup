@@ -12,13 +12,14 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.data.QDataContainer;
 
 public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOAdapterImpl() {
-		super(null);
+	public NIOAdapterImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
 	@Override
@@ -37,28 +38,28 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 
 		if (value instanceof Byte) {
 			Byte number = (Byte) value;
-			NIONumericImpl numeric = new NIODecimalImpl(15, 5);
+			NIONumericImpl numeric = new NIODecimalImpl(getDataContainer(), 15, 5);
 			numeric.allocate();
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Short) {
 			Short number = (Short) value;
-			NIONumericImpl numeric = new NIODecimalImpl(15, 5);
+			NIONumericImpl numeric = new NIODecimalImpl(getDataContainer(), 15, 5);
 			numeric.allocate();
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Integer) {
 			Integer number = (Integer) value;
-			NIONumericImpl numeric = new NIODecimalImpl(15, 5);
+			NIONumericImpl numeric = new NIODecimalImpl(getDataContainer(), 15, 5);
 			numeric.allocate();
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Long) {
 			Long number = (Long) value;
-			NIONumericImpl numeric = new NIODecimalImpl(15, 5);
+			NIONumericImpl numeric = new NIODecimalImpl(getDataContainer(), 15, 5);
 			numeric.allocate();
 			numeric.eval(number);
 			setDelegate(numeric);
@@ -67,7 +68,7 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 			String string = value.toString();
 			try {
 				long number = Long.parseLong(string);
-				NIONumericImpl numeric = new NIODecimalImpl(15, 5);
+				NIONumericImpl numeric = new NIODecimalImpl(getDataContainer(), 15, 5);
 				numeric.allocate();
 				numeric.eval(number);
 				setDelegate(numeric);
@@ -75,7 +76,7 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 				int stringLength = string.length();
 				if (stringLength == 0)
 					stringLength = 32;
-				NIOCharacterImpl character = new NIOCharacterImpl(stringLength);
+				NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), stringLength);
 				character.allocate();
 				character.eval(string);
 

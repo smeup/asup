@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QHexadecimal;
 
 public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadecimal {
@@ -21,12 +22,12 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 
 	private int _length;
 
-	public NIOHexadecimalImpl() {
-		super();
+	public NIOHexadecimalImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOHexadecimalImpl(int length) {
-		super();
+	public NIOHexadecimalImpl(QDataContainer dataContainer, int length) {
+		super(dataContainer);
 		this._length = length;
 	}
 

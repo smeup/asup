@@ -12,18 +12,19 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataStruct;
 
 public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements QDataStruct {
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOAbstractDataStruct() {
-		super();
+	public NIOAbstractDataStruct(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOAbstractDataStruct(int length) {
-		super(length);
+	public NIOAbstractDataStruct(QDataContainer dataContainer, int length) {
+		super(dataContainer, length);
 	}
 
 	@Override

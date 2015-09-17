@@ -17,6 +17,7 @@ import java.util.Arrays;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -33,12 +34,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	protected int _length;
 
-	public NIOCharacterImpl() {
-		super();
+	public NIOCharacterImpl(QDataContainer dataContainer) {
+		super(dataContainer);
 	}
 
-	public NIOCharacterImpl(int length) {
-		super();
+	public NIOCharacterImpl(QDataContainer dataContainer, int length) {
+		super(dataContainer);
 		_length = length;
 	}
 
@@ -589,7 +590,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// String str = asString().substring(start.intValue() - 1,
 		// length.intValue()-1);
 
-		QCharacter character = new NIOCharacterImpl(length.intValue());
+		QCharacter character = new NIOCharacterImpl(getDataContainer(), length.intValue());
 		slice(character, start.intValue() - 1);
 
 		return character;
@@ -600,7 +601,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		String str = trim();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
 		character.allocate();
 		character.eval(str);
 
@@ -611,7 +612,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QCharacter qTriml() {
 		String str = trimL();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
 		character.allocate();
 		character.eval(str);
 
@@ -622,107 +623,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QCharacter qTrimr() {
 		String str = trimR();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
 		character.allocate();
 		character.eval(str);
 
 		return character;
-	}
 
-	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start) {
-		return qScan(argument.s(), start.i());
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start, QNumeric length) {
-		return qScan(argument.s(), start.i(), length.i());
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument, QNumeric start, Number length) {
-		return qScan(argument.s(), start.i(), length);
-	}
-
-	
-	@Override
-	public QNumeric qScan(String argument, QNumeric start) {
-		return qScan(argument, start.i());
-	}
-
-	@Override
-	public QNumeric qScan(String argument, QNumeric start, QNumeric length) {
-		return qScan(argument, start.i(), length.i());
-	}
-
-	@Override
-	public QNumeric qScan(String argument, QNumeric start, Number length) {
-		return qScan(argument, start.i(), length);
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start) {
-		return qScan(argument.s(), start);
-	}
-
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start, QNumeric length) {
-		return qScan(argument.s(), start, length.i());
-	}
-	
-	@Override
-	public QNumeric qScan(QCharacter argument, Number start, Number length) {
-		return qScan(argument.s(), start, length);
-	}
-	
-	
-	@Override
-	public QNumeric qScan(QCharacter argument) {
-		return qScan(argument.s(), (Number) null);
-	}
-
-	@Override
-	public QNumeric qScan(String argument) {
-		return qScan(argument, (Number) null);
-	}
-
-	@Override
-	public QNumeric qScan(String argument, Number start) {
-		// TODO revision
-		return qScan(argument, start, 0);
-		/*
-		NIODecimalImpl number = new NIODecimalImpl(5, 0);
-		if (start == null)
-			start = 1;
-		int a = argument.indexOf(toString(), start.intValue());
-		number.eval(a);
-		return number;
-*/
-	}
-
-	@Override
-	public QNumeric qScan(String argument, Number start, Number length) {
-
-		NIODecimalImpl number = new NIODecimalImpl(5, 0);
-		if (start == null)
-			start = 1;
-		int a = 0;
-		if(length.intValue()==0)
-			a = argument.indexOf(toString(), start.intValue()-1);
-		else
-			a = argument.indexOf(toString().substring(0, length.intValue()), start.intValue()-1);
-	    number.eval(a);
-		if(a<0)
-	    	number.eval(0);
-		else
-	    	number.eval(a+1);
-		
-		return number;
-	}
-
-	@Override
-	public QNumeric qScan(String argument, Number start, QNumeric length) {
-		return qScan(argument, start, length.i());
 	}
 	
 	@Override
@@ -754,12 +660,79 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		return result;
 	}
+	
+	@Override
+	public QNumeric qScan(QCharacter source) {
+		return qScan(source.s(), (Integer)null, null);
+	}
 
+	@Override
+	public QNumeric qScan(QCharacter source, QIndicator found) {
+		return qScan(source.s(), (Integer)null, found);
+	}
 
+	@Override
+	public QNumeric qScan(QCharacter source, QNumeric start) {
+		return qScan(source.s(), start.asInteger(), null);
+	}
 
+	@Override
+	public QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
+		return qScan(source.s(), start.asInteger(), found);
+	}
 
+	@Override
+	public QNumeric qScan(QCharacter source, Number start) {
+		return qScan(source.s(), start, null);
+	}
 
+	@Override
+	public QNumeric qScan(QCharacter source, Number start, QIndicator found) {
+		return qScan(source.s(), start, found);
+	}
 
+	@Override
+	public QNumeric qScan(String source) {
+		return qScan(source, (Integer)null, null);
+	}
 
+	@Override
+	public QNumeric qScan(String source, QIndicator found) {
+		return qScan(source, (Integer)null, found);
+	}
 
+	@Override
+	public QNumeric qScan(String source, QNumeric start) {
+		return qScan(source, start.asInteger(), null);
+	}
+
+	@Override
+	public QNumeric qScan(String source, QNumeric start, QIndicator found) {
+		return qScan(source, start.asInteger(), found);
+	}
+
+	@Override
+	public QNumeric qScan(String source, Number start) {
+		return qScan(source, start, null);
+	}	
+	
+	@Override
+	public QNumeric qScan(String source, Number start, QIndicator found) {
+
+		NIODecimalImpl number = new NIODecimalImpl(getDataContainer(), 5, 0);
+		number.allocate();
+		if (start == null)
+			start = 1;
+		
+		int i = source.indexOf(toString(), start.intValue()-1);
+		if(i<0) 
+			number.eval(0);
+		else 
+			number.eval(i+1);
+		
+		if(found != null)
+			found.eval(number.ge(1));
+		
+		return number;
+	}
 }
