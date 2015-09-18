@@ -126,10 +126,26 @@ public class RPJCallableUnitLinker {
 
 			dataTerm.accept(dataLikeVisitor);
 
-			dataSection.getDatas().remove(dataTerm);
-			dataSection.getDatas().add(dataLikeVisitor.getDataTerm());
+			if (dataLikeVisitor.getDataTerm() != null) {
+				dataSection.getDatas().remove(dataTerm);
+				dataSection.getDatas().add(dataLikeVisitor.getDataTerm());
+				compilationUnit.refresh();
+			}
 		}
 
+		while (!dataLikeVisitor.getTermsTodo().isEmpty()) {
+			dataLikeVisitor.reset();
+
+			QDataTerm<?> termTodo = dataLikeVisitor.getTermsTodo().pop();
+			termTodo.accept(dataLikeVisitor);
+
+			if (dataLikeVisitor.getDataTerm() != null) {
+				dataSection.getDatas().remove(termTodo);
+				dataSection.getDatas().add(dataLikeVisitor.getDataTerm());
+				compilationUnit.refresh();
+			} else
+				"".toCharArray();
+		}
 	}
 
 	public void linkFormulas() {
@@ -150,11 +166,12 @@ public class RPJCallableUnitLinker {
 			dataFormulasResolver.reset();
 
 			dataTerm.accept(dataFormulasResolver);
-			if (dataFormulasResolver.getDataTerm() == null)
-				"".toCharArray();
 
-			dataSection.getDatas().remove(dataTerm);
-			dataSection.getDatas().add(dataFormulasResolver.getDataTerm());
+			if (dataFormulasResolver.getDataTerm() != null) {
+				dataSection.getDatas().remove(dataTerm);
+				dataSection.getDatas().add(dataFormulasResolver.getDataTerm());
+				compilationUnit.refresh();
+			}
 		}
 
 	}
@@ -178,11 +195,11 @@ public class RPJCallableUnitLinker {
 
 			dataTerm.accept(dataOverlayVisitor);
 
-			if (dataOverlayVisitor.getDataTerm() == null)
-				"".toCharArray();
-
-			dataSection.getDatas().remove(dataTerm);
-			dataSection.getDatas().add(dataOverlayVisitor.getDataTerm());
+			if (dataOverlayVisitor.getDataTerm() != null) {
+				dataSection.getDatas().remove(dataTerm);
+				dataSection.getDatas().add(dataOverlayVisitor.getDataTerm());				
+				compilationUnit.refresh();
+			}
 		}
 
 	}
@@ -241,7 +258,6 @@ public class RPJCallableUnitLinker {
 			linkFileTerm(printerTerm);
 	}
 
-
 	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm) {
 
@@ -255,14 +271,14 @@ public class RPJCallableUnitLinker {
 			if (dataRecord == null)
 				return;
 
-			QFileFormat<QCompoundDataDef<?,?>> internalFileFormat = new FileFormatImpl<QCompoundDataDef<?,?>>() {
+			QFileFormat<QCompoundDataDef<?, ?>> internalFileFormat = new FileFormatImpl<QCompoundDataDef<?, ?>>() {
 				private static final long serialVersionUID = 1L;
-			};			
-			internalFileFormat.setDefinition(dataRecord.getDefinition());			
+			};
+			internalFileFormat.setDefinition(dataRecord.getDefinition());
 
 			// remove redefined record
 			this.compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
-			
+
 			return;
 		} else {
 			QExternalFile externalFile = QOperatingSystemFileFactory.eINSTANCE.createExternalFile();
@@ -274,20 +290,20 @@ public class RPJCallableUnitLinker {
 				QDatabaseFile databaseFile = (QDatabaseFile) file;
 				externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
 
-				QDataSetTerm dataSet = (QDataSetTerm)fileTerm;
+				QDataSetTerm dataSet = (QDataSetTerm) fileTerm;
 				if (dataSet.getFormatName() == null)
 					dataSet.setFormatName(databaseFile.getDatabaseFormat().getName());
 
 				QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> format = dataSet.getFormat();
-				if (format == null) { 
-					QDatabaseFileFormat databaseFileFormat = databaseFile.getDatabaseFormat(); 
-					dataSet.setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) EcoreUtil.copy((EObject)databaseFileFormat));
+				if (format == null) {
+					QDatabaseFileFormat databaseFileFormat = databaseFile.getDatabaseFormat();
+					dataSet.setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) EcoreUtil.copy((EObject) databaseFileFormat));
 				}
-				if(dataSet.getPrefix() != null)
+				if (dataSet.getPrefix() != null)
 					dataSet.getFormat().getDefinition().setPrefix(dataSet.getPrefix());
-				
+
 				QCompilerLinker compilerLinker = linkExternalFile(dataSet.getFormat(), externalFile);
-				if(compilerLinker != null)
+				if (compilerLinker != null)
 					dataSet.getFacets().add(compilerLinker);
 
 				// redefine record
@@ -312,9 +328,9 @@ public class RPJCallableUnitLinker {
 				this.compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 			} else if (file instanceof QDisplayFile) {
 
-				QDisplayTerm displayTerm = (QDisplayTerm)fileTerm;
-				if(displayTerm.getFormat() == null) {
-					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?,QDataTerm<?>>>() {
+				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
+				if (displayTerm.getFormat() == null) {
+					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
 						private static final long serialVersionUID = 1L;
 					};
 					internalFormat.setDefinition(new CompoundDataDefImpl() {
@@ -337,15 +353,15 @@ public class RPJCallableUnitLinker {
 						}
 					});
 					displayTerm.setFormat(internalFormat);
-				}					
-										
+				}
+
 				linkExternalFile(displayTerm.getFormat(), externalFile);
-				
+
 			} else if (file instanceof QPrinterFile) {
 
-				QPrintTerm printTerm = (QPrintTerm)fileTerm;
-				if(printTerm.getFormat() == null) {
-					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?,QDataTerm<?>>>() {
+				QPrintTerm printTerm = (QPrintTerm) fileTerm;
+				if (printTerm.getFormat() == null) {
+					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
 						private static final long serialVersionUID = 1L;
 					};
 					internalFormat.setDefinition(new CompoundDataDefImpl() {
@@ -369,24 +385,24 @@ public class RPJCallableUnitLinker {
 					});
 					printTerm.setFormat(internalFormat);
 				}
-				
+
 				linkExternalFile(printTerm.getFormat(), externalFile);
-				
+
 			}
 		}
 
 		QCompilerLinker compilerLinker = buildCompilerLinker(file);
-		if(compilerLinker != null)
+		if (compilerLinker != null)
 			fileTerm.getFacets().add(compilerLinker);
 	}
-	
+
 	public QCompilerLinker linkExternalFile(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile) {
 
 		QFile file = getFile(externalFile.getName());
-		
+
 		return linkExternalFile(qDataTerm, externalFile, file);
 	}
-	
+
 	public QCompilerLinker linkExternalFile(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile, QFile file) {
 
 		if (externalFile.getName().startsWith("*"))
@@ -444,7 +460,6 @@ public class RPJCallableUnitLinker {
 		} else
 			throw new OperatingSystemRuntimeException("Unknown file type: " + externalFile.getName());
 
-		
 		return buildCompilerLinker(file);
 	}
 
@@ -459,7 +474,7 @@ public class RPJCallableUnitLinker {
 
 		return compilerLinker;
 	}
-	
+
 	private void appendElements(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QFileFormat<?> fileFormat) {
 
 		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
@@ -473,7 +488,6 @@ public class RPJCallableUnitLinker {
 		}
 	}
 
-
 	private QFile getFile(String name) {
 
 		QFile file = null;
@@ -482,7 +496,7 @@ public class RPJCallableUnitLinker {
 			file = fileReader.lookup(name);
 		else
 			file = fileOverride.getFileTo();
-		
+
 		return file;
 	}
 
@@ -493,7 +507,7 @@ public class RPJCallableUnitLinker {
 
 		String attribute = file.getAttribute();
 		if (attribute != null && (attribute.equals("PF") || attribute.equals("LF")))
-//			attribute = "dbf";
+			// attribute = "dbf";
 			attribute = "dbf.gen";
 
 		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "file." + attribute.toLowerCase() + "/";
@@ -534,9 +548,10 @@ public class RPJCallableUnitLinker {
 		// TODO
 		QLibrary library = libraryReader.lookup(module.getLibrary());
 
-//		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "module/";
+		// String pathURI = library.getPackageURI().toString().replaceAll("/",
+		// ".") + "module/";
 		String pathURI = library.getPackageURI().toString().replaceAll("/", ".") + "module.gen/";
-		
+
 		URI packageURI = library.getPackageURI().resolve(module.getPackageInfoURI());
 
 		String address = "asup:/omac/" + pathURI + packageURI.toString().replaceAll("/", ".") + "." + module.getName();
