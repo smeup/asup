@@ -138,7 +138,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				if (overlay.getName() != null && !getCompilationUnit().equalsTermName(parentTerm.getName(), overlay.getName()))
 					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 
-				if (overlay.getPosition() != null && !overlay.getPosition().equals(Overlay.NEXT))
+				if (overlay.getPosition() != null)
 					writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
 
 			} else {
