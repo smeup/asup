@@ -362,6 +362,16 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
+	public void movea(String value) {
+		delegate.movea(value);
+	}
+
+	@Override
+	public void movea(String value, boolean clear) {
+		delegate.movea(value, clear);
+	}
+	
+	@Override
 	public void movel(boolean value) {
 		delegate.movel(value);
 	}
