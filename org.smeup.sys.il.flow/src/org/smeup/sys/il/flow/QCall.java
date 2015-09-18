@@ -19,6 +19,7 @@ import java.util.List;
  *   <li>{@link org.smeup.sys.il.flow.QCall#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getError <em>Error</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QCall#getErrorHandling <em>Error Handling</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,5 +99,31 @@ public interface QCall extends QInvoke {
 	 * @generated
 	 */
 	void setError(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Error Handling</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Error Handling</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Error Handling</em>' attribute.
+	 * @see #setErrorHandling(String)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCall_ErrorHandling()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getErrorHandling();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QCall#getErrorHandling <em>Error Handling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Error Handling</em>' attribute.
+	 * @see #getErrorHandling()
+	 * @generated
+	 */
+	void setErrorHandling(String value);
 
 } // QCall

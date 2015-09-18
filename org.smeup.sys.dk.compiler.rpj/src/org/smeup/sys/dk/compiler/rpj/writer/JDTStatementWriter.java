@@ -195,9 +195,16 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		arrayCreation.setInitializer(arrayInitializer);
 		methodInvocation.arguments().add(arrayCreation);
 
-		// error handling
+		// error indicator
 		if(statement.getError() != null) {
 			QTermExpression errorExpression = expressionParser.parseTerm(statement.getError());
+			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
+			
+			methodInvocation.arguments().add(jdtErrorExpression);
+		}
+		// error handling
+		if(statement.getErrorHandling() != null) {
+			QTermExpression errorExpression = expressionParser.parseTerm(statement.getErrorHandling());
 			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
 			
 			methodInvocation.arguments().add(jdtErrorExpression);

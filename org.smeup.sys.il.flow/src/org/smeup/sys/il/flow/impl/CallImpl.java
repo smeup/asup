@@ -28,6 +28,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getError <em>Error</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getErrorHandling <em>Error Handling</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,6 +86,26 @@ public class CallImpl extends InvokeImpl implements QCall {
 	 * @ordered
 	 */
 	protected String error = ERROR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getErrorHandling() <em>Error Handling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getErrorHandling()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ERROR_HANDLING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getErrorHandling() <em>Error Handling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getErrorHandling()
+	 * @generated
+	 * @ordered
+	 */
+	protected String errorHandling = ERROR_HANDLING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -158,6 +179,27 @@ public class CallImpl extends InvokeImpl implements QCall {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getErrorHandling() {
+		return errorHandling;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setErrorHandling(String newErrorHandling) {
+		String oldErrorHandling = errorHandling;
+		errorHandling = newErrorHandling;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.CALL__ERROR_HANDLING, oldErrorHandling, errorHandling));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -170,6 +212,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 				return getParameters();
 			case QIntegratedLanguageFlowPackage.CALL__ERROR:
 				return getError();
+			case QIntegratedLanguageFlowPackage.CALL__ERROR_HANDLING:
+				return getErrorHandling();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,6 +236,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 			case QIntegratedLanguageFlowPackage.CALL__ERROR:
 				setError((String)newValue);
 				return;
+			case QIntegratedLanguageFlowPackage.CALL__ERROR_HANDLING:
+				setErrorHandling((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -212,6 +259,9 @@ public class CallImpl extends InvokeImpl implements QCall {
 			case QIntegratedLanguageFlowPackage.CALL__ERROR:
 				setError(ERROR_EDEFAULT);
 				return;
+			case QIntegratedLanguageFlowPackage.CALL__ERROR_HANDLING:
+				setErrorHandling(ERROR_HANDLING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -229,6 +279,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 				return parameters != null && !parameters.isEmpty();
 			case QIntegratedLanguageFlowPackage.CALL__ERROR:
 				return ERROR_EDEFAULT == null ? error != null : !ERROR_EDEFAULT.equals(error);
+			case QIntegratedLanguageFlowPackage.CALL__ERROR_HANDLING:
+				return ERROR_HANDLING_EDEFAULT == null ? errorHandling != null : !ERROR_HANDLING_EDEFAULT.equals(errorHandling);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -248,6 +300,8 @@ public class CallImpl extends InvokeImpl implements QCall {
 		result.append(parameters);
 		result.append(", error: ");
 		result.append(error);
+		result.append(", errorHandling: ");
+		result.append(errorHandling);
 		result.append(')');
 		return result.toString();
 	}

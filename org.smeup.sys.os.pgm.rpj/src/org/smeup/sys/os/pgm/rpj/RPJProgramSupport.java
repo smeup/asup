@@ -292,6 +292,28 @@ public class RPJProgramSupport {
 		}
 	}
 
+	public void qCall(QString program, QData[] parameters, String errorHandling) {
+		this.qParms.eval(parameters.length);
+		try {
+			qError(null).eval(false);
+			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
+		} catch (RuntimeException e) {
+			// TODO
+			qError(null).eval(true);
+		}
+	}
+	
+	public void qCall(String program, QData[] parameters, String errorHandling) {
+		this.qParms.eval(parameters.length);
+		try {
+			qError(null).eval(false);
+			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+		} catch (RuntimeException e) {
+			// TODO
+			qError(null).eval(true);
+		}
+	}
+	
 	public QString qChar(QDecimal numeric) {
 		if (numeric.getScale() > 0)
 			return qBox(Double.toString(numeric.asDouble()));
