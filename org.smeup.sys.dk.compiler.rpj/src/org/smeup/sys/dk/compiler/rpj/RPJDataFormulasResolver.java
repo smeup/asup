@@ -183,7 +183,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 					if (!dataValue.isConstant())
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdget9qbt23423");
 
-					QDefault default_ = target.getDefault();
+					QDefault default_ = dataValue.getDefault();
 					if(default_ != null) {
 						String defaultValue = default_.getValue();
 

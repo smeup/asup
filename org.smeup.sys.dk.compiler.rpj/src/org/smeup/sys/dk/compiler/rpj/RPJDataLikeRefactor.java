@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.il.core.meta.QFacet;
@@ -24,18 +25,17 @@ import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.os.file.QExternalFile;
 
 public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
-
+	
 	@Inject
 	public RPJDataLikeRefactor(QCompilationUnit compilationUnit) {
 		super(compilationUnit);
 	}
-	
+
 	@Override
 	public boolean visit(QDataTerm<?> dataTerm) {
 
-		//TODO Rimuovere presto una volta capito cosa succede
 		if(dataTerm.getDataTermType()==null)
-			return false;
+			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sdbfg9br9wer6");
 		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
@@ -46,11 +46,18 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				if (like == null)
 					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04370");
 
+				if(like.getLike() != null) {
+					getTermsTodo().push(dataTerm);
+					break;
+				}
+				
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
 
 				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
+				
+				dataTerm.setLike(null);
 			} else
 				super.visit(dataTerm);
 
@@ -63,11 +70,18 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				if (like == null)
 					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04371");
 
+				if(like.getLike() != null) {
+					getTermsTodo().push(dataTerm);
+					break;
+				}
+
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
 
 				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
+				
+				dataTerm.setLike(null);
 			} else
 				super.visit(dataTerm);
 
@@ -79,11 +93,18 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				if (like == null)
 					throw new IntegratedLanguageExpressionRuntimeException("Invalid data term: " + dataTerm.getLike());
 
+				if(like.getLike() != null) {
+					getTermsTodo().push(dataTerm);
+					break;
+				}
+
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
 
-				setDataTerm(buildUnaryDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
+				setDataTerm(buildUnaryDataTerm(dataTerm, like));
+				
+				dataTerm.setLike(null);
 			} else
 				super.visit(dataTerm);
 
@@ -96,11 +117,18 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				if (like == null)
 					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04373");
 
+				if(like.getLike() != null) {
+					getTermsTodo().push(dataTerm);
+					break;
+				}
+
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
 
-				setDataTerm(buildUnaryDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
+				setDataTerm(buildUnaryDataTerm(dataTerm, like));
+				
+				dataTerm.setLike(null);
 			} else
 				super.visit(dataTerm);
 
