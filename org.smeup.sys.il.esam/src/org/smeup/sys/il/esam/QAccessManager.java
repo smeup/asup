@@ -8,6 +8,7 @@
 package org.smeup.sys.il.esam;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.QDataContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,10 +21,11 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  */
 public interface QAccessManager {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" contextProviderRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextProviderRequired="true" dataContextRequired="true"
 	 * @generated
 	 */
-	QAccessFactory createFactory(QContextProvider contextProvider);
+	QAccessFactory createFactory(QContextProvider contextProvider, QDataContext dataContext);
 
 } // QAccessManager

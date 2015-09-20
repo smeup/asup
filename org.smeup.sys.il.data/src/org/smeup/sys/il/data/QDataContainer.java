@@ -45,6 +45,14 @@ public interface QDataContainer extends QDataTermContainer {
 	QData getData(QDataTerm<?> dataTerm);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataContext getDataContext();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyRequired="true"
 	 * @generated

@@ -40,11 +40,20 @@ public interface QDataManager {
 	QDataContainer createDataContainer(QContext context, QObject object, EClass term);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
 	QDataFactory createFactory(QContext context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextRequired="true" dataContextRequired="true"
+	 * @generated
+	 */
+	QDataFactory createFactory(QContext context, QDataContext dataContext);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

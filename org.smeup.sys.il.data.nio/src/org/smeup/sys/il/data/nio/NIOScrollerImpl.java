@@ -12,7 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.SortDirection;
@@ -24,12 +24,12 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	private int _dimension;
 	private int _lastIndex;
 
-	public NIOScrollerImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOScrollerImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOScrollerImpl(QDataContainer dataContainer, D model, int dimension, SortDirection sortDirection) {
-		super(dataContainer, model, sortDirection);
+	public NIOScrollerImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
+		super(dataContext, model, sortDirection);
 		_dimension = dimension;
 	}
 

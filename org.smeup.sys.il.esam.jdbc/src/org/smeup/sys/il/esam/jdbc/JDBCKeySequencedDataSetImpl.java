@@ -15,6 +15,7 @@ import java.sql.SQLException;
 
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.esam.AccessMode;
@@ -26,8 +27,8 @@ import org.smeup.sys.il.esam.QKSDataSet;
 
 public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QKSDataSet<R> {
 
-	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct) {
-		super(databaseConnection, tableProvider, index, record, accessMode, userOpen, infoStruct);
+	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
+		super(databaseConnection, tableProvider, index, record, accessMode, userOpen, infoStruct, dataContext);
 
 	}
 

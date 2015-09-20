@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -34,12 +34,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	protected int _length;
 
-	public NIOCharacterImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOCharacterImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOCharacterImpl(QDataContainer dataContainer, int length) {
-		super(dataContainer);
+	public NIOCharacterImpl(QDataContext dataContext, int length) {
+		super(dataContext);
 		_length = length;
 	}
 
@@ -590,7 +590,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// String str = asString().substring(start.intValue() - 1,
 		// length.intValue()-1);
 
-		QCharacter character = new NIOCharacterImpl(getDataContainer(), length.intValue());
+		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue());
 		slice(character, start.intValue() - 1);
 
 		return character;
@@ -601,7 +601,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		String str = trim();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
 		character.allocate();
 		character.eval(str);
 
@@ -612,7 +612,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QCharacter qTriml() {
 		String str = trimL();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
 		character.allocate();
 		character.eval(str);
 
@@ -623,7 +623,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public QCharacter qTrimr() {
 		String str = trimR();
 
-		NIOCharacterImpl character = new NIOCharacterImpl(getDataContainer(), str.length());
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), str.length());
 		character.allocate();
 		character.eval(str);
 
@@ -719,7 +719,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public QNumeric qScan(String source, Number start, QIndicator found) {
 
-		NIODecimalImpl number = new NIODecimalImpl(getDataContainer(), 5, 0);
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 5, 0);
 		number.allocate();
 		if (start == null)
 			start = 1;

@@ -16,7 +16,7 @@ import java.util.List;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -30,12 +30,12 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	private static final long serialVersionUID = 1L;
 
-	public NIOStrollerImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOStrollerImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOStrollerImpl(QDataContainer dataContainer, D model, int dimension, SortDirection sortDirection) {
-		super(dataContainer, model, dimension, sortDirection);
+	public NIOStrollerImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
+		super(dataContext, model, dimension, sortDirection);
 	}
 
 	@Override

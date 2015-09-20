@@ -22,8 +22,10 @@ import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
@@ -33,8 +35,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private static final long serialVersionUID = 1L;
 
-	private transient QDataFactory dataFactory;
-
+	private QDataFactory dataFactory;
+	private QDataContext dataContext;
+	
 	private Map<String, QDataTerm<?>> dataTerms;
 
 	private Map<String, QData> datas;
@@ -43,13 +46,29 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private boolean useDefault;
 
-	protected NIODataContainerImpl(NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
+	protected NIODataContainerImpl(final NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataFactory = dataFactory;
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.useDefault = useDefault;
-		dataFactory.setDataContainer(this);
+		
+		this.dataContext = new QDataContext() {
+
+			private QIndicator found = dataFactory.createIndicator(true);
+			private QIndicator endOfData = dataFactory.createIndicator(true);
+			
+			@Override
+			public QIndicator found() {
+				return this.found;
+			}
+
+			@Override
+			public QIndicator endOfData() {
+				return this.endOfData;
+			}
+		};
+		dataFactory.setDataContext(dataContext);
 	}
 
 	@Override
@@ -280,5 +299,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public QDataFactory getDataFactory() {
 		return dataFactory;
+	}
+
+	@Override
+	public QDataContext getDataContext() {
+		return dataContext;
 	}
 }

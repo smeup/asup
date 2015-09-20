@@ -14,7 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.lang.reflect.Field;
 
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.Special;
 
@@ -24,12 +24,12 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 
 	private Class<E> _klass;
 
-	public NIOEnumImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOEnumImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOEnumImpl(QDataContainer dataContainer, Class<E> klass, QBufferedData delegate) {
-		super(dataContainer, delegate);
+	public NIOEnumImpl(QDataContext dataContext, Class<E> klass, QBufferedData delegate) {
+		super(dataContext, delegate);
 		this._klass = klass;
 	}
 

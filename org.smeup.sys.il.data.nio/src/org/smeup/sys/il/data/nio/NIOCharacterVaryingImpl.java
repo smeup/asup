@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 
@@ -25,12 +25,12 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	private short length;
 
-	public NIOCharacterVaryingImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOCharacterVaryingImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOCharacterVaryingImpl(QDataContainer dataContainer, int size) {
-		super(dataContainer, size);
+	public NIOCharacterVaryingImpl(QDataContext dataContext, int size) {
+		super(dataContext, size);
 	}
 
 

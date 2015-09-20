@@ -48,7 +48,7 @@ public class TestCommands extends E4TestProviderImpl {
 
 		QConnection connection = connectionManager.createConnection(catalog);
 		QDataFactory dataFactory = dataManager.createFactory(connection.getContext());
-		QAccessFactory accessFactory = accessManager.createFactory(connection);
+		QAccessFactory accessFactory = accessManager.createFactory(connection, dataFactory.getDataContext());
 
 		QContext testContext = connection.getContext().createChildContext("ILESAM");
 		testContext.set(QConnection.class, connection);

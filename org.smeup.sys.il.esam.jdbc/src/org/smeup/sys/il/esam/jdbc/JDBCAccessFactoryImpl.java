@@ -87,7 +87,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
 			}
 
-			return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, accessMode, userOpen, internalInfoStruct);
+			return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,7 +134,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
 			}
 
-			return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, accessMode, userOpen, internalInfoStruct);
+			return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
 
 		} catch (Exception e) {
 			e.printStackTrace();

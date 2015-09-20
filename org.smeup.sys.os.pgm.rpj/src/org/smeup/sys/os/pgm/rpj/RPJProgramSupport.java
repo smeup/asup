@@ -302,7 +302,7 @@ public class RPJProgramSupport {
 			qError(null).eval(true);
 		}
 	}
-	
+
 	public void qCall(String program, QData[] parameters, String errorHandling) {
 		this.qParms.eval(parameters.length);
 		try {
@@ -313,7 +313,7 @@ public class RPJProgramSupport {
 			qError(null).eval(true);
 		}
 	}
-	
+
 	public QString qChar(QDecimal numeric) {
 		if (numeric.getScale() > 0)
 			return qBox(Double.toString(numeric.asDouble()));
@@ -404,7 +404,10 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qEof(QDataSet<?> dataSet) {
-		return qBox(dataSet.isEndOfData());
+		if (dataSet == null)
+			return this.dataFactory.getDataContext().endOfData();
+		else
+			return qBox(dataSet.isEndOfData());
 	}
 
 	public QIndicator qOpen(QDataSet<?> dataSet) {
@@ -436,7 +439,7 @@ public class RPJProgramSupport {
 
 	public QIndicator qFound(QDataSet<?> dataSet) {
 		if (dataSet == null)
-			return qBox(false);
+			return this.dataFactory.getDataContext().found();
 		else
 			return qBox(dataSet.isFound());
 	}
@@ -785,12 +788,20 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
+		QNumeric result = null;
 		for (int i = startIndex; i <= numElements; i++) {
-			if (list.get(i).toString().trim().equals(argument.toString().trim()))
-				return qBox(i);
+			if (list.get(i).toString().trim().equals(argument.toString().trim())) {
+				result = qBox(i);
+				break;
+			}
 		}
 
-		return qBox(0);
+		if (result == null)
+			result = qBox(0);
+
+		this.dataFactory.getDataContext().found().eval(result.ge(1));
+
+		return result;
 	}
 
 	private <BD extends QBufferedData> QNumeric qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
@@ -801,12 +812,20 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
+		QNumeric result = null;
 		for (int i = startIndex; i <= numElements; i++) {
-			if (list.get(i).eq(argument))
-				return qBox(i);
+			if (list.get(i).eq(argument)) {
+				result = qBox(i);
+				break;
+			}
 		}
 
-		return qBox(0);
+		if (result == null)
+			result = qBox(0);
+
+		this.dataFactory.getDataContext().found().eval(result.ge(1));
+
+		return result;
 	}
 
 	private QNumeric qLookup(LookupOperator operator, Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
@@ -817,12 +836,20 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
+		QNumeric result = null;
 		for (int i = startIndex; i <= numElements; i++) {
-			if (list.get(i).eq(argument))
-				return qBox(i);
+			if (list.get(i).eq(argument)) {
+				result = qBox(i);
+				break;
+			}
 		}
 
-		return qBox(0);
+		if (result == null)
+			result = qBox(0);
+
+		this.dataFactory.getDataContext().found().eval(result.ge(1));
+
+		return result;
 	}
 
 	/* Scan */
@@ -845,6 +872,7 @@ public class RPJProgramSupport {
 		if (length != null)
 			position = qSubst(source, 1, length).toString().indexOf(argument, start - 1) + 1;
 		else
+			// TODO encoding?
 			position = source.asString().indexOf(argument, start - 1) + 1;
 
 		return qBox(position);

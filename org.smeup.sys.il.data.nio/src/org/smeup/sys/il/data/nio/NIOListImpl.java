@@ -20,7 +20,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
@@ -34,12 +34,12 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	private D _model;
 	private int _dimension;
 
-	public NIOListImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOListImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIOListImpl(QDataContainer dataContainer, D model, int dimension) {
-		super(dataContainer);
+	public NIOListImpl(QDataContext dataContext, D model, int dimension) {
+		super(dataContext);
 		this._model = model;
 		this._dimension = dimension;
 		this._elements = new ArrayList<D>(_dimension);

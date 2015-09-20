@@ -20,6 +20,7 @@ import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QBinary;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
@@ -60,8 +61,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private ResultSet resultSet;
 
 	private InfoStruct infoStruct;
+	private QDataContext dataContext;
 	
-	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct) {
+	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
@@ -70,6 +72,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.accessMode = accessMode;
 		this.tableProvider = tableProvider;
 		this.infoStruct = infoStruct;
+		this.dataContext = dataContext;
 
 		this.jdbcAccessHelper = new JDBCAccessHelper();
 		this.dataReader = new JDBCDataReaderImpl();
@@ -139,21 +142,29 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	protected void handleSQLException(SQLException e) {
 
-		this.error = true;
 		this.found = false;
-		this.equal = false;
+		this.dataContext.found().eval(false);
 		this.endOfData = true;
+		this.dataContext.endOfData().eval(true);
+		
+		this.error = true;
+		this.equal = false;
+
 		this.infoStruct.rrn.clear();
 	}
 
 	private void init() {
 
+		this.found = false;
+		this.dataContext.found().eval(false);
+		this.endOfData = true;
+		this.dataContext.endOfData().eval(true);
+		
 		this.open = false;
 
-		this.found = false;
 		this.error = false;
 		this.equal = false;
-		this.endOfData = true;
+		
 		this.infoStruct.rrn.clear();
 
 		this.currentTable = null;
@@ -181,19 +192,16 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public boolean isEndOfData() {
-
 		return this.endOfData;
 	}
 
 	@Override
 	public boolean isEqual() {
-
 		return this.equal;
 	}
 
 	@Override
 	public boolean isFound() {
-
 		return this.found;
 	}
 
@@ -204,7 +212,6 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public boolean onError() {
-
 		return this.error;
 	}
 
@@ -304,8 +311,10 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			this.infoStruct.rrn.clear();
 
 			this.found = false;
+			this.dataContext.found().eval(false);
 			this.endOfData = true;
-			
+			this.dataContext.endOfData().eval(true);
+
 			return false;
 		}
 
@@ -316,7 +325,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			this.infoStruct.rrn.eval(rrn);
 			
 			this.found = true;
+			this.dataContext.found().eval(true);
 			this.endOfData = false;
+			this.dataContext.endOfData().eval(false);
 
 			return true;
 		} catch (SQLException e) {
@@ -440,7 +451,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			this.statement.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
+			this.dataContext.found().eval(true);
 			this.endOfData = false;
+			this.dataContext.endOfData().eval(false);
 
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -473,7 +486,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			this.statement.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
+			this.dataContext.found().eval(true);
 			this.endOfData = false;
+			this.dataContext.endOfData().eval(false);
 
 		} catch (SQLException e) {
 			handleSQLException(e);

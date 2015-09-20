@@ -18,6 +18,7 @@ import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.esam.QAccessFactory;
@@ -40,13 +41,13 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 	}
 
 	@Override
-	public QAccessFactory createFactory(QContextProvider contextProvider) {
+	public QAccessFactory createFactory(QContextProvider contextProvider, QDataContext dataContext) {
 
 		QContext context = contextProvider.getContext();
 		
 		QConnection connection = context.getAdapter(contextProvider, QConnection.class);
 
-		QDataFactory dataFactory = dataManager.createFactory(context);
+		QDataFactory dataFactory = dataManager.createFactory(context, dataContext);
 
 		return new JDBCAccessFactoryImpl(context, connection, dataFactory);
 	}

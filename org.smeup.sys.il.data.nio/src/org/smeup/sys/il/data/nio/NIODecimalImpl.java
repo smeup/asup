@@ -14,7 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 
 import com.ibm.as400.access.AS400ZonedDecimal;
@@ -29,12 +29,8 @@ public class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
 	private AS400ZonedDecimal zoned = null;
 
-	public NIODecimalImpl(QDataContainer dataContainer) {
-		super(dataContainer);
-	}
-
-	public NIODecimalImpl(QDataContainer dataContainer, int precision, int scale) {
-		super(dataContainer);
+	public NIODecimalImpl(QDataContext dataContext, int precision, int scale) {
+		super(dataContext);
 
 		zoned = getDecimal(precision, scale);
 	}

@@ -12,7 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 
@@ -20,8 +20,8 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 
 	private static final long serialVersionUID = 1L;
 	
-	public NIOPointerImpl(QDataContainer dataContainer, NIOBufferedDataImpl target) {
-		super(dataContainer);
+	public NIOPointerImpl(QDataContext dataContext, NIOBufferedDataImpl target) {
+		super(dataContext);
 		target.assign(this);
 	}
 

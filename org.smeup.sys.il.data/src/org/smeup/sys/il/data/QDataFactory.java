@@ -185,4 +185,12 @@ public interface QDataFactory {
 	 */
 	QDatetime createTimestamp(boolean initialize);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataContext getDataContext();
+
 } // QDataFactory

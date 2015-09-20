@@ -39,7 +39,7 @@ import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -94,15 +94,15 @@ import org.smeup.sys.il.data.term.impl.DataTermImpl;
 public class NIODataFactoryImpl implements QDataFactory {
 
 	private QContext context;
-	private QDataContainer dataContainer;
+	private QDataContext dataContext;
 
-	protected NIODataFactoryImpl(QContext context, QDataContainer dataContainer) {
+	protected NIODataFactoryImpl(QContext context, QDataContext dataContext) {
 		this.context = context;
-		this.dataContainer = dataContainer;
+		this.dataContext = dataContext;
 	}
 
-	protected void setDataContainer(QDataContainer dataContainer) {
-		this.dataContainer = dataContainer;
+	protected void setDataContext(QDataContext dataContext) {
+		this.dataContext = dataContext;
 	}
 
 	protected QContext getContext() {
@@ -147,7 +147,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			NIODataImpl model = (NIODataImpl) createData(listDef.getArgument(), false);
 
-			data = (D) new NIOListImpl<>(getDataContainer(), model, listDef.getDimension());
+			data = (D) new NIOListImpl<>(getDataContext(), model, listDef.getDimension());
 		}
 		// dataStruct
 		else if (dataDef instanceof QDataStructDef) {
@@ -172,7 +172,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		// base
 		else if (dataDef instanceof QAdapterDef)
 			// QAdapterDef adapterDef = (QAdapterDef)dataDef;
-			data = (D) new NIOAdapterImpl(getDataContainer());
+			data = (D) new NIOAdapterImpl(getDataContext());
 		else if (dataDef instanceof QBinaryDef) {
 			QBinaryDef binaryType = (QBinaryDef) dataDef;
 			data = (D) createBinary(binaryType.getType(), binaryType.isUnsigned(), initialize);
@@ -366,7 +366,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		NIOBufferedDataImpl model = (NIOBufferedDataImpl) createData(argument, false);
 
-		QArray<D> array = new NIOArrayImpl(getDataContainer(), model, dimension, sortDirection);
+		QArray<D> array = new NIOArrayImpl(getDataContext(), model, dimension, sortDirection);
 
 		if (initialize)
 			initialize(array);
@@ -380,7 +380,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		QBufferedData model = createData(argument, false);
 
-		QScroller<D> scroller = new NIOScrollerImpl(getDataContainer(), model, dimension, sortDirection);
+		QScroller<D> scroller = new NIOScrollerImpl(getDataContext(), model, dimension, sortDirection);
 
 		if (initialize)
 			initialize(scroller);
@@ -410,7 +410,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		}
 
-		QStroller<D> stroller = new NIOStrollerImpl(getDataContainer(), model, dimension, sortDirection);
+		QStroller<D> stroller = new NIOStrollerImpl(getDataContext(), model, dimension, sortDirection);
 		;
 
 		if (initialize)
@@ -432,7 +432,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			return null;
 		}
 
-		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContainer(), length, dataStructure);
+		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure);
 
 		int p = 1;
 		QBufferedData previousElement = null;
@@ -548,7 +548,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public <D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> dataTerms, int length, boolean initialize) {
 
-		NIODataStructImpl dataStructureDelegate = new NIODataStructImpl(getDataContainer(), length);
+		NIODataStructImpl dataStructureDelegate = new NIODataStructImpl(getDataContext(), length);
 
 		int p = 1;
 		for (QDataTerm<?> dataTerm : dataTerms) {
@@ -581,7 +581,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public <E extends Enum<E>, D extends QBufferedData> QEnum<E, D> createEnum(Class<E> classEnumerator, D dataDelegate, boolean initialize) {
-		return new NIOEnumImpl<E, D>(getDataContainer(), classEnumerator, dataDelegate);
+		return new NIOEnumImpl<E, D>(getDataContext(), classEnumerator, dataDelegate);
 	}
 
 	@Override
@@ -589,9 +589,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		QCharacter character = null;
 		if (varying)
-			character = new NIOCharacterVaryingImpl(getDataContainer(), length);
+			character = new NIOCharacterVaryingImpl(getDataContext(), length);
 		else
-			character = new NIOCharacterImpl(getDataContainer(), length);
+			character = new NIOCharacterImpl(getDataContext(), length);
 
 		if (initialize)
 			initialize(character);
@@ -602,7 +602,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public QBinary createBinary(BinaryType type, boolean unsigned, boolean initialize) {
 
-		QBinary binary = new NIOBinaryImpl(getDataContainer(), type, unsigned);
+		QBinary binary = new NIOBinaryImpl(getDataContext(), type, unsigned);
 
 		if (initialize)
 			initialize(binary);
@@ -617,7 +617,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		switch (type) {
 		case ZONED:
-			decimal = new NIODecimalImpl(getDataContainer(), precision, scale);
+			decimal = new NIODecimalImpl(getDataContext(), precision, scale);
 			break;
 		case PACKED:
 			break;
@@ -632,7 +632,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public QIndicator createIndicator(boolean initialize) {
 
-		QIndicator indicator = new NIOIndicatorImpl(getDataContainer());
+		QIndicator indicator = new NIOIndicatorImpl(getDataContext());
 
 		if (initialize)
 			initialize(indicator);
@@ -643,7 +643,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public QDatetime createDate(DatetimeType type, String format, boolean initialize) {
 
-		NIODatetimeImpl datetime = new NIODatetimeImpl(getDataContainer(), type, format);
+		NIODatetimeImpl datetime = new NIODatetimeImpl(getDataContext(), type, format);
 
 		if (initialize)
 			initialize(datetime);
@@ -660,7 +660,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public QHexadecimal createHexadecimal(int length, boolean initialize) {
 
-		QHexadecimal hexadecimal = new NIOHexadecimalImpl(getDataContainer(), length);
+		QHexadecimal hexadecimal = new NIOHexadecimalImpl(getDataContext(), length);
 
 		if (initialize)
 			initialize(hexadecimal);
@@ -777,7 +777,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		NIODataImpl model = (NIODataImpl) createData(argument, initialize);
 
-		QList<D> list = new NIOListImpl(getDataContainer(), model, dimension);
+		QList<D> list = new NIOListImpl(getDataContext(), model, dimension);
 
 		return list;
 
@@ -786,7 +786,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	@Override
 	public QPointer allocate(final int size) {
 
-		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl(getDataContainer()) {
+		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl(getDataContext()) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -811,10 +811,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 			}
 		};
 		bufferedData.allocate();
-		return new NIOPointerImpl(getDataContainer(), bufferedData);
+		return new NIOPointerImpl(getDataContext(), bufferedData);
 	}
 
-	private QDataContainer getDataContainer() {
-		return this.dataContainer;
+	public QDataContext getDataContext() {
+		return this.dataContext;
 	}
 }

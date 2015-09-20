@@ -21,7 +21,7 @@ import java.nio.ByteBuffer;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
@@ -38,8 +38,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private transient ByteBuffer _buffer;
 
-	public NIOBufferedDataImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIOBufferedDataImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
 	protected NIOBufferedDataImpl getParent() {
@@ -49,7 +49,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public QNumeric qLen() {
 
-		NIODecimalImpl decimalImpl = new NIODecimalImpl(getDataContainer(), 5, 0);
+		NIODecimalImpl decimalImpl = new NIODecimalImpl(getDataContext(), 5, 0);
 		decimalImpl.allocate();
 		decimalImpl.eval(getLength());
 
@@ -73,18 +73,18 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			NIOBufferedDataImpl tempParent = _parent;
 			ByteBuffer tempBuffer = _buffer;
 			int tempPosition = _position;
-			QDataContainer tempDataContainer = getDataContainer();
+			QDataContext tempDataContext = getDataContext();
 			
 			_parent = null;
 			_buffer = null;
 			_position = 0;
-			_dataContainer = null;			
+			_dataContext = null;			
 			oos.writeObject(this);
 			
 			_parent = tempParent;
 			_buffer = tempBuffer;
 			_position = tempPosition;
-			_dataContainer = tempDataContainer;
+			_dataContext = tempDataContext;
 			oos.close();
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
@@ -127,7 +127,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		nioBufferedData._parent = this;
 		nioBufferedData._buffer = null;
 		nioBufferedData._position = position;
-		nioBufferedData._dataContainer = getDataContainer();
+		nioBufferedData._dataContext = getDataContext();
 		// System.out.println(nioBufferedData._position);
 	}
 
@@ -529,7 +529,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public QPointer qAddr() {
-		return new NIOPointerImpl(getDataContainer(), this);
+		return new NIOPointerImpl(getDataContext(), this);
 	}
 
 	public int compareBytes(byte[] b1, byte[] b2) {

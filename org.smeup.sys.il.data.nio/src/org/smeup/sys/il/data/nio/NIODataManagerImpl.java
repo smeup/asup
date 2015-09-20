@@ -26,6 +26,7 @@ import org.smeup.sys.il.core.meta.QFrameManager;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -61,6 +62,11 @@ public class NIODataManagerImpl implements QDataManager {
 	@Override
 	public QDataFactory createFactory(QContext context) {
 		return new NIODataFactoryImpl(context, null);
+	}
+
+	@Override
+	public QDataFactory createFactory(QContext context, QDataContext dataContext) {
+		return new NIODataFactoryImpl(context, dataContext);
 	}
 
 	@Override

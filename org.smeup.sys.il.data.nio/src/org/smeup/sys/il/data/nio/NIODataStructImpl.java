@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QDataContainer;
+import org.smeup.sys.il.data.QDataContext;
 
 public class NIODataStructImpl extends NIOAbstractDataStruct {
 
@@ -26,12 +26,12 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 	private Map<String, QBufferedData> _elements;
 	private boolean _dynamicLength;
 
-	public NIODataStructImpl(QDataContainer dataContainer) {
-		super(dataContainer);
+	public NIODataStructImpl(QDataContext dataContext) {
+		super(dataContext);
 	}
 
-	public NIODataStructImpl(QDataContainer dataContainer, int length) {
-		super(dataContainer, length);
+	public NIODataStructImpl(QDataContext dataContext, int length) {
+		super(dataContext, length);
 
 		this._elements = new LinkedHashMap<String, QBufferedData>();
 		this._dynamicLength = (length == 0 ? true : false);

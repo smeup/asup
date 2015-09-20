@@ -243,13 +243,14 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="getDataContext" lowerBound="1" eType="#//DataContext"/>
+    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDataTerm">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>
       </eGenericType>
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getKeys" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -289,6 +290,10 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true">
+    <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -485,6 +490,7 @@
     <eOperations name="createTimestamp" lowerBound="1" eType="#//Datetime">
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="getDataContext" lowerBound="1" eType="#//DataContext"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
@@ -506,6 +512,10 @@
     </eOperations>
     <eOperations name="createFactory" lowerBound="1" eType="#//DataFactory">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
+    <eOperations name="createFactory" lowerBound="1" eType="#//DataFactory">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="dataContext" lowerBound="1" eType="#//DataContext"/>
     </eOperations>
     <eOperations name="validateDataContainer" lowerBound="1">
       <eParameters name="container" lowerBound="1" eType="#//DataContainer"/>
