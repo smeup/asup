@@ -1148,6 +1148,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		initEClass(connectionManagerEClass, QConnectionManager.class, "ConnectionManager", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(connectionManagerEClass, this.getConnection(), "createConnection", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDatabaseException());
 
 		op = addEOperation(connectionManagerEClass, this.getConnection(), "createConnection", 0, 1, IS_UNIQUE, IS_ORDERED);

@@ -32,8 +32,8 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 	private QDatabaseManager databaseManager;
 
 	@Override
-	public QConnection createConnection() throws SQLException {
-		return createConnection(null, null, null);
+	public QConnection createConnection(QContext context) throws SQLException {
+		return createConnection(context, null, null, null);
 	}
 
 	@Override
@@ -49,6 +49,11 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 	@Override
 	public QConnection createConnection(String catalog, String user, String password) throws SQLException {
 
+		return createConnection(null, catalog, user, password);
+	}
+
+	private QConnection createConnection(QContext context, String catalog, String user, String password) throws SQLException {
+
 		if (!(databaseManager instanceof BaseDatabaseManagerImpl))
 			return null;
 
@@ -58,14 +63,19 @@ public class BaseConnectionManagerImpl extends ConnectionManagerImpl {
 
 		QCatalogContainer catalogContainer = baseDatabaseManagerImpl.getCatalogContainer(catalog);
 
-		QContext context;
-		try {
-			context = catalogContainer.getCatalogContext().createChildContext(connectionID);
-		} catch (UnsupportedOperationException e) {
-			throw new SQLException("Unable to open a database connection");
+		QContext contextChild = null;
+
+		if (context != null) 
+			contextChild = context.createChildContext(connectionID);
+		else {
+			try {
+				contextChild = catalogContainer.getCatalogContext().createChildContext(connectionID);
+			} catch (UnsupportedOperationException e) {
+				throw new SQLException("Unable to open a database connection");
+			}			
 		}
 
-		QConnection connection = new BaseConnectionImpl(baseDatabaseManagerImpl.getDatabaseContainer(), context);
+		QConnection connection = new BaseConnectionImpl(baseDatabaseManagerImpl.getDatabaseContainer(), contextChild);
 		connection.setCatalog(catalog);
 
 		return connection;

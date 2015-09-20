@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QConnectionManager;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
+import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -42,11 +43,11 @@ public abstract class ConnectionManagerImpl extends MinimalEObjectImpl.Container
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public QConnection createConnection() throws SQLException {
+	public QConnection createConnection(QContext context) throws SQLException {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

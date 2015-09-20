@@ -8,6 +8,7 @@
 package org.smeup.sys.db.core;
 
 import java.sql.SQLException;
+import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,11 +21,12 @@ import java.sql.SQLException;
  */
 public interface QConnectionManager {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.db.core.DatabaseException"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" contextRequired="true"
 	 * @generated
 	 */
-	QConnection createConnection() throws SQLException;
+	QConnection createConnection(QContext context) throws SQLException;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
