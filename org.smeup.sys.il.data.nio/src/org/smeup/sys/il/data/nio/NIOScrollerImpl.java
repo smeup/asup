@@ -116,11 +116,6 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	@Override
-	public String asString() {
-		return asString();
-	}
-
-	@Override
 	protected byte getFiller() {
 		return ((NIOBufferedDataImpl)getModel()).getFiller();
 	}

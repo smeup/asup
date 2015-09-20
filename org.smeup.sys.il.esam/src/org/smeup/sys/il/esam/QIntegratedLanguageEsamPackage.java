@@ -207,22 +207,31 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int FILE_TERM__FILE_NAME = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int FILE_TERM__USER_OPEN = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Format</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_TERM__FORMAT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
+	int FILE_TERM__FORMAT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Info Struct</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_TERM__INFO_STRUCT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_TERM__USER_OPEN = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>File Term</em>' class. <!--
@@ -231,7 +240,7 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 3;
+	int FILE_TERM_FEATURE_COUNT = QIntegratedLanguageCoreTermPackage.TERM_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -251,15 +260,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DATA_SET_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_SET_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
-
-	/**
 	 * The feature id for the '<em><b>Format</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -267,6 +267,24 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_SET_TERM__FORMAT = FILE_TERM__FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Info Struct</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_TERM__INFO_STRUCT = FILE_TERM__INFO_STRUCT;
+
+	/**
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
 
 	/**
 	 * The feature id for the '<em><b>Access Mode</b></em>' attribute. <!--
@@ -339,15 +357,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int DISPLAY_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int DISPLAY_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
-
-	/**
 	 * The feature id for the '<em><b>Format</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -355,6 +364,24 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISPLAY_TERM__FORMAT = FILE_TERM__FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Info Struct</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_TERM__INFO_STRUCT = FILE_TERM__INFO_STRUCT;
+
+	/**
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
 
 	/**
 	 * The number of structural features of the '<em>Display Term</em>' class.
@@ -468,15 +495,6 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	int PRINT_TERM__FILE_NAME = FILE_TERM__FILE_NAME;
 
 	/**
-	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 * @ordered
-	 */
-	int PRINT_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
-
-	/**
 	 * The feature id for the '<em><b>Format</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -484,6 +502,24 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINT_TERM__FORMAT = FILE_TERM__FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Info Struct</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_TERM__INFO_STRUCT = FILE_TERM__INFO_STRUCT;
+
+	/**
+	 * The feature id for the '<em><b>User Open</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_TERM__USER_OPEN = FILE_TERM__USER_OPEN;
 
 	/**
 	 * The number of structural features of the '<em>Print Term</em>' class.
@@ -704,6 +740,17 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFileTerm_Format();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.esam.QFileTerm#getInfoStruct <em>Info Struct</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Info Struct</em>'.
+	 * @see org.smeup.sys.il.esam.QFileTerm#getInfoStruct()
+	 * @see #getFileTerm()
+	 * @generated
+	 */
+	EAttribute getFileTerm_InfoStruct();
 
 	/**
 	 * Returns the meta object for class '
@@ -1004,6 +1051,14 @@ public interface QIntegratedLanguageEsamPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FILE_TERM__FORMAT = eINSTANCE.getFileTerm_Format();
+
+		/**
+		 * The meta object literal for the '<em><b>Info Struct</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_TERM__INFO_STRUCT = eINSTANCE.getFileTerm_InfoStruct();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.esam.impl.KeyListTermImpl <em>Key List Term</em>}' class.

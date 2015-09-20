@@ -22,4 +22,8 @@ public @interface FileDef {
 	String name();
 
 	boolean userOpen() default false;
+	
+	String info() default INFO_NULL;
+	
+	public static final String INFO_NULL = "*NULL";
 }

@@ -237,8 +237,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	@Override
 	public void in() {
-		// TODO Auto-generated method stub
-
+		delegate.in();
 	}
 
 	@Override
@@ -448,8 +447,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	@Override
 	public void out() {
-		// TODO Auto-generated method stub
-
+		delegate.out();
 	}
 
 	public void setDelegate(QDataStruct delegate) {

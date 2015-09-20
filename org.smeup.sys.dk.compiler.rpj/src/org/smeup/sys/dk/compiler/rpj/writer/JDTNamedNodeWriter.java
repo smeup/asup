@@ -146,7 +146,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 
 				if (overlay.getPosition() != null)
-					if (overlay.getPosition().equals(Overlay.NEXT))
+					if (overlay.getPosition().equals(Overlay.POS_NEXT))
 						throw new RuntimeException("Unexpected runtime exception: nc707256c76045");
 					else
 						writeAnnotation(field, Overlay.class, "position", overlay.getPosition());

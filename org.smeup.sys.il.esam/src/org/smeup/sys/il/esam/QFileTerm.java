@@ -19,8 +19,9 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getInfoStruct <em>Info Struct</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,5 +106,31 @@ public interface QFileTerm extends QTerm {
 	 * @generated
 	 */
 	void setFormat(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> value);
+
+	/**
+	 * Returns the value of the '<em><b>Info Struct</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Info Struct</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Info Struct</em>' attribute.
+	 * @see #setInfoStruct(String)
+	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getFileTerm_InfoStruct()
+	 * @model
+	 * @generated
+	 */
+	String getInfoStruct();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QFileTerm#getInfoStruct <em>Info Struct</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Info Struct</em>' attribute.
+	 * @see #getInfoStruct()
+	 * @generated
+	 */
+	void setInfoStruct(String value);
 
 } // QFileTerm

@@ -52,6 +52,14 @@ public interface QDataContainer extends QDataTermContainer {
 	QDataTerm<?> getDataTerm(String key);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataFactory getDataFactory();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
@@ -105,13 +113,13 @@ public interface QDataContainer extends QDataTermContainer {
 	 * @model keyRequired="true"
 	 * @generated
 	 */
-	void resetData(String key);
+	QData resetData(String key);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model dataTermRequired="true"
 	 * @generated
 	 */
-	void resetData(QDataTerm<?> dataTerm);
+	QData resetData(QDataTerm<?> dataTerm);
 
 } // QDataContainer

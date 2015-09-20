@@ -26,8 +26,9 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getFileName <em>File Name</em>}</li>
- *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#isUserOpen <em>User Open</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getInfoStruct <em>Info Struct</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#isUserOpen <em>User Open</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,6 +59,36 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	protected String fileName = FILE_NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getFormat() <em>Format</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> format;
+
+	/**
+	 * The default value of the '{@link #getInfoStruct() <em>Info Struct</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInfoStruct()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INFO_STRUCT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInfoStruct() <em>Info Struct</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInfoStruct()
+	 * @generated
+	 * @ordered
+	 */
+	protected String infoStruct = INFO_STRUCT_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #isUserOpen() <em>User Open</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isUserOpen()
@@ -74,16 +105,6 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	 * @ordered
 	 */
 	protected boolean userOpen = USER_OPEN_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getFormat() <em>Format</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFormat()
-	 * @generated
-	 * @ordered
-	 */
-	protected QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> format;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -188,6 +209,27 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getInfoStruct() {
+		return infoStruct;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInfoStruct(String newInfoStruct) {
+		String oldInfoStruct = infoStruct;
+		infoStruct = newInfoStruct;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT, oldInfoStruct, infoStruct));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -232,10 +274,12 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 		switch (featureID) {
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
 				return getFileName();
-			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
-				return isUserOpen();
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				return getFormat();
+			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
+				return getInfoStruct();
+			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
+				return isUserOpen();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,11 +295,14 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
 				setFileName((String)newValue);
 				return;
-			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
-				setUserOpen((Boolean)newValue);
-				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>)newValue);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
+				setInfoStruct((String)newValue);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
+				setUserOpen((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -271,11 +318,14 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
 				setFileName(FILE_NAME_EDEFAULT);
 				return;
-			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
-				setUserOpen(USER_OPEN_EDEFAULT);
-				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>)null);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
+				setInfoStruct(INFO_STRUCT_EDEFAULT);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
+				setUserOpen(USER_OPEN_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -290,10 +340,12 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 		switch (featureID) {
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
-			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
-				return userOpen != USER_OPEN_EDEFAULT;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				return format != null;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
+				return INFO_STRUCT_EDEFAULT == null ? infoStruct != null : !INFO_STRUCT_EDEFAULT.equals(infoStruct);
+			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
+				return userOpen != USER_OPEN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -309,6 +361,8 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (fileName: ");
 		result.append(fileName);
+		result.append(", infoStruct: ");
+		result.append(infoStruct);
 		result.append(", userOpen: ");
 		result.append(userOpen);
 		result.append(')');

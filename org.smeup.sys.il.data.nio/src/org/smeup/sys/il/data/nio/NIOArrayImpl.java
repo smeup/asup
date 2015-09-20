@@ -109,11 +109,6 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public String asString() {
-		return asString();
-	}
-
-	@Override
 	public void eval(QArray<D> value) {
 		if (value == null)
 			return;

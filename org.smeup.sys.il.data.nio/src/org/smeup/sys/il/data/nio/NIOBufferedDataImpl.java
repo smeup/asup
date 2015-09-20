@@ -73,18 +73,24 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			NIOBufferedDataImpl tempParent = _parent;
 			ByteBuffer tempBuffer = _buffer;
 			int tempPosition = _position;
+			QDataContainer tempDataContainer = getDataContainer();
+			
 			_parent = null;
 			_buffer = null;
 			_position = 0;
+			_dataContainer = null;			
 			oos.writeObject(this);
+			
 			_parent = tempParent;
 			_buffer = tempBuffer;
 			_position = tempPosition;
+			_dataContainer = tempDataContainer;
 			oos.close();
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIOBufferedDataImpl) ois.readObject();
+
 			ois.close();
 
 			return copy;
@@ -121,7 +127,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		nioBufferedData._parent = this;
 		nioBufferedData._buffer = null;
 		nioBufferedData._position = position;
-
+		nioBufferedData._dataContainer = getDataContainer();
 		// System.out.println(nioBufferedData._position);
 	}
 

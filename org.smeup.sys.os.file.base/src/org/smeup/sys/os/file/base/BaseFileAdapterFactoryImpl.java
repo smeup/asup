@@ -84,7 +84,7 @@ public class BaseFileAdapterFactoryImpl implements QAdapterFactory {
 				if (connection == null)
 					try {
 						// TODO credentials
-						connection = connectionManager.createConnection();
+						connection = connectionManager.createConnection(job.getContext());
 						job.getContext().set(QConnection.class, connection);
 					
 						connection.getContext().set(QAliasResolver.class, new BaseAliasResolverImpl());

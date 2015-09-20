@@ -249,6 +249,7 @@
       </eGenericType>
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getKeys" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -278,10 +279,10 @@
       </eParameters>
     </eOperations>
     <eOperations name="resetData"/>
-    <eOperations name="resetData">
+    <eOperations name="resetData" eType="#//Data">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="resetData">
+    <eOperations name="resetData" eType="#//Data">
       <eParameters name="dataTerm" lowerBound="1">
         <eGenericType eClassifier="#//term/DataTerm">
           <eTypeArguments/>
@@ -380,6 +381,14 @@
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="createDataTerm" lowerBound="1">
+      <eGenericType eClassifier="#//term/DataTerm">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaAnnotation"/>
+    </eOperations>
     <eOperations name="createDate" lowerBound="1" eType="#//Datetime">
       <eParameters name="type" lowerBound="1" eType="#//def/DatetimeType"/>
       <eParameters name="format" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -476,7 +485,6 @@
     <eOperations name="createTimestamp" lowerBound="1" eType="#//Datetime">
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="getDataContainer" eType="#//DataContainer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">

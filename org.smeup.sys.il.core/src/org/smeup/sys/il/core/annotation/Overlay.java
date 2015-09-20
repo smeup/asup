@@ -16,10 +16,10 @@ import java.lang.annotation.Target;
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 public @interface Overlay {
 
-	String name() default OWNER;
+	String name() default NAME_OWNER;
 
-	String position() default NEXT;
+	String position() default POS_NEXT;
 
-	public static final String OWNER = "*OWNER";
-	public static final String NEXT = "*NEXT";
+	public static final String NAME_OWNER = "*OWNER";
+	public static final String POS_NEXT = "*NEXT";
 }

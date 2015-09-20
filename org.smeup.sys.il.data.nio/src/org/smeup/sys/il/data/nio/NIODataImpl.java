@@ -19,17 +19,17 @@ import org.smeup.sys.il.data.QDataVisitor;
 public abstract class NIODataImpl implements QData {
 
 	private static final long serialVersionUID = 1L;	
-	private QDataContainer dataContainer;
+	
+	protected transient QDataContainer _dataContainer;
 	
 	public NIODataImpl(QDataContainer dataContainer) {
-		super();
-		this.dataContainer = dataContainer;
+		this._dataContainer = dataContainer;
 	}
 
 	protected QDataContainer getDataContainer() {
-		return this.dataContainer;
+		return this._dataContainer;
 	}
-	
+
 	public abstract NIODataImpl copy();
 
 	@Override

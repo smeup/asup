@@ -18,8 +18,13 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QStatement;
+import org.smeup.sys.il.core.annotation.Overlay;
+import org.smeup.sys.il.data.QBinary;
+import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
+import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
@@ -45,7 +50,6 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private boolean error;
 	private boolean equal;
 	private boolean endOfData;
-	private int rrn;
 
 	private Table currentTable;
 	protected OperationSet currentOpSet;
@@ -55,7 +59,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private QStatement statement;
 	private ResultSet resultSet;
 
-	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen) {
+	private InfoStruct infoStruct;
+	
+	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct) {
 
 		this.databaseConnection = databaseConnection;
 
@@ -63,6 +69,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.record = record;
 		this.accessMode = accessMode;
 		this.tableProvider = tableProvider;
+		this.infoStruct = infoStruct;
 
 		this.jdbcAccessHelper = new JDBCAccessHelper();
 		this.dataReader = new JDBCDataReaderImpl();
@@ -82,7 +89,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 			// virtual element
 			if (indexColumn.getName().equals(QDatabaseManager.TABLE_COLUMN_RELATIVE_RECORD_NUMBER_NAME))
-				keySet[i] = rrn;
+				keySet[i] = this.infoStruct.rrn.asInteger();
 			else
 				keySet[i] = record.getElement(indexColumn.getName());
 
@@ -136,7 +143,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.found = false;
 		this.equal = false;
 		this.endOfData = true;
-		this.rrn = 0;
+		this.infoStruct.rrn.clear();
 	}
 
 	private void init() {
@@ -147,7 +154,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.error = false;
 		this.equal = false;
 		this.endOfData = true;
-		this.rrn = 0;
+		this.infoStruct.rrn.clear();
 
 		this.currentTable = null;
 
@@ -293,18 +300,21 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 			// TODO verify if not necessary
 			this.record.clear();
-			this.rrn = 0;
+			
+			this.infoStruct.rrn.clear();
 
 			this.found = false;
 			this.endOfData = true;
-
+			
 			return false;
 		}
 
 		try {
 			this.record.accept(this.dataReader);
-			this.rrn = this.resultSet.getInt(record.getElements().size() + 1);
 
+			int rrn = this.resultSet.getInt(record.getElements().size() + 1);
+			this.infoStruct.rrn.eval(rrn);
+			
 			this.found = true;
 			this.endOfData = false;
 
@@ -427,7 +437,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 *
 			 * this.resultSet.moveToCurrentRow();
 			 */
-			this.statement.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.rrn));
+			this.statement.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.endOfData = false;
@@ -460,7 +470,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 
-			this.statement.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.rrn));
+			this.statement.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.endOfData = false;
@@ -471,5 +481,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		if (error != null)
 			error.eval(onError());
+	}	
+
+	public static class InfoStruct extends QDataStructWrapper {
+		private static final long serialVersionUID = 1L;
+		
+		@DataDef(binaryType = BinaryType.INTEGER)
+		@Overlay(position = "397")
+		public QBinary rrn;
 	}
+
 } // QDataSetImpl

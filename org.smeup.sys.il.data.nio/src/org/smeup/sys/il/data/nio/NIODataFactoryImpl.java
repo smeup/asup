@@ -17,6 +17,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -29,6 +30,8 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.meta.QDefault;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -86,6 +89,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.def.impl.EnumDefImpl;
 import org.smeup.sys.il.data.def.impl.ListDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class NIODataFactoryImpl implements QDataFactory {
 
@@ -100,7 +104,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	protected void setDataContainer(QDataContainer dataContainer) {
 		this.dataContainer = dataContainer;
 	}
-	
+
 	protected QContext getContext() {
 		return context;
 	}
@@ -206,6 +210,33 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		QEnumDef<E, BD> enumDef = (QEnumDef<E, BD>) dataDef;
 		return (D) createEnum(enumDef.getKlass(), createData(enumDef.getDelegate(), false), initialize);
+	}
+
+	@Override
+	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
+
+		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {
+			private static final long serialVersionUID = 1L;
+		};
+
+		dataTerm.setName(name);
+
+		dataTerm.setDefinition(createDataDef(type, annotations));
+		 		
+		for (Annotation annotation : annotations) {
+			if(annotation instanceof DataDef) {
+				DataDef dataDef = (DataDef) annotation;		
+				
+				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
+				_default.setValue(dataDef.value());
+				_default.getValues().addAll(Arrays.asList(dataDef.values()));
+				
+				if(!_default.isEmpty())
+					dataTerm.setDefault(_default);			
+			}
+		}
+
+		return dataTerm;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -433,7 +464,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 						} else
 							p = Integer.parseInt(position);
 
-					if (!overlay.name().equalsIgnoreCase(Overlay.OWNER)) {
+					if (!overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER)) {
 						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
 						if (overlayedData instanceof QBufferedList<?>) {
 							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
@@ -441,7 +472,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 							arrayData.setListOwner(arrayOverlayed);
 
-							if (overlay.position().equals(Overlay.NEXT)) {
+							if (overlay.position().equals(Overlay.POS_NEXT)) {
 								if (previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
 									NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
 									p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
@@ -711,29 +742,31 @@ public class NIODataFactoryImpl implements QDataFactory {
 					else if (eClass.getName().replaceAll("Def", "").equalsIgnoreCase(method.getName().replace("Format", "")))
 						eFeature = eClass.getEStructuralFeature("format");
 
-				if (eFeature != null)
-					try {
-						Object object = method.invoke(annotation, new Object[] {});
-						if (object instanceof Overlay) {
-							Overlay overlay = (Overlay) object;
-							QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
-							qOverlay.setName(overlay.name());
-							qOverlay.setPosition(overlay.position());
-							object = qOverlay;
-						}
+				if (eFeature == null)
+					continue;
 
-						if (!(object instanceof Class<?>))
-							if (object != null && object.getClass().isArray()) {
-								List<Object> objects = new ArrayList<>();
-								for (Object element : (Object[]) object)
-									objects.add(element);
-								eObject.eSet(eFeature, objects);
-							} else
-								eObject.eSet(eFeature, object);
-
-					} catch (Exception e) {
-						throw new IntegratedLanguageCoreRuntimeException(e);
+				try {
+					Object object = method.invoke(annotation, new Object[] {});
+					if (object instanceof Overlay) {
+						Overlay overlay = (Overlay) object;
+						QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+						qOverlay.setName(overlay.name());
+						qOverlay.setPosition(overlay.position());
+						object = qOverlay;
 					}
+
+					if (!(object instanceof Class<?>))
+						if (object != null && object.getClass().isArray()) {
+							List<Object> objects = new ArrayList<>();
+							for (Object element : (Object[]) object)
+								objects.add(element);
+							eObject.eSet(eFeature, objects);
+						} else
+							eObject.eSet(eFeature, object);
+
+				} catch (Exception e) {
+					throw new IntegratedLanguageCoreRuntimeException(e);
+				}
 			}
 
 	}
@@ -781,8 +814,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return new NIOPointerImpl(getDataContainer(), bufferedData);
 	}
 
-	@Override
-	public QDataContainer getDataContainer() {
+	private QDataContainer getDataContainer() {
 		return this.dataContainer;
 	}
 }

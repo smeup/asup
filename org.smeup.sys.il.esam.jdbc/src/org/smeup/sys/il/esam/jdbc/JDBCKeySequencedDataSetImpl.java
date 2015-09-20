@@ -26,8 +26,8 @@ import org.smeup.sys.il.esam.QKSDataSet;
 
 public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetImpl<R> implements QKSDataSet<R> {
 
-	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen) {
-		super(databaseConnection, tableProvider, index, record, accessMode, userOpen);
+	protected JDBCKeySequencedDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct) {
+		super(databaseConnection, tableProvider, index, record, accessMode, userOpen, infoStruct);
 
 	}
 

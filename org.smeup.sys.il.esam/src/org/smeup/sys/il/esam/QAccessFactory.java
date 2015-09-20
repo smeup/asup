@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.esam;
 
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 
 /**
@@ -41,6 +42,14 @@ public interface QAccessFactory {
 	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
@@ -67,6 +76,14 @@ public interface QAccessFactory {
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
+	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
 	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper);
 
 	/**
@@ -84,5 +101,13 @@ public interface QAccessFactory {
 	 * @generated
 	 */
 	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" wrapperRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
 
 } // QAccessFactory

@@ -19,6 +19,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -67,6 +68,7 @@ import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QDisplayTerm;
+import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.esam.QPrint;
@@ -201,7 +203,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", dataSet.getFileName());
-			writeAnnotation(field, FileDef.class, "userOpen", dataSet.isUserOpen());
+			
+			EObject eDataSet = (EObject)dataSet;
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+				writeAnnotation(field, FileDef.class, "userOpen", dataSet.isUserOpen());
+
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSet.getInfoStruct()));
+			
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 			String className = null;
@@ -344,7 +353,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", display.getFileName());
-			writeAnnotation(field, FileDef.class, "userOpen", display.isUserOpen());
+			
+			EObject eDataSet = (EObject)display;
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+				writeAnnotation(field, FileDef.class, "userOpen", display.isUserOpen());
+
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+				writeAnnotation(field, FileDef.class, "info", display.getInfoStruct());
+
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 			String className = null;
@@ -383,7 +399,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", printer.getFileName());
-			writeAnnotation(field, FileDef.class, "userOpen", printer.isUserOpen());
+			
+			EObject eDataSet = (EObject)printer;
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+				writeAnnotation(field, FileDef.class, "userOpen", printer.isUserOpen());
+
+			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+				writeAnnotation(field, FileDef.class, "info", printer.getInfoStruct());
+
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 			String className = null;

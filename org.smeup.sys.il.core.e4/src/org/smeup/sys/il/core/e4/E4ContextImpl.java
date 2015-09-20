@@ -13,7 +13,6 @@ package org.smeup.sys.il.core.e4;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -226,7 +225,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 			
 			@Override
 			public String getSystemLibrary() {
-				return getName();
+				return getContextDescription().getSystemLibrary();
 			}
 			
 			@Override
@@ -236,12 +235,12 @@ public abstract class E4ContextImpl extends ContextImpl {
 			
 			@Override
 			public List<String> getLibraryPath() {
-				return Collections.singletonList(getName());
+				return getContextDescription().getLibraryPath();
 			}
 			
 			@Override
 			public String getCurrentLibrary() {
-				return getName();
+				return getContextDescription().getCurrentLibrary();
 			}
 		};
 
