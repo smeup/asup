@@ -479,29 +479,44 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public QNumeric divide(short value) {
-		return divide(value, null);
+		return divide(value, (String)null);
 	}
 
 	@Override
-	public QNumeric divide(long value) {
-		return divide(value, null);
-	}
-
-	@Override
-	public QNumeric divide(int value) {
-		return divide(value, null);
-	}
-
-	@Override
-	public QNumeric divide(double value) {
-		return divide(value, null);
-	}
-
-	@Override
-	public QNumeric divide(QNumeric value) {
-		return divide(value, null);
+	public QNumeric divide(short value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
 	}
 	
+	@Override
+	public QNumeric divide(short value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(long value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(long value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(long value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(int value) {
+		return divide(value, (String)null);
+	}
 
 	@Override
 	public QNumeric divide(int value, String roundingMode) {
@@ -510,9 +525,33 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
-	public QNumeric divide(long value, String roundingMode) {
+	public QNumeric divide(int value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(double value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(double value, String haslRounding) {
 		eval(asDouble() / value);
 		return this;
+	}
+
+	@Override
+	public QNumeric divide(double value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(QNumeric value) {
+		return divide(value, (String)null);
 	}
 
 	@Override
@@ -522,14 +561,9 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
-	public QNumeric divide(short value, String roundingMode) {
-		eval(asDouble() / value);
+	public QNumeric divide(QNumeric value, QNumeric remainderTarget) {
+		eval(asDouble() / value.asDouble());
+		remainderTarget.eval(asDouble() % value.asDouble());
 		return this;
-	}
-
-	@Override
-	public QNumeric divide(double value, String haslRounding) {
-		eval(asDouble() / value);
-		return this;
-	}
+	}	
 }

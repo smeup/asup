@@ -58,6 +58,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric divide(short value, String roundingMode);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(short value, QNumeric remainderTarget);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -70,6 +78,14 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	QNumeric divide(long value, String roundingMode);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(long value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -86,6 +102,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric divide(int value, String roundingMode);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(int value, QNumeric remainderTarget);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -100,6 +124,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric divide(double value, String roundingMode);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(double value, QNumeric remainderTarget);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -112,6 +144,14 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	QNumeric divide(QNumeric value, String roundingMode);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" remainderTargetRequired="true"
+	 * @generated
+	 */
+	QNumeric divide(QNumeric value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
