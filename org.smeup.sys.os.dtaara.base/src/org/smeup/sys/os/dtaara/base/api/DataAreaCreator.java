@@ -83,16 +83,14 @@ public class DataAreaCreator {
 		checkLibrary(libName, areaName);
 		checkExistence(areaName, libName);
 		
-		checkValue(tipo.asEnum().dataAreaType, lunghezza, valoreIniziale);
 		
 		QDataArea newDataArea = dataAreaFactory.createDataArea();
+		setValue(tipo.asEnum().dataAreaType, lunghezza, valoreIniziale, newDataArea);
 		newDataArea.setName(areaName);
 		newDataArea.setLibrary(libName);
 		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
 		newDataArea.setText(descriptionFrom(descrizioneTesto));
-		//********* TODO
-		//newDataArea.setValue
-		//
+		
 		resourceWriter.save(newDataArea);
 	}
 
@@ -106,7 +104,7 @@ public class DataAreaCreator {
 		return "";
 	}
 
-	private void checkValue(DataAreaType tipo, LUNGHEZZA lunghezza, QCharacter valoreIniziale) {
+	private void setValue(DataAreaType tipo, LUNGHEZZA lunghezza, QCharacter valoreIniziale, QDataArea newDataArea) {
 		String valore = valoreIniziale.trimR();
 		if (strings.isEmptyTrim(valore)) {
 			return;
@@ -116,16 +114,21 @@ public class DataAreaCreator {
 			if (valore.length() > lunghezza.lunghezza.asInteger()) {
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[0]);
 			}
+			newDataArea.setContent(valore);
 			break;
+		
 		case LOGICAL:
-			if (!strings.isOneOf(valore, Arrays.asList("", "1", "0"))) {
+			if (!strings.isOneOf(valore, Arrays.asList("1", "0"))) {
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
 			}
+			newDataArea.setContentDecimal(Integer.parseInt(valore));
 			break;
+		
 		case DECIMAL:
 			throw new UnsupportedOperationException("TODO");
-/////////////////////////////// TODO *******************************************************************			
+//********* TODO ***************
 //			break;
+		
 		case DISTRIBUTED:
 			throw new UnsupportedOperationException("Unsupported data area type: DDM");
 		}
