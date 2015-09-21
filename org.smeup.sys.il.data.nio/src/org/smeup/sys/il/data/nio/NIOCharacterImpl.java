@@ -718,6 +718,8 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	@Override
 	public QNumeric qScan(String source, Number start, QIndicator found) {
+		
+		getDataContext().found().eval(false);
 
 		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 5, 0);
 		number.allocate();
@@ -727,9 +729,10 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		int i = source.indexOf(toString(), start.intValue()-1);
 		if(i<0) 
 			number.eval(0);
-		else 
+		else {
 			number.eval(i+1);
-		
+			getDataContext().found().eval(true);
+		}
 		if(found != null)
 			found.eval(number.ge(1));
 		
