@@ -8,6 +8,7 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.rt.core.QApplicationManager;
 
 public  @Program(name = "QWCCSDSC")  class PowerManager {
@@ -24,7 +25,9 @@ public  @Program(name = "QWCCSDSC")  class PowerManager {
 	}
 	
 	public static enum RESTARTEnum {
-		NO, 
+		@Special("*NO") 
+		NO,
+		@Special("*YES") 		
 		YES
 	}
 }
