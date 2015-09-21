@@ -16,11 +16,9 @@ import java.util.Date;
 
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.QNamedNode;
-import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -28,9 +26,7 @@ import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
-import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.os.file.QExternalFile;
 
 public class CompilationContextHelper {
 
@@ -276,47 +272,5 @@ public class CompilationContextHelper {
 		}
 
 		return result;
-	}
-
-	public static QTerm getPrimaryRecord(QCallableUnit callableUnit, QDataSetTerm dataSetTerm) {
-
-		if (dataSetTerm.getFacet(QExternalFile.class) == null)
-			return null;
-
-		QTerm primaryRecord = null;
-
-		// search on external dataStructure
-		if (callableUnit.getDataSection() != null)
-			for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas())
-				if (dataTerm.getFacet(QExternalFile.class) != null) {
-					QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
-
-					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
-						primaryRecord = dataTerm;
-						break;
-					} else
-						continue;
-				}
-
-		if (primaryRecord != null)
-			return primaryRecord;
-
-		// search on dataSet
-		if (callableUnit.getFileSection() != null)
-			for (QDataSetTerm dst : callableUnit.getFileSection().getDataSets())
-				if (dst.getFacet(QExternalFile.class) != null) {
-					QExternalFile externalFile = dst.getFacet(QExternalFile.class);
-					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
-						primaryRecord = dst;
-						break;
-					} else
-						continue;
-				} else
-					System.out.println("Unexpected condition: pxnqt9r87x93q46t");
-
-		if (primaryRecord != null)
-			return primaryRecord;
-
-		return primaryRecord;
 	}
 }

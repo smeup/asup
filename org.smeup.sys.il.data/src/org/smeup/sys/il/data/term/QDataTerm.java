@@ -20,6 +20,7 @@ import org.smeup.sys.il.data.def.QDataDef;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getBased <em>Based</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.QDataTerm#getDefault <em>Default</em>}</li>
@@ -37,6 +38,32 @@ import org.smeup.sys.il.data.def.QDataDef;
  * @generated
  */
 public interface QDataTerm<DD extends QDataDef<?>> extends QTerm, QObject {
+	/**
+	 * Returns the value of the '<em><b>Based</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Based</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Based</em>' attribute.
+	 * @see #setBased(String)
+	 * @see org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage#getDataTerm_Based()
+	 * @model
+	 * @generated
+	 */
+	String getBased();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.term.QDataTerm#getBased <em>Based</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Based</em>' attribute.
+	 * @see #getBased()
+	 * @generated
+	 */
+	void setBased(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Cardinality</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

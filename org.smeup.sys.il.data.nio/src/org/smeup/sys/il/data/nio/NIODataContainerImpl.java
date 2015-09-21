@@ -86,7 +86,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (dataTerm == null)
 			return false;
 
-		QData data = dataFactory.createData(dataTerm, true);
+		QData data = getOrCreateData(dataTerm); 		
 		data.clear();
 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
@@ -123,7 +123,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (dataTerm == null)
 			return false;
 
-		QData data = dataFactory.createData(dataTerm, true);
+		QData data = getOrCreateData(dataTerm);
 		data.clear();
 
 		if (useDefault) {
@@ -162,18 +162,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 
 			// root data
-			if (data == null) {
-				data = datas.get(qualifier);
-				if (data == null) {
-					QDataTerm<?> dataTerm = dataTerms.get(qualifier);
-
-					if (dataTerm == null)
-						return null;
-
-					data = dataFactory.createData(dataTerm, true);
-					datas.put(qualifier, data);
-				}
-			} else {
+			if (data == null)
+				data = getOrCreateData(qualifier);
+			else {
 
 				if (!(data instanceof QStruct))
 					return null;
@@ -222,11 +213,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public void clearData() {
 
 		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
-			QData data = datas.get(entry.getKey());
-			if (data == null) {
-				data = dataFactory.createData(entry.getValue(), true);
-				datas.put(entry.getKey(), data);
-			}
+			QData data = getOrCreateData(entry.getKey(), entry.getValue()); 
 			data.clear();
 		}
 	}
@@ -277,11 +264,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private QData resetData(String key, QDataTerm<?> dataTerm) {
 
-		QData data = datas.get(key);
-		if (data == null) {
-			data = dataFactory.createData(dataTerm, true);
-			datas.put(key, data);
-		}
+		QData data = getOrCreateData(key, dataTerm);
 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 		dataTerm.accept(resetter);
@@ -304,5 +287,32 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public QDataContext getDataContext() {
 		return dataContext;
+	}
+
+	
+	private QData getOrCreateData(QDataTerm<?> dataTerm) {
+		return getOrCreateData(getKey(dataTerm), dataTerm);
+	}
+
+	private QData getOrCreateData(String key) {
+
+		QData data = datas.get(key);
+		if (data == null) {
+			QDataTerm<?> dataTerm = getDataTerm(key);
+			data = getOrCreateData(key, dataTerm);
+		}
+
+		return data;
+	}
+	
+	private QData getOrCreateData(String key, QDataTerm<?> dataTerm) {
+
+		QData data = datas.get(key);
+		if (data == null) {
+			data = dataFactory.createData(dataTerm, true);
+			datas.put(key, data);
+		}
+
+		return data;
 	}
 }

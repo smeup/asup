@@ -2006,6 +2006,7 @@
         <eParameters name="visitor" lowerBound="1" eType="#//term/DataTermVisitor"/>
       </eOperations>
       <eOperations name="getDataTermType" lowerBound="1" eType="#//term/DataTermType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="based" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cardinality" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Cardinality"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="constant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

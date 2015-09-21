@@ -618,6 +618,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (callableUnit.getFileSection() != null)
 				for (QDataSetTerm dataSetTerm : callableUnit.getFileSection().getDataSets()) {
 
+					/*
 					QTerm primaryRecord = CompilationContextHelper.getPrimaryRecord(callableUnit, dataSetTerm);
 					if (primaryRecord != null && !dataSetTerm.equals(primaryRecord)) {
 
@@ -629,7 +630,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 						block.statements().add(expressionStatement);
 
-					}
+					}*/
 
 					// remap
 					if (dataSetTerm.getFormat() != null) {

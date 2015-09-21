@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -31,16 +32,14 @@ import javax.inject.Inject;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
-import org.smeup.sys.il.data.QDataWriter;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
-import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
-import org.smeup.sys.il.data.QString;
-import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.AccessMode;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
@@ -50,8 +49,6 @@ import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.pgm.QActivationGroup;
-import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 
 public class BaseCallableInjector {
 
@@ -61,19 +58,19 @@ public class BaseCallableInjector {
 	private QAccessManager esamManager;
 	@Inject
 	private QJob job;
+	
+	public <C> C prepareCallable(QContext context, Class<C> klass) {
 
-	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-
-	public <C> C makeCallable(QContext context, QActivationGroup activationGroup, Class<C> klass) {
-
-		QDataFactory dataFactory = dataManager.createFactory(job.getContext());
-
+		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
+		QDataContainer dataContainer = dataManager.createDataContainer(context, dataTerms, true);
+		QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
+		
 		C callable = null;
 
 		try {
 			Map<String, Object> sharedModules = new HashMap<>();
 			try {
-				callable = injectData(klass, dataFactory, context, activationGroup, sharedModules);
+				callable = injectData(klass, accessFactory, dataContainer, context, sharedModules);
 			} catch (IllegalArgumentException | SecurityException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -115,52 +112,13 @@ public class BaseCallableInjector {
 		return entry;
 	}
 
-	private <C> C injectData(Class<C> klass, QDataFactory dataFactory, QContext context, QActivationGroup activationGroup, Map<String, Object> sharedModules) throws IllegalArgumentException,
-			IllegalAccessException, InstantiationException {
-
-//		if (klass.getAnnotation(Program.class) != null)
-//			System.out.println(klass);
+	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		C callable = klass.newInstance();
 
-		injectFieldsData(klass, callable, dataFactory, context, activationGroup, sharedModules);
+		injectFieldsData(klass, callable, accessFactory, dataContainer, context, sharedModules);
 
-		try {
-			Field £mubField = callable.getClass().getDeclaredField("£mub");
-			if (£mubField != null) {
-				try {
-					£mubField.setAccessible(true);
-
-					Object £mub = £mubField.get(callable);
-					Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
-
-					// program name
-					Object £pdsnp = £mu_£pds_1.getClass().getField("£pdsnp").get(£mu_£pds_1);
-					String programName = callable.getClass().getSimpleName();
-					Program program = callable.getClass().getAnnotation(Program.class);
-					if (program != null)
-						programName = program.name();
-					£pdsnp.getClass().getMethod("eval", String.class).invoke(£pdsnp, new Object[] { programName });
-
-					// user name
-					Object £pdsnu = £mu_£pds_1.getClass().getField("£pdsnu").get(£mu_£pds_1);
-					£pdsnu.getClass().getMethod("eval", String.class).invoke(£pdsnu, new Object[] { job.getJobUser() });
-					
-					// job number
-					Object £pdsjz = £mu_£pds_1.getClass().getField("£pdsjz").get(£mu_£pds_1);
-					£pdsjz.getClass().getMethod("eval", Integer.TYPE).invoke(£pdsjz, new Object[] { job.getJobNumber() });
-					
-				} catch (NoSuchFieldException | InvocationTargetException | NoSuchMethodException e) {
-					e.printStackTrace();
-				} finally {
-					£mubField.setAccessible(false);
-				}
-			}
-
-		} catch (NoSuchFieldException | SecurityException e1) {
-			// TODO Auto-generated catch block
-			// e1.printStackTrace();
-		}
+		injectSmeupData(callable);
 
 		if (callable.getClass().getAnnotation(Program.class) == null)
 			return callable;
@@ -171,19 +129,23 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFieldsData(Class<?> klass, Object callable, QDataFactory dataFactory, QContext context, QActivationGroup activationGroup, Map<String, Object> sharedModules)
-			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException,
+			IllegalAccessException, InstantiationException {
 
-		if(klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFieldsData(klass.getSuperclass(), callable, dataFactory, context, activationGroup, sharedModules);
-			
+		// recursively on superClass
+		if (klass.getSuperclass().getAnnotation(Program.class) != null)
+			injectFieldsData(klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules);
 
+		
+		Stack<QDataTerm<?>> fieldDatas = new Stack<QDataTerm<?>>();
+		List<Field> fieldDataSets = new ArrayList<Field>();
+		
 		for (Field field : klass.getDeclaredFields()) {
 
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
-				continue;			
-			
+				continue;
+
 			if (Modifier.isStatic(field.getModifiers())) {
 				if (Modifier.isFinal(field.getModifiers()))
 					continue;
@@ -193,103 +155,56 @@ public class BaseCallableInjector {
 
 			field.setAccessible(true);
 
+			Class<?> fieldClass = null;
 			
-//			if(field.getName().equals("qaambtb"))
-//				System.out.println("\t\t"+field);
-			
-			Type type = field.getGenericType();
-
-			Class<?> fieldKlass = null;
-
+			Type type = field.getGenericType();		
 			if (type instanceof ParameterizedType) {
-				fieldKlass = (Class<?>) ((ParameterizedType) type).getRawType();
+				fieldClass = (Class<?>) ((ParameterizedType) type).getRawType();
 			} else
-				fieldKlass = (Class<?>) type;
+				fieldClass = (Class<?>) type;
 
-			if (QDataFactory.class.isAssignableFrom(fieldKlass)) {
-				field.set(callable, dataFactory);
+
+			// DataFactory
+			if (QDataFactory.class.isAssignableFrom(fieldClass)) {
+				field.set(callable, dataContainer.getDataFactory());
 			}
-			// Module
-			/*
-			 * else if (field.getAnnotation(ModuleDef.class) != null) {
-			 * ModuleDef moduleDef = field.getAnnotation(ModuleDef.class);
-			 * Object callableModule = sharedModules.get(moduleDef.name()); if
-			 * (callableModule == null) { callableModule =
-			 * injectData(fieldKlass, dataFactory, job, activationGroup,
-			 * sharedModules); sharedModules.put(moduleDef.name(),
-			 * callableModule); } field.set(callable, callableModule); }
-			 */
 			// DataSet
-			else if (QDataSet.class.isAssignableFrom(fieldKlass)) {
-
-				ParameterizedType pType = (ParameterizedType) type;
-				if (!(pType.getActualTypeArguments()[0] instanceof WildcardType))
-					injectDataSet(job, dataFactory, callable, (Class<QDataSet<QRecord>>) fieldKlass, (Class<QRecord>) pType.getActualTypeArguments()[0], field);
+			else if (QDataSet.class.isAssignableFrom(fieldClass)) {
+				fieldDataSets.add(field);
 			}
 			// Data
-			else if (QData.class.isAssignableFrom(fieldKlass)) {
+			else if (QData.class.isAssignableFrom(fieldClass)) {
 
+				QDataTerm<?> dataTerm = dataContainer.getDataFactory().createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
 				
-				QDataDef<?> dataType = dataFactory.createDataDef(type, Arrays.asList(field.getAnnotations()));
-				QData data = dataFactory.createData(dataType, true);
-
-				DataDef dataDef = field.getAnnotation(DataDef.class);
-
-				if (dataDef != null) {
-
-					// default
-					if (data instanceof QList<?>) {
-						QList<?> array = (QList<?>) data;
-						int i = 1;
-						for (String value : dataDef.values()) {
-							array.get(i).accept(dataWriter.set(value));
-							i++;
-						}
-					} else {
-						if (!dataDef.value().isEmpty()) {
-							if (data instanceof QString) {
-
-								String value = dataDef.value();
-								if (value.startsWith("'") && value.endsWith("'")) {
-									value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
-
-									data.accept(dataWriter.set(value));
-								} else if (value.startsWith("*")) {
-									try {
-										Specials special = Specials.valueOf(value.substring(1));
-										data.accept(dataWriter.set(special));
-									} catch (Exception e) {
-										data.accept(dataWriter.set(value));
-									}
-								} else
-									data.accept(dataWriter.set(value));
-							} else {
-								data.accept(dataWriter.set(dataDef.value()));
-							}
-						}
-					}
-
+				// derived memory
+				if(dataTerm.getBased() != null) {
+					fieldDatas.push(dataTerm);
 				}
-
-				field.set(callable, data);
+				else {
+					QData data = dataContainer.resetData(dataTerm);					
+					field.set(callable, data);						
+				}
 			}
 			// @Injection
 			else if (field.getAnnotation(Inject.class) != null) {
 
 				Object object = null;
 
-				if (QJob.class.isAssignableFrom(fieldKlass)) {
+				// Job
+				if (QJob.class.isAssignableFrom(fieldClass)) {
 					object = job;
 				} 
+				// Module
 				else {
-					object = sharedModules.get(fieldKlass.getSimpleName());
+					object = sharedModules.get(fieldClass.getSimpleName());
 					if (object == null) {
-						object = context.get(fieldKlass);
+						object = context.get(fieldClass);
 					}
+					
 					if (object == null) {
-//						System.out.println("\t" + fieldKlass);
-						object = injectData(fieldKlass, dataFactory, context, activationGroup, sharedModules);
-						sharedModules.put(fieldKlass.getSimpleName(), object);
+						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules);
+						sharedModules.put(fieldClass.getSimpleName(), object);
 					}
 				}
 
@@ -302,34 +217,134 @@ public class BaseCallableInjector {
 
 			field.setAccessible(false);
 		}
+		
+		for(Field fieldDataSet: fieldDataSets) {
 
+			fieldDataSet.setAccessible(true);
+
+			Class<?> fieldClass = null;
+			
+			Type type = fieldDataSet.getGenericType();		
+			if (type instanceof ParameterizedType) {
+				fieldClass = (Class<?>) ((ParameterizedType) type).getRawType();
+			} else
+				fieldClass = (Class<?>) type;
+			
+			ParameterizedType pType = (ParameterizedType) type;
+			if (!(pType.getActualTypeArguments()[0] instanceof WildcardType))
+				injectDataSet(accessFactory, dataContainer, callable, fieldDataSet, (Class<QDataSet<QRecord>>) fieldClass, (Class<QRecord>) pType.getActualTypeArguments()[0]);
+
+			fieldDataSet.setAccessible(false);
+		}
 	}
 
-	private void injectDataSet(QJob job, QDataFactory dataFactory, Object callable, Class<QDataSet<QRecord>> fieldKlass, Class<QRecord> recordKlass, Field field) throws IllegalArgumentException,
-			IllegalAccessException {
 
-		QAccessFactory esamFactory = job.getContext().get(QAccessFactory.class);
-		if (esamFactory == null) {
-			esamFactory = esamManager.createFactory(job);
-			job.getContext().set(QAccessFactory.class, esamFactory);
-		}
+	private void injectDataSet(QAccessFactory accessFactory, QDataContainer dataContainer, Object callable, Field field, Class<QDataSet<QRecord>> fieldKlass, Class<QRecord> recordKlass) throws IllegalArgumentException,
+			IllegalAccessException {
 
 		FileDef fileDef = field.getAnnotation(FileDef.class);
 		if (fileDef != null) {
 
 			QDataSet<QRecord> dataSet = null;
 
+			QDataStruct infoStruct = null;
+			if (!fileDef.info().equals(FileDef.INFO_NULL))
+				infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());				
+
 			if (QKSDataSet.class.isAssignableFrom(fieldKlass)) {
-				dataSet = esamFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
+				dataSet = accessFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
 			} else if (QSMDataSet.class.isAssignableFrom(fieldKlass)) {
-				dataSet = esamFactory.createSourceMemberDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
+				dataSet = accessFactory.createSourceMemberDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
 			} else {
-				dataSet = esamFactory.createRelativeRecordDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen());
+				dataSet = accessFactory.createRelativeRecordDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
 			}
 
 			field.set(callable, dataSet);
 		}
-
 	}
-	
+
+	private void injectSmeupData(Object callable) throws IllegalArgumentException, IllegalAccessException {
+
+		Field £mubField = null;
+		try {
+			£mubField = callable.getClass().getField("£mub");
+
+		} catch (NoSuchFieldException | SecurityException e1) {
+			// TODO Auto-generated catch block
+			// e1.printStackTrace();
+		}
+
+		if (£mubField == null)
+			return;
+
+		try {
+			£mubField.setAccessible(true);
+
+			Object £mub = £mubField.get(callable);
+			Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
+
+			// program name
+			Object £pdsnp = £mu_£pds_1.getClass().getField("£pdsnp").get(£mu_£pds_1);
+			String programName = callable.getClass().getSimpleName();
+			Program program = callable.getClass().getAnnotation(Program.class);
+			if (program != null)
+				programName = program.name();
+			£pdsnp.getClass().getMethod("eval", String.class).invoke(£pdsnp, new Object[] { programName });
+
+			// user name
+			Object £pdsnu = £mu_£pds_1.getClass().getField("£pdsnu").get(£mu_£pds_1);
+			£pdsnu.getClass().getMethod("eval", String.class).invoke(£pdsnu, new Object[] { job.getJobUser() });
+
+			// job number
+			Object £pdsjz = £mu_£pds_1.getClass().getField("£pdsjz").get(£mu_£pds_1);
+			£pdsjz.getClass().getMethod("eval", Integer.TYPE).invoke(£pdsjz, new Object[] { job.getJobNumber() });
+
+		} catch (NoSuchFieldException | InvocationTargetException | NoSuchMethodException e) {
+			e.printStackTrace();
+		} finally {
+			£mubField.setAccessible(false);
+		}
+	}
+	/*
+	public static QTerm getPrimaryRecord(QCallableUnit callableUnit, QDataSetTerm dataSetTerm) {
+
+		if (dataSetTerm.getFacet(QExternalFile.class) == null)
+			return null;
+
+		QTerm primaryRecord = null;
+
+		// search on external dataStructure
+		if (callableUnit.getDataSection() != null)
+			for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas())
+				if (dataTerm.getFacet(QExternalFile.class) != null) {
+					QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
+
+					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
+						primaryRecord = dataTerm;
+						break;
+					} else
+						continue;
+				}
+
+		if (primaryRecord != null)
+			return primaryRecord;
+
+		// search on dataSet
+		if (callableUnit.getFileSection() != null)
+			for (QDataSetTerm dst : callableUnit.getFileSection().getDataSets())
+				if (dst.getFacet(QExternalFile.class) != null) {
+					QExternalFile externalFile = dst.getFacet(QExternalFile.class);
+					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
+						primaryRecord = dst;
+						break;
+					} else
+						continue;
+				} else
+					System.out.println("Unexpected condition: pxnqt9r87x93q46t");
+
+		if (primaryRecord != null)
+			return primaryRecord;
+
+		return primaryRecord;
+	}*/
 }

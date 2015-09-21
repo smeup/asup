@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceSetReader;
@@ -52,13 +57,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Inject
 	private QStrings strings;
 
-	private BaseProgramCallableHelper baseCallableHelper;
 	private Map<Thread, QResourceSetReader<QProgram>> programReaders ;
 	private Map<String, QProgramStack> programStacks;
 
 	@PostConstruct
 	private void init() {
-		this.baseCallableHelper = new BaseProgramCallableHelper(activationGroupManager);
 		this.programReaders = new WeakHashMap<Thread, QResourceSetReader<QProgram>>();
 		this.programStacks = new HashMap<String, QProgramStack>();
 	}
@@ -125,7 +128,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if(klass == null)
 			throw new OperatingSystemRuntimeProgramException("Class not found: "+address);
 
-		QCallableProgram callableProgram = baseCallableHelper.prepareCallableProgram(job, program, klass);
+		QCallableProgram callableProgram = prepareCallableProgram(job, program, klass);
 		
 		return callableProgram;
 	}
@@ -135,7 +138,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		try {
 			QProgram program = null;
-			QCallableProgram callableProgram = baseCallableHelper.prepareCallableProgram(job, program, klass);
+			QCallableProgram callableProgram = prepareCallableProgram(job, program, klass);
 			
 			return callableProgram;
 			
@@ -179,6 +182,81 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
+	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
+
+		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
+		if (activationGroup == null)
+			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
+
+		QCallableProgram callableProgram = null;
+
+		BaseCallableInjector callableInjector = activationGroup.getFrameworkContext().get(BaseCallableInjector.class);
+		if (callableInjector == null) {
+			callableInjector = activationGroup.getFrameworkContext().make(BaseCallableInjector.class);
+			activationGroup.getFrameworkContext().set(BaseCallableInjector.class, callableInjector);
+		}
+
+		if (QCallableProgram.class.isAssignableFrom(klass)) {
+			callableProgram = (QCallableProgram) callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
+		} else {
+			Object delegate = callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
+			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(delegate);
+
+			// search @Entry
+			for (Method method : klass.getMethods()) {
+				if (method.isAnnotationPresent(Entry.class)) {
+					delegator.entry = method;
+
+					QData[] entry = callableInjector.buildEntry(job, method);
+					delegator.setQEntry(entry);
+
+					break;
+				}
+			}
+
+			callableProgram = delegator;
+		}
+
+		if (callableProgram.getQProgram() == null)
+			callableProgram.setQProgram(program);
+
+		return callableProgram;
+	}
+
+	public void assignParameters(QData[] paramsTo, QData[] paramsFrom) throws OperatingSystemRuntimeProgramException {
+
+		int paramsLength = 0;
+
+		if (paramsTo != null && paramsFrom != null)
+			paramsLength = paramsFrom.length < paramsTo.length ? paramsFrom.length : paramsTo.length;
+
+		// assign data pointers
+		for (int i = 0; i < paramsLength; i++) {
+
+			if (paramsFrom[i] == null)
+				continue;
+
+			if (paramsTo[i] instanceof QAdapter) {
+				QAdapter adapter = (QAdapter) paramsTo[i];
+				adapter.eval(adapter.getDelegate());
+			} else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QBufferedData) {
+				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
+				((QBufferedData) paramsFrom[i]).assign(bufferedData);
+			} else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
+				assignList(paramsFrom[i], paramsTo[i]);
+			} else
+				throw new OperatingSystemRuntimeProgramException("Unexpected condition: nxt057t024xn", null);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public <D extends QData> void assignList(QData from, QData to) {
+
+		QList<D> listFrom = (QList<D>) from;
+		QList<D> listTo = (QList<D>) to;
+
+		listTo.eval(listFrom);
+	}
 	@Override
 	public QCallableProgram getCaller(String contextID, Object program) {
 
@@ -217,7 +295,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				if(!callableProgram.isOpen())
 					callableProgram.open();
 	
-				baseCallableHelper.assignParameters(callableProgram.getQEntry(), params);
+				assignParameters(callableProgram.getQEntry(), params);
 				
 	/*			PrintStream ps = System.out;
 				ps.println("Calling program: "+callableProgram.getQProgram().getName());
@@ -236,7 +314,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				// call
 				callableProgram.call();
 	
-				programStack.setDateExit(new Date());
 				
 	//			System.out.println(callableProgram.getQProgram().getName()+" ("+getDateDiff(programStack.getDateEnter(), programStack.getDateExit(), TimeUnit.MILLISECONDS)+"ms)");
 	
@@ -256,6 +333,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				// TODO release parameters
 				
 				// remove program from stack
+				programStack.setDateExit(new Date());
 				programStack.pop();
 	
 				// close

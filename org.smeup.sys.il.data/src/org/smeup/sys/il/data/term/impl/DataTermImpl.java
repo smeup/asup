@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getBased <em>Based</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getCardinality <em>Cardinality</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isConstant <em>Constant</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getDefault <em>Default</em>}</li>
@@ -45,6 +46,26 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * @generated
  */
 public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl implements QDataTerm<DD> {
+	/**
+	 * The default value of the '{@link #getBased() <em>Based</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBased()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BASED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBased() <em>Based</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBased()
+	 * @generated
+	 * @ordered
+	 */
+	protected String based = BASED_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getCardinality() <em>Cardinality</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -200,6 +221,27 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageDataTermPackage.Literals.DATA_TERM;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBased() {
+		return based;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBased(String newBased) {
+		String oldBased = based;
+		based = newBased;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataTermPackage.DATA_TERM__BASED, oldBased, based));
 	}
 
 	/**
@@ -518,6 +560,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__BASED:
+				return getBased();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 				return getCardinality();
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
@@ -548,6 +592,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__BASED:
+				setBased((String)newValue);
+				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 				setCardinality((QCardinality)newValue);
 				return;
@@ -586,6 +633,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__BASED:
+				setBased(BASED_EDEFAULT);
+				return;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 				setCardinality((QCardinality)null);
 				return;
@@ -624,6 +674,8 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case QIntegratedLanguageDataTermPackage.DATA_TERM__BASED:
+				return BASED_EDEFAULT == null ? based != null : !BASED_EDEFAULT.equals(based);
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CARDINALITY:
 				return cardinality != null;
 			case QIntegratedLanguageDataTermPackage.DATA_TERM__CONSTANT:
@@ -655,7 +707,9 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (constant: ");
+		result.append(" (based: ");
+		result.append(based);
+		result.append(", constant: ");
 		result.append(constant);
 		result.append(", initialized: ");
 		result.append(initialized);

@@ -41,6 +41,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private QIndex index;
 	private R record;
+	private String tableName;
 	private AccessMode accessMode;
 	private JDBCTableProvider tableProvider;
 	private JDBCDataReaderImpl dataReader;
@@ -63,12 +64,15 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	private InfoStruct infoStruct;
 	private QDataContext dataContext;
 	
-	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, QIndex index, R record, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
+	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, 
+							  QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
 
 		this.databaseConnection = databaseConnection;
 
 		this.index = index;
 		this.record = record;
+		this.tableName = tableName;
+		
 		this.accessMode = accessMode;
 		this.tableProvider = tableProvider;
 		this.infoStruct = infoStruct;
@@ -231,7 +235,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			else
 				statement = databaseConnection.createStatement(true, true);
 
-			this.currentTable = this.tableProvider.getTable(null, this.record.getClass().getSimpleName());
+			this.currentTable = this.tableProvider.getTable(null, this.tableName);
 
 			this.open = true;
 		} catch (SQLException e) {

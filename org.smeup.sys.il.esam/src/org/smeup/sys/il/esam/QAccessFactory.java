@@ -21,21 +21,24 @@ import org.smeup.sys.il.data.QRecord;
  */
 public interface QAccessFactory {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
 	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
 	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" wrapperRequired="true"
 	 * @generated
 	 */
