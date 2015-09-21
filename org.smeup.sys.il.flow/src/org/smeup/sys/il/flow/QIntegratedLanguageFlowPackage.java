@@ -687,13 +687,22 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int EVAL__ROUNDING_MODE = INVOKE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Remainder Target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVAL__REMAINDER_TARGET = INVOKE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Eval</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 2;
+	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.
@@ -776,6 +785,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOW_DATA__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
+
+	/**
+	 * The feature id for the '<em><b>Based</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_DATA__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
 
 	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
@@ -1585,6 +1603,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int PROTOTYPE__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Based</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOTYPE__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
+
+	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -2342,6 +2369,17 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEval_RoundingMode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#getRemainderTarget <em>Remainder Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remainder Target</em>'.
+	 * @see org.smeup.sys.il.flow.QEval#getRemainderTarget()
+	 * @see #getEval()
+	 * @generated
+	 */
+	EAttribute getEval_RemainderTarget();
 
 	/**
 	 * Returns the meta object for class '
@@ -3427,6 +3465,14 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVAL__ROUNDING_MODE = eINSTANCE.getEval_RoundingMode();
+
+		/**
+		 * The meta object literal for the '<em><b>Remainder Target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVAL__REMAINDER_TARGET = eINSTANCE.getEval_RemainderTarget();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.

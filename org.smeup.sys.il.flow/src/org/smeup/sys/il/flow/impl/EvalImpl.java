@@ -22,6 +22,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRoundingMode <em>Rounding Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRemainderTarget <em>Remainder Target</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,6 +66,26 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	 * @ordered
 	 */
 	protected String roundingMode = ROUNDING_MODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRemainderTarget() <em>Remainder Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainderTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REMAINDER_TARGET_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getRemainderTarget() <em>Remainder Target</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRemainderTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected String remainderTarget = REMAINDER_TARGET_EDEFAULT;
 
 	/**
 	 *
@@ -131,6 +152,27 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getRemainderTarget() {
+		return remainderTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRemainderTarget(String newRemainderTarget) {
+		String oldRemainderTarget = remainderTarget;
+		remainderTarget = newRemainderTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__REMAINDER_TARGET, oldRemainderTarget, remainderTarget));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -141,6 +183,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return getAssignment();
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				return getRoundingMode();
+			case QIntegratedLanguageFlowPackage.EVAL__REMAINDER_TARGET:
+				return getRemainderTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return;
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				setRoundingMode((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__REMAINDER_TARGET:
+				setRemainderTarget((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,6 +222,9 @@ public class EvalImpl extends InvokeImpl implements QEval {
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				setRoundingMode(ROUNDING_MODE_EDEFAULT);
 				return;
+			case QIntegratedLanguageFlowPackage.EVAL__REMAINDER_TARGET:
+				setRemainderTarget(REMAINDER_TARGET_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,6 +240,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return ASSIGNMENT_EDEFAULT == null ? assignment != null : !ASSIGNMENT_EDEFAULT.equals(assignment);
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				return ROUNDING_MODE_EDEFAULT == null ? roundingMode != null : !ROUNDING_MODE_EDEFAULT.equals(roundingMode);
+			case QIntegratedLanguageFlowPackage.EVAL__REMAINDER_TARGET:
+				return REMAINDER_TARGET_EDEFAULT == null ? remainderTarget != null : !REMAINDER_TARGET_EDEFAULT.equals(remainderTarget);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -207,6 +259,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 		result.append(assignment);
 		result.append(", roundingMode: ");
 		result.append(roundingMode);
+		result.append(", remainderTarget: ");
+		result.append(remainderTarget);
 		result.append(')');
 		return result.toString();
 	}

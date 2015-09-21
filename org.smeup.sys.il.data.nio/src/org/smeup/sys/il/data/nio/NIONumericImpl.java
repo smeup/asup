@@ -384,17 +384,17 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(double value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
 	public void eval(int value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
 	public void eval(long value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
@@ -404,12 +404,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(QNumeric value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
 	public void eval(short value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
@@ -419,7 +419,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(BigDecimal value) {
-		eval(value, null);
+		eval(value, (String)null);
 	}
 
 	@Override
@@ -477,6 +477,52 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		writeNumber(value, roundingMode);
 	}
 
+	@Override
+	public void eval(double value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(short value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(long value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(int value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(QNumeric value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(BigInteger value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eval(BigDecimal value, QNumeric remainderTarget) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+	
 	@Override
 	public QNumeric divide(short value) {
 		return divide(value, (String)null);
