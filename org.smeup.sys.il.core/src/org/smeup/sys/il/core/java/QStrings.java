@@ -85,4 +85,12 @@ public interface QStrings {
 	 */
 	Boolean checkEquals(String string1, String string2);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
+	 * @generated
+	 */
+	String left(String string, int nrOfChars);
+
 } // QStrings

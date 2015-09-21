@@ -1,5 +1,6 @@
 package org.smeup.sys.os.dtaara.base.api;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import javax.inject.Inject;
@@ -37,6 +38,8 @@ public class DataAreaCreator {
 		CPF1026, //Il parametro VALUE deve essere '0' o '1'.              
 		CPF1047, //La lunghezza non è valida per l'area dati &1 in &2.    
 		CPF1062, //La stringa nulla non è valida come valore di caratteri.
+		//OK
+		CPC0904 //Area dati &1 creata nella libreria &2
 	}
 
 	@Inject
@@ -48,7 +51,7 @@ public class DataAreaCreator {
 	@Inject
 	private QOperatingSystemDataAreaFactory dataAreaFactory;
 	@Inject
-	QStrings strings;
+	private  QStrings stringsUtils;
 	
 	private QResourceWriter<QDataArea> resourceWriter;
 	
@@ -90,8 +93,12 @@ public class DataAreaCreator {
 		newDataArea.setLibrary(libName);
 		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
 		newDataArea.setText(descriptionFrom(descrizioneTesto));
-		
+		newDataArea.setContentLength(lunghezza.lunghezza.asInteger());
+		newDataArea.setContentDecimal(lunghezza.posizioniDecimali.asInteger());
+
 		resourceWriter.save(newDataArea);
+		
+		exceptionManager.prepareException(job, QCPFMSG.CPC0904, new String[] {areaName, libName});
 	}
 
 	private String descriptionFrom(QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto) {
@@ -106,32 +113,77 @@ public class DataAreaCreator {
 
 	private void setValue(DataAreaType tipo, LUNGHEZZA lunghezza, QCharacter valoreIniziale, QDataArea newDataArea) {
 		String valore = valoreIniziale.trimR();
-		if (strings.isEmptyTrim(valore)) {
+		if (stringsUtils.isEmptyTrim(valore)) {
 			return;
 		}
 		switch (tipo) {
 		case CHARACTER:
 			if (valore.length() > lunghezza.lunghezza.asInteger()) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[0]);
+				throwDataTooLong();
 			}
 			newDataArea.setContent(valore);
 			break;
 		
 		case LOGICAL:
-			if (!strings.isOneOf(valore, Arrays.asList("1", "0"))) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
+			if (!stringsUtils.isOneOf(valore, Arrays.asList("1", "0"))) {
+				throwTypeAndValueMismatch();
 			}
 			newDataArea.setContentDecimal(Integer.parseInt(valore));
 			break;
 		
 		case DECIMAL:
-			throw new UnsupportedOperationException("TODO");
-//********* TODO ***************
-//			break;
+			String englishString = valore.replace(",", ".");
+			
+			checkIsNumeric(englishString);
+		
+			String[] tokens = englishString.split("\\.");
+
+			switch (tokens.length) {
+			case 0:
+			case 1:	
+				if (valore.length() > lunghezza.lunghezza.asInteger()) {
+					throwDataTooLong();
+				}
+				newDataArea.setContent(englishString);				
+				break;
+
+			case 2:
+				if (tokens[0].length() > lunghezza.lunghezza.asInteger()) {
+					throwDataTooLong();
+				}
+				
+				if (tokens[0] == "") {
+					tokens[0] = "0";
+				}
+				newDataArea.setContent(tokens[0] + "." + stringsUtils.left(tokens[1], lunghezza.posizioniDecimali.asInteger()));
+				break;
+
+			default:
+				//Should not happen
+				throwTypeAndValueMismatch();
+				break;
+			}
+			break;
 		
 		case DISTRIBUTED:
 			throw new UnsupportedOperationException("Unsupported data area type: DDM");
 		}
+	}
+
+	private void checkIsNumeric(String englishString) {
+		try {
+			new BigDecimal(englishString);
+		} catch (Exception e) {
+			throwTypeAndValueMismatch();
+		}
+	}
+
+	private void throwTypeAndValueMismatch() {
+		throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
+	}
+
+	private void throwDataTooLong() {
+		throw exceptionManager.prepareException(job, QCPFMSG.CPF1025, new String[0]);
 	}
 
 	private void checkExistence(String areaName, String libName) {

@@ -32,7 +32,8 @@ public class BaseStringsImpl implements QStrings {
 	}
 
 	@Override
-	public String appendChars(String string, String chars, int times, boolean before) {
+	public String appendChars(String string, String chars, int times,
+			boolean before) {
 
 		StringBuffer sb = new StringBuffer();
 
@@ -73,7 +74,9 @@ public class BaseStringsImpl implements QStrings {
 	@Override
 	public String trimL(String string) {
 		int i = 0;
-		while (i < string.length() && (Character.isWhitespace(string.charAt(i)) || string.charAt(i) == 0))
+		while (i < string.length()
+				&& (Character.isWhitespace(string.charAt(i)) || string
+						.charAt(i) == 0))
 			i++;
 		return string.substring(i);
 	}
@@ -81,7 +84,9 @@ public class BaseStringsImpl implements QStrings {
 	@Override
 	public String trimR(String string) {
 		int i = string.length() - 1;
-		while (i >= 0 && (Character.isWhitespace(string.charAt(i)) || string.charAt(i) == 0))
+		while (i >= 0
+				&& (Character.isWhitespace(string.charAt(i)) || string
+						.charAt(i) == 0))
 			i--;
 		return string.substring(0, i + 1);
 	}
@@ -102,7 +107,7 @@ public class BaseStringsImpl implements QStrings {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -112,4 +117,18 @@ public class BaseStringsImpl implements QStrings {
 		}
 		return s1.equals(s2);
 	}
+
+	public String left(String s, int nrOfChars) {
+		if (s == null)
+			return null;
+
+		if (nrOfChars < 1)
+			return "";
+
+		if (nrOfChars >= s.length())
+			return s;
+
+		return s.substring(0, nrOfChars);
+	}
+
 }
