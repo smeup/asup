@@ -1,10 +1,12 @@
 package org.smeup.sys.os.dtaara.base.api;
 
+import java.util.Arrays;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
-import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -20,7 +22,9 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
+import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
 import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QWCCCRVC")
@@ -41,7 +45,12 @@ public class DataAreaCreator {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
-	private QResourceWriter<QDataArea> resourceReader;
+	@Inject
+	private QOperatingSystemDataAreaFactory dataAreaFactory;
+	@Inject
+	QStrings strings;
+	
+	private QResourceWriter<QDataArea> resourceWriter;
 	
 
 	public @Entry void main(
@@ -60,28 +69,85 @@ public class DataAreaCreator {
 			@ToDo @DataDef(length = 10) QEnum<AUTORIZZAZIONEEnum, QCharacter> autorizzazione) {
 		
 		String areaName = dataArea.asData().name.trimR();
+		String libName = dataArea.asData().library.asData().trimR();
 		switch (dataArea.asData().library.asEnum()) {
 		case CURLIB:
-			resourceReader = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
+			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
+			libName = resourceWriter.getName();
 			break;
 		case OTHER:
-			String libName = dataArea.asData().library.asData().trimR();
-			checkLibrary(libName, areaName);
-			resourceReader = resourceManager.getResourceWriter(job, QDataArea.class, libName);
+			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, libName);
 			break;
 		}
 		
+		checkLibrary(libName, areaName);
+		checkExistence(areaName, libName);
+		
+		checkValue(tipo.asEnum().dataAreaType, lunghezza, valoreIniziale);
+		
+		QDataArea newDataArea = dataAreaFactory.createDataArea();
+		newDataArea.setName(areaName);
+		newDataArea.setLibrary(libName);
+		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
+		newDataArea.setText(descriptionFrom(descrizioneTesto));
+		//********* TODO
+		//newDataArea.setValue
+		//
+		resourceWriter.save(newDataArea);
+	}
+
+	private String descriptionFrom(QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto) {
+		switch (descrizioneTesto.asEnum()) {
+		case BLANK:
+			return "";
+		case OTHER:
+			return  descrizioneTesto.asData().trimR();
+		}
+		return "";
+	}
+
+	private void checkValue(DataAreaType tipo, LUNGHEZZA lunghezza, QCharacter valoreIniziale) {
+		String valore = valoreIniziale.trimR();
+		if (strings.isEmptyTrim(valore)) {
+			return;
+		}
+		switch (tipo) {
+		case CHARACTER:
+			if (valore.length() > lunghezza.lunghezza.asInteger()) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[0]);
+			}
+			break;
+		case LOGICAL:
+			if (!strings.isOneOf(valore, Arrays.asList("", "1", "0"))) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
+			}
+			break;
+		case DECIMAL:
+			throw new UnsupportedOperationException("TODO");
+/////////////////////////////// TODO *******************************************************************			
+//			break;
+		case DISTRIBUTED:
+			throw new UnsupportedOperationException("Unsupported data area type: DDM");
+		}
+	}
+
+	private void checkExistence(String areaName, String libName) {
+		if (resourceWriter.exists(areaName)) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] {areaName, libName});
+		}
 	}
 
 	private void checkLibrary(String libName, String areaName) {
 		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
-		if (!resourceReader.exists(libName))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] {libName});	
+		if (!resourceReader.exists(libName)) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] {libName, areaName});
+		}
 	}
 
 
 	public static class DATAAREA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QCharacter name;
 		@DataDef(length = 10, value = "*LIBL")
@@ -97,25 +163,42 @@ public class DataAreaCreator {
 	}
 
 	public static enum TIPOEnum {
+				
 		@Special(value = "D")
-		DEC, @Special(value = "C")
-		CHAR, @Special(value = "L")
-		LGL, @Special(value = "R")
-		DDM
+		DEC(DataAreaType.DECIMAL),
+		
+		@Special(value = "C")
+		CHAR(DataAreaType.CHARACTER),
+		
+		@Special(value = "L")
+		LGL(DataAreaType.LOGICAL), 
+				
+		@Special(value = "R")
+		DDM(DataAreaType.DISTRIBUTED);
+		
+		public final DataAreaType dataAreaType;
+		
+		TIPOEnum (DataAreaType dataAreaType) {
+			this.dataAreaType = dataAreaType;
+		}
 	}
 
 	public static class LUNGHEZZA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QBinary lunghezza;
+		
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QBinary posizioniDecimali;
 	}
 
 	public static class AREADATIREMOTA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QCharacter nome;
+		
 		@DataDef(length = 10)
 		public QEnum<LIBRERIAEnum, QCharacter> libreria;
 
@@ -146,7 +229,8 @@ public class DataAreaCreator {
 
 	public static enum DESCRIZIONETESTOEnum {
 		@Special(value = "")
-		BLANK, OTHER
+		BLANK, 
+		OTHER
 	}
 
 	public static enum AUTORIZZAZIONEEnum {

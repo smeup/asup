@@ -13,6 +13,7 @@ package org.smeup.sys.il.core.base;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import java.util.List;
 
 import org.smeup.sys.il.core.java.QStrings;
 
@@ -88,5 +89,27 @@ public class BaseStringsImpl implements QStrings {
 	@Override
 	public Boolean isEmptyTrim(String string) {
 		return string == null || string.trim().equals("");
+	}
+
+	@Override
+	public Boolean isOneOf(String string, List<String> values) {
+		if (values == null) {
+			return false;
+		}
+
+		for (String value : values) {
+			if (checkEquals(string, value)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	public Boolean checkEquals(String s1, String s2) {
+		if (s1 == null) {
+			return s2 == null;
+		}
+		return s1.equals(s2);
 	}
 }
