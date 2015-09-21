@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.core.java;
 
+import java.util.List;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Strings</b></em>'. <!-- end-user-doc -->
@@ -66,5 +68,29 @@ public interface QStrings {
 	 * @generated
 	 */
 	Boolean isEmptyTrim(String string);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" valuesMany="true"
+	 * @generated
+	 */
+	Boolean isOneOf(String string, List<String> values);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" string1Required="true" string2Required="true"
+	 * @generated
+	 */
+	Boolean checkEquals(String string1, String string2);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
+	 * @generated
+	 */
+	String left(String string, int nrOfChars);
 
 } // QStrings

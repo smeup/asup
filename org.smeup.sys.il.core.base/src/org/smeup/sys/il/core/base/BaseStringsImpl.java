@@ -13,6 +13,7 @@ package org.smeup.sys.il.core.base;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import java.util.List;
 
 import org.smeup.sys.il.core.java.QStrings;
 
@@ -31,7 +32,8 @@ public class BaseStringsImpl implements QStrings {
 	}
 
 	@Override
-	public String appendChars(String string, String chars, int times, boolean before) {
+	public String appendChars(String string, String chars, int times,
+			boolean before) {
 
 		StringBuffer sb = new StringBuffer();
 
@@ -72,7 +74,9 @@ public class BaseStringsImpl implements QStrings {
 	@Override
 	public String trimL(String string) {
 		int i = 0;
-		while (i < string.length() && (Character.isWhitespace(string.charAt(i)) || string.charAt(i) == 0))
+		while (i < string.length()
+				&& (Character.isWhitespace(string.charAt(i)) || string
+						.charAt(i) == 0))
 			i++;
 		return string.substring(i);
 	}
@@ -80,7 +84,9 @@ public class BaseStringsImpl implements QStrings {
 	@Override
 	public String trimR(String string) {
 		int i = string.length() - 1;
-		while (i >= 0 && (Character.isWhitespace(string.charAt(i)) || string.charAt(i) == 0))
+		while (i >= 0
+				&& (Character.isWhitespace(string.charAt(i)) || string
+						.charAt(i) == 0))
 			i--;
 		return string.substring(0, i + 1);
 	}
@@ -89,4 +95,40 @@ public class BaseStringsImpl implements QStrings {
 	public Boolean isEmptyTrim(String string) {
 		return string == null || string.trim().equals("");
 	}
+
+	@Override
+	public Boolean isOneOf(String string, List<String> values) {
+		if (values == null) {
+			return false;
+		}
+
+		for (String value : values) {
+			if (checkEquals(string, value)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public Boolean checkEquals(String s1, String s2) {
+		if (s1 == null) {
+			return s2 == null;
+		}
+		return s1.equals(s2);
+	}
+
+	public String left(String s, int nrOfChars) {
+		if (s == null)
+			return null;
+
+		if (nrOfChars < 1)
+			return "";
+
+		if (nrOfChars >= s.length())
+			return s;
+
+		return s.substring(0, nrOfChars);
+	}
+
 }
