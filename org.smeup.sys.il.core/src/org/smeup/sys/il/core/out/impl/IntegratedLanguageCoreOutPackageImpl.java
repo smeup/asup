@@ -26,6 +26,7 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
 
@@ -40,6 +41,13 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass objectWriterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass writableObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -146,6 +154,15 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWritableObject() {
+		return writableObjectEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -200,6 +217,8 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 
 		// Create classes and their features
 		objectWriterEClass = createEClass(OBJECT_WRITER);
+
+		writableObjectEClass = createEClass(WRITABLE_OBJECT);
 
 		objectWriterFactoryEClass = createEClass(OBJECT_WRITER_FACTORY);
 
@@ -256,6 +275,13 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		addEParameter(op, theIntegratedLanguageCorePackage.getObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
 
+		initEClass(writableObjectEClass, QWritableObject.class, "WritableObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(writableObjectEClass, theIntegratedLanguageCorePackage.getObject(), "getObjectToWrite", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(writableObjectEClass, null, "setObject", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(objectWriterFactoryEClass, QObjectWriterFactory.class, "ObjectWriterFactory", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(objectWriterFactoryEClass, this.getObjectWriter(), "createObjectWriter", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -280,6 +306,9 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 		op = addEOperation(outputManagerEClass, null, "setDefaultWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(outputManagerEClass, this.getWritableObject(), "getWritableObject", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "label", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } // IntegratedLanguageCoreOutPackageImpl

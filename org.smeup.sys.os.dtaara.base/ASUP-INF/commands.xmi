@@ -18,8 +18,7 @@
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="dataArea">
         <facets
@@ -475,13 +474,11 @@
       xsi:type="os-cmd:Command"
       name="DLTDTAARA"
       text="Delete Data Area"
-      program="QLIDLDTAARA"
-      status="TODO">
+      program="QLIDLDTAARA">
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="dataArea">
         <cardinality
@@ -549,12 +546,11 @@
       name="DSPDTAARA"
       text="Display Data Area"
       program="QWCCDSVC"
-      status="POS">
+      typeName="">
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="dataArea">
         <facets
@@ -616,8 +612,7 @@
     <parameters
         allowVariable="true"
         name="OUTPUT"
-        position="2"
-        status="POS">
+        position="2">
       <dataTerm
           name="output"
           restricted="true">
@@ -640,8 +635,7 @@
     <parameters
         allowVariable="true"
         name="OUTFMT"
-        position="3"
-        status="POS">
+        position="3">
       <dataTerm
           name="outputFormat"
           restricted="true">
@@ -665,7 +659,7 @@
         allowVariable="true"
         name="SYSTEM"
         position="4"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="system"
           restricted="true">

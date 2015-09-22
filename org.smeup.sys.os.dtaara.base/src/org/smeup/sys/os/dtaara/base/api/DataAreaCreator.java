@@ -49,8 +49,6 @@ public class DataAreaCreator {
 	@Inject
 	private QJob job;
 	@Inject
-	private QOperatingSystemDataAreaFactory dataAreaFactory;
-	@Inject
 	private  QStrings stringsUtils;
 	
 	private QResourceWriter<QDataArea> resourceWriter;
@@ -87,7 +85,7 @@ public class DataAreaCreator {
 		checkExistence(areaName, libName);
 		
 		
-		QDataArea newDataArea = dataAreaFactory.createDataArea();
+		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
 		setValue(tipo.asEnum().dataAreaType, lunghezza, valoreIniziale, newDataArea);
 		newDataArea.setName(areaName);
 		newDataArea.setLibrary(libName);

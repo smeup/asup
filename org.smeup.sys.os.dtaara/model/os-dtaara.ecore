@@ -9,7 +9,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentDecimal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataAreaManager" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAreaManager" abstract="true" interface="true">
+    <eOperations name="getLocalDataArea" lowerBound="1" eType="#//DataArea">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DataAreaType">
     <eLiterals name="Character" value="10" literal="*CHAR"/>
     <eLiterals name="Decimal" value="20" literal="*DEC"/>
