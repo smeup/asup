@@ -153,6 +153,96 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
+	public QNumeric divide(short value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(short value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(short value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(long value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(long value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(long value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(int value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(int value, String roundingMode) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(int value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(double value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(double value, String haslRounding) {
+		eval(asDouble() / value);
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(double value, QNumeric remainderTarget) {
+		eval(asDouble() / value);
+		remainderTarget.eval(asDouble() % value);
+		return this;
+	}
+	
+	@Override
+	public QNumeric divide(QNumeric value) {
+		return divide(value, (String)null);
+	}
+
+	@Override
+	public QNumeric divide(QNumeric value, String roundingMode) {
+		eval(asDouble() / value.asDouble());
+		return this;
+	}
+
+	@Override
+	public QNumeric divide(QNumeric value, QNumeric remainderTarget) {
+		eval(asDouble() / value.asDouble());
+		remainderTarget.eval(asDouble() % value.asDouble());
+		return this;
+	}	
+	
+	@Override
 	public QNumeric minus(int value) {
 		eval(asDouble() - value);
 		return this;
@@ -310,37 +400,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asLong() ^ value);
 		return this;
 	}
-
-	@Override
-	public QNumeric qRem(int value) {
-		eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric qRem(long value) {
-		eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric qRem(QNumeric value) {
-		eval(asDouble() % value.asDouble());
-		return this;
-	}
-
-	@Override
-	public QNumeric qRem(short value) {
-		eval(asDouble() % value);
-		return this;
-	}
-
-	@Override
-	public QNumeric qRem(double value) {
-		eval(asDouble() % value);
-		return this;
-	}
-
+	
 	public abstract Number readNumber();
 
 	@Override
@@ -476,94 +536,249 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	public void eval(BigDecimal value, String roundingMode) {
 		writeNumber(value, roundingMode);
 	}
-	
+
 	@Override
-	public QNumeric divide(short value) {
-		return divide(value, (String)null);
+	public QNumeric qDiv(short value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(short value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
-	}
-	
-	@Override
-	public QNumeric divide(short value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
+	public QNumeric qDiv(short value, QNumeric remainderTarget) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-	
-	@Override
-	public QNumeric divide(long value) {
-		return divide(value, (String)null);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(long value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
+	public QNumeric qDiv(long value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
+		return number;
 	}
-	
+
 	@Override
-	public QNumeric divide(long value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
+	public QNumeric qDiv(long value, QNumeric remainderTarget) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-	
-	@Override
-	public QNumeric divide(int value) {
-		return divide(value, (String)null);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(int value, String roundingMode) {
-		eval(asDouble() / value);
-		return this;
+	public QNumeric qDiv(int value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(int value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
+	public QNumeric qDiv(int value, QNumeric remainderTarget) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-	
-	@Override
-	public QNumeric divide(double value) {
-		return divide(value, (String)null);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(double value, String haslRounding) {
-		eval(asDouble() / value);
-		return this;
+	public QNumeric qDiv(double value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(double value, QNumeric remainderTarget) {
-		eval(asDouble() / value);
+	public QNumeric qDiv(double value, QNumeric remainderTarget) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
-		return this;
-	}
-	
-	@Override
-	public QNumeric divide(QNumeric value) {
-		return divide(value, (String)null);
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(QNumeric value, String roundingMode) {
-		eval(asDouble() / value.asDouble());
-		return this;
+	public QNumeric qDiv(QNumeric value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value.asDouble());
+		return number;
 	}
 
 	@Override
-	public QNumeric divide(QNumeric value, QNumeric remainderTarget) {
-		eval(asDouble() / value.asDouble());
+	public QNumeric qDiv(QNumeric value, QNumeric remainderTarget) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() / value.asDouble());
 		remainderTarget.eval(asDouble() % value.asDouble());
-		return this;
-	}	
+		return number;
+	}
+
+	@Override
+	public QNumeric qMinus(short value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() - value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMinus(long value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() - value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMinus(int value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() - value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMinus(double value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() - value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMinus(QNumeric value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() - value.asDouble());
+		return number;
+	}
+
+	@Override
+	public QNumeric qMult(short value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() * value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMult(long value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() * value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMult(int value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() * value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMult(double value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() * value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qMult(QNumeric value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() * value.asDouble());
+		return number;
+	}
+
+	@Override
+	public QNumeric qPlus(short value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() + value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qPlus(long value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() + value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qPlus(int value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() + value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qPlus(double value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() + value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qPlus(QNumeric value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() + value.asDouble());
+		return number;
+	}
+
+	@Override
+	public QNumeric qRem(int value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() % value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qRem(long value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() % value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qRem(QNumeric value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() % value.asDouble());
+		return number;
+	}
+
+	@Override
+	public QNumeric qRem(short value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() % value);
+		return number;
+	}
+
+	@Override
+	public QNumeric qRem(double value) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
+		number.allocate();
+		number.eval(asDouble() % value);
+		return number;
+	}
 }
