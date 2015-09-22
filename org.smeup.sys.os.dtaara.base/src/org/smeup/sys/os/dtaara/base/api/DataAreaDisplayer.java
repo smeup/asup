@@ -9,7 +9,6 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -23,10 +22,13 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
+import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification;
+import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.DATAAREAEnum;
 import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QWCCDSVC")
 public class DataAreaDisplayer {
+	
 	public static enum QCPFMSG {
 		CPF1015,    //Non è stata trovata l'area dati &1 in &2.                 
 		CPF1021,    //Non è stata trovata la libreria &1 per l'area dati &2.    
@@ -48,7 +50,7 @@ public class DataAreaDisplayer {
 	
 	
 	public @Entry void main(
-			@DataDef(qualified = true) QEnum<DATAAREAEnum, DATAAREA> dataAreaSpecification,
+			@DataDef(qualified = true) QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification,
 			@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@DataDef(length = 1) QEnum<OUTPUTFORMATEnum, QCharacter> outputFormat,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
@@ -79,7 +81,7 @@ public class DataAreaDisplayer {
 		}
 	}
 
-	private QResourceReader<QDataArea> findReader(DATAAREA object) {
+	private QResourceReader<QDataArea> findReader(ExistingDataAreaSpecification object) {
 		QResourceReader<QDataArea> resourceReader = null;
 		switch (object.library.asEnum()) {
 		case CURLIB:
@@ -97,7 +99,7 @@ public class DataAreaDisplayer {
 		return resourceReader;
 	}
 	
-	private QDataArea findDataArea(QEnum<DATAAREAEnum, DATAAREA> dataAreaSpecification) {
+	private QDataArea findDataArea(QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification) {
 		DATAAREAEnum dataAreaType = dataAreaSpecification.asEnum();
 		switch(dataAreaType) {
 		case LDA:
@@ -120,24 +122,6 @@ public class DataAreaDisplayer {
 		if (!resourceReader.exists(libraryName)) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] {libraryName, dataAreaName});
 		}
-	}
-
-	public static class DATAAREA extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		
-		@DataDef(length = 10)
-		public QCharacter name;
-		
-		@DataDef(length = 10, value = "*LIBL")
-		public QEnum<LIBRARYEnum, QCharacter> library;
-
-		public static enum LIBRARYEnum {
-			LIBL, CURLIB, OTHER
-		}
-	}
-
-	public static enum DATAAREAEnum {
-		LDA, GDA, PDA, OTHER
 	}
 
 	public static enum OUTPUTEnum {
