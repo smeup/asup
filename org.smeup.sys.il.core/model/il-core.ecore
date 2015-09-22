@@ -518,6 +518,10 @@
       <eOperations name="getWritableObject" lowerBound="1" eType="#//out/WritableObject">
         <eParameters name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
+      <eOperations name="getWritableObject" lowerBound="1" eType="#//out/WritableObject">
+        <eParameters name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="columnLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eOperations>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/core/term" nsPrefix="il-core-term">

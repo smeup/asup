@@ -55,4 +55,12 @@ public interface QOutputManager {
 	 */
 	QWritableObject getWritableObject(String label);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" labelRequired="true" columnLengthRequired="true"
+	 * @generated
+	 */
+	QWritableObject getWritableObject(String label, int columnLength);
+
 } // QOutputManager

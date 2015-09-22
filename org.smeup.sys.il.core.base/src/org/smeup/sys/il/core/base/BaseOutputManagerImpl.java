@@ -100,4 +100,9 @@ public class BaseOutputManagerImpl implements QOutputManager {
 	public QWritableObject getWritableObject(String label) {
 		return new BaseWritableObject(label);
 	}
+
+	@Override
+	public QWritableObject getWritableObject(String label, int columnLength) {
+		return new BaseWritableObject(label, columnLength);	
+	}
 }

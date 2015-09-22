@@ -59,7 +59,8 @@ public class DataAreaDisplayer {
 			objectWriter.write(area);
 			objectWriter.flush();
 			
-			QWritableObject objectToWrite = outputManager.getWritableObject("Data area");
+			String label = "Data area";
+			QWritableObject objectToWrite = outputManager.getWritableObject(label, Math.max(label.length(), area.getContentLength()));
 			objectToWrite.setObject(area.getContent());
 
 			objectWriter.initialize();

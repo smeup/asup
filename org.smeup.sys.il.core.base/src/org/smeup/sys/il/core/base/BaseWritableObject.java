@@ -17,10 +17,16 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 public class BaseWritableObject implements QWritableObject {
 	private EClass eClass;
 	private QObject qObject;
+	private int columnLength;
 
 	public BaseWritableObject(String columnName) {
-		eClass = createBaseObjectEClass(columnName);
-		qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
+		this(columnName, 198);
+	}
+
+	public BaseWritableObject(String columnName, int columnLength) {
+		this.columnLength = columnLength;
+		this.eClass = createBaseObjectEClass(columnName);
+		this.qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
 	}
 	
 	@Override
@@ -48,7 +54,6 @@ public class BaseWritableObject implements QWritableObject {
 
 		ePackage.getEClassifiers().add(eClass);
 		//
-		int columnLength = 198; 
 
 		EAttribute eAttribute = ecoreFactory.createEAttribute();
 		eAttribute.setName(columnName);

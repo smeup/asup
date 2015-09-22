@@ -309,6 +309,10 @@ public class IntegratedLanguageCoreOutPackageImpl extends EPackageImpl implement
 
 		op = addEOperation(outputManagerEClass, this.getWritableObject(), "getWritableObject", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "label", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(outputManagerEClass, this.getWritableObject(), "getWritableObject", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "label", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "columnLength", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } // IntegratedLanguageCoreOutPackageImpl
