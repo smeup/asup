@@ -476,52 +476,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	public void eval(BigDecimal value, String roundingMode) {
 		writeNumber(value, roundingMode);
 	}
-
-	@Override
-	public void eval(double value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(short value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(long value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(int value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(QNumeric value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(BigInteger value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(BigDecimal value, QNumeric remainderTarget) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
-	
 	
 	@Override
 	public QNumeric divide(short value) {

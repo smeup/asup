@@ -267,12 +267,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			methodInvocation.arguments().add(jdtExpression);
 		}
 		
-		if(statement.getRemainderTarget() != null) {
-			QExpression expression = expressionParser.parseExpression(statement.getRemainderTarget());
-			Expression jdtExpression = buildExpression(ast, expression, null);
-			methodInvocation.arguments().add(jdtExpression);
-		}
-
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 

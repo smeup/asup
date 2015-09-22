@@ -197,14 +197,6 @@ public interface QNumeric extends QBufferedData {
 	void eval(double value, String roundingMode);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(double value, QNumeric remainderTarget);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -217,14 +209,6 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	void eval(short value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(short value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -241,14 +225,6 @@ public interface QNumeric extends QBufferedData {
 	void eval(long value, String roundingMode);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(long value, QNumeric remainderTarget);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -261,14 +237,6 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	void eval(int value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(int value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -285,14 +253,6 @@ public interface QNumeric extends QBufferedData {
 	void eval(QNumeric value, String roundingMode);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(QNumeric value, QNumeric remainderTarget);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -307,14 +267,6 @@ public interface QNumeric extends QBufferedData {
 	void eval(BigInteger value, String roundingMode);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(BigInteger value, QNumeric remainderTarget);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -327,14 +279,6 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	void eval(BigDecimal value, String roundingMode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" remainderTargetRequired="true"
-	 * @generated
-	 */
-	void eval(BigDecimal value, QNumeric remainderTarget);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

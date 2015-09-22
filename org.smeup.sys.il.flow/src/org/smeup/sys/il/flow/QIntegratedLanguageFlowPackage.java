@@ -687,22 +687,13 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int EVAL__ROUNDING_MODE = INVOKE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Remainder Target</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVAL__REMAINDER_TARGET = INVOKE_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Eval</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 3;
+	int EVAL_FEATURE_COUNT = INVOKE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.
@@ -2371,17 +2362,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getEval_RoundingMode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#getRemainderTarget <em>Remainder Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remainder Target</em>'.
-	 * @see org.smeup.sys.il.flow.QEval#getRemainderTarget()
-	 * @see #getEval()
-	 * @generated
-	 */
-	EAttribute getEval_RemainderTarget();
-
-	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.flow.QFileSection <em>File Section</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -3465,14 +3445,6 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVAL__ROUNDING_MODE = eINSTANCE.getEval_RoundingMode();
-
-		/**
-		 * The meta object literal for the '<em><b>Remainder Target</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EVAL__REMAINDER_TARGET = eINSTANCE.getEval_RemainderTarget();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.

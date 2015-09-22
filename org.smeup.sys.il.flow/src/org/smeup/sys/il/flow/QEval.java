@@ -16,7 +16,6 @@ package org.smeup.sys.il.flow;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QEval#getRemainderTarget <em>Remainder Target</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,31 +76,5 @@ public interface QEval extends QInvoke {
 	 * @generated
 	 */
 	void setRoundingMode(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Remainder Target</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Remainder Target</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Remainder Target</em>' attribute.
-	 * @see #setRemainderTarget(String)
-	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_RemainderTarget()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getRemainderTarget();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getRemainderTarget <em>Remainder Target</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Remainder Target</em>' attribute.
-	 * @see #getRemainderTarget()
-	 * @generated
-	 */
-	void setRemainderTarget(String value);
 
 } // QEval
