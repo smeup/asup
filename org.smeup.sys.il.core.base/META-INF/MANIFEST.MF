@@ -6,6 +6,7 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.il.core.base
-Require-Bundle: org.smeup.sys.il.core
+Require-Bundle: org.smeup.sys.il.core,
+ org.smeup.sys.il.data
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.inject

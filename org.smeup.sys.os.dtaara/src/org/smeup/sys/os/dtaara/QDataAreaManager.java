@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.dtaara;
 
+import org.smeup.sys.il.core.ctx.QContext;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QData Area Manager</b></em>'. <!-- end-user-doc -->
@@ -17,4 +19,12 @@ package org.smeup.sys.os.dtaara;
  * @generated
  */
 public interface QDataAreaManager {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextRequired="true"
+	 * @generated
+	 */
+	QDataArea getLocalDataArea(QContext context);
 } // QDataAreaManager

@@ -480,6 +480,12 @@
         <eParameters name="object" lowerBound="1" eType="#//Object"/>
       </eOperations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WritableObject" abstract="true" interface="true">
+      <eOperations name="getObjectToWrite" eType="#//Object"/>
+      <eOperations name="setObject">
+        <eParameters name="object" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ObjectWriterFactory" abstract="true"
         interface="true">
       <eOperations name="createObjectWriter" lowerBound="1" eType="#//out/ObjectWriter">
@@ -508,6 +514,9 @@
       <eOperations name="setDefaultWriter">
         <eParameters name="context" lowerBound="1" eType="#//ctx/Context"/>
         <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="getWritableObject" lowerBound="1" eType="#//out/WritableObject">
+        <eParameters name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>

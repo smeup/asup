@@ -88,28 +88,28 @@ public @ToDo class DataAreaDeleter {
 	}
 
 	private QResourceReader<QDataArea> findReader(DATAAREA object) {
-		QResourceReader<QDataArea> resourceWriter = null;
+		QResourceReader<QDataArea> resourceReader = null;
 		switch (object.library.asEnum()) {
 		case ALL:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, Scope.ALL);
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.ALL);
 			break;
 		case ALLUSR:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, Scope.ALL_USER);
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.ALL_USER);
 			break;
 		case CURLIB:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, Scope.CURRENT_LIBRARY);
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.CURRENT_LIBRARY);
 			break;
 		case LIBL:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, Scope.LIBRARY_LIST);
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.LIBRARY_LIST);
 			break;
 		case USRLIBL:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, Scope.USER_LIBRARY_LIST);
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.USER_LIBRARY_LIST);
 			break;
 		case OTHER:
-			resourceWriter = resourceManager.getResourceReader(job, QDataArea.class, object.library.asData().trimR());
+			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, object.library.asData().trimR());
 			break;
 		}
-		return resourceWriter;
+		return resourceReader;
 	}
 
 	private QResourceWriter<QDataArea> findWriter(String library) {

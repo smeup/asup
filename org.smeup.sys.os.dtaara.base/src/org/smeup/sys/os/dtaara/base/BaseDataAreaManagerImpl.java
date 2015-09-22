@@ -11,8 +11,29 @@
  */
 package org.smeup.sys.os.dtaara.base;
 
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
+import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
 
 public class BaseDataAreaManagerImpl implements QDataAreaManager {
+
+	
+	@Override
+	public QDataArea getLocalDataArea(QContext context) {
+		QDataArea localDataArea = context.get(QDataArea.class);
+
+		if (localDataArea == null) {
+			synchronized (context) {
+				localDataArea = context.get(QDataArea.class);
+				if (localDataArea == null) {
+					localDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
+					context.set(QDataArea.class, localDataArea);
+				}
+			}
+		}
+
+		return localDataArea;
+	}
 
 }

@@ -73,6 +73,25 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	int OBJECT_WRITER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QWritableObject <em>Writable Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.out.QWritableObject
+	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getWritableObject()
+	 * @generated
+	 */
+	int WRITABLE_OBJECT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Writable Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITABLE_OBJECT_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -80,7 +99,7 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactory()
 	 * @generated
 	 */
-	int OBJECT_WRITER_FACTORY = 1;
+	int OBJECT_WRITER_FACTORY = 2;
 
 	/**
 	 * The number of structural features of the '<em>Object Writer Factory</em>' class.
@@ -98,7 +117,7 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getObjectWriterFactoryRegistry()
 	 * @generated
 	 */
-	int OBJECT_WRITER_FACTORY_REGISTRY = 2;
+	int OBJECT_WRITER_FACTORY_REGISTRY = 3;
 
 	/**
 	 * The number of structural features of the '<em>Object Writer Factory Registry</em>' class.
@@ -116,7 +135,7 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getOutputManager()
 	 * @generated
 	 */
-	int OUTPUT_MANAGER = 3;
+	int OUTPUT_MANAGER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Output Manager</em>' class.
@@ -134,6 +153,16 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getObjectWriter();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QWritableObject <em>Writable Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Writable Object</em>'.
+	 * @see org.smeup.sys.il.core.out.QWritableObject
+	 * @generated
+	 */
+	EClass getWritableObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}'.
@@ -195,6 +224,16 @@ public interface QIntegratedLanguageCoreOutPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OBJECT_WRITER = eINSTANCE.getObjectWriter();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QWritableObject <em>Writable Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.out.QWritableObject
+		 * @see org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl#getWritableObject()
+		 * @generated
+		 */
+		EClass WRITABLE_OBJECT = eINSTANCE.getWritableObject();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.out.QObjectWriterFactory <em>Object Writer Factory</em>}' class.

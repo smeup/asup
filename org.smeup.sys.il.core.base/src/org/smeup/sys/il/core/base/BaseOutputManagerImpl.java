@@ -20,6 +20,7 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QObjectWriterFactory;
 import org.smeup.sys.il.core.out.QObjectWriterFactoryRegistry;
 import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.core.out.QWritableObject;
 
 public class BaseOutputManagerImpl implements QOutputManager {
 
@@ -93,5 +94,10 @@ public class BaseOutputManagerImpl implements QOutputManager {
 
 		private static final long serialVersionUID = 1L;
 
+	}
+
+	@Override
+	public QWritableObject getWritableObject(String label) {
+		return new BaseWritableObject(label);
 	}
 }

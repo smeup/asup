@@ -47,4 +47,12 @@ public interface QOutputManager {
 	 */
 	void setDefaultWriter(QContext context, String name);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" labelRequired="true"
+	 * @generated
+	 */
+	QWritableObject getWritableObject(String label);
+
 } // QOutputManager
