@@ -31,7 +31,7 @@ public class BaseDataAreaManagerImpl implements QDataAreaManager {
 					localDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
 					localDataArea.setDataAreaType(DataAreaType.CHARACTER);
 					localDataArea.setContentLength(1024);
-					context.set(QDataArea.class, lo	 calDataArea);
+					context.set(QDataArea.class, localDataArea);
 				}
 			}
 		}
