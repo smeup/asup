@@ -469,6 +469,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			result = "^";
 			break;
 		case MODULAR:
+			result = "%";
 			break;
 		}
 
