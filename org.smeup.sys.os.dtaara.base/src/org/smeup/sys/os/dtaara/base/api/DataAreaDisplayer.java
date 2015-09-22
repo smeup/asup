@@ -15,16 +15,13 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceReader;
-import org.smeup.sys.il.memo.QResourceSetReader;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
 import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification;
-import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.DATAAREAEnum;
-import org.smeup.sys.os.lib.QLibrary;
+import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.DataAreaNotFoundException;
+import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.LibraryNotFoundException;
 
 @Program(name = "QWCCDSVC")
 public class DataAreaDisplayer {
@@ -54,9 +51,10 @@ public class DataAreaDisplayer {
 			@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@DataDef(length = 1) QEnum<OUTPUTFORMATEnum, QCharacter> outputFormat,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
-		QDataArea area = findDataArea(dataAreaSpecification);
-		QObjectWriter objectWriter = findWriter(output);
+
 		try {
+			QDataArea area = dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaSpecification.asEnum());
+			QObjectWriter objectWriter = findOutputWriter(output);
 			objectWriter.initialize();
 			objectWriter.write(area);
 			objectWriter.flush();
@@ -70,10 +68,14 @@ public class DataAreaDisplayer {
 			objectWriter.flush();
 		} catch (IOException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871, new String[0]);	
+		} catch (DataAreaNotFoundException e) {
+			e.printStackTrace();
+		} catch (LibraryNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
-	private QObjectWriter findWriter(QEnum<OUTPUTEnum, QCharacter> output) {
+	private QObjectWriter findOutputWriter(QEnum<OUTPUTEnum, QCharacter> output) {
 		if (output.asEnum().equals(OUTPUTEnum.PRINT)) {
 			return outputManager.getObjectWriter(job.getContext(), "P");
 		} else {
@@ -81,48 +83,6 @@ public class DataAreaDisplayer {
 		}
 	}
 
-	private QResourceReader<QDataArea> findReader(ExistingDataAreaSpecification object) {
-		QResourceReader<QDataArea> resourceReader = null;
-		switch (object.library.asEnum()) {
-		case CURLIB:
-			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.CURRENT_LIBRARY);
-			break;
-		case LIBL:
-			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, Scope.LIBRARY_LIST);
-			break;
-		case OTHER:
-			String libraryName = object.library.asData().trimR();
-			checkLibrary(libraryName, object.name.trimR());
-			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, libraryName);
-			break;
-		}
-		return resourceReader;
-	}
-	
-	private QDataArea findDataArea(QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification) {
-		DATAAREAEnum dataAreaType = dataAreaSpecification.asEnum();
-		switch(dataAreaType) {
-		case LDA:
-			return dataAreaManager.getLocalDataArea(job.getContext());
-		case OTHER:
-			String dataAreaName = dataAreaSpecification.asData().name.trimR();
-			String libraryName = dataAreaSpecification.asData().library.asData().trimR();
-			QDataArea result = findReader(dataAreaSpecification.asData()).lookup(dataAreaName);
-			if (result == null) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[] {libraryName, dataAreaName});				
-			}
-			return result;
-		default:
-			throw new UnsupportedOperationException("Unsupported DTAARA Type: " + dataAreaType);
-		}
-	}
-	
-	private void checkLibrary(String libraryName, String dataAreaName) {
-		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
-		if (!resourceReader.exists(libraryName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] {libraryName, dataAreaName});
-		}
-	}
 
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
