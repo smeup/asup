@@ -50,6 +50,7 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
@@ -388,6 +389,16 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return stroller;
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <R extends QRecord> R createRecord(Class<R> wrapper, boolean initialize) {
+		
+		Class<? extends QDataStruct> classDataStruct = (Class<? extends QDataStruct>) wrapper;
+		return (R) createDataStruct(classDataStruct, 0, initialize);
+	}
+
+	
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean initialize) {
 

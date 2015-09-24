@@ -18,7 +18,6 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
-import org.smeup.sys.il.data.def.*;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DateFormat;

@@ -908,12 +908,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		characterEClass.getESuperTypes().add(this.getString());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
-		g1 = createEGenericType(this.getCharacter());
-		dataStructEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getStruct());
-		g2 = createEGenericType(this.getBufferedData());
-		g1.getETypeArguments().add(g2);
-		dataStructEClass.getEGenericSuperTypes().add(g1);
+		dataStructEClass.getESuperTypes().add(this.getCharacter());
+		dataStructEClass.getESuperTypes().add(this.getRecord());
 		dataWriterEClass.getESuperTypes().add(this.getDataVisitor());
 		datetimeEClass.getESuperTypes().add(this.getBufferedData());
 		decimalEClass.getESuperTypes().add(this.getNumeric());
@@ -1381,6 +1377,18 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(this.getList());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(dataFactoryEClass, null, "createRecord", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "R");
+		g1 = createEGenericType(this.getRecord());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "wrapper", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, null, "createScroller", 1, 1, IS_UNIQUE, IS_ORDERED);

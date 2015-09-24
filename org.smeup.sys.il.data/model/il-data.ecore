@@ -452,6 +452,18 @@
       <eParameters name="dimension" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="createRecord" lowerBound="1">
+      <eGenericType eTypeParameter="#//DataFactory/createRecord/R"/>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="#//Record"/>
+      </eTypeParameters>
+      <eParameters name="wrapper">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//DataFactory/createRecord/R"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
     <eOperations name="createScroller" lowerBound="1">
       <eGenericType eClassifier="#//Scroller">
         <eTypeArguments eTypeParameter="#//DataFactory/createScroller/D"/>
@@ -522,12 +534,8 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataReader" eSuperTypes="#//DataVisitor"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataStruct" abstract="true" interface="true">
-    <eGenericSuperTypes eClassifier="#//Character"/>
-    <eGenericSuperTypes eClassifier="#//Struct">
-      <eTypeArguments eClassifier="#//BufferedData"/>
-    </eGenericSuperTypes>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataStruct" abstract="true" interface="true"
+      eSuperTypes="#//Character #//Record"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataVisitor" abstract="true">
     <eOperations name="endVisit">
       <eParameters name="data" lowerBound="1" eType="#//Data"/>

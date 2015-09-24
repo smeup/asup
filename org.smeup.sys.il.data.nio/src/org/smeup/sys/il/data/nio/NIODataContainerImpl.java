@@ -25,6 +25,8 @@ import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -346,7 +348,19 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QData data = datas.get(key);
 		if (data == null) {
-			data = dataFactory.createData(dataTerm, true);
+			if(dataTerm.getBased() != null) {
+				data = dataFactory.createData(dataTerm, false);
+				
+				QData rawData = getData(dataTerm.getBased());
+				if(rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData)) 
+					throw new IntegratedLanguageDataRuntimeException("Invalid based data: "+dataTerm);
+				
+				QBufferedData rawBufferedData = (QBufferedData) rawData;
+				rawBufferedData.assign((QBufferedData)data);
+			}
+			else {
+				data = dataFactory.createData(dataTerm, true);
+			}
 			datas.put(key, data);
 		}
 

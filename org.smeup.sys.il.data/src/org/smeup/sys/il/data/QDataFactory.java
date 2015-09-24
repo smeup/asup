@@ -150,6 +150,14 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" initializeRequired="true"
+	 * @generated
+	 */
+	<R extends QRecord> R createRecord(Class<R> wrapper, boolean initialize);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
 	 * @generated
 	 */

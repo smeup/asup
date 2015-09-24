@@ -16,5 +16,5 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDataStruct extends QCharacter, QStruct<QBufferedData> {
+public interface QDataStruct extends QCharacter, QRecord {
 } // QDataStruct
