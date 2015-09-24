@@ -1,761 +1,367 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<os-cmd:CommandContainer
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:il-core="http://www.smeup.org/asup/il/core"
-    xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
-    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
-    xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
-    typeName="*DTAARA">
-  <contents
-      xsi:type="os-cmd:Command"
-      name="CHGDTAARA"
-      text="Modifica area dati"
-      program="QWCCCHVC"
-      status="TODO">
-    <parameters
-        allowVariable="true"
-        name="DTAARA"
-        position="1">
-      <dataTerm
-          name="dataArea">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LDA"
-              unary="true"
-              value="*LDA"/>
-          <elements
-              name="*GDA"
-              unary="true"
-              value="*GDA"/>
-          <elements
-              name="*PDA"
-              unary="true"
-              value="*PDA"/>
-        </facets>
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="name">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
-          </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
+<?xml version="1.0" encoding="ASCII"?>
+<os-cmd:CommandContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:il-core="http://www.smeup.org/asup/il/core" xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta" xmlns:il-data-def="http://www.smeup.org/asup/il/data/def" xmlns:os-cmd="http://www.smeup.org/asup/os/cmd" typeName="*DTAARA">
+  <contents xsi:type="os-cmd:Command" name="CHGDTAARA" text="Change Data Area" program="QWCCCHVC" status="TODO">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
+      <dataTerm name="dataAreaSpecification">
+        <definition xsi:type="il-data-def:DataStructDef">
+          <elements xsi:type="os-cmd:CommandData" name="dataArea">
+            <facets xsi:type="il-core:Special">
+              <elements name="*LDA" unary="true" value="*LDA"/>
+              <elements name="*GDA" unary="true" value="*GDA"/>
+              <elements name="*PDA" unary="true" value="*PDA"/>
             </facets>
-            <default
-                value="*LIBL"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+              <elements xsi:type="os-cmd:CommandData" name="name">
+                <facets xsi:type="il-core:Format" type="NAME"/>
+                <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+              </elements>
+              <elements xsi:type="os-cmd:CommandData" name="library">
+                <facets xsi:type="il-core:Format" type="NAME"/>
+                <facets xsi:type="il-core:Special">
+                  <elements name="*LIBL" value="*LIBL"/>
+                  <elements name="*CURLIB" value="*CURLIB"/>
+                </facets>
+                <default value="*LIBL"/>
+                <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+              </elements>
+            </definition>
+          </elements>
+          <elements xsi:type="os-cmd:CommandData" name="substringSpecifications">
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" unary="true" value="0"/>
+            </facets>
+            <default value="*ALL"/>
+            <definition xsi:type="il-data-def:DataStructDef">
+              <elements xsi:type="os-cmd:CommandData" name="substringStartingPosition">
+                <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
+                <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
+              </elements>
+              <elements xsi:type="os-cmd:CommandData" name="substringLength">
+                <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
+                <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
+              </elements>
+            </definition>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="VALUE"
-        position="2">
-      <dataTerm
-          name="nuovoValore">
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:AdapterDef"/>
+    <parameters allowVariable="true" name="VALUE" position="2" status="TODO">
+      <dataTerm name="newValue">
+        <definition xsi:type="il-data-def:AdapterDef"/>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;CHGDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;CHGDTAARA&quot; MaxPos=&quot;2&quot; Prompt=&quot;Modifica area dati&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Specifica area dati&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Area dati&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LDA, *GDA, *PDA&quot; >&lt;SngVal>&lt;Value Val=&quot;*LDA&quot; MapTo=&quot;*LDA&quot;/>&lt;Value Val=&quot;*GDA&quot; MapTo=&quot;*GDA&quot;/>&lt;Value Val=&quot;*PDA&quot; MapTo=&quot;*PDA&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Libreria&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Elem>&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Specifiche sottostringa&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ALL&quot; >&lt;SngVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;0&quot;/>&lt;/SngVal>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Posiz. iniziale sottostringa&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Lunghezza sottostringa&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;X&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Nuovo valore&quot; Len=&quot;1.24.9&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Valore carattere&quot; >&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;CHGDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;CHGDTAARA&quot; MaxPos=&quot;2&quot; Prompt=&quot;Change Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area specification&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LDA, *GDA, *PDA&quot; >&lt;SngVal>&lt;Value Val=&quot;*LDA&quot; MapTo=&quot;*LDA&quot;/>&lt;Value Val=&quot;*GDA&quot; MapTo=&quot;*GDA&quot;/>&lt;Value Val=&quot;*PDA&quot; MapTo=&quot;*PDA&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Elem>&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Substring specifications&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ALL&quot; >&lt;SngVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;0&quot;/>&lt;/SngVal>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Substring starting position&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Substring length&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;X&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;New value&quot; Len=&quot;1.24.9&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents
-      xsi:type="os-cmd:Command"
-      name="CRTDTAARA"
-      text="Creazione area dati"
-      classCMD="true"
-      program="QWCCCRVC">
-    <parameters
-        allowVariable="true"
-        name="DTAARA"
-        position="1">
-      <dataTerm
-          name="dataArea">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LDA"
-              unary="true"
-              value="*LDA"/>
-          <elements
-              name="*GDA"
-              unary="true"
-              value="*GDA"/>
-          <elements
-              name="*PDA"
-              unary="true"
-              value="*PDA"/>
-        </facets>
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="name">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+  <contents xsi:type="os-cmd:Command" name="CRTDTAARA" text="Create Data Area" program="QWCCCRVC" status="TODO">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
+      <dataTerm name="dataArea">
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="name">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <default
-                value="*LIBL"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <default value="*CURLIB"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="TYPE"
-        position="2">
-      <dataTerm
-          name="tipo"
-          restricted="true">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*DEC"
-              value="D"/>
-          <elements
-              name="*CHAR"
-              value="C"/>
-          <elements
-              name="*LGL"
-              value="L"/>
-          <elements
-              name="*DDM"
-              value="R"/>
+    <parameters allowVariable="true" name="TYPE" position="2" status="TODO">
+      <dataTerm name="type" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*DEC" value="D"/>
+          <elements name="*CHAR" value="C"/>
+          <elements name="*LGL" value="L"/>
+          <elements name="*DDM" value="R"/>
         </facets>
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="LEN"
-        position="3">
-      <dataTerm
-          name="lunghezza">
-        <definition
-            xsi:type="il-data-def:DataStructDef">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="lunghezza">
-            <facets
-                xsi:type="il-core-meta:Range"
-                max="2000"
-                min="1"/>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:BinaryDef"
-                type="SHORT"/>
+    <parameters allowVariable="true" name="LEN" position="3" status="TODO">
+      <dataTerm name="length">
+        <definition xsi:type="il-data-def:DataStructDef">
+          <elements xsi:type="os-cmd:CommandData" name="length">
+            <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
+            <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="posizioniDecimali">
-            <facets
-                xsi:type="il-core-meta:Range"
-                max="9"
-                min="0"/>
-            <definition
-                xsi:type="il-data-def:BinaryDef"
-                type="SHORT"/>
+          <elements xsi:type="os-cmd:CommandData" name="decimalPositions">
+            <facets xsi:type="il-core-meta:Range" max="9" min="0"/>
+            <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="VALUE"
-        position="4">
-      <dataTerm
-          name="valoreIniziale">
-        <facets
-            xsi:type="il-core-meta:Default"
-            value=""/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="2000"
-            varying="true"/>
+    <parameters allowVariable="true" name="VALUE" position="4" status="POS">
+      <dataTerm name="initialValue">
+        <definition xsi:type="il-data-def:AdapterDef"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="RMTDTAARA"
-        position="5"
-        status="UNS">
-      <dataTerm
-          name="areaDatiRemota">
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="nome">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+    <parameters allowVariable="true" name="RMTDTAARA" position="5" status="POS">
+      <dataTerm name="remoteDataArea">
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="name">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="libreria">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*LIBL" value="*LIBL"/>
+              <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="RMTLOCNAME"
-        position="6"
-        status="UNS">
-      <dataTerm
-          name="ubicazioneRemota">
-        <facets
-            xsi:type="il-core:Format"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*RDB"
-              value="*RDB"/>
+    <parameters allowVariable="true" name="RMTLOCNAME" position="6" status="POS">
+      <dataTerm name="remoteLocation">
+        <facets xsi:type="il-core:Format"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*RDB" value="*RDB"/>
         </facets>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="8"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="RDB"
-        position="7"
-        status="UNS">
-      <dataTerm
-          name="databaseRelazionale">
-        <facets
-            xsi:type="il-core:Format"
-            type="NAME"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="18"/>
+    <parameters allowVariable="true" name="RDB" position="7" status="POS">
+      <dataTerm name="relationalDatabase">
+        <facets xsi:type="il-core:Format" type="NAME"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="18"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="DEV"
-        position="8"
-        status="UNS">
-      <dataTerm
-          name="descrizioneUnitaAPPC">
-        <facets
-            xsi:type="il-core:Format"
-            type="NAME"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LOC"
-              value="*LOC"/>
+    <parameters allowVariable="true" name="DEV" position="8" status="POS">
+      <dataTerm name="aPPCDeviceDescription">
+        <facets xsi:type="il-core:Format" type="NAME"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*LOC" value="*LOC"/>
         </facets>
-        <default
-            value="*LOC"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="10"/>
+        <default value="*LOC"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="LCLLOCNAME"
-        position="9"
-        status="UNS">
-      <dataTerm
-          name="ubicazioneLocale">
-        <facets
-            xsi:type="il-core:Format"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LOC"
-              value="*LOC"/>
-          <elements
-              name="*NETATR"
-              value="*NETATR"/>
+    <parameters allowVariable="true" name="LCLLOCNAME" position="9" status="POS">
+      <dataTerm name="localLocation">
+        <facets xsi:type="il-core:Format"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*LOC" value="*LOC"/>
+          <elements name="*NETATR" value="*NETATR"/>
         </facets>
-        <default
-            value="*LOC"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="8"/>
+        <default value="*LOC"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="MODE"
-        position="10"
-        status="UNS">
-      <dataTerm
-          name="modalita">
-        <facets
-            xsi:type="il-core:Format"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*NETATR"
-              value="*NETATR"/>
+    <parameters allowVariable="true" name="MODE" position="10" status="POS">
+      <dataTerm name="mode">
+        <facets xsi:type="il-core:Format"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*NETATR" value="*NETATR"/>
         </facets>
-        <default
-            value="*NETATR"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="8"/>
+        <default value="*NETATR"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="RMTNETID"
-        position="11"
-        status="UNS">
-      <dataTerm
-          name="reteRemota">
-        <facets
-            xsi:type="il-core:Format"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LOC"
-              value="*LOC"/>
-          <elements
-              name="*NETATR"
-              value="*NETATR"/>
-          <elements
-              name="*NONE"
-              value="*NONE"/>
+    <parameters allowVariable="true" name="RMTNETID" position="11" status="POS">
+      <dataTerm name="remoteNetworkIdentifier">
+        <facets xsi:type="il-core:Format"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*LOC" value="*LOC"/>
+          <elements name="*NETATR" value="*NETATR"/>
+          <elements name="*NONE" value="*NONE"/>
         </facets>
-        <default
-            value="*LOC"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="8"/>
+        <default value="*LOC"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="8"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="TEXT"
-        position="12">
-      <dataTerm
-          name="descrizioneTesto">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*BLANK"
-              value=""/>
+    <parameters allowVariable="true" name="TEXT" position="12" status="POS">
+      <dataTerm name="textDescription">
+        <facets xsi:type="il-core:Special">
+          <elements name="*BLANK" value=""/>
         </facets>
-        <default
-            value="*BLANK"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="50"/>
+        <default value="*BLANK"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="50"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="AUT"
-        position="13"
-        status="POS">
-      <dataTerm
-          name="autorizzazione">
-        <facets
-            xsi:type="il-core:Format"
-            type="NAME"/>
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LIBCRTAUT"
-              value="*LIBCRTAUT"/>
-          <elements
-              name="*CHANGE"
-              value="*CHANGE"/>
-          <elements
-              name="*ALL"
-              value="*ALL"/>
-          <elements
-              name="*USE"
-              value="*USE"/>
-          <elements
-              name="*EXCLUDE"
-              value="*EXCLUDE"/>
+    <parameters allowVariable="true" name="AUT" position="13" status="POS">
+      <dataTerm name="authority">
+        <facets xsi:type="il-core:Format" type="NAME"/>
+        <facets xsi:type="il-core:Special">
+          <elements name="*LIBCRTAUT" value="*LIBCRTAUT"/>
+          <elements name="*CHANGE" value="*CHANGE"/>
+          <elements name="*ALL" value="*ALL"/>
+          <elements name="*USE" value="*USE"/>
+          <elements name="*EXCLUDE" value="*EXCLUDE"/>
         </facets>
-        <default
-            value="*LIBCRTAUT"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="10"/>
+        <default value="*LIBCRTAUT"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;CRTDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;CRTDTAARA&quot; MaxPos=&quot;4&quot; Prompt=&quot;Creazione area dati&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Area dati&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Libreria&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURLIB&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;TYPE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Tipo&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*DEC, *CHAR, *LGL, *DDM&quot; >&lt;SpcVal>&lt;Value Val=&quot;*DEC&quot; MapTo=&quot;D&quot;/>&lt;Value Val=&quot;*CHAR&quot; MapTo=&quot;C&quot;/>&lt;Value Val=&quot;*LGL&quot; MapTo=&quot;L&quot;/>&lt;Value Val=&quot;*DDM&quot; MapTo=&quot;R&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;LEN&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Lunghezza&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;NE&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Lunghezza&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Posizioni decimali&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;0&quot; RangeMaxVal=&quot;9&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;0-9&quot; >&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;X&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Valore iniziale&quot; Len=&quot;1.24.9&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Valore carattere&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;NE&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;AUT&quot; PosNbr=&quot;13&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Autorizzazione&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBCRTAUT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBCRTAUT&quot; MapTo=&quot;*LIBCRTAUT&quot;/>&lt;Value Val=&quot;*CHANGE&quot; MapTo=&quot;*CHANGE&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*USE&quot; MapTo=&quot;*USE&quot;/>&lt;Value Val=&quot;*EXCLUDE&quot; MapTo=&quot;*EXCLUDE&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;TEXT&quot; PosNbr=&quot;12&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;&amp;apos;Descrizione&amp;apos; testo&quot; Len=&quot;50&quot; Rstd=&quot;NO&quot; Dft=&quot;*BLANK&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Valore carattere&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BLANK&quot; MapTo=&quot;&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RMTDTAARA&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Area dati remota&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Libreria&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;RMTLOCNAME&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ubicazione remota&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*RDB&quot; MapTo=&quot;*RDB&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;DEV&quot; PosNbr=&quot;8&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Descrizione unità  APPC&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;LCLLOCNAME&quot; PosNbr=&quot;9&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Ubicazione locale&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;MODE&quot; PosNbr=&quot;10&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Modalità &quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*NETATR&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;RMTNETID&quot; PosNbr=&quot;11&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Identific. rete remota&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;*NONE&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;RDB&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Database relazionale&quot; Len=&quot;18&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Nome&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;NE&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9263&quot;>&lt;DepParm Kwd=&quot;RMTDTAARA&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;DEV&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;LCLLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTNETID&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9264&quot;>&lt;DepParm Kwd=&quot;LEN&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;VALUE&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;RMTLOCNAME&quot; CmpVal=&quot;*RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD9191&quot;>&lt;DepParm Kwd=&quot;RDB&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;SPCFD&quot; CtlKwd=&quot;RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD9192&quot;>&lt;DepParm Kwd=&quot;RMTLOCNAME&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*RDB&quot; />&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;RMTLOCNAME&quot; CmpVal=&quot;*RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9266&quot;>&lt;DepParm Kwd=&quot;DEV&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;LCLLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTNETID&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;2&quot; MsgID=&quot;CPD2707&quot;>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;NE&quot; CmpVal=&quot;SNASVCMG&quot; />&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;NE&quot; CmpVal=&quot;CPSVCMG&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;CRTDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;CRTDTAARA&quot; MaxPos=&quot;4&quot; Prompt=&quot;Create Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURLIB&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;TYPE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Type&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*DEC, *CHAR, *LGL, *DDM&quot; >&lt;SpcVal>&lt;Value Val=&quot;*DEC&quot; MapTo=&quot;D&quot;/>&lt;Value Val=&quot;*CHAR&quot; MapTo=&quot;C&quot;/>&lt;Value Val=&quot;*LGL&quot; MapTo=&quot;L&quot;/>&lt;Value Val=&quot;*DDM&quot; MapTo=&quot;R&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;LEN&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Length&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;NE&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Length&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Decimal positions&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;0&quot; RangeMaxVal=&quot;9&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;0-9&quot; >&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;X&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Initial value&quot; Len=&quot;1.24.9&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;NE&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;AUT&quot; PosNbr=&quot;13&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Authority&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBCRTAUT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBCRTAUT&quot; MapTo=&quot;*LIBCRTAUT&quot;/>&lt;Value Val=&quot;*CHANGE&quot; MapTo=&quot;*CHANGE&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*USE&quot; MapTo=&quot;*USE&quot;/>&lt;Value Val=&quot;*EXCLUDE&quot; MapTo=&quot;*EXCLUDE&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;TEXT&quot; PosNbr=&quot;12&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Text &amp;apos;description&amp;apos;&quot; Len=&quot;50&quot; Rstd=&quot;NO&quot; Dft=&quot;*BLANK&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BLANK&quot; MapTo=&quot;&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RMTDTAARA&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Remote data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;RMTLOCNAME&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Remote location&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*RDB&quot; MapTo=&quot;*RDB&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;DEV&quot; PosNbr=&quot;8&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;APPC device description&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;LCLLOCNAME&quot; PosNbr=&quot;9&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Local location&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;MODE&quot; PosNbr=&quot;10&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Mode&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*NETATR&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;RMTNETID&quot; PosNbr=&quot;11&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CNAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Remote network identifier&quot; Len=&quot;8&quot; Rstd=&quot;NO&quot; Dft=&quot;*LOC&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LOC&quot; MapTo=&quot;*LOC&quot;/>&lt;Value Val=&quot;*NETATR&quot; MapTo=&quot;*NETATR&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;*NONE&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;RDB&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Relational database&quot; Len=&quot;18&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;PmtCtl CtlKwd=&quot;TYPE&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;R&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;NE&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9263&quot;>&lt;DepParm Kwd=&quot;RMTDTAARA&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;DEV&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;LCLLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTNETID&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9264&quot;>&lt;DepParm Kwd=&quot;LEN&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;VALUE&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;RMTLOCNAME&quot; CmpVal=&quot;*RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD9191&quot;>&lt;DepParm Kwd=&quot;RDB&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;SPCFD&quot; CtlKwd=&quot;RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD9192&quot;>&lt;DepParm Kwd=&quot;RMTLOCNAME&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*RDB&quot; />&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;RMTLOCNAME&quot; CmpVal=&quot;*RDB&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD9266&quot;>&lt;DepParm Kwd=&quot;DEV&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;LCLLOCNAME&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;SPCFD&quot;/>&lt;DepParm Kwd=&quot;RMTNETID&quot; Rel=&quot;SPCFD&quot;/>&lt;/Dep>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;TYPE&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;2&quot; MsgID=&quot;CPD2707&quot;>&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;NE&quot; CmpVal=&quot;SNASVCMG&quot; />&lt;DepParm Kwd=&quot;MODE&quot; Rel=&quot;NE&quot; CmpVal=&quot;CPSVCMG&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents
-      xsi:type="os-cmd:Command"
-      name="DLTDTAARA"
-      text="Delete Data Area"
-      program="QLIDLDTAARA">
-    <parameters
-        allowVariable="true"
-        name="DTAARA"
-        position="1">
-      <dataTerm
-          name="dataArea">
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="nameGeneric">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
-            </facets>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+  <contents xsi:type="os-cmd:Command" name="DLTDTAARA" text="Delete Data Area" program="QLIDLOBJ" status="TODO">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
+      <dataTerm name="dataArea">
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
-              <elements
-                  name="*USRLIBL"
-                  value="*USRLIBL"/>
-              <elements
-                  name="*ALLUSR"
-                  value="*ALLUSR"/>
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*LIBL" value="*LIBL"/>
+              <elements name="*CURLIB" value="*CURLIB"/>
+              <elements name="*USRLIBL" value="*USRLIBL"/>
+              <elements name="*ALL" value="*ALL"/>
+              <elements name="*ALLUSR" value="*ALLUSR"/>
             </facets>
-            <default
-                value="*LIBL"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <default value="*LIBL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xD;&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xD;&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DLTDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DLTDTAARA&quot; MaxPos=&quot;1&quot; Prompt=&quot;Delete Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xD;&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DLTDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DLTDTAARA&quot; MaxPos=&quot;1&quot; Prompt=&quot;Delete Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents
-      xsi:type="os-cmd:Command"
-      name="DSPDTAARA"
-      text="Display Data Area"
-      program="QWCCDSVC"
-      typeName="">
-    <parameters
-        allowVariable="true"
-        name="DTAARA"
-        position="1">
-      <dataTerm
-          name="dataArea">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LDA"
-              unary="true"
-              value="*LDA"/>
-          <elements
-              name="*GDA"
-              unary="true"
-              value="*GDA"/>
-          <elements
-              name="*PDA"
-              unary="true"
-              value="*PDA"/>
+  <contents xsi:type="os-cmd:Command" name="DSPDTAARA" text="Display Data Area" program="QWCCDSVC" status="POS">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="POS">
+      <dataTerm name="dataArea">
+        <facets xsi:type="il-core:Special">
+          <elements name="*LDA" unary="true" value="*LDA"/>
+          <elements name="*GDA" unary="true" value="*GDA"/>
+          <elements name="*PDA" unary="true" value="*PDA"/>
         </facets>
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="name">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="name">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*LIBL" value="*LIBL"/>
+              <elements name="*CURLIB" value="*CURLIB"/>
             </facets>
-            <default
-                value="*LIBL"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <default value="*LIBL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="OUTPUT"
-        position="2">
-      <dataTerm
-          name="output"
-          restricted="true">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*"
-              value="*"/>
-          <elements
-              name="*PRINT"
-              value="L"/>
+    <parameters allowVariable="true" name="OUTPUT" position="2" status="POS">
+      <dataTerm name="output" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*" value="*"/>
+          <elements name="*PRINT" value="L"/>
         </facets>
-        <default
-            value="*"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+        <default value="*"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="OUTFMT"
-        position="3">
-      <dataTerm
-          name="outputFormat"
-          restricted="true">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*CHAR"
-              value="C"/>
-          <elements
-              name="*HEX"
-              value="H"/>
+    <parameters allowVariable="true" name="OUTFMT" position="3" status="POS">
+      <dataTerm name="outputFormat" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*CHAR" value="C"/>
+          <elements name="*HEX" value="H"/>
         </facets>
-        <default
-            value="*CHAR"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+        <default value="*CHAR"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
-    <parameters
-        allowVariable="true"
-        name="SYSTEM"
-        position="4"
-        status="UNS">
-      <dataTerm
-          name="system"
-          restricted="true">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*LCL"
-              value="L"/>
-          <elements
-              name="*RMT"
-              value="R"/>
+    <parameters allowVariable="true" name="SYSTEM" position="4" status="POS">
+      <dataTerm name="system" restricted="true">
+        <facets xsi:type="il-core:Special">
+          <elements name="*LCL" value="L"/>
+          <elements name="*RMT" value="R"/>
         </facets>
-        <default
-            value="*LCL"/>
-        <definition
-            xsi:type="il-data-def:CharacterDef"
-            length="1"/>
+        <default value="*LCL"/>
+        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DSPDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DSPDTAARA&quot; MaxPos=&quot;2&quot; Prompt=&quot;Display Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LDA, *GDA, *PDA&quot; >&lt;SngVal>&lt;Value Val=&quot;*LDA&quot; MapTo=&quot;*LDA&quot;/>&lt;Value Val=&quot;*GDA&quot; MapTo=&quot;*GDA&quot;/>&lt;Value Val=&quot;*PDA&quot; MapTo=&quot;*PDA&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;OUTPUT&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*, *PRINT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*PRINT&quot; MapTo=&quot;L&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;OUTFMT&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output format&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*CHAR&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*CHAR, *HEX&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CHAR&quot; MapTo=&quot;C&quot;/>&lt;Value Val=&quot;*HEX&quot; MapTo=&quot;H&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SYSTEM&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;System&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*LCL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LCL, *RMT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LCL&quot; MapTo=&quot;L&quot;/>&lt;Value Val=&quot;*RMT&quot; MapTo=&quot;R&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;SYSTEM&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD0938&quot;>&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*LDA&quot; />&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*GDA&quot; />&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*PDA&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;DSPDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;DSPDTAARA&quot; MaxPos=&quot;2&quot; Prompt=&quot;Display Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LDA, *GDA, *PDA&quot; >&lt;SngVal>&lt;Value Val=&quot;*LDA&quot; MapTo=&quot;*LDA&quot;/>&lt;Value Val=&quot;*GDA&quot; MapTo=&quot;*GDA&quot;/>&lt;Value Val=&quot;*PDA&quot; MapTo=&quot;*PDA&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;OUTPUT&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*, *PRINT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*&quot; MapTo=&quot;*&quot;/>&lt;Value Val=&quot;*PRINT&quot; MapTo=&quot;L&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;OUTFMT&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Output format&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*CHAR&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*CHAR, *HEX&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CHAR&quot; MapTo=&quot;C&quot;/>&lt;Value Val=&quot;*HEX&quot; MapTo=&quot;H&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SYSTEM&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;System&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*LCL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LCL, *RMT&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LCL&quot; MapTo=&quot;L&quot;/>&lt;Value Val=&quot;*RMT&quot; MapTo=&quot;R&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;EQ&quot; CtlKwd=&quot;SYSTEM&quot; CmpVal=&quot;R&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD0938&quot;>&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*LDA&quot; />&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*GDA&quot; />&lt;DepParm Kwd=&quot;DTAARA&quot; Rel=&quot;EQ&quot; CmpVal=&quot;*PDA&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents
-      xsi:type="os-cmd:Command"
-      name="WRKDTAARA"
-      text="Work with Data Areas"
-      allowBatch="false"
-      classCMD="true"
-      program="QMNWRKXX"
-      status="POS">
-    <parameters
-        allowVariable="true"
-        name="DTAARA"
-        position="1"
-        status="POS">
-      <dataTerm
-          name="dataArea">
-        <cardinality
-            min="1"/>
-        <definition
-            xsi:type="il-data-def:DataStructDef"
-            qualified="true">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="nameGeneric">
-            <facets
-                xsi:type="il-core:Format"
-                type="GENERIC"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+  <contents xsi:type="os-cmd:Command" name="RTVDTAARA" text="Retrieve Data Area" allowBatch="false" program="QCLRTVDA" status="TODO">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="TODO">
+      <dataTerm name="dataAreaSpecification">
+        <definition xsi:type="il-data-def:DataStructDef">
+          <elements xsi:type="os-cmd:CommandData" name="dataArea">
+            <facets xsi:type="il-core:Special">
+              <elements name="*LDA" unary="true" value="*LDA"/>
+              <elements name="*GDA" unary="true" value="*GDA"/>
+              <elements name="*PDA" unary="true" value="*PDA"/>
             </facets>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+              <elements xsi:type="os-cmd:CommandData" name="name">
+                <facets xsi:type="il-core:Format" type="NAME"/>
+                <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+              </elements>
+              <elements xsi:type="os-cmd:CommandData" name="library">
+                <facets xsi:type="il-core:Format" type="NAME"/>
+                <facets xsi:type="il-core:Special">
+                  <elements name="*LIBL" value="*LIBL"/>
+                  <elements name="*CURLIB" value="*CURLIB"/>
+                </facets>
+                <default value="*LIBL"/>
+                <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+              </elements>
+            </definition>
           </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="library">
-            <facets
-                xsi:type="il-core:Format"
-                type="NAME"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*LIBL"
-                  value="*LIBL"/>
-              <elements
-                  name="*CURLIB"
-                  value="*CURLIB"/>
-              <elements
-                  name="*USRLIBL"
-                  value="*USRLIBL"/>
-              <elements
-                  name="*ALLUSR"
-                  value="*ALLUSR"/>
-              <elements
-                  name="*ALL"
-                  value="*ALL"/>
+          <elements xsi:type="os-cmd:CommandData" name="substringSpecifications">
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" unary="true" value="0"/>
             </facets>
-            <default
-                value="*LIBL"/>
-            <definition
-                xsi:type="il-data-def:CharacterDef"
-                length="10"/>
+            <default value="*ALL"/>
+            <definition xsi:type="il-data-def:DataStructDef">
+              <elements xsi:type="os-cmd:CommandData" name="substringStartingPosition">
+                <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
+                <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
+              </elements>
+              <elements xsi:type="os-cmd:CommandData" name="substringLength">
+                <facets xsi:type="il-core-meta:Range" max="2000" min="1"/>
+                <definition xsi:type="il-data-def:BinaryDef" type="SHORT"/>
+              </elements>
+            </definition>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <source
-        type="CMD"
-        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;WRKDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHMNCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;WRKDTAARA&quot; MaxPos=&quot;1&quot; Prompt=&quot;Work with Data Areas&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;NO&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <parameters allowVariable="true" name="RTNVAR" position="2" status="TODO">
+      <dataTerm name="cLVariableForReturnedValue">
+        <definition xsi:type="il-data-def:AdapterDef"/>
+      </dataTerm>
+    </parameters>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;RTVDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;RTVDTAARA&quot; MaxPos=&quot;2&quot; Prompt=&quot;Retrieve Data Area&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;NO&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;ELEM&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area specification&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Elem Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LDA, *GDA, *PDA&quot; >&lt;SngVal>&lt;Value Val=&quot;*LDA&quot; MapTo=&quot;*LDA&quot;/>&lt;Value Val=&quot;*GDA&quot; MapTo=&quot;*GDA&quot;/>&lt;Value Val=&quot;*PDA&quot; MapTo=&quot;*PDA&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Elem>&lt;Elem Type=&quot;ELEM&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Substring specifications&quot; Rstd=&quot;NO&quot; Dft=&quot;*ALL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ALL&quot; >&lt;SngVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;0&quot;/>&lt;/SngVal>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Substring starting position&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;Elem Type=&quot;INT2&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Substring length&quot; Rstd=&quot;NO&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;2000&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;1-2000&quot; >&lt;/Elem>&lt;/Elem>&lt;/Parm>&lt;Parm Kwd=&quot;RTNVAR&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;X&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;CL variable for returned value&quot; Len=&quot;1.24.9&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+  </contents>
+  <contents xsi:type="os-cmd:Command" name="WRKDTAARA" text="Work with Data Areas" allowBatch="false" program="QMNWRKXX" status="POS">
+    <parameters allowVariable="true" name="DTAARA" position="1" status="POS">
+      <dataTerm name="dataArea">
+        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
+          <elements xsi:type="os-cmd:CommandData" name="nameGeneric">
+            <facets xsi:type="il-core:Format" type="GENERIC"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*ALL" value="*ALL"/>
+            </facets>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+          </elements>
+          <elements xsi:type="os-cmd:CommandData" name="library">
+            <facets xsi:type="il-core:Format" type="NAME"/>
+            <facets xsi:type="il-core:Special">
+              <elements name="*LIBL" value="*LIBL"/>
+              <elements name="*CURLIB" value="*CURLIB"/>
+              <elements name="*USRLIBL" value="*USRLIBL"/>
+              <elements name="*ALLUSR" value="*ALLUSR"/>
+              <elements name="*ALL" value="*ALL"/>
+            </facets>
+            <default value="*LIBL"/>
+            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+          </elements>
+        </definition>
+      </dataTerm>
+    </parameters>
+    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;WRKDTAARA&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHMNCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;WRKDTAARA&quot; MaxPos=&quot;1&quot; Prompt=&quot;Work with Data Areas&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;NO&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;DTAARA&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;QUAL&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Data area&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; >&lt;Qual Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;Value Val=&quot;*USRLIBL&quot; MapTo=&quot;*USRLIBL&quot;/>&lt;Value Val=&quot;*ALLUSR&quot; MapTo=&quot;*ALLUSR&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
 </os-cmd:CommandContainer>

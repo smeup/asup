@@ -21,14 +21,11 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ArrayInitializer;
 import org.eclipse.jdt.core.dom.EnumConstantDeclaration;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
-import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.Modifier;
-import org.eclipse.jdt.core.dom.PrefixExpression;
 import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
-import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.ParameterizedType;
 import org.eclipse.jdt.core.dom.PrimitiveType;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
@@ -73,13 +70,10 @@ import org.smeup.sys.il.data.def.QScrollerDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.expr.QExpression;
-import org.smeup.sys.il.expr.QExpressionParser;
 
 public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 	private TypeDeclaration target;
-	private QExpressionParser expressionParser;
 
 	@SuppressWarnings("unchecked")
 	public JDTNamedNodeWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
@@ -95,8 +89,6 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			getJDTCompilationUnit().types().add(target);
 		else
 			root.getTarget().bodyDeclarations().add(target);
-
-		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -469,18 +461,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				annotation.values().add(memberValuePair);
 			} else if (value instanceof String) {
 				StringLiteral stringLiteral = getAST().newStringLiteral();
-				// TODO verificare assolutamente
-				QExpression expression = expressionParser.parseExpression(value.toString());
-				Expression jdtExpression = JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, null);
-				if (jdtExpression instanceof NumberLiteral) {
-					NumberLiteral numberExpression = (NumberLiteral) jdtExpression;
-					stringLiteral.setLiteralValue(numberExpression.getToken());
-				} else	if (jdtExpression instanceof PrefixExpression) {
-					PrefixExpression prefixExpression = (PrefixExpression) jdtExpression;
-					stringLiteral.setLiteralValue(prefixExpression.getOperator() + prefixExpression.getOperand().toString());
-				} else{
-					stringLiteral.setLiteralValue((String) value);
-				}
+				stringLiteral.setLiteralValue((String) value);
 				memberValuePair.setValue(stringLiteral);
 				annotation.values().add(memberValuePair);
 			} else if (value instanceof Enum) {

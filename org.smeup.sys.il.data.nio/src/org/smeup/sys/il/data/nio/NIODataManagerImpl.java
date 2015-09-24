@@ -92,8 +92,8 @@ public class NIODataManagerImpl implements QDataManager {
 			if (slot.getCardinality().isMultiple())
 				continue;
 
-			if (slot.getName().equals("content"))
-				continue;
+//			if (slot.getName().equals("content"))
+//				continue;
 
 			if (slot.getName().equals("source"))
 				continue;
