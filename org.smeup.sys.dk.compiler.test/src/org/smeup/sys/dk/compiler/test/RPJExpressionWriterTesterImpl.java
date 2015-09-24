@@ -1,0 +1,94 @@
+package org.smeup.sys.dk.compiler.test;
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
+
+
+import javax.inject.Inject;
+
+import org.eclipse.osgi.framework.console.CommandInterpreter;
+import org.smeup.sys.dk.compiler.rpj.RPJExtendedExpressionStringBuilder;
+import org.smeup.sys.dk.test.QTestAsserter;
+import org.smeup.sys.dk.test.QTestManager;
+import org.smeup.sys.dk.test.QTestResult;
+import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.annotation.Test;
+import org.smeup.sys.dk.test.annotation.TestStarted;
+import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
+import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.expr.QExpression;
+import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QExpressionParserRegistry;
+
+public class RPJExpressionWriterTesterImpl extends E4TestProviderImpl{
+
+		
+	@Inject
+	private QTestManager testManager;
+
+
+	public void _testRPJWriter(CommandInterpreter interpreter){
+
+		
+		
+		QContext testContext = testManager.prepareContext(this.getClass());
+		QTestRunner testRunner = testManager.prepareRunner(testContext, WriteRPJ.class);
+		QTestResult testResult;
+		try {
+			testResult = testRunner.call();
+			printTestResult(testResult);	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+	
+	@Test(category = "DBCOMPILER", object = "RPJWRITER")
+	public static class WriteRPJ {
+
+		@Inject
+		private QTestAsserter testAsserter;
+		
+		@Inject
+		private QExpressionParserRegistry expressionParserRegistry;
+		
+		@TestStarted
+		public void main() {
+			QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
+			RPJExtendedExpressionStringBuilder strBuilder = new RPJExtendedExpressionStringBuilder();
+			
+			strBuilder.reset();
+			QExpression parseExpression = expressionParser.parseExpression("A+B*C+D*E+F");						 			
+			parseExpression.accept(strBuilder);						
+			testAsserter.assertEquals("String builder result", "A.qPlus(B.qMult(C)).qPlus(D.qMult(E)).qPlus(F)", strBuilder.getResult());
+			
+			strBuilder.reset();
+			parseExpression = expressionParser.parseExpression("A=(B+C+D*E+F)*G");						 			
+			parseExpression.accept(strBuilder);						
+			testAsserter.assertEquals("String builder result", "A.qEquals(B.qPlus(C).qPlus(D.qMult(E)).qPlus(F).qMult(G))", strBuilder.getResult());
+			
+			strBuilder.reset();
+			parseExpression = expressionParser.parseExpression("A*B*C*(D+E*F-G*H)");						 			
+			parseExpression.accept(strBuilder);						
+			testAsserter.assertEquals("String builder result", "A.qMult(B).qMult(C).qMult(D.qPlus(E.qMult(F)).qMinus(G.qMult(H)))", strBuilder.getResult());
+			
+			strBuilder.reset();
+			parseExpression = expressionParser.parseExpression("(A+B)/(C*E+F)-G+H**L");						 			
+			parseExpression.accept(strBuilder);						
+			testAsserter.assertEquals("String builder result", "A.qPlus(B).qDiv(C.qMult(E).qPlus(F)).qMinus(G).qPlus(H.qPow(L))", strBuilder.getResult());
+			
+		}
+	}
+
+}
+

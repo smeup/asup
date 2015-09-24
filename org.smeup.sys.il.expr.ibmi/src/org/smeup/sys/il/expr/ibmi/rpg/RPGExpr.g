@@ -243,16 +243,6 @@ SPECIAL
 		|
 		( Y E A R S)
 		|
-		( Y)
-		|
-		( M O N T H S)
-		|
-		( M)
-		|
-		( D A Y S)
-		|
-		( D)
-		|
 		( N E X T)
 	;
 
@@ -483,5 +473,3 @@ fragment Z:('z'|'Z');
 WS
 	:  (' '|'\t'|'\u000C'| '\n' | '\r') {$channel=HIDDEN;}
 	;
-
-
