@@ -26,4 +26,8 @@ public @interface FileDef {
 	String info() default INFO_NULL;
 	
 	public static final String INFO_NULL = "*NULL";
+	
+	String prefix() default PREFIX_NULL;
+	
+	public static final String PREFIX_NULL = "*NULL";
 }
