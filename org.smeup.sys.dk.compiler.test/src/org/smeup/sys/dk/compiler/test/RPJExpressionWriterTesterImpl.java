@@ -15,6 +15,7 @@ package org.smeup.sys.dk.compiler.test;
 import javax.inject.Inject;
 
 import org.eclipse.osgi.framework.console.CommandInterpreter;
+import org.smeup.sys.dk.compiler.rpj.RPJExpressionStringBuilder;
 import org.smeup.sys.dk.compiler.rpj.RPJExtendedExpressionStringBuilder;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestManager;
@@ -37,8 +38,6 @@ public class RPJExpressionWriterTesterImpl extends E4TestProviderImpl{
 
 	public void _testRPJWriter(CommandInterpreter interpreter){
 
-		
-		
 		QContext testContext = testManager.prepareContext(this.getClass());
 		QTestRunner testRunner = testManager.prepareRunner(testContext, WriteRPJ.class);
 		QTestResult testResult;
@@ -65,27 +64,44 @@ public class RPJExpressionWriterTesterImpl extends E4TestProviderImpl{
 		@TestStarted
 		public void main() {
 			QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
-			RPJExtendedExpressionStringBuilder strBuilder = new RPJExtendedExpressionStringBuilder();
+			RPJExpressionStringBuilder strBuilder = new RPJExpressionStringBuilder();
+			RPJExtendedExpressionStringBuilder strExtBuilder = new RPJExtendedExpressionStringBuilder();
 			
 			strBuilder.reset();
-			QExpression parseExpression = expressionParser.parseExpression("A+B*C+D*E+F");						 			
-			parseExpression.accept(strBuilder);						
-			testAsserter.assertEquals("String builder result", "A.qPlus(B.qMult(C)).qPlus(D.qMult(E)).qPlus(F)", strBuilder.getResult());
+			strExtBuilder.reset();
+			String testString = "A+B*C+D*E+F";
+			QExpression parseExpression = expressionParser.parseExpression(testString);			
+			parseExpression.accept(strBuilder);
+			parseExpression.accept(strExtBuilder);	
+			testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());
+			testAsserter.assertEquals("Extended string builder result", "A.qPlus(B.qMult(C)).qPlus(D.qMult(E)).qPlus(F)", strExtBuilder.getResult());
 			
 			strBuilder.reset();
-			parseExpression = expressionParser.parseExpression("A=(B+C+D*E+F)*G");						 			
-			parseExpression.accept(strBuilder);						
-			testAsserter.assertEquals("String builder result", "A.qEquals(B.qPlus(C).qPlus(D.qMult(E)).qPlus(F).qMult(G))", strBuilder.getResult());
+			strExtBuilder.reset();
+			testString = "A = (B+C+D*E+F)*G";
+			parseExpression = expressionParser.parseExpression(testString);						 			
+			parseExpression.accept(strBuilder);
+			parseExpression.accept(strExtBuilder);	
+			testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());						
+			testAsserter.assertEquals("Extended string builder result", "A.qEquals(B.qPlus(C).qPlus(D.qMult(E)).qPlus(F).qMult(G))", strExtBuilder.getResult());
 			
 			strBuilder.reset();
-			parseExpression = expressionParser.parseExpression("A*B*C*(D+E*F-G*H)");						 			
-			parseExpression.accept(strBuilder);						
-			testAsserter.assertEquals("String builder result", "A.qMult(B).qMult(C).qMult(D.qPlus(E.qMult(F)).qMinus(G.qMult(H)))", strBuilder.getResult());
+			strExtBuilder.reset();
+			testString = "A*B*C*(D+E*F-G*H)";
+			parseExpression = expressionParser.parseExpression(testString);						 			
+			parseExpression.accept(strBuilder);
+			parseExpression.accept(strExtBuilder);	
+			testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());						
+			testAsserter.assertEquals("Extended string builder result", "A.qMult(B).qMult(C).qMult(D.qPlus(E.qMult(F)).qMinus(G.qMult(H)))", strExtBuilder.getResult());
 			
 			strBuilder.reset();
-			parseExpression = expressionParser.parseExpression("(A+B)/(C*E+F)-G+H**L");						 			
-			parseExpression.accept(strBuilder);						
-			testAsserter.assertEquals("String builder result", "A.qPlus(B).qDiv(C.qMult(E).qPlus(F)).qMinus(G).qPlus(H.qPow(L))", strBuilder.getResult());
+			strExtBuilder.reset();
+			testString= "(A+B)/(C*E+F)-G+H**L";
+			parseExpression = expressionParser.parseExpression(testString);						 			
+			parseExpression.accept(strBuilder);
+			parseExpression.accept(strExtBuilder);	
+			testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());						
+			testAsserter.assertEquals("Extended string builder result", "A.qPlus(B).qDiv(C.qMult(E).qPlus(F)).qMinus(G).qPlus(H.qPow(L))", strExtBuilder.getResult());
 			
 		}
 	}

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: As.UP Developer Kit Compiler Test
 Bundle-SymbolicName: org.smeup.sys.dk.compiler.test
 Bundle-Version: 0.7.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: www.smeup.com
 Require-Bundle: org.smeup.sys.dk.test.e4,
  org.smeup.sys.il.expr,
