@@ -70,16 +70,21 @@ public @ToDo class DataAreaModifier {
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
 			
 			
-			if (notAll(dataAreaParm.substringSpecifications) && !area.getDataAreaType().equals(DataAreaType.CHARACTER)) {
+			if (!all(dataAreaParm.substringSpecifications) && !area.getDataAreaType().equals(DataAreaType.CHARACTER)) {
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF1087, new String[0]);
 			}
 			
-			SUBSTRINGSPECIFICATIONS substringspecification = dataAreaParm.substringSpecifications.asData();
 			
-			new DataAreaEditor(area, stringsUtils)
-			.setValue(value.trimR(), 
-					  substringspecification.substringStartingPosition.asInteger(),
-					  substringspecification.substringLength.asInteger());
+			DataAreaEditor dataAreaEditor = new DataAreaEditor(area, stringsUtils);
+			
+			if (all(dataAreaParm.substringSpecifications)) {
+				dataAreaEditor.setValue(value.trimR());
+			} else {
+				SUBSTRINGSPECIFICATIONS substringspecification = dataAreaParm.substringSpecifications.asData();
+				dataAreaEditor.setValue(value.trimR(), 
+										substringspecification.substringStartingPosition.asInteger(),
+										substringspecification.substringLength.asInteger());
+			}
 			
 			if (dataAreaParm.dataAreaSpecification.asEnum().equals(ExistingDataAreaSpecification.DATAAREAEnum.OTHER)) {
 				resourceWriter(area.getName(), area.getLibrary()).save(area);
@@ -104,8 +109,13 @@ public @ToDo class DataAreaModifier {
 		}
 	}
 
-	private boolean notAll(QEnum<SUBSTRINGSPECIFICATIONSEnum, SUBSTRINGSPECIFICATIONS> substringSpecifications) {
-		return !substringSpecifications.asEnum().equals(DATAAREASPECIFICATION.SUBSTRINGSPECIFICATIONSEnum.ALL);
+	private boolean all(QEnum<SUBSTRINGSPECIFICATIONSEnum, SUBSTRINGSPECIFICATIONS> substringSpecifications) {
+		switch(substringSpecifications.asEnum()) {
+		case ALL:
+			return true;
+		default:
+			return false;
+		}
 	}
 
 	private QResourceWriter<QDataArea> resourceWriter(String areaName, String libName) {
