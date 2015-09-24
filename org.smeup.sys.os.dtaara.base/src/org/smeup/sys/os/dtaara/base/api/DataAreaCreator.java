@@ -1,8 +1,5 @@
 package org.smeup.sys.os.dtaara.base.api;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
@@ -26,6 +23,10 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.DataTooLongException;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.InvalidBooleanValueException;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.TypeAndValueMismatchException;
 import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QWCCCRVC")
@@ -71,6 +72,7 @@ public class DataAreaCreator {
 		
 		String areaName = dataArea.asData().name.trimR();
 		String libName = dataArea.asData().library.asData().trimR();
+		
 		switch (dataArea.asData().library.asEnum()) {
 		case CURLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
@@ -79,20 +81,28 @@ public class DataAreaCreator {
 		case OTHER:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, libName);
 			break;
-		}
-		
+		}	
+
 		checkLibrary(libName, areaName);
 		checkExistence(areaName, libName);
 		
 		
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
-		setValue(tipo.asEnum().dataAreaType, lunghezza, valoreIniziale, newDataArea);
 		newDataArea.setName(areaName);
 		newDataArea.setLibrary(libName);
 		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
 		newDataArea.setText(descriptionFrom(descrizioneTesto));
 		newDataArea.setContentLength(lunghezza.lunghezza.asInteger());
 		newDataArea.setContentDecimal(lunghezza.posizioniDecimali.asInteger());
+		try {
+			new DataAreaEditor(newDataArea, stringsUtils).setValue(valoreIniziale.trimR());
+		} catch (DataTooLongException e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1025, new String[0]);
+		} catch (TypeAndValueMismatchException e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
+		} catch (InvalidBooleanValueException e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1026, new String[0]);
+		}
 
 		resourceWriter.save(newDataArea);
 		
@@ -109,80 +119,6 @@ public class DataAreaCreator {
 		return "";
 	}
 
-	private void setValue(DataAreaType tipo, LUNGHEZZA lunghezza, QCharacter valoreIniziale, QDataArea newDataArea) {
-		String valore = valoreIniziale.trimR();
-		if (stringsUtils.isEmptyTrim(valore)) {
-			return;
-		}
-		switch (tipo) {
-		case CHARACTER:
-			if (valore.length() > lunghezza.lunghezza.asInteger()) {
-				throwDataTooLong();
-			}
-			newDataArea.setContent(valore);
-			break;
-		
-		case LOGICAL:
-			if (!stringsUtils.isOneOf(valore, Arrays.asList("1", "0"))) {
-				throwTypeAndValueMismatch();
-			}
-			newDataArea.setContentDecimal(Integer.parseInt(valore));
-			break;
-		
-		case DECIMAL:
-			String englishString = valore.replace(",", ".");
-			
-			checkIsNumeric(englishString);
-		
-			String[] tokens = englishString.split("\\.");
-
-			switch (tokens.length) {
-			case 0:
-			case 1:	
-				if (valore.length() > lunghezza.lunghezza.asInteger()) {
-					throwDataTooLong();
-				}
-				newDataArea.setContent(englishString);				
-				break;
-
-			case 2:
-				if (tokens[0].length() > lunghezza.lunghezza.asInteger()) {
-					throwDataTooLong();
-				}
-				
-				if (tokens[0] == "") {
-					tokens[0] = "0";
-				}
-				newDataArea.setContent(tokens[0] + "." + stringsUtils.left(tokens[1], lunghezza.posizioniDecimali.asInteger()));
-				break;
-
-			default:
-				//Should not happen
-				throwTypeAndValueMismatch();
-				break;
-			}
-			break;
-		
-		case DISTRIBUTED:
-			throw new UnsupportedOperationException("Unsupported data area type: DDM");
-		}
-	}
-
-	private void checkIsNumeric(String englishString) {
-		try {
-			new BigDecimal(englishString);
-		} catch (Exception e) {
-			throwTypeAndValueMismatch();
-		}
-	}
-
-	private void throwTypeAndValueMismatch() {
-		throw exceptionManager.prepareException(job, QCPFMSG.CPF1024, new String[0]);
-	}
-
-	private void throwDataTooLong() {
-		throw exceptionManager.prepareException(job, QCPFMSG.CPF1025, new String[0]);
-	}
 
 	private void checkExistence(String areaName, String libName) {
 		if (resourceWriter.exists(areaName)) {

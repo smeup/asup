@@ -110,7 +110,8 @@ public class BaseStringsImpl implements QStrings {
 
 		return false;
 	}
-
+	
+	@Override
 	public Boolean checkEquals(String s1, String s2) {
 		if (s1 == null) {
 			return s2 == null;
@@ -118,6 +119,7 @@ public class BaseStringsImpl implements QStrings {
 		return s1.equals(s2);
 	}
 
+	@Override
 	public String left(String s, int nrOfChars) {
 		if (s == null)
 			return null;
@@ -131,4 +133,80 @@ public class BaseStringsImpl implements QStrings {
 		return s.substring(0, nrOfChars);
 	}
 
+	@Override
+	public String string(int numeroRipetizioni, String stringa) {
+		if (stringa == null || numeroRipetizioni <= 0) {
+			return "";
+		} else {
+			StringBuffer aus = new StringBuffer(numeroRipetizioni);
+			for (int i = 1; i <= numeroRipetizioni; i++) {
+				aus.append(stringa);
+			}
+			return aus.toString();
+		}
+	}
+
+	@Override
+	public String rSet(String sDaAllineare, int nCaratteri) {
+		return rSet(sDaAllineare, nCaratteri, " ");
+	}
+
+	/**
+	 * Allinea a destra una stringa in una di nCaratteri
+	 * 
+	 * @param s
+	 *            la stringa da allineare
+	 * @param nCaratteri
+	 *            lunghezza della stringa di output
+	 * @return una stringa di nCaratteri riempita a sx da spazi (es. "pippo" ->
+	 *         "   pippo")
+	 */
+	@Override
+	public String rSet(String sDaAllineare, int nCaratteri, String riempimento) {
+		String filler = string(nCaratteri, riempimento);
+		if (sDaAllineare == null || nCaratteri <= 0) {
+			return filler;
+		} else {
+			return right(filler + sDaAllineare, nCaratteri);
+		}
+	}
+
+	/**
+	 * Allinea a sinistra una stringa in una di nCaratteri
+	 * 
+	 * @param s
+	 *            la stringa da allineare
+	 * @param nCaratteri
+	 *            lunghezza della stringa di output
+	 * @return una stringa di nCaratteri riempita a dx da spazi (es. "pippo" ->
+	 *         "pippo   ")
+	 */
+	@Override
+	public String lSet(String sDaAllineare, int nCaratteri) {
+		return lSet(sDaAllineare, nCaratteri, " ");
+	}
+
+	@Override
+	public String lSet(String sDaAllineare, int nCaratteri, String riempimento) {
+		String filler = string(nCaratteri, riempimento);
+		if (sDaAllineare == null || nCaratteri <= 0) {
+			return filler;
+		} else {
+			return left(sDaAllineare + filler, nCaratteri);
+		}
+	}
+
+	@Override
+	public String right(String s, int nCaratteri) {
+		if (s == null)
+			return null;
+
+		if (nCaratteri < 1)
+			return "";
+
+		if (nCaratteri >= s.length())
+			return s;
+
+		return s.substring(s.length() - nCaratteri);
+	}
 }

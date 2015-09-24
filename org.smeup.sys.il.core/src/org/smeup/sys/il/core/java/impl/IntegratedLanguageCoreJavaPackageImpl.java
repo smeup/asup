@@ -738,6 +738,32 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "lSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "lSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "filler", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "filler", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "rSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "rSet", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "filler", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "right", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(urIsEClass, QURIs.class, "URIs", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(urIsEClass, ecorePackage.getEString(), "getBaseName", 1, 1, IS_UNIQUE, IS_ORDERED);

@@ -66,12 +66,12 @@ public class DataAreaDisplayer {
 			objectWriter.initialize();
 			objectWriter.write(objectToWrite.getObjectToWrite());
 			objectWriter.flush();
-		} catch (IOException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871, new String[0]);	
 		} catch (DataAreaNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[]{e.dataAreaName, e.libraryName});
 		} catch (LibraryNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[]{e.libraryName, e.dataAreaName});
+		} catch (IOException e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871, new String[0]);
 		}
 	}
 

@@ -93,4 +93,52 @@ public interface QStrings {
 	 */
 	String left(String string, int nrOfChars);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
+	 * @generated
+	 */
+	String lSet(String string, int nrOfChars);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true" fillerRequired="true"
+	 * @generated
+	 */
+	String lSet(String string, int nrOfChars, String filler);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nrOfCharsRequired="true" fillerRequired="true"
+	 * @generated
+	 */
+	String string(int nrOfChars, String filler);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
+	 * @generated
+	 */
+	String rSet(String string, int nrOfChars);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true" fillerRequired="true"
+	 * @generated
+	 */
+	String rSet(String string, int nrOfChars, String filler);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true" nrOfCharsRequired="true"
+	 * @generated
+	 */
+	String right(String string, int nrOfChars);
+
 } // QStrings
