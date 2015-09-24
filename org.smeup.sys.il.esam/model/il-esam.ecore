@@ -60,6 +60,21 @@
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
+    <eOperations name="createKeySequencedDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//KSDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.4/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="record" lowerBound="1">
+        <eGenericType eTypeParameter="#//AccessFactory/createKeySequencedDataSet.4/R"/>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
+    </eOperations>
     <eOperations name="createRelativeRecordDataSet" lowerBound="1">
       <eGenericType eClassifier="#//RRDataSet">
         <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet/R"/>
@@ -118,6 +133,21 @@
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
     </eOperations>
+    <eOperations name="createRelativeRecordDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//RRDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.4/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="record" lowerBound="1">
+        <eGenericType eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.4/R"/>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
+    </eOperations>
     <eOperations name="createSourceMemberDataSet" lowerBound="1">
       <eGenericType eClassifier="#//SMDataSet">
         <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet/R"/>
@@ -172,6 +202,21 @@
           <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.3/R"/>
         </eGenericType>
       </eParameters>
+      <eParameters name="accessMode" eType="#//AccessMode"/>
+      <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
+    </eOperations>
+    <eOperations name="createSourceMemberDataSet" lowerBound="1">
+      <eGenericType eClassifier="#//SMDataSet">
+        <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.4/R"/>
+      </eGenericType>
+      <eTypeParameters name="R">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
+      </eTypeParameters>
+      <eParameters name="record" lowerBound="1">
+        <eGenericType eTypeParameter="#//AccessFactory/createSourceMemberDataSet.4/R"/>
+      </eParameters>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="accessMode" eType="#//AccessMode"/>
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>

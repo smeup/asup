@@ -99,14 +99,6 @@ public interface QDataFactory {
 	<D extends QDataStruct> D createDataStruct(Class<D> wrapper, int length, boolean initialize);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
-	 * @generated
-	 */
-	QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" typeRequired="true" formatRequired="true" initializeRequired="true"
 	 * @generated

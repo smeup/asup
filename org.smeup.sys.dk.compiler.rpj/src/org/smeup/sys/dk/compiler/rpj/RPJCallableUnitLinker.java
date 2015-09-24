@@ -258,7 +258,7 @@ public class RPJCallableUnitLinker {
 			linkFileTerm(printerTerm);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes", "serial" })
+	@SuppressWarnings({ "unchecked", "rawtypes"})
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm) {
 
 		QFile file = getFile(fileTerm.getFileName());
@@ -288,7 +288,7 @@ public class RPJCallableUnitLinker {
 			if (file instanceof QDatabaseFile) {
 
 				QDatabaseFile databaseFile = (QDatabaseFile) file;
-				externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
+					externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
 
 				QDataSetTerm dataSet = (QDataSetTerm) fileTerm;
 				if (dataSet.getFormatName() == null)
@@ -335,6 +335,11 @@ public class RPJCallableUnitLinker {
 					};
 					internalFormat.setDefinition(new CompoundDataDefImpl() {
 
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
+
 						@Override
 						public Class<?> getDataClass() {
 							// TODO Auto-generated method stub
@@ -365,6 +370,11 @@ public class RPJCallableUnitLinker {
 						private static final long serialVersionUID = 1L;
 					};
 					internalFormat.setDefinition(new CompoundDataDefImpl() {
+
+						/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
 
 						@Override
 						public Class<?> getDataClass() {

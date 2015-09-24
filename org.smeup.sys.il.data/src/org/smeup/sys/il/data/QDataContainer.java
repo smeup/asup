@@ -8,6 +8,8 @@
 package org.smeup.sys.il.data;
 
 import java.lang.String;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -29,6 +31,14 @@ public interface QDataContainer extends QDataTermContainer {
 	 * @generated
 	 */
 	void clearData();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @generated
+	 */
+	QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -67,34 +67,33 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
-		try {
 
-			R record = null;
-			if (QDataStruct.class.isAssignableFrom(wrapper))
-				record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
-			else
-				throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
+		R record = null;
+		if (QDataStruct.class.isAssignableFrom(wrapper))
+			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		else
+			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 
-			QIndex index = getIndex(record);
-			if (index == null)
-				index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
+		return createKeySequencedDataSet(record, wrapper.getSimpleName(), accessMode, userOpen, infoStruct);
+	}
 
-			InfoStruct internalInfoStruct = null;
-			if (infoStruct != null) {
-				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
-				infoStruct.assign(internalInfoStruct);
-			} else {
-				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
-			}
+	@Override
+	public <R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-			String tableName = wrapper.getSimpleName();
-			
-			return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, tableName, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
+		QIndex index = getIndex(record);
+		if (index == null)
+			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+		InfoStruct internalInfoStruct = null;
+		if (infoStruct != null) {
+			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
+			infoStruct.assign(internalInfoStruct);
+		} else {
+			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
 		}
+
+		return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
+
 	}
 
 	@Override
@@ -117,35 +116,43 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		try {
-			R record = null;
-			if (QDataStruct.class.isAssignableFrom(wrapper))
-				record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
-			else
-				throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
+		R record = null;
+		if (QDataStruct.class.isAssignableFrom(wrapper))
+			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+		else
+			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 
-			QIndex index = getIndex(record);
-			if (index == null)
-				index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
-
-			InfoStruct internalInfoStruct = null;
-			if (infoStruct != null) {
-				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
-				infoStruct.assign(internalInfoStruct);
-			} else {
-				internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
-			}
-
-			String tableName = wrapper.getSimpleName();
-			
-			return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, tableName, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return createRelativeRecordDataSet(record, wrapper.getSimpleName(), accessMode, userOpen, infoStruct);
 	}
 
+	@Override
+	public <R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
+
+		QIndex index = getIndex(record);
+		if (index == null)
+			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
+
+		InfoStruct internalInfoStruct = null;
+		if (infoStruct != null) {
+			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
+			infoStruct.assign(internalInfoStruct);
+		} else {
+			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
+		}
+
+		return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
+	}
+
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper) {
+		return createSourceMemberDataSet(wrapper, AccessMode.INPUT);
+	}
+
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode) {
+		return createSourceMemberDataSet(wrapper, accessMode, true);
+	}
+	
 	@Override
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen) {
 		return createSourceMemberDataSet(wrapper, accessMode, userOpen, null);
@@ -155,17 +162,25 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(context, wrapper.getSimpleName());
-
 		R record = null;
 		if (QDataStruct.class.isAssignableFrom(wrapper))
 			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		else
 			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 
+		return createSourceMemberDataSet(record, wrapper.getSimpleName(), accessMode, userOpen, infoStruct);
+	}
+
+	@Override
+	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
+
+		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(context, name);
+
 		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen);
+		
 		return dataSet;
 	}
+
 
 	public QIndex getIndex(Object object) {
 
@@ -279,16 +294,6 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 			return length;
 		}
 
-	}
-
-	@Override
-	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper) {
-		return createSourceMemberDataSet(wrapper, AccessMode.INPUT);
-	}
-
-	@Override
-	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, AccessMode accessMode) {
-		return createSourceMemberDataSet(wrapper, accessMode, true);
 	}
 
 	private static final QIndex TABLE_INDEX_RELATIVE_RECORD_NUMBER = new QIndex() {

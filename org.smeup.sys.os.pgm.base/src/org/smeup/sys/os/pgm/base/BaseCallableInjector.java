@@ -31,6 +31,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataFactory;
@@ -47,8 +48,14 @@ import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QKSDataSet;
 import org.smeup.sys.il.esam.QSMDataSet;
 import org.smeup.sys.il.esam.annotation.FileDef;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
 
 public class BaseCallableInjector {
 
@@ -57,14 +64,25 @@ public class BaseCallableInjector {
 	@Inject
 	private QAccessManager esamManager;
 	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QFileManager fileManager;
+	@Inject
 	private QJob job;
-	
+
+	private QResourceReader<QFile> fileReader;
+
+	@PostConstruct
+	public void init() {
+		this.fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
+	}
+
 	public <C> C prepareCallable(QContext context, Class<C> klass) {
 
 		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
 		QDataContainer dataContainer = dataManager.createDataContainer(context, dataTerms, true);
 		QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
-		
+
 		C callable = null;
 
 		try {
@@ -112,7 +130,8 @@ public class BaseCallableInjector {
 		return entry;
 	}
 
-	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException,
+			IllegalAccessException, InstantiationException {
 
 		C callable = klass.newInstance();
 
@@ -129,17 +148,16 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException,
-			IllegalAccessException, InstantiationException {
+	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules)
+			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
 			injectFieldsData(klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules);
 
-		
-		Stack<QDataTerm<?>> fieldDatas = new Stack<QDataTerm<?>>();
+		Stack<QDataTerm<?>> basedDataTerms = new Stack<QDataTerm<?>>();
 		List<Field> fieldDataSets = new ArrayList<Field>();
-		
+
 		for (Field field : klass.getDeclaredFields()) {
 
 			// TODO
@@ -156,13 +174,12 @@ public class BaseCallableInjector {
 			field.setAccessible(true);
 
 			Class<?> fieldClass = null;
-			
-			Type type = field.getGenericType();		
+
+			Type type = field.getGenericType();
 			if (type instanceof ParameterizedType) {
 				fieldClass = (Class<?>) ((ParameterizedType) type).getRawType();
 			} else
 				fieldClass = (Class<?>) type;
-
 
 			// DataFactory
 			if (QDataFactory.class.isAssignableFrom(fieldClass)) {
@@ -175,15 +192,14 @@ public class BaseCallableInjector {
 			// Data
 			else if (QData.class.isAssignableFrom(fieldClass)) {
 
-				QDataTerm<?> dataTerm = dataContainer.getDataFactory().createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
-				
+				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
+
 				// derived memory
-				if(dataTerm.getBased() != null) {
-					fieldDatas.push(dataTerm);
-				}
-				else {
-					QData data = dataContainer.resetData(dataTerm);					
-					field.set(callable, data);						
+				if (dataTerm.getBased() != null) {
+					basedDataTerms.push(dataTerm);
+				} else {
+					QData data = dataContainer.resetData(dataTerm);
+					field.set(callable, data);
 				}
 			}
 			// @Injection
@@ -194,14 +210,14 @@ public class BaseCallableInjector {
 				// Job
 				if (QJob.class.isAssignableFrom(fieldClass)) {
 					object = job;
-				} 
+				}
 				// Module
 				else {
 					object = sharedModules.get(fieldClass.getSimpleName());
 					if (object == null) {
 						object = context.get(fieldClass);
 					}
-					
+
 					if (object == null) {
 						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules);
 						sharedModules.put(fieldClass.getSimpleName(), object);
@@ -217,19 +233,28 @@ public class BaseCallableInjector {
 
 			field.setAccessible(false);
 		}
+
+		for(QDataTerm<?> basedDataTerm: basedDataTerms) {
+			QData rowData = dataContainer.getData(basedDataTerm.getBased());
+			if(rowData == null || !(rowData instanceof QBufferedData))
+				throw new OperatingSystemRuntimeException("Invalid based data: " + basedDataTerm);
+			
+			QBufferedData rowBufferedData = (QBufferedData) rowData;
+//			rowBufferedData.assign(compi);
+		}
 		
-		for(Field fieldDataSet: fieldDataSets) {
+		for (Field fieldDataSet : fieldDataSets) {
 
 			fieldDataSet.setAccessible(true);
 
 			Class<?> fieldClass = null;
-			
-			Type type = fieldDataSet.getGenericType();		
+
+			Type type = fieldDataSet.getGenericType();
 			if (type instanceof ParameterizedType) {
 				fieldClass = (Class<?>) ((ParameterizedType) type).getRawType();
 			} else
 				fieldClass = (Class<?>) type;
-			
+
 			ParameterizedType pType = (ParameterizedType) type;
 			if (!(pType.getActualTypeArguments()[0] instanceof WildcardType))
 				injectDataSet(accessFactory, dataContainer, callable, fieldDataSet, (Class<QDataSet<QRecord>>) fieldClass, (Class<QRecord>) pType.getActualTypeArguments()[0]);
@@ -238,9 +263,8 @@ public class BaseCallableInjector {
 		}
 	}
 
-
-	private void injectDataSet(QAccessFactory accessFactory, QDataContainer dataContainer, Object callable, Field field, Class<QDataSet<QRecord>> fieldKlass, Class<QRecord> recordKlass) throws IllegalArgumentException,
-			IllegalAccessException {
+	private void injectDataSet(QAccessFactory accessFactory, QDataContainer dataContainer, Object callable, Field field, Class<QDataSet<QRecord>> fieldKlass, Class<QRecord> recordKlass)
+			throws IllegalArgumentException, IllegalAccessException {
 
 		FileDef fileDef = field.getAnnotation(FileDef.class);
 		if (fileDef != null) {
@@ -249,7 +273,7 @@ public class BaseCallableInjector {
 
 			QDataStruct infoStruct = null;
 			if (!fileDef.info().equals(FileDef.INFO_NULL))
-				infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());				
+				infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());
 
 			if (QKSDataSet.class.isAssignableFrom(fieldKlass)) {
 				dataSet = accessFactory.createKeySequencedDataSet(recordKlass, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
@@ -260,6 +284,32 @@ public class BaseCallableInjector {
 			}
 
 			field.set(callable, dataSet);
+		}
+	}
+
+	private void injectDataSet(QAccessFactory accessFactory, QDataContainer dataContainer, Object callable, Field field, Class<QDataSet<QRecord>> fieldKlass, QRecord record)
+			throws IllegalArgumentException, IllegalAccessException {
+
+		FileDef fileDef = field.getAnnotation(FileDef.class);
+		if (fileDef != null) {
+
+			
+			QDataSet<QRecord> dataSet = null;
+
+			QDataStruct infoStruct = null;
+			if (!fileDef.info().equals(FileDef.INFO_NULL))
+				infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());
+
+			if (QKSDataSet.class.isAssignableFrom(fieldKlass)) {
+				dataSet = accessFactory.createKeySequencedDataSet(record, null, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
+			} else if (QSMDataSet.class.isAssignableFrom(fieldKlass)) {
+				dataSet = accessFactory.createSourceMemberDataSet(record, null, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
+			} else {
+				dataSet = accessFactory.createRelativeRecordDataSet(record, null, AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
+			}
+
+			field.set(callable, dataSet);
+
 		}
 	}
 
@@ -305,46 +355,51 @@ public class BaseCallableInjector {
 			£mubField.setAccessible(false);
 		}
 	}
+
+	private QFile getFile(String name) {
+
+		QFile file = null;
+		QFileOverride fileOverride = fileManager.getFileOverride(job.getContext(), name);
+		if (fileOverride == null)
+			file = fileReader.lookup(name);
+		else
+			file = fileOverride.getFileTo();
+
+		return file;
+	}
+
 	/*
-	public static QTerm getPrimaryRecord(QCallableUnit callableUnit, QDataSetTerm dataSetTerm) {
-
-		if (dataSetTerm.getFacet(QExternalFile.class) == null)
-			return null;
-
-		QTerm primaryRecord = null;
-
-		// search on external dataStructure
-		if (callableUnit.getDataSection() != null)
-			for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas())
-				if (dataTerm.getFacet(QExternalFile.class) != null) {
-					QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
-
-					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
-						primaryRecord = dataTerm;
-						break;
-					} else
-						continue;
-				}
-
-		if (primaryRecord != null)
-			return primaryRecord;
-
-		// search on dataSet
-		if (callableUnit.getFileSection() != null)
-			for (QDataSetTerm dst : callableUnit.getFileSection().getDataSets())
-				if (dst.getFacet(QExternalFile.class) != null) {
-					QExternalFile externalFile = dst.getFacet(QExternalFile.class);
-					if (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
-						primaryRecord = dst;
-						break;
-					} else
-						continue;
-				} else
-					System.out.println("Unexpected condition: pxnqt9r87x93q46t");
-
-		if (primaryRecord != null)
-			return primaryRecord;
-
-		return primaryRecord;
-	}*/
+	 * public static QTerm getPrimaryRecord(QCallableUnit callableUnit,
+	 * QDataSetTerm dataSetTerm) {
+	 * 
+	 * if (dataSetTerm.getFacet(QExternalFile.class) == null) return null;
+	 * 
+	 * QTerm primaryRecord = null;
+	 * 
+	 * // search on external dataStructure if (callableUnit.getDataSection() !=
+	 * null) for (QDataTerm<?> dataTerm :
+	 * callableUnit.getDataSection().getDatas()) if
+	 * (dataTerm.getFacet(QExternalFile.class) != null) { QExternalFile
+	 * externalFile = dataTerm.getFacet(QExternalFile.class);
+	 * 
+	 * if
+	 * (dataSetTerm.getFacet(QExternalFile.class).getFormat().equalsIgnoreCase
+	 * (externalFile.getFormat())) { primaryRecord = dataTerm; break; } else
+	 * continue; }
+	 * 
+	 * if (primaryRecord != null) return primaryRecord;
+	 * 
+	 * // search on dataSet if (callableUnit.getFileSection() != null) for
+	 * (QDataSetTerm dst : callableUnit.getFileSection().getDataSets()) if
+	 * (dst.getFacet(QExternalFile.class) != null) { QExternalFile externalFile
+	 * = dst.getFacet(QExternalFile.class); if
+	 * (dataSetTerm.getFacet(QExternalFile
+	 * .class).getFormat().equalsIgnoreCase(externalFile.getFormat())) {
+	 * primaryRecord = dst; break; } else continue; } else
+	 * System.out.println("Unexpected condition: pxnqt9r87x93q46t");
+	 * 
+	 * if (primaryRecord != null) return primaryRecord;
+	 * 
+	 * return primaryRecord; }
+	 */
 }

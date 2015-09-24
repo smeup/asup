@@ -233,6 +233,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
       eSuperTypes="#//term/DataTermContainer">
     <eOperations name="clearData"/>
+    <eOperations name="createDataTerm" lowerBound="1">
+      <eGenericType eClassifier="#//term/DataTerm">
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaAnnotation"/>
+    </eOperations>
     <eOperations name="getData" eType="#//Data">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -385,14 +393,6 @@
       </eParameters>
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="createDataTerm" lowerBound="1">
-      <eGenericType eClassifier="#//term/DataTerm">
-        <eTypeArguments/>
-      </eGenericType>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaType"/>
-      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaAnnotation"/>
     </eOperations>
     <eOperations name="createDate" lowerBound="1" eType="#//Datetime">
       <eParameters name="type" lowerBound="1" eType="#//def/DatetimeType"/>

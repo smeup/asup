@@ -12,7 +12,10 @@
 package org.smeup.sys.il.data.nio;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +23,8 @@ import java.util.Map.Entry;
 
 import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.impl.ObjectImpl;
+import org.smeup.sys.il.core.meta.QDefault;
+import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -29,7 +34,10 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
+import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, Serializable {
 
@@ -69,6 +77,35 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 		};
 		dataFactory.setDataContext(dataContext);
+	}
+
+	@Override
+	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
+
+		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {
+			private static final long serialVersionUID = 1L;
+		};
+
+		dataTerm.setName(name);
+
+		dataTerm.setDefinition(getDataFactory().createDataDef(type, annotations));
+		 		
+		for (Annotation annotation : annotations) {
+			if(annotation instanceof DataDef) {
+				DataDef dataDef = (DataDef) annotation;		
+				
+				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
+				_default.setValue(dataDef.value());
+				_default.getValues().addAll(Arrays.asList(dataDef.values()));
+				
+				if(!_default.isEmpty())
+					dataTerm.setDefault(_default);			
+			}
+		}
+
+		this.dataTerms.put(name, dataTerm);
+		
+		return dataTerm;
 	}
 
 	@Override

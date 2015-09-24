@@ -17,7 +17,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -30,8 +29,6 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.core.meta.QDefault;
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -89,7 +86,6 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.def.impl.EnumDefImpl;
 import org.smeup.sys.il.data.def.impl.ListDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class NIODataFactoryImpl implements QDataFactory {
 
@@ -210,33 +206,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		QEnumDef<E, BD> enumDef = (QEnumDef<E, BD>) dataDef;
 		return (D) createEnum(enumDef.getKlass(), createData(enumDef.getDelegate(), false), initialize);
-	}
-
-	@Override
-	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
-
-		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {
-			private static final long serialVersionUID = 1L;
-		};
-
-		dataTerm.setName(name);
-
-		dataTerm.setDefinition(createDataDef(type, annotations));
-		 		
-		for (Annotation annotation : annotations) {
-			if(annotation instanceof DataDef) {
-				DataDef dataDef = (DataDef) annotation;		
-				
-				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
-				_default.setValue(dataDef.value());
-				_default.getValues().addAll(Arrays.asList(dataDef.values()));
-				
-				if(!_default.isEmpty())
-					dataTerm.setDefault(_default);			
-			}
-		}
-
-		return dataTerm;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
