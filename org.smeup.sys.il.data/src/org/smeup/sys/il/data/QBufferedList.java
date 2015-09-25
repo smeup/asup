@@ -62,4 +62,68 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	 * @generated
 	 */
 	<E extends Enum<E>> void movea(E value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QArray<?> value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QArray<?> value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, String value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, int sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, int sourceIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" sourceIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QArray<?> value, int sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear);
 } // QBufferedList
