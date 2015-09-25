@@ -55,10 +55,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	public QJob start() {
 
 		this.startupJob = createJob(JobType.KERNEL, "QASUP");
-	
-		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(this.startupJob, QSystem.class, getSystem().getSystemLibrary());
-		systemWriter.save(getSystem(), true);
-		
+					
 		return startupJob;
 	}
 
