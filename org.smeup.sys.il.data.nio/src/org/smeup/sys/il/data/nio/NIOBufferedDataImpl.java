@@ -108,24 +108,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		clear();
 	}
 
-	public void slice(QBufferedData target, int position) {
-
-		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
-
-		if (nioBufferedData == null)
-			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
-
-		// TODO synchronize
-		if (nioBufferedData._buffer != null)
-			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n031");
-
-		nioBufferedData._relative = this;
-		nioBufferedData._buffer = null;
-		nioBufferedData._position = position;
-		nioBufferedData._dataContext = getDataContext();
-		// System.out.println(nioBufferedData._position);
-	}
-
 	@Override
 	public void assign(QBufferedData target) {
 		assign(target, 1);
@@ -139,16 +121,24 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target, int position) {
 
+		if(position == 0)
+			"".toCharArray();
+		
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 
 		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
 
-		nioBufferedData._relative = null;
-		nioBufferedData._buffer = getBuffer();
-		nioBufferedData._position = getPosition() + position - 1;
-	}
+		// TODO synchronize
+		if (nioBufferedData._buffer != null)
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n031");
 
+		nioBufferedData._relative = this;
+		nioBufferedData._buffer = null;
+		nioBufferedData._position = position - 1;		
+		nioBufferedData._dataContext = getDataContext();
+	}
+	
 	@Override
 	public void clear() {
 		NIOBufferHelper.clear(getBuffer(), getPosition(), getSize(), getFiller());
@@ -180,7 +170,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			return null;
 	}
 
-	public int getPosition() {
+	protected int getPosition() {
 
 		// TODO synchronize
 		if (_relative != null)

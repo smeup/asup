@@ -68,7 +68,7 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 		else
 			position = getListOwner().getModel().getLength() * (index - 1);
 
-		slice(getModel(), position);
+		assign(getModel(), position+1);
 
 		_lastIndex = index;
 

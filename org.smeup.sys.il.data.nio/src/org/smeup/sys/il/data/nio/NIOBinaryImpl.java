@@ -77,19 +77,19 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public Number readNumber() {
 
-		ByteBuffer byteBuffer = getBuffer();
+		ByteBuffer buffer = getBuffer();
 		int position = getPosition();
 
-		NIOBufferHelper.prepare(byteBuffer, position, getSize());
+		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
 		case BYTE:
-			return byteBuffer.get(position);
+			return buffer.get(position);
 		case SHORT:
-			return byteBuffer.getShort(position);
+			return buffer.getShort(position);
 		case INTEGER:
-			return byteBuffer.getInt(position);
+			return buffer.getInt(position);
 		case LONG:
-			return byteBuffer.getLong(position);
+			return buffer.getLong(position);
 		}
 
 		throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: zv8rv8ewtrwe");
@@ -104,16 +104,16 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 		NIOBufferHelper.prepare(buffer, position, getSize());
 		switch (_type) {
 		case BYTE:
-			buffer.put(getPosition(), (byte) number.intValue());
+			buffer.put(position, (byte) number.intValue());
 			return;
 		case SHORT:
-			buffer.putShort(getPosition(), number.shortValue());
+			buffer.putShort(position, number.shortValue());
 			return;
 		case INTEGER:
-			buffer.putInt(getPosition(), number.intValue());
+			buffer.putInt(position, number.intValue());
 			return;
 		case LONG:
-			buffer.putLong(getPosition(), number.longValue());
+			buffer.putLong(position, number.longValue());
 			return;
 		}
 
@@ -123,17 +123,20 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public int compareNumber(Number value) {
 
+		ByteBuffer buffer = getBuffer();
+		int position = getPosition();
+
 		try {
 
 			switch (_type) {
 			case BYTE:
-				return ((Byte) getBuffer().get(getPosition())).compareTo((Byte) value);
+				return ((Byte) buffer.get(position)).compareTo((Byte) value);
 			case SHORT:
-				return ((Short) getBuffer().getShort(getPosition())).compareTo((Short) value);
+				return ((Short) buffer.getShort(position)).compareTo((Short) value);
 			case INTEGER:
-				return ((Integer) getBuffer().getInt(getPosition())).compareTo((Integer) value);
+				return ((Integer) buffer.getInt(position)).compareTo((Integer) value);
 			case LONG:
-				return ((Long) getBuffer().getLong(getPosition())).compareTo((Long) value);
+				return ((Long) buffer.getLong(position)).compareTo((Long) value);
 			}
 		} catch (ClassCastException e) {
 			System.err.println(e.getMessage());
