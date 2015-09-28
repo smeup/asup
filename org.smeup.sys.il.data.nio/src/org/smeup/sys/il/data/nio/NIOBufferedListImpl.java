@@ -383,10 +383,73 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 		for (QBufferedData element : this)
 			element.movel(value, true);
 	}
-
+	
 	@Override
 	public <E extends Enum<E>> void movea(E value) {
 		for (QBufferedData element : this)
 			element.eval(value);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, boolean clear) {
+		if(clear)
+			this.clear();
+		int idx = 1;
+		for (int i=targetIndex; i<this.capacity();i++){
+			QBufferedData element = this.get(i);
+			element.movel(value.get(idx), true);
+			idx++;
+		}
+	}
+
+	@Override
+	public void movea(int targetIndex, String value) {
+		// TODO
+	}
+
+	@Override
+	public void movea(int targetIndex, String value, boolean clear) {
+		// TODO
+	}
+
+	@Override
+	public void movea(QArray<?> value, int sourceIndex) {
+		movea(value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
+		int idx = sourceIndex;
+		if(clear)
+			this.clear();
+		for (QBufferedData element : this){
+			if(idx>value.capacity())
+				break;
+			element.movel(value.get(idx), true);
+			idx++;
+		}
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, int sourceIndex) {
+		movea(targetIndex, value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, int sourceIndex,
+			boolean clear) {
+		int idx = sourceIndex;
+		if(clear)
+			this.clear();
+		for (int i=targetIndex; i<this.capacity();i++){
+			QBufferedData element = this.get(i);
+			element.movel(value.get(idx), true);
+			idx++;
+		}
 	}
 }
