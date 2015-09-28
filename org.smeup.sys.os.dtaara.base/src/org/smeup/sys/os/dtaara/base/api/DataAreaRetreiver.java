@@ -49,7 +49,7 @@ public @ToDo class DataAreaRetreiver {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QDataManager dataManager;
-
+	
 	private QDataFactory dataFactory;
 
 	@PostConstruct
