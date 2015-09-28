@@ -28,37 +28,29 @@ public @interface DataDef {
 
 	// common
 	String value() default "";
-
 	String target() default "";
-
 	String[] formulas() default {};
 
 	// compound
 	boolean qualified() default false;
+	String prefix() default "";
 
 	// multiple
 	int dimension() default 0;
-
-	// sortDirection
 	SortDirection order() default SortDirection.ASCEND;
-
 	String[] values() default {};
 
 	// character
 	int length() default 0;
-
 	boolean varying() default false;
 
 	// decimal
 	int precision() default 0;
-
 	int scale() default 0;
-
 	boolean packed() default false;
 
 	// datetime
 	DatetimeType datetimeType() default DatetimeType.DATE;
-
 	String datetimeFormat() default "";
 
 	// binary

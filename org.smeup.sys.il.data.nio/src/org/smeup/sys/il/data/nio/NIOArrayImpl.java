@@ -81,7 +81,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		else
 			position = getListOwner().getModel().getLength() * (index - 1);		
 		
-		slice(element, position);
+		assign(element, position+1);
 
 		return element;
 	}
@@ -186,7 +186,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	public QArray<D> qSubarr(int start, int elements) {
 
 		NIOArrayImpl<D> subArray = new NIOArrayImpl<D>(getDataContext(), getModel(), elements, getSortDirection());
-		slice(subArray, start+(getModel().getSize()*(start-1)));
+		assign(subArray, getModel().getSize()*(start-1)+1);
 					
 		return subArray;
 	}

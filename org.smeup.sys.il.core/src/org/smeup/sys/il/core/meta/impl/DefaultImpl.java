@@ -23,8 +23,10 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValues <em>Values</em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValue <em>Value
+ * </em>}</li>
+ * <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValues <em>Values
+ * </em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +41,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -48,6 +51,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -55,8 +59,9 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	protected String value = VALUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The cached value of the '{@link #getValues() <em>Values</em>}' attribute
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValues()
 	 * @generated
 	 * @ordered
@@ -65,6 +70,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected DefaultImpl() {
@@ -73,6 +79,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -82,6 +89,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -91,6 +99,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -103,6 +112,7 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -123,93 +133,99 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 		getValues().clear();
 	}
 
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
 	public boolean isEmpty() {
-		
-		if(getValue() != null && getValue().isEmpty())
+
+		if (getValue() == null)
 			return this.getValues().isEmpty();
-		else	
-			return false;
+		else
+			return getValue().isEmpty();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
-				return getValue();
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
-				return getValues();
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
+			return getValue();
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
+			return getValues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
-				setValue((String)newValue);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
-				getValues().clear();
-				getValues().addAll((Collection<? extends String>)newValue);
-				return;
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
+			setValue((String) newValue);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
+			getValues().clear();
+			getValues().addAll((Collection<? extends String>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
-				getValues().clear();
-				return;
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
+			getValues().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
-				return values != null && !values.isEmpty();
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUE:
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+		case QIntegratedLanguageCoreMetaPackage.DEFAULT__VALUES:
+			return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");

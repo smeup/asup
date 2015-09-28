@@ -78,13 +78,14 @@
           </elements>
           <elements
               xsi:type="os-cmd:CommandData"
+              initialized="true"
               name="substringSpecifications">
             <facets
                 xsi:type="il-core:Special">
               <elements
                   name="*ALL"
                   unary="true"
-                  value="0"/>
+                  value="*ALL"/>
             </facets>
             <default
                 value="*ALL"/>
@@ -731,13 +732,11 @@
       name="RTVDTAARA"
       text="Retrieve Data Area"
       allowBatch="false"
-      program="QCLRTVDA"
-      status="TODO">
+      program="QCLRTVDA">
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="dataAreaSpecification">
         <definition
@@ -840,8 +839,7 @@
     <parameters
         allowVariable="true"
         name="RTNVAR"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="cLVariableForReturnedValue">
         <definition
@@ -863,8 +861,7 @@
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="dataArea">
         <cardinality
@@ -921,6 +918,20 @@
                 length="10"/>
           </elements>
         </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="OBJTYPE"
+        position="2"
+        hidden="true">
+      <dataTerm
+          initialized="true"
+          name="objectType">
+        <default
+            value="*DTAARA"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="7"/>
       </dataTerm>
     </parameters>
     <source

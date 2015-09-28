@@ -42,5 +42,4 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 		return true;
 	}
-
 }
