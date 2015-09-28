@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -409,12 +410,19 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, String value) {
-		// TODO
+		movea(targetIndex, value, false);
 	}
 
 	@Override
 	public void movea(int targetIndex, String value, boolean clear) {
-		// TODO
+		if(clear)
+			this.clear();
+		int position = ((this.getLength() / this.capacity()) * (targetIndex-1)); 
+		try {
+			NIOBufferHelper.movel(getBuffer(), position, value.length(), value.getBytes(getEncoding()), clear, (byte) 32);
+		} catch (UnsupportedEncodingException e) {
+			NIOBufferHelper.movel(getBuffer(), position, value.length(), value.getBytes(), clear, (byte) 32);
+		}
 	}
 
 	@Override

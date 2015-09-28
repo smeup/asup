@@ -12,7 +12,6 @@
 package org.smeup.sys.il.data.nio;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.QBufferedData;
@@ -29,8 +28,9 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	private static final long serialVersionUID = 1L;
 	private static final byte INIT = (byte) 64; // 32;
-	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
-	private static final Charset CHARSET = Charset.forName(ENCODING);
+	// TODO inseriti in NioBufferedDataImpl
+//	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
+//	private static final Charset CHARSET = Charset.forName(ENCODING);
 	
 	protected int _length;
 
@@ -519,9 +519,10 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		return INIT;
 	}
 
-	protected String getEncoding() {
-		return ENCODING;
-	}
+	// TODO rimosso, introdotto in NioBufferedDataImpl
+//	protected String getEncoding() {
+//		return ENCODING;
+//	}
 
 	@Override
 	public void xlate(QString from, QString to, QString target) {
@@ -650,7 +651,8 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		System.out.println(bytesToHex(asBytes()));
 		System.out.println(bytesToHex(value.getBytes(CHARSET)));*/
 		
-		int result = compareBytes(asBytes(), value.getBytes(CHARSET));
+//		int result = compareBytes(asBytes(), value.getBytes(CHARSET));
+		int result = compareBytes(asBytes(), value.getBytes(getCharset()));
 		
 		/*try {
 			return compareBytes(asBytes(), b2.getBytes(getEncoding()));

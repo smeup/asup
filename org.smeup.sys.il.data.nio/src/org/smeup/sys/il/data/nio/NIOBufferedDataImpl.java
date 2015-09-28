@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
@@ -32,6 +33,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	private static final long serialVersionUID = 1L;
 	protected static final ComparatorType defaultComparator = ComparatorType.EBCDIC;
+	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
+	private static final Charset CHARSET = Charset.forName(ENCODING);
 
 	private NIOBufferedDataImpl _relative;
 	private int _position;
@@ -189,6 +192,14 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			return _position;
 	}
 
+	public String getEncoding() {
+		return ENCODING;
+	}
+
+	public Charset getCharset() {
+		return CHARSET;
+	}
+	
 	private void writeObject(ObjectOutputStream stream) throws IOException {
 
 		// TODO synchronize
