@@ -192,9 +192,10 @@ public class BaseCallableInjector {
 			// Data
 			else if (QData.class.isAssignableFrom(fieldClass)) {
 
-				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));				
+				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
+				
 				QData data = dataContainer.resetData(dataTerm);					
-				field.set(callable, data);
+				field.set(callable, data);			
 				
 				if(dataTerm.getDataTermType().isCompound()) {
 					QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
@@ -260,14 +261,14 @@ public class BaseCallableInjector {
 				QDataSet<QDataStruct> dataSet = null;
 
 				QDataStruct infoStruct = null;
-				if (!fileDef.info().equals(FileDef.INFO_NULL))
+				if (!fileDef.info().isEmpty())
 					infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());
 
 				Class<QDataStruct> classRecord = (Class<QDataStruct>) pType.getActualTypeArguments()[0];
 				Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
 				
 				String primaryRecordName = null;
-				if(!fileDef.prefix().equals(FileDef.PREFIX_NULL)) 
+				if(!fileDef.prefix().isEmpty()) 
 					primaryRecordName = fileDef.prefix()+"_"+classPrimaryRecord.getSimpleName();
 				else
 					primaryRecordName = classPrimaryRecord.getSimpleName();
