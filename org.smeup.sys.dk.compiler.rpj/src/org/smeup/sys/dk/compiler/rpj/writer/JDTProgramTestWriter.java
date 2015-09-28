@@ -116,7 +116,7 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 
 		}
 
-		// writeInit();
+		writeInit();
 
 		writeEntry(programTest, modules);
 
@@ -203,7 +203,6 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 		getTarget().bodyDeclarations().add(methodDeclaration);
 
 		methodDeclaration.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(routine.getName())));
-		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 		// writeSuppressWarning(methodDeclaration);
 
@@ -233,7 +232,9 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 					assertionTestWriter.writeAssertion(qAnnotationTest, block, "");
 				}
 		}
-
+		
+		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		
 		if (routine.getMain() instanceof QBlock) {
 			QBlock qBlock = (QBlock) routine.getMain();
 			for (org.smeup.sys.il.flow.QStatement qStatement : qBlock.getStatements())
