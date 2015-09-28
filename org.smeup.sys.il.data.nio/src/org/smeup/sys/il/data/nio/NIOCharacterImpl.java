@@ -169,100 +169,87 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, QString factor2) {
-//		eval(factor1 + factor2.toString());
-		cat(factor1, factor2, 0);
+		cat(factor1, factor2.s(), 0);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2) {
-//		eval(factor1.toString() + factor2.toString());
-		cat(factor1, factor2, 0);
+		cat(factor1.s(), factor2.s(), 0);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2) {
-//		eval(factor1.trimR() + factor2);
-		cat(factor1, factor2, 0);
+		cat(factor1.s(), factor2, 0);
 	}
 
 	@Override
 	public void cat(String factor1, String factor2) {
-//		eval(factor1 + factor2);
 		cat(factor1, factor2, 0);
 	}
 
 	@Override
 	public void cat(QString factor1, Number space) {
-		// TODO Auto-generated method stub
+		cat(factor1.s(), space);
 	}
 
 	@Override
 	public void cat(QString factor1, QNumeric space) {
-		// TODO Auto-generated method stub
+		cat(factor1.s(), space.i());
 	}
 
 	@Override
 	public void cat(String factor1, QNumeric space) {
-		// TODO Auto-generated method stub
+		cat(factor1, space.i());
 	}
 
 	@Override
 	public void cat(String factor1, String factor2, int space) {
-		// TODO Auto-generated method stub
+		if (space == 0)
+			eval(factor1.trim() + factor2.toString());
+		else {
+			try {
+				String value = factor1.trim();
+				int length = value.length() + space;
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), false, INIT);
+			} catch (UnsupportedEncodingException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 
 	@Override
 	public void cat(String factor1, String factor2, QNumeric space) {
-		// TODO Auto-generated method stub
+		cat(factor1, factor2, space.i());
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, int space) {
-		// TODO Auto-generated method stub
+		cat(factor1, factor2.s(), space);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
-
-		if (space.asInteger() == 0)
-			eval(trimR(factor1) + factor2.toString());
-		else
-			eval(factor1 + factor2.toString());
-
+		cat(factor1, factor2.s(), space.i());
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, int space) {
-
-		if (space == 0)
-			eval(factor1.trimR() + factor2.toString());
-		else
-			eval(factor1.toString() + factor2.toString());
+		cat(factor1.s(), factor2.s(), space);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space) {
-
-		if (space.asInteger() == 0)
-			eval(factor1.trimR() + factor2.toString());
-		else
-			eval(factor1.toString() + factor2.toString());
-
+		cat(factor1.s(), factor2.s(), space.i());
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, int space) {
-
-		if (space == 0)
-			eval(factor1.trimR() + factor2);
-		else
-			eval(factor1.toString() + factor2.toString());
-
+		cat(factor1.s(), factor2, space);
 	}
 
 	@Override
 	public void cat(String factor1, Number space) {
-
 		if (space.intValue() == 0)
 			eval(trimR() + factor1);
 		else {
@@ -274,18 +261,17 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			} catch (UnsupportedEncodingException e) {
 				throw new RuntimeException(e);
 			}
-
 		}
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, Number space) {
-		// TODO Auto-generated method stub
+		cat(factor1.s(), factor2.s(), space.intValue());
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, Number space) {
-		// TODO Auto-generated method stub
+		cat(factor1.s(), factor2, space.intValue());
 	}
 
 	@Override
