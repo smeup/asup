@@ -732,13 +732,11 @@
       name="RTVDTAARA"
       text="Retrieve Data Area"
       allowBatch="false"
-      program="QCLRTVDA"
-      status="TODO">
+      program="QCLRTVDA">
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="dataAreaSpecification">
         <definition
@@ -841,8 +839,7 @@
     <parameters
         allowVariable="true"
         name="RTNVAR"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="cLVariableForReturnedValue">
         <definition

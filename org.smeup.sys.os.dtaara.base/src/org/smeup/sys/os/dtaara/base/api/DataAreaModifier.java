@@ -4,15 +4,10 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.java.QStrings;
-import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.il.data.annotation.Special;
-import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
@@ -20,14 +15,14 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 import org.smeup.sys.os.dtaara.QDataAreaManager;
-import org.smeup.sys.os.dtaara.base.api.DataAreaModifier.DATAAREASPECIFICATION.SUBSTRINGSPECIFICATIONS;
-import org.smeup.sys.os.dtaara.base.api.DataAreaModifier.DATAAREASPECIFICATION.SUBSTRINGSPECIFICATIONSEnum;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.DataTooLongException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.InvalidBooleanValueException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.InvalidSubstringException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.TypeAndValueMismatchException;
 import org.smeup.sys.os.dtaara.base.api.tools.DataAreaEditor.WrongStartPositionException;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaSpecification;
+import org.smeup.sys.os.dtaara.base.api.tools.DataAreaSpecification.SUBSTRINGSPECIFICATIONS;
 import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification;
 import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.DataAreaNotFoundException;
 import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.LibraryNotFoundException;
@@ -63,21 +58,21 @@ public @ToDo class DataAreaModifier {
 	@Inject
 	private  QStrings stringsUtils;
 	
-	public @Entry void main(DATAAREASPECIFICATION dataAreaParm, 
+	public @Entry void main(DataAreaSpecification dataAreaParm, 
 							@DataDef(length = 2000) QCharacter value) {
 		try {
 			
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
 			
 			
-			if (!all(dataAreaParm.substringSpecifications) && !area.getDataAreaType().equals(DataAreaType.CHARACTER)) {
+			if (!dataAreaParm.all() && !area.getDataAreaType().equals(DataAreaType.CHARACTER)) {
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF1087, new String[0]);
 			}
 			
 			
 			DataAreaEditor dataAreaEditor = new DataAreaEditor(area, stringsUtils);
 			
-			if (all(dataAreaParm.substringSpecifications)) {
+			if (dataAreaParm.all()) {
 				dataAreaEditor.setValue(value.trimR());
 			} else {
 				SUBSTRINGSPECIFICATIONS substringspecification = dataAreaParm.substringSpecifications.asData();
@@ -109,44 +104,10 @@ public @ToDo class DataAreaModifier {
 		}
 	}
 
-	private boolean all(QEnum<SUBSTRINGSPECIFICATIONSEnum, SUBSTRINGSPECIFICATIONS> substringSpecifications) {
-		switch(substringSpecifications.asEnum()) {
-		case ALL:
-			return true;
-		default:
-			SUBSTRINGSPECIFICATIONS specData = substringSpecifications.asData();
-			return (specData.substringStartingPosition.asInteger() == 0 && specData.substringLength.asInteger() == 0);
-		}
-	}
 
 	private QResourceWriter<QDataArea> resourceWriter(String libName) {
 		return resourceManager.getResourceWriter(job, QDataArea.class, libName);
 	}
 
 
-	public static class DATAAREASPECIFICATION extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		
-		@DataDef(qualified = true)
-		public QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification;
-		
-		@DataDef(value = "*ALL")
-		public QEnum<SUBSTRINGSPECIFICATIONSEnum, DATAAREASPECIFICATION.SUBSTRINGSPECIFICATIONS> substringSpecifications;
-
-		public static class SUBSTRINGSPECIFICATIONS extends QDataStructWrapper {
-			private static final long serialVersionUID = 1L;
-			
-			@DataDef(binaryType = BinaryType.SHORT)
-			public QBinary substringStartingPosition;
-			
-			@DataDef(binaryType = BinaryType.SHORT)
-			public QBinary substringLength;
-		}
-
-		public static enum SUBSTRINGSPECIFICATIONSEnum {
-			@Special(value = "*ALL")
-			ALL, 
-			OTHER
-		}
-	}
 }
