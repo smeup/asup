@@ -861,8 +861,7 @@
     <parameters
         allowVariable="true"
         name="DTAARA"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="dataArea">
         <cardinality
@@ -919,6 +918,20 @@
                 length="10"/>
           </elements>
         </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="OBJTYPE"
+        position="2"
+        hidden="true">
+      <dataTerm
+          initialized="true"
+          name="objectType">
+        <default
+            value="*DTAARA"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="7"/>
       </dataTerm>
     </parameters>
     <source
