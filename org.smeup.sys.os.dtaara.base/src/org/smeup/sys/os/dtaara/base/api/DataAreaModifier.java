@@ -87,7 +87,7 @@ public @ToDo class DataAreaModifier {
 			}
 			
 			if (dataAreaParm.dataAreaSpecification.asEnum().equals(ExistingDataAreaSpecification.DATAAREAEnum.OTHER)) {
-				resourceWriter(area.getName(), area.getLibrary()).save(area);
+				resourceWriter(area.getLibrary()).save(area, true);
 			}
 			
 		} catch (DataAreaNotFoundException e) {
@@ -114,11 +114,12 @@ public @ToDo class DataAreaModifier {
 		case ALL:
 			return true;
 		default:
-			return false;
+			SUBSTRINGSPECIFICATIONS specData = substringSpecifications.asData();
+			return (specData.substringStartingPosition.asInteger() == 0 && specData.substringLength.asInteger() == 0);
 		}
 	}
 
-	private QResourceWriter<QDataArea> resourceWriter(String areaName, String libName) {
+	private QResourceWriter<QDataArea> resourceWriter(String libName) {
 		return resourceManager.getResourceWriter(job, QDataArea.class, libName);
 	}
 
@@ -143,7 +144,7 @@ public @ToDo class DataAreaModifier {
 		}
 
 		public static enum SUBSTRINGSPECIFICATIONSEnum {
-			@Special(value = "0")
+			@Special(value = "*ALL")
 			ALL, 
 			OTHER
 		}
