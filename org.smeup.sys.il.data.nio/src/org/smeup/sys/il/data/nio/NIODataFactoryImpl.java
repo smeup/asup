@@ -389,16 +389,14 @@ public class NIODataFactoryImpl implements QDataFactory {
 		return stroller;
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public <R extends QRecord> R createRecord(Class<R> wrapper, boolean initialize) {
-		
+
 		Class<? extends QDataStruct> classDataStruct = (Class<? extends QDataStruct>) wrapper;
 		return (R) createDataStruct(classDataStruct, 0, initialize);
 	}
 
-	
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean initialize) {
 
@@ -440,12 +438,12 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 					if (position != null)
 						if (position.equalsIgnoreCase("*NEXT")) {
-
 						} else
 							p = Integer.parseInt(position);
 
 					if (!overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER)) {
 						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
+
 						if (overlayedData instanceof QBufferedList<?>) {
 							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 							NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
@@ -464,7 +462,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			}
 
 			dataStructureDelegate.addElement(field.getName(), dataElement, p - 1);
-			dataStructureDelegate.slice(dataElement, p - 1);
+			dataStructureDelegate.assign(dataElement, p);
 
 			p += dataElement.getSize();
 
@@ -547,7 +545,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					p = Integer.parseInt(position);
 
 			dataStructureDelegate.addElement(dataTerm.getName(), dataElement, p - 1);
-			dataStructureDelegate.slice(dataElement, p - 1);
+			dataStructureDelegate.assign(dataElement, p);
 
 			p += dataElement.getSize();
 

@@ -64,7 +64,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 						for (int e = i; e <= list.capacity(); e++)
 							list.get(e).accept(dataWriter.set(specialElement));
 				} else
-					data.accept(dataWriter.set(value));
+					list.get(i).accept(dataWriter.set(value));
 
 				i++;
 			}
@@ -88,7 +88,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 								list.get(e).accept(dataWriter.set(specialElement));
 						result = false;
 					} else
-						data.accept(dataWriter.set(value));
+						list.get(i).accept(dataWriter.set(value));
 
 					i++;
 				}
@@ -133,7 +133,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 					struct.accept(dataWriter.set(specialElement));
 					result = false;
 				} else
-					data.accept(dataWriter.set(default_.getValues()));
+					data.accept(dataWriter.set(default_.getValue()));
 			}
 
 			if (result)

@@ -97,7 +97,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				DataDef dataDef = (DataDef) annotation;		
 				
 				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
-				_default.setValue(dataDef.value());
+				if(!dataDef.value().isEmpty())
+					_default.setValue(dataDef.value());
 				_default.getValues().addAll(Arrays.asList(dataDef.values()));
 				
 				if(!_default.isEmpty())

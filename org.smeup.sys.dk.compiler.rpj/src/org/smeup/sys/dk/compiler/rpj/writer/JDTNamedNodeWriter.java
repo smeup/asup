@@ -338,6 +338,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		else if (QDataStructDef.class.isAssignableFrom(klassDef)) {
 			QDataStructDef dataStructureDef = (QDataStructDef) dataDef;
 
+			if (dataStructureDef.getPrefix() != null)
+				writeAnnotation(node, DataDef.class, "prefix", dataStructureDef.getPrefix());
+
 			if (dataStructureDef.isQualified())
 				writeAnnotation(node, DataDef.class, "qualified", dataStructureDef.isQualified());
 
@@ -346,6 +349,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		} 
 		else if (QCompoundDataDef.class.isAssignableFrom(klassDef)) {
 			QCompoundDataDef<?, ?> compoundDataDef =  (QCompoundDataDef<?, ?>) dataDef;
+
+
+			if (compoundDataDef.getPrefix() != null)
+				writeAnnotation(node, DataDef.class, "prefix", compoundDataDef.getPrefix());
 
 			if (compoundDataDef.isQualified())
 				writeAnnotation(node, DataDef.class, "qualified", compoundDataDef.isQualified());
