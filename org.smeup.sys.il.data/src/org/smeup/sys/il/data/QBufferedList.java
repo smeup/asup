@@ -85,6 +85,22 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */
+	void movea(int targetIndex, QBufferedData value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QBufferedData value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
 	void movea(int targetIndex, String value);
 
 	/**

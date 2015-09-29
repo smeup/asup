@@ -420,6 +420,16 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
+	public void movea(int targetIndex, QBufferedData value) {
+		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QBufferedData value, boolean clear) {
+		movea(targetIndex, value.s(), clear);
+	}
+	
+	@Override
 	public void movea(int targetIndex, String value) {
 		movea(targetIndex, value, false);
 	}
