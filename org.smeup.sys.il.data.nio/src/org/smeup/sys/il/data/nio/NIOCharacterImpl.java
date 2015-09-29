@@ -467,6 +467,10 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			Arrays.fill(charArray, ' ');
 		else if (value.name().equals("BLANK"))
 			return " ";
+		else if (value.name().equals("ZEROS"))
+			Arrays.fill(charArray, '0');
+		else if (value.name().equals("ZERO"))
+			return "0";
 		else if (value.name().equals("HIVAL"))
 			Arrays.fill(charArray, '9');
 		else if (value.name().equals("LOVAL"))

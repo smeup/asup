@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
@@ -288,7 +289,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movea(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), clear, getFiller());
+		try {
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
+		} catch (UnsupportedEncodingException e) {
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), clear, getFiller());
+		}
 	}
 
 	@Override
