@@ -1,5 +1,7 @@
 package org.smeup.sys.os.core.base.api;
 
+import java.text.DateFormat;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -16,8 +18,10 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
 import org.smeup.sys.os.core.base.api.tools.JobName;
 import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
+import org.smeup.sys.os.core.jobs.JobDateFormat;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -26,6 +30,7 @@ public @Supported class JobAttributesSetter {
 	public static enum QCPFMSG {
 		CPF1321, //Il lavoro &1 utente &2 numero di lavoro &3 non trovati
 		CPF1156, //Job &3/&2/&1 job switch &4 not valid. 
+		CPD0082, //Il valore &3, indicato per una data, non è valido per il parametro &2
 	}
 
 	@Inject
@@ -38,9 +43,9 @@ public @Supported class JobAttributesSetter {
 	
 	public @Entry void main(
 			@DataDef(qualified = true) JobName jobName,
-			@DataDef(length = 1) QEnum<JOBPRIORITYONJOBQEnum, QCharacter> jobPriorityonJOBQ,
-			@DataDef(length = 1) QEnum<OUTPUTPRIORITYONOUTQEnum, QCharacter> outputPriorityonOUTQ,
-			@DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
+			@ToDo @DataDef(length = 1) QEnum<JOBPRIORITYONJOBQEnum, QCharacter> jobPriorityonJOBQ,
+			@ToDo @DataDef(length = 1) QEnum<OUTPUTPRIORITYONOUTQEnum, QCharacter> outputPriorityonOUTQ,
+			@ToDo @DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
 			@ToDo @DataDef(qualified = true) QEnum<OUTPUTQUEUEEnum, OUTPUTQUEUE> outputQueue,
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<RUNPRIORITYEnum, QBinary> runPriority,
 			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
@@ -55,8 +60,8 @@ public @Supported class JobAttributesSetter {
 			@DataDef(length = 1) QEnum<DDMCONVERSATIONEnum, QCharacter> dDMConversation,
 			@DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
 			@DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
-			@ToDo @DataDef(datetimeType = DatetimeType.DATE) QEnum<JOBDATEEnum, QDatetime> jobDate,
-			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<DATEFORMATEnum, QBinary> dateFormat,
+			@DataDef(datetimeType = DatetimeType.DATE) QEnum<JOBDATEEnum, QDatetime> jobDate,
+			@DataDef(binaryType = BinaryType.SHORT) QEnum<DATEFORMATEnum, QBinary> dateFormat,
 			@ToDo @DataDef(length = 1) QEnum<DATESEPARATOREnum, QCharacter> dateSeparator,
 			@ToDo @DataDef(length = 1) QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator,
 			@ToDo @DataDef(length = 8) QEnum<JOBSWITCHESEnum, QCharacter> jobSwitches,
@@ -91,11 +96,28 @@ public @Supported class JobAttributesSetter {
 	
 		try {
 			QJob jobToChange = jobName.findJob(job, jobManager);
+			
 			setSwitches(jobToChange, jobSwitches);
+			
+			setJobDate(jobToChange, jobDate);
+
+			setJobDateFormat(jobToChange, dateFormat);
 		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
 		}
+	}
 
+	private void setJobDateFormat(QJob jobToChange, QEnum<DATEFORMATEnum, QBinary> dateFormat) {
+		dateFormat.asEnum().setDateFormat(jobToChange);
+	}
+
+	private void setJobDate(QJob jobToChange, QEnum<JOBDATEEnum, QDatetime> jobDate) {
+		try {
+			jobDate.asEnum().setJobDate(jobToChange, jobDate.asData().toString());
+		} catch (Exception e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPD0082, 
+					new String[] {"", "DATE", jobDate.asData().toString()});
+		}
 	}
 
 	private void setSwitches(QJob jobToChange, QEnum<JOBSWITCHESEnum, QCharacter> jobSwitches) {
@@ -257,17 +279,68 @@ public @Supported class JobAttributesSetter {
 
 	public static enum JOBDATEEnum {
 		@Special(value = "0000000")
-		SAME, OTHER
+		SAME {
+			@Override
+			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
+				DateFormat fmt = JobDateFormatter.forType(jobToChange.getJobDateFormat());
+				jobToChange.getCreationInfo().setCreationDate(fmt.parse(dateString));
+			}
+		}, 
+		OTHER {
+			@Override
+			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
+				
+			}
+		};
+		public abstract void setJobDate(QJob jobToChange, String dateString) throws Exception;
 	}
 
 	public static enum DATEFORMATEnum {
 		@Special(value = "-1")
-		SAME, @Special(value = "0")
-		SYSVAL, @Special(value = "1")
-		YMD, @Special(value = "2")
-		MDY, @Special(value = "3")
-		DMY, @Special(value = "4")
-		JUL
+		SAME {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				//Nothing to do
+			}
+		}, 
+		@Special(value = "0")
+		SYSVAL {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				// TODO ????
+			}
+		},
+		
+		@Special(value = "1")
+		YMD {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				jobToChange.setJobDateFormat(JobDateFormat.YEAR_MONTH_DAY);
+			}
+		}, 
+		@Special(value = "2")
+		MDY {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				jobToChange.setJobDateFormat(JobDateFormat.MONTH_DAY_YEAR);				
+			}
+		}, 
+		@Special(value = "3")
+		DMY {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				jobToChange.setJobDateFormat(JobDateFormat.DAY_MONTH_YEAR);
+			}
+		}, 
+		@Special(value = "4")
+		JUL {
+			@Override
+			public void setDateFormat(QJob jobToChange) {
+				jobToChange.setJobDateFormat(JobDateFormat.JULIAN);
+			}
+		};
+
+		public abstract void setDateFormat(QJob jobToChange);
 	}
 
 	public static enum DATESEPARATOREnum {
