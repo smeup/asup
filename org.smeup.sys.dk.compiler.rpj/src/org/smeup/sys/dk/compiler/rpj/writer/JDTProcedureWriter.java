@@ -15,87 +15,184 @@ package org.smeup.sys.dk.compiler.rpj.writer;
 import java.io.IOException;
 
 import org.eclipse.jdt.core.dom.Block;
+import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.FieldAccess;
+import org.eclipse.jdt.core.dom.MarkerAnnotation;
+import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.MethodInvocation;
+import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
+import org.eclipse.jdt.core.dom.NormalAnnotation;
+import org.eclipse.jdt.core.dom.StringLiteral;
+import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
+import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Procedure;
+import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
+import org.smeup.sys.il.data.term.impl.DataTermImpl;
+import org.smeup.sys.il.flow.QBlock;
+import org.smeup.sys.il.flow.QEntry;
+import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QProcedure;
-import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 
 public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
-	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-
+	private boolean statik;
+	
+	@SuppressWarnings("unchecked")
+	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean statik) {
 		super(root, compilationUnit, compilationSetup, name);
+		
+		writeImport(Procedure.class);
+		
+		if (statik)
+			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
+		
+		this.statik = statik;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void writeProcedure(QProcedure procedure) throws IOException {
 
-		// refactoring callable unit
 		refactCallableUnit(procedure);
 
-		// analyze callable unit
+		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
 
-		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
-		getTarget().bodyDeclarations().add(methodDeclaration);
-
-		methodDeclaration.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(procedure.getName())));
-		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-
-		Block block = getAST().newBlock();
-		methodDeclaration.setBody(block);
-
-		if (procedure.getSetupSection() != null) 
+		writeProcedureAnnotation(procedure);
+		
+		if (procedure.getSetupSection() != null)
 			writeModuleFields(procedure.getSetupSection().getModules(), false);
-
-		if (procedure.getFileSection() != null) {
-			writeDataSets(procedure.getFileSection().getDataSets());
-			writeKeyLists(procedure.getFileSection().getKeyLists());
-		}
 
 		if (procedure.getDataSection() != null)
 			writeDataFields(procedure.getDataSection());
-
-		if (procedure.getFileSection() != null)
+		
+		if (procedure.getFileSection() != null) {
+			writeDataSets(procedure.getFileSection().getDataSets());
 			writeDisplays(procedure.getFileSection().getDisplays());
-
-		if (procedure.getFileSection() != null)
 			writePrinters(procedure.getFileSection().getPrinters());
-
+			writeKeyLists(procedure.getFileSection().getKeyLists());
+		}
+		
+		if (procedure.getEntry() != null) {
+			for (QEntryParameter<?> entryParameter : procedure.getEntry().getParameters()) {
+				writePublicField((QDataTerm<?>) entryParameter.getDelegate(), false);
+			}
+		}
+		
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet());
 
 		// main
 		if (procedure.getMain() != null) {
-			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
-			routine.setName("main");
-			routine.setMain(procedure.getMain());
-
-			writeRoutine(routine);
+			writeProcedureEntry(procedure);
 		}
 
-		// functions
-		if (procedure.getFlowSection() != null) {
-
-			// routines
+		// routines
+		if (procedure.getFlowSection() != null)
 			for (QRoutine routine : procedure.getFlowSection().getRoutines())
 				writeRoutine(routine);
 
-			// prototype
-			for (QPrototype prototype : procedure.getFlowSection().getPrototypes())
-				writePrototype(prototype);
-		}
-
+		// datas
 		if (procedure.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : procedure.getDataSection().getDatas())
-				writeInnerTerm(dataTerm);
+				writeInnerData(dataTerm, this.statik);
 	}
 
+	@SuppressWarnings("unchecked")
+	private void writeProcedureEntry(final QProcedure procedure) {
+
+		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
+		getTarget().bodyDeclarations().add(methodDeclaration);
+
+		methodDeclaration.setName(getAST().newSimpleName("qExec"));
+		
+		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
+		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
+		writeImport(Entry.class);
+		methodDeclaration.modifiers().add(entryAnnotation);
+		
+		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		
+		if (procedure.getReturnType() != null) {
+			QDataTerm<?> tempTerm = new DataTermImpl<QDataDef<?>>() {
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public QDataDef<?> getDefinition() {
+					return procedure.getReturnType();
+				}
+			};
+			Type type = getJavaType(tempTerm);
+			methodDeclaration.setReturnType2(type);
+		}
+
+		Block block = getAST().newBlock();
+		methodDeclaration.setBody(block);
+
+		if (procedure.getEntry() != null) {
+			QEntry entry = procedure.getEntry();
+			writeEntry(methodDeclaration, entry);
+
+			for (QEntryParameter<?> entryParameter : entry.getParameters()) {
+
+				MethodInvocation methodInvocation = getAST().newMethodInvocation();
+				FieldAccess thisAccess = getAST().newFieldAccess();
+				thisAccess.setExpression(getAST().newThisExpression());
+				thisAccess.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+
+				QDataTerm<?> delegateTerm = (QDataTerm<?>) entryParameter.getDelegate();
+
+				if (delegateTerm.isConstant()) {
+					methodInvocation.setName(getAST().newSimpleName("eval"));
+					methodInvocation.setExpression(thisAccess);
+					methodInvocation.arguments().add(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+				} else {
+					methodInvocation.setName(getAST().newSimpleName("assign"));
+					methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+					methodInvocation.arguments().add(thisAccess);
+				}
+
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+				block.statements().add(expressionStatement);
+
+			}
+		}
+
+		// write java AST
+		JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
+		statementWriter.setAST(getAST());
+
+		statementWriter.getBlocks().push(block);
+
+		if (procedure.getMain() instanceof QBlock) {
+			QBlock qBlock = (QBlock) procedure.getMain();
+			for (org.smeup.sys.il.flow.QStatement qStatement : qBlock.getStatements())
+				qStatement.accept(statementWriter);
+		} else
+			procedure.getMain().accept(statementWriter);
+
+		statementWriter.getBlocks().pop();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void writeProcedureAnnotation(QProcedure procedure) {
+
+		// @Procedure(name=)
+		NormalAnnotation procedureAnnotation = getAST().newNormalAnnotation();
+		procedureAnnotation.setTypeName(getAST().newSimpleName(Procedure.class.getSimpleName()));
+		MemberValuePair memberValuePair = getAST().newMemberValuePair();
+		memberValuePair.setName(getAST().newSimpleName("name"));
+		StringLiteral stringLiteral = getAST().newStringLiteral();
+		stringLiteral.setLiteralValue(procedure.getName());
+		memberValuePair.setValue(stringLiteral);
+		procedureAnnotation.values().add(memberValuePair);
+
+		getTarget().modifiers().add(0, procedureAnnotation);
+	}
 }

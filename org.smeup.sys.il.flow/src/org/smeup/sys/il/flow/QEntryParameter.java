@@ -46,8 +46,8 @@ public interface QEntryParameter<T extends QTerm> extends QNamedNode {
 
 	/**
 	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEntryParameter#getDelegate <em>Delegate</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Delegate</em>' containment reference.
 	 * @see #getDelegate()
 	 * @generated

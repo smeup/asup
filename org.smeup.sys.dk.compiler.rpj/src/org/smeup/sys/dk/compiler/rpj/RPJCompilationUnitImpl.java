@@ -710,10 +710,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					name = "current()." + name;
 			} else if (node instanceof QFileTerm)
 				name = "get()." + name;
-			else if (node instanceof QEntry)
-				"".toCharArray();
+			else if (node instanceof QEntry) 
+				break;
+			else if (node instanceof QProcedure) 
+				break;
 
-			if (node != getRoot() && !(node instanceof QEntry) && !(node instanceof QProgram))
+			if (node != getRoot() && !(node instanceof QEntry) && !(node instanceof QProgram) && !(node instanceof QProcedure))
 				// no record name
 				if (!(((EObject) node).eContainer() instanceof QDataSetTerm)) {
 					QNamedNode namedChildNode = (QNamedNode) node;

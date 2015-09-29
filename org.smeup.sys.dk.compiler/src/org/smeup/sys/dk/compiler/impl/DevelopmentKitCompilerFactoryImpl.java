@@ -78,10 +78,12 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QDevelopmentKitCompilerPackage.ENTRY_TYPE:
-				return createEntryTypeFromString(eDataType, initialValue);
 			case QDevelopmentKitCompilerPackage.CASE_SENSITIVE_TYPE:
 				return createCaseSensitiveTypeFromString(eDataType, initialValue);
+			case QDevelopmentKitCompilerPackage.ENTRY_TYPE:
+				return createEntryTypeFromString(eDataType, initialValue);
+			case QDevelopmentKitCompilerPackage.INTERNAL_TYPE:
+				return createInternalTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -95,10 +97,12 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QDevelopmentKitCompilerPackage.ENTRY_TYPE:
-				return convertEntryTypeToString(eDataType, instanceValue);
 			case QDevelopmentKitCompilerPackage.CASE_SENSITIVE_TYPE:
 				return convertCaseSensitiveTypeToString(eDataType, instanceValue);
+			case QDevelopmentKitCompilerPackage.ENTRY_TYPE:
+				return convertEntryTypeToString(eDataType, instanceValue);
+			case QDevelopmentKitCompilerPackage.INTERNAL_TYPE:
+				return convertInternalTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -154,6 +158,26 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 	 * @generated
 	 */
 	public String convertEntryTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InternalType createInternalTypeFromString(EDataType eDataType, String initialValue) {
+		InternalType result = InternalType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInternalTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

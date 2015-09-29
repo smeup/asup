@@ -13,7 +13,6 @@ package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,15 +31,11 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
-import org.smeup.sys.dk.core.annotation.Supported;
-import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.QAnnotationTest;
-import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.QExpressionParser;
@@ -49,12 +44,13 @@ import org.smeup.sys.il.flow.QDataSection;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
-public class JDTProgramTestWriter extends JDTCallableUnitWriter {
+public class JDTProgramTestWriter extends JDTProgramWriter {
 
 	private JDTAssertionTestWriter assertionTestWriter;
 
@@ -67,7 +63,6 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 	}
 
 	public void writeProgramTest(QProgram programTest) throws IOException {
-		System.out.println(programTest);
 
 		refactCallableUnit(programTest);
 
@@ -106,6 +101,10 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 		if (programTest.getDataSection() != null)
 			writeDataFields(programTest.getDataSection());
 
+		if (programTest.getFlowSection() != null)
+			for (QProcedure procedure: programTest.getFlowSection().getProcedures())
+				writePublicProcedure(procedure);
+
 		if (programTest.getFileSection() != null) {
 			writeDataSets(programTest.getFileSection().getDataSets());
 			writeKeyLists(programTest.getFileSection().getKeyLists());
@@ -123,31 +122,33 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet());
 
+		// prototypes
+		if (programTest.getFlowSection() != null)
+			for (QPrototype prototype : programTest.getFlowSection().getPrototypes())
+				writePrototype(prototype);
+
 		// main
 		if (programTest.getMain() != null) {
 			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
 			routine.setName("main");
 			routine.setMain(programTest.getMain());
-			writeRoutine(routine, programTest.getDataSection());
+			writeRoutine(routine);
 		}
 
-		// functions
-		if (programTest.getFlowSection() != null) {
+		// routines
+		if (programTest.getFlowSection() != null)
+			for (QRoutine routine : programTest.getFlowSection().getRoutines())
+				writeRoutine(routine);
 
-			// routines
-			for (QRoutine routine : programTest.getFlowSection().getRoutines()) {
-				System.out.println("\t" + routine);
-				writeRoutine(routine, null);
-			}
+		// procedures
+		if (programTest.getFlowSection() != null)
+			for (QProcedure procedure: programTest.getFlowSection().getProcedures())
+				writeInnerProcedure(procedure);
 
-			// prototype
-			for (QPrototype prototype : programTest.getFlowSection().getPrototypes())
-				writePrototype(prototype);
-		}
-
+		// datas
 		if (programTest.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas())
-				writeInnerTerm(dataTerm);
+				writeInnerData(dataTerm, true);
 
 	}
 
@@ -257,30 +258,6 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 
 	@SuppressWarnings("unchecked")
 	public void writeProgramAnnotation(QProgram program) {
-		QConversion conversion = program.getFacet(QConversion.class);
-		if (conversion != null) {
-			MarkerAnnotation conversionAnnotation = getAST().newMarkerAnnotation();
-
-			switch (conversion.getStatus()) {
-			case POSSIBLE:
-				break;
-			case SUPPORTED:
-				writeImport(Supported.class);
-				conversionAnnotation.setTypeName(getAST().newSimpleName(Supported.class.getSimpleName()));
-				getTarget().modifiers().add(conversionAnnotation);
-				break;
-			case TODO:
-				writeImport(ToDo.class);
-				conversionAnnotation.setTypeName(getAST().newSimpleName(ToDo.class.getSimpleName()));
-				getTarget().modifiers().add(conversionAnnotation);
-				break;
-			case UNSUPPORTED:
-				writeImport(Unsupported.class);
-				conversionAnnotation.setTypeName(getAST().newSimpleName(Unsupported.class.getSimpleName()));
-				getTarget().modifiers().add(conversionAnnotation);
-				break;
-			}
-		}
 
 		// @Program(name=)
 		NormalAnnotation programAnnotation = getAST().newNormalAnnotation();
@@ -314,15 +291,4 @@ public class JDTProgramTestWriter extends JDTCallableUnitWriter {
 
 		getTarget().modifiers().add(1, programAnnotation);
 	}
-
-	private void loadModules(Collection<String> modules, String module) {
-
-		if (!modules.contains(module))
-			modules.add(module);
-
-		QModule qModule = getCompilationUnit().getModule(module, true);
-		for (String moduleName : qModule.getSetupSection().getModules())
-			loadModules(modules, moduleName);
-	}
-
 }

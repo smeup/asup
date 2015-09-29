@@ -34,7 +34,7 @@ public class JDTStubWriter extends JDTProgramWriter {
 
 		if (program.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerTerm(dataTerm);
+				writeInnerData(dataTerm, true);
 	}
 
 }

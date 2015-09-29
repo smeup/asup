@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.smeup.sys.dk.compiler.EntryType;
+import org.smeup.sys.dk.compiler.InternalType;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 
@@ -27,6 +28,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getEntryType <em>Entry Type</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getProcedureType <em>Procedure Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +74,26 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EntryType entryType = ENTRY_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getProcedureType() <em>Procedure Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcedureType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final InternalType PROCEDURE_TYPE_EDEFAULT = InternalType.INNER;
+
+	/**
+	 * The cached value of the '{@link #getProcedureType() <em>Procedure Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcedureType()
+	 * @generated
+	 * @ordered
+	 */
+	protected InternalType procedureType = PROCEDURE_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +165,27 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public InternalType getProcedureType() {
+		return procedureType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProcedureType(InternalType newProcedureType) {
+		InternalType oldProcedureType = procedureType;
+		procedureType = newProcedureType == null ? PROCEDURE_TYPE_EDEFAULT : newProcedureType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE, oldProcedureType, procedureType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -150,6 +193,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return getBasePackage();
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				return getEntryType();
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
+				return getProcedureType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,6 +212,9 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				setEntryType((EntryType)newValue);
+				return;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
+				setProcedureType((InternalType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -186,6 +234,9 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				setEntryType(ENTRY_TYPE_EDEFAULT);
 				return;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
+				setProcedureType(PROCEDURE_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,6 +253,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				return entryType != ENTRY_TYPE_EDEFAULT;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
+				return procedureType != PROCEDURE_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -220,6 +273,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 		result.append(basePackage);
 		result.append(", entryType: ");
 		result.append(entryType);
+		result.append(", procedureType: ");
+		result.append(procedureType);
 		result.append(')');
 		return result.toString();
 	}

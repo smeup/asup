@@ -88,7 +88,6 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QUnit;
-import org.smeup.sys.os.pgm.rpj.RPJServiceSupport;
 
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
@@ -185,7 +184,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			if (dataTerm.getDefinition() == null)
 				continue;
-			// Mirandola
+
 			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), true);
 
 			writePublicField(dataTerm, false);
@@ -203,18 +202,18 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", dataSetTerm.getFileName());
-			
-			EObject eDataSet = (EObject)dataSetTerm;
+
+			EObject eDataSet = (EObject) dataSetTerm;
 
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_Prefix()))
 				writeAnnotation(field, FileDef.class, "prefix", dataSetTerm.getPrefix());
-			
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
 				writeAnnotation(field, FileDef.class, "userOpen", dataSetTerm.isUserOpen());
 
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
-			
+
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 			String className = null;
@@ -357,12 +356,12 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", display.getFileName());
-			
-			EObject eDataSet = (EObject)display;
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+
+			EObject eDataSet = (EObject) display;
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
 				writeAnnotation(field, FileDef.class, "userOpen", display.isUserOpen());
 
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", display.getInfoStruct());
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
@@ -403,12 +402,12 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 			writeAnnotation(field, FileDef.class, "name", printer.getFileName());
-			
-			EObject eDataSet = (EObject)printer;
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+
+			EObject eDataSet = (EObject) printer;
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
 				writeAnnotation(field, FileDef.class, "userOpen", printer.isUserOpen());
 
-			if(eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", printer.getInfoStruct());
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
@@ -485,55 +484,80 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		methodDeclaration.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(prototype.getName())));
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
-		// writeSuppressWarning(methodDeclaration);
+		Block block = getAST().newBlock();
+		methodDeclaration.setBody(block);
 
 		if (prototype.getDefinition() != null) {
 			Type type = getJavaType(prototype);
 			methodDeclaration.setReturnType2(type);
 		}
 
-		QEntry entry = null;
-
-		PrototypeType prototypeType = PrototypeType.CALL;
 		QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), true);
 		if (procedure != null) {
-			prototypeType = PrototypeType.INNER;
-			entry = procedure.getEntry();
-		} else {
-			entry = prototype.getEntry();
-		}
+			writeEntry(methodDeclaration, procedure.getEntry());
 
-		if(entry != null)
-			writeEntry(methodDeclaration, entry);
-		
-		Block block = getAST().newBlock();
-		methodDeclaration.setBody(block);
+			String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
+			MethodInvocation methodInvocation = getAST().newMethodInvocation();
+			methodInvocation.setExpression(getAST().newName(namePrototype));
+			methodInvocation.setName(getAST().newSimpleName("qExec"));
 
-		// write java AST
-		JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
-		statementWriter.setAST(getAST());
-
-		statementWriter.getBlocks().push(block);
-
-		if (prototype.getDefinition() != null) {
-			ReturnStatement returnStatement = getAST().newReturnStatement();
-
-			block.statements().add(getReturnStatement(returnStatement, prototype, methodDeclaration));
-		}
-		statementWriter.getBlocks().pop();
-
-		if(prototypeType.equals(PrototypeType.INNER)) {
-			QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
+/*			switch (namePrototype) {
+			case "p_rxatt":
+			case "p_rxsos":
+			case "p_rxlate":
+				writeImport(RPJServiceSupport.class);
+				methodInvocation.setExpression(getAST().newName("qJAX"));
+				methodInvocation.setName(getAST().newSimpleName(namePrototype));
+				break;
+			default:
+				methodInvocation.setExpression(getAST().newName(namePrototype));
+				methodInvocation.setName(getAST().newSimpleName("qExec"));
+				break;
+			}*/
 			
-			QCompilerManager compilerManager = getCompilationUnit().getContext().get(QCompilerManager.class);
-			QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);
-						
-			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()));
-			try {
-				procedureWriter.writeProcedure(procedure);
-			} catch (IOException e) {
-				throw new DevelopmentKitCompilerRuntimeException("Invalid procedure: " + procedure, e);
-			}			 			
+			for (Object entryParameter : methodDeclaration.parameters()) {
+				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
+				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
+			}
+
+			if (prototype.getDefinition() != null) {
+				ReturnStatement returnStatement = getAST().newReturnStatement();
+				returnStatement.setExpression(methodInvocation);
+				block.statements().add(returnStatement);
+			} else {
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+				block.statements().add(expressionStatement);
+			}
+
+		} else {
+			writeEntry(methodDeclaration, prototype.getEntry());
+			
+			// TODO manage CALL
+		}
+	}
+
+	public void writeInnerProcedure(QProcedure procedure) {
+
+		QCompilerManager compilerManager = getCompilationUnit().getContext().get(QCompilerManager.class);
+		QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);
+
+		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
+		
+		boolean statik = false;
+
+		switch (getCompilationSetup().getProcedureType()) {
+		case INNER:
+			break;
+		case NESTED:
+			statik = true;
+			break;
+		}
+		
+		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), statik);
+		try {
+			procedureWriter.writeProcedure(procedure);
+		} catch (IOException e) {
+			throw new DevelopmentKitCompilerRuntimeException("Invalid procedure: " + procedure, e);
 		}
 	}
 
@@ -817,53 +841,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				refactUnit(unit);
 	}
 
-	@SuppressWarnings("unchecked")
-	private ReturnStatement getReturnStatement(ReturnStatement returnStatement, QPrototype prototype, MethodDeclaration methodDeclaration) {
-
-		String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
-		MethodInvocation methodInvocation = getAST().newMethodInvocation();
-		switch (namePrototype) {
-		case "p_rxatt":
-			writeImport(RPJServiceSupport.class);
-			methodInvocation.setExpression(getAST().newName("qJAX"));
-			methodInvocation.setName(getAST().newSimpleName(namePrototype));
-			for (Object entryParameter : methodDeclaration.parameters()) {
-				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
-				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
-			}
-
-			returnStatement.setExpression(methodInvocation);
-			break;
-		case "p_rxsos":
-			writeImport(RPJServiceSupport.class);
-			methodInvocation.setExpression(getAST().newName("qJAX"));
-			methodInvocation.setName(getAST().newSimpleName(namePrototype));
-			for (Object entryParameter : methodDeclaration.parameters()) {
-				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
-				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
-			}
-
-			returnStatement.setExpression(methodInvocation);
-			break;
-		case "p_rxlate":
-			writeImport(RPJServiceSupport.class);
-			methodInvocation.setExpression(getAST().newName("qJAX"));
-			methodInvocation.setName(getAST().newSimpleName(namePrototype));
-			for (Object entryParameter : methodDeclaration.parameters()) {
-				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
-				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
-			}
-
-			returnStatement.setExpression(methodInvocation);
-			break;
-		default:
-			returnStatement.setExpression(getAST().newNullLiteral());
-		}
-
-		return returnStatement;
-	}
-
-	private Expression buildExpression(String expression) {
+	protected Expression buildExpression(String expression) {
 
 		ASTParser parser = ASTParser.newParser(AST.JLS8);
 		parser.setKind(ASTParser.K_EXPRESSION);
@@ -883,7 +861,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void writeEntry(MethodDeclaration methodDeclaration, QEntry entry) {
+	public void writeEntry(MethodDeclaration methodDeclaration, QEntry entry) {
 
 		int p = 0;
 		for (QEntryParameter<?> entryParameter : entry.getParameters()) {
@@ -919,10 +897,5 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			p++;
 		}
-	}
-
-
-	public static enum PrototypeType {
-		CALL, INNER;
 	}
 }

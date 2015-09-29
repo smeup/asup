@@ -110,7 +110,8 @@ public class EntryParameterImpl<T extends QTerm> extends NamedNodeImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetDelegate(T newDelegate, NotificationChain msgs) {
@@ -124,10 +125,10 @@ public class EntryParameterImpl<T extends QTerm> extends NamedNodeImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setDelegate(T newDelegate) {
 		if (newDelegate != delegate) {
 			NotificationChain msgs = null;

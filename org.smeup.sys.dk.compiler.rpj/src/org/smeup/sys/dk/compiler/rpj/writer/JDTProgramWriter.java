@@ -34,6 +34,7 @@ import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
@@ -50,14 +51,12 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 	public void writeProgram(QProgram program) throws IOException {
 
-		System.out.println(program);
-
 		refactCallableUnit(program);
 
 		// unit info
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
 
-		// modules		
+		// modules
 		List<String> modules = new ArrayList<>();
 		if (program.getSetupSection() != null) {
 			for (String module : program.getSetupSection().getModules())
@@ -77,7 +76,6 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			}
 		}
 
-		// Program annotation
 		writeProgramAnnotation(program);
 
 		writeSupportFields(callableUnitInfo);
@@ -87,6 +85,10 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		if (program.getDataSection() != null)
 			writeDataFields(program.getDataSection());
 
+		if (program.getFlowSection() != null)
+			for (QProcedure procedure: program.getFlowSection().getProcedures())
+				writePublicProcedure(procedure);
+		
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());
 			writeKeyLists(program.getFileSection().getKeyLists());
@@ -96,13 +98,18 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			writePrinters(program.getFileSection().getPrinters());
 
 		}
-		
+
 		writeInit();
 
 		writeEntry(program, modules);
 
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet());
+
+		// prototypes
+		if (program.getFlowSection() != null)
+			for (QPrototype prototype : program.getFlowSection().getPrototypes())
+				writePrototype(prototype);
 
 		// main
 		if (program.getMain() != null) {
@@ -112,30 +119,27 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			writeRoutine(routine);
 		}
 
-		// functions
-		if (program.getFlowSection() != null) {
-
-			// routines
-			for (QRoutine routine : program.getFlowSection().getRoutines()) {
-				System.out.println("\t" + routine);
+		// routines
+		if (program.getFlowSection() != null)
+			for (QRoutine routine : program.getFlowSection().getRoutines())
 				writeRoutine(routine);
-			}
 
-			// prototype
-			for (QPrototype prototype : program.getFlowSection().getPrototypes())
-				writePrototype(prototype);
-		}
+		// procedures
+		if (program.getFlowSection() != null)
+			for (QProcedure procedure: program.getFlowSection().getProcedures())
+				writeInnerProcedure(procedure);
 
+		// datas
 		if (program.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerTerm(dataTerm);
+				writeInnerData(dataTerm, true);
 	}
 
 	public void writeEntry(QProgram program, List<String> modules) throws IOException {
 
 		if (program.getEntry() != null)
 			writeEntry(program.getEntry(), "qEntry");
-		else{
+		else {
 
 			boolean entry = false;
 			for (String module : modules) {
@@ -158,7 +162,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 					break;
 				}
 			}
-			if(!entry)
+			if (!entry)
 				writeEntry(null, "qEntry");
 		}
 		// scrivo una entry vuota
@@ -204,7 +208,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		getTarget().modifiers().add(0, programAnnotation);
 	}
 
-	private void loadModules(Collection<String> modules, String module) {
+	protected void loadModules(Collection<String> modules, String module) {
 
 		if (!modules.contains(module))
 			modules.add(module);

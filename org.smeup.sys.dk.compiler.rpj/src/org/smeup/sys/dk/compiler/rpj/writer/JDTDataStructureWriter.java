@@ -82,7 +82,7 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		// elements
 		for (QDataTerm<?> element : elements)
-			writeInnerTerm(element);
+			writeInnerData(element, true);
 	}
 
 }

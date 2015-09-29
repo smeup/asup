@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="compiler" nsURI="http://ww.asup.org/dk/compiler" nsPrefix="dk-compiler">
+  <eClassifiers xsi:type="ecore:EEnum" name="CaseSensitiveType">
+    <eLiterals name="Lower" value="10" literal="L"/>
+    <eLiterals name="Upper" value="20" literal="U"/>
+    <eLiterals name="Ignore" value="30" literal="I"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="equalsTermName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -87,11 +92,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompilationSetup">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entryType" eType="#//EntryType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="procedureType" eType="#//InternalType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilationTrashCan">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataTerms" upperBound="-1"
         containment="true">
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompilerLinker" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkedClass" transient="true">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
         <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
@@ -155,6 +168,14 @@
       <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EntryType">
+    <eLiterals name="Main" value="10" literal="MAIN"/>
+    <eLiterals name="Entry" value="20" literal="ENT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InternalType">
+    <eLiterals name="Inner" value="10" literal="INNER"/>
+    <eLiterals name="Nested" value="20" literal="NESTED"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitConverter" abstract="true" interface="true">
     <eOperations name="convertModule" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Module">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
@@ -170,21 +191,5 @@
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
       <eTypeArguments eClassifier="#//UnitConverter"/>
     </eGenericSuperTypes>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="EntryType">
-    <eLiterals name="Main" value="10" literal="MAIN"/>
-    <eLiterals name="Entry" value="20" literal="ENT"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CaseSensitiveType">
-    <eLiterals name="Lower" value="10" literal="L"/>
-    <eLiterals name="Upper" value="20" literal="U"/>
-    <eLiterals name="Ignore" value="30" literal="I"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompilerLinker" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkedClass" transient="true">
-      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -402,7 +402,8 @@ public class BaseBundleManagerImpl implements QBundleManager {
 				e.printStackTrace();
 				continue;
 			}
-			if(QCallableProgram.class.isAssignableFrom(klass) || klass.getAnnotation(Module.class) != null)
+ 
+			if(klass.getAnnotation(Module.class) != null)
 				modules.add(buildModule(bundle, (Class<QCallableProgram>)klass));
 		}
 		

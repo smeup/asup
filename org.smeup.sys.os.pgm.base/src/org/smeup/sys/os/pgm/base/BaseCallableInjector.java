@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
+import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -80,21 +81,16 @@ public class BaseCallableInjector {
 	public <C> C prepareCallable(QContext context, Class<C> klass) {
 
 		Map<String, QDataTerm<?>> dataTerms = new HashMap<String, QDataTerm<?>>();
+
 		QDataContainer dataContainer = dataManager.createDataContainer(context, dataTerms, true);
 		QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
 
 		C callable = null;
-
 		try {
-			Map<String, Object> sharedModules = new HashMap<>();
-			try {
-				callable = injectData(klass, accessFactory, dataContainer, context, sharedModules);
-			} catch (IllegalArgumentException | SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (InstantiationException | IllegalAccessException e) {
-			throw new OperatingSystemRuntimeException(e);
+			callable = injectData(klass, accessFactory, dataContainer, context, new HashMap<String, Object>(), new HashMap<String, Object>());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		return callable;
@@ -130,12 +126,15 @@ public class BaseCallableInjector {
 		return entry;
 	}
 
-	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException,
+	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules, Map<String, Object> sharedProcedures) throws IllegalArgumentException,
 			IllegalAccessException, InstantiationException {
 
 		C callable = klass.newInstance();
 
-		injectFieldsData(klass, callable, accessFactory, dataContainer, context, sharedModules);
+		if(klass.getAnnotation(Procedure.class) != null)
+			sharedProcedures.put(klass.getSimpleName(), callable);
+		
+		injectFieldsData(klass, callable, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
 
 		injectSmeupData(callable);
 
@@ -148,12 +147,12 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules)
+	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules, Map<String, Object> sharedProcedures)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFieldsData(klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules);
+			injectFieldsData(klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
 
 		List<Field> fieldDataSets = new ArrayList<Field>();
 		Map<String, QDataStruct> classToStructs = new HashMap<String, QDataStruct>();
@@ -218,15 +217,22 @@ public class BaseCallableInjector {
 				if (QJob.class.isAssignableFrom(fieldClass)) {
 					object = job;
 				}
+				// Procedure
+				else if(fieldClass.getAnnotation(Procedure.class) != null) {
+					object = sharedProcedures.get(fieldClass.getSimpleName());
+					if (object == null) {
+						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
+						sharedProcedures.put(fieldClass.getSimpleName(), object);
+					}
+				}
 				// Module
 				else {
 					object = sharedModules.get(fieldClass.getSimpleName());
-					if (object == null) {
+					if (object == null)
 						object = context.get(fieldClass);
-					}
 
 					if (object == null) {
-						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules);
+						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
 						sharedModules.put(fieldClass.getSimpleName(), object);
 					}
 				}

@@ -77,6 +77,7 @@ import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
+import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
@@ -196,20 +197,20 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		methodInvocation.arguments().add(arrayCreation);
 
 		// error indicator
-		if(statement.getError() != null) {
+		if (statement.getError() != null) {
 			QTermExpression errorExpression = expressionParser.parseTerm(statement.getError());
 			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
-			
+
 			methodInvocation.arguments().add(jdtErrorExpression);
 		}
 		// error handling
-		if(statement.getErrorHandling() != null) {
+		if (statement.getErrorHandling() != null) {
 			QTermExpression errorExpression = expressionParser.parseTerm(statement.getErrorHandling());
 			Expression jdtErrorExpression = buildExpression(ast, errorExpression, null);
-			
+
 			methodInvocation.arguments().add(jdtErrorExpression);
 		}
-		
+
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
@@ -255,18 +256,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QEval statement) {
 
 		Block block = blocks.peek();
-		
+
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression);
 
-		if(statement.getRoundingMode() != null) {
+		if (statement.getRoundingMode() != null) {
 			statement.toString();
 			// TODO verificare se corretto qui
 			QExpression expression = expressionParser.parseExpression(statement.getRoundingMode());
 			Expression jdtExpression = buildExpression(ast, expression, null);
 			methodInvocation.arguments().add(jdtExpression);
 		}
-		
+
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
@@ -377,8 +378,11 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (prototype.isChild() && prototype.getParent() != compilationUnit.getRoot()) {
 			QNode parent = prototype.getParent();
 			if (parent instanceof QNamedNode) {
-				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
-				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
+
+				if (!(parent instanceof QProgram)) {
+					String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
+					methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
+				}
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getProcedure());
 		}
@@ -618,6 +622,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Block block = blocks.peek();
 
 		ReturnStatement returnSt = ast.newReturnStatement();
+		if (statement.getValue() != null) {
+			QExpression returnExpression = expressionParser.parseExpression(statement.getValue());
+			returnSt.setExpression(buildExpression(ast, returnExpression, null));
+		}
 
 		if (isParentProcedure(statement))
 			block.statements().add(returnSt);
@@ -855,7 +863,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Expression expression = buildExpression(ast, assignmentExpression.getLeftOperand(), null);
 		methodInvocation.setExpression(expression);
-		
+
 		expression = buildExpression(ast, assignmentExpression.getRightOperand(), null);
 		methodInvocation.arguments().add(p, expression);
 

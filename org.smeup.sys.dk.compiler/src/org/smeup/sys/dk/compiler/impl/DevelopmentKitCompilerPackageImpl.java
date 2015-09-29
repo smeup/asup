@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
 import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.EntryType;
+import org.smeup.sys.dk.compiler.InternalType;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationTrashCan;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
@@ -101,6 +102,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EEnum entryTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum internalTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,6 +238,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCompilationSetup_ProcedureType() {
+		return (EAttribute)compilationSetupEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getCompilationTrashCan() {
 		return compilationTrashCanEClass;
@@ -310,6 +327,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getInternalType() {
+		return internalTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getCaseSensitiveType() {
 		return caseSensitiveTypeEEnum;
@@ -350,9 +376,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		compilationSetupEClass = createEClass(COMPILATION_SETUP);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__BASE_PACKAGE);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__ENTRY_TYPE);
+		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__PROCEDURE_TYPE);
 
 		compilationTrashCanEClass = createEClass(COMPILATION_TRASH_CAN);
 		createEReference(compilationTrashCanEClass, COMPILATION_TRASH_CAN__DATA_TERMS);
+
+		compilerLinkerEClass = createEClass(COMPILER_LINKER);
+		createEAttribute(compilerLinkerEClass, COMPILER_LINKER__LINKED_CLASS);
 
 		compilerManagerEClass = createEClass(COMPILER_MANAGER);
 
@@ -360,12 +390,10 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		unitConverterRegistryEClass = createEClass(UNIT_CONVERTER_REGISTRY);
 
-		compilerLinkerEClass = createEClass(COMPILER_LINKER);
-		createEAttribute(compilerLinkerEClass, COMPILER_LINKER__LINKED_CLASS);
-
 		// Create enums
-		entryTypeEEnum = createEEnum(ENTRY_TYPE);
 		caseSensitiveTypeEEnum = createEEnum(CASE_SENSITIVE_TYPE);
+		entryTypeEEnum = createEEnum(ENTRY_TYPE);
+		internalTypeEEnum = createEEnum(INTERNAL_TYPE);
 	}
 
 	/**
@@ -398,12 +426,12 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageFlowPackage theIntegratedLanguageFlowPackage = (QIntegratedLanguageFlowPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageFlowPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
+		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QOperatingSystemFilePackage theOperatingSystemFilePackage = (QOperatingSystemFilePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemFilePackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QOperatingSystemModulePackage theOperatingSystemModulePackage = (QOperatingSystemModulePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemModulePackage.eNS_URI);
 		QOperatingSystemProgramPackage theOperatingSystemProgramPackage = (QOperatingSystemProgramPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemProgramPackage.eNS_URI);
-		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -411,11 +439,11 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		// Add supertypes to classes
 		compilationUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
 		EGenericType g2 = createEGenericType(this.getUnitConverter());
 		g1.getETypeArguments().add(g2);
 		unitConverterRegistryEClass.getEGenericSuperTypes().add(g1);
-		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(compilationUnitEClass, QCompilationUnit.class, "CompilationUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -508,12 +536,19 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		initEClass(compilationSetupEClass, QCompilationSetup.class, "CompilationSetup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompilationSetup_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompilationSetup_EntryType(), this.getEntryType(), "entryType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompilationSetup_ProcedureType(), this.getInternalType(), "procedureType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compilationTrashCanEClass, QCompilationTrashCan.class, "CompilationTrashCan", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEReference(getCompilationTrashCan_DataTerms(), g1, null, "dataTerms", null, 0, -1, QCompilationTrashCan.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compilerLinkerEClass, QCompilerLinker.class, "CompilerLinker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getCompilerLinker_LinkedClass(), g1, "linkedClass", null, 0, 1, QCompilerLinker.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compilerManagerEClass, QCompilerManager.class, "CompilerManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -593,21 +628,19 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		initEClass(unitConverterRegistryEClass, QUnitConverterRegistry.class, "UnitConverterRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(compilerLinkerEClass, QCompilerLinker.class, "CompilerLinker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getCompilerLinker_LinkedClass(), g1, "linkedClass", null, 0, 1, QCompilerLinker.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		// Initialize enums and add enum literals
-		initEEnum(entryTypeEEnum, EntryType.class, "EntryType");
-		addEEnumLiteral(entryTypeEEnum, EntryType.MAIN);
-		addEEnumLiteral(entryTypeEEnum, EntryType.ENTRY);
-
 		initEEnum(caseSensitiveTypeEEnum, CaseSensitiveType.class, "CaseSensitiveType");
 		addEEnumLiteral(caseSensitiveTypeEEnum, CaseSensitiveType.LOWER);
 		addEEnumLiteral(caseSensitiveTypeEEnum, CaseSensitiveType.UPPER);
 		addEEnumLiteral(caseSensitiveTypeEEnum, CaseSensitiveType.IGNORE);
+
+		initEEnum(entryTypeEEnum, EntryType.class, "EntryType");
+		addEEnumLiteral(entryTypeEEnum, EntryType.MAIN);
+		addEEnumLiteral(entryTypeEEnum, EntryType.ENTRY);
+
+		initEEnum(internalTypeEEnum, InternalType.class, "InternalType");
+		addEEnumLiteral(internalTypeEEnum, InternalType.INNER);
+		addEEnumLiteral(internalTypeEEnum, InternalType.NESTED);
 
 		// Create resource
 		createResource(eNS_URI);
