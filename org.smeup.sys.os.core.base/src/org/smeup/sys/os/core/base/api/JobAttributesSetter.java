@@ -102,9 +102,21 @@ public @Supported class JobAttributesSetter {
 			setJobDate(jobToChange, jobDate);
 
 			setJobDateFormat(jobToChange, dateFormat);
+			
+			setDateSeparator(jobToChange, dateSeparator);
+			
+			setTimeSeparator(jobToChange, timeSeparator);
 		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
 		}
+	}
+
+	private void setTimeSeparator(QJob jobToChange,	QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator) {
+		timeSeparator.asEnum().setTimeSeparator(jobToChange);
+	}
+
+	private void setDateSeparator(QJob jobToChange,	QEnum<DATESEPARATOREnum, QCharacter> dateSeparator) {
+		dateSeparator.asEnum().setDateSeparator(jobToChange);
 	}
 
 	private void setJobDateFormat(QJob jobToChange, QEnum<DATEFORMATEnum, QBinary> dateFormat) {
@@ -345,25 +357,129 @@ public @Supported class JobAttributesSetter {
 
 	public static enum DATESEPARATOREnum {
 		@Special(value = "*")
-		SAME, @Special(value = "X'00'")
-		SYSVAL, @Special(value = "X'40'")
-		BLANK, @Special(value = "/")
-		slash, @Special(value = "-")
-		minus, @Special(value = ".")
-		dot, @Special(value = "")
-		blank, @Special(value = ",")
-		comma
+		SAME {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				//Nothing to do
+			}
+		}, 
+		
+		@Special(value = "X'00'")
+		SYSVAL {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				// TODO ??
+			}
+		}, 
+		
+		@Special(value = "X'40'")
+		BLANK {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator("");
+			}
+		}, 
+		
+		@Special(value = "/")
+		slash {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator("/");
+			}
+		}, 
+		
+		@Special(value = "-")
+		minus {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator("-");				
+			}
+		}, 
+		
+		@Special(value = ".")
+		dot {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator("0");				
+			}
+		}, 
+		
+		@Special(value = "")
+		blank {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator(" ");
+			}
+		}, 
+		
+		@Special(value = ",")
+		comma {
+			@Override
+			public void setDateSeparator(QJob jobToChange) {
+				jobToChange.setDateSeparator(",");				
+			}
+		};
+
+		public abstract void setDateSeparator(QJob jobToChange);
 	}
 
 	public static enum TIMESEPARATOREnum {
 		@Special(value = "*")
-		SAME, @Special(value = "X'00'")
-		SYSVAL, @Special(value = "X'40'")
-		BLANK, @Special(value = ":")
-		column, @Special(value = ".")
-		dot, @Special(value = "")
-		blank, @Special(value = ",")
-		comma
+		SAME {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				//Nothing to do
+			}
+		}, 
+		
+		@Special(value = "X'00'")
+		SYSVAL {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				// TODO ??
+			}
+		}, 
+		
+		@Special(value = "X'40'")
+		BLANK {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				jobToChange.setTimeSeparator("");
+			}
+		}, 
+		
+		@Special(value = ":")
+		column {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				jobToChange.setTimeSeparator(":");				
+			}
+		}, 
+		
+		@Special(value = ".")
+		dot {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				jobToChange.setTimeSeparator(".");				
+			}
+		}, 
+		
+		@Special(value = "")
+		blank {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				jobToChange.setTimeSeparator("");				
+			}
+		}, 
+		
+		@Special(value = ",")
+		comma {
+			@Override
+			public void setTimeSeparator(QJob jobToChange) {
+				jobToChange.setTimeSeparator(",");
+			}
+		};
+		public abstract void setTimeSeparator(QJob jobToChange);
 	}
 
 	public static enum JOBSWITCHESEnum {

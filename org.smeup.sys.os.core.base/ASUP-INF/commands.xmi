@@ -129,8 +129,7 @@
     <parameters
         allowVariable="true"
         name="JOB"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="jobName">
         <facets
@@ -790,8 +789,7 @@
     <parameters
         allowVariable="true"
         name="DATE"
-        position="19"
-        status="TODO">
+        position="19">
       <dataTerm
           name="jobDate">
         <facets
@@ -809,8 +807,7 @@
     <parameters
         allowVariable="true"
         name="DATFMT"
-        position="20"
-        status="TODO">
+        position="20">
       <dataTerm
           name="dateFormat"
           restricted="true">
@@ -926,8 +923,7 @@
     <parameters
         allowVariable="true"
         name="SWS"
-        position="23"
-        status="TODO">
+        position="23">
       <dataTerm
           name="jobSwitches">
         <facets
