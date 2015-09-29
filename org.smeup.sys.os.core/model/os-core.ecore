@@ -111,6 +111,26 @@
           <details key="length" value="10"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="switches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="&quot;00000000&quot;">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="8"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobDateFormat" eType="#//jobs/JobDateFormat"
+          defaultValueLiteral="*DMY"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="&quot;/&quot;">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="1"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="&quot;:&quot;">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="1"/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobEvent">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//jobs/Job"/>
@@ -224,6 +244,12 @@
       <eLiterals name="Kernel" value="10" literal="KRN"/>
       <eLiterals name="Interactive" value="20" literal="INT"/>
       <eLiterals name="Batch" value="30" literal="BCH"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="JobDateFormat">
+      <eLiterals name="YearMonthDay" value="10" literal="*YMD"/>
+      <eLiterals name="MonthDayYear" value="20" literal="*MDY"/>
+      <eLiterals name="DayMonthYear" value="30" literal="*DMY"/>
+      <eLiterals name="Julian" value="40" literal="*JUL"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

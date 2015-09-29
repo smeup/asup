@@ -252,15 +252,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int EXCEPTION_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.memo.Scope
-	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getScope()
-	 * @generated
-	 */
-	int SCOPE = 4;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,7 +259,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemStatus()
 	 * @generated
 	 */
-	int SYSTEM_STATUS = 5;
+	int SYSTEM_STATUS = 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.DateFormat <em>Date Format</em>}' enum.
@@ -278,7 +269,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getDateFormat()
 	 * @generated
 	 */
-	int DATE_FORMAT = 6;
+	int DATE_FORMAT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.TimeFormat <em>Time Format</em>}' enum.
@@ -288,7 +279,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getTimeFormat()
 	 * @generated
 	 */
-	int TIME_FORMAT = 7;
+	int TIME_FORMAT = 6;
 
 	/**
 	 * The meta object id for the '<em>Message Variable List</em>' data type.
@@ -297,7 +288,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageVariableList()
 	 * @generated
 	 */
-	int MESSAGE_VARIABLE_LIST = 8;
+	int MESSAGE_VARIABLE_LIST = 7;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -307,7 +298,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 9;
+	int MESSAGE_EXCEPTION = 8;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QCreationInfo <em>Creation Info</em>}'.
@@ -465,15 +456,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExceptionManager();
-
-	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Scope</em>'.
-	 * @see org.smeup.sys.il.memo.Scope
-	 * @generated
-	 */
-	EEnum getScope();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}'.
@@ -671,15 +653,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXCEPTION_MANAGER = eINSTANCE.getExceptionManager();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.memo.Scope <em>Scope</em>}' enum.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.memo.Scope
-		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getScope()
-		 * @generated
-		 */
-		EEnum SCOPE = eINSTANCE.getScope();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.SystemStatus <em>System Status</em>}' enum.

@@ -23,6 +23,7 @@ import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
+import org.smeup.sys.os.core.jobs.JobDateFormat;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -105,6 +106,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EEnum jobTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jobDateFormatEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -318,6 +326,42 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getJob_Switches() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJob_JobDateFormat() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJob_DateSeparator() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJob_TimeSeparator() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getJobLog() {
 		return jobLogEClass;
@@ -464,6 +508,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getJobDateFormat() {
+		return jobDateFormatEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getJobEventType() {
 		return jobEventTypeEEnum;
 	}
@@ -510,6 +563,10 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(jobEClass, JOB__LIBRARIES);
 		createEAttribute(jobEClass, JOB__MESSAGES);
 		createEAttribute(jobEClass, JOB__CURRENT_LIBRARY);
+		createEAttribute(jobEClass, JOB__SWITCHES);
+		createEAttribute(jobEClass, JOB__JOB_DATE_FORMAT);
+		createEAttribute(jobEClass, JOB__DATE_SEPARATOR);
+		createEAttribute(jobEClass, JOB__TIME_SEPARATOR);
 
 		jobEventEClass = createEClass(JOB_EVENT);
 		createEReference(jobEventEClass, JOB_EVENT__SOURCE);
@@ -534,6 +591,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
 		jobStatusEEnum = createEEnum(JOB_STATUS);
 		jobTypeEEnum = createEEnum(JOB_TYPE);
+		jobDateFormatEEnum = createEEnum(JOB_DATE_FORMAT);
 	}
 
 	/**
@@ -589,6 +647,10 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getJob_Libraries(), ecorePackage.getEString(), "libraries", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_Messages(), ecorePackage.getEString(), "messages", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_CurrentLibrary(), ecorePackage.getEString(), "currentLibrary", "QGPL", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJob_Switches(), ecorePackage.getEString(), "switches", "\"00000000\"", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJob_JobDateFormat(), this.getJobDateFormat(), "jobDateFormat", "*DMY", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJob_DateSeparator(), ecorePackage.getEString(), "dateSeparator", "\"/\"", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getJob_TimeSeparator(), ecorePackage.getEString(), "timeSeparator", "\":\"", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jobEventEClass, QJobEvent.class, "JobEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobEvent_Source(), this.getJob(), null, "source", null, 0, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -695,6 +757,12 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(jobTypeEEnum, JobType.INTERACTIVE);
 		addEEnumLiteral(jobTypeEEnum, JobType.BATCH);
 
+		initEEnum(jobDateFormatEEnum, JobDateFormat.class, "JobDateFormat");
+		addEEnumLiteral(jobDateFormatEEnum, JobDateFormat.YEAR_MONTH_DAY);
+		addEEnumLiteral(jobDateFormatEEnum, JobDateFormat.MONTH_DAY_YEAR);
+		addEEnumLiteral(jobDateFormatEEnum, JobDateFormat.DAY_MONTH_YEAR);
+		addEEnumLiteral(jobDateFormatEEnum, JobDateFormat.JULIAN);
+
 		// Create annotations
 		// il-data
 		createIldataAnnotations();
@@ -749,6 +817,33 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		   source, 
 		   new String[] {
 			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getJob_Switches(), 
+		   source, 
+		   new String[] {
+			 "length", "8"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getJob_DateSeparator(), 
+		   source, 
+		   new String[] {
+			 "length", "1"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getJob_TimeSeparator(), 
+		   source, 
+		   new String[] {
+			 "length", "1"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")

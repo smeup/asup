@@ -23,8 +23,13 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QWCRTVCA")
 public class CurrentAttributesRetriever {
 
-	public @Entry void main(@DataDef(length = 1000) QCharacter rcvvar, @DataDef(binaryType = BinaryType.BYTE, value = "1000") QBinary rcvlen, @DataDef(length = 8) QCharacter format,
-			@DataDef(binaryType = BinaryType.BYTE) QBinary numval, @DataDef(dimension = 100, binaryType = BinaryType.BYTE) QArray<QBinary> $ky, QUSEC qusec) {
+	public @Entry void main(
+			@DataDef(length = 1000) QCharacter rcvvar,
+			@DataDef(binaryType = BinaryType.BYTE, value = "1000") QBinary rcvlen,
+			@DataDef(length = 8) QCharacter format,
+			@DataDef(binaryType = BinaryType.BYTE) QBinary numval,
+			@DataDef(dimension = 100, binaryType = BinaryType.BYTE) QArray<QBinary> $ky,
+			QUSEC qusec) {
 
 		"".toCharArray();
 	}

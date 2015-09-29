@@ -31,7 +31,6 @@ import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.TimeFormat;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
@@ -71,13 +70,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass exceptionManagerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum scopeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -340,16 +332,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	@Override
-	public EEnum getScope() {
-		return scopeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getSystemStatus() {
 		return systemStatusEEnum;
 	}
@@ -441,7 +423,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		exceptionManagerEClass = createEClass(EXCEPTION_MANAGER);
 
 		// Create enums
-		scopeEEnum = createEEnum(SCOPE);
 		systemStatusEEnum = createEEnum(SYSTEM_STATUS);
 		dateFormatEEnum = createEEnum(DATE_FORMAT);
 		timeFormatEEnum = createEEnum(TIME_FORMAT);
@@ -529,13 +510,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, this.getMessageVariableList(), "variables", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(scopeEEnum, Scope.class, "Scope");
-		addEEnumLiteral(scopeEEnum, Scope.ALL);
-		addEEnumLiteral(scopeEEnum, Scope.LIBRARY_LIST);
-		addEEnumLiteral(scopeEEnum, Scope.CURRENT_LIBRARY);
-		addEEnumLiteral(scopeEEnum, Scope.USER_LIBRARY_LIST);
-		addEEnumLiteral(scopeEEnum, Scope.ALL_USER);
-
 		initEEnum(systemStatusEEnum, SystemStatus.class, "SystemStatus");
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.ACTIVATING);
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.STARTED);

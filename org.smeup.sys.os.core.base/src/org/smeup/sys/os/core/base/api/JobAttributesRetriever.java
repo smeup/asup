@@ -8,52 +8,54 @@
  *
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
+ *   Franco Lombardo - Further implementation
  */
 package org.smeup.sys.os.core.base.api;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
+import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobManager;
 
-@SuppressWarnings("unused")
 @Program(name = "QCLRTVJA")
 public class JobAttributesRetriever {
+
+	private static final int UTF_8 = 13496;
 
 	@Inject
 	private QJob job;
 
-	@Inject
-	private QJobManager jobManager;
 
 	public @Entry void main(
-			@ToDo @DataDef(length = 10) QCharacter cLVarForJOB10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForUSER10,
-			@ToDo @DataDef(length = 6) QCharacter cLVarForNBR6,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForCURUSER10,
-			@ToDo @DataDef(length = 1) QCharacter cLVarForTYPE1,
-			@ToDo @DataDef(length = 1) QCharacter cLVarForSUBTYPE1,
-			@DataDef(length = 165) QCharacter sysLibraries,
-			@DataDef(length = 10) QCharacter curLibrary,
-			@DataDef(length = 275) QCharacter userLibraries,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForASPGRP10,
-			@ToDo @DataDef(length = 1) QCharacter cLVarForLOGLVL1,
-			@ToDo @DataDef(precision = 2) QDecimal cLVarForLOGSEV20,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForLOGTYPE10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForLOGCLPGM10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForLOGOUTPUT10,
-			@ToDo @DataDef(precision = 2) QDecimal cLVarForJOBMSGQMX20,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForJOBMSGQFL10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForINQMSGRPY10,
-			@ToDo @DataDef(length = 7) QCharacter cLVarForSTSMSG7,
-			@ToDo @DataDef(length = 7) QCharacter cLVarForBRKMSG7,
-			@ToDo @DataDef(length = 13) QCharacter cLVarForDEVRCYACN13,
+			@DataDef(length = 10) QCharacter cLVarForJOB10,
+			@DataDef(length = 10) QCharacter cLVarForUSER10,
+			@DataDef(length = 6) QCharacter cLVarForNBR6,
+			@DataDef(length = 10) QCharacter cLVarForCURUSER10,
+			@DataDef(length = 1) QCharacter cLVarForTYPE1,
+			@DataDef(length = 1) QCharacter cLVarForSUBTYPE1,
+			@DataDef(length = 165) QCharacter clVarForSYSLIBL,
+			@DataDef(length = 10) QCharacter clVarForCURLIB,
+			@DataDef(length = 275) QCharacter clVarForUSRLIBL,
+			@Unsupported @DataDef(length = 10) QCharacter cLVarForASPGRP10,
+			@Unsupported @DataDef(length = 1) QCharacter cLVarForLOGLVL1,
+			@Unsupported @DataDef(precision = 2) QDecimal cLVarForLOGSEV20,
+			@Unsupported @DataDef(length = 10) QCharacter cLVarForLOGTYPE10,
+			@Unsupported @DataDef(length = 10) QCharacter cLVarForLOGCLPGM10,
+			@Unsupported @DataDef(length = 10) QCharacter cLVarForLOGOUTPUT10,
+			@Unsupported @DataDef(precision = 2) QDecimal cLVarForJOBMSGQMX20,
+			@Unsupported @DataDef(length = 10) QCharacter cLVarForJOBMSGQFL10,
+			@DataDef(length = 10) QCharacter cLVarForINQMSGRPY10,
+			@DataDef(length = 7) QCharacter cLVarForSTSMSG7,
+			@Unsupported @DataDef(length = 7) QCharacter cLVarForBRKMSG7,
+			@Unsupported @DataDef(length = 13) QCharacter cLVarForDEVRCYACN13,
 			@ToDo @DataDef(precision = 5) QDecimal cLVarForRTNCDE50,
 			@ToDo @DataDef(length = 1) QCharacter cLVarForENDSTS1,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForPRTDEV10,
@@ -70,10 +72,10 @@ public class JobAttributesRetriever {
 			@ToDo @DataDef(precision = 5) QDecimal cLVarForDFTCCSID50,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForCHRIDCTL10,
 			@ToDo @DataDef(length = 1) QCharacter cLVarForDECFMT1,
-			@ToDo @DataDef(length = 4) QCharacter cLVarForDATFMT4,
-			@ToDo @DataDef(length = 1) QCharacter cLVarForDATSEP1,
-			@ToDo @DataDef(length = 1) QCharacter cLVarForTIMSEP1,
-			@ToDo @DataDef(length = 6) QCharacter cLVarForDATE6,
+			@DataDef(length = 4) QCharacter cLVarForDATFMT4,
+			@DataDef(length = 1) QCharacter cLVarForDATSEP1,
+			@DataDef(length = 1) QCharacter cLVarForTIMSEP1,
+			@DataDef(length = 6) QCharacter cLVarForDATE6,
 			@ToDo @DataDef(length = 7) QCharacter cLVarForCYMDDATE7,
 			@ToDo @DataDef(length = 20) QCharacter cLVarForDATETIME20,
 			@ToDo @DataDef(length = 4) QCharacter cLVarForDAYOFWEEK4,
@@ -95,9 +97,44 @@ public class JobAttributesRetriever {
 			@ToDo @DataDef(length = 20) QCharacter cLVarForTHDRSCAFN20,
 			@ToDo @DataDef(length = 10) QCharacter cLVarForRSCAFNGRP10) {
 
-		
-		fillLibraries(userLibraries);
-		fillLibraries(sysLibraries);
+		cLVarForJOB10.eval(job.getJobName());
+		cLVarForUSER10.eval(job.getCreationInfo().getCreationUser());
+		cLVarForNBR6.eval("" + job.getJobNumber());
+		cLVarForCURUSER10.eval(job.getJobUser());
+		cLVarForTYPE1.eval(varFor(job.getJobType()));
+		cLVarForSUBTYPE1.eval("*");
+		fillLibraries(clVarForSYSLIBL);
+		clVarForCURLIB.eval(job.getCurrentLibrary());
+		fillLibraries(clVarForUSRLIBL);
+		cLVarForINQMSGRPY10.eval("*DFT");
+		cLVarForSTSMSG7.eval("*NORMAL");
+		cLVarForSWS8.eval(job.getSwitches());
+		cLVarForDATE6.eval(varForDate());
+		cLVarForDATFMT4.eval(job.getJobDateFormat().getLiteral());
+		cLVarForDATSEP1.eval(job.getDateSeparator());
+		cLVarForTIMSEP1.eval(job.getTimeSeparator());
+		//
+		cLVarForDFTWAIT70.eval(1);
+		//
+		cLVarForCCSID50.eval(UTF_8);
+		cLVarForDFTCCSID50.eval(UTF_8); 
+	}
+
+	private String varForDate() {
+		return JobDateFormatter.forType(job.getJobDateFormat())
+			   .format(job.getCreationInfo().getCreationDate());
+	}
+
+	private String varFor(JobType jobType) {
+		switch (job.getJobType()) {
+		case BATCH:
+			return "0";
+		case INTERACTIVE:
+			return "1";
+		case KERNEL:			
+			return "2";
+		}
+		throw new RuntimeException("Unknown job type " + jobType);
 	}
 
 	private void fillLibraries(QCharacter userLibraries) {

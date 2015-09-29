@@ -29,6 +29,8 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.base.api.tools.JobName;
+import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -55,35 +57,22 @@ public class JobDisplayer {
 			         @ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, 
 			         @ToDo OutputMemberOptions outputMemberOptions) {
 
-		QJob jobFound = findJob(jobName);
-		QObjectWriter objectWriter = findWiter(output);
-		objectWriter.initialize();
 		try {
-			objectWriter.write(jobFound);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		objectWriter.flush();
-	}
-
-
-	private QJob findJob(JobName jobName) {
-		QJob result = null;
-		switch (jobName.name.asEnum()) {
-		case TERM_STAR:
-			result = job;
-			break;
-		case OTHER:
-			result = jobManager.lookup(job.getJobID(), jobName.name.asData().trimR(), jobName.user.trimR(), new Integer(jobName.number.trim()));
-			break;
-		}
-		
-		if (result == null) {
+			QJob jobFound = jobName.findJob(job, jobManager);
+			QObjectWriter objectWriter = findWiter(output);
+			objectWriter.initialize();
+			try {
+				objectWriter.write(jobFound);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			objectWriter.flush();
+		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
 		}
-		
-		return result;
 	}
+
+
 
 	private QObjectWriter findWiter(QEnum<OutputEnum, QCharacter> output) {
 		switch (output.asEnum()) {
@@ -99,20 +88,6 @@ public class JobDisplayer {
 		throw new OperatingSystemRuntimeException("Unsupported output type " + output);
 	}
 
-	public static class JobName extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QEnum<NameEnum, QCharacter> name;
-		@DataDef(length = 10)
-		public QCharacter user;
-		@DataDef(length = 6)
-		public QCharacter number;
-
-		public static enum NameEnum {
-			@Special(value = "*")
-			TERM_STAR, OTHER
-		}
-	}
 
 	public static enum OutputEnum {
 		@Special(value = "*") TERM_STAR,

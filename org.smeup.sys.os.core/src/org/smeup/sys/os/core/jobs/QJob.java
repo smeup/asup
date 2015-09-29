@@ -33,6 +33,10 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
  * </ul>
  * </p>
  *
@@ -302,6 +306,120 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setCurrentLibrary(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Switches</b></em>' attribute.
+	 * The default value is <code>"\"00000000\""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Switches</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Switches</em>' attribute.
+	 * @see #setSwitches(String)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_Switches()
+	 * @model default="\"00000000\""
+	 *        annotation="il-data length='8'"
+	 * @generated
+	 */
+	String getSwitches();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Switches</em>' attribute.
+	 * @see #getSwitches()
+	 * @generated
+	 */
+	void setSwitches(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Job Date Format</b></em>' attribute.
+	 * The default value is <code>"*DMY"</code>.
+	 * The literals are from the enumeration {@link org.smeup.sys.os.core.jobs.JobDateFormat}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Job Date Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Job Date Format</em>' attribute.
+	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
+	 * @see #setJobDateFormat(JobDateFormat)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobDateFormat()
+	 * @model default="*DMY"
+	 * @generated
+	 */
+	JobDateFormat getJobDateFormat();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Job Date Format</em>' attribute.
+	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
+	 * @see #getJobDateFormat()
+	 * @generated
+	 */
+	void setJobDateFormat(JobDateFormat value);
+
+	/**
+	 * Returns the value of the '<em><b>Date Separator</b></em>' attribute.
+	 * The default value is <code>"\"/\""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Date Separator</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Date Separator</em>' attribute.
+	 * @see #setDateSeparator(String)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_DateSeparator()
+	 * @model default="\"/\""
+	 *        annotation="il-data length='1'"
+	 * @generated
+	 */
+	String getDateSeparator();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Date Separator</em>' attribute.
+	 * @see #getDateSeparator()
+	 * @generated
+	 */
+	void setDateSeparator(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Time Separator</b></em>' attribute.
+	 * The default value is <code>"\":\""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Time Separator</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Time Separator</em>' attribute.
+	 * @see #setTimeSeparator(String)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_TimeSeparator()
+	 * @model default="\":\""
+	 *        annotation="il-data length='1'"
+	 * @generated
+	 */
+	String getTimeSeparator();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time Separator</em>' attribute.
+	 * @see #getTimeSeparator()
+	 * @generated
+	 */
+	void setTimeSeparator(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

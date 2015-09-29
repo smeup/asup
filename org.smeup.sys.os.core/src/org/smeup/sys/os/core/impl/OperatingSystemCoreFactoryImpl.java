@@ -19,7 +19,6 @@ import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.TimeFormat;
 
@@ -82,8 +81,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case QOperatingSystemCorePackage.SCOPE:
-				return createScopeFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return createSystemStatusFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.DATE_FORMAT:
@@ -107,8 +104,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case QOperatingSystemCorePackage.SCOPE:
-				return convertScopeToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return convertSystemStatusToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.DATE_FORMAT:
@@ -144,26 +139,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	public QSystem createSystem() {
 		SystemImpl system = new SystemImpl();
 		return system;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Scope createScopeFromString(EDataType eDataType, String initialValue) {
-		Scope result = Scope.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertScopeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

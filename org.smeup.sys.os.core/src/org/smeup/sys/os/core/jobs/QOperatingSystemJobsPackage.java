@@ -182,13 +182,49 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__CURRENT_LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Switches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__SWITCHES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 12;
+
+	/**
+	 * The feature id for the '<em><b>Job Date Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__JOB_DATE_FORMAT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 13;
+
+	/**
+	 * The feature id for the '<em><b>Date Separator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__DATE_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 14;
+
+	/**
+	 * The feature id for the '<em><b>Time Separator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 15;
+
+	/**
 	 * The number of structural features of the '<em>Job</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 12;
+	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.
@@ -389,6 +425,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobDateFormat <em>Job Date Format</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobDateFormat()
+	 * @generated
+	 */
+	int JOB_DATE_FORMAT = 10;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -540,6 +586,50 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJob_CurrentLibrary();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Switches</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getSwitches()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EAttribute getJob_Switches();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job Date Format</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getJobDateFormat()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EAttribute getJob_JobDateFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date Separator</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getDateSeparator()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EAttribute getJob_DateSeparator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Separator</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getTimeSeparator()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EAttribute getJob_TimeSeparator();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLog <em>Job Log</em>}'.
@@ -699,6 +789,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EEnum getJobType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobDateFormat <em>Job Date Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Job Date Format</em>'.
+	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
+	 * @generated
+	 */
+	EEnum getJobDateFormat();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -837,6 +937,38 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EAttribute JOB__CURRENT_LIBRARY = eINSTANCE.getJob_CurrentLibrary();
 
 		/**
+		 * The meta object literal for the '<em><b>Switches</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB__SWITCHES = eINSTANCE.getJob_Switches();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Date Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB__JOB_DATE_FORMAT = eINSTANCE.getJob_JobDateFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Date Separator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB__DATE_SEPARATOR = eINSTANCE.getJob_DateSeparator();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Separator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB__TIME_SEPARATOR = eINSTANCE.getJob_TimeSeparator();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -971,6 +1103,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum JOB_TYPE = eINSTANCE.getJobType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobDateFormat <em>Job Date Format</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.JobDateFormat
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobDateFormat()
+		 * @generated
+		 */
+		EEnum JOB_DATE_FORMAT = eINSTANCE.getJobDateFormat();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.
