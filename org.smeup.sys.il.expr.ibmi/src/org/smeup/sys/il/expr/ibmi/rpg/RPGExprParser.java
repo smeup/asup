@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2015-09-23 17:12:04
+// $ANTLR 3.5.1 C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2015-10-01 12:06:38
 
   package org.smeup.sys.il.expr.ibmi.rpg;
   
@@ -128,7 +128,7 @@ public class RPGExprParser extends Parser {
 		return adaptor;
 	}
 	@Override public String[] getTokenNames() { return RPGExprParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g"; }
 
 
 
@@ -180,7 +180,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:98:1: expression : logicalExpression EOF !;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:98:1: expression : logicalExpression EOF !;
 	public final RPGExprParser.expression_return expression() throws RecognitionException {
 		RPGExprParser.expression_return retval = new RPGExprParser.expression_return();
 		retval.start = input.LT(1);
@@ -193,8 +193,8 @@ public class RPGExprParser extends Parser {
 		CommonTree EOF2_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:99:2: ( logicalExpression EOF !)
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:99:5: logicalExpression EOF !
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:99:2: ( logicalExpression EOF !)
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:99:5: logicalExpression EOF !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -237,7 +237,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "logicalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:102:1: logicalExpression : booleanAndExpression ( OR ^ booleanAndExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:102:1: logicalExpression : booleanAndExpression ( OR ^ booleanAndExpression )* ;
 	public final RPGExprParser.logicalExpression_return logicalExpression() throws RecognitionException {
 		RPGExprParser.logicalExpression_return retval = new RPGExprParser.logicalExpression_return();
 		retval.start = input.LT(1);
@@ -251,8 +251,8 @@ public class RPGExprParser extends Parser {
 		CommonTree OR4_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:2: ( booleanAndExpression ( OR ^ booleanAndExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:4: booleanAndExpression ( OR ^ booleanAndExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:2: ( booleanAndExpression ( OR ^ booleanAndExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:4: booleanAndExpression ( OR ^ booleanAndExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -263,7 +263,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanAndExpression3.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:25: ( OR ^ booleanAndExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:25: ( OR ^ booleanAndExpression )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -274,7 +274,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:26: OR ^ booleanAndExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:103:26: OR ^ booleanAndExpression
 					{
 					OR4=(Token)match(input,OR,FOLLOW_OR_in_logicalExpression162); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
@@ -327,7 +327,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "booleanAndExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:106:1: booleanAndExpression : equalityExpression ( AND ^ equalityExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:106:1: booleanAndExpression : equalityExpression ( AND ^ equalityExpression )* ;
 	public final RPGExprParser.booleanAndExpression_return booleanAndExpression() throws RecognitionException {
 		RPGExprParser.booleanAndExpression_return retval = new RPGExprParser.booleanAndExpression_return();
 		retval.start = input.LT(1);
@@ -341,8 +341,8 @@ public class RPGExprParser extends Parser {
 		CommonTree AND7_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:2: ( equalityExpression ( AND ^ equalityExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:4: equalityExpression ( AND ^ equalityExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:2: ( equalityExpression ( AND ^ equalityExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:4: equalityExpression ( AND ^ equalityExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -353,7 +353,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression6.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:23: ( AND ^ equalityExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:23: ( AND ^ equalityExpression )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -364,7 +364,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:24: AND ^ equalityExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:107:24: AND ^ equalityExpression
 					{
 					AND7=(Token)match(input,AND,FOLLOW_AND_in_booleanAndExpression182); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
@@ -417,7 +417,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "equalityExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:111:1: equalityExpression : relationalExpression ( ( EQ | NE ) ^ relationalExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:111:1: equalityExpression : relationalExpression ( ( EQ | NE ) ^ relationalExpression )* ;
 	public final RPGExprParser.equalityExpression_return equalityExpression() throws RecognitionException {
 		RPGExprParser.equalityExpression_return retval = new RPGExprParser.equalityExpression_return();
 		retval.start = input.LT(1);
@@ -431,8 +431,8 @@ public class RPGExprParser extends Parser {
 		CommonTree set10_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:2: ( relationalExpression ( ( EQ | NE ) ^ relationalExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:4: relationalExpression ( ( EQ | NE ) ^ relationalExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:2: ( relationalExpression ( ( EQ | NE ) ^ relationalExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:4: relationalExpression ( ( EQ | NE ) ^ relationalExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -443,7 +443,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression9.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:25: ( ( EQ | NE ) ^ relationalExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:25: ( ( EQ | NE ) ^ relationalExpression )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -454,7 +454,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:26: ( EQ | NE ) ^ relationalExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:112:26: ( EQ | NE ) ^ relationalExpression
 					{
 					set10=input.LT(1);
 					set10=input.LT(1);
@@ -514,7 +514,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "relationalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:115:1: relationalExpression : additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:115:1: relationalExpression : additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* ;
 	public final RPGExprParser.relationalExpression_return relationalExpression() throws RecognitionException {
 		RPGExprParser.relationalExpression_return retval = new RPGExprParser.relationalExpression_return();
 		retval.start = input.LT(1);
@@ -528,8 +528,8 @@ public class RPGExprParser extends Parser {
 		CommonTree set13_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:2: ( additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:4: additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:2: ( additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:4: additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -540,7 +540,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression12.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:23: ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:23: ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -551,7 +551,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:25: ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:116:25: ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression
 					{
 					set13=input.LT(1);
 					set13=input.LT(1);
@@ -611,7 +611,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "additiveExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:120:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:120:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* ;
 	public final RPGExprParser.additiveExpression_return additiveExpression() throws RecognitionException {
 		RPGExprParser.additiveExpression_return retval = new RPGExprParser.additiveExpression_return();
 		retval.start = input.LT(1);
@@ -625,8 +625,8 @@ public class RPGExprParser extends Parser {
 		CommonTree set16_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:2: ( multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:4: multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:2: ( multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:4: multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -637,7 +637,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression15.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:29: ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:29: ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
 			loop5:
 			while (true) {
 				int alt5=2;
@@ -648,7 +648,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt5) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:31: ( PLUS | MINUS ) ^ multiplicativeExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:121:31: ( PLUS | MINUS ) ^ multiplicativeExpression
 					{
 					set16=input.LT(1);
 					set16=input.LT(1);
@@ -708,7 +708,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "multiplicativeExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:124:1: multiplicativeExpression : powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:124:1: multiplicativeExpression : powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )* ;
 	public final RPGExprParser.multiplicativeExpression_return multiplicativeExpression() throws RecognitionException {
 		RPGExprParser.multiplicativeExpression_return retval = new RPGExprParser.multiplicativeExpression_return();
 		retval.start = input.LT(1);
@@ -722,8 +722,8 @@ public class RPGExprParser extends Parser {
 		CommonTree set19_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:125:2: ( powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:3: powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:125:2: ( powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:3: powerExpression ( ( MULT | DIV | MOD ) ^ powerExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -734,7 +734,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, powerExpression18.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:19: ( ( MULT | DIV | MOD ) ^ powerExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:19: ( ( MULT | DIV | MOD ) ^ powerExpression )*
 			loop6:
 			while (true) {
 				int alt6=2;
@@ -745,7 +745,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt6) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:21: ( MULT | DIV | MOD ) ^ powerExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:126:21: ( MULT | DIV | MOD ) ^ powerExpression
 					{
 					set19=input.LT(1);
 					set19=input.LT(1);
@@ -805,7 +805,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "powerExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:129:1: powerExpression : (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:129:1: powerExpression : (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )* ;
 	public final RPGExprParser.powerExpression_return powerExpression() throws RecognitionException {
 		RPGExprParser.powerExpression_return retval = new RPGExprParser.powerExpression_return();
 		retval.start = input.LT(1);
@@ -823,11 +823,11 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_unaryExpression=new RewriteRuleSubtreeStream(adaptor,"rule unaryExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:2: ( (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:4: (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:2: ( (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:4: (v1= unaryExpression -> unaryExpression ) ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )*
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:4: (v1= unaryExpression -> unaryExpression )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:5: v1= unaryExpression
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:4: (v1= unaryExpression -> unaryExpression )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:5: v1= unaryExpression
 			{
 			pushFollow(FOLLOW_unaryExpression_in_powerExpression308);
 			v1=unaryExpression();
@@ -857,7 +857,7 @@ public class RPGExprParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:44: ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:44: ( ( MULT MULT v2= unaryExpression ) -> ^( POW $v1 $v2) )*
 			loop7:
 			while (true) {
 				int alt7=2;
@@ -883,10 +883,10 @@ public class RPGExprParser extends Parser {
 
 				switch (alt7) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:47: MULT MULT v2= unaryExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:47: MULT MULT v2= unaryExpression
 					{
 					MULT21=(Token)match(input,MULT,FOLLOW_MULT_in_powerExpression318); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MULT.add(MULT21);
@@ -902,7 +902,7 @@ public class RPGExprParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: v2, v1
+					// elements: v1, v2
 					// token labels: 
 					// rule labels: v1, v2, retval
 					// token list labels: 
@@ -917,7 +917,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 130:78: -> ^( POW $v1 $v2)
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:81: ^( POW $v1 $v2)
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:81: ^( POW $v1 $v2)
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(POW, "POW"), root_1);
@@ -971,7 +971,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "unaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:133:1: unaryExpression : ( qualified | NOT ^ qualified | MINUS qualified -> ^( SIGN_MINUS qualified ) | PLUS qualified -> ^( SIGN_PLUS qualified ) );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:133:1: unaryExpression : ( qualified | NOT ^ qualified | MINUS qualified -> ^( SIGN_MINUS qualified ) | PLUS qualified -> ^( SIGN_PLUS qualified ) );
 	public final RPGExprParser.unaryExpression_return unaryExpression() throws RecognitionException {
 		RPGExprParser.unaryExpression_return retval = new RPGExprParser.unaryExpression_return();
 		retval.start = input.LT(1);
@@ -994,7 +994,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_qualified=new RewriteRuleSubtreeStream(adaptor,"rule qualified");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:134:2: ( qualified | NOT ^ qualified | MINUS qualified -> ^( SIGN_MINUS qualified ) | PLUS qualified -> ^( SIGN_PLUS qualified ) )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:134:2: ( qualified | NOT ^ qualified | MINUS qualified -> ^( SIGN_MINUS qualified ) | PLUS qualified -> ^( SIGN_PLUS qualified ) )
 			int alt8=4;
 			switch ( input.LA(1) ) {
 			case BI_FUN:
@@ -1038,7 +1038,7 @@ public class RPGExprParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:135:4: qualified
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:135:4: qualified
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1052,7 +1052,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:136:8: NOT ^ qualified
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:136:8: NOT ^ qualified
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1072,7 +1072,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:137:8: MINUS qualified
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:137:8: MINUS qualified
 					{
 					MINUS26=(Token)match(input,MINUS,FOLLOW_MINUS_in_unaryExpression375); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MINUS.add(MINUS26);
@@ -1096,7 +1096,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 137:24: -> ^( SIGN_MINUS qualified )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:137:27: ^( SIGN_MINUS qualified )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:137:27: ^( SIGN_MINUS qualified )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SIGN_MINUS, "SIGN_MINUS"), root_1);
@@ -1113,7 +1113,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:138:8: PLUS qualified
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:138:8: PLUS qualified
 					{
 					PLUS28=(Token)match(input,PLUS,FOLLOW_PLUS_in_unaryExpression394); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_PLUS.add(PLUS28);
@@ -1137,7 +1137,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 138:24: -> ^( SIGN_PLUS qualified )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:138:27: ^( SIGN_PLUS qualified )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:138:27: ^( SIGN_PLUS qualified )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(SIGN_PLUS, "SIGN_PLUS"), root_1);
@@ -1184,7 +1184,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "qualified"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:141:1: qualified : (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )* ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:141:1: qualified : (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )* ;
 	public final RPGExprParser.qualified_return qualified() throws RecognitionException {
 		RPGExprParser.qualified_return retval = new RPGExprParser.qualified_return();
 		retval.start = input.LT(1);
@@ -1200,11 +1200,11 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_primaryExpression=new RewriteRuleSubtreeStream(adaptor,"rule primaryExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:142:2: ( (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:3: (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:142:2: ( (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )* )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:3: (v= primaryExpression -> primaryExpression ) ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )*
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:3: (v= primaryExpression -> primaryExpression )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:4: v= primaryExpression
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:3: (v= primaryExpression -> primaryExpression )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:4: v= primaryExpression
 			{
 			pushFollow(FOLLOW_primaryExpression_in_qualified428);
 			v=primaryExpression();
@@ -1234,7 +1234,7 @@ public class RPGExprParser extends Parser {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:46: ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:46: ( ( POINT vals+= primaryExpression ) -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ ) )*
 			loop9:
 			while (true) {
 				int alt9=2;
@@ -1245,10 +1245,10 @@ public class RPGExprParser extends Parser {
 
 				switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:47: ( POINT vals+= primaryExpression )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:47: ( POINT vals+= primaryExpression )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:47: ( POINT vals+= primaryExpression )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:48: POINT vals+= primaryExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:47: ( POINT vals+= primaryExpression )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:48: POINT vals+= primaryExpression
 					{
 					POINT30=(Token)match(input,POINT,FOLLOW_POINT_in_qualified437); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_POINT.add(POINT30);
@@ -1263,7 +1263,7 @@ public class RPGExprParser extends Parser {
 					}
 
 					// AST REWRITE
-					// elements: v, vals
+					// elements: vals, v
 					// token labels: 
 					// rule labels: v, retval
 					// token list labels: 
@@ -1277,7 +1277,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 143:79: -> ^( QUALIFIED[$qualified.text] $v ( $vals)+ )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:82: ^( QUALIFIED[$qualified.text] $v ( $vals)+ )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:143:82: ^( QUALIFIED[$qualified.text] $v ( $vals)+ )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(QUALIFIED, input.toString(retval.start,input.LT(-1))), root_1);
@@ -1338,7 +1338,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "primaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:146:1: primaryExpression : ( '(' logicalExpression ')' -> ^( BLOCK[$primaryExpression.text] logicalExpression ) | value );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:146:1: primaryExpression : ( '(' logicalExpression ')' -> ^( BLOCK[$primaryExpression.text] logicalExpression ) | value );
 	public final RPGExprParser.primaryExpression_return primaryExpression() throws RecognitionException {
 		RPGExprParser.primaryExpression_return retval = new RPGExprParser.primaryExpression_return();
 		retval.start = input.LT(1);
@@ -1357,7 +1357,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_logicalExpression=new RewriteRuleSubtreeStream(adaptor,"rule logicalExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:2: ( '(' logicalExpression ')' -> ^( BLOCK[$primaryExpression.text] logicalExpression ) | value )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:2: ( '(' logicalExpression ')' -> ^( BLOCK[$primaryExpression.text] logicalExpression ) | value )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0==75) ) {
@@ -1376,7 +1376,7 @@ public class RPGExprParser extends Parser {
 
 			switch (alt10) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:4: '(' logicalExpression ')'
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:4: '(' logicalExpression ')'
 					{
 					char_literal31=(Token)match(input,75,FOLLOW_75_in_primaryExpression474); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_75.add(char_literal31);
@@ -1403,7 +1403,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 147:30: -> ^( BLOCK[$primaryExpression.text] logicalExpression )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:33: ^( BLOCK[$primaryExpression.text] logicalExpression )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:147:33: ^( BLOCK[$primaryExpression.text] logicalExpression )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BLOCK, input.toString(retval.start,input.LT(-1))), root_1);
@@ -1420,7 +1420,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:149:3: value
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:149:3: value
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1464,7 +1464,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "value"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:152:1: value : ( INTEGER | FLOAT | DATETIME | BOOLEAN | STRING | HEX | TERM | ( SPECIAL -> TERM ) | filler | special | bi_function | usr_function | indicator );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:152:1: value : ( INTEGER | FLOAT | DATETIME | BOOLEAN | STRING | HEX | TERM | ( SPECIAL -> TERM ) | filler | special | bi_function | usr_function | indicator );
 	public final RPGExprParser.value_return value() throws RecognitionException {
 		RPGExprParser.value_return retval = new RPGExprParser.value_return();
 		retval.start = input.LT(1);
@@ -1496,7 +1496,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleTokenStream stream_SPECIAL=new RewriteRuleTokenStream(adaptor,"token SPECIAL");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:153:2: ( INTEGER | FLOAT | DATETIME | BOOLEAN | STRING | HEX | TERM | ( SPECIAL -> TERM ) | filler | special | bi_function | usr_function | indicator )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:153:2: ( INTEGER | FLOAT | DATETIME | BOOLEAN | STRING | HEX | TERM | ( SPECIAL -> TERM ) | filler | special | bi_function | usr_function | indicator )
 			int alt11=13;
 			switch ( input.LA(1) ) {
 			case INTEGER:
@@ -1604,7 +1604,7 @@ public class RPGExprParser extends Parser {
 			}
 			switch (alt11) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:3: INTEGER
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:154:3: INTEGER
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1618,7 +1618,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:155:4: FLOAT
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:155:4: FLOAT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1632,7 +1632,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:156:5: DATETIME
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:156:5: DATETIME
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1646,7 +1646,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:157:4: BOOLEAN
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:157:4: BOOLEAN
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1660,7 +1660,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 5 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:158:4: STRING
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:158:4: STRING
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1674,7 +1674,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 6 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:159:4: HEX
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:159:4: HEX
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1688,7 +1688,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 7 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:160:4: TERM
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:160:4: TERM
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1702,10 +1702,10 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 8 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:4: ( SPECIAL -> TERM )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:4: ( SPECIAL -> TERM )
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:4: ( SPECIAL -> TERM )
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:5: SPECIAL
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:4: ( SPECIAL -> TERM )
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:161:5: SPECIAL
 					{
 					SPECIAL42=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_value547); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_SPECIAL.add(SPECIAL42);
@@ -1736,7 +1736,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 9 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:162:4: filler
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:162:4: filler
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1750,7 +1750,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 10 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:163:4: special
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:163:4: special
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1764,7 +1764,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 11 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:164:4: bi_function
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:164:4: bi_function
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1778,7 +1778,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 12 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:165:4: usr_function
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:165:4: usr_function
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1792,7 +1792,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 13 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:166:6: indicator
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:166:6: indicator
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -1836,7 +1836,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "indicator"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:169:1: indicator : ( IN '(' logicalExpression ')' -> ^( BI_FUNCTION[\"*IN\"] logicalExpression ) | INNR -> ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] ) | INNU -> ^( INDICATOR[$INNU.text] ) | IN -> ^( INDICATOR[$IN.text] ) );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:169:1: indicator : ( IN '(' logicalExpression ')' -> ^( BI_FUNCTION[\"*IN\"] logicalExpression ) | INNR -> ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] ) | INNU -> ^( INDICATOR[$INNU.text] ) | IN -> ^( INDICATOR[$IN.text] ) );
 	public final RPGExprParser.indicator_return indicator() throws RecognitionException {
 		RPGExprParser.indicator_return retval = new RPGExprParser.indicator_return();
 		retval.start = input.LT(1);
@@ -1865,7 +1865,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_logicalExpression=new RewriteRuleSubtreeStream(adaptor,"rule logicalExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:170:2: ( IN '(' logicalExpression ')' -> ^( BI_FUNCTION[\"*IN\"] logicalExpression ) | INNR -> ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] ) | INNU -> ^( INDICATOR[$INNU.text] ) | IN -> ^( INDICATOR[$IN.text] ) )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:170:2: ( IN '(' logicalExpression ')' -> ^( BI_FUNCTION[\"*IN\"] logicalExpression ) | INNR -> ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] ) | INNU -> ^( INDICATOR[$INNU.text] ) | IN -> ^( INDICATOR[$IN.text] ) )
 			int alt12=4;
 			switch ( input.LA(1) ) {
 			case IN:
@@ -1911,7 +1911,7 @@ public class RPGExprParser extends Parser {
 			}
 			switch (alt12) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:3: IN '(' logicalExpression ')'
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:3: IN '(' logicalExpression ')'
 					{
 					IN48=(Token)match(input,IN,FOLLOW_IN_in_indicator593); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_IN.add(IN48);
@@ -1941,7 +1941,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 171:32: -> ^( BI_FUNCTION[\"*IN\"] logicalExpression )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:35: ^( BI_FUNCTION[\"*IN\"] logicalExpression )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:35: ^( BI_FUNCTION[\"*IN\"] logicalExpression )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, "*IN"), root_1);
@@ -1958,7 +1958,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:3: INNR
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:3: INNR
 					{
 					INNR52=(Token)match(input,INNR,FOLLOW_INNR_in_indicator619); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_INNR.add(INNR52);
@@ -1977,7 +1977,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 173:8: -> ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:11: ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:11: ^( BI_FUNCTION[\"*IN\"] INTEGER[$INNR.text.substring(3)] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, "*IN"), root_1);
@@ -1994,7 +1994,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:3: INNU
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:3: INNU
 					{
 					INNU53=(Token)match(input,INNU,FOLLOW_INNU_in_indicator642); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_INNU.add(INNU53);
@@ -2013,7 +2013,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 175:8: -> ^( INDICATOR[$INNU.text] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:11: ^( INDICATOR[$INNU.text] )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:11: ^( INDICATOR[$INNU.text] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(INDICATOR, (INNU53!=null?INNU53.getText():null)), root_1);
@@ -2029,7 +2029,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:3: IN
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:3: IN
 					{
 					IN54=(Token)match(input,IN,FOLLOW_IN_in_indicator674); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_IN.add(IN54);
@@ -2048,7 +2048,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 177:6: -> ^( INDICATOR[$IN.text] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:9: ^( INDICATOR[$IN.text] )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:9: ^( INDICATOR[$IN.text] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(INDICATOR, (IN54!=null?IN54.getText():null)), root_1);
@@ -2094,7 +2094,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "filler"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:180:1: filler : ( MULT ALL STRING -> ^( BI_FUNCTION[\"*ALL\"] STRING ) | MULT ALL HEX -> ^( BI_FUNCTION[\"*ALL\"] HEX ) );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:180:1: filler : ( MULT ALL STRING -> ^( BI_FUNCTION[\"*ALL\"] STRING ) | MULT ALL HEX -> ^( BI_FUNCTION[\"*ALL\"] HEX ) );
 	public final RPGExprParser.filler_return filler() throws RecognitionException {
 		RPGExprParser.filler_return retval = new RPGExprParser.filler_return();
 		retval.start = input.LT(1);
@@ -2120,7 +2120,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleTokenStream stream_HEX=new RewriteRuleTokenStream(adaptor,"token HEX");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:180:8: ( MULT ALL STRING -> ^( BI_FUNCTION[\"*ALL\"] STRING ) | MULT ALL HEX -> ^( BI_FUNCTION[\"*ALL\"] HEX ) )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:180:8: ( MULT ALL STRING -> ^( BI_FUNCTION[\"*ALL\"] STRING ) | MULT ALL HEX -> ^( BI_FUNCTION[\"*ALL\"] HEX ) )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0==MULT) ) {
@@ -2175,7 +2175,7 @@ public class RPGExprParser extends Parser {
 
 			switch (alt13) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:3: MULT ALL STRING
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:3: MULT ALL STRING
 					{
 					MULT55=(Token)match(input,MULT,FOLLOW_MULT_in_filler709); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MULT.add(MULT55);
@@ -2200,7 +2200,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 181:19: -> ^( BI_FUNCTION[\"*ALL\"] STRING )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:22: ^( BI_FUNCTION[\"*ALL\"] STRING )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:22: ^( BI_FUNCTION[\"*ALL\"] STRING )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, "*ALL"), root_1);
@@ -2217,7 +2217,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:3: MULT ALL HEX
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:3: MULT ALL HEX
 					{
 					MULT58=(Token)match(input,MULT,FOLLOW_MULT_in_filler730); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_MULT.add(MULT58);
@@ -2242,7 +2242,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 183:16: -> ^( BI_FUNCTION[\"*ALL\"] HEX )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:19: ^( BI_FUNCTION[\"*ALL\"] HEX )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:19: ^( BI_FUNCTION[\"*ALL\"] HEX )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, "*ALL"), root_1);
@@ -2289,7 +2289,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "special"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:186:1: special : MULT SPECIAL -> SP_VALUE[$MULT.text + $SPECIAL.text] ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:186:1: special : MULT SPECIAL -> SP_VALUE[$MULT.text + $SPECIAL.text] ;
 	public final RPGExprParser.special_return special() throws RecognitionException {
 		RPGExprParser.special_return retval = new RPGExprParser.special_return();
 		retval.start = input.LT(1);
@@ -2305,8 +2305,8 @@ public class RPGExprParser extends Parser {
 		RewriteRuleTokenStream stream_SPECIAL=new RewriteRuleTokenStream(adaptor,"token SPECIAL");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:186:9: ( MULT SPECIAL -> SP_VALUE[$MULT.text + $SPECIAL.text] )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:187:3: MULT SPECIAL
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:186:9: ( MULT SPECIAL -> SP_VALUE[$MULT.text + $SPECIAL.text] )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:187:3: MULT SPECIAL
 			{
 			MULT61=(Token)match(input,MULT,FOLLOW_MULT_in_special756); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_MULT.add(MULT61);
@@ -2366,7 +2366,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "usr_function"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:191:1: usr_function : ( TERM params -> ^( USER_FUNCTION[$TERM.text] params ) | TERM empty -> ^( USER_FUNCTION[$TERM.text] ) );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:191:1: usr_function : ( TERM params -> ^( USER_FUNCTION[$TERM.text] params ) | TERM empty -> ^( USER_FUNCTION[$TERM.text] ) );
 	public final RPGExprParser.usr_function_return usr_function() throws RecognitionException {
 		RPGExprParser.usr_function_return retval = new RPGExprParser.usr_function_return();
 		retval.start = input.LT(1);
@@ -2385,7 +2385,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_empty=new RewriteRuleSubtreeStream(adaptor,"rule empty");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:2: ( TERM params -> ^( USER_FUNCTION[$TERM.text] params ) | TERM empty -> ^( USER_FUNCTION[$TERM.text] ) )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:2: ( TERM params -> ^( USER_FUNCTION[$TERM.text] params ) | TERM empty -> ^( USER_FUNCTION[$TERM.text] ) )
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0==TERM) ) {
@@ -2440,7 +2440,7 @@ public class RPGExprParser extends Parser {
 
 			switch (alt14) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:4: TERM params
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:4: TERM params
 					{
 					TERM63=(Token)match(input,TERM,FOLLOW_TERM_in_usr_function775); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_TERM.add(TERM63);
@@ -2464,7 +2464,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 192:17: -> ^( USER_FUNCTION[$TERM.text] params )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:20: ^( USER_FUNCTION[$TERM.text] params )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:192:20: ^( USER_FUNCTION[$TERM.text] params )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(USER_FUNCTION, (TERM63!=null?TERM63.getText():null)), root_1);
@@ -2481,7 +2481,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:194:3: TERM empty
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:194:3: TERM empty
 					{
 					TERM65=(Token)match(input,TERM,FOLLOW_TERM_in_usr_function795); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_TERM.add(TERM65);
@@ -2505,7 +2505,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 194:14: -> ^( USER_FUNCTION[$TERM.text] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:194:17: ^( USER_FUNCTION[$TERM.text] )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:194:17: ^( USER_FUNCTION[$TERM.text] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(USER_FUNCTION, (TERM65!=null?TERM65.getText():null)), root_1);
@@ -2551,7 +2551,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "bi_function"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:196:1: bi_function : ( BI_FUN ( params )? -> ^( BI_FUNCTION[$BI_FUN.text] ( params )? ) | BI_FUN '(' ')' -> ^( BI_FUNCTION[$BI_FUN.text] ) );
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:196:1: bi_function : ( BI_FUN ( params )? -> ^( BI_FUNCTION[$BI_FUN.text] ( params )? ) | BI_FUN '(' ')' -> ^( BI_FUNCTION[$BI_FUN.text] ) );
 	public final RPGExprParser.bi_function_return bi_function() throws RecognitionException {
 		RPGExprParser.bi_function_return retval = new RPGExprParser.bi_function_return();
 		retval.start = input.LT(1);
@@ -2574,7 +2574,7 @@ public class RPGExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_params=new RewriteRuleSubtreeStream(adaptor,"rule params");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:2: ( BI_FUN ( params )? -> ^( BI_FUNCTION[$BI_FUN.text] ( params )? ) | BI_FUN '(' ')' -> ^( BI_FUNCTION[$BI_FUN.text] ) )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:2: ( BI_FUN ( params )? -> ^( BI_FUNCTION[$BI_FUN.text] ( params )? ) | BI_FUN '(' ')' -> ^( BI_FUNCTION[$BI_FUN.text] ) )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==BI_FUN) ) {
@@ -2632,12 +2632,12 @@ public class RPGExprParser extends Parser {
 
 			switch (alt16) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:5: BI_FUN ( params )?
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:5: BI_FUN ( params )?
 					{
 					BI_FUN67=(Token)match(input,BI_FUN,FOLLOW_BI_FUN_in_bi_function815); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_BI_FUN.add(BI_FUN67);
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:12: ( params )?
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:12: ( params )?
 					int alt15=2;
 					int LA15_0 = input.LA(1);
 					if ( (LA15_0==75) ) {
@@ -2645,7 +2645,7 @@ public class RPGExprParser extends Parser {
 					}
 					switch (alt15) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:13: params
+							// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:13: params
 							{
 							pushFollow(FOLLOW_params_in_bi_function818);
 							params68=params();
@@ -2671,11 +2671,11 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 197:22: -> ^( BI_FUNCTION[$BI_FUN.text] ( params )? )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:25: ^( BI_FUNCTION[$BI_FUN.text] ( params )? )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:25: ^( BI_FUNCTION[$BI_FUN.text] ( params )? )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, (BI_FUN67!=null?BI_FUN67.getText():null)), root_1);
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:53: ( params )?
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:53: ( params )?
 						if ( stream_params.hasNext() ) {
 							adaptor.addChild(root_1, stream_params.nextTree());
 						}
@@ -2693,7 +2693,7 @@ public class RPGExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:3: BI_FUN '(' ')'
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:3: BI_FUN '(' ')'
 					{
 					BI_FUN69=(Token)match(input,BI_FUN,FOLLOW_BI_FUN_in_bi_function840); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_BI_FUN.add(BI_FUN69);
@@ -2718,7 +2718,7 @@ public class RPGExprParser extends Parser {
 					root_0 = (CommonTree)adaptor.nil();
 					// 199:20: -> ^( BI_FUNCTION[$BI_FUN.text] )
 					{
-						// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:23: ^( BI_FUNCTION[$BI_FUN.text] )
+						// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:23: ^( BI_FUNCTION[$BI_FUN.text] )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BI_FUNCTION, (BI_FUN69!=null?BI_FUN69.getText():null)), root_1);
@@ -2764,7 +2764,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "params"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:202:1: params : '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:202:1: params : '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !;
 	public final RPGExprParser.params_return params() throws RecognitionException {
 		RPGExprParser.params_return retval = new RPGExprParser.params_return();
 		retval.start = input.LT(1);
@@ -2782,8 +2782,8 @@ public class RPGExprParser extends Parser {
 		CommonTree char_literal76_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:203:2: ( '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !)
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:3: '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:203:2: ( '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !)
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:3: '(' ! logicalExpression ( ':' ! logicalExpression )* ')' !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2795,7 +2795,7 @@ public class RPGExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression73.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:26: ( ':' ! logicalExpression )*
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:26: ( ':' ! logicalExpression )*
 			loop17:
 			while (true) {
 				int alt17=2;
@@ -2806,7 +2806,7 @@ public class RPGExprParser extends Parser {
 
 				switch (alt17) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:27: ':' ! logicalExpression
+					// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:204:27: ':' ! logicalExpression
 					{
 					char_literal74=(Token)match(input,77,FOLLOW_77_in_params875); if (state.failed) return retval;
 					pushFollow(FOLLOW_logicalExpression_in_params878);
@@ -2855,7 +2855,7 @@ public class RPGExprParser extends Parser {
 
 
 	// $ANTLR start "empty"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:207:1: empty : '(' ')' ;
+	// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:207:1: empty : '(' ')' ;
 	public final RPGExprParser.empty_return empty() throws RecognitionException {
 		RPGExprParser.empty_return retval = new RPGExprParser.empty_return();
 		retval.start = input.LT(1);
@@ -2869,8 +2869,8 @@ public class RPGExprParser extends Parser {
 		CommonTree char_literal78_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:2: ( '(' ')' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:2: '(' ')'
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:2: ( '(' ')' )
+			// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:2: '(' ')'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -2914,11 +2914,11 @@ public class RPGExprParser extends Parser {
 		ParserRuleReturnScope v2 =null;
 
 
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( ( MULT MULT v2= unaryExpression ) )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
+		// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( ( MULT MULT v2= unaryExpression ) )
+		// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
 		{
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:47: MULT MULT v2= unaryExpression
+		// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:45: ( MULT MULT v2= unaryExpression )
+		// C:\\Users\\giugianc\\git\\asup_0.7.0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:130:47: MULT MULT v2= unaryExpression
 		{
 		match(input,MULT,FOLLOW_MULT_in_synpred14_RPGExpr318); if (state.failed) return;
 
