@@ -13,11 +13,11 @@ package org.smeup.sys.il.core.meta;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.QDomain#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.QDomain#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDomain()
  * @model

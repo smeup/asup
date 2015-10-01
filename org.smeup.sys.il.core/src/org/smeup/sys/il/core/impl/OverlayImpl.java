@@ -19,11 +19,11 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <em><b>Overlay</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.OverlayImpl#getPosition <em>Position</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

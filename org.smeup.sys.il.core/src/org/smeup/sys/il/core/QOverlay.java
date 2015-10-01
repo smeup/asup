@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QOverlay#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QOverlay#getPosition <em>Position</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getOverlay()
  * @model

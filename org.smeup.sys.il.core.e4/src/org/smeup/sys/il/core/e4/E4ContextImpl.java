@@ -28,13 +28,16 @@ import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
+import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+import org.osgi.framework.wiring.BundleWiring;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.impl.ContextImpl;
+import org.smeup.sys.os.core.QSystem;
 
 @SuppressWarnings("restriction")
 public abstract class E4ContextImpl extends ContextImpl {
@@ -118,6 +121,35 @@ public abstract class E4ContextImpl extends ContextImpl {
 			return null;
 		}
 	}
+	
+	
+	@Override
+	public Class<?> loadClassByName(String className) {
+						
+		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
+		
+		Class<?> class_ = null;
+		BundleWiring bundleWiring = null;		
+		
+		for (Bundle bundle : bundleContext.getBundles()) {
+
+			try {
+				bundleWiring = bundle.adapt(BundleWiring.class);
+				if (bundleWiring != null) {				
+					class_ = bundleWiring.getClassLoader().loadClass(className);
+					break;
+				}
+				
+			} catch (ClassNotFoundException e) {
+				continue;
+			} 
+		}
+
+		return class_;
+		
+	}
+	
+	
 
 	@SuppressWarnings("unchecked")
 	@Override

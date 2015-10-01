@@ -27,10 +27,10 @@ import org.smeup.sys.il.core.ctx.QContext;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestRunnerImpl#getListeners <em>Listeners</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

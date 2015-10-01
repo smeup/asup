@@ -20,11 +20,11 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <em><b>Assertion Result</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.AssertionResultImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.AssertionResultImpl#getTime <em>Time</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -95,6 +95,14 @@ public interface QContext {
 	Class<?> loadClass(String address);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" classNameRequired="true"
+	 * @generated
+	 */
+	Class<?> loadClassByName(String className);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model objectRequired="true" qualifierRequired="true" ABounds="org.smeup.sys.il.core.java.JavaAnnotation"
 	 * @generated

@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.QDefault#getValue <em>Value</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.QDefault#getValues <em>Values</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getDefault()
  * @model

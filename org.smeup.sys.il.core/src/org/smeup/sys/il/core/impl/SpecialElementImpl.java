@@ -18,13 +18,13 @@ import org.smeup.sys.il.core.QSpecialElement;
  * <em><b>Special Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#isUnary <em>Unary</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialElementImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

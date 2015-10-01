@@ -17,6 +17,8 @@ import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
+import org.smeup.sys.dk.test.annotation.TestDestroy;
+import org.smeup.sys.dk.test.annotation.TestInit;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.impl.UnitTestRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -50,7 +52,12 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		context.set(QTestRunner.class, this);
 		
 		Object testCase = context.make(testClass);
+		
+		// Call test initialization
+		if (testCase.getClass().getAnnotation(TestInit.class) != null)
+			context.invoke(testCase, TestInit.class);
 
+		// Call test procedure
 		long start = System.currentTimeMillis();
 		try {
 			testAsserter.resetTime();
@@ -61,6 +68,10 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		long end = System.currentTimeMillis();
 
 		testResult.setTime(end - start);
+		
+		// Call test destroyer
+		if (testCase.getClass().getAnnotation(TestDestroy.class) != null)
+			context.invoke(testCase, TestDestroy.class);
 
 		return testResult;
 	}

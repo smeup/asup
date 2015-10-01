@@ -83,7 +83,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="AssertionFailed" eSuperTypes="#//AssertionResult"/>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionResult" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eOperations name="getAssertionState" eType="#//AssertionState"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="128"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AssertionState">
@@ -140,12 +144,24 @@
   <eClassifiers xsi:type="ecore:EClass" name="TestResult" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eStructuralFeatures xsi:type="ecore:EReference" name="assertResults" upperBound="-1"
         eType="#//AssertionResult" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="15"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="failed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="15"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="runner" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+        <details key="length" value="25"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestRunner" abstract="true" eSuperTypes="#//CallableTest ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">

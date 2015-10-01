@@ -15,10 +15,10 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QObjectContainer#getContents <em>Contents</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectContainer()
  * @model abstract="true"

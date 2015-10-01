@@ -27,10 +27,10 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <em><b>Node</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.NodeImpl#getFacets <em>Facets</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

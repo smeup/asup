@@ -162,6 +162,12 @@
         </eGenericType>
         <eParameters name="address" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
+      <eOperations name="loadClassByName" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments/>
+        </eGenericType>
+        <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="invoke">
         <eTypeParameters name="A">
           <eBounds eClassifier="#//java/JavaAnnotation"/>

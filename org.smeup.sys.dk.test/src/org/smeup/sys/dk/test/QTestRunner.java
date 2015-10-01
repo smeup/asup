@@ -16,10 +16,10 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.QTestRunner#getListeners <em>Listeners</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner()
  * @model abstract="true"

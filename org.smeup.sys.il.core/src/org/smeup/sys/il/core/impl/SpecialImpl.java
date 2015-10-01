@@ -28,11 +28,11 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <em><b>Special</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getClassDelegate <em>Class Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.SpecialImpl#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

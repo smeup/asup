@@ -23,8 +23,6 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Context</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -153,6 +151,17 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	public Class<?> loadClass(String address) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Class<?> loadClassByName(String className) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

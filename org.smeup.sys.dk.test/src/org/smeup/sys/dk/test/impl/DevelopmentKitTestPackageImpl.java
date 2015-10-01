@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.dk.test.impl;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -34,6 +35,7 @@ import org.smeup.sys.dk.test.QUnitTestRunner;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -174,7 +176,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		isInited = true;
 
 		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
+		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDevelopmentKitTestPackage.createPackageContents();
@@ -672,6 +674,56 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// il-data
+		createIldataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>il-data</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIldataAnnotations() {
+		String source = "il-data";	
+		addAnnotation
+		  (getAssertionResult_Message(), 
+		   source, 
+		   new String[] {
+			 "length", "128"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getTestResult_Category(), 
+		   source, 
+		   new String[] {
+			 "length", "15"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getTestResult_Object(), 
+		   source, 
+		   new String[] {
+			 "length", "15"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getTestResult_Runner(), 
+		   source, 
+		   new String[] {
+			 "length", "25"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });
 	}
 
 } // FrameworkTestPackageImpl

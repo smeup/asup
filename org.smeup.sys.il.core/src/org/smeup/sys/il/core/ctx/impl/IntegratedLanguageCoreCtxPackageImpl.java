@@ -405,6 +405,13 @@ public class IntegratedLanguageCoreCtxPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(contextEClass, null, "loadClassByName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		op = addEOperation(contextEClass, null, "invoke", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "A");
 		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaAnnotation());

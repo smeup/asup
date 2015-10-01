@@ -26,7 +26,8 @@ import org.eclipse.ecf.server.generic.IGenericServerContainerGroupFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.remoteserviceadmin.EndpointDescription;
-import org.osgi.service.remoteserviceadmin.EndpointListener;
+import org.osgi.service.remoteserviceadmin.EndpointEvent;
+import org.osgi.service.remoteserviceadmin.EndpointEventListener;
 import org.smeup.sys.co.osgi.QCommunicationManager;
 import org.smeup.sys.co.osgi.ecf.impl.ECFCommunicationManagerImpl;
 import org.smeup.sys.rt.core.ApplicationStarting;
@@ -47,7 +48,7 @@ public class ECFClientActivatorHook {
 
 		Dictionary<String, String> props = new Hashtable<String, String>();
 		props.put("endpoint.listener.scope", "(endpoint.id=*)");
-		bundleContext.registerService(EndpointListener.class, endpointListener, props);
+		bundleContext.registerService(EndpointEventListener.class, endpointListener, props);
 
 		QCommunicationManager communicationManager = new ECFCommunicationManagerImpl();
 		bundleContext.registerService(QCommunicationManager.class, communicationManager, null);
@@ -69,22 +70,32 @@ public class ECFClientActivatorHook {
 											// endpoints
 											// props.put("endpoint.listener.scope","(endpoint.id=*)");
 
-	private static class InternalEndPointListener implements EndpointListener {
+	private static class InternalEndPointListener implements EndpointEventListener {
 
 		protected static List<EndpointDescription> endpointDescriptions = new ArrayList<EndpointDescription>();
-
-		@Override
-		public void endpointAdded(EndpointDescription endpoint, String matchedFilter) {
-			InternalEndPointListener.endpointDescriptions.add(endpoint);
-		}
-
-		@Override
-		public void endpointRemoved(EndpointDescription endpoint, String matchedFilter) {
-			InternalEndPointListener.endpointDescriptions.remove(endpoint);
-		}
-
+		
 		protected List<EndpointDescription> getEndpointDescriptions() {
 			return InternalEndPointListener.endpointDescriptions;
+		}
+
+		@Override
+		public void endpointChanged(EndpointEvent event, String filter) {
+			
+			switch (event.getType()) {
+			case EndpointEvent.ADDED:
+				InternalEndPointListener.endpointDescriptions.add(event.getEndpoint());
+				break;
+			case EndpointEvent.MODIFIED:
+				
+				break;
+			case EndpointEvent.MODIFIED_ENDMATCH:
+				
+				break;
+	
+			case EndpointEvent.REMOVED:
+				InternalEndPointListener.endpointDescriptions.remove(event.getEndpoint());
+				break;
+			}			
 		}
 	}
 }

@@ -16,6 +16,7 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getAssertResults <em>Assert Results</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getCategory <em>Category</em>}</li>
@@ -24,7 +25,6 @@ import org.smeup.sys.il.core.QObject;
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getRunner <em>Runner</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.QTestResult#getTime <em>Time</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestResult()
  * @model
