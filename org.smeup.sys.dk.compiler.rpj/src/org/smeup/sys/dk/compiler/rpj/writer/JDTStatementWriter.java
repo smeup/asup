@@ -41,6 +41,7 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeLiteral;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.il.core.QAnnotationTest;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.meta.QDefault;
@@ -55,10 +56,13 @@ import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QAssignmentExpression;
+import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QPredicateExpression;
+import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
+import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QBreak;
 import org.smeup.sys.il.flow.QCall;
@@ -77,7 +81,6 @@ import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
-import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
@@ -271,6 +274,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
+		// Annotation
+		if (statement.getFacet(QAnnotationTest.class) != null) {
+			QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
+
+			writeAssertion(annotationTest, statement.toString());
+		}
+
 		return false;
 	}
 
@@ -281,6 +291,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Block block = blocks.peek();
 
 		IfStatement ifSt = ast.newIfStatement();
+		if (statement.getCondition().contains("%PARMS"))
+			"".toCharArray();
+
 		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
 
 		Expression expression = null;
@@ -375,18 +388,19 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(prototype.getName())));
 
-		if (prototype.isChild() && prototype.getParent() != compilationUnit.getRoot()) {
-			QNode parent = prototype.getParent();
-			if (parent instanceof QNamedNode) {
-
-				if (!(parent instanceof QProgram)) {
-					String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
-					methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
-				}
-			} else
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getProcedure());
-		}
-
+		/*
+		 * if (prototype.isChild() && prototype.getParent() !=
+		 * compilationUnit.getRoot()) { QNode parent = prototype.getParent(); if
+		 * (parent instanceof QNamedNode) {
+		 * 
+		 * if (!(parent instanceof QProgram)) { String qualifiedParent =
+		 * compilationUnit.getQualifiedName((QNamedNode) parent);
+		 * methodInvocation.setExpression(buildExpression(ast,
+		 * expressionParser.parseTerm(qualifiedParent), null)); } } else throw
+		 * new
+		 * IntegratedLanguageExpressionRuntimeException("Invalid procedure: " +
+		 * statement.getProcedure()); }
+		 */
 		// entry
 		if (prototype.getEntry() != null) {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
@@ -483,55 +497,56 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		try {
+		Block block = blocks.peek();
+		
+		if (statement.getObject() != null) {
 
-			if (statement.getObject() != null) {
+			MethodInvocation methodInvocation = ast.newMethodInvocation();
+			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
 
-				Block block = blocks.peek();
+			QNamedNode namedNode = compilationUnit.getNamedNode(statement.getObject(), true);
 
-				MethodInvocation methodInvocation = ast.newMethodInvocation();
-				methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
+			// display and print
+			if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
 
-				QNamedNode namedNode = compilationUnit.getNamedNode(statement.getObject(), true);
+				methodInvocation.setExpression(ast.newName(compilationUnit.getQualifiedName((QNamedNode) namedNode.getParent())));
 
-				// display and print
-				if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
+				TypeLiteral typeLiteral = ast.newTypeLiteral();
+				String fileName = compilationUnit.normalizeTypeName(((QNamedNode) namedNode.getParent()).getName());
+				String formatName = compilationUnit.normalizeTypeName(namedNode.getName());
+				typeLiteral.setType(ast.newSimpleType(ast.newName(new String[] { fileName, formatName })));
 
-					methodInvocation.setExpression(ast.newName(compilationUnit.getQualifiedName((QNamedNode) namedNode.getParent())));
+				methodInvocation.arguments().add(typeLiteral);
 
-					TypeLiteral typeLiteral = ast.newTypeLiteral();
-					String fileName = compilationUnit.normalizeTypeName(((QNamedNode) namedNode.getParent()).getName());
-					String formatName = compilationUnit.normalizeTypeName(namedNode.getName());
-					typeLiteral.setType(ast.newSimpleType(ast.newName(new String[] { fileName, formatName })));
+			} else
+				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseExpression(statement.getObject()), null));
 
-					methodInvocation.arguments().add(typeLiteral);
+			if (statement.getParameters() != null)
+				for (String parameter : statement.getParameters()) {
 
-				} else
-					methodInvocation.setExpression(buildExpression(ast, expressionParser.parseExpression(statement.getObject()), null));
+					QExpression expression = expressionParser.parseExpression(parameter);
+					Expression jdtExpression = buildExpression(ast, expression, null);
+					methodInvocation.arguments().add(jdtExpression);
+				}
 
-				if (statement.getParameters() != null)
-					for (String parameter : statement.getParameters()) {
+			ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
+			block.statements().add(expressionStatement);
 
-						QExpression expression = expressionParser.parseExpression(parameter);
-						Expression jdtExpression = buildExpression(ast, expression, null);
-						methodInvocation.arguments().add(jdtExpression);
-					}
-
-				ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
-				block.statements().add(expressionStatement);
-
-			} else {
-				QProcedureExec procedureExec = QIntegratedLanguageFlowFactory.eINSTANCE.createProcedureExec();
-				procedureExec.setProcedure(statement.getMethod());
-				procedureExec.getParameters().addAll(statement.getParameters());
-				visit(procedureExec);
-			}
-
-			return false;
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new OperatingSystemRuntimeException(e);
+		} else {
+			QProcedureExec procedureExec = QIntegratedLanguageFlowFactory.eINSTANCE.createProcedureExec();
+			procedureExec.setProcedure(statement.getMethod());
+			procedureExec.getParameters().addAll(statement.getParameters());
+			visit(procedureExec);
 		}
+
+		// Annotation
+		if (statement.getFacet(QAnnotationTest.class) != null) {
+			QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
+			
+			writeAssertion(annotationTest, statement.toString());
+		}
+
+		return false;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -624,12 +639,12 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		ReturnStatement returnSt = ast.newReturnStatement();
 		if (statement.getValue() != null) {
 			QExpression returnExpression = expressionParser.parseExpression(statement.getValue());
-			returnSt.setExpression(buildExpression(ast, returnExpression, null));
-		}
 
-		if (isParentProcedure(statement))
+			QProcedure procedure = (QProcedure) this.compilationUnit.getRoot();
+
+			returnSt.setExpression(buildExpression(ast, returnExpression, procedure.getReturnType().getDataClass()));
 			block.statements().add(returnSt);
-		else {
+		} else {
 			// dummy condition
 			IfStatement ifSt = ast.newIfStatement();
 			ifSt.setExpression(ast.newBooleanLiteral(true));
@@ -870,6 +885,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		return methodInvocation;
 	}
 
+	@SuppressWarnings("unused")
 	private boolean isParentProcedure(QStatement statement) {
 
 		QNode parent = statement.getParent();
@@ -892,5 +908,104 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		}
 
 		return false;
+	}
+	
+	
+
+	public void writeAssertion(QAnnotationTest qAnnotationTest, String message) {
+
+		Block block = getBlocks().peek();
+		
+		QPredicateExpression expression = expressionParser.parsePredicate(qAnnotationTest.getExpression());
+		QRelationalExpression relationalExpression = null;
+		if (expression instanceof QRelationalExpression) {
+			relationalExpression = (QRelationalExpression) expression;
+		} else 
+			return;
+
+		Expression leftExpression = buildExpression(ast, relationalExpression.getLeftOperand(), null);
+		Expression rightExpression = buildExpression(ast, relationalExpression.getRightOperand(), null);
+
+		String messageNormalized = "";
+		if(qAnnotationTest.getMessage()==null || qAnnotationTest.getMessage().isEmpty()){
+			if(message.isEmpty()){
+				messageNormalized = "Init " + leftExpression;
+			}else{
+				messageNormalized = normalizeMessage(message);
+			}
+		}else{
+			messageNormalized = qAnnotationTest.getMessage();
+		}
+		
+		
+		QAtomicTermExpression atomicLeftExpr = null;
+		if(relationalExpression.getLeftOperand() instanceof QAtomicTermExpression){
+			atomicLeftExpr = (QAtomicTermExpression) relationalExpression.getLeftOperand();
+			if(compilationUnit.getDataTerm(atomicLeftExpr.getValue(), true) != null)
+				writeAssertionTrue(block, messageNormalized,buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
+			else
+				writeAssertionEquals(block, messageNormalized, leftExpression, rightExpression, relationalExpression.getOperator());
+		}else{
+			writeAssertionEquals(block, messageNormalized, leftExpression, rightExpression, relationalExpression.getOperator());
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void writeAssertionTrue(Block target, String message, Expression expression){
+		MethodInvocation methodInvocation = ast.newMethodInvocation();
+		methodInvocation.setExpression(ast.newSimpleName("testAsserter"));
+		methodInvocation.setName(ast.newSimpleName("assertTrue"));
+		
+		StringLiteral literal = ast.newStringLiteral();
+		literal.setLiteralValue(message);
+
+		methodInvocation.arguments().add(literal);
+		methodInvocation.arguments().add(expression);
+		
+		ExpressionStatement assertStatement = ast.newExpressionStatement(methodInvocation);
+		target.statements().add(assertStatement);
+}
+	
+	@SuppressWarnings("unchecked")
+	private void writeAssertionEquals(Block target, String message, Expression leftExpression, Expression rightExpression, RelationalOperator operator){
+
+		MethodInvocation methodInvocation = ast.newMethodInvocation();
+		methodInvocation.setExpression(ast.newSimpleName("testAsserter"));
+
+		switch (operator) {
+		case EQUAL:
+			methodInvocation.setName(ast.newSimpleName("assertEquals"));
+			break;
+		case GREATER_THAN:
+			break;
+		case GREATER_THAN_EQUAL:
+			break;
+		case LESS_THAN:
+			break;
+		case LESS_THAN_EQUAL:
+			break;
+		case NOT_EQUAL:
+			break;
+	}
+		
+		StringLiteral literal = ast.newStringLiteral();
+		literal.setLiteralValue(message);
+
+		methodInvocation.arguments().add(literal);
+		methodInvocation.arguments().add(leftExpression);
+		methodInvocation.arguments().add(rightExpression);
+		
+		ExpressionStatement assertStatement = ast.newExpressionStatement(methodInvocation);
+		target.statements().add(assertStatement);
+	}
+
+	private String normalizeMessage(String message) {
+		String newMessage = "";
+		int pos =message.indexOf("("); 
+		if(pos == -1){
+			return message;
+		}
+		newMessage = message.substring(pos);
+		return newMessage;
 	}
 }

@@ -36,11 +36,9 @@ import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.QAnnotationTest;
+import org.smeup.sys.il.core.java.QLists;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.expr.QExpressionParser;
-import org.smeup.sys.il.flow.QBlock;
-import org.smeup.sys.il.flow.QDataSection;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
@@ -52,16 +50,18 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 public class JDTProgramTestWriter extends JDTProgramWriter {
 
-	private JDTAssertionTestWriter assertionTestWriter;
+	private QLists listUtil;
 
 	public JDTProgramTestWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
 		super(root, compilationUnit, compilationSetup, name);
 
+		this.listUtil = compilationUnit.getContext().get(QLists.class);
+
 		writeImport(Program.class);
 		writeImport(OperatingSystemRuntimeException.class);
-		this.assertionTestWriter = new JDTAssertionTestWriter(getAST(), getCompilationUnit(), getCompilationUnit().getContext().get(QExpressionParser.class));
 	}
 
+	@SuppressWarnings("unchecked")
 	public void writeProgramTest(QProgram programTest) throws IOException {
 
 		refactCallableUnit(programTest);
@@ -102,7 +102,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			writeDataFields(programTest.getDataSection());
 
 		if (programTest.getFlowSection() != null)
-			for (QProcedure procedure: programTest.getFlowSection().getProcedures())
+			for (QProcedure procedure : programTest.getFlowSection().getProcedures())
 				writePublicProcedure(procedure);
 
 		if (programTest.getFileSection() != null) {
@@ -120,7 +120,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		writeEntry(programTest, modules);
 
 		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet());
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// prototypes
 		if (programTest.getFlowSection() != null)
@@ -132,7 +132,31 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
 			routine.setName("main");
 			routine.setMain(programTest.getMain());
-			writeRoutine(routine);
+			MethodDeclaration methodDeclaration = writeRoutine(routine);
+
+			MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
+			entryAnnotation.setTypeName(getAST().newSimpleName(TestStarted.class.getSimpleName()));
+			writeImport(TestStarted.class);
+
+			listUtil.addFirst(methodDeclaration.modifiers(), entryAnnotation);
+
+			Block assertionBlock = getAST().newBlock();
+
+			JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
+			statementWriter.setAST(getAST());
+			statementWriter.getBlocks().push(assertionBlock);
+
+			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas()) {
+				if (dataTerm.getFacet(QAnnotationTest.class) != null) {
+					QAnnotationTest annotationTest = dataTerm.getFacet(QAnnotationTest.class);
+					statementWriter.writeAssertion(annotationTest, "");
+				}
+			}
+
+			if(!assertionBlock.statements().isEmpty())
+				listUtil.addFirst(methodDeclaration.getBody().statements(), assertionBlock);
+
+			statementWriter.getBlocks().pop();
 		}
 
 		// routines
@@ -142,13 +166,13 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		// procedures
 		if (programTest.getFlowSection() != null)
-			for (QProcedure procedure: programTest.getFlowSection().getProcedures())
+			for (QProcedure procedure : programTest.getFlowSection().getProcedures())
 				writeInnerProcedure(procedure);
 
 		// datas
 		if (programTest.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas())
-				writeInnerData(dataTerm, true);
+				writeInnerData(dataTerm, false, true);
 
 	}
 
@@ -191,68 +215,6 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		field.setType(getAST().newSimpleType(getAST().newName(QTestAsserter.class.getSimpleName())));
 		variable.setName(getAST().newSimpleName("testAsserter"));
 		getTarget().bodyDeclarations().add(field);
-
-	}
-
-	@SuppressWarnings("unchecked")
-	public void writeRoutine(QRoutine routine, QDataSection dataSection) {
-
-		if (routine.getName().startsWith("*ENTRY") || routine.getName().startsWith("*EXIT"))
-			return;
-
-		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
-		getTarget().bodyDeclarations().add(methodDeclaration);
-
-		methodDeclaration.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(routine.getName())));
-
-		// writeSuppressWarning(methodDeclaration);
-
-		Block block = getAST().newBlock();
-		methodDeclaration.setBody(block);
-
-		if (routine.getMain() == null)
-			return;
-
-		// write java AST
-		JDTStatementTestWriter statementTestWriter = getCompilationUnit().getContext().make(JDTStatementTestWriter.class);
-		statementTestWriter.setAST(getAST());
-
-		statementTestWriter.getBlocks().push(block);
-
-		// TODO Sviluppo annotazioni specifiche D. E' corretto qui???
-		if (dataSection != null) {
-
-			MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
-			entryAnnotation.setTypeName(getAST().newSimpleName(TestStarted.class.getSimpleName()));
-			writeImport(TestStarted.class);
-			methodDeclaration.modifiers().add(entryAnnotation);
-
-			for (QDataTerm<?> dataTerm : dataSection.getDatas())
-				if (dataTerm.getFacet(QAnnotationTest.class) != null) {
-					QAnnotationTest qAnnotationTest = dataTerm.getFacet(QAnnotationTest.class);
-					assertionTestWriter.writeAssertion(qAnnotationTest, block, "");
-				}
-		}
-		
-		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-		
-		if (routine.getMain() instanceof QBlock) {
-			QBlock qBlock = (QBlock) routine.getMain();
-			for (org.smeup.sys.il.flow.QStatement qStatement : qBlock.getStatements())
-				qStatement.accept(statementTestWriter);
-			// TODO probabilmente non necessario in questo punto, è stato
-			// spostato in JDTStatementTestWriter
-			// if(qStatement.getFacet(QAnnotationTest.class)!=null){
-			// QAnnotationTest qAnnotationTest =
-			// qStatement.getFacet(QAnnotationTest.class);
-			// assertionTestWriter.writeAssertion(qAnnotationTest, block,
-			// qStatement.toString());
-			// }
-
-		} else
-			routine.getMain().accept(statementTestWriter);
-
-		statementTestWriter.getBlocks().pop();
 
 	}
 

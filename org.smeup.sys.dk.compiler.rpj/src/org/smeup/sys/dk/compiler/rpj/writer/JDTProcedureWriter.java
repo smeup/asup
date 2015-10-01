@@ -43,18 +43,20 @@ import org.smeup.sys.il.flow.QRoutine;
 
 public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
-	private boolean statik;
+	private boolean static_;
+	private boolean private_;
 	
 	@SuppressWarnings("unchecked")
-	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean statik) {
+	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_, boolean static_) {
 		super(root, compilationUnit, compilationSetup, name);
 		
 		writeImport(Procedure.class);
 		
-		if (statik)
+		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 		
-		this.statik = statik;
+		this.static_ = static_;
+		this.private_ = private_;
 	}
 
 	public void writeProcedure(QProcedure procedure) throws IOException {
@@ -65,7 +67,9 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
 
 		writeProcedureAnnotation(procedure);
-		
+
+		writeSupportFields(callableUnitInfo);
+
 		if (procedure.getSetupSection() != null)
 			writeModuleFields(procedure.getSetupSection().getModules(), false);
 
@@ -85,9 +89,6 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 			}
 		}
 		
-		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet());
-
 		// main
 		if (procedure.getMain() != null) {
 			writeProcedureEntry(procedure);
@@ -101,7 +102,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		// datas
 		if (procedure.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : procedure.getDataSection().getDatas())
-				writeInnerData(dataTerm, this.statik);
+				writeInnerData(dataTerm, this.private_, this.static_);
 	}
 
 	@SuppressWarnings("unchecked")

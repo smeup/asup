@@ -123,10 +123,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
+
 	public void assign(QBufferedData target, int position) {
 
 		if(position == 0)
-			"".toCharArray();
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
 		
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 

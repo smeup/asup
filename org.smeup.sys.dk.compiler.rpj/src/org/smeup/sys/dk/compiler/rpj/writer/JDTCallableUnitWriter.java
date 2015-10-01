@@ -100,15 +100,21 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeLabels(Collection<String> labels) {
+	public void writeLabels(Collection<String> labels, boolean private_, boolean static_) {
 
 		if (labels.isEmpty())
 			return;
 
 		EnumDeclaration enumType = getAST().newEnumDeclaration();
 		enumType.setName(getAST().newSimpleName("TAG"));
-		enumType.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
-		enumType.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
+
+		if (private_)
+			enumType.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PRIVATE_KEYWORD));
+		else
+			enumType.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
+
+		if (static_)
+			enumType.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 
 		// elements
 		int num = 0;
@@ -439,10 +445,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeRoutine(QRoutine routine) {
+	public MethodDeclaration writeRoutine(QRoutine routine) {
 
 		if (routine.getName().startsWith("*ENTRY") || routine.getName().startsWith("*EXIT"))
-			return;
+			return null;
 
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 		getTarget().bodyDeclarations().add(methodDeclaration);
@@ -456,7 +462,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		methodDeclaration.setBody(block);
 
 		if (routine.getMain() == null)
-			return;
+			return methodDeclaration;
 
 		// write java AST
 		JDTStatementWriter statementWriter = getCompilationUnit().getContext().make(JDTStatementWriter.class);
@@ -473,6 +479,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		statementWriter.getBlocks().pop();
 
+		return methodDeclaration;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -501,20 +508,17 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			methodInvocation.setExpression(getAST().newName(namePrototype));
 			methodInvocation.setName(getAST().newSimpleName("qExec"));
 
-/*			switch (namePrototype) {
-			case "p_rxatt":
-			case "p_rxsos":
-			case "p_rxlate":
-				writeImport(RPJServiceSupport.class);
-				methodInvocation.setExpression(getAST().newName("qJAX"));
-				methodInvocation.setName(getAST().newSimpleName(namePrototype));
-				break;
-			default:
-				methodInvocation.setExpression(getAST().newName(namePrototype));
-				methodInvocation.setName(getAST().newSimpleName("qExec"));
-				break;
-			}*/
-			
+			/*
+			 * switch (namePrototype) { case "p_rxatt": case "p_rxsos": case
+			 * "p_rxlate": writeImport(RPJServiceSupport.class);
+			 * methodInvocation.setExpression(getAST().newName("qJAX"));
+			 * methodInvocation.setName(getAST().newSimpleName(namePrototype));
+			 * break; default:
+			 * methodInvocation.setExpression(getAST().newName(namePrototype));
+			 * methodInvocation.setName(getAST().newSimpleName("qExec")); break;
+			 * }
+			 */
+
 			for (Object entryParameter : methodDeclaration.parameters()) {
 				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
 				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
@@ -531,7 +535,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		} else {
 			writeEntry(methodDeclaration, prototype.getEntry());
-			
+
 			// TODO manage CALL
 		}
 	}
@@ -542,18 +546,20 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);
 
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
-		
-		boolean statik = false;
+
+		boolean static_ = false;
+		boolean private_ = true;
 
 		switch (getCompilationSetup().getProcedureType()) {
 		case INNER:
 			break;
 		case NESTED:
-			statik = true;
+			static_ = true;
+			private_ = false;
 			break;
 		}
-		
-		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), statik);
+
+		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), private_, static_);
 		try {
 			procedureWriter.writeProcedure(procedure);
 		} catch (IOException e) {

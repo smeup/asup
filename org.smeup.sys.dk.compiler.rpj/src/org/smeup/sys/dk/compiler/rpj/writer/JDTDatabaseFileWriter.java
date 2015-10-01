@@ -32,7 +32,7 @@ public class JDTDatabaseFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDatabaseFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass) {
-		super(root, compilationUnit, compilationSetup, name, superClass, false);
+		super(root, compilationUnit, compilationSetup, name, superClass, false, false);
 
 		if (root != null)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
@@ -40,7 +40,7 @@ public class JDTDatabaseFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDatabaseFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, String superClassName) {
-		super(root, compilationUnit, compilationSetup, name, superClassName, true, false);
+		super(root, compilationUnit, compilationSetup, name, superClassName, true, false, false);
 
 		if (root != null)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));

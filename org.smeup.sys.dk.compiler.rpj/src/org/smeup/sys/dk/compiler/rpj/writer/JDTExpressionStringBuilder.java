@@ -29,6 +29,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QHexadecimal;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -580,9 +581,17 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// Hexadecimal
 		if (source.isAssignableFrom(QHexadecimal.class))
 			buffer.append(value);
-		else if (source.isAssignableFrom(Enum.class) && !this.target.isAssignableFrom(Boolean.class))
-			buffer.append(value);
-		else if (target.isAssignableFrom(String.class)) {
+		else if (source.isAssignableFrom(Enum.class)) {
+
+			if (QIndicator.class.isAssignableFrom(this.target)) {
+				if (source.toString().equalsIgnoreCase("qRPJ.qSP.ON"))
+					buffer.append("qRPJ.qBox(true)");
+				else
+					buffer.append("qRPJ.qBox(false)");
+			} else 
+				buffer.append(value);
+
+		} else if (target.isAssignableFrom(String.class)) {
 			buffer.append(value);
 			buffer.append(".s()");
 		} else if (target.isAssignableFrom(Integer.class)) {

@@ -81,7 +81,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		}
 
 		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet());
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// prototypes
 		if (module.getFlowSection() != null)
@@ -110,7 +110,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		// datas
 		if (module.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : module.getDataSection().getDatas())
-				writeInnerData(dataTerm, true);
+				writeInnerData(dataTerm, false, true);
 	}
 	
 	@SuppressWarnings("unchecked")

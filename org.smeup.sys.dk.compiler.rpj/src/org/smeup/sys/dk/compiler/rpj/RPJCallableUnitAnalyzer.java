@@ -16,6 +16,7 @@ import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QCommandExec;
 import org.smeup.sys.il.flow.QJump;
 import org.smeup.sys.il.flow.QLabel;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
@@ -38,12 +39,20 @@ public class RPJCallableUnitAnalyzer extends StatementVisitorImpl {
 		if (callableUnit.getMain() != null)
 			callableUnit.getMain().accept(callableUnitAnalyzer);
 
-		// flow section
+		// routines
 		if (callableUnit.getFlowSection() != null)
-			// routines
 			for (QRoutine routine : callableUnit.getFlowSection().getRoutines())
 				if (routine.getMain() != null)
 					routine.getMain().accept(callableUnitAnalyzer);
+		
+		// procedures
+		if (callableUnit.getFlowSection() != null)
+			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
+				RPJCallableUnitInfo procedureUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
+				
+				callableUnitInfo.getLabels().putAll(procedureUnitInfo.getLabels());
+			}
+
 
 		if (callableUnit.getFileSection() != null && !callableUnit.getFileSection().getStatements().isEmpty())
 			callableUnitInfo.containsSQLStatement(true);

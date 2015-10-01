@@ -104,7 +104,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeEntry(program, modules);
 
 		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet());
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// prototypes
 		if (program.getFlowSection() != null)
@@ -132,7 +132,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		// datas
 		if (program.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerData(dataTerm, true);
+				writeInnerData(dataTerm, false, true);
 	}
 
 	public void writeEntry(QProgram program, List<String> modules) throws IOException {

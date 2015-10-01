@@ -690,6 +690,11 @@ public class RPJProgramSupport {
 		return this.dataWriter.set(numeric);
 	}
 
+	public QArray<QCharacter> qAll(QArray<QCharacter> $fltlis) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public QNumeric qAbs(Integer numeric) {
 		return qBox(Math.abs(numeric));
 	}

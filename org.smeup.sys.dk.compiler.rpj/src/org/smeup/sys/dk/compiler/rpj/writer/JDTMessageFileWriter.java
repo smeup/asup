@@ -26,7 +26,7 @@ import org.smeup.sys.os.msgf.QMessageFile;
 public class JDTMessageFileWriter extends JDTNamedNodeWriter {
 
 	public JDTMessageFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+		super(root, compilationUnit, compilationSetup, name, false);
 	}
 
 	@SuppressWarnings("unchecked")

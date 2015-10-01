@@ -29,7 +29,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTPrinterFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+		super(root, compilationUnit, compilationSetup, name, false);
 
 		// writeFieldSerializer();
 
@@ -68,7 +68,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 			elements.addAll(printerFileFormat.getDefinition().getElements());
 
-			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QRecordWrapper.class, true);
+			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QRecordWrapper.class, false, true);
 			dataStructureWriter.writeElements(elements);
 		}
 

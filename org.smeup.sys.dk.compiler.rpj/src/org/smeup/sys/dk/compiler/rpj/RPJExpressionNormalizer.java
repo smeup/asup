@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.dk.compiler.rpj;
 
-import javax.inject.Inject;
-
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.CompilationContextHelper;
 import org.smeup.sys.il.core.QNamedNode;
@@ -30,20 +28,25 @@ import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
+import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
 import org.smeup.sys.il.flow.QMethodExec;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
 
 public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
-	@Inject
 	private QCompilationUnit compilationUnit;
-	@Inject
 	private QExpressionParser expressionParser;
+
+	public RPJExpressionNormalizer(QCompilationUnit compilationUnit, QExpressionParser expressionParser) {
+		this.compilationUnit = compilationUnit;
+		this.expressionParser = expressionParser;
+	}
 
 	@Override
 	public boolean visit(QMethodExec statement) {
@@ -80,7 +83,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	public boolean visit(QEval statement) {
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
-				
+
 		switch (assignmentExpression.getLeftOperand().getExpressionType()) {
 		case FUNCTION:
 			QDataTerm<?> dataTerm = compilationUnit.getMethod(assignmentExpression.getLeftOperand().getValue());
@@ -112,13 +115,13 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 					// primitive
 					if (CompilationContextHelper.isPrimitive(compilationUnit, assignmentExpression.getRightOperand())) {
-						
+
 						// array.eval(%all(*ZEROS))
 						QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
 						functionTermExpression.setValue("%all");
 						functionTermExpression.getElements().add(assignmentExpression.getRightOperand());
 						assignmentExpression.setRightOperand(functionTermExpression);
-						
+
 						RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 						expressionStringBuilder.visit(assignmentExpression);
 						statement.setAssignment(expressionStringBuilder.getResult());
@@ -126,7 +129,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 				}
 			}
 			break;
-			
+
 		case BLOCK:
 		case BOOLEAN:
 		case LOGICAL:
@@ -136,100 +139,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			break;
 		}
 
-/*
-		QDataTerm<?> dataTerm = null;
-
-
-		if (dataTerm == null)
-			dataTerm = compilationUnit.getPrototype(assignmentExpression.getLeftOperand().getValue(), true);
-
-		if (dataTerm == null)
-			dataTerm = compilationUnit.getDataTerm(assignmentExpression.getLeftOperand().getValue(), true);
-
-		if (dataTerm == null)
-			throw new IntegratedLanguageExpressionRuntimeException("Invalid data term: " + assignmentExpression.getLeftOperand().getValue());
-
-		// unary
-		if (dataTerm.getDataTermType().isUnary())
-			return false;
-
-		// multiple
-		switch (assignmentExpression.getRightOperand().getExpressionType()) {
-		case ARITHMETIC:
-			QArithmeticExpression arithmeticExpression = (QArithmeticExpression) assignmentExpression.getRightOperand();
-
-			if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_ATOMIC) {
-
-				Class<?> argumentClass = ((QMultipleAtomicDataDef<?>) dataTerm.getDefinition()).getArgument().getJavaClass();
-
-				if (argumentClass.equals(Buffer.class)) {
-				} else if (argumentClass.equals(String.class)) {
-					if (isConcatExpression(arithmeticExpression)) {
-
-						RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-						expressionStringBuilder.visit(arithmeticExpression);
-						assignmentExpression.setRightOperand(expressionParser.parseExpression("%all(" + expressionStringBuilder.getResult() + ")"));
-
-						expressionStringBuilder = new RPJExpressionStringBuilder();
-						expressionStringBuilder.visit(assignmentExpression);
-						statement.setAssignment(expressionStringBuilder.getResult());
-					}
-				} else if (argumentClass.equals(Integer.class)) {
-				}
-			}
-
-			break;
-		case ASSIGNMENT:
-			break;
-		case ATOMIC:
-			QAtomicTermExpression atomicTermExpression = (QAtomicTermExpression) assignmentExpression.getRightOperand();
-			switch (atomicTermExpression.getType()) {
-			case BOOLEAN:
-				break;
-			case DATETIME:
-				break;
-			case FLOATING:
-				break;
-			case HEXADECIMAL:
-				break;
-			case INDICATOR:
-				break;
-			case STRING:
-				// search QArray<QNumeric>.eval("")
-			case INTEGER:
-				// search QArray<QNumeric>.eval(0)
-
-				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_ATOMIC) {
-
-					Class<?> argumentClass = ((QMultipleAtomicDataDef<?>) dataTerm.getDefinition()).getArgument().getJavaClass();
-
-					if (argumentClass.equals(Buffer.class)) {
-						if (isNumeric(atomicTermExpression.getValue()))
-							checkSpecialInteger(atomicTermExpression, statement, assignmentExpression);
-						else
-							checkSpecialString(atomicTermExpression, statement, assignmentExpression);
-					} else if (argumentClass.equals(String.class))
-						checkSpecialString(atomicTermExpression, statement, assignmentExpression);
-					else if (argumentClass.equals(Integer.class))
-						checkSpecialInteger(atomicTermExpression, statement, assignmentExpression);
-				}
-
-				break;
-			case NAME:
-				break;
-			case SPECIAL:
-				break;
-			}
-			break;
-		case BLOCK:
-		case BOOLEAN:
-		case QUALIFIED:
-		case FUNCTION:
-		case LOGICAL:
-		case RELATIONAL:
-			break;
-		}
-*/
 		return super.visit(statement);
 	}
 
@@ -285,6 +194,45 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QExpression leftExpression = relationalExpression.getLeftOperand();
 		QExpression rightExpression = relationalExpression.getRightOperand();
+
+		if (leftExpression.getExpressionType() == ExpressionType.FUNCTION) {
+			QFunctionTermExpression functionTermExpressionLeft = (QFunctionTermExpression) leftExpression;
+
+			// %PARAMS founded on left -> replace with entry parameter check null
+			if (functionTermExpressionLeft.getValue().equalsIgnoreCase("%PARMS") && functionTermExpressionLeft.getElements().isEmpty()) {
+
+				if (rightExpression instanceof QAtomicTermExpression) {
+					QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
+					if (atomicTermExpressionRight.getType() == AtomicType.INTEGER) {
+						
+						int checkedParams = Integer.parseInt(atomicTermExpressionRight.getValue());
+						
+						if (this.compilationUnit.getRoot() instanceof QProcedure) {
+							QProcedure procedure = (QProcedure) this.compilationUnit.getRoot();
+							QEntry entry = procedure.getEntry();
+							if(entry.getParameters().size() >= checkedParams) {
+
+								QAtomicTermExpression leftAtomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
+								leftAtomicTermExpression.setType(AtomicType.NAME);
+								leftAtomicTermExpression.setValue(entry.getParameters().get(checkedParams-1).getName());
+								relationalExpression.setLeftOperand(leftAtomicTermExpression);
+								
+								relationalExpression.setOperator(RelationalOperator.NOT_EQUAL);
+								
+								atomicTermExpressionRight.setType(AtomicType.SPECIAL);
+								atomicTermExpressionRight.setValue("*OMIT");
+								
+								RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+								expressionStringBuilder.visit(relationalExpression);
+								
+								return expressionStringBuilder.getResult();
+
+							}
+						}
+					}
+				}
+			}
+		}
 
 		if (leftExpression.getExpressionType() == ExpressionType.ATOMIC) {
 			QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;

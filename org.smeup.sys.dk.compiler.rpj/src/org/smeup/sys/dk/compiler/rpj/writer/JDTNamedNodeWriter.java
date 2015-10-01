@@ -79,14 +79,18 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	private TypeDeclaration target;
 
 	@SuppressWarnings("unchecked")
-	public JDTNamedNodeWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
+	public JDTNamedNodeWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
 
 		super(root, compilationUnit, compilationSetup);
 
 		// Type declaration
 		target = getAST().newTypeDeclaration();
 		target.setName(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(name)));
-		target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
+
+		if (private_)
+			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PRIVATE_KEYWORD));
+		else
+			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
 
 		if (root == null)
 			getJDTCompilationUnit().types().add(target);
@@ -118,7 +122,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		// @DataDef
-		if(dataTerm.getDefinition()!=null)
+		if (dataTerm.getDefinition() != null)
 			writeDataDefAnnotation(field, dataTerm.getDefinition());
 
 		// default
@@ -158,7 +162,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		}
 
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-		
+
 		Type type = getJavaType(dataTerm);
 		field.setType(type);
 
@@ -168,33 +172,33 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		getTarget().bodyDeclarations().add(field);
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public void writePublicProcedure(QProcedure procedure) {
 
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(procedure.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
-		
+
 		writeAnnotation(field, Inject.class);
-		
+
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-		
+
 		Type type = getAST().newSimpleType(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(procedure.getName())));
 		field.setType(type);
 
 		getTarget().bodyDeclarations().add(field);
 	}
-	
+
 	public void writeInnerRecord(String name, QCompoundDataDef<?, QDataTerm<?>> compoundDataDef) throws IOException {
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class, true);
+		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class,
+				false, true);
 		dataStructureWriter.writeDataStructure(compoundDataDef);
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeInnerData(QDataTerm<?> dataTerm, boolean statik) throws IOException {
+	public void writeInnerData(QDataTerm<?> dataTerm, boolean private_, boolean static_) throws IOException {
 
 		if (dataTerm.getDataTermType().isCompound()) {
 
@@ -204,13 +208,15 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), QDataStructWrapper.class, statik);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
+						QDataStructWrapper.class, private_, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
 			} else if (checkFileOverride(compoundDataDef)) {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass, statik);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass,
+						private_, static_);
 				List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 				for (QDataTerm<?> element : compoundDataDef.getElements()) {
 					if (element.getFacet(QDerived.class) != null)
@@ -226,7 +232,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		if (special != null) {
 			EnumDeclaration enumType = getAST().newEnumDeclaration();
 			enumType.setName(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(dataTerm) + "Enum"));
-			writeEnum(enumType, dataTerm);
+			writeInnerEnum(enumType, dataTerm, static_);
 
 			writeImport(Special.class);
 
@@ -236,13 +242,15 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeEnum(EnumDeclaration target, QDataTerm<?> dataTerm) {
+	public void writeInnerEnum(EnumDeclaration target, QDataTerm<?> dataTerm, boolean statik) {
 		AST ast = target.getAST();
 
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
 
 		target.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
-		target.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
+
+		if (statik)
+			target.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 
 		// elements
 		int num = 0;
@@ -314,9 +322,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (arrayDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", arrayDef.getDimension());
 
-			if(arrayDef.getOrder() != null && arrayDef.getOrder() != SortDirection.ASCEND)
+			if (arrayDef.getOrder() != null && arrayDef.getOrder() != SortDirection.ASCEND)
 				writeAnnotation(node, DataDef.class, "order", arrayDef.getOrder());
-			
+
 			writeDataDefAnnotation(node, arrayDef.getArgument());
 		} else if (QScrollerDef.class.isAssignableFrom(klassDef)) {
 			QScrollerDef<?> scrollerDef = (QScrollerDef<?>) dataDef;
@@ -324,19 +332,19 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (scrollerDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", scrollerDef.getDimension());
 
-			if(scrollerDef.getOrder() != null && scrollerDef.getOrder() != SortDirection.ASCEND)
+			if (scrollerDef.getOrder() != null && scrollerDef.getOrder() != SortDirection.ASCEND)
 				writeAnnotation(node, DataDef.class, "order", scrollerDef.getOrder());
-			
+
 			writeDataDefAnnotation(node, scrollerDef.getArgument());
 		} else if (QStrollerDef.class.isAssignableFrom(klassDef)) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
-			
+
 			if (strollerDef.getDimension() != 0)
 				writeAnnotation(node, DataDef.class, "dimension", strollerDef.getDimension());
 
-			if(strollerDef.getOrder() != null && strollerDef.getOrder() != SortDirection.ASCEND)
+			if (strollerDef.getOrder() != null && strollerDef.getOrder() != SortDirection.ASCEND)
 				writeAnnotation(node, DataDef.class, "order", strollerDef.getOrder());
-			
+
 		} else if (QBinaryDef.class.isAssignableFrom(klassDef)) {
 			QBinaryDef binaryDef = (QBinaryDef) dataDef;
 			writeImport(BinaryType.class);
@@ -365,10 +373,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (dataStructureDef.getLength() > 0)
 				writeAnnotation(node, DataDef.class, "length", dataStructureDef.getLength());
-		} 
-		else if (QCompoundDataDef.class.isAssignableFrom(klassDef)) {
-			QCompoundDataDef<?, ?> compoundDataDef =  (QCompoundDataDef<?, ?>) dataDef;
-
+		} else if (QCompoundDataDef.class.isAssignableFrom(klassDef)) {
+			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataDef;
 
 			if (compoundDataDef.getPrefix() != null)
 				writeAnnotation(node, DataDef.class, "prefix", compoundDataDef.getPrefix());
@@ -376,8 +382,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (compoundDataDef.isQualified())
 				writeAnnotation(node, DataDef.class, "qualified", compoundDataDef.isQualified());
 
-		} 
-		else if (QCharacterDef.class.isAssignableFrom(klassDef)) {
+		} else if (QCharacterDef.class.isAssignableFrom(klassDef)) {
 			QCharacterDef charDef = (QCharacterDef) dataDef;
 
 			if (charDef.getLength() > 0)

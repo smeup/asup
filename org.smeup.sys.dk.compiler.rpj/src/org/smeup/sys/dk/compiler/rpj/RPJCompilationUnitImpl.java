@@ -92,7 +92,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		this.caseSensitive = caseSensitive;
 		this.root = root;
 		this.setTrashCan(QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationTrashCan());
-		
+
 		if (root instanceof QCallableUnit) {
 			QCallableUnit callableUnit = (QCallableUnit) root;
 
@@ -248,7 +248,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				}
 		}
 
-
 		// search on dataSet
 		if (dataTerm == null) {
 
@@ -268,9 +267,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					continue;
 				}
 
-				if(dataSetTerm.getFormat() == null)
+				if (dataSetTerm.getFormat() == null)
 					continue;
-				
+
 				// search on primary dataSet
 				dataTerm = findDataTerm(dataSetTerm.getFormat().getDefinition(), name);
 
@@ -281,7 +280,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			// search on renamed dataSet
 			if (dataTerm == null) {
 				for (QDataSetTerm dataSetTerm : renamedFiles) {
-					if(dataSetTerm.getFormat() == null)
+					if (dataSetTerm.getFormat() == null)
 						continue;
 
 					dataTerm = findDataTerm(dataSetTerm.getFormat().getDefinition(), name);
@@ -295,7 +294,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		// search on display
 		if (dataTerm == null) {
 			for (QDisplayTerm displayTerm : displays) {
-				if(displayTerm.getFormat() == null)
+				if (displayTerm.getFormat() == null)
 					continue;
 
 				dataTerm = findDataTerm(displayTerm.getFormat().getDefinition(), name);
@@ -307,15 +306,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		// search on printers
 		if (dataTerm == null) {
 			for (QPrintTerm printTerm : printers) {
-				if(printTerm.getFormat() == null)
+				if (printTerm.getFormat() == null)
 					continue;
-				
+
 				dataTerm = findDataTerm(printTerm.getFormat().getDefinition(), name);
 				if (dataTerm != null)
 					break;
 			}
 		}
-		
+
 		if (dataTerm != null)
 			cachedTerms.put(normalizeTermName(name), dataTerm);
 
@@ -710,21 +709,38 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					name = "current()." + name;
 			} else if (node instanceof QFileTerm)
 				name = "get()." + name;
-			else if (node instanceof QEntry) 
-				break;
-			else if (node instanceof QProcedure) 
-				break;
 
-			if (node != getRoot() && !(node instanceof QEntry) && !(node instanceof QProgram) && !(node instanceof QProcedure))
-				// no record name
-				if (!(((EObject) node).eContainer() instanceof QDataSetTerm)) {
-					QNamedNode namedChildNode = (QNamedNode) node;
-					if(namedChildNode.getName() == null)
-						continue;
-					name = normalizeTermName(namedChildNode.getName()) + "." + name;
+			if (node.equals(getRoot()))
+				continue;
+
+			if (node instanceof QEntry)
+				continue;
+
+			if (node instanceof QProgram)
+				continue;
+			
+			if (node instanceof QProcedure)
+				continue;
+
+			if (((EObject) node).eContainer() instanceof QDataSetTerm)
+				continue;
+
+			QNamedNode namedChildNode = (QNamedNode) node;
+			if (namedChildNode.getName() == null)
+				continue;
+
+			if(node instanceof QModule) {
+				if(getRoot() instanceof QProcedure) {
+					QProcedure procedure = (QProcedure) getRoot();
+					
+					if(((EObject)procedure).eContainer().eContainer() == node)
+						continue;					
 				}
+			}
+
+			name = normalizeTermName(namedChildNode.getName()) + "." + name;
 		}
-		
+
 		return name;
 	}
 
@@ -735,7 +751,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			return null;
 
 		// reserved keywords
-		if(reservedKeywords.contains(name))
+		if (reservedKeywords.contains(name))
 			name = "_" + name.trim();
 
 		StringBuffer nameBuffer = new StringBuffer();
@@ -886,7 +902,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				prototype.setCardinality(cardinality);
 
 				prototype.setText(eOperation.getName() + " text");
-				
+
 				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);

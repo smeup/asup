@@ -27,8 +27,8 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, String superClassName, boolean serializable,
-			boolean statik) {
-		super(root, compilationUnit, compilationSetup, name);
+			boolean private_, boolean static_) {
+		super(root, compilationUnit, compilationSetup, name, private_);
 
 		if (superClassName != null) {
 			writeImport(compilationSetup.getBasePackage() + "." + superClassName);
@@ -43,13 +43,13 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		}
 
-		if (statik)
+		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 	}
 
 	@SuppressWarnings("unchecked")
-	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass, boolean statik) {
-		super(root, compilationUnit, compilationSetup, name);
+	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass, boolean private_, boolean static_) {
+		super(root, compilationUnit, compilationSetup, name, private_);
 
 		if (superClass != null) {
 			writeImport(superClass);
@@ -64,7 +64,7 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		}
 
-		if (statik)
+		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 	}
 
@@ -82,7 +82,7 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		// elements
 		for (QDataTerm<?> element : elements)
-			writeInnerData(element, true);
+			writeInnerData(element, true, true);
 	}
 
 }

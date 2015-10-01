@@ -26,16 +26,16 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
 import org.smeup.sys.os.pgm.rpj.RPJDatabaseSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
-import org.smeup.sys.os.pgm.rpj.RPJServiceSupport;
 
 public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 	public JDTUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+		super(root, compilationUnit, compilationSetup, name, false);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -108,9 +108,8 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 		}
 
-		// TODO
-		String name = getCompilationUnit().getRoot().getName();
-		if (name.equalsIgnoreCase("£JAX") || name.equalsIgnoreCase("£J03")) {
+/*		String name = getCompilationUnit().getRoot().getName();
+		if (name.equalsIgnoreCase("£J03")) {
 			writeImport(RPJServiceSupport.class);
 
 			variable = getAST().newVariableDeclarationFragment();
@@ -124,13 +123,14 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 			field.setType(getAST().newSimpleType(getAST().newName(RPJServiceSupport.class.getSimpleName())));
 			variable.setName(getAST().newSimpleName("qJAX"));
 			getTarget().bodyDeclarations().add(field);
-		}
+		}*/
 	}
 
 	public void refactUnit(QUnit unit) {
 
-		RPJExpressionNormalizer expressionNormalizer = getCompilationUnit().getContext().make(RPJExpressionNormalizer.class);
-
+		QExpressionParser expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
+		RPJExpressionNormalizer expressionNormalizer = new RPJExpressionNormalizer(getCompilationUnit(), expressionParser);
+		
 		// main
 		if (unit.getMain() != null)
 			unit.getMain().accept(expressionNormalizer);

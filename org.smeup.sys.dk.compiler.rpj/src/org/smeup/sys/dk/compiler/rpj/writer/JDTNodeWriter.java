@@ -37,6 +37,7 @@ public class JDTNodeWriter {
 
 		this.compilationUnit = compilationUnit;
 		this.compilationSetup = compilationSetup;
+		
 		if (root != null) {
 			this.ast = root.getAST();
 			this.jdtCompilationUnit = root.getJDTCompilationUnit();
