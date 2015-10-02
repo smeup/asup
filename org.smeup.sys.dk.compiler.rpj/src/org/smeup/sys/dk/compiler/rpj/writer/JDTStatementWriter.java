@@ -938,7 +938,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		}
 		
 		
-		QAtomicTermExpression atomicLeftExpr = null;
+//		QAtomicTermExpression atomicLeftExpr = null;
+		writeAssertionTrue(block, messageNormalized,buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
+/*
 		if(relationalExpression.getLeftOperand() instanceof QAtomicTermExpression){
 			atomicLeftExpr = (QAtomicTermExpression) relationalExpression.getLeftOperand();
 			if(compilationUnit.getDataTerm(atomicLeftExpr.getValue(), true) != null)
@@ -948,6 +950,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		}else{
 			writeAssertionEquals(block, messageNormalized, leftExpression, rightExpression, relationalExpression.getOperator());
 		}
+
+ */
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -966,7 +970,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		target.statements().add(assertStatement);
 }
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unused" })
 	private void writeAssertionEquals(Block target, String message, Expression leftExpression, Expression rightExpression, RelationalOperator operator){
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
