@@ -575,7 +575,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		if (start == null)
 			start = 1;
 
-		if (length == null)
+		if (length == null || length.equals(0))
 			length = getLength() - start.intValue() + 1;
 
 		// String str = asString().substring(start.intValue() - 1,
