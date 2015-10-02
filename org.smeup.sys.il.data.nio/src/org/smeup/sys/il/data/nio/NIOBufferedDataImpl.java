@@ -290,6 +290,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movea(String value, boolean clear) {
+		if(clear)
+			this.clear();
 		try {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
 		} catch (UnsupportedEncodingException e) {
