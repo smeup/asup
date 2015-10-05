@@ -789,6 +789,82 @@
     </eOperations>
     <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="t" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eOperations name="adddur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/adddur/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="adddur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/adddur.1/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="adddur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/adddur.2/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="adddur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/adddur.3/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="subdur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/subdur/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="subdur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/subdur.1/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="subdur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/subdur.2/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="subdur">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/subdur.3/E"/>
+      </eParameters>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
       eSuperTypes="#//Numeric">

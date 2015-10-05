@@ -16,6 +16,7 @@ import java.util.Date;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDatetime;
+import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 
@@ -221,5 +222,53 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	@Override
 	public long t() {
 		return asTime();
+	}
+
+	@Override
+	public <E extends Enum<E>> void adddur(QBufferedData value, int duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void adddur(int duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void adddur(QNumeric duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void subdur(QBufferedData value, int duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void subdur(QBufferedData value, QNumeric duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void subdur(int duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void subdur(QNumeric duration, E format) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void adddur(QBufferedData value, QNumeric duration, E format) {
+		// TODO Auto-generated method stub
+		
 	}
 }
