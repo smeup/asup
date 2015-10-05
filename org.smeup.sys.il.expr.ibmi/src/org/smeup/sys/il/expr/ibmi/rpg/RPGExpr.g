@@ -253,6 +253,12 @@ SPECIAL
 		|
 		( D)
 		|
+		( I S O)
+		|
+		( E U R)
+		|
+		( U S A)
+		|
 		( N E X T)
 	;
 
