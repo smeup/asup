@@ -554,7 +554,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		case UNARY_ATOMIC:
 
-			type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
+			if(dataTerm.isConstant())
+				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getJavaClass().getSimpleName()));
+			else
+				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
 
 			break;
 

@@ -77,6 +77,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		this.target = target;
 	}
 
+	public Class<?> getTarget() {
+		return this.target;
+	}
+
 	public void setAST(AST ast) {
 		this.ast = ast;
 	}
@@ -135,10 +139,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case SPECIAL:
 			source = Enum.class;
-			if (expression.getValue().equalsIgnoreCase("*OMIT"))
-				value = "null";
-			else
-				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+			/*
+			 * if (expression.getValue().equalsIgnoreCase("*OMIT")) value =
+			 * "null"; else
+			 */
+			value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 			break;
 		case STRING:
 
@@ -158,9 +163,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			value = compilationUnit.getQualifiedName(namedNode);
 
-			if (namedNode instanceof QDataTerm<?>) {
+			QDataTerm<?> dataTerm = CompilationContextHelper.getDataTerm(namedNode);
 
-				QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
+			if (dataTerm != null) {
 
 				if (dataTerm.getDataTermType().isMultiple()) {
 					if (this.target != null) {
@@ -170,8 +175,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 							source = ((QMultipleAtomicDataDef<?>) dataTerm.getDefinition()).getArgument().getDataClass();
 					} else
 						source = dataTerm.getDefinition().getDataClass();
-				} else
-					source = dataTerm.getDefinition().getDataClass();
+				} else {
+					if (dataTerm.isConstant())
+						source = dataTerm.getDefinition().getJavaClass();
+					else
+						source = dataTerm.getDefinition().getDataClass();
+				}
 
 			} else if (namedNode instanceof QKeyListTerm) {
 				QKeyListTerm keyListTerm = (QKeyListTerm) namedNode;
@@ -358,46 +367,61 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 	@Override
 	public boolean visit(QRelationalExpression expression) {
-		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
-		builder.setAST(getAST());
+
+		JDTExpressionStringBuilder leftBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+		leftBuilder.setAST(getAST());
+
+		JDTExpressionStringBuilder rightBuilder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
+		rightBuilder.setAST(getAST());
 
 		if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand())) {
 
-			// left
-			builder.setTarget(null);
-			builder.clear();
-			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			leftBuilder.clear();
+			if (CompilationContextHelper.isSpecial(compilationUnit, expression.getRightOperand()))
+				leftBuilder.setTarget(QData.class);
+			else
+				leftBuilder.setTarget(null);
+
+			expression.getLeftOperand().accept(leftBuilder);
+			buffer.append(leftBuilder.getResult());
 
 			// operator
-			buffer.append(toJavaPrimitive(expression.getOperator()));
+			if (leftBuilder.getTarget() != null) {
+				buffer.append("." + toJavaMethod(expression));
+				buffer.append("(");
+			} else
+				buffer.append(toJavaPrimitive(expression.getOperator()));
 
 			// right
+			rightBuilder.clear();
 			if (CompilationContextHelper.isPrimitive(compilationUnit, expression.getRightOperand()))
-				builder.setTarget(null);
+				rightBuilder.setTarget(null);
 			else
-				builder.setTarget(CompilationContextHelper.getJavaClass(compilationUnit, expression.getRightOperand()));
+				rightBuilder.setTarget(CompilationContextHelper.getJavaClass(compilationUnit, expression.getRightOperand()));
 
-			builder.clear();
-			expression.getRightOperand().accept(builder);
-			buffer.append(builder.getResult());
+			expression.getRightOperand().accept(rightBuilder);
+			buffer.append(rightBuilder.getResult());
+
+			if (leftBuilder.getTarget() != null)
+				buffer.append(")");
 
 		} else {
 
 			// left
-			builder.setTarget(null);
-			builder.clear();
-			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			leftBuilder.clear();
+			leftBuilder.setTarget(null);
+			leftBuilder.clear();
+			expression.getLeftOperand().accept(leftBuilder);
+			buffer.append(leftBuilder.getResult());
 
 			// operator
 			buffer.append("." + toJavaMethod(expression));
 			buffer.append("(");
 
 			// right
-			builder.clear();
-			expression.getRightOperand().accept(builder);
-			buffer.append(builder.getResult());
+			rightBuilder.clear();
+			expression.getRightOperand().accept(rightBuilder);
+			buffer.append(rightBuilder.getResult());
 
 			buffer.append(")");
 		}
@@ -588,7 +612,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					buffer.append("qRPJ.qBox(true)");
 				else
 					buffer.append("qRPJ.qBox(false)");
-			} else 
+			} else
 				buffer.append(value);
 
 		} else if (target.isAssignableFrom(String.class)) {
@@ -769,8 +793,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			StringBuffer value = new StringBuffer();
 
-			if (namedNode.getName().startsWith("%"))
-				System.out.println("Verificare in qRPJ " + namedNode.getName());
+//			if (namedNode.getName().startsWith("%"))
+//				System.out.println("Verificare in qRPJ " + namedNode.getName());
 
 			value.append(compilationUnit.getQualifiedName(namedNode));
 

@@ -311,12 +311,14 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 				visitor.reset();
 
 				dataTerm.accept(visitor);
-				compoundDataDef.getElements().remove(dataTerm);
 
 				if (visitor.getDataTerm() != null) {
+					compoundDataDef.getElements().remove(dataTerm);
 					QDataTerm<?> dt = visitor.getDataTerm();
 					compoundDataDef.getElements().add(dt);
 				}
+				else 
+					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: wer98wer9wew79e");
 			}
 			
 
@@ -329,10 +331,11 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 				if (visitor.getDataTerm() != null) {
 					QDataTerm<?> dt = visitor.getDataTerm();
 					compoundDataDef.getElements().add(dt);
-					compilationUnit.refresh();
 				} else
-					"".toCharArray();
+					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: er0t9erterter");
 			}
+			
+			compilationUnit.refresh();
 		}
 
 		return false;

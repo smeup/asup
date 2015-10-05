@@ -26,6 +26,7 @@ import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QPrototype;
 
 public class CompilationContextHelper {
@@ -55,7 +56,7 @@ public class CompilationContextHelper {
 
 				QNamedNode namedNode = compilationUnit.getNamedNode(atomicTermExpression.getValue(), true);
 				QDataTerm<?> dataTerm = getDataTerm(namedNode);
-				if (dataTerm == null)
+				if (dataTerm == null || dataTerm.isConstant())
 					return true;
 
 				break;
@@ -221,9 +222,9 @@ public class CompilationContextHelper {
 					return multipleAtomicDataDef.getArgument().getJavaClass();
 				} else {
 					// TODO verify
-					if(compoundTermExpression.getValue().startsWith("*IN")){
+					if (compoundTermExpression.getValue().startsWith("*IN")) {
 						return Boolean.class;
-					}else{
+					} else {
 						return dataTerm.getDefinition().getJavaClass();
 					}
 				}
@@ -242,14 +243,19 @@ public class CompilationContextHelper {
 		return null;
 	}
 
-	private static QDataTerm<?> getDataTerm(QNamedNode namedNode) {
+	public static QDataTerm<?> getDataTerm(QNamedNode namedNode) {
 
 		QDataTerm<?> dataTerm = null;
 
 		if (namedNode instanceof QPrototype) {
 			QPrototype prototype = (QPrototype) namedNode;
 			dataTerm = prototype;
-		} else if (namedNode instanceof QDataTerm<?>)
+		}
+		else if (namedNode instanceof QEntryParameter<?>) {
+			QEntryParameter<?> entryParameter = (QEntryParameter<?>) namedNode;
+			dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
+		}
+		else if (namedNode instanceof QDataTerm<?>)
 			dataTerm = (QDataTerm<?>) namedNode;
 		else
 			return null;

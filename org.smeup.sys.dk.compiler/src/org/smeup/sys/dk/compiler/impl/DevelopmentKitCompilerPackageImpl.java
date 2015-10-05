@@ -488,9 +488,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(compilationUnitEClass, theIntegratedLanguageCorePackage.getNameable(), "getNode", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageCorePackage.getNamedNode(), "getNamedNode", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(compilationUnitEClass, this.getCompilationUnit(), "getParentUnit", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageEsamPackage.getPrintTerm(), "getPrinter", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -506,8 +510,6 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(compilationUnitEClass, ecorePackage.getEString(), "getQualifiedName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCorePackage.getNamedNode(), "namedNode", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(compilationUnitEClass, theIntegratedLanguageCorePackage.getNameable(), "getRoot", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(compilationUnitEClass, theIntegratedLanguageFlowPackage.getRoutine(), "getRoutine", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);

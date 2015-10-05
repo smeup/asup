@@ -207,7 +207,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				break;
 			default:
-				System.out.println(getCompilationUnit().getRoot().getName() + "." + target.getName() + "." + propertyName + "=" + value);
+				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value);
 				break;
 			}
 
@@ -227,7 +227,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				break;
 
 			default:
-				System.out.println(getCompilationUnit().getRoot().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue());
+				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue());
 				break;
 			}
 

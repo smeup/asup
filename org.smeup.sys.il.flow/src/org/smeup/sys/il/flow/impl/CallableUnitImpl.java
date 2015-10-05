@@ -217,6 +217,19 @@ public abstract class CallableUnitImpl extends UnitImpl implements QCallableUnit
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean hasRoutines() {
+		
+		if(getFlowSection() == null)
+			return false;
+
+		return !getFlowSection().getRoutines().isEmpty();
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

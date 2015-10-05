@@ -78,7 +78,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	private QDataManager dataManager;
 	@Inject
 	private QResourceManager resourceManager;
-	
+
 	private ResourceSet resourceSet = new ResourceSetImpl();
 	private Map<String, QCompilationUnit> globalContexts = new HashMap<>();
 
@@ -88,11 +88,13 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		QJob job = master.getContext().get(QJob.class);
 
 		List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, procedure, master.getCaseSensitive());
-		moduleContexts.add(master);
+		// moduleContexts.add(master);
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(master.getContext().createChildContext(procedure.getName()), procedure, moduleContexts, master.getCaseSensitive());
-
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(master.getContext().createChildContext(procedure.getName()), procedure, master, moduleContexts, master.getCaseSensitive());
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
 		return compilationUnit;
 	}
@@ -105,10 +107,18 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		else
 			moduleContexts = new ArrayList<QCompilationUnit>();
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, moduleContexts, caseSensitive);
-
-		// compilationUnit
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, null, moduleContexts, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+
+		// dataFactory
+		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+
+		// module
+		compilationUnit.getContext().set(QModule.class, module);
+
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
 		// expression parser
 		if (module.getSetupSection() != null) {
@@ -119,13 +129,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			}
 		}
 
-		// dataFactory
-		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
-
-		// module
-		compilationUnit.getContext().set(QModule.class, module);
-
 		return compilationUnit;
 	}
 
@@ -134,8 +137,11 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		List<QCompilationUnit> compilationUnits = new ArrayList<QCompilationUnit>();
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(file.getName()), file, compilationUnits, caseSensitive);
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(file.getName()), file, null, compilationUnits, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
 		return compilationUnit;
 	}
@@ -151,10 +157,16 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, program, caseSensitive);
 
-		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(program.getName()), program, moduleContexts, caseSensitive);
-
-		// compilation unit
+		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(program.getName()), program, null, moduleContexts, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+
+		// dataFactory
+		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+		compilationUnit.getContext().set(QProgram.class, program);
+
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
 		// expression parser
 		if (program.getSetupSection() != null) {
@@ -166,43 +178,53 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			}
 		}
 
-		// dataFactory
-		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
-
-		compilationUnit.getContext().set(QProgram.class, program);
-
 		return compilationUnit;
 	}
 
 	private void linkCompilationUnit(List<String> compilationUnits, QCompilationUnit compilationUnit) {
 
-		if (compilationUnits.contains(compilationUnit.getRoot().getName()))
+		if (compilationUnits.contains(compilationUnit.getNode().getName()))
 			return;
 
-		compilationUnits.add(compilationUnit.getRoot().getName());
+		compilationUnits.add(compilationUnit.getNode().getName());
+
+		QJob job = compilationUnit.getContext().get(QJob.class);
 
 		// link childs
 		for (QCompilationUnit childCompilationUnit : compilationUnit.getChildCompilationUnits())
 			linkCompilationUnit(compilationUnits, childCompilationUnit);
 
-		// link root
-		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
+		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().get(RPJCallableUnitLinker.class);
 
-		// register linker on compilationUnit
-		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
+		callableUnitLinker.linkModules(compilationUnit);
+		callableUnitLinker.linkFiles(compilationUnit);
+		callableUnitLinker.linkExternalDatas(compilationUnit);
+		callableUnitLinker.linkLikeDatas(compilationUnit);
+		callableUnitLinker.linkOverlayDatas(compilationUnit);
+		callableUnitLinker.linkFormulas(compilationUnit);
 
-		callableUnitLinker.linkModules();
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
+			return;
 
-		callableUnitLinker.linkFiles();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
-		callableUnitLinker.linkExternalDatas();
+		if (callableUnit.getFlowSection() != null) {
+			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
 
-		callableUnitLinker.linkLikeDatas();
+				List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, procedure, compilationUnit.getCaseSensitive());
+				RPJCompilationUnitImpl childCompilationUnit = new RPJCompilationUnitImpl(compilationUnit.getContext().createChildContext(procedure.getName()), procedure, null, moduleContexts,
+						compilationUnit.getCaseSensitive());
+				childCompilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
-		callableUnitLinker.linkOverlayDatas();
+				callableUnitLinker.linkModules(childCompilationUnit);
+				callableUnitLinker.linkFiles(childCompilationUnit);
+				callableUnitLinker.linkExternalDatas(childCompilationUnit);
+				callableUnitLinker.linkLikeDatas(childCompilationUnit);
+				callableUnitLinker.linkOverlayDatas(childCompilationUnit);
+				callableUnitLinker.linkFormulas(childCompilationUnit);
+			}
+		}
 
-		callableUnitLinker.linkFormulas();
 	}
 
 	@Override
@@ -216,11 +238,18 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	private List<QCompilationUnit> prepareContexts(QJob job, Map<String, QCompilationUnit> globalContexts, QCallableUnit callableUnit, CaseSensitiveType caseSensitive) {
 
 		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
-		loadModule(job, moduleContexts, caseSensitive, "*RPJ");
+
+		if (callableUnit instanceof QProcedure)
+			loadModule(job, moduleContexts, caseSensitive, "*PRO");
+		else
+			loadModule(job, moduleContexts, caseSensitive, "*RPJ");
 
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(callableUnit);
 		if (callableUnitInfo.containsSQLStatement())
 			loadModule(job, moduleContexts, caseSensitive, "*SQL");
+		
+		if (callableUnitInfo.containsCMDStatement())
+			loadModule(job, moduleContexts, caseSensitive, "*CMD");
 
 		if (callableUnit.getSetupSection() == null)
 			return moduleContexts;
@@ -280,7 +309,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			if (eObject instanceof QModule) {
 				QModule module = (QModule) eObject;
 
-				// add *RPJ module
 				QCompilationUnit moduleContext = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
 				moduleContexts.add(moduleContext);
 			}
@@ -295,7 +323,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeDatabaseFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QDatabaseFile databaseFile = (QDatabaseFile) compilationUnit.getRoot();
+		QDatabaseFile databaseFile = (QDatabaseFile) compilationUnit.getNode();
 
 		JDTDatabaseFileWriter databaseFileWriter = null;
 
@@ -304,9 +332,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 			if (databaseFile.getDatabaseFormat().isEmpty()) {
 				String table = logicalFile.getTables().get(0);
-				databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName(), table);
+				databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName(), table);
 			} else
-				databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName(), QRecordWrapper.class);
+				databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName(), QRecordWrapper.class);
 
 			QViewDef viewDef = compilationUnit.getContext().getAdapter(logicalFile, QViewDef.class);
 			if (viewDef != null) {
@@ -326,7 +354,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 			}
 		} else
-			databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName(), QRecordWrapper.class);
+			databaseFileWriter = new JDTDatabaseFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName(), QRecordWrapper.class);
 
 		// @Format("BRARTIR")
 		databaseFileWriter.writeImport(Format.class);
@@ -349,9 +377,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeDisplayFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QDisplayFile displayFile = (QDisplayFile) compilationUnit.getRoot();
+		QDisplayFile displayFile = (QDisplayFile) compilationUnit.getNode();
 
-		JDTDisplayFileWriter displayFileWriter = new JDTDisplayFileWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTDisplayFileWriter displayFileWriter = new JDTDisplayFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		displayFileWriter.writeDisplayFile(displayFile);
 
 		displayFileWriter.writeOutputStream(output);
@@ -360,9 +388,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeModule(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QModule module = (QModule) compilationUnit.getRoot();
+		QModule module = (QModule) compilationUnit.getNode();
 
-		JDTModuleWriter moduleWriter = new JDTModuleWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTModuleWriter moduleWriter = new JDTModuleWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		moduleWriter.writeModule(module);
 
 		moduleWriter.writeOutputStream(output);
@@ -371,9 +399,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writePrinterFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QPrinterFile printerFile = (QPrinterFile) compilationUnit.getRoot();
+		QPrinterFile printerFile = (QPrinterFile) compilationUnit.getNode();
 
-		JDTPrinterFileWriter printerFileWriter = new JDTPrinterFileWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTPrinterFileWriter printerFileWriter = new JDTPrinterFileWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		printerFileWriter.writerPrinterFile(printerFile);
 
 		printerFileWriter.writeOutputStream(output);
@@ -383,9 +411,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeProgram(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QProgram program = (QProgram) compilationUnit.getRoot();
+		QProgram program = (QProgram) compilationUnit.getNode();
 
-		JDTProgramWriter programWriter = new JDTProgramWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTProgramWriter programWriter = new JDTProgramWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		programWriter.writeProgram(program);
 
 		programWriter.writeOutputStream(output);
@@ -394,9 +422,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeProgramTest(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QProgram program = (QProgram) compilationUnit.getRoot();
+		QProgram program = (QProgram) compilationUnit.getNode();
 
-		JDTProgramTestWriter programTestWriter = new JDTProgramTestWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTProgramTestWriter programTestWriter = new JDTProgramTestWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		programTestWriter.writeProgramTest(program);
 
 		programTestWriter.writeOutputStream(output);
@@ -405,9 +433,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	@Override
 	public void writeStub(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException {
 
-		QProgram program = (QProgram) compilationUnit.getRoot();
+		QProgram program = (QProgram) compilationUnit.getNode();
 
-		JDTStubWriter skeletonWriter = new JDTStubWriter(null, compilationUnit, setup, compilationUnit.getRoot().getName());
+		JDTStubWriter skeletonWriter = new JDTStubWriter(null, compilationUnit, setup, compilationUnit.getNode().getName());
 		skeletonWriter.writeSkeleton(program);
 
 		skeletonWriter.writeOutputStream(output);

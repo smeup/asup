@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<il-flow:Module
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
+    xmlns:il-flow="http://www.smeup.org/asup/il/flow"
+    xsi:schemaLocation="http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/il/flow ../../org.smeup.sys.il.flow/model/il-flow.ecore"
+    name="*PRO">
+  <flowSection>
+    <prototypes
+        name="%parms">
+      <definition
+          xsi:type="il-data-def:DecimalDef"
+          precision="3"/>
+    </prototypes>
+  </flowSection>
+</il-flow:Module>

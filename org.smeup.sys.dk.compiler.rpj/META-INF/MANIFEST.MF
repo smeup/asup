@@ -20,4 +20,5 @@ Require-Bundle: org.smeup.sys.il.flow,
  org.smeup.sys.os.file,
  org.smeup.sys.db.syntax,
  org.smeup.sys.os.lib,
- org.smeup.sys.dk.source
+ org.smeup.sys.dk.source,
+ org.smeup.sys.il.core

@@ -27,15 +27,17 @@ import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
 import org.smeup.sys.os.pgm.rpj.RPJDatabaseSupport;
+import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
 public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
-	public JDTUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+	public JDTUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
+		super(root, compilationUnit, compilationSetup, name, private_);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -62,18 +64,24 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 		writeImport(QData.class);
 		writeImport(RPJProgramSupport.class);
 
+		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
-		// writeAnnotation(field, ModuleDef.class, "name", "*RPJ");
 		writeAnnotation(field, Inject.class);
-		// writeAnnotation(field, Named.class, "value", "*RPJ");
-
 		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-		field.setType(getAST().newSimpleType(getAST().newName(RPJProgramSupport.class.getSimpleName())));
-		variable.setName(getAST().newSimpleName("qRPJ"));
-		getTarget().bodyDeclarations().add(field);
 
+		if(getCompilationUnit().getNode() instanceof QProcedure) {
+			field.setType(getAST().newSimpleType(getAST().newName(RPJProcedureSupport.class.getSimpleName())));
+			variable.setName(getAST().newSimpleName("qPRO"));	
+		}
+		else {
+			field.setType(getAST().newSimpleType(getAST().newName(RPJProgramSupport.class.getSimpleName())));
+			variable.setName(getAST().newSimpleName("qRPJ"));
+		}
+		getTarget().bodyDeclarations().add(field);
+		
+		
 		// *CMD
 		if (callableUnitInfo.containsCMDStatement()) {
 			writeImport(RPJCommandSupport.class);

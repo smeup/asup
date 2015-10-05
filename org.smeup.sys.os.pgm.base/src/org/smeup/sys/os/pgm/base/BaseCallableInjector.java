@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -242,6 +243,10 @@ public class BaseCallableInjector {
 					throw new OperatingSystemRuntimeException("Unknown field type: " + type);
 				} else
 					field.set(callable, object);
+			}
+			// @DataDef
+			else if (field.getAnnotation(DataDef.class) != null) {
+				"".toCharArray();
 			}
 
 			field.setAccessible(false);

@@ -23,12 +23,10 @@ import org.smeup.sys.os.file.QExternalFile;
 
 public class RPJDataTermLinker extends DataTermVisitorImpl {
 
-	private RPJCallableUnitLinker callableUnitLinker;
-
 	@Inject
-	public RPJDataTermLinker(QCompilationUnit compilationUnit) {
-		this.callableUnitLinker = compilationUnit.getContext().get(RPJCallableUnitLinker.class);
-	}
+	private RPJCallableUnitLinker callableUnitLinker;
+	@Inject
+	private QCompilationUnit compilationUnit;	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -45,7 +43,7 @@ public class RPJDataTermLinker extends DataTermVisitorImpl {
 			if (externalFile != null) {
 				QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 				if(compilerLinker == null) {
-					compilerLinker = callableUnitLinker.linkExternalFile((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);
+					compilerLinker = callableUnitLinker.linkExternalFile(compilationUnit.getContext(), (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);
 					if(compilerLinker != null)
 						dataTerm.getFacets().add(compilerLinker);
 				}
@@ -57,7 +55,7 @@ public class RPJDataTermLinker extends DataTermVisitorImpl {
 			if (externalFile != null) {
 				QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 				if(compilerLinker == null) {
-					compilerLinker = callableUnitLinker.linkExternalFile((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);
+					compilerLinker = callableUnitLinker.linkExternalFile(compilationUnit.getContext(), (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);
 					if(compilerLinker != null)
 						dataTerm.getFacets().add(compilerLinker);
 				}

@@ -56,7 +56,6 @@ import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QAssignmentExpression;
-import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -291,8 +290,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Block block = blocks.peek();
 
 		IfStatement ifSt = ast.newIfStatement();
-		if (statement.getCondition().contains("%PARMS"))
-			"".toCharArray();
 
 		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
 
@@ -640,7 +637,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		if (statement.getValue() != null) {
 			QExpression returnExpression = expressionParser.parseExpression(statement.getValue());
 
-			QProcedure procedure = (QProcedure) this.compilationUnit.getRoot();
+			QProcedure procedure = (QProcedure) this.compilationUnit.getNode();
 
 			returnSt.setExpression(buildExpression(ast, returnExpression, procedure.getReturnType().getDataClass()));
 			block.statements().add(returnSt);
@@ -722,7 +719,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(routine.getName())));
 
-		if (routine.isChild() && routine.getParent() != compilationUnit.getRoot()) {
+		if (routine.isChild() && routine.getParent() != compilationUnit.getNode()) {
 			QNode parent = routine.getParent();
 			if (parent instanceof QNamedNode) {
 				// invoke on module
@@ -910,8 +907,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		return false;
 	}
 	
-	
-
 	public void writeAssertion(QAnnotationTest qAnnotationTest, String message) {
 
 		Block block = getBlocks().peek();
@@ -924,7 +919,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			return;
 
 		Expression leftExpression = buildExpression(ast, relationalExpression.getLeftOperand(), null);
-		Expression rightExpression = buildExpression(ast, relationalExpression.getRightOperand(), null);
 
 		String messageNormalized = "";
 		if(qAnnotationTest.getMessage()==null || qAnnotationTest.getMessage().isEmpty()){

@@ -149,10 +149,26 @@ public interface QCompilationUnit extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QNameable getNode();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
 	QNamedNode getNamedNode(String name, boolean deep);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	QCompilationUnit getParentUnit();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,14 +201,6 @@ public interface QCompilationUnit extends QContextProvider {
 	 * @generated
 	 */
 	String getQualifiedName(QNamedNode namedNode);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QNameable getRoot();
 
 	/**
 	 * <!-- begin-user-doc -->

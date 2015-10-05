@@ -33,7 +33,7 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 	public JDTModuleWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+		super(root, compilationUnit, compilationSetup, name, false);
 
 		writeImport(OperatingSystemRuntimeException.class);
 	}

@@ -28,6 +28,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QRemap;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -67,8 +68,6 @@ import org.smeup.sys.os.module.QModule;
 public class RPJCallableUnitLinker {
 
 	@Inject
-	private QCompilationUnit compilationUnit;
-	@Inject
 	private QJob job;
 	@Inject
 	private QFileManager fileManager;
@@ -90,29 +89,29 @@ public class RPJCallableUnitLinker {
 		this.libraryReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.LIBRARY_LIST);
 	}
 
-	public void linkExternalDatas() {
+	public void linkExternalDatas(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QDataSection dataSection = callableUnit.getDataSection();
 		if (dataSection == null)
 			return;
 
-		RPJDataTermLinker externalNameLinker = new RPJDataTermLinker(compilationUnit);
+		RPJDataTermLinker externalNameLinker = compilationUnit.getContext().make(RPJDataTermLinker.class);
 		for (QDataTerm<?> dataTerm : dataSection.getDatas())
 			dataTerm.accept(externalNameLinker);
 
 	}
 
-	public void linkLikeDatas() {
+	public void linkLikeDatas(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QDataSection dataSection = callableUnit.getDataSection();
 		if (dataSection == null)
@@ -148,12 +147,12 @@ public class RPJCallableUnitLinker {
 		}
 	}
 
-	public void linkFormulas() {
+	public void linkFormulas(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QDataSection dataSection = callableUnit.getDataSection();
 		if (dataSection == null)
@@ -176,12 +175,12 @@ public class RPJCallableUnitLinker {
 
 	}
 
-	public void linkOverlayDatas() {
+	public void linkOverlayDatas(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QDataSection dataSection = callableUnit.getDataSection();
 		if (dataSection == null)
@@ -204,12 +203,12 @@ public class RPJCallableUnitLinker {
 
 	}
 
-	public void linkModules() {
+	public void linkModules(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QSetupSection setupSection = callableUnit.getSetupSection();
 		if (setupSection == null)
@@ -221,7 +220,7 @@ public class RPJCallableUnitLinker {
 			if (module == null)
 				throw new OperatingSystemRuntimeException("Module not found: " + moduleName);
 
-			Class<?> linkedClass = loadClass(module);
+			Class<?> linkedClass = loadClass(module, compilationUnit.getContext());
 			if (linkedClass == null)
 				throw new DevelopmentKitCompilerRuntimeException("Linked class not found: " + module);
 
@@ -237,29 +236,29 @@ public class RPJCallableUnitLinker {
 
 	}
 
-	public void linkFiles() {
+	public void linkFiles(QCompilationUnit compilationUnit) {
 
-		if (!(compilationUnit.getRoot() instanceof QCallableUnit))
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
 			return;
 
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
 
 		QFileSection fileSection = callableUnit.getFileSection();
 		if (fileSection == null)
 			return;
 
 		for (QDataSetTerm dataSetTerm : fileSection.getDataSets())
-			linkFileTerm(dataSetTerm);
+			linkFileTerm(dataSetTerm, compilationUnit);
 
 		for (QDisplayTerm displayTerm : fileSection.getDisplays())
-			linkFileTerm(displayTerm);
+			linkFileTerm(displayTerm, compilationUnit);
 
 		for (QPrintTerm printerTerm : fileSection.getPrinters())
-			linkFileTerm(printerTerm);
+			linkFileTerm(printerTerm, compilationUnit);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes"})
-	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm) {
+	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm, QCompilationUnit compilationUnit) {
 
 		QFile file = getFile(fileTerm.getFileName());
 
@@ -267,7 +266,7 @@ public class RPJCallableUnitLinker {
 		if (file == null || file instanceof QSourceFile) {
 
 			// redefine record
-			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataRecord = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) this.compilationUnit.getDataTerm(fileTerm.getName(), false);
+			QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> dataRecord = (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) compilationUnit.getDataTerm(fileTerm.getName(), false);
 			if (dataRecord == null)
 				return;
 
@@ -277,7 +276,7 @@ public class RPJCallableUnitLinker {
 			internalFileFormat.setDefinition(dataRecord.getDefinition());
 
 			// remove redefined record
-			this.compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
+			compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 
 			return;
 		} else {
@@ -302,12 +301,12 @@ public class RPJCallableUnitLinker {
 				if (dataSet.getPrefix() != null)
 					dataSet.getFormat().getDefinition().setPrefix(dataSet.getPrefix());
 
-				QCompilerLinker compilerLinker = linkExternalFile(dataSet.getFormat(), externalFile);
+				QCompilerLinker compilerLinker = linkExternalFile(compilationUnit.getContext(), dataSet.getFormat(), externalFile);
 				if (compilerLinker != null)
 					dataSet.getFacets().add(compilerLinker);
 
 				// redefine record
-				QDataTerm<QCompoundDataDef<?, ?>> dataRecord = (QDataTerm<QCompoundDataDef<?, ?>>) this.compilationUnit.getDataTerm(dataSet.getFormatName(), false);
+				QDataTerm<QCompoundDataDef<?, ?>> dataRecord = (QDataTerm<QCompoundDataDef<?, ?>>) compilationUnit.getDataTerm(dataSet.getFormatName(), false);
 				if (dataRecord == null)
 					return;
 
@@ -318,14 +317,14 @@ public class RPJCallableUnitLinker {
 						continue;
 
 					for (QDataTerm<?> recordElement : dataSet.getFormat().getDefinition().getElements())
-						if (this.compilationUnit.equalsTermName(recordElement.getName(), element.getName())) {
+						if (compilationUnit.equalsTermName(recordElement.getName(), element.getName())) {
 							recordElement.getFacets().add(remap);
 							break;
 						}
 				}
 
 				// remove redefined record
-				this.compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
+				compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 			} else if (file instanceof QDisplayFile) {
 
 				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
@@ -360,7 +359,7 @@ public class RPJCallableUnitLinker {
 					displayTerm.setFormat(internalFormat);
 				}
 
-				linkExternalFile(displayTerm.getFormat(), externalFile);
+				linkExternalFile(compilationUnit.getContext(), displayTerm.getFormat(), externalFile);
 
 			} else if (file instanceof QPrinterFile) {
 
@@ -396,24 +395,24 @@ public class RPJCallableUnitLinker {
 					printTerm.setFormat(internalFormat);
 				}
 
-				linkExternalFile(printTerm.getFormat(), externalFile);
+				linkExternalFile(compilationUnit.getContext(), printTerm.getFormat(), externalFile);
 
 			}
 		}
 
-		QCompilerLinker compilerLinker = buildCompilerLinker(file);
+		QCompilerLinker compilerLinker = buildCompilerLinker(file, compilationUnit.getContext());
 		if (compilerLinker != null)
 			fileTerm.getFacets().add(compilerLinker);
 	}
 
-	public QCompilerLinker linkExternalFile(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile) {
+	public QCompilerLinker linkExternalFile(QContext context, QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile) {
 
 		QFile file = getFile(externalFile.getName());
 
-		return linkExternalFile(qDataTerm, externalFile, file);
+		return linkExternalFile(context, qDataTerm, externalFile, file);
 	}
 
-	public QCompilerLinker linkExternalFile(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile, QFile file) {
+	public QCompilerLinker linkExternalFile(QContext context, QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile, QFile file) {
 
 		if (externalFile.getName().startsWith("*"))
 			return null;
@@ -470,12 +469,12 @@ public class RPJCallableUnitLinker {
 		} else
 			throw new OperatingSystemRuntimeException("Unknown file type: " + externalFile.getName());
 
-		return buildCompilerLinker(file);
+		return buildCompilerLinker(file, context);
 	}
 
-	private QCompilerLinker buildCompilerLinker(QFile file) {
+	private QCompilerLinker buildCompilerLinker(QFile file, QContext context) {
 
-		Class<?> linkedClass = loadClass(file);
+		Class<?> linkedClass = loadClass(file, context);
 		if (linkedClass == null)
 			return null;
 
@@ -510,7 +509,7 @@ public class RPJCallableUnitLinker {
 		return file;
 	}
 
-	private Class<?> loadClass(QFile file) {
+	private Class<?> loadClass(QFile file, QContext context) {
 
 		// TODO
 		QLibrary library = libraryReader.lookup(file.getLibrary());
@@ -524,11 +523,11 @@ public class RPJCallableUnitLinker {
 		URI packageURI = library.getPackageURI().resolve(file.getPackageInfoURI());
 
 		String address = "asup:/omac/" + pathURI + packageURI.toString().replaceAll("/", ".") + "." + file.getName();
-		Class<?> linkedClass = compilationUnit.getContext().loadClass(address);
+		Class<?> linkedClass = context.loadClass(address);
 
 		if (linkedClass == null) {
 			address = "asup:/omac/" + file.getLibrary() + "/" + file.getApplication() + ".file." + file.getName();
-			linkedClass = compilationUnit.getContext().loadClass(address);
+			linkedClass = context.loadClass(address);
 		}
 
 		// search on parent library
@@ -540,7 +539,7 @@ public class RPJCallableUnitLinker {
 					throw new OperatingSystemRuntimeException("Master library not found: " + library);
 
 				address = "asup:/omac/" + masterLibrary.getName() + "/" + file.getApplication() + ".file." + file.getName();
-				linkedClass = compilationUnit.getContext().loadClass(address);
+				linkedClass = context.loadClass(address);
 			}
 
 		return linkedClass;
@@ -553,7 +552,7 @@ public class RPJCallableUnitLinker {
 		return module;
 	}
 
-	private Class<?> loadClass(QModule module) {
+	private Class<?> loadClass(QModule module, QContext context) {
 
 		// TODO
 		QLibrary library = libraryReader.lookup(module.getLibrary());
@@ -565,11 +564,11 @@ public class RPJCallableUnitLinker {
 		URI packageURI = library.getPackageURI().resolve(module.getPackageInfoURI());
 
 		String address = "asup:/omac/" + pathURI + packageURI.toString().replaceAll("/", ".") + "." + module.getName();
-		Class<?> linkedClass = compilationUnit.getContext().loadClass(address);
+		Class<?> linkedClass = context.loadClass(address);
 
 		if (linkedClass == null) {
 			address = "asup:/omac/" + module.getLibrary() + "/" + module.getApplication() + ".module." + module.getName();
-			linkedClass = compilationUnit.getContext().loadClass(address);
+			linkedClass = context.loadClass(address);
 		}
 
 		// search on parent library
@@ -581,7 +580,7 @@ public class RPJCallableUnitLinker {
 					throw new OperatingSystemRuntimeException("Master library not found: " + library);
 
 				address = "asup:/omac/" + masterLibrary.getName() + "/" + module.getApplication() + ".module." + module.getName();
-				linkedClass = compilationUnit.getContext().loadClass(address);
+				linkedClass = context.loadClass(address);
 			}
 
 		return linkedClass;

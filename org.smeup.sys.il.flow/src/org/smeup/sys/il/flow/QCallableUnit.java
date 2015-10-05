@@ -106,6 +106,14 @@ public interface QCallableUnit extends QUnit {
 	void setFlowSection(QFlowSection value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean hasRoutines();
+
+	/**
 	 * Returns the value of the '<em><b>Setup Section</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>

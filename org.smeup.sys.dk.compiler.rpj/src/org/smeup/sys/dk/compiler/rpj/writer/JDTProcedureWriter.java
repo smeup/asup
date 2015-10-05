@@ -14,6 +14,8 @@ package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
 
+import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.Assignment.Operator;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.FieldAccess;
@@ -45,16 +47,16 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 	private boolean static_;
 	private boolean private_;
-	
+
 	@SuppressWarnings("unchecked")
 	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_, boolean static_) {
-		super(root, compilationUnit, compilationSetup, name);
-		
+		super(root, compilationUnit, compilationSetup, name, private_);
+
 		writeImport(Procedure.class);
-		
+
 		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
-		
+
 		this.static_ = static_;
 		this.private_ = private_;
 	}
@@ -63,11 +65,10 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		refactCallableUnit(procedure);
 
-		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
-
 		writeProcedureAnnotation(procedure);
 
+		// unit info
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(procedure);
 		writeSupportFields(callableUnitInfo);
 
 		if (procedure.getSetupSection() != null)
@@ -75,20 +76,20 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		if (procedure.getDataSection() != null)
 			writeDataFields(procedure.getDataSection());
-		
+
 		if (procedure.getFileSection() != null) {
 			writeDataSets(procedure.getFileSection().getDataSets());
 			writeDisplays(procedure.getFileSection().getDisplays());
 			writePrinters(procedure.getFileSection().getPrinters());
 			writeKeyLists(procedure.getFileSection().getKeyLists());
 		}
-		
-		if (procedure.getEntry() != null) {
+
+		if (procedure.getEntry() != null && procedure.hasRoutines()) {
 			for (QEntryParameter<?> entryParameter : procedure.getEntry().getParameters()) {
 				writePublicField((QDataTerm<?>) entryParameter.getDelegate(), false);
 			}
 		}
-		
+
 		// main
 		if (procedure.getMain() != null) {
 			writeProcedureEntry(procedure);
@@ -101,8 +102,13 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		// datas
 		if (procedure.getDataSection() != null)
-			for (QDataTerm<?> dataTerm : procedure.getDataSection().getDatas())
+			for (QDataTerm<?> dataTerm : procedure.getDataSection().getDatas()) {
+				
+				if(getCompilationUnit().getParentUnit().getDataTerm(dataTerm.getName(), false) != null)
+					continue;
+				
 				writeInnerData(dataTerm, this.private_, this.static_);
+			}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -112,14 +118,14 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		getTarget().bodyDeclarations().add(methodDeclaration);
 
 		methodDeclaration.setName(getAST().newSimpleName("qExec"));
-		
+
 		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
 		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
 		writeImport(Entry.class);
 		methodDeclaration.modifiers().add(entryAnnotation);
-		
+
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-		
+
 		if (procedure.getReturnType() != null) {
 			QDataTerm<?> tempTerm = new DataTermImpl<QDataDef<?>>() {
 				private static final long serialVersionUID = 1L;
@@ -140,28 +146,37 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 			QEntry entry = procedure.getEntry();
 			writeEntry(methodDeclaration, entry);
 
-			for (QEntryParameter<?> entryParameter : entry.getParameters()) {
+			if (procedure.hasRoutines()) {
+				for (QEntryParameter<?> entryParameter : entry.getParameters()) {
 
-				MethodInvocation methodInvocation = getAST().newMethodInvocation();
-				FieldAccess thisAccess = getAST().newFieldAccess();
-				thisAccess.setExpression(getAST().newThisExpression());
-				thisAccess.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+					QDataTerm<?> delegateTerm = (QDataTerm<?>) entryParameter.getDelegate();
 
-				QDataTerm<?> delegateTerm = (QDataTerm<?>) entryParameter.getDelegate();
+					FieldAccess thisAccess = getAST().newFieldAccess();
+					thisAccess.setExpression(getAST().newThisExpression());
+					thisAccess.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
 
-				if (delegateTerm.isConstant()) {
-					methodInvocation.setName(getAST().newSimpleName("eval"));
-					methodInvocation.setExpression(thisAccess);
-					methodInvocation.arguments().add(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
-				} else {
-					methodInvocation.setName(getAST().newSimpleName("assign"));
-					methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
-					methodInvocation.arguments().add(thisAccess);
+					if (delegateTerm.isConstant()) {						
+						Assignment assignment = getAST().newAssignment();
+
+						assignment.setLeftHandSide(thisAccess);
+						assignment.setOperator(Operator.ASSIGN);
+						assignment.setRightHandSide(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(assignment);
+						block.statements().add(expressionStatement);
+
+					} else {
+
+						MethodInvocation methodInvocation = getAST().newMethodInvocation();
+						methodInvocation.setName(getAST().newSimpleName("assign"));
+						methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
+						methodInvocation.arguments().add(thisAccess);
+						
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+						block.statements().add(expressionStatement);
+					}
+
 				}
-
-				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-				block.statements().add(expressionStatement);
-
 			}
 		}
 
@@ -180,7 +195,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		statementWriter.getBlocks().pop();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void writeProcedureAnnotation(QProcedure procedure) {
 

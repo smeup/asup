@@ -43,7 +43,7 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 	public JDTProgramWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+		super(root, compilationUnit, compilationSetup, name, false);
 
 		writeImport(Program.class);
 		writeImport(OperatingSystemRuntimeException.class);
@@ -52,9 +52,6 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 	public void writeProgram(QProgram program) throws IOException {
 
 		refactCallableUnit(program);
-
-		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
 
 		// modules
 		List<String> modules = new ArrayList<>();
@@ -77,6 +74,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		}
 
 		writeProgramAnnotation(program);
+
+		// unit info
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
 
 		writeSupportFields(callableUnitInfo);
 

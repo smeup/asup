@@ -1656,6 +1656,8 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		initEReference(getCallableUnit_FileSection(), this.getFileSection(), null, "fileSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallableUnit_FlowSection(), this.getFlowSection(), null, "flowSection", null, 0, 1, QCallableUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(callableUnitEClass, ecorePackage.getEBoolean(), "hasRoutines", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(commandExecEClass, QCommandExec.class, "CommandExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandExec_Statement(), ecorePackage.getEString(), "statement", null, 1, 1, QCommandExec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

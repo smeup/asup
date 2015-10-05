@@ -21,7 +21,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.smeup.sys.db.esql.QCursorTerm;
@@ -66,9 +65,10 @@ import org.smeup.sys.os.file.QExternalFile;
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QContext context;
-	private QNameable root;
+	private QNameable node;
 
-	private List<QCompilationUnit> compilationUnits;
+	private QCompilationUnit parentUnit;
+	private List<QCompilationUnit> childUnits;
 	private CaseSensitiveType caseSensitive;
 
 	private List<QDataSetTerm> dataSets;
@@ -85,16 +85,17 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
 	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "SET", "IF", "BREAK"));
 
-	public RPJCompilationUnitImpl(QContext context, QNameable root, List<QCompilationUnit> compilationUnits, CaseSensitiveType caseSensitive) {
+	public RPJCompilationUnitImpl(QContext context, QNameable node, QCompilationUnit parentUnit, List<QCompilationUnit> childUnits, CaseSensitiveType caseSensitive) {
 
 		this.context = context;
-		this.compilationUnits = compilationUnits;
+		this.parentUnit = parentUnit;
+		this.childUnits = childUnits;
 		this.caseSensitive = caseSensitive;
-		this.root = root;
+		this.node = node;
 		this.setTrashCan(QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationTrashCan());
 
-		if (root instanceof QCallableUnit) {
-			QCallableUnit callableUnit = (QCallableUnit) root;
+		if (node instanceof QCallableUnit) {
+			QCallableUnit callableUnit = (QCallableUnit) node;
 
 			if (callableUnit.getFileSection() != null) {
 				dataSets = callableUnit.getFileSection().getDataSets();
@@ -114,6 +115,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		if (dataSets == null)
 			dataSets = new ArrayList<QDataSetTerm>();
+		if (prototypes == null)
+			prototypes = new ArrayList<QPrototype>();
 		if (keyLists == null)
 			keyLists = new ArrayList<QKeyListTerm>();
 		if (cursors == null)
@@ -128,8 +131,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			routines = new ArrayList<QRoutine>();
 		if (procedures == null)
 			procedures = new ArrayList<QProcedure>();
-		if (prototypes == null)
-			prototypes = new ArrayList<QPrototype>();
 
 		refresh();
 	}
@@ -140,31 +141,40 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		this.cachedTerms = new HashMap<String, QDataTerm<?>>();
 		this.cachedPrototypes = new HashMap<String, QPrototype>();
 
-		for (QCompilationUnit compilationUnit : compilationUnits)
-			if (compilationUnit.getRoot() instanceof QCallableUnit) {
-				QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getRoot();
-				if (callableUnit.getDataSection() == null)
+		for (QCompilationUnit compilationUnit : this.childUnits)
+			refreshUnit(compilationUnit);
+
+		if (this.parentUnit != null)
+			refreshUnit(this.parentUnit);
+	}
+
+	private void refreshUnit(QCompilationUnit compilationUnit) {
+
+		if (!(compilationUnit.getNode() instanceof QCallableUnit))
+			return;
+
+		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
+
+		if (callableUnit.getDataSection() == null)
+			return;
+
+		for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas()) {
+			if (!dataTerm.getName().startsWith(callableUnit.getName()))
+				continue;
+
+			cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
+
+			if (dataTerm.getDataTermType().isCompound()) {
+				@SuppressWarnings("unchecked")
+				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) dataTerm;
+
+				if (compoundDataTerm.getDefinition().isQualified())
 					continue;
 
-				for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas()) {
-					if (!dataTerm.getName().startsWith(callableUnit.getName()))
-						continue;
-
-					cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
-
-					if (dataTerm.getDataTermType().isCompound()) {
-						@SuppressWarnings("unchecked")
-						QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) dataTerm;
-
-						if (compoundDataTerm.getDefinition().isQualified())
-							continue;
-
-						for (QDataTerm<?> element : compoundDataTerm.getDefinition().getElements())
-							cachedTerms.put(normalizeTermName(element.getName()), element);
-					}
-				}
+				for (QDataTerm<?> element : compoundDataTerm.getDefinition().getElements())
+					cachedTerms.put(normalizeTermName(element.getName()), element);
 			}
-
+		}
 	}
 
 	@Override
@@ -180,12 +190,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (dataSetTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				dataSetTerm = compilationUnit.getDataSet(name, true);
 
 				if (dataSetTerm != null)
 					break;
 			}
+
+		if (dataSetTerm == null && this.parentUnit != null && deep)
+			dataSetTerm = this.parentUnit.getDataSet(name, deep);
 
 		return dataSetTerm;
 	}
@@ -203,12 +216,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (keyListTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				keyListTerm = compilationUnit.getKeyList(name, true);
 
 				if (keyListTerm != null)
 					break;
 			}
+
+		if (keyListTerm == null && this.parentUnit != null && deep)
+			keyListTerm = this.parentUnit.getKeyList(name, deep);
 
 		return keyListTerm;
 
@@ -221,15 +237,27 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm != null)
 			return dataTerm;
 
+		QCallableUnit callableUnit = (QCallableUnit) getNode();
+
 		// search on dataTermContainer
-		if (dataTerm == null && ((QCallableUnit) getRoot()).getDataSection() != null)
-			dataTerm = findData(((QCallableUnit) getRoot()).getDataSection().getDatas(), name, null, 0);
+		if (dataTerm == null && callableUnit.getDataSection() != null)
+			dataTerm = findData(callableUnit.getDataSection().getDatas(), name, null, 0);
+
+		if (getNode() instanceof QProcedure) {
+			QProcedure qProcedure = (QProcedure) getNode();
+
+			for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
+				if (equalsTermName(entryParameter.getName(), name)) {
+					dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
+					break;
+				}
+		}
 
 		// deep search on module
 		if (dataTerm == null && deep) {
 
-			for (QCompilationUnit compilationUnit : compilationUnits)
-				if (name.toUpperCase().startsWith(compilationUnit.getRoot().getName())) {
+			for (QCompilationUnit compilationUnit : this.childUnits)
+				if (name.toUpperCase().startsWith(compilationUnit.getNode().getName())) {
 					dataTerm = compilationUnit.getDataTerm(name, true);
 
 					if (dataTerm != null)
@@ -237,8 +265,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				}
 
 			if (dataTerm == null)
-				for (QCompilationUnit compilationUnit : compilationUnits) {
-					if (name.toUpperCase().startsWith(compilationUnit.getRoot().getName()))
+				for (QCompilationUnit compilationUnit : this.childUnits) {
+					if (name.toUpperCase().startsWith(compilationUnit.getNode().getName()))
 						continue;
 
 					dataTerm = compilationUnit.getDataTerm(name, true);
@@ -247,6 +275,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						break;
 				}
 		}
+
+		if (dataTerm == null && this.parentUnit != null && deep)
+			dataTerm = this.parentUnit.getDataTerm(name, deep);
 
 		// search on dataSet
 		if (dataTerm == null) {
@@ -334,12 +365,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (displayTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				displayTerm = compilationUnit.getDisplay(name, true);
 
 				if (displayTerm != null)
 					break;
 			}
+
+		if (displayTerm == null && this.parentUnit != null && deep)
+			displayTerm = this.parentUnit.getDisplay(name, deep);
 
 		return displayTerm;
 	}
@@ -357,12 +391,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (printerTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				printerTerm = compilationUnit.getPrinter(name, true);
 
 				if (printerTerm != null)
 					break;
 			}
+
+		if (printerTerm == null && this.parentUnit != null && deep)
+			printerTerm = this.parentUnit.getPrinter(name, deep);
 
 		return printerTerm;
 	}
@@ -469,13 +506,16 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (procedure == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 
 				procedure = compilationUnit.getProcedure(name, true);
 
 				if (procedure != null)
 					break;
 			}
+
+		if (procedure == null && this.parentUnit != null && deep)
+			procedure = this.parentUnit.getProcedure(name, deep);
 
 		return procedure;
 	}
@@ -485,22 +525,25 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		QModule module = null;
 
-		for (QCompilationUnit compilationUnit : compilationUnits)
-			if (compilationUnit.getRoot() instanceof QModule)
-				if (equalsTermName(compilationUnit.getRoot().getName(), name)) {
-					module = (QModule) compilationUnit.getRoot();
+		for (QCompilationUnit compilationUnit : this.childUnits)
+			if (compilationUnit.getNode() instanceof QModule)
+				if (equalsTermName(compilationUnit.getNode().getName(), name)) {
+					module = (QModule) compilationUnit.getNode();
 					break;
 				}
 
 		// deep search
 		if (module == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 
 				module = compilationUnit.getModule(name, true);
 
 				if (module != null)
 					break;
 			}
+
+		if (module == null && this.parentUnit != null && deep)
+			module = this.parentUnit.getModule(name, deep);
 
 		return module;
 	}
@@ -520,12 +563,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (prototype == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				prototype = compilationUnit.getPrototype(name, true);
 
 				if (prototype != null)
 					break;
 			}
+
+		if (prototype == null && this.parentUnit != null && deep)
+			prototype = this.parentUnit.getPrototype(name, deep);
 
 		if (prototype != null)
 			cachedPrototypes.put(name, prototype);
@@ -546,13 +592,16 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (routine == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 
 				routine = compilationUnit.getRoutine(name, true);
 
 				if (routine != null)
 					break;
 			}
+
+		if (routine == null && this.parentUnit != null && deep)
+			routine = this.parentUnit.getRoutine(name, deep);
 
 		return routine;
 	}
@@ -570,12 +619,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (cursorTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				cursorTerm = compilationUnit.getCursor(name, true);
 
 				if (cursorTerm != null)
 					break;
 			}
+
+		if (cursorTerm == null && this.parentUnit != null && deep)
+			cursorTerm = this.parentUnit.getCursor(name, deep);
 
 		return cursorTerm;
 	}
@@ -593,12 +645,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// deep search
 		if (statementTerm == null && deep)
-			for (QCompilationUnit compilationUnit : compilationUnits) {
+			for (QCompilationUnit compilationUnit : this.childUnits) {
 				statementTerm = compilationUnit.getStatement(name, true);
 
 				if (statementTerm != null)
 					break;
 			}
+
+		if (statementTerm == null && this.parentUnit != null && deep)
+			statementTerm = this.parentUnit.getStatement(name, deep);
 
 		return statementTerm;
 	}
@@ -612,13 +667,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// data
 		if (name.startsWith("*"))
-			order = "EDPTMCSFK";
+			order = "DPTMCSFK";
 		// prototype
 		else if (name.startsWith("%"))
-			order = "EPTDMCSFK";
+			order = "PTDMCSFK";
 		// other
 		else
-			order = "EMCSFKPDT";
+			order = "MCSFKPDT";
 
 		QNamedNode namedNode = getNamedNode(name, deep, order);
 
@@ -633,19 +688,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			switch (c) {
 
-			// entry
-			case 'E':
-				if (getRoot() instanceof QProcedure) {
-					QProcedure qProcedure = (QProcedure) getRoot();
-
-					for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
-						if (equalsTermName(entryParameter.getName(), name)) {
-							namedNode = entryParameter;
-							break;
-						}
-				}
-
-				break;
 			// dataTerm
 			case 'D':
 				namedNode = getDataTerm(name, deep);
@@ -691,57 +733,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		}
 
 		return namedNode;
-	}
-
-	@Override
-	public String getQualifiedName(QNamedNode namedNode) {
-
-		String name = normalizeTermName(namedNode.getName());
-
-		QNode node = namedNode;
-
-		while (node.isChild()) {
-			node = node.getParent();
-
-			if (node instanceof QDataTerm<?>) {
-				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
-				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
-					name = "current()." + name;
-			} else if (node instanceof QFileTerm)
-				name = "get()." + name;
-
-			if (node.equals(getRoot()))
-				continue;
-
-			if (node instanceof QEntry)
-				continue;
-
-			if (node instanceof QProgram)
-				continue;
-			
-			if (node instanceof QProcedure)
-				continue;
-
-			if (((EObject) node).eContainer() instanceof QDataSetTerm)
-				continue;
-
-			QNamedNode namedChildNode = (QNamedNode) node;
-			if (namedChildNode.getName() == null)
-				continue;
-
-			if(node instanceof QModule) {
-				if(getRoot() instanceof QProcedure) {
-					QProcedure procedure = (QProcedure) getRoot();
-					
-					if(((EObject)procedure).eContainer().eContainer() == node)
-						continue;					
-				}
-			}
-
-			name = normalizeTermName(namedChildNode.getName()) + "." + name;
-		}
-
-		return name;
 	}
 
 	@Override
@@ -840,8 +831,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
-	public QNameable getRoot() {
-		return this.root;
+	public QNameable getNode() {
+		return this.node;
 	}
 
 	@Override
@@ -865,7 +856,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	@Override
 	public List<QCompilationUnit> getChildCompilationUnits() {
-		return new ArrayList<QCompilationUnit>(compilationUnits);
+		return new ArrayList<QCompilationUnit>(this.childUnits);
 	}
 
 	@Override
@@ -934,5 +925,88 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			}
 		}
 		return prototype;
+	}
+
+	@Override
+	public String getQualifiedName(QNamedNode namedNode) {
+
+		String name = normalizeTermName(namedNode.getName());
+
+		QNode node = namedNode;
+
+		while (node.isChild()) {
+			node = node.getParent();
+
+			if (node.equals(getNode()))
+				break;
+
+			if (this.parentUnit != null && node.equals(this.parentUnit.getNode()))
+				break;
+
+			if (node instanceof QDataTerm<?>) {
+				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
+				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
+					name = "current()." + name;
+			} else if (node instanceof QFileTerm)
+				name = "get()." + name;
+
+			/*
+			 * 
+			 * 
+			 * if (node instanceof QProcedure) continue;
+			 * 
+			 * if (((EObject) node).eContainer() instanceof QDataSetTerm)
+			 * continue;
+			 * 
+			 * QNamedNode namedChildNode = (QNamedNode) node; if
+			 * (namedChildNode.getName() == null) continue;
+			 * 
+			 * if(namedChildNode instanceof QModule) { if(getNode() instanceof
+			 * QProcedure) {
+			 * 
+			 * if(getModule(namedChildNode.getName(), false) != null) break; } }
+			 */
+
+			if (node instanceof QProgram)
+				continue;
+
+			if (node instanceof QProcedure)
+				continue;
+
+			if (node instanceof QEntry)
+				continue;
+			
+			if (node instanceof QEntryParameter<?>)
+				continue;
+
+			if (!(node instanceof QNamedNode))
+				continue;
+
+			QNamedNode namedParentNode = (QNamedNode) node;
+
+			// check if procedure redefine owner has internal
+			/*
+			 * if (getNode() instanceof QProcedure) {
+			 * 
+			 * QProcedure procedure = (QProcedure) getNode(); if
+			 * (namedParentNode.equals(procedure.getParent())) {
+			 * 
+			 * if (procedure.getSetupSection() != null) { for (String
+			 * internalModule : procedure.getSetupSection().getModules()) {
+			 * 
+			 * if (equalsTermName(internalModule, namedParentNode.getName()))
+			 * return normalizeTermName(namedParentNode.getName()) + "." + name;
+			 * } } break; } }
+			 */
+
+			name = normalizeTermName(namedParentNode.getName()) + "." + name;
+		}
+
+		return name;
+	}
+
+	@Override
+	public QCompilationUnit getParentUnit() {
+		return this.parentUnit;
 	}
 }

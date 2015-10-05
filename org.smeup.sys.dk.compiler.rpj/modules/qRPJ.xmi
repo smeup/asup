@@ -1402,6 +1402,7 @@
         <parameters>
           <delegate
               xsi:type="il-flow:FlowData"
+              constant="true"
               name="argument">
             <cardinality
                 min="1"/>
@@ -1652,12 +1653,6 @@
           </delegate>
         </parameters>
       </entry>
-    </prototypes>
-    <prototypes
-        name="%parms">
-      <definition
-          xsi:type="il-data-def:DecimalDef"
-          precision="3"/>
     </prototypes>
     <prototypes
         name="%realloc">

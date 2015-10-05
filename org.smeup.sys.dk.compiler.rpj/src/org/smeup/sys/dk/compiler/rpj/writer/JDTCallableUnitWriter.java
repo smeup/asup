@@ -13,7 +13,9 @@
 package org.smeup.sys.dk.compiler.rpj.writer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -32,6 +34,7 @@ import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
@@ -60,6 +63,7 @@ import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QRemap;
+import org.smeup.sys.il.core.annotation.Optional;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -93,8 +97,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private QExpressionParser expressionParser;
 
-	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name);
+	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
+		super(root, compilationUnit, compilationSetup, name, private_);
 
 		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
 	}
@@ -503,21 +507,47 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		if (procedure != null) {
 			writeEntry(methodDeclaration, procedure.getEntry());
 
+			List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
+			entryParameters.addAll(procedure.getEntry().getParameters());
+			// Collections.reverse(entryParameters);
+
+			int p = 1;
+			
+			IfStatement lastBlock = null;
+			for (QEntryParameter<?> entryParameter : entryParameters) {
+
+				if (entryParameter.isNullable()) {
+
+					Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName())+".qPRO.qParms().eval(" + p + ")");
+					ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
+
+					if (entryParameters.size() < p + 1) {
+						IfStatement ifStatement = getAST().newIfStatement();
+						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
+						ifStatement.setThenStatement(expressionStatement);
+
+						if (lastBlock != null)
+							ifStatement.setElseStatement(lastBlock);
+						lastBlock = ifStatement;
+					} else {
+						
+						if(lastBlock != null) 
+							lastBlock.setElseStatement(expressionStatement);
+						else
+							block.statements().add(expressionStatement);
+					}
+				}
+
+				p++;
+			}
+
+			if(lastBlock != null)
+				block.statements().add(lastBlock);
+			
 			String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
 			MethodInvocation methodInvocation = getAST().newMethodInvocation();
 			methodInvocation.setExpression(getAST().newName(namePrototype));
 			methodInvocation.setName(getAST().newSimpleName("qExec"));
-
-			/*
-			 * switch (namePrototype) { case "p_rxatt": case "p_rxsos": case
-			 * "p_rxlate": writeImport(RPJServiceSupport.class);
-			 * methodInvocation.setExpression(getAST().newName("qJAX"));
-			 * methodInvocation.setName(getAST().newSimpleName(namePrototype));
-			 * break; default:
-			 * methodInvocation.setExpression(getAST().newName(namePrototype));
-			 * methodInvocation.setName(getAST().newSimpleName("qExec")); break;
-			 * }
-			 */
 
 			for (Object entryParameter : methodDeclaration.parameters()) {
 				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
@@ -644,11 +674,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		methodDeclaration.setBody(block);
 
 		// redefined record dataSet
-		if (getCompilationUnit().getRoot() instanceof QCallableUnit) {
+		if (getCompilationUnit().getNode() instanceof QCallableUnit) {
 
 			// getCompilationUnit().refresh();
 
-			QCallableUnit callableUnit = (QCallableUnit) getCompilationUnit().getRoot();
+			QCallableUnit callableUnit = (QCallableUnit) getCompilationUnit().getNode();
 			if (callableUnit.getFileSection() != null)
 				for (QDataSetTerm dataSetTerm : callableUnit.getFileSection().getDataSets()) {
 
@@ -686,7 +716,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QRoutine qInzsr = getCompilationUnit().getRoutine("*INZSR", true);
 		if (qInzsr != null) {
 
-			if (qInzsr.getParent() == getCompilationUnit().getRoot()) {
+			if (qInzsr.getParent() == getCompilationUnit().getNode()) {
 				MethodInvocation methodInvocation = getAST().newMethodInvocation();
 				methodInvocation.setExpression(getAST().newThisExpression());
 				methodInvocation.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(qInzsr.getName())));
@@ -875,6 +905,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			QTerm parameterDelegate = entryParameter.getDelegate();
 
 			SingleVariableDeclaration singleVar = getAST().newSingleVariableDeclaration();
+
+			if (entryParameter.isNullable())
+				writeAnnotation(singleVar, Optional.class);
+
 			String parameterName = parameterDelegate.getName();
 			if (parameterName == null)
 				parameterName = "arg" + p;
@@ -890,6 +924,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 					Type type = getJavaType(dataTerm);
 					singleVar.setType(type);
 				}
+
 			} else if (parameterDelegate instanceof QDataSetTerm) {
 
 				Type dataSet = getAST().newSimpleType(getAST().newSimpleName(QDataSet.class.getSimpleName()));

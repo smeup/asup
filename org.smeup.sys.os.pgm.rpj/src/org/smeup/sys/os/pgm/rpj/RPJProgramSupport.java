@@ -46,7 +46,7 @@ import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.rt.core.QLogger;
 
 public class RPJProgramSupport {
-
+	
 	@Inject
 	public QDataFactory dataFactory;
 
@@ -142,8 +142,6 @@ public class RPJProgramSupport {
 	public Specials qSP;
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
-	@DataDef(precision = 3)
-	public QDecimal qParms;
 
 	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	NumberFormat numberFormat = new DecimalFormat();
@@ -169,7 +167,7 @@ public class RPJProgramSupport {
 	}
 
 	public static enum Specials {
-		NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, MS, YEARS, Y, MONTHS, M, DAYS, D;
+		NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D;
 
 		public boolean asBoolean() {
 			return this.toString().equals("ON");
@@ -204,7 +202,9 @@ public class RPJProgramSupport {
 
 		QDecimal qDecimal = null;
 
-		if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 9)
+		if(decimal == null)
+			qDecimal = dataFactory.createDecimal(0, 0, DecimalType.ZONED, false);
+		else if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 9)
 			qDecimal = dataFactory.createDecimal(1, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 10 && Math.abs(decimal) <= 99)
 			qDecimal = dataFactory.createDecimal(2, 0, DecimalType.ZONED, true);
@@ -234,7 +234,9 @@ public class RPJProgramSupport {
 
 		QDecimal qDecimal = null;
 
-		if (Math.abs(double_) >= 0 && Math.abs(double_) <= 9)
+		if(double_ == null)
+			qDecimal = dataFactory.createDecimal(0, 0, DecimalType.ZONED, false);
+		else if (Math.abs(double_) >= 0 && Math.abs(double_) <= 9)
 			qDecimal = dataFactory.createDecimal(1, 0, DecimalType.ZONED, true);
 		else
 			qDecimal = dataFactory.createDecimal(10, 0, DecimalType.ZONED, true);
@@ -246,7 +248,12 @@ public class RPJProgramSupport {
 
 	public QCharacter qBox(String character) {
 
-		QCharacter qCharacter = dataFactory.createCharacter(character.length(), false, true);
+		QCharacter qCharacter = null;
+		if(character == null)
+			qCharacter = dataFactory.createCharacter(0, false, false);
+		else
+			qCharacter = dataFactory.createCharacter(character.length(), false, true);
+		
 		qCharacter.eval(character);
 
 		return qCharacter;
@@ -261,17 +268,14 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(QString program, QData[] parameters) {
-		this.qParms.eval(parameters.length);
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		this.qParms.eval(parameters.length);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
-		this.qParms.eval(parameters.length);
 
 		try {
 			error.eval(false);
@@ -282,7 +286,6 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters, QIndicator error) {
-		this.qParms.eval(parameters.length);
 
 		try {
 			error.eval(false);
@@ -293,7 +296,6 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(QString program, QData[] parameters, String errorHandling) {
-		this.qParms.eval(parameters.length);
 		try {
 			qError(null).eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
@@ -304,7 +306,6 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters, String errorHandling) {
-		this.qParms.eval(parameters.length);
 		try {
 			qError(null).eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
@@ -506,10 +507,6 @@ public class RPJProgramSupport {
 
 	public QDecimal qStatus() {
 		return qSTATUS.qStatus;
-	}
-
-	public QDecimal qParms() {
-		return qParms;
 	}
 
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {
