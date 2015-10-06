@@ -40,6 +40,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 	public void writeModule(QModule module) throws IOException {
 
+		System.out.println("Compiling module: "+module);
 
 		refactCallableUnit(module);
 

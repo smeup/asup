@@ -92,6 +92,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.il.flow.QUnit;
+import org.smeup.sys.os.file.QExternalFile;
 
 public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
@@ -503,70 +504,102 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			methodDeclaration.setReturnType2(type);
 		}
 
-		QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), true);
-		if (procedure != null) {
-			writeEntry(methodDeclaration, procedure.getEntry());
-
-			List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
-			entryParameters.addAll(procedure.getEntry().getParameters());
-			// Collections.reverse(entryParameters);
-
-			int p = 1;
+		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
+		if (externalFile != null) {
+			writeEntry(methodDeclaration, prototype.getEntry());
 			
-			IfStatement lastBlock = null;
-			for (QEntryParameter<?> entryParameter : entryParameters) {
-
-				if (entryParameter.isNullable()) {
-
-					Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName())+".qPRO.qParms().eval(" + p + ")");
-					ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
-
-					if (entryParameters.size() < p + 1) {
-						IfStatement ifStatement = getAST().newIfStatement();
-						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
-						ifStatement.setThenStatement(expressionStatement);
-
-						if (lastBlock != null)
-							ifStatement.setElseStatement(lastBlock);
-						lastBlock = ifStatement;
-					} else {
-						
-						if(lastBlock != null) 
-							lastBlock.setElseStatement(expressionStatement);
-						else
-							block.statements().add(expressionStatement);
-					}
-				}
-
-				p++;
-			}
-
-			if(lastBlock != null)
-				block.statements().add(lastBlock);
+			// TODO manage external invocation
 			
-			String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
-			MethodInvocation methodInvocation = getAST().newMethodInvocation();
-			methodInvocation.setExpression(getAST().newName(namePrototype));
-			methodInvocation.setName(getAST().newSimpleName("qExec"));
-
-			for (Object entryParameter : methodDeclaration.parameters()) {
-				SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
-				methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
-			}
-
 			if (prototype.getDefinition() != null) {
 				ReturnStatement returnStatement = getAST().newReturnStatement();
-				returnStatement.setExpression(methodInvocation);
+				returnStatement.setExpression(getAST().newNullLiteral());
 				block.statements().add(returnStatement);
-			} else {
-				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-				block.statements().add(expressionStatement);
 			}
 
 		} else {
-			writeEntry(methodDeclaration, prototype.getEntry());
+			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), true);
+			if (procedure != null) {
+				writeEntry(methodDeclaration, procedure.getEntry());
 
-			// TODO manage CALL
+				List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
+				entryParameters.addAll(procedure.getEntry().getParameters());
+				Collections.reverse(entryParameters);
+
+				int p = entryParameters.size();
+
+				IfStatement baseIf = null;
+				IfStatement lastIf = null;
+				for (QEntryParameter<?> entryParameter : entryParameters) {
+
+					if (!entryParameter.isNullable())
+						break;
+
+					// first
+					if (entryParameters.size() == p) {
+
+						IfStatement ifStatement = getAST().newIfStatement();
+						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
+						Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + p + ")");
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
+						ifStatement.setThenStatement(expressionStatement);
+
+						Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
+						ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
+						ifStatement.setElseStatement(expressionElseStatement);
+
+						baseIf = ifStatement;
+						lastIf = ifStatement;
+					} else {
+						IfStatement ifStatement = getAST().newIfStatement();
+						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
+
+						Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + p + ")");
+						ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
+						ifStatement.setThenStatement(expressionStatement);
+
+						Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
+						ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
+						ifStatement.setElseStatement(expressionElseStatement);
+
+						lastIf.setElseStatement(ifStatement);
+						lastIf = ifStatement;
+					}
+					p--;
+				}
+
+				if (baseIf != null)
+					block.statements().add(baseIf);
+
+				String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
+				MethodInvocation methodInvocation = getAST().newMethodInvocation();
+				methodInvocation.setExpression(getAST().newName(namePrototype));
+				methodInvocation.setName(getAST().newSimpleName("qExec"));
+
+				for (Object entryParameter : methodDeclaration.parameters()) {
+					SingleVariableDeclaration singleVariableDeclaration = (SingleVariableDeclaration) entryParameter;
+					methodInvocation.arguments().add(getAST().newSimpleName(singleVariableDeclaration.getName().toString()));
+				}
+
+				if (prototype.getDefinition() != null) {
+					ReturnStatement returnStatement = getAST().newReturnStatement();
+					returnStatement.setExpression(methodInvocation);
+					block.statements().add(returnStatement);
+				} else {
+					ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
+					block.statements().add(expressionStatement);
+				}
+
+			} else {
+				writeEntry(methodDeclaration, prototype.getEntry());
+
+				// TODO manage CALL
+				
+				if (prototype.getDefinition() != null) {
+					ReturnStatement returnStatement = getAST().newReturnStatement();
+					returnStatement.setExpression(getAST().newNullLiteral());
+					block.statements().add(returnStatement);
+				}
+			}
 		}
 	}
 

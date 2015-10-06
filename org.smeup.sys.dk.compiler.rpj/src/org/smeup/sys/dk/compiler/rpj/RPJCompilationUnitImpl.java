@@ -48,7 +48,6 @@ import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
-import org.smeup.sys.il.esam.QFileTerm;
 import org.smeup.sys.il.esam.QKeyListTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.flow.QCallableUnit;
@@ -61,6 +60,7 @@ import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.file.QExternalFile;
+import org.smeup.sys.os.file.QFileFormat;
 
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
@@ -947,25 +947,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
 				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
 					name = "current()." + name;
-			} else if (node instanceof QFileTerm)
-				name = "get()." + name;
-
-			/*
-			 * 
-			 * 
-			 * if (node instanceof QProcedure) continue;
-			 * 
-			 * if (((EObject) node).eContainer() instanceof QDataSetTerm)
-			 * continue;
-			 * 
-			 * QNamedNode namedChildNode = (QNamedNode) node; if
-			 * (namedChildNode.getName() == null) continue;
-			 * 
-			 * if(namedChildNode instanceof QModule) { if(getNode() instanceof
-			 * QProcedure) {
-			 * 
-			 * if(getModule(namedChildNode.getName(), false) != null) break; } }
-			 */
+				else if(dataTerm instanceof QFileFormat) {
+					name = "get()." + name;
+				}
+			} 
 
 			if (node instanceof QProgram)
 				continue;
@@ -974,6 +959,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			if (node instanceof QEntry)
+				continue;
+			
+			if (node instanceof QDataSetTerm)
 				continue;
 			
 			if (node instanceof QEntryParameter<?>)
