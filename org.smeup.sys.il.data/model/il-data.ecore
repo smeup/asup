@@ -807,7 +807,7 @@
       <eParameters name="format">
         <eGenericType eTypeParameter="#//Datetime/adddur.1/E"/>
       </eParameters>
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="adddur">
       <eTypeParameters name="E">
@@ -835,7 +835,7 @@
       <eParameters name="format">
         <eGenericType eTypeParameter="#//Datetime/subdur/E"/>
       </eParameters>
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
@@ -845,7 +845,7 @@
       <eParameters name="format">
         <eGenericType eTypeParameter="#//Datetime/subdur.1/E"/>
       </eParameters>
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
@@ -869,7 +869,7 @@
       <eTypeParameters name="E">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
       </eTypeParameters>
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
       <eParameters name="format">
         <eGenericType eTypeParameter="#//Datetime/qDiff/E"/>
       </eParameters>
@@ -1383,6 +1383,7 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="time"/>
     <eOperations name="qRem" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -1770,6 +1771,12 @@
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
     <eOperations name="out"/>
+    <eOperations name="qDate" lowerBound="1" eType="#//Datetime">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="qDate" lowerBound="1" eType="#//Datetime">
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
+    </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>

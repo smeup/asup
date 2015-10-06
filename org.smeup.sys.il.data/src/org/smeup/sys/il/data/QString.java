@@ -293,6 +293,14 @@ public interface QString extends QBufferedData, QScanner {
 	void out();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" valueRequired="true"
+	 * @generated
+	 */
+	QDatetime qDate(String value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" startRequired="true" lengthRequired="true"
 	 * @generated
