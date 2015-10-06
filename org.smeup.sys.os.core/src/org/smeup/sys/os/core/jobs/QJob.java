@@ -309,7 +309,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 
 	/**
 	 * Returns the value of the '<em><b>Switches</b></em>' attribute.
-	 * The default value is <code>"\"00000000\""</code>.
+	 * The default value is <code>"00000000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Switches</em>' attribute isn't clear,
@@ -319,7 +319,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @return the value of the '<em>Switches</em>' attribute.
 	 * @see #setSwitches(String)
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_Switches()
-	 * @model default="\"00000000\""
+	 * @model default="00000000"
 	 *        annotation="il-data length='8'"
 	 * @generated
 	 */
@@ -367,7 +367,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 
 	/**
 	 * Returns the value of the '<em><b>Date Separator</b></em>' attribute.
-	 * The default value is <code>"\"/\""</code>.
+	 * The default value is <code>"/"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Date Separator</em>' attribute isn't clear,
@@ -377,7 +377,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @return the value of the '<em>Date Separator</em>' attribute.
 	 * @see #setDateSeparator(String)
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_DateSeparator()
-	 * @model default="\"/\""
+	 * @model default="/"
 	 *        annotation="il-data length='1'"
 	 * @generated
 	 */
@@ -395,7 +395,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 
 	/**
 	 * Returns the value of the '<em><b>Time Separator</b></em>' attribute.
-	 * The default value is <code>"\":\""</code>.
+	 * The default value is <code>":"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Time Separator</em>' attribute isn't clear,
@@ -405,7 +405,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @return the value of the '<em>Time Separator</em>' attribute.
 	 * @see #setTimeSeparator(String)
 	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_TimeSeparator()
-	 * @model default="\":\""
+	 * @model default=":"
 	 *        annotation="il-data length='1'"
 	 * @generated
 	 */
