@@ -24,7 +24,8 @@ public class JobName extends QDataStructWrapper {
 
 	public static enum NameEnum {
 		@Special(value = "*")
-		TERM_STAR, OTHER
+		TERM_STAR, 
+		OTHER
 	}
 
 	public QJob findJob(QJob job, QJobManager jobManager) throws JobNotFoundException {

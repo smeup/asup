@@ -197,7 +197,6 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	@Override
 	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
-
 		final QJob job = create(credentials.getUser(), credentials.getPassword());
 
 		return new QAuthenticationToken() {
@@ -206,9 +205,20 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 			public String getID() {
 				return job.getJobID();
 			}
+
+			@Override
+			public Boolean isValid() {
+				return job != null && 
+					   lookup(job.getJobID()) != null;	
+			}
 		};
 	}
 
+	@Override
+	public void deleteAuthenticationToken(QAuthenticationToken authToken) {
+		// TODO Auto-generated method stub
+	}
+	
 	@Override
 	public void registerListener(QJobListener listener) {
 		this.listeners.add(listener);
@@ -223,4 +233,5 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		}
 		return executorService;
 	}
+
 }

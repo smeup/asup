@@ -206,10 +206,15 @@ public class RuntimeCoreAuthPackageImpl extends EPackageImpl implements QRuntime
 
 		addEOperation(authenticationTokenEClass, ecorePackage.getEString(), "getID", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(authenticationTokenEClass, ecorePackage.getEBooleanObject(), "isValid", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(authenticationManagerEClass, QAuthenticationManager.class, "AuthenticationManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(authenticationManagerEClass, this.getAuthenticationToken(), "createAuthenticationToken", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getCredentials(), "credentials", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(authenticationManagerEClass, null, "deleteAuthenticationToken", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAuthenticationToken(), "authToken", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } //RuntimeCoreAuthPackageImpl

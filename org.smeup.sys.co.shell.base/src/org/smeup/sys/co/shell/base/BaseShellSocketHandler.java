@@ -57,6 +57,8 @@ public class BaseShellSocketHandler extends Thread {
 	@Override
 	public void run() {
 		
+		BufferedReader bufferedReader = null;
+		
 		try {
 
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.socket.getOutputStream());
@@ -64,62 +66,77 @@ public class BaseShellSocketHandler extends Thread {
 			outputStreamWriter.write(LOGIN);
 			outputStreamWriter.flush();
 
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 
-			while (true) {
+			boolean nextLoop = true;
+			while (nextLoop) {
 
 				String request = bufferedReader.readLine();
 
 				// hello
-				if (request.equals("HELLO"))
+				if (request.equals("HELLO")) {
 					outputStreamWriter.write(WELCOME);
-
-				// disconnect
-				else if (request.equalsIgnoreCase("SIGNOFF") || request.equalsIgnoreCase("EXIT") || request.equalsIgnoreCase("QUIT")) {
-					if(authenticationToken != null)
-						shellOutputWrapper.unregister(authenticationToken.getID());
-					break;
-				}
-				else
+				} else {
 					try {
 						if (authenticationToken == null) {
-							authenticationToken = connect(request);
-							
-							shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
-							
-							// set Looc.UP as default objectWriter on server
-							shellManager.setDefaultWriter(authenticationToken.getID(), "S");
-							
-							logConnection();
-						} else
-							executeCommand(request);
+							login(outputStreamWriter, request);
+						} else {
+							nextLoop = executeCommand(request);
+						}
 					} catch (Exception e) {
 						if (e.getCause() == null)
 							outputStreamWriter.write(e + "\n");
 						else
 							outputStreamWriter.write(e.getCause() + "\n");
 					}
-
-				if (authenticationToken != null)
-					outputStreamWriter.write(user.toLowerCase() + "> ");
-				else
-					outputStreamWriter.write(LOGIN);
+				}
+				
+				checkValidSession();
+				
+				writePrompt(outputStreamWriter);
 
 				outputStreamWriter.flush();
 			}
-
-			bufferedReader.close();
-			this.socket.close();
-
+			outputStreamWriter.write("\nGoodbye");
+			outputStreamWriter.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
 			try {
+				if (bufferedReader != null) {
+					bufferedReader.close();
+				}
 				this.socket.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
+			} catch (Exception e) {
+			}			
 		}
 	}
+
+	private void login(OutputStreamWriter outputStreamWriter, String request) {
+		authenticationToken = authenticate(request);
+		
+		shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
+		shellManager.setDefaultWriter(authenticationToken.getID(), "S");
+		
+		logConnection();
+	}
+
+	private void checkValidSession() {
+		if (authenticationToken != null && !authenticationToken.isValid()) {
+			shellOutputWrapper.unregister(authenticationToken.getID());
+			authenticationManager.deleteAuthenticationToken(authenticationToken);
+			authenticationToken = null;
+			setName("" + this.socket.getRemoteSocketAddress());					
+		}
+	}
+
+	private void writePrompt(OutputStreamWriter outputStreamWriter)	throws IOException {
+		if (authenticationToken != null)
+			outputStreamWriter.write(user.toLowerCase() + "> ");
+		else
+			outputStreamWriter.write(LOGIN);
+	}
+
 
 	private void logConnection() {
 		//TODO -> DSPLOG
@@ -127,7 +144,7 @@ public class BaseShellSocketHandler extends Thread {
 		setName("Telnet " +  this.socket.getRemoteSocketAddress() + " " + user);
 	}
 
-	private QAuthenticationToken connect(String command) {
+	private QAuthenticationToken authenticate(String command) {
 		// retrieve user
 		user = cleanup(command);
 
@@ -144,11 +161,21 @@ public class BaseShellSocketHandler extends Thread {
 		return command.toUpperCase().replaceAll("[^A-Z0-9§$£_]", "");
 	}
 
-	private void executeCommand(String command) {
-		if (command == null || command.trim().length() == 0)
-			return;
+	private boolean executeCommand(String command) {
+		boolean nextLoop = true;
+		if (command == null || command.trim().length() == 0) {
+			return nextLoop;
+		}
+		
+		if (command.equals("QUIT") || command.equals("EXIT")) {
+			nextLoop = false;
+			command = "SIGNOFF";
+		}
+		
 		System.out.println("Executing " + command + "...");
 		shellManager.executeCommand(authenticationToken.getID(), command, null, true);
 		System.out.println(command + " terminated");
+		
+		return nextLoop;
 	}
 }

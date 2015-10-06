@@ -132,11 +132,15 @@
     <eClassifiers xsi:type="ecore:EClass" name="AuthenticationToken" abstract="true"
         interface="true">
       <eOperations name="getID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eOperations name="isValid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="AuthenticationManager" abstract="true"
         interface="true">
       <eOperations name="createAuthenticationToken" eType="#//auth/AuthenticationToken">
         <eParameters name="credentials" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Credentials"/>
+      </eOperations>
+      <eOperations name="deleteAuthenticationToken">
+        <eParameters name="authToken" lowerBound="1" eType="#//auth/AuthenticationToken"/>
       </eOperations>
     </eClassifiers>
   </eSubpackages>

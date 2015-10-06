@@ -19,14 +19,28 @@ public class BaseTestAuthenticationManagerImpl implements QAuthenticationManager
 
 	@Override
 	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
-		
-		return new QAuthenticationToken() {
-			
-			@Override
-			public String getID() {
-				return this.toString();
-			}
-		};
+		return new TestAuthenticationToken();
 	}
 
+	@Override
+	public void deleteAuthenticationToken(QAuthenticationToken authToken) {
+		if (authToken instanceof TestAuthenticationToken) {
+			((TestAuthenticationToken)authToken).valid = false;
+		}
+	}
+
+	private class TestAuthenticationToken implements QAuthenticationToken {
+		public Boolean valid = true;
+
+		@Override
+		public String getID() {
+			return toString();
+		}
+
+		@Override
+		public Boolean isValid() {
+			return valid;
+		}
+		
+	}
 }

@@ -27,4 +27,12 @@ public interface QAuthenticationToken {
 	 */
 	String getID();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	Boolean isValid();
+
 } // QAuthenticationToken

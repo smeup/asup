@@ -29,4 +29,12 @@ public interface QAuthenticationManager {
 	 */
 	QAuthenticationToken createAuthenticationToken(QCredentials credentials);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model authTokenRequired="true"
+	 * @generated
+	 */
+	void deleteAuthenticationToken(QAuthenticationToken authToken);
+
 } // QAuthenticationManager
