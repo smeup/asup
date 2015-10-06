@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -546,6 +547,11 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	public QNumeric qScan(String source, Number start, QIndicator found) {
 		return current().qScan(source, start, found);
+	}
+
+	@Override
+	public <E extends Enum<E>> QDatetime qDate() {
+		return current().qDate();
 	}
 
 }

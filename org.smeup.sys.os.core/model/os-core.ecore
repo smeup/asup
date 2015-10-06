@@ -112,7 +112,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="switches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="&quot;00000000&quot;">
+          defaultValueLiteral="00000000">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="8"/>
         </eAnnotations>
@@ -120,13 +120,13 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobDateFormat" eType="#//jobs/JobDateFormat"
           defaultValueLiteral="*DMY"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="&quot;/&quot;">
+          defaultValueLiteral="/">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="1"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="&quot;:&quot;">
+          defaultValueLiteral=":">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="1"/>
         </eAnnotations>

@@ -244,7 +244,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SWITCHES_EDEFAULT = "\"00000000\"";
+	protected static final String SWITCHES_EDEFAULT = "00000000";
 
 	/**
 	 * The cached value of the '{@link #getSwitches() <em>Switches</em>}' attribute.
@@ -284,7 +284,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DATE_SEPARATOR_EDEFAULT = "\"/\"";
+	protected static final String DATE_SEPARATOR_EDEFAULT = "/";
 
 	/**
 	 * The cached value of the '{@link #getDateSeparator() <em>Date Separator</em>}' attribute.
@@ -304,7 +304,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TIME_SEPARATOR_EDEFAULT = "\":\"";
+	protected static final String TIME_SEPARATOR_EDEFAULT = ":";
 
 	/**
 	 * The cached value of the '{@link #getTimeSeparator() <em>Time Separator</em>}' attribute.

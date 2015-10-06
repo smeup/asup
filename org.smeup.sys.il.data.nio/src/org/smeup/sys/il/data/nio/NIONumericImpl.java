@@ -781,4 +781,10 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		number.eval(asDouble() % value);
 		return number;
 	}
+
+	@Override
+	public void time() {
+		// TODO Auto-generated method stub
+		
+	}
 }

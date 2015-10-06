@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -729,5 +730,11 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			found.eval(number.ge(1));
 		
 		return number;
+	}
+
+	@Override
+	public <E extends Enum<E>> QDatetime qDate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

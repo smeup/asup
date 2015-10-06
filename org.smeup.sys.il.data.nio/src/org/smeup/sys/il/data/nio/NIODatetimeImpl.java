@@ -225,7 +225,13 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(QBufferedData value, int duration, E format) {
+	public <E extends Enum<E>> void adddur(int duration, E format, QDatetime value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void adddur(QNumeric duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -243,13 +249,13 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(QBufferedData value, int duration, E format) {
+	public <E extends Enum<E>> void subdur(int duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public <E extends Enum<E>> void subdur(QBufferedData value, QNumeric duration, E format) {
+	public <E extends Enum<E>> void subdur(QNumeric duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -267,8 +273,16 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public <E extends Enum<E>> void adddur(QBufferedData value, QNumeric duration, E format) {
+	public <E extends Enum<E>> QNumeric qDiff(QDatetime value, E format) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void time() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 }

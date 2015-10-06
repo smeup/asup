@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
 import java.util.Date;
 
 /**
@@ -43,10 +44,18 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>> void adddur(QBufferedData value, int duration, E format);
+	<E extends Enum<E>> void adddur(int duration, E format, QDatetime value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> void adddur(QNumeric duration, E format, QDatetime value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,18 +76,18 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>> void subdur(QBufferedData value, int duration, E format);
+	<E extends Enum<E>> void subdur(int duration, E format, QDatetime value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>> void subdur(QBufferedData value, QNumeric duration, E format);
+	<E extends Enum<E>> void subdur(QNumeric duration, E format, QDatetime value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,9 +108,17 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	<E extends Enum<E>> void adddur(QBufferedData value, QNumeric duration, E format);
+	<E extends Enum<E>> QNumeric qDiff(QDatetime value, E format);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void time();
 
 } // QDatetime
