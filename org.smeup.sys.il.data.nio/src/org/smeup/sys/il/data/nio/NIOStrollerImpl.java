@@ -554,4 +554,99 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		return current().qDate();
 	}
 
+	@Override
+	public void cat(String factor1, String factor2, int space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, QNumeric space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, int space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, QString factor2, int space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, String factor2, int space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, QString factor2, Number space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, String factor2, Number space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, boolean clear) {
+		current().cat(factor1, factor2, clear);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, boolean clear) {
+		current().cat(factor1, factor2, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, QString factor2, boolean clear) {
+		current().cat(factor1, factor2, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, String factor2, boolean clear) {
+		current().cat(factor1, factor2, clear);
+	}
+
+	@Override
+	public void cat(String factor1, boolean clear) {
+		current().cat(factor1, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, Number space, boolean clear) {
+		current().cat(factor1, clear);
+	}
+
+	@Override
+	public void cat(String factor1, Number space, boolean clear) {
+		current().cat(factor1, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, QNumeric space, boolean clear) {
+		current().cat(factor1, space, clear);
+	}
+
+	@Override
+	public void cat(String factor1, QNumeric space, boolean clear) {
+		current().cat(factor1, space, clear);
+	}
+
+	@Override
+	public void cat(QString factor1, boolean clear) {
+		current().cat(factor1, clear);
+	}
+
 }

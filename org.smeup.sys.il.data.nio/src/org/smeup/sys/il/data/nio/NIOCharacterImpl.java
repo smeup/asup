@@ -160,17 +160,35 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	/* cat */
 	@Override
 	public void cat(QString factor1) {
-		eval(trimR() + factor1.toString());
+		cat(factor1, false);
 	}
 
 	@Override
+	public void cat(QString factor1, boolean clear) {
+		if(clear)
+			this.clear();
+		eval(trimR() + factor1.toString());
+	}
+	
+	@Override
 	public void cat(String factor1) {
-		eval(trimR() + factor1);
+		cat(factor1, false);
 	}
 
+	@Override
+	public void cat(String factor1, boolean clear) {
+		if(clear)
+			this.clear();
+		eval(trimR() + factor1);
+	}
+	
 	@Override
 	public void cat(String factor1, QString factor2) {
 		cat(factor1, factor2.s(), 0);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, boolean clear) {
 	}
 
 	@Override
@@ -179,32 +197,67 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
+	public void cat(QString factor1, QString factor2, boolean clear) {
+	}
+	
+	@Override
 	public void cat(QString factor1, String factor2) {
 		cat(factor1.s(), factor2, 0);
 	}
 
 	@Override
+	public void cat(QString factor1, String factor2, boolean clear) {
+	}
+	
+	@Override
 	public void cat(String factor1, String factor2) {
-		cat(factor1, factor2, 0);
+		cat(factor1, factor2, 0, false);
 	}
 
+	@Override
+	public void cat(String factor1, String factor2, boolean clear) {
+		cat(factor1, factor2, 0, clear);
+	}
+	
 	@Override
 	public void cat(QString factor1, Number space) {
-		cat(factor1.s(), space);
+		cat(factor1.s(), space, false);
 	}
 
+	@Override
+	public void cat(QString factor1, Number space, boolean clear) {
+		cat(factor1.s(), space, clear);
+	}
+	
 	@Override
 	public void cat(QString factor1, QNumeric space) {
-		cat(factor1.s(), space.i());
+		cat(factor1.s(), space.i(), false);
 	}
 
 	@Override
+	public void cat(QString factor1, QNumeric space, boolean clear) {
+		cat(factor1.s(), space.i(), clear);
+	}
+	
+	@Override
 	public void cat(String factor1, QNumeric space) {
-		cat(factor1, space.i());
+		cat(factor1, space.i(), false);
+	}
+
+	@Override
+	public void cat(String factor1, QNumeric space, boolean clear) {
+		cat(factor1, space.i(), clear);
 	}
 
 	@Override
 	public void cat(String factor1, String factor2, int space) {
+		cat(factor1, factor2, space, false);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, int space, boolean clear) {
+		if(clear)
+			this.clear();
 		if (space == 0)
 			eval(factor1.trim() + factor2.toString());
 		else {
@@ -218,39 +271,76 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			}
 		}
 	}
-
+	
 	@Override
 	public void cat(String factor1, String factor2, QNumeric space) {
-		cat(factor1, factor2, space.i());
+		cat(factor1, factor2, space.i(), false);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, QNumeric space, boolean clear) {
+		cat(factor1, factor2, space.i(), clear);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, int space) {
-		cat(factor1, factor2.s(), space);
+		cat(factor1, factor2.s(), space, false);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, int space, boolean clear) {
+		cat(factor1, factor2.s(), space, clear);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
-		cat(factor1, factor2.s(), space.i());
+		cat(factor1, factor2.s(), space.i(), false);
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
+		cat(factor1, factor2.s(), space.i(), clear);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, int space) {
-		cat(factor1.s(), factor2.s(), space);
+		cat(factor1.s(), factor2.s(), space, false);
 	}
 
+	@Override
+	public void cat(QString factor1, QString factor2, int space, boolean clear) {
+		cat(factor1.s(), factor2.s(), space, clear);
+	}
+	
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space) {
-		cat(factor1.s(), factor2.s(), space.i());
+		cat(factor1.s(), factor2.s(), space.i(), false);
 	}
 
+	@Override
+	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
+		cat(factor1.s(), factor2.s(), space.i(), clear);
+	}
+	
 	@Override
 	public void cat(QString factor1, String factor2, int space) {
-		cat(factor1.s(), factor2, space);
+		cat(factor1.s(), factor2, space, false);
 	}
 
 	@Override
+	public void cat(QString factor1, String factor2, int space, boolean clear) {
+		cat(factor1.s(), factor2, space, clear);
+	}
+	
+	@Override
 	public void cat(String factor1, Number space) {
+		cat(factor1, space, false);
+	}
+
+	@Override
+	public void cat(String factor1, Number space, boolean clear) {
+		if(clear)
+			this.clear();
 		if (space.intValue() == 0)
 			eval(trimR() + factor1);
 		else {
@@ -264,17 +354,27 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			}
 		}
 	}
-
+	
 	@Override
 	public void cat(QString factor1, QString factor2, Number space) {
-		cat(factor1.s(), factor2.s(), space.intValue());
+		cat(factor1.s(), factor2.s(), space.intValue(), false);
+	}
+
+	@Override
+	public void cat(QString factor1, QString factor2, Number space, boolean clear) {
+		cat(factor1.s(), factor2.s(), space.intValue(), clear);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, Number space) {
-		cat(factor1.s(), factor2, space.intValue());
+		cat(factor1.s(), factor2, space.intValue(), false);
 	}
 
+	@Override
+	public void cat(QString factor1, String factor2, Number space, boolean clear) {
+		cat(factor1.s(), factor2, space.intValue(), clear);
+	}
+	
 	@Override
 	public boolean eq(String value) {
 
@@ -737,4 +837,5 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
