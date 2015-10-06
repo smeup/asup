@@ -51,6 +51,8 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 	public void writeProgram(QProgram program) throws IOException {
 
+		System.out.println("Compiling program: "+program);
+		
 		refactCallableUnit(program);
 
 		// modules

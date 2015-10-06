@@ -267,6 +267,12 @@ public class RPJProgramSupport {
 		return qCharacter;
 	}
 
+	public QIndicator qCast(QCharacter xin) {
+		QIndicator indicator = dataFactory.createIndicator(false);
+		xin.assign(indicator);
+		return indicator;
+	}
+
 	public void qCall(QString program, QData[] parameters) {
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}

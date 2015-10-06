@@ -26,6 +26,7 @@ import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -646,7 +647,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			buffer.append("qRPJ.qBox(" + value + ")");
 			buffer.append(value);
 			buffer.append(".asDatetime()");
-		} else if (QData.class.isAssignableFrom(target))
+		} 
+		else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
+			buffer.append("qRPJ.qCast(" + value + ")");
+		else if (QData.class.isAssignableFrom(target))
 			buffer.append("qRPJ.qBox(" + value + ")");
 		else
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid unboxing: " + value);
