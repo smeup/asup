@@ -52,4 +52,12 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @generated
 	 */
 	QArray<D> qSubarr(QDecimal start, int elements);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true"
+	 * @generated
+	 */
+	void plus(QArray<D> array);
 } // QArray

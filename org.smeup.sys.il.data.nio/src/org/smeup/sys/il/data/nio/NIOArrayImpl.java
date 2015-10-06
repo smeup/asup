@@ -190,4 +190,10 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 					
 		return subArray;
 	}
+
+	@Override
+	public void plus(QArray<D> array) {
+		// TODO Auto-generated method stub
+		
+	}
 }
