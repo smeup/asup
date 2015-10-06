@@ -256,12 +256,21 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM__ADDRESS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Base Program</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM__BASE_PROGRAM = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Creation Params</b></em>' attribute list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM__CREATION_PARAMS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int PROGRAM__CREATION_PARAMS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' containment reference.
@@ -269,7 +278,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM__SOURCE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
+	int PROGRAM__SOURCE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Program</em>' class. <!--
@@ -278,7 +287,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
+	int PROGRAM_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.ProgramContainerImpl <em>Program Container</em>}' class.
@@ -535,6 +544,17 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProgram_Address();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgram#getBaseProgram <em>Base Program</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Base Program</em>'.
+	 * @see org.smeup.sys.os.pgm.QProgram#getBaseProgram()
+	 * @see #getProgram()
+	 * @generated
+	 */
+	EAttribute getProgram_BaseProgram();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link org.smeup.sys.os.pgm.QProgram#getCreationParams <em>Creation Params</em>}'.
@@ -830,6 +850,14 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROGRAM__ADDRESS = eINSTANCE.getProgram_Address();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Program</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROGRAM__BASE_PROGRAM = eINSTANCE.getProgram_BaseProgram();
 
 		/**
 		 * The meta object literal for the '<em><b>Creation Params</b></em>' attribute list feature.

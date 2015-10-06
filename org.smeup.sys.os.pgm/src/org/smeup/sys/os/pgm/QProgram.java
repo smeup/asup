@@ -20,6 +20,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getActivationGroup <em>Activation Group</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.QProgram#getBaseProgram <em>Base Program</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getCreationParams <em>Creation Params</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getSource <em>Source</em>}</li>
  * </ul>
@@ -86,6 +87,32 @@ public interface QProgram extends QTypedObject {
 	 * @generated
 	 */
 	void setAddress(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Base Program</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Base Program</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Base Program</em>' attribute.
+	 * @see #setBaseProgram(String)
+	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgram_BaseProgram()
+	 * @model annotation="il-data length='128'"
+	 * @generated
+	 */
+	String getBaseProgram();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgram#getBaseProgram <em>Base Program</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Base Program</em>' attribute.
+	 * @see #getBaseProgram()
+	 * @generated
+	 */
+	void setBaseProgram(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Creation Params</b></em>' attribute

@@ -116,9 +116,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	public QCallableProgram loadProgram(QJob job, QProgram program) throws OperatingSystemRuntimeProgramException {
 		
 		// API
-		String address = null;
+		String address = null;		
 		if(program.getAddress() != null) 
-			address = program.getAddress(); 
+			address = program.getAddress();
+		// Duplicated program
+		else if(program.getBaseProgram() != null) {
+			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm."+program.getApplication()+".gen."+program.getBaseProgram();
+		}
 		// Program
 		else				
 			address = "asup:/omac/com.smeup.erp.pgm.gen/com.smeup.erp.pgm."+program.getApplication()+".gen."+program.getName();

@@ -245,11 +245,11 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getProgram_CreationParams() {
+	public EAttribute getProgram_BaseProgram() {
 		return (EAttribute)programEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -258,8 +258,17 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
+	public EAttribute getProgram_CreationParams() {
+		return (EAttribute)programEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getProgram_Source() {
-		return (EReference)programEClass.getEStructuralFeatures().get(3);
+		return (EReference)programEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -469,6 +478,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		programEClass = createEClass(PROGRAM);
 		createEAttribute(programEClass, PROGRAM__ACTIVATION_GROUP);
 		createEAttribute(programEClass, PROGRAM__ADDRESS);
+		createEAttribute(programEClass, PROGRAM__BASE_PROGRAM);
 		createEAttribute(programEClass, PROGRAM__CREATION_PARAMS);
 		createEReference(programEClass, PROGRAM__SOURCE);
 
@@ -589,6 +599,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgram_ActivationGroup(), ecorePackage.getEString(), "activationGroup", "*DFT", 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgram_Address(), ecorePackage.getEString(), "address", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProgram_BaseProgram(), ecorePackage.getEString(), "baseProgram", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgram_CreationParams(), ecorePackage.getEString(), "creationParams", null, 0, -1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProgram_Source(), this.getProgramSource(), null, "source", null, 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -696,6 +707,15 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		   });	
 		addAnnotation
 		  (getProgram_Address(), 
+		   source, 
+		   new String[] {
+			 "length", "128"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getProgram_BaseProgram(), 
 		   source, 
 		   new String[] {
 			 "length", "128"

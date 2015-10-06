@@ -26,6 +26,8 @@ import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -128,18 +130,13 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 					
 					if (dataStructDefFrom.getLength() == 0 && charDefTo.getLength() == 0) {
 						
-						int length = 0;
-						for(QDataTerm<QBufferedDataDef<?>> elementDef: dataStructDefFrom.getElements()) {
-							if(elementDef.getDefinition().getLength() == 0)
-								throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: jsdrf6sd8s7d6fsd");
-							
-							length+=elementDef.getDefinition().getLength();
-						}
-						
-						if(length == 0) 
+						QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
+						QDataStruct dataStructure = dataFactory.createDataStruct(dataStructDefFrom.getElements(), 0, false);
+								
+						if(dataStructure.getLength() == 0)
 							throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: jsdrf6sd6fs777gh");							
 
-						charDefTo.setLength(length);
+						charDefTo.setLength(dataStructure.getLength());
 					}
 				}
 

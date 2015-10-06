@@ -32,6 +32,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramImpl#getActivationGroup <em>Activation Group</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramImpl#getBaseProgram <em>Base Program</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramImpl#getCreationParams <em>Creation Params</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramImpl#getSource <em>Source</em>}</li>
  * </ul>
@@ -82,6 +83,26 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 	 * @ordered
 	 */
 	protected String address = ADDRESS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBaseProgram() <em>Base Program</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBaseProgram()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BASE_PROGRAM_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBaseProgram() <em>Base Program</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBaseProgram()
+	 * @generated
+	 * @ordered
+	 */
+	protected String baseProgram = BASE_PROGRAM_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCreationParams() <em>Creation Params</em>}' attribute list.
@@ -171,6 +192,27 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 		address = newAddress;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.PROGRAM__ADDRESS, oldAddress, address));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBaseProgram() {
+		return baseProgram;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBaseProgram(String newBaseProgram) {
+		String oldBaseProgram = baseProgram;
+		baseProgram = newBaseProgram;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.PROGRAM__BASE_PROGRAM, oldBaseProgram, baseProgram));
 	}
 
 	/**
@@ -274,6 +316,8 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 				return getActivationGroup();
 			case QOperatingSystemProgramPackage.PROGRAM__ADDRESS:
 				return getAddress();
+			case QOperatingSystemProgramPackage.PROGRAM__BASE_PROGRAM:
+				return getBaseProgram();
 			case QOperatingSystemProgramPackage.PROGRAM__CREATION_PARAMS:
 				return getCreationParams();
 			case QOperatingSystemProgramPackage.PROGRAM__SOURCE:
@@ -295,6 +339,9 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 				return;
 			case QOperatingSystemProgramPackage.PROGRAM__ADDRESS:
 				setAddress((String)newValue);
+				return;
+			case QOperatingSystemProgramPackage.PROGRAM__BASE_PROGRAM:
+				setBaseProgram((String)newValue);
 				return;
 			case QOperatingSystemProgramPackage.PROGRAM__CREATION_PARAMS:
 				getCreationParams().clear();
@@ -320,6 +367,9 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 			case QOperatingSystemProgramPackage.PROGRAM__ADDRESS:
 				setAddress(ADDRESS_EDEFAULT);
 				return;
+			case QOperatingSystemProgramPackage.PROGRAM__BASE_PROGRAM:
+				setBaseProgram(BASE_PROGRAM_EDEFAULT);
+				return;
 			case QOperatingSystemProgramPackage.PROGRAM__CREATION_PARAMS:
 				getCreationParams().clear();
 				return;
@@ -341,6 +391,8 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 				return ACTIVATION_GROUP_EDEFAULT == null ? activationGroup != null : !ACTIVATION_GROUP_EDEFAULT.equals(activationGroup);
 			case QOperatingSystemProgramPackage.PROGRAM__ADDRESS:
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
+			case QOperatingSystemProgramPackage.PROGRAM__BASE_PROGRAM:
+				return BASE_PROGRAM_EDEFAULT == null ? baseProgram != null : !BASE_PROGRAM_EDEFAULT.equals(baseProgram);
 			case QOperatingSystemProgramPackage.PROGRAM__CREATION_PARAMS:
 				return creationParams != null && !creationParams.isEmpty();
 			case QOperatingSystemProgramPackage.PROGRAM__SOURCE:
@@ -362,6 +414,8 @@ public class ProgramImpl extends TypedObjectImpl implements QProgram {
 		result.append(activationGroup);
 		result.append(", address: ");
 		result.append(address);
+		result.append(", baseProgram: ");
+		result.append(baseProgram);
 		result.append(", creationParams: ");
 		result.append(creationParams);
 		result.append(')');

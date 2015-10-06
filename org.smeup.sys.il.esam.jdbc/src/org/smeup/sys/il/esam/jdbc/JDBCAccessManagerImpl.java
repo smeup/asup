@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.esam.jdbc;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
@@ -24,7 +25,6 @@ import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
 import org.smeup.sys.rt.core.QApplication;
-import org.smeup.sys.rt.core.ServiceRegistering;
 
 public class JDBCAccessManagerImpl implements QAccessManager {
 
@@ -33,7 +33,7 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 	@Inject
 	private QDataManager dataManager;
 
-	@ServiceRegistering
+	@PostConstruct
 	public void init() {
 
 		QAdapterFactory adapterFactory = new JDBCEsamAdatpterFactoryImpl();

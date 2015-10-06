@@ -194,8 +194,8 @@ public class BaseCallableInjector {
 
 				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
 				
-				QData data = dataContainer.resetData(dataTerm);					
-				field.set(callable, data);			
+				QData data = dataContainer.resetData(dataTerm);
+				field.set(callable, data);
 				
 				if(dataTerm.getDataTermType().isCompound()) {
 					QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
