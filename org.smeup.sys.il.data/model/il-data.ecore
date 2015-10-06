@@ -1772,10 +1772,9 @@
     </eOperations>
     <eOperations name="out"/>
     <eOperations name="qDate" lowerBound="1" eType="#//Datetime">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="qDate" lowerBound="1" eType="#//Datetime">
-      <eParameters name="value" lowerBound="1" eType="#//String"/>
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>

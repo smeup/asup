@@ -733,7 +733,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public QDatetime qDate(String value) {
+	public <E extends Enum<E>> QDatetime qDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}

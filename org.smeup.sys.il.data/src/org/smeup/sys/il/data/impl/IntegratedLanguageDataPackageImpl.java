@@ -2665,7 +2665,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(stringEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(stringEClass, this.getDatetime(), "qDate", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		t1.getEBounds().add(g1);
 
 		op = addEOperation(stringEClass, this.getCharacter(), "qSubst", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);

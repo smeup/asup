@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
 import java.lang.String;
 
 /**
@@ -295,10 +296,10 @@ public interface QString extends QBufferedData, QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" valueRequired="true"
+	 * @model required="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
-	QDatetime qDate(String value);
+	<E extends Enum<E>> QDatetime qDate();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

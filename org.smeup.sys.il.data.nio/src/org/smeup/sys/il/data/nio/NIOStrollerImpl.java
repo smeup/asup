@@ -549,8 +549,9 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		return current().qScan(source, start, found);
 	}
 
-	public QDatetime qDate(String value) {
-		return current().qDate(value);
+	@Override
+	public <E extends Enum<E>> QDatetime qDate() {
+		return current().qDate();
 	}
 
 }
