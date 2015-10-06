@@ -260,6 +260,8 @@ SPECIAL
 		( U S A)
 		|
 		( N E X T)
+		|
+		(I S O)
 	;
 
 OR 	: 	'||' | (O R);
