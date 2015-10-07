@@ -284,5 +284,11 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		
 	}
 
+	@Override
+	public boolean eq(String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 }

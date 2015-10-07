@@ -520,6 +520,11 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(double value) {
+		if(Double.isInfinite(value))  {
+			System.err.println("Unexpected condition: c4564v94cr9ddvsdcrs");
+			return;
+		}
+		
 		eval(value, (String)null);
 	}
 
