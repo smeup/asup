@@ -11,15 +11,15 @@ import java.lang.String;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Concatenate</b></em>'.
+ * A representation of the model object '<em><b>Cattable</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getConcatenate()
+ * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getCattable()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QConcatenate {
+public interface QCattable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,4 +324,4 @@ public interface QConcatenate {
 	 */
 	void cat(QString factor1, boolean clear);
 
-} // QConcatenate
+} // QCattable
