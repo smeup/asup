@@ -26,7 +26,6 @@ import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
@@ -53,9 +52,6 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		QProject project = null;
 		switch (event.getType()) {
 		case PRE_SAVE:
-			
-			if(!library.getLibraryType().equals(LibraryType.PRODUCTION))
-				break;
 			
 			project = sourceManager.getProject(contextProvider.getContext(), library.getName());
 			if (project == null) {
