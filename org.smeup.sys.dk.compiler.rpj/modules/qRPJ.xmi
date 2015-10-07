@@ -1397,7 +1397,8 @@
     <prototypes
         name="%lookup">
       <definition
-          xsi:type="il-data-def:NumericDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1444,7 +1445,8 @@
     <prototypes
         name="%lookuplt">
       <definition
-          xsi:type="il-data-def:NumericDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1490,7 +1492,8 @@
     <prototypes
         name="%lookuple">
       <definition
-          xsi:type="il-data-def:NumericDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1536,7 +1539,8 @@
     <prototypes
         name="%lookupgt">
       <definition
-          xsi:type="il-data-def:NumericDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate
@@ -1582,7 +1586,8 @@
     <prototypes
         name="%lookupge">
       <definition
-          xsi:type="il-data-def:NumericDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
       <entry>
         <parameters>
           <delegate

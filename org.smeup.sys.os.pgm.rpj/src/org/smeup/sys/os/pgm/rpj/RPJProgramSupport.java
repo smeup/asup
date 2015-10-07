@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
@@ -59,6 +60,9 @@ public class RPJProgramSupport {
 	// public QCommandManager commandManager;
 	@Inject
 	public QJob job;
+	
+	@Inject @Program(name = "*OWNER")
+	private Object programOwner;
 
 	@DataDef(dimension = 99)
 	public QArray<QIndicator> qIN;
@@ -146,6 +150,9 @@ public class RPJProgramSupport {
 	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	NumberFormat numberFormat = new DecimalFormat();
 
+	public Object getProgramOwner() {
+		return this.programOwner;
+	}
 	public static class ProgramStatus extends QDataStructWrapper {
 
 		private static final long serialVersionUID = 1L;
@@ -748,47 +755,47 @@ public class RPJProgramSupport {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookup(String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookup(String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookup(QDataStruct argument, QStroller<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookup(QDataStruct argument, QStroller<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument.toString(), list, startIndex, numElements);
 	}
 
-	public QNumeric qLookuplt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuplt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookuplt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public <BD extends QBufferedData> QDecimal qLookuplt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LT, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookuple(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookuple(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookuple(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public <BD extends QBufferedData> QDecimal qLookuple(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.LE, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookupgt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupgt(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookupgt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public <BD extends QBufferedData> QDecimal qLookupgt(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GT, argument, list, startIndex, numElements);
 	}
 
-	public QNumeric qLookupge(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	public QDecimal qLookupge(Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	public <BD extends QBufferedData> QNumeric qLookupge(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	public <BD extends QBufferedData> QDecimal qLookupge(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.GE, argument, list, startIndex, numElements);
 	}
 
-	private QNumeric qLookup(LookupOperator operator, String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, String argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -796,7 +803,7 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
-		QNumeric result = null;
+		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
 			if (list.get(i).toString().trim().equals(argument.toString().trim())) {
 				result = qBox(i);
@@ -812,7 +819,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private <BD extends QBufferedData> QNumeric qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
+	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -820,7 +827,7 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
-		QNumeric result = null;
+		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {
 				result = qBox(i);
@@ -836,7 +843,7 @@ public class RPJProgramSupport {
 		return result;
 	}
 
-	private QNumeric qLookup(LookupOperator operator, Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
+	private QDecimal qLookup(LookupOperator operator, Specials argument, QList<? extends QBufferedData> list, Integer startIndex, Integer numElements) {
 
 		if (startIndex == null)
 			startIndex = 1;
@@ -844,7 +851,7 @@ public class RPJProgramSupport {
 		if (numElements == null || numElements == 0)
 			numElements = list.capacity();
 
-		QNumeric result = null;
+		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {
 				result = qBox(i);
