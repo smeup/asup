@@ -49,6 +49,27 @@
       <eParameters name="start" eType="#//Decimal"/>
       <eParameters name="elements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="divide">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="minus">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="mult">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments eTypeParameter="#//Array/D"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="plus">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">

@@ -1009,6 +1009,24 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
+		op = addEOperation(arrayEClass, null, "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "minus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(arrayEClass, null, "mult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType(arrayEClass_D);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(arrayEClass, null, "plus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType(arrayEClass_D);

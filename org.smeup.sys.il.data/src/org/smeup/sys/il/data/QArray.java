@@ -59,5 +59,29 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model arrayRequired="true"
 	 * @generated
 	 */
+	void divide(QArray<D> array);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true"
+	 * @generated
+	 */
+	void minus(QArray<D> array);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true"
+	 * @generated
+	 */
+	void mult(QArray<D> array);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true"
+	 * @generated
+	 */
 	void plus(QArray<D> array);
 } // QArray

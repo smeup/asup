@@ -196,4 +196,22 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void divide(QArray<D> array) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void minus(QArray<D> array) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mult(QArray<D> array) {
+		// TODO Auto-generated method stub
+		
+	}
 }
