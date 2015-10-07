@@ -2371,11 +2371,11 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getEval_RoundingMode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#getDirection <em>Direction</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Direction</em>'.
-	 * @see org.smeup.sys.il.flow.QEval#getDirection()
+	 * @see org.smeup.sys.il.flow.QEval#isDirection()
 	 * @see #getEval()
 	 * @generated
 	 */

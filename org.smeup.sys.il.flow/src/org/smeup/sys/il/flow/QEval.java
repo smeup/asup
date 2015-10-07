@@ -16,7 +16,7 @@ package org.smeup.sys.il.flow;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QEval#getDirection <em>Direction</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,6 +80,7 @@ public interface QEval extends QInvoke {
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Direction</em>' attribute isn't clear,
@@ -87,21 +88,21 @@ public interface QEval extends QInvoke {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Direction</em>' attribute.
-	 * @see #setDirection(String)
+	 * @see #setDirection(boolean)
 	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_Direction()
-	 * @model required="true"
+	 * @model default="false" required="true"
 	 * @generated
 	 */
-	String getDirection();
+	boolean isDirection();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#getDirection <em>Direction</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Direction</em>' attribute.
-	 * @see #getDirection()
+	 * @see #isDirection()
 	 * @generated
 	 */
-	void setDirection(String value);
+	void setDirection(boolean value);
 
 } // QEval
