@@ -87,6 +87,21 @@ public class JDTSourceManagerImpl implements QSourceManager {
 	}
 
 	@Override
+	public void deleteProject(QContext context, QProject project) throws IOException {
+
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		IProject iProject = root.getProject(project.getName());
+		if (iProject.exists()) {
+			try {
+				iProject.delete(true, null);
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
 	public <T extends QObjectNameable> QSourceEntry createObjectEntry(QContext context, String project, Class<T> type, String name, boolean replace, T content) throws IOException {
 
 		URI uri = EcoreUtil.getURI((EObject) content);

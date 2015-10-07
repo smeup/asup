@@ -24,7 +24,9 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
@@ -42,13 +44,20 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 
+		if (event.getType() != ResourceEventType.PRE_SAVE && event.getType() != ResourceEventType.PRE_DELETE)
+			return;
+
 		QContextProvider contextProvider = event.getResource().getContextProvider();
 		QLibrary library = event.getSource();
 
+		QProject project = null;
 		switch (event.getType()) {
 		case PRE_SAVE:
 			
-			QProject project = sourceManager.getProject(contextProvider.getContext(), library.getName());
+			if(!library.getLibraryType().equals(LibraryType.PRODUCTION))
+				break;
+			
+			project = sourceManager.getProject(contextProvider.getContext(), library.getName());
 			if (project == null) {
 				QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 				projectDef.setText(library.getText());
@@ -62,16 +71,26 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 					}
 */
 				} catch (IOException e) {
-					throw new OperatingSystemRuntimeException(e);
+					// TODO
+					e.printStackTrace();
 				}
 			}
 
 			break;
-
+		case PRE_DELETE:
+			
+			project = sourceManager.getProject(contextProvider.getContext(), library.getName());
+			if (project != null) {
+				try {
+					sourceManager.deleteProject(contextProvider.getContext(), project);
+				} catch (IOException e) {
+					new OperatingSystemRuntimeException(e);
+				}
+			}
+			
+			break;
 		default:
 			break;
 		}
 	}
-	
-
 }

@@ -76,85 +76,88 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				dataTerm.getDefinition().getFormulas().remove(formula);
 		}
 
-		if (dataTerm.getDataTermType().isMultiple()) 
+		// TODO
+		if (dataTerm.getDataTermType().isMultiple())
 			return;
 
 		QDefault default_ = dataTerm.getDefault();
-		if(default_ == null)
+		if (default_ == null)
 			return;
-		
-		if (default_.isEmpty()) 
+
+		if (default_.isEmpty())
 			return;
 
 		QExpression value = null;
 		// TODO
 		if (default_.getValue().trim().equals("*Allx'00'"))
 			value = expressionParser.parseExpression(default_.getValue().trim().toUpperCase());
-		else
-			value = expressionParser.parseExpression(default_.getValue());
-
-		if (value.getExpressionType() == ExpressionType.FUNCTION) {
-
-			QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
-			if (compoundTermExpression.getValue().toLowerCase().equals("%addr")) {
-
-				if (!dataTerm.getDefinition().getDataClass().equals(QPointer.class))
-					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: d9q6r35xcvbcvb40956");
-
-				QPointerDef pointerDef = (QPointerDef) dataTerm.getDefinition();
-				if (pointerDef.getTarget() != null)
-					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 90mvqsdgdfag79fa");
-
-				QDataTerm<?> dataValue = getDataValue(value);
-				if (dataValue == null)
-					throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 90mvqsdgdfag79fasgfsdfg");
-
-				pointerDef.setTarget(dataValue.getName());
-
-				default_.clear();
+		else {
+			try {
+				value = expressionParser.parseExpression(default_.getValue());
+			} catch (Exception e) {
+				System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
 			}
-			/*
-			 * else if
-			 * (compoundTermExpression.getValue().toLowerCase().equals
-			 * ("%size")) {
-			 *
-			 *
-			 *
-			 * // TODO calculate on @PostConstruct }
-			 */
-			else if (compoundTermExpression.getValue().toUpperCase().equals("*ALL")) {
-				// TODO calculate on @PostConstruct
-			} else {
-				QDataTerm<?> dataValue = getDataValue(value);
-				switch (compoundTermExpression.getValue().toLowerCase()) {
-				case "%elem":
+		}
 
-					if (dataValue.getDataTermType().isUnary())
-						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f8s0d9");
+		if (value == null)
+			return;
 
-					String stringValue = null;
-					try {
-						stringValue = Integer.toString(((QDataTerm<QMultipleDataDef<?>>) dataValue).getDefinition().getDimension());
-					} catch (Exception e) {
-						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sd", e);
-					}
+		if (value.getExpressionType() != ExpressionType.FUNCTION)
+			return;
 
-					default_.setValue(stringValue);
-					break;
-				case "%size":
-					if (dataValue.getDataTermType().isAtomic())
-						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f82343");
-					
-					QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
+		QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
+		if (compoundTermExpression.getValue().toLowerCase().equals("%addr")) {
 
-					QDataStruct dataStruct = dataFactory.createDataStruct(compoundDataDef.getElements(), 0, false);
-					default_.setValue(Integer.toString(dataStruct.getSize()));
+			if (!dataTerm.getDefinition().getDataClass().equals(QPointer.class))
+				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: d9q6r35xcvbcvb40956");
 
-					break;
-				default:
-					System.err.println(value);
-					break;
+			QPointerDef pointerDef = (QPointerDef) dataTerm.getDefinition();
+			if (pointerDef.getTarget() != null)
+				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 90mvqsdgdfag79fa");
+
+			QDataTerm<?> dataValue = getDataValue(value);
+			if (dataValue == null)
+				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 90mvqsdgdfag79fasgfsdfg");
+
+			pointerDef.setTarget(dataValue.getName());
+
+			default_.clear();
+		}
+		else if (compoundTermExpression.getValue().toUpperCase().equals("*ALL")) {
+			// TODO calculate on @PostConstruct
+		} else {
+			QDataTerm<?> dataValue = getDataValue(value);
+			switch (compoundTermExpression.getValue().toLowerCase()) {
+			case "%elem":
+
+				if (dataValue.getDataTermType().isUnary())
+					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f8s0d9");
+
+				setProperty(dataTerm, "%elem", value);
+/*				String stringValue = null;
+				try {
+					stringValue = Integer.toString(((QDataTerm<QMultipleDataDef<?>>) dataValue).getDefinition().getDimension());
+				} catch (Exception e) {
+					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sd", e);
 				}
+
+				default_.setValue(stringValue);*/
+
+				
+				break;
+			case "%size":
+				if (dataValue.getDataTermType().isAtomic())
+					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f82343");
+
+				QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
+
+				QDataStruct dataStruct = dataFactory.createDataStruct(compoundDataDef.getElements(), 0, false);
+				default_.setValue(Integer.toString(dataStruct.getSize()));
+
+				break;
+			default:
+				System.err.println(value);
+				break;
 			}
 		}
 	}
@@ -184,14 +187,14 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdget9qbt23423");
 
 					QDefault default_ = dataValue.getDefault();
-					if(default_ != null) {
+					if (default_ != null) {
 						String defaultValue = default_.getValue();
 
 						try {
-							((QMultipleDataDef<?>)target.getDefinition()).setDimension(Integer.parseInt(defaultValue));
+							((QMultipleDataDef<?>) target.getDefinition()).setDimension(Integer.parseInt(defaultValue));
 						} catch (Exception e) {
 							throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgetg8rr5wq", e);
-						}						
+						}
 					}
 				} else {
 					if (target.getDefinition() == null)
@@ -200,7 +203,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 					if (dataValue.getDefinition() == null)
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cvnbn53n6985sdfghsdfg");
 
-					((QMultipleDataDef<?>)target.getDefinition()).setDimension(((QMultipleDataDef<?>)dataValue.getDefinition()).getDimension());
+					((QMultipleDataDef<?>) target.getDefinition()).setDimension(((QMultipleDataDef<?>) dataValue.getDefinition()).getDimension());
 				}
 
 				resolved = true;

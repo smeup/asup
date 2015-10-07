@@ -21,6 +21,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * <ul>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.smeup.sys.os.lib.QLibrary#getLibraryType <em>Library Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getParentLibrary <em>Parent Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
@@ -54,6 +55,36 @@ public interface QLibrary extends QTypedObject {
 	 * @generated
 	 */
 	List<String> getDependencies();
+
+	/**
+	 * Returns the value of the '<em><b>Library Type</b></em>' attribute.
+	 * The default value is <code>"PROD"</code>.
+	 * The literals are from the enumeration {@link org.smeup.sys.os.lib.LibraryType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Library Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Library Type</em>' attribute.
+	 * @see org.smeup.sys.os.lib.LibraryType
+	 * @see #setLibraryType(LibraryType)
+	 * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary_LibraryType()
+	 * @model default="PROD" required="true"
+	 * @generated
+	 */
+	LibraryType getLibraryType();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.lib.QLibrary#getLibraryType <em>Library Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Library Type</em>' attribute.
+	 * @see org.smeup.sys.os.lib.LibraryType
+	 * @see #getLibraryType()
+	 * @generated
+	 */
+	void setLibraryType(LibraryType value);
 
 	/**
 	 * Returns the value of the '<em><b>Parent Library</b></em>' attribute. <!--
