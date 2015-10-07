@@ -22,8 +22,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dependencies" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="libraryType" lowerBound="1"
+        eType="#//LibraryType" defaultValueLiteral="PROD"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parentLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="synchronized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LibraryType">
+    <eLiterals name="Production" value="10" literal="PROD"/>
+    <eLiterals name="Test" value="20" literal="TEST"/>
+    <eLiterals name="Temporary" value="30" literal="TEMP"/>
   </eClassifiers>
 </ecore:EPackage>

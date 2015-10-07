@@ -9,6 +9,7 @@ package org.smeup.sys.os.lib.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
+import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
@@ -45,6 +47,13 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass libraryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum libraryTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -138,11 +147,11 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getLibrary_ParentLibrary() {
+	public EAttribute getLibrary_LibraryType() {
 		return (EAttribute)libraryEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -151,8 +160,26 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EAttribute getLibrary_Synchronized() {
+	public EAttribute getLibrary_ParentLibrary() {
 		return (EAttribute)libraryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLibrary_Synchronized() {
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLibraryType() {
+		return libraryTypeEEnum;
 	}
 
 	/**
@@ -196,8 +223,12 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		libraryEClass = createEClass(LIBRARY);
 		createEAttribute(libraryEClass, LIBRARY__BASE_PACKAGE);
 		createEAttribute(libraryEClass, LIBRARY__DEPENDENCIES);
+		createEAttribute(libraryEClass, LIBRARY__LIBRARY_TYPE);
 		createEAttribute(libraryEClass, LIBRARY__PARENT_LIBRARY);
 		createEAttribute(libraryEClass, LIBRARY__SYNCHRONIZED);
+
+		// Create enums
+		libraryTypeEEnum = createEEnum(LIBRARY_TYPE);
 	}
 
 	/**
@@ -255,6 +286,7 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		initEClass(libraryEClass, QLibrary.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLibrary_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Dependencies(), ecorePackage.getEString(), "dependencies", null, 0, -1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLibrary_LibraryType(), this.getLibraryType(), "libraryType", "PROD", 1, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_ParentLibrary(), ecorePackage.getEString(), "parentLibrary", null, 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Synchronized(), ecorePackage.getEBoolean(), "synchronized", "false", 0, 1, QLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -263,6 +295,12 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		addEOperation(libraryEClass, ecorePackage.getEBoolean(), "isChildLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(libraryEClass, theIntegratedLanguageCoreJavaPackage.getJavaURI(), "getPackageURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(libraryTypeEEnum, LibraryType.class, "LibraryType");
+		addEEnumLiteral(libraryTypeEEnum, LibraryType.PRODUCTION);
+		addEEnumLiteral(libraryTypeEEnum, LibraryType.TEST);
+		addEEnumLiteral(libraryTypeEEnum, LibraryType.TEMPORARY);
 
 		// Create resource
 		createResource(eNS_URI);
