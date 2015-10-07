@@ -244,34 +244,60 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	
 	@Override
 	public QNumeric minus(int value) {
-		eval(asDouble() - value);
-		return this;
+		return minus(value, null);
 	}
 
 	@Override
+	public QNumeric minus(int value, String roundingMode) {
+		eval(asDouble() - value);
+		return this;
+	}
+	
+
+	@Override
 	public QNumeric minus(long value) {
+		return minus(value, null);
+	}
+
+	@Override
+	public QNumeric minus(long value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
 
 	@Override
 	public QNumeric minus(QNumeric value) {
-		eval(asDouble() - value.asDouble());
-		return this;
+		return minus(value, null);
 	}
 
 	@Override
+	public QNumeric minus(QNumeric value, String roundingMode) {
+		eval(asDouble() - value.asDouble());
+		return this;
+	}
+	
+	@Override
 	public QNumeric minus(short value) {
+		return minus(value, null);
+	}
+
+	@Override
+	public QNumeric minus(short value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
 
 	@Override
 	public QNumeric minus(double value) {
+		return minus(value, null);
+	}
+
+	@Override
+	public QNumeric minus(double value, String roundingMode) {
 		eval(asDouble() - value);
 		return this;
 	}
-
+	
 	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
@@ -304,34 +330,59 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public QNumeric mult(int value) {
+		return mult(value, null);
+	}
+
+	@Override
+	public QNumeric mult(int value, String roundingMode) {
 		eval(asDouble() * value);
 		return this;
 	}
 
 	@Override
 	public QNumeric mult(long value) {
-		eval(asDouble() * value);
-		return this;
+		return mult(value, null);
 	}
 
 	@Override
+	public QNumeric mult(long value, String roundingMode) {
+		eval(asDouble() * value);
+		return this;
+	}
+	
+	@Override
 	public QNumeric mult(QNumeric value) {
+		return mult(value, null);
+	}
+
+	@Override
+	public QNumeric mult(QNumeric value, String roundingMode) {
 		eval(asDouble() * value.asDouble());
 		return this;
 	}
 
 	@Override
 	public QNumeric mult(short value) {
-		eval(asDouble() * value);
-		return this;
+		return mult(value, null);
 	}
 
 	@Override
-	public QNumeric mult(double value) {
+	public QNumeric mult(short value, String roundingMode) {
 		eval(asDouble() * value);
 		return this;
 	}
+	
+	@Override
+	public QNumeric mult(double value) {
+		return mult(value, null);
+	}
 
+	@Override
+	public QNumeric mult(double value, String roundingMode) {
+		eval(asDouble() * value);
+		return this;
+	}
+	
 	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
 		return !eq(value);
@@ -349,30 +400,55 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public QNumeric plus(int value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public QNumeric plus(int value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
 	public QNumeric plus(long value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public QNumeric plus(long value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
 	public QNumeric plus(QNumeric value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public QNumeric plus(QNumeric value, String roundingMode) {
 		eval(asDouble() + value.asDouble());
 		return this;
 	}
 
 	@Override
 	public QNumeric plus(short value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public QNumeric plus(short value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
 
 	@Override
 	public QNumeric plus(double value) {
+		return plus(value, null);
+	}
+
+	@Override
+	public QNumeric plus(double value, String roundingMode) {
 		eval(asDouble() + value);
 		return this;
 	}
