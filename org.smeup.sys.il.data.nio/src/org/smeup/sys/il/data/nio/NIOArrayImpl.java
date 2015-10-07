@@ -193,25 +193,36 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(QArray<D> array) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				System.out.println(array.get(i));
+			   ((QNumeric)this.get(i)).plus((QNumeric)array.get(i));
+			}
+			}
 	}
 
 	@Override
 	public void divide(QArray<D> array) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++)
+				if(i <= array.capacity())
+					((QNumeric)this.get(i)).divide((QNumeric)array.get(i));
+			  }
 	}
 
 	@Override
 	public void minus(QArray<D> array) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++)
+			   ((QNumeric)this.get(i)).minus((QNumeric)array.get(i));
+			  }
 	}
 
 	@Override
 	public void mult(QArray<D> array) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++)
+			   ((QNumeric)this.get(i)).mult((QNumeric)array.get(i));
+			  }
 	}
 }
