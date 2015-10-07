@@ -133,16 +133,14 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				if (dataValue.getDataTermType().isUnary())
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f8s0d9");
 
-				setProperty(dataTerm, "%elem", value);
-/*				String stringValue = null;
+				String stringValue = null;
 				try {
 					stringValue = Integer.toString(((QDataTerm<QMultipleDataDef<?>>) dataValue).getDefinition().getDimension());
 				} catch (Exception e) {
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sd", e);
 				}
 
-				default_.setValue(stringValue);*/
-
+				default_.setValue(stringValue);
 				
 				break;
 			case "%size":

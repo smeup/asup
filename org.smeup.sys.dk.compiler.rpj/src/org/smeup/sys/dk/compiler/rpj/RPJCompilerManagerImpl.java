@@ -256,7 +256,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
 		for (String moduleName : callableUnit.getSetupSection().getModules()) {
-
+			
 			QCompilationUnit moduleContext = globalContexts.get(moduleName);
 
 			if (moduleContext != null) {
@@ -286,8 +286,8 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				QModule flowModel = (QModule) resourceModule.getContents().get(0);
 
 				moduleContext = createCompilationUnit(job, globalContexts, flowModel, caseSensitive);
-
 				moduleContexts.add(moduleContext);
+				
 				globalContexts.put(moduleName, moduleContext);
 			} catch (IOException e) {
 				throw new OperatingSystemRuntimeException(e);
