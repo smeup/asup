@@ -66,7 +66,7 @@ public class RPJCommandSupport {
 			}
 		}
 
-		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), command, variables, false);
+		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), command, variables, true);
 		
 		commandManager.executeCommand(job.getJobID(), callableCommand);
 	}
