@@ -21,5 +21,6 @@ public @interface Overlay {
 	String position() default POS_NEXT;
 
 	public static final String NAME_OWNER = "*OWNER";
+	public static final String NAME_PGM_STATUS = "*PGMSTATUS";
 	public static final String POS_NEXT = "*NEXT";
 }

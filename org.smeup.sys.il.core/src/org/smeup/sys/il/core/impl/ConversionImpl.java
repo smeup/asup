@@ -20,10 +20,10 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <em><b>Conversion</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.ConversionImpl#getStatus <em>Status</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

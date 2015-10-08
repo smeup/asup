@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QSpecial#getClassDelegate <em>Class Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QSpecial#getElements <em>Elements</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecial()
  * @model

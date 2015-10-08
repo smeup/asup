@@ -432,16 +432,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 					Overlay overlay = (Overlay) annotation;
 
 					// TODO check name
-					String position = null;
-					if (overlay != null)
-						position = overlay.position();
+					if (overlay.position().equals(Overlay.POS_NEXT)) {
+					} else
+						p = Integer.parseInt(overlay.position());
 
-					if (position != null)
-						if (position.equalsIgnoreCase("*NEXT")) {
-						} else
-							p = Integer.parseInt(position);
-
-					if (!overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER)) {
+					if (!overlay.name().equals(Overlay.NAME_OWNER)) {
 						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
 
 						if (overlayedData instanceof QBufferedList<?>) {
@@ -533,13 +528,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			QBufferedData dataElement = (QBufferedData) createData(dataTerm, false);
 
-			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			String position = null;
+			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay != null)
 				position = overlay.getPosition();
 
 			if (position != null)
-				if (position.equalsIgnoreCase("*NEXT")) {
+				if (position.equalsIgnoreCase(Overlay.POS_NEXT)) {
 
 				} else
 					p = Integer.parseInt(position);
@@ -728,8 +723,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 					if (object instanceof Overlay) {
 						Overlay overlay = (Overlay) object;
 						QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
-						qOverlay.setName(overlay.name());
-						qOverlay.setPosition(overlay.position());
+						if (!overlay.name().equals(Overlay.NAME_OWNER))
+							qOverlay.setName(overlay.name());
+						if (!overlay.position().equals(Overlay.POS_NEXT))
+							qOverlay.setPosition(overlay.position());
 						object = qOverlay;
 					}
 

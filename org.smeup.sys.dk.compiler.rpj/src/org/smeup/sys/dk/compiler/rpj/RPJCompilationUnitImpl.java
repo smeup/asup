@@ -788,9 +788,14 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@Override
 	public boolean equalsTermName(String source, String target) {
 
-		if (source == null || target == null)
+		if (source == null)
+			if(target == null)
+				return true;
+			else
+				return false;
+		else if (target == null)
 			return false;
-
+		
 		if (normalizeTermName(source).toLowerCase().equals(normalizeTermName(target).toLowerCase()))
 			return true;
 		else
