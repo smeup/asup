@@ -61,6 +61,7 @@ public class TestLauncherHelper {
 		return testLauncherList;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static Collection<Class<QTestRunner>> findTestRunners(QTestLauncher testLauncher, String object) {
 		
 		ArrayList<Class<QTestRunner>> testRunnerList = new ArrayList<Class<QTestRunner>>();
