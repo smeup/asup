@@ -662,7 +662,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEval_Direction() {
+	public EAttribute getEval_RightAdjust() {
 		return (EAttribute)evalEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1443,7 +1443,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		evalEClass = createEClass(EVAL);
 		createEAttribute(evalEClass, EVAL__ASSIGNMENT);
 		createEAttribute(evalEClass, EVAL__ROUNDING_MODE);
-		createEAttribute(evalEClass, EVAL__DIRECTION);
+		createEAttribute(evalEClass, EVAL__RIGHT_ADJUST);
 
 		fileSectionEClass = createEClass(FILE_SECTION);
 		createEReference(fileSectionEClass, FILE_SECTION__DATA_SETS);
@@ -1694,7 +1694,7 @@ public class IntegratedLanguageFlowPackageImpl extends EPackageImpl implements Q
 		initEClass(evalEClass, QEval.class, "Eval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEval_Assignment(), ecorePackage.getEString(), "assignment", null, 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEval_RoundingMode(), ecorePackage.getEString(), "roundingMode", null, 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEval_Direction(), ecorePackage.getEBoolean(), "direction", "false", 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEval_RightAdjust(), ecorePackage.getEBoolean(), "rightAdjust", "false", 1, 1, QEval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fileSectionEClass, QFileSection.class, "FileSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFileSection_DataSets(), theIntegratedLanguageEsamPackage.getDataSetTerm(), null, "dataSets", null, 0, -1, QFileSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -687,13 +687,13 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	int EVAL__ROUNDING_MODE = INVOKE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * The feature id for the '<em><b>Right Adjust</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVAL__DIRECTION = INVOKE_FEATURE_COUNT + 2;
+	int EVAL__RIGHT_ADJUST = INVOKE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Eval</em>' class. <!--
@@ -2371,15 +2371,15 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 	EAttribute getEval_RoundingMode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.flow.QEval#isRightAdjust <em>Right Adjust</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Direction</em>'.
-	 * @see org.smeup.sys.il.flow.QEval#isDirection()
+	 * @return the meta object for the attribute '<em>Right Adjust</em>'.
+	 * @see org.smeup.sys.il.flow.QEval#isRightAdjust()
 	 * @see #getEval()
 	 * @generated
 	 */
-	EAttribute getEval_Direction();
+	EAttribute getEval_RightAdjust();
 
 	/**
 	 * Returns the meta object for class '
@@ -3467,12 +3467,12 @@ public interface QIntegratedLanguageFlowPackage extends EPackage {
 		EAttribute EVAL__ROUNDING_MODE = eINSTANCE.getEval_RoundingMode();
 
 		/**
-		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Right Adjust</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EVAL__DIRECTION = eINSTANCE.getEval_Direction();
+		EAttribute EVAL__RIGHT_ADJUST = eINSTANCE.getEval_RightAdjust();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.flow.impl.FileSectionImpl <em>File Section</em>}' class.
