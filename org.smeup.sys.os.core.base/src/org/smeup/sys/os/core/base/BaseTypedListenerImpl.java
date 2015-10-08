@@ -19,7 +19,6 @@ import org.smeup.sys.il.memo.QResource;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
@@ -38,15 +37,10 @@ public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 	
 	@Override
 	public void handleEvent(QResourceEvent<QTypedObject> event) {
-
-		if (event.getType() != ResourceEventType.PRE_SAVE)
-			return;
-
-		QResource<QTypedObject> resource = event.getResource();
-		QTypedObject typedObject = event.getSource();
-		
 		switch (event.getType()) {
 		case PRE_SAVE:
+			QResource<QTypedObject> resource = event.getResource();
+			QTypedObject typedObject = event.getSource();
 			
 			EObject eObject = (EObject) typedObject;
 			
@@ -64,7 +58,6 @@ public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 		default:
 			break;
 		}
-		
 	}
 
 }
