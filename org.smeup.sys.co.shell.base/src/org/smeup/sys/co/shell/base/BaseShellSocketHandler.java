@@ -97,7 +97,7 @@ public class BaseShellSocketHandler extends Thread {
 
 				outputStreamWriter.flush();
 			}
-			outputStreamWriter.write("\nGoodbye");
+			outputStreamWriter.write("\nGoodbye\n");
 			outputStreamWriter.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
