@@ -16,7 +16,7 @@ package org.smeup.sys.il.flow;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEval#getRoundingMode <em>Rounding Mode</em>}</li>
- *   <li>{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.QEval#isRightAdjust <em>Right Adjust</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,30 +79,30 @@ public interface QEval extends QInvoke {
 	void setRoundingMode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
+	 * Returns the value of the '<em><b>Right Adjust</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Direction</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Right Adjust</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Direction</em>' attribute.
-	 * @see #setDirection(boolean)
-	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_Direction()
+	 * @return the value of the '<em>Right Adjust</em>' attribute.
+	 * @see #setRightAdjust(boolean)
+	 * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEval_RightAdjust()
 	 * @model default="false" required="true"
 	 * @generated
 	 */
-	boolean isDirection();
+	boolean isRightAdjust();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#isDirection <em>Direction</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.flow.QEval#isRightAdjust <em>Right Adjust</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Direction</em>' attribute.
-	 * @see #isDirection()
+	 * @param value the new value of the '<em>Right Adjust</em>' attribute.
+	 * @see #isRightAdjust()
 	 * @generated
 	 */
-	void setDirection(boolean value);
+	void setRightAdjust(boolean value);
 
 } // QEval
