@@ -9,6 +9,7 @@ package org.smeup.sys.os.lib;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
@@ -151,13 +152,22 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	int LIBRARY__DEPENDENCIES = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Library Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__LIBRARY_TYPE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Parent Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__PARENT_LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int LIBRARY__PARENT_LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!--
@@ -166,7 +176,7 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__SYNCHRONIZED = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
+	int LIBRARY__SYNCHRONIZED = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class. <!--
@@ -175,7 +185,17 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
+	int LIBRARY_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.lib.LibraryType <em>Library Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.lib.LibraryType
+	 * @see org.smeup.sys.os.lib.impl.OperatingSystemLibraryPackageImpl#getLibraryType()
+	 * @generated
+	 */
+	int LIBRARY_TYPE = 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.lib.QLibraryManager <em>Library Manager</em>}'.
@@ -206,6 +226,17 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	EAttribute getLibrary_Dependencies();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.lib.QLibrary#getLibraryType <em>Library Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Library Type</em>'.
+	 * @see org.smeup.sys.os.lib.QLibrary#getLibraryType()
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	EAttribute getLibrary_LibraryType();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.lib.QLibrary#getParentLibrary <em>Parent Library</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Parent Library</em>'.
@@ -224,6 +255,16 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLibrary_Synchronized();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.lib.LibraryType <em>Library Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Library Type</em>'.
+	 * @see org.smeup.sys.os.lib.LibraryType
+	 * @generated
+	 */
+	EEnum getLibraryType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}'.
@@ -283,6 +324,14 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 		EAttribute LIBRARY__DEPENDENCIES = eINSTANCE.getLibrary_Dependencies();
 
 		/**
+		 * The meta object literal for the '<em><b>Library Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIBRARY__LIBRARY_TYPE = eINSTANCE.getLibrary_LibraryType();
+
+		/**
 		 * The meta object literal for the '<em><b>Parent Library</b></em>' attribute feature.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
@@ -295,6 +344,16 @@ public interface QOperatingSystemLibraryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIBRARY__SYNCHRONIZED = eINSTANCE.getLibrary_Synchronized();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.lib.LibraryType <em>Library Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.lib.LibraryType
+		 * @see org.smeup.sys.os.lib.impl.OperatingSystemLibraryPackageImpl#getLibraryType()
+		 * @generated
+		 */
+		EEnum LIBRARY_TYPE = eINSTANCE.getLibraryType();
 
 		/**
 		 * The meta object literal for the '<em><b>Base Package</b></em>' attribute feature.

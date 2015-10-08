@@ -22,6 +22,7 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRoundingMode <em>Rounding Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#isDirection <em>Direction</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,6 +66,26 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	 * @ordered
 	 */
 	protected String roundingMode = ROUNDING_MODE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirection()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean DIRECTION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isDirection()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean direction = DIRECTION_EDEFAULT;
 
 	/**
 	 *
@@ -131,6 +152,27 @@ public class EvalImpl extends InvokeImpl implements QEval {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isDirection() {
+		return direction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDirection(boolean newDirection) {
+		boolean oldDirection = direction;
+		direction = newDirection;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageFlowPackage.EVAL__DIRECTION, oldDirection, direction));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -141,6 +183,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return getAssignment();
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				return getRoundingMode();
+			case QIntegratedLanguageFlowPackage.EVAL__DIRECTION:
+				return isDirection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,6 +201,9 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return;
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				setRoundingMode((String)newValue);
+				return;
+			case QIntegratedLanguageFlowPackage.EVAL__DIRECTION:
+				setDirection((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,6 +222,9 @@ public class EvalImpl extends InvokeImpl implements QEval {
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				setRoundingMode(ROUNDING_MODE_EDEFAULT);
 				return;
+			case QIntegratedLanguageFlowPackage.EVAL__DIRECTION:
+				setDirection(DIRECTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,6 +240,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 				return ASSIGNMENT_EDEFAULT == null ? assignment != null : !ASSIGNMENT_EDEFAULT.equals(assignment);
 			case QIntegratedLanguageFlowPackage.EVAL__ROUNDING_MODE:
 				return ROUNDING_MODE_EDEFAULT == null ? roundingMode != null : !ROUNDING_MODE_EDEFAULT.equals(roundingMode);
+			case QIntegratedLanguageFlowPackage.EVAL__DIRECTION:
+				return direction != DIRECTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -207,6 +259,8 @@ public class EvalImpl extends InvokeImpl implements QEval {
 		result.append(assignment);
 		result.append(", roundingMode: ");
 		result.append(roundingMode);
+		result.append(", direction: ");
+		result.append(direction);
 		result.append(')');
 		return result.toString();
 	}

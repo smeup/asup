@@ -30,13 +30,13 @@ import org.smeup.sys.rt.core.QServiceHook;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationImpl#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -448,23 +448,23 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int CHARACTER_FEATURE_COUNT = STRING_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.data.QConcatenate <em>Concatenate</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QCattable <em>Cattable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.data.QConcatenate
-	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getConcatenate()
+	 * @see org.smeup.sys.il.data.QCattable
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getCattable()
 	 * @generated
 	 */
-	int CONCATENATE = 8;
+	int CATTABLE = 8;
 
 	/**
-	 * The number of structural features of the '<em>Concatenate</em>' class.
+	 * The number of structural features of the '<em>Cattable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCATENATE_FEATURE_COUNT = 0;
+	int CATTABLE_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataContainer <em>Data Container</em>}' class.
@@ -830,14 +830,14 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	EClass getCharacter();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QConcatenate <em>Concatenate</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QCattable <em>Cattable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Concatenate</em>'.
-	 * @see org.smeup.sys.il.data.QConcatenate
+	 * @return the meta object for class '<em>Cattable</em>'.
+	 * @see org.smeup.sys.il.data.QCattable
 	 * @generated
 	 */
-	EClass getConcatenate();
+	EClass getCattable();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QData <em>Data</em>}'.
@@ -1243,14 +1243,14 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		EClass CHARACTER = eINSTANCE.getCharacter();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.data.QConcatenate <em>Concatenate</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QCattable <em>Cattable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.data.QConcatenate
-		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getConcatenate()
+		 * @see org.smeup.sys.il.data.QCattable
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getCattable()
 		 * @generated
 		 */
-		EClass CONCATENATE = eINSTANCE.getConcatenate();
+		EClass CATTABLE = eINSTANCE.getCattable();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.QData <em>Data</em>}' class.

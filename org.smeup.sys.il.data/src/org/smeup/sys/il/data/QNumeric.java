@@ -383,11 +383,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric minus(short value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(short value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric minus(long value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(long value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -397,11 +413,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric minus(int value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(int value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric minus(double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(double value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -411,11 +443,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric minus(QNumeric value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric minus(QNumeric value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric mult(short value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(short value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -425,11 +473,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric mult(long value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(long value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric mult(int value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(int value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -439,11 +503,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric mult(double value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(double value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric mult(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric mult(QNumeric value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -475,11 +555,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric plus(short value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(short value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric plus(long value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(long value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -489,6 +585,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric plus(int value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(int value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -496,11 +600,27 @@ public interface QNumeric extends QBufferedData {
 	QNumeric plus(double value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(double value, String roundingMode);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	QNumeric plus(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	QNumeric plus(QNumeric value, String roundingMode);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

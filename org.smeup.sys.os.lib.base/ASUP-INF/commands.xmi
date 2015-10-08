@@ -704,6 +704,9 @@
           <elements
               name="*TEST"
               value="TEST"/>
+          <elements
+              name="*TEMP"
+              value="TEMP"/>
         </facets>
         <default
             value="*PROD"/>

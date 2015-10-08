@@ -19,6 +19,7 @@ import org.eclipse.flux.core.Repository;
 import org.smeup.sys.il.memo.QResourceEvent;
 import org.smeup.sys.il.memo.QResourceListener;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class FluxLibraryListenerImpl implements QResourceListener<QLibrary> {
@@ -33,7 +34,10 @@ public class FluxLibraryListenerImpl implements QResourceListener<QLibrary> {
 	
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
-		
+
+		if (event.getType() != ResourceEventType.PRE_SAVE)
+			return;
+
 		QLibrary library = event.getSource();
 		
 		switch (event.getType()) {

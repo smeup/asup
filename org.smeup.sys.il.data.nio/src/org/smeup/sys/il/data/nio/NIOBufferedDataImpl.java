@@ -23,6 +23,7 @@ import java.nio.charset.Charset;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
@@ -536,6 +537,50 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return new NIOPointerImpl(getDataContext(), this);
 	}
 
+	@Override
+	public QCharacter qSubst(QNumeric start, QNumeric length) {
+		return qSubst(start.i(), length.i());
+	}
+
+	@Override
+	public QCharacter qSubst(QNumeric start) {
+		return qSubst(start.i());
+	}
+
+	@Override
+	public QCharacter qSubst(QNumeric start, Number length) {
+		return qSubst(start.i(), length);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start, QNumeric length) {
+		return qSubst(start, length.i());
+	}
+
+	@Override
+	public QCharacter qSubst(Number start) {
+		return qSubst(start, 0);
+	}
+
+	@Override
+	public QCharacter qSubst(Number start, Number length) {
+
+		if (start == null)
+			start = 1;
+
+		if (length == null || length.equals(0))
+			length = getLength() - start.intValue() + 1;
+
+		// String str = asString().substring(start.intValue() - 1,
+		// length.intValue()-1);
+
+		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue());
+		assign(character, start.intValue());
+
+		return character;
+	}
+
+	
 	public int compareBytes(byte[] b1, byte[] b2) {
 
 		if (b1 == null && b2 == null)

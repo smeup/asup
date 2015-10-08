@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryPackage;
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
@@ -29,6 +30,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <ul>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getLibraryType <em>Library Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#getParentLibrary <em>Parent Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.impl.LibraryImpl#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
@@ -71,6 +73,24 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 	 * @ordered
 	 */
 	protected EList<String> dependencies;
+	/**
+	 * The default value of the '{@link #getLibraryType() <em>Library Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibraryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final LibraryType LIBRARY_TYPE_EDEFAULT = LibraryType.PRODUCTION;
+	/**
+	 * The cached value of the '{@link #getLibraryType() <em>Library Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibraryType()
+	 * @generated
+	 * @ordered
+	 */
+	protected LibraryType libraryType = LIBRARY_TYPE_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getParentLibrary() <em>Parent Library</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
@@ -133,6 +153,27 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 			dependencies = new EDataTypeUniqueEList<String>(String.class, this, QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES);
 		}
 		return dependencies;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LibraryType getLibraryType() {
+		return libraryType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLibraryType(LibraryType newLibraryType) {
+		LibraryType oldLibraryType = libraryType;
+		libraryType = newLibraryType == null ? LIBRARY_TYPE_EDEFAULT : newLibraryType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemLibraryPackage.LIBRARY__LIBRARY_TYPE, oldLibraryType, libraryType));
 	}
 
 	/**
@@ -250,6 +291,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 				return getBasePackage();
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				return getDependencies();
+			case QOperatingSystemLibraryPackage.LIBRARY__LIBRARY_TYPE:
+				return getLibraryType();
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				return getParentLibrary();
 			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
@@ -272,6 +315,9 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				getDependencies().clear();
 				getDependencies().addAll((Collection<? extends String>)newValue);
+				return;
+			case QOperatingSystemLibraryPackage.LIBRARY__LIBRARY_TYPE:
+				setLibraryType((LibraryType)newValue);
 				return;
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				setParentLibrary((String)newValue);
@@ -296,6 +342,9 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				getDependencies().clear();
 				return;
+			case QOperatingSystemLibraryPackage.LIBRARY__LIBRARY_TYPE:
+				setLibraryType(LIBRARY_TYPE_EDEFAULT);
+				return;
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				setParentLibrary(PARENT_LIBRARY_EDEFAULT);
 				return;
@@ -317,6 +366,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
 			case QOperatingSystemLibraryPackage.LIBRARY__DEPENDENCIES:
 				return dependencies != null && !dependencies.isEmpty();
+			case QOperatingSystemLibraryPackage.LIBRARY__LIBRARY_TYPE:
+				return libraryType != LIBRARY_TYPE_EDEFAULT;
 			case QOperatingSystemLibraryPackage.LIBRARY__PARENT_LIBRARY:
 				return PARENT_LIBRARY_EDEFAULT == null ? parentLibrary != null : !PARENT_LIBRARY_EDEFAULT.equals(parentLibrary);
 			case QOperatingSystemLibraryPackage.LIBRARY__SYNCHRONIZED:
@@ -338,6 +389,8 @@ public class LibraryImpl extends TypedObjectImpl implements QLibrary {
 		result.append(basePackage);
 		result.append(", dependencies: ");
 		result.append(dependencies);
+		result.append(", libraryType: ");
+		result.append(libraryType);
 		result.append(", parentLibrary: ");
 		result.append(parentLibrary);
 		result.append(", synchronized: ");

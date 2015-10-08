@@ -29,6 +29,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
 
@@ -38,7 +39,7 @@ public class LibraryCreator {
 	public static enum QCPFMSG {
 		CPF2111
 	}
-	
+
 	@Inject
 	private QSystemManager systemManager;
 	@Inject
@@ -47,25 +48,18 @@ public class LibraryCreator {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
+
 	@Entry
-	public void main(
-			@Supported @DataDef(length = 10) QCharacter library,
-			@ToDo @DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
-			@Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
-		    @ToDo @DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
-			@Unsupported @DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber,
-			@Unsupported @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
-			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority,
-			@DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing,
+	public void main(@Supported @DataDef(length = 10) QCharacter library, @ToDo @DataDef(length = 10) QEnum<LibraryTypeEnum, QCharacter> libraryType,
+			@Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription, @ToDo @DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority,
+			@Unsupported @DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNumberEnum, QBinary> aSPNumber, @Unsupported @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice,
+			@DataDef(length = 10) QEnum<CreateAuthorityEnum, QCharacter> createAuthority, @DataDef(length = 10) QEnum<CreateObjectAuditingEnum, QCharacter> createObjectAuditing,
 			@Supported @DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
 
-		QResourceWriter<QLibrary> libraryWriter = resourceManager
-				.getResourceWriter(job, QLibrary.class, systemManager
-						.getSystem().getSystemLibrary());
+		QResourceWriter<QLibrary> libraryWriter = resourceManager.getResourceWriter(job, QLibrary.class, systemManager.getSystem().getSystemLibrary());
 
 		if (libraryWriter.exists(library.trimR()))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] {library.trimR()});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] { library.trimR() });
 
 		QLibrary qLibrary = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 		qLibrary.setName(library.trimR());
@@ -85,19 +79,27 @@ public class LibraryCreator {
 		case YES:
 			qLibrary.setSynchronized(true);
 			break;
-		default:
-			qLibrary.setSynchronized(false);
-			break;
-
 		}
 
+		switch (libraryType.asEnum()) {
+		case PROD:
+			qLibrary.setLibraryType(LibraryType.PRODUCTION);
+			break;
+		case TEMP:
+			qLibrary.setLibraryType(LibraryType.TEMPORARY);
+			break;
+		case TEST:
+			qLibrary.setLibraryType(LibraryType.TEST);
+			break;
+		}
 		libraryWriter.save(qLibrary);
 	}
 
 	public static enum LibraryTypeEnum {
 		@Special(value = "PROD")
 		PROD, @Special(value = "TEST")
-		TEST
+		TEST, @Special(value = "TEMP")
+		TEMP,
 	}
 
 	public static enum TextDescriptionEnum {

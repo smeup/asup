@@ -88,7 +88,7 @@ public class BaseCallableInjector {
 
 		C callable = null;
 		try {
-			callable = injectData(klass, accessFactory, dataContainer, context, new HashMap<String, Object>(), new HashMap<String, Object>());
+			callable = injectData(null, klass, accessFactory, dataContainer, context, new HashMap<String, Object>());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,15 +127,15 @@ public class BaseCallableInjector {
 		return entry;
 	}
 
-	private <C> C injectData(Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules, Map<String, Object> sharedProcedures) throws IllegalArgumentException,
+	private <C> C injectData(Object owner, Class<C> klass, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules) throws IllegalArgumentException,
 			IllegalAccessException, InstantiationException {
 
 		C callable = klass.newInstance();
 
-		if(klass.getAnnotation(Procedure.class) != null)
-			sharedProcedures.put(klass.getSimpleName(), callable);
+		if(owner == null)
+			owner = callable;
 		
-		injectFieldsData(klass, callable, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
+		injectFieldsData(owner, klass, callable, accessFactory, dataContainer, context, sharedModules);
 
 		injectSmeupData(callable);
 
@@ -148,16 +148,16 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFieldsData(Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules, Map<String, Object> sharedProcedures)
+	private void injectFieldsData(Object owner, Class<?> klass, Object callable, QAccessFactory accessFactory, QDataContainer dataContainer, QContext context, Map<String, Object> sharedModules)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFieldsData(klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
+			injectFieldsData(owner, klass.getSuperclass(), callable, accessFactory, dataContainer, context, sharedModules);
 
 		List<Field> fieldDataSets = new ArrayList<Field>();
 		Map<String, QDataStruct> classToStructs = new HashMap<String, QDataStruct>();
-		
+
 		for (Field field : klass.getDeclaredFields()) {
 
 			// TODO
@@ -193,19 +193,19 @@ public class BaseCallableInjector {
 			else if (QData.class.isAssignableFrom(fieldClass)) {
 
 				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), type, Arrays.asList(field.getAnnotations()));
-				
+
 				QData data = dataContainer.resetData(dataTerm);
 				field.set(callable, data);
-				
-				if(dataTerm.getDataTermType().isCompound()) {
+
+				if (dataTerm.getDataTermType().isCompound()) {
 					QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 					Class<? extends QRecord> primaryRecord = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
 					String primaryRecordName = null;
-					if(compoundDataDef.getPrefix() != null)
-						primaryRecordName = compoundDataDef.getPrefix()+"_"+primaryRecord.getSimpleName();
+					if (compoundDataDef.getPrefix() != null)
+						primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecord.getSimpleName();
 					else
 						primaryRecordName = primaryRecord.getSimpleName();
-					
+
 					classToStructs.put(primaryRecordName, (QDataStruct) data);
 				}
 			}
@@ -218,13 +218,13 @@ public class BaseCallableInjector {
 				if (QJob.class.isAssignableFrom(fieldClass)) {
 					object = job;
 				}
+				// Caller
+				else if (field.getAnnotation(Program.class) != null) {
+					object = owner;
+				}
 				// Procedure
-				else if(fieldClass.getAnnotation(Procedure.class) != null) {
-					object = sharedProcedures.get(fieldClass.getSimpleName());
-					if (object == null) {
-						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
-						sharedProcedures.put(fieldClass.getSimpleName(), object);
-					}
+				else if (fieldClass.getAnnotation(Procedure.class) != null) {
+					object = injectData(owner, fieldClass, accessFactory, dataContainer, context, sharedModules);
 				}
 				// Module
 				else {
@@ -233,7 +233,7 @@ public class BaseCallableInjector {
 						object = context.get(fieldClass);
 
 					if (object == null) {
-						object = injectData(fieldClass, accessFactory, dataContainer, context, sharedModules, sharedProcedures);
+						object = injectData(owner, fieldClass, accessFactory, dataContainer, context, sharedModules);
 						sharedModules.put(fieldClass.getSimpleName(), object);
 					}
 				}
@@ -251,9 +251,8 @@ public class BaseCallableInjector {
 
 			field.setAccessible(false);
 		}
-		
-		for (Field fieldDataSet : fieldDataSets) {
 
+		for (Field fieldDataSet : fieldDataSets) {
 
 			Type type = fieldDataSet.getGenericType();
 
@@ -261,14 +260,13 @@ public class BaseCallableInjector {
 			if (pType.getActualTypeArguments()[0] instanceof WildcardType)
 				continue;
 
-			
 			Class<?> fieldClass = (Class<?>) pType.getRawType();
 
 			fieldDataSet.setAccessible(true);
 
 			FileDef fileDef = fieldDataSet.getAnnotation(FileDef.class);
 			if (fileDef != null) {
-				
+
 				QDataSet<QDataStruct> dataSet = null;
 
 				QDataStruct infoStruct = null;
@@ -277,25 +275,24 @@ public class BaseCallableInjector {
 
 				Class<QDataStruct> classRecord = (Class<QDataStruct>) pType.getActualTypeArguments()[0];
 				Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
-				
+
 				String primaryRecordName = null;
-				if(!fileDef.prefix().isEmpty()) 
-					primaryRecordName = fileDef.prefix()+"_"+classPrimaryRecord.getSimpleName();
+				if (!fileDef.prefix().isEmpty())
+					primaryRecordName = fileDef.prefix() + "_" + classPrimaryRecord.getSimpleName();
 				else
 					primaryRecordName = classPrimaryRecord.getSimpleName();
-				
+
 				QDataStruct primaryRecord = classToStructs.get(primaryRecordName);
-						
+
 				QDataStruct record = null;
-				if(primaryRecord == null) {
+				if (primaryRecord == null) {
 					record = dataContainer.getDataFactory().createRecord(classRecord, true);
 					classToStructs.put(primaryRecordName, record);
-				}
-				else {
+				} else {
 					record = dataContainer.getDataFactory().createRecord(classRecord, false);
 					primaryRecord.assign(record);
 				}
-				
+
 				if (QKSDataSet.class.isAssignableFrom(fieldClass)) {
 					dataSet = accessFactory.createKeySequencedDataSet(record, fileDef.name(), AccessMode.UPDATE, fileDef.userOpen(), infoStruct);
 				} else if (QSMDataSet.class.isAssignableFrom(fieldClass)) {
@@ -369,22 +366,21 @@ public class BaseCallableInjector {
 
 	@SuppressWarnings("unchecked")
 	private Class<? extends QRecord> getPrimaryRecord(Class<? extends QRecord> classRecord) {
-		
-		if(classRecord.getSuperclass() == QRecordWrapper.class)
+
+		if (classRecord.getSuperclass() == QRecordWrapper.class)
 			return classRecord;
 
-		
 		boolean extended = false;
-		
-		for(Field field: classRecord.getDeclaredFields()) {
-			if(Modifier.isStatic(field.getModifiers()))
+
+		for (Field field : classRecord.getDeclaredFields()) {
+			if (Modifier.isStatic(field.getModifiers()))
 				continue;
-			
+
 			extended = true;
 			break;
-		}		
-		
-		if(extended)
+		}
+
+		if (extended)
 			return classRecord;
 		else
 			return getPrimaryRecord((Class<? extends QRecord>) classRecord.getSuperclass());

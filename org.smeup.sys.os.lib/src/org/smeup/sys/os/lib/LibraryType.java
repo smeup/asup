@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.rt.core;
+package org.smeup.sys.os.lib;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,121 +15,126 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Service Status</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Library Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getServiceStatus()
+ * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibraryType()
  * @model
  * @generated
  */
-public enum ServiceStatus implements Enumerator {
+public enum LibraryType implements Enumerator {
 	/**
-	 * The '<em><b>Active</b></em>' literal object.
+	 * The '<em><b>Production</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ACTIVE_VALUE
+	 * @see #PRODUCTION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ACTIVE(0, "Active", "ACT"),
+	PRODUCTION(10, "Production", "PROD"),
 
 	/**
-	 * The '<em><b>Stopped</b></em>' literal object.
+	 * The '<em><b>Test</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #STOPPED_VALUE
+	 * @see #TEST_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	STOPPED(20, "Stopped", "STP"),
+	TEST(20, "Test", "TEST"),
 
 	/**
-	 * The '<em><b>Testing</b></em>' literal object.
+	 * The '<em><b>Temporary</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #TESTING_VALUE
+	 * @see #TEMPORARY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	TESTING(30, "Testing", "TST");
+	TEMPORARY(30, "Temporary", "TEMP");
 
 	/**
-	 * The '<em><b>Active</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String copyright = "Copyright (c) 2012, 2015 Sme.UP and others.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html";
+
+	/**
+	 * The '<em><b>Production</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Active</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Production</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ACTIVE
-	 * @model name="Active" literal="ACT"
+	 * @see #PRODUCTION
+	 * @model name="Production" literal="PROD"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ACTIVE_VALUE = 0;
+	public static final int PRODUCTION_VALUE = 10;
 
 	/**
-	 * The '<em><b>Stopped</b></em>' literal value.
+	 * The '<em><b>Test</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Stopped</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Test</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #STOPPED
-	 * @model name="Stopped" literal="STP"
+	 * @see #TEST
+	 * @model name="Test" literal="TEST"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STOPPED_VALUE = 20;
+	public static final int TEST_VALUE = 20;
 
 	/**
-	 * The '<em><b>Testing</b></em>' literal value.
+	 * The '<em><b>Temporary</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Testing</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Temporary</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #TESTING
-	 * @model name="Testing" literal="TST"
+	 * @see #TEMPORARY
+	 * @model name="Temporary" literal="TEMP"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TESTING_VALUE = 30;
+	public static final int TEMPORARY_VALUE = 30;
 
 	/**
-	 * An array of all the '<em><b>Service Status</b></em>' enumerators.
+	 * An array of all the '<em><b>Library Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ServiceStatus[] VALUES_ARRAY =
-		new ServiceStatus[] {
-			ACTIVE,
-			STOPPED,
-			TESTING,
+	private static final LibraryType[] VALUES_ARRAY =
+		new LibraryType[] {
+			PRODUCTION,
+			TEST,
+			TEMPORARY,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Service Status</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Library Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ServiceStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LibraryType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Service Status</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Library Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ServiceStatus get(String literal) {
+	public static LibraryType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ServiceStatus result = VALUES_ARRAY[i];
+			LibraryType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -138,16 +143,14 @@ public enum ServiceStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Service Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Library Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ServiceStatus getByName(String name) {
+	public static LibraryType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ServiceStatus result = VALUES_ARRAY[i];
+			LibraryType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -156,18 +159,16 @@ public enum ServiceStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Service Status</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Library Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ServiceStatus get(int value) {
+	public static LibraryType get(int value) {
 		switch (value) {
-			case ACTIVE_VALUE: return ACTIVE;
-			case STOPPED_VALUE: return STOPPED;
-			case TESTING_VALUE: return TESTING;
+			case PRODUCTION_VALUE: return PRODUCTION;
+			case TEST_VALUE: return TEST;
+			case TEMPORARY_VALUE: return TEMPORARY;
 		}
 		return null;
 	}
@@ -199,7 +200,7 @@ public enum ServiceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ServiceStatus(int value, String name, String literal) {
+	private LibraryType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -210,7 +211,6 @@ public enum ServiceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -220,7 +220,6 @@ public enum ServiceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getName() {
 	  return name;
 	}
@@ -230,7 +229,6 @@ public enum ServiceStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getLiteral() {
 	  return literal;
 	}
@@ -246,4 +244,4 @@ public enum ServiceStatus implements Enumerator {
 		return literal;
 	}
 	
-} //ServiceStatus
+} //LibraryType

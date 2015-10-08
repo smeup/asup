@@ -41,6 +41,7 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeLiteral;
 import org.eclipse.jdt.core.dom.WhileStatement;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QAnnotationTest;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QNode;
@@ -260,7 +261,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Block block = blocks.peek();
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
-		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression);
+		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isDirection());
 		
 		if (statement.getRoundingMode() != null) {
 			statement.toString();
@@ -349,7 +350,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// initialization
 		QAssignmentExpression assignment = expressionParser.parseAssignment(statement.getInitialization());
-		forSt.initializers().add(buildAssignmentMethod(assignment));
+		forSt.initializers().add(buildAssignmentMethod(assignment, false));
 
 		// condition
 		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
@@ -358,7 +359,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		// increment
 		QAssignmentExpression increment = expressionParser.parseAssignment(statement.getIncrement());
-		forSt.updaters().add(buildAssignmentMethod(increment));
+		forSt.updaters().add(buildAssignmentMethod(increment, false));
 
 		block.statements().add(forSt);
 
@@ -837,36 +838,54 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	}
 
 	@SuppressWarnings("unchecked")
-	private MethodInvocation buildAssignmentMethod(QAssignmentExpression assignmentExpression) {
+	private MethodInvocation buildAssignmentMethod(QAssignmentExpression assignmentExpression, boolean direction) {
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
 		int p = 0;
 		switch (assignmentExpression.getOperator()) {
 		case ASSIGN:
-			methodInvocation.setName(ast.newSimpleName("eval"));
+			if(direction)
+				methodInvocation.setName(ast.newSimpleName("evalr"));
+			else
+				methodInvocation.setName(ast.newSimpleName("eval"));
 			break;
 		case DIVIDE_ASSIGN:
+			if(direction)
+				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbh");
+
 			methodInvocation.setName(ast.newSimpleName("divide"));
 			// methodInvocation.arguments().add(p, "/");
 			// p++;
 			break;
 		case MINUS_ASSIGN:
+			if(direction)
+				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhA");
+
 			methodInvocation.setName(ast.newSimpleName("minus"));
 			// methodInvocation.arguments().add(p, "-");
 			// p++;
 			break;
 		case PLUS_ASSIGN:
+			if(direction)
+				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhB");
+
 			methodInvocation.setName(ast.newSimpleName("plus"));
 			// methodInvocation.arguments().add(p, "+");
 			// p++;
 			break;
 		case TIMES_ASSIGN:
+			if(direction)
+				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhC");
+
 			methodInvocation.setName(ast.newSimpleName("mult"));
 			// methodInvocation.arguments().add(p, "*");
 			// p++;
 			break;
 		case POWER_ASSIGN:
+			if(direction)
+				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhD");
+
 			methodInvocation.setName(ast.newSimpleName("power"));
 			// methodInvocation.arguments().add(p, "^");
 			// p++;

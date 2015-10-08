@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationModule#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.QApplicationModule#getServices <em>Services</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getApplicationModule()
  * @model

@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data;
 
 import java.lang.Enum;
+import java.lang.String;
 import java.util.Date;
 
 /**
@@ -120,5 +121,13 @@ public interface QDatetime extends QBufferedData {
 	 * @generated
 	 */
 	void time();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean eq(String value);
 
 } // QDatetime

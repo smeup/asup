@@ -54,6 +54,14 @@ public interface QSourceManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" contextRequired="true" projectRequired="true"
+	 * @generated
+	 */
+	void deleteProject(QContext context, QProject project) throws IOException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true" parentRequired="true" nameRequired="true"
 	 * @generated
 	 */
