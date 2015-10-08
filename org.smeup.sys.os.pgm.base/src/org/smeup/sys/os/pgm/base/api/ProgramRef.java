@@ -9,6 +9,7 @@ package org.smeup.sys.os.pgm.base.api;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 
 public class ProgramRef extends QDataStructWrapper {
@@ -17,8 +18,11 @@ public class ProgramRef extends QDataStructWrapper {
 
 	@DataDef(length = 10)
 	public QCharacter name;
+	@DataDef(length = 10, value = "*LIBL")
+	public QEnum<LibraryEnum, QCharacter> library;
 
-	@DataDef(length = 10)
-	public QCharacter library;
+	public static enum LibraryEnum {
+		LIBL, CURLIB, USRLIBL, ALLUSR,  OTHER
+	}
 
 }
