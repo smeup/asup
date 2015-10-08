@@ -926,6 +926,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		bufferedListEClass.getEGenericSuperTypes().add(g1);
 		characterEClass.getESuperTypes().add(this.getString());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
+		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
 		dataStructEClass.getESuperTypes().add(this.getCharacter());
 		dataStructEClass.getESuperTypes().add(this.getRecord());
@@ -1644,6 +1645,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(dataContainerEClass, QDataContainer.class, "DataContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(dataContainerEClass, null, "clearData", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContainerEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, null, "createDataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);

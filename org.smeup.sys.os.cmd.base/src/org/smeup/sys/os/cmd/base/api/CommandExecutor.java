@@ -54,5 +54,6 @@ public class CommandExecutor {
 		
 		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), commandString, programsVariables, true);
 		commandManager.executeCommand(job.getJobID(), callableCommand);
+		callableCommand.close();
 	}
 }

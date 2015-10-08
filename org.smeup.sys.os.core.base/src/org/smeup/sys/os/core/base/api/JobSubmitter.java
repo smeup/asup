@@ -87,6 +87,7 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<CopyEnvironmentVariablesEnum, QCharacter> copyEnvironmentVariables,
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
+		@SuppressWarnings("resource")
 		QCallableProgram caller = programManager.getCaller(job.getJobID(), this);
 
 		// Job spawn

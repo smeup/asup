@@ -544,6 +544,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		EGenericType g2 = createEGenericType(this.getParameterList());
 		g1.getETypeArguments().add(g2);
 		callableProgramEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		callableProgramEClass.getEGenericSuperTypes().add(g1);
 		programEClass.getESuperTypes().add(theOperatingSystemTypePackage.getTypedObject());
 		g1 = createEGenericType(theOperatingSystemTypePackage.getTypedContainer());
 		g2 = createEGenericType(this.getProgram());

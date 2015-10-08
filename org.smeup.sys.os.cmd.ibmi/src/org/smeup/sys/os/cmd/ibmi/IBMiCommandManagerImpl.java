@@ -92,6 +92,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		application.getContext().set(QShellManager.class, this);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
 
@@ -681,13 +682,14 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, defaults);
 		executeCommand(contextID, callableCommand);
+		callableCommand.close();
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public QDataContainer decodeCommand(String contextID, String command, boolean useDefaults) {
 
-		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);
-
+		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);		
 		return callableCommand.getDataContainer();
 	}
 

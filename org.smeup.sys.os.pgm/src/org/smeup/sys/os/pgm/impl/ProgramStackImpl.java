@@ -184,6 +184,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 		List<QCallableProgram> programList = new ArrayList<QCallableProgram>();
 		Iterator<QCallableProgram> programs = stack.iterator();
 		while (programs.hasNext()) {
+			@SuppressWarnings("resource")
 			QCallableProgram program = programs.next();
 			programList.add(program);
 		}

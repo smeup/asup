@@ -233,6 +233,16 @@ public class CallableCommandImpl extends ObjectImpl implements QCallableCommand 
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void close() {
+		if(getDataContainer() != null)
+			getDataContainer().close();
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

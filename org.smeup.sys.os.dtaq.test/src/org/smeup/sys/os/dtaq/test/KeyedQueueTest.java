@@ -64,6 +64,7 @@ public class KeyedQueueTest {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
 			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
 			commandManager.executeCommand(job.getJobID(), callableCommand);
+			callableCommand.close();
 		}
 
 		// Create Keyed Queue
@@ -130,6 +131,7 @@ public class KeyedQueueTest {
 
 			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
 			commandManager.executeCommand(job.getJobID(), callableCommand);
+			callableCommand.close();
 		}
 
 		// Create Keyed Queue

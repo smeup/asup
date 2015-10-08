@@ -66,6 +66,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		this.programStacks = new HashMap<String, QProgramStack>();
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(String contextID, String library, String name, QData[] params) {
 
@@ -80,7 +81,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QCallableProgram callableProgram = activationGroup.lookup(program);
 
 		// new program
-		if(callableProgram == null) {	
+		if(callableProgram == null) {
 			callableProgram = loadProgram(job, program);
 			activationGroup.getPrograms().add(callableProgram);
 		} 
@@ -88,6 +89,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		callProgram(job, callableProgram, params);
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, Class<?> klass, QData[] params) {
 
@@ -186,6 +188,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
+	@SuppressWarnings("resource")
 	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
 
 		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());

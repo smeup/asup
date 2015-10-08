@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.cmd;
 
+import java.io.Closeable;
 import java.util.Map;
 
 import org.smeup.sys.il.core.QObject;
@@ -27,10 +28,10 @@ import org.smeup.sys.il.data.QDataContainer;
  * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCallableCommand()
- * @model
+ * @model superTypes="org.smeup.sys.il.core.Object org.smeup.sys.il.core.java.JavaCloseable"
  * @generated
  */
-public interface QCallableCommand extends QObject {
+public interface QCallableCommand extends QObject, Closeable {
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' reference. <!--
 	 * begin-user-doc -->
@@ -139,5 +140,13 @@ public interface QCallableCommand extends QObject {
 	 * @generated
 	 */
 	void setDataContainer(QDataContainer value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void close();
 
 } // QCallableCommand

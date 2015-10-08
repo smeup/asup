@@ -21,4 +21,6 @@ public @interface Program {
 	String text() default "";
 	
 	boolean generated() default true;
+	
+	public static final String NAME_OWNER = "*OWNER";
 }
