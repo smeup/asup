@@ -8,27 +8,29 @@
 package org.smeup.sys.dk.test;
 
 import java.util.List;
-import org.smeup.sys.il.core.ctx.QContextProvider;
+
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Test Runner</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Test Launcher</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.dk.test.QTestRunner#getListeners <em>Listeners</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.test.QTestLauncher#getListeners <em>Listeners</em>}</li>
  * </ul>
  *
- * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner()
+ * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestLauncher()
  * @model abstract="true"
  * @generated
  */
-public interface QTestRunner extends QCallableTest, QContextProvider {
+public interface QTestLauncher {
+
 	/**
 	 * Returns the value of the '<em><b>Listeners</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.dk.test.QTestRunnerListener}.
+	 * The list contents are of type {@link org.smeup.sys.dk.test.QTestLauncherListener}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Listeners</em>' containment reference list isn't clear,
@@ -36,10 +38,17 @@ public interface QTestRunner extends QCallableTest, QContextProvider {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Listeners</em>' containment reference list.
-	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner_Listeners()
+	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestLauncher_Listeners()
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<QTestRunnerListener> getListeners();
+	List<QTestLauncherListener> getListeners();
 
-} // QTestRunner
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void launchTests(String object);
+} // QTestLauncher

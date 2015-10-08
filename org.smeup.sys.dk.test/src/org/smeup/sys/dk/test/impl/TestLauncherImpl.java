@@ -9,32 +9,37 @@ package org.smeup.sys.dk.test.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
-import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.QTestRunnerListener;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.dk.test.QTestLauncher;
+import org.smeup.sys.dk.test.QTestLauncherListener;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Runner</b></em>'.
+ * An implementation of the model object '<em><b>Test Launcher</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.dk.test.impl.TestRunnerImpl#getListeners <em>Listeners</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.test.impl.TestLauncherImpl#getListeners <em>Listeners</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implements QTestRunner {
+public abstract class TestLauncherImpl extends MinimalEObjectImpl.Container implements QTestLauncher {
 	/**
 	 * The cached value of the '{@link #getListeners() <em>Listeners</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -43,13 +48,14 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QTestRunnerListener> listeners;
+	protected EList<QTestLauncherListener> listeners;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TestRunnerImpl() {
+	protected TestLauncherImpl() {
 		super();
 	}
 
@@ -60,7 +66,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QDevelopmentKitTestPackage.Literals.TEST_RUNNER;
+		return QDevelopmentKitTestPackage.Literals.TEST_LAUNCHER;
 	}
 
 	/**
@@ -68,9 +74,9 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QTestRunnerListener> getListeners() {
+	public List<QTestLauncherListener> getListeners() {
 		if (listeners == null) {
-			listeners = new EObjectContainmentEList<QTestRunnerListener>(QTestRunnerListener.class, this, QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS);
+			listeners = new EObjectContainmentEList<QTestLauncherListener>(QTestLauncherListener.class, this, QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS);
 		}
 		return listeners;
 	}
@@ -80,7 +86,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QContext getContext() {
+	public void launchTests(String object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -94,7 +100,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS:
+			case QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS:
 				return ((InternalEList<?>)getListeners()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -108,7 +114,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS:
+			case QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS:
 				return getListeners();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -123,9 +129,9 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS:
+			case QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS:
 				getListeners().clear();
-				getListeners().addAll((Collection<? extends QTestRunnerListener>)newValue);
+				getListeners().addAll((Collection<? extends QTestLauncherListener>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -139,7 +145,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS:
+			case QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS:
 				getListeners().clear();
 				return;
 		}
@@ -154,10 +160,10 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS:
+			case QDevelopmentKitTestPackage.TEST_LAUNCHER__LISTENERS:
 				return listeners != null && !listeners.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //TestRunnerImpl
+} //TestLauncherImpl

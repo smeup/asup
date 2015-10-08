@@ -109,15 +109,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tests" upperBound="-1"
         eType="#//TestRunner" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TestListener" abstract="true" interface="true">
-    <eOperations name="addAssertionResult">
+  <eClassifiers xsi:type="ecore:EClass" name="TestRunnerListener" abstract="true"
+      interface="true">
+    <eOperations name="assertionResultAdded">
+      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="assertionResult" eType="#//AssertionResult"/>
     </eOperations>
-    <eOperations name="startTest">
-      <eParameters name="test" eType="#//TestRunner"/>
+    <eOperations name="testStarted">
+      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="endTest">
-      <eParameters name="test" eType="#//TestRunner"/>
+    <eOperations name="testFinished">
+      <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="result" eType="#//TestResult"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestManager" abstract="true" interface="true">
@@ -166,7 +169,30 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestRunner" abstract="true" eSuperTypes="#//CallableTest ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeners" upperBound="-1"
-        eType="#//TestListener" containment="true"/>
+        eType="#//TestRunnerListener" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestLauncher" abstract="true">
+    <eOperations name="launchTests">
+      <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listeners" upperBound="-1"
+        eType="#//TestLauncherListener" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestLauncherListener" abstract="true"
+      interface="true">
+    <eOperations name="launcherDestroyed">
+      <eParameters name="launcher" eType="#//TestLauncher"/>
+    </eOperations>
+    <eOperations name="launcherInitialized">
+      <eParameters name="launcher" eType="#//TestLauncher"/>
+    </eOperations>
+    <eOperations name="launcherStarted">
+      <eParameters name="launcher" eType="#//TestLauncher"/>
+    </eOperations>
+    <eOperations name="resultAdded">
+      <eParameters name="runner" eType="#//TestRunner"/>
+      <eParameters name="result" eType="#//TestResult"/>
+    </eOperations>
+  </eClassifiers>
 </ecore:EPackage>

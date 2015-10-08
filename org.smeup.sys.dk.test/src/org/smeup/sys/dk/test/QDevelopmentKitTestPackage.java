@@ -304,23 +304,23 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_CONTAINER_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestListener
-	 * <em>Test Listener</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @see org.smeup.sys.dk.test.QTestListener
-	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestListener()
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestRunnerListener <em>Test Runner Listener</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestRunnerListener
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerListener()
 	 * @generated
 	 */
-	int TEST_LISTENER = 8;
+	int TEST_RUNNER_LISTENER = 8;
 
 	/**
-	 * The number of structural features of the '<em>Test Listener</em>' class.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * The number of structural features of the '<em>Test Runner Listener</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_LISTENER_FEATURE_COUNT = 0;
+	int TEST_RUNNER_LISTENER_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestManager
@@ -441,6 +441,53 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int UNIT_TEST_RUNNER_FEATURE_COUNT = TEST_RUNNER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestLauncherImpl <em>Test Launcher</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.impl.TestLauncherImpl
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncher()
+	 * @generated
+	 */
+	int TEST_LAUNCHER = 13;
+
+	/**
+	 * The feature id for the '<em><b>Listeners</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_LAUNCHER__LISTENERS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Test Launcher</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_LAUNCHER_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.QTestLauncherListener
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncherListener()
+	 * @generated
+	 */
+	int TEST_LAUNCHER_LISTENER = 14;
+
+	/**
+	 * The number of structural features of the '<em>Test Launcher Listener</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_LAUNCHER_LISTENER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -448,7 +495,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAssertionState()
 	 * @generated
 	 */
-	int ASSERTION_STATE = 13;
+	int ASSERTION_STATE = 15;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}'.
@@ -560,13 +607,14 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	EReference getTestContainer_Tests();
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestListener <em>Test Listener</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Test Listener</em>'.
-	 * @see org.smeup.sys.dk.test.QTestListener
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestRunnerListener <em>Test Runner Listener</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Runner Listener</em>'.
+	 * @see org.smeup.sys.dk.test.QTestRunnerListener
 	 * @generated
 	 */
-	EClass getTestListener();
+	EClass getTestRunnerListener();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestManager <em>Test Manager</em>}'.
@@ -686,6 +734,37 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUnitTestRunner();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestLauncher <em>Test Launcher</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Launcher</em>'.
+	 * @see org.smeup.sys.dk.test.QTestLauncher
+	 * @generated
+	 */
+	EClass getTestLauncher();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.dk.test.QTestLauncher#getListeners <em>Listeners</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Listeners</em>'.
+	 * @see org.smeup.sys.dk.test.QTestLauncher#getListeners()
+	 * @see #getTestLauncher()
+	 * @generated
+	 */
+	EReference getTestLauncher_Listeners();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Launcher Listener</em>'.
+	 * @see org.smeup.sys.dk.test.QTestLauncherListener
+	 * @generated
+	 */
+	EClass getTestLauncherListener();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}'.
@@ -819,13 +898,14 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		EReference TEST_CONTAINER__TESTS = eINSTANCE.getTestContainer_Tests();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QTestListener <em>Test Listener</em>}' class.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.dk.test.QTestListener
-		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestListener()
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QTestRunnerListener <em>Test Runner Listener</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.QTestRunnerListener
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerListener()
 		 * @generated
 		 */
-		EClass TEST_LISTENER = eINSTANCE.getTestListener();
+		EClass TEST_RUNNER_LISTENER = eINSTANCE.getTestRunnerListener();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QTestManager <em>Test Manager</em>}' class.
@@ -914,6 +994,34 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UNIT_TEST_RUNNER = eINSTANCE.getUnitTestRunner();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.TestLauncherImpl <em>Test Launcher</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.impl.TestLauncherImpl
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncher()
+		 * @generated
+		 */
+		EClass TEST_LAUNCHER = eINSTANCE.getTestLauncher();
+
+		/**
+		 * The meta object literal for the '<em><b>Listeners</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEST_LAUNCHER__LISTENERS = eINSTANCE.getTestLauncher_Listeners();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.QTestLauncherListener
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncherListener()
+		 * @generated
+		 */
+		EClass TEST_LAUNCHER_LISTENER = eINSTANCE.getTestLauncherListener();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.AssertionState <em>Assertion State</em>}' enum.

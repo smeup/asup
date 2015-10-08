@@ -18,16 +18,16 @@ import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QAssertionSuccess;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QTestAsserter;
-import org.smeup.sys.dk.test.QTestListener;
 import org.smeup.sys.dk.test.QTestResult;
+import org.smeup.sys.dk.test.QTestRunnerListener;
 
 public class BaseTestAsserterImpl implements QTestAsserter {
 
 	private QTestResult testResult;
-	private List<QTestListener> testListeners;
+	private List<QTestRunnerListener> testListeners;
 	private long time;
 
-	public BaseTestAsserterImpl(QTestResult testResult, List<QTestListener> testListeners) {
+	public BaseTestAsserterImpl(QTestResult testResult, List<QTestRunnerListener> testListeners) {
 		this.testResult = testResult;
 		this.testListeners = testListeners;
 		resetTime();
@@ -281,16 +281,12 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 	}
 
 	public void notifyAssertResult(QAssertionResult assertionResult) {
-		for (QTestListener testListener : testListeners)
-			testListener.addAssertionResult(assertionResult);
+		for (QTestRunnerListener testListener : testListeners)
+			testListener.assertionResultAdded(testResult.getRunner(), assertionResult);
 	}
 
 	@Override
 	public void resetTime() {
 		time = System.currentTimeMillis();
-
 	}
-
-	// public abstract void notifyAssertResult(QAssertionResult
-	// AssertionResult);
 }

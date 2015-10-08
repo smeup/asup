@@ -16,17 +16,17 @@
         name="COMP"
         position="1">
       <dataTerm
-          name="comp"
+          name="component"
           text="">
         <definition
             xsi:type="il-data-def:CharacterDef"
-            length="256"
+            length="32"
             varying="true"/>
       </dataTerm>
     </parameters>
     <parameters
         name="OUTPUT"
-        position="2">
+        position="4">
       <dataTerm
           name="output"
           restricted="true">
@@ -47,6 +47,30 @@
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="MOD"
+        position="2">
+      <dataTerm
+          name="module"
+          text="">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="32"
+            varying="true"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        name="OBJ"
+        position="3">
+      <dataTerm
+          name="object"
+          text="">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="32"
+            varying="true"/>
       </dataTerm>
     </parameters>
   </contents>

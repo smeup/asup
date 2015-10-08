@@ -11,11 +11,14 @@
  */
 package org.smeup.sys.dk.test.base;
 
+import java.util.List;
+
 import org.smeup.sys.dk.test.DevelopmentKitTestRuntimeException;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestDestroy;
 import org.smeup.sys.dk.test.annotation.TestInit;
@@ -35,10 +38,19 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 
 	@Override
 	public QTestResult call() {
+		
+		List<QTestRunnerListener> listeners = getListeners();
+		
+			
 
 		Class<?> testClass = context.loadClass(classURI);
 		if (testClass == null)
 			throw new DevelopmentKitTestRuntimeException("Invalid runner: " + classURI);
+		
+		//Notify test start
+				for (QTestRunnerListener listener: listeners){
+					listener.testStarted(testClass.getName());
+				}
 
 		// result
 		QTestResult testResult = QDevelopmentKitTestFactory.eINSTANCE.createTestResult();
@@ -72,6 +84,11 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		// Call test destroyer
 		if (testCase.getClass().getAnnotation(TestDestroy.class) != null)
 			context.invoke(testCase, TestDestroy.class);
+		
+		//Notify test start
+		for (QTestRunnerListener listener: listeners){
+			listener.testFinished(testClass.getName(), testResult);
+		}
 
 		return testResult;
 	}

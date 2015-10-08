@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 public @interface Test {
 
-	String category();
+	String category() default "";
 
-	String object();
+	String object() default ""; 
 }

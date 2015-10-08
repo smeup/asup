@@ -27,10 +27,12 @@ import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QSuiteTestRunner;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestContainer;
-import org.smeup.sys.dk.test.QTestListener;
+import org.smeup.sys.dk.test.QTestLauncher;
+import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.QUnitTestRunner;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
@@ -92,10 +94,11 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	private EClass testContainerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass testListenerEClass = null;
+	private EClass testRunnerListenerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -120,6 +123,20 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	private EClass unitTestRunnerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testLauncherEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass testLauncherListenerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -293,12 +310,12 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EClass getTestListener() {
-		return testListenerEClass;
+	public EClass getTestRunnerListener() {
+		return testRunnerListenerEClass;
 	}
 
 	/**
@@ -401,6 +418,33 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestLauncher() {
+		return testLauncherEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTestLauncher_Listeners() {
+		return (EReference)testLauncherEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTestLauncherListener() {
+		return testLauncherListenerEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -455,7 +499,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		testContainerEClass = createEClass(TEST_CONTAINER);
 		createEReference(testContainerEClass, TEST_CONTAINER__TESTS);
 
-		testListenerEClass = createEClass(TEST_LISTENER);
+		testRunnerListenerEClass = createEClass(TEST_RUNNER_LISTENER);
 
 		testManagerEClass = createEClass(TEST_MANAGER);
 
@@ -471,6 +515,11 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		createEReference(testRunnerEClass, TEST_RUNNER__LISTENERS);
 
 		unitTestRunnerEClass = createEClass(UNIT_TEST_RUNNER);
+
+		testLauncherEClass = createEClass(TEST_LAUNCHER);
+		createEReference(testLauncherEClass, TEST_LAUNCHER__LISTENERS);
+
+		testLauncherListenerEClass = createEClass(TEST_LAUNCHER_LISTENER);
 
 		// Create enums
 		assertionStateEEnum = createEEnum(ASSERTION_STATE);
@@ -624,16 +673,18 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(testContainerEClass, QTestContainer.class, "TestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTestContainer_Tests(), this.getTestRunner(), null, "tests", null, 0, -1, QTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(testListenerEClass, QTestListener.class, "TestListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(testRunnerListenerEClass, QTestRunnerListener.class, "TestRunnerListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(testListenerEClass, null, "addAssertionResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testRunnerListenerEClass, null, "assertionResultAdded", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAssertionResult(), "assertionResult", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(testListenerEClass, null, "startTest", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestRunner(), "test", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testRunnerListenerEClass, null, "testStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(testListenerEClass, null, "endTest", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getTestRunner(), "test", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testRunnerListenerEClass, null, "testFinished", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "testClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(testManagerEClass, QTestManager.class, "TestManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -663,9 +714,30 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEAttribute(getTestResult_Time(), ecorePackage.getELong(), "time", null, 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testRunnerEClass, QTestRunner.class, "TestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestRunner_Listeners(), this.getTestListener(), null, "listeners", null, 0, -1, QTestRunner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTestRunner_Listeners(), this.getTestRunnerListener(), null, "listeners", null, 0, -1, QTestRunner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitTestRunnerEClass, QUnitTestRunner.class, "UnitTestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(testLauncherEClass, QTestLauncher.class, "TestLauncher", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTestLauncher_Listeners(), this.getTestLauncherListener(), null, "listeners", null, 0, -1, QTestLauncher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(testLauncherEClass, null, "launchTests", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(testLauncherListenerEClass, QTestLauncherListener.class, "TestLauncherListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(testLauncherListenerEClass, null, "launcherDestroyed", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestLauncher(), "launcher", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(testLauncherListenerEClass, null, "launcherInitialized", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestLauncher(), "launcher", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(testLauncherListenerEClass, null, "launcherStarted", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestLauncher(), "launcher", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(testLauncherListenerEClass, null, "resultAdded", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestRunner(), "runner", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTestResult(), "result", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(assertionStateEEnum, AssertionState.class, "AssertionState");
