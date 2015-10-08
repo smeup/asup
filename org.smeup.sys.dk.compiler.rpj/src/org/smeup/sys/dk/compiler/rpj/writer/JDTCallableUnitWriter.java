@@ -27,6 +27,8 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ArrayCreation;
 import org.eclipse.jdt.core.dom.ArrayInitializer;
+import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.Assignment.Operator;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.EnumConstantDeclaration;
 import org.eclipse.jdt.core.dom.EnumDeclaration;
@@ -305,7 +307,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		for (String keyField : keyList.getKeyFields()) {
 
 			QExpression expression = expressionParser.parseExpression(keyField);
-			Expression jdtExpression = buildExpression(getAST(), expression, null);
+			Expression jdtExpression = buildExpression(expression, null);
 			arrayInitializer.expressions().add(jdtExpression);
 		}
 		arrayCreation.setInitializer(arrayInitializer);
@@ -507,9 +509,9 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
 		if (externalFile != null) {
 			writeEntry(methodDeclaration, prototype.getEntry());
-			
+
 			// TODO manage external invocation
-			
+
 			if (prototype.getDefinition() != null) {
 				ReturnStatement returnStatement = getAST().newReturnStatement();
 				returnStatement.setExpression(getAST().newNullLiteral());
@@ -521,54 +523,9 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (procedure != null) {
 				writeEntry(methodDeclaration, procedure.getEntry());
 
-				List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
-				entryParameters.addAll(procedure.getEntry().getParameters());
-				Collections.reverse(entryParameters);
+				writeLazyLoading(procedure, block);
 
-				int p = entryParameters.size();
-
-				IfStatement baseIf = null;
-				IfStatement lastIf = null;
-				for (QEntryParameter<?> entryParameter : entryParameters) {
-
-					if (!entryParameter.isNullable())
-						break;
-
-					// first
-					if (entryParameters.size() == p) {
-
-						IfStatement ifStatement = getAST().newIfStatement();
-						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
-						Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + p + ")");
-						ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
-						ifStatement.setThenStatement(expressionStatement);
-
-						Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
-						ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
-						ifStatement.setElseStatement(expressionElseStatement);
-
-						baseIf = ifStatement;
-						lastIf = ifStatement;
-					} else {
-						IfStatement ifStatement = getAST().newIfStatement();
-						ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
-
-						Expression expression = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + p + ")");
-						ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
-						ifStatement.setThenStatement(expressionStatement);
-
-						Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(prototype.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
-						ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
-						ifStatement.setElseStatement(expressionElseStatement);
-
-						lastIf.setElseStatement(ifStatement);
-						lastIf = ifStatement;
-					}
-					p--;
-				}
-
-				if (baseIf != null)
-					block.statements().add(baseIf);
+				writeSetEntryParams(procedure, block);
 
 				String namePrototype = getCompilationUnit().normalizeTermName(prototype.getName());
 				MethodInvocation methodInvocation = getAST().newMethodInvocation();
@@ -593,7 +550,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeEntry(methodDeclaration, prototype.getEntry());
 
 				// TODO manage CALL
-				
+
 				if (prototype.getDefinition() != null) {
 					ReturnStatement returnStatement = getAST().newReturnStatement();
 					returnStatement.setExpression(getAST().newNullLiteral());
@@ -601,6 +558,74 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				}
 			}
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void writeLazyLoading(QProcedure procedure, Block block) {
+
+		IfStatement ifStatement = getAST().newIfStatement();
+		String expression = getCompilationUnit().normalizeTermName(procedure.getName()) + " == null";
+		ifStatement.setExpression(buildExpression(expression));
+
+		Assignment assignment = getAST().newAssignment();
+		assignment.setLeftHandSide(buildExpression(getCompilationUnit().normalizeTermName(procedure.getName())));
+		assignment.setRightHandSide(buildExpression("qRPJ.bindProcedure(" + getCompilationUnit().normalizeTypeName(procedure.getName()) + ".class)"));
+		assignment.setOperator(Operator.ASSIGN);
+		ifStatement.setThenStatement(getAST().newExpressionStatement(assignment));
+		
+		block.statements().add(ifStatement);
+	}
+
+	@SuppressWarnings("unchecked")
+	private void writeSetEntryParams(QProcedure procedure, Block block) {
+		List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
+		entryParameters.addAll(procedure.getEntry().getParameters());
+		Collections.reverse(entryParameters);
+
+		int p = entryParameters.size();
+
+		IfStatement baseIf = null;
+		IfStatement lastIf = null;
+		for (QEntryParameter<?> entryParameter : entryParameters) {
+
+			if (!entryParameter.isNullable())
+				break;
+
+			// first
+			if (entryParameters.size() == p) {
+
+				IfStatement ifStatement = getAST().newIfStatement();
+				ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
+				Expression expression = buildExpression(getCompilationUnit().normalizeTermName(procedure.getName()) + ".qPRO.qParms().eval(" + p + ")");
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
+				ifStatement.setThenStatement(expressionStatement);
+
+				Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(procedure.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
+				ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
+				ifStatement.setElseStatement(expressionElseStatement);
+
+				baseIf = ifStatement;
+				lastIf = ifStatement;
+			} else {
+				IfStatement ifStatement = getAST().newIfStatement();
+				ifStatement.setExpression(buildExpression(getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null"));
+
+				Expression expression = buildExpression(getCompilationUnit().normalizeTermName(procedure.getName()) + ".qPRO.qParms().eval(" + p + ")");
+				ExpressionStatement expressionStatement = getAST().newExpressionStatement(expression);
+				ifStatement.setThenStatement(expressionStatement);
+
+				Expression expressionElse = buildExpression(getCompilationUnit().normalizeTermName(procedure.getName()) + ".qPRO.qParms().eval(" + (p - 1) + ")");
+				ExpressionStatement expressionElseStatement = getAST().newExpressionStatement(expressionElse);
+				ifStatement.setElseStatement(expressionElseStatement);
+
+				lastIf.setElseStatement(ifStatement);
+				lastIf = ifStatement;
+			}
+			p--;
+		}
+
+		if (baseIf != null)
+			block.statements().add(baseIf);
 	}
 
 	public void writeInnerProcedure(QProcedure procedure) {
@@ -925,8 +950,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		return (Expression) ASTNode.copySubtree(getAST(), jdtExpression);
 	}
 
-	private Expression buildExpression(AST ast, QExpression expression, Class<?> target) {
-		return JDTStatementHelper.buildExpression(ast, getCompilationUnit(), expression, target);
+	private Expression buildExpression(QExpression expression, Class<?> target) {
+		return JDTStatementHelper.buildExpression(getAST(), getCompilationUnit(), expression, target);
 	}
 
 	@SuppressWarnings("unchecked")

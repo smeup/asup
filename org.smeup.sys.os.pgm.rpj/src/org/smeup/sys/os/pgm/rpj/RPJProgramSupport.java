@@ -959,4 +959,9 @@ public class RPJProgramSupport {
 
 		return string;
 	}
+	
+	public <C extends Object> C bindProcedure(Class<C> klass) {
+		
+		return null;
+	}
 }

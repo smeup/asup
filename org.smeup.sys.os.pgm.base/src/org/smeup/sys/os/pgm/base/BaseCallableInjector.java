@@ -171,7 +171,6 @@ public class BaseCallableInjector {
 					continue;
 			}
 
-			field.setAccessible(true);
 
 			Class<?> fieldClass = null;
 
@@ -179,7 +178,13 @@ public class BaseCallableInjector {
 			if (type instanceof ParameterizedType) {
 				fieldClass = (Class<?>) ((ParameterizedType) type).getRawType();
 			} else
-				fieldClass = (Class<?>) type;
+				fieldClass = (Class<?>) type;			
+			
+			// Procedure lazy loading
+			if (fieldClass.getAnnotation(Procedure.class) != null) 
+				continue;
+
+			field.setAccessible(true);
 
 			// DataFactory
 			if (QDataFactory.class.isAssignableFrom(fieldClass)) {
@@ -221,10 +226,6 @@ public class BaseCallableInjector {
 				// Caller
 				else if (field.getAnnotation(Program.class) != null) {
 					object = owner;
-				}
-				// Procedure
-				else if (fieldClass.getAnnotation(Procedure.class) != null) {
-					object = injectData(owner, fieldClass, accessFactory, dataContainer, context, sharedModules);
 				}
 				// Module
 				else {
