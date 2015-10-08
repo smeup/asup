@@ -199,6 +199,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, QString factor2, boolean clear) {
+		cat(factor1, factor2.s(), 0, clear);
 	}
 
 	@Override
@@ -208,6 +209,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(QString factor1, QString factor2, boolean clear) {
+		cat(factor1.s(), factor2.s(), 0, clear);
 	}
 	
 	@Override
@@ -266,16 +268,14 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, String factor2, int space, boolean clear) {
-		if(clear)
-			this.clear();
 		if (space == 0)
 			eval(factor1.trim() + factor2.toString());
 		else {
 			try {
 				String value = factor1.trim();
 				int length = value.length() + space;
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), false, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), clear, INIT);
 			} catch (UnsupportedEncodingException e) {
 				throw new RuntimeException(e);
 			}
@@ -349,16 +349,14 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, Number space, boolean clear) {
-		if(clear)
-			this.clear();
 		if (space.intValue() == 0)
 			eval(trimR() + factor1);
 		else {
 			try {
 				String value = trimR();
 				int length = value.length() + space.intValue();
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), false, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), false, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), clear, INIT);
 			} catch (UnsupportedEncodingException e) {
 				throw new RuntimeException(e);
 			}
