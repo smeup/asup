@@ -55,6 +55,16 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
+	public void evalr(String value) {
+		move(value, true);
+	}
+
+	@Override
+	public void evalr(QBufferedData value) {
+		evalr(value.s());
+	}
+
+	@Override
 	public void eval(byte value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), _length, new byte[] { value }, true, INIT);
 	}
@@ -794,5 +804,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

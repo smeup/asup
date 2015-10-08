@@ -166,6 +166,16 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
+	public void evalr(String value) {
+		current().evalr(value);
+	}
+
+	@Override
+	public void evalr(QBufferedData value) {
+		current().evalr(value);
+	}
+	
+	@Override
 	public <E extends Enum<E>> boolean ge(E value) {
 		return current().ge(value);
 	}
