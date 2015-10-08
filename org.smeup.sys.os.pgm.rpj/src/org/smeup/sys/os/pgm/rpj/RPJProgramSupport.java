@@ -44,13 +44,16 @@ import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
+import org.smeup.sys.os.pgm.base.BaseCallableInjector;
 import org.smeup.sys.rt.core.QLogger;
 
 public class RPJProgramSupport {
 	
 	@Inject
+	private BaseCallableInjector injector;
+	
+	@Inject
 	public QDataFactory dataFactory;
-
 	@Inject
 	public QLogger logger;
 
@@ -142,8 +145,9 @@ public class RPJProgramSupport {
 	public ProgramStatus qSTATUS;
 	@DataDef
 	public Date qDATE;
-	@DataDef
-	public Specials qSP;
+
+	public static Specials qSP;
+	
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
@@ -960,8 +964,7 @@ public class RPJProgramSupport {
 		return string;
 	}
 	
-	public <C extends Object> C bindProcedure(Class<C> klass) {
-		
-		return null;
+	public <P extends Object> P bindProcedure(Class<P> klass) {
+		return injector.prepareProcedure(job.getContext(), getProgramOwner(), klass);
 	}
 }
