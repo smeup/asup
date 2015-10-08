@@ -20,8 +20,8 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.annotation.Test;
-import org.smeup.sys.dk.test.annotation.TestDestroy;
-import org.smeup.sys.dk.test.annotation.TestInit;
+import org.smeup.sys.dk.test.annotation.TestStopped;
+import org.smeup.sys.dk.test.annotation.TestStarting;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.impl.UnitTestRunnerImpl;
 import org.smeup.sys.il.core.ctx.QContext;
@@ -48,9 +48,9 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 			throw new DevelopmentKitTestRuntimeException("Invalid runner: " + classURI);
 		
 		//Notify test start
-				for (QTestRunnerListener listener: listeners){
-					listener.testStarted(testClass.getName());
-				}
+		for (QTestRunnerListener listener: listeners){
+			listener.testStarted(testClass.getName());
+		}
 
 		// result
 		QTestResult testResult = QDevelopmentKitTestFactory.eINSTANCE.createTestResult();
@@ -62,13 +62,16 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		QTestAsserter testAsserter = new BaseTestAsserterImpl(testResult, getListeners());
 		context.set(QTestAsserter.class, testAsserter);
 		context.set(QTestRunner.class, this);
-		
-		Object testCase = context.make(testClass);
-		
-		// Call test initialization
-		if (testCase.getClass().getAnnotation(TestInit.class) != null)
-			context.invoke(testCase, TestInit.class);
 
+		Object testCase = context.make(testClass);
+
+		// Call test initialization
+		try {
+			context.invoke(testCase, TestStarting.class);
+		} catch (Exception exc) {
+			testResult.setFailed(true);
+			return testResult;
+		}
 		// Call test procedure
 		long start = System.currentTimeMillis();
 		try {
@@ -78,18 +81,18 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 			testResult.setFailed(true);
 		}
 		long end = System.currentTimeMillis();
-
 		testResult.setTime(end - start);
-		
+
 		// Call test destroyer
-		if (testCase.getClass().getAnnotation(TestDestroy.class) != null)
-			context.invoke(testCase, TestDestroy.class);
+
+		if (testCase.getClass().getAnnotation(TestStopped.class) != null)
+			context.invoke(testCase, TestStopped.class);
 		
 		//Notify test start
 		for (QTestRunnerListener listener: listeners){
 			listener.testFinished(testClass.getName(), testResult);
 		}
-
+		
 		return testResult;
 	}
 
