@@ -77,7 +77,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QNumeric divide(short value);
+	void divide(short value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,7 +109,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QNumeric divide(int value);
+	void divide(int value);
 
 	/**
 	 * <!-- begin-user-doc -->

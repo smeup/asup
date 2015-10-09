@@ -209,62 +209,72 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	
 	@Override
 	public void plus(short value) {
-		// TODO Auto-generated method stub
-		
+		plus(value, null);
 	}
 
 	@Override
 	public void plus(short value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value);
+			}
+		}
 	}
 
 	@Override
 	public void plus(long value) {
-		// TODO Auto-generated method stub
-		
+		plus(value, null);
 	}
 
 	@Override
 	public void plus(long value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value);
+			}
+		}
 	}
 
 	@Override
 	public void plus(int value) {
-		// TODO Auto-generated method stub
-		
+		plus(value, null);
 	}
 
 	@Override
 	public void plus(int value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value);
+			}
+		}
 	}
 
 	@Override
 	public void plus(double value) {
-		// TODO Auto-generated method stub
-		
+		plus(value, null);
 	}
 
 	@Override
 	public void plus(double value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value);
+			}
+		}
 	}
 
 	@Override
 	public void plus(QNumeric value) {
-		// TODO Auto-generated method stub
-		
+		plus(value, null);
 	}
 
 	@Override
 	public void plus(QNumeric value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value);
+			}
+		}
 	}
 	
 	@Override
@@ -284,63 +294,73 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
-	public QNumeric divide(short value) {
-		// TODO Auto-generated method stub
-		return null;
+	public void divide(short value) {
+		divide(value, null);
 	}
 
 	@Override
 	public void divide(short value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).divide(value);
+			}
+		}
 	}
 
 	@Override
 	public void divide(long value) {
-		// TODO Auto-generated method stub
-		
+		divide(value, null);
 	}
 
 	@Override
 	public void divide(long value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).divide(value);
+			}
+		}
 	}
 
 	@Override
-	public QNumeric divide(int value) {
-		// TODO Auto-generated method stub
-		return null;
+	public void divide(int value) {
+		divide(value, null);
 	}
 
 	@Override
 	public void divide(int value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).divide(value);
+			}
+		}
 	}
 
 	@Override
 	public void divide(double value) {
-		// TODO Auto-generated method stub
-		
+		divide(value, null);
 	}
 
 	@Override
 	public void divide(double value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).divide(value);
+			}
+		}
 	}
 
 	@Override
 	public void divide(QNumeric value) {
-		// TODO Auto-generated method stub
-		
+		divide(value, null);
 	}
 
 	@Override
 	public void divide(QNumeric value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).divide(value);
+			}
+		}
 	}
 
 	@Override
@@ -361,62 +381,72 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(short value) {
-		// TODO Auto-generated method stub
-		
+		minus(value, null);
 	}
 
 	@Override
 	public void minus(short value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value);
+			}
+		}
 	}
 
 	@Override
 	public void minus(long value) {
-		// TODO Auto-generated method stub
-		
+		minus(value, null);
 	}
 
 	@Override
 	public void minus(long value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value);
+			}
+		}
 	}
 
 	@Override
 	public void minus(int value) {
-		// TODO Auto-generated method stub
-		
+		minus(value, null);
 	}
 
 	@Override
 	public void minus(int value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value);
+			}
+		}
 	}
 
 	@Override
 	public void minus(double value) {
-		// TODO Auto-generated method stub
-		
+		minus(value, null);
 	}
 
 	@Override
 	public void minus(double value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value);
+			}
+		}
 	}
 
 	@Override
 	public void minus(QNumeric value) {
-		// TODO Auto-generated method stub
-		
+		minus(value, null);
 	}
 
 	@Override
 	public void minus(QNumeric value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value);
+			}
+		}
 	}
 	
 	@Override
@@ -437,61 +467,71 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(short value) {
-		// TODO Auto-generated method stub
-		
+		mult(value, null);
 	}
 
 	@Override
 	public void mult(short value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value);
+			}
+		}
 	}
 
 	@Override
 	public void mult(long value) {
-		// TODO Auto-generated method stub
-		
+		mult(value, null);
 	}
 
 	@Override
 	public void mult(long value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value);
+			}
+		}
 	}
 
 	@Override
 	public void mult(int value) {
-		// TODO Auto-generated method stub
-		
+		mult(value, null);
 	}
 
 	@Override
 	public void mult(int value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value);
+			}
+		}
 	}
 
 	@Override
 	public void mult(double value) {
-		// TODO Auto-generated method stub
-		
+		mult(value, null);
 	}
 
 	@Override
 	public void mult(double value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value);
+			}
+		}
 	}
 
 	@Override
 	public void mult(QNumeric value) {
-		// TODO Auto-generated method stub
-		
+		mult(value, null);
 	}
 
 	@Override
 	public void mult(QNumeric value, String roundingMode) {
-		// TODO Auto-generated method stub
-		
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value);
+			}
+		}
 	}
 }
