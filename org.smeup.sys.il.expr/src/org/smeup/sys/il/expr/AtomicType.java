@@ -33,16 +33,14 @@ public enum AtomicType implements Enumerator {
 	BOOLEAN(3, "Boolean", "BOOLEAN"),
 
 	/**
-	 * The '<em><b>Datetime</b></em>' literal object.
+	 * The '<em><b>Date</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DATETIME_VALUE
+	 * @see #DATE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DATETIME(2, "Datetime", "DATETIME"),
-
-	/**
+	DATE(2, "Date", "DATE"), /**
 	 * The '<em><b>Floating</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -110,7 +108,23 @@ public enum AtomicType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRING(4, "String", "STRING");
+	STRING(4, "String", "STRING"), /**
+	 * The '<em><b>Time</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIME_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TIME(9, "Time", "TIME"), /**
+	 * The '<em><b>Timestamp</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TIMESTAMP_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TIMESTAMP(10, "Timestamp", "TIMESTAMP");
 
 	/**
 	 * The '<em><b>Boolean</b></em>' literal value.
@@ -128,19 +142,19 @@ public enum AtomicType implements Enumerator {
 	public static final int BOOLEAN_VALUE = 3;
 
 	/**
-	 * The '<em><b>Datetime</b></em>' literal value.
+	 * The '<em><b>Date</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Datetime</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>Date</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #DATETIME
-	 * @model name="Datetime" literal="DATETIME"
+	 * @see #DATE
+	 * @model name="Date" literal="DATE"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATETIME_VALUE = 2;
+	public static final int DATE_VALUE = 2;
 
 	/**
 	 * The '<em><b>Floating</b></em>' literal value.
@@ -248,6 +262,36 @@ public enum AtomicType implements Enumerator {
 	public static final int STRING_VALUE = 4;
 
 	/**
+	 * The '<em><b>Time</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Time</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TIME
+	 * @model name="Time" literal="TIME"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME_VALUE = 9;
+
+	/**
+	 * The '<em><b>Timestamp</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Timestamp</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TIMESTAMP
+	 * @model name="Timestamp" literal="TIMESTAMP"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIMESTAMP_VALUE = 10;
+
+	/**
 	 * An array of all the '<em><b>Atomic Type</b></em>' enumerators. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -255,7 +299,7 @@ public enum AtomicType implements Enumerator {
 	 */
 	private static final AtomicType[] VALUES_ARRAY = new AtomicType[] {
 			BOOLEAN,
-			DATETIME,
+			DATE,
 			FLOATING,
 			HEXADECIMAL,
 			INDICATOR,
@@ -263,6 +307,8 @@ public enum AtomicType implements Enumerator {
 			NAME,
 			SPECIAL,
 			STRING,
+			TIME,
+			TIMESTAMP,
 		};
 
 	/**
@@ -310,7 +356,7 @@ public enum AtomicType implements Enumerator {
 	public static AtomicType get(int value) {
 		switch (value) {
 			case BOOLEAN_VALUE: return BOOLEAN;
-			case DATETIME_VALUE: return DATETIME;
+			case DATE_VALUE: return DATE;
 			case FLOATING_VALUE: return FLOATING;
 			case HEXADECIMAL_VALUE: return HEXADECIMAL;
 			case INDICATOR_VALUE: return INDICATOR;
@@ -318,6 +364,8 @@ public enum AtomicType implements Enumerator {
 			case NAME_VALUE: return NAME;
 			case SPECIAL_VALUE: return SPECIAL;
 			case STRING_VALUE: return STRING;
+			case TIME_VALUE: return TIME;
+			case TIMESTAMP_VALUE: return TIMESTAMP;
 		}
 		return null;
 	}

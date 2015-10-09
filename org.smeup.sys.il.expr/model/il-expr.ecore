@@ -40,7 +40,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AtomicType">
     <eLiterals name="Boolean" value="3" literal="BOOLEAN"/>
-    <eLiterals name="Datetime" value="2" literal="DATETIME"/>
+    <eLiterals name="Date" value="2" literal="DATE"/>
     <eLiterals name="Floating" value="1" literal="FLOATING"/>
     <eLiterals name="Hexadecimal" value="8" literal="HEXADECIMAL"/>
     <eLiterals name="Indicator" value="6" literal="INDICATOR"/>
@@ -48,6 +48,8 @@
     <eLiterals name="Name" value="5" literal="NAME"/>
     <eLiterals name="Special" value="7" literal="SPECIAL"/>
     <eLiterals name="String" value="4" literal="STRING"/>
+    <eLiterals name="Time" value="9" literal="TIME"/>
+    <eLiterals name="Timestamp" value="10" literal="TIMESTAMP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanExpression" eSuperTypes="#//PredicateExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operand" lowerBound="1"

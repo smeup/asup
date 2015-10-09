@@ -25,6 +25,15 @@ public interface QIntegratedLanguageCoreFactory extends EFactory {
 	QIntegratedLanguageCoreFactory eINSTANCE = org.smeup.sys.il.core.impl.IntegratedLanguageCoreFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Annotation Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Scope</em>'.
+	 * @generated
+	 */
+	QAnnotationScope createAnnotationScope();
+
+	/**
 	 * Returns a new object of class '<em>Annotation Test</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

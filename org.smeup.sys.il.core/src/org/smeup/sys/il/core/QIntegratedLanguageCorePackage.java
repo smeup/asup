@@ -66,7 +66,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNameable()
 	 * @generated
 	 */
-	int NAMEABLE = 5;
+	int NAMEABLE = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.AnnotationImpl <em>Annotation</em>}' class.
@@ -85,7 +85,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getAnnotationTest()
 	 * @generated
 	 */
-	int ANNOTATION_TEST = 1;
+	int ANNOTATION_TEST = 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.NodeImpl <em>Node</em>}' class.
@@ -94,7 +94,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNode()
 	 * @generated
 	 */
-	int NODE = 7;
+	int NODE = 8;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.NamedNodeImpl <em>Named Node</em>}' class.
@@ -103,7 +103,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getNamedNode()
 	 * @generated
 	 */
-	int NAMED_NODE = 6;
+	int NAMED_NODE = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ConversionImpl <em>Conversion</em>}' class.
@@ -112,7 +112,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getConversion()
 	 * @generated
 	 */
-	int CONVERSION = 2;
+	int CONVERSION = 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.DerivedImpl <em>Derived</em>}' class.
@@ -121,7 +121,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getDerived()
 	 * @generated
 	 */
-	int DERIVED = 3;
+	int DERIVED = 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.FormatImpl <em>Format</em>}' class.
@@ -130,7 +130,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 4;
+	int FORMAT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectImpl <em>Object</em>}' class.
@@ -139,7 +139,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 8;
+	int OBJECT = 9;
 
 	/**
 	 * The number of structural features of the '<em>Object</em>' class. <!--
@@ -157,6 +157,34 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ANNOTATION_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.AnnotationScopeImpl <em>Annotation Scope</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.impl.AnnotationScopeImpl
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getAnnotationScope()
+	 * @generated
+	 */
+	int ANNOTATION_SCOPE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SCOPE__NAME = ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_SCOPE_FEATURE_COUNT = ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' attribute. <!--
@@ -287,7 +315,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectContainer()
 	 * @generated
 	 */
-	int OBJECT_CONTAINER = 9;
+	int OBJECT_CONTAINER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -313,7 +341,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectIterator()
 	 * @generated
 	 */
-	int OBJECT_ITERATOR = 10;
+	int OBJECT_ITERATOR = 11;
 
 	/**
 	 * The number of structural features of the '<em>Object Iterator</em>' class.
@@ -331,7 +359,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getObjectNameable()
 	 * @generated
 	 */
-	int OBJECT_NAMEABLE = 11;
+	int OBJECT_NAMEABLE = 12;
 
 	/**
 	 * The number of structural features of the '<em>Object Nameable</em>' class.
@@ -348,7 +376,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getOverlay()
 	 * @generated
 	 */
-	int OVERLAY = 12;
+	int OVERLAY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -384,7 +412,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getRemap()
 	 * @generated
 	 */
-	int REMAP = 13;
+	int REMAP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -420,7 +448,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getSpecial()
 	 * @generated
 	 */
-	int SPECIAL = 14;
+	int SPECIAL = 15;
 
 	/**
 	 * The feature id for the '<em><b>Class Delegate</b></em>' attribute. <!--
@@ -456,7 +484,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getSpecialElement()
 	 * @generated
 	 */
-	int SPECIAL_ELEMENT = 15;
+	int SPECIAL_ELEMENT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -517,7 +545,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getConversionStatus()
 	 * @generated
 	 */
-	int CONVERSION_STATUS = 16;
+	int CONVERSION_STATUS = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.FormatType
@@ -528,7 +556,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getFormatType()
 	 * @generated
 	 */
-	int FORMAT_TYPE = 17;
+	int FORMAT_TYPE = 18;
 
 	/**
 	 * Returns the meta object for class '
@@ -540,6 +568,27 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAnnotation();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QAnnotationScope <em>Annotation Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Scope</em>'.
+	 * @see org.smeup.sys.il.core.QAnnotationScope
+	 * @generated
+	 */
+	EClass getAnnotationScope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.core.QAnnotationScope#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.il.core.QAnnotationScope#getName()
+	 * @see #getAnnotationScope()
+	 * @generated
+	 */
+	EAttribute getAnnotationScope_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QAnnotationTest <em>Annotation Test</em>}'.
@@ -913,6 +962,24 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass ANNOTATION = eINSTANCE.getAnnotation();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.AnnotationScopeImpl <em>Annotation Scope</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.impl.AnnotationScopeImpl
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getAnnotationScope()
+		 * @generated
+		 */
+		EClass ANNOTATION_SCOPE = eINSTANCE.getAnnotationScope();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_SCOPE__NAME = eINSTANCE.getAnnotationScope_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.impl.AnnotationTestImpl <em>Annotation Test</em>}' class.

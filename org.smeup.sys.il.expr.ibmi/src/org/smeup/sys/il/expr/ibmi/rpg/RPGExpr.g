@@ -32,66 +32,15 @@ tokens
 	//NOT
 	QUALIFIED;
 	BLOCK;
-	INDICATOR;
+	INDICATOR;	
 }
 
 @parser::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
-  
-  import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 }
 
 @lexer::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
-}
-
-@parser::members {
-
-   @Override
-  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
-    	throw new MismatchedTokenException(ttype, input);
-  	}
-
-   @Override
-   public void reportError(RecognitionException e) {
-      super.reportError(e);
-      RuntimeException re = createException(e);
-      recover(input, e);
-      throw re;
-   }
-
-   @Override
-  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
-    	throw e;
-    }
-    
-    public RuntimeException createException(RecognitionException e) {
-        String message = "";
-        boolean addTokenAndLine = true;
-        if (e instanceof NoViableAltException) {
-            message = "Syntax error. ";
-        } else if (e instanceof MissingTokenException) {
-            message = "Missing token ";
-        } else if (e instanceof UnwantedTokenException) {
-            UnwantedTokenException ex = (UnwantedTokenException) e;
-            ex.getUnexpectedToken().getText();
-            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-            addTokenAndLine = false;
-        } else {
-            message = "Syntax error near ";
-        }
-        if (addTokenAndLine) {
-            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-        }
-        return new IntegratedLanguageExpressionRuntimeException(message,e);
-    }
-}
-
-@rulecatch {
-    catch (RecognitionException e) {
-        RuntimeException re = createException(e);
-        throw re;
-    }
 }
 
 
@@ -153,10 +102,12 @@ value
 	:
 		INTEGER
 	|	FLOAT
-	| 	DATETIME
+	| 	DATE -> ^(DATE[$DATE.text.substring(2, $DATE.text.length() -1 )])
+	|	TIME -> ^(TIME[$TIME.text.substring(2, $TIME.text.length() -1 )])
+	|	TIMESTAMP -> ^(TIMESTAMP[$TIMESTAMP.text.substring(2, $TIMESTAMP.text.length() -1 )])
 	|	BOOLEAN
 	|	STRING
-	|	HEX
+	|	HEX -> ^(HEX[$HEX.text.substring(2, $HEX.text.length() -1 )])
 	|	TERM
 	|	(SPECIAL -> TERM)
 	|	filler
@@ -242,22 +193,6 @@ SPECIAL
 		( Y E A R)
 		|
 		( Y E A R S)
-		|
-		( Y)
-		|
-		( M O N T H S)
-		|
-		( M)
-		|
-		( D A Y S)
-		|
-		( D)
-		|
-		( I S O)
-		|
-		( E U R)
-		|
-		( U S A)
 		|
 		( N E X T)
 		|
@@ -402,9 +337,18 @@ FLOAT
 	:	('0'..'9')* DIGIT_SPECIAL ('0'..'9')+
 	;
 
-DATETIME
- 	:	'#' (~'#')* '#'
+DATE
+ 	:	('D\''|'d\'') (DIGIT)* '\''
         ;
+
+TIME
+ 	:	('T\''|'t\'') (DIGIT)* '\''
+        ;
+
+TIMESTAMP
+ 	:	('Z\''|'z\'') (DIGIT)* '\''
+        ;
+        
 
 BOOLEAN
 	:	(T R U E)

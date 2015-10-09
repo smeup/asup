@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.ConversionStatus;
 import org.smeup.sys.il.core.FormatType;
 import org.smeup.sys.il.core.QAnnotation;
+import org.smeup.sys.il.core.QAnnotationScope;
 import org.smeup.sys.il.core.QAnnotationTest;
 import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.core.QDerived;
@@ -58,6 +59,13 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass annotationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationScopeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -245,6 +253,24 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	@Override
 	public EClass getAnnotation() {
 		return annotationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationScope() {
+		return annotationScopeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotationScope_Name() {
+		return (EAttribute)annotationScopeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -582,6 +608,9 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Create classes and their features
 		annotationEClass = createEClass(ANNOTATION);
 
+		annotationScopeEClass = createEClass(ANNOTATION_SCOPE);
+		createEAttribute(annotationScopeEClass, ANNOTATION_SCOPE__NAME);
+
 		annotationTestEClass = createEClass(ANNOTATION_TEST);
 		createEAttribute(annotationTestEClass, ANNOTATION_TEST__EXPRESSION);
 		createEAttribute(annotationTestEClass, ANNOTATION_TEST__MESSAGE);
@@ -682,6 +711,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		// Add supertypes to classes
 		annotationEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		annotationScopeEClass.getESuperTypes().add(this.getAnnotation());
 		annotationTestEClass.getESuperTypes().add(this.getAnnotation());
 		conversionEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		derivedEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
@@ -704,6 +734,9 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(annotationEClass, QAnnotation.class, "Annotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(annotationScopeEClass, QAnnotationScope.class, "AnnotationScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnnotationScope_Name(), ecorePackage.getEString(), "name", null, 0, 1, QAnnotationScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(annotationTestEClass, QAnnotationTest.class, "AnnotationTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationTest_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, QAnnotationTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
