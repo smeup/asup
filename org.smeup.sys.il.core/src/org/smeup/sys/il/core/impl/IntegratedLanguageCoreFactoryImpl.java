@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.core.ConversionStatus;
 import org.smeup.sys.il.core.FormatType;
+import org.smeup.sys.il.core.QAnnotationScope;
 import org.smeup.sys.il.core.QAnnotationTest;
 import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.core.QDerived;
@@ -70,6 +71,7 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QIntegratedLanguageCorePackage.ANNOTATION_SCOPE: return (EObject)createAnnotationScope();
 			case QIntegratedLanguageCorePackage.ANNOTATION_TEST: return (EObject)createAnnotationTest();
 			case QIntegratedLanguageCorePackage.CONVERSION: return (EObject)createConversion();
 			case QIntegratedLanguageCorePackage.DERIVED: return (EObject)createDerived();
@@ -115,6 +117,16 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QAnnotationScope createAnnotationScope() {
+		AnnotationScopeImpl annotationScope = new AnnotationScopeImpl();
+		return annotationScope;
 	}
 
 	/**
