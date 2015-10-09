@@ -25,10 +25,10 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <em><b>Test Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestContainerImpl#getTests <em>Tests</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

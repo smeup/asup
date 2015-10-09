@@ -41,6 +41,6 @@ public interface QTestRunnerListener {
 	 * @model
 	 * @generated
 	 */
-	void testFinished(String testClass, QTestResult result);
+	void testStopped(String testClass, QTestResult result);
 
 } // QTestRunnerListener

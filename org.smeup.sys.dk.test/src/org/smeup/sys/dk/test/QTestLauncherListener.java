@@ -25,15 +25,7 @@ public interface QTestLauncherListener {
 	 * @model
 	 * @generated
 	 */
-	void launcherDestroyed(QTestLauncher launcher);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void launcherInitialized(QTestLauncher launcher);
+	void launcherStopped(QTestLauncher launcher);
 
 	/**
 	 * <!-- begin-user-doc -->

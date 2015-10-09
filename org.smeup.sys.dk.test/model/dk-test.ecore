@@ -118,7 +118,7 @@
     <eOperations name="testStarted">
       <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="testFinished">
+    <eOperations name="testStopped">
       <eParameters name="testClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="result" eType="#//TestResult"/>
     </eOperations>
@@ -168,23 +168,32 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestRunner" abstract="true" eSuperTypes="#//CallableTest ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eOperations name="addListener">
+      <eParameters name="listener" eType="#//TestRunnerListener"/>
+    </eOperations>
+    <eOperations name="removeListener">
+      <eParameters name="listener" eType="#//TestRunnerListener"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeners" upperBound="-1"
         eType="#//TestRunnerListener" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
   <eClassifiers xsi:type="ecore:EClass" name="TestLauncher" abstract="true">
-    <eOperations name="launchTests">
+    <eOperations name="launch">
       <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="addListener">
+      <eParameters name="listener" eType="#//TestLauncherListener"/>
+    </eOperations>
+    <eOperations name="removeListener">
+      <eParameters name="listener" eType="#//TestLauncherListener"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listeners" upperBound="-1"
         eType="#//TestLauncherListener" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestLauncherListener" abstract="true"
       interface="true">
-    <eOperations name="launcherDestroyed">
-      <eParameters name="launcher" eType="#//TestLauncher"/>
-    </eOperations>
-    <eOperations name="launcherInitialized">
+    <eOperations name="launcherStopped">
       <eParameters name="launcher" eType="#//TestLauncher"/>
     </eOperations>
     <eOperations name="launcherStarted">

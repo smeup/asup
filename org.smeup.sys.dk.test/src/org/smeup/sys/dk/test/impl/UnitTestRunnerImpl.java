@@ -8,18 +8,37 @@
 package org.smeup.sys.dk.test.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
+import org.smeup.sys.dk.test.QTestResult;
+import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.QUnitTestRunner;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Unit Test Runner</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */
 public abstract class UnitTestRunnerImpl extends TestRunnerImpl implements QUnitTestRunner {
+	@Override
+	public QTestResult call() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addListener(QTestRunnerListener listener) {
+		getListeners().add(listener);
+	}
+
+	@Override
+	public void removeListener(QTestRunnerListener listener) {
+		getListeners().add(listener);
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

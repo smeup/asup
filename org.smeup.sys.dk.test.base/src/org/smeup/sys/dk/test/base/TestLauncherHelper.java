@@ -10,6 +10,8 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.wiring.BundleWiring;
 import org.smeup.sys.dk.test.QTestLauncher;
+import org.smeup.sys.dk.test.QTestLauncherListener;
+import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.os.core.QSystem;
@@ -61,14 +63,16 @@ public class TestLauncherHelper {
 		return testLauncherList;
 	}
 	
-	public static Collection<Class<QTestRunner>> findTestRunners(QTestLauncher testLauncher, String object) {
+	
+	@SuppressWarnings("unchecked")
+	public static Collection<Class<QTestRunner>> findTestRunners(QTestLauncher testLauncher, String resourcePath, String object) {
 		
 		ArrayList<Class<QTestRunner>> testRunnerList = new ArrayList<Class<QTestRunner>>();
 		
 		Bundle bundle = FrameworkUtil.getBundle(testLauncher.getClass());
 		
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);		
-		for(String resource: bundleWiring.listResources("/runner/", null, BundleWiring.LISTRESOURCES_LOCAL)) {
+		for(String resource: bundleWiring.listResources(resourcePath, null, BundleWiring.LISTRESOURCES_LOCAL)) {
 			Class<?> klass = null;
 			try {
 				String resourceURI = resource.replace(".class", "").replace('/', '.');
@@ -78,6 +82,8 @@ public class TestLauncherHelper {
 			} catch (ClassNotFoundException e) {
 				continue;
 			}
+			
+			//TODO: da rivedere
 			
 			if(QTestRunner.class.isAssignableFrom(klass)) {
 				if (object != null && object.length()>0) {
@@ -95,6 +101,28 @@ public class TestLauncherHelper {
 		}
 		
 		return testRunnerList;
+	}
+
+	public static void notifyLauncherStarted(QTestLauncher testLauncher) {
+		
+		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+			listener.launcherStarted(testLauncher);
+		}		
+	}
+	
+	public static void notifyResultAdded(QTestLauncher testLauncher,	QTestRunner testRunner, QTestResult testResult) {
+		
+		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+			listener.resultAdded(testRunner, testResult);
+		}
+		
+	}
+	
+	public static void notifyLauncherStopped(QTestLauncher testLauncher) {
+		
+		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+			listener.launcherStopped(testLauncher);
+		}		
 	}
 	
 

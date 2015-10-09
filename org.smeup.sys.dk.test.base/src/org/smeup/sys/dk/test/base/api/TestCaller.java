@@ -32,20 +32,18 @@ public @Supported class TestCaller implements QTestLauncherListener{
 	@Inject
 	private QOutputManager outputManager;
 
-	private QEnum<OUTPUTEnum, QCharacter> output;
-
-	private QContext context;
-
+	private OUTPUTEnum outputEnum;
+	
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(@Supported @DataDef(length = 32, varying = true) QCharacter component,
-			@Supported @DataDef(length = 32, varying = true) QCharacter module,
-			@Supported @DataDef(length = 32, varying = true) QCharacter object,
-			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
+	public @Entry void main(@Supported @DataDef(length=32) QCharacter component,  
+							@Supported @DataDef(length=32) QCharacter module,  
+							@Supported @DataDef(length=32) QCharacter object,  
+							@Supported @DataDef(length=1) QEnum<OUTPUTEnum, QCharacter> output) {
 
-		this.output = output;
-		context = job.getContext();
+		
+		this.outputEnum = output.asEnum();
 		
 		Collection<QTestLauncher> testLauncherList = TestLauncherHelper.findTestLauncher(component.toString(), module.toString());
 		
@@ -53,7 +51,7 @@ public @Supported class TestCaller implements QTestLauncherListener{
 		
 			for (QTestLauncher testLauncher: testLauncherList) {
 				testLauncher.getListeners().add(this);
-				testLauncher.launchTests(object.toString());
+				testLauncher.launch(object.toString());
 			}
 		}				
 	}
@@ -70,11 +68,7 @@ public @Supported class TestCaller implements QTestLauncherListener{
 	// Implements QTestLauncherListener methods
 
 	@Override
-	public void launcherDestroyed(QTestLauncher launcher) {
-	}
-
-	@Override
-	public void launcherInitialized(QTestLauncher launcher) {			
+	public void launcherStopped(QTestLauncher launcher) {
 	}
 
 	@Override
@@ -87,18 +81,18 @@ public @Supported class TestCaller implements QTestLauncherListener{
 		
 		QObjectWriter objectWriter = null;
 		
-		switch(output.asEnum()){
+		switch(outputEnum){
 		case FILE:
 			writeToFile(result);
 			break;
 			
 		case PRINT:
-				objectWriter = outputManager.getObjectWriter(context, "P");
+				objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			break;
 			
 		case TERM_STAR:				
 		default:
-			objectWriter = outputManager.getDefaultWriter(context);
+			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		
 		}

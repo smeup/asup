@@ -17,10 +17,10 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.QTestLauncher#getListeners <em>Listeners</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestLauncher()
  * @model abstract="true"
@@ -50,5 +50,21 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
-	void launchTests(String object);
+	void launch(String object);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addListener(QTestLauncherListener listener);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void removeListener(QTestLauncherListener listener);
 } // QTestLauncher

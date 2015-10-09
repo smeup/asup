@@ -16,10 +16,10 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.QTestRunner#getListeners <em>Listeners</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner()
  * @model abstract="true"
@@ -41,5 +41,21 @@ public interface QTestRunner extends QCallableTest, QContextProvider {
 	 * @generated
 	 */
 	List<QTestRunnerListener> getListeners();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addListener(QTestRunnerListener listener);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void removeListener(QTestRunnerListener listener);
 
 } // QTestRunner

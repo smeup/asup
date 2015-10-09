@@ -90,7 +90,7 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		
 		//Notify test start
 		for (QTestRunnerListener listener: listeners){
-			listener.testFinished(testClass.getName(), testResult);
+			listener.testStopped(testClass.getName(), testResult);
 		}
 		
 		return testResult;

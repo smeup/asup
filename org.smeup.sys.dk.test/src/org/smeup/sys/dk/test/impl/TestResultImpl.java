@@ -27,7 +27,6 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <em><b>Result</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getAssertResults <em>Assert Results</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getCategory <em>Category</em>}</li>
@@ -36,6 +35,7 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getRunner <em>Runner</em>}</li>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestResultImpl#getTime <em>Time</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

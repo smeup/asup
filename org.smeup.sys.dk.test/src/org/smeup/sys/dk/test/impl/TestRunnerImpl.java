@@ -9,16 +9,23 @@ package org.smeup.sys.dk.test.impl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.QTestRunnerListener;
+
 import org.smeup.sys.il.core.ctx.QContext;
 
 /**
@@ -27,10 +34,10 @@ import org.smeup.sys.il.core.ctx.QContext;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.test.impl.TestRunnerImpl#getListeners <em>Listeners</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -44,6 +51,7 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 	 * @ordered
 	 */
 	protected EList<QTestRunnerListener> listeners;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -73,6 +81,28 @@ public abstract class TestRunnerImpl extends MinimalEObjectImpl.Container implem
 			listeners = new EObjectContainmentEList<QTestRunnerListener>(QTestRunnerListener.class, this, QDevelopmentKitTestPackage.TEST_RUNNER__LISTENERS);
 		}
 		return listeners;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addListener(QTestRunnerListener listener) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void removeListener(QTestRunnerListener listener) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
