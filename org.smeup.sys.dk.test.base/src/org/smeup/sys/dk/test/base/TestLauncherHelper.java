@@ -1,6 +1,5 @@
 package org.smeup.sys.dk.test.base;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Collection;
 
