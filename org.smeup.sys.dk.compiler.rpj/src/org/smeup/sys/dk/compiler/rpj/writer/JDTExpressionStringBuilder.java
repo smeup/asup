@@ -110,7 +110,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value = expression.getValue();
 			source = Boolean.class;
 			break;
-		case DATETIME:
+		case DATE:
+		case TIME:
+		case TIMESTAMP:	
 			value = expression.getValue();
 			source = Date.class;
 			break;
