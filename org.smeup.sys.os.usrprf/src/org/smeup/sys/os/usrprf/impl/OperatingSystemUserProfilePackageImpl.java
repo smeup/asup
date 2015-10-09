@@ -9,6 +9,7 @@ package org.smeup.sys.os.usrprf.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
@@ -16,6 +17,7 @@ import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfilePackage;
 import org.smeup.sys.os.usrprf.QUserProfile;
 import org.smeup.sys.os.usrprf.QUserProfileManager;
+import org.smeup.sys.os.usrprf.UserClass;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -34,6 +36,13 @@ public class OperatingSystemUserProfilePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass userProfileManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum userClassEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -144,12 +153,39 @@ public class OperatingSystemUserProfilePackageImpl extends EPackageImpl implemen
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUserProfile_UserClass() {
+		return (EAttribute)userProfileEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUserProfile_Enabled() {
+		return (EAttribute)userProfileEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public EClass getUserProfileManager() {
 		return userProfileManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getUserClass() {
+		return userClassEEnum;
 	}
 
 	/**
@@ -184,8 +220,13 @@ public class OperatingSystemUserProfilePackageImpl extends EPackageImpl implemen
 		createEAttribute(userProfileEClass, USER_PROFILE__INITIAL_PROGRAM);
 		createEAttribute(userProfileEClass, USER_PROFILE__MESSAGE_QUEUE);
 		createEAttribute(userProfileEClass, USER_PROFILE__OUT_QUEUE);
+		createEAttribute(userProfileEClass, USER_PROFILE__USER_CLASS);
+		createEAttribute(userProfileEClass, USER_PROFILE__ENABLED);
 
 		userProfileManagerEClass = createEClass(USER_PROFILE_MANAGER);
+
+		// Create enums
+		userClassEEnum = createEEnum(USER_CLASS);
 	}
 
 	/**
@@ -226,8 +267,18 @@ public class OperatingSystemUserProfilePackageImpl extends EPackageImpl implemen
 		initEAttribute(getUserProfile_InitialProgram(), ecorePackage.getEString(), "initialProgram", null, 0, 1, QUserProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUserProfile_MessageQueue(), ecorePackage.getEString(), "messageQueue", null, 0, 1, QUserProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUserProfile_OutQueue(), ecorePackage.getEString(), "outQueue", null, 0, 1, QUserProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUserProfile_UserClass(), this.getUserClass(), "userClass", "*USER", 1, 1, QUserProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUserProfile_Enabled(), ecorePackage.getEBoolean(), "enabled", "true", 1, 1, QUserProfile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(userProfileManagerEClass, QUserProfileManager.class, "UserProfileManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(userClassEEnum, UserClass.class, "UserClass");
+		addEEnumLiteral(userClassEEnum, UserClass.USER);
+		addEEnumLiteral(userClassEEnum, UserClass.SYSOPR);
+		addEEnumLiteral(userClassEEnum, UserClass.PGMR);
+		addEEnumLiteral(userClassEEnum, UserClass.SECADM);
+		addEEnumLiteral(userClassEEnum, UserClass.SECOFR);
 
 		// Create resource
 		createResource(eNS_URI);

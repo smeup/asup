@@ -60,7 +60,7 @@ public class UserProfileRetriever {
 							@ToDo @DataDef(length = 10) QCharacter cLVarForOUTQLIB10, 
 							@ToDo @DataDef(length = 50) QCharacter cLVarForTEXT50, 
 							@ToDo @DataDef(length = 6) QCharacter cLVarForPWDCHGDAT6,
-							@ToDo @DataDef(length = 10) QCharacter cLVarForUSRCLS10, 
+							@DataDef(length = 10) QCharacter cLVarForUSRCLS10, 
 							@ToDo @DataDef(length = 10) QCharacter cLVarForASTLVL10, 
 							@ToDo @DataDef(length = 10) QCharacter cLVarForSPCENV10,
 							@ToDo @DataDef(length = 10) QCharacter cLVarForCURLIB10, 
@@ -106,7 +106,10 @@ public class UserProfileRetriever {
 		
 		//
 		cLVarForRTNUSRPRF10.eval(qUserProfile.getName());
-		
+		cLVarForUSRCLS10.eval(qUserProfile.getUserClass().getLiteral());
+		cLVarForTEXT50.eval(qUserProfile.getText());
+		cLVarForJOBD10.eval(qUserProfile.getJobDescription());
+		cLVarForSTATUS10.eval(qUserProfile.isEnabled() ? "*ENABLED" : "*DISABLED");
 	}
 
 	private String name(QEnum<USERPROFILEEnum, QCharacter> userProfile) {

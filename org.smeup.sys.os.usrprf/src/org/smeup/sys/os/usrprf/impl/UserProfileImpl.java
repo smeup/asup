@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.os.type.impl.TypedObjectImpl;
 import org.smeup.sys.os.usrprf.QOperatingSystemUserProfilePackage;
 import org.smeup.sys.os.usrprf.QUserProfile;
+import org.smeup.sys.os.usrprf.UserClass;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -24,6 +25,8 @@ import org.smeup.sys.os.usrprf.QUserProfile;
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getInitialProgram <em>Initial Program</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getMessageQueue <em>Message Queue</em>}</li>
  *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getOutQueue <em>Out Queue</em>}</li>
+ *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#getUserClass <em>User Class</em>}</li>
+ *   <li>{@link org.smeup.sys.os.usrprf.impl.UserProfileImpl#isEnabled <em>Enabled</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,6 +115,46 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 	 * @ordered
 	 */
 	protected String outQueue = OUT_QUEUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUserClass() <em>User Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final UserClass USER_CLASS_EDEFAULT = UserClass.USER;
+
+	/**
+	 * The cached value of the '{@link #getUserClass() <em>User Class</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUserClass()
+	 * @generated
+	 * @ordered
+	 */
+	protected UserClass userClass = USER_CLASS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -215,6 +258,48 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UserClass getUserClass() {
+		return userClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUserClass(UserClass newUserClass) {
+		UserClass oldUserClass = userClass;
+		userClass = newUserClass == null ? USER_CLASS_EDEFAULT : newUserClass;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemUserProfilePackage.USER_PROFILE__USER_CLASS, oldUserClass, userClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnabled(boolean newEnabled) {
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemUserProfilePackage.USER_PROFILE__ENABLED, oldEnabled, enabled));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -229,6 +314,10 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 				return getMessageQueue();
 			case QOperatingSystemUserProfilePackage.USER_PROFILE__OUT_QUEUE:
 				return getOutQueue();
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__USER_CLASS:
+				return getUserClass();
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__ENABLED:
+				return isEnabled();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,6 +340,12 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 				return;
 			case QOperatingSystemUserProfilePackage.USER_PROFILE__OUT_QUEUE:
 				setOutQueue((String)newValue);
+				return;
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__USER_CLASS:
+				setUserClass((UserClass)newValue);
+				return;
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__ENABLED:
+				setEnabled((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,6 +370,12 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 			case QOperatingSystemUserProfilePackage.USER_PROFILE__OUT_QUEUE:
 				setOutQueue(OUT_QUEUE_EDEFAULT);
 				return;
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__USER_CLASS:
+				setUserClass(USER_CLASS_EDEFAULT);
+				return;
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__ENABLED:
+				setEnabled(ENABLED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -294,6 +395,10 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 				return MESSAGE_QUEUE_EDEFAULT == null ? messageQueue != null : !MESSAGE_QUEUE_EDEFAULT.equals(messageQueue);
 			case QOperatingSystemUserProfilePackage.USER_PROFILE__OUT_QUEUE:
 				return OUT_QUEUE_EDEFAULT == null ? outQueue != null : !OUT_QUEUE_EDEFAULT.equals(outQueue);
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__USER_CLASS:
+				return userClass != USER_CLASS_EDEFAULT;
+			case QOperatingSystemUserProfilePackage.USER_PROFILE__ENABLED:
+				return enabled != ENABLED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -315,6 +420,10 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 		result.append(messageQueue);
 		result.append(", outQueue: ");
 		result.append(outQueue);
+		result.append(", userClass: ");
+		result.append(userClass);
+		result.append(", enabled: ");
+		result.append(enabled);
 		result.append(')');
 		return result.toString();
 	}

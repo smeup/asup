@@ -6,7 +6,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialProgram" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="userClass" lowerBound="1"
+        eType="#//UserClass" defaultValueLiteral="*USER" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UserProfileManager" abstract="true"
       interface="true"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="UserClass">
+    <eLiterals name="User" value="100" literal="*USER"/>
+    <eLiterals name="Sysopr" value="200" literal="*SYSOPR"/>
+    <eLiterals name="Pgmr" value="300" literal="*PGMR"/>
+    <eLiterals name="Secadm" value="400" literal="*SECADM"/>
+    <eLiterals name="Secofr" value="500" literal="*SECOFR"/>
+  </eClassifiers>
 </ecore:EPackage>
