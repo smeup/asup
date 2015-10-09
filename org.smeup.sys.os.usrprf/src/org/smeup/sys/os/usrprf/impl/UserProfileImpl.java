@@ -66,7 +66,7 @@ public class UserProfileImpl extends TypedObjectImpl implements QUserProfile {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INITIAL_PROGRAM_EDEFAULT = null;
+	protected static final String INITIAL_PROGRAM_EDEFAULT = "*NONE";
 
 	/**
 	 * The cached value of the '{@link #getInitialProgram() <em>Initial Program</em>}' attribute.
