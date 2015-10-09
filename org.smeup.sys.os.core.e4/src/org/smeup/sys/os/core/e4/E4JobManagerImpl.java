@@ -127,6 +127,9 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		if (userProfile == null)
 			throw new OperatingSystemRuntimeException("User " + user + " not found");
 
+		if (!userProfile.isEnabled())
+			throw new OperatingSystemRuntimeException("User " + user + " is disabled");
+
 		QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName());
 
 		// add job description libraries

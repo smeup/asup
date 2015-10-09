@@ -9,6 +9,7 @@ package org.smeup.sys.os.usrprf;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
@@ -149,12 +150,30 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 	int USER_PROFILE__OUT_QUEUE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>User Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_PROFILE__USER_CLASS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_PROFILE__ENABLED = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>User Profile</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_PROFILE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 4;
+	int USER_PROFILE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.usrprf.QUserProfileManager <em>User Profile Manager</em>}' class.
@@ -173,6 +192,16 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 	 * @ordered
 	 */
 	int USER_PROFILE_MANAGER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.usrprf.UserClass <em>User Class</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.usrprf.UserClass
+	 * @see org.smeup.sys.os.usrprf.impl.OperatingSystemUserProfilePackageImpl#getUserClass()
+	 * @generated
+	 */
+	int USER_CLASS = 2;
 
 	/**
 	 * Returns the meta object for class '
@@ -226,6 +255,28 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 	EAttribute getUserProfile_OutQueue();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.usrprf.QUserProfile#getUserClass <em>User Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>User Class</em>'.
+	 * @see org.smeup.sys.os.usrprf.QUserProfile#getUserClass()
+	 * @see #getUserProfile()
+	 * @generated
+	 */
+	EAttribute getUserProfile_UserClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.usrprf.QUserProfile#isEnabled <em>Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enabled</em>'.
+	 * @see org.smeup.sys.os.usrprf.QUserProfile#isEnabled()
+	 * @see #getUserProfile()
+	 * @generated
+	 */
+	EAttribute getUserProfile_Enabled();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.usrprf.QUserProfileManager <em>User Profile Manager</em>}'.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -234,6 +285,16 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUserProfileManager();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.usrprf.UserClass <em>User Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>User Class</em>'.
+	 * @see org.smeup.sys.os.usrprf.UserClass
+	 * @generated
+	 */
+	EEnum getUserClass();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -296,6 +357,22 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 		EAttribute USER_PROFILE__OUT_QUEUE = eINSTANCE.getUserProfile_OutQueue();
 
 		/**
+		 * The meta object literal for the '<em><b>User Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER_PROFILE__USER_CLASS = eINSTANCE.getUserProfile_UserClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER_PROFILE__ENABLED = eINSTANCE.getUserProfile_Enabled();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.usrprf.QUserProfileManager <em>User Profile Manager</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -304,6 +381,16 @@ public interface QOperatingSystemUserProfilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass USER_PROFILE_MANAGER = eINSTANCE.getUserProfileManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.usrprf.UserClass <em>User Class</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.usrprf.UserClass
+		 * @see org.smeup.sys.os.usrprf.impl.OperatingSystemUserProfilePackageImpl#getUserClass()
+		 * @generated
+		 */
+		EEnum USER_CLASS = eINSTANCE.getUserClass();
 
 	}
 

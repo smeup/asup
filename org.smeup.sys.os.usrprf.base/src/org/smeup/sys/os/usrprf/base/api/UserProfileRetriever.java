@@ -60,7 +60,7 @@ public class UserProfileRetriever {
 							@ToDo @DataDef(length = 10) QCharacter cLVarForOUTQLIB10, 
 							@ToDo @DataDef(length = 50) QCharacter cLVarForTEXT50, 
 							@ToDo @DataDef(length = 6) QCharacter cLVarForPWDCHGDAT6,
-							@ToDo @DataDef(length = 10) QCharacter cLVarForUSRCLS10, 
+							@DataDef(length = 10) QCharacter cLVarForUSRCLS10, 
 							@ToDo @DataDef(length = 10) QCharacter cLVarForASTLVL10, 
 							@ToDo @DataDef(length = 10) QCharacter cLVarForSPCENV10,
 							@ToDo @DataDef(length = 10) QCharacter cLVarForCURLIB10, 
@@ -106,7 +106,25 @@ public class UserProfileRetriever {
 		
 		//
 		cLVarForRTNUSRPRF10.eval(qUserProfile.getName());
+		cLVarForUSRCLS10.eval(qUserProfile.getUserClass().getLiteral());
+		cLVarForTEXT50.eval(qUserProfile.getText());
+		cLVarForJOBD10.eval(qUserProfile.getJobDescription());
+		cLVarForSTATUS10.eval(qUserProfile.isEnabled() ? "*ENABLED" : "*DISABLED");
 		
+		setInitialProgram(cLVarForINLPGM10, cLVarForINLPGMLIB10, qUserProfile);
+	}
+
+	private void setInitialProgram(QCharacter cLVarForINLPGM10,
+								   QCharacter cLVarForINLPGMLIB10, 
+								   QUserProfile qUserProfile) {
+		String[] programLinbAndName = qUserProfile.getInitialProgram().split("/");
+		if (programLinbAndName.length == 2) {
+			cLVarForINLPGM10.eval(programLinbAndName[1]);
+			cLVarForINLPGMLIB10.eval(programLinbAndName[0]);
+		} else {
+			cLVarForINLPGM10.eval("*NONE");
+			cLVarForINLPGMLIB10.eval("");			
+		}
 	}
 
 	private String name(QEnum<USERPROFILEEnum, QCharacter> userProfile) {
