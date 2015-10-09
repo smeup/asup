@@ -59,6 +59,7 @@ public interface QUserProfile extends QTypedObject {
 
 	/**
 	 * Returns the value of the '<em><b>Initial Program</b></em>' attribute.
+	 * The default value is <code>"*NONE"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initial Program</em>' attribute isn't clear,
@@ -68,7 +69,7 @@ public interface QUserProfile extends QTypedObject {
 	 * @return the value of the '<em>Initial Program</em>' attribute.
 	 * @see #setInitialProgram(String)
 	 * @see org.smeup.sys.os.usrprf.QOperatingSystemUserProfilePackage#getUserProfile_InitialProgram()
-	 * @model
+	 * @model default="*NONE"
 	 * @generated
 	 */
 	String getInitialProgram();
