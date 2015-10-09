@@ -1,5 +1,6 @@
 package org.smeup.sys.dk.test.base;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -24,6 +25,9 @@ public class TestLauncherHelper {
 	}
 	
 	public static Collection<QTestLauncher> findTestLauncher(String component, String module) {
+		
+		component = component.trim();
+		module = module.trim();
 		
 		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
 		
@@ -51,8 +55,8 @@ public class TestLauncherHelper {
 			// Filter for category (defined in QTestLauncer class annotation
 			Test testAnnotation = testRef.getClass().getAnnotation(Test.class);
 			
-			if (module != null) {
-				if (module.equals(testAnnotation.category())) {
+			if (module != null && module.length() > 0) {
+				if (module.equalsIgnoreCase(testAnnotation.category())) {
 					testLauncherList.add(testRef);
 				}			
 			} else {
@@ -63,17 +67,17 @@ public class TestLauncherHelper {
 		return testLauncherList;
 	}
 	
-
-	
-	@SuppressWarnings("unchecked")
-	public static Collection<Class<QTestRunner>> findTestRunners(QTestLauncher testLauncher, String resourcePath, String object) {
+	public static Collection<Class<?>> findTestClasses(QTestLauncher testLauncher, String resourcePath, String object) {
 		
-		ArrayList<Class<QTestRunner>> testRunnerList = new ArrayList<Class<QTestRunner>>();
+		ArrayList<Class<?>> testRunnerList = new ArrayList<Class<?>>();
 		
 		Bundle bundle = FrameworkUtil.getBundle(testLauncher.getClass());
 		
-		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);		
-		for(String resource: bundleWiring.listResources(resourcePath, null, BundleWiring.LISTRESOURCES_LOCAL)) {
+		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);	
+		
+		String bundlePath = "/" + bundle.getSymbolicName().replace('.', '/') + resourcePath;
+		
+		for(String resource: bundleWiring.listResources(bundlePath , "*.class", BundleWiring.LISTRESOURCES_RECURSE)) {
 			Class<?> klass = null;
 			try {
 				String resourceURI = resource.replace(".class", "").replace('/', '.');
@@ -83,22 +87,23 @@ public class TestLauncherHelper {
 			} catch (ClassNotFoundException e) {
 				continue;
 			}
+				
 			
-			//TODO: da rivedere
+			Test annotation = klass.getAnnotation(Test.class);
 			
-			if(QTestRunner.class.isAssignableFrom(klass)) {
+			if (annotation != null) {				
+				// Test annotated class
+			
 				if (object != null && object.length()>0) {
-					
-					Test annotation = klass.getAnnotation(Test.class);
-					
-					if (object.equals(annotation.object())) {
-						testRunnerList.add((Class<QTestRunner>)klass);
+					// Filter by object
+					if (object.equalsIgnoreCase(annotation.object())) {
+						testRunnerList.add(klass);
 					}
 				} else {
-					testRunnerList.add((Class<QTestRunner>)klass);
+					
+					testRunnerList.add(klass);
 				}
-
-			}						
+			}
 		}
 		
 		return testRunnerList;
@@ -111,7 +116,7 @@ public class TestLauncherHelper {
 		}		
 	}
 	
-	public static void notifyResultAdded(QTestLauncher testLauncher,	QTestRunner testRunner, QTestResult testResult) {
+	public static void notifyResultAdded(QTestLauncher testLauncher, QTestRunner testRunner, QTestResult testResult) {
 		
 		for (QTestLauncherListener listener: testLauncher.getListeners()) {
 			listener.resultAdded(testRunner, testResult);
@@ -124,6 +129,10 @@ public class TestLauncherHelper {
 		for (QTestLauncherListener listener: testLauncher.getListeners()) {
 			listener.launcherStopped(testLauncher);
 		}		
+	}
+	
+	public static <T> boolean isInstanceOf(Class<T> clazz, Class<T> targetClass) {
+	    return clazz.isInstance(targetClass);
 	}
 	
 
