@@ -27,7 +27,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -41,8 +41,11 @@ public class UserProfileChanger {
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	public static enum QCPFMSG {
+		CPF2204, 	//Non trovato il profilo untente &1
 	}
 
 	public @Entry void main(@Supported @DataDef(length = 10) QCharacter userProfile, 
@@ -97,9 +100,10 @@ public class UserProfileChanger {
 		resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
 
 		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
-		if (qUserProfile == null)
-			throw new OperatingSystemRuntimeException("User Profile " + userProfile.trimR() + " not exists");
-
+		if (qUserProfile == null) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2204, new String[]{userProfile.trimR()});
+		}
+		
 		// TEXT
 		switch (textDescription.asEnum()) {
 		case SAME:
@@ -140,9 +144,32 @@ public class UserProfileChanger {
 			qUserProfile.setUserClass(userClass.asEnum().getUserClass());
 			break;
 		}
+		
+		//Initial program
+		switch(initialProgramToCall.asEnum()) {
+		case NONE:
+			qUserProfile.setInitialProgram("*NONE");
+			break;
+		case SAME:
+			break;
+		case OTHER:
+			INITIALPROGRAMTOCALL pgmSpecification = initialProgramToCall.asData();
+			qUserProfile.setInitialProgram(getLibrary(pgmSpecification) + "/" + pgmSpecification.name.trimR());
+			break;
+		}
+		
 		//
 		resourceWriter.save(qUserProfile, true);
 		jobLogManager.info(job, "User Profile " + userProfile.trimR() + " changed");
+	}
+
+	private String getLibrary(INITIALPROGRAMTOCALL pgmSpecification) {
+		switch(pgmSpecification.library.asEnum()) {
+		case CURLIB:
+			return job.getCurrentLibrary();
+		default:
+			return pgmSpecification.library.asData().trimR();
+		}
 	}
 
 	public static enum USERPASSWORDEnum {
@@ -168,14 +195,19 @@ public class UserProfileChanger {
 	}
 
 	public static enum CURRENTLIBRARYEnum {
-		SAME, @Special(value = "X'40404040404040404040'")
-		CRTDFT, OTHER
+		@Special(value ="*SAME")
+		SAME, 
+		@Special(value ="*CRTDFT")
+		CRTDFT, 
+		OTHER
 	}
 
 	public static class INITIALPROGRAMTOCALL extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QCharacter name;
+		
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LIBRARYEnum, QCharacter> library;
 
@@ -185,8 +217,11 @@ public class UserProfileChanger {
 	}
 
 	public static enum INITIALPROGRAMTOCALLEnum {
-		SAME, @Special(value = "X'40'")
-		NONE, OTHER
+		@Special(value = "*SAME")
+		SAME, 
+		@Special(value = "*NONE")
+		NONE, 
+		OTHER
 	}
 
 	public static class INITIALMENU extends QDataStructWrapper {

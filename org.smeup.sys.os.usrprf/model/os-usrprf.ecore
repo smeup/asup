@@ -3,7 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="usrprf" nsURI="http://www.smeup.org/asup/os/usrprf" nsPrefix="os-usrprf">
   <eClassifiers xsi:type="ecore:EClass" name="UserProfile" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialProgram" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialProgram" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="*NONE"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outQueue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="userClass" lowerBound="1"

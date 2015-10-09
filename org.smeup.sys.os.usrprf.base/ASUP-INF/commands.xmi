@@ -193,7 +193,7 @@
               value="*SAME"/>
           <elements
               name="*CRTDFT"
-              value="X'40404040404040404040'"/>
+              value="*CRTDFT"/>
         </facets>
         <default
             value="*SAME"/>
@@ -217,7 +217,7 @@
           <elements
               name="*NONE"
               unary="true"
-              value="X'40'"/>
+              value="*NONE"/>
         </facets>
         <default
             value="*SAME"/>
