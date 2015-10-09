@@ -35,9 +35,9 @@ public class DKCompilerTestLauncherImpl extends BaseTestLauncherImpl{
 		// Notify launcher start
 		TestLauncherHelper.notifyLauncherStarted(this);
 		
-		Collection<Class<QTestRunner>> testRunners = TestLauncherHelper.findTestRunners(this, "/runner/", object);		
+		Collection<Class<?>> testRunners = TestLauncherHelper.findTestClasses(this, "/runner/", object);		
 		
-		for (Class<QTestRunner> testRunnerClass: testRunners){
+		for (Class<?> testRunnerClass: testRunners){
 			
 			QContext testContext = testManager.prepareContext(testRunnerClass);
 			QTestRunner testRunner = testManager.prepareRunner(testContext, testRunnerClass);

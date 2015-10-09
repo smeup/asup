@@ -76,7 +76,9 @@ public class RPJArithmeticExpressionAnalyzer extends ExpressionVisitorImpl {
 		case BOOLEAN:
 			getClasses().add(Boolean.class);
 			break;
-		case DATETIME:
+		case DATE:
+		case TIME:
+		case TIMESTAMP:	
 			getClasses().add(Date.class);
 			break;
 		case FLOATING:

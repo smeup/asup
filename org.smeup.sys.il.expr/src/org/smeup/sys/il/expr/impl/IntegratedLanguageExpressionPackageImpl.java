@@ -873,7 +873,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		initEEnum(atomicTypeEEnum, AtomicType.class, "AtomicType");
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.BOOLEAN);
-		addEEnumLiteral(atomicTypeEEnum, AtomicType.DATETIME);
+		addEEnumLiteral(atomicTypeEEnum, AtomicType.DATE);
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.FLOATING);
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.HEXADECIMAL);
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.INDICATOR);
@@ -881,6 +881,8 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.NAME);
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.SPECIAL);
 		addEEnumLiteral(atomicTypeEEnum, AtomicType.STRING);
+		addEEnumLiteral(atomicTypeEEnum, AtomicType.TIME);
+		addEEnumLiteral(atomicTypeEEnum, AtomicType.TIMESTAMP);
 
 		initEEnum(expressionTypeEEnum, ExpressionType.class, "ExpressionType");
 		addEEnumLiteral(expressionTypeEEnum, ExpressionType.ARITHMETIC);

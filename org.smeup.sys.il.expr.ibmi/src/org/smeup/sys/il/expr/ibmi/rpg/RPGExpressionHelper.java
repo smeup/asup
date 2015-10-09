@@ -69,7 +69,9 @@ public class RPGExpressionHelper implements BaseExpressionHelper {
 		case RPGExprLexer.TERM:
 		case RPGExprLexer.INTEGER:
 		case RPGExprLexer.FLOAT:
-		case RPGExprLexer.DATETIME:
+		case RPGExprLexer.DATE:
+		case RPGExprLexer.TIME:
+		case RPGExprLexer.TIMESTAMP:	
 		case RPGExprLexer.BOOLEAN:
 		case RPGExprLexer.STRING:
 		case RPGExprLexer.HEX:
@@ -163,8 +165,12 @@ public class RPGExpressionHelper implements BaseExpressionHelper {
 			return AtomicType.INTEGER;
 		case RPGExprLexer.FLOAT:
 			return AtomicType.FLOATING;
-		case RPGExprLexer.DATETIME:
-			return AtomicType.DATETIME;
+		case RPGExprLexer.DATE:
+			return AtomicType.DATE;
+		case RPGExprLexer.TIME:
+			return AtomicType.TIME;
+		case RPGExprLexer.TIMESTAMP:
+			return AtomicType.TIMESTAMP;	
 		case RPGExprLexer.BOOLEAN:
 			return AtomicType.BOOLEAN;
 		case RPGExprLexer.STRING:

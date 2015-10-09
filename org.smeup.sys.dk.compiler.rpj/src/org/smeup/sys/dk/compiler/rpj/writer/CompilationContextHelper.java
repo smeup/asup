@@ -43,7 +43,9 @@ public class CompilationContextHelper {
 
 			switch (atomicTermExpression.getType()) {
 			case BOOLEAN:
-			case DATETIME:
+			case DATE:
+			case TIME:
+			case TIMESTAMP:	
 			case FLOATING:
 			case HEXADECIMAL:
 			case INTEGER:
@@ -105,7 +107,9 @@ public class CompilationContextHelper {
 
 			switch (atomicTermExpression.getType()) {
 			case BOOLEAN:
-			case DATETIME:
+			case DATE:
+			case TIME:
+			case TIMESTAMP:	
 			case FLOATING:
 			case HEXADECIMAL:
 			case INTEGER:
@@ -133,7 +137,9 @@ public class CompilationContextHelper {
 
 			switch (atomicTermExpression.getType()) {
 			case BOOLEAN:
-			case DATETIME:
+			case DATE:
+			case TIME:
+			case TIMESTAMP:	
 			case FLOATING:
 			case HEXADECIMAL:
 			case INTEGER:
@@ -178,8 +184,10 @@ public class CompilationContextHelper {
 			switch (atomicTermExpression.getType()) {
 			case BOOLEAN:
 				return Boolean.class;
-			case DATETIME:
-				return Date.class;
+			case DATE:
+			case TIME:
+			case TIMESTAMP:	
+				return Date.class;			
 			case FLOATING:
 				return Float.class;
 			case HEXADECIMAL:

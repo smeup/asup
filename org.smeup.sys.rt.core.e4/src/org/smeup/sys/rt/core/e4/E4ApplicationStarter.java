@@ -238,7 +238,7 @@ public class E4ApplicationStarter {
 	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties, boolean remoteExport) {
 
 		// Register component as service property
-		properties.put("org.smeup.sys.rt.core.component", component.getName());
+		properties.put("org.smeup.sys.rt.core.component", component.getName().toLowerCase());
 		
 		QContext contextService = componentContext.createChildContext(name);
 		contextService.set("org.smeup.sys.rt.core.service.name", name);
