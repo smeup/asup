@@ -13,11 +13,11 @@ package org.smeup.sys.il.core.meta;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMax <em>Max</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.QRange#getMin <em>Min</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage#getRange()
  * @model

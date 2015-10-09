@@ -19,11 +19,11 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <em><b>Remap</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.RemapImpl#getIndex <em>Index</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

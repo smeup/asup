@@ -2010,10 +2010,16 @@
     <parameters
         allowVariable="true"
         name="JOB"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="jobName">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*"
+              unary="true"
+              value="*"/>
+        </facets>
         <definition
             xsi:type="il-data-def:DataStructDef"
             qualified="true">
@@ -2053,8 +2059,129 @@
     </parameters>
     <parameters
         allowVariable="true"
-        name="DUPJOBOPT"
+        name="OPTION"
         position="2"
+        status="TODO"
+        hidden="true">
+      <dataTerm
+          name="howToEnd"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*CNTRLD"
+              value="C"/>
+          <elements
+              name="*IMMED"
+              value="I"/>
+        </facets>
+        <default
+            value="*IMMED"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="DELAY"
+        position="3"
+        status="POS"
+        hidden="true">
+      <dataTerm
+          name="controlledEndDelayTime">
+        <facets
+            xsi:type="il-core-meta:Range"
+            max="999999"
+            min="1"/>
+        <default
+            value="30"/>
+        <definition
+            xsi:type="il-data-def:BinaryDef"
+            type="INTEGER"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="SPLFILE"
+        position="4"
+        status="POS"
+        hidden="true">
+      <dataTerm
+          name="deleteSpooledFiles"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NO"
+              value="N"/>
+          <elements
+              name="*YES"
+              value="Y"/>
+        </facets>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="LOGLMT"
+        position="5"
+        status="POS"
+        hidden="true">
+      <dataTerm
+          name="maximumLogEntries">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*SAME"
+              value="-2"/>
+          <elements
+              name="*NOMAX"
+              value="-1"/>
+        </facets>
+        <default
+            value="0"/>
+        <definition
+            xsi:type="il-data-def:BinaryDef"
+            type="INTEGER"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="ADLINTJOBS"
+        position="6"
+        status="POS"
+        hidden="true">
+      <dataTerm
+          name="additionalInteractiveJobs"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NONE"
+              value="NON"/>
+          <elements
+              name="*GRPJOB"
+              value="GRP"/>
+          <elements
+              name="*ALL"
+              value="ALL"/>
+        </facets>
+        <default
+            value="*NONE"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="7"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="DUPJOBOPT"
+        position="7"
         status="POS">
       <dataTerm
           name="duplicateJobOption"

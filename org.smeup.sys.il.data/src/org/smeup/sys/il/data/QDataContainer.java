@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data;
 
+import java.io.Closeable;
 import java.lang.String;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -21,16 +22,24 @@ import org.smeup.sys.il.data.term.QDataTermContainer;
  *
  *
  * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getDataContainer()
- * @model interface="true" abstract="true"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.data.term.DataTermContainer org.smeup.sys.il.core.java.JavaCloseable"
  * @generated
  */
-public interface QDataContainer extends QDataTermContainer {
+public interface QDataContainer extends QDataTermContainer, Closeable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
 	void clearData();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void close();
 
 	/**
 	 * <!-- begin-user-doc -->

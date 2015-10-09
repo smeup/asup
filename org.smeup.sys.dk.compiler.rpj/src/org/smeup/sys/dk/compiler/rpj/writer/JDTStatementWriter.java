@@ -261,7 +261,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Block block = blocks.peek();
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
-		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isDirection());
+		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isRightAdjust());
 		
 		if (statement.getRoundingMode() != null) {
 			statement.toString();
@@ -766,10 +766,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			if (dataTerm.getDefinition().getJavaClass().isAssignableFrom(String.class))
-				eval.setAssignment(statement.getObject() + "=" + "'" + default_.getValue() + "'");
-			else
-				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+			eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 			eval.accept(this);
 
 			break;
@@ -791,10 +788,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			if (dataTerm.getDefinition().getJavaClass().isAssignableFrom(String.class))
-				eval.setAssignment(statement.getObject() + "=" + "'" + default_.getValue() + "'");
-			else
-				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+			eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 			eval.accept(this);
 
 			break;
@@ -824,10 +818,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					continue;
 
 				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				if (dataElement.getDefinition().getJavaClass().isAssignableFrom(String.class))
-					eval.setAssignment(element.getName() + "=" + "'" + defaultElement.getValue() + "'");
-				else
-					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
+				eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
 				eval.accept(this);
 			}
 

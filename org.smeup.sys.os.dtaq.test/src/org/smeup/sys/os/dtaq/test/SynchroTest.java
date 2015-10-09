@@ -74,6 +74,7 @@ public class SynchroTest {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
 			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
 			commandManager.executeCommand(job.getJobID(), callableCommand);
+			callableCommand.close();
 		}
 
 		// Assert: create queues (if none, else clear existent)
@@ -132,6 +133,7 @@ public class SynchroTest {
 			String cmd = "CRTLIB LIB(" + testLib + ")";
 			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
 			commandManager.executeCommand(job.getJobID(), callableCommand);
+			callableCommand.close();
 		}
 
 		// Assert: create queues (if none, else clear existent)

@@ -142,14 +142,14 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (dataTerm.getParent() instanceof QDataTerm<?>) {
 				QDataTerm<?> parentTerm = (QDataTerm<?>) dataTerm.getParent();
 
-				if (overlay.getName() != null && !getCompilationUnit().equalsTermName(parentTerm.getName(), overlay.getName()))
+				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER) && !getCompilationUnit().equalsTermName(parentTerm.getName(), overlay.getName()))
 					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 
-				if (overlay.getPosition() != null)
+				if (overlay.getPosition() != null && !overlay.getPosition().equals(Overlay.POS_NEXT))
 					writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
 
 			} else {
-				if (overlay.getName() != null)
+				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER))
 					writeAnnotation(field, Overlay.class, "name", overlay.getName());
 
 				if (overlay.getPosition() != null)

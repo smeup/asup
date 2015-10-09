@@ -267,6 +267,16 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
+	public void evalr(String value) {
+		delegate.evalr(value);
+	}
+
+	@Override
+	public void evalr(QBufferedData value) {
+		delegate.evalr(value);
+	}
+
+	@Override
 	public void eval(QDataWriter value) {
 		delegate.eval(value);
 	}

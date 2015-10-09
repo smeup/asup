@@ -19,11 +19,11 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <em><b>Credentials</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getUser <em>User</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.ctx.impl.CredentialsImpl#getPassword <em>Password</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

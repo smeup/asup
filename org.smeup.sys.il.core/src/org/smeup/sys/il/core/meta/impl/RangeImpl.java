@@ -18,11 +18,11 @@ import org.smeup.sys.il.core.meta.QRange;
  * <em><b>Range</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMax <em>Max</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.RangeImpl#getMin <em>Min</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

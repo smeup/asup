@@ -52,6 +52,7 @@ public class WaitTest {
 			String cmd = "CRTLIB LIB(" + testLib + ") TEXT('TEMPORARY LIB: '" + job.getJobID() + "')";
 			QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), cmd, null, true);
 			commandManager.executeCommand(job.getJobID(), callableCommand);
+			callableCommand.close();
 		}
 
 		// Assert: create queues (if none, else clear existent)

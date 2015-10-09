@@ -43,6 +43,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		jobLogManager.info(jobManager.lookup(contextID), callableCommand.getCommandString());
 
+		@SuppressWarnings("resource")
 		QDataContainer dataContainer = callableCommand.getDataContainer();
 
 		QData[] parameters = new QData[callableCommand.getCommand().getParameters().size()];
@@ -57,8 +58,9 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	@Override
 	public void executeCommandImmediate(String contextID, String command, Map<String, Object> variables, boolean defaults) {
 		try {
-			QCallableCommand preparedCommand = prepareCommand(contextID, command, variables, defaults);
-			executeCommand(contextID, preparedCommand);
+			QCallableCommand callableCommand = prepareCommand(contextID, command, variables, defaults);
+			executeCommand(contextID, callableCommand);
+			callableCommand.close();
 		} catch (Exception e) {
 			jobLogManager.error(jobManager.lookup(contextID), e.getMessage());
 		}

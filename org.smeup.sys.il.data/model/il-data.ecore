@@ -711,8 +711,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
-      eSuperTypes="#//term/DataTermContainer">
+      eSuperTypes="#//term/DataTermContainer ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
     <eOperations name="clearData"/>
+    <eOperations name="close"/>
     <eOperations name="createDataTerm" lowerBound="1">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>
@@ -2118,6 +2119,12 @@
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="evalr">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="evalr">
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

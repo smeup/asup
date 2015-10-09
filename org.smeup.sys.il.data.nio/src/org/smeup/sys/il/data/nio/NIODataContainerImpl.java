@@ -82,6 +82,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
+	public void close() {
+		this.datas = new HashMap<String, QData>();
+	}
+
+	@Override
 	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
 
 		QDataTerm<QDataDef<?>> dataTerm = new DataTermImpl<QDataDef<?>>() {

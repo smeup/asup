@@ -89,6 +89,7 @@ public class FileMemberRunner {
 			try {
 				QCallableCommand command = commandManager.prepareCommand(job.getJobID(), line.trim(), null, true);
 				commandManager.executeCommand(job.getJobID(), command);
+				command.close();
 			} catch (Exception e) {
 				jobLogManager.error(job, e.getMessage());
 			}

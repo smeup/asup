@@ -9,4 +9,5 @@ Export-Package: org.smeup.sys.os.pgm.rpj
 Require-Bundle: org.smeup.sys.os.pgm,
  org.smeup.sys.il.esam,
  org.smeup.sys.os.cmd,
- org.smeup.sys.rt.core
+ org.smeup.sys.rt.core,
+ org.smeup.sys.os.pgm.base

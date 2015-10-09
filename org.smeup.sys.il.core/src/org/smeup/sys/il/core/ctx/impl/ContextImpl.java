@@ -23,6 +23,8 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Context</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

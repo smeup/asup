@@ -75,10 +75,10 @@ public class UserProfileChanger {
 			@DataDef(precision = 10) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber, @DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
 			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation) {
 
-		QResourceWriter<QUserProfile> resource = null;
-		resource = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
+		QResourceWriter<QUserProfile> resourceWriter = null;
+		resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
 
-		QUserProfile qUserProfile = resource.lookup(userProfile.trimR());
+		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
 		if (qUserProfile == null)
 			throw new OperatingSystemRuntimeException("User Profile " + userProfile.trimR() + " not exists");
 
@@ -103,7 +103,7 @@ public class UserProfileChanger {
 			break;
 		}
 
-		resource.save(qUserProfile, true);
+		resourceWriter.save(qUserProfile, true);
 		jobLogManager.info(job, "User Profile " + userProfile.trimR() + " changed");
 	}
 
