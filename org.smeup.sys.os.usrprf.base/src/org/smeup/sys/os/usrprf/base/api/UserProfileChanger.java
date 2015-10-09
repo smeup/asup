@@ -154,7 +154,7 @@ public class UserProfileChanger {
 			break;
 		case OTHER:
 			INITIALPROGRAMTOCALL pgmSpecification = initialProgramToCall.asData();
-			qUserProfile.setInitialProgram(getLibrary(pgmSpecification) + "/" + pgmSpecification.name);
+			qUserProfile.setInitialProgram(getLibrary(pgmSpecification) + "/" + pgmSpecification.name.trimR());
 			break;
 		}
 		
@@ -195,8 +195,11 @@ public class UserProfileChanger {
 	}
 
 	public static enum CURRENTLIBRARYEnum {
-		SAME, @Special(value = "X'40404040404040404040'")
-		CRTDFT, OTHER
+		@Special(value ="*SAME")
+		SAME, 
+		@Special(value ="*CRTDFT")
+		CRTDFT, 
+		OTHER
 	}
 
 	public static class INITIALPROGRAMTOCALL extends QDataStructWrapper {
@@ -214,8 +217,11 @@ public class UserProfileChanger {
 	}
 
 	public static enum INITIALPROGRAMTOCALLEnum {
-		SAME, @Special(value = "X'40'")
-		NONE, OTHER
+		@Special(value = "*SAME")
+		SAME, 
+		@Special(value = "*NONE")
+		NONE, 
+		OTHER
 	}
 
 	public static class INITIALMENU extends QDataStructWrapper {
