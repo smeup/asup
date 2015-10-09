@@ -31,6 +31,8 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.usrprf.QUserProfile;
+import org.smeup.sys.os.usrprf.base.api.tools.StatusEnum;
+import org.smeup.sys.os.usrprf.base.api.tools.UserClassEnum;
 
 @Program(name = "QSYUP")
 public class UserProfileChanger {

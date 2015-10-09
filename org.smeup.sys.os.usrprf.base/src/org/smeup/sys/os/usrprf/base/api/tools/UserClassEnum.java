@@ -1,4 +1,4 @@
-package org.smeup.sys.os.usrprf.base.api;
+package org.smeup.sys.os.usrprf.base.api.tools;
 
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.usrprf.UserClass;
