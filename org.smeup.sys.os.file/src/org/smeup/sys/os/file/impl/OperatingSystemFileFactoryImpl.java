@@ -38,31 +38,32 @@ import org.smeup.sys.os.file.QSourceFile;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOperatingSystemFileFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static QOperatingSystemFileFactory init() {
 		try {
-			QOperatingSystemFileFactory theOperatingSystemFileFactory = (QOperatingSystemFileFactory) EPackage.Registry.INSTANCE.getEFactory(QOperatingSystemFilePackage.eNS_URI);
-			if (theOperatingSystemFileFactory != null)
+			QOperatingSystemFileFactory theOperatingSystemFileFactory = (QOperatingSystemFileFactory)EPackage.Registry.INSTANCE.getEFactory(QOperatingSystemFilePackage.eNS_URI);
+			if (theOperatingSystemFileFactory != null) {
 				return theOperatingSystemFileFactory;
-		} catch (Exception exception) {
+			}
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new OperatingSystemFileFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OperatingSystemFileFactoryImpl() {
@@ -71,60 +72,38 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case QOperatingSystemFilePackage.DATABASE_FILE_FIELD:
-			return (EObject) createDatabaseFileField();
-		case QOperatingSystemFilePackage.DATABASE_FILE_FORMAT:
-			return (EObject) createDatabaseFileFormat();
-		case QOperatingSystemFilePackage.DATABASE_FILE_FORMAT_DEF:
-			return (EObject) createDatabaseFileFormatDef();
-		case QOperatingSystemFilePackage.DISPLAY_FILE:
-			return (EObject) createDisplayFile();
-		case QOperatingSystemFilePackage.DISPLAY_FILE_FIELD:
-			return (EObject) createDisplayFileField();
-		case QOperatingSystemFilePackage.DISPLAY_FILE_FORMAT:
-			return (EObject) createDisplayFileFormat();
-		case QOperatingSystemFilePackage.DISPLAY_FILE_FORMAT_DEF:
-			return (EObject) createDisplayFileFormatDef();
-		case QOperatingSystemFilePackage.EXTERNAL_FILE:
-			return (EObject) createExternalFile();
-		case QOperatingSystemFilePackage.FILE_FORMAT_KEY:
-			return (EObject) createFileFormatKey();
-		case QOperatingSystemFilePackage.FILE_FORMAT_KEY_FIELD:
-			return (EObject) createFileFormatKeyField();
-		case QOperatingSystemFilePackage.FILE_MEMBER:
-			return (EObject) createFileMember();
-		case QOperatingSystemFilePackage.FILE_MEMBER_ROW:
-			return (EObject) createFileMemberRow();
-		case QOperatingSystemFilePackage.FILE_OVERRIDE:
-			return (EObject) createFileOverride();
-		case QOperatingSystemFilePackage.LOGICAL_FILE:
-			return (EObject) createLogicalFile();
-		case QOperatingSystemFilePackage.PHYSICAL_FILE:
-			return (EObject) createPhysicalFile();
-		case QOperatingSystemFilePackage.PRINTER_FILE:
-			return (EObject) createPrinterFile();
-		case QOperatingSystemFilePackage.PRINTER_FILE_FORMAT:
-			return (EObject) createPrinterFileFormat();
-		case QOperatingSystemFilePackage.PRINTER_FILE_FORMAT_DEF:
-			return (EObject) createPrinterFileFormatDef();
-		case QOperatingSystemFilePackage.PRINTER_FILE_FIELD:
-			return (EObject) createPrinterFileField();
-		case QOperatingSystemFilePackage.SOURCE_FILE:
-			return (EObject) createSourceFile();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case QOperatingSystemFilePackage.DATABASE_FILE_FIELD: return (EObject)createDatabaseFileField();
+			case QOperatingSystemFilePackage.DATABASE_FILE_FORMAT: return (EObject)createDatabaseFileFormat();
+			case QOperatingSystemFilePackage.DATABASE_FILE_FORMAT_DEF: return (EObject)createDatabaseFileFormatDef();
+			case QOperatingSystemFilePackage.DISPLAY_FILE: return (EObject)createDisplayFile();
+			case QOperatingSystemFilePackage.DISPLAY_FILE_FIELD: return (EObject)createDisplayFileField();
+			case QOperatingSystemFilePackage.DISPLAY_FILE_FORMAT: return (EObject)createDisplayFileFormat();
+			case QOperatingSystemFilePackage.DISPLAY_FILE_FORMAT_DEF: return (EObject)createDisplayFileFormatDef();
+			case QOperatingSystemFilePackage.EXTERNAL_FILE: return (EObject)createExternalFile();
+			case QOperatingSystemFilePackage.FILE_FORMAT_KEY: return (EObject)createFileFormatKey();
+			case QOperatingSystemFilePackage.FILE_FORMAT_KEY_FIELD: return (EObject)createFileFormatKeyField();
+			case QOperatingSystemFilePackage.FILE_MEMBER: return (EObject)createFileMember();
+			case QOperatingSystemFilePackage.FILE_MEMBER_ROW: return (EObject)createFileMemberRow();
+			case QOperatingSystemFilePackage.FILE_OVERRIDE: return (EObject)createFileOverride();
+			case QOperatingSystemFilePackage.LOGICAL_FILE: return (EObject)createLogicalFile();
+			case QOperatingSystemFilePackage.PHYSICAL_FILE: return (EObject)createPhysicalFile();
+			case QOperatingSystemFilePackage.PRINTER_FILE: return (EObject)createPrinterFile();
+			case QOperatingSystemFilePackage.PRINTER_FILE_FORMAT: return (EObject)createPrinterFileFormat();
+			case QOperatingSystemFilePackage.PRINTER_FILE_FORMAT_DEF: return (EObject)createPrinterFileFormatDef();
+			case QOperatingSystemFilePackage.PRINTER_FILE_FIELD: return (EObject)createPrinterFileField();
+			case QOperatingSystemFilePackage.SOURCE_FILE: return (EObject)createSourceFile();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -135,7 +114,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -146,7 +124,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -157,7 +134,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -168,7 +144,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -179,7 +154,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -190,7 +164,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -201,7 +174,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -212,7 +184,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -223,7 +194,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -234,7 +204,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -245,7 +214,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -256,7 +224,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -267,7 +234,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -278,7 +244,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -289,7 +254,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -300,7 +264,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -311,7 +274,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -322,7 +284,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -333,7 +294,6 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -344,17 +304,15 @@ public class OperatingSystemFileFactoryImpl extends EFactoryImpl implements QOpe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QOperatingSystemFilePackage getOperatingSystemFilePackage() {
-		return (QOperatingSystemFilePackage) getEPackage();
+		return (QOperatingSystemFilePackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

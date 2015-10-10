@@ -24,7 +24,6 @@ public interface QFileManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" contextRequired="true" nameRequired="true"
 	 * @generated
 	 */
@@ -32,7 +31,6 @@ public interface QFileManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model contextRequired="true" fileOverrideRequired="true"
 	 * @generated
 	 */
@@ -40,7 +38,6 @@ public interface QFileManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */

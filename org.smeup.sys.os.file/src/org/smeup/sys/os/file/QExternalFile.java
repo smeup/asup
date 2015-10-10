@@ -16,8 +16,9 @@ import org.smeup.sys.il.core.meta.QFacet;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QExternalFile#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QExternalFile#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QExternalFile#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QExternalFile#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QExternalFile#getRule <em>Rule</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,12 +45,9 @@ public interface QExternalFile extends QFacet {
 	String getName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QExternalFile#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QExternalFile#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
@@ -73,15 +71,38 @@ public interface QExternalFile extends QFacet {
 	String getFormat();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QExternalFile#getFormat <em>Format</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Format</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QExternalFile#getFormat <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Format</em>' attribute.
 	 * @see #getFormat()
 	 * @generated
 	 */
 	void setFormat(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Rule</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rule</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rule</em>' attribute.
+	 * @see #setRule(String)
+	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getExternalFile_Rule()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getRule();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QExternalFile#getRule <em>Rule</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rule</em>' attribute.
+	 * @see #getRule()
+	 * @generated
+	 */
+	void setRule(String value);
 
 } // QExternalFile

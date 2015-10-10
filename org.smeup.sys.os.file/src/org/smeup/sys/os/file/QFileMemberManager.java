@@ -23,7 +23,6 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QFileMemberManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model contextRequired="true" libraryRequired="true" fileRequired="true"
 	 * @generated
 	 */
@@ -31,7 +30,6 @@ public interface QFileMemberManager {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model contextRequired="true" fileRequired="true" nameRequired="true"
 	 * @generated
 	 */

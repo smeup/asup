@@ -16,10 +16,9 @@ import org.smeup.sys.il.core.QObjectNameable;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileOverride#getMemberTo <em>Member To
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileOverride#getMemberTo <em>Member To</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,12 +46,9 @@ public interface QFileOverride extends QObjectNameable {
 	String getName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
@@ -76,12 +72,9 @@ public interface QFileOverride extends QObjectNameable {
 	QFile getFileTo();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>File To</em>' reference.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>File To</em>' reference.
 	 * @see #getFileTo()
 	 * @generated
 	 */

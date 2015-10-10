@@ -54,7 +54,9 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
-
+				else if(compilerLinker != null)
+					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04w70");
+				
 				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
 				
 				dataTerm.setLike(null);
@@ -78,6 +80,8 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
+				else if(compilerLinker != null)
+					throw new RuntimeException("Unexpected condition: 4m8x7t8764frsadfsz");
 
 				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
 				
@@ -101,6 +105,8 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
+				else if(compilerLinker != null)
+					throw new RuntimeException("Unexpected condition: 4m8x7t8234234kkk");
 
 				setDataTerm(buildUnaryDataTerm(dataTerm, like));
 				
@@ -125,6 +131,8 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
 				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
 					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
+				else if(compilerLinker != null)
+					throw new RuntimeException("Unexpected condition: 4m8x7zxcvxcvzcx0");
 
 				setDataTerm(buildUnaryDataTerm(dataTerm, like));
 				

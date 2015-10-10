@@ -34,7 +34,6 @@ public class PrinterFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QPrin
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PrinterFileFormatDefImpl() {
@@ -43,7 +42,6 @@ public class PrinterFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QPrin
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -59,8 +57,9 @@ public class PrinterFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QPrin
 	 */
 	@Override
 	public List<QPrinterFileField> getElements() {
-		if (elements == null)
+		if (elements == null) {
 			elements = new EObjectContainmentEList<QPrinterFileField>(QPrinterFileField.class, this, QOperatingSystemFilePackage.PRINTER_FILE_FORMAT_DEF__ELEMENTS);
+		}
 		return elements;
 	}
 

@@ -27,7 +27,6 @@ public class DatabaseFileFieldImpl extends FileFormatFieldImpl implements QDatab
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DatabaseFileFieldImpl() {
@@ -36,7 +35,6 @@ public class DatabaseFileFieldImpl extends FileFormatFieldImpl implements QDatab
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

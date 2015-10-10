@@ -14,9 +14,8 @@ package org.smeup.sys.os.file;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#isDescend <em>Descend
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#isDescend <em>Descend</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,12 +42,9 @@ public interface QFileFormatKeyField {
 	String getName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QFileFormatKeyField#getName <em>Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileFormatKeyField#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

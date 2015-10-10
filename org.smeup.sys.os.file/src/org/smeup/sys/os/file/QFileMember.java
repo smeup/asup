@@ -18,11 +18,11 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QFileMember#getFile <em>File</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileMember#getName <em>Name</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileMember#getRows <em>Rows</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileMember#getText <em>Text</em>}</li>
- * <li>{@link org.smeup.sys.os.file.QFileMember#getType <em>Type</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileMember#getFile <em>File</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileMember#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileMember#getRows <em>Rows</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileMember#getText <em>Text</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QFileMember#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,11 +49,9 @@ public interface QFileMember extends QObject {
 	String getType();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getType
-	 * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Type</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see #getType()
 	 * @generated
 	 */
@@ -77,28 +75,24 @@ public interface QFileMember extends QObject {
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getText
-	 * <em>Text</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Text</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getText <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
 	 * @generated
 	 */
 	void setText(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Rows</b></em>' containment reference
-	 * list. The list contents are of type
-	 * {@link org.smeup.sys.os.file.QFileMemberRow}. It is bidirectional and its
-	 * opposite is '{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember
-	 * <em>File Member</em>}'. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Rows</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.os.file.QFileMemberRow}.
+	 * It is bidirectional and its opposite is '{@link org.smeup.sys.os.file.QFileMemberRow#getFileMember <em>File Member</em>}'.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rows</em>' containment reference list isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Rows</em>' containment reference list.
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileMember_Rows()
 	 * @see org.smeup.sys.os.file.QFileMemberRow#getFileMember
@@ -125,11 +119,9 @@ public interface QFileMember extends QObject {
 	QFileMembered getFile();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getFile
-	 * <em>File</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>File</em>' reference.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getFile <em>File</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>File</em>' reference.
 	 * @see #getFile()
 	 * @generated
 	 */
@@ -153,11 +145,9 @@ public interface QFileMember extends QObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getName
-	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QFileMember#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */

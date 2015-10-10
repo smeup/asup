@@ -29,7 +29,6 @@ public class DisplayFileFormatImpl extends FileFormatImpl<QDisplayFileFormatDef>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DisplayFileFormatImpl() {
@@ -38,7 +37,6 @@ public class DisplayFileFormatImpl extends FileFormatImpl<QDisplayFileFormatDef>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

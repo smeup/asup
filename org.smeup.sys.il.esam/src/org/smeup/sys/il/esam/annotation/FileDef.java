@@ -19,8 +19,8 @@ import org.smeup.sys.il.data.annotation.DataType;
 @Target(ElementType.FIELD)
 public @interface FileDef {
 
-	String name();
-
+	String name() default "";
+	
 	boolean userOpen() default false;
 	
 	String info() default "";

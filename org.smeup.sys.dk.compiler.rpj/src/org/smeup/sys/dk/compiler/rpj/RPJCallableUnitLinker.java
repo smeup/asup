@@ -64,6 +64,7 @@ import org.smeup.sys.os.file.QSourceFile;
 import org.smeup.sys.os.file.impl.FileFormatImpl;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.module.QModule;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 
 public class RPJCallableUnitLinker {
 
@@ -196,7 +197,7 @@ public class RPJCallableUnitLinker {
 
 			if (dataOverlayVisitor.getDataTerm() != null) {
 				dataSection.getDatas().remove(dataTerm);
-				dataSection.getDatas().add(dataOverlayVisitor.getDataTerm());				
+				dataSection.getDatas().add(dataOverlayVisitor.getDataTerm());
 				compilationUnit.refresh();
 			}
 		}
@@ -257,7 +258,7 @@ public class RPJCallableUnitLinker {
 			linkFileTerm(printerTerm, compilationUnit);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes"})
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm, QCompilationUnit compilationUnit) {
 
 		QFile file = getFile(fileTerm.getFileName());
@@ -287,7 +288,7 @@ public class RPJCallableUnitLinker {
 			if (file instanceof QDatabaseFile) {
 
 				QDatabaseFile databaseFile = (QDatabaseFile) file;
-					externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
+				externalFile.setFormat(databaseFile.getDatabaseFormat().getName());
 
 				QDataSetTerm dataSet = (QDataSetTerm) fileTerm;
 				if (dataSet.getFormatName() == null)
@@ -409,13 +410,10 @@ public class RPJCallableUnitLinker {
 
 		QFile file = getFile(externalFile.getName());
 
-		return linkExternalFile(context, qDataTerm, externalFile, file);
-	}
-
-	public QCompilerLinker linkExternalFile(QContext context, QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile, QFile file) {
-
-		if (externalFile.getName().startsWith("*"))
+		if (externalFile.getName().startsWith("*")) {
+			System.out.println("Unexpected condition: 9xqb59qrqevrvqd0sa");
 			return null;
+		}
 
 		if (file instanceof QDatabaseFile) {
 			QDatabaseFile databaseFile = (QDatabaseFile) file;
@@ -433,6 +431,12 @@ public class RPJCallableUnitLinker {
 					if (superTable == null)
 						throw new OperatingSystemRuntimeException("File not found: " + table);
 
+					// TODO
+					if(externalFile.getRule() != null) {
+						if(!externalFile.getRule().toUpperCase().equals(Specials.ALL))
+							throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());						
+					}
+					
 					appendElements(qDataTerm, superTable.getDatabaseFormat());
 				}
 			} else

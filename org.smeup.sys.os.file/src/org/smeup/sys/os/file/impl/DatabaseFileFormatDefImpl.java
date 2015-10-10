@@ -34,7 +34,6 @@ public class DatabaseFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DatabaseFileFormatDefImpl() {
@@ -43,7 +42,6 @@ public class DatabaseFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDat
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -59,8 +57,9 @@ public class DatabaseFileFormatDefImpl extends CompoundDataDefImpl<QRecord, QDat
 	 */
 	@Override
 	public List<QDatabaseFileField> getElements() {
-		if (elements == null)
+		if (elements == null) {
 			elements = new EObjectContainmentEList<QDatabaseFileField>(QDatabaseFileField.class, this, QOperatingSystemFilePackage.DATABASE_FILE_FORMAT_DEF__ELEMENTS);
+		}
 		return elements;
 	}
 

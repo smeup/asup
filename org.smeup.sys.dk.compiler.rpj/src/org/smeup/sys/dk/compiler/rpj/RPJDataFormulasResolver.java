@@ -89,7 +89,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 		QExpression value = null;
 		// TODO
-		if (default_.getValue().trim().equals("*Allx'00'"))
+		if (default_.getValue().trim().equalsIgnoreCase("*Allx'00'"))
 			value = expressionParser.parseExpression(default_.getValue().trim().toUpperCase());
 		else {
 			try {

@@ -24,10 +24,8 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getCreationStatement
- * <em>Creation Statement</em>}</li>
- * <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getTables <em>Tables
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getCreationStatement <em>Creation Statement</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.LogicalFileImpl#getTables <em>Tables</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,29 +33,26 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  */
 public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 	/**
-	 * The default value of the '{@link #getCreationStatement()
-	 * <em>Creation Statement</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getCreationStatement() <em>Creation Statement</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getCreationStatement()
 	 * @generated
 	 * @ordered
 	 */
 	protected static final String CREATION_STATEMENT_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getCreationStatement()
-	 * <em>Creation Statement</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getCreationStatement() <em>Creation Statement</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #getCreationStatement()
 	 * @generated
 	 * @ordered
 	 */
 	protected String creationStatement = CREATION_STATEMENT_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getTables() <em>Tables</em>}' attribute
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getTables() <em>Tables</em>}' attribute list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTables()
 	 * @generated
 	 * @ordered
@@ -70,7 +65,6 @@ public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LogicalFileImpl() {
@@ -79,7 +73,6 @@ public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -89,7 +82,6 @@ public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -99,7 +91,6 @@ public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -112,95 +103,89 @@ public class LogicalFileImpl extends DatabaseFileImpl implements QLogicalFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<String> getTables() {
-		if (tables == null)
+		if (tables == null) {
 			tables = new EDataTypeUniqueEList<String>(String.class, this, QOperatingSystemFilePackage.LOGICAL_FILE__TABLES);
+		}
 		return tables;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
-			return getCreationStatement();
-		case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
-			return getTables();
+			case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
+				return getCreationStatement();
+			case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
+				return getTables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
-			setCreationStatement((String) newValue);
-			return;
-		case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
-			getTables().clear();
-			getTables().addAll((Collection<? extends String>) newValue);
-			return;
+			case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
+				setCreationStatement((String)newValue);
+				return;
+			case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
+				getTables().clear();
+				getTables().addAll((Collection<? extends String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
-			setCreationStatement(CREATION_STATEMENT_EDEFAULT);
-			return;
-		case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
-			getTables().clear();
-			return;
+			case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
+				setCreationStatement(CREATION_STATEMENT_EDEFAULT);
+				return;
+			case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
+				getTables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
-			return CREATION_STATEMENT_EDEFAULT == null ? creationStatement != null : !CREATION_STATEMENT_EDEFAULT.equals(creationStatement);
-		case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
-			return tables != null && !tables.isEmpty();
+			case QOperatingSystemFilePackage.LOGICAL_FILE__CREATION_STATEMENT:
+				return CREATION_STATEMENT_EDEFAULT == null ? creationStatement != null : !CREATION_STATEMENT_EDEFAULT.equals(creationStatement);
+			case QOperatingSystemFilePackage.LOGICAL_FILE__TABLES:
+				return tables != null && !tables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (creationStatement: ");

@@ -44,6 +44,7 @@ import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Modifier.ModifierKeyword;
 import org.eclipse.jdt.core.dom.ParameterizedType;
 import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.SimpleType;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
@@ -214,7 +215,36 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
-			writeAnnotation(field, FileDef.class, "name", dataSetTerm.getFileName());
+
+			String className = null;
+
+			if (dataSetTerm.isKeyedAccess()) {
+				writeImport(QKSDataSet.class);
+				className = QKSDataSet.class.getSimpleName();
+			} else
+				try {
+					writeImport(QRRDataSet.class);
+					className = QRRDataSet.class.getSimpleName();
+					// }
+				} catch (NullPointerException e) {
+					writeImport(QRRDataSet.class);
+					className = QRRDataSet.class.getSimpleName();
+				}
+
+			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(className));
+			ParameterizedType parType = getAST().newParameterizedType(dataSetType);
+
+			QCompilerLinker compilerLinker = dataSetTerm.getFacet(QCompilerLinker.class);
+			if (compilerLinker != null) {
+				writeImport(compilerLinker.getLinkedClass());
+				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
+			} else {
+				String argument = dataSetTerm.getFileName();
+				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
+			}
+
+			if (!((SimpleType)parType.typeArguments().get(0)).getName().toString().equals(dataSetTerm.getFileName()))
+				writeAnnotation(field, FileDef.class, "name", dataSetTerm.getName());
 
 			EObject eDataSet = (EObject) dataSetTerm;
 
@@ -228,44 +258,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
 
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-
-			String className = null;
-			QCompilerLinker compilerLinker = dataSetTerm.getFacet(QCompilerLinker.class);
-
-			if (dataSetTerm.isKeyedAccess()) {
-				writeImport(QKSDataSet.class);
-				className = QKSDataSet.class.getSimpleName();
-			} else
-				try {
-					/*
-					 * if (dataSet.getRecord().getElements().size() > 1 &&
-					 * dataSet
-					 * .getRecord().getElements().get(0).getName().equalsIgnoreCase
-					 * ("SRCSEQ")) {
-					 * 
-					 * writeImport(QSMDataSet.class); className =
-					 * QSMDataSet.class.getSimpleName();
-					 * 
-					 * } else {
-					 */
-					writeImport(QRRDataSet.class);
-					className = QRRDataSet.class.getSimpleName();
-					// }
-				} catch (NullPointerException e) {
-					writeImport(QRRDataSet.class);
-					className = QRRDataSet.class.getSimpleName();
-				}
-
-			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(className));
-			ParameterizedType parType = getAST().newParameterizedType(dataSetType);
-
-			if (compilerLinker != null) {
-				writeImport(compilerLinker.getLinkedClass());
-				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
-			} else {
-				String argument = dataSetTerm.getFileName();
-				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
-			}
 
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataSetTerm.getName())));
@@ -508,6 +500,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
 		if (externalFile != null) {
+			System.err.println("Unexpected condition: sdiauf8sad7gf65wq8");
 			writeEntry(methodDeclaration, prototype.getEntry());
 
 			// TODO manage external invocation
@@ -572,7 +565,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		assignment.setRightHandSide(buildExpression("qRPJ.bindProcedure(" + getCompilationUnit().normalizeTypeName(procedure.getName()) + ".class)"));
 		assignment.setOperator(Operator.ASSIGN);
 		ifStatement.setThenStatement(getAST().newExpressionStatement(assignment));
-		
+
 		block.statements().add(ifStatement);
 	}
 

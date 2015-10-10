@@ -16,8 +16,7 @@ import java.util.List;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QDisplayFile#getDisplayFormats <em>Display
- * Formats</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QDisplayFile#getDisplayFormats <em>Display Formats</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,17 +27,15 @@ import java.util.List;
 public interface QDisplayFile extends QFile {
 
 	/**
-	 * Returns the value of the '<em><b>Display Formats</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link org.smeup.sys.os.file.QDisplayFileFormat}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Display Formats</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.os.file.QDisplayFileFormat}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Display Formats</em>' containment reference
 	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Display Formats</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Display Formats</em>' containment reference list.
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getDisplayFile_DisplayFormats()
 	 * @model containment="true"
 	 * @generated

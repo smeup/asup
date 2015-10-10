@@ -14,8 +14,7 @@ package org.smeup.sys.os.file;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.QDatabaseFileFormat#getFormatKey <em>Format
- * Key</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.QDatabaseFileFormat#getFormatKey <em>Format Key</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,14 +25,13 @@ package org.smeup.sys.os.file;
 public interface QDatabaseFileFormat extends QFileFormat<QDatabaseFileFormatDef> {
 
 	/**
-	 * Returns the value of the '<em><b>Format Key</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Format Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Format Key</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Format Key</em>' containment reference.
 	 * @see #setFormatKey(QFileFormatKey)
 	 * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getDatabaseFileFormat_FormatKey()
@@ -43,14 +41,10 @@ public interface QDatabaseFileFormat extends QFileFormat<QDatabaseFileFormatDef>
 	QFileFormatKey getFormatKey();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.file.QDatabaseFileFormat#getFormatKey
-	 * <em>Format Key</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.os.file.QDatabaseFileFormat#getFormatKey <em>Format Key</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Format Key</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Format Key</em>' containment reference.
 	 * @see #getFormatKey()
 	 * @generated
 	 */
@@ -58,7 +52,6 @@ public interface QDatabaseFileFormat extends QFileFormat<QDatabaseFileFormatDef>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

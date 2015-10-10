@@ -28,8 +28,7 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.impl.DisplayFileImpl#getDisplayFormats <em>
- * Display Formats</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.DisplayFileImpl#getDisplayFormats <em>Display Formats</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +52,6 @@ public class DisplayFileImpl extends FileImpl implements QDisplayFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected DisplayFileImpl() {
@@ -62,7 +60,6 @@ public class DisplayFileImpl extends FileImpl implements QDisplayFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -72,13 +69,13 @@ public class DisplayFileImpl extends FileImpl implements QDisplayFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public List<QDisplayFileFormat> getDisplayFormats() {
-		if (displayFormats == null)
+		if (displayFormats == null) {
 			displayFormats = new EObjectContainmentEList<QDisplayFileFormat>(QDisplayFileFormat.class, this, QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS);
+		}
 		return displayFormats;
 	}
 
@@ -126,74 +123,69 @@ public class DisplayFileImpl extends FileImpl implements QDisplayFile {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
-			return ((InternalEList<?>) getDisplayFormats()).basicRemove(otherEnd, msgs);
+			case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
+				return ((InternalEList<?>)getDisplayFormats()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
-			return getDisplayFormats();
+			case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
+				return getDisplayFormats();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
-			getDisplayFormats().clear();
-			getDisplayFormats().addAll((Collection<? extends QDisplayFileFormat>) newValue);
-			return;
+			case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
+				getDisplayFormats().clear();
+				getDisplayFormats().addAll((Collection<? extends QDisplayFileFormat>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
-			getDisplayFormats().clear();
-			return;
+			case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
+				getDisplayFormats().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
-			return displayFormats != null && !displayFormats.isEmpty();
+			case QOperatingSystemFilePackage.DISPLAY_FILE__DISPLAY_FORMATS:
+				return displayFormats != null && !displayFormats.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

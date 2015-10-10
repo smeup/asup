@@ -30,7 +30,6 @@ public abstract class FileFormatImpl<DD extends QCompoundDataDef<?, ?>> extends 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FileFormatImpl() {
@@ -39,7 +38,6 @@ public abstract class FileFormatImpl<DD extends QCompoundDataDef<?, ?>> extends 
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

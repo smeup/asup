@@ -29,7 +29,6 @@ public class PrinterFileFormatImpl extends FileFormatImpl<QPrinterFileFormatDef>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected PrinterFileFormatImpl() {
@@ -38,7 +37,6 @@ public class PrinterFileFormatImpl extends FileFormatImpl<QPrinterFileFormatDef>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

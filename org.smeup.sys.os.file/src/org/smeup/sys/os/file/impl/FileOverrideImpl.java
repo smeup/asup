@@ -23,12 +23,9 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getName <em>Name</em>}
- * </li>
- * <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getFileTo <em>File To
- * </em>}</li>
- * <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getMemberTo <em>Member
- * To</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getFileTo <em>File To</em>}</li>
+ *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getMemberTo <em>Member To</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,7 +40,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -53,7 +49,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -61,9 +56,8 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getFileTo() <em>File To</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getFileTo() <em>File To</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFileTo()
 	 * @generated
 	 * @ordered
@@ -71,9 +65,8 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 	protected QFile fileTo;
 
 	/**
-	 * The default value of the '{@link #getMemberTo() <em>Member To</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getMemberTo() <em>Member To</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getMemberTo()
 	 * @generated
 	 * @ordered
@@ -81,9 +74,8 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 	protected static final String MEMBER_TO_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMemberTo() <em>Member To</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getMemberTo() <em>Member To</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getMemberTo()
 	 * @generated
 	 * @ordered
@@ -92,7 +84,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FileOverrideImpl() {
@@ -101,7 +92,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -111,7 +101,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -121,7 +110,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -134,24 +122,23 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QFile getFileTo() {
-		if (fileTo != null && ((EObject) fileTo).eIsProxy()) {
-			InternalEObject oldFileTo = (InternalEObject) fileTo;
-			fileTo = (QFile) eResolveProxy(oldFileTo);
-			if (fileTo != oldFileTo)
+		if (fileTo != null && ((EObject)fileTo).eIsProxy()) {
+			InternalEObject oldFileTo = (InternalEObject)fileTo;
+			fileTo = (QFile)eResolveProxy(oldFileTo);
+			if (fileTo != oldFileTo) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO, oldFileTo, fileTo));
+			}
 		}
 		return fileTo;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public QFile basicGetFileTo() {
@@ -160,7 +147,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -173,7 +159,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -183,7 +168,6 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -196,93 +180,86 @@ public class FileOverrideImpl extends ObjectNameableImpl implements QFileOverrid
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
-			return getName();
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
-			if (resolve)
-				return getFileTo();
-			return basicGetFileTo();
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
-			return getMemberTo();
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
+				return getName();
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
+				if (resolve) return getFileTo();
+				return basicGetFileTo();
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
+				return getMemberTo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
-			setName((String) newValue);
-			return;
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
-			setFileTo((QFile) newValue);
-			return;
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
-			setMemberTo((String) newValue);
-			return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
+				setName((String)newValue);
+				return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
+				setFileTo((QFile)newValue);
+				return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
+				setMemberTo((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
-			setFileTo((QFile) null);
-			return;
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
-			setMemberTo(MEMBER_TO_EDEFAULT);
-			return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
+				setFileTo((QFile)null);
+				return;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
+				setMemberTo(MEMBER_TO_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
-			return fileTo != null;
-		case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
-			return MEMBER_TO_EDEFAULT == null ? memberTo != null : !MEMBER_TO_EDEFAULT.equals(memberTo);
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__FILE_TO:
+				return fileTo != null;
+			case QOperatingSystemFilePackage.FILE_OVERRIDE__MEMBER_TO:
+				return MEMBER_TO_EDEFAULT == null ? memberTo != null : !MEMBER_TO_EDEFAULT.equals(memberTo);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
