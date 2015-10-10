@@ -12,7 +12,6 @@ import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.base.TestLauncherHelper;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;

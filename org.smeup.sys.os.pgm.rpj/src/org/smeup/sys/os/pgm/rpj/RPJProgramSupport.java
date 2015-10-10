@@ -178,7 +178,7 @@ public class RPJProgramSupport {
 	}
 
 	public static enum Specials {
-		NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D;
+		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D;
 
 		public boolean asBoolean() {
 			return this.toString().equals("ON");

@@ -137,7 +137,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		// TODO synchronize
 		if (nioBufferedData._buffer != null)
-			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n031");
+			System.err.println("Unexpected condition: dmn8432m75n031");
 
 		nioBufferedData._relative = this;
 		nioBufferedData._buffer = null;
