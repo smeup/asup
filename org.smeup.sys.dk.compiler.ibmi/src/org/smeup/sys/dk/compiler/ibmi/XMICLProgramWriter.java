@@ -684,8 +684,12 @@ public class XMICLProgramWriter {
 		if (varType == null)
 			varType = clCmd.getParm("TYPE").getValue().getText().trim();
 
-		if (varLength == null)
-			varLength = clCmd.getParm("LEN").getValue().getText().trim();
+		if (varLength == null) {
+			if (clCmd.getParm("LEN") == null)
+				varLength = "1";
+			else
+				varLength = clCmd.getParm("LEN").getValue().getText().trim();
+		}
 
 		if (clCmd.getParm("VALUE") != null)
 			varValue = clCmd.getParm("VALUE").getValue().getText().trim();
