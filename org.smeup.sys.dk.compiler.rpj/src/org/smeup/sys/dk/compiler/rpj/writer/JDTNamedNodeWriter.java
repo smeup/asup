@@ -39,6 +39,7 @@ import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.QSpecial;
@@ -79,7 +80,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	private TypeDeclaration target;
 
 	@SuppressWarnings("unchecked")
-	public JDTNamedNodeWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
+	public JDTNamedNodeWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
 
 		super(root, compilationUnit, compilationSetup);
 
@@ -87,10 +88,19 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		target = getAST().newTypeDeclaration();
 		target.setName(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(name)));
 
-		if (private_)
+		switch (scope) {
+		case FRIENDLY:
+			break;
+		case PRIVATE:
 			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PRIVATE_KEYWORD));
-		else
+			break;
+		case PROTECTED:
+			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PROTECTED_KEYWORD));
+			break;
+		case PUBLIC:
 			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
+			break;
+		}			
 
 		if (root == null)
 			getJDTCompilationUnit().types().add(target);
@@ -192,13 +202,12 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	public void writeInnerRecord(String name, QCompoundDataDef<?, QDataTerm<?>> compoundDataDef) throws IOException {
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class,
-				false, true);
+		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class, UnitScope.PUBLIC, true);
 		dataStructureWriter.writeDataStructure(compoundDataDef);
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeInnerData(QDataTerm<?> dataTerm, boolean private_, boolean static_) throws IOException {
+	public void writeInnerData(QDataTerm<?> dataTerm, UnitScope scope, boolean static_) throws IOException {
 
 		if (dataTerm.getDataTermType().isCompound()) {
 
@@ -208,15 +217,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
-						QDataStructWrapper.class, private_, static_);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), QDataStructWrapper.class, scope, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
 			} else if (checkFileOverride(compoundDataDef)) {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass,
-						private_, static_);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass, scope, static_);
 				List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 				for (QDataTerm<?> element : compoundDataDef.getElements()) {
 					if (element.getFacet(QDerived.class) != null)

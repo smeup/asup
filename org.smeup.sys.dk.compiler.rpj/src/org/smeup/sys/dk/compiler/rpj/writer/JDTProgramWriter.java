@@ -23,6 +23,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -43,7 +44,7 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 	public JDTProgramWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
 		writeImport(Program.class);
 		writeImport(OperatingSystemRuntimeException.class);
@@ -138,7 +139,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		// datas
 		if (program.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerData(dataTerm, false, true);
+				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 	}
 
 	public void writeEntry(QProgram program, List<String> modules) throws IOException {

@@ -19,6 +19,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.il.data.annotation.Module;
@@ -33,7 +34,7 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 	public JDTModuleWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
 		writeImport(OperatingSystemRuntimeException.class);
 	}
@@ -118,7 +119,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		// datas
 		if (module.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : module.getDataSection().getDatas())
-				writeInnerData(dataTerm, false, true);
+				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 	}
 	
 	@SuppressWarnings("unchecked")

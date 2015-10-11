@@ -423,9 +423,13 @@ public class RPJProgramSupport {
 
 	public QIndicator qEof(QDataSet<?> dataSet) {
 		if (dataSet == null)
-			return this.dataFactory.getDataContext().endOfData();
+			return qEof();
 		else
 			return qBox(dataSet.isEndOfData());
+	}
+
+	public QIndicator qEof() {
+		return this.dataFactory.getDataContext().endOfData();
 	}
 
 	public QIndicator qOpen(QDataSet<?> dataSet) {

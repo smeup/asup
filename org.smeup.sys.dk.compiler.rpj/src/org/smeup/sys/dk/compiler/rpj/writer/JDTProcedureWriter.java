@@ -30,6 +30,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -46,19 +47,19 @@ import org.smeup.sys.il.flow.QRoutine;
 public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 	private boolean static_;
-	private boolean private_;
+	private UnitScope scope;
 
 	@SuppressWarnings("unchecked")
-	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_, boolean static_) {
-		super(root, compilationUnit, compilationSetup, name, private_);
+	public JDTProcedureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope, boolean static_) {
+		super(root, compilationUnit, compilationSetup, name, scope);
 
 		writeImport(Procedure.class);
 
 		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
-
+		
 		this.static_ = static_;
-		this.private_ = private_;
+		this.scope = scope;
 	}
 
 	public void writeProcedure(QProcedure procedure) throws IOException {
@@ -112,7 +113,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 				if(getCompilationUnit().getParentUnit().getDataTerm(dataTerm.getName(), false) != null)
 					continue;
 				
-				writeInnerData(dataTerm, this.private_, this.static_);
+				writeInnerData(dataTerm, scope, static_);
 			}
 	}
 

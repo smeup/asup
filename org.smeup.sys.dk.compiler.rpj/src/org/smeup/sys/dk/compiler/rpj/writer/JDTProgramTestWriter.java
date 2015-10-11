@@ -29,6 +29,7 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.test.QTestAsserter;
@@ -175,7 +176,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		// datas
 		if (programTest.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas())
-				writeInnerData(dataTerm, false, true);
+				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 
 	}
 

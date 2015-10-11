@@ -60,6 +60,7 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
@@ -101,8 +102,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	private QExpressionParser expressionParser;
 
-	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
-		super(root, compilationUnit, compilationSetup, name, private_);
+	public JDTCallableUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
+		super(root, compilationUnit, compilationSetup, name, scope);
 
 		expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
 	}
@@ -629,18 +630,18 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
 		boolean static_ = false;
-		boolean private_ = true;
+		UnitScope scope = UnitScope.PROTECTED;
 
 		switch (getCompilationSetup().getProcedureType()) {
 		case INNER:
 			break;
 		case NESTED:
 			static_ = true;
-			private_ = false;
+			scope = UnitScope.PUBLIC;
 			break;
 		}
 
-		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), private_, static_);
+		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), scope, static_);
 		try {
 			procedureWriter.writeProcedure(procedure);
 		} catch (IOException e) {

@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.os.file.QDisplayFile;
@@ -29,7 +30,7 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDisplayFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
 		// writeFieldSerializer();
 
@@ -67,7 +68,7 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 			elements.addAll(fileFormat.getDefinition().getElements());
 
-			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), fileFormat.getName(), QRecordWrapper.class, true, true);
+			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), fileFormat.getName(), QRecordWrapper.class, UnitScope.PUBLIC, true);
 			dataStructureWriter.writeElements(elements);
 		}
 	}

@@ -28,6 +28,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.dk.compiler.QUnitConverter;
 import org.smeup.sys.dk.compiler.QUnitConverterRegistry;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
@@ -109,6 +110,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EEnum internalTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum unitScopeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -336,6 +344,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getUnitScope() {
+		return unitScopeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getCaseSensitiveType() {
 		return caseSensitiveTypeEEnum;
@@ -394,6 +411,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		caseSensitiveTypeEEnum = createEEnum(CASE_SENSITIVE_TYPE);
 		entryTypeEEnum = createEEnum(ENTRY_TYPE);
 		internalTypeEEnum = createEEnum(INTERNAL_TYPE);
+		unitScopeEEnum = createEEnum(UNIT_SCOPE);
 	}
 
 	/**
@@ -643,6 +661,12 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		initEEnum(internalTypeEEnum, InternalType.class, "InternalType");
 		addEEnumLiteral(internalTypeEEnum, InternalType.INNER);
 		addEEnumLiteral(internalTypeEEnum, InternalType.NESTED);
+
+		initEEnum(unitScopeEEnum, UnitScope.class, "UnitScope");
+		addEEnumLiteral(unitScopeEEnum, UnitScope.FRIENDLY);
+		addEEnumLiteral(unitScopeEEnum, UnitScope.PUBLIC);
+		addEEnumLiteral(unitScopeEEnum, UnitScope.PROTECTED);
+		addEEnumLiteral(unitScopeEEnum, UnitScope.PRIVATE);
 
 		// Create resource
 		createResource(eNS_URI);

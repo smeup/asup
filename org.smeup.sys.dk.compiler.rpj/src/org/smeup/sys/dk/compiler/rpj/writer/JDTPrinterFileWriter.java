@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.os.file.QPrinterFile;
@@ -29,7 +30,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTPrinterFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
 		// writeFieldSerializer();
 
@@ -68,7 +69,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 			List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 			elements.addAll(printerFileFormat.getDefinition().getElements());
 
-			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QRecordWrapper.class, false, true);
+			JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), getCompilationSetup(), printerFileFormat.getName(), QRecordWrapper.class, UnitScope.PUBLIC, true);
 			dataStructureWriter.writeElements(elements);
 		}
 

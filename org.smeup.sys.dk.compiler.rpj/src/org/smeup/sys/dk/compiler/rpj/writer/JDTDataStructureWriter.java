@@ -20,6 +20,7 @@ import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
@@ -27,8 +28,8 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, String superClassName, boolean serializable,
-			boolean private_, boolean static_) {
-		super(root, compilationUnit, compilationSetup, name, private_);
+			UnitScope scope, boolean static_) {
+		super(root, compilationUnit, compilationSetup, name, scope);
 
 		if (superClassName != null) {
 			writeImport(compilationSetup.getBasePackage() + "." + superClassName);
@@ -40,7 +41,6 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 			// serializable
 			if (serializable)
 				writeFieldSerializer();
-
 		}
 
 		if (static_)
@@ -48,8 +48,8 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass, boolean private_, boolean static_) {
-		super(root, compilationUnit, compilationSetup, name, private_);
+	public JDTDataStructureWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass, UnitScope scope, boolean static_) {
+		super(root, compilationUnit, compilationSetup, name, scope);
 
 		if (superClass != null) {
 			writeImport(superClass);
@@ -82,7 +82,7 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		// elements
 		for (QDataTerm<?> element : elements)
-			writeInnerData(element, true, true);
+			writeInnerData(element, UnitScope.PUBLIC, true);
 	}
 
 }

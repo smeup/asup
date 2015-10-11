@@ -20,13 +20,14 @@ import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;
 
 public class JDTMessageFileWriter extends JDTNamedNodeWriter {
 
 	public JDTMessageFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name) {
-		super(root, compilationUnit, compilationSetup, name, false);
+		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 	}
 
 	@SuppressWarnings("unchecked")

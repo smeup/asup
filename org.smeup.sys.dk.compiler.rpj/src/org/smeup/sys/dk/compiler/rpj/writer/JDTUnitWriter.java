@@ -23,6 +23,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
 import org.smeup.sys.il.data.QData;
@@ -36,8 +37,8 @@ import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
 public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
-	public JDTUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, boolean private_) {
-		super(root, compilationUnit, compilationSetup, name, private_);
+	public JDTUnitWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, UnitScope scope) {
+		super(root, compilationUnit, compilationSetup, name, scope);
 	}
 
 	@SuppressWarnings("unchecked")

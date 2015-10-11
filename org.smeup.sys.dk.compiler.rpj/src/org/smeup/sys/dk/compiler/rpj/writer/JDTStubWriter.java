@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QProgram;
 
@@ -34,7 +35,7 @@ public class JDTStubWriter extends JDTProgramWriter {
 
 		if (program.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerData(dataTerm, false, true);
+				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 	}
 
 }

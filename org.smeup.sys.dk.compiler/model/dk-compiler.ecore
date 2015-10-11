@@ -193,4 +193,10 @@
       <eTypeArguments eClassifier="#//UnitConverter"/>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UnitScope">
+    <eLiterals name="Friendly" value="10" literal="FRIENDLY"/>
+    <eLiterals name="Public" value="20" literal="PUBLIC"/>
+    <eLiterals name="Protected" value="30" literal="PROTECTED"/>
+    <eLiterals name="Private" value="40" literal="PRIVATE"/>
+  </eClassifiers>
 </ecore:EPackage>

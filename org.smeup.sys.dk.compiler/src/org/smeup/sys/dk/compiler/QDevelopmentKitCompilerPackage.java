@@ -273,6 +273,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int INTERNAL_TYPE = 9;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.compiler.UnitScope
+	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitScope()
+	 * @generated
+	 */
+	int UNIT_SCOPE = 10;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -438,6 +448,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getInternalType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Unit Scope</em>'.
+	 * @see org.smeup.sys.dk.compiler.UnitScope
+	 * @generated
+	 */
+	EEnum getUnitScope();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}'.
@@ -608,6 +628,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum INTERNAL_TYPE = eINSTANCE.getInternalType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.compiler.UnitScope
+		 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitScope()
+		 * @generated
+		 */
+		EEnum UNIT_SCOPE = eINSTANCE.getUnitScope();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}' enum.

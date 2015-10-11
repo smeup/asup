@@ -21,6 +21,7 @@ import org.eclipse.jdt.core.dom.EnumDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.annotation.Descend;
 import org.smeup.sys.il.esam.annotation.Index;
@@ -32,7 +33,7 @@ public class JDTDatabaseFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDatabaseFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, Class<?> superClass) {
-		super(root, compilationUnit, compilationSetup, name, superClass, false, false);
+		super(root, compilationUnit, compilationSetup, name, superClass, UnitScope.PUBLIC, false);
 
 		if (root != null)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
@@ -40,7 +41,7 @@ public class JDTDatabaseFileWriter extends JDTDataStructureWriter {
 
 	@SuppressWarnings("unchecked")
 	public JDTDatabaseFileWriter(JDTNamedNodeWriter root, QCompilationUnit compilationUnit, QCompilationSetup compilationSetup, String name, String superClassName) {
-		super(root, compilationUnit, compilationSetup, name, superClassName, true, false, false);
+		super(root, compilationUnit, compilationSetup, name, superClassName, true, UnitScope.PUBLIC, false);
 
 		if (root != null)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
