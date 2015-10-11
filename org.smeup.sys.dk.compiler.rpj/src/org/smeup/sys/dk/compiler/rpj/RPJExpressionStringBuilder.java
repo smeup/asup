@@ -106,31 +106,31 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		/*
 		 * if(expression.getOperator() == ArithmeticOperator.BCAT) {
-		 *
+		 * 
 		 * QCompoundTermExpression compoundTermExpression =
 		 * QIntegratedLanguageExpressionFactory
 		 * .eINSTANCE.createCompoundTermExpression();
 		 * compoundTermExpression.setFunction(true);
 		 * compoundTermExpression.setValue("%bcat");
-		 *
+		 * 
 		 * compoundTermExpression.getElements().add(expression.getLeftOperand());
 		 * compoundTermExpression
 		 * .getElements().add(expression.getRightOperand());
-		 *
+		 * 
 		 * compoundTermExpression.accept(this); return false; }
-		 *
+		 * 
 		 * if(expression.getOperator() == ArithmeticOperator.TCAT) {
-		 *
+		 * 
 		 * QCompoundTermExpression compoundTermExpression =
 		 * QIntegratedLanguageExpressionFactory
 		 * .eINSTANCE.createCompoundTermExpression();
 		 * compoundTermExpression.setFunction(true);
 		 * compoundTermExpression.setValue("%tcat");
-		 *
+		 * 
 		 * compoundTermExpression.getElements().add(expression.getLeftOperand());
 		 * compoundTermExpression
 		 * .getElements().add(expression.getRightOperand());
-		 *
+		 * 
 		 * compoundTermExpression.accept(this); return false; }
 		 */
 
@@ -221,12 +221,10 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 		if (expression.getType() == AtomicType.STRING) {
 			String value = expression.getValue().replaceAll("\'", "\''");
 			result += "'" + value + "'";
+		} else if (expression.getType() == AtomicType.HEXADECIMAL) {
+			result += "x'" + expression.getValue() + "'";
 		} else
 			result += expression.getValue();
-
-		// Mirandola
-//		if (expression.isFunction())
-//			result += "()";
 
 		return false;
 	}
@@ -260,7 +258,6 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return false;
 	}
-	
 
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {

@@ -21,6 +21,7 @@ import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
@@ -142,6 +143,11 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	@Override
 	public R get() {
 		return this.record;
+	}
+
+	@Override
+	public QDataStruct getInfoStruct() {
+		return this.infoStruct;
 	}
 
 	protected void handleSQLException(SQLException e) {
@@ -509,5 +515,4 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		@Overlay(position = "397")
 		public QBinary rrn;
 	}
-
 } // QDataSetImpl

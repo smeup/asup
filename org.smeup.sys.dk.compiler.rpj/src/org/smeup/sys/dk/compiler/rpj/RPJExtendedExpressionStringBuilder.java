@@ -97,7 +97,7 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		if (expression.getRightOperand() != null)
 			expression.getRightOperand().accept(this);
-		
+
 		result += ")";
 
 		return false;
@@ -107,17 +107,17 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QArithmeticExpression expression) {
 
 		if (expression.getOperator() == ArithmeticOperator.SIGN_MINUS) {
-			
+
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
-				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35n4v5");	
+				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35n4v5");
 			result += ".qNegative()";
 		} else if (expression.getOperator() == ArithmeticOperator.SIGN_PLUS) {
-			
+
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35v5gt");
-			result += ".qPositive()";			
+			result += ".qPositive()";
 		} else {
 			expression.getLeftOperand().accept(this);
 
@@ -148,7 +148,7 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			if (expression.getRightOperand() != null)
 				expression.getRightOperand().accept(this);
-			
+
 			result += ")";
 		}
 
@@ -186,7 +186,7 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		if (expression.getRightOperand() != null)
 			expression.getRightOperand().accept(this);
-		
+
 		result += ")";
 
 		return false;
@@ -199,12 +199,14 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 		if (expression.getType() == AtomicType.STRING) {
 			String value = expression.getValue().replaceAll("\'", "\''");
 			result += "'" + value + "'";
+		} else if (expression.getType() == AtomicType.HEXADECIMAL) {
+			result += "x'" + expression.getValue() + "'";
 		} else
 			result += expression.getValue();
 
 		// Mirandola
-//		if (expression.isFunction())
-//			result += "()";
+		// if (expression.isFunction())
+		// result += "()";
 
 		return false;
 	}
@@ -212,9 +214,9 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
-		//result += "(";
+		// result += "(";
 		expression.getExpression().accept(this);
-		//result += ")";
+		// result += ")";
 
 		return false;
 	}
@@ -238,7 +240,6 @@ public class RPJExtendedExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		return false;
 	}
-	
 
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {

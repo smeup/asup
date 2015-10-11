@@ -83,35 +83,39 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeSupportFields(callableUnitInfo);
 
 		writeModuleFields(modules, false);
+		
+		if (program.getFileSection() != null) {
+			writeDataSets(program.getFileSection().getDataSets());
+			writeDisplays(program.getFileSection().getDisplays());
+			writePrinters(program.getFileSection().getPrinters());
+		}
 
 		if (program.getDataSection() != null)
 			writeDataFields(program.getDataSection());
+		
+		if (program.getFileSection() != null) {
+			writeKeyLists(program.getFileSection().getKeyLists());
+			writeCursors(program.getFileSection().getCursors());
+			writeStatements(program.getFileSection().getStatements());
+		}
 
 		if (program.getFlowSection() != null)
 			for (QProcedure procedure: program.getFlowSection().getProcedures())
 				writePublicProcedure(procedure);
-		
-		if (program.getFileSection() != null) {
-			writeDataSets(program.getFileSection().getDataSets());
-			writeKeyLists(program.getFileSection().getKeyLists());
-			writeCursors(program.getFileSection().getCursors());
-			writeStatements(program.getFileSection().getStatements());
-			writeDisplays(program.getFileSection().getDisplays());
-			writePrinters(program.getFileSection().getPrinters());
 
-		}
-
+		// postConstruct
 		writeInit();
 
+		// entry
 		writeEntry(program, modules);
-
-		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// prototypes
 		if (program.getFlowSection() != null)
 			for (QPrototype prototype : program.getFlowSection().getPrototypes())
 				writePrototype(prototype);
+
+		// labels
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// main
 		if (program.getMain() != null) {

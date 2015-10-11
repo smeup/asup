@@ -117,6 +117,14 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> QNumeric qSubdt(E portion);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

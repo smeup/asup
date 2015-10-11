@@ -956,6 +956,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(dataSetEClass_R);
 		initEOperation(op, g1);
 
+		addEOperation(dataSetEClass, theIntegratedLanguageDataPackage.getDataStruct(), "getInfoStruct", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(dataSetTermEClass, QDataSetTerm.class, "DataSetTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSetTerm_AccessMode(), this.getAccessMode(), "accessMode", "I", 1, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSetTerm_FormatName(), ecorePackage.getEString(), "formatName", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

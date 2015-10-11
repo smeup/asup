@@ -1284,6 +1284,14 @@
         <eGenericType eTypeParameter="#//Datetime/qDiff/E"/>
       </eParameters>
     </eOperations>
+    <eOperations name="qSubdt" eType="#//Numeric">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="portion">
+        <eGenericType eTypeParameter="#//Datetime/qSubdt/E"/>
+      </eParameters>
+    </eOperations>
     <eOperations name="time"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -1376,6 +1384,7 @@
         <eGenericType eTypeParameter="#//Indicator/ne.2/E"/>
       </eParameters>
     </eOperations>
+    <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="List" abstract="true" interface="true"
       eSuperTypes="#//Data">
@@ -2167,11 +2176,6 @@
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
     <eOperations name="out"/>
-    <eOperations name="qDate" lowerBound="1" eType="#//Datetime">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
-      </eTypeParameters>
-    </eOperations>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>

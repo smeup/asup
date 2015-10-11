@@ -455,9 +455,13 @@ public class RPJProgramSupport {
 			return qBox(dataSet.onError());
 	}
 
+	public QIndicator qFound() {
+		return this.dataFactory.getDataContext().found();
+	}
+
 	public QIndicator qFound(QDataSet<?> dataSet) {
 		if (dataSet == null)
-			return this.dataFactory.getDataContext().found();
+			return qFound();
 		else
 			return qBox(dataSet.isFound());
 	}
@@ -542,27 +546,6 @@ public class RPJProgramSupport {
 	public QArray<?> qSubarr(QArray<?> array, int start, int elements) {
 
 		return array.qSubarr(start, elements);
-	}
-
-	// TODO remove return value
-	public QNumeric qTime(QDatetime datetime) {
-
-		// TODO
-
-		return null;
-	}
-
-	public void qTime(QNumeric datetime) {
-
-		Calendar CALENDAR = Calendar.getInstance();
-		if (datetime.getLength() == 14) {
-			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
-		} else if (datetime.getLength() == 12) {
-			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
-		} else if (datetime.getLength() == 6) {
-			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
-		} else
-			System.err.println("Unknown length: " + datetime.getLength());
 	}
 
 	public QString qTrim(String source) {
@@ -966,5 +949,34 @@ public class RPJProgramSupport {
 	
 	public <P extends Object> P bindProcedure(Class<P> klass) {
 		return injector.prepareProcedure(job.getContext(), getProgramOwner(), klass);
+	}
+
+	public QDatetime qDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public QDatetime qDate(QString value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	// TODO remove return value
+	public QNumeric qTime(QDatetime datetime) {
+
+		return null;
+	}
+
+	public void qTime(QNumeric datetime) {
+
+		Calendar CALENDAR = Calendar.getInstance();
+		if (datetime.getLength() == 14) {
+			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
+		} else if (datetime.getLength() == 12) {
+			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
+		} else if (datetime.getLength() == 6) {
+			datetime.eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
+		} else
+			System.err.println("Unknown length: " + datetime.getLength());
 	}
 }

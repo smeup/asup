@@ -40,10 +40,9 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 	public void writeModule(QModule module) throws IOException {
 
-		refactCallableUnit(module);
+		System.out.println("Compiling module: "+module);
 
-		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(module);
+		refactCallableUnit(module);
 
 		// modules
 		for (String childModule : module.getSetupSection().getModules()) {
@@ -61,31 +60,41 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 		writeModuleAnnotation(module);
 
+		// unit info
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(module);
+
 		writeSupportFields(callableUnitInfo);
 
 		writeModuleFields(module.getSetupSection().getModules(), false);
-
-		if (module.getDataSection() != null)
-			writeDataFields(module.getDataSection());
-
-		if (module.getFlowSection() != null)
-			for (QProcedure procedure: module.getFlowSection().getProcedures())
-				writePublicProcedure(procedure);
 
 		if (module.getFileSection() != null) {
 			writeDataSets(module.getFileSection().getDataSets());
 			writeDisplays(module.getFileSection().getDisplays());
 			writePrinters(module.getFileSection().getPrinters());
-			writeKeyLists(module.getFileSection().getKeyLists());
 		}
 
-		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
+		if (module.getDataSection() != null)
+			writeDataFields(module.getDataSection());
 
+		if (module.getFileSection() != null) {
+			writeKeyLists(module.getFileSection().getKeyLists());
+			writeCursors(module.getFileSection().getCursors());
+			writeStatements(module.getFileSection().getStatements());
+		}
+
+		if (module.getFlowSection() != null)
+			for (QProcedure procedure: module.getFlowSection().getProcedures())
+				writePublicProcedure(procedure);
+		
+		writeInit();
+		
 		// prototypes
 		if (module.getFlowSection() != null)
 			for (QPrototype prototype : module.getFlowSection().getPrototypes())
 				writePrototype(prototype);
+
+		// labels
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// main
 		if (module.getMain() != null) {

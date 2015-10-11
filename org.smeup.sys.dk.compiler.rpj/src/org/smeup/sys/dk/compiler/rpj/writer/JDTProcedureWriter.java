@@ -74,14 +74,19 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		if (procedure.getSetupSection() != null)
 			writeModuleFields(procedure.getSetupSection().getModules(), false);
 
-		if (procedure.getDataSection() != null)
-			writeDataFields(procedure.getDataSection());
-
 		if (procedure.getFileSection() != null) {
 			writeDataSets(procedure.getFileSection().getDataSets());
 			writeDisplays(procedure.getFileSection().getDisplays());
 			writePrinters(procedure.getFileSection().getPrinters());
+		}
+
+		if (procedure.getDataSection() != null)
+			writeDataFields(procedure.getDataSection());
+
+		if (procedure.getFileSection() != null) {
 			writeKeyLists(procedure.getFileSection().getKeyLists());
+			writeCursors(procedure.getFileSection().getCursors());
+			writeStatements(procedure.getFileSection().getStatements());
 		}
 
 		if (procedure.getEntry() != null && procedure.hasRoutines()) {

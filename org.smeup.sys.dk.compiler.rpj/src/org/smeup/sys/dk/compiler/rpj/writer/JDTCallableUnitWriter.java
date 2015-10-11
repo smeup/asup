@@ -199,7 +199,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (dataTerm.getDefinition() == null)
 				continue;
 
-			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), true);
+			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), false);
 
 			writePublicField(dataTerm, false);
 		}
@@ -512,7 +512,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			}
 
 		} else {
-			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), true);
+			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), false);
 			if (procedure != null) {
 				writeEntry(methodDeclaration, procedure.getEntry());
 
@@ -710,7 +710,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	public void writeInit() {
 
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
-		getTarget().bodyDeclarations().add(methodDeclaration);
 
 		methodDeclaration.setName(getAST().newSimpleName("qInit"));
 
@@ -743,7 +742,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 							MethodInvocation methodInvocation = getAST().newMethodInvocation();
 							methodInvocation.setName(getAST().newSimpleName("assign"));
 
-							QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), true);
+							QDataTerm<?> remapDataTerm = getCompilationUnit().getDataTerm(remap.getName(), false);
 							if (remapDataTerm == null)
 								throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + remap);
 
@@ -764,7 +763,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				}
 		}
 
-		QRoutine qInzsr = getCompilationUnit().getRoutine("*INZSR", true);
+		QRoutine qInzsr = getCompilationUnit().getRoutine("*INZSR", false);
 		if (qInzsr != null) {
 
 			if (qInzsr.getParent() == getCompilationUnit().getNode()) {
@@ -782,12 +781,15 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			}
 		} else {
 
-			qInzsr = getCompilationUnit().getRoutine("£MU_INZSR", true);
+			qInzsr = getCompilationUnit().getRoutine("£MU_INZSR", false);
 			if (qInzsr != null) {
 
 				MethodInvocation methodInvocation = getAST().newMethodInvocation();
+				
 				methodInvocation.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(qInzsr.getName())));
-				methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName((QNamedNode) qInzsr.getParent())));
+				if(!qInzsr.getParent().equals(getCompilationUnit().getNode()))
+					methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName((QNamedNode) qInzsr.getParent())));
+				
 				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 				block.statements().add(expressionStatement);
 			}
@@ -804,6 +806,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			block.statements().add(expressionStatement);
 		}
 
+		if(!methodDeclaration.getBody().statements().isEmpty())
+			getTarget().bodyDeclarations().add(methodDeclaration);
 	}
 
 	@SuppressWarnings("unchecked")

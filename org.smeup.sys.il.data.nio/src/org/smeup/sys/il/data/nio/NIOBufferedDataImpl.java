@@ -119,6 +119,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		// TODO remove
 		if (target instanceof NIOCharacterVaryingImpl) {
+			System.err.println("Unexpected condition: dm5c46sdgfs5r4g5mc");
 			target.eval(this);
 		}
 	}
@@ -136,8 +137,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
 
 		// TODO synchronize
-		if (nioBufferedData._buffer != null)
-			System.err.println("Unexpected condition: dmn8432m75n031");
+//		if (nioBufferedData._buffer != null)
+//			System.err.println("Unexpected condition: dmn8432m75n031");
 
 		nioBufferedData._relative = this;
 		nioBufferedData._buffer = null;

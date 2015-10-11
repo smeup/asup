@@ -296,6 +296,7 @@
     <eOperations name="get" lowerBound="1">
       <eGenericType eTypeParameter="#//DataSet/R"/>
     </eOperations>
+    <eOperations name="getInfoStruct" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSetTerm" eSuperTypes="#//FileTerm">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessMode" lowerBound="1"

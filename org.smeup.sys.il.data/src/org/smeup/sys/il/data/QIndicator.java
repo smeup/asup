@@ -99,4 +99,12 @@ public interface QIndicator extends QBufferedData {
 	@Override
 	<E extends Enum<E>> boolean ne(E value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QCharacter qTrim();
+
 } // QIndicator

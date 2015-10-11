@@ -188,11 +188,17 @@ SPECIAL
 		|
 		( P A R M S)
 		|
+		( D )
+		|
 		( M S)
 		|
 		( Y E A R)
 		|
 		( Y E A R S)
+		|
+		( M O N T H S)
+		|
+		( D A Y S)
 		|
 		( N E X T)
 		|

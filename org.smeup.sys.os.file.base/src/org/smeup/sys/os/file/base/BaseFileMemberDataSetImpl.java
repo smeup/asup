@@ -1,5 +1,6 @@
 package org.smeup.sys.os.file.base;
 
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -357,5 +358,11 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 			record.getElement(3).eval(dataWriter);
 			return;
 		}
+	}
+
+	@Override
+	public QDataStruct getInfoStruct() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

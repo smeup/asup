@@ -84,7 +84,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private Map<String, QDataTerm<?>> cachedTerms = new HashMap<String, QDataTerm<?>>();
 	private Map<String, QPrototype> cachedPrototypes = new HashMap<String, QPrototype>();
-	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "SET", "IF", "BREAK"));
+	private ArrayList<String> reservedKeywords = new ArrayList<String>(Arrays.asList("INT", "FOR", "SET", "IF", "BREAK", "CHAR"));
 
 	public RPJCompilationUnitImpl(QContext context, QNameable node, QCompilationUnit parentUnit, List<QCompilationUnit> childUnits, CaseSensitiveType caseSensitive) {
 
@@ -744,7 +744,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// reserved keywords
 		if (reservedKeywords.contains(name))
-			name = "_" + name.trim();
+			name = name.trim()+"_";
 
 		StringBuffer nameBuffer = new StringBuffer();
 
@@ -970,7 +970,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			if (node instanceof QEntry)
 				continue;
 			
-			if (node instanceof QDataSetTerm)
+			if (node instanceof QFileFormat)
 				continue;
 			
 			if (node instanceof QEntryParameter<?>)

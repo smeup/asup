@@ -12,6 +12,7 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QIndicator;
 
@@ -124,5 +125,15 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	@Override
 	protected byte getFiller() {
 		return OFF;
+	}
+
+	@Override
+	public QCharacter qTrim() {
+
+		NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), 1);
+		character.allocate();
+		character.eval(this);
+
+		return character;
 	}
 }

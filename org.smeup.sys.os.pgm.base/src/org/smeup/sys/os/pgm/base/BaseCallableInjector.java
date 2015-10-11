@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -181,6 +182,7 @@ public class BaseCallableInjector {
 			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, context, sharedModules);
 
 		Map<String, QDataStruct> structures = new HashMap<String, QDataStruct>();
+		Stack<Field> infoFields = new Stack<Field>();
 
 		for (Field field : klass.getDeclaredFields()) {
 
@@ -202,7 +204,7 @@ public class BaseCallableInjector {
 			Type fieldType = field.getGenericType();
 			ParameterizedType parType = null;
 			Type[] argsType = null;
-			
+
 			if (fieldType instanceof ParameterizedType) {
 				parType = (ParameterizedType) fieldType;
 				argsType = parType.getActualTypeArguments();
@@ -225,10 +227,10 @@ public class BaseCallableInjector {
 				QData data = dataContainer.resetData(dataTerm);
 
 				// DataStruct
-				if(data instanceof QDataStruct) {
-					QDataStruct dataStruct = (QDataStruct)data;								
-					
-					Class<? extends QRecord> primaryRecordClass = getPrimaryRecord( (Class<? extends QRecord>) data.getClass());
+				if (data instanceof QDataStruct) {
+					QDataStruct dataStruct = (QDataStruct) data;
+
+					Class<? extends QRecord> primaryRecordClass = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
 					QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 
 					String primaryRecordName = null;
@@ -237,14 +239,14 @@ public class BaseCallableInjector {
 					else
 						primaryRecordName = primaryRecordClass.getSimpleName();
 
-					QDataStruct primaryRecord = structures.get(primaryRecordName);
+					QDataStruct primaryRecord = structures.get(primaryRecordName.toLowerCase());
 					if (primaryRecord == null) {
-						structures.put(primaryRecordName, dataStruct);
+						structures.put(primaryRecordName.toLowerCase(), dataStruct);
 					} else {
 						primaryRecord.assign(dataStruct);
 					}
 				}
-				
+
 				object = data;
 			}
 			// DataSet
@@ -259,24 +261,29 @@ public class BaseCallableInjector {
 				String primaryRecordName = classPrimaryRecord.getSimpleName();
 
 				QDataStruct record = null;
-				String fileName = classRecord.getName();
+				String fileName = classRecord.getSimpleName();
 				boolean userOpen = false;
 				QDataStruct infoStruct = null;
 
 				// from annotation
 				FileDef fileDef = field.getAnnotation(FileDef.class);
-				if (fileDef != null) {					
+				if (fileDef != null) {
 					userOpen = fileDef.userOpen();
-					if (!fileDef.info().isEmpty())
-						infoStruct = (QDataStruct) dataContainer.getData(fileDef.info());
+					if (!fileDef.name().isEmpty())
+						primaryRecordName = fileDef.name();
+					if (!fileDef.info().isEmpty()) {
+						infoStruct = structures.get(fileDef.info().toLowerCase());
+						if (infoStruct == null)
+							infoFields.add(field);
+					}
 					if (!fileDef.prefix().isEmpty())
 						primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
 				}
 
-				QDataStruct primaryRecord = structures.get(primaryRecordName);
+				QDataStruct primaryRecord = structures.get(primaryRecordName.toLowerCase());
 				if (primaryRecord == null) {
 					record = dataContainer.getDataFactory().createRecord(classRecord, true);
-					structures.put(primaryRecordName, record);
+					structures.put(primaryRecordName.toLowerCase(), record);
 				} else {
 					record = dataContainer.getDataFactory().createRecord(classRecord, false);
 					primaryRecord.assign(record);
@@ -291,7 +298,7 @@ public class BaseCallableInjector {
 				}
 
 				object = dataSet;
-			}			
+			}
 			// Job
 			else if (QJob.class.isAssignableFrom(fieldClass))
 				object = job;
@@ -322,13 +329,29 @@ public class BaseCallableInjector {
 					throw new OperatingSystemRuntimeException("Unknown field type: " + fieldType);
 				}
 			} else if (field.getAnnotation(DataDef.class) != null) {
-				System.err.println("Unexpected condition " + field.getDeclaringClass() + ": x456b6439b57w6ervdas5");
+				DataDef dataDef = field.getAnnotation(DataDef.class);
+
+				if (Integer.class.isAssignableFrom(fieldClass)) {
+					object = Integer.parseInt(dataDef.value());
+				} else
+					System.err.println("Unexpected condition " + field.getDeclaringClass() + ": x456b6439b57w6ervdas5");
 			}
 
 			if (object != null)
 				field.set(callable, object);
 
 			field.setAccessible(false);
+		}
+
+		while (!infoFields.isEmpty()) {
+			Field field = infoFields.pop();
+			
+			FileDef fileDef = field.getAnnotation(FileDef.class);
+			QDataStruct infoStruct = structures.get(fileDef.info().toLowerCase());
+			if(infoStruct == null)
+				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
+			else
+				((QDataSet<?>)field.get(callable)).getInfoStruct().assign(infoStruct);				
 		}
 	}
 
@@ -397,9 +420,9 @@ public class BaseCallableInjector {
 		// physical file
 		else if (classRecord.getSuperclass() == QRecordWrapper.class)
 			return classRecord;
-		
-		// logical 
-		boolean extended = false;		
+
+		// logical
+		boolean extended = false;
 		for (Field field : classRecord.getDeclaredFields()) {
 			if (Modifier.isStatic(field.getModifiers()))
 				continue;

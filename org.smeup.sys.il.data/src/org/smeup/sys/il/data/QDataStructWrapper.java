@@ -798,8 +798,4 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public QNumeric qScan(String source, Number start, QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
-
-	public <E extends Enum<E>> QDatetime qDate() {
-		return delegate.qDate();
-	}
 }

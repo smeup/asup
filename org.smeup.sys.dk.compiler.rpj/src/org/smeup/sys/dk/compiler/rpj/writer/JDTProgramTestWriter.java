@@ -64,10 +64,9 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 	@SuppressWarnings("unchecked")
 	public void writeProgramTest(QProgram programTest) throws IOException {
 
-		refactCallableUnit(programTest);
+		System.out.println("Compiling test: "+programTest);
 
-		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(programTest);
+		refactCallableUnit(programTest);
 
 		// modules
 		List<String> modules = new ArrayList<>();
@@ -89,8 +88,10 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			}
 		}
 
-		// Program annotation
 		writeProgramAnnotation(programTest);
+
+		// unit info
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(programTest);
 
 		writeSupportFields(callableUnitInfo);
 
@@ -98,34 +99,36 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		writeModuleFields(modules, false);
 
+		if (programTest.getFileSection() != null) {
+			writeDataSets(programTest.getFileSection().getDataSets());
+			writeDisplays(programTest.getFileSection().getDisplays());
+			writePrinters(programTest.getFileSection().getPrinters());
+		}
+
 		if (programTest.getDataSection() != null)
 			writeDataFields(programTest.getDataSection());
+
+		if (programTest.getFileSection() != null) {
+			writeKeyLists(programTest.getFileSection().getKeyLists());
+			writeCursors(programTest.getFileSection().getCursors());
+			writeStatements(programTest.getFileSection().getStatements());
+		}
 
 		if (programTest.getFlowSection() != null)
 			for (QProcedure procedure : programTest.getFlowSection().getProcedures())
 				writePublicProcedure(procedure);
 
-		if (programTest.getFileSection() != null) {
-			writeDataSets(programTest.getFileSection().getDataSets());
-			writeKeyLists(programTest.getFileSection().getKeyLists());
-			writeCursors(programTest.getFileSection().getCursors());
-			writeStatements(programTest.getFileSection().getStatements());
-			writeDisplays(programTest.getFileSection().getDisplays());
-			writePrinters(programTest.getFileSection().getPrinters());
-
-		}
-
 		writeInit();
 
 		writeEntry(programTest, modules);
-
-		// labels
-		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// prototypes
 		if (programTest.getFlowSection() != null)
 			for (QPrototype prototype : programTest.getFlowSection().getPrototypes())
 				writePrototype(prototype);
+
+		// labels
+		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// main
 		if (programTest.getMain() != null) {

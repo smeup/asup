@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.esam;
 
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QRecord;
 
@@ -208,5 +209,13 @@ public interface QDataSet<R extends QRecord> {
 	 * @generated
 	 */
 	R get();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataStruct getInfoStruct();
 
 } // QDataSet

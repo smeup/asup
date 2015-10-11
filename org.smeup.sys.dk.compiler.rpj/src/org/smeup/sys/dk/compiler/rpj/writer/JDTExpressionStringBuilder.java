@@ -132,12 +132,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			value = expression.getValue();
 
 			if (value.startsWith("X'") || value.startsWith("x'")) {
-				value = value.substring(2);
-				value = value.substring(0, value.length() - 1);
+				// value = value.substring(2);
+				// value = value.substring(0, value.length() - 1);
+
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid hexadecimal: " + expression.getValue());				
+			} else {
 				source = QHexadecimal.class;
 				value = "(byte) 0x" + value;
-			} else
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid hexadecimal: " + expression.getValue());
+			}
 
 			break;
 		case SPECIAL:
@@ -847,8 +849,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				while (entryParameters.hasNext()) {
 					entryParameters.next();
 					if (!first)
-						value.append(", ");
-					value.append("null");
+						value.append(", null");
+
 					first = false;
 				}
 			} else {
