@@ -66,6 +66,22 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> void movea(int targetIndex, E value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true"
+	 * @generated
+	 */
+	void movea(int targetIndex, QDataWriter value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */

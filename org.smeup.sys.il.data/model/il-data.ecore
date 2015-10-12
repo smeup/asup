@@ -341,6 +341,19 @@
       </eParameters>
     </eOperations>
     <eOperations name="movea">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eTypeParameter="#//BufferedList/movea.5/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" eType="#//DataWriter"/>
+    </eOperations>
+    <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="value">
         <eGenericType eClassifier="#//Array">

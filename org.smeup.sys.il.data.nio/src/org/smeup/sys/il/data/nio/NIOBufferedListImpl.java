@@ -280,18 +280,18 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 			if (getListOwner() != null) {
 				List<byte[]> dataList = new ArrayList<byte[]>();
-				
+
 				for (QBufferedData elementTarget : getListOwner()) {
 					dataList.add(elementTarget.asBytes());
 				}
-				
+
 				Collections.sort(dataList, new Comparator<byte[]>() {
 					@Override
 					public int compare(byte[] param1, byte[] param2) {
-						
-						byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition()+getModel().getLength());
-						byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition()+getModel().getLength());
-						
+
+						byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
+						byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
+
 						switch (getSortDirection()) {
 						case ASCEND:
 							return compareBytes(b1, b2);
@@ -302,9 +302,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 						return compareBytes(b1, b2);
 					}
 				});
-				
+
 				for (byte[] bd : dataList) {
-					
+
 					((NIOBufferedDataImpl) getListOwner().get(i + 1))._eval(bd);
 					i++;
 				}
@@ -376,24 +376,33 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QDataWriter value) {
-		this.accept(value);
+		movea(1, value);
+	}
+
+	@Override
+	public void movea(int targetIndex, QDataWriter value) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).accept(value);
 	}
 
 	@Override
 	public void movea(String value) {
-//		for (QBufferedData element : this)
-//			element.movel(value, true);
 		try {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), false, (byte) 32);
 		} catch (UnsupportedEncodingException e) {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), false, (byte) 32);
 		}
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> void movea(E value) {
-		for (QBufferedData element : this)
-			element.eval(value);
+		movea(1, value);
+	}
+
+	@Override
+	public <E extends Enum<E>> void movea(int targetIndex, E value) {
+		for (int i = targetIndex; i <= capacity(); i++)
+			get(i).eval(value);
 	}
 
 	@Override
@@ -403,15 +412,15 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, QArray<?> value, boolean clear) {
-		if(clear)
+		if (clear)
 			this.clear();
 
-		if (getSize() != value.getSize()){
-			int position = ((this.getLength() / this.capacity()) * (targetIndex-1));
+		if (getSize() != value.getSize()) {
+			int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 			NIOBufferHelper.movel(getBuffer(), position, value.getSize(), value.asBytes(), false, (byte) 32);
-		}else{
+		} else {
 			int idx = 1;
-			for (int i=targetIndex; i<=this.capacity();i++){
+			for (int i = targetIndex; i <= this.capacity(); i++) {
 				QBufferedData element = this.get(i);
 				element.movel(value.get(idx), true);
 				idx++;
@@ -428,7 +437,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	public void movea(int targetIndex, QBufferedData value, boolean clear) {
 		movea(targetIndex, value.s(), clear);
 	}
-	
+
 	@Override
 	public void movea(int targetIndex, String value) {
 		movea(targetIndex, value, false);
@@ -436,9 +445,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, String value, boolean clear) {
-		if(clear)
+		if (clear)
 			this.clear();
-		int position = ((this.getLength() / this.capacity()) * (targetIndex-1)); 
+		int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 		try {
 			NIOBufferHelper.movel(getBuffer(), position, value.length(), value.getBytes(getEncoding()), clear, (byte) 32);
 		} catch (UnsupportedEncodingException e) {
@@ -454,25 +463,25 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
 		int idx = sourceIndex;
-		if(clear)
+		if (clear)
 			this.clear();
 
-		if (getSize() != value.getSize()){
-			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex-1));
-				// TODO è corretto splittare i bytes???
+		if (getSize() != value.getSize()) {
+			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
+			// TODO è corretto splittare i bytes???
 			try {
 				NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.s().substring(positionSource).getBytes(getEncoding()), false, (byte) 32);
 			} catch (UnsupportedEncodingException e) {
 				NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.s().substring(positionSource).getBytes(), false, (byte) 32);
 			}
-		}else{
-			for (QBufferedData element : this){
-				if(idx>value.capacity())
+		} else {
+			for (QBufferedData element : this) {
+				if (idx > value.capacity())
 					break;
 				element.movel(value.get(idx), true);
 				idx++;
 			}
-		}		
+		}
 	}
 
 	@Override
@@ -481,23 +490,22 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, int sourceIndex,
-			boolean clear) {
+	public void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
 		int idx = sourceIndex;
-		if(clear)
+		if (clear)
 			this.clear();
 
-		if (getSize() != value.getSize()){
-			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex-1));
-			int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex-1));
+		if (getSize() != value.getSize()) {
+			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
+			int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 			// TODO è corretto splittare i bytes???
-		try {
-			NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(getEncoding()), false, (byte) 32);
-		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(), false, (byte) 32);
-		}
-		}else{
-			for (int i=targetIndex; i<=this.capacity();i++){
+			try {
+				NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(getEncoding()), false, (byte) 32);
+			} catch (UnsupportedEncodingException e) {
+				NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(), false, (byte) 32);
+			}
+		} else {
+			for (int i = targetIndex; i <= this.capacity(); i++) {
 				QBufferedData element = this.get(i);
 				element.movel(value.get(idx), true);
 				idx++;
