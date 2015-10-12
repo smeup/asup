@@ -107,7 +107,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		}
 
 		if (programTest.getDataSection() != null)
-			writeDataFields(programTest.getDataSection());
+			writeDataFields(programTest.getDataSection(), UnitScope.PROTECTED);
 
 		if (programTest.getFileSection() != null) {
 			writeKeyLists(programTest.getFileSection().getKeyLists());

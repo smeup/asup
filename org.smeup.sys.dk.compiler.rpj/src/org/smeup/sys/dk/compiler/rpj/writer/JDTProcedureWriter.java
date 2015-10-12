@@ -82,7 +82,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		}
 
 		if (procedure.getDataSection() != null)
-			writeDataFields(procedure.getDataSection());
+			writeDataFields(procedure.getDataSection(), UnitScope.PRIVATE);
 
 		if (procedure.getFileSection() != null) {
 			writeKeyLists(procedure.getFileSection().getKeyLists());
@@ -92,7 +92,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		if (procedure.getEntry() != null && procedure.hasRoutines()) {
 			for (QEntryParameter<?> entryParameter : procedure.getEntry().getParameters()) {
-				writePublicField((QDataTerm<?>) entryParameter.getDelegate(), false);
+				writeField((QDataTerm<?>) entryParameter.getDelegate(), false, UnitScope.PRIVATE);
 			}
 		}
 

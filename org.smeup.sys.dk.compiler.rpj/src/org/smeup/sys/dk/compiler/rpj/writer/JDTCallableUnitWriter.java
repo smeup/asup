@@ -192,7 +192,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	}
 
-	public void writeDataFields(QDataSection dataSection) {
+	public void writeDataFields(QDataSection dataSection, UnitScope scope) {
 
 		// fields
 		for (QDataTerm<?> dataTerm : dataSection.getDatas()) {
@@ -202,7 +202,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			dataTerm = getCompilationUnit().getDataTerm(dataTerm.getName(), false);
 
-			writePublicField(dataTerm, false);
+			writeField(dataTerm, false, scope);
 		}
 
 	}
@@ -630,7 +630,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
 		boolean static_ = false;
-		UnitScope scope = UnitScope.PROTECTED;
+		UnitScope scope = UnitScope.PRIVATE;
 
 		switch (getCompilationSetup().getProcedureType()) {
 		case INNER:

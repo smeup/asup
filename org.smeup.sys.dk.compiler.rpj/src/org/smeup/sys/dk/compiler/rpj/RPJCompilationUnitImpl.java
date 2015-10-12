@@ -743,7 +743,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			return null;
 
 		// reserved keywords
-		if (reservedKeywords.contains(name))
+		if (reservedKeywords.contains(name.toUpperCase()))
 			name = name.trim()+"_";
 
 		StringBuffer nameBuffer = new StringBuffer();

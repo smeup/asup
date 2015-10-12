@@ -92,7 +92,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		}
 
 		if (program.getDataSection() != null)
-			writeDataFields(program.getDataSection());
+			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
 		
 		if (program.getFileSection() != null) {
 			writeKeyLists(program.getFileSection().getKeyLists());

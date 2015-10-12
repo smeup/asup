@@ -125,7 +125,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writePublicField(QDataTerm<?> dataTerm, boolean nullInitialization) {
+	public void writeField(QDataTerm<?> dataTerm, boolean nullInitialization, UnitScope scope) {
 
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
@@ -170,8 +170,21 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			}
 
 		}
+		
+		switch (scope) {
+		case FRIENDLY:
+			break;
+		case PRIVATE:
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
+			break;
+		case PROTECTED:
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+			break;
+		case PUBLIC:
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			break;
+		}
 
-		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 		Type type = getJavaType(dataTerm);
 		field.setType(type);

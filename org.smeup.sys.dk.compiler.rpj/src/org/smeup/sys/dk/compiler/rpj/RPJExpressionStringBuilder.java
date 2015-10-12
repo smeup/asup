@@ -22,6 +22,7 @@ import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
@@ -271,5 +272,15 @@ public class RPJExpressionStringBuilder extends ExpressionVisitorImpl {
 			}
 
 		return false;
+	}
+
+	public void visit(QPredicateExpression predicateExpression) {
+		
+		if (predicateExpression instanceof QRelationalExpression) 
+			visit((QRelationalExpression)predicateExpression);
+		else if(predicateExpression instanceof QLogicalExpression) 
+			visit((QLogicalExpression)predicateExpression);		
+		else if(predicateExpression instanceof QBooleanExpression)
+			visit((QBooleanExpression)predicateExpression);
 	}
 }

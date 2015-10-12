@@ -43,7 +43,7 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {
 			if(fileFormat.getName().equals(displayFile.getName()))
 				continue;
-			writePublicField(fileFormat, false);			
+			writeField(fileFormat, false, UnitScope.PUBLIC);			
 		}
 		// Distinct element
 		List<QDataTerm<?>> elementsField = new ArrayList<QDataTerm<?>>();
@@ -58,7 +58,7 @@ public class JDTDisplayFileWriter extends JDTNamedNodeWriter {
 				}
 		}
 		for (QDataTerm<?> element : elementsField)
-			writePublicField(element, false);
+			writeField(element, false, UnitScope.PUBLIC);
 		
 		// Formats
 		for (QDisplayFileFormat fileFormat : displayFile.getDisplayFormats()) {

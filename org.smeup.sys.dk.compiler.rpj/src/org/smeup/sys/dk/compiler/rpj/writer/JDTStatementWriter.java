@@ -48,6 +48,7 @@ import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -262,7 +263,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(statement.getAssignment());
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isRightAdjust());
-		
+
 		if (statement.getRoundingMode() != null) {
 			statement.toString();
 			// TODO verificare se corretto qui
@@ -496,16 +497,20 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QMethodExec statement) {
 
 		Block block = blocks.peek();
-		
+
 		if (statement.getObject() != null) {
 
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
 			methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(statement.getMethod())));
 
-			QNamedNode namedNode = compilationUnit.getNamedNode(statement.getObject(), true);
+			QTermExpression nameExpression = expressionParser.parseTerm(statement.getObject());
 
+			QNamedNode namedNode = compilationUnit.getNamedNode(nameExpression.getValue(), true);
+
+			if (namedNode == null)
+				methodInvocation.setExpression(buildExpression(ast, nameExpression, QBufferedData.class));
 			// display and print
-			if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
+			else if ((namedNode != null && (namedNode.getParent() instanceof QDisplayTerm || namedNode.getParent() instanceof QPrintTerm))) {
 
 				methodInvocation.setExpression(ast.newName(compilationUnit.getQualifiedName((QNamedNode) namedNode.getParent())));
 
@@ -516,8 +521,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 				methodInvocation.arguments().add(typeLiteral);
 
-			} else
-				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseExpression(statement.getObject()), null));
+			} else {
+				methodInvocation.setExpression(buildExpression(ast, nameExpression, null));
+			}
 
 			if (statement.getParameters() != null)
 				for (String parameter : statement.getParameters()) {
@@ -540,7 +546,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		// Annotation
 		if (statement.getFacet(QAnnotationTest.class) != null) {
 			QAnnotationTest annotationTest = statement.getFacet(QAnnotationTest.class);
-			
+
 			writeAssertion(annotationTest, statement.toString());
 		}
 
@@ -836,13 +842,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		int p = 0;
 		switch (assignmentExpression.getOperator()) {
 		case ASSIGN:
-			if(direction)
+			if (direction)
 				methodInvocation.setName(ast.newSimpleName("evalr"));
 			else
 				methodInvocation.setName(ast.newSimpleName("eval"));
 			break;
 		case DIVIDE_ASSIGN:
-			if(direction)
+			if (direction)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbh");
 
 			methodInvocation.setName(ast.newSimpleName("divide"));
@@ -850,7 +856,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// p++;
 			break;
 		case MINUS_ASSIGN:
-			if(direction)
+			if (direction)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhA");
 
 			methodInvocation.setName(ast.newSimpleName("minus"));
@@ -858,7 +864,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// p++;
 			break;
 		case PLUS_ASSIGN:
-			if(direction)
+			if (direction)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhB");
 
 			methodInvocation.setName(ast.newSimpleName("plus"));
@@ -866,7 +872,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// p++;
 			break;
 		case TIMES_ASSIGN:
-			if(direction)
+			if (direction)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhC");
 
 			methodInvocation.setName(ast.newSimpleName("mult"));
@@ -874,7 +880,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			// p++;
 			break;
 		case POWER_ASSIGN:
-			if(direction)
+			if (direction)
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: vbjhgso4873y6tisbhD");
 
 			methodInvocation.setName(ast.newSimpleName("power"));
@@ -916,66 +922,66 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		return false;
 	}
-	
+
 	public void writeAssertion(QAnnotationTest qAnnotationTest, String message) {
 
 		Block block = getBlocks().peek();
-		
+
 		QPredicateExpression expression = expressionParser.parsePredicate(qAnnotationTest.getExpression());
 		QRelationalExpression relationalExpression = null;
 		if (expression instanceof QRelationalExpression) {
 			relationalExpression = (QRelationalExpression) expression;
-		} else 
+		} else
 			return;
 
 		Expression leftExpression = buildExpression(ast, relationalExpression.getLeftOperand(), null);
 
 		String messageNormalized = "";
-		if(qAnnotationTest.getMessage()==null || qAnnotationTest.getMessage().isEmpty()){
-			if(message.isEmpty()){
+		if (qAnnotationTest.getMessage() == null || qAnnotationTest.getMessage().isEmpty()) {
+			if (message.isEmpty()) {
 				messageNormalized = "Init " + leftExpression;
-			}else{
+			} else {
 				messageNormalized = normalizeMessage(message);
 			}
-		}else{
+		} else {
 			messageNormalized = qAnnotationTest.getMessage();
 		}
-		
-		
-//		QAtomicTermExpression atomicLeftExpr = null;
-		writeAssertionTrue(block, messageNormalized,buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
-/*
-		if(relationalExpression.getLeftOperand() instanceof QAtomicTermExpression){
-			atomicLeftExpr = (QAtomicTermExpression) relationalExpression.getLeftOperand();
-			if(compilationUnit.getDataTerm(atomicLeftExpr.getValue(), true) != null)
-				writeAssertionTrue(block, messageNormalized,buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
-			else
-				writeAssertionEquals(block, messageNormalized, leftExpression, rightExpression, relationalExpression.getOperator());
-		}else{
-			writeAssertionEquals(block, messageNormalized, leftExpression, rightExpression, relationalExpression.getOperator());
-		}
 
- */
+		// QAtomicTermExpression atomicLeftExpr = null;
+		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
+		/*
+		 * if(relationalExpression.getLeftOperand() instanceof
+		 * QAtomicTermExpression){ atomicLeftExpr = (QAtomicTermExpression)
+		 * relationalExpression.getLeftOperand();
+		 * if(compilationUnit.getDataTerm(atomicLeftExpr.getValue(), true) !=
+		 * null) writeAssertionTrue(block,
+		 * messageNormalized,buildExpression(ast,
+		 * expressionParser.parseExpression(qAnnotationTest.getExpression()),
+		 * null)); else writeAssertionEquals(block, messageNormalized,
+		 * leftExpression, rightExpression, relationalExpression.getOperator());
+		 * }else{ writeAssertionEquals(block, messageNormalized, leftExpression,
+		 * rightExpression, relationalExpression.getOperator()); }
+		 */
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	private void writeAssertionTrue(Block target, String message, Expression expression){
+	private void writeAssertionTrue(Block target, String message, Expression expression) {
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 		methodInvocation.setExpression(ast.newSimpleName("testAsserter"));
 		methodInvocation.setName(ast.newSimpleName("assertTrue"));
-		
+
 		StringLiteral literal = ast.newStringLiteral();
 		literal.setLiteralValue(message);
 
 		methodInvocation.arguments().add(literal);
 		methodInvocation.arguments().add(expression);
-		
+
 		ExpressionStatement assertStatement = ast.newExpressionStatement(methodInvocation);
 		target.statements().add(assertStatement);
-}
-	
+	}
+
 	@SuppressWarnings({ "unchecked", "unused" })
-	private void writeAssertionEquals(Block target, String message, Expression leftExpression, Expression rightExpression, RelationalOperator operator){
+	private void writeAssertionEquals(Block target, String message, Expression leftExpression, Expression rightExpression, RelationalOperator operator) {
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 		methodInvocation.setExpression(ast.newSimpleName("testAsserter"));
@@ -994,23 +1000,23 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			break;
 		case NOT_EQUAL:
 			break;
-	}
-		
+		}
+
 		StringLiteral literal = ast.newStringLiteral();
 		literal.setLiteralValue(message);
 
 		methodInvocation.arguments().add(literal);
 		methodInvocation.arguments().add(leftExpression);
 		methodInvocation.arguments().add(rightExpression);
-		
+
 		ExpressionStatement assertStatement = ast.newExpressionStatement(methodInvocation);
 		target.statements().add(assertStatement);
 	}
 
 	private String normalizeMessage(String message) {
 		String newMessage = "";
-		int pos =message.indexOf("("); 
-		if(pos == -1){
+		int pos = message.indexOf("(");
+		if (pos == -1) {
 			return message;
 		}
 		newMessage = message.substring(pos);

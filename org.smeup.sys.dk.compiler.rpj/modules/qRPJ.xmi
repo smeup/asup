@@ -1168,7 +1168,7 @@
     <prototypes
         name="%dec">
       <definition
-          xsi:type="il-data-def:DecimalDef"/>
+          xsi:type="il-data-def:NumericDef"/>
       <entry>
         <parameters>
           <delegate

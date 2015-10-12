@@ -78,7 +78,7 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 
 		// fields
 		for (QDataTerm<?> element : elements)
-			writePublicField(element, false);
+			writeField(element, false, UnitScope.PUBLIC);
 
 		// elements
 		for (QDataTerm<?> element : elements)

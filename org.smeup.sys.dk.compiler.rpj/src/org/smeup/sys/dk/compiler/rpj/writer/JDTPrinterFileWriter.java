@@ -43,7 +43,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {
 			if(printerFileFormat.getName().equals(printerFile.getName()))
 				continue;
-			writePublicField(printerFileFormat, false);
+			writeField(printerFileFormat, false, UnitScope.PUBLIC);
 		}
 
 		// Distinct element
@@ -59,7 +59,7 @@ public class JDTPrinterFileWriter extends JDTNamedNodeWriter {
 				}
 		}
 		for (QDataTerm<?> element : elementsField)
-			writePublicField(element, false);
+			writeField(element, false, UnitScope.PUBLIC);
 		
 		// Formats
 		for (QPrinterFileFormat printerFileFormat : printerFile.getPrinterFormats()) {

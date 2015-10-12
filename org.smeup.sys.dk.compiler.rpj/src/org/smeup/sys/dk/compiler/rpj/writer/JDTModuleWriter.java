@@ -75,7 +75,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		}
 
 		if (module.getDataSection() != null)
-			writeDataFields(module.getDataSection());
+			writeDataFields(module.getDataSection(), UnitScope.PUBLIC);
 
 		if (module.getFileSection() != null) {
 			writeKeyLists(module.getFileSection().getKeyLists());

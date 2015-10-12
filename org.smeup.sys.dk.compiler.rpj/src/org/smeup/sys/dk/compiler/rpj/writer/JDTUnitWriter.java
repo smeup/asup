@@ -70,7 +70,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		writeAnnotation(field, Inject.class);
-		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 
 		if(getCompilationUnit().getNode() instanceof QProcedure) {
 			field.setType(getAST().newSimpleType(getAST().newName(RPJProcedureSupport.class.getSimpleName())));
@@ -92,7 +92,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 			writeAnnotation(field, Inject.class);
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 			field.setType(getAST().newSimpleType(getAST().newName(RPJCommandSupport.class.getSimpleName())));
 			variable.setName(getAST().newSimpleName("qCMD"));
 			getTarget().bodyDeclarations().add(field);
@@ -110,7 +110,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 			writeAnnotation(field, Inject.class);
 			// writeAnnotation(field, Named.class, "value", "*SQL");
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 			field.setType(getAST().newSimpleType(getAST().newName(RPJDatabaseSupport.class.getSimpleName())));
 			variable.setName(getAST().newSimpleName("qSQL"));
 			getTarget().bodyDeclarations().add(field);

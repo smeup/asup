@@ -746,8 +746,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				methodExec.accept(statementWriter);
 				if (!block.statements().isEmpty()) {
 					String content = block.statements().get(0).toString().trim();
-					// this.buffer.append(strings.removeLastChar(content));
-					writeValue(block.statements().get(0).getClass(), target, strings.removeLastChar(content));
+					this.buffer.append(strings.removeLastChar(content));
+//					writeValue(QBufferedData.class, target, strings.removeLastChar(content));
 				}
 
 				statementWriter.getBlocks().pop();
