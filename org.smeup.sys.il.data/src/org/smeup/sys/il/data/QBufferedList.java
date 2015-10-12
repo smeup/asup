@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
-import java.lang.String;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -142,6 +140,22 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	 * @generated
 	 */
 	void movea(QArray<?> value, int sourceIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, QNumeric sourceIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model sourceIndexRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, QNumeric sourceIndex, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->

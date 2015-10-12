@@ -7,8 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
-import java.lang.String;
 import java.util.Date;
 
 /**

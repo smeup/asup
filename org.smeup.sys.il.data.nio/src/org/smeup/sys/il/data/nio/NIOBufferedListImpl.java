@@ -346,22 +346,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QArray<?> value, boolean clear) {
-
-		if (getSize() != value.getSize())
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), false, (byte) 32);
-		else {
-
-			int i = 1;
-			for (QBufferedData elementTarget : this) {
-
-				if (value.capacity() >= i)
-					elementTarget.eval(value.get(i));
-				else if (clear)
-					elementTarget.clear();
-				i++;
-			}
-		}
-
+		movea(1, value, 1, clear);
 	}
 
 	@Override
@@ -411,24 +396,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
-	public void movea(int targetIndex, QArray<?> value, boolean clear) {
-		if (clear)
-			this.clear();
-
-		if (getSize() != value.getSize()) {
-			int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
-			NIOBufferHelper.movel(getBuffer(), position, value.getSize(), value.asBytes(), false, (byte) 32);
-		} else {
-			int idx = 1;
-			for (int i = targetIndex; i <= this.capacity(); i++) {
-				QBufferedData element = this.get(i);
-				element.movel(value.get(idx), true);
-				idx++;
-			}
-		}
-	}
-
-	@Override
 	public void movea(int targetIndex, QBufferedData value) {
 		movea(targetIndex, value, false);
 	}
@@ -456,37 +423,33 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex) {
+		movea(value, sourceIndex.i());
+	}
+
+	@Override
+	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
+		movea(value, sourceIndex.i(), clear);		
+	}
+
+	@Override
 	public void movea(QArray<?> value, int sourceIndex) {
 		movea(value, sourceIndex, false);
 	}
 
 	@Override
 	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
-		int idx = sourceIndex;
-		if (clear)
-			this.clear();
-
-		if (getSize() != value.getSize()) {
-			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
-			// TODO è corretto splittare i bytes???
-			try {
-				NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.s().substring(positionSource).getBytes(getEncoding()), false, (byte) 32);
-			} catch (UnsupportedEncodingException e) {
-				NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.s().substring(positionSource).getBytes(), false, (byte) 32);
-			}
-		} else {
-			for (QBufferedData element : this) {
-				if (idx > value.capacity())
-					break;
-				element.movel(value.get(idx), true);
-				idx++;
-			}
-		}
+		movea(1, value, sourceIndex, clear);
 	}
 
 	@Override
 	public void movea(int targetIndex, QArray<?> value, int sourceIndex) {
 		movea(targetIndex, value, sourceIndex, false);
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, boolean clear) {
+		movea(targetIndex, value, 1, false);
 	}
 
 	@Override
@@ -510,6 +473,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 				element.movel(value.get(idx), true);
 				idx++;
 			}
-		}
+		}		
 	}
 }
