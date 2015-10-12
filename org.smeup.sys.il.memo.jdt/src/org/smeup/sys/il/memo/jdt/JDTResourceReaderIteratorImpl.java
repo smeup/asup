@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.il.memo.jdt;
 
-import java.util.Stack;
+import java.util.Queue;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
@@ -21,17 +21,17 @@ import org.smeup.sys.il.memo.ResourceEventType;
 
 public class JDTResourceReaderIteratorImpl<T extends QObjectNameable> implements QObjectIterator<T> {
 
-	private Stack<QResourceReader<T>> readers;
+	private Queue<QResourceReader<T>> readers;
 	private QObjectIterator<T> currentIterator;
 	private String namePrefix;
 	private T nextObject = null;
 	private QResourceEvent<T> resourceEvent;
 
-	public JDTResourceReaderIteratorImpl(Stack<QResourceReader<T>> readers, String namePrefix, QResourceEvent<T> resourceEvent) {
+	public JDTResourceReaderIteratorImpl(Queue<QResourceReader<T>> readers, String namePrefix, QResourceEvent<T> resourceEvent) {
 		this.readers = readers;
 		this.namePrefix = namePrefix;
 		this.resourceEvent = resourceEvent;
-		this.currentIterator = readers.pop().find(namePrefix);
+		this.currentIterator = readers.poll().find(namePrefix);
 		doNext();
 	}
 
@@ -71,8 +71,8 @@ public class JDTResourceReaderIteratorImpl<T extends QObjectNameable> implements
 			return;
 		}
 
-		while (!readers.empty()) {
-			currentIterator = readers.pop().find(namePrefix);
+		while (readers.peek() != null) {
+			currentIterator = readers.poll().find(namePrefix);
 			while (currentIterator.hasNext()) {
 				nextObject = currentIterator.next();
 				return;

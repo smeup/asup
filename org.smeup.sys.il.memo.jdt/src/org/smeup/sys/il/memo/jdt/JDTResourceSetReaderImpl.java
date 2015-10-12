@@ -12,8 +12,9 @@
 package org.smeup.sys.il.memo.jdt;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
+import java.util.Queue;
 
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
@@ -84,7 +85,7 @@ public class JDTResourceSetReaderImpl<T extends QObjectNameable> extends Resourc
 	@Override
 	public QObjectIterator<T> find(String resource, String nameFilter) {
 
-		Stack<QResourceReader<T>> readers = new Stack<QResourceReader<T>>();
+		Queue<QResourceReader<T>> readers = new LinkedList<QResourceReader<T>>();
 		for (QResourceReader<T> resourceReader : resourceSet) {
 			if (resource != null && !resourceReader.getName().equals(resource))
 				continue;

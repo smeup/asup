@@ -11,10 +11,6 @@
  */
 package org.smeup.sys.il.memo.cdo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
@@ -127,7 +123,11 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		case LIBRARY_LIST:
 			String curLib = contextDescription.getCurrentLibrary();
 			resource.getResources().add(curLib);
-			resource.getResources().addAll(filter(contextDescription.getLibraryPath(), curLib));
+			for (String libraryName : contextDescription.getLibraryPath()) {
+				if (!libraryName.equals(curLib)) {
+					resource.getResources().add(libraryName);
+				}
+			}
 			break;
 			
 		case CURRENT_LIBRARY:
@@ -138,15 +138,6 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			throw new IntegratedLanguageMemoryRuntimeException("Unsupported scope " + scope);
 		}
 
-	}
-
-	private Collection<? extends String> filter(List<String> list, String element) {
-		if (list.contains(element)) {
-			ArrayList<String> result = new ArrayList<String>(list);
-			result.remove(element);
-			return result;
-		}
-		return list;
 	}
 
 	private CDONet4jSession getSession(QContextProvider contextProvider) {
