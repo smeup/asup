@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.smeup.sys.os.type.dtaq.test
+Bundle-SymbolicName: org.smeup.sys.os.dtaq.test
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

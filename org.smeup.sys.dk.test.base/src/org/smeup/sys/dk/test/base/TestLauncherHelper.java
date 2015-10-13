@@ -133,6 +133,4 @@ public class TestLauncherHelper {
 	public static <T> boolean isInstanceOf(Class<T> clazz, Class<T> targetClass) {
 	    return clazz.isInstance(targetClass);
 	}
-	
-
 }
