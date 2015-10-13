@@ -47,7 +47,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private QDataFactory dataFactory;
 	private QDataContext dataContext;
-	
+
 	private Map<String, QDataTerm<?>> dataTerms;
 
 	private Map<String, QData> datas;
@@ -62,12 +62,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.datas = new HashMap<String, QData>();
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.useDefault = useDefault;
-		
+
 		this.dataContext = new QDataContext() {
 
 			private QIndicator found = dataFactory.createIndicator(true);
 			private QIndicator endOfData = dataFactory.createIndicator(true);
-			
+
 			@Override
 			public QIndicator found() {
 				return this.found;
@@ -96,99 +96,26 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		dataTerm.setName(name);
 
 		dataTerm.setDefinition(getDataFactory().createDataDef(type, annotations));
-		 		
+
 		for (Annotation annotation : annotations) {
-			if(annotation instanceof DataDef) {
-				DataDef dataDef = (DataDef) annotation;		
-				
+			if (annotation instanceof DataDef) {
+				DataDef dataDef = (DataDef) annotation;
+
 				QDefault _default = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
-				if(!dataDef.value().isEmpty())
+				if (!dataDef.value().isEmpty())
 					_default.setValue(dataDef.value());
 				_default.getValues().addAll(Arrays.asList(dataDef.values()));
-				
-				if(!_default.isEmpty())
-					dataTerm.setDefault(_default);			
+
+				if (!_default.isEmpty())
+					dataTerm.setDefault(_default);
 			}
 		}
 
-		this.dataTerms.put(name, dataTerm);
-		
+		QDataTerm<?> oldTerm = this.dataTerms.put(name, dataTerm);
+		if (oldTerm != null)
+			System.err.println("Unexpected condition: sdhgbrf87stvbr86");
+
 		return dataTerm;
-	}
-
-	@Override
-	public boolean isDefault(String key) {
-
-		QDataTerm<?> dataTerm = dataTerms.get(key);
-
-		return isDefault(dataTerm);
-	}
-
-	@Override
-	public boolean isDefault(QDataTerm<?> dataTerm) {
-		boolean result = false;
-
-		if (dataTerm == null)
-			return false;
-
-		QData data = getOrCreateData(dataTerm); 		
-		data.clear();
-
-		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-		dataTerm.accept(resetter);
-
-		try {
-
-			String s1 = getData(dataTerm).toString();
-			String s2 = data.toString();
-
-			result = s1.equals(s2);
-			if (result)
-				"".toString();
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			result = false;
-		}
-		return result;
-	}
-
-	@Override
-	public boolean isSet(String key) {
-
-		QDataTerm<?> dataTerm = dataTerms.get(key);
-
-		return isSet(dataTerm);
-	}
-
-	@Override
-	public boolean isSet(QDataTerm<?> dataTerm) {
-
-		boolean result = false;
-
-		if (dataTerm == null)
-			return false;
-
-		QData data = getOrCreateData(dataTerm);
-		data.clear();
-
-		if (useDefault) {
-			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-			dataTerm.accept(resetter);
-		}
-
-		try {
-
-			String s1 = getData(dataTerm).toString();
-			String s2 = data.toString();
-
-			result = !s1.equals(s2);
-			if (result)
-				"".toString();
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			result = false;
-		}
-		return result;
 	}
 
 	@Override
@@ -207,9 +134,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			}
 
 			// root data
-			if (data == null)
+			if (data == null) {
+				// data = getOrCreateData(qualifier);
 				data = getOrCreateData(qualifier);
-			else {
+				if (data == null) {
+					System.err.println("Unexpected condition: c59tb45b94t4er9");
+					break;
+				}
+			} else {
 
 				if (!(data instanceof QStruct))
 					return null;
@@ -258,7 +190,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public void clearData() {
 
 		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
-			QData data = getOrCreateData(entry.getKey(), entry.getValue()); 
+			QData data = getOrCreateData(entry.getKey(), entry.getValue());
 			data.clear();
 		}
 	}
@@ -266,8 +198,16 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public void resetData() {
 
-		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet())
+		for (Entry<String, QDataTerm<?>> entry : dataTerms.entrySet()) {
+			if (entry.getValue().getParent() instanceof QDataTerm<?>) {
+				QDataTerm<?> parentTerm = (QDataTerm<?>) entry.getValue().getParent();
+
+				// exclude element of compound data
+				if (parentTerm.getDataTermType().isCompound())
+					continue;
+			}
 			resetData(entry.getKey(), entry.getValue());
+		}
 	}
 
 	@Override
@@ -313,7 +253,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
 		dataTerm.accept(resetter);
-		
+
 		return data;
 	}
 
@@ -334,7 +274,79 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return dataContext;
 	}
 
-	
+	@Override
+	public boolean isDefault(String key) {
+
+		QDataTerm<?> dataTerm = dataTerms.get(key);
+
+		return isDefault(dataTerm);
+	}
+
+	@Override
+	public boolean isDefault(QDataTerm<?> dataTerm) {
+		boolean result = false;
+
+		if (dataTerm == null)
+			return false;
+
+		QData data = getOrCreateData(dataTerm);
+		data.clear();
+
+		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+		dataTerm.accept(resetter);
+
+		try {
+
+			String s1 = getData(dataTerm).toString();
+			String s2 = data.toString();
+
+			result = s1.equals(s2);
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean isSet(String key) {
+
+		QDataTerm<?> dataTerm = dataTerms.get(key);
+
+		return isSet(dataTerm);
+	}
+
+	@Override
+	public boolean isSet(QDataTerm<?> dataTerm) {
+
+		boolean result = false;
+
+		if (dataTerm == null)
+			return false;
+
+		QData data = getOrCreateData(dataTerm);
+		data.clear();
+
+		if (useDefault) {
+			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+			dataTerm.accept(resetter);
+		}
+
+		try {
+
+			String s1 = getData(dataTerm).toString();
+			String s2 = data.toString();
+
+			result = !s1.equals(s2);
+			if (result)
+				"".toString();
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
+
 	private QData getOrCreateData(QDataTerm<?> dataTerm) {
 		return getOrCreateData(getKey(dataTerm), dataTerm);
 	}
@@ -349,22 +361,21 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		return data;
 	}
-	
+
 	private QData getOrCreateData(String key, QDataTerm<?> dataTerm) {
 
 		QData data = datas.get(key);
 		if (data == null) {
-			if(dataTerm.getBased() != null) {
+			if (dataTerm.getBased() != null) {
 				data = dataFactory.createData(dataTerm, false);
-				
+
 				QData rawData = getData(dataTerm.getBased());
-				if(rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData)) 
-					throw new IntegratedLanguageDataRuntimeException("Invalid based data: "+dataTerm);
-				
+				if (rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData))
+					throw new IntegratedLanguageDataRuntimeException("Invalid based data: " + dataTerm);
+
 				QBufferedData rawBufferedData = (QBufferedData) rawData;
-				rawBufferedData.assign((QBufferedData)data);
-			}
-			else {
+				rawBufferedData.assign((QBufferedData) data);
+			} else {
 				data = dataFactory.createData(dataTerm, true);
 			}
 			datas.put(key, data);

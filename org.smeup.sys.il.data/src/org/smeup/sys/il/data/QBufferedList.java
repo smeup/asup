@@ -7,6 +7,9 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
+import java.lang.String;
+
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

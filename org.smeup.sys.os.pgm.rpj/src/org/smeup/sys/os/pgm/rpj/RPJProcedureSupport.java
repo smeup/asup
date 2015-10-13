@@ -13,7 +13,9 @@ package org.smeup.sys.os.pgm.rpj;
 
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Module;
 
+@Module(name="*PRO")
 public class RPJProcedureSupport {
 	
 	@DataDef(length = 3)
