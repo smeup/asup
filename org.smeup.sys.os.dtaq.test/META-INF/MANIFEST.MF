@@ -10,4 +10,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.smeup.sys.os.dtaq,
  org.smeup.sys.dk.test.e4,
  org.smeup.sys.os.cmd,
- org.smeup.sys.os.lib
+ org.smeup.sys.os.lib,
+ org.smeup.sys.dk.test.base
+Export-Package: org.smeup.sys.os.dtaq.test,
+ org.smeup.sys.os.dtaq.test.runner
