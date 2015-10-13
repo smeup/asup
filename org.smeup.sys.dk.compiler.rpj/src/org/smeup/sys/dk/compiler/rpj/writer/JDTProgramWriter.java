@@ -154,7 +154,10 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 				QModule flowModule = getCompilationUnit().getModule(module, true);
 				if (flowModule == null)
 					throw new IOException("Invalid module: " + module);
-
+				
+				if(flowModule.getFlowSection() == null) 
+					continue;
+				
 				QParameterList parameterList = null;
 				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
 					if (pl.getName().equals("*ENTRY")) {

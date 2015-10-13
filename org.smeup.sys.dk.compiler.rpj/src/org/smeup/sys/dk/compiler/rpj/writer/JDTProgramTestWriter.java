@@ -191,6 +191,9 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 				if (flowModule == null)
 					throw new IOException("Invalid module: " + module);
 
+				if(flowModule.getFlowSection() == null) 
+					continue;
+				
 				QParameterList parameterList = null;
 				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
 					if (pl.getName().equals("*ENTRY")) {
