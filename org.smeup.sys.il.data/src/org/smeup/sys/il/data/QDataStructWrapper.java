@@ -807,4 +807,32 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public QNumeric qScan(String source, Number start, QIndicator found) {
 		return delegate.qScan(source, start, found);
 	}
+
+	public boolean ne(byte value) {
+		return delegate.ne(value);
+	}
+
+	public boolean ge(byte value) {
+		return delegate.ge(value);
+	}
+
+	public boolean gt(byte value) {
+		return delegate.gt(value);
+	}
+
+	public boolean le(byte value) {
+		return delegate.le(value);
+	}
+
+	public boolean lt(byte value) {
+		return delegate.lt(value);
+	}
+
+	public void movea(QArray<?> value, int startIndex, boolean clear) {
+		delegate.movea(value, startIndex, clear);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+		delegate.movea(value, startIndex, clear);
+	}
 }

@@ -269,14 +269,32 @@
       <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
     <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eOperations name="getSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
@@ -423,13 +441,8 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
-      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -440,6 +453,42 @@
       </eParameters>
       <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="sourceIndex" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eGenericSuperTypes eClassifier="#//List">
       <eTypeArguments eTypeParameter="#//BufferedList/D"/>
@@ -1525,6 +1574,24 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="startIndex" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">

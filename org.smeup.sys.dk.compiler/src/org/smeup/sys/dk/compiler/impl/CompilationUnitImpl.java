@@ -476,6 +476,17 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String normalizeModuleName(String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QRoutine getRoutine(String name, boolean deep) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

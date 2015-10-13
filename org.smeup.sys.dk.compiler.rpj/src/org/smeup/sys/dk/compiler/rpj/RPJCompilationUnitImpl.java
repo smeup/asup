@@ -140,43 +140,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		this.cachedTerms = new HashMap<String, QDataTerm<?>>();
 		this.cachedPrototypes = new HashMap<String, QPrototype>();
-
-		/*
-		 * for (QCompilationUnit compilationUnit : this.childUnits)
-		 * refreshUnit(compilationUnit);
-		 * 
-		 * if (this.parentUnit != null) refreshUnit(this.parentUnit);
-		 */
-	}
-
-	@SuppressWarnings("unused")
-	private void refreshUnit(QCompilationUnit compilationUnit) {
-
-		if (!(compilationUnit.getNode() instanceof QCallableUnit))
-			return;
-
-		QCallableUnit callableUnit = (QCallableUnit) compilationUnit.getNode();
-
-		if (callableUnit.getDataSection() == null)
-			return;
-
-		for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas()) {
-			if (!dataTerm.getName().startsWith(callableUnit.getName()))
-				continue;
-
-			cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
-
-			if (dataTerm.getDataTermType().isCompound()) {
-				@SuppressWarnings("unchecked")
-				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) dataTerm;
-
-				if (compoundDataTerm.getDefinition().isQualified())
-					continue;
-
-				for (QDataTerm<?> element : compoundDataTerm.getDefinition().getElements())
-					cachedTerms.put(normalizeTermName(element.getName()), element);
-			}
-		}
 	}
 
 	@Override
@@ -245,7 +208,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm == null && callableUnit.getDataSection() != null)
 			dataTerm = findData(callableUnit.getDataSection().getDatas(), name, null, 0);
 
-		if (getNode() instanceof QProcedure) {
+		if (dataTerm == null && getNode() instanceof QProcedure) {
 			QProcedure qProcedure = (QProcedure) getNode();
 
 			for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
@@ -315,6 +278,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				for (QDataSetTerm dataSetTerm : renamedFiles) {
 					if (dataSetTerm.getFormat() == null)
 						continue;
+
+					if (equalsTermName(dataSetTerm.getFormatName(), name)) {
+						dataTerm = dataSetTerm.getFormat();
+						break;
+					}
 
 					dataTerm = findDataTerm(dataSetTerm.getFormat().getDefinition(), name);
 					if (dataTerm != null)
@@ -446,18 +414,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
-		/*
-		 * List<QDataTerm<?>> atomicDataTerms = new ArrayList<QDataTerm<?>>();
-		 * List<QDataTerm<?>> compoundDataTerms = new ArrayList<QDataTerm<?>>();
-		 * 
-		 * for (QDataTerm<?> child : dataTerms) {
-		 * 
-		 * if(child.getDataTermType().isAtomic()) atomicDataTerms.add(child);
-		 * else compoundDataTerms.add(child);
-		 * 
-		 * continue; }
-		 */
-
 		QDataTerm<?> dataTerm = null;
 
 		for (QDataTerm<?> child : dataTerms) {
@@ -498,6 +454,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					dataTerm = findData(compoundDataDef.getElements(), name, pfx, pos);
 				} else
 					dataTerm = findData(compoundDataDef.getElements(), name, null, 0);
+
+				if (dataTerm == null && equalsTermName(childName, name))
+					dataTerm = child;
 			}
 			// atomic
 			else if (equalsTermName(childName, name))
@@ -690,7 +649,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			order = "PTDMCSFK";
 		// other
 		else
-			order = "MCSFKPDT";
+			// order = "MCSFKPDT";
+			order = "CSFKPDTM";
 
 		QNamedNode namedNode = getNamedNode(name, deep, order);
 
@@ -802,6 +762,14 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
+	public String normalizeModuleName(String name) {
+		String moduleName = normalizeTermName(name);
+		moduleName = Character.toString(moduleName.charAt(0)) + Character.toUpperCase(moduleName.charAt(1)) + moduleName.substring(2);
+
+		return moduleName;
+	}
+
+	@Override
 	public boolean equalsTermName(String source, String target) {
 
 		if (source == null)
@@ -902,10 +870,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 				if (eOperation.getEType() == null)
 					continue;
-				
+
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
 				prototype.setName(name);
-				
+
 				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
@@ -953,7 +921,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	@Override
 	public String getQualifiedName(QNamedNode namedNode) {
 
-		String name = normalizeTermName(namedNode.getName());
+		String name = null;
+
+		if (namedNode instanceof QModule)
+			name = normalizeModuleName(namedNode.getName());
+		else
+			name = normalizeTermName(namedNode.getName());
 
 		QNode node = namedNode;
 
@@ -972,7 +945,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					name = "current()." + name;
 				else if (dataTerm instanceof QFileFormat) {
 					name = "get()." + name;
+				} else if (dataTerm.getName() == null || dataTerm.getName().isEmpty()) {
+					continue;
 				}
+			}
+
+			if (node instanceof QDisplayTerm) {
+				name = "get()." + name;
 			}
 
 			if (node instanceof QProgram)
@@ -995,22 +974,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			QNamedNode namedParentNode = (QNamedNode) node;
 
-			// check if procedure redefine owner has internal
-			/*
-			 * if (getNode() instanceof QProcedure) {
-			 * 
-			 * QProcedure procedure = (QProcedure) getNode(); if
-			 * (namedParentNode.equals(procedure.getParent())) {
-			 * 
-			 * if (procedure.getSetupSection() != null) { for (String
-			 * internalModule : procedure.getSetupSection().getModules()) {
-			 * 
-			 * if (equalsTermName(internalModule, namedParentNode.getName()))
-			 * return normalizeTermName(namedParentNode.getName()) + "." + name;
-			 * } } break; } }
-			 */
-
-			name = normalizeTermName(namedParentNode.getName()) + "." + name;
+			if (namedParentNode instanceof QModule)
+				name = normalizeModuleName(namedParentNode.getName()) + "." + name;
+			else
+				name = normalizeTermName(namedParentNode.getName()) + "." + name;
 		}
 
 		return name;

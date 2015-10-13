@@ -10,7 +10,6 @@ package org.smeup.sys.dk.test.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestResult;
-import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.QUnitTestRunner;
 
 /**

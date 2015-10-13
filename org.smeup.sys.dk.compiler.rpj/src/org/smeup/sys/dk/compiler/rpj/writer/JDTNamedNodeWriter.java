@@ -74,6 +74,7 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QProcedure;
+import org.smeup.sys.os.file.QFileFormat;
 
 public class JDTNamedNodeWriter extends JDTNodeWriter {
 
@@ -100,7 +101,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		case PUBLIC:
 			target.modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
 			break;
-		}			
+		}
 
 		if (root == null)
 			getJDTCompilationUnit().types().add(target);
@@ -170,7 +171,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			}
 
 		}
-		
+
 		switch (scope) {
 		case FRIENDLY:
 			break;
@@ -184,7 +185,6 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 			break;
 		}
-
 
 		Type type = getJavaType(dataTerm);
 		field.setType(type);
@@ -215,7 +215,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 	public void writeInnerRecord(String name, QCompoundDataDef<?, QDataTerm<?>> compoundDataDef) throws IOException {
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class, UnitScope.PUBLIC, true);
+		JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(name), QRecordWrapper.class,
+				UnitScope.PUBLIC, true);
 		dataStructureWriter.writeDataStructure(compoundDataDef);
 	}
 
@@ -230,13 +231,15 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), QDataStructWrapper.class, scope, static_);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
+						QDataStructWrapper.class, scope, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
 			} else if (checkFileOverride(compoundDataDef)) {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
-				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass, scope, static_);
+				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass,
+						scope, static_);
 				List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
 				for (QDataTerm<?> element : compoundDataDef.getElements()) {
 					if (element.getFacet(QDerived.class) != null)
@@ -313,6 +316,27 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			normalAnnotation.values().add(memberValuePair);
 
 			enumField.modifiers().add(normalAnnotation);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public void writeInnerEnum(EnumDeclaration target, QFileFormat<?> fileFormat, boolean statik) {
+		AST ast = target.getAST();
+
+		target.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.PUBLIC_KEYWORD));
+
+		if (statik)
+			target.modifiers().add(ast.newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
+
+		// elements
+		int num = 0;
+
+		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
+
+			EnumConstantDeclaration constantDeclaration = ast.newEnumConstantDeclaration();
+			constantDeclaration.setName(ast.newSimpleName(normalizeEnumName(element.getName())));			
+			target.enumConstants().add(num, constantDeclaration);
+			num++;
 		}
 	}
 
@@ -574,7 +598,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		case UNARY_ATOMIC:
 
-			if(dataTerm.isConstant())
+			if (dataTerm.isConstant())
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getJavaClass().getSimpleName()));
 			else
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
@@ -692,6 +716,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		if (isNumeric(s))
 			s = "NUM_" + s.replace(".", "_");
 
+		s = s.replaceAll("§", "Ç");
 		return s;
 	}
 

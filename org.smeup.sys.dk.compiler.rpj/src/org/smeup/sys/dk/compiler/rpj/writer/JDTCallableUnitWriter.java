@@ -169,8 +169,6 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		for (String module : modules) {
 
-			String moduleName = getCompilationUnit().normalizeTermName(module).toUpperCase();
-
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
@@ -183,9 +181,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			else
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 
+			String moduleName = getCompilationUnit().normalizeTypeName(module);
 			field.setType(getAST().newSimpleType(getAST().newName(moduleName)));
 
-			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(module)));
+			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeModuleName(module)));
 
 			getTarget().bodyDeclarations().add(field);
 		}

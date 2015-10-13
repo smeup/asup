@@ -49,6 +49,14 @@ public interface QBufferedData extends QData, QMoveable {
 	void assign(QBufferedData value, int position);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean eq(byte value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
@@ -70,6 +78,22 @@ public interface QBufferedData extends QData, QMoveable {
 	boolean isNull();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean ge(byte value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean gt(byte value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
@@ -82,6 +106,30 @@ public interface QBufferedData extends QData, QMoveable {
 	 * @generated
 	 */
 	int getSize();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean le(byte value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean lt(byte value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean ne(byte value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

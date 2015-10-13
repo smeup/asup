@@ -224,6 +224,14 @@ public interface QCompilationUnit extends QContextProvider {
 	 * @model required="true" nameRequired="true"
 	 * @generated
 	 */
+	String normalizeModuleName(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
 	String normalizeTermName(String name);
 
 	/**

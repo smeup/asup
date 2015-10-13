@@ -406,4 +406,36 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	public QCharacter qSubst(Number start, QNumeric length) {
 		return _delegate.qSubst(start, length);
 	}
+
+	public boolean eq(byte value) {
+		return _delegate.eq(value);
+	}
+
+	public boolean ne(byte value) {
+		return _delegate.ne(value);
+	}
+
+	public boolean ge(byte value) {
+		return _delegate.ge(value);
+	}
+
+	public boolean gt(byte value) {
+		return _delegate.gt(value);
+	}
+
+	public boolean le(byte value) {
+		return _delegate.le(value);
+	}
+
+	public boolean lt(byte value) {
+		return _delegate.lt(value);
+	}
+
+	public void movea(QArray<?> value, int startIndex, boolean clear) {
+		_delegate.movea(value, startIndex, clear);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+		_delegate.movea(value, startIndex, clear);
+	}
 }

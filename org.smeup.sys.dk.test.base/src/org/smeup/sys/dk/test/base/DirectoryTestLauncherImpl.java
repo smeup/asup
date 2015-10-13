@@ -9,7 +9,6 @@ import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
-import org.smeup.sys.dk.test.impl.AssertionResultImpl;
 import org.smeup.sys.dk.test.impl.DevelopmentKitTestFactoryImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 

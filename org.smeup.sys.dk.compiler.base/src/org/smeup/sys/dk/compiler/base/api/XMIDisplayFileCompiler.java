@@ -27,6 +27,8 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -54,7 +56,7 @@ public class XMIDisplayFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Entry
-	public void main(FileRef fileRef) {
+	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) {
 
 		try (QObjectIterator<QFile> files = buildIterator(fileRef);) {
 
@@ -69,9 +71,9 @@ public class XMIDisplayFileCompiler {
 				QDisplayFile displayFile = (QDisplayFile) qFile;
 
 				try {
-					createJavaFile(displayFile, library);
+					createJavaFile(displayFile, library, libraryTo.trimR());
 				} catch (Exception e) {
-					System.err.println(e);
+					e.printStackTrace();
 				}
 			}
 		}
@@ -97,13 +99,17 @@ public class XMIDisplayFileCompiler {
 		return fileIterator;
 	}
 	
-	private void createJavaFile(QDisplayFile file, QLibrary library) throws IOException, OperatingSystemException {
+	private void createJavaFile(QDisplayFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
+
+		if(libraryTo == null || libraryTo.isEmpty())
+			libraryTo = file.getLibrary();
+
 		// create java source
-		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
+		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 

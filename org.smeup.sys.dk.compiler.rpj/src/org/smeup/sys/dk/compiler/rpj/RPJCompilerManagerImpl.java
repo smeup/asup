@@ -140,6 +140,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(file.getName()), file, null, compilationUnits, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
+		// dataFactory
+		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
 		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 

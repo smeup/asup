@@ -75,13 +75,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			ByteBuffer tempBuffer = _buffer;
 			int tempPosition = _position;
 			QDataContext tempDataContext = getDataContext();
-			
+
 			_relative = null;
 			_buffer = null;
 			_position = 0;
-			_dataContext = null;			
+			_dataContext = null;
 			oos.writeObject(this);
-			
+
 			_relative = tempRelative;
 			_buffer = tempBuffer;
 			_position = tempPosition;
@@ -125,27 +125,26 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-
 	public void assign(QBufferedData target, int position) {
 
-		if(position == 0)
+		if (position == 0)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
-		
+
 		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
 
 		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
 
 		// TODO synchronize
-//		if (nioBufferedData._buffer != null)
-//			System.err.println("Unexpected condition: dmn8432m75n031");
+		// if (nioBufferedData._buffer != null)
+		// System.err.println("Unexpected condition: dmn8432m75n031");
 
 		nioBufferedData._relative = this;
 		nioBufferedData._buffer = null;
-		nioBufferedData._position = position - 1;		
+		nioBufferedData._position = position - 1;
 		nioBufferedData._dataContext = getDataContext();
 	}
-	
+
 	@Override
 	public void clear() {
 		NIOBufferHelper.clear(getBuffer(), getPosition(), getSize(), getFiller());
@@ -193,7 +192,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	public Charset getCharset() {
 		return CHARSET;
 	}
-	
+
 	private void writeObject(ObjectOutputStream stream) throws IOException {
 
 		// TODO synchronize
@@ -281,9 +280,17 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
+	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+	}
+
+	@Override
+	public void movea(QArray<?> value, int startIndex, boolean clear) {
+	}
+
+	@Override
 	public void movea(QArray<?> value, boolean clear) {
-//		NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), value.asBytes(), clear, getFiller());
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getLength(), value.asBytes(), clear, getFiller());	}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getLength(), value.asBytes(), clear, getFiller());
+	}
 
 	@Override
 	public void movea(String value) {
@@ -292,7 +299,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movea(String value, boolean clear) {
-		if(clear)
+		if (clear)
 			this.clear();
 		try {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
@@ -581,7 +588,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return character;
 	}
 
-	
 	public int compareBytes(byte[] b1, byte[] b2) {
 
 		if (b1 == null && b2 == null)
@@ -595,9 +601,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		if (b1.length == b2.length) {
 			for (int i = 0; i < b1.length; i++) {
-				if(b1[i] == b2[i])
+				if (b1[i] == b2[i])
 					continue;
-				
+
 				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
 			}
 		} else if (b1.length > b2.length) {
@@ -610,7 +616,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 					return 1;
 				}
 
-				if(b1[i] == b2[i])
+				if (b1[i] == b2[i])
 					continue;
 
 				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
@@ -625,9 +631,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 					return -1;
 				}
 
-				if(b1[i] == b2[i])
+				if (b1[i] == b2[i])
 					continue;
-				
+
 				return toHexString(b1[i]).compareTo(toHexString(b2[i]));
 			}
 		}
@@ -661,5 +667,41 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	protected void _eval(byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
+	}
+
+	@Override
+	public boolean eq(byte value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean ne(byte value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean ge(byte value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean gt(byte value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean le(byte value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean lt(byte value) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

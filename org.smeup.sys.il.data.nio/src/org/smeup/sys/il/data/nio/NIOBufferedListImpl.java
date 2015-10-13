@@ -391,6 +391,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
+	public void movea(QNumeric targetIndex, QBufferedData value) {
+		movea(targetIndex.i(), value);
+	}
+
+	@Override
 	public void movea(int targetIndex, QArray<?> value) {
 		movea(targetIndex, value, false);
 	}
@@ -429,7 +434,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QArray<?> value, QNumeric sourceIndex, boolean clear) {
-		movea(value, sourceIndex.i(), clear);		
+		movea(value, sourceIndex.i(), clear);
 	}
 
 	@Override
@@ -440,6 +445,21 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void movea(QArray<?> value, int sourceIndex, boolean clear) {
 		movea(1, value, sourceIndex, clear);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, int sourceIndex) {
+		movea(targetIndex.i(), value, sourceIndex);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, QNumeric sourceIndex) {
+		movea(targetIndex.i(), value, sourceIndex.i());
+	}
+
+	@Override
+	public void movea(int targetIndex, QArray<?> value, QNumeric sourceIndex) {
+		movea(targetIndex, value, sourceIndex.i());
 	}
 
 	@Override
@@ -473,6 +493,54 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 				element.movel(value.get(idx), true);
 				idx++;
 			}
-		}		
+		}
+	}
+
+	@Override
+	public D[] asArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public D get(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void set(int index, D value) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void set(QNumeric index, D value) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int capacity() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLength() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
