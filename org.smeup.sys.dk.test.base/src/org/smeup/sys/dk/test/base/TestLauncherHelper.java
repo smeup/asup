@@ -75,8 +75,8 @@ public class TestLauncherHelper {
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);	
 		
 		String bundlePath = "/" + bundle.getSymbolicName().replace('.', '/') + resourcePath;
-		
-		for(String resource: bundleWiring.listResources(bundlePath , "*.class", BundleWiring.LISTRESOURCES_RECURSE)) {
+
+		for(String resource: bundleWiring.listResources(bundlePath , "*.class", BundleWiring.LISTRESOURCES_LOCAL)) {
 			Class<?> klass = null;
 			try {
 				String resourceURI = resource.replace(".class", "").replace('/', '.');
