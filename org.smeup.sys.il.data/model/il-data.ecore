@@ -1946,6 +1946,8 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="remainderTarget" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="qInt" eType="#//Numeric"/>
+    <eOperations name="qInth" eType="#//Numeric"/>
     <eOperations name="qMinus" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -2206,6 +2208,8 @@
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
     <eOperations name="out"/>
+    <eOperations name="qInt" eType="#//Numeric"/>
+    <eOperations name="qInth" eType="#//Numeric"/>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>

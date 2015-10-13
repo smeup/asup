@@ -11,7 +11,6 @@ import java.util.List;
 
 public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDelegator {
 
-
 	private static final long serialVersionUID = 1L;
 
 	private QDataStruct delegate;
@@ -760,6 +759,16 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.qScan(argument);
 	}
 
+	@Override
+	public QNumeric qInt() {
+		return delegate.qInt();
+	}
+
+	@Override
+	public QNumeric qInth() {
+		return delegate.qInth();
+	}
+	
 	@Override
 	public QNumeric qLen() {
 		return delegate.qLen();
