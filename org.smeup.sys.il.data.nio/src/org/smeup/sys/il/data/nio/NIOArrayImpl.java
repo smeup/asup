@@ -214,11 +214,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(short value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).plus(value);
-			}
-		}
+		operationPlus(value, roundingMode);
 	}
 
 	@Override
@@ -228,11 +224,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(long value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).plus(value);
-			}
-		}
+		operationPlus(value, roundingMode);
 	}
 
 	@Override
@@ -242,11 +234,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(int value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).plus(value);
-			}
-		}
+		operationPlus(value, roundingMode);
 	}
 
 	@Override
@@ -256,11 +244,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(double value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).plus(value);
-			}
-		}
+		operationPlus(value, roundingMode);
 	}
 
 	@Override
@@ -270,11 +254,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(QNumeric value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).plus(value);
-			}
-		}
+		operationPlus(value.asDouble(), roundingMode);
 	}
 	
 	@Override
@@ -300,11 +280,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(short value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).divide(value);
-			}
-		}
+		operationDivide(value, roundingMode);
 	}
 
 	@Override
@@ -314,11 +290,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(long value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).divide(value);
-			}
-		}
+		operationDivide(value, roundingMode);
 	}
 
 	@Override
@@ -328,11 +300,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(int value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).divide(value);
-			}
-		}
+		operationDivide(value, roundingMode);
 	}
 
 	@Override
@@ -342,11 +310,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(double value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).divide(value);
-			}
-		}
+		operationDivide(value, roundingMode);
 	}
 
 	@Override
@@ -356,11 +320,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(QNumeric value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).divide(value);
-			}
-		}
+		operationDivide(value.asDouble(), roundingMode);
 	}
 
 	@Override
@@ -386,11 +346,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(short value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).minus(value);
-			}
-		}
+		operationMinus(value, roundingMode);
 	}
 
 	@Override
@@ -400,11 +356,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(long value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).minus(value);
-			}
-		}
+		operationMinus(value, roundingMode);
 	}
 
 	@Override
@@ -414,11 +366,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(int value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).minus(value);
-			}
-		}
+		operationMinus(value, roundingMode);
 	}
 
 	@Override
@@ -428,11 +376,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(double value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).minus(value);
-			}
-		}
+		operationMinus(value, roundingMode);
 	}
 
 	@Override
@@ -442,11 +386,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(QNumeric value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).minus(value);
-			}
-		}
+		operationMinus(value.asDouble(), roundingMode);
 	}
 	
 	@Override
@@ -472,11 +412,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(short value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).mult(value);
-			}
-		}
+		operationMult(value, roundingMode);
 	}
 
 	@Override
@@ -486,11 +422,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(long value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).mult(value);
-			}
-		}
+		operationMult(value, roundingMode);
 	}
 
 	@Override
@@ -500,11 +432,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(int value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).mult(value);
-			}
-		}
+		operationMult(value, roundingMode);
 	}
 
 	@Override
@@ -514,11 +442,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(double value, String roundingMode) {
-		if(this.getModel() instanceof QNumeric) {
-			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).mult(value);
-			}
-		}
+		operationMult(value, roundingMode);
 	}
 
 	@Override
@@ -528,9 +452,37 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(QNumeric value, String roundingMode) {
+		operationMult(value.asDouble(), roundingMode);
+	}
+
+	private void operationDivide(Number value, String roundingMode) {
 		if(this.getModel() instanceof QNumeric) {
 			for(int i=1; i<=this.capacity();i++){
-				((QNumeric)this.get(i)).mult(value);
+				((QNumeric)this.get(i)).divide(value.doubleValue());
+			}
+		}
+	}
+
+	private void operationMult(Number value, String roundingMode) {
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).mult(value.doubleValue());
+			}
+		}
+	}
+
+	private void operationMinus(Number value, String roundingMode) {
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).minus(value.doubleValue());
+			}
+		}
+	}
+
+	private void operationPlus(Number value, String roundingMode) {
+		if(this.getModel() instanceof QNumeric) {
+			for(int i=1; i<=this.capacity();i++){
+				((QNumeric)this.get(i)).plus(value.doubleValue());
 			}
 		}
 	}
