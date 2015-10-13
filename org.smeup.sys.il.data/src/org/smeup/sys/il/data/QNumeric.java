@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
+import java.lang.String;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
