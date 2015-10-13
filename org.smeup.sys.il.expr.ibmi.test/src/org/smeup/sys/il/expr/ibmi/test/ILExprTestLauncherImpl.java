@@ -1,4 +1,4 @@
-package org.smeup.sys.os.dtaq.test;
+package org.smeup.sys.il.expr.ibmi.test;
 /**
  *  Copyright (c) 2012, 2015 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
@@ -15,11 +15,12 @@ package org.smeup.sys.os.dtaq.test;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.base.DirectoryTestLauncherImpl;
 
+
 /*
  * Extends DirectoryTestLauncherImpl class and setting test category by class annotation
  */
 
-@Test(category = "OS.DTAQ")
-public class DtaqTestLauncherImpl extends DirectoryTestLauncherImpl{	
+@Test(category = "IL.EXPR")
+public class ILExprTestLauncherImpl extends DirectoryTestLauncherImpl{	
 }
 

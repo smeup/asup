@@ -22,7 +22,7 @@ import org.smeup.sys.dk.test.e4.E4TestHelper;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
-@Test(category = "il.expr", object = "CL")
+@Test(category = "IL.EXPR", object = "CL")
 public class CLExpressionTester {
 
 	@Inject
