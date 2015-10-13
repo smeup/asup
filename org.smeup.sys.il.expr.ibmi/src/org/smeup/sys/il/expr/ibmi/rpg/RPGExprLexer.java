@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g 2015-10-10 23:11:39
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g 2015-10-13 16:04:12
 
   package org.smeup.sys.il.expr.ibmi.rpg;
 
@@ -101,15 +101,15 @@ public class RPGExprLexer extends Lexer {
 	public RPGExprLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "/home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g"; }
 
 	// $ANTLR start "T__77"
 	public final void mT__77() throws RecognitionException {
 		try {
 			int _type = T__77;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:11:7: ( '(' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:11:9: '('
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:11:7: ( '(' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:11:9: '('
 			{
 			match('('); 
 			}
@@ -128,8 +128,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = T__78;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:12:7: ( ')' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:12:9: ')'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:12:7: ( ')' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:12:9: ')'
 			{
 			match(')'); 
 			}
@@ -148,8 +148,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = T__79;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:13:7: ( ':' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:13:9: ':'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:13:7: ( ':' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:13:9: ':'
 			{
 			match(':'); 
 			}
@@ -168,7 +168,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = SPECIAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:167:2: ( ( H I V A L ) | ( L O V A L ) | ( Z E R O S ) | ( Z E R O ) | ( B L A N K ) | ( B L A N K S ) | ( O N ) | ( O F F ) | ( O M I T ) | ( N U L L ) | ( S T A T U S ) | ( P A R M S ) | ( D ) | ( M S ) | ( Y E A R ) | ( Y E A R S ) | ( M O N T H S ) | ( D A Y S ) | ( N E X T ) | ( I S O ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:167:2: ( ( H I V A L ) | ( L O V A L ) | ( Z E R O S ) | ( Z E R O ) | ( B L A N K ) | ( B L A N K S ) | ( O N ) | ( O F F ) | ( O M I T ) | ( N U L L ) | ( S T A T U S ) | ( P A R M S ) | ( D ) | ( M S ) | ( Y E A R ) | ( Y E A R S ) | ( M O N T H S ) | ( D A Y S ) | ( N E X T ) | ( I S O ) )
 			int alt1=20;
 			switch ( input.LA(1) ) {
 			case 'H':
@@ -523,10 +523,10 @@ public class RPGExprLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:167:4: ( H I V A L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:167:4: ( H I V A L )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:167:4: ( H I V A L )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:167:6: H I V A L
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:167:4: ( H I V A L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:167:6: H I V A L
 					{
 					mH(); 
 
@@ -543,10 +543,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:169:3: ( L O V A L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:169:3: ( L O V A L )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:169:3: ( L O V A L )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:169:5: L O V A L
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:169:3: ( L O V A L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:169:5: L O V A L
 					{
 					mL(); 
 
@@ -563,10 +563,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:171:3: ( Z E R O S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:3: ( Z E R O S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:171:3: ( Z E R O S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:171:5: Z E R O S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:3: ( Z E R O S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:171:5: Z E R O S
 					{
 					mZ(); 
 
@@ -583,10 +583,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:173:3: ( Z E R O )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:3: ( Z E R O )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:173:3: ( Z E R O )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:173:5: Z E R O
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:3: ( Z E R O )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:173:5: Z E R O
 					{
 					mZ(); 
 
@@ -601,10 +601,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:175:3: ( B L A N K )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:3: ( B L A N K )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:175:3: ( B L A N K )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:175:5: B L A N K
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:3: ( B L A N K )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:175:5: B L A N K
 					{
 					mB(); 
 
@@ -621,10 +621,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:177:3: ( B L A N K S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:3: ( B L A N K S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:177:3: ( B L A N K S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:177:5: B L A N K S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:3: ( B L A N K S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:177:5: B L A N K S
 					{
 					mB(); 
 
@@ -643,10 +643,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:179:3: ( O N )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:179:3: ( O N )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:179:3: ( O N )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:179:5: O N
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:179:3: ( O N )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:179:5: O N
 					{
 					mO(); 
 
@@ -657,10 +657,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:181:3: ( O F F )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:3: ( O F F )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:181:3: ( O F F )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:181:5: O F F
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:3: ( O F F )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:181:5: O F F
 					{
 					mO(); 
 
@@ -673,10 +673,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:183:3: ( O M I T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:3: ( O M I T )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:183:3: ( O M I T )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:183:5: O M I T
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:3: ( O M I T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:183:5: O M I T
 					{
 					mO(); 
 
@@ -691,10 +691,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 10 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:185:3: ( N U L L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:185:3: ( N U L L )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:185:3: ( N U L L )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:185:5: N U L L
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:185:3: ( N U L L )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:185:5: N U L L
 					{
 					mN(); 
 
@@ -709,10 +709,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 11 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:187:3: ( S T A T U S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:187:3: ( S T A T U S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:187:3: ( S T A T U S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:187:5: S T A T U S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:187:3: ( S T A T U S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:187:5: S T A T U S
 					{
 					mS(); 
 
@@ -731,10 +731,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 12 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:189:3: ( P A R M S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:189:3: ( P A R M S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:189:3: ( P A R M S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:189:5: P A R M S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:189:3: ( P A R M S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:189:5: P A R M S
 					{
 					mP(); 
 
@@ -751,7 +751,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 13 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:191:3: ( D )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:191:3: ( D )
 					{
 					if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
 						input.consume();
@@ -764,10 +764,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 14 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:193:3: ( M S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:193:3: ( M S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:193:3: ( M S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:193:5: M S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:193:3: ( M S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:193:5: M S
 					{
 					mM(); 
 
@@ -778,10 +778,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 15 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:195:3: ( Y E A R )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:195:3: ( Y E A R )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:195:3: ( Y E A R )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:195:5: Y E A R
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:195:3: ( Y E A R )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:195:5: Y E A R
 					{
 					mY(); 
 
@@ -796,10 +796,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 16 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:197:3: ( Y E A R S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:3: ( Y E A R S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:197:3: ( Y E A R S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:197:5: Y E A R S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:3: ( Y E A R S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:197:5: Y E A R S
 					{
 					mY(); 
 
@@ -816,10 +816,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 17 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:199:3: ( M O N T H S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:3: ( M O N T H S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:199:3: ( M O N T H S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:199:5: M O N T H S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:3: ( M O N T H S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:199:5: M O N T H S
 					{
 					mM(); 
 
@@ -838,10 +838,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 18 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:201:3: ( D A Y S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:201:3: ( D A Y S )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:201:3: ( D A Y S )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:201:5: D A Y S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:201:3: ( D A Y S )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:201:5: D A Y S
 					{
 					mD(); 
 
@@ -856,10 +856,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 19 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:203:3: ( N E X T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:203:3: ( N E X T )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:203:3: ( N E X T )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:203:5: N E X T
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:203:3: ( N E X T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:203:5: N E X T
 					{
 					mN(); 
 
@@ -874,10 +874,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 20 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:205:3: ( I S O )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:205:3: ( I S O )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:205:3: ( I S O )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:205:4: I S O
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:205:3: ( I S O )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:205:4: I S O
 					{
 					mI(); 
 
@@ -905,7 +905,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:208:5: ( '||' | ( O R ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:5: ( '||' | ( O R ) )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( (LA2_0=='|') ) {
@@ -923,17 +923,17 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt2) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:208:8: '||'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:8: '||'
 					{
 					match("||"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:208:15: ( O R )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:15: ( O R )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:208:15: ( O R )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:208:16: O R
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:15: ( O R )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:208:16: O R
 					{
 					mO(); 
 
@@ -959,7 +959,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:209:6: ( '&&' | ( A N D ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:6: ( '&&' | ( A N D ) )
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='&') ) {
@@ -977,17 +977,17 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt3) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:209:9: '&&'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:9: '&&'
 					{
 					match("&&"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:209:16: ( A N D )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:16: ( A N D )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:209:16: ( A N D )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:209:17: A N D
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:16: ( A N D )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:209:17: A N D
 					{
 					mA(); 
 
@@ -1015,7 +1015,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:210:5: ( '!' | ( N O T ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:210:5: ( '!' | ( N O T ) )
 			int alt4=2;
 			int LA4_0 = input.LA(1);
 			if ( (LA4_0=='!') ) {
@@ -1033,16 +1033,16 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt4) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:210:7: '!'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:210:7: '!'
 					{
 					match('!'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:210:14: ( N O T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:210:14: ( N O T )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:210:14: ( N O T )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:210:15: N O T
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:210:14: ( N O T )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:210:15: N O T
 					{
 					mN(); 
 
@@ -1070,7 +1070,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = EQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:212:4: ( '=' | '==' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:212:4: ( '=' | '==' )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='=') ) {
@@ -1093,13 +1093,13 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:212:6: '='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:212:6: '='
 					{
 					match('='); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:212:13: '=='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:212:13: '=='
 					{
 					match("=="); 
 
@@ -1121,7 +1121,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = NE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:213:4: ( '!=' | '<>' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:213:4: ( '!=' | '<>' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='!') ) {
@@ -1139,14 +1139,14 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:213:6: '!='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:213:6: '!='
 					{
 					match("!="); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:213:13: '<>'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:213:13: '<>'
 					{
 					match("<>"); 
 
@@ -1168,8 +1168,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = LT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:214:4: ( '<' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:214:6: '<'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:214:4: ( '<' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:214:6: '<'
 			{
 			match('<'); 
 			}
@@ -1188,8 +1188,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = LTEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:215:6: ( '<=' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:215:8: '<='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:215:6: ( '<=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:215:8: '<='
 			{
 			match("<="); 
 
@@ -1209,8 +1209,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = GT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:216:4: ( '>' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:216:6: '>'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:216:4: ( '>' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:216:6: '>'
 			{
 			match('>'); 
 			}
@@ -1229,8 +1229,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = GTEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:217:6: ( '>=' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:217:8: '>='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:217:6: ( '>=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:217:8: '>='
 			{
 			match(">="); 
 
@@ -1250,8 +1250,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:219:6: ( '+' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:219:8: '+'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:219:6: ( '+' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:219:8: '+'
 			{
 			match('+'); 
 			}
@@ -1270,8 +1270,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:220:7: ( '-' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:220:9: '-'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:220:7: ( '-' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:220:9: '-'
 			{
 			match('-'); 
 			}
@@ -1290,8 +1290,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = MULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:221:6: ( '*' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:221:8: '*'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:221:6: ( '*' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:221:8: '*'
 			{
 			match('*'); 
 			}
@@ -1310,8 +1310,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = DIV;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:222:5: ( '/' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:222:7: '/'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:222:5: ( '/' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:222:7: '/'
 			{
 			match('/'); 
 			}
@@ -1330,8 +1330,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = MOD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:223:5: ( '%' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:223:7: '%'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:223:5: ( '%' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:223:7: '%'
 			{
 			match('%'); 
 			}
@@ -1350,8 +1350,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = BI_FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:227:9: ( '%' TERM )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:227:11: '%' TERM
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:227:9: ( '%' TERM )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:227:11: '%' TERM
 			{
 			match('%'); 
 			mTERM(); 
@@ -1372,8 +1372,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = IN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:242:5: ( MULT I N )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:243:2: MULT I N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:242:5: ( MULT I N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:243:2: MULT I N
 			{
 			mMULT(); 
 
@@ -1397,8 +1397,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = INNR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:246:6: ( MULT I N ( '0' .. '9' ) ( '0' .. '9' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:247:2: MULT I N ( '0' .. '9' ) ( '0' .. '9' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:246:6: ( MULT I N ( '0' .. '9' ) ( '0' .. '9' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:247:2: MULT I N ( '0' .. '9' ) ( '0' .. '9' )
 			{
 			mMULT(); 
 
@@ -1438,7 +1438,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = INNU;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:250:6: ( MULT I N U ( '1' .. '8' ) | MULT I N H ( '1' .. '8' ) | MULT I N M R | MULT I N O ( A | G | V | F ) | MULT I N L ( '1' .. '9' ) | MULT I N L R | MULT I N R T | MULT I N K A | MULT I N K B | MULT I N K C | MULT I N K D | MULT I N K E | MULT I N K F | MULT I N K G | MULT I N K H | MULT I N K I | MULT I N K J | MULT I N K K | MULT I N K L | MULT I N K M | MULT I N K N | MULT I N K P | MULT I N K Q | MULT I N K R | MULT I N K S | MULT I N K T | MULT I N K U | MULT I N K V | MULT I N K W | MULT I N K X | MULT I N K Y )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:250:6: ( MULT I N U ( '1' .. '8' ) | MULT I N H ( '1' .. '8' ) | MULT I N M R | MULT I N O ( A | G | V | F ) | MULT I N L ( '1' .. '9' ) | MULT I N L R | MULT I N R T | MULT I N K A | MULT I N K B | MULT I N K C | MULT I N K D | MULT I N K E | MULT I N K F | MULT I N K G | MULT I N K H | MULT I N K I | MULT I N K J | MULT I N K K | MULT I N K L | MULT I N K M | MULT I N K N | MULT I N K P | MULT I N K Q | MULT I N K R | MULT I N K S | MULT I N K T | MULT I N K U | MULT I N K V | MULT I N K W | MULT I N K X | MULT I N K Y )
 			int alt7=31;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0=='*') ) {
@@ -1720,7 +1720,7 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt7) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:252:2: MULT I N U ( '1' .. '8' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:252:2: MULT I N U ( '1' .. '8' )
 					{
 					mMULT(); 
 
@@ -1741,7 +1741,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:254:2: MULT I N H ( '1' .. '8' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:254:2: MULT I N H ( '1' .. '8' )
 					{
 					mMULT(); 
 
@@ -1762,7 +1762,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:256:2: MULT I N M R
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:256:2: MULT I N M R
 					{
 					mMULT(); 
 
@@ -1777,7 +1777,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:258:2: MULT I N O ( A | G | V | F )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:258:2: MULT I N O ( A | G | V | F )
 					{
 					mMULT(); 
 
@@ -1798,7 +1798,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:260:2: MULT I N L ( '1' .. '9' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:260:2: MULT I N L ( '1' .. '9' )
 					{
 					mMULT(); 
 
@@ -1819,7 +1819,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:262:2: MULT I N L R
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:262:2: MULT I N L R
 					{
 					mMULT(); 
 
@@ -1834,7 +1834,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 7 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:264:2: MULT I N R T
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:264:2: MULT I N R T
 					{
 					mMULT(); 
 
@@ -1849,7 +1849,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 8 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:266:2: MULT I N K A
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:266:2: MULT I N K A
 					{
 					mMULT(); 
 
@@ -1864,7 +1864,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 9 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:268:2: MULT I N K B
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:268:2: MULT I N K B
 					{
 					mMULT(); 
 
@@ -1879,7 +1879,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 10 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:270:2: MULT I N K C
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:270:2: MULT I N K C
 					{
 					mMULT(); 
 
@@ -1894,7 +1894,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 11 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:272:2: MULT I N K D
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:272:2: MULT I N K D
 					{
 					mMULT(); 
 
@@ -1909,7 +1909,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 12 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:274:2: MULT I N K E
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:274:2: MULT I N K E
 					{
 					mMULT(); 
 
@@ -1924,7 +1924,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 13 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:276:2: MULT I N K F
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:276:2: MULT I N K F
 					{
 					mMULT(); 
 
@@ -1939,7 +1939,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 14 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:278:2: MULT I N K G
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:278:2: MULT I N K G
 					{
 					mMULT(); 
 
@@ -1954,7 +1954,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 15 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:280:2: MULT I N K H
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:280:2: MULT I N K H
 					{
 					mMULT(); 
 
@@ -1969,7 +1969,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 16 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:282:2: MULT I N K I
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:282:2: MULT I N K I
 					{
 					mMULT(); 
 
@@ -1984,7 +1984,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 17 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:284:2: MULT I N K J
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:284:2: MULT I N K J
 					{
 					mMULT(); 
 
@@ -1999,7 +1999,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 18 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:286:2: MULT I N K K
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:286:2: MULT I N K K
 					{
 					mMULT(); 
 
@@ -2014,7 +2014,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 19 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:288:2: MULT I N K L
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:288:2: MULT I N K L
 					{
 					mMULT(); 
 
@@ -2029,7 +2029,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 20 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:290:2: MULT I N K M
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:290:2: MULT I N K M
 					{
 					mMULT(); 
 
@@ -2044,7 +2044,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 21 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:292:2: MULT I N K N
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:292:2: MULT I N K N
 					{
 					mMULT(); 
 
@@ -2059,7 +2059,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 22 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:294:2: MULT I N K P
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:294:2: MULT I N K P
 					{
 					mMULT(); 
 
@@ -2074,7 +2074,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 23 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:296:2: MULT I N K Q
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:296:2: MULT I N K Q
 					{
 					mMULT(); 
 
@@ -2089,7 +2089,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 24 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:298:2: MULT I N K R
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:298:2: MULT I N K R
 					{
 					mMULT(); 
 
@@ -2104,7 +2104,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 25 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:300:2: MULT I N K S
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:300:2: MULT I N K S
 					{
 					mMULT(); 
 
@@ -2119,7 +2119,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 26 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:302:2: MULT I N K T
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:302:2: MULT I N K T
 					{
 					mMULT(); 
 
@@ -2134,7 +2134,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 27 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:304:2: MULT I N K U
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:304:2: MULT I N K U
 					{
 					mMULT(); 
 
@@ -2149,7 +2149,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 28 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:306:2: MULT I N K V
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:306:2: MULT I N K V
 					{
 					mMULT(); 
 
@@ -2164,7 +2164,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 29 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:308:2: MULT I N K W
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:308:2: MULT I N K W
 					{
 					mMULT(); 
 
@@ -2179,7 +2179,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 30 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:310:2: MULT I N K X
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:310:2: MULT I N K X
 					{
 					mMULT(); 
 
@@ -2194,7 +2194,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 31 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:312:2: MULT I N K Y
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:312:2: MULT I N K Y
 					{
 					mMULT(); 
 
@@ -2224,8 +2224,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = ALL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:316:5: ( A L L )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:317:2: A L L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:316:5: ( A L L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:317:2: A L L
 			{
 			mA(); 
 
@@ -2249,10 +2249,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = HEX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:5: ( ( 'X\\'' | 'x\\'' ) ( HexDigit )+ '\\'' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:9: ( 'X\\'' | 'x\\'' ) ( HexDigit )+ '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:5: ( ( 'X\\'' | 'x\\'' ) ( HexDigit )+ '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:9: ( 'X\\'' | 'x\\'' ) ( HexDigit )+ '\\''
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:9: ( 'X\\'' | 'x\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:9: ( 'X\\'' | 'x\\'' )
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0=='X') ) {
@@ -2270,14 +2270,14 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt8) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:10: 'X\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:10: 'X\\''
 					{
 					match("X'"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:16: 'x\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:16: 'x\\''
 					{
 					match("x'"); 
 
@@ -2286,7 +2286,7 @@ public class RPGExprLexer extends Lexer {
 
 			}
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:321:23: ( HexDigit )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:321:23: ( HexDigit )+
 			int cnt9=0;
 			loop9:
 			while (true) {
@@ -2298,7 +2298,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt9) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
 						input.consume();
@@ -2338,12 +2338,12 @@ public class RPGExprLexer extends Lexer {
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			int c;
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:327:2: ( '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\'' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:327:4: '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:327:2: ( '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:327:4: '\\'' ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )* '\\''
 			{
 			match('\''); 
 			 StringBuilder b = new StringBuilder(); 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:329:2: ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:329:2: ( '\\'' '\\'' |c=~ ( '\\'' | '\\r' | '\\n' ) )*
 			loop10:
 			while (true) {
 				int alt10=3;
@@ -2361,7 +2361,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt10) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:329:4: '\\'' '\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:329:4: '\\'' '\\''
 					{
 					match('\''); 
 					match('\''); 
@@ -2369,7 +2369,7 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:330:4: c=~ ( '\\'' | '\\r' | '\\n' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:330:4: c=~ ( '\\'' | '\\r' | '\\n' )
 					{
 					c= input.LA(1);
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '\uFFFF') ) {
@@ -2407,10 +2407,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = INTEGER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:339:2: ( ( '0' .. '9' )+ )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:339:4: ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:339:2: ( ( '0' .. '9' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:339:4: ( '0' .. '9' )+
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:339:4: ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:339:4: ( '0' .. '9' )+
 			int cnt11=0;
 			loop11:
 			while (true) {
@@ -2422,7 +2422,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt11) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2459,10 +2459,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:343:2: ( ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+ )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:343:4: ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:343:2: ( ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:343:4: ( '0' .. '9' )* DIGIT_SPECIAL ( '0' .. '9' )+
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:343:4: ( '0' .. '9' )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:343:4: ( '0' .. '9' )*
 			loop12:
 			while (true) {
 				int alt12=2;
@@ -2473,7 +2473,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt12) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2493,7 +2493,7 @@ public class RPGExprLexer extends Lexer {
 
 			mDIGIT_SPECIAL(); 
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:343:30: ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:343:30: ( '0' .. '9' )+
 			int cnt13=0;
 			loop13:
 			while (true) {
@@ -2505,7 +2505,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt13) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2542,10 +2542,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:3: ( ( 'D\\'' | 'd\\'' ) ( DIGIT )* '\\'' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:5: ( 'D\\'' | 'd\\'' ) ( DIGIT )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:3: ( ( 'D\\'' | 'd\\'' ) ( DIGIT )* '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:5: ( 'D\\'' | 'd\\'' ) ( DIGIT )* '\\''
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:5: ( 'D\\'' | 'd\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:5: ( 'D\\'' | 'd\\'' )
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0=='D') ) {
@@ -2563,14 +2563,14 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt14) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:6: 'D\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:6: 'D\\''
 					{
 					match("D'"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:12: 'd\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:12: 'd\\''
 					{
 					match("d'"); 
 
@@ -2579,7 +2579,7 @@ public class RPGExprLexer extends Lexer {
 
 			}
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:347:19: ( DIGIT )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:347:19: ( DIGIT )*
 			loop15:
 			while (true) {
 				int alt15=2;
@@ -2590,7 +2590,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt15) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2625,10 +2625,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = TIME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:3: ( ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\'' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:5: ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:3: ( ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:5: ( 'T\\'' | 't\\'' ) ( DIGIT )* '\\''
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:5: ( 'T\\'' | 't\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:5: ( 'T\\'' | 't\\'' )
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='T') ) {
@@ -2646,14 +2646,14 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt16) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:6: 'T\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:6: 'T\\''
 					{
 					match("T'"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:12: 't\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:12: 't\\''
 					{
 					match("t'"); 
 
@@ -2662,7 +2662,7 @@ public class RPGExprLexer extends Lexer {
 
 			}
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:351:19: ( DIGIT )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:351:19: ( DIGIT )*
 			loop17:
 			while (true) {
 				int alt17=2;
@@ -2673,7 +2673,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt17) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2708,10 +2708,10 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = TIMESTAMP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:3: ( ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\'' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:5: ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:3: ( ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:5: ( 'Z\\'' | 'z\\'' ) ( DIGIT )* '\\''
 			{
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:5: ( 'Z\\'' | 'z\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:5: ( 'Z\\'' | 'z\\'' )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='Z') ) {
@@ -2729,14 +2729,14 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt18) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:6: 'Z\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:6: 'Z\\''
 					{
 					match("Z'"); 
 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:12: 'z\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:12: 'z\\''
 					{
 					match("z'"); 
 
@@ -2745,7 +2745,7 @@ public class RPGExprLexer extends Lexer {
 
 			}
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:355:19: ( DIGIT )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:355:19: ( DIGIT )*
 			loop19:
 			while (true) {
 				int alt19=2;
@@ -2756,7 +2756,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt19) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2791,7 +2791,7 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = BOOLEAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:360:2: ( ( T R U E ) | ( F A L S E ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:360:2: ( ( T R U E ) | ( F A L S E ) )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0=='T'||LA20_0=='t') ) {
@@ -2809,10 +2809,10 @@ public class RPGExprLexer extends Lexer {
 
 			switch (alt20) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:360:4: ( T R U E )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:360:4: ( T R U E )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:360:4: ( T R U E )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:360:5: T R U E
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:360:4: ( T R U E )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:360:5: T R U E
 					{
 					mT(); 
 
@@ -2827,10 +2827,10 @@ public class RPGExprLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:361:4: ( F A L S E )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:361:4: ( F A L S E )
 					{
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:361:4: ( F A L S E )
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:361:5: F A L S E
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:361:4: ( F A L S E )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:361:5: F A L S E
 					{
 					mF(); 
 
@@ -2862,12 +2862,12 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = TERM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:366:2: ( LETTER ( LETTER | DIGIT )* )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:366:4: LETTER ( LETTER | DIGIT )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:366:2: ( LETTER ( LETTER | DIGIT )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:366:4: LETTER ( LETTER | DIGIT )*
 			{
 			mLETTER(); 
 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:366:11: ( LETTER | DIGIT )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:366:11: ( LETTER | DIGIT )*
 			loop21:
 			while (true) {
 				int alt21=2;
@@ -2878,7 +2878,7 @@ public class RPGExprLexer extends Lexer {
 
 				switch (alt21) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 					{
 					if ( input.LA(1)=='$'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7' ) {
 						input.consume();
@@ -2912,8 +2912,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = POINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:370:3: ( '.' )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:370:5: '.'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:370:3: ( '.' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:370:5: '.'
 			{
 			match('.'); 
 			}
@@ -2930,8 +2930,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:374:3: ( ( '0' .. '9' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:374:3: ( ( '0' .. '9' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -2953,8 +2953,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:378:3: ( ( '\\u00A3' | '\\u00A7' | '$' | '_' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:378:3: ( ( '\\u00A3' | '\\u00A7' | '$' | '_' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='$'||input.LA(1)=='_'||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7' ) {
 				input.consume();
@@ -2976,8 +2976,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:382:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | CHAR_SPECIAL ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:382:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | CHAR_SPECIAL ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='$'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7' ) {
 				input.consume();
@@ -2999,11 +2999,11 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "EscapeSequence"
 	public final void mEscapeSequence() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:387:2: ( '\\\\' ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:387:4: '\\\\' ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:387:2: ( '\\\\' ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:387:4: '\\\\' ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape )
 			{
 			match('\\'); 
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:388:4: ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:388:4: ( 'n' | 'r' | 't' | '\\'' | '\\\\' | UnicodeEscape )
 			int alt22=6;
 			switch ( input.LA(1) ) {
 			case 'n':
@@ -3043,37 +3043,37 @@ public class RPGExprLexer extends Lexer {
 			}
 			switch (alt22) {
 				case 1 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:389:5: 'n'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:389:5: 'n'
 					{
 					match('n'); 
 					}
 					break;
 				case 2 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:390:4: 'r'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:390:4: 'r'
 					{
 					match('r'); 
 					}
 					break;
 				case 3 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:391:4: 't'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:391:4: 't'
 					{
 					match('t'); 
 					}
 					break;
 				case 4 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:392:4: '\\''
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:392:4: '\\''
 					{
 					match('\''); 
 					}
 					break;
 				case 5 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:393:4: '\\\\'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:393:4: '\\\\'
 					{
 					match('\\'); 
 					}
 					break;
 				case 6 :
-					// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:394:4: UnicodeEscape
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:394:4: UnicodeEscape
 					{
 					mUnicodeEscape(); 
 
@@ -3094,8 +3094,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "UnicodeEscape"
 	public final void mUnicodeEscape() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:399:6: ( 'u' HexDigit HexDigit HexDigit HexDigit )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:399:12: 'u' HexDigit HexDigit HexDigit HexDigit
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:399:6: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:399:12: 'u' HexDigit HexDigit HexDigit HexDigit
 			{
 			match('u'); 
 			mHexDigit(); 
@@ -3118,8 +3118,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "HexDigit"
 	public final void mHexDigit() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:403:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:403:2: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
 				input.consume();
@@ -3141,8 +3141,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "DIGIT_SPECIAL"
 	public final void mDIGIT_SPECIAL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:406:3: ( ( ',' | '.' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:406:3: ( ( ',' | '.' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)==','||input.LA(1)=='.' ) {
 				input.consume();
@@ -3164,8 +3164,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "A"
 	public final void mA() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:411:11: ( ( 'a' | 'A' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:411:11: ( ( 'a' | 'A' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
 				input.consume();
@@ -3187,8 +3187,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "B"
 	public final void mB() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:412:11: ( ( 'b' | 'B' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:412:11: ( ( 'b' | 'B' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
 				input.consume();
@@ -3210,8 +3210,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "C"
 	public final void mC() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:413:11: ( ( 'c' | 'C' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:413:11: ( ( 'c' | 'C' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
 				input.consume();
@@ -3233,8 +3233,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "D"
 	public final void mD() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:414:11: ( ( 'd' | 'D' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:414:11: ( ( 'd' | 'D' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
 				input.consume();
@@ -3256,8 +3256,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "E"
 	public final void mE() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:415:11: ( ( 'e' | 'E' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:415:11: ( ( 'e' | 'E' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -3279,8 +3279,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "F"
 	public final void mF() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:416:11: ( ( 'f' | 'F' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:416:11: ( ( 'f' | 'F' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
 				input.consume();
@@ -3302,8 +3302,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "G"
 	public final void mG() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:417:11: ( ( 'g' | 'G' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:417:11: ( ( 'g' | 'G' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
 				input.consume();
@@ -3325,8 +3325,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "H"
 	public final void mH() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:418:11: ( ( 'h' | 'H' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:418:11: ( ( 'h' | 'H' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
 				input.consume();
@@ -3348,8 +3348,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "I"
 	public final void mI() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:419:11: ( ( 'i' | 'I' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:419:11: ( ( 'i' | 'I' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
 				input.consume();
@@ -3371,8 +3371,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "J"
 	public final void mJ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:420:11: ( ( 'j' | 'J' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:420:11: ( ( 'j' | 'J' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
 				input.consume();
@@ -3394,8 +3394,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "K"
 	public final void mK() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:421:11: ( ( 'k' | 'K' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:421:11: ( ( 'k' | 'K' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='K'||input.LA(1)=='k' ) {
 				input.consume();
@@ -3417,8 +3417,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "L"
 	public final void mL() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:422:11: ( ( 'l' | 'L' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:422:11: ( ( 'l' | 'L' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
 				input.consume();
@@ -3440,8 +3440,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "M"
 	public final void mM() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:423:11: ( ( 'm' | 'M' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:423:11: ( ( 'm' | 'M' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
 				input.consume();
@@ -3463,8 +3463,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "N"
 	public final void mN() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:424:11: ( ( 'n' | 'N' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:424:11: ( ( 'n' | 'N' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
 				input.consume();
@@ -3486,8 +3486,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "O"
 	public final void mO() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:425:11: ( ( 'o' | 'O' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:425:11: ( ( 'o' | 'O' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
 				input.consume();
@@ -3509,8 +3509,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "P"
 	public final void mP() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:426:11: ( ( 'p' | 'P' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:426:11: ( ( 'p' | 'P' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
 				input.consume();
@@ -3532,8 +3532,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "Q"
 	public final void mQ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:427:11: ( ( 'q' | 'Q' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:427:11: ( ( 'q' | 'Q' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='Q'||input.LA(1)=='q' ) {
 				input.consume();
@@ -3555,8 +3555,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "R"
 	public final void mR() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:428:11: ( ( 'r' | 'R' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:428:11: ( ( 'r' | 'R' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
 				input.consume();
@@ -3578,8 +3578,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "S"
 	public final void mS() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:429:11: ( ( 's' | 'S' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:429:11: ( ( 's' | 'S' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
 				input.consume();
@@ -3601,8 +3601,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "T"
 	public final void mT() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:430:11: ( ( 't' | 'T' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:430:11: ( ( 't' | 'T' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
 				input.consume();
@@ -3624,8 +3624,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "U"
 	public final void mU() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:431:11: ( ( 'u' | 'U' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:431:11: ( ( 'u' | 'U' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
 				input.consume();
@@ -3647,8 +3647,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "V"
 	public final void mV() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:432:11: ( ( 'v' | 'V' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:432:11: ( ( 'v' | 'V' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
 				input.consume();
@@ -3670,8 +3670,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "W"
 	public final void mW() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:433:11: ( ( 'w' | 'W' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:433:11: ( ( 'w' | 'W' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
 				input.consume();
@@ -3693,8 +3693,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "X"
 	public final void mX() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:434:11: ( ( 'x' | 'X' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:434:11: ( ( 'x' | 'X' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
 				input.consume();
@@ -3716,8 +3716,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "Y"
 	public final void mY() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:435:11: ( ( 'y' | 'Y' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:435:11: ( ( 'y' | 'Y' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='Y'||input.LA(1)=='y' ) {
 				input.consume();
@@ -3739,8 +3739,8 @@ public class RPGExprLexer extends Lexer {
 	// $ANTLR start "Z"
 	public final void mZ() throws RecognitionException {
 		try {
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:436:11: ( ( 'z' | 'Z' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:436:11: ( ( 'z' | 'Z' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:
 			{
 			if ( input.LA(1)=='Z'||input.LA(1)=='z' ) {
 				input.consume();
@@ -3764,8 +3764,8 @@ public class RPGExprLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:442:2: ( ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' ) )
-			// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:442:5: ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:442:2: ( ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:442:5: ( ' ' | '\\t' | '\\u000C' | '\\n' | '\\r' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||(input.LA(1) >= '\f' && input.LA(1) <= '\r')||input.LA(1)==' ' ) {
 				input.consume();
@@ -3789,243 +3789,243 @@ public class RPGExprLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:8: ( T__77 | T__78 | T__79 | SPECIAL | OR | AND | NOT | EQ | NE | LT | LTEQ | GT | GTEQ | PLUS | MINUS | MULT | DIV | MOD | BI_FUN | IN | INNR | INNU | ALL | HEX | STRING | INTEGER | FLOAT | DATE | TIME | TIMESTAMP | BOOLEAN | TERM | POINT | WS )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:8: ( T__77 | T__78 | T__79 | SPECIAL | OR | AND | NOT | EQ | NE | LT | LTEQ | GT | GTEQ | PLUS | MINUS | MULT | DIV | MOD | BI_FUN | IN | INNR | INNU | ALL | HEX | STRING | INTEGER | FLOAT | DATE | TIME | TIMESTAMP | BOOLEAN | TERM | POINT | WS )
 		int alt23=34;
 		alt23 = dfa23.predict(input);
 		switch (alt23) {
 			case 1 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:10: T__77
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:10: T__77
 				{
 				mT__77(); 
 
 				}
 				break;
 			case 2 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:16: T__78
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:16: T__78
 				{
 				mT__78(); 
 
 				}
 				break;
 			case 3 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:22: T__79
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:22: T__79
 				{
 				mT__79(); 
 
 				}
 				break;
 			case 4 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:28: SPECIAL
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:28: SPECIAL
 				{
 				mSPECIAL(); 
 
 				}
 				break;
 			case 5 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:36: OR
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:36: OR
 				{
 				mOR(); 
 
 				}
 				break;
 			case 6 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:39: AND
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:39: AND
 				{
 				mAND(); 
 
 				}
 				break;
 			case 7 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:43: NOT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:43: NOT
 				{
 				mNOT(); 
 
 				}
 				break;
 			case 8 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:47: EQ
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:47: EQ
 				{
 				mEQ(); 
 
 				}
 				break;
 			case 9 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:50: NE
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:50: NE
 				{
 				mNE(); 
 
 				}
 				break;
 			case 10 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:53: LT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:53: LT
 				{
 				mLT(); 
 
 				}
 				break;
 			case 11 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:56: LTEQ
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:56: LTEQ
 				{
 				mLTEQ(); 
 
 				}
 				break;
 			case 12 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:61: GT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:61: GT
 				{
 				mGT(); 
 
 				}
 				break;
 			case 13 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:64: GTEQ
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:64: GTEQ
 				{
 				mGTEQ(); 
 
 				}
 				break;
 			case 14 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:69: PLUS
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:69: PLUS
 				{
 				mPLUS(); 
 
 				}
 				break;
 			case 15 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:74: MINUS
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:74: MINUS
 				{
 				mMINUS(); 
 
 				}
 				break;
 			case 16 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:80: MULT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:80: MULT
 				{
 				mMULT(); 
 
 				}
 				break;
 			case 17 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:85: DIV
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:85: DIV
 				{
 				mDIV(); 
 
 				}
 				break;
 			case 18 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:89: MOD
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:89: MOD
 				{
 				mMOD(); 
 
 				}
 				break;
 			case 19 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:93: BI_FUN
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:93: BI_FUN
 				{
 				mBI_FUN(); 
 
 				}
 				break;
 			case 20 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:100: IN
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:100: IN
 				{
 				mIN(); 
 
 				}
 				break;
 			case 21 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:103: INNR
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:103: INNR
 				{
 				mINNR(); 
 
 				}
 				break;
 			case 22 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:108: INNU
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:108: INNU
 				{
 				mINNU(); 
 
 				}
 				break;
 			case 23 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:113: ALL
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:113: ALL
 				{
 				mALL(); 
 
 				}
 				break;
 			case 24 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:117: HEX
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:117: HEX
 				{
 				mHEX(); 
 
 				}
 				break;
 			case 25 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:121: STRING
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:121: STRING
 				{
 				mSTRING(); 
 
 				}
 				break;
 			case 26 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:128: INTEGER
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:128: INTEGER
 				{
 				mINTEGER(); 
 
 				}
 				break;
 			case 27 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:136: FLOAT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:136: FLOAT
 				{
 				mFLOAT(); 
 
 				}
 				break;
 			case 28 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:142: DATE
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:142: DATE
 				{
 				mDATE(); 
 
 				}
 				break;
 			case 29 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:147: TIME
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:147: TIME
 				{
 				mTIME(); 
 
 				}
 				break;
 			case 30 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:152: TIMESTAMP
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:152: TIMESTAMP
 				{
 				mTIMESTAMP(); 
 
 				}
 				break;
 			case 31 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:162: BOOLEAN
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:162: BOOLEAN
 				{
 				mBOOLEAN(); 
 
 				}
 				break;
 			case 32 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:170: TERM
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:170: TERM
 				{
 				mTERM(); 
 
 				}
 				break;
 			case 33 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:175: POINT
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:175: POINT
 				{
 				mPOINT(); 
 
 				}
 				break;
 			case 34 :
-				// /home/jamiro/Dati/git_smeup/asup/org.smeup.sys.il.expr.ibmi/src/org/smeup/sys/il/expr/ibmi/rpg/RPGExpr.g:1:181: WS
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr.ibmi\\src\\org\\smeup\\sys\\il\\expr\\ibmi\\rpg\\RPGExpr.g:1:181: WS
 				{
 				mWS(); 
 

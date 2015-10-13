@@ -178,6 +178,22 @@ public interface QString extends QBufferedData, QScanner, QCattable {
 	void out();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QNumeric qInt();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	QNumeric qInth();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated

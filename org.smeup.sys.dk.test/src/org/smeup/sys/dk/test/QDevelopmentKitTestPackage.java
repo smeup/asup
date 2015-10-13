@@ -216,21 +216,12 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_RUNNER = 11;
 
 	/**
-	 * The feature id for the '<em><b>Listeners</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_RUNNER__LISTENERS = CALLABLE_TEST_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Test Runner</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_RUNNER_FEATURE_COUNT = CALLABLE_TEST_FEATURE_COUNT + 1;
+	int TEST_RUNNER_FEATURE_COUNT = CALLABLE_TEST_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.SuiteTestRunnerImpl <em>Suite Test Runner</em>}' class.
@@ -241,15 +232,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	int SUITE_TEST_RUNNER = 5;
-
-	/**
-	 * The feature id for the '<em><b>Listeners</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUITE_TEST_RUNNER__LISTENERS = TEST_RUNNER__LISTENERS;
 
 	/**
 	 * The number of structural features of the '<em>Suite Test Runner</em>' class.
@@ -424,15 +406,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int UNIT_TEST_RUNNER = 12;
 
 	/**
-	 * The feature id for the '<em><b>Listeners</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNIT_TEST_RUNNER__LISTENERS = TEST_RUNNER__LISTENERS;
-
-	/**
 	 * The number of structural features of the '<em>Unit Test Runner</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -451,22 +424,13 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int TEST_LAUNCHER = 13;
 
 	/**
-	 * The feature id for the '<em><b>Listeners</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEST_LAUNCHER__LISTENERS = 0;
-
-	/**
 	 * The number of structural features of the '<em>Test Launcher</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_LAUNCHER_FEATURE_COUNT = 1;
+	int TEST_LAUNCHER_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}' class.
@@ -714,17 +678,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	EClass getTestRunner();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.dk.test.QTestRunner#getListeners <em>Listeners</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Listeners</em>'.
-	 * @see org.smeup.sys.dk.test.QTestRunner#getListeners()
-	 * @see #getTestRunner()
-	 * @generated
-	 */
-	EReference getTestRunner_Listeners();
-
-	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.dk.test.QUnitTestRunner <em>Unit Test Runner</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -744,17 +697,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTestLauncher();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.dk.test.QTestLauncher#getListeners <em>Listeners</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Listeners</em>'.
-	 * @see org.smeup.sys.dk.test.QTestLauncher#getListeners()
-	 * @see #getTestLauncher()
-	 * @generated
-	 */
-	EReference getTestLauncher_Listeners();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}'.
@@ -978,14 +920,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		EClass TEST_RUNNER = eINSTANCE.getTestRunner();
 
 		/**
-		 * The meta object literal for the '<em><b>Listeners</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEST_RUNNER__LISTENERS = eINSTANCE.getTestRunner_Listeners();
-
-		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.UnitTestRunnerImpl <em>Unit Test Runner</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
@@ -1004,14 +938,6 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TEST_LAUNCHER = eINSTANCE.getTestLauncher();
-
-		/**
-		 * The meta object literal for the '<em><b>Listeners</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEST_LAUNCHER__LISTENERS = eINSTANCE.getTestLauncher_Listeners();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.QTestLauncherListener <em>Test Launcher Listener</em>}' class.

@@ -653,4 +653,13 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().cat(factor1, clear);
 	}
 
+	@Override
+	public QNumeric qInt() {
+		return current().qInt();
+	}
+
+	@Override
+	public QNumeric qInth() {
+		return current().qInth();
+	}
 }

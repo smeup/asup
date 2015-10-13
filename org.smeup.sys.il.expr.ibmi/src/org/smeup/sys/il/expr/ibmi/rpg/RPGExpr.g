@@ -109,7 +109,7 @@ value
 	|	STRING
 	|	HEX -> ^(HEX[$HEX.text.substring(2, $HEX.text.length() -1 )])
 	|	TERM
-	|	(SPECIAL -> TERM)
+	|	(SPECIAL -> TERM[$SPECIAL.text])
 	|	filler
 	|	special
 	|	bi_function

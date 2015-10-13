@@ -4,9 +4,13 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.dk.test.annotation.Test;
+import org.smeup.sys.dk.test.impl.AssertionResultImpl;
+import org.smeup.sys.dk.test.impl.DevelopmentKitTestFactoryImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
 public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
@@ -16,17 +20,18 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 	
 	private String runnerDirPath = "/runner/";	
 
+	@Override
 	public void launch(String object) {
 		
 		// Notify launcher start
 		TestLauncherHelper.notifyLauncherStarted(this);
 		
-		Collection<Class<?>> testRunners = TestLauncherHelper.findTestClasses(this, runnerDirPath, object);		
+		Collection<Class<?>> testClasses = TestLauncherHelper.findTestClasses(this, runnerDirPath, object);		
 		
-		for (Class<?> testRunnerClass: testRunners){
+		for (Class<?> testClass: testClasses){
 			
-			QContext testContext = testManager.prepareContext(testRunnerClass);
-			QTestRunner testRunner = testManager.prepareRunner(testContext, testRunnerClass);
+			QContext testContext = testManager.prepareContext(testClass);
+			QTestRunner testRunner = testManager.prepareRunner(testContext, testClass);
 			QTestResult testResult;
 			try {
 				testResult = testRunner.call();
@@ -35,8 +40,29 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 				TestLauncherHelper.notifyResultAdded(this, testRunner, testResult);
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				QTestResult errorResult = DevelopmentKitTestFactoryImpl.eINSTANCE.createTestResult();
+			
+				errorResult.setRunner(testRunner.getClass().getSimpleName());
+				
+				Test testCalssAnnotation = testClass.getAnnotation(Test.class);
+				if (testCalssAnnotation != null) {
+					errorResult.setObject(testCalssAnnotation.object());
+				} else {
+					errorResult.setObject("");
+				}
+
+				errorResult.setCategory(getCategory());
+				errorResult.setFailed(true);
+				
+				QAssertionFailed assertionFailed = DevelopmentKitTestFactoryImpl.eINSTANCE.createAssertionFailed();
+				assertionFailed.setMessage(e.getMessage());
+				assertionFailed.setTime(0);
+				
+				errorResult.getAssertResults().add(assertionFailed);
+
+				TestLauncherHelper.notifyResultAdded(this, testRunner, errorResult);				
+				
 			}
 			
 		}

@@ -11,4 +11,5 @@ Require-Bundle: org.smeup.sys.dk.test.e4,
  org.smeup.sys.dk.test
 Import-Package: javax.inject,
  org.smeup.sys.dk.test.base
-Export-Package: org.smeup.sys.dk.compiler.test
+Export-Package: org.smeup.sys.dk.compiler.test,
+ org.smeup.sys.dk.compiler.test.runner

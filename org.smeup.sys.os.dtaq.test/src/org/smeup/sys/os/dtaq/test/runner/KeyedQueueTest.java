@@ -29,7 +29,7 @@ import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
 
-@Test(category = "OSDTAQ", object = "KEYED")
+@Test(category = "OS.DTAQ", object = "KEYED")
 public class KeyedQueueTest {
 
 	@Inject
@@ -44,9 +44,14 @@ public class KeyedQueueTest {
 	private QJob job;
 
 	@TestStarted
-	public void runTest() throws OperatingSystemException {
-		doTest1();
-		doTest2();
+	public void runTest()  {
+		try{
+			doTest1();
+			doTest2();
+		}
+		catch(Exception exc) {
+			testAsserter.fail("Exception in class KeyedQueueTest:" + exc.getMessage());
+		}
 	}
 
 	/**

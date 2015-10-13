@@ -34,7 +34,7 @@ import org.smeup.sys.os.dtaq.QDataQueueContent;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
 
-@Test(category = "OSDTAQ", object = "SYNCHRO")
+@Test(category = "OS.DTAQ", object = "SYNCHRO")
 public class SynchroTest {
 
 	@Inject
@@ -55,9 +55,14 @@ public class SynchroTest {
 	private Object lockWaitObj = new Object();
 
 	@TestStarted
-	public void runTest() throws OperatingSystemException {
-		doTestReadOK();
-		doTestReadKO();
+	public void runTest() {
+		try{
+			doTestReadOK();
+			doTestReadKO();
+		} 
+		catch(Exception exc) {
+			testAsserter.fail("Exception in class SynchroTest" + exc.getMessage());
+		}
 	}
 
 	/**

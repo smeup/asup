@@ -14,12 +14,6 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Test Runner</b></em>'. <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link org.smeup.sys.dk.test.QTestRunner#getListeners <em>Listeners</em>}</li>
- * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner()
  * @model abstract="true"
@@ -27,28 +21,24 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  */
 public interface QTestRunner extends QCallableTest, QContextProvider {
 	/**
-	 * Returns the value of the '<em><b>Listeners</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.dk.test.QTestRunnerListener}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void registerListener(QTestRunnerListener listener);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Listeners</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Listeners</em>' containment reference list.
-	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestRunner_Listeners()
-	 * @model containment="true"
+	 * @model kind="operation"
 	 * @generated
 	 */
 	List<QTestRunnerListener> getListeners();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void addListener(QTestRunnerListener listener);
 
 	/**
 	 * <!-- begin-user-doc -->
