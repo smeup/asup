@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QTestLauncher;
 import org.smeup.sys.dk.test.QTestLauncherListener;
@@ -22,6 +23,8 @@ public class TestResultWriter implements QTestLauncherListener {
 
 	@Inject
 	QJob job;
+
+	private QObjectWriter objectWriter;
 	
 	public void setOutputWriterName(String outputWriterName) {
 		this.outputWriterName = outputWriterName;
@@ -33,28 +36,26 @@ public class TestResultWriter implements QTestLauncherListener {
 
 	@Override
 	public void launcherStopped(QTestLauncher launcher) {
+		objectWriter.flush();				
 	}
 
 	@Override
-	public void launcherStarted(QTestLauncher launcher) {		
-		
+	public void launcherStarted(QTestLauncher launcher) {	
+		objectWriter = outputManager.getObjectWriter(job.getContext(), outputWriterName);	
+		objectWriter.initialize();
 	}
 
 	@Override
 	public void resultAdded(QTestRunner runner, QTestResult result) {
-		
-		QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), outputWriterName);	
+		if (objectWriter != null) {									
 			
-		if (objectWriter != null) {
-											
-			objectWriter.initialize();
 			try {
 				objectWriter.write(result);
 										
 				for (QAssertionResult assertionResult : result.getAssertResults()) {
-					
-					objectWriter.write(assertionResult);
-							
+					if (assertionResult.getAssertionState().equals(AssertionState.FAILED)) {
+						objectWriter.write(assertionResult);
+					}
 				}
 			
 			} catch (IOException e) {

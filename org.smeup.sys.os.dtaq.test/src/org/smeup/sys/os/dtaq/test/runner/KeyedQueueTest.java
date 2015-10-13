@@ -44,9 +44,14 @@ public class KeyedQueueTest {
 	private QJob job;
 
 	@TestStarted
-	public void runTest() throws OperatingSystemException {
-		doTest1();
-		doTest2();
+	public void runTest()  {
+		try{
+			doTest1();
+			doTest2();
+		}
+		catch(Exception exc) {
+			testAsserter.fail("Exception in class KeyedQueueTest:" + exc.getMessage());
+		}
 	}
 
 	/**

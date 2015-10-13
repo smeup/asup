@@ -55,9 +55,14 @@ public class SynchroTest {
 	private Object lockWaitObj = new Object();
 
 	@TestStarted
-	public void runTest() throws OperatingSystemException {
-		doTestReadOK();
-		doTestReadKO();
+	public void runTest() {
+		try{
+			doTestReadOK();
+			doTestReadKO();
+		} 
+		catch(Exception exc) {
+			testAsserter.fail("Exception in class SynchroTest" + exc.getMessage());
+		}
 	}
 
 	/**
