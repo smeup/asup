@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data.impl;
 
+import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;

@@ -9,11 +9,12 @@
  * Contributors:
  *   Dario Foresti - Initial API and implementation
  */
-package org.smeup.sys.os.dtaq.test;
+package org.smeup.sys.os.dtaq.test.runner;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.QTestAsserter;
+import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -28,6 +29,7 @@ import org.smeup.sys.os.dtaq.QDataQueue;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
 import org.smeup.sys.os.lib.QLibrary;
 
+@Test(category = "OSDTAQ", object = "WAIT")
 public class WaitTest {
 
 	@Inject

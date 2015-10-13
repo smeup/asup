@@ -23,9 +23,10 @@ import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
+import java.util.Queue;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -41,6 +42,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -181,8 +183,11 @@ public class BaseCallableInjector {
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
 			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, context, sharedModules);
 
-		Map<String, QDataStruct> structures = new HashMap<String, QDataStruct>();
-		Stack<Field> infoFields = new Stack<Field>();
+		Queue<InjectableField> dataSets = new LinkedList<InjectableField>();
+		Map<String, QDataStruct> records = new HashMap<String, QDataStruct>();
+		Queue<InjectableField> dataStructures = new LinkedList<InjectableField>();
+		Queue<InjectableField> datas = new LinkedList<InjectableField>();
+		Queue<InjectableField> infoFields = new LinkedList<InjectableField>();
 
 		for (Field field : klass.getDeclaredFields()) {
 
@@ -208,7 +213,7 @@ public class BaseCallableInjector {
 			if (fieldType instanceof ParameterizedType) {
 				parType = (ParameterizedType) fieldType;
 				argsType = parType.getActualTypeArguments();
-				fieldClass = (Class<?>) ((ParameterizedType) fieldType).getRawType();
+				fieldClass = (Class<?>) parType.getRawType();
 			} else
 				fieldClass = (Class<?>) fieldType;
 
@@ -216,118 +221,50 @@ public class BaseCallableInjector {
 			if (fieldClass.getAnnotation(Procedure.class) != null)
 				continue;
 
-			field.setAccessible(true);
+			InjectableField injectableField = new InjectableField(field, fieldClass, fieldType, argsType);
 
 			Object object = null;
 
-			// Data
-			if (QData.class.isAssignableFrom(fieldClass)) {
-
-				QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), fieldType, Arrays.asList(field.getAnnotations()));
-				QData data = dataContainer.resetData(dataTerm);
-
-				// DataStruct
-				if (data instanceof QDataStruct) {
-					QDataStruct dataStruct = (QDataStruct) data;
-
-					Class<? extends QRecord> primaryRecordClass = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
-					QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
-
-					String primaryRecordName = null;
-					if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
-						primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecordClass.getSimpleName();
-					else
-						primaryRecordName = primaryRecordClass.getSimpleName();
-
-					QDataStruct primaryRecord = structures.get(primaryRecordName.toLowerCase());
-					if (primaryRecord == null) {
-						structures.put(primaryRecordName.toLowerCase(), dataStruct);
-					} else {
-						primaryRecord.assign(dataStruct);
-					}
-				}
-
-				object = data;
-			}
 			// DataSet
-			else if (QDataSet.class.isAssignableFrom(fieldClass)) {
+			if (QDataSet.class.isAssignableFrom(fieldClass)) {
 				if (argsType[0] instanceof WildcardType)
 					continue;
 
-				QDataSet<QDataStruct> dataSet = null;
-
-				Class<QDataStruct> classRecord = (Class<QDataStruct>) argsType[0];
-				Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
-				String primaryRecordName = classPrimaryRecord.getSimpleName();
-
-				QDataStruct record = null;
-				String fileName = classRecord.getSimpleName();
-				boolean userOpen = false;
-				QDataStruct infoStruct = null;
-
-				// from annotation
-				FileDef fileDef = field.getAnnotation(FileDef.class);
-				if (fileDef != null) {
-					userOpen = fileDef.userOpen();
-					if (!fileDef.name().isEmpty())
-						primaryRecordName = fileDef.name();
-					if (!fileDef.info().isEmpty()) {
-						infoStruct = structures.get(fileDef.info().toLowerCase());
-						if (infoStruct == null)
-							infoFields.add(field);
-					}
-					if (!fileDef.prefix().isEmpty())
-						primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
-				}
-
-				QDataStruct primaryRecord = structures.get(primaryRecordName.toLowerCase());
-				if (primaryRecord == null) {
-					record = dataContainer.getDataFactory().createRecord(classRecord, true);
-					structures.put(primaryRecordName.toLowerCase(), record);
-				} else {
-					record = dataContainer.getDataFactory().createRecord(classRecord, false);
-					primaryRecord.assign(record);
-				}
-
-				if (QKSDataSet.class.isAssignableFrom(fieldClass)) {
-					dataSet = accessFactory.createKeySequencedDataSet(record, fileName, AccessMode.UPDATE, userOpen, infoStruct);
-				} else if (QSMDataSet.class.isAssignableFrom(fieldClass)) {
-					dataSet = accessFactory.createSourceMemberDataSet(record, fileName, AccessMode.UPDATE, userOpen, infoStruct);
-				} else {
-					dataSet = accessFactory.createRelativeRecordDataSet(record, fileName, AccessMode.UPDATE, userOpen, infoStruct);
-				}
-
-				object = dataSet;
+				dataSets.add(injectableField);
 			}
+			// DataStruct
+			else if (QDataStruct.class.isAssignableFrom(fieldClass))
+				dataStructures.add(injectableField);
+			// Data
+			else if (QData.class.isAssignableFrom(fieldClass))
+				datas.add(injectableField);
 			// Job
 			else if (QJob.class.isAssignableFrom(fieldClass))
 				object = job;
-			// Injector
+			// Injection
 			else if (BaseCallableInjector.class.isAssignableFrom(fieldClass))
 				object = this;
 			// DataFactory
 			else if (QDataFactory.class.isAssignableFrom(fieldClass))
 				object = dataContainer.getDataFactory();
-			// Caller
-			else if (field.getAnnotation(Program.class) != null && field.getAnnotation(Program.class).name().equals(Program.NAME_OWNER))
-				object = owner;
-			// @Injection
-			else if (field.getAnnotation(Inject.class) != null) {
-
+			// Module
+			else if (fieldClass.getAnnotation(Module.class) != null) {
 				object = sharedModules.get(fieldClass.getSimpleName());
-
-				if (object == null)
-					object = context.get(fieldClass);
-
 				if (object == null) {
 					object = injectData(owner, fieldClass, dataContainer, accessFactory, context, sharedModules);
 					sharedModules.put(fieldClass.getSimpleName(), object);
 				}
+			}
+			// Caller
+			else if (field.getAnnotation(Program.class) != null && field.getAnnotation(Program.class).name().equals(Program.NAME_OWNER))
+				object = owner;
+			// Inject
+			else if (field.getAnnotation(Inject.class) != null) {
+				object = context.get(fieldClass);
 
-				if (object == null) {
-					field.setAccessible(false);
-					throw new OperatingSystemRuntimeException("Unknown field type: " + fieldType);
-				}
+				if (object == null)
+					throw new OperatingSystemRuntimeException("Invalid " + injectableField);
+
 			} else if (field.getAnnotation(DataDef.class) != null) {
 				DataDef dataDef = field.getAnnotation(DataDef.class);
 
@@ -338,20 +275,92 @@ public class BaseCallableInjector {
 			}
 
 			if (object != null)
-				field.set(callable, object);
-
-			field.setAccessible(false);
+				injectableField.setValue(callable, object);
 		}
 
-		while (!infoFields.isEmpty()) {
-			Field field = infoFields.pop();
+		// dataSet
+		for (InjectableField field : dataSets) {
+			QDataSet<QDataStruct> dataSet = null;
+
+			Class<QDataStruct> classRecord = (Class<QDataStruct>) field.getArguments()[0];
+			Class<? extends QRecord> classPrimaryRecord = getPrimaryRecord(classRecord);
+
+			String primaryRecordName = classPrimaryRecord.getSimpleName();
+			boolean userOpen = false;
+
+			// from annotation
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			if (fileDef != null) {
+				userOpen = fileDef.userOpen();
+				if (!fileDef.name().isEmpty())
+					primaryRecordName = fileDef.name();
+				if (!fileDef.info().isEmpty())
+					infoFields.add(field);
+
+				if (!fileDef.prefix().isEmpty())
+					primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
+			}
+
+			QDataStruct record = dataContainer.getDataFactory().createRecord(classRecord, true);
+			records.put(primaryRecordName, record);
+
+			String fileName = classRecord.getSimpleName();
+			if (QKSDataSet.class.isAssignableFrom(field.getClass_())) {
+				dataSet = accessFactory.createKeySequencedDataSet(record, fileName, AccessMode.UPDATE, userOpen, null);
+			} else if (QSMDataSet.class.isAssignableFrom(field.getClass_())) {
+				dataSet = accessFactory.createSourceMemberDataSet(record, fileName, AccessMode.UPDATE, userOpen, null);
+			} else {
+				dataSet = accessFactory.createRelativeRecordDataSet(record, fileName, AccessMode.UPDATE, userOpen, null);
+			}
+
+			field.setValue(callable, dataSet);
+		}
+
+		// dataStructure
+		for (InjectableField field : dataStructures) {
+
+			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QData data = dataContainer.resetData(dataTerm);
+
+			QDataStruct dataStruct = (QDataStruct) data;
+			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
 			
-			FileDef fileDef = field.getAnnotation(FileDef.class);
-			QDataStruct infoStruct = structures.get(fileDef.info().toLowerCase());
-			if(infoStruct == null)
+			Class<? extends QRecord> primaryRecordClass = getPrimaryRecord((Class<? extends QRecord>) data.getClass());
+
+			String primaryRecordName = null;
+			if (compoundDataDef.getPrefix() != null && !compoundDataDef.getPrefix().isEmpty())
+				primaryRecordName = compoundDataDef.getPrefix() + "_" + primaryRecordClass.getSimpleName();
+			else
+				primaryRecordName = primaryRecordClass.getSimpleName();
+
+			QDataStruct primaryRecord = records.get(primaryRecordName.toLowerCase());
+			if (primaryRecord == null) {
+				records.put(primaryRecordName.toLowerCase(), dataStruct);
+			} else {
+				primaryRecord.assign(dataStruct);
+			}
+
+			field.setValue(callable, dataStruct);
+		}
+
+		// data
+		for (InjectableField field : datas) {
+
+			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QData data = dataContainer.resetData(dataTerm);
+
+			field.setValue(callable, data);
+		}
+
+		// recordInfo
+		for (InjectableField field : infoFields) {
+
+			FileDef fileDef = field.getClass_().getAnnotation(FileDef.class);
+			QDataStruct infoStruct = records.get(fileDef.info().toLowerCase());
+			if (infoStruct == null)
 				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
 			else
-				((QDataSet<?>)field.get(callable)).getInfoStruct().assign(infoStruct);				
+				((QDataSet<?>) field.getField().get(callable)).getInfoStruct().assign(infoStruct);
 		}
 	}
 
@@ -435,5 +444,55 @@ public class BaseCallableInjector {
 			return classRecord;
 		else
 			return getPrimaryRecord((Class<? extends QRecord>) classRecord.getSuperclass());
+	}
+
+	private class InjectableField {
+
+		private Field field;
+		private Class<?> class_;
+		private Type type;
+		private Type[] arguments;
+
+		protected InjectableField(Field field, Class<?> fieldClass, Type fieldType, Type[] fieldArgs) {
+			this.field = field;
+			this.class_ = fieldClass;
+			this.type = fieldType;
+			this.arguments = fieldArgs;
+		}
+
+		public String getName() {
+			return this.field.getName();
+		}
+
+		protected Field getField() {
+			return field;
+		}
+
+		protected Class<?> getClass_() {
+			return class_;
+		}
+
+		protected Type getType() {
+			return type;
+		}
+
+		protected Type[] getArguments() {
+			return arguments;
+		}
+
+		protected void setValue(Object owner, Object value) {
+			field.setAccessible(true);
+			try {
+				field.set(owner, value);
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+			field.setAccessible(false);
+		}
+
+		@Override
+		public String toString() {
+			return "InjectableField [field=" + field + ", class_=" + class_ + ", type=" + type + ", arguments=" + Arrays.toString(arguments) + "]";
+		}
 	}
 }

@@ -160,7 +160,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case INDICATOR:
 		case NAME:
-
+			
 			QNamedNode namedNode = null;
 			namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 			if (namedNode == null)
@@ -703,7 +703,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// if (expression.getValue().equalsIgnoreCase("*ALL"))
 		// expression.setValue("%all");
 
-		if (compilationUnit.getMethod(expression.getValue()) != null && !expression.getElements().isEmpty()) {
+		QPrototype prototype = compilationUnit.getMethod(expression.getValue()); 
+		if (prototype != null && !expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 
 			switch (expressionChild.getExpressionType()) {
@@ -746,8 +747,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				methodExec.accept(statementWriter);
 				if (!block.statements().isEmpty()) {
 					String content = block.statements().get(0).toString().trim();
-					this.buffer.append(strings.removeLastChar(content));
-//					writeValue(QBufferedData.class, target, strings.removeLastChar(content));
+					writeValue(prototype.getDefinition().getDataClass(), target, strings.removeLastChar(content));
 				}
 
 				statementWriter.getBlocks().pop();

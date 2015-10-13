@@ -29,7 +29,6 @@ import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.impl.CompilationUnitImpl;
-import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QNameable;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.QNode;
@@ -142,13 +141,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		this.cachedTerms = new HashMap<String, QDataTerm<?>>();
 		this.cachedPrototypes = new HashMap<String, QPrototype>();
 
-		for (QCompilationUnit compilationUnit : this.childUnits)
-			refreshUnit(compilationUnit);
-
-		if (this.parentUnit != null)
-			refreshUnit(this.parentUnit);
+		/*
+		 * for (QCompilationUnit compilationUnit : this.childUnits)
+		 * refreshUnit(compilationUnit);
+		 * 
+		 * if (this.parentUnit != null) refreshUnit(this.parentUnit);
+		 */
 	}
 
+	@SuppressWarnings("unused")
 	private void refreshUnit(QCompilationUnit compilationUnit) {
 
 		if (!(compilationUnit.getNode() instanceof QCallableUnit))
@@ -445,9 +446,21 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
-		QDataTerm<?> dataTerm = null;
-		for (QDataTerm<?> child : dataTerms) {
+		/*
+		 * List<QDataTerm<?>> atomicDataTerms = new ArrayList<QDataTerm<?>>();
+		 * List<QDataTerm<?>> compoundDataTerms = new ArrayList<QDataTerm<?>>();
+		 * 
+		 * for (QDataTerm<?> child : dataTerms) {
+		 * 
+		 * if(child.getDataTermType().isAtomic()) atomicDataTerms.add(child);
+		 * else compoundDataTerms.add(child);
+		 * 
+		 * continue; }
+		 */
 
+		QDataTerm<?> dataTerm = null;
+
+		for (QDataTerm<?> child : dataTerms) {
 			String childName = null;
 
 			// remap
@@ -464,10 +477,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			if (prefix != null)
 				childName = prefix + childName.substring(position);
 
-			if (equalsTermName(childName, name))
+			// qualified
+			if (equalsTermName(getQualifiedName(child), name))
 				dataTerm = child;
-			else if (equalsTermName(getQualifiedName(child), name))
-				dataTerm = child;
+			// compound
 			else if (child.getDataTermType().isCompound()) {
 				@SuppressWarnings("unchecked")
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
@@ -486,6 +499,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				} else
 					dataTerm = findData(compoundDataDef.getElements(), name, null, 0);
 			}
+			// atomic
+			else if (equalsTermName(childName, name))
+				dataTerm = child;
 
 			if (dataTerm != null)
 				break;
@@ -744,7 +760,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		// reserved keywords
 		if (reservedKeywords.contains(name.toUpperCase()))
-			name = name.trim()+"_";
+			name = name.trim() + "_";
 
 		StringBuffer nameBuffer = new StringBuffer();
 
@@ -789,13 +805,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	public boolean equalsTermName(String source, String target) {
 
 		if (source == null)
-			if(target == null)
+			if (target == null)
 				return true;
 			else
 				return false;
 		else if (target == null)
 			return false;
-		
+
 		if (normalizeTermName(source).toLowerCase().equals(normalizeTermName(target).toLowerCase()))
 			return true;
 		else
@@ -880,26 +896,16 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			EClass eClass = (EClass) eClassifier;
 
-			EOperation eOperation = null;
-			for (EOperation eOp : eClass.getEAllOperations()) {
-				if (eOp.getName().equalsIgnoreCase(normalizeTermName(name))) {
-					eOperation = eOp;
-					break;
-				}
-			}
+			for (EOperation eOperation : eClass.getEAllOperations()) {
+				if (!eOperation.getName().equalsIgnoreCase(normalizeTermName(name)))
+					continue;
 
-			if (eOperation != null) {
-
+				if (eOperation.getEType() == null)
+					continue;
+				
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
 				prototype.setName(name);
-
-				QCardinality cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
-				cardinality.setMin(eOperation.getLowerBound());
-				cardinality.setMax(eOperation.getUpperBound());
-				prototype.setCardinality(cardinality);
-
-				prototype.setText(eOperation.getName() + " text");
-
+				
 				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
@@ -915,8 +921,17 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getDatetime())) {
 					QDatetimeDef datetimeDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDatetimeDef();
 					prototype.setDefinition(datetimeDef);
-				} else
-					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s23456bve8ft8fsdfc");
+				} else {
+					prototype = null;
+					continue;
+				}
+
+				QCardinality cardinality = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createCardinality();
+				cardinality.setMin(eOperation.getLowerBound());
+				cardinality.setMax(eOperation.getUpperBound());
+				prototype.setCardinality(cardinality);
+
+				prototype.setText(eOperation.getName() + " text");
 
 				if (!eOperation.getEParameters().isEmpty()) {
 					QEntry entry = QIntegratedLanguageFlowFactory.eINSTANCE.createEntry();
@@ -929,7 +944,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 						entry.getParameters().add(entryParameter);
 					}
 				}
-
 				break;
 			}
 		}
@@ -956,10 +970,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
 				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
 					name = "current()." + name;
-				else if(dataTerm instanceof QFileFormat) {
+				else if (dataTerm instanceof QFileFormat) {
 					name = "get()." + name;
 				}
-			} 
+			}
 
 			if (node instanceof QProgram)
 				continue;
@@ -969,10 +983,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			if (node instanceof QEntry)
 				continue;
-			
+
 			if (node instanceof QFileFormat)
 				continue;
-			
+
 			if (node instanceof QEntryParameter<?>)
 				continue;
 

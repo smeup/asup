@@ -1,4 +1,4 @@
-package org.smeup.sys.dk.compiler.test;
+package org.smeup.sys.os.dtaq.test;
 /**
  *  Copyright (c) 2012, 2015 Sme.UP and others.
  *  All rights reserved. This program and the accompanying materials
@@ -8,7 +8,7 @@ package org.smeup.sys.dk.compiler.test;
  *
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Dario Foresti - Initial API and implementation
  */
 
 
@@ -19,7 +19,7 @@ import org.smeup.sys.dk.test.base.DirectoryTestLauncherImpl;
  * Extends DirectoryTestLauncherImpl class and setting test category by class annotation
  */
 
-@Test(category = "DKCOMPILER")
-public class DKCompilerTestLauncherImpl extends DirectoryTestLauncherImpl{	
+@Test(category = "OSDTAQ")
+public class DtaqTestLauncherImpl extends DirectoryTestLauncherImpl{	
 }
 

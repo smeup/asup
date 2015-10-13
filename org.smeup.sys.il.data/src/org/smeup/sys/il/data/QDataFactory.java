@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.lang.Enum;
+import java.lang.String;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
