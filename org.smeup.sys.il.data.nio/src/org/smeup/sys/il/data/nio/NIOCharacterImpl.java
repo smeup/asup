@@ -717,6 +717,22 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		return result;
 	}
+	@Override
+	public QNumeric qInt() {
+		return qIntOperation(this.s(), false);
+	}
+
+	@Override
+	public QNumeric qInth() {
+		return qIntOperation(this.s(), true);
+	}
+
+	private QNumeric qIntOperation(String value, boolean roundingMode) {
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 0);
+		number.allocate();
+		number.eval(Integer.parseInt(value.trim()));
+		return number;
+	}
 	
 	@Override
 	public QNumeric qScan(QCharacter source) {
