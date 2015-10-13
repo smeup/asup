@@ -38,28 +38,27 @@ public @Supported class TestCaller {
 		
 		Collection<QTestLauncher> testLauncherList = TestLauncherHelper.findTestLauncher(component.toString(), module.toString());
 		
-		QContext childContext = job.getContext().createChildContext("resultWriter");
-		
-		QTestLauncherListener resultWriter = null;
-		
-		switch(outputEnum){
-		case FILE:
-			resultWriter = childContext.make(FileTestResultWriter.class);
-			break;
-			
-		case PRINT:
-			resultWriter = childContext.make(TestResultWriter.class);
-			((TestResultWriter)resultWriter).setOutputWriterName("P");
-		case TERM_STAR:				
-		default:
-			resultWriter = childContext.make(TestResultWriter.class);
-			break;
-		
-		}
-		
-		
 		if (testLauncherList != null) {
 		
+			QContext childContext = job.getContext().createChildContext("resultWriter");
+			
+			QTestLauncherListener resultWriter = null;
+			
+			switch(outputEnum){
+			case FILE:
+				resultWriter = childContext.make(FileTestResultWriter.class);
+				break;
+				
+			case PRINT:
+				resultWriter = childContext.make(TestResultWriter.class);
+				((TestResultWriter)resultWriter).setOutputWriterName("P");
+			case TERM_STAR:				
+			default:
+				resultWriter = childContext.make(TestResultWriter.class);
+				break;
+			
+			}
+
 			for (QTestLauncher testLauncher: testLauncherList) {
 				testLauncher.registerListener(resultWriter);
 				testLauncher.launch(object.toString().trim());
