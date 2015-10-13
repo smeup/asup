@@ -15,12 +15,6 @@ import java.util.List;
  * A representation of the model object '<em><b>Test Launcher</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link org.smeup.sys.dk.test.QTestLauncher#getListeners <em>Listeners</em>}</li>
- * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestLauncher()
  * @model abstract="true"
@@ -29,17 +23,13 @@ import java.util.List;
 public interface QTestLauncher {
 
 	/**
-	 * Returns the value of the '<em><b>Listeners</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.dk.test.QTestLauncherListener}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Listeners</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Listeners</em>' containment reference list.
-	 * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getTestLauncher_Listeners()
-	 * @model containment="true"
+	 * @model kind="operation"
 	 * @generated
 	 */
 	List<QTestLauncherListener> getListeners();
@@ -58,7 +48,7 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
-	void addListener(QTestLauncherListener listener);
+	void registerListener(QTestLauncherListener listener);
 
 	/**
 	 * <!-- begin-user-doc -->

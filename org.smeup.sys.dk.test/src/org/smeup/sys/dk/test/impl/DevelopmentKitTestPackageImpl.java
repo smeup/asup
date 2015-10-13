@@ -400,15 +400,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTestRunner_Listeners() {
-		return (EReference)testRunnerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -424,15 +415,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 */
 	public EClass getTestLauncher() {
 		return testLauncherEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTestLauncher_Listeners() {
-		return (EReference)testLauncherEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -512,12 +494,10 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		createEAttribute(testResultEClass, TEST_RESULT__TIME);
 
 		testRunnerEClass = createEClass(TEST_RUNNER);
-		createEReference(testRunnerEClass, TEST_RUNNER__LISTENERS);
 
 		unitTestRunnerEClass = createEClass(UNIT_TEST_RUNNER);
 
 		testLauncherEClass = createEClass(TEST_LAUNCHER);
-		createEReference(testLauncherEClass, TEST_LAUNCHER__LISTENERS);
 
 		testLauncherListenerEClass = createEClass(TEST_LAUNCHER_LISTENER);
 
@@ -714,27 +694,29 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEAttribute(getTestResult_Time(), ecorePackage.getELong(), "time", null, 0, 1, QTestResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testRunnerEClass, QTestRunner.class, "TestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestRunner_Listeners(), this.getTestRunnerListener(), null, "listeners", null, 0, -1, QTestRunner.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(testRunnerEClass, null, "addListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testRunnerEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestRunnerListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(testRunnerEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestRunnerListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(testRunnerEClass, this.getTestRunnerListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(unitTestRunnerEClass, QUnitTestRunner.class, "UnitTestRunner", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(testLauncherEClass, QTestLauncher.class, "TestLauncher", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTestLauncher_Listeners(), this.getTestLauncherListener(), null, "listeners", null, 0, -1, QTestLauncher.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(testLauncherEClass, null, "launch", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(testLauncherEClass, null, "addListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testLauncherEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(testLauncherEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(testLauncherEClass, this.getTestLauncherListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(testLauncherListenerEClass, QTestLauncherListener.class, "TestLauncherListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

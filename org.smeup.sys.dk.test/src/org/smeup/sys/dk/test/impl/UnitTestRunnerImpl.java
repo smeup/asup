@@ -29,16 +29,6 @@ public abstract class UnitTestRunnerImpl extends TestRunnerImpl implements QUnit
 		return null;
 	}
 
-	@Override
-	public void addListener(QTestRunnerListener listener) {
-		getListeners().add(listener);
-	}
-
-	@Override
-	public void removeListener(QTestRunnerListener listener) {
-		getListeners().add(listener);
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
