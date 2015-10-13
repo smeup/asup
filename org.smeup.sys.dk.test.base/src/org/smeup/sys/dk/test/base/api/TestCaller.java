@@ -49,8 +49,9 @@ public @Supported class TestCaller implements QTestLauncherListener{
 		if (testLauncherList != null) {
 		
 			for (QTestLauncher testLauncher: testLauncherList) {
-				testLauncher.getListeners().add(this);
+				testLauncher.addListener(this);
 				testLauncher.launch(object.toString().trim());
+				testLauncher.removeListener(this);
 			}
 		}				
 	}
