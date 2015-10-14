@@ -640,7 +640,7 @@ hold
 /* FETCH STATEMENT*/ 
  fetch_statement
  	:
- 	FETCH (fetch_position)? FROM c=Identifier (fetch_into)? -> ^(FETCH_STATEMENT (fetch_position)? ^(CURSOR $c) (fetch_into)?)
+ 	FETCH (fetch_position)? (FROM)? c=Identifier (fetch_into)? -> ^(FETCH_STATEMENT (fetch_position)? ^(CURSOR $c) (fetch_into)?)
  	;	
  
  fetch_position
