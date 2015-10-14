@@ -827,6 +827,13 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public boolean lt(byte value) {
 		return delegate.lt(value);
 	}
+	public void movea(QArray<?> value, int startIndex) {
+		delegate.movea(value, startIndex);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex) {
+		delegate.movea(value, startIndex);
+	}
 
 	public void movea(QArray<?> value, int startIndex, boolean clear) {
 		delegate.movea(value, startIndex, clear);

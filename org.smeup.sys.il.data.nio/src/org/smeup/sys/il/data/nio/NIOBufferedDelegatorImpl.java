@@ -29,7 +29,6 @@ import org.smeup.sys.il.data.QPointer;
 
 public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QBufferedData, QBufferedDataDelegator {
 
-
 	private static final long serialVersionUID = 1L;
 
 	private QBufferedData _delegate;
@@ -431,6 +430,14 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 		return _delegate.lt(value);
 	}
 
+	public void movea(QArray<?> value, int startIndex) {
+		_delegate.movea(value, startIndex);
+	}
+
+	public void movea(QArray<?> value, QNumeric startIndex) {
+		_delegate.movea(value, startIndex);
+	}
+	
 	public void movea(QArray<?> value, int startIndex, boolean clear) {
 		_delegate.movea(value, startIndex, clear);
 	}

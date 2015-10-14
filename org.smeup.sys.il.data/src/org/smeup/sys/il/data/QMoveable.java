@@ -138,10 +138,26 @@ public interface QMoveable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model startIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, int startIndex);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model startIndexRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void movea(QArray<?> value, int startIndex, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model startIndexRequired="true"
+	 * @generated
+	 */
+	void movea(QArray<?> value, QNumeric startIndex);
 
 	/**
 	 * <!-- begin-user-doc -->

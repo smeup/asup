@@ -280,7 +280,15 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
+	public void movea(QArray<?> value, QNumeric startIndex) {
+	}
+
+	@Override
 	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
+	}
+
+	@Override
+	public void movea(QArray<?> value, int startIndex) {
 	}
 
 	@Override
