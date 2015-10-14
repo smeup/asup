@@ -36,7 +36,12 @@ public class RPGExpressionTester {
 
 		QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/rpg/expressions.txt"))
-			testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
+		for (String expression : E4TestHelper.readTextResource(this, "/resources/rpg/expressions.txt")) {
+			try{
+				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
+			} catch(Exception exc) {
+				testAsserter.fail("Cannot parse expression \"" + expression + " Error message: " + exc.getMessage());
+			}
+		}
 	}
 }
