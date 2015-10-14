@@ -192,14 +192,12 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		compilationUnits.add(compilationUnit.getNode().getName());
 
-		QJob job = compilationUnit.getContext().get(QJob.class);
-
 		// link childs
 		for (QCompilationUnit childCompilationUnit : compilationUnit.getChildCompilationUnits())
 			linkCompilationUnit(compilationUnits, childCompilationUnit);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().get(RPJCallableUnitLinker.class);
-		
+
 		callableUnitLinker.linkModules(compilationUnit);
 		callableUnitLinker.linkFiles(compilationUnit);
 		callableUnitLinker.linkExternalDatas(compilationUnit);
@@ -215,10 +213,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		if (callableUnit.getFlowSection() != null) {
 			for (QProcedure procedure : callableUnit.getFlowSection().getProcedures()) {
 
-				List<QCompilationUnit> moduleContexts = prepareContexts(job, globalContexts, procedure, compilationUnit.getCaseSensitive());
-				RPJCompilationUnitImpl childCompilationUnit = new RPJCompilationUnitImpl(compilationUnit.getContext().createChildContext(procedure.getName()), procedure, null, moduleContexts,
-						compilationUnit.getCaseSensitive());
-				childCompilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
+				QCompilationUnit childCompilationUnit = createChildCompilationUnit(compilationUnit, procedure);
 
 				callableUnitLinker.linkModules(childCompilationUnit);
 				callableUnitLinker.linkFiles(childCompilationUnit);
@@ -251,7 +246,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(callableUnit);
 		if (callableUnitInfo.containsSQLStatement())
 			loadModule(job, moduleContexts, caseSensitive, "*SQL");
-		
+
 		if (callableUnitInfo.containsCMDStatement())
 			loadModule(job, moduleContexts, caseSensitive, "*CMD");
 
@@ -260,7 +255,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
 		for (String moduleName : callableUnit.getSetupSection().getModules()) {
-			
+
 			QCompilationUnit moduleContext = globalContexts.get(moduleName);
 
 			if (moduleContext != null) {
@@ -291,7 +286,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 				moduleContext = createCompilationUnit(job, globalContexts, flowModel, caseSensitive);
 				moduleContexts.add(moduleContext);
-				
+
 				globalContexts.put(moduleName, moduleContext);
 			} catch (IOException e) {
 				throw new OperatingSystemRuntimeException(e);
