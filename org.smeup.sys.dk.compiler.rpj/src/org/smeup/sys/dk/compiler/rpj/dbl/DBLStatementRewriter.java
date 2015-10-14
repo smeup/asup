@@ -201,8 +201,9 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 			break;
 		default:
 			break;
-		}
+		}		
 		cursorTerm.setHold(bindingStatement.isHold());
+		cursorTerm.setStatementName(bindingStatement.getForStatementName());
 		cursorTerm.setSql(bindingStatement.getForQuery());
 
 		QFileSection fileSection = this.callableUnit.getFileSection();

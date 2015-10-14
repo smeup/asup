@@ -772,7 +772,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				// TODO string special '*BLANKS' '*CHANGE'
+				String value = default_.getValue().replaceAll("\'", "\''");
+				eval.setAssignment(statement.getObject() + "=" + "'"+value+"'");
+			}
+			else
+				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 			eval.accept(this);
 
 			break;
@@ -794,7 +800,13 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				// TODO string special '*BLANKS' '*CHANGE'
+				String value = default_.getValue().replaceAll("\'", "\''");
+				eval.setAssignment(statement.getObject() + "=" + "'"+value+"'");
+			}
+			else
+				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 			eval.accept(this);
 
 			break;
@@ -824,7 +836,14 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					continue;
 
 				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
+				if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+					// TODO string special '*BLANKS' '*CHANGE'
+					String value = defaultElement.getValue().replaceAll("\'", "\''");
+					eval.setAssignment(element.getName() + "=" + "'"+value+"'");
+				}
+				else
+					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
+				
 				eval.accept(this);
 			}
 
@@ -923,11 +942,14 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		return false;
 	}
 
-	public void writeAssertion(QAnnotationTest qAnnotationTest, String message) {
+	public void writeAssertion(QAnnotationTest annotationTest, String message) {
 
 		Block block = getBlocks().peek();
 
-		QPredicateExpression expression = expressionParser.parsePredicate(qAnnotationTest.getExpression());
+		if(annotationTest.getExpression() == null)
+			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: rbbbb9r88888sdxgrwgxtrx");
+		
+		QPredicateExpression expression = expressionParser.parsePredicate(annotationTest.getExpression());
 		QRelationalExpression relationalExpression = null;
 		if (expression instanceof QRelationalExpression) {
 			relationalExpression = (QRelationalExpression) expression;
@@ -937,18 +959,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		Expression leftExpression = buildExpression(ast, relationalExpression.getLeftOperand(), null);
 
 		String messageNormalized = "";
-		if (qAnnotationTest.getMessage() == null || qAnnotationTest.getMessage().isEmpty()) {
+		if (annotationTest.getMessage() == null || annotationTest.getMessage().isEmpty()) {
 			if (message.isEmpty()) {
 				messageNormalized = "Init " + leftExpression;
 			} else {
 				messageNormalized = normalizeMessage(message);
 			}
 		} else {
-			messageNormalized = qAnnotationTest.getMessage();
+			messageNormalized = annotationTest.getMessage();
 		}
 
 		// QAtomicTermExpression atomicLeftExpr = null;
-		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expressionParser.parseExpression(qAnnotationTest.getExpression()), null));
+		writeAssertionTrue(block, messageNormalized, buildExpression(ast, expressionParser.parseExpression(annotationTest.getExpression()), null));
 		/*
 		 * if(relationalExpression.getLeftOperand() instanceof
 		 * QAtomicTermExpression){ atomicLeftExpr = (QAtomicTermExpression)

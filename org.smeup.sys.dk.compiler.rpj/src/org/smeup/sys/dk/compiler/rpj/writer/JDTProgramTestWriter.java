@@ -63,16 +63,16 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeProgramTest(QProgram programTest) throws IOException {
+	public void writeProgramTest(QProgram program) throws IOException {
 
-		System.out.println("Compiling test: "+programTest);
+		System.out.println("Compiling test: "+program);
 
-		refactCallableUnit(programTest);
+		refactCallableUnit(program);
 
 		// modules
 		List<String> modules = new ArrayList<>();
-		if (programTest.getSetupSection() != null) {
-			for (String module : programTest.getSetupSection().getModules())
+		if (program.getSetupSection() != null) {
+			for (String module : program.getSetupSection().getModules())
 				loadModules(modules, module);
 
 			for (String module : modules) {
@@ -89,10 +89,10 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			}
 		}
 
-		writeProgramAnnotation(programTest);
+		writeProgramAnnotation(program);
 
 		// unit info
-		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(programTest);
+		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(program);
 
 		writeSupportFields(callableUnitInfo);
 
@@ -100,42 +100,39 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		writeModuleFields(modules, false);
 
-		if (programTest.getFileSection() != null) {
-			writeDataSets(programTest.getFileSection().getDataSets());
-			writeDisplays(programTest.getFileSection().getDisplays());
-			writePrinters(programTest.getFileSection().getPrinters());
+		if (program.getFileSection() != null) {
+			writeDataSets(program.getFileSection().getDataSets());
+			writeKeyLists(program.getFileSection().getKeyLists());
+			writeStatements(program.getFileSection().getStatements());
+			writeCursors(program.getFileSection().getCursors());
+			writeDisplays(program.getFileSection().getDisplays());
+			writePrinters(program.getFileSection().getPrinters());
 		}
 
-		if (programTest.getDataSection() != null)
-			writeDataFields(programTest.getDataSection(), UnitScope.PROTECTED);
+		if (program.getDataSection() != null)
+			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
 
-		if (programTest.getFileSection() != null) {
-			writeKeyLists(programTest.getFileSection().getKeyLists());
-			writeCursors(programTest.getFileSection().getCursors());
-			writeStatements(programTest.getFileSection().getStatements());
-		}
-
-		if (programTest.getFlowSection() != null)
-			for (QProcedure procedure : programTest.getFlowSection().getProcedures())
+		if (program.getFlowSection() != null)
+			for (QProcedure procedure : program.getFlowSection().getProcedures())
 				writePublicProcedure(procedure);
 
 		writeInit();
 
-		writeEntry(programTest, modules);
+		writeEntry(program, modules);
 
 		// prototypes
-		if (programTest.getFlowSection() != null)
-			for (QPrototype prototype : programTest.getFlowSection().getPrototypes())
+		if (program.getFlowSection() != null)
+			for (QPrototype prototype : program.getFlowSection().getPrototypes())
 				writePrototype(prototype);
 
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
 		// main
-		if (programTest.getMain() != null) {
+		if (program.getMain() != null) {
 			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
 			routine.setName("main");
-			routine.setMain(programTest.getMain());
+			routine.setMain(program.getMain());
 			MethodDeclaration methodDeclaration = writeRoutine(routine);
 
 			MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
@@ -150,10 +147,10 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			statementWriter.setAST(getAST());
 			statementWriter.getBlocks().push(assertionBlock);
 
-			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas()) {
+			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas()) {
 				if (dataTerm.getFacet(QAnnotationTest.class) != null) {
 					QAnnotationTest annotationTest = dataTerm.getFacet(QAnnotationTest.class);
-					statementWriter.writeAssertion(annotationTest, "");
+					statementWriter.writeAssertion(annotationTest, dataTerm.toString());
 				}
 			}
 
@@ -164,18 +161,18 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		}
 
 		// routines
-		if (programTest.getFlowSection() != null)
-			for (QRoutine routine : programTest.getFlowSection().getRoutines())
+		if (program.getFlowSection() != null)
+			for (QRoutine routine : program.getFlowSection().getRoutines())
 				writeRoutine(routine);
 
 		// procedures
-		if (programTest.getFlowSection() != null)
-			for (QProcedure procedure : programTest.getFlowSection().getProcedures())
+		if (program.getFlowSection() != null)
+			for (QProcedure procedure : program.getFlowSection().getProcedures())
 				writeInnerProcedure(procedure);
 
 		// datas
-		if (programTest.getDataSection() != null)
-			for (QDataTerm<?> dataTerm : programTest.getDataSection().getDatas())
+		if (program.getDataSection() != null)
+			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
 				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 
 	}

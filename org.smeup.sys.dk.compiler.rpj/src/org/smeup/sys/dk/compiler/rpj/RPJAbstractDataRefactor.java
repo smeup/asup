@@ -80,35 +80,37 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected QDataTerm<?> buildUnaryDataTerm(QDataTerm<?> term, QDataTerm<?> termFrom) {
+	protected QDataTerm<?> buildUnaryDataTerm(QDataTerm<?> termTarget, QDataTerm<?> termSource) {
 
-		EClass eTermClass = ((EObject) term).eClass();
+		EClass eTermClass = ((EObject) termTarget).eClass();
 
-		if (termFrom.getDataTermType().isAtomic()) {
+		// atomic
+		if (termSource.getDataTermType().isAtomic()) {
 
 			// compound to atomic
-			if (term.getDataTermType().isCompound())
+			if (termTarget.getDataTermType().isCompound())
 				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: zfgsbdiyfb9scr34239");
 
+			// assert atomic to atomic
 			
 			// term
 			QDataTerm<QUnaryDataDef<?>> unaryDataTerm = (QDataTerm<QUnaryDataDef<?>>) EcoreUtil.create(eTermClass);
-			copyDataTerm(term, unaryDataTerm);
+			copyDataTerm(termTarget, unaryDataTerm);
 
 			QUnaryDataDef<?> unaryDataDef = null;
 
 			// unary
-			if (termFrom.getDataTermType().isUnary()) {
-				unaryDataDef = (QUnaryDataDef<?>) EcoreUtil.copy((EObject) termFrom.getDefinition());
+			if (termSource.getDataTermType().isUnary()) {
+				unaryDataDef = (QUnaryDataDef<?>) EcoreUtil.copy((EObject) termSource.getDefinition());
 			}
 			// multiple
 			else {
-				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) termFrom.getDefinition();
+				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) termSource.getDefinition();
 				unaryDataDef = (QUnaryDataDef<?>) EcoreUtil.copy((EObject) multipleAtomicBufferedDataDef.getArgument());
 			}
 
-			if (term.getDefinition() != null) 
-				overrideDefinition(unaryDataDef, term.getDefinition());
+			if (termTarget.getDefinition() != null) 
+				appendDefinition(unaryDataDef, termTarget.getDefinition());
 
 			unaryDataTerm.setDefinition(unaryDataDef);
 			
@@ -116,17 +118,19 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		} else {
 
 			// compound to atomic
-			if (term.getDataTermType().isAtomic()) {
+			if (termTarget.getDataTermType().isAtomic()) {
 
-				copyDataDef(termFrom.getDefinition(), term.getDefinition());
+				termTarget.getDefinition().getFormulas().addAll(EcoreUtil.copyAll(termSource.getDefinition().getFormulas()));
 
-				if (term.getDefinition() != null)
-					overrideDefinition(term.getDefinition(), termFrom.getDefinition());
-
-				if (termFrom.getDefinition() instanceof QDataStructDef && term.getDefinition() instanceof QCharacterDef) {
+				if (termTarget.getDefinition() != null)
+					appendDefinition(termTarget.getDefinition(), termSource.getDefinition());
+				else
+					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: ds9nf7tsd8ftsdbsdv");
+				
+				if (termSource.getDefinition() instanceof QDataStructDef && termTarget.getDefinition() instanceof QCharacterDef) {
 					
-					QDataStructDef dataStructDefFrom = (QDataStructDef) termFrom.getDefinition();
-					QCharacterDef charDefTo = (QCharacterDef) term.getDefinition();
+					QDataStructDef dataStructDefFrom = (QDataStructDef) termSource.getDefinition();
+					QCharacterDef charDefTo = (QCharacterDef) termTarget.getDefinition();
 					
 					if (dataStructDefFrom.getLength() == 0 && charDefTo.getLength() == 0) {
 						
@@ -140,17 +144,17 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 					}
 				}
 
-				return term;
+				return termTarget;
 			}
 			// compound to compound
 			else {
 
 				QDataTerm<QUnaryCompoundDataDef<?, ?>> unaryCompoundDataTerm = (QDataTerm<QUnaryCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
-				copyDataTerm(term, unaryCompoundDataTerm);
+				copyDataTerm(termTarget, unaryCompoundDataTerm);
 
 				// definition
 				QUnaryCompoundDataDef<?, ?> unaryCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataStructDef();
-				copyCompoundDataDef((QCompoundDataDef<?, ?>) termFrom.getDefinition(), unaryCompoundDataDef);
+				copyCompoundDataDef((QCompoundDataDef<?, ?>) termSource.getDefinition(), unaryCompoundDataDef);
 				unaryCompoundDataTerm.setDefinition(unaryCompoundDataDef);
 
 				return unaryCompoundDataTerm;
@@ -158,7 +162,7 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		}
 	}
 
-	private void overrideDefinition(QDataDef<?> target, QDataDef<?> source) {
+	private void appendDefinition(QDataDef<?> target, QDataDef<?> source) {
 
 		EObject eObjectTarget = ((EObject) target);
 		EObject eObjectSource = ((EObject) source);

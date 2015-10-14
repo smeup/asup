@@ -257,7 +257,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			field.setType(parType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataSetTerm.getName())));
@@ -286,7 +286,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(keyList.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
-		field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+		field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
 
 		Type bufferedType = getAST().newSimpleType(getAST().newSimpleName(QBufferedData.class.getSimpleName()));
 		field.setType(getAST().newArrayType(bufferedType));
@@ -319,14 +319,21 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
+			
+			writeAnnotation(field, CursorDef.class, "type", cursorTerm.getCursorType());			
 			if (cursorTerm.isHold())
 				writeAnnotation(field, CursorDef.class, "hold", cursorTerm.isHold());
-			writeAnnotation(field, CursorDef.class, "type", cursorTerm.getCursorType());
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-
+			if(cursorTerm.getStatementName() != null)
+				writeAnnotation(field, CursorDef.class, "statement", getCompilationUnit().normalizeTermName(cursorTerm.getStatementName()));
+			if(cursorTerm.getSql() != null)
+				writeAnnotation(field, CursorDef.class, "query", cursorTerm.getStatementName());
+					
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+			
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(QCursor.class.getSimpleName()));
 			field.setType(dataSetType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(cursorTerm.getName())));
+			
 			getTarget().bodyDeclarations().add(field);
 		}
 
@@ -341,7 +348,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(QStatement.class.getSimpleName()));
 			field.setType(dataSetType);
@@ -369,7 +376,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", display.getInfoStruct());
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			String className = null;
 			QCompilerLinker compilerLinker = display.getFacet(QCompilerLinker.class);
@@ -415,7 +422,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", printer.getInfoStruct());
 
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			String className = null;
 			QCompilerLinker compilerLinker = printer.getFacet(QCompilerLinker.class);
@@ -500,7 +507,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		QExternalFile externalFile = prototype.getFacet(QExternalFile.class);
 		if (externalFile != null) {
-			System.err.println("Unexpected condition: sdiauf8sad7gf65wq8");
+
 			writeEntry(methodDeclaration, prototype.getEntry());
 
 			// TODO manage external invocation
