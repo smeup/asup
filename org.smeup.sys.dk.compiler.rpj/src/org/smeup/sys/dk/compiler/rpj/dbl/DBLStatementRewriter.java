@@ -254,7 +254,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		methodExec.setObject(bindingStatement.getStatementName());
 		methodExec.setMethod(STATEMENT_METHOD.PREPARE);
-		methodExec.getParameters().add(bindingStatement.getFrom().substring(1));
+		methodExec.getParameters().add(bindingStatement.getFrom());
 
 		// Par 2 and 3
 		if (bindingStatement.getInto() != null) {
@@ -349,7 +349,7 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 					methodExec.getParameters().add(multipleRowClause.getDescriptor());
 			} else
 				// Into
-				methodExec.getParameters().add(bindingStatement.getInto().substring(1));
+				methodExec.getParameters().add(bindingStatement.getInto());
 
 		return methodExec;
 	}

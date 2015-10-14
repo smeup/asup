@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2015-10-14 14:34:52
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\dbl\\DBL.g 2015-10-14 15:28:43
 
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -6825,6 +6825,7 @@ public class DBLLexer extends Lexer {
 				cnt15++;
 			}
 
+			 setText(getText().substring(1)); 
 			}
 
 			state.type = _type;

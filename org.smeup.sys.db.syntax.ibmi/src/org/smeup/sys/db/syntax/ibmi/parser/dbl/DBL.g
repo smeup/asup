@@ -1160,7 +1160,7 @@ Identifier
 ===============================================================================
 */
 Variable
-  : ':'('a'..'z'|'A'..'Z'|Digit|'_'|CHAR_SPECIAL)+
+  : ':'('a'..'z'|'A'..'Z'|Digit|'_'|CHAR_SPECIAL)+ { setText(getText().substring(1)); }
   ;
 /*
 
