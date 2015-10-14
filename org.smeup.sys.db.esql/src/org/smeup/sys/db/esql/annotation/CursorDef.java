@@ -20,7 +20,10 @@ import org.smeup.sys.il.data.annotation.DataType;
 @Target(ElementType.FIELD)
 public @interface CursorDef {
 	
-	boolean hold() default false;
-	
 	CursorType type() default CursorType.SCROLLABLE;
+	
+	boolean hold() default false;
+	String statement() default "";
+	
+	
 }

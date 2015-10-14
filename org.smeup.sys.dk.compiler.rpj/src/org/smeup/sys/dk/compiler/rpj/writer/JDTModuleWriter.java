@@ -70,18 +70,15 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 
 		if (module.getFileSection() != null) {
 			writeDataSets(module.getFileSection().getDataSets());
+			writeKeyLists(module.getFileSection().getKeyLists());
+			writeStatements(module.getFileSection().getStatements());
+			writeCursors(module.getFileSection().getCursors());
 			writeDisplays(module.getFileSection().getDisplays());
 			writePrinters(module.getFileSection().getPrinters());
 		}
 
 		if (module.getDataSection() != null)
 			writeDataFields(module.getDataSection(), UnitScope.PUBLIC);
-
-		if (module.getFileSection() != null) {
-			writeKeyLists(module.getFileSection().getKeyLists());
-			writeCursors(module.getFileSection().getCursors());
-			writeStatements(module.getFileSection().getStatements());
-		}
 
 		if (module.getFlowSection() != null)
 			for (QProcedure procedure: module.getFlowSection().getProcedures())

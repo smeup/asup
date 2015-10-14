@@ -87,18 +87,15 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());
+			writeKeyLists(program.getFileSection().getKeyLists());
+			writeStatements(program.getFileSection().getStatements());
+			writeCursors(program.getFileSection().getCursors());
 			writeDisplays(program.getFileSection().getDisplays());
 			writePrinters(program.getFileSection().getPrinters());
 		}
 
 		if (program.getDataSection() != null)
 			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
-		
-		if (program.getFileSection() != null) {
-			writeKeyLists(program.getFileSection().getKeyLists());
-			writeCursors(program.getFileSection().getCursors());
-			writeStatements(program.getFileSection().getStatements());
-		}
 
 		if (program.getFlowSection() != null)
 			for (QProcedure procedure: program.getFlowSection().getProcedures())

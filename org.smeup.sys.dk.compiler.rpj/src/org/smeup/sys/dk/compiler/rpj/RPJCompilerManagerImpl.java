@@ -199,7 +199,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			linkCompilationUnit(compilationUnits, childCompilationUnit);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().get(RPJCallableUnitLinker.class);
-
+		
 		callableUnitLinker.linkModules(compilationUnit);
 		callableUnitLinker.linkFiles(compilationUnit);
 		callableUnitLinker.linkExternalDatas(compilationUnit);

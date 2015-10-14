@@ -301,9 +301,14 @@ public class BaseCallableInjector {
 					primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
 			}
 
-			QDataStruct record = dataContainer.getDataFactory().createRecord(classRecord, true);
-			records.put(primaryRecordName, record);
-
+			QDataStruct record = records.get(primaryRecordName.toLowerCase());
+			if (record == null) {
+				record = dataContainer.getDataFactory().createRecord(classRecord, true);
+				records.put(primaryRecordName.toLowerCase(), record);
+			}
+			else
+				record.toString();
+			
 			String fileName = classRecord.getSimpleName();
 			if (QKSDataSet.class.isAssignableFrom(field.getClass_())) {
 				dataSet = accessFactory.createKeySequencedDataSet(record, fileName, AccessMode.UPDATE, userOpen, null);
