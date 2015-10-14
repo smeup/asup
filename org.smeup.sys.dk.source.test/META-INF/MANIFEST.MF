@@ -7,5 +7,6 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.dk.source,
  org.smeup.sys.dk.test.e4,
- org.smeup.sys.rt.core
+ org.smeup.sys.rt.core,
+ org.smeup.sys.dk.test.base
 Import-Package: javax.inject

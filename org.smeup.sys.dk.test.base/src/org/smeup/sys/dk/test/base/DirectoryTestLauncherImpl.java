@@ -63,6 +63,10 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 				TestLauncherHelper.notifyResultAdded(this, testRunner, errorResult);				
 				
 			}
+			finally {
+				if(testContext != null)
+					testContext.close();
+			}
 			
 		}
 		

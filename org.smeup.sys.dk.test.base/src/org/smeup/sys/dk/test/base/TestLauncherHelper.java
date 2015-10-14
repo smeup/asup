@@ -90,9 +90,8 @@ public class TestLauncherHelper {
 			
 			Test annotation = klass.getAnnotation(Test.class);
 			
-			if (annotation != null) {				
-				// Test annotated class
-			
+			if (annotation != null) {
+				
 				if (object != null && object.length()>0) {
 					// Filter by object
 					if (object.equalsIgnoreCase(annotation.object())) {
@@ -130,7 +129,5 @@ public class TestLauncherHelper {
 		}		
 	}
 	
-	public static <T> boolean isInstanceOf(Class<T> clazz, Class<T> targetClass) {
-	    return clazz.isInstance(targetClass);
-	}
+	
 }

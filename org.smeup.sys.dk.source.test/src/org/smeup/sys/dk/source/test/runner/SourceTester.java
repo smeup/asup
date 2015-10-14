@@ -28,7 +28,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.QApplicationComponent;
 import org.smeup.sys.rt.core.QRuntimeCoreFactory;
 
-@Test(category = "dk.source", object = "Manager")
+@Test(category = "DK.SOURCE", object = "Manager")
 public class SourceTester {
 
 	@Inject

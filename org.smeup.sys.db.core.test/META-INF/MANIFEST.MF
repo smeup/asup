@@ -9,7 +9,8 @@ Require-Bundle: org.smeup.sys.il.core,
  org.smeup.sys.dk.test,
  org.smeup.sys.db.core,
  org.smeup.sys.db.syntax,
- org.smeup.sys.dk.test.e4
+ org.smeup.sys.dk.test.e4,
+ org.smeup.sys.dk.test.base
 Export-Package: org.smeup.sys.db.core.test
 Import-Package: javax.inject;version="1.0.0",
  org.eclipse.emf.ecore.xmi.impl,
