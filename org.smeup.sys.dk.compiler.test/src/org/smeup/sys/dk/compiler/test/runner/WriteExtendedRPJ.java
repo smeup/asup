@@ -10,7 +10,7 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 
-@Test(category = "DKCOMPILER",  object = "EXTRPJ")
+@Test(category = "DK.COMPILER",  object = "EXTRPJ")
 public class WriteExtendedRPJ {
 
 	@Inject

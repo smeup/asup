@@ -19,7 +19,7 @@ import org.smeup.sys.dk.test.base.DirectoryTestLauncherImpl;
  * Extends DirectoryTestLauncherImpl class and setting test category by class annotation
  */
 
-@Test(category = "DKCOMPILER")
+@Test(category = "DK.COMPILER")
 public class DKCompilerTestLauncherImpl extends DirectoryTestLauncherImpl{	
 }
 
