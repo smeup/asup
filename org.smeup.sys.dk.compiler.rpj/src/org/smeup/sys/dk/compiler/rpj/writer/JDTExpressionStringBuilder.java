@@ -112,7 +112,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case DATE:
 		case TIME:
-		case TIMESTAMP:	
+		case TIMESTAMP:
 			value = expression.getValue();
 			source = Date.class;
 			break;
@@ -135,7 +135,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				// value = value.substring(2);
 				// value = value.substring(0, value.length() - 1);
 
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid hexadecimal: " + expression.getValue());				
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid hexadecimal: " + expression.getValue());
 			} else {
 				source = QHexadecimal.class;
 				value = "(byte) 0x" + value;
@@ -160,7 +160,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case INDICATOR:
 		case NAME:
-			
+
 			QNamedNode namedNode = null;
 			namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 			if (namedNode == null) {
@@ -653,8 +653,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			buffer.append("qRPJ.qBox(" + value + ")");
 			buffer.append(value);
 			buffer.append(".asDatetime()");
-		} 
-		else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
+		} else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
 			buffer.append("qRPJ.qCast(" + value + ")");
 		else if (QData.class.isAssignableFrom(target))
 			buffer.append("qRPJ.qBox(" + value + ")");
@@ -705,7 +704,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		// if (expression.getValue().equalsIgnoreCase("*ALL"))
 		// expression.setValue("%all");
 
-		QPrototype prototype = compilationUnit.getMethod(expression.getValue()); 
+		QPrototype prototype = compilationUnit.getMethod(expression.getValue());
 		if (prototype != null && !expression.getElements().isEmpty()) {
 			QExpression expressionChild = expression.getElements().get(0);
 
@@ -772,7 +771,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		if (namedNode == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
-
 		// unary
 
 		// dataSet
@@ -803,8 +801,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			StringBuffer value = new StringBuffer();
 
-//			if (namedNode.getName().startsWith("%"))
-//				System.out.println("Verificare in qRPJ " + namedNode.getName());
+			// if (namedNode.getName().startsWith("%"))
+			// System.out.println("Verificare in qRPJ " + namedNode.getName());
 
 			value.append(compilationUnit.getQualifiedName(namedNode));
 

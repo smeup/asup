@@ -21,6 +21,8 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getAccessMode <em>Access Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getExternalFile <em>External File</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getExternalMember <em>External Member</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getFormatName <em>Format Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#isKeyedAccess <em>Keyed Access</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getPrefix <em>Prefix</em>}</li>
@@ -46,6 +48,42 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 	 * @ordered
 	 */
 	protected AccessMode accessMode = ACCESS_MODE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getExternalFile() <em>External File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXTERNAL_FILE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getExternalFile() <em>External File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected String externalFile = EXTERNAL_FILE_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getExternalMember() <em>External Member</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalMember()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXTERNAL_MEMBER_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getExternalMember() <em>External Member</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalMember()
+	 * @generated
+	 * @ordered
+	 */
+	protected String externalMember = EXTERNAL_MEMBER_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getFormatName() <em>Format Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -138,6 +176,48 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getExternalFile() {
+		return externalFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalFile(String newExternalFile) {
+		String oldExternalFile = externalFile;
+		externalFile = newExternalFile;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_FILE, oldExternalFile, externalFile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getExternalMember() {
+		return externalMember;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalMember(String newExternalMember) {
+		String oldExternalMember = externalMember;
+		externalMember = newExternalMember;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_MEMBER, oldExternalMember, externalMember));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -209,6 +289,10 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 		switch (featureID) {
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
 				return getAccessMode();
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_FILE:
+				return getExternalFile();
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_MEMBER:
+				return getExternalMember();
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
 				return getFormatName();
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
@@ -228,6 +312,12 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 		switch (featureID) {
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
 				setAccessMode((AccessMode)newValue);
+				return;
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_FILE:
+				setExternalFile((String)newValue);
+				return;
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_MEMBER:
+				setExternalMember((String)newValue);
 				return;
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
 				setFormatName((String)newValue);
@@ -252,6 +342,12 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
 				setAccessMode(ACCESS_MODE_EDEFAULT);
 				return;
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_FILE:
+				setExternalFile(EXTERNAL_FILE_EDEFAULT);
+				return;
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_MEMBER:
+				setExternalMember(EXTERNAL_MEMBER_EDEFAULT);
+				return;
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
 				setFormatName(FORMAT_NAME_EDEFAULT);
 				return;
@@ -274,6 +370,10 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 		switch (featureID) {
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__ACCESS_MODE:
 				return accessMode != ACCESS_MODE_EDEFAULT;
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_FILE:
+				return EXTERNAL_FILE_EDEFAULT == null ? externalFile != null : !EXTERNAL_FILE_EDEFAULT.equals(externalFile);
+			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__EXTERNAL_MEMBER:
+				return EXTERNAL_MEMBER_EDEFAULT == null ? externalMember != null : !EXTERNAL_MEMBER_EDEFAULT.equals(externalMember);
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__FORMAT_NAME:
 				return FORMAT_NAME_EDEFAULT == null ? formatName != null : !FORMAT_NAME_EDEFAULT.equals(formatName);
 			case QIntegratedLanguageEsamPackage.DATA_SET_TERM__KEYED_ACCESS:
@@ -295,6 +395,10 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accessMode: ");
 		result.append(accessMode);
+		result.append(", externalFile: ");
+		result.append(externalFile);
+		result.append(", externalMember: ");
+		result.append(externalMember);
 		result.append(", formatName: ");
 		result.append(formatName);
 		result.append(", keyedAccess: ");
@@ -303,13 +407,5 @@ public class DataSetTermImpl extends FileTermImpl implements QDataSetTerm {
 		result.append(prefix);
 		result.append(')');
 		return result.toString();
-	}
-
-	@Override
-	public String getName() {
-		if (getFormatName() == null || getFormatName().isEmpty())
-			return getFileName();
-		else
-			return getFormatName();
 	}
 } // DataSetTermImpl

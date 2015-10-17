@@ -377,4 +377,22 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

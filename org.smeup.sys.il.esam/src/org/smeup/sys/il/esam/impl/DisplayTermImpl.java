@@ -41,10 +41,4 @@ public class DisplayTermImpl extends FileTermImpl implements QDisplayTerm {
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageEsamPackage.Literals.DISPLAY_TERM;
 	}
-
-	@Override
-	public String getName() {
-		return getFileName();
-	}
-
 } // DisplayTermImpl

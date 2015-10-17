@@ -63,8 +63,6 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 	public void writeSupportFields(RPJCallableUnitInfo callableUnitInfo) {
 
 		writeImport(QData.class);
-		writeImport(RPJProgramSupport.class);
-
 		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);

@@ -261,7 +261,7 @@ public class RPJCallableUnitLinker {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm, QCompilationUnit compilationUnit) {
 
-		QFile file = getFile(fileTerm.getFileName());
+		QFile file = getFile(fileTerm.getName());
 
 		// TODO retrieve type (internal=true)
 		if (file == null || file instanceof QSourceFile) {
@@ -276,11 +276,11 @@ public class RPJCallableUnitLinker {
 			};
 			internalFileFormat.setDefinition(dataRecord.getDefinition());
 
-			if(fileTerm.getFormat() == null)
+			if (fileTerm.getFormat() == null)
 				fileTerm.setFormat(internalFileFormat);
 			else
 				System.out.println("Unexpected condition: b439t857bt9retvbtr");
-			
+
 			// remove redefined record
 			compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 
@@ -330,7 +330,9 @@ public class RPJCallableUnitLinker {
 				}
 
 				// remove redefined record
-				compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
+				if (compilerLinker == null)
+					compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
+				
 			} else if (file instanceof QDisplayFile) {
 
 				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
@@ -437,11 +439,11 @@ public class RPJCallableUnitLinker {
 						throw new OperatingSystemRuntimeException("File not found: " + table);
 
 					// TODO
-					if(externalFile.getRule() != null) {
-						if(!externalFile.getRule().toUpperCase().equals(Specials.ALL))
-							throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());						
+					if (externalFile.getRule() != null) {
+						if (!externalFile.getRule().toUpperCase().equals(Specials.ALL))
+							throw new OperatingSystemRuntimeException("Invalid format rule: " + externalFile.getRule());
 					}
-					
+
 					appendElements(qDataTerm, superTable.getDatabaseFormat());
 				}
 			} else

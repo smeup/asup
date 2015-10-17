@@ -120,7 +120,8 @@ public interface QDataSet<R extends QRecord> {
 	boolean read(QIndicator endOfData);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
@@ -157,7 +158,8 @@ public interface QDataSet<R extends QRecord> {
 	boolean readp(QIndicator beginningOfData);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

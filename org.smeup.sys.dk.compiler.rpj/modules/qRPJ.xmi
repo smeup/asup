@@ -1336,7 +1336,7 @@
         <parameters>
           <delegate
               xsi:type="il-esam:DataSetTerm"
-              fileName="dataSet"/>
+              name="dataSet"/>
         </parameters>
       </entry>
     </prototypes>
@@ -1348,7 +1348,7 @@
         <parameters>
           <delegate
               xsi:type="il-esam:DataSetTerm"
-              fileName="dataSet"/>
+              name="dataSet"/>
         </parameters>
       </entry>
     </prototypes>
@@ -1360,7 +1360,7 @@
         <parameters>
           <delegate
               xsi:type="il-esam:DataSetTerm"
-              fileName="dataSet"/>
+              name="dataSet"/>
         </parameters>
       </entry>
     </prototypes>
@@ -1372,7 +1372,7 @@
         <parameters>
           <delegate
               xsi:type="il-esam:DataSetTerm"
-              fileName="dataSet"/>
+              name="dataSet"/>
         </parameters>
       </entry>
     </prototypes>
@@ -1637,7 +1637,7 @@
         <parameters>
           <delegate
               xsi:type="il-esam:DataSetTerm"
-              fileName="dataSet"/>
+              name="dataSet"/>
         </parameters>
       </entry>
     </prototypes>

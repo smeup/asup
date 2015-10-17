@@ -262,20 +262,20 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getDataSetTerm_FormatName() {
+	public EAttribute getDataSetTerm_ExternalFile() {
 		return (EAttribute)dataSetTermEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getDataSetTerm_KeyedAccess() {
+	public EAttribute getDataSetTerm_ExternalMember() {
 		return (EAttribute)dataSetTermEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -284,8 +284,26 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataSetTerm_Prefix() {
+	public EAttribute getDataSetTerm_FormatName() {
 		return (EAttribute)dataSetTermEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataSetTerm_KeyedAccess() {
+		return (EAttribute)dataSetTermEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataSetTerm_Prefix() {
+		return (EAttribute)dataSetTermEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -320,15 +338,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EAttribute getFileTerm_FileName() {
-		return (EAttribute)fileTermEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getFileTerm_UserOpen() {
 		return (EAttribute)fileTermEClass.getEStructuralFeatures().get(3);
 	}
@@ -339,7 +348,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public EReference getFileTerm_Format() {
-		return (EReference)fileTermEClass.getEStructuralFeatures().get(1);
+		return (EReference)fileTermEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -348,6 +357,15 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	public EAttribute getFileTerm_InfoStruct() {
+		return (EAttribute)fileTermEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFileTerm_Name() {
 		return (EAttribute)fileTermEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -539,6 +557,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		dataSetTermEClass = createEClass(DATA_SET_TERM);
 		createEAttribute(dataSetTermEClass, DATA_SET_TERM__ACCESS_MODE);
+		createEAttribute(dataSetTermEClass, DATA_SET_TERM__EXTERNAL_FILE);
+		createEAttribute(dataSetTermEClass, DATA_SET_TERM__EXTERNAL_MEMBER);
 		createEAttribute(dataSetTermEClass, DATA_SET_TERM__FORMAT_NAME);
 		createEAttribute(dataSetTermEClass, DATA_SET_TERM__KEYED_ACCESS);
 		createEAttribute(dataSetTermEClass, DATA_SET_TERM__PREFIX);
@@ -548,9 +568,9 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		displayTermEClass = createEClass(DISPLAY_TERM);
 
 		fileTermEClass = createEClass(FILE_TERM);
-		createEAttribute(fileTermEClass, FILE_TERM__FILE_NAME);
 		createEReference(fileTermEClass, FILE_TERM__FORMAT);
 		createEAttribute(fileTermEClass, FILE_TERM__INFO_STRUCT);
+		createEAttribute(fileTermEClass, FILE_TERM__NAME);
 		createEAttribute(fileTermEClass, FILE_TERM__USER_OPEN);
 
 		keyListTermEClass = createEClass(KEY_LIST_TERM);
@@ -968,6 +988,8 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		initEClass(dataSetTermEClass, QDataSetTerm.class, "DataSetTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataSetTerm_AccessMode(), this.getAccessMode(), "accessMode", "I", 1, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSetTerm_ExternalFile(), ecorePackage.getEString(), "externalFile", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSetTerm_ExternalMember(), ecorePackage.getEString(), "externalMember", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSetTerm_FormatName(), ecorePackage.getEString(), "formatName", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSetTerm_KeyedAccess(), ecorePackage.getEBoolean(), "keyedAccess", null, 1, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDataSetTerm_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, QDataSetTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1033,7 +1055,6 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		initEClass(displayTermEClass, QDisplayTerm.class, "DisplayTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fileTermEClass, QFileTerm.class, "FileTerm", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFileTerm_FileName(), ecorePackage.getEString(), "fileName", null, 1, 1, QFileTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType(theIntegratedLanguageDataDefPackage.getCompoundDataDef());
 		g1.getETypeArguments().add(g2);
@@ -1045,6 +1066,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		g3.getETypeArguments().add(g4);
 		initEReference(getFileTerm_Format(), g1, null, "format", null, 0, 1, QFileTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFileTerm_InfoStruct(), ecorePackage.getEString(), "infoStruct", null, 0, 1, QFileTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFileTerm_Name(), ecorePackage.getEString(), "name", null, 1, 1, QFileTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFileTerm_UserOpen(), ecorePackage.getEBoolean(), "userOpen", null, 1, 1, QFileTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(keyListTermEClass, QKeyListTerm.class, "KeyListTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1064,6 +1086,11 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theIntegratedLanguageDataPackage.getData(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "chain", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getData(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(ksDataSetEClass, ecorePackage.getEBoolean(), "chain", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getData(), "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1365,6 +1392,22 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(rrDataSetEClass, ecorePackage.getEBoolean(), "chain", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "relativeRecordNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(rrDataSetEClass, ecorePackage.getEBoolean(), "chain", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "relativeRecordNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBooleanObject(), "lock", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(rrDataSetEClass, ecorePackage.getEBoolean(), "chain", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getNumeric(), "relativeRecordNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "notFound", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageDataPackage.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(rrDataSetEClass, null, "setgt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "relativeRecordNumber", 1, 1, IS_UNIQUE, IS_ORDERED);

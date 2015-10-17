@@ -18,9 +18,9 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFormat <em>Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getInfoStruct <em>Info Struct</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
  * </ul>
  * </p>
@@ -30,32 +30,6 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * @generated
  */
 public interface QFileTerm extends QTerm {
-	/**
-	 * Returns the value of the '<em><b>File Name</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>File Name</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>File Name</em>' attribute.
-	 * @see #setFileName(String)
-	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getFileTerm_FileName()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getFileName();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.esam.QFileTerm#getFileName <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>File Name</em>' attribute.
-	 * @see #getFileName()
-	 * @generated
-	 */
-	void setFileName(String value);
-
 	/**
 	 * Returns the value of the '<em><b>User Open</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Imposta
@@ -132,5 +106,31 @@ public interface QFileTerm extends QTerm {
 	 * @generated
 	 */
 	void setInfoStruct(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getFileTerm_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QFileTerm#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // QFileTerm

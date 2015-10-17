@@ -30,6 +30,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
 public class JDTModuleWriter extends JDTCallableUnitWriter {
 
@@ -37,6 +38,7 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		super(root, compilationUnit, compilationSetup, name, UnitScope.PUBLIC);
 
 		writeImport(Module.class);
+		writeImport(RPJProgramSupport.class);
 		writeImport(OperatingSystemRuntimeException.class);
 	}
 

@@ -41,9 +41,4 @@ public class PrintTermImpl extends FileTermImpl implements QPrintTerm {
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageEsamPackage.Literals.PRINT_TERM;
 	}
-
-	@Override
-	public String getName() {
-		return getFileName();
-	}
 } // PrinterTermImpl

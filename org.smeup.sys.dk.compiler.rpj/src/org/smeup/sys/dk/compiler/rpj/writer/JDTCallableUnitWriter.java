@@ -239,11 +239,14 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeImport(compilerLinker.getLinkedClass());
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
 			} else {
-				String argument = dataSetTerm.getFileName();
+				String argument = dataSetTerm.getFormatName();
+				if (argument == null)
+					argument = dataSetTerm.getName();
+
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
 			}
 
-			if (!((SimpleType)parType.typeArguments().get(0)).getName().toString().equals(dataSetTerm.getFileName()))
+			if (!((SimpleType) parType.typeArguments().get(0)).getName().toString().equals(dataSetTerm.getName()))
 				writeAnnotation(field, FileDef.class, "name", dataSetTerm.getName());
 
 			EObject eDataSet = (EObject) dataSetTerm;
@@ -257,16 +260,29 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
 				writeAnnotation(field, FileDef.class, "info", getCompilationUnit().normalizeTermName(dataSetTerm.getInfoStruct()));
 
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalFile()))
+				writeAnnotation(field, FileDef.class, "externalFile", getCompilationUnit().normalizeTermName(dataSetTerm.getExternalFile()));
+
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getDataSetTerm_ExternalMember()))
+				writeAnnotation(field, FileDef.class, "externalMember", getCompilationUnit().normalizeTermName(dataSetTerm.getExternalMember()));
+
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			field.setType(parType);
-			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataSetTerm.getName())));
+			if (dataSetTerm.getFormatName() != null)
+				variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataSetTerm.getFormatName())));
+			else
+				variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataSetTerm.getName())));
 
 			getTarget().bodyDeclarations().add(field);
 
 			// internal file definition
-			if (compilerLinker == null && dataSetTerm.getFormat() != null)
-				writeInnerRecord(dataSetTerm.getFileName(), dataSetTerm.getFormat().getDefinition());
+			if (compilerLinker == null && dataSetTerm.getFormat() != null) {
+				if (dataSetTerm.getFormatName() != null)
+					writeInnerRecord(dataSetTerm.getFormatName(), dataSetTerm.getFormat().getDefinition());
+				else
+					writeInnerRecord(dataSetTerm.getName(), dataSetTerm.getFormat().getDefinition());
+			}
 		}
 
 	}
@@ -319,21 +335,21 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
-			
-			writeAnnotation(field, CursorDef.class, "type", cursorTerm.getCursorType());			
+
+			writeAnnotation(field, CursorDef.class, "type", cursorTerm.getCursorType());
 			if (cursorTerm.isHold())
 				writeAnnotation(field, CursorDef.class, "hold", cursorTerm.isHold());
-			if(cursorTerm.getStatementName() != null)
+			if (cursorTerm.getStatementName() != null)
 				writeAnnotation(field, CursorDef.class, "statement", getCompilationUnit().normalizeTermName(cursorTerm.getStatementName()));
-			if(cursorTerm.getSql() != null)
+			if (cursorTerm.getSql() != null)
 				writeAnnotation(field, CursorDef.class, "query", cursorTerm.getStatementName());
-					
+
 			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
-			
+
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(QCursor.class.getSimpleName()));
 			field.setType(dataSetType);
 			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(cursorTerm.getName())));
-			
+
 			getTarget().bodyDeclarations().add(field);
 		}
 
@@ -363,23 +379,13 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		writeImport(QDisplay.class);
 
-		for (QDisplayTerm display : displays) {
+		for (QDisplayTerm displayTerm : displays) {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
-			writeAnnotation(field, FileDef.class, "name", display.getFileName());
-
-			EObject eDataSet = (EObject) display;
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
-				writeAnnotation(field, FileDef.class, "userOpen", display.isUserOpen());
-
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
-				writeAnnotation(field, FileDef.class, "info", display.getInfoStruct());
-
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			String className = null;
-			QCompilerLinker compilerLinker = display.getFacet(QCompilerLinker.class);
+			QCompilerLinker compilerLinker = displayTerm.getFacet(QCompilerLinker.class);
 
 			writeImport(QDisplay.class);
 			className = QDisplay.class.getSimpleName();
@@ -391,12 +397,24 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeImport(compilerLinker.getLinkedClass());
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
 			} else {
-				String argument = display.getFileName();
+				String argument = displayTerm.getName();
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
 			}
 
+			if (!((SimpleType) parType.typeArguments().get(0)).getName().toString().equals(displayTerm.getName()))
+				writeAnnotation(field, FileDef.class, "name", displayTerm.getName());
+
+			EObject eDataSet = (EObject) displayTerm;
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+				writeAnnotation(field, FileDef.class, "userOpen", displayTerm.isUserOpen());
+
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+				writeAnnotation(field, FileDef.class, "info", displayTerm.getInfoStruct());
+
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+
 			field.setType(parType);
-			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(display.getName())));
+			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(displayTerm.getName())));
 
 			getTarget().bodyDeclarations().add(field);
 
@@ -409,23 +427,13 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		writeImport(QPrint.class);
 
-		for (QPrintTerm printer : printers) {
+		for (QPrintTerm printTerm : printers) {
 
 			VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 			FieldDeclaration field = getAST().newFieldDeclaration(variable);
-			writeAnnotation(field, FileDef.class, "name", printer.getFileName());
-
-			EObject eDataSet = (EObject) printer;
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
-				writeAnnotation(field, FileDef.class, "userOpen", printer.isUserOpen());
-
-			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
-				writeAnnotation(field, FileDef.class, "info", printer.getInfoStruct());
-
-			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 
 			String className = null;
-			QCompilerLinker compilerLinker = printer.getFacet(QCompilerLinker.class);
+			QCompilerLinker compilerLinker = printTerm.getFacet(QCompilerLinker.class);
 
 			writeImport(QPrint.class);
 			className = QPrint.class.getSimpleName();
@@ -437,12 +445,23 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				writeImport(compilerLinker.getLinkedClass());
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newName(compilerLinker.getLinkedClass().getSimpleName())));
 			} else {
-				String argument = printer.getFileName();
+				String argument = printTerm.getName();
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
 			}
 
+			if (!((SimpleType) parType.typeArguments().get(0)).getName().toString().equals(printTerm.getName()))
+				writeAnnotation(field, FileDef.class, "name", printTerm.getName());
+
+			EObject eDataSet = (EObject) printTerm;
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_UserOpen()))
+				writeAnnotation(field, FileDef.class, "userOpen", printTerm.isUserOpen());
+
+			if (eDataSet.eIsSet(QIntegratedLanguageEsamPackage.eINSTANCE.getFileTerm_InfoStruct()))
+				writeAnnotation(field, FileDef.class, "info", printTerm.getInfoStruct());
+
+			field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
 			field.setType(parType);
-			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(printer.getName())));
+			variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(printTerm.getName())));
 
 			getTarget().bodyDeclarations().add(field);
 
@@ -792,11 +811,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (qInzsr != null) {
 
 				MethodInvocation methodInvocation = getAST().newMethodInvocation();
-				
+
 				methodInvocation.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(qInzsr.getName())));
-				if(!qInzsr.getParent().equals(getCompilationUnit().getNode()))
+				if (!qInzsr.getParent().equals(getCompilationUnit().getNode()))
 					methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName((QNamedNode) qInzsr.getParent())));
-				
+
 				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 				block.statements().add(expressionStatement);
 			}
@@ -813,7 +832,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			block.statements().add(expressionStatement);
 		}
 
-		if(!methodDeclaration.getBody().statements().isEmpty())
+		if (!methodDeclaration.getBody().statements().isEmpty())
 			getTarget().bodyDeclarations().add(methodDeclaration);
 	}
 

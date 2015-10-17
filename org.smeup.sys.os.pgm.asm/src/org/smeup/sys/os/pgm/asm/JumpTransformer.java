@@ -42,7 +42,7 @@ public class JumpTransformer extends ClassAdapter {
 
 					Label label = tag2Label.get(lastTag);
 					if (label == null) {
-						System.err.println("Unexpected condition: nasd78qweablreq68u");
+						System.err.println("Unexpected condition "+lastTag+": nasd78qweablreq68u");
 						super.visitMethodInsn(opcode, owner, name, desc);
 					} else {
 						super.visitInsn(Opcodes.POP);

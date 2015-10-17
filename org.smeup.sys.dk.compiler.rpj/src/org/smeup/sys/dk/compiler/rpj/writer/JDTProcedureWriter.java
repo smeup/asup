@@ -43,6 +43,7 @@ import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QRoutine;
+import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 
 public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
@@ -54,7 +55,8 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		super(root, compilationUnit, compilationSetup, name, scope);
 
 		writeImport(Procedure.class);
-
+		writeImport(RPJProcedureSupport.class);
+		
 		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 		

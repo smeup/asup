@@ -27,5 +27,7 @@ public @interface FileDef {
 	
 	String prefix() default "";
 	
-	String external() default "";
+	String externalFile() default "";
+	String externalMember() default "";
+	
 }

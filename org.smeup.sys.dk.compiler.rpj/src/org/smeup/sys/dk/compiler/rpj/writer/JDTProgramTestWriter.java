@@ -48,6 +48,7 @@ import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
 public class JDTProgramTestWriter extends JDTProgramWriter {
 
@@ -59,6 +60,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		this.listUtil = compilationUnit.getContext().get(QLists.class);
 
 		writeImport(Program.class);
+		writeImport(RPJProgramSupport.class);
 		writeImport(OperatingSystemRuntimeException.class);
 	}
 

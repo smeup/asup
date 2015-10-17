@@ -148,7 +148,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		QDataSetTerm dataSetTerm = null;
 
 		for (QDataSetTerm d : dataSets)
-			if (equalsTermName(d.getFormatName(), name) || equalsTermName(d.getFileName(), name)) {
+			if (equalsTermName(d.getFormatName(), name) || equalsTermName(d.getName(), name)) {
 				dataSetTerm = d;
 				break;
 			}
@@ -414,7 +414,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
-		if(name.contains("(")) 
+		if (name.contains("("))
 			name = name.substring(0, name.indexOf("("));
 
 		QDataTerm<?> dataTerm = null;
@@ -448,10 +448,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (compoundDataDef.isQualified()) {
 					String[] tokens = name.split("\\.");
 					if (tokens.length > 1) {
-						name = null; 
+						name = null;
 						for (int i = 1; i < tokens.length; i++) {
-							if(name != null)
-								name = name+"."+tokens[i];
+							if (name != null)
+								name = name + "." + tokens[i];
 							else
 								name = tokens[i];
 						}
@@ -940,6 +940,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		if (namedNode instanceof QModule)
 			name = normalizeModuleName(namedNode.getName());
+		else if (namedNode instanceof QDataSetTerm) {
+			QDataSetTerm dataSetTerm = (QDataSetTerm) namedNode;
+			if(dataSetTerm.getFormatName() != null)
+				name = normalizeTermName(dataSetTerm.getFormatName());
+			else
+				name = normalizeTermName(dataSetTerm.getName());
+		}
 		else
 			name = normalizeTermName(namedNode.getName());
 
@@ -991,7 +998,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 			if (namedParentNode instanceof QModule)
 				name = normalizeModuleName(namedParentNode.getName()) + "." + name;
-			else
+			else if (namedParentNode instanceof QDataSetTerm) {
+				QDataSetTerm dataSetTerm = (QDataSetTerm) namedParentNode;
+				name = normalizeTermName(dataSetTerm.getFormatName()) + "." + name;
+			} else
 				name = normalizeTermName(namedParentNode.getName()) + "." + name;
 		}
 

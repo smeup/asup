@@ -50,7 +50,8 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	boolean chain(int relativeRecordNumber, QIndicator notFound);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" relativeRecordNumberRequired="true"
 	 * @generated
 	 */
@@ -63,6 +64,30 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @generated
 	 */
 	boolean chain(int relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

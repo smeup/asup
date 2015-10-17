@@ -17,6 +17,8 @@ package org.smeup.sys.il.esam;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getExternalFile <em>External File</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getExternalMember <em>External Member</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getFormatName <em>Format Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}</li>
@@ -54,6 +56,58 @@ public interface QDataSetTerm extends QFileTerm {
 	 * @generated
 	 */
 	void setAccessMode(AccessMode value);
+
+	/**
+	 * Returns the value of the '<em><b>External File</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External File</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External File</em>' attribute.
+	 * @see #setExternalFile(String)
+	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm_ExternalFile()
+	 * @model
+	 * @generated
+	 */
+	String getExternalFile();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#getExternalFile <em>External File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External File</em>' attribute.
+	 * @see #getExternalFile()
+	 * @generated
+	 */
+	void setExternalFile(String value);
+
+	/**
+	 * Returns the value of the '<em><b>External Member</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Member</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Member</em>' attribute.
+	 * @see #setExternalMember(String)
+	 * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm_ExternalMember()
+	 * @model
+	 * @generated
+	 */
+	String getExternalMember();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.esam.QDataSetTerm#getExternalMember <em>External Member</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External Member</em>' attribute.
+	 * @see #getExternalMember()
+	 * @generated
+	 */
+	void setExternalMember(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Format Name</b></em>' attribute. <!--

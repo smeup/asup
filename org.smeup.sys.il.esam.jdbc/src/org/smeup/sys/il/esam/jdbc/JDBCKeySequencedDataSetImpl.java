@@ -105,6 +105,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	}
 
 	@Override
+	public boolean chain(QData keyField, QIndicator notFound, QIndicator error) {
+		return chain(keyField, notFound, error, null);
+	}
+
+	@Override
 	public boolean chain(QData keyField, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };

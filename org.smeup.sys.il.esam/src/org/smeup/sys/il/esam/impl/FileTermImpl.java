@@ -25,9 +25,9 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getInfoStruct <em>Info Struct</em>}</li>
+ *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#isUserOpen <em>User Open</em>}</li>
  * </ul>
  * </p>
@@ -39,24 +39,6 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The default value of the '{@link #getFileName() <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getFileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FILE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFileName() <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getFileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String fileName = FILE_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getFormat() <em>Format</em>}' containment reference.
@@ -87,6 +69,26 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	 * @ordered
 	 */
 	protected String infoStruct = INFO_STRUCT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isUserOpen() <em>User Open</em>}' attribute.
@@ -121,27 +123,6 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageEsamPackage.Literals.FILE_TERM;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getFileName() {
-		return fileName;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFileName(String newFileName) {
-		String oldFileName = fileName;
-		fileName = newFileName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME, oldFileName, fileName));
 	}
 
 	/**
@@ -230,6 +211,27 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageEsamPackage.FILE_TERM__NAME, oldName, name));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -272,12 +274,12 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
-				return getFileName();
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				return getFormat();
 			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
 				return getInfoStruct();
+			case QIntegratedLanguageEsamPackage.FILE_TERM__NAME:
+				return getName();
 			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
 				return isUserOpen();
 		}
@@ -292,14 +294,14 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
-				setFileName((String)newValue);
-				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>)newValue);
 				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
 				setInfoStruct((String)newValue);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__NAME:
+				setName((String)newValue);
 				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
 				setUserOpen((Boolean)newValue);
@@ -315,14 +317,14 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
-				setFileName(FILE_NAME_EDEFAULT);
-				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				setFormat((QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>)null);
 				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
 				setInfoStruct(INFO_STRUCT_EDEFAULT);
+				return;
+			case QIntegratedLanguageEsamPackage.FILE_TERM__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
 				setUserOpen(USER_OPEN_EDEFAULT);
@@ -338,12 +340,12 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QIntegratedLanguageEsamPackage.FILE_TERM__FILE_NAME:
-				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 			case QIntegratedLanguageEsamPackage.FILE_TERM__FORMAT:
 				return format != null;
 			case QIntegratedLanguageEsamPackage.FILE_TERM__INFO_STRUCT:
 				return INFO_STRUCT_EDEFAULT == null ? infoStruct != null : !INFO_STRUCT_EDEFAULT.equals(infoStruct);
+			case QIntegratedLanguageEsamPackage.FILE_TERM__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QIntegratedLanguageEsamPackage.FILE_TERM__USER_OPEN:
 				return userOpen != USER_OPEN_EDEFAULT;
 		}
@@ -359,10 +361,10 @@ public abstract class FileTermImpl extends NamedNodeImpl implements QFileTerm {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (fileName: ");
-		result.append(fileName);
-		result.append(", infoStruct: ");
+		result.append(" (infoStruct: ");
 		result.append(infoStruct);
+		result.append(", name: ");
+		result.append(name);
 		result.append(", userOpen: ");
 		result.append(userOpen);
 		result.append(')');

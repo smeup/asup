@@ -94,8 +94,10 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 			// like
 			if (dataTerm.getLike() != null) {
 				QDataTerm<?> like = getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-				if (like == null)
+				if (like == null) {
+					getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
 					throw new IntegratedLanguageExpressionRuntimeException("Invalid data term: " + dataTerm.getLike());
+				}
 
 				if(like.getLike() != null) {
 					getTermsTodo().push(dataTerm);
