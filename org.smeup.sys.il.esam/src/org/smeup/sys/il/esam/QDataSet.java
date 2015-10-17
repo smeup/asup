@@ -127,11 +127,20 @@ public interface QDataSet<R extends QRecord> {
 	boolean read(QIndicator endOfData, Boolean lock);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean read(QIndicator endOfData, Boolean lock, QIndicator error);
+	boolean read(QIndicator endOfData, QIndicator error);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean read(QIndicator endOfData, QIndicator error, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -155,11 +164,20 @@ public interface QDataSet<R extends QRecord> {
 	boolean readp(QIndicator beginningOfData, Boolean lock);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	boolean readp(QIndicator beginningOfData, Boolean lock, QIndicator error);
+	boolean readp(QIndicator beginningOfData, QIndicator error);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

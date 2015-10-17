@@ -15,6 +15,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -707,6 +708,15 @@ public class RPJProgramSupport {
 
 		// TODO Unsigned
 		QDecimal decimal = createDecimal(list.capacity());
+
+		return decimal;
+	}
+
+	/* Elem */
+	public QNumeric qElem(List<?> list) {
+
+		// TODO Unsigned
+		QDecimal decimal = createDecimal(list.size());
 
 		return decimal;
 	}

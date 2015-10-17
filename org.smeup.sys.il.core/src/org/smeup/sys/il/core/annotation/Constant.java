@@ -5,27 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.esam.annotation;
+package org.smeup.sys.il.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.smeup.sys.il.data.annotation.DataType;
-
-@DataType
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface FileDef {
-
-	String name() default "";
-	
-	boolean userOpen() default false;
-	
-	String info() default "";
-	
-	String prefix() default "";
-	
-	String external() default "";
+@Target({ ElementType.FIELD, ElementType.PARAMETER })
+public @interface Constant {
 }

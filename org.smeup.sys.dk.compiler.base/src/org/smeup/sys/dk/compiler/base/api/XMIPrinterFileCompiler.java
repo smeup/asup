@@ -107,7 +107,8 @@ public class XMIPrinterFileCompiler {
 
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
-
+		javaName = javaName.replaceAll("§", "Ç");
+		
 		compilerManager.writePrinterFile(compilationUnit, setup, output);
 
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));

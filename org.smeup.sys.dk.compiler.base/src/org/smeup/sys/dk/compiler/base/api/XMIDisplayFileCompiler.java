@@ -124,6 +124,7 @@ public class XMIDisplayFileCompiler {
 		compilerManager.writeDisplayFile(compilationUnit, setup, output);
 
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
+		javaName = javaName.replaceAll("§", "Ç");
 		sourceManager.createChildEntry(job.getContext(), project, javaName, true, new ByteArrayInputStream(output.toByteArray()));
 
 		compilationUnit.close();

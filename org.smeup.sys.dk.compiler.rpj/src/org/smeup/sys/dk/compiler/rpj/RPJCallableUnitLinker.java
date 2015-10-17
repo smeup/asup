@@ -271,11 +271,16 @@ public class RPJCallableUnitLinker {
 			if (dataRecord == null)
 				return;
 
-			QFileFormat<QCompoundDataDef<?, ?>> internalFileFormat = new FileFormatImpl<QCompoundDataDef<?, ?>>() {
+			QFileFormat<QCompoundDataDef<?, QDataTerm<?>>> internalFileFormat = new FileFormatImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
 				private static final long serialVersionUID = 1L;
 			};
 			internalFileFormat.setDefinition(dataRecord.getDefinition());
 
+			if(fileTerm.getFormat() == null)
+				fileTerm.setFormat(internalFileFormat);
+			else
+				System.out.println("Unexpected condition: b439t857bt9retvbtr");
+			
 			// remove redefined record
 			compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
 

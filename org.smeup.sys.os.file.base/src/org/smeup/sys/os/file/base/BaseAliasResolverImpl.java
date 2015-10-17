@@ -30,7 +30,9 @@ public class BaseAliasResolverImpl implements QAliasResolver {
 				if (table != null)
 					tableRef.setDatabaseTable(table);
 			}
-
+			else if (tableRef.getDatabaseTable().getSchema().getName().equalsIgnoreCase("QTEMP")) {
+				tableRef.getDatabaseTable().getSchema().setName("Q_"+connection.getContext().getID());
+			}
 			/*
 			 * for (Object column : tableRef.getValueExprColumns()) {
 			 * System.out.println("  Columns :  " + ((ValueExpressionColumn)

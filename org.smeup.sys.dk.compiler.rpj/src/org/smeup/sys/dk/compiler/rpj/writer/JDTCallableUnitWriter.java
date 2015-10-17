@@ -265,8 +265,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			getTarget().bodyDeclarations().add(field);
 
 			// internal file definition
-			// if (compilerLinker == null && dataSet.getRecord() != null)
-			// writeInnerRecord(dataSet.getFileName(), dataSet.getRecord());
+			if (compilerLinker == null && dataSetTerm.getFormat() != null)
+				writeInnerRecord(dataSetTerm.getFileName(), dataSetTerm.getFormat().getDefinition());
 		}
 
 	}

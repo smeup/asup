@@ -104,7 +104,8 @@ public class XMIDatabaseFileCompiler {
 		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
 
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
-
+		javaName = javaName.replaceAll("§", "Ç");
+		
 		// compilation unit
 		QCompilationUnit compilationUnit = compilerManager.createCompilationUnit(job, file, CaseSensitiveType.LOWER);
 

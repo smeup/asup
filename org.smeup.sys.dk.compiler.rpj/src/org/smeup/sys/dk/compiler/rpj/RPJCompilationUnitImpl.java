@@ -414,6 +414,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
+		if(name.contains("(")) 
+			name = name.substring(0, name.indexOf("("));
+
 		QDataTerm<?> dataTerm = null;
 
 		for (QDataTerm<?> child : dataTerms) {
@@ -442,6 +445,18 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
 				@SuppressWarnings("unchecked")
 				QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) compoundDataTerm.getDefinition();
+				if (compoundDataDef.isQualified()) {
+					String[] tokens = name.split("\\.");
+					if (tokens.length > 1) {
+						name = null; 
+						for (int i = 1; i < tokens.length; i++) {
+							if(name != null)
+								name = name+"."+tokens[i];
+							else
+								name = tokens[i];
+						}
+					}
+				}
 				if (compoundDataDef.getPrefix() != null) {
 					String[] tokens = compoundDataDef.getPrefix().split("\\:");
 					String pfx = tokens[0];

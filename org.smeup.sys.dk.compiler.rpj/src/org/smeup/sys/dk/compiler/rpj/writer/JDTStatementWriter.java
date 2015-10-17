@@ -773,9 +773,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
 			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				// TODO string special '*BLANKS' '*CHANGE'
-				String value = default_.getValue().replaceAll("\'", "\''");
-				eval.setAssignment(statement.getObject() + "=" + "'"+value+"'");
+				if(default_.getValue().startsWith("'"))
+					eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+				else
+					eval.setAssignment(statement.getObject() + "=" + "'"+default_.getValue().replaceAll("\'", "\''")+"'");
 			}
 			else
 				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
@@ -801,9 +802,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
 			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				// TODO string special '*BLANKS' '*CHANGE'
-				String value = default_.getValue().replaceAll("\'", "\''");
-				eval.setAssignment(statement.getObject() + "=" + "'"+value+"'");
+				if(default_.getValue().startsWith("'"))
+					eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+				else
+					eval.setAssignment(statement.getObject() + "=" + "'"+default_.getValue().replaceAll("\'", "\''")+"'");
 			}
 			else
 				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
@@ -830,16 +832,16 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				if (element.getDataTermType().isMultiple())
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cbe7xcb59vbnfg7733");
 
-				QDataTerm<?> dataElement = (QDataTerm<?>) element;
-				QDefault defaultElement = dataElement.getDefault();
+				QDefault defaultElement = element.getDefault();
 				if (defaultElement == null || defaultElement.isEmpty())
 					continue;
 
 				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-					// TODO string special '*BLANKS' '*CHANGE'
-					String value = defaultElement.getValue().replaceAll("\'", "\''");
-					eval.setAssignment(element.getName() + "=" + "'"+value+"'");
+				if(String.class.isAssignableFrom(element.getDefinition().getJavaClass())) {
+					if(defaultElement.getValue().startsWith("'"))
+						eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
+					else
+						eval.setAssignment(element.getName() + "=" + "'"+defaultElement.getValue().replaceAll("\'", "\''")+"'");
 				}
 				else
 					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());

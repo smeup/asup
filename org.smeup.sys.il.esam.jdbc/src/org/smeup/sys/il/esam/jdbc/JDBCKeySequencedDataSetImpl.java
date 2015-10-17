@@ -44,14 +44,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean chain(Object keyField, QIndicator notFound, Boolean lock) {
-		return chain(keyField, notFound, lock, null);
+		return chain(keyField, notFound, null, lock);
 	}
 
 	@Override
-	public boolean chain(Object keyField, QIndicator notFound, Boolean lock, QIndicator error) {
+	public boolean chain(Object keyField, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return chain(keyList, notFound, lock, error);
+		return chain(keyList, notFound, error, lock);
 	}
 
 	@Override
@@ -66,11 +66,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean chain(Object[] keyList, QIndicator notFound, Boolean lock) {
-		return chain(keyList, notFound, lock, null);
+		return chain(keyList, notFound, null, lock);
 	}
 
 	@Override
-	public boolean chain(Object[] keyList, QIndicator notFound, Boolean lock, QIndicator error) {
+	public boolean chain(Object[] keyList, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		try {
 			prepareAccess(OperationSet.CHAIN, keyList, OperationRead.CHAIN, keyList);
@@ -101,14 +101,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean chain(QData keyField, QIndicator notFound, Boolean lock) {
-		return chain(keyField, notFound, lock, null);
+		return chain(keyField, notFound, null, lock);
 	}
 
 	@Override
-	public boolean chain(QData keyField, QIndicator notFound, Boolean lock, QIndicator error) {
+	public boolean chain(QData keyField, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return chain(keyList, notFound, lock, error);
+		return chain(keyList, notFound, error, lock);
 	}
 
 	@Override
@@ -123,14 +123,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean reade(Object keyField, QIndicator endOfData, Boolean lock) {
-		return reade(keyField, endOfData, lock, null);
+		return reade(keyField, endOfData, null, lock);
 	}
 
 	@Override
-	public boolean reade(Object keyField, QIndicator endOfData, Boolean lock, QIndicator error) {
+	public boolean reade(Object keyField, QIndicator endOfData, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return reade(keyList, endOfData, lock, error);
+		return reade(keyList, endOfData, error, lock);
 	}
 
 	@Override
@@ -145,11 +145,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean reade(Object[] keyList, QIndicator endOfData, Boolean lock) {
-		return reade(keyList, endOfData, lock, null);
+		return reade(keyList, endOfData, null, lock);
 	}
 
 	@Override
-	public boolean reade(Object[] keyList, QIndicator endOfData, Boolean lock, QIndicator error) {
+	public boolean reade(Object[] keyList, QIndicator endOfData, QIndicator error, Boolean lock) {
 
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD)) {
@@ -190,14 +190,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean reade(QData keyField, QIndicator endOfData, Boolean lock) {
-		return reade(keyField, endOfData, lock, null);
+		return reade(keyField, endOfData, null, lock);
 	}
 
 	@Override
-	public boolean reade(QData keyField, QIndicator endOfData, Boolean lock, QIndicator error) {
+	public boolean reade(QData keyField, QIndicator endOfData, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return reade(keyList, endOfData, lock, error);
+		return reade(keyList, endOfData, error, lock);
 	}
 
 	@Override
@@ -212,14 +212,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean readpe(Object keyField, QIndicator beginningOfData, Boolean lock) {
-		return readpe(keyField, beginningOfData, lock, null);
+		return readpe(keyField, beginningOfData, null, lock);
 	}
 
 	@Override
-	public boolean readpe(Object keyField, QIndicator beginningOfData, Boolean lock, QIndicator error) {
+	public boolean readpe(Object keyField, QIndicator beginningOfData, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return readpe(keyList, beginningOfData, lock, error);
+		return readpe(keyList, beginningOfData, error, lock);
 	}
 
 	@Override
@@ -234,11 +234,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean readpe(Object[] keyList, QIndicator beginningOfData, Boolean lock) {
-		return readpe(keyList, beginningOfData, lock, null);
+		return readpe(keyList, beginningOfData, null, lock);
 	}
 
 	@Override
-	public boolean readpe(Object[] keyList, QIndicator beginningOfData, Boolean lock, QIndicator error) {
+	public boolean readpe(Object[] keyList, QIndicator beginningOfData, QIndicator error, Boolean lock) {
 
 		try {
 			if (rebuildNeeded(OperationDirection.BACKWARD)) {
@@ -275,14 +275,14 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 	@Override
 	public boolean readpe(QData keyField, QIndicator beginningOfData, Boolean lock) {
-		return readpe(keyField, beginningOfData, lock, null);
+		return readpe(keyField, beginningOfData, null, lock);
 	}
 
 	@Override
-	public boolean readpe(QData keyField, QIndicator beginningOfData, Boolean lock, QIndicator error) {
+	public boolean readpe(QData keyField, QIndicator beginningOfData, QIndicator error, Boolean lock) {
 
 		Object[] keyList = { keyField };
-		return readpe(keyList, beginningOfData, lock, error);
+		return readpe(keyList, beginningOfData, error, lock);
 	}
 
 	@Override

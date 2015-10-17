@@ -49,11 +49,11 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 
 	@Override
 	public boolean chain(int relativeRecordNumber, QIndicator notFound, Boolean lock) {
-		return chain(relativeRecordNumber, notFound, lock, null);
+		return chain(relativeRecordNumber, notFound, null, lock);
 	}
 
 	@Override
-	public boolean chain(int relativeRecordNumber, QIndicator notFound, Boolean lock, QIndicator error) {
+	public boolean chain(int relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		QFileMember fileMember = getFileMember();
 		
@@ -250,7 +250,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public boolean read(QIndicator endOfData, Boolean lock, QIndicator error) {
+	public boolean read(QIndicator endOfData, QIndicator error, Boolean lock) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -274,7 +274,7 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public boolean readp(QIndicator beginningOfData, Boolean lock, QIndicator error) {
+	public boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -364,5 +364,17 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public QDataStruct getInfoStruct() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean read(QIndicator endOfData, QIndicator error) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(QIndicator beginningOfData, QIndicator error) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
