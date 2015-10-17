@@ -20,23 +20,22 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 	private String runnerDirPath = "/runner/";	
 
 	@Override
-	public void launch(String object) {
+	public void launch(QContext context, String object) {
 		
 		// Notify launcher start
-		TestLauncherHelper.notifyLauncherStarted(this);
+		TestLauncherHelper.notifyLauncherStarted(context, this);
 		
 		Collection<Class<?>> testClasses = TestLauncherHelper.findTestClasses(this, runnerDirPath, object);		
 		
 		for (Class<?> testClass: testClasses){
-			
-			QContext testContext = testManager.prepareContext(testClass);
-			QTestRunner testRunner = testManager.prepareRunner(testContext, testClass);
+						
+			QTestRunner testRunner = testManager.prepareRunner(context, testClass);
 			QTestResult testResult;
 			try {
 				testResult = testRunner.call();
 				
 				// Notify launcher result
-				TestLauncherHelper.notifyResultAdded(this, testRunner, testResult);
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, testResult);
 				
 			} catch (Exception e) {
 				
@@ -60,17 +59,12 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 				
 				errorResult.getAssertResults().add(assertionFailed);
 
-				TestLauncherHelper.notifyResultAdded(this, testRunner, errorResult);				
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);				
 				
 			}
-			finally {
-				if(testContext != null)
-					testContext.close();
-			}
-			
 		}
 		
 		// Notify launcher stop
-		TestLauncherHelper.notifyLauncherStopped(this);
+		TestLauncherHelper.notifyLauncherStopped(context, this);
 	}	
 }

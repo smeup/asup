@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
 Require-Bundle: org.smeup.sys.il.expr;visibility:=reexport,
  org.smeup.sys.dk.test.e4,
- org.smeup.sys.dk.test.base
+ org.smeup.sys.dk.test.base,
+ org.smeup.sys.rt.core
 Import-Package: javax.inject
 Export-Package: org.smeup.sys.il.expr.ibmi.test,
  org.smeup.sys.il.expr.ibmi.test.runner

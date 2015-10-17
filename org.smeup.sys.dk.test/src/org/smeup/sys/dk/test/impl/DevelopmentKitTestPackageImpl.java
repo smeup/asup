@@ -668,12 +668,6 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		initEClass(testManagerEClass, QTestManager.class, "TestManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(testManagerEClass, theIntegratedLanguageCoreCtxPackage.getContext(), "prepareContext", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEJavaClass());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(testManagerEClass, this.getTestRunner(), "prepareRunner", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
@@ -708,15 +702,19 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(testLauncherEClass, QTestLauncher.class, "TestLauncher", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(testLauncherEClass, null, "launch", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(testLauncherEClass, null, "registerListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(testLauncherEClass, null, "removeListener", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getTestLauncherListener(), "listener", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(testLauncherEClass, this.getTestLauncherListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(testLauncherEClass, this.getTestLauncherListener(), "getListeners", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(testLauncherListenerEClass, QTestLauncherListener.class, "TestLauncherListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

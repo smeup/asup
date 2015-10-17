@@ -26,14 +26,6 @@ public interface QTestManager {
 	 * @model required="true" klassRequired="true"
 	 * @generated
 	 */
-	QContext prepareContext(Class<?> klass);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" klassRequired="true"
-	 * @generated
-	 */
 	QTestRunner prepareRunner(QContext context, Class<?> klass) throws DevelopmentKitTestRuntimeException;
 
 	/**

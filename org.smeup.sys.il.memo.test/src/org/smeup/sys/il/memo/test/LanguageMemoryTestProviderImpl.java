@@ -15,15 +15,18 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.rt.core.QApplication;
 
 public class LanguageMemoryTestProviderImpl extends E4TestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;
+	@Inject
+	private QApplication application;
 
 	public void _testMemo(CommandInterpreter commandInterpreter) {
 		
-		QContext testContext = testManager.prepareContext(this.getClass());
+		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
 		
 		try {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, TestWrite.class);

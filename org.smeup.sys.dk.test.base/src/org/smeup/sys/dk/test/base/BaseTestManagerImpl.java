@@ -12,20 +12,14 @@
  */
 package org.smeup.sys.dk.test.base;
 
-import javax.inject.Inject;
-
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.QUnitTestRunner;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.rt.core.QApplication;
 
 public class BaseTestManagerImpl implements QTestManager {
-
-	@Inject
-	private QApplication application;
 	
 	@Override
 	public QTestRunner prepareRunner(QContext context, String classURI) {
@@ -44,13 +38,5 @@ public class BaseTestManagerImpl implements QTestManager {
 		QUnitTestRunner testRunner = new BaseUnitTestRunnerImpl(context, classURI);
 
 		return testRunner;
-	}
-
-	@Override
-	public QContext prepareContext(Class<?> klass) {
-
-		QContext context = application.getContext().createChildContext(klass.getSimpleName());
-		
-		return context;
 	}
 }

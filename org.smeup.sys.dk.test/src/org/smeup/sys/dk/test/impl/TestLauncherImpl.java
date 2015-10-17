@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 import org.smeup.sys.dk.test.QTestLauncher;
 import org.smeup.sys.dk.test.QTestLauncherListener;
+import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +52,7 @@ public abstract class TestLauncherImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void launch(String object) {
+	public void launch(QContext context, String object) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -62,7 +63,7 @@ public abstract class TestLauncherImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void registerListener(QTestLauncherListener listener) {
+	public void registerListener(QContext context, QTestLauncherListener listener) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -73,7 +74,7 @@ public abstract class TestLauncherImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void removeListener(QTestLauncherListener listener) {
+	public void removeListener(QContext context, QTestLauncherListener listener) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -84,7 +85,7 @@ public abstract class TestLauncherImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QTestLauncherListener> getListeners() {
+	public List<QTestLauncherListener> getListeners(QContext context) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

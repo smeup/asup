@@ -20,15 +20,18 @@ import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.test.runner.FrameTester;
+import org.smeup.sys.rt.core.QApplication;
 
 public class LanguageCoreTestProviderImpl extends E4TestProviderImpl {
-
+	
+	@Inject
+	private QApplication application;
 	@Inject
 	private QTestManager testManager;
 
 	public void _testILCore(CommandInterpreter interpreter) throws Exception {
 
-		QContext testContext = testManager.prepareContext(this.getClass());
+		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
 
 		try {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, FrameTester.class);

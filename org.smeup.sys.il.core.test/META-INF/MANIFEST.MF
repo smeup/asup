@@ -6,7 +6,8 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.il.core,
- org.smeup.sys.dk.test.e4
+ org.smeup.sys.dk.test.e4,
+ org.smeup.sys.rt.core
 Import-Package: javax.inject
 Export-Package: org.smeup.sys.il.core.test,
  org.smeup.sys.il.core.test.runner

@@ -8,6 +8,7 @@
 package org.smeup.sys.dk.test;
 
 import java.util.List;
+import org.smeup.sys.il.core.ctx.QContext;
 
 
 /**
@@ -24,15 +25,11 @@ public interface QTestLauncher {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Listeners</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @model
 	 * @generated
 	 */
-	List<QTestLauncherListener> getListeners();
+	void launch(QContext context, String object);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -40,7 +37,7 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
-	void launch(String object);
+	void registerListener(QContext context, QTestLauncherListener listener);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -48,7 +45,7 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
-	void registerListener(QTestLauncherListener listener);
+	void removeListener(QContext context, QTestLauncherListener listener);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -56,5 +53,5 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
-	void removeListener(QTestLauncherListener listener);
+	List<QTestLauncherListener> getListeners(QContext context);
 } // QTestLauncher

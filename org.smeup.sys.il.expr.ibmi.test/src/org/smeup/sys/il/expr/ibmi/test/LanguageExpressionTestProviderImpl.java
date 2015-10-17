@@ -21,15 +21,18 @@ import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.expr.ibmi.test.runner.CLExpressionTester;
 import org.smeup.sys.il.expr.ibmi.test.runner.RPGExpressionTester;
+import org.smeup.sys.rt.core.QApplication;
 
 public class LanguageExpressionTestProviderImpl extends E4TestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;
+	@Inject
+	private QApplication application;
 
 	public void _testILExpr(CommandInterpreter interpreter) throws Exception {
 
-		QContext testContext = testManager.prepareContext(this.getClass());
+		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
 
 		try {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, RPGExpressionTester.class);

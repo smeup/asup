@@ -14,7 +14,10 @@ import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.rt.core.QApplication;
 
 public class TestLauncherHelper {
 	
@@ -107,24 +110,24 @@ public class TestLauncherHelper {
 		return testRunnerList;
 	}
 
-	public static void notifyLauncherStarted(QTestLauncher testLauncher) {
+	public static void notifyLauncherStarted(QContext context, QTestLauncher testLauncher) {
 		
-		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+		for (QTestLauncherListener listener: testLauncher.getListeners(context)) {
 			listener.launcherStarted(testLauncher);
 		}		
 	}
 	
-	public static void notifyResultAdded(QTestLauncher testLauncher, QTestRunner testRunner, QTestResult testResult) {
+	public static void notifyResultAdded(QContext context, QTestLauncher testLauncher, QTestRunner testRunner, QTestResult testResult) {
 		
-		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+		for (QTestLauncherListener listener: testLauncher.getListeners(context)) {
 			listener.resultAdded(testRunner, testResult);
 		}
 		
 	}
 	
-	public static void notifyLauncherStopped(QTestLauncher testLauncher) {
+	public static void notifyLauncherStopped(QContext context, QTestLauncher testLauncher) {
 		
-		for (QTestLauncherListener listener: testLauncher.getListeners()) {
+		for (QTestLauncherListener listener: testLauncher.getListeners(context)) {
 			listener.launcherStopped(testLauncher);
 		}		
 	}

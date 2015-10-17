@@ -21,15 +21,18 @@ import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.test.runner.DataStructureTester;
 import org.smeup.sys.il.data.test.runner.HexadecimalTester;
+import org.smeup.sys.rt.core.QApplication;
 
 public class LanguageDataTestProviderImpl extends E4TestProviderImpl {
 
 	@Inject
 	private QTestManager testManager;
+	@Inject
+	private QApplication application;
 
 	public void _testILData(CommandInterpreter interpreter) throws Exception {
 
-		QContext testContext = testManager.prepareContext(this.getClass());
+		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
 
 		try {
 			QTestRunner testRunner = testManager.prepareRunner(testContext, DataStructureTester.class);

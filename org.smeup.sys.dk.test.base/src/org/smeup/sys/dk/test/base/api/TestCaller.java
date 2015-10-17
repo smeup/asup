@@ -40,29 +40,29 @@ public @Supported class TestCaller {
 		
 		if (testLauncherList != null) {
 		
-			QContext childContext = job.getContext().createChildContext("resultWriter");
+			QContext context = job.getContext();
 			
 			QTestLauncherListener resultWriter = null;
 			
 			switch(outputEnum){
 			case FILE:
-				resultWriter = childContext.make(FileTestResultWriter.class);
+				resultWriter = context.make(FileTestResultWriter.class);
 				break;
 				
 			case PRINT:
-				resultWriter = childContext.make(TestResultWriter.class);
+				resultWriter = context.make(TestResultWriter.class);
 				((TestResultWriter)resultWriter).setOutputWriterName("P");
 			case TERM_STAR:				
 			default:
-				resultWriter = childContext.make(TestResultWriter.class);
+				resultWriter = context.make(TestResultWriter.class);
 				break;
 			
 			}
-
+			
 			for (QTestLauncher testLauncher: testLauncherList) {
-				testLauncher.registerListener(resultWriter);
-				testLauncher.launch(object.toString().trim());
-				testLauncher.removeListener(resultWriter);
+				testLauncher.registerListener(context, resultWriter);
+				testLauncher.launch(context, object.toString().trim());
+				testLauncher.removeListener(context, resultWriter);
 			}
 		}				
 	}

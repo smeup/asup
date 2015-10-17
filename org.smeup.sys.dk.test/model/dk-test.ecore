@@ -124,13 +124,6 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestManager" abstract="true" interface="true">
-    <eOperations name="prepareContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context">
-      <eParameters name="klass" lowerBound="1">
-        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
     <eOperations name="prepareRunner" lowerBound="1" eType="#//TestRunner">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="klass" lowerBound="1">
@@ -179,15 +172,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
   <eClassifiers xsi:type="ecore:EClass" name="TestLauncher" abstract="true">
     <eOperations name="launch">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="registerListener">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="listener" eType="#//TestLauncherListener"/>
     </eOperations>
     <eOperations name="removeListener">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="listener" eType="#//TestLauncherListener"/>
     </eOperations>
-    <eOperations name="getListeners" upperBound="-1" eType="#//TestLauncherListener"/>
+    <eOperations name="getListeners" upperBound="-1" eType="#//TestLauncherListener">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TestLauncherListener" abstract="true"
       interface="true">
