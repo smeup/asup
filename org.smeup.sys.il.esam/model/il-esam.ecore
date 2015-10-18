@@ -244,6 +244,10 @@
     </eOperations>
     <eOperations name="delete"/>
     <eOperations name="delete">
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="delete">
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="isEndOfData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -590,16 +594,16 @@
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Data"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Data"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Data"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
@@ -608,16 +612,16 @@
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
@@ -626,16 +630,16 @@
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
@@ -644,11 +648,11 @@
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Data"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Data"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
@@ -656,11 +660,11 @@
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyField" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
@@ -668,7 +672,7 @@
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
@@ -756,11 +760,11 @@
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
@@ -768,11 +772,11 @@
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setgt">
@@ -799,16 +803,16 @@
     </eOperations>
     <eOperations name="setll">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="found" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>

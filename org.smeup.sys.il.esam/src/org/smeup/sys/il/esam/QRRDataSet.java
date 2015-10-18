@@ -101,14 +101,14 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setgt(int relativeRecordNumber, QIndicator found);
+	void setgt(int relativeRecordNumber, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setgt(int relativeRecordNumber, QIndicator found, QIndicator error);
+	void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -136,21 +136,21 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setll(int relativeRecordNumber, QIndicator found);
+	void setll(int relativeRecordNumber, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setll(int relativeRecordNumber, QIndicator found, QIndicator equal);
+	void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setll(int relativeRecordNumber, QIndicator found, QIndicator equal, QIndicator error);
+	void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -164,14 +164,14 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setgt(QNumeric relativeRecordNumber, QIndicator found);
+	void setgt(QNumeric relativeRecordNumber, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated
 	 */
-	void setgt(QNumeric relativeRecordNumber, QIndicator found, QIndicator error);
+	void setgt(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -42,23 +42,8 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
-	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, Boolean lock) {
-		return chain(relativeRecordNumber, notFound, null, lock);
-	}
-
-	@Override
-	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
-		return chain(relativeRecordNumber, notFound, error, null);
-	}
-
-	@Override
 	public boolean chain(int relativeRecordNumber, QIndicator notFound, Boolean lock) {
 		return chain(relativeRecordNumber, notFound, null, lock);
-	}
-
-	@Override
-	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
-		return chain(relativeRecordNumber.asInteger(), notFound, error, lock);
 	}
 
 	@Override
@@ -84,72 +69,57 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
-	public void setgt(int relativeRecordNumber) {
-		setgt(relativeRecordNumber, null, null);
-	}
-
-	@Override
-	public void setgt(int relativeRecordNumber, QIndicator found) {
-		setgt(relativeRecordNumber, found, null);
-	}
-
-	@Override
-	public void setgt(int relativeRecordNumber, QIndicator found, QIndicator error) {
-
-		Object[] keyList = { relativeRecordNumber };
-		setKeySet(OperationSet.SET_GREATER_THAN, keyList);
-
-		if (found != null)
-			found.eval(isFound());
-
-		if (error != null)
-			error.eval(onError());
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber) {
-		setll(relativeRecordNumber, null, null, null);
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found) {
-		setll(relativeRecordNumber, found, null, null);
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found, QIndicator equal) {
-		setll(relativeRecordNumber, found, equal, null);
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found, QIndicator equal, QIndicator error) {
-
-		Object[] keyList = { relativeRecordNumber };
-		setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
-
-		if (found != null)
-			found.eval(isFound());
-
-		if (equal != null)
-			equal.eval(isEqual());
-
-		if (error != null)
-			error.eval(onError());
-	}
-
-	@Override
 	public boolean chain(QNumeric relativeRecordNumber) {
 		return chain(relativeRecordNumber.asInteger());
 	}
 
 	@Override
-	public void setll(QNumeric relativeRecordNumber) {
-		setll(relativeRecordNumber.asInteger());
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound) {
+		return chain(relativeRecordNumber.asInteger(), notFound);
 	}
 
 	@Override
-	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound) {
-		return chain(relativeRecordNumber.asInteger(), notFound);
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, Boolean lock) {
+		return chain(relativeRecordNumber, notFound, null, lock);
+	}
+
+	@Override
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		return chain(relativeRecordNumber, notFound, error, null);
+	}
+
+	@Override
+	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
+		return chain(relativeRecordNumber.asInteger(), notFound, error, lock);
+	}
+
+	@Override
+	public <E extends Enum<E>> void setgt(E keyField) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber) {
+		setgt(relativeRecordNumber, null, null);
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber, QIndicator notFound) {
+		setgt(relativeRecordNumber, notFound, null);
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
+
+		Object[] keyList = { relativeRecordNumber };
+		setKeySet(OperationSet.SET_GREATER_THAN, keyList);
+
+		if (notFound != null)
+			notFound.eval(!isFound());
+
+		if (error != null)
+			error.eval(onError());
 	}
 
 	@Override
@@ -174,8 +144,38 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
-	public <E extends Enum<E>> void setgt(E keyField) {
-		// TODO Auto-generated method stub
+	public void setll(int relativeRecordNumber) {
+		setll(relativeRecordNumber, null, null, null);
+	}
 
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound) {
+		setll(relativeRecordNumber, notFound, null, null);
+	}
+
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal) {
+		setll(relativeRecordNumber, notFound, equal, null);
+	}
+
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal, QIndicator error) {
+
+		Object[] keyList = { relativeRecordNumber };
+		setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
+
+		if (notFound != null)
+			notFound.eval(!isFound());
+
+		if (equal != null)
+			equal.eval(isEqual());
+
+		if (error != null)
+			error.eval(onError());
+	}
+
+	@Override
+	public void setll(QNumeric relativeRecordNumber) {
+		setll(relativeRecordNumber.asInteger());
 	}
 } // QTableDataSetImpl

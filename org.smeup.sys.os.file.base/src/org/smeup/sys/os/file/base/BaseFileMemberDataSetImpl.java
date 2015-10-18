@@ -70,86 +70,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public void setgt(int relativeRecordNumber) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setgt(int relativeRecordNumber, QIndicator found) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setgt(int relativeRecordNumber, QIndicator found, QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void setll(int relativeRecordNumber) {
 		this.currentPosition = relativeRecordNumber;
-	}
-
-	@Override
-	public <E extends Enum<E>> void setll(E keyField) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setll(QNumeric keyField) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found, QIndicator equal) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setll(int relativeRecordNumber, QIndicator found, QIndicator equal, QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setgt(QNumeric relativeRecordNumber) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setgt(QNumeric relativeRecordNumber, QIndicator found) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setgt(QNumeric relativeRecordNumber, QIndicator found, QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public <E extends Enum<E>> void setgt(E keyField) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -172,38 +94,8 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public void delete(QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isEndOfData() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isEqual() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isFound() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean isOpen() {
 		return this.open;
-	}
-
-	@Override
-	public boolean onError() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -215,12 +107,6 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public void open(QIndicator error) {
 		this.open = true;
 		getFileMember();		
-	}
-
-	@Override
-	public boolean read() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -241,78 +127,6 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 			endOfData.eval(false);
 		
 		return true;
-	}
-
-	@Override
-	public boolean read(QIndicator endOfData, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean read(QIndicator endOfData, QIndicator error, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean readp() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean readp(QIndicator beginningOfData) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean readp(QIndicator beginningOfData, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void unlock() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void unlock(QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(QIndicator error) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void write() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void write(QIndicator error) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -361,24 +175,6 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
-	public QDataStruct getInfoStruct() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean read(QIndicator endOfData, QIndicator error) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean readp(QIndicator beginningOfData, QIndicator error) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
 		// TODO Auto-generated method stub
 		return false;
@@ -394,5 +190,215 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	public boolean chain(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber, QIndicator notFound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void setll(E keyField) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setll(QNumeric keyField) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal, QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setgt(QNumeric relativeRecordNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <E extends Enum<E>> void setgt(E keyField) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(QIndicator notFound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(QIndicator notFound, QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isEndOfData() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEqual() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isFound() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onError() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean read() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean read(QIndicator endOfData, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean read(QIndicator endOfData, QIndicator error) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean read(QIndicator endOfData, QIndicator error, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(QIndicator beginningOfData) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(QIndicator beginningOfData, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(QIndicator beginningOfData, QIndicator error) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean readp(QIndicator beginningOfData, QIndicator error, Boolean lock) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void unlock() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unlock(QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void write() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void write(QIndicator error) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public QDataStruct getInfoStruct() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

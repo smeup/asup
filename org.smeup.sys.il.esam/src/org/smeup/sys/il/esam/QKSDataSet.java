@@ -311,21 +311,21 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(QData keyField, QIndicator found);
+	void setll(QData keyField, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(QData keyField, QIndicator found, QIndicator equal);
+	void setll(QData keyField, QIndicator notFound, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(QData keyField, QIndicator found, QIndicator equal, QIndicator error);
+	void setll(QData keyField, QIndicator notFound, QIndicator equal, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -339,21 +339,21 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(Object keyField, QIndicator found);
+	void setll(Object keyField, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(Object keyField, QIndicator found, QIndicator equal);
+	void setll(Object keyField, QIndicator notFound, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setll(Object keyField, QIndicator found, QIndicator equal, QIndicator error);
+	void setll(Object keyField, QIndicator notFound, QIndicator equal, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -367,21 +367,21 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
-	void setll(Object[] keyList, QIndicator found);
+	void setll(Object[] keyList, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
-	void setll(Object[] keyList, QIndicator found, QIndicator equal);
+	void setll(Object[] keyList, QIndicator notFound, QIndicator equal);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
-	void setll(Object[] keyList, QIndicator found, QIndicator equal, QIndicator error);
+	void setll(Object[] keyList, QIndicator notFound, QIndicator equal, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -395,14 +395,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setgt(QData keyField, QIndicator found);
+	void setgt(QData keyField, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setgt(QData keyField, QIndicator found, QIndicator error);
+	void setgt(QData keyField, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -416,14 +416,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setgt(Object keyField, QIndicator found);
+	void setgt(Object keyField, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
-	void setgt(Object keyField, QIndicator found, QIndicator error);
+	void setgt(Object keyField, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -437,7 +437,7 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
-	void setgt(Object[] keyList, QIndicator found);
+	void setgt(Object[] keyList, QIndicator notFound);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

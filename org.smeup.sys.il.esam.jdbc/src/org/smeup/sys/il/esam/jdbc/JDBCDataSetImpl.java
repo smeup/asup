@@ -37,34 +37,42 @@ import org.smeup.sys.il.esam.QIndexColumn;
 
 public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> {
 
+	public static class InfoStruct extends QDataStructWrapper {
+		private static final long serialVersionUID = 1L;
+		
+		@DataDef(binaryType = BinaryType.INTEGER)
+		@Overlay(position = "397")
+		public QBinary rrn;
+	}
 	private QConnection databaseConnection;
-	private JDBCAccessHelper jdbcAccessHelper;
 
+	private JDBCAccessHelper jdbcAccessHelper;
 	private QIndex index;
 	private R record;
 	private String tableName;
 	private AccessMode accessMode;
 	private JDBCTableProvider tableProvider;
 	private JDBCDataReaderImpl dataReader;
-	private JDBCDataWriterImpl dataWriter;
 
+	private JDBCDataWriterImpl dataWriter;
 	private boolean open;
 	private boolean found;
 	private boolean error;
 	private boolean equal;
-	private boolean endOfData;
 
+	private boolean endOfData;
 	private Table currentTable;
 	protected OperationSet currentOpSet;
 	protected Object[] currentKeySet;
+
 	private OperationRead currentOpRead;
-
 	private QStatement statement;
-	private ResultSet resultSet;
 
+	private ResultSet resultSet;
 	private InfoStruct infoStruct;
-	private QDataContext dataContext;
 	
+	private QDataContext dataContext;
+
 	protected JDBCDataSetImpl(QConnection databaseConnection, JDBCTableProvider tableProvider, 
 							  QIndex index, R record, String tableName, AccessMode accessMode, boolean userOpen, InfoStruct infoStruct, QDataContext dataContext) {
 
@@ -128,16 +136,22 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public void delete() {
-		delete(null);
+		delete(null, null);
 	}
 
 	@Override
 	public void delete(QIndicator error) {
+		delete(null, error);
+	}
 
-		// TODO
-
+	@Override
+	public void delete(QIndicator notFound, QIndicator error) {
+		
+		if(notFound != null)
+			notFound.eval(!isFound());
+		
 		if (error != null)
-			error.eval(onError());
+			error.eval(onError());		
 	}
 
 	@Override
@@ -486,7 +500,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 	@Override
 	public void write() {
 		write(null);
-	}
+	}	
 
 	@Override
 	public void write(QIndicator error) {
@@ -516,13 +530,5 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		if (error != null)
 			error.eval(onError());
-	}	
-
-	public static class InfoStruct extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		
-		@DataDef(binaryType = BinaryType.INTEGER)
-		@Overlay(position = "397")
-		public QBinary rrn;
 	}
 } // QDataSetImpl

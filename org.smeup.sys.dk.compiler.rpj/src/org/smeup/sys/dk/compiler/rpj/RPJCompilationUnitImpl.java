@@ -419,7 +419,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		QDataTerm<?> dataTerm = null;
 
-		for (QDataTerm<?> child : dataTerms) {
+		for (QDataTerm<?> child : new ArrayList<QDataTerm<?>>(dataTerms)) {
 			String childName = null;
 
 			// remap
