@@ -71,9 +71,9 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		if (!statement.getMethod().equals("sum"))
 			return super.visit(statement);
 
-		statement.setMethod("%xfoot");
-		statement.getParameters().add(0, statement.getObject());
-		statement.setObject(null);
+//		statement.setMethod("%xfoot");
+//		statement.getParameters().add(0, statement.getObject());
+//		statement.setObject(null);
 
 		return super.visit(statement);
 	}
