@@ -301,9 +301,9 @@ public class RPJCallableUnitLinker {
 				}
 
 				// remove redefined record
-				if (compilerLinker == null)
+				if (!(dataRecord.getParent() instanceof QDataSetTerm))
 					compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
-				
+
 			} else if (file instanceof QDisplayFile) {
 
 				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
@@ -375,7 +375,6 @@ public class RPJCallableUnitLinker {
 					});
 					printTerm.setFormat(internalFormat);
 				}
-
 
 				QCompilerLinker compilerLinker = linkExternalFile(compilationUnit.getContext(), printTerm.getFormat(), externalFile);
 				if (compilerLinker != null)
