@@ -2,6 +2,7 @@ package org.smeup.sys.il.memo.test;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
@@ -42,16 +43,19 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 			QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, TestRead.class, e.getMessage());
 			TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
 		}
-
-		try {
-			testRunner = testManager.prepareRunner(testContext, TestRead.class);
-			testResult = testRunner.call();
+		
+		if (testResult != null && !testResult.isFailed()) {						
 			
-			TestLauncherHelper.notifyResultAdded(context, this, testRunner, testResult);
-			
-		} catch (Exception e) {
-			QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, TestRead.class, e.getMessage());
-			TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
+			try {
+				testRunner = testManager.prepareRunner(testContext, TestRead.class);
+				testResult = testRunner.call();
+				
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, testResult);
+				
+			} catch (Exception e) {
+				QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, TestRead.class, e.getMessage());
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
+			}
 		}
 
 		
@@ -64,19 +68,27 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 		private QResourceManager resourceManager;
 		@Inject
 		private QTestRunner testRunner;
+		@Inject 
+		private QTestAsserter asserter;
+		
 		
 		@TestStarted
 		public void start() {
-
-			QResourceReader<QObjectA> applicationReader = resourceManager.getResourceReader(testRunner, QObjectA.class, Scope.ALL);
 			
-			QObjectIterator<QObjectA> objectIterator = applicationReader.find(null); 
-			while(objectIterator.hasNext()) {
-				QObjectA objectA = objectIterator.next();
-				System.out.println(objectA);
+			try {
+				QResourceReader<QObjectA> applicationReader = resourceManager.getResourceReader(testRunner, QObjectA.class, Scope.ALL);
+				
+				QObjectIterator<QObjectA> objectIterator = applicationReader.find(null); 
+				while(objectIterator.hasNext()) {
+					QObjectA objectA = objectIterator.next();					
+					asserter.assertNotNull("Read object", objectA);
+				}
+				
+				objectIterator.close();
+				
+			} catch(Exception exc) {
+				asserter.fail("Resource reading failed: " + exc.getMessage());
 			}
-			
-			objectIterator.close();
 		}
 	}
 	
@@ -88,33 +100,42 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 		private QResourceManager resourceManager;
 		@Inject
 		private QTestRunner testRunner;
+		@Inject 
+		private QTestAsserter asserter;
 		
 		@TestStarted
 		public void start() {
 
-			QResourceWriter<QObjectA> objectWriter = resourceManager.getResourceWriter(testRunner, QObjectA.class, "QSYS");
-			
-			QObjectA objectA = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectA();
-			objectA.setName("PIPPO");
-			objectA.setText("Pippo text");
-			
-			QObjectB objectB = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectB();
-			objectB.setName("PLUTO");
-			objectB.setEnum1(Enum1.VALUE1);		
-			objectA.setObjectB(objectB);
-			
-			objectWriter.save(objectA);
-			
-			objectA = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectA();
-			objectA.setName("PAPERINO");
-			objectA.setText("Paperino text");
-			
-			objectB = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectB();
-			objectB.setName("PAPEROGA");
-			objectB.setEnum1(Enum1.VALUE2);
-			objectA.setObjectB(objectB);
-			
-			objectWriter.save(objectA);
+			try {
+				QResourceWriter<QObjectA> objectWriter = resourceManager.getResourceWriter(testRunner, QObjectA.class, "QSYS");
+				
+				QObjectA objectA = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectA();
+				objectA.setName("PIPPO");
+				objectA.setText("Pippo text");
+				
+				QObjectB objectB = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectB();
+				objectB.setName("PLUTO");
+				objectB.setEnum1(Enum1.VALUE1);		
+				objectA.setObjectB(objectB);
+				
+				objectWriter.save(objectA);
+				
+				objectA = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectA();
+				objectA.setName("PAPERINO");
+				objectA.setText("Paperino text");
+				
+				objectB = QIntegratedLanguageMemoryTestFactory.eINSTANCE.createObjectB();
+				objectB.setName("PAPEROGA");
+				objectB.setEnum1(Enum1.VALUE2);
+				objectA.setObjectB(objectB);
+				
+				objectWriter.save(objectA);
+				
+				asserter.success("Resource writing");
+				
+			} catch (Exception exc) {
+				asserter.fail("Resource writing failed: " + exc.getMessage());
+			}
 		}
 	}
 }
