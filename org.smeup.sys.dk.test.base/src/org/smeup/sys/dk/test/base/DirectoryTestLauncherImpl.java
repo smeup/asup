@@ -39,28 +39,8 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 				
 			} catch (Exception e) {
 				
-				QTestResult errorResult = DevelopmentKitTestFactoryImpl.eINSTANCE.createTestResult();
-			
-				errorResult.setRunner(testRunner.getClass().getSimpleName());
-				
-				Test testCalssAnnotation = testClass.getAnnotation(Test.class);
-				if (testCalssAnnotation != null) {
-					errorResult.setObject(testCalssAnnotation.object());
-				} else {
-					errorResult.setObject("");
-				}
-
-				errorResult.setCategory(getCategory());
-				errorResult.setFailed(true);
-				
-				QAssertionFailed assertionFailed = DevelopmentKitTestFactoryImpl.eINSTANCE.createAssertionFailed();
-				assertionFailed.setMessage(e.getMessage());
-				assertionFailed.setTime(0);
-				
-				errorResult.getAssertResults().add(assertionFailed);
-
-				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);				
-				
+				QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, testClass, e.getMessage());
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
 			}
 		}
 		

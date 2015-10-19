@@ -92,7 +92,7 @@ public @Supported class ObjectRenamer {
 	private QType<?> type(QCharacter typeAsQCharacter) {
 		String objectTypeString = typeAsQCharacter.trimR();
 		if (objectTypeString != null && !"".equals(objectTypeString)) {
-				QType<?> typeFound = typeRegistry.lookup(objectTypeString);
+				QType<?> typeFound = typeRegistry.lookup(translateTypeName(objectTypeString));
 				if (typeFound != null) {
 					return typeFound;
 				}
@@ -100,6 +100,14 @@ public @Supported class ObjectRenamer {
 		return null;
 	}
 	
+
+	private String translateTypeName(String objectTypeString) {
+		if (objectTypeString.startsWith("*")) {
+			return objectTypeString;
+		}
+		return "*" + objectTypeString;
+	}
+
 
 	public static enum ASPDEVICEEnum {
 		@Special(value = "*")

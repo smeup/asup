@@ -904,6 +904,22 @@ public interface QNumeric extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true"
+	 * @generated
+	 */
+	void xfoot(QArray<?> array);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model arrayRequired="true" roundingModeRequired="true"
+	 * @generated
+	 */
+	void xfoot(QArray<?> array, String roundingMode);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

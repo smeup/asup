@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QNumeric;
@@ -827,5 +828,19 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	public void time() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void xfoot(QArray<?> array) {
+		xfoot(array, null);
+	}
+
+	@Override
+	public void xfoot(QArray<?> array, String roundingMode) {
+		for(int i=1; i<=array.capacity();i++){
+			if(i > array.capacity())
+				break;
+			((QNumeric)this).plus((QNumeric)array.get(i));
+		}
 	}
 }

@@ -9,11 +9,13 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.wiring.BundleWiring;
+import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QTestLauncher;
 import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
+import org.smeup.sys.dk.test.impl.DevelopmentKitTestFactoryImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -130,6 +132,41 @@ public class TestLauncherHelper {
 		for (QTestLauncherListener listener: testLauncher.getListeners(context)) {
 			listener.launcherStopped(testLauncher);
 		}		
+	}
+	
+	public static QTestResult createErrorResult(QTestLauncher testLauncher, QTestRunner testRunner, Class<?> testClass, String errorMessage) {
+		
+		QTestResult errorResult = DevelopmentKitTestFactoryImpl.eINSTANCE.createTestResult();
+		
+		errorResult.setFailed(true);
+		
+		errorResult.setRunner("");
+		if (testRunner != null) {
+			errorResult.setRunner(testRunner.getClass().getSimpleName());
+		}
+		
+		errorResult.setObject("");		
+		if (testClass != null) {
+			Test testClassAnnotation = testClass.getAnnotation(Test.class);
+			if (testClassAnnotation != null) {
+				errorResult.setObject(testClassAnnotation.object());
+			} 
+		} 
+		
+		errorResult.setCategory("");
+		// Read category from testLauncher
+		Test annotation = testLauncher.getClass().getAnnotation(Test.class);		
+		if (annotation != null) {
+			errorResult.setCategory(annotation.category());
+		}
+		
+		QAssertionFailed assertionFailed = DevelopmentKitTestFactoryImpl.eINSTANCE.createAssertionFailed();
+		assertionFailed.setMessage(errorMessage);
+		assertionFailed.setTime(0);
+		
+		errorResult.getAssertResults().add(assertionFailed);
+		
+		return errorResult;
 	}
 	
 	
