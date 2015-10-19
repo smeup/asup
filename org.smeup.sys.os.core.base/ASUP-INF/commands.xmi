@@ -1625,8 +1625,7 @@
     <parameters
         allowVariable="true"
         name="JOB"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="jobName">
         <facets
@@ -1678,8 +1677,7 @@
     <parameters
         allowVariable="true"
         name="OUTPUT"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="output"
           restricted="true">
@@ -1697,6 +1695,9 @@
           <elements
               name="*OUTFILE"
               value="N"/>
+          <elements
+              name="*SHORT"
+              value="S"/>
         </facets>
         <default
             value="*"/>
@@ -1796,6 +1797,29 @@
                 length="7"/>
           </elements>
         </definition>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="SHORT"
+        position="5">
+      <dataTerm
+          name="shortFormat"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NO"
+              value="N"/>
+          <elements
+              name="*YES"
+              value="Y"/>
+        </facets>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
     <source
