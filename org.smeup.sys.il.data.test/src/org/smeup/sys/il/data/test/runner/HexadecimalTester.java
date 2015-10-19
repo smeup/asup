@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 
-@Test(category = "il.data", object = "Hexadecimal")
+@Test(category = "IL.DATA", object = "Hexadecimal")
 public class HexadecimalTester {
 
 	@Inject
