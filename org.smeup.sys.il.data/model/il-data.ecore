@@ -2076,6 +2076,21 @@
     <eOperations name="qPlus" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="xfoot">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="xfoot">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pointer" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">
