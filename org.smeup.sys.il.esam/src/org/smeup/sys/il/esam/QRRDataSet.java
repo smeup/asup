@@ -146,6 +146,14 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 	void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model relativeRecordNumberRequired="true"
+	 * @generated
+	 */
+	void setll(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator equal);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model relativeRecordNumberRequired="true"
 	 * @generated

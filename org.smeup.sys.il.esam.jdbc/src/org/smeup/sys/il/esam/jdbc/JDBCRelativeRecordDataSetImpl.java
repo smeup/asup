@@ -154,6 +154,11 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
+	public void setll(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator equal) {
+		setll(relativeRecordNumber.asInteger(), notFound, equal);
+	}
+
+	@Override
 	public void setll(int relativeRecordNumber, QIndicator notFound, QIndicator equal) {
 		setll(relativeRecordNumber, notFound, equal, null);
 	}

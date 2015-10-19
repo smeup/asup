@@ -811,6 +811,11 @@
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="setll">
+      <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Numeric"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+      <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="setll">
       <eParameters name="relativeRecordNumber" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="equal" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
