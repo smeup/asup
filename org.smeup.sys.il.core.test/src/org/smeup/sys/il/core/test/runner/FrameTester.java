@@ -18,7 +18,7 @@ import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.meta.QFrameManager;
 
-@Test(category = "il.core", object = "Frame")
+@Test(category = "IL.CORE", object = "Frame")
 public class FrameTester {
 
 	@Inject
