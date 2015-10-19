@@ -9,28 +9,35 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.test.runner;
+package org.smeup.sys.rt.repo.test.runner;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.il.core.meta.QFrameManager;
+import org.smeup.sys.rt.core.QApplicationManager;
 
-@Test(category = "IL.CORE", object = "Frame")
-public class FrameTester {
-
+@Test(category = "RT.REPO", object = "RepoRestart")
+public class TestRestart {
+	
 	@Inject
-	public QTestAsserter testAsserter;
-
+	private QApplicationManager applicationManager;
+	
 	@Inject
-	public QFrameManager frameManager;
+	private QTestAsserter testAsserter;
+	
 
-	public @TestStarted void main() {
+	@TestStarted
+	public void main() {
 
-		testAsserter.assertNotNull("FrameManager", frameManager);
-
+		try {
+			applicationManager.restart();
+			testAsserter.success("Application manager restart OK");
+		} catch(Exception exc) {
+			testAsserter.fail("Application manager restart failed: " + exc.getMessage());
+		}
 	}
-
+	
+	
 }

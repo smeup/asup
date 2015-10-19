@@ -129,4 +129,12 @@ public interface QAsserter {
 	 */
 	void fail(String message);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void success(String message);
+
 } // QAssert

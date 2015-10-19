@@ -243,13 +243,14 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		resetTime();
 	}
 
+	/**
+	 * Fails a test with the given message.
+	 */
 	public void failNotEquals(String message, Object expected, Object actual) {
 		fail(formatFailMessage(message, expected, actual));
 	}
 
-	/**
-	 * Fails a test with the given message.
-	 */
+	
 	public void success(String message) {
 
 		// Create fail assertion

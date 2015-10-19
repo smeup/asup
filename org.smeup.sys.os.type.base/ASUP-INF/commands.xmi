@@ -11146,13 +11146,11 @@
       xsi:type="os-cmd:Command"
       name="RNMOBJ"
       text="Rename Object"
-      program="QLIRNOBJ"
-      status="TODO">
+      program="QLIRNOBJ">
     <parameters
         allowVariable="true"
         name="OBJ"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="object">
         <cardinality
@@ -11199,8 +11197,7 @@
     <parameters
         allowVariable="true"
         name="OBJTYPE"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="objectType"
           restricted="true">
@@ -11436,8 +11433,7 @@
     <parameters
         allowVariable="true"
         name="NEWOBJ"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="newObject">
         <facets
@@ -11454,7 +11450,7 @@
         allowVariable="true"
         name="ASPDEV"
         position="4"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="aSPDevice">
         <facets
@@ -11483,7 +11479,7 @@
         allowVariable="true"
         name="SYSTEM"
         position="5"
-        status="POS">
+        status="UNS">
       <dataTerm
           name="system"
           restricted="true">

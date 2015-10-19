@@ -32,7 +32,7 @@ import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 
-@Test(category = "il.data", object = "DataStructure")
+@Test(category = "IL.DATA", object = "DataStructure")
 public class DataStructureTester {
 
 	@Inject

@@ -4,12 +4,9 @@ import java.util.Collection;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
-import org.smeup.sys.dk.test.annotation.Test;
-import org.smeup.sys.dk.test.impl.DevelopmentKitTestFactoryImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
 public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
@@ -25,7 +22,7 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 		// Notify launcher start
 		TestLauncherHelper.notifyLauncherStarted(context, this);
 		
-		Collection<Class<?>> testClasses = TestLauncherHelper.findTestClasses(this, runnerDirPath, object);		
+		Collection<Class<?>> testClasses = TestLauncherHelper.findTestClasses(this, getRunnersDirPath(), object);		
 		
 		for (Class<?> testClass: testClasses){
 						
@@ -39,32 +36,20 @@ public abstract class DirectoryTestLauncherImpl extends BaseTestLauncherImpl {
 				
 			} catch (Exception e) {
 				
-				QTestResult errorResult = DevelopmentKitTestFactoryImpl.eINSTANCE.createTestResult();
-			
-				errorResult.setRunner(testRunner.getClass().getSimpleName());
-				
-				Test testCalssAnnotation = testClass.getAnnotation(Test.class);
-				if (testCalssAnnotation != null) {
-					errorResult.setObject(testCalssAnnotation.object());
-				} else {
-					errorResult.setObject("");
-				}
-
-				errorResult.setCategory(getCategory());
-				errorResult.setFailed(true);
-				
-				QAssertionFailed assertionFailed = DevelopmentKitTestFactoryImpl.eINSTANCE.createAssertionFailed();
-				assertionFailed.setMessage(e.getMessage());
-				assertionFailed.setTime(0);
-				
-				errorResult.getAssertResults().add(assertionFailed);
-
-				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);				
-				
+				QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, testClass, e.getMessage());
+				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
 			}
 		}
 		
 		// Notify launcher stop
 		TestLauncherHelper.notifyLauncherStopped(context, this);
-	}	
+	}
+	
+	/**
+	 * Override to define runners dir path
+	 * @return
+	 */
+	public String getRunnersDirPath() {
+		return runnerDirPath;
+	}
 }
