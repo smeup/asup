@@ -24,24 +24,18 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
-import org.smeup.sys.il.core.meta.QFacet;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.def.QBufferedDataDef;
+import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
-import org.smeup.sys.il.data.def.QListDef;
+import org.smeup.sys.il.data.def.QDecimalDef;
+import org.smeup.sys.il.data.def.QIndicatorDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
-import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
-import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
-import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
-import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
-import org.smeup.sys.il.data.def.QUnaryDataDef;
+import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 
@@ -50,12 +44,12 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 	private QCompilationUnit compilationUnit;
 	private QDataTerm<?> dataTerm;
 
-	private Stack<QDataTerm<?>> termsTodo = new Stack<QDataTerm<?>>(); 
-	
+	private Stack<QDataTerm<?>> termsTodo = new Stack<QDataTerm<?>>();
+
 	public Stack<QDataTerm<?>> getTermsTodo() {
 		return this.termsTodo;
 	}
-	
+
 	@Inject
 	public RPJAbstractDataRefactor(QCompilationUnit compilationUnit) {
 		this.compilationUnit = compilationUnit;
@@ -71,232 +65,6 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		this.dataTerm = null;
 	}
 
-	public QDataTerm<?> getDataTerm() {
-		return dataTerm;
-	}
-
-	protected void setDataTerm(QDataTerm<?> dataTerm) {
-		this.dataTerm = dataTerm;
-	}
-
-	@SuppressWarnings("unchecked")
-	protected QDataTerm<?> buildUnaryDataTerm(QDataTerm<?> termTarget, QDataTerm<?> termSource) {
-
-		EClass eTermClass = ((EObject) termTarget).eClass();
-
-		// atomic
-		if (termSource.getDataTermType().isAtomic()) {
-
-			// compound to atomic
-			if (termTarget.getDataTermType().isCompound())
-				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: zfgsbdiyfb9scr34239");
-
-			// assert atomic to atomic
-			
-			// term
-			QDataTerm<QUnaryDataDef<?>> unaryDataTerm = (QDataTerm<QUnaryDataDef<?>>) EcoreUtil.create(eTermClass);
-			copyDataTerm(termTarget, unaryDataTerm);
-
-			QUnaryDataDef<?> unaryDataDef = null;
-
-			// unary
-			if (termSource.getDataTermType().isUnary()) {
-				unaryDataDef = (QUnaryDataDef<?>) EcoreUtil.copy((EObject) termSource.getDefinition());
-			}
-			// multiple
-			else {
-				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) termSource.getDefinition();
-				unaryDataDef = (QUnaryDataDef<?>) EcoreUtil.copy((EObject) multipleAtomicBufferedDataDef.getArgument());
-			}
-
-			if (termTarget.getDefinition() != null) 
-				appendDefinition(unaryDataDef, termTarget.getDefinition());
-
-			unaryDataTerm.setDefinition(unaryDataDef);
-			
-			return unaryDataTerm;
-		} else {
-
-			// compound to atomic
-			if (termTarget.getDataTermType().isAtomic()) {
-
-				termTarget.getDefinition().getFormulas().addAll(EcoreUtil.copyAll(termSource.getDefinition().getFormulas()));
-
-				if (termTarget.getDefinition() != null)
-					appendDefinition(termTarget.getDefinition(), termSource.getDefinition());
-				else
-					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: ds9nf7tsd8ftsdbsdv");
-				
-				if (termSource.getDefinition() instanceof QDataStructDef && termTarget.getDefinition() instanceof QCharacterDef) {
-					
-					QDataStructDef dataStructDefFrom = (QDataStructDef) termSource.getDefinition();
-					QCharacterDef charDefTo = (QCharacterDef) termTarget.getDefinition();
-					
-					if (dataStructDefFrom.getLength() == 0 && charDefTo.getLength() == 0) {
-						
-						QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
-						QDataStruct dataStructure = dataFactory.createDataStruct(dataStructDefFrom.getElements(), 0, false);
-								
-						if(dataStructure.getLength() == 0)
-							throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: jsdrf6sd6fs777gh");							
-
-						charDefTo.setLength(dataStructure.getLength());
-					}
-				}
-
-				return termTarget;
-			}
-			// compound to compound
-			else {
-
-				QDataTerm<QUnaryCompoundDataDef<?, ?>> unaryCompoundDataTerm = (QDataTerm<QUnaryCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
-				copyDataTerm(termTarget, unaryCompoundDataTerm);
-
-				// definition
-				QUnaryCompoundDataDef<?, ?> unaryCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataStructDef();
-				copyCompoundDataDef((QCompoundDataDef<?, ?>) termSource.getDefinition(), unaryCompoundDataDef);
-				unaryCompoundDataTerm.setDefinition(unaryCompoundDataDef);
-
-				return unaryCompoundDataTerm;
-			}
-		}
-	}
-
-	private void appendDefinition(QDataDef<?> target, QDataDef<?> source) {
-
-		EObject eObjectTarget = ((EObject) target);
-		EObject eObjectSource = ((EObject) source);
-
-		EClass eClassTarget = eObjectTarget.eClass();
-		EClass eClassSource = eObjectSource.eClass();
-
-		for (EStructuralFeature eFeatureSource : eClassSource.getEAllStructuralFeatures()) {
-
-			if (eObjectSource.eIsSet(eFeatureSource)) {
-				EStructuralFeature eFeatureTarget = eClassTarget.getEStructuralFeature(eFeatureSource.getName());
-
-				if (eFeatureTarget != null && !eObjectTarget.eIsSet(eFeatureTarget)) {
-					eObjectTarget.eSet(eFeatureTarget, eObjectSource.eGet(eFeatureSource));
-				}
-			}
-		}
-
-	}
-
-	@SuppressWarnings("unchecked")
-	protected QDataTerm<?> buildMultipleDataTerm(QDataTerm<?> termTo, QDataTerm<?> termFrom, EClass eTermClass) {
-
-		if (termFrom.getDataTermType().isAtomic()) {
-
-			// term
-			QDataTerm<QMultipleAtomicDataDef<?>> multipleAtomicDataTerm = (QDataTerm<QMultipleAtomicDataDef<?>>) EcoreUtil.create(eTermClass);
-			copyDataTerm(termTo, multipleAtomicDataTerm);
-
-			// buffered definition
-			if (termFrom.getDefinition() instanceof QBufferedDataDef) {
-
-				// unary
-				if (termFrom.getDataTermType().isUnary()) {
-					QMultipleAtomicBufferedDataDef<?> multipleAtomicDataDef = (QMultipleAtomicBufferedDataDef<?>) termTo.getDefinition();
-					multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject) termFrom.getDefinition()));
-					multipleAtomicDataTerm.setDefinition(multipleAtomicDataDef);
-
-					dataTerm = multipleAtomicDataTerm;
-				} else if (termTo.getDefinition() != null)
-					switch (termTo.getDataTermType()) {
-					case MULTIPLE_ATOMIC:
-						QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject) termFrom.getDefinition());
-						QMultipleAtomicBufferedDataDef<?> multipleDataDef = (QMultipleAtomicBufferedDataDef<?>) termTo.getDefinition();
-						multipleAtomicBufferedDataDef.setArgument(multipleDataDef.getArgument());
-						multipleAtomicDataTerm.setDefinition(multipleAtomicBufferedDataDef);
-
-						dataTerm = multipleAtomicDataTerm;
-						break;
-					case UNARY_ATOMIC:
-						multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject) termFrom.getDefinition());
-						multipleAtomicBufferedDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) termTo.getDefinition());
-						multipleAtomicDataTerm.setDefinition(multipleAtomicBufferedDataDef);
-
-						dataTerm = multipleAtomicDataTerm;
-						break;
-					case UNARY_COMPOUND:
-						QDataTerm<QMultipleCompoundDataDef<?, ?>> multipleCompoundDataTerm = (QDataTerm<QMultipleCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
-						copyDataTerm(termTo, multipleCompoundDataTerm);
-
-						// definition
-						QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createStrollerDef();
-						copyCompoundDataDef((QCompoundDataDef<?, ?>) termTo.getDefinition(), multipleCompoundDataDef);
-						multipleCompoundDataTerm.setDefinition(multipleCompoundDataDef);
-
-						dataTerm = multipleCompoundDataTerm;
-						break;
-					case MULTIPLE_COMPOUND:
-						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: bt7v8q45q4v5bq4375v");
-					}
-				else
-					dataTerm = multipleAtomicDataTerm;
-			} else {
-				QListDef<?> listDef = (QListDef<?>) EcoreUtil.copy((EObject) termTo.getDefinition());
-				listDef.setArgument((QUnaryAtomicDataDef<?>) EcoreUtil.copy((EObject) termFrom.getDefinition()));
-				multipleAtomicDataTerm.setDefinition(listDef);
-
-				dataTerm = multipleAtomicDataTerm;
-			}
-
-		} else {
-
-			// term
-			QDataTerm<QMultipleCompoundDataDef<?, ?>> multipleCompoundDataTerm = (QDataTerm<QMultipleCompoundDataDef<?, ?>>) EcoreUtil.create(eTermClass);
-			copyDataTerm(termTo, multipleCompoundDataTerm);
-
-			// definition
-			QMultipleCompoundDataDef<?, ?> multipleCompoundDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createStrollerDef();
-			copyCompoundDataDef((QCompoundDataDef<?, ?>) termFrom.getDefinition(), multipleCompoundDataDef);
-			multipleCompoundDataTerm.setDefinition(multipleCompoundDataDef);
-
-			dataTerm = multipleCompoundDataTerm;
-		}
-
-		return dataTerm;
-	}
-
-	private void copyDataTerm(QDataTerm<?> dataTerm, QDataTerm<?> dataTermTo) {
-
-		dataTermTo.setName(dataTerm.getName());
-		dataTermTo.setConstant(dataTerm.isConstant());
-		dataTermTo.setInitialized(dataTerm.isInitialized());
-		dataTermTo.setRestricted(dataTerm.isRestricted());
-		dataTermTo.setText(dataTerm.getText());
-
-		for (QFacet facet : dataTerm.getFacets())
-			if (dataTermTo.getFacet(facet.getClass()) == null)
-				dataTermTo.getFacets().add((QFacet) EcoreUtil.copy((EObject) facet));
-
-	}
-
-	private <E extends QDataTerm<?>> void copyCompoundDataDef(QCompoundDataDef<?, ?> compoundDataDef, QCompoundDataDef<?, E> compoundDataDefTo) {
-
-		compoundDataDefTo.setClassDelegator(compoundDataDef.getClassDelegator());
-		compoundDataDefTo.setPrefix(compoundDataDef.getPrefix());
-		compoundDataDefTo.setQualified(compoundDataDef.isQualified());
-
-		RPJAbstractDataRefactor elementVisitor = this.copy();
-		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(compoundDataDef.getElements());
-		for (QDataTerm<?> element : dataTerms) {
-			elementVisitor.reset();
-			element.accept(elementVisitor);
-			@SuppressWarnings("unchecked")
-			E elementTerm = (E) EcoreUtil.copy((EObject) elementVisitor.getDataTerm());
-			compoundDataDefTo.getElements().add(elementTerm);
-		}
-
-		copyDataDef(compoundDataDef, compoundDataDefTo);
-	}
-
-	private void copyDataDef(QDataDef<?> dataDef, QDataDef<?> dataDefTo) {
-		dataDefTo.getFormulas().addAll(EcoreUtil.copyAll(dataDef.getFormulas()));
-	}
-
 	@Override
 	public boolean visit(QDataTerm<?> term) {
 
@@ -310,35 +78,132 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 			RPJAbstractDataRefactor visitor = this.copy();
 			for (QDataTerm<?> dataTerm : dataTerms) {
 				visitor.reset();
-
 				dataTerm.accept(visitor);
-
-				if (visitor.getDataTerm() != null) {
-					compoundDataDef.getElements().remove(dataTerm);
-					QDataTerm<?> dt = visitor.getDataTerm();
-					compoundDataDef.getElements().add(dt);
-				}
-				else 
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: wer98wer9wew79e");
 			}
-			
 
 			while (!visitor.getTermsTodo().isEmpty()) {
 				visitor.reset();
-
 				QDataTerm<?> termTodo = visitor.getTermsTodo().pop();
 				termTodo.accept(visitor);
-
-				if (visitor.getDataTerm() != null) {
-					QDataTerm<?> dt = visitor.getDataTerm();
-					compoundDataDef.getElements().add(dt);
-				} else
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: er0t9erterter");
 			}
-			
-			compilationUnit.refresh();
 		}
 
 		return false;
+	}
+
+	protected void appendDefinitionToMultiple(QDataDef<?> source, QDataTerm<QMultipleAtomicDataDef<?>> termTarget) {
+
+		QMultipleAtomicBufferedDataDef<?> target = (QMultipleAtomicBufferedDataDef<?>) termTarget.getDefinition();
+
+		if (!source.getClass().equals(target.getArgument().getClass())) {
+			if (target.getArgument() instanceof QCharacterDef && source instanceof QDecimalDef) {
+				target.setArgument((QDecimalDef) EcoreUtil.copy((EObject) source));
+				appendDefinition(source, target.getArgument());
+			} else
+				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sb9r89tnbr9tbnt9s");
+		} else
+			appendDefinition(source, target.getArgument());
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void appendDefinition(QDataDef<?> source, QDataTerm<?> termTarget) {
+
+		QDataDef<?> target = termTarget.getDefinition();
+
+		if (!source.getClass().equals(target.getClass())) {
+			if (target instanceof QCharacterDef && source instanceof QDecimalDef) {
+				((QDataTerm<QDecimalDef>) termTarget).setDefinition((QDecimalDef) EcoreUtil.copy((EObject) source));
+				target = termTarget.getDefinition();
+			} else if (target instanceof QCharacterDef && source instanceof QBinaryDef) {
+				((QDataTerm<QBinaryDef>) termTarget).setDefinition((QBinaryDef) EcoreUtil.copy((EObject) source));
+				target = termTarget.getDefinition();
+			} else if (target instanceof QCharacterDef && source instanceof QIndicatorDef) {
+				((QDataTerm<QIndicatorDef>) termTarget).setDefinition((QIndicatorDef) EcoreUtil.copy((EObject) source));
+				target = termTarget.getDefinition();
+			} else
+				throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sb9r89tnbr9tbnt9s");
+		}
+
+		appendDefinition(source, target);
+	}
+
+	protected void appendDefinition(QDataDef<?> source, QDataDef<?> target) {
+
+		if (!source.getClass().equals(target.getClass()))
+			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: v9ant6tvb9ar9btva");
+
+		EObject eObjectSource = ((EObject) source);
+		EObject eObjectTarget = ((EObject) target);
+
+		EClass eClassSource = eObjectSource.eClass();
+		EClass eClassTarget = eObjectTarget.eClass();
+
+		for (EStructuralFeature eFeatureSource : eClassSource.getEAllStructuralFeatures()) {
+
+			if (eObjectSource.eIsSet(eFeatureSource)) {
+				EStructuralFeature eFeatureTarget = eClassTarget.getEStructuralFeature(eFeatureSource.getName());
+
+				if (eFeatureTarget != null && !eObjectTarget.eIsSet(eFeatureTarget)) {
+					eObjectTarget.eSet(eFeatureTarget, eObjectSource.eGet(eFeatureSource));
+				}
+			}
+		}
+	}
+
+	protected <E extends QDataTerm<?>> void copyCompoundDataDef(QCompoundDataDef<?, ?> source, QCompoundDataDef<?, E> target) {
+
+		target.setClassDelegator(source.getClassDelegator());
+		target.setPrefix(source.getPrefix());
+		target.setQualified(source.isQualified());
+
+		RPJAbstractDataRefactor elementVisitor = this.copy();
+		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(source.getElements());
+		for (QDataTerm<?> element : dataTerms) {
+			elementVisitor.reset();
+			element.accept(elementVisitor);
+			@SuppressWarnings("unchecked")
+			E elementTerm = (E) EcoreUtil.copy((EObject) element);
+			target.getElements().add(elementTerm);
+		}
+
+		copyDataDef(source, target);
+	}
+
+	protected void copyDataDef(QDataDef<?> dataDef, QDataDef<?> dataDefTo) {
+		dataDefTo.getFormulas().addAll(EcoreUtil.copyAll(dataDef.getFormulas()));
+	}
+
+	protected void setLength(QCharacterDef charDefTo, QDataStructDef dataStructDefFrom) {
+
+		if (charDefTo.getLength() == 0) {
+			if (dataStructDefFrom.getLength() == 0) {
+
+				QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
+				QDataStruct dataStructure = dataFactory.createDataStruct(dataStructDefFrom.getElements(), 0, false);
+
+				if (dataStructure.getLength() == 0)
+					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: ayetvayey654c7C");
+
+				charDefTo.setLength(dataStructure.getLength());
+			} else
+				charDefTo.setLength(dataStructDefFrom.getLength());
+		}
+	}
+
+	protected void setLength(QCharacterDef charDefTo, QStrollerDef<?> strollerDefFrom) {
+
+		if (charDefTo.getLength() == 0) {
+			if (strollerDefFrom.getLength() == 0) {
+
+				QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
+				QDataStruct dataStructure = dataFactory.createDataStruct(strollerDefFrom.getElements(), 0, false);
+
+				if (dataStructure.getLength() == 0)
+					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: kjhfvxzgjchvzxjchv");
+
+				charDefTo.setLength(dataStructure.getLength());
+			} else
+				charDefTo.setLength(strollerDefFrom.getLength());
+		}
 	}
 }

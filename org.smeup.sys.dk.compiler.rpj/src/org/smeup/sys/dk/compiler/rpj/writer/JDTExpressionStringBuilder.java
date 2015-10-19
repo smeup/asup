@@ -60,6 +60,7 @@ import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QPrototype;
+import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
@@ -148,7 +149,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			 * if (expression.getValue().equalsIgnoreCase("*OMIT")) value =
 			 * "null"; else
 			 */
-			value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+			if(Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
+				value = "null";
+			else
+				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
 			break;
 		case STRING:
 

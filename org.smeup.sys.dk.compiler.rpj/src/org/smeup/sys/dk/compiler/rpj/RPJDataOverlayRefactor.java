@@ -15,9 +15,15 @@ package org.smeup.sys.dk.compiler.rpj;
 import javax.inject.Inject;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
+import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
+import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
+import org.smeup.sys.il.data.def.QStrollerDef;
+import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
@@ -27,8 +33,20 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		super(compilationUnit);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QDataTerm<?> dataTerm) {
+
+		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+		if (overlay == null)
+			return super.visit(dataTerm);
+
+		if (overlay.getName() == null)
+			return super.visit(dataTerm);
+
+		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
+		if (overlayTerm == null)
+			throw new RuntimeException("Unexpected condition: 57as43534dftgasd8764xm0437");
 
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
@@ -37,46 +55,35 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		case MULTIPLE_COMPOUND:
 			super.visit(dataTerm);
 			break;
-		case UNARY_ATOMIC:
-			// overlay
-			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-			if (overlay != null && overlay.getName() != null) {
-				QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
-				if (overlayTerm == null)
-					throw new RuntimeException("Unexpected condition: 57as43534dftgasd8764xm0437");
-
-				if (overlayTerm.getDataTermType().isMultiple())
-					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject) dataTerm).eClass()));
-				else
-					super.visit(dataTerm);
-
-			} else
-				super.visit(dataTerm);
-
-			break;
 		case UNARY_COMPOUND:
-			// overlay
-			overlay = dataTerm.getFacet(QOverlay.class);
-			if (overlay != null) {
+			super.visit(dataTerm);
+			break;
+		case UNARY_ATOMIC:
 
-				if (overlay.getName() == null)
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: b8r6w8er6wver87w68");
+			switch (overlayTerm.getDataTermType()) {
+			case UNARY_ATOMIC:
+			case UNARY_COMPOUND:
+				return super.visit(dataTerm);
 
-				QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
-				if (overlayTerm == null)
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: b8r6w8er6wver87w61");
-
-				if (overlayTerm.getDataTermType().isMultiple())
-					setDataTerm(buildMultipleDataTerm(dataTerm, overlayTerm, ((EObject) dataTerm).eClass()));
-				else
-					super.visit(dataTerm);
-
-			} else
-				super.visit(dataTerm);
-
+			case MULTIPLE_ATOMIC:
+				QMultipleAtomicBufferedDataDef<?> multipleAtomicDataDef = (QMultipleAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject)overlayTerm.getDefinition());
+				multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataTerm.getDefinition());
+				((QDataTerm<QMultipleAtomicDataDef<?>>)dataTerm).setDefinition(multipleAtomicDataDef);				
+				appendDefinition(overlayTerm.getDefinition(), dataTerm);
+				
+				break;
+			case MULTIPLE_COMPOUND:
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) overlayTerm.getDefinition();
+				multipleAtomicDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
+				multipleAtomicDataDef.setDimension(strollerDef.getDimension());
+				setLength((QCharacterDef)dataTerm.getDefinition(), strollerDef);
+				multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataTerm.getDefinition());
+				((QDataTerm<QMultipleAtomicDataDef<?>>)dataTerm).setDefinition(multipleAtomicDataDef);
+				appendDefinition(overlayTerm.getDefinition(), dataTerm);
+				break;
+			}
 			break;
 		}
-
 		return false;
 	}
 

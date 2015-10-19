@@ -20,133 +20,150 @@ import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.il.core.meta.QFacet;
+import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataStructDef;
+import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
+import org.smeup.sys.il.data.def.QMultipleCompoundDataDef;
+import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.os.file.QExternalFile;
 
 public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
-	
+
 	@Inject
 	public RPJDataLikeRefactor(QCompilationUnit compilationUnit) {
 		super(compilationUnit);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public boolean visit(QDataTerm<?> dataTerm) {
+	public boolean visit(QDataTerm<?> target) {
 
-		if(dataTerm.getDataTermType()==null)
+		if (target.getDataTermType() == null)
 			throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: sdbfg9br9wer6");
-		
-		switch (dataTerm.getDataTermType()) {
-		case MULTIPLE_ATOMIC:
-			// like
-			if (dataTerm.getLike() != null) {
 
-				QDataTerm<?> like = getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-				if (like == null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04370");
+		if (target.getLike() == null)
+			return super.visit(target);
 
-				if(like.getLike() != null) {
-					getTermsTodo().push(dataTerm);
-					break;
-				}
-				
-				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
-				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
-					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
-				else if(compilerLinker != null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04w70");
-				
-				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
-				
-				dataTerm.setLike(null);
-			} else
-				super.visit(dataTerm);
+		QDataTerm<?> source = getCompilationUnit().getDataTerm(target.getLike(), true);
+		if (source == null)
+			throw new IntegratedLanguageExpressionRuntimeException("Invalid liked data term: " + target.getLike());
 
-			break;
-		case MULTIPLE_COMPOUND:
-			// like
-			if (dataTerm.getLike() != null) {
+		if (source.getLike() != null) {
+			getTermsTodo().push(target);
+			return false;
+		}
 
-				QDataTerm<?> like = getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-				if (like == null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04371");
+		QCompilerLinker compilerLinker = source.getFacet(QCompilerLinker.class);
+		if (compilerLinker != null && target.getFacet(QExternalFile.class) == null)
+			target.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
+		else if (compilerLinker != null)
+			throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04w70");
 
-				if(like.getLike() != null) {
-					getTermsTodo().push(dataTerm);
-					break;
-				}
-
-				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
-				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
-					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
-				else if(compilerLinker != null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8764frsadfsz");
-
-				setDataTerm(buildMultipleDataTerm(dataTerm, like, ((EObject)dataTerm).eClass()));
-				
-				dataTerm.setLike(null);
-			} else
-				super.visit(dataTerm);
-
-			break;
+		switch (target.getDataTermType()) {
 		case UNARY_ATOMIC:
-			// like
-			if (dataTerm.getLike() != null) {
-				QDataTerm<?> like = getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-				if (like == null) {
-					getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-					throw new IntegratedLanguageExpressionRuntimeException("Invalid data term: " + dataTerm.getLike());
-				}
 
-				if(like.getLike() != null) {
-					getTermsTodo().push(dataTerm);
-					break;
-				}
+			switch (source.getDataTermType()) {
+			case UNARY_ATOMIC:
+				appendDefinition(source.getDefinition(), target);
+				break;
+			case UNARY_COMPOUND:
+				QCharacterDef charDefTo = (QCharacterDef) target.getDefinition();
+				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();				
+				setLength(charDefTo, dataStructDefFrom);
+				break;
+			case MULTIPLE_ATOMIC:
+				QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) source.getDefinition();
+				appendDefinition(multipleAtomicDataDef.getArgument(), target);
+				break;
+			case MULTIPLE_COMPOUND:
+				charDefTo = (QCharacterDef) target.getDefinition();
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();				
+				setLength(charDefTo, strollerDef);
+				appendDefinition(strollerDef, target);
+				break;
+			}
 
-				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
-				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
-					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
-				else if(compilerLinker != null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8234234kkk");
-
-				setDataTerm(buildUnaryDataTerm(dataTerm, like));
-				
-				dataTerm.setLike(null);
-			} else
-				super.visit(dataTerm);
-
+			target.setLike(null);
 			break;
 		case UNARY_COMPOUND:
 
-			// like
-			if (dataTerm.getLike() != null) {
-				QDataTerm<?> like = getCompilationUnit().getDataTerm(dataTerm.getLike(), true);
-				if (like == null)
-					throw new RuntimeException("Unexpected condition: 4m8x7t8764xm04373");
-
-				if(like.getLike() != null) {
-					getTermsTodo().push(dataTerm);
-					break;
-				}
-
-				QCompilerLinker compilerLinker = like.getFacet(QCompilerLinker.class);
-				if (compilerLinker != null && dataTerm.getFacet(QExternalFile.class) == null)
-					dataTerm.getFacets().add((QFacet) EcoreUtil.copy((EObject) compilerLinker));
-				else if(compilerLinker != null)
-					throw new RuntimeException("Unexpected condition: 4m8x7zxcvxcvzcx0");
-
-				setDataTerm(buildUnaryDataTerm(dataTerm, like));
+			switch (source.getDataTermType()) {
+			case UNARY_ATOMIC:
+			case MULTIPLE_ATOMIC:
+				throw new DevelopmentKitCompilerRuntimeException("Invalid like atomic to compound: " + source.getName() + "->" + target.getName());
+			case UNARY_COMPOUND:
+				QCompoundDataDef<?, ?> compoundDataDefTarget = (QCompoundDataDef<?, ?>)target.getDefinition(); 
+				compoundDataDefTarget.setQualified(true);
+				if(!compoundDataDefTarget.getElements().isEmpty())
+					throw new DevelopmentKitCompilerRuntimeException("Invalid compound to compound: " + source.getName() + "->" + target.getName());
 				
-				dataTerm.setLike(null);
-			} else
-				super.visit(dataTerm);
+				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), compoundDataDefTarget);
+				appendDefinition(source.getDefinition(), target);				
+				break;
+			case MULTIPLE_COMPOUND:
+				((QCompoundDataDef<?, ?>)target.getDefinition()).setQualified(true);
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
+				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), (QCompoundDataDef<?, QDataTerm<?>>) target.getDefinition());
+				appendDefinition(strollerDef, target);
+				break;
+			}
 
+			target.setLike(null);
 			break;
-		default:
+		case MULTIPLE_ATOMIC:
+
+			QMultipleAtomicDataDef<?> multipleAtomicTarget = (QMultipleAtomicDataDef<?>) target.getDefinition();
+			
+			switch (source.getDataTermType()) {
+			case UNARY_ATOMIC:
+				appendDefinitionToMultiple(source.getDefinition(), (QDataTerm<QMultipleAtomicDataDef<?>>) target);
+				break;
+			case UNARY_COMPOUND:
+				QCharacterDef charDefTo = (QCharacterDef) multipleAtomicTarget.getArgument();
+				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();				
+				setLength(charDefTo, dataStructDefFrom);
+				break;
+			case MULTIPLE_ATOMIC:
+				QMultipleAtomicDataDef<?> multipleAtomicSource = (QMultipleAtomicDataDef<?>) source.getDefinition();
+				appendDefinitionToMultiple(multipleAtomicSource.getArgument(), (QDataTerm<QMultipleAtomicDataDef<?>>) target);
+				break;
+			case MULTIPLE_COMPOUND:
+				charDefTo = (QCharacterDef) multipleAtomicTarget.getArgument();
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();				
+				setLength(charDefTo, strollerDef);
+				appendDefinition(strollerDef, target.getDefinition());
+				break;
+			}
+			
+			target.setLike(null);
+			break;
+		case MULTIPLE_COMPOUND:
+			QMultipleCompoundDataDef<?, ?> multipleCompoundTarget = (QMultipleCompoundDataDef<?, ?>) target.getDefinition();
+
+			switch (source.getDataTermType()) {
+			case UNARY_ATOMIC:
+			case MULTIPLE_ATOMIC:
+				throw new DevelopmentKitCompilerRuntimeException("Invalid like atomic to compound: " + source.getName() + "->" + target.getName());
+			case UNARY_COMPOUND:
+				multipleCompoundTarget.setQualified(true);
+				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), multipleCompoundTarget);
+				appendDefinition(source.getDefinition(), target.getDefinition());				
+				break;
+			case MULTIPLE_COMPOUND:
+				multipleCompoundTarget.setQualified(true);
+				QMultipleCompoundDataDef<?, ?> multipleCompoundSource = (QMultipleCompoundDataDef<?, ?>) source.getDefinition();
+				copyCompoundDataDef(multipleCompoundSource, multipleCompoundTarget);
+				appendDefinition(source.getDefinition(), target.getDefinition());				
+				break;
+			}
+			
+			target.setLike(null);
 			break;
 		}
-		
+
 		return false;
 	}
 
