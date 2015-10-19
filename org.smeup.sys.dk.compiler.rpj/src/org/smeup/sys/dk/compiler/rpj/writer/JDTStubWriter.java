@@ -26,7 +26,8 @@ public class JDTStubWriter extends JDTProgramWriter {
 	}
 
 	public void writeSkeleton(QProgram program) throws IOException {
-
+		System.out.println("Writing " + program.getName());
+		
 		writeProgramAnnotation(program);
 
 		writeMessages(program.getMessages());
@@ -34,8 +35,16 @@ public class JDTStubWriter extends JDTProgramWriter {
 		writeMain(program.getEntry(), "main");
 
 		if (program.getDataSection() != null)
-			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
-				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
+			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas()) 
+				writeInnerDataWithoutErrors(dataTerm, UnitScope.PUBLIC, true);
+	}
+
+	private void writeInnerDataWithoutErrors(QDataTerm<?> dataTerm,	UnitScope scope, boolean b) {
+		try {
+			writeInnerData(dataTerm, UnitScope.PUBLIC, true);			
+		} catch (Exception e) {
+			System.err.println("Error on " + dataTerm.getName() + ": " + e.getMessage());
+		}
 	}
 
 }

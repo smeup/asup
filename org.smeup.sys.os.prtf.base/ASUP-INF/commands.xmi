@@ -9418,52 +9418,10 @@
         position="20"
         status="POS">
       <dataTerm
-          name="channelValues">
+          name="channel">
         <definition
-            xsi:type="il-data-def:StrollerDef"
-            dimension="12">
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="channel">
-            <facets
-                xsi:type="il-core-meta:Range"
-                max="12"
-                min="1"/>
-            <facets
-                xsi:type="il-core:Special">
-              <elements
-                  name="*NORMAL"
-                  value="0"/>
-            </facets>
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:BinaryDef"
-                type="SHORT"/>
-          </elements>
-          <elements
-              xsi:type="os-cmd:CommandData"
-              name="lineNumberForChannel">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:DataStructDef">
-              <elements
-                  xsi:type="os-cmd:CommandData"
-                  name="line">
-                <facets
-                    xsi:type="il-core-meta:Range"
-                    max="255"
-                    min="1"/>
-                <cardinality
-                    min="1"/>
-                <definition
-                    xsi:type="il-data-def:BinaryDef"
-                    type="SHORT"/>
-              </elements>
-            </definition>
-          </elements>
-        </definition>
+            xsi:type="il-data-def:BinaryDef"
+            type="INTEGER"/>
       </dataTerm>
     </parameters>
     <parameters
@@ -10002,18 +9960,6 @@
         status="POS">
       <dataTerm
           name="printText">
-        <facets
-            xsi:type="il-core:Special">
-          <elements
-              name="*JOB"
-              value="X'0000'"/>
-          <elements
-              name="*BLANK"
-              value="X'FFFF'"/>
-          <elements
-              name="X''"
-              value="X'FFFF'"/>
-        </facets>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="30"/>
