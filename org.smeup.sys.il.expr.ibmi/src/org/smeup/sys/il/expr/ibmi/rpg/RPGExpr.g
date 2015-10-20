@@ -108,30 +108,30 @@ value
 	|	BOOLEAN
 	|	STRING
 	|	HEX -> ^(HEX[$HEX.text.substring(2, $HEX.text.length() -1 )])
-	|	TERM
 	|	(SPECIAL -> TERM[$SPECIAL.text])
 	|	filler
 	|	special
 	|	bi_function
 	|	usr_function
-	|   indicator
+	|   	indicator
+	|	TERM
 	;
 	
 indicator
 	:
 		IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
 		|
-		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 			// Caso *INnn
+		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 		// Caso *INnn
 		|
-		INNU -> ^(INDICATOR[$INNU.text])				        					// Caso *INU0 - *INU8
+		INNU -> ^(INDICATOR[$INNU.text])				        	// Caso *INU0 - *INU8
 		|
-		IN -> ^(INDICATOR[$IN.text])												// Caso *IN
+		IN -> ^(INDICATOR[$IN.text])							// Caso *IN
 	;		
 	
 filler	:	
-		MULT ALL STRING -> ^(BI_FUNCTION["*ALL"] STRING)
+		ALL -> ^(BI_FUNCTION["*ALL"] STRING[$ALL.text.substring(5, $ALL.text.length()-1)])
 		|
-		MULT ALL HEX -> ^(BI_FUNCTION["*ALL"] HEX)	
+		ALLX -> ^(BI_FUNCTION["*ALL"] HEX[$ALLX.text.substring(6, $ALLX.text.length()-1)])	
 	;
 
 special	:
@@ -314,9 +314,12 @@ INNU	:
 	;	
 
 ALL	:
-	A L L
+	MULT A L L '\'' (LETTER|DIGIT)+ '\''
 	;	
-	
+
+ALLX    :
+	MULT A L L HEX	
+	;
 
 HEX	:   ('X\''|'x\'') (HexDigit)+ '\''
 	;
