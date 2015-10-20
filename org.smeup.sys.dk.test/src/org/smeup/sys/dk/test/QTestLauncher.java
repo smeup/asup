@@ -29,6 +29,22 @@ public interface QTestLauncher {
 	 * @model
 	 * @generated
 	 */
+	void destroy(QContext context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void init(QContext context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void launch(QContext context, String object);
 
 	/**

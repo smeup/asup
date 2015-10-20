@@ -174,6 +174,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
   <eClassifiers xsi:type="ecore:EClass" name="TestLauncher" abstract="true">
+    <eOperations name="destroy">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
+    <eOperations name="init">
+      <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
     <eOperations name="launch">
       <eParameters name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

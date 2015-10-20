@@ -5,19 +5,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.smeup.sys.dk.test.QTestLauncher;
 import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.annotation.Test;
-import org.smeup.sys.dk.test.impl.TestLauncherImpl;
 import org.smeup.sys.il.core.ctx.QContext;
 
 
-public abstract class BaseTestLauncherImpl extends TestLauncherImpl {
+public abstract class BaseTestLauncherImpl implements QTestLauncher {
 		
 	Map<QContext, List<QTestLauncherListener>> listeners = new HashMap<QContext, List<QTestLauncherListener>>();
-	 
-
+	
 	@Override
-	public abstract void launch(QContext context, String object); 
+	public abstract void launch(QContext context, String object);
+	 
+	@Override
+	public void init(QContext context) {
+		TestLauncherHelper.notifyLauncherStarted(context, this);
+	}
+	
+	@Override
+	public void destroy(QContext context) {
+		TestLauncherHelper.notifyLauncherStopped(context, this);
+	}; 
 
 	@Override
 	public void registerListener(QContext context, QTestLauncherListener listener) {
