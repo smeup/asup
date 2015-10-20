@@ -7963,8 +7963,7 @@
     <parameters
         allowVariable="true"
         name="FILE"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="fileBeingOverridden">
         <facets
@@ -7986,8 +7985,7 @@
     <parameters
         allowVariable="true"
         name="TOFILE"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="overridingToPrinterFile">
         <default

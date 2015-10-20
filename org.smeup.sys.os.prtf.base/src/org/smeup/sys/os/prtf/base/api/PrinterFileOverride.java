@@ -21,6 +21,7 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
@@ -31,6 +32,7 @@ import org.smeup.sys.os.file.QPrinterFile;
 @Program(name = "QDMOVRPR")
 public @Supported class PrinterFileOverride {
 	public static enum QCPFMSG {
+		CPD5801
 	}
 	
 	@Inject
@@ -39,11 +41,14 @@ public @Supported class PrinterFileOverride {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
+
 
 	public @Entry void main(
-			@ToDo @DataDef(length = 10) QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden,
-			@ToDo @DataDef(qualified = true) OVERRIDINGTOPRINTERFILE overridingToPrinterFile,
-			DEVICE device,
+			@DataDef(length = 10) QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden,
+			@DataDef(qualified = true) OVERRIDINGTOPRINTERFILE overridingToPrinterFile,
+			@ToDo DEVICE device,
 			@DataDef(length = 1) QEnum<PRINTERDEVICETYPEEnum, QCharacter> printerDeviceType,
 			@ToDo PAGESIZE pageSize,
 			@ToDo @DataDef(precision = 3, scale = 1) QEnum<LINESPERINCHEnum, QDecimal> linesPerInch,
@@ -121,6 +126,11 @@ public @Supported class PrinterFileOverride {
 			@ToDo @DataDef(length = 1) QEnum<SHAREOPENDATAPATHEnum, QCharacter> shareOpenDataPath,
 			@DataDef(length = 1) QEnum<OPENSCOPEEnum, QCharacter> openScope) {
 
+		if (fileBeingOverridden.asEnum().equals(FILEBEINGOVERRIDDENEnum.PRTF) && 
+			overridingToPrinterFile.name.asEnum().equals(OVERRIDINGTOPRINTERFILE.NAMEEnum.FILE)) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPD5801, new String[0]);
+		}
+				
 		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
 		fileOverride.setName(name(fileBeingOverridden));
 		QPrinterFile qFile = qFile(overridingToPrinterFile);
@@ -131,19 +141,20 @@ public @Supported class PrinterFileOverride {
 	}
 
 	private QPrinterFile qFile(OVERRIDINGTOPRINTERFILE overridingToPrinterFile) {
+		String overridingName = overridingToPrinterFile.name.asData().trimR();
 		switch (overridingToPrinterFile.name.asEnum()) {
 		case FILE:
 			return QOperatingSystemFileFactory.eINSTANCE.createPrinterFile();
 		case OTHER:
 			QResourceReader<QFile> fileReader = findReader(overridingToPrinterFile.library);
-			QFile qFile = fileReader.lookup(overridingToPrinterFile.name.asData().trimR());
+			QFile qFile = fileReader.lookup(overridingName);
 
 			if (qFile == null) {
-				throw new OperatingSystemRuntimeException("File not found: " + overridingToPrinterFile.name.asString());
+				throw new OperatingSystemRuntimeException("File not found: " + overridingName);
 			}
 
 			if (!(qFile instanceof QPrinterFile)) {
-				throw new OperatingSystemRuntimeException("Wrong file type: " + overridingToPrinterFile.name.asString());
+				throw new OperatingSystemRuntimeException("Wrong file type: " + overridingName);
 			}
 			
 			return (QPrinterFile) qFile;
