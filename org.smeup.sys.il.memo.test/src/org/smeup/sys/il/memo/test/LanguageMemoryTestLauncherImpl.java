@@ -26,6 +26,7 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 	@Inject
 	private QApplication application;
 	
+	
 	@Override
 	public void launch(QContext context, String object) {
 		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
@@ -138,4 +139,7 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 			}
 		}
 	}
+
+
+	
 }

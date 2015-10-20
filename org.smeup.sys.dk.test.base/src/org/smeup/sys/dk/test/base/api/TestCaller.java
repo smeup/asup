@@ -61,7 +61,9 @@ public @Supported class TestCaller {
 			
 			for (QTestLauncher testLauncher: testLauncherList) {
 				testLauncher.registerListener(context, resultWriter);
+				testLauncher.init(context);
 				testLauncher.launch(context, object.toString().trim());
+				testLauncher.destroy(context);
 				testLauncher.removeListener(context, resultWriter);
 			}
 		}				
