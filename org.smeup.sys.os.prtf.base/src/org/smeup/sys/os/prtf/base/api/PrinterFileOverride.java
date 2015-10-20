@@ -1,5 +1,7 @@
 package org.smeup.sys.os.prtf.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
@@ -15,16 +17,38 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QFileManager;
+import org.smeup.sys.os.file.QFileOverride;
+import org.smeup.sys.os.file.QOperatingSystemFileFactory;
+import org.smeup.sys.os.file.QPrinterFile;
 					
 @Program(name = "QDMOVRPR")
 public @Supported class PrinterFileOverride {
 	public static enum QCPFMSG {
+		CPD5801
 	}
+	
+	@Inject
+	private QFileManager fileManager;
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
+
 
 	public @Entry void main(
-			@ToDo @DataDef(length = 10) QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden,
-			@ToDo @DataDef(qualified = true) OVERRIDINGTOPRINTERFILE overridingToPrinterFile,
-			DEVICE device,
+			@DataDef(length = 10) QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden,
+			@DataDef(qualified = true) OVERRIDINGTOPRINTERFILE overridingToPrinterFile,
+			@ToDo DEVICE device,
 			@DataDef(length = 1) QEnum<PRINTERDEVICETYPEEnum, QCharacter> printerDeviceType,
 			@ToDo PAGESIZE pageSize,
 			@ToDo @DataDef(precision = 3, scale = 1) QEnum<LINESPERINCHEnum, QDecimal> linesPerInch,
@@ -101,6 +125,63 @@ public @Supported class PrinterFileOverride {
 			@ToDo @DataDef(length = 1) QEnum<OVERRIDESCOPEEnum, QCharacter> overrideScope,
 			@ToDo @DataDef(length = 1) QEnum<SHAREOPENDATAPATHEnum, QCharacter> shareOpenDataPath,
 			@DataDef(length = 1) QEnum<OPENSCOPEEnum, QCharacter> openScope) {
+
+		if (fileBeingOverridden.asEnum().equals(FILEBEINGOVERRIDDENEnum.PRTF) && 
+			overridingToPrinterFile.name.asEnum().equals(OVERRIDINGTOPRINTERFILE.NAMEEnum.FILE)) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPD5801, new String[0]);
+		}
+				
+		QFileOverride fileOverride = QOperatingSystemFileFactory.eINSTANCE.createFileOverride();
+		fileOverride.setName(name(fileBeingOverridden));
+		QPrinterFile qFile = qFile(overridingToPrinterFile);
+		//TODO: set attributes from command parameters
+		fileOverride.setFileTo(qFile);
+		
+		fileManager.setFileOverride(job.getContext(), fileOverride);		
+	}
+
+	private QPrinterFile qFile(OVERRIDINGTOPRINTERFILE overridingToPrinterFile) {
+		String overridingName = overridingToPrinterFile.name.asData().trimR();
+		switch (overridingToPrinterFile.name.asEnum()) {
+		case FILE:
+			return QOperatingSystemFileFactory.eINSTANCE.createPrinterFile();
+		case OTHER:
+			QResourceReader<QFile> fileReader = findReader(overridingToPrinterFile.library);
+			QFile qFile = fileReader.lookup(overridingName);
+
+			if (qFile == null) {
+				throw new OperatingSystemRuntimeException("File not found: " + overridingName);
+			}
+
+			if (!(qFile instanceof QPrinterFile)) {
+				throw new OperatingSystemRuntimeException("Wrong file type: " + overridingName);
+			}
+			
+			return (QPrinterFile) qFile;
+		}
+		throw new RuntimeException("Shuld not happen");
+	}
+
+	private QResourceReader<QFile> findReader(QEnum<OVERRIDINGTOPRINTERFILE.LIBRARYEnum, QCharacter> library) {
+		switch (library.asEnum()) {
+		case CURLIB:
+			return resourceManager.getResourceReader(job, QFile.class, Scope.CURRENT_LIBRARY);
+		case LIBL:
+			return resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
+		case OTHER:
+			return resourceManager.getResourceReader(job, QFile.class, library.asData().trimR());
+		}
+		throw new RuntimeException("Shuld not happen");
+	}
+
+	private String name(QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden) {
+		switch(fileBeingOverridden.asEnum()) {
+		case PRTF:
+			return "*PRTF";
+		case OTHER:
+			return fileBeingOverridden.asData().trimR();
+		}
+		throw new RuntimeException("Shuld not happen");
 	}
 
 	public static enum FILEBEINGOVERRIDDENEnum {
@@ -109,8 +190,10 @@ public @Supported class PrinterFileOverride {
 
 	public static class OVERRIDINGTOPRINTERFILE extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QEnum<NAMEEnum, QCharacter> name;
+		
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LIBRARYEnum, QCharacter> library;
 
