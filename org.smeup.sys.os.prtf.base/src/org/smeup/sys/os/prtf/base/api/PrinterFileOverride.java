@@ -1,5 +1,6 @@
 package org.smeup.sys.os.prtf.base.api;
 
+import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -8,16 +9,15 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
-import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
-
+					
 @Program(name = "QDMOVRPR")
-public @ToDo class PrinterFileOverride {
+public @Supported class PrinterFileOverride {
 	public static enum QCPFMSG {
 	}
 
@@ -41,7 +41,7 @@ public @ToDo class PrinterFileOverride {
 			@DataDef(length = 1) QEnum<FORMFEEDEnum, QCharacter> formFeed,
 			@DataDef(length = 1) QEnum<PRINTQUALITYEnum, QCharacter> printQuality,
 			@DataDef(length = 1) QEnum<CONTROLCHARACTEREnum, QCharacter> controlCharacter,
-			@DataDef(dimension = 12) QStroller<CHANNELVALUES> channelValues,
+			@DataDef(binaryType=BinaryType.INTEGER) QBinary channel,
 			@DataDef(length = 1) QEnum<FIDELITYEnum, QCharacter> fidelity,
 			CHARACTERIDENTIFIER characterIdentifier,
 			@DataDef(length = 1) QEnum<DECIMALFORMATEnum, QCharacter> decimalFormat,
@@ -54,7 +54,7 @@ public @ToDo class PrinterFileOverride {
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<DEGREEOFPAGEROTATIONEnum, QBinary> degreeOfPageRotation,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<PAGESPERSIDEEnum, QBinary> pagesPerSide,
 			@DataDef(length = 1) QEnum<REDUCEOUTPUTEnum, QCharacter> reduceOutput,
-			@DataDef(length = 30) Character printText,
+			@DataDef(length = 30) QCharacter printText,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<HARDWAREJUSTIFICATIONEnum, QBinary> hardwareJustification,
 			@DataDef(length = 1) QEnum<PRINTONBOTHSIDESEnum, QCharacter> printOnBothSides,
 			@DataDef(length = 1) QEnum<UNITOFMEASUREEnum, QCharacter> unitOfMeasure,
