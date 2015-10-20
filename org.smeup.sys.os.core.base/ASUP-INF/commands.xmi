@@ -1452,8 +1452,7 @@
     </parameters>
     <parameters
         name="RSMTIME"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="resumeTime">
         <default/>
