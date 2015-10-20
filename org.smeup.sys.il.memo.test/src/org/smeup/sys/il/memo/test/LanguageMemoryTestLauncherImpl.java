@@ -1,66 +1,64 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Dario Foresti - Initial API and implementation
+ */
 package org.smeup.sys.il.memo.test;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.QTestAsserter;
-import org.smeup.sys.dk.test.QTestManager;
-import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
-import org.smeup.sys.dk.test.base.BaseTestLauncherImpl;
-import org.smeup.sys.dk.test.base.TestLauncherHelper;
+import org.smeup.sys.dk.test.base.MultipleTestLauncherImpl;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.rt.core.QApplication;
 
 @Test(category = "IL.MEMO")
-public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
-
-	@Inject
-	private QTestManager testManager;
-	@Inject
-	private QApplication application;
-	
+public class LanguageMemoryTestLauncherImpl extends MultipleTestLauncherImpl {
 	
 	@Override
-	public void launch(QContext context, String object) {
-		QContext testContext = application.getContext().createChildContext(this.getClass().getSimpleName());
-		
-		QTestRunner testRunner = null;
-		QTestResult testResult = null;
-		
-		try {
-			testRunner = testManager.prepareRunner(testContext, TestWrite.class);
-			testResult = testRunner.call();
-			
-			TestLauncherHelper.notifyResultAdded(context, this, testRunner, testResult);
-			
-		} catch (Exception e) {
-			QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, TestRead.class, e.getMessage());
-			TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
-		}
-		
-		if (testResult != null && !testResult.isFailed()) {						
-			
-			try {
-				testRunner = testManager.prepareRunner(testContext, TestRead.class);
-				testResult = testRunner.call();
-				
-				TestLauncherHelper.notifyResultAdded(context, this, testRunner, testResult);
-				
-			} catch (Exception e) {
-				QTestResult errorResult = TestLauncherHelper.createErrorResult(this, testRunner, TestRead.class, e.getMessage());
-				TestLauncherHelper.notifyResultAdded(context, this, testRunner, errorResult);								
-			}
-		}
-
-		
+	public void destroy(QContext context) {
+		super.destroy(context);
 	}
+
+
+	@Override
+	public void init(QContext context) {
+		super.init(context);
+	}
+
+
+	@Override
+	public Collection<Class<?>> getTestClassList(String object) {
+		
+		Collection<Class<?>> testClasses = new ArrayList<Class<?>>();
+		testClasses.add(TestWrite.class);
+		testClasses.add(TestRead.class);
+		return testClasses;				
+	}
+
+
+	@Override
+	public boolean breaksOnFirstFailedTest() {		
+		return true;
+	}
+	
+	
 
 	@Test(category = "IL.MEMO", object = "READ")
 	public static class TestRead {
@@ -139,7 +137,4 @@ public class LanguageMemoryTestLauncherImpl extends BaseTestLauncherImpl {
 			}
 		}
 	}
-
-
-	
 }
