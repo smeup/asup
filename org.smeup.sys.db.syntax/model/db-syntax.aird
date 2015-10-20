@@ -5,6 +5,9 @@
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.smeup.sys.il.core/model/il-core.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="ecore:EPackage" href="platform:/resource/org.smeup.sys.il.data/model/il-data.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_pRpW0HcaEeWinuP6cj_hrg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_pW8tkHcaEeWinuP6cj_hrg" name="syntax class diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_pW8tlncaEeWinuP6cj_hrg" source="GMF_DIAGRAMS">
@@ -1041,107 +1044,7 @@
         </data>
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_woGnAHcaEeWinuP6cj_hrg" source="DANNOTATION_CUSTOMIZATION_KEY">
-        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_woHOEHcaEeWinuP6cj_hrg">
-          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_woLfgXcaEeWinuP6cj_hrg" arcWidth="8" arcHeight="8" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid">
-            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']"/>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_woQ_EncaEeWinuP6cj_hrg" arcWidth="8" arcHeight="8" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid">
-            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']"/>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:FlatContainerStyleDescription" xmi:id="_woclQncaEeWinuP6cj_hrg" arcWidth="8" arcHeight="8" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid">
-            <borderColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <backgroundColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xmi:type="description:UserFixedColor" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']"/>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_wqjeE3caEeWinuP6cj_hrg" targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
-            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_wqjeFHcaEeWinuP6cj_hrg" labelFormat="italic" showIcon="false" labelExpression="service:superTypesLabel">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_wqjeFXcaEeWinuP6cj_hrg" showIcon="false">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </centerLabelStyleDescription>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_wqlTQncaEeWinuP6cj_hrg" lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
-            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_wqlTQ3caEeWinuP6cj_hrg" labelFormat="italic" showIcon="false" labelExpression="service:superTypesLabel">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_wqlTRHcaEeWinuP6cj_hrg" showIcon="false">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </centerLabelStyleDescription>
-          </computedStyleDescriptions>
-          <computedStyleDescriptions xmi:type="style:EdgeStyleDescription" xmi:id="_wqoWkncaEeWinuP6cj_hrg" targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
-            <strokeColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <beginLabelStyleDescription xmi:type="style:BeginLabelStyleDescription" xmi:id="_wqoWk3caEeWinuP6cj_hrg" labelFormat="italic" showIcon="false" labelExpression="service:superTypesLabel">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription xmi:type="style:CenterLabelStyleDescription" xmi:id="_wqoWlHcaEeWinuP6cj_hrg" showIcon="false">
-              <labelColor xmi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </centerLabelStyleDescription>
-          </computedStyleDescriptions>
-          <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_woJqUHcaEeWinuP6cj_hrg">
-            <key xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_woK4cHcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//DefinitionWriter"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_woLfgHcaEeWinuP6cj_hrg" key="_woBugHcaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_woMGkHcaEeWinuP6cj_hrg" value="_woLfgXcaEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_woQ_EHcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//NameHelper"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_woQ_EXcaEeWinuP6cj_hrg" key="_woPw8HcaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_woQ_E3caEeWinuP6cj_hrg" value="_woQ_EncaEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_woclQHcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//QueryWriter"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_woclQXcaEeWinuP6cj_hrg" key="_wobXIHcaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_woclQ3caEeWinuP6cj_hrg" value="_woclQncaEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-          </cache>
-          <cache xmi:type="diagram:DiagramElementMapping2ModelElement" xmi:id="_wqjeEHcaEeWinuP6cj_hrg">
-            <key xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_wqjeEXcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//DefinitionWriter"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_wqjeEncaEeWinuP6cj_hrg" key="_wqgawHcaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_wqjeFncaEeWinuP6cj_hrg" value="_wqjeE3caEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_wqlTQHcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//NameHelper"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_wqlTQXcaEeWinuP6cj_hrg" key="_wqkFJncaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_wqlTRXcaEeWinuP6cj_hrg" value="_wqlTQncaEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-            <value xmi:type="diagram:ModelElement2ViewVariable" xmi:id="_wqoWkHcaEeWinuP6cj_hrg">
-              <key xmi:type="ecore:EClass" href="db-syntax.ecore#//QueryWriter"/>
-              <value xmi:type="diagram:ViewVariable2ContainerVariable" xmi:id="_wqoWkXcaEeWinuP6cj_hrg" key="_wqnvgHcaEeWinuP6cj_hrg">
-                <value xmi:type="diagram:ContainerVariable2StyleDescription" xmi:id="_wqoWlXcaEeWinuP6cj_hrg" value="_wqoWkncaEeWinuP6cj_hrg">
-                  <key xmi:type="ecore:EPackage" href="db-syntax.ecore#/"/>
-                </value>
-              </value>
-            </value>
-          </cache>
-        </data>
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_woHOEHcaEeWinuP6cj_hrg"/>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_wnne0HcaEeWinuP6cj_hrg" name="AliasResolver" tooltipText="" width="12" height="10">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//AliasResolver"/>
@@ -1382,17 +1285,18 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_woBugHcaEeWinuP6cj_hrg" name="DefinitionWriter" tooltipText="&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@9d15139{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@5eaa35e7{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@4d54c7a8{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@5eaa35e7{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@4d54c7a8{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@5eaa35e7{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@6de42614{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/schema}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3bbae583{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@567260fe{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3bbae583{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@567260fe{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3bbae583{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@5529ab90{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2e2314fa{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3e2b4f1a{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2e2314fa{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3e2b4f1a{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabel.1/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2e2314fa{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@72331a4d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/schema}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2ba970d3{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3783e165{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2ba970d3{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3783e165{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2ba970d3{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@2feeb92e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@66e24167{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@4bd97056{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@66e24167{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@4bd97056{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createLabelForFields/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@66e24167{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@2152ea12{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createSchema/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@39c2a72f{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@9f2af94{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createSchema/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@39c2a72f{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@9f2af94{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createSchema/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@39c2a72f{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@538f404d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/schema}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@237912d4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@5354d1aa{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@237912d4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@5354d1aa{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@237912d4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@65e0b3a8{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@f2e324b{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@79f23e8f{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@f2e324b{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@79f23e8f{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createTable/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@f2e324b{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@505684d4{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/schema}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3d8b7c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@25fac6f5{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3d8b7c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@25fac6f5{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3d8b7c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@45e75c11{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@43c9ad0e{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2d890464{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@43c9ad0e{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2d890464{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createView/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@43c9ad0e{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@499d4525{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@13e21689{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3a23ff8d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@13e21689{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3a23ff8d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@13e21689{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@45db3b0c{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/name}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2a34f1bb{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2094bdf7{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2a34f1bb{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2094bdf7{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/createIndex/name/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EDataTypeImpl@2a34f1bb{platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@30370ad{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropSchema/schema}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@d16a4a4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@267928d7{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropSchema/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@d16a4a4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@267928d7{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropSchema/schema/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@d16a4a4{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//schema/Schema}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@3ae6744f{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropTable/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@4d48e59a{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3f981de1{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropTable/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@4d48e59a{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3f981de1{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropTable/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@4d48e59a{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@278694a7{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropView/view}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@adab18f{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/ViewTable}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@48563f10{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropView/view/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@adab18f{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/ViewTable}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@48563f10{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropView/view/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@adab18f{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/ViewTable}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@419b6e59{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropIndex/index}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@aac1205{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//constraints/Index}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3e93049e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropIndex/index/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@aac1205{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//constraints/Index}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@3e93049e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/dropIndex/index/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@aac1205{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//constraints/Index}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@2da38c47{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/deleteData/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3ad1c87d{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@5474985c{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/deleteData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3ad1c87d{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@5474985c{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/deleteData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@3ad1c87d{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@4e07dd2d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/insertData/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@424ac0fa{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@68168787{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/insertData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@424ac0fa{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@68168787{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/insertData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@424ac0fa{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@59e6ff76{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/selectData/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@514fb918{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@29a03a6e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/selectData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@514fb918{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@29a03a6e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/selectData/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@514fb918{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@59be74c2{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/hasLogicals/table}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@bda0c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@548eacd{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/hasLogicals/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@bda0c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@548eacd{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/hasLogicals/table/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@bda0c9e{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@6b3ba85d{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableFrom}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@a0a66ef{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@43e08c1e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableFrom/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@a0a66ef{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@43e08c1e{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableFrom/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@a0a66ef{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@6952f8c4{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableTo}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@f9882d8{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2b8e79a1{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableTo/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@f9882d8{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@2b8e79a1{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//DefinitionWriter/copyTableData/tableTo/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@f9882d8{platform:/resource/org.eclipse.datatools.modelbase.sql/model/sqlmodel.ecore#//tables/Table}'" outgoingEdges="_wqgawHcaEeWinuP6cj_hrg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_woBugHcaEeWinuP6cj_hrg" name="DefinitionWriter" tooltipText="" outgoingEdges="_wqgawHcaEeWinuP6cj_hrg" width="12" height="10">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//DefinitionWriter"/>
         <semanticElements xmi:type="ecore:EClass" href="db-syntax.ecore#//DefinitionWriter"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_woNUsHcaEeWinuP6cj_hrg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" description="_woLfgXcaEeWinuP6cj_hrg" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_woNUsXcaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_woNUsncaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woNUs3caEeWinuP6cj_hrg" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woNUtHcaEeWinuP6cj_hrg" red="228" green="228" blue="228"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_pnESkHctEeWLerHh65tVbg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnESkXctEeWLerHh65tVbg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_pnESknctEeWLerHh65tVbg" red="125" green="125" blue="125"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnESk3ctEeWLerHh65tVbg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnESlHctEeWLerHh65tVbg" red="228" green="228" blue="228"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpnp8HcaEeWinuP6cj_hrg" name="createLabel(name, schema SchemaDef) : EString" tooltipText="createLabel(name, schema) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpnp8HcaEeWinuP6cj_hrg" name="createLabel(name EString, schema SchemaDef) : EString" tooltipText="createLabel(name, schema) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabel"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabel"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createLabel/name"/>
@@ -1405,7 +1309,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpoRBHcaEeWinuP6cj_hrg" name="createLabel(schema, name, table TableDef) : EString" tooltipText="createLabel(schema, name, table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpoRBHcaEeWinuP6cj_hrg" name="createLabel(schema Schema, name EString, table TableDef) : EString" tooltipText="createLabel(schema, name, table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabel.1"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabel.1"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createLabel.1/name"/>
@@ -1419,7 +1323,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpo4FHcaEeWinuP6cj_hrg" name="createLabelForFields(schema, name, table TableDef) : EString" tooltipText="createLabelForFields(schema, name, table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpo4FHcaEeWinuP6cj_hrg" name="createLabelForFields(schema Schema, name EString, table TableDef) : EString" tooltipText="createLabelForFields(schema, name, table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabelForFields"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createLabelForFields"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createLabelForFields/name"/>
@@ -1433,7 +1337,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpqGMHcaEeWinuP6cj_hrg" name="createSchema(name, schema SchemaDef) : EString" tooltipText="createSchema(name, schema) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpqGMHcaEeWinuP6cj_hrg" name="createSchema(name EString, schema SchemaDef) : EString" tooltipText="createSchema(name, schema) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createSchema"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createSchema"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createSchema/name"/>
@@ -1446,7 +1350,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wprUUHcaEeWinuP6cj_hrg" name="createTable(schema, name, table TableDef) : EString" tooltipText="createTable(schema, name, table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wprUUHcaEeWinuP6cj_hrg" name="createTable(schema Schema, name EString, table TableDef) : EString" tooltipText="createTable(schema, name, table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createTable"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createTable"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createTable/name"/>
@@ -1460,7 +1364,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpr7Y3caEeWinuP6cj_hrg" name="createView(schema, name, view ViewDef) : EString" tooltipText="createView(schema, name, view) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpr7Y3caEeWinuP6cj_hrg" name="createView(schema Schema, name EString, view ViewDef) : EString" tooltipText="createView(schema, name, view) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createView"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createView"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createView/name"/>
@@ -1474,7 +1378,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpsidHcaEeWinuP6cj_hrg" name="createIndex(table, name, index IndexDef) : EString" tooltipText="createIndex(table, name, index) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpsidHcaEeWinuP6cj_hrg" name="createIndex(table Table, name EString, index IndexDef) : EString" tooltipText="createIndex(table, name, index) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createIndex"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/createIndex"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/createIndex/index"/>
@@ -1488,7 +1392,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpuXoHcaEeWinuP6cj_hrg" name="dropSchema(schema, ignoreFailOnNonEmpty EBoolean) : EString" tooltipText="dropSchema(schema, ignoreFailOnNonEmpty) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpuXoHcaEeWinuP6cj_hrg" name="dropSchema(schema Schema, ignoreFailOnNonEmpty EBoolean) : EString" tooltipText="dropSchema(schema, ignoreFailOnNonEmpty) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropSchema"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropSchema"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/dropSchema/ignoreFailOnNonEmpty"/>
@@ -1501,7 +1405,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpu-tHcaEeWinuP6cj_hrg" name="dropTable(table) : EString" tooltipText="dropTable(table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpu-tHcaEeWinuP6cj_hrg" name="dropTable(table Table) : EString" tooltipText="dropTable(table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropTable"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropTable"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/dropTable/table"/>
@@ -1513,7 +1417,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpvlxHcaEeWinuP6cj_hrg" name="dropView(view) : EString" tooltipText="dropView(view) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpvlxHcaEeWinuP6cj_hrg" name="dropView(view ViewTable) : EString" tooltipText="dropView(view) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropView"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropView"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/dropView/view"/>
@@ -1525,7 +1429,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpwz4HcaEeWinuP6cj_hrg" name="dropIndex(index) : EString" tooltipText="dropIndex(index) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpwz4HcaEeWinuP6cj_hrg" name="dropIndex(index Index) : EString" tooltipText="dropIndex(index) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropIndex"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/dropIndex"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/dropIndex/index"/>
@@ -1537,7 +1441,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpxa8HcaEeWinuP6cj_hrg" name="deleteData(table) : EString" tooltipText="deleteData(table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpxa8HcaEeWinuP6cj_hrg" name="deleteData(table Table) : EString" tooltipText="deleteData(table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/deleteData"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/deleteData"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/deleteData/table"/>
@@ -1549,7 +1453,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpyCAHcaEeWinuP6cj_hrg" name="insertData(table) : EString" tooltipText="insertData(table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpyCAHcaEeWinuP6cj_hrg" name="insertData(table Table) : EString" tooltipText="insertData(table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/insertData"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/insertData"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/insertData/table"/>
@@ -1561,7 +1465,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpypFHcaEeWinuP6cj_hrg" name="selectData(table) : EString" tooltipText="selectData(table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpypFHcaEeWinuP6cj_hrg" name="selectData(table Table) : EString" tooltipText="selectData(table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/selectData"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/selectData"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/selectData/table"/>
@@ -1573,7 +1477,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpzQJHcaEeWinuP6cj_hrg" name="hasLogicals(table) : EString" tooltipText="hasLogicals(table) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wpzQJHcaEeWinuP6cj_hrg" name="hasLogicals(table Table) : EString" tooltipText="hasLogicals(table) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/hasLogicals"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/hasLogicals"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/hasLogicals/table"/>
@@ -1585,7 +1489,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp0eQHcaEeWinuP6cj_hrg" name="copyTableData(tableFrom, tableTo, isCreateRelativeRecordNumber EBoolean) : EString" tooltipText="copyTableData(tableFrom, tableTo, isCreateRelativeRecordNumber) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp0eQHcaEeWinuP6cj_hrg" name="copyTableData(tableFrom Table, tableTo Table, isCreateRelativeRecordNumber EBoolean) : EString" tooltipText="copyTableData(tableFrom, tableTo, isCreateRelativeRecordNumber) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/copyTableData"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//DefinitionWriter/copyTableData"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//DefinitionWriter/copyTableData/isCreateRelativeRecordNumber"/>
@@ -1624,17 +1528,18 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_woPw8HcaEeWinuP6cj_hrg" name="NameHelper" tooltipText="&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@39945077{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//NameHelper/resolveContainers/query}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2e85695b{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@41610c03{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//NameHelper/resolveContainers/query/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2e85695b{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@41610c03{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//NameHelper/resolveContainers/query/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@2e85695b{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'" outgoingEdges="_wqkFJncaEeWinuP6cj_hrg" incomingEdges="_wqaUIHcaEeWinuP6cj_hrg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_woPw8HcaEeWinuP6cj_hrg" name="NameHelper" tooltipText="" outgoingEdges="_wqkFJncaEeWinuP6cj_hrg" incomingEdges="_wqaUIHcaEeWinuP6cj_hrg" width="12" height="10">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//NameHelper"/>
         <semanticElements xmi:type="ecore:EClass" href="db-syntax.ecore#//NameHelper"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_woQ_FHcaEeWinuP6cj_hrg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" description="_woQ_EncaEeWinuP6cj_hrg" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_woQ_FXcaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_woQ_FncaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woQ_F3caEeWinuP6cj_hrg" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woQ_GHcaEeWinuP6cj_hrg" red="228" green="228" blue="228"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_pnGu0HctEeWLerHh65tVbg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnGu0XctEeWLerHh65tVbg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_pnGu0nctEeWLerHh65tVbg" red="125" green="125" blue="125"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnGu03ctEeWLerHh65tVbg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnGu1HctEeWLerHh65tVbg" red="228" green="228" blue="228"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp2TcHcaEeWinuP6cj_hrg" name="resolveContainers(query)" tooltipText="resolveContainers(query)">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp2TcHcaEeWinuP6cj_hrg" name="resolveContainers(query QueryStatement)" tooltipText="resolveContainers(query)">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//NameHelper/resolveContainers"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//NameHelper/resolveContainers"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//NameHelper/resolveContainers/query"/>
@@ -1731,17 +1636,18 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_wobXIHcaEeWinuP6cj_hrg" name="QueryWriter" tooltipText="&#xA;ERROR : The feature 'eType' of 'org.eclipse.emf.ecore.impl.EParameterImpl@434df5d0{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//QueryWriter/writeQuery/statement}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@8429c7{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'&#xA;ERROR : The feature 'eRawType' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@416ad0fe{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//QueryWriter/writeQuery/statement/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@8429c7{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'&#xA;ERROR : The feature 'eClassifier' of 'org.eclipse.emf.ecore.impl.EGenericTypeImpl@416ad0fe{platform:/resource/org.smeup.sys.db.syntax/model/db-syntax.ecore#//QueryWriter/writeQuery/statement/@eGenericType}' contains an unresolved proxy 'org.eclipse.emf.ecore.impl.EClassImpl@8429c7{platform:/resource/org.eclipse.datatools.modelbase.sql.query/model/SQLQueryModel.ecore#//QueryStatement}'" outgoingEdges="_wqnvgHcaEeWinuP6cj_hrg" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_wobXIHcaEeWinuP6cj_hrg" name="QueryWriter" tooltipText="" outgoingEdges="_wqnvgHcaEeWinuP6cj_hrg" width="12" height="10">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//QueryWriter"/>
         <semanticElements xmi:type="ecore:EClass" href="db-syntax.ecore#//QueryWriter"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_woclRHcaEeWinuP6cj_hrg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" description="_woclQncaEeWinuP6cj_hrg" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_woclRXcaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_woclRncaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woclR3caEeWinuP6cj_hrg" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_woclSHcaEeWinuP6cj_hrg" red="228" green="228" blue="228"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_pnLnUHctEeWLerHh65tVbg" labelFormat="italic" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" backgroundStyle="Liquid">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnLnUXctEeWLerHh65tVbg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_pnLnUnctEeWLerHh65tVbg" red="125" green="125" blue="125"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnLnU3ctEeWLerHh65tVbg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_pnLnVHctEeWLerHh65tVbg" red="228" green="228" blue="228"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp6k4HcaEeWinuP6cj_hrg" name="writeQuery(statement) : EString" tooltipText="writeQuery(statement) : EString">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_wp6k4HcaEeWinuP6cj_hrg" name="writeQuery(statement QueryStatement) : EString" tooltipText="writeQuery(statement) : EString">
           <target xmi:type="ecore:EOperation" href="db-syntax.ecore#//QueryWriter/writeQuery"/>
           <semanticElements xmi:type="ecore:EOperation" href="db-syntax.ecore#//QueryWriter/writeQuery"/>
           <semanticElements xmi:type="ecore:EParameter" href="db-syntax.ecore#//QueryWriter/writeQuery/statement"/>
@@ -2003,13 +1909,14 @@
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_wqgawHcaEeWinuP6cj_hrg" sourceNode="_woBugHcaEeWinuP6cj_hrg" targetNode="_womWQHcaEeWinuP6cj_hrg">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//DefinitionWriter"/>
         <semanticElements xmi:type="ecore:EGenericType" href="db-syntax.ecore#//DefinitionWriter/@eGenericSuperTypes.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_wqkFIHcaEeWinuP6cj_hrg" description="_wqjeE3caEeWinuP6cj_hrg" targetArrow="InputClosedArrow" routingStyle="tree">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_wqkFIXcaEeWinuP6cj_hrg" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_wqkFIncaEeWinuP6cj_hrg" labelFormat="italic" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqkFI3caEeWinuP6cj_hrg"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_pnty0HctEeWLerHh65tVbg" targetArrow="InputClosedArrow" routingStyle="tree">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_pnty0XctEeWLerHh65tVbg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_pnty0nctEeWLerHh65tVbg" labelFormat="italic" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnty03ctEeWLerHh65tVbg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_wqkFJHcaEeWinuP6cj_hrg" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqkFJXcaEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_pnty1HctEeWLerHh65tVbg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnty1XctEeWLerHh65tVbg"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
@@ -2017,13 +1924,14 @@
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_wqkFJncaEeWinuP6cj_hrg" sourceNode="_woPw8HcaEeWinuP6cj_hrg" targetNode="_wogPoHcaEeWinuP6cj_hrg">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//NameHelper"/>
         <semanticElements xmi:type="ecore:EGenericType" href="db-syntax.ecore#//NameHelper/@eGenericSuperTypes.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_wqlTRncaEeWinuP6cj_hrg" description="_wqlTQncaEeWinuP6cj_hrg" lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="tree">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_wqlTR3caEeWinuP6cj_hrg" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_wqlTSHcaEeWinuP6cj_hrg" labelFormat="italic" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqlTSXcaEeWinuP6cj_hrg"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_pnvoAHctEeWLerHh65tVbg" lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="tree">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@conditionnalStyles.0/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_pnvoAXctEeWLerHh65tVbg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_pnvoAnctEeWLerHh65tVbg" labelFormat="italic" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnvoA3ctEeWLerHh65tVbg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_wqlTSncaEeWinuP6cj_hrg" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqlTS3caEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_pnvoBHctEeWLerHh65tVbg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnvoBXctEeWLerHh65tVbg"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
@@ -2046,13 +1954,14 @@
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_wqnvgHcaEeWinuP6cj_hrg" sourceNode="_wobXIHcaEeWinuP6cj_hrg" targetNode="_womWQHcaEeWinuP6cj_hrg">
         <target xmi:type="ecore:EClass" href="db-syntax.ecore#//QueryWriter"/>
         <semanticElements xmi:type="ecore:EGenericType" href="db-syntax.ecore#//QueryWriter/@eGenericSuperTypes.0"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_wqoWlncaEeWinuP6cj_hrg" description="_wqoWkncaEeWinuP6cj_hrg" targetArrow="InputClosedArrow" routingStyle="tree">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_wqoWl3caEeWinuP6cj_hrg" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_wqoWmHcaEeWinuP6cj_hrg" labelFormat="italic" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqoWmXcaEeWinuP6cj_hrg"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_pnxdMHctEeWLerHh65tVbg" targetArrow="InputClosedArrow" routingStyle="tree">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_pnxdMXctEeWLerHh65tVbg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_pnxdMnctEeWLerHh65tVbg" labelFormat="italic" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnxdM3ctEeWLerHh65tVbg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_wqoWmncaEeWinuP6cj_hrg" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wqoWm3caEeWinuP6cj_hrg" red="239" green="41" blue="41"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_pnxdNHctEeWLerHh65tVbg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_pnxdNXctEeWLerHh65tVbg"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
