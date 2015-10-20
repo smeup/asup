@@ -60,6 +60,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	}
 
 	@Override
+	public boolean chain(Object[] keyList, Boolean lock) {
+		return chain(keyList, null, null, lock);
+	}
+
+	@Override
 	public boolean chain(Object[] keyList, QIndicator notFound) {
 		return chain(keyList, notFound, null, null);
 	}
@@ -67,6 +72,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	@Override
 	public boolean chain(Object[] keyList, QIndicator notFound, Boolean lock) {
 		return chain(keyList, notFound, null, lock);
+	}
+
+	@Override
+	public boolean chain(Object[] keyList, QIndicator notFound, QIndicator error) {
+		return chain(keyList, notFound, error, null);
 	}
 
 	@Override
@@ -95,6 +105,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	}
 
 	@Override
+	public boolean chain(QData keyField, Boolean lock) {
+		return chain(keyField, null, null, lock);
+	}
+
+	@Override
 	public boolean chain(QData keyField, QIndicator notFound) {
 		return chain(keyField, notFound, null, null);
 	}
@@ -114,6 +129,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 
 		Object[] keyList = { keyField };
 		return chain(keyList, notFound, error, lock);
+	}
+
+	@Override
+	public boolean reade(Object[] keyList, Boolean lock) {
+		return reade(keyList, null, null, null);
 	}
 
 	@Override

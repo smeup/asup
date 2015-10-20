@@ -20,6 +20,7 @@ import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.il.core.meta.QFacet;
+import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
@@ -51,10 +52,8 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 		if (source == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid liked data term: " + target.getLike());
 
-		if (source.getLike() != null) {
-			getTermsTodo().push(target);
-			return false;
-		}
+		if (source.getLike() != null)
+			visit(source);
 
 		QCompilerLinker compilerLinker = source.getFacet(QCompilerLinker.class);
 		if (compilerLinker != null && target.getFacet(QExternalFile.class) == null)
@@ -67,11 +66,13 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 
 			switch (source.getDataTermType()) {
 			case UNARY_ATOMIC:
-				appendDefinition(source.getDefinition(), target);
+			appendDefinition(source.getDefinition(), target);
 				break;
 			case UNARY_COMPOUND:
 				QCharacterDef charDefTo = (QCharacterDef) target.getDefinition();
-				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();				
+				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();
+				if(containsLike(dataStructDefFrom)) 
+					visit(source);
 				setLength(charDefTo, dataStructDefFrom);
 				break;
 			case MULTIPLE_ATOMIC:
@@ -80,7 +81,9 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				break;
 			case MULTIPLE_COMPOUND:
 				charDefTo = (QCharacterDef) target.getDefinition();
-				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();				
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
+				if(containsLike(strollerDef))
+					visit(source);
 				setLength(charDefTo, strollerDef);
 				appendDefinition(strollerDef, target);
 				break;
@@ -123,7 +126,9 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				break;
 			case UNARY_COMPOUND:
 				QCharacterDef charDefTo = (QCharacterDef) multipleAtomicTarget.getArgument();
-				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();				
+				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();
+				if(containsLike(dataStructDefFrom))
+					visit(source);
 				setLength(charDefTo, dataStructDefFrom);
 				break;
 			case MULTIPLE_ATOMIC:
@@ -132,7 +137,9 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				break;
 			case MULTIPLE_COMPOUND:
 				charDefTo = (QCharacterDef) multipleAtomicTarget.getArgument();
-				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();				
+				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
+				if(containsLike(strollerDef))
+					visit(source);
 				setLength(charDefTo, strollerDef);
 				appendDefinition(strollerDef, target.getDefinition());
 				break;
@@ -166,7 +173,35 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 
 		return false;
 	}
-
+	
+	private boolean containsLike(QDataStructDef structDef) {
+		
+		boolean result = false;
+		
+		for(QDataTerm<QBufferedDataDef<?>> element: structDef.getElements()) {
+			if(element.getLike() != null) {
+				result = true;
+				break;
+			}
+		}
+		
+		return result;
+	}
+	
+	private boolean containsLike(QStrollerDef<?> strollerDef) {
+		
+		boolean result = false;
+		
+		for(QDataTerm<QBufferedDataDef<?>> element: strollerDef.getElements()) {
+			if(element.getLike() != null) {
+				result = true;
+				break;
+			}
+		}
+		
+		return result;
+	}
+	
 	@Override
 	public RPJAbstractDataRefactor copy() {
 		return new RPJDataLikeRefactor(getCompilationUnit());

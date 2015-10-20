@@ -75,6 +75,15 @@ public interface QIntegratedLanguageDataDefFactory extends EFactory {
 	QCharacterDef createCharacterDef();
 
 	/**
+	 * Returns a new object of class '<em>Data Area Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Area Def</em>'.
+	 * @generated
+	 */
+	<D extends QBufferedData> QDataAreaDef<D> createDataAreaDef();
+
+	/**
 	 * Returns a new object of class '<em>Data Struct Def</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

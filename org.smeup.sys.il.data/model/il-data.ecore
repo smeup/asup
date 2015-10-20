@@ -368,6 +368,15 @@
       </eParameters>
     </eOperations>
     <eOperations name="movea">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="value">
+        <eGenericType eTypeParameter="#//BufferedList/movea.6/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="value" eType="#//DataWriter"/>
     </eOperations>
@@ -381,6 +390,15 @@
     </eOperations>
     <eOperations name="movea">
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="movea">
+      <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="value">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -787,6 +805,17 @@
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataWriter"/>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataArea" abstract="true" interface="true"
+      eSuperTypes="#//BufferedData">
+    <eTypeParameters name="D">
+      <eBounds eClassifier="#//BufferedData"/>
+    </eTypeParameters>
+    <eOperations name="get" lowerBound="1">
+      <eGenericType eTypeParameter="#//DataArea/D"/>
+    </eOperations>
+    <eOperations name="in"/>
+    <eOperations name="out"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
@@ -2277,7 +2306,6 @@
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="in"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -2305,7 +2333,6 @@
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
     </eOperations>
-    <eOperations name="out"/>
     <eOperations name="qInt" eType="#//Numeric"/>
     <eOperations name="qInth" eType="#//Numeric"/>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
@@ -2324,6 +2351,11 @@
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="target" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="target" lowerBound="1" eType="#//String"/>
     </eOperations>
@@ -2472,6 +2504,15 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="formulas" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataAreaDef">
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//BufferedData"/>
+      </eTypeParameters>
+      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
+        <eTypeArguments eTypeParameter="#//def/DataAreaDef/D"/>
+      </eGenericSuperTypes>
+      <eGenericSuperTypes eClassifier="#//def/WrapperDef"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="DataDefType">
       <eLiterals name="Adapter" value="10" literal="ADAPTER"/>
       <eLiterals name="Array" value="20" literal="ARRAY"/>
@@ -2491,6 +2532,7 @@
       <eLiterals name="String" value="160" literal="STRING"/>
       <eLiterals name="Stroller" value="170" literal="STROLLER"/>
       <eLiterals name="Struct" value="180" literal="STRUCT"/>
+      <eLiterals name="Wrapper" value="190" literal="WRAPPER"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DataStructDef">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -2774,6 +2816,14 @@
       <eGenericSuperTypes eClassifier="#//def/DataDef">
         <eTypeArguments eTypeParameter="#//def/UnaryDataDef/D"/>
       </eGenericSuperTypes>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WrapperDef" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
+          containment="true">
+        <eGenericType eClassifier="#//def/BufferedDataDef">
+          <eTypeArguments/>
+        </eGenericType>
+      </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="term" nsURI="http://www.smeup.org/asup/il/data/term" nsPrefix="il-data-term">

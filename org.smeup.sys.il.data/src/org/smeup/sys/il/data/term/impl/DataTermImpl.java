@@ -19,6 +19,7 @@ import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.def.QWrapperDef;
 import org.smeup.sys.il.data.term.DataTermType;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.QDataTermVisitor;
@@ -504,13 +505,47 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	@Override
 	public DataTermType getDataTermType() {
 
-		DD definition = getDefinition();
-		if (definition == null)
+		if (getDefinition() == null)
 			return null;
 
 		DataTermType dataTermType = null;
 
-		switch (definition.getDataDefType()) {
+		switch (getDefinition().getDataDefType()) {
+		case ADAPTER:
+		case BINARY:
+		case BUFFER:
+		case CHARACTER:
+		case DATETIME:
+		case DECIMAL:
+		case FLOATING:
+		case HEXADECIMAL:
+		case IDENTITY:
+		case INDICATOR:
+		case POINTER:
+		case STRING:
+		case STRUCT:
+		case DATA_STRUCT:
+		case SCROLLER:
+		case ARRAY:
+		case LIST:
+		case STROLLER:
+			dataTermType = getDataTermType(getDefinition());
+			break;
+		case WRAPPER:
+			dataTermType = getDataTermType(((QWrapperDef)getDefinition()).getArgument());
+			break;
+		}
+
+		return dataTermType;
+	}
+	
+	private DataTermType getDataTermType(QDataDef<?> dataDef) {
+		DataTermType dataTermType = null;
+
+		if(dataDef == null)
+			return null;
+		
+		switch (dataDef.getDataDefType()) {
 		case ADAPTER:
 		case BINARY:
 		case BUFFER:
@@ -537,9 +572,11 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 		case STROLLER:
 			dataTermType = DataTermType.MULTIPLE_COMPOUND;
 			break;
+		case WRAPPER:
+			break;
 		}
 
-		return dataTermType;
+		return dataTermType;		
 	}
 
 	/**

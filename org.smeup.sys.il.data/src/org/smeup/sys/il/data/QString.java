@@ -102,13 +102,6 @@ public interface QString extends QBufferedData, QScanner, QCattable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void in();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -171,13 +164,6 @@ public interface QString extends QBufferedData, QScanner, QCattable {
 	boolean ne(QHexadecimal value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	void out();
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -227,6 +213,14 @@ public interface QString extends QBufferedData, QScanner, QCattable {
 	 * @generated
 	 */
 	void xlate(String from, String to, QString target);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" targetRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString target);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

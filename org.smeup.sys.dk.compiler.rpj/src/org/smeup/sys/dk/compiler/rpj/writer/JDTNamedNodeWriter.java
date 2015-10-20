@@ -53,6 +53,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.annotation.ExternalDef;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
@@ -60,6 +61,7 @@ import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QDatetimeDef;
@@ -74,6 +76,7 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QProcedure;
+import org.smeup.sys.os.file.QExternalFile;
 import org.smeup.sys.os.file.QFileFormat;
 
 public class JDTNamedNodeWriter extends JDTNodeWriter {
@@ -132,10 +135,16 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
+		// @ExternalDef
+		QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
+		if(externalFile != null && externalFile.getName() != null && dataTerm.getDefinition() instanceof QDataAreaDef) {
+			writeAnnotation(field, ExternalDef.class, "name", externalFile.getName());
+		}
+
 		// @DataDef
 		if (dataTerm.getDefinition() != null)
 			writeDataDefAnnotation(field, dataTerm.getDefinition());
-
+		
 		// default
 		QDefault default_ = dataTerm.getDefault();
 		if (default_ != null && !default_.isEmpty()) {
@@ -225,7 +234,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		if (dataTerm.getDataTermType().isCompound()) {
 
-			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
+			if (dataTerm.getDefinition() instanceof QDataAreaDef) {
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+			} else
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+			
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker == null) {
 
@@ -334,7 +349,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
 
 			EnumConstantDeclaration constantDeclaration = ast.newEnumConstantDeclaration();
-			constantDeclaration.setName(ast.newSimpleName(normalizeEnumName(element.getName())));			
+			constantDeclaration.setName(ast.newSimpleName(normalizeEnumName(element.getName())));
 			target.enumConstants().add(num, constantDeclaration);
 			num++;
 		}
@@ -380,6 +395,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				writeAnnotation(node, DataDef.class, "order", scrollerDef.getOrder());
 
 			writeDataDefAnnotation(node, scrollerDef.getArgument());
+		} else if (QDataAreaDef.class.isAssignableFrom(klassDef)) {
+			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
+
+			writeDataDefAnnotation(node, dataAreaDef.getArgument());
+
 		} else if (QStrollerDef.class.isAssignableFrom(klassDef)) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
 
@@ -579,7 +599,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		writeImport(dataDef.getDataClass());
 
 		Type type = null;
-
+		Type wrapper = null;
+		
+		if(dataTerm.getDataTermType() == null) {
+			dataTerm.getDataTermType();
+			"".toCharArray();
+		}
+		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataDef;
@@ -587,8 +613,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			QUnaryAtomicDataDef<?> innerDataDefinition = multipleAtomicDataDef.getArgument();
 			writeImport(innerDataDefinition.getDataClass());
 
-			Type array = getAST().newSimpleType(getAST().newSimpleName(multipleAtomicDataDef.getDataClass().getSimpleName()));
-			ParameterizedType parType = getAST().newParameterizedType(array);
+			wrapper = getAST().newSimpleType(getAST().newSimpleName(multipleAtomicDataDef.getDataClass().getSimpleName()));
+			ParameterizedType parType = getAST().newParameterizedType(wrapper);
 
 			String argument = innerDataDefinition.getDataClass().getSimpleName();
 			parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
@@ -600,14 +626,30 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (dataTerm.isConstant())
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getJavaClass().getSimpleName()));
-			else
+			else {
 				type = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
+			}
 
+			if (dataDef instanceof QDataAreaDef) {
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>)dataDef;
+				parType = getAST().newParameterizedType(type);
+				argument = dataAreaDef.getArgument().getDataClass().getSimpleName();
+				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
+				type = parType;				
+			}
+			
 			break;
 
 		case MULTIPLE_COMPOUND:
 
-			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
+			QCompoundDataDef<?, ?> compoundDataDef = null;
+			
+			if (dataDef instanceof QDataAreaDef) {
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+			} else
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+
 			writeImport(compoundDataDef.getDataClass());
 
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
@@ -629,8 +671,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
 			}
 
-			array = getAST().newSimpleType(getAST().newSimpleName(compoundDataDef.getDataClass().getSimpleName()));
-			parType = getAST().newParameterizedType(array);
+			wrapper = getAST().newSimpleType(getAST().newSimpleName(compoundDataDef.getDataClass().getSimpleName()));
+			parType = getAST().newParameterizedType(wrapper);
 
 			argument = compoundDataDef.getDataClass().getSimpleName();
 			parType.typeArguments().add(type);
@@ -639,7 +681,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			break;
 		case UNARY_COMPOUND:
 
-			compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();
+			if (dataDef instanceof QDataAreaDef) {
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+			} else
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
 
 			compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker != null) {
@@ -654,14 +700,21 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 					type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
 
 			} else {
+
 				String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
-				// TODO setup
 				type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
+				
+				if (dataDef instanceof QDataAreaDef) {
+					wrapper = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
+					parType = getAST().newParameterizedType(wrapper);
+					parType.typeArguments().add(type);
+					type = parType;
+				}
 			}
 
 			break;
 		}
-
+		
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
 		if (special != null) {
 			writeImport(QEnum.class);

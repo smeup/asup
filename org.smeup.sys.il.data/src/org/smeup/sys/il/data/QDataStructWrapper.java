@@ -341,11 +341,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void in() {
-		delegate.in();
-	}
-
-	@Override
 	public boolean isEmpty() {
 		return delegate.isEmpty();
 	}
@@ -548,11 +543,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public boolean ne(QDataWriter value) {
 		return delegate.ne(value);
-	}
-
-	@Override
-	public void out() {
-		delegate.out();
 	}
 
 	public void setDelegate(QDataStruct delegate) {
@@ -841,5 +831,9 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
 		delegate.movea(value, startIndex, clear);
+	}
+
+	public void xlate(QString from, String to, QString target) {
+		delegate.xlate(from, to, target);
 	}
 }

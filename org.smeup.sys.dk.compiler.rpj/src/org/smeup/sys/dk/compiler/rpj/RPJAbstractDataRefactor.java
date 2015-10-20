@@ -14,7 +14,6 @@ package org.smeup.sys.dk.compiler.rpj;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import javax.inject.Inject;
 
@@ -29,6 +28,7 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
@@ -44,11 +44,12 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 	private QCompilationUnit compilationUnit;
 	private QDataTerm<?> dataTerm;
 
+	/*
 	private Stack<QDataTerm<?>> termsTodo = new Stack<QDataTerm<?>>();
 
 	public Stack<QDataTerm<?>> getTermsTodo() {
 		return this.termsTodo;
-	}
+	}*/
 
 	@Inject
 	public RPJAbstractDataRefactor(QCompilationUnit compilationUnit) {
@@ -65,14 +66,21 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		this.dataTerm = null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QDataTerm<?> term) {
 
 		dataTerm = term;
 
 		if (dataTerm.getDataTermType().isCompound()) {
-			@SuppressWarnings("unchecked")
-			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) term.getDefinition();
+			QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
+			
+			if (dataTerm.getDefinition() instanceof QDataAreaDef) {
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+			} else
+				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
+			
 			List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(compoundDataDef.getElements());
 
 			RPJAbstractDataRefactor visitor = this.copy();
@@ -81,11 +89,11 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 				dataTerm.accept(visitor);
 			}
 
-			while (!visitor.getTermsTodo().isEmpty()) {
+/*			while (!visitor.getTermsTodo().isEmpty()) {
 				visitor.reset();
 				QDataTerm<?> termTodo = visitor.getTermsTodo().pop();
 				termTodo.accept(visitor);
-			}
+			}*/
 		}
 
 		return false;

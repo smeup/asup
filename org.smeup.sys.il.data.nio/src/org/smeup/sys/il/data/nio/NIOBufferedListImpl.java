@@ -385,6 +385,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
+	public <E extends Enum<E>> void movea(QNumeric targetIndex, E value) {
+		movea(targetIndex.asInteger(), value);
+	}
+
+	@Override
 	public <E extends Enum<E>> void movea(int targetIndex, E value) {
 		for (int i = targetIndex; i <= capacity(); i++)
 			get(i).eval(value);
@@ -403,6 +408,11 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void movea(int targetIndex, QBufferedData value) {
 		movea(targetIndex, value, false);
+	}
+
+	@Override
+	public void movea(QNumeric targetIndex, QArray<?> value, boolean clear) {
+		movea(targetIndex.asInteger(), value, clear);
 	}
 
 	@Override

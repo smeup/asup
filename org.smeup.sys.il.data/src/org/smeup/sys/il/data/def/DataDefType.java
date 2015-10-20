@@ -150,7 +150,15 @@ public enum DataDefType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRUCT(180, "Struct", "STRUCT");
+	STRUCT(180, "Struct", "STRUCT"), /**
+	 * The '<em><b>Wrapper</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #WRAPPER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	WRAPPER(190, "Wrapper", "WRAPPER");
 
 	/**
 	 * The '<em><b>Adapter</b></em>' literal value.
@@ -423,6 +431,21 @@ public enum DataDefType implements Enumerator {
 	public static final int STRUCT_VALUE = 180;
 
 	/**
+	 * The '<em><b>Wrapper</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Wrapper</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #WRAPPER
+	 * @model name="Wrapper" literal="WRAPPER"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WRAPPER_VALUE = 190;
+
+	/**
 	 * An array of all the '<em><b>Data Def Type</b></em>' enumerators. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -447,6 +470,7 @@ public enum DataDefType implements Enumerator {
 			STRING,
 			STROLLER,
 			STRUCT,
+			WRAPPER,
 		};
 
 	/**
@@ -511,6 +535,7 @@ public enum DataDefType implements Enumerator {
 			case STRING_VALUE: return STRING;
 			case STROLLER_VALUE: return STROLLER;
 			case STRUCT_VALUE: return STRUCT;
+			case WRAPPER_VALUE: return WRAPPER;
 		}
 		return null;
 	}

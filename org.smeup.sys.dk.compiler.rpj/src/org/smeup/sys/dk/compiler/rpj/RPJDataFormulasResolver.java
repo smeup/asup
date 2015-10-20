@@ -89,8 +89,10 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 		QExpression value = null;
 		// TODO
-		if (default_.getValue().trim().equalsIgnoreCase("*Allx'00'"))
-			value = expressionParser.parseExpression(default_.getValue().trim());
+		if (default_.getValue().trim().equalsIgnoreCase("*Allx'00'")) {
+			System.err.println("Unexpected condition: 9vbewc8w76erv8s6c8r6w");
+			value = expressionParser.parseExpression("*LOVAL");
+		}
 		// TODO
 		else if (default_.getValue().trim().equals("")) {
 			value = null;

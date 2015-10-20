@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 import org.smeup.sys.os.file.QExternalFile;
@@ -52,7 +53,7 @@ public class RPJDataTermLinker extends DataTermVisitorImpl {
 			break;
 		case UNARY_COMPOUND:
 			externalFile = dataTerm.getFacet(QExternalFile.class);
-			if (externalFile != null) {
+			if (externalFile != null && !(dataTerm.getDefinition() instanceof QDataAreaDef)) {
 				QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 				if(compilerLinker == null) {
 					compilerLinker = callableUnitLinker.linkExternalFile(compilationUnit.getContext(), (QDataTerm<QCompoundDataDef<?, QDataTerm<?>>>) dataTerm, externalFile);

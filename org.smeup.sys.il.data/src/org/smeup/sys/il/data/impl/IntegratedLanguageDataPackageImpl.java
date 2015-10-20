@@ -28,6 +28,7 @@ import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCattable;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataDelegator;
@@ -129,6 +130,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass dataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataAreaEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -469,6 +477,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataArea() {
+		return dataAreaEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -776,6 +793,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		dataEClass = createEClass(DATA);
 
+		dataAreaEClass = createEClass(DATA_AREA);
+
 		dataContainerEClass = createEClass(DATA_CONTAINER);
 
 		dataContextEClass = createEClass(DATA_CONTEXT);
@@ -873,6 +892,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		// Create type parameters
 		ETypeParameter arrayEClass_D = addETypeParameter(arrayEClass, "D");
 		ETypeParameter bufferedListEClass_D = addETypeParameter(bufferedListEClass, "D");
+		ETypeParameter dataAreaEClass_D = addETypeParameter(dataAreaEClass, "D");
 		ETypeParameter dataDelegatorEClass_D = addETypeParameter(dataDelegatorEClass, "D");
 		ETypeParameter enumEClass_E = addETypeParameter(enumEClass, "E");
 		ETypeParameter enumEClass_D = addETypeParameter(enumEClass, "D");
@@ -886,6 +906,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		arrayEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getBufferedData());
 		bufferedListEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(this.getBufferedData());
+		dataAreaEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getData());
 		dataDelegatorEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
@@ -925,6 +947,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(this.getBufferedData());
 		bufferedListEClass.getEGenericSuperTypes().add(g1);
 		characterEClass.getESuperTypes().add(this.getString());
+		dataAreaEClass.getESuperTypes().add(this.getBufferedData());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
@@ -1317,6 +1340,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataWriter(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1329,6 +1360,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -1714,6 +1753,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(dataEClass, ecorePackage.getEBoolean(), "ne", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataWriter(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(dataAreaEClass, QDataArea.class, "DataArea", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(dataAreaEClass, null, "get", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(dataAreaEClass_D);
+		initEOperation(op, g1);
+
+		addEOperation(dataAreaEClass, null, "in", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataAreaEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataContainerEClass, QDataContainer.class, "DataContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3172,8 +3221,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(stringEClass, ecorePackage.getEBoolean(), "gt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(stringEClass, null, "in", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(stringEClass, ecorePackage.getEBoolean(), "le", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3201,8 +3248,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(stringEClass, ecorePackage.getEBoolean(), "ne", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getHexadecimal(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(stringEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(stringEClass, this.getNumeric(), "qInt", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(stringEClass, this.getNumeric(), "qInth", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -3229,6 +3274,11 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(stringEClass, null, "xlate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "from", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "to", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringEClass, null, "xlate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "from", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "to", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
 

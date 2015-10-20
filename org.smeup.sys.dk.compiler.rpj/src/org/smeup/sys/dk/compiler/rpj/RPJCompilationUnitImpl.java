@@ -40,6 +40,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
@@ -412,6 +413,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		return dataTerm;
 	}
 
+	@SuppressWarnings("unchecked")
 	private QDataTerm<?> findData(List<QDataTerm<?>> dataTerms, String name, String prefix, int position) {
 
 		if (name.contains("("))
@@ -421,7 +423,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		for (QDataTerm<?> child : new ArrayList<QDataTerm<?>>(dataTerms)) {
 			String childName = null;
-
+			
 			// remap
 			QRemap remap = child.getFacet(QRemap.class);
 			if (remap != null) {
@@ -441,10 +443,15 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				dataTerm = child;
 			// compound
 			else if (child.getDataTermType().isCompound()) {
-				@SuppressWarnings("unchecked")
 				QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) child;
-				@SuppressWarnings("unchecked")
-				QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) compoundDataTerm.getDefinition();
+
+				QCompoundDataDef<?, QDataTerm<?>> compoundDataDef = null;
+				if (child.getDefinition() instanceof QDataAreaDef) {
+					QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) child.getDefinition();
+					compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
+				} else
+					compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) compoundDataTerm.getDefinition();
+
 				if (compoundDataDef.isQualified()) {
 					String[] tokens = name.split("\\.");
 					if (tokens.length > 1) {
@@ -942,12 +949,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			name = normalizeModuleName(namedNode.getName());
 		else if (namedNode instanceof QDataSetTerm) {
 			QDataSetTerm dataSetTerm = (QDataSetTerm) namedNode;
-			if(dataSetTerm.getFormatName() != null)
+			if (dataSetTerm.getFormatName() != null)
 				name = normalizeTermName(dataSetTerm.getFormatName());
 			else
 				name = normalizeTermName(dataSetTerm.getName());
-		}
-		else
+		} else
 			name = normalizeTermName(namedNode.getName());
 
 		QNode node = namedNode;
@@ -965,7 +971,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
 				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
 					name = "current()." + name;
-				else if (dataTerm instanceof QFileFormat) {
+				else if (dataTerm.getDefinition() instanceof QDataAreaDef) {
+					name = "get()." + name;
+				} else if (dataTerm instanceof QFileFormat) {
 					name = "get()." + name;
 				} else if (dataTerm.getName() == null || dataTerm.getName().isEmpty()) {
 					continue;
@@ -1000,7 +1008,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				name = normalizeModuleName(namedParentNode.getName()) + "." + name;
 			else if (namedParentNode instanceof QDataSetTerm) {
 				QDataSetTerm dataSetTerm = (QDataSetTerm) namedParentNode;
-				name = normalizeTermName(dataSetTerm.getFormatName()) + "." + name;
+				if(dataSetTerm.getFormatName() != null)
+					name = normalizeTermName(dataSetTerm.getFormatName()) + "." + name;
+				else
+					name = normalizeTermName(dataSetTerm.getName()) + "." + name;
 			} else
 				name = normalizeTermName(namedParentNode.getName()) + "." + name;
 		}

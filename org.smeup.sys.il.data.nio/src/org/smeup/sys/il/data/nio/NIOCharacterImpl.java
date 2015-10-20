@@ -516,18 +516,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void in() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void out() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
@@ -810,5 +798,11 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			found.eval(number.ge(1));
 		
 		return number;
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString target) {
+		// TODO Auto-generated method stub
+		
 	}
 }

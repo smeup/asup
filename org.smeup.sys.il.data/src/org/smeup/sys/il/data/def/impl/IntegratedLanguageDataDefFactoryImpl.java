@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
+import org.smeup.sys.il.data.def.*;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -92,6 +93,7 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 			case QIntegratedLanguageDataDefPackage.BINARY_DEF: return (EObject)createBinaryDef();
 			case QIntegratedLanguageDataDefPackage.BUFFER_DEF: return (EObject)createBufferDef();
 			case QIntegratedLanguageDataDefPackage.CHARACTER_DEF: return (EObject)createCharacterDef();
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF: return (EObject)createDataAreaDef();
 			case QIntegratedLanguageDataDefPackage.DATA_STRUCT_DEF: return (EObject)createDataStructDef();
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF: return (EObject)createDatetimeDef();
 			case QIntegratedLanguageDataDefPackage.DECIMAL_DEF: return (EObject)createDecimalDef();
@@ -206,6 +208,16 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	public QCharacterDef createCharacterDef() {
 		CharacterDefImpl characterDef = new CharacterDefImpl();
 		return characterDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <D extends QBufferedData> QDataAreaDef<D> createDataAreaDef() {
+		DataAreaDefImpl<D> dataAreaDef = new DataAreaDefImpl<D>();
+		return dataAreaDef;
 	}
 
 	/**

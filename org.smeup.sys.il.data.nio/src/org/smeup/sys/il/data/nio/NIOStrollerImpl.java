@@ -220,11 +220,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void in() {
-		current().in();
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean le(E value) {
 		return current().le(value);
 	}
@@ -381,11 +376,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void out() {
-		current().out();
-	}
-
-	@Override
 	public String trim() {
 		return current().trim();
 	}
@@ -402,6 +392,11 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public void xlate(String from, String to, QString target) {
+		current().xlate(from, to, target);
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString target) {
 		current().xlate(from, to, target);
 	}
 

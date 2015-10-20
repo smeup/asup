@@ -21,6 +21,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -333,6 +334,10 @@ public class RPJProgramSupport {
 			// TODO
 			qError(null).eval(true);
 		}
+	}
+
+	public QBufferedData qChar(QBinary numeric) {
+		return qBox(Long.toString(numeric.asLong()));
 	}
 
 	public QString qChar(QDecimal numeric) {

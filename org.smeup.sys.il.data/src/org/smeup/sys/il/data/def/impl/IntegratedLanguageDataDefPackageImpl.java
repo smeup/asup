@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.def.QBufferDef;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QDatetimeDef;
@@ -58,6 +59,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryDataDef;
+import org.smeup.sys.il.data.def.QWrapperDef;
 import org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
@@ -121,6 +123,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass dataDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataAreaDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -253,6 +262,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EClass unaryDataDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass wrapperDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -530,6 +546,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	@Override
 	public EAttribute getDataDef_Formulas() {
 		return (EAttribute)dataDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataAreaDef() {
+		return dataAreaDefEClass;
 	}
 
 	/**
@@ -884,6 +909,24 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWrapperDef() {
+		return wrapperDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWrapperDef_Argument() {
+		return (EReference)wrapperDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -992,6 +1035,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		dataDefEClass = createEClass(DATA_DEF);
 		createEAttribute(dataDefEClass, DATA_DEF__FORMULAS);
 
+		dataAreaDefEClass = createEClass(DATA_AREA_DEF);
+
 		dataStructDefEClass = createEClass(DATA_STRUCT_DEF);
 		createEAttribute(dataStructDefEClass, DATA_STRUCT_DEF__LENGTH);
 
@@ -1053,6 +1098,9 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		unaryDataDefEClass = createEClass(UNARY_DATA_DEF);
 
+		wrapperDefEClass = createEClass(WRAPPER_DEF);
+		createEReference(wrapperDefEClass, WRAPPER_DEF__ARGUMENT);
+
 		// Create enums
 		binaryTypeEEnum = createEEnum(BINARY_TYPE);
 		dataDefTypeEEnum = createEEnum(DATA_DEF_TYPE);
@@ -1097,6 +1145,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		ETypeParameter compoundDataDefEClass_D = addETypeParameter(compoundDataDefEClass, "D");
 		ETypeParameter compoundDataDefEClass_E = addETypeParameter(compoundDataDefEClass, "E");
 		ETypeParameter dataDefEClass_D = addETypeParameter(dataDefEClass, "D");
+		ETypeParameter dataAreaDefEClass_D = addETypeParameter(dataAreaDefEClass, "D");
 		ETypeParameter enumDefEClass_E = addETypeParameter(enumDefEClass, "E");
 		ETypeParameter enumDefEClass_D = addETypeParameter(enumDefEClass, "D");
 		ETypeParameter listDefEClass_D = addETypeParameter(listDefEClass, "D");
@@ -1132,6 +1181,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		compoundDataDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getData());
 		dataDefEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
+		dataAreaDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
 		enumDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
@@ -1217,6 +1268,12 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g1.getETypeArguments().add(g2);
 		compoundDataDefEClass.getEGenericSuperTypes().add(g1);
 		dataDefEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
+		g2 = createEGenericType(dataAreaDefEClass_D);
+		g1.getETypeArguments().add(g2);
+		dataAreaDefEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getWrapperDef());
+		dataAreaDefEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getUnaryCompoundDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDataStruct());
 		g1.getETypeArguments().add(g2);
@@ -1400,6 +1457,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		addEOperation(dataDefEClass, this.getDataDefType(), "getDataDefType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(dataAreaDefEClass, QDataAreaDef.class, "DataAreaDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(dataStructDefEClass, QDataStructDef.class, "DataStructDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataStructDef_Length(), ecorePackage.getEInt(), "length", null, 0, 1, QDataStructDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1479,6 +1538,12 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		initEClass(unaryDataDefEClass, QUnaryDataDef.class, "UnaryDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(wrapperDefEClass, QWrapperDef.class, "WrapperDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getBufferedDataDef());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getWrapperDef_Argument(), g1, null, "argument", null, 1, 1, QWrapperDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(binaryTypeEEnum, BinaryType.class, "BinaryType");
 		addEEnumLiteral(binaryTypeEEnum, BinaryType.BYTE);
@@ -1505,6 +1570,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		addEEnumLiteral(dataDefTypeEEnum, DataDefType.STRING);
 		addEEnumLiteral(dataDefTypeEEnum, DataDefType.STROLLER);
 		addEEnumLiteral(dataDefTypeEEnum, DataDefType.STRUCT);
+		addEEnumLiteral(dataDefTypeEEnum, DataDefType.WRAPPER);
 
 		initEEnum(datetimeTypeEEnum, DatetimeType.class, "DatetimeType");
 		addEEnumLiteral(datetimeTypeEEnum, DatetimeType.DATE);

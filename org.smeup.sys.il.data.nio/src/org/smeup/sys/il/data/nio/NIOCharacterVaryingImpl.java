@@ -321,18 +321,6 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	public void in() {
-		// TODO Auto-generated method stub
-		super.in();
-	}
-
-	@Override
-	public void out() {
-		// TODO Auto-generated method stub
-		super.out();
-	}
-
-	@Override
 	public void eval(byte value) {
 
 		this.length = 1;

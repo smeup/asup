@@ -29,6 +29,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	boolean chain(QData keyField);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" keyFieldRequired="true"
+	 * @generated
+	 */
+	boolean chain(QData keyField, Boolean lock);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" keyFieldRequired="true"
 	 * @generated
@@ -109,7 +117,23 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
+	boolean chain(Object[] keyList, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * @generated
+	 */
 	boolean chain(Object[] keyList, QIndicator notFound, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * @generated
+	 */
+	boolean chain(Object[] keyList, QIndicator notFound, QIndicator error);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,6 +209,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @generated
 	 */
 	boolean reade(Object[] keyList);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * @generated
+	 */
+	boolean reade(Object[] keyList, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

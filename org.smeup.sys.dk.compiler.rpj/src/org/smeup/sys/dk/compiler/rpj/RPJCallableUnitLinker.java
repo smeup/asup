@@ -102,9 +102,14 @@ public class RPJCallableUnitLinker {
 			return;
 
 		RPJDataTermLinker externalNameLinker = compilationUnit.getContext().make(RPJDataTermLinker.class);
-		for (QDataTerm<?> dataTerm : dataSection.getDatas())
+		for (QDataTerm<?> dataTerm : new ArrayList<QDataTerm<?>>(dataSection.getDatas())) {
+			if(dataTerm.getDataTermType() == null) {
+				compilationUnit.getTrashCan().getDataTerms().add(dataTerm);
+				continue;
+			}
 			dataTerm.accept(externalNameLinker);
-
+		}
+			
 	}
 
 	public void linkLikeDatas(QCompilationUnit compilationUnit) {
@@ -125,13 +130,14 @@ public class RPJCallableUnitLinker {
 			dataLikeVisitor.reset();
 			dataTerm.accept(dataLikeVisitor);
 		}
-
+		
+/*
 		while (!dataLikeVisitor.getTermsTodo().isEmpty()) {
 			dataLikeVisitor.reset();
 
 			QDataTerm<?> termTodo = dataLikeVisitor.getTermsTodo().pop();
 			termTodo.accept(dataLikeVisitor);
-		}
+		}*/
 	}
 
 	public void linkFormulas(QCompilationUnit compilationUnit) {
@@ -227,6 +233,8 @@ public class RPJCallableUnitLinker {
 
 		for (QPrintTerm printerTerm : fileSection.getPrinters())
 			linkFileTerm(printerTerm, compilationUnit);
+		
+		compilationUnit.refresh();
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -246,7 +254,7 @@ public class RPJCallableUnitLinker {
 				private static final long serialVersionUID = 1L;
 			};
 			internalFileFormat.setDefinition(dataRecord.getDefinition());
-
+			
 			if (fileTerm.getFormat() == null)
 				fileTerm.setFormat(internalFileFormat);
 			else
