@@ -1,5 +1,6 @@
 package org.smeup.sys.os.prtf.base.api;
 
+import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -14,9 +15,9 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
-
+					
 @Program(name = "QDMOVRPR")
-public @ToDo class PrinterFileOverride {
+public @Supported class PrinterFileOverride {
 	public static enum QCPFMSG {
 	}
 

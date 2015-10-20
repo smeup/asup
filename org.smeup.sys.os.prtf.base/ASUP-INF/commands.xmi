@@ -7959,8 +7959,7 @@
       xsi:type="os-cmd:Command"
       name="OVRPRTF"
       text="Override with Printer File"
-      program="QDMOVRPR"
-      status="TODO">
+      program="QDMOVRPR">
     <parameters
         allowVariable="true"
         name="FILE"
