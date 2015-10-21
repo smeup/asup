@@ -227,18 +227,6 @@ MOD	:	'%';
 BI_FUN  :	'%'TERM
 	;
 
-/*
-INDICATOR : ('*IN' (LETTER | DIGIT )*)
-	;
-
-ARRAY_INDICATOR	: '*IN('
-	;
-
-
-ALL	: '*ALL'
-	;
-*/	
-
 IN 	:
 	MULT I N
 	;
@@ -314,7 +302,7 @@ INNU	:
 	;	
 
 ALL	:
-	MULT A L L '\'' ~('\''|'\r'|'\n')+ '\''
+	MULT A L L '\'' ~('\''|'\r'|'\n'|'\t')+ '\''
 	;	
 
 ALLX    :
