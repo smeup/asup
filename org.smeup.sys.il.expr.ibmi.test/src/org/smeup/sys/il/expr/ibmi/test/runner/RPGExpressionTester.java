@@ -40,7 +40,7 @@ public class RPGExpressionTester {
 			try{
 				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
 			} catch(Exception exc) {
-				testAsserter.fail("Cannot parse expression \"" + expression + " Error message: " + exc.getMessage());
+				testAsserter.fail("Cannot parse expression \"" + expression + "\"");
 			}
 		}
 	}
