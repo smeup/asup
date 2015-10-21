@@ -314,7 +314,7 @@ INNU	:
 	;	
 
 ALL	:
-	MULT A L L '\'' (LETTER|DIGIT)+ '\''
+	MULT A L L '\'' ~('\''|'\r'|'\n')+ '\''
 	;	
 
 ALLX    :
