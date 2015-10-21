@@ -201,33 +201,164 @@ public interface QString extends QBufferedData, QScanner, QCattable {
 	String trimR();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model fromRequired="true" toRequired="true" targetRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
 	 * @generated
 	 */
-	void xlate(QString from, QString to, QString target);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model fromRequired="true" toRequired="true" targetRequired="true"
-	 * @generated
-	 */
-	void xlate(String from, String to, QString target);
+	void xlate(QString from, QString to, QString source);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model fromRequired="true" toRequired="true" targetRequired="true"
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
 	 * @generated
 	 */
-	void xlate(QString from, String to, QString target);
+	void xlate(String from, String to, QString source);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model fromRequired="true" toRequired="true" targetRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" clearRequired="true"
 	 * @generated
 	 */
-	void xlate(byte from, String to, QString target);
+	void xlate(String from, String to, QString source, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, String to, QString source, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, String to, QString source, Number start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, String to, QString source, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, String to, QString source, QNumeric start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source, Number start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(String from, QString to, QString source, QNumeric start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source, Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source, Number start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source, QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true" startRequired="true" clearRequired="true"
+	 * @generated
+	 */
+	void xlate(QString from, String to, QString source, QNumeric start, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fromRequired="true" toRequired="true" sourceRequired="true"
+	 * @generated
+	 */
+	void xlate(byte from, String to, QString source);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

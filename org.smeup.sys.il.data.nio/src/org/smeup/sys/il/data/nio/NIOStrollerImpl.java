@@ -391,23 +391,100 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void xlate(String from, String to, QString target) {
-		current().xlate(from, to, target);
+	public void xlate(QString from, QString to, QString source) {
+		current().xlate(from, to, source);
 	}
 
 	@Override
-	public void xlate(QString from, String to, QString target) {
-		current().xlate(from, to, target);
+	public void xlate(String from, String to, QString source) {
+		current().xlate(from, to, source);
 	}
 
 	@Override
-	public void xlate(QString from, QString to, QString target) {
-		current().xlate(from, to, target);
+	public void xlate(String from, String to, QString source, boolean clear) {
+		current().xlate(from, to, source, clear);
 	}
 
 	@Override
-	public void xlate(byte from, String to, QString target) {
-		current().xlate(from, to, target);
+	public void xlate(String from, String to, QString source, Number start) {
+		current().xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, Number start, boolean clear) {
+		current().xlate(from, to, source, start, clear);		
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, QNumeric start) {
+		current().xlate(from, to, source, start);	}
+
+	@Override
+	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
+		current().xlate(from, to, source, start, clear);	}
+
+	@Override
+	public void xlate(String from, QString to, QString source) {
+		current().xlate(from, to, source);	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, boolean clear) {
+		current().xlate(from, to, source, clear);
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, Number start) {
+		current().xlate(from, to, source, start);	
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
+		current().xlate(from, to, source, start, clear);	
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, QNumeric start) {
+		current().xlate(from, to, source, start);	
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
+		current().xlate(from, to, source, start, clear);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source) {
+		current().xlate(from, to, source);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, boolean clear) {
+		current().xlate(from, to, source, clear);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, Number start) {
+		current().xlate(from, to, source, start);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
+		current().xlate(from, to, source, start, clear);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, QNumeric start) {
+		current().xlate(from, to, source, start);	
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
+		current().xlate(from, to, source, start, clear);	
+	}
+
+	@Override
+	public void xlate(byte from, String to, QString source) {
+		current().xlate(from, to, source);	
 	}
 
 	@Override
@@ -657,4 +734,5 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	public QNumeric qInth() {
 		return current().qInth();
 	}
+
 }

@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.QString;
 
 public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter {
 
+
 	private static final long serialVersionUID = 1L;
 	private static final byte INIT = (byte) 64; // 32;
 	// TODO inseriti in NioBufferedDataImpl
@@ -611,19 +612,121 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 //	}
 
 	@Override
-	public void xlate(QString from, QString to, QString target) {
+	public void xlate(QString from, QString to, QString source) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void xlate(String from, String to, QString target) {
+	public void xlate(String from, String to, QString source) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	public void xlate(byte from, String to, QString target) {
+	public void xlate(String from, String to, QString source, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, Number start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, Number start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, QNumeric start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, Number start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, QNumeric start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, Number start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, QNumeric start) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void xlate(byte from, String to, QString source) {
 		// TODO Auto-generated method stub
 
 	}
@@ -798,11 +901,5 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			found.eval(number.ge(1));
 		
 		return number;
-	}
-
-	@Override
-	public void xlate(QString from, String to, QString target) {
-		// TODO Auto-generated method stub
-		
 	}
 }
