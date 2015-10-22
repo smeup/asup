@@ -177,4 +177,8 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void dealloc() {
+	}
 }

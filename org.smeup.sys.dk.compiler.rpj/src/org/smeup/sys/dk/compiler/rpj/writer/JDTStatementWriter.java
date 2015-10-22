@@ -382,24 +382,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
 		QPrototype prototype = compilationUnit.getPrototype(statement.getProcedure(), true);
+		
+		if(prototype == null)
+			prototype = compilationUnit.getMethod(statement.getProcedure());
+
 		if (prototype == null)
 			throw new IntegratedLanguageExpressionRuntimeException("Binding error: " + statement.getProcedure());
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(prototype.getName())));
 
-		/*
-		 * if (prototype.isChild() && prototype.getParent() !=
-		 * compilationUnit.getRoot()) { QNode parent = prototype.getParent(); if
-		 * (parent instanceof QNamedNode) {
-		 * 
-		 * if (!(parent instanceof QProgram)) { String qualifiedParent =
-		 * compilationUnit.getQualifiedName((QNamedNode) parent);
-		 * methodInvocation.setExpression(buildExpression(ast,
-		 * expressionParser.parseTerm(qualifiedParent), null)); } } else throw
-		 * new
-		 * IntegratedLanguageExpressionRuntimeException("Invalid procedure: " +
-		 * statement.getProcedure()); }
-		 */
 		// entry
 		if (prototype.getEntry() != null) {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();

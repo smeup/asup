@@ -28,6 +28,11 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	@Override
+	public boolean chain(QNumeric relativeRecordNumber, Boolean lock) {
+		return chain(relativeRecordNumber.asInteger(), null);
+	}
+
+	@Override
 	public boolean chain(int relativeRecordNumber) {		
 		return chain(relativeRecordNumber, null);
 	}

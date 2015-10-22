@@ -47,8 +47,11 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	public void open() {
 
 		try {
-			£mubField = delegate.getClass().getDeclaredField("£mub");
+			£mubField = delegate.getClass().getDeclaredField("£Mub");
+		} catch (NoSuchFieldException | SecurityException e1) {
+		}
 
+		try {
 			if (this.open != null)
 				this.open.invoke(delegate, (Object[]) null);
 			else if (£mubField != null) {

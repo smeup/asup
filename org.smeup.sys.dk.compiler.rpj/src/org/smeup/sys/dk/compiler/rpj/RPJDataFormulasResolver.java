@@ -94,13 +94,6 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		// TODO
 		try {		
 			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				if (default_.getValue().trim().equals("")) {
-					if (default_.getValue().startsWith("'"))
-						value = expressionParser.parseExpression(default_.getValue());
-					else
-						value = expressionParser.parseExpression("'" + default_.getValue().replaceAll("\\'", "\\''") + "'");
-				}
-
 				if (default_.getValue().startsWith("'"))
 					value = expressionParser.parseExpression(default_.getValue());
 				else

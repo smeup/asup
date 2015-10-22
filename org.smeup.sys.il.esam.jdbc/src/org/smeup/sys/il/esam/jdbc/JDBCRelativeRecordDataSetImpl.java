@@ -47,6 +47,11 @@ public class JDBCRelativeRecordDataSetImpl<R extends QRecord> extends JDBCDataSe
 	}
 
 	@Override
+	public boolean chain(QNumeric relativeRecordNumber, Boolean lock) {
+		return chain(relativeRecordNumber, null, null, lock);
+	}
+
+	@Override
 	public boolean chain(int relativeRecordNumber, QIndicator notFound, QIndicator error, Boolean lock) {
 
 		try {
