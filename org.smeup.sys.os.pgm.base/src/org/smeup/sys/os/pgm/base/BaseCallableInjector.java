@@ -65,7 +65,9 @@ import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
 
 public class BaseCallableInjector {
-
+	
+	public static final String NAME_OWNER = "*OWNER";
+	
 	@Inject
 	private QDataManager dataManager;
 	@Inject
@@ -256,7 +258,7 @@ public class BaseCallableInjector {
 				}
 			}
 			// Caller
-			else if (field.getAnnotation(Program.class) != null && field.getAnnotation(Program.class).name().equals(Program.NAME_OWNER))
+			else if (field.getAnnotation(Program.class) != null && field.getAnnotation(Program.class).name().equals(NAME_OWNER))
 				object = owner;
 			// Inject
 			else if (field.getAnnotation(Inject.class) != null) {

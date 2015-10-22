@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
@@ -23,9 +24,6 @@ import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
 
 public class BaseCallableProgramDelegator extends CallableProgramImpl implements QCallableProgramDelegator {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Object delegate;
@@ -37,16 +35,40 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	private boolean isOpen;
 	private boolean isStateless;
 
-	protected BaseCallableProgramDelegator(Object delegate) {
+	private InitStrategy initStrategy;
+	private Field £mubField = null;
+
+	protected BaseCallableProgramDelegator(Object delegate, InitStrategy initStrategy) {
 		this.delegate = delegate;
+		this.initStrategy = initStrategy;
 	}
 
 	@Override
 	public void open() {
 
 		try {
+			£mubField = delegate.getClass().getDeclaredField("£mub");
+
 			if (this.open != null)
 				this.open.invoke(delegate, (Object[]) null);
+			else if (£mubField != null) {
+				try {
+					Object £mub = £mubField.get(delegate);
+					switch (initStrategy) {
+					case BASE:
+						£mub.getClass().getMethod("£mu_inzsr", Integer.TYPE).invoke(£mub, new Object[0]);
+					case LIGHT:
+						£mub.getClass().getMethod("£mu_inzsrlt", Integer.TYPE).invoke(£mub, new Object[0]);
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					£mubField.setAccessible(false);
+				}
+
+			}
+
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e.getMessage());
 		} finally {
@@ -63,7 +85,7 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				this.entry.invoke(delegate, new Object[0]);
 				return params;
 			}
-			
+
 			int paramsLength = 0;
 			for (QData param : params) {
 
@@ -78,26 +100,21 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				paramsLength++;
 			}
 
-			try {
-				Field £mubField = delegate.getClass().getDeclaredField("£mub");
-				if (£mubField != null) {
-					try {
-						£mubField.setAccessible(true);
+			if (£mubField != null) {
+				try {
+					£mubField.setAccessible(true);
 
-						Object £mub = £mubField.get(delegate);
-						Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
+					Object £mub = £mubField.get(delegate);
 
-						Object £pdspr = £mu_£pds_1.getClass().getField("£pdspr").get(£mu_£pds_1);
-						£pdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£pdspr, new Object[] { paramsLength });
+					Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
+					Object £pdspr = £mu_£pds_1.getClass().getField("£pdspr").get(£mu_£pds_1);
+					£pdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£pdspr, new Object[] { paramsLength });
 
-					} catch (NoSuchFieldException e) {
-						e.printStackTrace();
-					} finally {
-						£mubField.setAccessible(false);
-					}
+				} catch (NoSuchFieldException e) {
+					e.printStackTrace();
+				} finally {
+					£mubField.setAccessible(false);
 				}
-			} catch (Exception e) {
-
 			}
 
 			Field £qpdsqqField = null;

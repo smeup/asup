@@ -22,6 +22,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
@@ -207,7 +208,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			callableProgram = (QCallableProgram) callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
 		} else {
 			Object delegate = callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
-			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(delegate);
+			
+			InitStrategy initStrategy = InitStrategy.BASE;
+			Program programAnnotation = klass.getAnnotation(Program.class);
+			if(programAnnotation != null)
+				initStrategy = programAnnotation.initStrategy();
+			
+			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(delegate, initStrategy);
 
 			// search @Entry
 			for (Method method : klass.getMethods()) {
@@ -303,27 +310,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					callableProgram.open();
 	
 				assignParameters(callableProgram.getQEntry(), params);
-				
-	/*			PrintStream ps = System.out;
-				ps.println("Calling program: "+callableProgram.getQProgram().getName());
-				
-				ps.println("\t-> entry:");
-				BaseProgramMemoryPrinter memoryPrinter = new BaseProgramMemoryPrinter(ps);
-				memoryPrinter.setPrefix("\t\t->");
-				
-				if(callableProgram.getQEntry() != null) {
-					for(QData entryData: callableProgram.getQEntry()) {
-						entryData.accept(memoryPrinter);
-						ps.println();
-					}
-				}*/
-				
+								
 				// call
-				callableProgram.call();
-	
-				
-	//			System.out.println(callableProgram.getQProgram().getName()+" ("+getDateDiff(programStack.getDateEnter(), programStack.getDateExit(), TimeUnit.MILLISECONDS)+"ms)");
-	
+				callableProgram.call();	
 			}
 			catch(Exception e) {
 				Throwable cause = e.getCause();

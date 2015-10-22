@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -295,6 +296,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass structEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum initStrategyEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -724,6 +732,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getInitStrategy() {
+		return initStrategyEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSortDirection() {
 		return sortDirectionEEnum;
 	}
@@ -850,6 +867,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		structEClass = createEClass(STRUCT);
 
 		// Create enums
+		initStrategyEEnum = createEEnum(INIT_STRATEGY);
 		sortDirectionEEnum = createEEnum(SORT_DIRECTION);
 
 		// Create data types
@@ -3413,6 +3431,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		// Initialize enums and add enum literals
+		initEEnum(initStrategyEEnum, InitStrategy.class, "InitStrategy");
+		addEEnumLiteral(initStrategyEEnum, InitStrategy.BASE);
+		addEEnumLiteral(initStrategyEEnum, InitStrategy.LIGHT);
+
 		initEEnum(sortDirectionEEnum, SortDirection.class, "SortDirection");
 		addEEnumLiteral(sortDirectionEEnum, SortDirection.ASCEND);
 		addEEnumLiteral(sortDirectionEEnum, SortDirection.DESCEND);

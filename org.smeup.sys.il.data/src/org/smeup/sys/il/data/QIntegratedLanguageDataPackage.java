@@ -751,6 +751,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int STROLLER_FEATURE_COUNT = SCROLLER_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.InitStrategy <em>Init Strategy</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.InitStrategy
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInitStrategy()
+	 * @generated
+	 */
+	int INIT_STRATEGY = 38;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -758,7 +768,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getSortDirection()
 	 * @generated
 	 */
-	int SORT_DIRECTION = 38;
+	int SORT_DIRECTION = 39;
 
 	/**
 	 * The meta object id for the '<em>Data Array</em>' data type. <!--
@@ -767,7 +777,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataArray()
 	 * @generated
 	 */
-	int DATA_ARRAY = 39;
+	int DATA_ARRAY = 40;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
@@ -1138,6 +1148,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStruct();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.InitStrategy <em>Init Strategy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Init Strategy</em>'.
+	 * @see org.smeup.sys.il.data.InitStrategy
+	 * @generated
+	 */
+	EEnum getInitStrategy();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}'.
@@ -1552,6 +1572,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STRUCT = eINSTANCE.getStruct();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.InitStrategy <em>Init Strategy</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.InitStrategy
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInitStrategy()
+		 * @generated
+		 */
+		EEnum INIT_STRATEGY = eINSTANCE.getInitStrategy();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}' enum.

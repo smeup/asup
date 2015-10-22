@@ -1494,6 +1494,10 @@
     </eOperations>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InitStrategy">
+    <eLiterals name="Base" value="10" literal="BASE"/>
+    <eLiterals name="Light" value="20" literal="LIGHT"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="List" abstract="true" interface="true"
       eSuperTypes="#//Data">
     <eTypeParameters name="D">

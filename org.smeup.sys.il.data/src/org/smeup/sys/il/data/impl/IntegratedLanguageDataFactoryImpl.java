@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QDataReader;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -75,6 +76,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageDataPackage.INIT_STRATEGY:
+				return createInitStrategyFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
 				return createSortDirectionFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
@@ -91,6 +94,8 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case QIntegratedLanguageDataPackage.INIT_STRATEGY:
+				return convertInitStrategyToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.SORT_DIRECTION:
 				return convertSortDirectionToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataPackage.DATA_ARRAY:
@@ -118,6 +123,26 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	public QDataWriter createDataWriter() {
 		DataWriterImpl dataWriter = new DataWriterImpl();
 		return dataWriter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InitStrategy createInitStrategyFromString(EDataType eDataType, String initialValue) {
+		InitStrategy result = InitStrategy.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertInitStrategyToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

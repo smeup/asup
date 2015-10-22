@@ -4,23 +4,17 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
-import org.smeup.sys.dk.source.QSourceManager;
-import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.base.api.tools.ObjectNameAndLib;
@@ -42,10 +36,6 @@ public @Supported class ObjectRenamer {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-	@Inject
-	private QJobLogManager jobLogManager;
-	@Inject
-	private QSourceManager sourceManager;
 
 	public @Entry void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object,
 							@Supported @DataDef(length = 7) QCharacter objectType,

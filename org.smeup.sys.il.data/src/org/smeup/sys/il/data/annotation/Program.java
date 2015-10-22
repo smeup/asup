@@ -12,15 +12,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.smeup.sys.il.data.InitStrategy;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE, ElementType.FIELD })
 public @interface Program {
 
 	String name();
-
 	String text() default "";
 	
 	boolean generated() default true;
 	
-	public static final String NAME_OWNER = "*OWNER";
+	InitStrategy initStrategy() default InitStrategy.BASE;
 }
