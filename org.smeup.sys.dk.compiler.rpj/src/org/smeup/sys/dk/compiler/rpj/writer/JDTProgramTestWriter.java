@@ -75,7 +75,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		List<String> modules = new ArrayList<>();
 		if (program.getSetupSection() != null) {
 			for (String module : program.getSetupSection().getModules())
-				loadModules(modules, module);
+				loadModules(modules, module, false);
 
 			for (String module : modules) {
 

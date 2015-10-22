@@ -50,23 +50,24 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeImport(Program.class);
 		writeImport(RPJProgramSupport.class);
 		writeImport(OperatingSystemRuntimeException.class);
+		writeImport(List.class);
 	}
 
 	public void writeProgram(QProgram program) throws IOException {
 
-		System.out.println("Compiling program: "+program);
-		
+		System.out.println("Compiling program: " + program);
+
 		refactCallableUnit(program);
 
 		// modules
 		List<String> modules = new ArrayList<>();
 		if (program.getSetupSection() != null) {
 			for (String module : program.getSetupSection().getModules())
-				loadModules(modules, module);
+				loadModules(modules, module, false);
 
 			for (String module : modules) {
 
-				QModule flowModule = getCompilationUnit().getModule(module, true);
+				QModule flowModule = getCompilationUnit().getModule(module, false);
 				if (flowModule == null)
 					throw new IOException("Invalid module: " + module);
 
@@ -86,7 +87,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeSupportFields(callableUnitInfo);
 
 		writeModuleFields(modules, false);
-		
+
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());
 			writeKeyLists(program.getFileSection().getKeyLists());
@@ -100,7 +101,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
 
 		if (program.getFlowSection() != null)
-			for (QProcedure procedure: program.getFlowSection().getProcedures())
+			for (QProcedure procedure : program.getFlowSection().getProcedures())
 				writePublicProcedure(procedure);
 
 		// postConstruct
@@ -132,7 +133,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		// procedures
 		if (program.getFlowSection() != null)
-			for (QProcedure procedure: program.getFlowSection().getProcedures())
+			for (QProcedure procedure : program.getFlowSection().getProcedures())
 				writeInnerProcedure(procedure);
 
 		// datas
@@ -153,10 +154,10 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 				QModule flowModule = getCompilationUnit().getModule(module, true);
 				if (flowModule == null)
 					throw new IOException("Invalid module: " + module);
-				
-				if(flowModule.getFlowSection() == null) 
+
+				if (flowModule.getFlowSection() == null)
 					continue;
-				
+
 				QParameterList parameterList = null;
 				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
 					if (pl.getName().equals("*ENTRY")) {
@@ -217,13 +218,22 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		getTarget().modifiers().add(0, programAnnotation);
 	}
 
-	protected void loadModules(Collection<String> modules, String module) {
+	protected void loadModules(Collection<String> modules, String module, boolean recursive) {
+
+		addModule(modules, module);
+
+		QModule qModule = getCompilationUnit().getModule(module, true);
+		for (String moduleName : qModule.getSetupSection().getModules()) {
+			if (recursive)
+				loadModules(modules, moduleName, recursive);
+			else 
+				addModule(modules, module);
+		}
+	}
+	
+	private void addModule(Collection<String> modules, String module) {
 
 		if (!modules.contains(module))
 			modules.add(module);
-
-		QModule qModule = getCompilationUnit().getModule(module, true);
-		for (String moduleName : qModule.getSetupSection().getModules())
-			loadModules(modules, moduleName);
 	}
 }

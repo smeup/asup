@@ -805,33 +805,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
 				block.statements().add(expressionStatement);
 			}
-		} else {
-
-			qInzsr = getCompilationUnit().getRoutine("£MU_INZSR", false);
-			if (qInzsr != null) {
-
-				MethodInvocation methodInvocation = getAST().newMethodInvocation();
-
-				methodInvocation.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(qInzsr.getName())));
-				if (!qInzsr.getParent().equals(getCompilationUnit().getNode()))
-					methodInvocation.setExpression(buildExpression(getCompilationUnit().getQualifiedName((QNamedNode) qInzsr.getParent())));
-
-				ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-				block.statements().add(expressionStatement);
-			}
 		}
-
-		// £INIZI
-		QRoutine £inizi = getCompilationUnit().getRoutine("£INIZI", false);
-		if (£inizi != null) {
-			MethodInvocation methodInvocation = getAST().newMethodInvocation();
-			methodInvocation = getAST().newMethodInvocation();
-			methodInvocation.setExpression(getAST().newThisExpression());
-			methodInvocation.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(£inizi.getName())));
-			ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-			block.statements().add(expressionStatement);
-		}
-
+		
 		if (!methodDeclaration.getBody().statements().isEmpty())
 			getTarget().bodyDeclarations().add(methodDeclaration);
 	}

@@ -239,64 +239,80 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		List<QCompilationUnit> moduleContexts = new ArrayList<QCompilationUnit>();
 
 		if (callableUnit instanceof QProcedure)
-			loadModule(job, moduleContexts, caseSensitive, "*PRO");
+			loadInternalModule(job, moduleContexts, caseSensitive, "*PRO");
 		else
-			loadModule(job, moduleContexts, caseSensitive, "*RPJ");
+			loadInternalModule(job, moduleContexts, caseSensitive, "*RPJ");
 
 		RPJCallableUnitInfo callableUnitInfo = RPJCallableUnitAnalyzer.analyzeCallableUnit(callableUnit);
 		if (callableUnitInfo.containsSQLStatement())
-			loadModule(job, moduleContexts, caseSensitive, "*SQL");
+			loadInternalModule(job, moduleContexts, caseSensitive, "*SQL");
 
 		if (callableUnitInfo.containsCMDStatement())
-			loadModule(job, moduleContexts, caseSensitive, "*CMD");
+			loadInternalModule(job, moduleContexts, caseSensitive, "*CMD");
 
 		if (callableUnit.getSetupSection() == null)
 			return moduleContexts;
 
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
-		for (String moduleName : callableUnit.getSetupSection().getModules()) {
+		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules())) {
 
-			QCompilationUnit moduleContext = globalContexts.get(moduleName);
 
-			if (moduleContext != null) {
-				moduleContexts.add(moduleContext);
-				continue;
-			}
-
-			org.smeup.sys.os.module.QModule module = moduleReader.lookup(moduleName);
-
-			if (module == null)
-				throw new OperatingSystemRuntimeException("Null resource for object " + moduleName, null);
-
-			// lookup module source entry
-			QSourceEntry moduleEntry = sourceManager.getObjectEntry(job.getContext(), module.getLibrary(), org.smeup.sys.os.module.QModule.class, module.getName());
-			if (moduleEntry == null)
-				throw new OperatingSystemRuntimeException("Null resource for object " + module.getName(), null);
-
-			// XMI conversion
-			QSourceEntry xmiModuleSource = sourceManager.getChildEntry(job.getContext(), moduleEntry, module.getName() + ".xmi");
-			if (xmiModuleSource == null)
-				throw new OperatingSystemRuntimeException("Null resource for object " + module.getName(), null);
-
-			// load flow module
-			Resource resourceModule = new XMIResourceImpl();
-			try {
-				resourceModule.load(xmiModuleSource.getInputStream(), Collections.EMPTY_MAP);
-				QModule flowModel = (QModule) resourceModule.getContents().get(0);
-
-				moduleContext = createCompilationUnit(job, globalContexts, flowModel, caseSensitive);
-				moduleContexts.add(moduleContext);
-
-				globalContexts.put(moduleName, moduleContext);
-			} catch (IOException e) {
-				throw new OperatingSystemRuntimeException(e);
+			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
+			
+			if(moduleName.equalsIgnoreCase("£JAX")) {
+				loadModule(job, moduleReader, moduleContexts, "£UIB", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£UIB");
+				loadModule(job, moduleReader, moduleContexts, "£J15", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£J15");
+				loadModule(job, moduleReader, moduleContexts, "£G61", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£G61");
 			}
 		}
 
 		return moduleContexts;
 	}
 
-	private void loadModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
+	private void loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, List<QCompilationUnit> moduleContexts, String moduleName, CaseSensitiveType caseSensitive) {
+
+		QCompilationUnit moduleContext = globalContexts.get(moduleName);
+
+		if (moduleContext != null) {
+			moduleContexts.add(moduleContext);
+			return;
+		}
+
+		org.smeup.sys.os.module.QModule module = moduleReader.lookup(moduleName);
+
+		if (module == null)
+			throw new OperatingSystemRuntimeException("Null resource for object " + moduleName, null);
+
+		// lookup module source entry
+		QSourceEntry moduleEntry = sourceManager.getObjectEntry(job.getContext(), module.getLibrary(), org.smeup.sys.os.module.QModule.class, module.getName());
+		if (moduleEntry == null)
+			throw new OperatingSystemRuntimeException("Null resource for object " + module.getName(), null);
+
+		// XMI conversion
+		QSourceEntry xmiModuleSource = sourceManager.getChildEntry(job.getContext(), moduleEntry, module.getName() + ".xmi");
+		if (xmiModuleSource == null)
+			throw new OperatingSystemRuntimeException("Null resource for object " + module.getName(), null);
+
+		// load flow module
+		Resource resourceModule = new XMIResourceImpl();
+		try {
+			resourceModule.load(xmiModuleSource.getInputStream(), Collections.EMPTY_MAP);
+			QModule flowModel = (QModule) resourceModule.getContents().get(0);
+
+			moduleContext = createCompilationUnit(job, globalContexts, flowModel, caseSensitive);
+			moduleContexts.add(moduleContext);
+
+			globalContexts.put(moduleName, moduleContext);
+		} catch (IOException e) {
+			throw new OperatingSystemRuntimeException(e);
+		}
+
+	} 
+	
+	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
 		try {
 			URL entry = FrameworkUtil.getBundle(this.getClass()).getEntry("./modules/" + moduleName.replaceAll("\\*", "q") + ".xmi");
 			Resource resource = resourceSet.createResource(URI.createURI(entry.toString()));

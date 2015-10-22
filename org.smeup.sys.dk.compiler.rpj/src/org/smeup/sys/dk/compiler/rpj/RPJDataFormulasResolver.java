@@ -65,6 +65,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 	@SuppressWarnings("unchecked")
 	private void resolveFormula(QDataTerm<?> dataTerm) {
 
+		// property
 		for (String formula : new ArrayList<String>(dataTerm.getDefinition().getFormulas())) {
 
 			QAssignmentExpression assignmentExpression = expressionParser.parseAssignment(formula);
@@ -75,6 +76,8 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			if (setProperty(dataTerm, property.getValue(), value))
 				dataTerm.getDefinition().getFormulas().remove(formula);
 		}
+
+		// value
 
 		// TODO
 		if (dataTerm.getDataTermType().isMultiple())
@@ -89,27 +92,24 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 		QExpression value = null;
 		// TODO
-		if (default_.getValue().trim().equalsIgnoreCase("*Allx'00'")) {
-			System.err.println("Unexpected condition: 9vbewc8w76erv8s6c8r6w");
-			value = expressionParser.parseExpression("*LOVAL");
-		}
-		// TODO
-		else if (default_.getValue().trim().equals("")) {
-			value = null;
-		} else {
-			try {
-				if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-					if(default_.getValue().startsWith("'"))
-						value = expressionParser.parseExpression(default_.getValue());						
+		try {		
+			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				if (default_.getValue().trim().equals("")) {
+					if (default_.getValue().startsWith("'"))
+						value = expressionParser.parseExpression(default_.getValue());
 					else
-						value = expressionParser.parseExpression("'"+default_.getValue().replaceAll("\\'", "\\''")+"'");
+						value = expressionParser.parseExpression("'" + default_.getValue().replaceAll("\\'", "\\''") + "'");
 				}
-				else
+
+				if (default_.getValue().startsWith("'"))
 					value = expressionParser.parseExpression(default_.getValue());
-				
-			} catch (Exception e) {
-				System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
-			}
+				else
+					value = expressionParser.parseExpression("'" + default_.getValue().replaceAll("\\'", "\\''") + "'");
+			} else
+				value = expressionParser.parseExpression(default_.getValue());
+
+		} catch (Exception e) {
+			System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
 		}
 
 		if (value == null)
@@ -126,7 +126,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 			QPointerDef pointerDef = (QPointerDef) dataTerm.getDefinition();
 			if (pointerDef.getTarget() != null)
-				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition "+pointerDef+": nfdsg8sdfbm0jntr8uy9u0ty");
+				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition " + pointerDef + ": nfdsg8sdfbm0jntr8uy9u0ty");
 
 			QDataTerm<?> dataValue = getDataValue(value);
 			if (dataValue == null)
@@ -136,6 +136,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 			default_.clear();
 		} else if (compoundTermExpression.getValue().toUpperCase().equals("*ALL")) {
+			"".toCharArray();
 			// TODO calculate on @PostConstruct
 		} else {
 			QDataTerm<?> dataValue = getDataValue(value);
