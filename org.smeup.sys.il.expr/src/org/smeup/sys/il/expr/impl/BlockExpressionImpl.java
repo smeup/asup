@@ -185,6 +185,15 @@ public class BlockExpressionImpl extends ExpressionImpl implements QBlockExpress
 		visitor.endVisit(this);
 	}
 
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String toString() {	
+		return super.toString();
+	}
+
 	@Override
 	public ExpressionType getExpressionType() {
 		return ExpressionType.BLOCK;

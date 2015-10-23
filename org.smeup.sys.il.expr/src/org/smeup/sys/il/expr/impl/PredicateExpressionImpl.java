@@ -40,5 +40,5 @@ public abstract class PredicateExpressionImpl extends ExpressionImpl implements 
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageExpressionPackage.Literals.PREDICATE_EXPRESSION;
-	}
+	}	
 } // PredicateExpressionImpl

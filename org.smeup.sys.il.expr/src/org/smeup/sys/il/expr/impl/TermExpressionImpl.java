@@ -141,17 +141,11 @@ public abstract class TermExpressionImpl extends ExpressionImpl implements QTerm
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(')');
-		return result.toString();
+	public String toString() {	
+		return super.toString();
 	}
 
 } // TermExpressionImpl
