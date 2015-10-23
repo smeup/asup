@@ -258,7 +258,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
 			
-			if(moduleName.equalsIgnoreCase("£JAX")) {
+/*			if(moduleName.equalsIgnoreCase("£JAX")) {
 				loadModule(job, moduleReader, moduleContexts, "£UIB", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£UIB");
 				loadModule(job, moduleReader, moduleContexts, "£J15", caseSensitive);
@@ -269,7 +269,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				callableUnit.getSetupSection().getModules().add("£DEC");
 				loadModule(job, moduleReader, moduleContexts, "£OAV", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£OAV");
-			}
+			}*/
 		}
 
 		return moduleContexts;

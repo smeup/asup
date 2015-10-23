@@ -50,34 +50,9 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		if (statement.getObject() == null)
-			return super.visit(statement);
-
 		if(statement.getMethod().equalsIgnoreCase("SETLL")) 
 			lastSetll = statement;
 		
-		QTermExpression termExpression = expressionParser.parseTerm(statement.getObject());
-
-		QNamedNode namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
-		if (namedNode == null)
-			return super.visit(statement);
-
-		if (!(namedNode instanceof QDataTerm<?>))
-			return super.visit(statement);
-
-		QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
-
-		// unary
-		if (dataTerm.getDataTermType().isUnary())
-			return super.visit(statement);
-
-		if (!statement.getMethod().equals("sum"))
-			return super.visit(statement);
-
-//		statement.setMethod("%xfoot");
-//		statement.getParameters().add(0, statement.getObject());
-//		statement.setObject(null);
-
 		return super.visit(statement);
 	}
 
@@ -195,7 +170,7 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QIf statement) {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
-
+		
 		if(normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
