@@ -69,7 +69,7 @@ public @Supported class TestCaller {
 				break;
 			
 			}
-			
+
 			for (QTestLauncher testLauncher: testLauncherList) {
 				testLauncher.registerListener(context, resultWriter);
 				testLauncher.init(context);

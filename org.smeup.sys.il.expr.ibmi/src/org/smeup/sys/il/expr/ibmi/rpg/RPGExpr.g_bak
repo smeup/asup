@@ -109,35 +109,29 @@ value
 	|	STRING
 	|	HEX -> ^(HEX[$HEX.text.substring(2, $HEX.text.length() -1 )])
 	|	(SPECIAL -> TERM[$SPECIAL.text])
-	|	(IN -> TERM[$IN.text])
-	|	(INNR -> TERM[$INNR.text])
-	|	(INNU -> TERM[$INNU.text])
-	|	(ALL -> TERM[$ALL.text])
-	|	(ALLX -> TERM[$ALLX.text])
 	|	filler
 	|	special
 	|	bi_function
 	|	usr_function
 	|   	indicator
 	|	TERM
-
 	;
 	
 indicator
 	:
-		MULT IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
+		IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
 		|
-		MULT INNR ->	^(BI_FUNCTION["*IN"] INTEGER["*" + $INNR.text.substring(2)])	// Caso *INnn
+		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 		// Caso *INnn
 		|
-		MULT INNU -> ^(INDICATOR["*" + $INNU.text])				        	// Caso *INU0 - *INU8
+		INNU -> ^(INDICATOR[$INNU.text])				        	// Caso *INU0 - *INU8
 		|
-		MULT IN -> ^(INDICATOR["*" + $IN.text])							// Caso *IN
+		IN -> ^(INDICATOR[$IN.text])							// Caso *IN
 	;		
 	
 filler	:	
-		MULT ALL  -> ^(BI_FUNCTION["*ALL"] STRING[$ALL.text.substring(4, $ALL.text.length()-1)])			
+		ALL -> ^(BI_FUNCTION["*ALL"] STRING[$ALL.text.substring(5, $ALL.text.length()-1)])
 		|
-		MULT ALLX -> ^(BI_FUNCTION["*ALL"] HEX[$ALLX.text.substring(5, $ALLX.text.length()-1)])					
+		ALLX -> ^(BI_FUNCTION["*ALL"] HEX[$ALLX.text.substring(6, $ALLX.text.length()-1)])	
 	;
 
 special	:
@@ -234,85 +228,85 @@ BI_FUN  :	'%'TERM
 	;
 
 IN 	:
-	I N
+	MULT I N
 	;
 	
 INNR	:
-	I N ('0'..'9') ('0'..'9')
+	MULT I N ('0'..'9') ('0'..'9')
 	;
 	
 INNU	:	
 	
-	I N U ('1'..'8')
+	MULT I N U ('1'..'8')
 	|
-	I N H ('1'..'8')
+	MULT I N H ('1'..'8')
 	|
-	I N M R
+	MULT I N M R
 	|
-	I N O (A | G | V | F)
+	MULT I N O (A | G | V | F)
 	|
-	I N L ('1'..'9')
+	MULT I N L ('1'..'9')
 	|
-	I N L R
+	MULT I N L R
 	|
-	I N R T
+	MULT I N R T
 	|
-	I N K A
+	MULT I N K A
 	|
-	I N K B
+	MULT I N K B
 	|
-	I N K C
+	MULT I N K C
 	|
-	I N K D
+	MULT I N K D
 	|
-	I N K E
+	MULT I N K E
 	|
-	I N K F
+	MULT I N K F
 	|
-	I N K G
+	MULT I N K G
 	|
-	I N K H
+	MULT I N K H
 	|
-	I N K I
+	MULT I N K I
 	|
-	I N K J
+	MULT I N K J
 	|
-	I N K K
+	MULT I N K K
 	|
-	I N K L
+	MULT I N K L
 	|
-	I N K M
+	MULT I N K M
 	|
-	I N K N
+	MULT I N K N
 	|
-	I N K P
+	MULT I N K P
 	|
-	I N K Q
+	MULT I N K Q
 	|
-	I N K R
+	MULT I N K R
 	|
-	I N K S
+	MULT I N K S
 	|
-	I N K T
+	MULT I N K T
 	|
-	I N K U
+	MULT I N K U
 	|
-	I N K V
+	MULT I N K V
 	|
-	I N K W
+	MULT I N K W
 	|	
-	I N K X
+	MULT I N K X
 	|
-	I N K Y	
+	MULT I N K Y	
 	
 	;	
 
 ALL	:
-	A L L '\'' ~('\''|'\r'|'\n'|'\t')+ '\'' 
+	MULT A L L '\'' ~('\''|'\r'|'\n'|'\t')+ '\''
 	;	
 
 ALLX    :
-	A L L HEX
+	MULT A L L HEX	
 	;
 
 HEX	:   ('X\''|'x\'') (HexDigit)+ '\''
