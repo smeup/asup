@@ -48,6 +48,7 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
@@ -65,6 +66,7 @@ import org.smeup.sys.os.file.impl.FileFormatImpl;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJCallableUnitLinker {
 
@@ -78,6 +80,10 @@ public class RPJCallableUnitLinker {
 	private QDataFactory dataFactory;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QExceptionManager excpetionManager;
+	@Inject
+	private QLogger logger;
 
 	private QResourceReader<QFile> fileReader;
 	private QResourceReader<QModule> moduleReader;
@@ -258,7 +264,8 @@ public class RPJCallableUnitLinker {
 			if (fileTerm.getFormat() == null)
 				fileTerm.setFormat(internalFileFormat);
 			else
-				System.out.println("Unexpected condition: b439t857bt9retvbtr");
+				logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00100, new String[] {}));
+//				System.out.println("Unexpected condition: b439t857bt9retvbtr");
 
 			// remove redefined record
 			compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
@@ -400,7 +407,8 @@ public class RPJCallableUnitLinker {
 		QFile file = getFile(externalFile.getName());
 
 		if (externalFile.getName().startsWith("*")) {
-			System.out.println("Unexpected condition: 9xqb59qrqevrvqd0sa");
+			logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00101, new String[] {}));
+//			System.out.println("Unexpected condition: 9xqb59qrqevrvqd0sa");
 			return null;
 		}
 

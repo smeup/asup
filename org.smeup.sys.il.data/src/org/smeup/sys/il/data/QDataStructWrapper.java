@@ -760,6 +760,91 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
+	public void xlate(QString from, QString to, String source) {
+		delegate.xlate(from, to, source);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, boolean clear) {
+		delegate.xlate(from, to, source, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, Number start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, Number start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, QNumeric start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, boolean clear) {
+		delegate.xlate(from, to, source, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, Number start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, Number start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, QNumeric start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source) {
+		delegate.xlate(from, to, source);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, boolean clear) {
+		delegate.xlate(from, to, source, clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, Number start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, Number start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, QNumeric start) {
+		delegate.xlate(from, to, source, start);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, QNumeric start, boolean clear) {
+		delegate.xlate(from, to, source, start, clear);
+	}
+	
+	@Override
 	public QCharacter qSubst(QNumeric start, QNumeric length) {
 		return delegate.qSubst(start, length);
 	}

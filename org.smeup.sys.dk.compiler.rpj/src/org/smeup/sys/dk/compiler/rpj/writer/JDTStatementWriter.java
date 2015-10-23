@@ -67,6 +67,7 @@ import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QBreak;
 import org.smeup.sys.il.flow.QCall;
+import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QCommandExec;
 import org.smeup.sys.il.flow.QContinue;
 import org.smeup.sys.il.flow.QEntryParameter;
@@ -78,10 +79,12 @@ import org.smeup.sys.il.flow.QIteration;
 import org.smeup.sys.il.flow.QJump;
 import org.smeup.sys.il.flow.QLabel;
 import org.smeup.sys.il.flow.QMethodExec;
+import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QMonitor;
 import org.smeup.sys.il.flow.QOnError;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProcedureExec;
+import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QReset;
 import org.smeup.sys.il.flow.QReturn;
@@ -391,6 +394,20 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(prototype.getName())));
 
+		if(!isOwner(prototype)) {
+			QNode parent = prototype.getParent();
+			if (parent instanceof QModule) {
+				methodInvocation.setExpression(ast.newSimpleName(compilationUnit.normalizeModuleName(((QModule) parent).getName())));
+			}
+			else if (parent instanceof QNamedNode) {
+				// invoke on module
+				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
+				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
+			} else
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getProcedure());
+			
+		}
+
 		// entry
 		if (prototype.getEntry() != null) {
 			Iterator<QEntryParameter<?>> entryParameters = prototype.getEntry().getParameters().iterator();
@@ -488,7 +505,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QMethodExec statement) {
 
 		Block block = blocks.peek();
-
+		
 		if (statement.getObject() != null) {
 
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
@@ -708,7 +725,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QRoutineExec statement) {
 		Block block = blocks.peek();
-
+		
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
 		QNamedNode routine = compilationUnit.getRoutine(statement.getRoutine(), true);
@@ -717,16 +734,20 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(routine.getName())));
 
-		if (routine.isChild() && routine.getParent() != compilationUnit.getNode()) {
+		if(!isOwner(routine)) {
 			QNode parent = routine.getParent();
-			if (parent instanceof QNamedNode) {
+			if (parent instanceof QModule) {
+				methodInvocation.setExpression(ast.newSimpleName(compilationUnit.normalizeModuleName(((QModule) parent).getName())));
+			}
+			else if (parent instanceof QNamedNode) {
 				// invoke on module
 				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
 				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
 			} else
-				throw new IntegratedLanguageExpressionRuntimeException("Invalid routine: " + statement.getRoutine());
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getRoutine());
+			
 		}
-
+		
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
@@ -921,6 +942,30 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		}
 
 		return false;
+	}
+
+	private QCallableUnit getCallableUnit(QNamedNode nameNode) {
+	
+		QCallableUnit callableUnit = null;
+		
+		QNode node = nameNode;
+		while(callableUnit == null) {
+			if(node instanceof QModule || node instanceof QProgram) {
+				callableUnit = (QCallableUnit) node;
+				break;
+			}
+			else 
+				node = node.getParent();
+			
+			if(node == null)
+				break;
+		}
+		
+		return callableUnit;
+	}
+	
+	private boolean isOwner(QNamedNode namedNode) {	
+		return getCallableUnit((QNamedNode) compilationUnit.getNode()).equals(getCallableUnit(namedNode));
 	}
 
 	private boolean isParentFor(QStatement statement) {

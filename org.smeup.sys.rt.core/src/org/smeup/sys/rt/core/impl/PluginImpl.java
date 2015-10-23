@@ -24,13 +24,13 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.PluginImpl#getVendor <em>Vendor</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

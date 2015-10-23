@@ -64,4 +64,17 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	@Override
 	public abstract ExpressionType getExpressionType();
 
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String toString() {
+		
+		ExpressionStringBuilderImpl expressionStringBuilderImpl = new ExpressionStringBuilderImpl();
+		accept(expressionStringBuilderImpl);
+		
+		return expressionStringBuilderImpl.getResult();
+	}
 } // ExpressionImpl

@@ -61,12 +61,14 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJCompilerManagerImpl implements QCompilerManager {
 
@@ -78,6 +80,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	private QDataManager dataManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QExceptionManager exceptionManager;
+	@Inject
+	private QLogger logger;
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
 	private Map<String, QCompilationUnit> globalContexts = new HashMap<>();
@@ -256,17 +262,20 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
 		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules())) {
 
-
 			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
 			
-			if(moduleName.equalsIgnoreCase("£JAX")) {
+/*			if(moduleName.equalsIgnoreCase("£JAX")) {
 				loadModule(job, moduleReader, moduleContexts, "£UIB", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£UIB");
 				loadModule(job, moduleReader, moduleContexts, "£J15", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£J15");
 				loadModule(job, moduleReader, moduleContexts, "£G61", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£G61");
-			}
+				loadModule(job, moduleReader, moduleContexts, "£DEC", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£DEC");
+				loadModule(job, moduleReader, moduleContexts, "£OAV", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£OAV");
+			}*/
 		}
 
 		return moduleContexts;
@@ -329,7 +338,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Error loading module: " + moduleName);
+			logger.info(exceptionManager.prepareException(job, 
+					RPJCompilerMessage.AS00102, new String[] {moduleName}));
+//			System.out.println("Error loading module: " + moduleName);
 		}
 
 	}

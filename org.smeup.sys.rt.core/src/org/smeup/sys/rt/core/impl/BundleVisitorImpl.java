@@ -17,6 +17,8 @@ import org.smeup.sys.rt.core.QRuntimeCorePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Bundle Visitor</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

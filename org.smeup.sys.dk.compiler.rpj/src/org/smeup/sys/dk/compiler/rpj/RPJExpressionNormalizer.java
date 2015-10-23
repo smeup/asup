@@ -16,7 +16,6 @@ import org.smeup.sys.dk.compiler.rpj.writer.CompilationContextHelper;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.AtomicType;
-import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
@@ -24,11 +23,11 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
-import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
 import org.smeup.sys.il.expr.RelationalOperator;
+import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
@@ -41,7 +40,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	private QCompilationUnit compilationUnit;
 	private QExpressionParser expressionParser;
-
+	private QMethodExec lastSetll = null;
+	
 	public RPJExpressionNormalizer(QCompilationUnit compilationUnit, QExpressionParser expressionParser) {
 		this.compilationUnit = compilationUnit;
 		this.expressionParser = expressionParser;
@@ -50,31 +50,9 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		if (statement.getObject() == null)
-			return super.visit(statement);
-
-		QTermExpression termExpression = expressionParser.parseTerm(statement.getObject());
-
-		QNamedNode namedNode = compilationUnit.getNamedNode(termExpression.getValue(), true);
-		if (namedNode == null)
-			return super.visit(statement);
-
-		if (!(namedNode instanceof QDataTerm<?>))
-			return super.visit(statement);
-
-		QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
-
-		// unary
-		if (dataTerm.getDataTermType().isUnary())
-			return super.visit(statement);
-
-		if (!statement.getMethod().equals("sum"))
-			return super.visit(statement);
-
-//		statement.setMethod("%xfoot");
-//		statement.getParameters().add(0, statement.getObject());
-//		statement.setObject(null);
-
+		if(statement.getMethod().equalsIgnoreCase("SETLL")) 
+			lastSetll = statement;
+		
 		return super.visit(statement);
 	}
 
@@ -191,9 +169,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	@Override
 	public boolean visit(QIf statement) {
-
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
-
+		
 		if(normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
@@ -248,103 +225,116 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 	private boolean normalizePredicateExpression(QPredicateExpression predicateExpression) {
 
-		boolean normalized = false;
+		InternalExpressionNormalizer expressionVisitor = new InternalExpressionNormalizer();
+		predicateExpression.accept(expressionVisitor);
 		
-		if (predicateExpression instanceof QRelationalExpression) {
-			QRelationalExpression relationalExpression = (QRelationalExpression) predicateExpression;
-			
-			if(normalizeRelationalExpression(relationalExpression)) 
-				normalized = true;
-		} 
-		else if(predicateExpression instanceof QLogicalExpression) {
-			QLogicalExpression logicalExpression = (QLogicalExpression)predicateExpression;
-			
-			if(normalizeLogicalExpression(logicalExpression)) 
-				normalized = true;
-		}
-
-		return normalized;
+		return expressionVisitor.isNormalized();
 	}
 	
-	private boolean normalizeLogicalExpression(QLogicalExpression logicalExpression) {
-
-		boolean normalized = false;
-		
-		if(logicalExpression.getLeftOperand() instanceof QPredicateExpression) {
-			QPredicateExpression predicateExpression = (QPredicateExpression) logicalExpression.getLeftOperand();
-			if(normalizePredicateExpression(predicateExpression))
-				normalized = true;
-		}
-		
-		if(logicalExpression.getRightOperand() instanceof QPredicateExpression) {
-			QPredicateExpression predicateExpression = (QPredicateExpression) logicalExpression.getRightOperand();
-			if(normalizePredicateExpression(predicateExpression))
-				normalized = true;
-		}
-		
-		return normalized;
-	}
 	
-	private boolean normalizeRelationalExpression(QRelationalExpression relationalExpression) {
+	private class InternalExpressionNormalizer extends ExpressionVisitorImpl {
 
-		boolean normalized = false;
+		private boolean normalized = false;
 		
-		QExpression leftExpression = relationalExpression.getLeftOperand();
-		QExpression rightExpression = relationalExpression.getRightOperand();
-
+		protected boolean isNormalized() {
+			return normalized;
+		}
 		
-		if (leftExpression.getExpressionType() == ExpressionType.ATOMIC) {
-			QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
-
-			// special founded on left -> reverse expression
-			if (atomicTermExpressionLeft.getType() == AtomicType.SPECIAL) {
-				reverseExpression(relationalExpression);				
-				normalized = true;
-			}
-
-			// STRING founded on left
-			if (atomicTermExpressionLeft.getType() == AtomicType.STRING) {
-
-				if (rightExpression instanceof QAtomicTermExpression) {
-					QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
-
-					if (!atomicTermExpressionRight.getType().equals(AtomicType.STRING)) {
-						reverseExpression(relationalExpression);
+		@Override
+		public boolean visit(QFunctionTermExpression expression) {
+			if(expression.getValue().equalsIgnoreCase("%EQUAL")) {
+				if(expression.getElements().isEmpty()) {
+					if(lastSetll != null) {
+						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
+						atomicTermExpression.setType(AtomicType.NAME);
+						atomicTermExpression.setValue(lastSetll.getObject());
+						expression.getElements().add(atomicTermExpression);
+						
 						normalized = true;
+					}						
+				}
+				
+			}
+			return super.visit(expression);
+		}
+
+		@Override
+		public boolean visit(QRelationalExpression expression) {
+			QExpression leftExpression = expression.getLeftOperand();
+			QExpression rightExpression = expression.getRightOperand();
+
+			switch (leftExpression.getExpressionType()) {
+			case ARITHMETIC:
+				break;
+			case ASSIGNMENT:
+				break;
+			case ATOMIC:
+				QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
+
+				// special founded on left -> reverse expression
+				if (atomicTermExpressionLeft.getType() == AtomicType.SPECIAL) {
+					reverseExpression(expression);				
+					normalized = true;
+				}
+
+				// STRING founded on left
+				if (atomicTermExpressionLeft.getType() == AtomicType.STRING) {
+
+					if (rightExpression instanceof QAtomicTermExpression) {
+						QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
+
+						if (!atomicTermExpressionRight.getType().equals(AtomicType.STRING)) {
+							reverseExpression(expression);
+							normalized = true;
+						}
 					}
 				}
+			
+
+				break;
+			case BLOCK:
+				break;
+			case BOOLEAN:
+				break;
+			case FUNCTION:
+				break;
+			case LOGICAL:
+				break;
+			case QUALIFIED:
+				break;
+			case RELATIONAL:
+				break;
 			}
-		
+
+			return super.visit(expression);
 		}
-
-		return normalized;
-	}
-
-	private void reverseExpression(QRelationalExpression relationalExpression) {
 		
-		QExpression leftExpression = relationalExpression.getLeftOperand();
-		QExpression rightExpression = relationalExpression.getRightOperand();
-		
-		relationalExpression.setLeftOperand(rightExpression);
-		relationalExpression.setRightOperand(leftExpression);
+		private void reverseExpression(QRelationalExpression relationalExpression) {
+			
+			QExpression leftExpression = relationalExpression.getLeftOperand();
+			QExpression rightExpression = relationalExpression.getRightOperand();
+			
+			relationalExpression.setLeftOperand(rightExpression);
+			relationalExpression.setRightOperand(leftExpression);
 
-		switch (relationalExpression.getOperator()) {
-		case EQUAL:
-			break;
-		case GREATER_THAN:
-			relationalExpression.setOperator(RelationalOperator.LESS_THAN);
-			break;
-		case GREATER_THAN_EQUAL:
-			relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
-			break;
-		case LESS_THAN:
-			relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
-			break;
-		case LESS_THAN_EQUAL:
-			relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
-			break;
-		case NOT_EQUAL:
-			break;
+			switch (relationalExpression.getOperator()) {
+			case EQUAL:
+				break;
+			case GREATER_THAN:
+				relationalExpression.setOperator(RelationalOperator.LESS_THAN);
+				break;
+			case GREATER_THAN_EQUAL:
+				relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
+				break;
+			case LESS_THAN:
+				relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
+				break;
+			case LESS_THAN_EQUAL:
+				relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
+				break;
+			case NOT_EQUAL:
+				break;
+			}
 		}
 	}
 }

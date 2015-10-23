@@ -290,17 +290,11 @@ public class AssignmentExpressionImpl extends ExpressionImpl implements QAssignm
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (operator: ");
-		result.append(operator);
-		result.append(')');
-		return result.toString();
+	public String toString() {	
+		return super.toString();
 	}
 
 	/**
