@@ -42,6 +42,7 @@ import org.smeup.sys.il.flow.QBlock;
 import org.smeup.sys.il.flow.QEntry;
 import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QProcedure;
+import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.pgm.rpj.RPJProcedureSupport;
 
@@ -95,6 +96,11 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 			}
 		}
 
+		// prototypes
+		if (procedure.getFlowSection() != null)
+			for (QPrototype prototype : procedure.getFlowSection().getPrototypes())
+				writePrototype(prototype);
+
 		// main
 		if (procedure.getMain() != null) {
 			writeProcedureEntry(procedure);
@@ -104,6 +110,11 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		if (procedure.getFlowSection() != null)
 			for (QRoutine routine : procedure.getFlowSection().getRoutines())
 				writeRoutine(routine);
+
+		// procedures
+		if (procedure.getFlowSection() != null)
+			for (QProcedure procedureChild : procedure.getFlowSection().getProcedures())
+				writeInnerProcedure(procedureChild);
 
 		// datas
 		if (procedure.getDataSection() != null)

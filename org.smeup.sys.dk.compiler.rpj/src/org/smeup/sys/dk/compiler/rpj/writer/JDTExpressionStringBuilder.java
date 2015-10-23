@@ -619,11 +619,24 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		else if (source.isAssignableFrom(Enum.class)) {
 
 			if (QIndicator.class.isAssignableFrom(this.target)) {
-				if (source.toString().equalsIgnoreCase("qRPJ.qSP.ON"))
+				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
 					buffer.append("qRPJ.qBox(true)");
 				else
 					buffer.append("qRPJ.qBox(false)");
-			} else
+			} 
+			else if(String.class.isAssignableFrom(this.target)) {
+				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
+					buffer.append("\"1\"");
+				else if (value.equalsIgnoreCase("qRPJ.qSP.OFF"))
+					buffer.append("\"0\"");
+				else if (value.equalsIgnoreCase("qRPJ.qSP.BLANK"))
+					buffer.append("\"\"");
+				else if (value.equalsIgnoreCase("qRPJ.qSP.BLANKS"))
+					buffer.append("\"\"");
+				else
+					buffer.append(value);
+			}
+			else
 				buffer.append(value);
 
 		} else if (target.isAssignableFrom(String.class)) {

@@ -256,7 +256,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		QResourceReader<org.smeup.sys.os.module.QModule> moduleReader = resourceManager.getResourceReader(job, org.smeup.sys.os.module.QModule.class, Scope.LIBRARY_LIST);
 		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules())) {
 
-
 			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
 			
 			if(moduleName.equalsIgnoreCase("£JAX")) {
@@ -266,6 +265,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				callableUnit.getSetupSection().getModules().add("£J15");
 				loadModule(job, moduleReader, moduleContexts, "£G61", caseSensitive);
 				callableUnit.getSetupSection().getModules().add("£G61");
+				loadModule(job, moduleReader, moduleContexts, "£DEC", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£DEC");
+				loadModule(job, moduleReader, moduleContexts, "£OAV", caseSensitive);
+				callableUnit.getSetupSection().getModules().add("£OAV");
 			}
 		}
 

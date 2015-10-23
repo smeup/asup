@@ -423,7 +423,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		for (QDataTerm<?> child : new ArrayList<QDataTerm<?>>(dataTerms)) {
 			String childName = null;
-			
+
 			// remap
 			QRemap remap = child.getFacet(QRemap.class);
 			if (remap != null) {
@@ -1008,7 +1008,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				name = normalizeModuleName(namedParentNode.getName()) + "." + name;
 			else if (namedParentNode instanceof QDataSetTerm) {
 				QDataSetTerm dataSetTerm = (QDataSetTerm) namedParentNode;
-				if(dataSetTerm.getFormatName() != null)
+				if (dataSetTerm.getFormatName() != null)
 					name = normalizeTermName(dataSetTerm.getFormatName()) + "." + name;
 				else
 					name = normalizeTermName(dataSetTerm.getName()) + "." + name;
