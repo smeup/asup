@@ -187,9 +187,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, boolean clear) {
-		if(clear)
-			this.clear();
-		eval(trimR() + factor1);
+		cat(factor1, (String)null, 0, clear);
 	}
 	
 	@Override
@@ -268,18 +266,34 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, String factor2, int space, boolean clear) {
-		if (space == 0)
-			eval(factor1.trim() + factor2.toString());
-		else {
-			try {
-				String value = factor1.trim();
-				int length = value.length() + space;
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), clear, INIT);
-			} catch (UnsupportedEncodingException e) {
-				throw new RuntimeException(e);
+		if(factor2 == null){
+			if (space == 0)
+				eval(trimR() + factor1);
+			else {
+				try {
+					String value = trimR();
+					int length = value.length() + space;
+					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
+					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), clear, INIT);
+				} catch (UnsupportedEncodingException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}else{
+			if (space == 0)
+				eval(factor1.trim() + factor2.toString());
+			else {
+				try {
+					String value = factor1.trim();
+					int length = value.length() + space;
+					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
+					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), clear, INIT);
+				} catch (UnsupportedEncodingException e) {
+					throw new RuntimeException(e);
+				}
 			}
 		}
+		
 	}
 	
 	@Override
@@ -349,18 +363,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, Number space, boolean clear) {
-		if (space.intValue() == 0)
-			eval(trimR() + factor1);
-		else {
-			try {
-				String value = trimR();
-				int length = value.length() + space.intValue();
-				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
-				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), clear, INIT);
-			} catch (UnsupportedEncodingException e) {
-				throw new RuntimeException(e);
-			}
-		}
+		cat(factor1, (String)null, space.intValue(), clear);
 	}
 	
 	@Override
@@ -613,124 +616,201 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source) {
-		// TODO Auto-generated method stub
-		
+		xlate(from.s(), to.s(), source, 1, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source.s(), start, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start.i(), clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start, false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to.s(), source, start, clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start.i(), false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start.i(), clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, 1, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start, false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from.s(), to, source, start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start) {
-		// TODO Auto-generated method stub
-		
+		xlate(from, to, source, start, false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		xlate(from.s(), to, source, start, clear);
 	}
 	
 	@Override
 	public void xlate(byte from, String to, QString source) {
 		// TODO Auto-generated method stub
-
 	}
 
+	@Override
+	public void xlate(QString from, QString to, String source) {
+		xlate(from, to, source, 1, false);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, boolean clear) {
+		xlate(from, to, source, 1, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, Number start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, Number start, boolean clear) {
+		xlate(from.s(), to.s(), source, start, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, QNumeric start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
+		xlate(from.s(), to.s(), source, start.i(), clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, boolean clear) {
+		xlate(from, to, source, 1, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, Number start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, Number start, boolean clear) {
+		xlate(from.s(), to.s(), source.s(), start, clear);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, QNumeric start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
+		xlate(from.s(), to.s(), source.s(), start.i(), clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source) {
+		xlate(from, to, source, 1, false);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, boolean clear) {
+		xlate(from, to, source, 1, clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, Number start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, Number start, boolean clear) {
+		StringBuffer sb = new StringBuffer();
+		int startId = 1;
+		for (char c : source.toCharArray()) {
+			int i = from.indexOf(c);
+			if(startId >= start.intValue() && (to.length()>=i && i>=0)){
+				sb.append(to.substring(i, i+1));
+			}else{
+				sb.append(c);
+			}
+			startId++;
+		}
+		movel(sb.toString(), clear);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, QNumeric start) {
+		xlate(from, to, source, start, false);
+	}
+
+	@Override
+	public void xlate(String from, String to, String source, QNumeric start, boolean clear) {
+		xlate(from, to, source, start.i(), clear);
+	}
+	
+	
 	@Override
 	public boolean ge(QHexadecimal value) {
 		// TODO Auto-generated method stub
@@ -902,4 +982,5 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		
 		return number;
 	}
+
 }
