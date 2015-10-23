@@ -205,6 +205,18 @@ public class RPJProgramSupport {
 	 * public QBufferedData qBox(Enum<?> label) { return null; }
 	 */
 
+	public QDecimal qBitand(QDecimal expression, QDecimal expression2) {
+		return null;
+	}
+	
+	public QDecimal qBitnot(QDecimal expression) {
+		return null;
+	}
+
+	public QDecimal qBitxor(QDecimal expression, QDecimal expression2) {
+		return null;
+	}
+
 	public QIndicator qBox(boolean boolean_) {
 
 		QIndicator qIndicator = dataFactory.createIndicator(true);

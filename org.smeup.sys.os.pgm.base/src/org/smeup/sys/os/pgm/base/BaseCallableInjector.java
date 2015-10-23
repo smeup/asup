@@ -272,6 +272,8 @@ public class BaseCallableInjector {
 
 				if (Integer.class.isAssignableFrom(fieldClass)) {
 					object = Integer.parseInt(dataDef.value());
+				} else 	if (String.class.isAssignableFrom(fieldClass)) {
+					object = dataDef.value();
 				} else
 					System.err.println("Unexpected condition " + field.getDeclaringClass() + ": x456b6439b57w6ervdas5");
 			}
