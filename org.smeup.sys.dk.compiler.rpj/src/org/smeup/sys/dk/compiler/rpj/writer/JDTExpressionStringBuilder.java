@@ -634,7 +634,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				else
 					buffer.append("qRPJ.qBox(false)");
 			} 
-			else if(String.class.isAssignableFrom(this.target)) {
+			else if(String.class.isAssignableFrom(this.target)) {				
 				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
 					buffer.append("\"1\"");
 				else if (value.equalsIgnoreCase("qRPJ.qSP.OFF"))

@@ -784,14 +784,18 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
+			String value = default_.getValue();
+			if(value == null)
+				value = default_.getValues().iterator().next();
+				
 			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
 				if(default_.getValue().startsWith("'"))
-					eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+					eval.setAssignment(statement.getObject() + "=" + value);
 				else
-					eval.setAssignment(statement.getObject() + "=" + "'"+default_.getValue().replaceAll("\'", "\''")+"'");
+					eval.setAssignment(statement.getObject() + "=" + "'"+value.replaceAll("\'", "\''")+"'");
 			}
 			else
-				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
+				eval.setAssignment(statement.getObject() + "=" + value);
 			eval.accept(this);
 
 			break;
