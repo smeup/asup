@@ -113,7 +113,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 		} catch (Exception e) {
 			logger.warning(exceptionManager.prepareException(job, 
-					RPJCompilerMessage.AS00103, new String[] {}));
+					RPJCompilerMessage.AS00103, null));
 //			System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
 		}
 
