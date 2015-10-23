@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
+import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionStringBuilder;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.java.QStrings;
@@ -60,7 +61,10 @@ import org.smeup.sys.il.flow.QEntryParameter;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QPrototype;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport.Specials;
+import org.smeup.sys.rt.core.QLogger;
 
 public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
@@ -70,6 +74,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	private QStrings strings;
 	@Inject
 	private QExpressionParser expressionParser;
+	@Inject
+	private QExceptionManager exceptionManager;
+	@Inject
+	private QLogger logger;
+	@Inject
+	private QJob job;
 
 	private StringBuffer buffer = new StringBuffer();
 	private Class<?> target;
@@ -958,7 +968,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
 			}
 		} else
-			System.err.println("Unexpected condition: xm4t609543m487mxz");
+//			System.err.println("Unexpected condition: xm4t609543m487mxz");
+			logger.warning(exceptionManager.prepareException(job, 
+				RPJCompilerMessage.AS00106, new String[] {namedNode.getName()}));
+
 
 		return false;
 	}

@@ -40,13 +40,13 @@ import org.smeup.sys.rt.core.QServiceHook;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getConfigs <em>Configs</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getHooks <em>Hooks</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationComponentImpl#getName <em>Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

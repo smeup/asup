@@ -15,6 +15,8 @@ import org.smeup.sys.rt.core.QServiceHook;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Service Hook</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

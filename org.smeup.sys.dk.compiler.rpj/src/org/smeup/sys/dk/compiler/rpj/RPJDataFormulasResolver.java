@@ -36,11 +36,21 @@ import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QTermExpression;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 	private QExpressionParser expressionParser;
 	private QDataFactory dataFactory;
+
+	@Inject
+	private QExceptionManager exceptionManager;
+	@Inject
+	private QLogger logger;
+	@Inject
+	private QJob job;
 
 	@Inject
 	public RPJDataFormulasResolver(QCompilationUnit compilationUnit, QExpressionParser expressionParser, QDataFactory dataFactory) {
@@ -102,7 +112,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				value = expressionParser.parseExpression(default_.getValue());
 
 		} catch (Exception e) {
-			System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
+			logger.warning(exceptionManager.prepareException(job, 
+					RPJCompilerMessage.AS00103, new String[] {}));
+//			System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
 		}
 
 		if (value == null)
@@ -160,7 +172,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				break;
 			default:
-				System.err.println(value);
+				logger.warning(exceptionManager.prepareException(job, 
+						RPJCompilerMessage.AS00104, new String[] {value.toString()}));
+//				System.err.println(value);
 				break;
 			}
 		}
@@ -214,7 +228,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				break;
 			default:
-				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value);
+				logger.info(exceptionManager.prepareException(job, 
+						RPJCompilerMessage.AS00105, new String[] {getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value}));
+//				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value);
 				break;
 			}
 
@@ -234,7 +250,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				break;
 
 			default:
-				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue());
+				logger.info(exceptionManager.prepareException(job, 
+						RPJCompilerMessage.AS00105, new String[] {getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue()}));
+//				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue());
 				break;
 			}
 

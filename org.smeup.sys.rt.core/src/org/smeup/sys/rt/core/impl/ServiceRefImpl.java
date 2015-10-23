@@ -28,7 +28,6 @@ import org.smeup.sys.rt.core.ServiceStatus;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getClassName <em>Class Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getInterfaceName <em>Interface Name</em>}</li>
@@ -36,6 +35,7 @@ import org.smeup.sys.rt.core.ServiceStatus;
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ServiceRefImpl#getServices <em>Services</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

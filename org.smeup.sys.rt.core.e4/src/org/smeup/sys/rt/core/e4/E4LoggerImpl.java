@@ -27,6 +27,11 @@ public class E4LoggerImpl implements QLogger {
 	}
 
 	@Override
+	public void debug(Throwable throwable) {
+		logService.log(LogService.LOG_DEBUG,  null, throwable);		
+	}
+
+	@Override
 	public void debug(String message, Throwable throwable) {
 		logService.log(LogService.LOG_DEBUG, message, throwable);		
 	}
@@ -34,6 +39,11 @@ public class E4LoggerImpl implements QLogger {
 	@Override
 	public void error(String message) {
 		logService.log(LogService.LOG_ERROR, message);
+	}
+
+	@Override
+	public void error(Throwable throwable) {
+		logService.log(LogService.LOG_ERROR, null, throwable);
 	}
 
 	@Override
@@ -47,6 +57,11 @@ public class E4LoggerImpl implements QLogger {
 	}
 
 	@Override
+	public void info(Throwable throwable) {
+		logService.log(LogService.LOG_INFO, null, throwable);
+	}
+
+	@Override
 	public void info(String message, Throwable throwable) {
 		logService.log(LogService.LOG_INFO, message, throwable);
 	}
@@ -54,6 +69,11 @@ public class E4LoggerImpl implements QLogger {
 	@Override
 	public void warning(String message) {
 		logService.log(LogService.LOG_WARNING, message);
+	}
+
+	@Override
+	public void warning(Throwable throwable) {
+		logService.log(LogService.LOG_WARNING, null, throwable);
 	}
 
 	@Override

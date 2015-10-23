@@ -10,19 +10,18 @@ package org.smeup.sys.rt.core;
 import org.smeup.sys.il.core.meta.QFacet;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Plugin</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Plugin</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
- *   <li>{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}</li>
- *   <li>{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}</li>
+ * <li>{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}</li>
+ * <li>{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}</li>
+ * <li>{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}</li>
+ * <li>{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin()
  * @model
@@ -30,13 +29,14 @@ import org.smeup.sys.il.core.meta.QFacet;
  */
 public interface QPlugin extends QFacet {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Name()
@@ -46,23 +46,25 @@ public interface QPlugin extends QFacet {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getName
+	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Text</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Text</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Text()
@@ -72,23 +74,25 @@ public interface QPlugin extends QFacet {
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getText <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getText
+	 * <em>Text</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Text</em>' attribute.
 	 * @see #getText()
 	 * @generated
 	 */
 	void setText(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Version</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Version</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Version</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Version()
@@ -98,23 +102,26 @@ public interface QPlugin extends QFacet {
 	String getVersion();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVersion <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Version</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVersion
+	 * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Version</em>' attribute.
 	 * @see #getVersion()
 	 * @generated
 	 */
 	void setVersion(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Vendor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Vendor</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Vendor</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Vendor</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Vendor</em>' attribute.
 	 * @see #setVendor(String)
 	 * @see org.smeup.sys.rt.core.QRuntimeCorePackage#getPlugin_Vendor()
@@ -124,10 +131,12 @@ public interface QPlugin extends QFacet {
 	String getVendor();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVendor <em>Vendor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Vendor</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.rt.core.QPlugin#getVendor
+	 * <em>Vendor</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Vendor</em>' attribute.
 	 * @see #getVendor()
 	 * @generated
 	 */

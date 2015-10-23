@@ -80,11 +80,17 @@
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="debug">
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
+    </eOperations>
+    <eOperations name="debug">
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
     </eOperations>
     <eOperations name="error">
       <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="error">
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
     </eOperations>
     <eOperations name="error">
       <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -92,6 +98,9 @@
     </eOperations>
     <eOperations name="info">
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="info">
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
     </eOperations>
     <eOperations name="info">
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -99,6 +108,9 @@
     </eOperations>
     <eOperations name="warning">
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="warning">
+      <eParameters name="throwable" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaThrowable"/>
     </eOperations>
     <eOperations name="warning">
       <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

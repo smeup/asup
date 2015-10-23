@@ -29,6 +29,14 @@ public interface QLogger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
+	 * @generated
+	 */
+	void debug(Throwable throwable);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model messageRequired="true" throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
 	 * @generated
 	 */
@@ -41,6 +49,14 @@ public interface QLogger {
 	 * @generated
 	 */
 	void info(String message);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
+	 * @generated
+	 */
+	void info(Throwable throwable);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,6 +77,14 @@ public interface QLogger {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
+	 * @generated
+	 */
+	void warning(Throwable throwable);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model messageRequired="true" throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
 	 * @generated
 	 */
@@ -73,6 +97,14 @@ public interface QLogger {
 	 * @generated
 	 */
 	void error(String message);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model throwableDataType="org.smeup.sys.il.core.java.JavaThrowable" throwableRequired="true"
+	 * @generated
+	 */
+	void error(Throwable throwable);
 
 	/**
 	 * <!-- begin-user-doc -->

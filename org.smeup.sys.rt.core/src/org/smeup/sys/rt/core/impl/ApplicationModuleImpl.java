@@ -28,11 +28,11 @@ import org.smeup.sys.rt.core.QServiceRef;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.rt.core.impl.ApplicationModuleImpl#getServices <em>Services</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

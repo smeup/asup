@@ -61,12 +61,14 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJCompilerManagerImpl implements QCompilerManager {
 
@@ -78,6 +80,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 	private QDataManager dataManager;
 	@Inject
 	private QResourceManager resourceManager;
+	@Inject
+	private QExceptionManager exceptionManager;
+	@Inject
+	private QLogger logger;
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
 	private Map<String, QCompilationUnit> globalContexts = new HashMap<>();
@@ -332,7 +338,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Error loading module: " + moduleName);
+			logger.info(exceptionManager.prepareException(job, 
+					RPJCompilerMessage.AS00102, new String[] {moduleName}));
+//			System.out.println("Error loading module: " + moduleName);
 		}
 
 	}
