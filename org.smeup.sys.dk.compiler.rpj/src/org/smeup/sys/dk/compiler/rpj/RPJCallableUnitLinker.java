@@ -264,7 +264,8 @@ public class RPJCallableUnitLinker {
 			if (fileTerm.getFormat() == null)
 				fileTerm.setFormat(internalFileFormat);
 			else
-				logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00100, new String[] {}));
+				logger.info(excpetionManager.prepareException(job, 
+						RPJCompilerMessage.AS00100, null));
 //				System.out.println("Unexpected condition: b439t857bt9retvbtr");
 
 			// remove redefined record
@@ -407,7 +408,8 @@ public class RPJCallableUnitLinker {
 		QFile file = getFile(externalFile.getName());
 
 		if (externalFile.getName().startsWith("*")) {
-			logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00101, new String[] {}));
+			logger.info(excpetionManager.prepareException(job, 
+					RPJCompilerMessage.AS00101, null));
 //			System.out.println("Unexpected condition: 9xqb59qrqevrvqd0sa");
 			return null;
 		}
