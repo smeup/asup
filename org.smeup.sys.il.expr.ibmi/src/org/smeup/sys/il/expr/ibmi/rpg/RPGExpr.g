@@ -127,7 +127,7 @@ indicator
 	:
 		MULT IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
 		|
-		MULT INNR ->	^(BI_FUNCTION["*IN"] INTEGER["*" + $INNR.text.substring(2)])	// Caso *INnn
+		MULT INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(2)])	// Caso *INnn
 		|
 		MULT INNU -> ^(INDICATOR["*" + $INNU.text])				        	// Caso *INU0 - *INU8
 		|
