@@ -34,7 +34,9 @@ public class DatabaseSyntaxHelper {
 		"^[\\s]*[dD][eE][sS][cC][rR][iI][bB][eE][\\s]*.*", /*DESCRIBE*/
 //		"^[\\s]*[fF][eE][tT][cC][hH].*[fF][rR][oO][mM][\\s][\\s]*.*", /*FETCH FROM*/
 		"^[\\s]*[fF][eE][tT][cC][hH][\\s]*.*", /*FETCH*/
-		"^[\\s]*[cC][lL][oO][sS][eE][\\s]*.*" /*CLOSE*/		
+		"^[\\s]*[cC][lL][oO][sS][eE][\\s]*.*", /*CLOSE*/
+		"^[\\s]*[sS][eE][tT][\\s]*[oO][pP][tT][iI][oO][nN][\\s]*.*", /*SET OPTION*/
+		
 	};
 	
 
