@@ -1153,5 +1153,16 @@
         </parameters>
       </entry>
     </prototypes>
+    <prototypes name="%uns">
+      <definition xsi:type="il-data-def:NumericDef"/>
+      <entry>
+        <parameters>
+          <delegate xsi:type="il-flow:FlowData" name="expression">
+            <cardinality min="1"/>
+            <definition xsi:type="il-data-def:BufferDef"/>
+          </delegate>
+        </parameters>
+      </entry>
+    </prototypes>
   </flowSection>
 </il-flow:Module>
