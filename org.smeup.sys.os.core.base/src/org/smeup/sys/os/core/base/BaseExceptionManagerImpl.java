@@ -37,7 +37,7 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 		QResourceReader<QMessageFile> messageFileReader = resourceManager.getResourceReader(job, QMessageFile.class, Scope.LIBRARY_LIST);
 
-		QMessageFile qMessageFile = null;
+		QMessageFile messageFile = null;
 
 		String messageFileName = null;
 		if (message.getClass().getAnnotation(MessageDef.class) != null)
@@ -50,19 +50,19 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 				synchronized (this) {
 					if (cpfMessageFile == null) {
 						cpfMessageFile = messageFileReader.lookup(messageFileName);
-						qMessageFile = cpfMessageFile;
+						messageFile = cpfMessageFile;
 					}
 				}
-				qMessageFile = cpfMessageFile;
+				messageFile = cpfMessageFile;
 			} else
-				qMessageFile = cpfMessageFile;
+				messageFile = cpfMessageFile;
 
 		} else
-			qMessageFile = messageFileReader.lookup(messageFileName);
+			messageFile = messageFileReader.lookup(messageFileName);
 
 		QMessageDescription messageDescription = null;
-		if (qMessageFile != null)
-			messageDescription = qMessageFile.lookup(messageFileName);
+		if (messageFile != null)
+			messageDescription = messageFile.lookup(message.name());
 
 		String messageText = "Invalid message file: " + message;
 		String name = message.toString();
