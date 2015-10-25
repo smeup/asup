@@ -11,16 +11,13 @@
  */
 package org.smeup.sys.rt.core.e4;
 
-import javax.inject.Inject;
-
 import org.osgi.service.log.LogService;
 import org.smeup.sys.rt.core.QLogger;
 
 public class E4LoggerImpl implements QLogger {
 
-	@Inject
-	private LogService logService;
-
+	private LogService logService = new SystemLogService("E4Logger");
+	
 	@Override
 	public void debug(String message) {
 		logService.log(LogService.LOG_DEBUG, message);		

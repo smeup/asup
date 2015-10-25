@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.data.annotation.MessageDef;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -38,11 +39,17 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 		QMessageFile qMessageFile = null;
 
-		if (message.getClass().getSimpleName().equalsIgnoreCase("QCPFMSG")) {
+		String messageFileName = null;
+		if (message.getClass().getAnnotation(MessageDef.class) != null)
+			messageFileName = message.getClass().getAnnotation(MessageDef.class).name();
+		else
+			messageFileName = message.getClass().getSimpleName();
+
+		if (messageFileName.equalsIgnoreCase("QCPFMSG")) {
 			if (cpfMessageFile == null) {
 				synchronized (this) {
 					if (cpfMessageFile == null) {
-						cpfMessageFile = messageFileReader.lookup(message.getClass().getSimpleName());
+						cpfMessageFile = messageFileReader.lookup(messageFileName);
 						qMessageFile = cpfMessageFile;
 					}
 				}
@@ -51,11 +58,11 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 				qMessageFile = cpfMessageFile;
 
 		} else
-			qMessageFile = messageFileReader.lookup(message.getClass().getSimpleName());
+			qMessageFile = messageFileReader.lookup(messageFileName);
 
 		QMessageDescription messageDescription = null;
 		if (qMessageFile != null)
-			messageDescription = qMessageFile.lookup(message);
+			messageDescription = qMessageFile.lookup(messageFileName);
 
 		String messageText = "Invalid message file: " + message;
 		String name = message.toString();
