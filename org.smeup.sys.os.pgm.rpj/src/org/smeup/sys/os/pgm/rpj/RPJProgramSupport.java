@@ -676,6 +676,14 @@ public class RPJProgramSupport {
 		return character;
 	}
 
+	public QDecimal qUns(QNumeric numeric) {
+		return null;
+	}
+
+	public QDecimal qUns(QString string) {
+		return null;
+	}
+	
 	public QString qXlate(String oldString, String newString, QString source) {
 		return null;
 	}
