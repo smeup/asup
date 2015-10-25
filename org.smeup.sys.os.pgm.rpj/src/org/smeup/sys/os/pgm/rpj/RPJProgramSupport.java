@@ -48,7 +48,6 @@ import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
-import org.smeup.sys.rt.core.QLogger;
 
 @Module(name="*RPJ")
 public class RPJProgramSupport {
@@ -58,8 +57,6 @@ public class RPJProgramSupport {
 	
 	@Inject
 	public QDataFactory dataFactory;
-	@Inject
-	public QLogger logger;
 
 	@Inject
 	public QProgramManager programManager;
@@ -205,15 +202,20 @@ public class RPJProgramSupport {
 	 * public QBufferedData qBox(Enum<?> label) { return null; }
 	 */
 
-	public QDecimal qBitand(QDecimal expression, QDecimal expression2) {
-		return null;
-	}
-	
-	public QDecimal qBitnot(QDecimal expression) {
+	public QNumeric qBitand(int expression, byte expression2) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public QDecimal qBitxor(QDecimal expression, QDecimal expression2) {
+	public QDecimal qBitand(Integer expression, QDecimal expression2) {
+		return null;
+	}
+	
+	public QDecimal qBitnot(Integer expression) {
+		return null;
+	}
+
+	public QDecimal qBitxor(Integer expression, QDecimal expression2) {
 		return null;
 	}
 

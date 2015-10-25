@@ -102,7 +102,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 		QExpression value = null;
 		// TODO
-		try {		
+		try {
 			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
 				if (default_.getValue().startsWith("'"))
 					value = expressionParser.parseExpression(default_.getValue());
@@ -112,9 +112,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				value = expressionParser.parseExpression(default_.getValue());
 
 		} catch (Exception e) {
-			logger.warning(exceptionManager.prepareException(job, 
-					RPJCompilerMessage.AS00103, null));
-//			System.err.println("Unexpected condition " + default_.getValue() + ": cnt0wr7t9w7rtb444c6");
+			logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00103, default_.getValue()));
 		}
 
 		if (value == null)
@@ -172,9 +170,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				break;
 			default:
-				logger.warning(exceptionManager.prepareException(job, 
-						RPJCompilerMessage.AS00104, new String[] {value.toString()}));
-//				System.err.println(value);
+				logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00104, new String[] { value.toString() }));
 				break;
 			}
 		}
@@ -228,9 +224,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				break;
 			default:
-				logger.info(exceptionManager.prepareException(job, 
-						RPJCompilerMessage.AS00105, new String[] {getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value}));
-//				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + value);
+				logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { target.getName(), propertyName }));
 				break;
 			}
 
@@ -250,9 +244,8 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				break;
 
 			default:
-				logger.info(exceptionManager.prepareException(job, 
-						RPJCompilerMessage.AS00105, new String[] {getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue()}));
-//				System.out.println(getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName + "=" + compoundTermExpression.getValue());
+				logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { getCompilationUnit().getNode().getName() + "." + target.getName() + "." + propertyName
+						+ "=" + compoundTermExpression.getValue() }));
 				break;
 			}
 

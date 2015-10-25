@@ -21,6 +21,12 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eTypeParameter="#//Array/D"/>
@@ -300,29 +306,29 @@
     </eOperations>
     <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
     <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedDataDelegator" abstract="true"
       interface="true">
@@ -2124,6 +2130,7 @@
       </eParameters>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="qUns" eType="#//Numeric"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pointer" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">

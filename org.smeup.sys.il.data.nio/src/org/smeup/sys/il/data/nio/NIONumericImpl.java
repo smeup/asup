@@ -670,6 +670,20 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	@Override
+	public QNumeric qUns() {
+
+		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 0);
+		number.allocate();
+		
+		if(asShort() > 0)
+			number.eval(this);
+		else
+			number.eval(this.asDouble()*-1);
+			
+		return number;
+	}
+
+	@Override
 	public QNumeric qInt() {
 		return qIntOperation(this.asDouble(), false);
 	}

@@ -19,6 +19,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
 
 public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedListImpl<D> implements QArray<D> {
@@ -485,5 +486,17 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 				((QNumeric)this.get(i)).plus(value.doubleValue());
 			}
 		}
+	}
+
+	@Override
+	public void eval(int value) {
+		for(D element: this)
+			((QNumeric)element).eval(value);
+	}
+
+	@Override
+	public void eval(String value) {
+		for(D element: this)
+			((QString)element).eval(value);
 	}
 }

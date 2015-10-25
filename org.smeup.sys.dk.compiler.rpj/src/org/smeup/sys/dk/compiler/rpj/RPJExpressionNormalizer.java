@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.dk.compiler.rpj;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.writer.CompilationContextHelper;
 import org.smeup.sys.il.core.QNamedNode;
@@ -35,24 +37,31 @@ import org.smeup.sys.il.flow.QMethodExec;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.rt.core.QLogger;
 
 public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
+	@Inject
 	private QCompilationUnit compilationUnit;
+	@Inject
 	private QExpressionParser expressionParser;
+	@Inject
+	private QExceptionManager excpetionManager;
+	@Inject
+	private QLogger logger;
+	@Inject
+	private QJob job;
+
 	private QMethodExec lastSetll = null;
-	
-	public RPJExpressionNormalizer(QCompilationUnit compilationUnit, QExpressionParser expressionParser) {
-		this.compilationUnit = compilationUnit;
-		this.expressionParser = expressionParser;
-	}
 
 	@Override
 	public boolean visit(QMethodExec statement) {
 
-		if(statement.getMethod().equalsIgnoreCase("SETLL")) 
+		if (statement.getMethod().equalsIgnoreCase("SETLL"))
 			lastSetll = statement;
-		
+
 		return super.visit(statement);
 	}
 
@@ -170,13 +179,13 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QIf statement) {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
-		
-		if(normalizePredicateExpression(predicateExpression)) {
+
+		if (normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());			
+			statement.setCondition(expressionStringBuilder.getResult());
 		}
-		
+
 		return super.visit(statement);
 	}
 
@@ -185,10 +194,10 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if(normalizePredicateExpression(predicateExpression)) {
+		if (normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());			
+			statement.setCondition(expressionStringBuilder.getResult());
 		}
 
 		return super.visit(statement);
@@ -199,10 +208,10 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if(normalizePredicateExpression(predicateExpression)) {
+		if (normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());			
+			statement.setCondition(expressionStringBuilder.getResult());
 		}
 
 		return super.visit(statement);
@@ -211,49 +220,75 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QWhile statement) {
 
-
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
-		if(normalizePredicateExpression(predicateExpression)) {
+		if (normalizePredicateExpression(predicateExpression)) {
 			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
 			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());			
+			statement.setCondition(expressionStringBuilder.getResult());
 		}
 
 		return super.visit(statement);
-	}	
+	}
 
 	private boolean normalizePredicateExpression(QPredicateExpression predicateExpression) {
 
 		InternalExpressionNormalizer expressionVisitor = new InternalExpressionNormalizer();
 		predicateExpression.accept(expressionVisitor);
-		
+
 		return expressionVisitor.isNormalized();
 	}
-	
-	
+
+	private void reverseExpression(QRelationalExpression relationalExpression) {
+
+		QExpression leftExpression = relationalExpression.getLeftOperand();
+		QExpression rightExpression = relationalExpression.getRightOperand();
+
+		relationalExpression.setLeftOperand(rightExpression);
+		relationalExpression.setRightOperand(leftExpression);
+
+		switch (relationalExpression.getOperator()) {
+		case EQUAL:
+			break;
+		case GREATER_THAN:
+			relationalExpression.setOperator(RelationalOperator.LESS_THAN);
+			break;
+		case GREATER_THAN_EQUAL:
+			relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
+			break;
+		case LESS_THAN:
+			relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
+			break;
+		case LESS_THAN_EQUAL:
+			relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
+			break;
+		case NOT_EQUAL:
+			break;
+		}
+	}
+
 	private class InternalExpressionNormalizer extends ExpressionVisitorImpl {
 
 		private boolean normalized = false;
-		
+
 		protected boolean isNormalized() {
 			return normalized;
 		}
-		
+
 		@Override
 		public boolean visit(QFunctionTermExpression expression) {
-			if(expression.getValue().equalsIgnoreCase("%EQUAL")) {
-				if(expression.getElements().isEmpty()) {
-					if(lastSetll != null) {
+			if (expression.getValue().equalsIgnoreCase("%EQUAL")) {
+				if (expression.getElements().isEmpty()) {
+					if (lastSetll != null) {
 						QAtomicTermExpression atomicTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 						atomicTermExpression.setType(AtomicType.NAME);
 						atomicTermExpression.setValue(lastSetll.getObject());
 						expression.getElements().add(atomicTermExpression);
-						
+
 						normalized = true;
-					}						
+					}
 				}
-				
+
 			}
 			return super.visit(expression);
 		}
@@ -271,14 +306,13 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			case ATOMIC:
 				QAtomicTermExpression atomicTermExpressionLeft = (QAtomicTermExpression) leftExpression;
 
-				// special founded on left -> reverse expression
+				// special founded on left
 				if (atomicTermExpressionLeft.getType() == AtomicType.SPECIAL) {
-					reverseExpression(expression);				
+					reverseExpression(expression);
 					normalized = true;
 				}
-
-				// STRING founded on left
-				if (atomicTermExpressionLeft.getType() == AtomicType.STRING) {
+				// string founded on left
+				else if (atomicTermExpressionLeft.getType() == AtomicType.STRING) {
 
 					if (rightExpression instanceof QAtomicTermExpression) {
 						QAtomicTermExpression atomicTermExpressionRight = (QAtomicTermExpression) rightExpression;
@@ -287,9 +321,28 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 							reverseExpression(expression);
 							normalized = true;
 						}
+
+					} else
+						logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00106, atomicTermExpressionLeft.getValue()));
+				}
+				// constant founded on left
+				else if (atomicTermExpressionLeft.getType() == AtomicType.NAME) {
+
+					if (CompilationContextHelper.isPrimitive(compilationUnit, rightExpression))
+						break;
+					if (rightExpression instanceof QAtomicTermExpression)
+						if (((QAtomicTermExpression) rightExpression).getType() == AtomicType.SPECIAL)
+							break;
+
+					QDataTerm<?> dataTerm = compilationUnit.getDataTerm(atomicTermExpressionLeft.getValue(), true);
+					if (dataTerm == null)
+						logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00107, atomicTermExpressionLeft.getValue()));
+
+					else if (dataTerm.isConstant()) {
+						reverseExpression(expression);
+						normalized = true;
 					}
 				}
-			
 
 				break;
 			case BLOCK:
@@ -307,34 +360,6 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 			}
 
 			return super.visit(expression);
-		}
-		
-		private void reverseExpression(QRelationalExpression relationalExpression) {
-			
-			QExpression leftExpression = relationalExpression.getLeftOperand();
-			QExpression rightExpression = relationalExpression.getRightOperand();
-			
-			relationalExpression.setLeftOperand(rightExpression);
-			relationalExpression.setRightOperand(leftExpression);
-
-			switch (relationalExpression.getOperator()) {
-			case EQUAL:
-				break;
-			case GREATER_THAN:
-				relationalExpression.setOperator(RelationalOperator.LESS_THAN);
-				break;
-			case GREATER_THAN_EQUAL:
-				relationalExpression.setOperator(RelationalOperator.LESS_THAN_EQUAL);
-				break;
-			case LESS_THAN:
-				relationalExpression.setOperator(RelationalOperator.GREATER_THAN);
-				break;
-			case LESS_THAN_EQUAL:
-				relationalExpression.setOperator(RelationalOperator.GREATER_THAN_EQUAL);
-				break;
-			case NOT_EQUAL:
-				break;
-			}
 		}
 	}
 }

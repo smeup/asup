@@ -63,11 +63,11 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		List<String> modules = new ArrayList<>();
 		if (program.getSetupSection() != null) {
 			for (String module : program.getSetupSection().getModules())
-				loadModules(modules, module, false);
+				loadModules(modules, module, true);
 
 			for (String module : modules) {
 
-				QModule flowModule = getCompilationUnit().getModule(module, false);
+				QModule flowModule = getCompilationUnit().getModule(module, true);
 				if (flowModule == null)
 					throw new IOException("Invalid module: " + module);
 

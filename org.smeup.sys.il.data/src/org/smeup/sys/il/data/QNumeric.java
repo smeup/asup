@@ -923,6 +923,14 @@ public interface QNumeric extends QBufferedData {
 	 * @model
 	 * @generated
 	 */
+	QNumeric qUns();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void time();
 
 	/**

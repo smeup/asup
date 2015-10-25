@@ -27,7 +27,6 @@ import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.dk.compiler.rpj.RPJExpressionNormalizer;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QUnit;
 import org.smeup.sys.os.pgm.rpj.RPJCommandSupport;
@@ -135,8 +134,7 @@ public abstract class JDTUnitWriter extends JDTNamedNodeWriter {
 
 	public void refactUnit(QUnit unit) {
 
-		QExpressionParser expressionParser = getCompilationUnit().getContext().get(QExpressionParser.class);
-		RPJExpressionNormalizer expressionNormalizer = new RPJExpressionNormalizer(getCompilationUnit(), expressionParser);
+		RPJExpressionNormalizer expressionNormalizer = getCompilationUnit().getContext().make(RPJExpressionNormalizer.class);
 		
 		// main
 		if (unit.getMain() != null)

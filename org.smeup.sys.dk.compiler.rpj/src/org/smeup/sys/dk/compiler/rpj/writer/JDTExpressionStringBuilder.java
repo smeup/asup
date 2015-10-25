@@ -32,6 +32,8 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -159,7 +161,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			 * if (expression.getValue().equalsIgnoreCase("*OMIT")) value =
 			 * "null"; else
 			 */
-			if(Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
+			if (Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
 				value = "null";
 			else
 				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
@@ -233,6 +235,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QArithmeticExpression expression) {
 
+		StringBuffer value = new StringBuffer();
+
 		JDTExpressionStringBuilder builder = compilationUnit.getContext().make(JDTExpressionStringBuilder.class);
 		builder.setAST(getAST());
 
@@ -243,18 +247,18 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.setTarget(null);
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
 
 			// operator
-			buffer.append("." + toJavaMethod(expression));
-			buffer.append("(");
+			value.append("." + toJavaMethod(expression));
+			value.append("(");
 
 			// right
 			builder.clear();
 			expression.getRightOperand().accept(builder);
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
 
-			buffer.append(")");
+			value.append(")");
 
 		}
 		// plus, minus, multiple, cat ..
@@ -264,21 +268,21 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			builder.setTarget(target);
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
 
-			buffer.append(toJavaPrimitive(expression.getOperator()));
+			value.append(toJavaPrimitive(expression.getOperator()));
 
 			target = CompilationContextHelper.getJavaClass(compilationUnit, expression.getRightOperand());
 			builder.setTarget(target);
 			builder.clear();
 			expression.getRightOperand().accept(builder);
 
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
 		}
 		// negate
 		else {
 
-			buffer.append(toJavaPrimitive(expression.getOperator()));
+			value.append(toJavaPrimitive(expression.getOperator()));
 
 			if (!CompilationContextHelper.isPrimitive(compilationUnit, expression.getLeftOperand()))
 				builder.setTarget(Integer.class);
@@ -287,8 +291,26 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			builder.clear();
 			expression.getLeftOperand().accept(builder);
-			buffer.append(builder.getResult());
+			value.append(builder.getResult());
 
+		}
+
+		if (target != null) {
+			if (Number.class.isAssignableFrom(target))
+				writeValue(Integer.class, target, value.toString());
+			else if (Buffer.class.isAssignableFrom(target))
+				writeValue(Integer.class, target, value.toString());
+			else if (String.class.isAssignableFrom(target))
+				writeValue(String.class, target, value.toString());
+			
+			else if (QNumeric.class.isAssignableFrom(target))
+				writeValue(Integer.class, target, value.toString());
+			else if (QString.class.isAssignableFrom(target))
+				writeValue(String.class, target, value.toString());
+			else
+				writeValue(String.class, target, value.toString());
+		} else {
+			buffer.append(value);
 		}
 
 		return false;
@@ -633,8 +655,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					buffer.append("qRPJ.qBox(true)");
 				else
 					buffer.append("qRPJ.qBox(false)");
-			} 
-			else if(String.class.isAssignableFrom(this.target)) {				
+			} else if (String.class.isAssignableFrom(this.target)) {
 				if (value.equalsIgnoreCase("qRPJ.qSP.ON"))
 					buffer.append("\"1\"");
 				else if (value.equalsIgnoreCase("qRPJ.qSP.OFF"))
@@ -645,8 +666,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					buffer.append("\"\"");
 				else
 					buffer.append(value);
-			}
-			else
+			} else
 				buffer.append(value);
 
 		} else if (target.isAssignableFrom(String.class)) {
@@ -968,10 +988,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 					writeValue(dataTerm.getDefinition().getDataClass(), null, value.toString());
 			}
 		} else
-//			System.err.println("Unexpected condition: xm4t609543m487mxz");
-			logger.warning(exceptionManager.prepareException(job, 
-				RPJCompilerMessage.AS00106, new String[] {namedNode.getName()}));
-
+			logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00106, namedNode));
 
 		return false;
 	}

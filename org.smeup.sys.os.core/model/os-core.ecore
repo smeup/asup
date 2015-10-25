@@ -63,6 +63,14 @@
       </eTypeParameters>
       <eParameters name="job" eType="#//jobs/Job"/>
       <eParameters name="message" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      <eParameters name="variable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="prepareException" eType="#//MessageException">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="job" eType="#//jobs/Job"/>
+      <eParameters name="message" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
       <eParameters name="variables" lowerBound="1" eType="#//MessageVariableList"/>
     </eOperations>
   </eClassifiers>

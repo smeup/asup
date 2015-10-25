@@ -109,13 +109,13 @@ public class RPJCallableUnitLinker {
 
 		RPJDataTermLinker externalNameLinker = compilationUnit.getContext().make(RPJDataTermLinker.class);
 		for (QDataTerm<?> dataTerm : new ArrayList<QDataTerm<?>>(dataSection.getDatas())) {
-			if(dataTerm.getDataTermType() == null) {
+			if (dataTerm.getDataTermType() == null) {
 				compilationUnit.getTrashCan().getDataTerms().add(dataTerm);
 				continue;
 			}
 			dataTerm.accept(externalNameLinker);
 		}
-			
+
 	}
 
 	public void linkLikeDatas(QCompilationUnit compilationUnit) {
@@ -136,14 +136,14 @@ public class RPJCallableUnitLinker {
 			dataLikeVisitor.reset();
 			dataTerm.accept(dataLikeVisitor);
 		}
-		
-/*
-		while (!dataLikeVisitor.getTermsTodo().isEmpty()) {
-			dataLikeVisitor.reset();
 
-			QDataTerm<?> termTodo = dataLikeVisitor.getTermsTodo().pop();
-			termTodo.accept(dataLikeVisitor);
-		}*/
+		/*
+		 * while (!dataLikeVisitor.getTermsTodo().isEmpty()) {
+		 * dataLikeVisitor.reset();
+		 * 
+		 * QDataTerm<?> termTodo = dataLikeVisitor.getTermsTodo().pop();
+		 * termTodo.accept(dataLikeVisitor); }
+		 */
 	}
 
 	public void linkFormulas(QCompilationUnit compilationUnit) {
@@ -239,7 +239,7 @@ public class RPJCallableUnitLinker {
 
 		for (QPrintTerm printerTerm : fileSection.getPrinters())
 			linkFileTerm(printerTerm, compilationUnit);
-		
+
 		compilationUnit.refresh();
 	}
 
@@ -260,13 +260,11 @@ public class RPJCallableUnitLinker {
 				private static final long serialVersionUID = 1L;
 			};
 			internalFileFormat.setDefinition(dataRecord.getDefinition());
-			
+
 			if (fileTerm.getFormat() == null)
 				fileTerm.setFormat(internalFileFormat);
 			else
-				logger.info(excpetionManager.prepareException(job, 
-						RPJCompilerMessage.AS00100, null));
-//				System.out.println("Unexpected condition: b439t857bt9retvbtr");
+				logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00100, fileTerm.getFormat()));
 
 			// remove redefined record
 			compilationUnit.getTrashCan().getDataTerms().add(dataRecord);
@@ -408,9 +406,7 @@ public class RPJCallableUnitLinker {
 		QFile file = getFile(externalFile.getName());
 
 		if (externalFile.getName().startsWith("*")) {
-			logger.info(excpetionManager.prepareException(job, 
-					RPJCompilerMessage.AS00101, null));
-//			System.out.println("Unexpected condition: 9xqb59qrqevrvqd0sa");
+			logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00101, externalFile.getName()));
 			return null;
 		}
 
