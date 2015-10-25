@@ -6,7 +6,7 @@
     <eLiterals name="Upper" value="20" literal="U"/>
     <eLiterals name="Ignore" value="30" literal="I"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+  <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
     <eOperations name="equalsTermName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="target" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -92,6 +92,9 @@
     <eOperations name="close"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trashCan" eType="#//CompilationTrashCan"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConversionUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+    <eOperations name="close"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilationSetup">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -181,12 +184,20 @@
     <eLiterals name="Nested" value="20" literal="NESTED"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitConverter" abstract="true" interface="true">
-    <eOperations name="convertModule" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Module">
+    <eOperations name="createConversionUnit" lowerBound="1" eType="#//ConversionUnit">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="module" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.module/model/os-module.ecore#//Module"/>
     </eOperations>
-    <eOperations name="convertProgram" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Program">
+    <eOperations name="createConversionUnit" lowerBound="1" eType="#//ConversionUnit">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="program" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.pgm/model/os-pgm.ecore#//Program"/>
+    </eOperations>
+    <eOperations name="convertModule" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Module">
+      <eParameters name="conversionUnit" lowerBound="1" eType="#//ConversionUnit"/>
+      <eParameters name="module" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.module/model/os-module.ecore#//Module"/>
+    </eOperations>
+    <eOperations name="convertProgram" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.flow/model/il-flow.ecore#//Program">
+      <eParameters name="conversionUnit" lowerBound="1" eType="#//ConversionUnit"/>
       <eParameters name="program" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.pgm/model/os-pgm.ecore#//Program"/>
     </eOperations>
   </eClassifiers>

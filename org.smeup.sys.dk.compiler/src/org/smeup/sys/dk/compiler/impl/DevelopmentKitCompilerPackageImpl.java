@@ -24,6 +24,7 @@ import org.smeup.sys.dk.compiler.QCompilationTrashCan;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
 import org.smeup.sys.dk.compiler.QCompilerManager;
+import org.smeup.sys.dk.compiler.QConversionUnit;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.dk.compiler.QUnitConverter;
@@ -54,6 +55,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass compilationUnitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conversionUnitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,6 +217,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 */
 	public EReference getCompilationUnit_TrashCan() {
 		return (EReference)compilationUnitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConversionUnit() {
+		return conversionUnitEClass;
 	}
 
 	/**
@@ -390,6 +407,8 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		compilationUnitEClass = createEClass(COMPILATION_UNIT);
 		createEReference(compilationUnitEClass, COMPILATION_UNIT__TRASH_CAN);
 
+		conversionUnitEClass = createEClass(CONVERSION_UNIT);
+
 		compilationSetupEClass = createEClass(COMPILATION_SETUP);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__BASE_PACKAGE);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__ENTRY_TYPE);
@@ -439,6 +458,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
 		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
@@ -447,7 +467,6 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QOperatingSystemFilePackage theOperatingSystemFilePackage = (QOperatingSystemFilePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemFilePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QOperatingSystemModulePackage theOperatingSystemModulePackage = (QOperatingSystemModulePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemModulePackage.eNS_URI);
 		QOperatingSystemProgramPackage theOperatingSystemProgramPackage = (QOperatingSystemProgramPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemProgramPackage.eNS_URI);
 
@@ -457,6 +476,9 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		// Add supertypes to classes
 		compilationUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		compilationUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		conversionUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		conversionUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
 		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
 		EGenericType g2 = createEGenericType(this.getUnitConverter());
@@ -556,6 +578,10 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(compilationUnitEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(conversionUnitEClass, QConversionUnit.class, "ConversionUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(conversionUnitEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(compilationSetupEClass, QCompilationSetup.class, "CompilationSetup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompilationSetup_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompilationSetup_EntryType(), this.getEntryType(), "entryType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -641,12 +667,20 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		initEClass(unitConverterEClass, QUnitConverter.class, "UnitConverter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(unitConverterEClass, theIntegratedLanguageFlowPackage.getModule(), "convertModule", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(unitConverterEClass, this.getConversionUnit(), "createConversionUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemModulePackage.getModule(), "module", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(unitConverterEClass, theIntegratedLanguageFlowPackage.getProgram(), "convertProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(unitConverterEClass, this.getConversionUnit(), "createConversionUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemProgramPackage.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(unitConverterEClass, theIntegratedLanguageFlowPackage.getModule(), "convertModule", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConversionUnit(), "conversionUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemModulePackage.getModule(), "module", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(unitConverterEClass, theIntegratedLanguageFlowPackage.getProgram(), "convertProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConversionUnit(), "conversionUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemProgramPackage.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unitConverterRegistryEClass, QUnitConverterRegistry.class, "UnitConverterRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

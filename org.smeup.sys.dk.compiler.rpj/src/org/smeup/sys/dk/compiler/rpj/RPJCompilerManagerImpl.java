@@ -227,6 +227,8 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 				callableUnitLinker.linkLikeDatas(childCompilationUnit);
 				callableUnitLinker.linkOverlayDatas(childCompilationUnit);
 				callableUnitLinker.linkFormulas(childCompilationUnit);
+
+				childCompilationUnit.close();
 			}
 		}
 
@@ -263,24 +265,30 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		for (String moduleName : new ArrayList<String>(callableUnit.getSetupSection().getModules())) {
 
 			loadModule(job, moduleReader, moduleContexts, moduleName, caseSensitive);
-			
-/*			if(moduleName.equalsIgnoreCase("£JAX")) {
-				loadModule(job, moduleReader, moduleContexts, "£UIB", caseSensitive);
-				callableUnit.getSetupSection().getModules().add("£UIB");
-				loadModule(job, moduleReader, moduleContexts, "£J15", caseSensitive);
-				callableUnit.getSetupSection().getModules().add("£J15");
-				loadModule(job, moduleReader, moduleContexts, "£G61", caseSensitive);
-				callableUnit.getSetupSection().getModules().add("£G61");
-				loadModule(job, moduleReader, moduleContexts, "£DEC", caseSensitive);
-				callableUnit.getSetupSection().getModules().add("£DEC");
-				loadModule(job, moduleReader, moduleContexts, "£OAV", caseSensitive);
-				callableUnit.getSetupSection().getModules().add("£OAV");
-			}*/
+
+			/*
+			 * if(moduleName.equalsIgnoreCase("£JAX")) { loadModule(job,
+			 * moduleReader, moduleContexts, "£UIB", caseSensitive);
+			 * callableUnit.getSetupSection().getModules().add("£UIB");
+			 * loadModule(job, moduleReader, moduleContexts, "£J15",
+			 * caseSensitive);
+			 * callableUnit.getSetupSection().getModules().add("£J15");
+			 * loadModule(job, moduleReader, moduleContexts, "£G61",
+			 * caseSensitive);
+			 * callableUnit.getSetupSection().getModules().add("£G61");
+			 * loadModule(job, moduleReader, moduleContexts, "£DEC",
+			 * caseSensitive);
+			 * callableUnit.getSetupSection().getModules().add("£DEC");
+			 * loadModule(job, moduleReader, moduleContexts, "£OAV",
+			 * caseSensitive);
+			 * callableUnit.getSetupSection().getModules().add("£OAV"); }
+			 */
 		}
 
 		return moduleContexts;
 	}
 
+	@SuppressWarnings("resource")
 	private void loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, List<QCompilationUnit> moduleContexts, String moduleName, CaseSensitiveType caseSensitive) {
 
 		QCompilationUnit moduleContext = globalContexts.get(moduleName);
@@ -319,9 +327,18 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			throw new OperatingSystemRuntimeException(e);
 		}
 
-	} 
-	
+	}
+
+	@SuppressWarnings("resource")
 	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
+
+		QCompilationUnit moduleContext = globalContexts.get(moduleName);
+
+		if (moduleContext != null) {
+			moduleContexts.add(moduleContext);
+			return;
+		}
+
 		try {
 			URL entry = FrameworkUtil.getBundle(this.getClass()).getEntry("./modules/" + moduleName.replaceAll("\\*", "q") + ".xmi");
 			Resource resource = resourceSet.createResource(URI.createURI(entry.toString()));
@@ -333,16 +350,13 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 			if (eObject instanceof QModule) {
 				QModule module = (QModule) eObject;
 
-				QCompilationUnit moduleContext = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
+				moduleContext = createCompilationUnit(job, new HashMap<String, QCompilationUnit>(), module, caseSensitive);
 				moduleContexts.add(moduleContext);
 			}
 
 		} catch (Exception e) {
-			logger.info(exceptionManager.prepareException(job, 
-					RPJCompilerMessage.AS00102, new String[] {moduleName}));
-//			System.out.println("Error loading module: " + moduleName);
+			logger.info(exceptionManager.prepareException(job, RPJCompilerMessage.AS00102, new String[] { moduleName }));
 		}
-
 	}
 
 	@SuppressWarnings("unchecked")

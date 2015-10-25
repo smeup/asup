@@ -33,6 +33,7 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -302,10 +303,12 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				writeValue(Integer.class, target, value.toString());
 			else if (String.class.isAssignableFrom(target))
 				writeValue(String.class, target, value.toString());
-			
+
 			else if (QNumeric.class.isAssignableFrom(target))
 				writeValue(Integer.class, target, value.toString());
 			else if (QString.class.isAssignableFrom(target))
+				writeValue(String.class, target, value.toString());
+			else if (QPointer.class.isAssignableFrom(target))
 				writeValue(String.class, target, value.toString());
 			else
 				writeValue(String.class, target, value.toString());

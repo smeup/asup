@@ -28,7 +28,6 @@ import org.smeup.sys.il.data.def.QMultipleDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.ExpressionType;
-import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
@@ -125,15 +124,15 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 		if (compoundTermExpression.getValue().toLowerCase().equals("%addr")) {
 
 			if (!dataTerm.getDefinition().getDataClass().equals(QPointer.class))
-				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: d9q6r35xcvbcvb40956");
+				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
 
 			QPointerDef pointerDef = (QPointerDef) dataTerm.getDefinition();
 			if (pointerDef.getTarget() != null)
-				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition " + pointerDef + ": nfdsg8sdfbm0jntr8uy9u0ty");
+				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
 
 			QDataTerm<?> dataValue = getDataValue(value);
 			if (dataValue == null)
-				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: 90mvqsdgdfag79fasgfsdfg");
+				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
 
 			pointerDef.setTarget(dataValue.getName());
 
@@ -143,11 +142,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			// TODO calculate on @PostConstruct
 		} else {
 			QDataTerm<?> dataValue = getDataValue(value);
+			String property = compoundTermExpression.getValue();
 			switch (compoundTermExpression.getValue().toLowerCase()) {
 			case "%elem":
-
-				if (dataValue.getDataTermType().isUnary())
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f8s0d9");
 
 				String stringValue = null;
 				try {
@@ -156,12 +153,15 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sd", e);
 				}
 
+				if (dataValue.getDataTermType().isUnary())
+					throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { property, stringValue});
+
 				default_.setValue(stringValue);
 
 				break;
 			case "%size":
 				if (dataValue.getDataTermType().isAtomic())
-					throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdsfwergds09f82343");
+					throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00107, dataTerm);
 
 				QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
 
@@ -188,7 +188,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 			QDataTerm<?> dataValue = getCompilationUnit().getDataTerm(atomicTermExpression.getValue(), true);
 			if (dataValue == null)
-				throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdget9qbtr9q");
+				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00107, atomicTermExpression);
 
 			switch (propertyName.toLowerCase()) {
 			case "dimension":
@@ -207,7 +207,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 						try {
 							((QMultipleDataDef<?>) target.getDefinition()).setDimension(Integer.parseInt(defaultValue));
 						} catch (Exception e) {
-							throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgetg8rr5wq", e);
+							throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00105, new String[] { propertyName, defaultValue});
 						}
 					}
 				} else {

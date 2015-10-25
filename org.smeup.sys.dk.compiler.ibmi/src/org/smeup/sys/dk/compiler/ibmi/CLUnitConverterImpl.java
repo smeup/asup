@@ -24,9 +24,11 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.smeup.sys.dk.compiler.QConversionUnit;
 import org.smeup.sys.dk.compiler.QUnitConverter;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
+import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionException;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
@@ -49,15 +51,15 @@ public class CLUnitConverterImpl implements QUnitConverter {
 	private QSourceManager sourceManager;
 
 	@Override
-	public QModule convertModule(QJob job, org.smeup.sys.os.module.QModule module) {
+	public QModule convertModule(QConversionUnit conversionUnit, org.smeup.sys.os.module.QModule module) {
 		return null;
 	}
 
 	@Override
-	public QProgram convertProgram(QJob job, org.smeup.sys.os.pgm.QProgram program) {
+	public QProgram convertProgram(QConversionUnit conversionUnit, org.smeup.sys.os.pgm.QProgram program) {
 
 		// lookup program source entry
-		QSourceEntry programEntry = sourceManager.getObjectEntry(job.getContext(), program.getLibrary(), org.smeup.sys.os.pgm.QProgram.class, program.getName());
+		QSourceEntry programEntry = sourceManager.getObjectEntry(conversionUnit.getContext(), program.getLibrary(), org.smeup.sys.os.pgm.QProgram.class, program.getName());
 		if (programEntry == null)
 			// TODO create and extract(materialize program source)
 			throw new OperatingSystemRuntimeException("Null resource for object " + program.getName(), null);
@@ -65,13 +67,13 @@ public class CLUnitConverterImpl implements QUnitConverter {
 		try(InputStream inputStream = extractContent(program.getSource());) {
 
 			// extract and save
-			QSourceEntry memberExtracted = sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_extracted.XML", true, inputStream);
+			QSourceEntry memberExtracted = sourceManager.createChildEntry(conversionUnit.getContext(), programEntry, program.getName() + "_extracted.XML", true, inputStream);
 			
 			Document docFrom = loadDocument(memberExtracted.getInputStream());
-			StringBuffer source = extractSource(job, docFrom);
+			StringBuffer source = extractSource(conversionUnit, docFrom);
 
 			// save
-			sourceManager.createChildEntry(job.getContext(), programEntry, program.getName() + "_sourced.TXT", true, new ByteArrayInputStream(source.toString().getBytes("ISO-8859-1")));
+			sourceManager.createChildEntry(conversionUnit.getContext(), programEntry, program.getName() + "_sourced.TXT", true, new ByteArrayInputStream(source.toString().getBytes("ISO-8859-1")));
 
 			QProgram flowProgram = QIntegratedLanguageFlowFactory.eINSTANCE.createProgram();
 			flowProgram.setName(program.getName());
@@ -92,7 +94,7 @@ public class CLUnitConverterImpl implements QUnitConverter {
 		}
 	}
 
-	private StringBuffer extractSource(QJob job, Document document) throws ParserConfigurationException, SAXException, IOException, OperatingSystemRuntimeException,
+	private StringBuffer extractSource(QConversionUnit conversionUnit, Document document) throws ParserConfigurationException, SAXException, IOException, OperatingSystemRuntimeException,
 	IntegratedLanguageExpressionException {
 
 		StringBuffer src = null;
@@ -107,12 +109,13 @@ public class CLUnitConverterImpl implements QUnitConverter {
 			String memberName = reference.getAttribute("member");
 
 			QSourceEntry source = null;
-			for (String library : job.getLibraries()) {
-				QSourceEntry file = sourceManager.getObjectEntry(job.getContext(), library, QFile.class, fileName);
+			QContextDescription contextDescription = conversionUnit.getContext().getContextDescription();
+			for (String library : contextDescription.getLibraryPath()) {
+				QSourceEntry file = sourceManager.getObjectEntry(conversionUnit.getContext(), library, QFile.class, fileName);
 				if (file == null)
 					continue;
 
-				source = sourceManager.getChildEntry(job.getContext(), file, memberName + ".XMI");
+				source = sourceManager.getChildEntry(conversionUnit.getContext(), file, memberName + ".XMI");
 				if (source != null)
 					break;
 			}
@@ -185,5 +188,17 @@ public class CLUnitConverterImpl implements QUnitConverter {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		return builder.parse(input);
+	}
+
+	@Override
+	public QConversionUnit createConversionUnit(QJob job, org.smeup.sys.os.module.QModule module) {	
+		QConversionUnit conversionUnit = new CLConversionUnitImpl(job.getContext().createChildContext(module.getName()));
+		return conversionUnit;
+	}
+
+	@Override
+	public QConversionUnit createConversionUnit(QJob job, org.smeup.sys.os.pgm.QProgram program) {
+		QConversionUnit conversionUnit = new CLConversionUnitImpl(job.getContext().createChildContext(program.getName()));
+		return conversionUnit;
 	}
 }

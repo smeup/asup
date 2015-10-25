@@ -650,27 +650,31 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	public void writeInnerProcedure(QProcedure procedure) {
 
 		QCompilerManager compilerManager = getCompilationUnit().getContext().get(QCompilerManager.class);
-		QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);
-
+		QCompilationUnit procedureCompilationUnit = compilerManager.createChildCompilationUnit(getCompilationUnit(), procedure);		
 		QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
-
-		boolean static_ = false;
-		UnitScope scope = UnitScope.PRIVATE;
-
-		switch (getCompilationSetup().getProcedureType()) {
-		case INNER:
-			break;
-		case NESTED:
-			static_ = true;
-			scope = UnitScope.PUBLIC;
-			break;
-		}
-
-		JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), scope, static_);
+		
 		try {
+
+			boolean static_ = false;
+			UnitScope scope = UnitScope.PRIVATE;
+
+			switch (getCompilationSetup().getProcedureType()) {
+			case INNER:
+				break;
+			case NESTED:
+				static_ = true;
+				scope = UnitScope.PUBLIC;
+				break;
+			}
+
+			JDTProcedureWriter procedureWriter = new JDTProcedureWriter(this, procedureCompilationUnit, compilationSetup, getCompilationUnit().normalizeTermName(procedure.getName()), scope, static_);
+
 			procedureWriter.writeProcedure(procedure);
 		} catch (IOException e) {
 			throw new DevelopmentKitCompilerRuntimeException("Invalid procedure: " + procedure, e);
+		}
+		finally {
+			procedureCompilationUnit.close();
 		}
 	}
 

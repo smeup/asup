@@ -94,6 +94,25 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int COMPILATION_UNIT_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CONTEXT_PROVIDER_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.ConversionUnitImpl <em>Conversion Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.compiler.impl.ConversionUnitImpl
+	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getConversionUnit()
+	 * @generated
+	 */
+	int CONVERSION_UNIT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Conversion Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERSION_UNIT_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.CONTEXT_PROVIDER_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl <em>Compilation Setup</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,7 +120,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCompilationSetup()
 	 * @generated
 	 */
-	int COMPILATION_SETUP = 1;
+	int COMPILATION_SETUP = 2;
 
 	/**
 	 * The feature id for the '<em><b>Base Package</b></em>' attribute.
@@ -147,7 +166,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCompilationTrashCan()
 	 * @generated
 	 */
-	int COMPILATION_TRASH_CAN = 2;
+	int COMPILATION_TRASH_CAN = 3;
 
 	/**
 	 * The feature id for the '<em><b>Data Terms</b></em>' containment reference list.
@@ -175,7 +194,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCompilerManager()
 	 * @generated
 	 */
-	int COMPILER_MANAGER = 4;
+	int COMPILER_MANAGER = 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.QUnitConverter <em>Unit Converter</em>}' class.
@@ -185,7 +204,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitConverter()
 	 * @generated
 	 */
-	int UNIT_CONVERTER = 5;
+	int UNIT_CONVERTER = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.QUnitConverterRegistry <em>Unit Converter Registry</em>}' class.
@@ -195,7 +214,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitConverterRegistry()
 	 * @generated
 	 */
-	int UNIT_CONVERTER_REGISTRY = 6;
+	int UNIT_CONVERTER_REGISTRY = 7;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.CompilerLinkerImpl <em>Compiler Linker</em>}' class.
@@ -205,7 +224,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCompilerLinker()
 	 * @generated
 	 */
-	int COMPILER_LINKER = 3;
+	int COMPILER_LINKER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Linked Class</b></em>' attribute.
@@ -260,7 +279,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getEntryType()
 	 * @generated
 	 */
-	int ENTRY_TYPE = 8;
+	int ENTRY_TYPE = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.InternalType <em>Internal Type</em>}' enum.
@@ -270,7 +289,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getInternalType()
 	 * @generated
 	 */
-	int INTERNAL_TYPE = 9;
+	int INTERNAL_TYPE = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.
@@ -280,7 +299,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitScope()
 	 * @generated
 	 */
-	int UNIT_SCOPE = 10;
+	int UNIT_SCOPE = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}' enum.
@@ -290,7 +309,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getCaseSensitiveType()
 	 * @generated
 	 */
-	int CASE_SENSITIVE_TYPE = 7;
+	int CASE_SENSITIVE_TYPE = 8;
 
 
 	/**
@@ -313,6 +332,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompilationUnit_TrashCan();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.compiler.QConversionUnit <em>Conversion Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conversion Unit</em>'.
+	 * @see org.smeup.sys.dk.compiler.QConversionUnit
+	 * @generated
+	 */
+	EClass getConversionUnit();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.compiler.QCompilationSetup <em>Compilation Setup</em>}'.
@@ -508,6 +537,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPILATION_UNIT__TRASH_CAN = eINSTANCE.getCompilationUnit_TrashCan();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.impl.ConversionUnitImpl <em>Conversion Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.compiler.impl.ConversionUnitImpl
+		 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getConversionUnit()
+		 * @generated
+		 */
+		EClass CONVERSION_UNIT = eINSTANCE.getConversionUnit();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl <em>Compilation Setup</em>}' class.

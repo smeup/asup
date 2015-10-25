@@ -29,7 +29,7 @@ public interface QUnitConverter {
 	 * @model required="true" jobRequired="true" moduleRequired="true"
 	 * @generated
 	 */
-	QModule convertModule(QJob job, org.smeup.sys.os.module.QModule module);
+	QConversionUnit createConversionUnit(QJob job, org.smeup.sys.os.module.QModule module);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -37,6 +37,22 @@ public interface QUnitConverter {
 	 * @model required="true" jobRequired="true" programRequired="true"
 	 * @generated
 	 */
-	QProgram convertProgram(QJob job, org.smeup.sys.os.pgm.QProgram program);
+	QConversionUnit createConversionUnit(QJob job, org.smeup.sys.os.pgm.QProgram program);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" conversionUnitRequired="true" moduleRequired="true"
+	 * @generated
+	 */
+	QModule convertModule(QConversionUnit conversionUnit, org.smeup.sys.os.module.QModule module);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" conversionUnitRequired="true" programRequired="true"
+	 * @generated
+	 */
+	QProgram convertProgram(QConversionUnit conversionUnit, org.smeup.sys.os.pgm.QProgram program);
 
 } // QUnitConverter

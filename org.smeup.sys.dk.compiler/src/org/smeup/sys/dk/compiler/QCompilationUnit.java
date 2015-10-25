@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.dk.compiler;
 
+import java.io.Closeable;
 import java.util.List;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
@@ -36,10 +37,10 @@ import org.smeup.sys.il.flow.QRoutine;
  * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilationUnit()
- * @model abstract="true"
+ * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.il.core.java.JavaCloseable"
  * @generated
  */
-public interface QCompilationUnit extends QContextProvider {
+public interface QCompilationUnit extends QContextProvider, Closeable {
 	/**
 	 * Returns the value of the '<em><b>Trash Can</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
