@@ -1014,4 +1014,8 @@ public class RPJProgramSupport {
 		} else
 			System.err.println("Unknown length: " + datetime.getLength());
 	}
+
+	public QPointer qPointer(String string) {
+		return qBox(string).qAddr();
+	}
 }

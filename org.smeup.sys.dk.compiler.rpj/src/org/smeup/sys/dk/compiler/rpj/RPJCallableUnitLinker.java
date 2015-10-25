@@ -325,6 +325,7 @@ public class RPJCallableUnitLinker {
 					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
 						private static final long serialVersionUID = 1L;
 					};
+					
 					internalFormat.setDefinition(new CompoundDataDefImpl() {
 
 						/**
@@ -355,6 +356,22 @@ public class RPJCallableUnitLinker {
 				QCompilerLinker compilerLinker = linkExternalFile(compilationUnit.getContext(), displayTerm.getFormat(), externalFile);
 				if (compilerLinker != null)
 					displayTerm.getFacets().add(compilerLinker);
+
+				List<QDataTerm<?>> childDataElements = new ArrayList<QDataTerm<?>>(displayTerm.getFormat().getDefinition().getElements());
+				for(QDataTerm<?> childDataTerm: childDataElements) {
+					if(!(childDataTerm instanceof QFileFormat))
+						continue;
+					
+					QFileFormat<?> fileFormat = (QFileFormat<?>) childDataTerm;
+					// redefine record
+					QDataTerm<QCompoundDataDef<?, ?>> dataRecord = (QDataTerm<QCompoundDataDef<?, ?>>) compilationUnit.getDataTerm(fileFormat.getName(), false);
+					if (dataRecord == null)
+						return;
+
+					// remove redefined record
+					if (!(dataRecord.getParent() instanceof QFileTerm))
+						compilationUnit.getTrashCan().getDataTerms().add(dataRecord);					
+				}
 
 			} else if (file instanceof QPrinterFile) {
 

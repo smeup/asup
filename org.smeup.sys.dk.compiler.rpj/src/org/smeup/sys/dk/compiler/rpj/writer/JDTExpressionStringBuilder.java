@@ -158,11 +158,9 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case SPECIAL:
 			source = Enum.class;
-			/*
-			 * if (expression.getValue().equalsIgnoreCase("*OMIT")) value =
-			 * "null"; else
-			 */
 			if (Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
+				value = "null";
+			else if (Specials.OMIT.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
 				value = "null";
 			else
 				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
@@ -177,7 +175,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			break;
 		case INDICATOR:
 		case NAME:
-
+		
 			QNamedNode namedNode = null;
 			namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 			if (namedNode == null) {
@@ -309,7 +307,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			else if (QString.class.isAssignableFrom(target))
 				writeValue(String.class, target, value.toString());
 			else if (QPointer.class.isAssignableFrom(target))
-				writeValue(String.class, target, value.toString());
+				writeValue(QPointer.class, target, value.toString());
 			else
 				writeValue(String.class, target, value.toString());
 		} else {
@@ -705,6 +703,8 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 			buffer.append(".asDatetime()");
 		} else if (QIndicator.class.isAssignableFrom(target) && QCharacter.class.isAssignableFrom(source))
 			buffer.append("qRPJ.qCast(" + value + ")");
+		else if (QPointer.class.isAssignableFrom(target))
+			buffer.append("qRPJ.qPointer(" + value + ")");
 		else if (QData.class.isAssignableFrom(target))
 			buffer.append("qRPJ.qBox(" + value + ")");
 		else

@@ -268,11 +268,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		MethodInvocation methodInvocation = buildAssignmentMethod(assignmentExpression, statement.isRightAdjust());
 
 		if (statement.getRoundingMode() != null) {
-			statement.toString();
-			// TODO verificare se corretto qui
-			QExpression expression = expressionParser.parseExpression(statement.getRoundingMode());
-			Expression jdtExpression = buildExpression(ast, expression, null);
-			methodInvocation.arguments().add(jdtExpression);
+			QDataTerm<?> dataTerm = compilationUnit.getDataTerm(assignmentExpression.getLeftOperand().getValue(), true);
+			if (dataTerm == null)
+				throw new IntegratedLanguageExpressionRuntimeException("Invalid statement: " + statement);
+
+			if (Number.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				QExpression expression = expressionParser.parseExpression(statement.getRoundingMode());
+				Expression jdtExpression = buildExpression(ast, expression, null);
+				methodInvocation.arguments().add(jdtExpression);
+			}
 		}
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
@@ -385,8 +389,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
 		QPrototype prototype = compilationUnit.getPrototype(statement.getProcedure(), true);
-		
-		if(prototype == null)
+
+		if (prototype == null)
 			prototype = compilationUnit.getMethod(statement.getProcedure());
 
 		if (prototype == null)
@@ -394,18 +398,17 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(prototype.getName())));
 
-		if(!isOwner(prototype)) {
+		if (!isOwner(prototype)) {
 			QNode parent = prototype.getParent();
 			if (parent instanceof QModule) {
 				methodInvocation.setExpression(ast.newSimpleName(compilationUnit.normalizeModuleName(((QModule) parent).getName())));
-			}
-			else if (parent instanceof QNamedNode) {
+			} else if (parent instanceof QNamedNode) {
 				// invoke on module
 				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
 				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getProcedure());
-			
+
 		}
 
 		// entry
@@ -505,7 +508,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	public boolean visit(QMethodExec statement) {
 
 		Block block = blocks.peek();
-		
+
 		if (statement.getObject() != null) {
 
 			MethodInvocation methodInvocation = ast.newMethodInvocation();
@@ -725,7 +728,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	@Override
 	public boolean visit(QRoutineExec statement) {
 		Block block = blocks.peek();
-		
+
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 
 		QNamedNode routine = compilationUnit.getRoutine(statement.getRoutine(), true);
@@ -734,20 +737,19 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		methodInvocation.setName(ast.newSimpleName(compilationUnit.normalizeTermName(routine.getName())));
 
-		if(!isOwner(routine)) {
+		if (!isOwner(routine)) {
 			QNode parent = routine.getParent();
 			if (parent instanceof QModule) {
 				methodInvocation.setExpression(ast.newSimpleName(compilationUnit.normalizeModuleName(((QModule) parent).getName())));
-			}
-			else if (parent instanceof QNamedNode) {
+			} else if (parent instanceof QNamedNode) {
 				// invoke on module
 				String qualifiedParent = compilationUnit.getQualifiedName((QNamedNode) parent);
 				methodInvocation.setExpression(buildExpression(ast, expressionParser.parseTerm(qualifiedParent), null));
 			} else
 				throw new IntegratedLanguageExpressionRuntimeException("Invalid procedure: " + statement.getRoutine());
-			
+
 		}
-		
+
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
 
@@ -785,16 +787,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 			QEval eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
 			String value = default_.getValue();
-			if(value == null)
+			if (value == null)
 				value = default_.getValues().iterator().next();
-				
-			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				if(default_.getValue().startsWith("'"))
+
+			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				if (default_.getValue().startsWith("'"))
 					eval.setAssignment(statement.getObject() + "=" + value);
 				else
-					eval.setAssignment(statement.getObject() + "=" + "'"+value.replaceAll("\'", "\''")+"'");
-			}
-			else
+					eval.setAssignment(statement.getObject() + "=" + "'" + value.replaceAll("\'", "\''") + "'");
+			} else
 				eval.setAssignment(statement.getObject() + "=" + value);
 			eval.accept(this);
 
@@ -817,13 +818,12 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			}
 
 			eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-			if(String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
-				if(default_.getValue().startsWith("'"))
+			if (String.class.isAssignableFrom(dataTerm.getDefinition().getJavaClass())) {
+				if (default_.getValue().startsWith("'"))
 					eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 				else
-					eval.setAssignment(statement.getObject() + "=" + "'"+default_.getValue().replaceAll("\'", "\''")+"'");
-			}
-			else
+					eval.setAssignment(statement.getObject() + "=" + "'" + default_.getValue().replaceAll("\'", "\''") + "'");
+			} else
 				eval.setAssignment(statement.getObject() + "=" + default_.getValue());
 			eval.accept(this);
 
@@ -853,15 +853,14 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 					continue;
 
 				eval = QIntegratedLanguageFlowFactory.eINSTANCE.createEval();
-				if(String.class.isAssignableFrom(element.getDefinition().getJavaClass())) {
-					if(defaultElement.getValue().startsWith("'"))
+				if (String.class.isAssignableFrom(element.getDefinition().getJavaClass())) {
+					if (defaultElement.getValue().startsWith("'"))
 						eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
 					else
-						eval.setAssignment(element.getName() + "=" + "'"+defaultElement.getValue().replaceAll("\'", "\''")+"'");
-				}
-				else
+						eval.setAssignment(element.getName() + "=" + "'" + defaultElement.getValue().replaceAll("\'", "\''") + "'");
+				} else
 					eval.setAssignment(element.getName() + "=" + defaultElement.getValue());
-				
+
 				eval.accept(this);
 			}
 
@@ -949,26 +948,25 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 	}
 
 	private QCallableUnit getCallableUnit(QNamedNode nameNode) {
-	
+
 		QCallableUnit callableUnit = null;
-		
+
 		QNode node = nameNode;
-		while(callableUnit == null) {
-			if(node instanceof QModule || node instanceof QProgram) {
+		while (callableUnit == null) {
+			if (node instanceof QModule || node instanceof QProgram) {
 				callableUnit = (QCallableUnit) node;
 				break;
-			}
-			else 
+			} else
 				node = node.getParent();
-			
-			if(node == null)
+
+			if (node == null)
 				break;
 		}
-		
+
 		return callableUnit;
 	}
-	
-	private boolean isOwner(QNamedNode namedNode) {	
+
+	private boolean isOwner(QNamedNode namedNode) {
 		return getCallableUnit((QNamedNode) compilationUnit.getNode()).equals(getCallableUnit(namedNode));
 	}
 
@@ -988,9 +986,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Block block = getBlocks().peek();
 
-		if(annotationTest.getExpression() == null)
+		if (annotationTest.getExpression() == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: rbbbb9r88888sdxgrwgxtrx");
-		
+
 		QPredicateExpression expression = expressionParser.parsePredicate(annotationTest.getExpression());
 		QRelationalExpression relationalExpression = null;
 		if (expression instanceof QRelationalExpression) {

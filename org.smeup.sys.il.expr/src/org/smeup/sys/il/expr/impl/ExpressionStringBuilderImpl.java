@@ -214,10 +214,10 @@ public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 	public boolean visit(QFunctionTermExpression expression) {
 
 		result += expression.getValue();
-
+		
 		if (!expression.getElements().isEmpty()) {
-			boolean first = true;
 			result += "(";
+			boolean first = true;
 			for (QExpression child : expression.getElements()) {
 				if (!first)
 					result += ": ";
@@ -226,7 +226,11 @@ public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 			}
 			result += ")";
 		}
-
+		else {
+			result += "(";
+			result += ")";
+		}
+		
 		return false;
 	}
 

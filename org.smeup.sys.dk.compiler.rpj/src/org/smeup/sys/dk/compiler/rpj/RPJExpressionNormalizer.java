@@ -34,6 +34,7 @@ import org.smeup.sys.il.flow.QEval;
 import org.smeup.sys.il.flow.QFor;
 import org.smeup.sys.il.flow.QIf;
 import org.smeup.sys.il.flow.QMethodExec;
+import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
@@ -123,6 +124,32 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		case ARITHMETIC:
 		case ASSIGNMENT:
 			break;
+		}
+
+		switch (assignmentExpression.getRightOperand().getExpressionType()) {
+		case ATOMIC:
+			QAtomicTermExpression atomicRightExpression = (QAtomicTermExpression)assignmentExpression.getRightOperand();
+			// normalize prototype
+			QPrototype prototype = this.compilationUnit.getPrototype(atomicRightExpression.getValue(), true);
+			if (prototype != null) {
+
+				QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
+				functionTermExpression.setValue(atomicRightExpression.getValue());
+				assignmentExpression.setRightOperand(functionTermExpression);
+
+				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+				expressionStringBuilder.visit(assignmentExpression);
+				statement.setAssignment(expressionStringBuilder.getResult());
+			}
+			break;
+		case ARITHMETIC:
+		case ASSIGNMENT:
+		case BLOCK:
+		case BOOLEAN:
+		case FUNCTION:
+		case LOGICAL:
+		case QUALIFIED:
+		case RELATIONAL:
 		}
 
 		return super.visit(statement);

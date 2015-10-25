@@ -158,7 +158,7 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 
 	@Override
 	public Class<?> getJavaClass() {
-		return Object.class;
+		return QPointer.class;
 	}
 
 	@Override
