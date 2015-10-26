@@ -100,7 +100,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 
 		writeSupportProgramTestFields(callableUnitInfo);
 
-		writeModuleFields(modules, false);
+		writeModuleFields(modules, UnitScope.PRIVATE);
 
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());

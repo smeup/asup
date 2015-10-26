@@ -76,7 +76,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		writeSupportFields(callableUnitInfo);
 
 		if (procedure.getSetupSection() != null)
-			writeModuleFields(procedure.getSetupSection().getModules(), false);
+			writeModuleFields(procedure.getSetupSection().getModules(), UnitScope.PRIVATE);
 
 		if (procedure.getFileSection() != null) {
 			writeDataSets(procedure.getFileSection().getDataSets());

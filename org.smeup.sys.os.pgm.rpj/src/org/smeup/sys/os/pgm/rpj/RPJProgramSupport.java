@@ -1018,4 +1018,13 @@ public class RPJProgramSupport {
 	public QPointer qPointer(String string) {
 		return qBox(string).qAddr();
 	}
+
+	public QPointer qPointer(QCharacter string) {
+		return string.qAddr();
+	}
+
+	public QArray<QCharacter> qArray(String string) {
+		
+		return null;
+	}
 }

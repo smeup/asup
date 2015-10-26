@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.il.data.annotation.MessageDef;
+import org.smeup.sys.il.data.annotation.MessageFile;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
@@ -40,8 +40,8 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 		QMessageFile messageFile = null;
 
 		String messageFileName = null;
-		if (message.getClass().getAnnotation(MessageDef.class) != null)
-			messageFileName = message.getClass().getAnnotation(MessageDef.class).name();
+		if (message.getClass().getAnnotation(MessageFile.class) != null)
+			messageFileName = message.getClass().getAnnotation(MessageFile.class).name();
 		else
 			messageFileName = message.getClass().getSimpleName();
 
