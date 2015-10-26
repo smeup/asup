@@ -17,7 +17,8 @@
       </eParameters>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contextProvider" lowerBound="1"
-        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"/>
+        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider"
+        transient="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notifier">
       <eGenericType eClassifier="#//ResourceNotifier">
         <eTypeArguments eTypeParameter="#//Resource/T"/>

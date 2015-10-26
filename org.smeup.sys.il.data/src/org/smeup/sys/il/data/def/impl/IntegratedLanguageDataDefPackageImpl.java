@@ -558,6 +558,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataAreaDef_ExternalName() {
+		return (EAttribute)dataAreaDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1036,6 +1045,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		createEAttribute(dataDefEClass, DATA_DEF__FORMULAS);
 
 		dataAreaDefEClass = createEClass(DATA_AREA_DEF);
+		createEAttribute(dataAreaDefEClass, DATA_AREA_DEF__EXTERNAL_NAME);
 
 		dataStructDefEClass = createEClass(DATA_STRUCT_DEF);
 		createEAttribute(dataStructDefEClass, DATA_STRUCT_DEF__LENGTH);
@@ -1458,6 +1468,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		addEOperation(dataDefEClass, this.getDataDefType(), "getDataDefType", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataAreaDefEClass, QDataAreaDef.class, "DataAreaDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataAreaDef_ExternalName(), ecorePackage.getEString(), "externalName", null, 0, 1, QDataAreaDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataStructDefEClass, QDataStructDef.class, "DataStructDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataStructDef_Length(), ecorePackage.getEInt(), "length", null, 0, 1, QDataStructDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

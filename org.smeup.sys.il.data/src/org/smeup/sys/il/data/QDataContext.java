@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import org.smeup.sys.il.core.ctx.QContextProvider;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +20,7 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QDataContext {
+public interface QDataContext extends QContextProvider {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,4 +37,20 @@ public interface QDataContext {
 	 * @generated
 	 */
 	QIndicator endOfData();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataFactory getDataFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataArea<QCharacter> getOrCreateLocalDataArea();
 } // QDataContext

@@ -19,15 +19,19 @@ import org.smeup.sys.il.data.QPointer;
 public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 
 	private static final long serialVersionUID = 1L;
+	private QBufferedData target;
 	
 	public NIOPointerImpl(QDataContext dataContext, NIOBufferedDataImpl target) {
 		super(dataContext);
 		target.assign(this);
+		this.target = target;
 	}
 
 	@Override
 	public void eval(QPointer value) {
-		value.assign(this);	
+		// TODO
+		if(value != null)
+			value.assign(this);	
 	}
 
 	@Override
@@ -180,5 +184,15 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 
 	@Override
 	public void dealloc() {
+	}
+
+	@Override
+	public String toString() {
+		return target.toString();
+	}
+
+	@Override
+	public String asString() {
+		return target.asString();
 	}
 }

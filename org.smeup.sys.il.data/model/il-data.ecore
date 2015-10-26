@@ -894,9 +894,16 @@
       </eParameters>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
+    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
+    <eOperations name="getOrCreateLocalDataArea" lowerBound="1">
+      <eGenericType eClassifier="#//DataArea">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -952,6 +959,21 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
+      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createDataArea" lowerBound="1">
+      <eGenericType eClassifier="#//DataArea">
+        <eTypeArguments eTypeParameter="#//DataFactory/createDataArea/D"/>
+      </eGenericType>
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//BufferedData"/>
+      </eTypeParameters>
+      <eParameters name="argument" lowerBound="1">
+        <eGenericType eClassifier="#//def/BufferedDataDef">
+          <eTypeArguments eTypeParameter="#//DataFactory/createDataArea/D"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="externalName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDataDef" lowerBound="1">
@@ -2727,6 +2749,7 @@
       <eTypeParameters name="D">
         <eBounds eClassifier="#//BufferedData"/>
       </eTypeParameters>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/DataAreaDef/D"/>
       </eGenericSuperTypes>

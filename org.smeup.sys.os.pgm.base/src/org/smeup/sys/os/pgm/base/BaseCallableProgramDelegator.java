@@ -52,24 +52,18 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 		}
 
 		try {
-			if (this.open != null)
-				this.open.invoke(delegate, (Object[]) null);
-			else if (£mubField != null) {
-				try {
-					Object £mub = £mubField.get(delegate);
-					switch (initStrategy) {
-					case BASE:
-						£mub.getClass().getMethod("£mu_inzsr", Integer.TYPE).invoke(£mub, new Object[0]);
-					case LIGHT:
-						£mub.getClass().getMethod("£mu_inzsrlt", Integer.TYPE).invoke(£mub, new Object[0]);
-					}
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					£mubField.setAccessible(false);
+			if (this.open == null && £mubField != null) {
+				£mubField.setAccessible(true);
+				Object £mub = £mubField.get(delegate);
+				switch (initStrategy) {
+				case BASE:
+					£mub.getClass().getMethod("£mu_inzsr").invoke(£mub, (Object[]) null);
+					break;
+				case LIGHT:
+					£mub.getClass().getMethod("£mu_inzsrlt").invoke(£mub, (Object[]) null);
+					break;
 				}
-
+				£mubField.setAccessible(false);
 			}
 
 		} catch (Exception e) {
@@ -139,9 +133,11 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 			}
 
 			if (£qpdsqqField != null) {
+				£qpdsqqField.setAccessible(true);
 				Object £qpdsqq = £qpdsqqField.get(delegate);
 				Object £qpdspr = £qpdsqq.getClass().getField("£qdspr").get(£qpdsqq);
 				£qpdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£qpdspr, new Object[] { paramsLength });
+				£qpdsqqField.setAccessible(false);
 			}
 			if (getQEntry().length > 0) {
 				this.entry.invoke(delegate, (Object[]) params);

@@ -629,13 +629,22 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int DATA_AREA_DEF__ARGUMENT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>External Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_AREA_DEF__EXTERNAL_NAME = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Data Area Def</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_AREA_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+	int DATA_AREA_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl <em>Unary Compound Data Def</em>}' class.
@@ -1706,6 +1715,17 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EClass getDataAreaDef();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QDataAreaDef#getExternalName <em>External Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>External Name</em>'.
+	 * @see org.smeup.sys.il.data.def.QDataAreaDef#getExternalName()
+	 * @see #getDataAreaDef()
+	 * @generated
+	 */
+	EAttribute getDataAreaDef_ExternalName();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QDataStructDef <em>Data Struct Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Data Struct Def</em>'.
@@ -2371,6 +2391,14 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DATA_AREA_DEF = eINSTANCE.getDataAreaDef();
+
+		/**
+		 * The meta object literal for the '<em><b>External Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_AREA_DEF__EXTERNAL_NAME = eINSTANCE.getDataAreaDef_ExternalName();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.DataStructDefImpl <em>Data Struct Def</em>}' class.

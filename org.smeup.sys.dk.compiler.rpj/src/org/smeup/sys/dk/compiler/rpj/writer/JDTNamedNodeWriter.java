@@ -53,7 +53,6 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.ExternalDef;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
@@ -76,7 +75,6 @@ import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QProcedure;
-import org.smeup.sys.os.file.QExternalFile;
 import org.smeup.sys.os.file.QFileFormat;
 
 public class JDTNamedNodeWriter extends JDTNodeWriter {
@@ -136,9 +134,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		// @ExternalDef
-		QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
-		if (externalFile != null && externalFile.getName() != null && dataTerm.getDefinition() instanceof QDataAreaDef) {
-			writeAnnotation(field, ExternalDef.class, "name", externalFile.getName());
+		if (dataTerm.getDefinition() instanceof QDataAreaDef) {
+			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>)dataTerm.getDefinition();
+			writeAnnotation(field, DataDef.class, "externalName", dataAreaDef.getExternalName());
 		}
 
 		// @DataDef

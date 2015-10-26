@@ -15,10 +15,12 @@ import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermVisitorImpl;
 
@@ -125,7 +127,21 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			result = true;
 
 			default_ = term.getDefault();
-			QStruct<?> struct = (QStruct<?>) data;
+			QStruct<?> struct = null;
+			
+			// elements
+			QCompoundDataDef<?, ?> compoundDef = null;
+
+			// TODO
+			if(data instanceof QDataArea<?>) {
+				QDataArea<?> dataArea = (QDataArea<?>)data;
+				struct = (QStruct<?>) dataArea.get();
+				compoundDef = (QCompoundDataDef<?, ?>) ((QDataAreaDef<?>)term.getDefinition()).getArgument();
+			}
+			else { 
+				struct = (QStruct<?>) data;
+				compoundDef = (QCompoundDataDef<?, ?>) term.getDefinition();
+			}
 
 			if (default_ != null) {
 				specialElement = getSpecialElement(term, default_.getValue());
@@ -136,12 +152,13 @@ public class NIODataResetter extends DataTermVisitorImpl {
 					data.accept(dataWriter.set(default_.getValue()));
 			}
 
-			if (result)
-				// elements
-				for (QDataTerm<?> child : ((QCompoundDataDef<?, ?>) term.getDefinition()).getElements()) {
+			if (result) {
+				
+				for (QDataTerm<?> child : compoundDef.getElements()) {
 					NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()), dataWriter);
 					child.accept(childResetter);
 				}
+			}
 
 			result = false;
 

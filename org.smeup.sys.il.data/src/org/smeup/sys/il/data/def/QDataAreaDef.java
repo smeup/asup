@@ -14,11 +14,43 @@ import org.smeup.sys.il.data.QBufferedData;
  * A representation of the model object '<em><b>Data Area Def</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.smeup.sys.il.data.def.QDataAreaDef#getExternalName <em>External Name</em>}</li>
+ * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataAreaDef()
  * @model
  * @generated
  */
 public interface QDataAreaDef<D extends QBufferedData> extends QUnaryAtomicBufferedDataDef<D>, QWrapperDef {
+
+	/**
+	 * Returns the value of the '<em><b>External Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>External Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>External Name</em>' attribute.
+	 * @see #setExternalName(String)
+	 * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataAreaDef_ExternalName()
+	 * @model
+	 * @generated
+	 */
+	String getExternalName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.data.def.QDataAreaDef#getExternalName <em>External Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>External Name</em>' attribute.
+	 * @see #getExternalName()
+	 * @generated
+	 */
+	void setExternalName(String value);
 
 } // QDataAreaDef

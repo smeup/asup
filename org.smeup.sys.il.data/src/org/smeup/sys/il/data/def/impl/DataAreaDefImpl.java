@@ -28,6 +28,7 @@ import org.smeup.sys.il.data.def.QWrapperDef;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataAreaDefImpl#getArgument <em>Argument</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DataAreaDefImpl#getExternalName <em>External Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,6 +48,25 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * @ordered
 	 */
 	protected QBufferedDataDef<?> argument;
+
+	/**
+	 * The default value of the '{@link #getExternalName() <em>External Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXTERNAL_NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getExternalName() <em>External Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExternalName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String externalName = EXTERNAL_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,6 +135,27 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getExternalName() {
+		return externalName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExternalName(String newExternalName) {
+		String oldExternalName = externalName;
+		externalName = newExternalName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME, oldExternalName, externalName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -134,6 +175,8 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				return getArgument();
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+				return getExternalName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +191,9 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				setArgument((QBufferedDataDef<?>)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+				setExternalName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,6 +210,9 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				setArgument((QBufferedDataDef<?>)null);
 				return;
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+				setExternalName(EXTERNAL_NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -178,6 +227,8 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__ARGUMENT:
 				return argument != null;
+			case QIntegratedLanguageDataDefPackage.DATA_AREA_DEF__EXTERNAL_NAME:
+				return EXTERNAL_NAME_EDEFAULT == null ? externalName != null : !EXTERNAL_NAME_EDEFAULT.equals(externalName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -212,6 +263,22 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (externalName: ");
+		result.append(externalName);
+		result.append(')');
+		return result.toString();
 	}
 
 	@SuppressWarnings("unchecked")

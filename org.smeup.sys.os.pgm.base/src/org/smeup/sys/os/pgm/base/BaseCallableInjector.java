@@ -368,8 +368,11 @@ public class BaseCallableInjector {
 			QDataStruct infoStruct = records.get(fileDef.info().toLowerCase());
 			if (infoStruct == null)
 				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");
-			else
+			else {
+				field.getField().setAccessible(true);
 				((QDataSet<?>) field.getField().get(callable)).getInfoStruct().assign(infoStruct);
+				field.getField().setAccessible(false);
+			}
 		}
 	}
 

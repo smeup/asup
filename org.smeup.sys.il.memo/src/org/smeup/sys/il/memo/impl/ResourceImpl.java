@@ -99,23 +99,6 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 	 * @generated
 	 */
 	public QContextProvider getContextProvider() {
-		if (contextProvider != null && ((EObject)contextProvider).eIsProxy()) {
-			InternalEObject oldContextProvider = (InternalEObject)contextProvider;
-			contextProvider = (QContextProvider)eResolveProxy(oldContextProvider);
-			if (contextProvider != oldContextProvider) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QIntegratedLanguageMemoryPackage.RESOURCE__CONTEXT_PROVIDER, oldContextProvider, contextProvider));
-			}
-		}
-		return contextProvider;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public QContextProvider basicGetContextProvider() {
 		return contextProvider;
 	}
 
@@ -218,8 +201,7 @@ public abstract class ResourceImpl<T extends QObjectNameable> extends MinimalEOb
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case QIntegratedLanguageMemoryPackage.RESOURCE__CONTEXT_PROVIDER:
-				if (resolve) return getContextProvider();
-				return basicGetContextProvider();
+				return getContextProvider();
 			case QIntegratedLanguageMemoryPackage.RESOURCE__NOTIFIER:
 				if (resolve) return getNotifier();
 				return basicGetNotifier();

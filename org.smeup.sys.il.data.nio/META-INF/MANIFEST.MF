@@ -6,7 +6,9 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.il.data;visibility:=reexport,
- org.smeup.sys.et.jt400
+ org.smeup.sys.il.memo,
+ org.smeup.sys.et.jt400,
+ org.smeup.sys.os.dtaara
 Export-Package: org.smeup.sys.il.data.nio
 Bundle-ClassPath: .
 Import-Package: javax.inject;version="1.0.0",

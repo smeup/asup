@@ -228,6 +228,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 			}
 
+			try {
+				delegator.open = klass.getMethod("qINZSR");
+			} catch (NoSuchMethodException | SecurityException e) {
+			}
+					
 			callableProgram = delegator;
 		}
 

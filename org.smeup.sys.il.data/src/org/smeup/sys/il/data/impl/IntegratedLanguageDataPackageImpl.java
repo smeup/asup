@@ -968,6 +968,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		dataAreaEClass.getESuperTypes().add(this.getBufferedData());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageDataTermPackage.getDataTermContainer());
 		dataContainerEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		dataContextEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		dataReaderEClass.getESuperTypes().add(this.getDataVisitor());
 		dataStructEClass.getESuperTypes().add(this.getCharacter());
 		dataStructEClass.getESuperTypes().add(this.getRecord());
@@ -1866,6 +1867,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContextEClass, this.getIndicator(), "endOfData", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(dataContextEClass, this.getDataFactory(), "getDataFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataContextEClass, null, "getOrCreateLocalDataArea", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getDataArea());
+		g2 = createEGenericType(this.getCharacter());
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(dataDelegatorEClass, this.getData(), "getDelegate", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1919,6 +1928,21 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataFactoryEClass, null, "createDataArea", 1, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "D");
+		g1 = createEGenericType(this.getBufferedData());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageDataDefPackage.getBufferedDataDef());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "externalName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getDataArea());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, null, "createDataDef", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaType(), "type", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -3051,6 +3075,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(numericEClass, this.getNumeric(), "qPlus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(numericEClass, this.getNumeric(), "qUns", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(numericEClass, null, "xfoot", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
@@ -3063,8 +3089,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "roundingMode", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(numericEClass, this.getNumeric(), "qUns", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(pointerEClass, QPointer.class, "Pointer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

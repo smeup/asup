@@ -303,16 +303,19 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(QString program, QData[] parameters) {
+		System.out.println(program);
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
 
 	public void qCall(String program, QData[] parameters) {
+		System.out.println(program);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
 
 		try {
+			System.out.println(program);
 			error.eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 		} catch (RuntimeException e) {
@@ -323,6 +326,7 @@ public class RPJProgramSupport {
 	public void qCall(String program, QData[] parameters, QIndicator error) {
 
 		try {
+			System.out.println(program);
 			error.eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 		} catch (RuntimeException e) {
@@ -332,6 +336,7 @@ public class RPJProgramSupport {
 
 	public void qCall(QString program, QData[] parameters, String errorHandling) {
 		try {
+			System.out.println(program);
 			qError(null).eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 		} catch (RuntimeException e) {
@@ -342,11 +347,12 @@ public class RPJProgramSupport {
 
 	public void qCall(String program, QData[] parameters, String errorHandling) {
 		try {
-			qError(null).eval(false);
+			System.out.println(program);
+			qError().eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 		} catch (RuntimeException e) {
 			// TODO
-			qError(null).eval(true);
+			qError().eval(true);
 		}
 	}
 
@@ -519,7 +525,8 @@ public class RPJProgramSupport {
 	}
 
 	public QPointer qAlloc(Integer size) {
-		return dataFactory.allocate(size.intValue());
+		return null;
+//		return dataFactory.allocate(size.intValue());
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
@@ -543,7 +550,7 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qSize(QBufferedData bufferedData) {
-		QDecimal decimal = dataFactory.createDecimal(5, 0, DecimalType.ZONED, true);
+		QDecimal decimal = dataFactory.createDecimal(7, 0, DecimalType.ZONED, true);
 		decimal.eval(bufferedData.getSize());
 		return decimal;
 	}

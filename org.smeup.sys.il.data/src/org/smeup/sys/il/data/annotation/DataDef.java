@@ -30,7 +30,8 @@ public @interface DataDef {
 	String value() default "";
 	String target() default "";
 	String[] formulas() default {};
-
+	String externalName() default "";
+			
 	// compound
 	boolean qualified() default false;
 	String prefix() default "";

@@ -36,6 +36,7 @@ import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
@@ -68,6 +69,7 @@ import org.smeup.sys.il.data.def.QAtomicDataDef;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QDataAreaDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QDataStructDef;
 import org.smeup.sys.il.data.def.QDatetimeDef;
@@ -196,6 +198,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QPointerDef pointerDef = (QPointerDef) dataDef;
 			pointerDef.toString();
 			data = (D) allocate(0);
+		} else if (dataDef instanceof QDataAreaDef) {
+			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
+			data = (D) createDataArea(dataAreaDef.getArgument(), dataAreaDef.getExternalName(), initialize);
 		} else
 			throw new IntegratedLanguageCoreRuntimeException("Unknown dataType: " + dataDef);
 
@@ -245,6 +250,16 @@ public class NIODataFactoryImpl implements QDataFactory {
 			arrayDef.setArgument(argument);
 
 			dataDef = arrayDef;
+		}
+		// dataArea
+		else if (QDataArea.class.isAssignableFrom(klass)) {
+
+			QDataAreaDef<?> dataAreaDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createDataAreaDef();
+			// argument
+			QBufferedDataDef<?> argument = (QBufferedDataDef<?>) createDataDef(arguments.get(0), annotations);
+			dataAreaDef.setArgument(argument);
+
+			dataDef = dataAreaDef;
 		}
 		// stroller
 		else if (QStroller.class.isAssignableFrom(klass)) {
@@ -328,6 +343,15 @@ public class NIODataFactoryImpl implements QDataFactory {
 		injectAnnotations(annotations, dataDef);
 
 		return dataDef;
+	}
+
+	@Override
+	public <D extends QBufferedData> QDataArea<D> createDataArea(QBufferedDataDef<D> argument, String externalName, boolean initialize) {
+
+		D argumentData = (D) createData(argument, initialize);
+		NIODataAreaImpl<D> nioDataAreaImpl = new NIODataAreaImpl<D>(getDataContext(), argumentData, externalName);
+
+		return nioDataAreaImpl;
 	}
 
 	@Override
@@ -695,7 +719,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		EClass eClass = eObject.eClass();
 
 		// merge annotations by reflection
-		for (Annotation annotation : annotations)
+		for (Annotation annotation : annotations) {
 			for (Method method : annotation.getClass().getDeclaredMethods()) {
 
 				// EMF reflection
@@ -743,7 +767,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					throw new IntegratedLanguageCoreRuntimeException(e);
 				}
 			}
-
+		}
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

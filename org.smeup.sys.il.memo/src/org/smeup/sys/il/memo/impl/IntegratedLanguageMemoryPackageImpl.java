@@ -461,7 +461,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(resourceEClass, QResource.class, "Resource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResource_ContextProvider(), theIntegratedLanguageCoreCtxPackage.getContextProvider(), null, "contextProvider", null, 1, 1, QResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResource_ContextProvider(), theIntegratedLanguageCoreCtxPackage.getContextProvider(), null, "contextProvider", null, 1, 1, QResource.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceNotifier());
 		g2 = createEGenericType(resourceEClass_T);
 		g1.getETypeArguments().add(g2);

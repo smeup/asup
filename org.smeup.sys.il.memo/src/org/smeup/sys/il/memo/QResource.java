@@ -40,7 +40,7 @@ public interface QResource<T extends QObjectNameable> extends QNameable {
 	 * @return the value of the '<em>Context Provider</em>' reference.
 	 * @see #setContextProvider(QContextProvider)
 	 * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResource_ContextProvider()
-	 * @model required="true"
+	 * @model resolveProxies="false" required="true" transient="true"
 	 * @generated
 	 */
 	QContextProvider getContextProvider();

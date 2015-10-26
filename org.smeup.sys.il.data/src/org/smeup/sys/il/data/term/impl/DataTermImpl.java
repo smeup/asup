@@ -771,7 +771,14 @@ public abstract class DataTermImpl<DD extends QDataDef<?>> extends NamedNodeImpl
 	public void accept(QDataTermVisitor visitor) {
 		if (visitor.visit(this))
 			if (getDataTermType().isCompound()) {
-				QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) getDefinition();
+				QCompoundDataDef<?, ?> compoundDataDef = null;
+				// TODO
+				if(getDefinition() instanceof QWrapperDef) {
+					QWrapperDef wrapperDef = (QWrapperDef) getDefinition();	
+					compoundDataDef = (QCompoundDataDef<?, ?>) wrapperDef.getArgument();
+				}
+				else
+					compoundDataDef = (QCompoundDataDef<?, ?>) getDefinition();
 
 				// elements
 				for (QDataTerm<?> child : compoundDataDef.getElements())

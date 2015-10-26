@@ -22,12 +22,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.smeup.sys.il.core.QNode;
+import org.smeup.sys.il.core.QOverlay;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
@@ -37,7 +41,9 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
+import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDataDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
@@ -77,6 +83,32 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			public QIndicator endOfData() {
 				return this.endOfData;
 			}
+
+			@Override
+			public QDataFactory getDataFactory() {
+				return dataFactory;
+			}
+
+			@Override
+			public QContext getContext() {
+				return dataFactory.getContext();
+			}
+
+			@Override
+			@SuppressWarnings("unchecked")
+			public QDataArea<QCharacter> getOrCreateLocalDataArea() {
+
+				QDataArea<QCharacter> localDataArea = getDataContext().getContext().get(QDataArea.class);
+				if (localDataArea == null) {
+					QCharacterDef argument = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+					argument.setLength(1024);
+					;
+					localDataArea = getDataContext().getDataFactory().createDataArea(argument, "*LDA", true);
+					getDataContext().getContext().set(QDataArea.class, localDataArea);
+				}
+
+				return localDataArea;
+			}
 		};
 		dataFactory.setDataContext(dataContext);
 	}
@@ -113,7 +145,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QDataTerm<?> oldTerm = this.dataTerms.put(name, dataTerm);
 		if (oldTerm != null)
-			System.err.println("Unexpected condition: sdhgbrf87stvbr86");
+			System.err.println("Unexpected condition " + dataTerm.getName() + ": sdhgbrf87stvbr86");
 
 		return dataTerm;
 	}
@@ -376,7 +408,17 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				QBufferedData rawBufferedData = (QBufferedData) rawData;
 				rawBufferedData.assign((QBufferedData) data);
 			} else {
-				data = dataFactory.createData(dataTerm, true);
+				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+				if (overlay == null) {
+					data = dataFactory.createData(dataTerm, true);
+				} else {
+					data = dataFactory.createData(dataTerm, false);
+					if (overlay.getName().equalsIgnoreCase("*LDA")) {
+						QDataArea<QCharacter> localDataArea = getDataContext().getOrCreateLocalDataArea();
+						localDataArea.assign((QBufferedData)data);
+					} else
+						"".toCharArray();
+				}
 			}
 			datas.put(key, data);
 		}
