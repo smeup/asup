@@ -231,7 +231,6 @@ public class BaseCallableInjector {
 			if (QDataSet.class.isAssignableFrom(fieldClass)) {
 				if (argsType[0] instanceof WildcardType)
 					continue;
-
 				dataSets.add(injectableField);
 			}
 			// DataStruct
@@ -364,7 +363,8 @@ public class BaseCallableInjector {
 		// recordInfo
 		for (InjectableField field : infoFields) {
 
-			FileDef fileDef = field.getClass_().getAnnotation(FileDef.class);
+			FileDef fileDef = field.getField().getAnnotation(FileDef.class);
+			
 			QDataStruct infoStruct = records.get(fileDef.info().toLowerCase());
 			if (infoStruct == null)
 				System.err.println("Unexpected condition " + fileDef.info() + ": asggsu676rf7qwf7");

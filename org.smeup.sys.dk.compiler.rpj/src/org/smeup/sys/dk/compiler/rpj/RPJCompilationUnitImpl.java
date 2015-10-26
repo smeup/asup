@@ -672,7 +672,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		// other
 		else
 			// order = "MCSFKPDT";
-			order = "CSFKPDTM";
+			order = "CSFKDPTM";
 
 		QNamedNode namedNode = getNamedNode(name, deep, order);
 

@@ -128,18 +128,20 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 		switch (assignmentExpression.getRightOperand().getExpressionType()) {
 		case ATOMIC:
-			QAtomicTermExpression atomicRightExpression = (QAtomicTermExpression)assignmentExpression.getRightOperand();
+			QAtomicTermExpression atomicRightExpression = (QAtomicTermExpression) assignmentExpression.getRightOperand();
 			// normalize prototype
-			QPrototype prototype = this.compilationUnit.getPrototype(atomicRightExpression.getValue(), true);
-			if (prototype != null) {
+			if (atomicRightExpression.getType() == AtomicType.NAME) {
+				QNamedNode nameNode = this.compilationUnit.getNamedNode(atomicRightExpression.getValue(), true);
+				if (nameNode != null && nameNode instanceof QPrototype) {
 
-				QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
-				functionTermExpression.setValue(atomicRightExpression.getValue());
-				assignmentExpression.setRightOperand(functionTermExpression);
+					QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
+					functionTermExpression.setValue(atomicRightExpression.getValue());
+					assignmentExpression.setRightOperand(functionTermExpression);
 
-				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-				expressionStringBuilder.visit(assignmentExpression);
-				statement.setAssignment(expressionStringBuilder.getResult());
+					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
+					expressionStringBuilder.visit(assignmentExpression);
+					statement.setAssignment(expressionStringBuilder.getResult());
+				}
 			}
 			break;
 		case ARITHMETIC:

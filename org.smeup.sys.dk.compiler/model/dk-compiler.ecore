@@ -115,6 +115,8 @@
         <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkedTermName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        transient="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilerManager" abstract="true" interface="true">
     <eOperations name="createChildCompilationUnit" lowerBound="1" eType="#//CompilationUnit">

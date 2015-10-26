@@ -18,6 +18,7 @@ import org.smeup.sys.il.core.meta.QFacet;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedClass <em>Linked Class</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedTermName <em>Linked Term Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,5 +52,31 @@ public interface QCompilerLinker extends QFacet {
 	 * @generated
 	 */
 	void setLinkedClass(Class<?> value);
+
+	/**
+	 * Returns the value of the '<em><b>Linked Term Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Linked Term Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Linked Term Name</em>' attribute.
+	 * @see #setLinkedTermName(String)
+	 * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilerLinker_LinkedTermName()
+	 * @model transient="true"
+	 * @generated
+	 */
+	String getLinkedTermName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedTermName <em>Linked Term Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Linked Term Name</em>' attribute.
+	 * @see #getLinkedTermName()
+	 * @generated
+	 */
+	void setLinkedTermName(String value);
 
 } // QCompilerLinker

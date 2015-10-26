@@ -214,23 +214,17 @@ public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 	public boolean visit(QFunctionTermExpression expression) {
 
 		result += expression.getValue();
-		
-		if (!expression.getElements().isEmpty()) {
-			result += "(";
-			boolean first = true;
-			for (QExpression child : expression.getElements()) {
-				if (!first)
-					result += ": ";
-				child.accept(this);
-				first = false;
-			}
-			result += ")";
+
+		result += "(";
+		boolean first = true;
+		for (QExpression child : expression.getElements()) {
+			if (!first)
+				result += ": ";
+			child.accept(this);
+			first = false;
 		}
-		else {
-			result += "(";
-			result += ")";
-		}
-		
+		result += ")";
+
 		return false;
 	}
 
@@ -249,12 +243,12 @@ public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 	}
 
 	public void visit(QPredicateExpression predicateExpression) {
-		
-		if (predicateExpression instanceof QRelationalExpression) 
-			visit((QRelationalExpression)predicateExpression);
-		else if(predicateExpression instanceof QLogicalExpression) 
-			visit((QLogicalExpression)predicateExpression);		
-		else if(predicateExpression instanceof QBooleanExpression)
-			visit((QBooleanExpression)predicateExpression);
+
+		if (predicateExpression instanceof QRelationalExpression)
+			visit((QRelationalExpression) predicateExpression);
+		else if (predicateExpression instanceof QLogicalExpression)
+			visit((QLogicalExpression) predicateExpression);
+		else if (predicateExpression instanceof QBooleanExpression)
+			visit((QBooleanExpression) predicateExpression);
 	}
 }

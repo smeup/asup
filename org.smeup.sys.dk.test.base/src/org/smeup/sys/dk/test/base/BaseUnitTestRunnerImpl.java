@@ -64,7 +64,9 @@ public class BaseUnitTestRunnerImpl extends UnitTestRunnerImpl {
 		context.set(QTestRunner.class, this);
 
 		Object testCase = context.make(testClass);
-
+		if(testCase == null)
+			"".toCharArray();
+		
 		// Call test initialization
 		try {
 			context.invoke(testCase, TestStarting.class);

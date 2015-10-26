@@ -236,13 +236,22 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int COMPILER_LINKER__LINKED_CLASS = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Linked Term Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILER_LINKER__LINKED_TERM_NAME = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Compiler Linker</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILER_LINKER_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+	int COMPILER_LINKER_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Compiler Manager</em>' class.
@@ -459,6 +468,17 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	EAttribute getCompilerLinker_LinkedClass();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedTermName <em>Linked Term Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Linked Term Name</em>'.
+	 * @see org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedTermName()
+	 * @see #getCompilerLinker()
+	 * @generated
+	 */
+	EAttribute getCompilerLinker_LinkedTermName();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.compiler.EntryType <em>Entry Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -647,6 +667,14 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPILER_LINKER__LINKED_CLASS = eINSTANCE.getCompilerLinker_LinkedClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Linked Term Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPILER_LINKER__LINKED_TERM_NAME = eINSTANCE.getCompilerLinker_LinkedTermName();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.EntryType <em>Entry Type</em>}' enum.

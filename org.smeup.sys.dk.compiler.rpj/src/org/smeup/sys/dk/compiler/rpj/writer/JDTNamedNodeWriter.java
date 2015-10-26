@@ -137,14 +137,14 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		// @ExternalDef
 		QExternalFile externalFile = dataTerm.getFacet(QExternalFile.class);
-		if(externalFile != null && externalFile.getName() != null && dataTerm.getDefinition() instanceof QDataAreaDef) {
+		if (externalFile != null && externalFile.getName() != null && dataTerm.getDefinition() instanceof QDataAreaDef) {
 			writeAnnotation(field, ExternalDef.class, "name", externalFile.getName());
 		}
 
 		// @DataDef
 		if (dataTerm.getDefinition() != null)
 			writeDataDefAnnotation(field, dataTerm.getDefinition());
-		
+
 		// default
 		QDefault default_ = dataTerm.getDefault();
 		if (default_ != null && !default_.isEmpty()) {
@@ -240,16 +240,15 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
 			} else
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataTerm.getDefinition();
-			
+
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker == null) {
-
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
 				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
 						QDataStructWrapper.class, scope, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
-			} else if (checkFileOverride(compoundDataDef)) {
+			} else if (checkCompoundOverride(compoundDataDef)) {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 
@@ -600,12 +599,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		Type type = null;
 		Type wrapper = null;
-		
-		if(dataTerm.getDataTermType() == null) {
-			dataTerm.getDataTermType();
-			"".toCharArray();
-		}
-		
+
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataDef;
@@ -631,19 +625,19 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			}
 
 			if (dataDef instanceof QDataAreaDef) {
-				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>)dataDef;
+				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
 				parType = getAST().newParameterizedType(type);
 				argument = dataAreaDef.getArgument().getDataClass().getSimpleName();
 				parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
-				type = parType;				
+				type = parType;
 			}
-			
+
 			break;
 
 		case MULTIPLE_COMPOUND:
 
 			QCompoundDataDef<?, ?> compoundDataDef = null;
-			
+
 			if (dataDef instanceof QDataAreaDef) {
 				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
@@ -656,14 +650,20 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			if (compilerLinker != null) {
 
-				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
-
-				if (checkFileOverride(compoundDataDef)) {
+				if (checkCompoundOverride(compoundDataDef)) {
 					String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
 					// TODO setup
 					type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
-				} else
-					type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
+				} else {
+					Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
+					if(linkedClass != null)
+						type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
+ 					else {
+ 						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
+ 						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
+						type = getAST().newSimpleType(getAST().newName(qualifiedName.toUpperCase()));
+ 					}
+				}
 
 			} else {
 				String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
@@ -692,18 +692,25 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 				Class<?> linkedClass = compilerLinker.getLinkedClass();
 
-				if (checkFileOverride(compoundDataDef)) {
+				if (checkCompoundOverride(compoundDataDef)) {
 					String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
 					// TODO setup
 					type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
-				} else
-					type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
+				} else {
+					if(linkedClass != null)
+						type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
+					else {
+ 						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
+ 						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
+						type = getAST().newSimpleType(getAST().newName(qualifiedName.toUpperCase()));
+					}
+				}
 
 			} else {
 
 				String qualifiedName = getCompilationUnit().getQualifiedName(dataTerm);
 				type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
-				
+
 				if (dataDef instanceof QDataAreaDef) {
 					wrapper = getAST().newSimpleType(getAST().newSimpleName(dataDef.getDataClass().getSimpleName()));
 					parType = getAST().newParameterizedType(wrapper);
@@ -714,7 +721,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 			break;
 		}
-		
+
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
 		if (special != null) {
 			writeImport(QEnum.class);
@@ -731,7 +738,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 		return type;
 	}
 
-	public boolean checkFileOverride(QCompoundDataDef<?, ?> compoundDataDef) {
+	public boolean checkCompoundOverride(QCompoundDataDef<?, ?> compoundDataDef) {
 
 		for (QDataTerm<?> element : compoundDataDef.getElements())
 			if (element.getFacet(QDerived.class) == null)

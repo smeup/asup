@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
+import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -99,18 +100,30 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				throw new DevelopmentKitCompilerRuntimeException("Invalid like atomic to compound: " + source.getName() + "->" + target.getName());
 			case UNARY_COMPOUND:
 				QCompoundDataDef<?, ?> compoundDataDefTarget = (QCompoundDataDef<?, ?>)target.getDefinition(); 
-				compoundDataDefTarget.setQualified(true);
 				if(!compoundDataDefTarget.getElements().isEmpty())
-					throw new DevelopmentKitCompilerRuntimeException("Invalid compound to compound: " + source.getName() + "->" + target.getName());
-				
+					throw new DevelopmentKitCompilerRuntimeException("Invalid compound to compound: " + source.getName() + "->" + target.getName());		
+
 				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), compoundDataDefTarget);
-				appendDefinition(source.getDefinition(), target);				
+				appendDefinition(source.getDefinition(), target);
+				compoundDataDefTarget.setQualified(true);
+				if(compilerLinker == null) {
+					compilerLinker = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilerLinker();
+					compilerLinker.setLinkedTermName(source.getName());
+					target.getFacets().add(compilerLinker);
+				}
 				break;
 			case MULTIPLE_COMPOUND:
 				((QCompoundDataDef<?, ?>)target.getDefinition()).setQualified(true);
 				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
 				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), (QCompoundDataDef<?, QDataTerm<?>>) target.getDefinition());
 				appendDefinition(strollerDef, target);
+				compilerLinker = target.getFacet(QCompilerLinker.class);				
+				strollerDef.setQualified(true);
+				if(compilerLinker == null) {
+					compilerLinker = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilerLinker();
+					compilerLinker.setLinkedTermName(source.getName());
+					target.getFacets().add(compilerLinker);
+				}
 				break;
 			}
 
@@ -155,15 +168,26 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 			case MULTIPLE_ATOMIC:
 				throw new DevelopmentKitCompilerRuntimeException("Invalid like atomic to compound: " + source.getName() + "->" + target.getName());
 			case UNARY_COMPOUND:
-				multipleCompoundTarget.setQualified(true);
 				copyCompoundDataDef((QCompoundDataDef<?, ?>) source.getDefinition(), multipleCompoundTarget);
-				appendDefinition(source.getDefinition(), target.getDefinition());				
+				appendDefinition(source.getDefinition(), target.getDefinition());
+				multipleCompoundTarget.setQualified(true);
+				if(compilerLinker == null) {
+					compilerLinker = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilerLinker();
+					compilerLinker.setLinkedTermName(source.getName());
+					target.getFacets().add(compilerLinker);
+				}				
 				break;
 			case MULTIPLE_COMPOUND:
-				multipleCompoundTarget.setQualified(true);
+				
 				QMultipleCompoundDataDef<?, ?> multipleCompoundSource = (QMultipleCompoundDataDef<?, ?>) source.getDefinition();
 				copyCompoundDataDef(multipleCompoundSource, multipleCompoundTarget);
-				appendDefinition(source.getDefinition(), target.getDefinition());				
+				appendDefinition(source.getDefinition(), target.getDefinition());
+				multipleCompoundTarget.setQualified(true);
+				if(compilerLinker == null) {
+					compilerLinker = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilerLinker();
+					compilerLinker.setLinkedTermName(source.getName());
+					target.getFacets().add(compilerLinker);
+				}
 				break;
 			}
 			

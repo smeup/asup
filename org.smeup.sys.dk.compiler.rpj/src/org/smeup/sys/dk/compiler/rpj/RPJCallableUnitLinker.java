@@ -30,6 +30,7 @@ import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.impl.CompoundDataDefImpl;
@@ -243,7 +244,7 @@ public class RPJCallableUnitLinker {
 		compilationUnit.refresh();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked"})
 	private <E extends QDataTerm<?>> void linkFileTerm(QFileTerm fileTerm, QCompilationUnit compilationUnit) {
 
 		QFile file = getFile(fileTerm.getName());
@@ -322,34 +323,8 @@ public class RPJCallableUnitLinker {
 
 				QDisplayTerm displayTerm = (QDisplayTerm) fileTerm;
 				if (displayTerm.getFormat() == null) {
-					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
-						private static final long serialVersionUID = 1L;
-					};
-					
-					internalFormat.setDefinition(new CompoundDataDefImpl() {
-
-						/**
-						 * 
-						 */
-						private static final long serialVersionUID = 1L;
-
-						@Override
-						public Class<?> getDataClass() {
-							// TODO Auto-generated method stub
-							return null;
-						}
-
-						@Override
-						public Class<?> getJavaClass() {
-							// TODO Auto-generated method stub
-							return null;
-						}
-
-						@Override
-						public DataDefType getDataDefType() {
-							return DataDefType.STRUCT;
-						}
-					});
+					InternalFileTermImpl internalFormat = new InternalFileTermImpl(); 
+					internalFormat.setDefinition(new InternalFileDefinitionImpl());
 					displayTerm.setFormat(internalFormat);
 				}
 
@@ -366,10 +341,10 @@ public class RPJCallableUnitLinker {
 					// redefine record
 					QDataTerm<QCompoundDataDef<?, ?>> dataRecord = (QDataTerm<QCompoundDataDef<?, ?>>) compilationUnit.getDataTerm(fileFormat.getName(), false);
 					if (dataRecord == null)
-						return;
+						continue;
 
 					// remove redefined record
-					if (!(dataRecord.getParent() instanceof QFileTerm))
+					if (!(dataRecord.getParent() instanceof InternalFileTermImpl))
 						compilationUnit.getTrashCan().getDataTerms().add(dataRecord);					
 				}
 
@@ -377,33 +352,8 @@ public class RPJCallableUnitLinker {
 
 				QPrintTerm printTerm = (QPrintTerm) fileTerm;
 				if (printTerm.getFormat() == null) {
-					QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> internalFormat = new DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>>() {
-						private static final long serialVersionUID = 1L;
-					};
-					internalFormat.setDefinition(new CompoundDataDefImpl() {
-
-						/**
-						 * 
-						 */
-						private static final long serialVersionUID = 1L;
-
-						@Override
-						public Class<?> getDataClass() {
-							// TODO Auto-generated method stub
-							return null;
-						}
-
-						@Override
-						public Class<?> getJavaClass() {
-							// TODO Auto-generated method stub
-							return null;
-						}
-
-						@Override
-						public DataDefType getDataDefType() {
-							return DataDefType.STRUCT;
-						}
-					});
+					InternalFileTermImpl internalFormat = new InternalFileTermImpl(); 
+					internalFormat.setDefinition(new InternalFileDefinitionImpl());
 					printTerm.setFormat(internalFormat);
 				}
 
@@ -600,5 +550,33 @@ public class RPJCallableUnitLinker {
 			}
 
 		return linkedClass;
+	}
+	
+	private class InternalFileTermImpl extends DataTermImpl<QCompoundDataDef<?, QDataTerm<?>>> {
+		private static final long serialVersionUID = 1L;
+		
+	}
+	
+	private class InternalFileDefinitionImpl extends CompoundDataDefImpl<QStruct<?>, QDataTerm<?>> {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public Class<QStruct<?>> getDataClass() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Class<?> getJavaClass() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public DataDefType getDataDefType() {
+			return DataDefType.STRUCT;
+		}
+		
 	}
 }
