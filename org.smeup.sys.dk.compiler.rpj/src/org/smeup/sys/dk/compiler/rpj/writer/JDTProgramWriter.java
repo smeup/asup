@@ -86,7 +86,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		writeSupportFields(callableUnitInfo);
 
-		writeModuleFields(modules, false);
+		writeModuleFields(modules, UnitScope.PROTECTED);
 
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());

@@ -165,7 +165,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void writeModuleFields(List<String> modules, boolean public_) {
+	public void writeModuleFields(List<String> modules, UnitScope scope) {
 
 		for (String module : modules) {
 
@@ -176,10 +176,20 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			writeAnnotation(field, Inject.class);
 			// writeAnnotation(field, Named.class, "value", moduleName);
 
-			if (public_)
-				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-			else
+			switch (scope) {
+			case FRIENDLY:
+				break;
+			case PRIVATE:
 				field.modifiers().add(getAST().newModifier(ModifierKeyword.PRIVATE_KEYWORD));
+				break;
+			case PROTECTED:
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PROTECTED_KEYWORD));
+				break;
+			case PUBLIC:
+				field.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));				
+				break;
+			}
+				
 
 			String moduleName = getCompilationUnit().normalizeTypeName(module);
 			field.setType(getAST().newSimpleType(getAST().newName(moduleName)));
