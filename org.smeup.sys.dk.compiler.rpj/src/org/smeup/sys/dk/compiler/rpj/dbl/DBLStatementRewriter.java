@@ -40,6 +40,7 @@ import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
+import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dml.QExtendedQuerySelect;
 import org.smeup.sys.dk.compiler.rpj.RPJStatementRewriter;
@@ -159,7 +160,9 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 			QBindingStatement bindingStatement = parseBindingResult.getBindingStatement();
 
-			if (bindingStatement instanceof QSetTransactionStatement)
+			if (bindingStatement instanceof QSetOptionStatement)
+				result = manageSetOptionStatement((QSetOptionStatement) bindingStatement);
+			else if (bindingStatement instanceof QSetTransactionStatement)
 				result = manageSetTransactionStatement((QSetTransactionStatement) bindingStatement);
 			else if (bindingStatement instanceof QExecuteStatement)
 				result = manageExecuteStatement((QExecuteStatement) bindingStatement);
@@ -427,6 +430,15 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		return methodExec;
 	}
+	
+	//TODO: manage Set Option statement
+	private QStatement manageSetOptionStatement(QSetOptionStatement bindingStatement) {
+		System.out.println("Manage SET OPTION");
+		
+		
+		return null;
+	}
+	
 
 	private QStatement manageSetTransactionStatement(QSetTransactionStatement bindingStatement) {
 		System.out.println("Manage SET TRANSACTION");
