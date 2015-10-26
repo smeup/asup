@@ -36,7 +36,9 @@ import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QIntoClause;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.QOpenStatement;
+import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
+import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
 import org.smeup.sys.db.syntax.dbl.RWOperation;
 import org.smeup.sys.db.syntax.dbl.UsingType;
@@ -93,6 +95,10 @@ public class DBLModelBuilder {
 		QBindingStatement result = null;
 
 		switch (tree.getType()) {
+		
+		case DBLLexer.SET_OPTION_STATEMENT:
+			result = manageSetOptionStatement(tree);
+			break;
 
 		case DBLLexer.SET_TRANSACTION_STATEMENT:
 			result = manageSetTransactionStatement(tree);
@@ -128,7 +134,7 @@ public class DBLModelBuilder {
 
 		case DBLLexer.CLOSE_STATEMENT:
 			result = manageCloseStatement(tree);
-			break;
+			break;		
 
 		default:
 			break;
@@ -633,6 +639,29 @@ public class DBLModelBuilder {
 		return executeStatement;
 	}
 
+	private QBindingStatement manageSetOptionStatement(Tree tree) {
+		QSetOptionStatement setOptionStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createSetOptionStatement();
+		
+		Tree optionToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			optionToken = tree.getChild(i);
+			
+			if (optionToken.getType() == DBLLexer.OPTION){
+				QOption option = QDatabaseSyntaxDBLFactory.eINSTANCE.createOption();
+				option.setName(optionToken.getText());
+				
+				Tree valueToken = optionToken.getChild(0);
+				if (valueToken != null) {
+					option.setValue(valueToken.getText());
+					setOptionStatement.getOptions().add(option);
+				}
+			}			
+		}
+		
+		return setOptionStatement;
+	}
+	
 	private QBindingStatement manageSetTransactionStatement(Tree tree) {
 		QSetTransactionStatement setTransactionStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createSetTransactionStatement();
 

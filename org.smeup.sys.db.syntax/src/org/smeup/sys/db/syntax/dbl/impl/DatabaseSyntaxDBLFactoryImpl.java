@@ -67,9 +67,11 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
+			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
 			case QDatabaseSyntaxDBLPackage.OPEN_STATEMENT: return (EObject)createOpenStatement();
 			case QDatabaseSyntaxDBLPackage.PREPARE_STATEMENT: return (EObject)createPrepareStatement();
 			case QDatabaseSyntaxDBLPackage.CLOSE_STATEMENT: return (EObject)createCloseStatement();
+			case QDatabaseSyntaxDBLPackage.OPTION: return (EObject)createOption();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -210,6 +212,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QSetOptionStatement createSetOptionStatement() {
+		SetOptionStatementImpl setOptionStatement = new SetOptionStatementImpl();
+		return setOptionStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QOpenStatement createOpenStatement() {
 		OpenStatementImpl openStatement = new OpenStatementImpl();
 		return openStatement;
@@ -233,6 +245,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QCloseStatement createCloseStatement() {
 		CloseStatementImpl closeStatement = new CloseStatementImpl();
 		return closeStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QOption createOption() {
+		OptionImpl option = new OptionImpl();
+		return option;
 	}
 
 	/**

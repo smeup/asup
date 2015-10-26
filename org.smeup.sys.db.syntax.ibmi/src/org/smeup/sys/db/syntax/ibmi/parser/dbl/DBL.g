@@ -814,9 +814,14 @@ hold
  
  single_fetch
  	:
- 	INTO v= Variable -> ^(SINGLE_FETCH ^(INTO ^(VARIABLE $v)))
+ 	INTO into_variable  (',' into_variable)* -> ^(SINGLE_FETCH ^(INTO into_variable (into_variable)*))
  	;
  	
+ into_variable
+ 	:
+ 	v=Variable -> ^(VARIABLE $v)
+ 	;	
+
  	
  multiple_row_fetch
  	:	
@@ -1375,8 +1380,7 @@ CHAR_SPECIAL
     | '\u00f2' //Ã²
     | '\u00f9' //Ã¹
     | '"'
-    | '?'    
-    | ','   
+    | '?'      
     | '\u00a3' //Â£	
     | '&'
     | '*'    

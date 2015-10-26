@@ -372,6 +372,10 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isolationLevel" eType="#//dbl/IsolationLevel"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rwOperation" eType="#//dbl/RWOperation"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SetOptionStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
+          eType="#//dbl/Option"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OpenStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="using" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -400,6 +404,10 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CloseStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Option">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

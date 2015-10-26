@@ -269,8 +269,8 @@ SET : S E T;
 SELECT : S E L E C T;
 SHARE	:	 S H A R E;
 SERIALIZABLE 	:	 S E R I A L I Z A B L E;
-SQL: S Q L;
 SYSTEM	:	S Y S T E M;
+SQL	:	 S Q L;
 TABLE : T A B L E;
 THEN : T H E N;
 TO	:	 T O;
@@ -537,7 +537,7 @@ control_statement
   
 create_index_statement
 	:
-	CREATE (u=UNIQUE)? INDEX n=qualified_identifier ON t=table (m=method_specifier)?
+	CREATE (u=UNIQUE)? INDEX n=table ON t=table (m=method_specifier)?
     LEFT_PAREN s=sort_specifier_list RIGHT_PAREN p=param_clause?
     -> ^(CREATE_INDEX_STATEMENT $u? ^(INDEX_NAME $n)? ^(ON $t) $p? $s)		
 	;  
@@ -667,6 +667,12 @@ rename_index_statement
 	RENAME INDEX t=table TO n=Identifier FOR SYSTEM NAME s=Identifier -> ^(RENAME_INDEX_STATEMENT ^(INDEX_NAME $t) ^(NEW_NAME $n) ^(SYSTEM $s))
 	;	
 		
+
+rollback_statement
+	:
+	ROLLBACK (h=HOLD)? -> ^(ROLLBACK_STATEMENT ($h)?)
+	;	
+
 release_statement
 	: RELEASE s=Identifier-> ^(RELEASE_STATEMENT ^(SERVER_NAME $s))
 	  |
@@ -677,10 +683,7 @@ release_statement
 	  RELEASE c=CURRENT -> ^(RELEASE_STATEMENT ^(SERVER_NAME $c)) 
 	;
 	
-rollback_statement
-	:
-	ROLLBACK (h=HOLD)? -> ^(ROLLBACK_STATEMENT ($h)?)
-	;	
+
 
 set_connection_statement
 	:
@@ -817,7 +820,7 @@ derived_column
   ;
   
 column_reference
-	:	c=Identifier -> ^(COLUMN_NAME $c)
+	:	b=Identifier -> ^(COLUMN_NAME $b )
 	
 	;
 as_clause
@@ -833,7 +836,12 @@ table
   ;
 
 qualified_identifier
-  : l=Identifier DIVIDE f=Identifier (LEFT_PAREN m=Identifier RIGHT_PAREN)? -> ^(QUALIFIED $l $f $m?) 
+  : l=Identifier DIVIDE f=Identifier LEFT_PAREN m=Identifier RIGHT_PAREN -> ^(QUALIFIED $l $f $m) 
+  	|
+    l=Identifier DIVIDE f=Identifier -> ^(QUALIFIED $l $f)
+    	|
+    l=Identifier LEFT_PAREN m=Identifier RIGHT_PAREN -> ^(QUALIFIED $l $m) 	
+    		
   ;	
  
 member	:
@@ -1227,7 +1235,7 @@ fragment
 UNICODE_ESC
     :   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
     ;
-
+    
 fragment
 CHAR_SPECIAL
   :
@@ -1244,12 +1252,10 @@ CHAR_SPECIAL
     | '\u00f2' //ò
     | '\u00f9' //ù
     | '"'
-    | '?'    
-    | ','   
+    | '?'     
     | '\u00a3' //£	
     | '&'
     | '*'    
-    | '/'
     | '='
     | '>'
     | '<'	
@@ -1260,7 +1266,7 @@ CHAR_SPECIAL
     | '%'
     | ':'
   )
-  ;    
+  ;
     
 /*
 ===============================================================================

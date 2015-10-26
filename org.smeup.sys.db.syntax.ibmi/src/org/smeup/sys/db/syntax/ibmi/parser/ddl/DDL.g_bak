@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-grammar DBL;
+grammar DDL;
 
 options {
 	language=Java;
@@ -24,30 +24,32 @@ options {
 	output=AST;
 	ASTLabelType=CommonTree;
 }
-
-
 tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
-  ALLOW_READ;    
+  ALLOW_READ;  
   AS_EXPRESSION;
-  CLOSE_STATEMENT;
   COLUMN;
   COLUMNS_LIST;
   COLUMN_NAME;
+  COMMIT_STATEMENT;
+  CONNECT_STATEMENT;
   COUNT_VAL;
   COUNT_ROWS;
+  CREATE_ALIAS_STATEMENT;
+  CREATE_INDEX_STATEMENT;
+  CREATE_TABLE_STATEMENT;
+  CREATE_VIEW_STATEMENT;
   //CURRENT
   DB_NAME;
-  DECLARE_CURSOR_STATEMENT;
-  DESCRIBE_STATEMENT;
-  DESCRIPTOR;
+  DROP_ALIAS_STATEMENT;
+  DROP_INDEX_STATEMENT;
+  DROP_TABLE_STATEMENT;
+  DROP_VIEW_STATEMENT;
+  DESC_TABLE;
+  DISCONNECT_STATEMENT;
   EMPTY_GROUPING_SET;
-  EXECUTE_STATEMENT;
-  EXECUTE_IMMEDIATE_STATEMENT;
-  FETCH_POSITION;
-  FETCH_STATEMENT;	
   FIELD_NAME;
   FIELD_DEF;
   FIELD_TYPE;
@@ -56,68 +58,61 @@ tokens {
   GROUP_BY;
   INDEX_NAME;
   ISOLATION_LEVEL;
+  LOCK_TABLE_STATEMENT;
   MEMBER;
-  MULTIPLE_ROW_FETCH;
   NEW_NAME;
   NO_COMMIT;
-  NO_SCROLL;
   NULL_ORDER;
-  OPEN_STATEMENT;
   ORDER;
   ORDER_BY;
   OR_REPLACE;
   PARAM;
   PARAMS; 
-  PREPARE_STATEMENT;
   PROCEDURE_ARGS;
+  PROCEDURE_CALL_STATEMENT;
   PROCEDURE_NAME;
   READ_COMMITTED;
   READ_ONLY;
   READ_WRITE;
   READ_UNCOMMITTED;
   RELEASE_STATEMENT;
+  RENAME_INDEX_STATEMENT; 
+  RENAME_TABLE_STATEMENT;
   REPEATABLE_READ; 
-  ROLLBACK_STATEMENT;  
+  ROLLBACK_STATEMENT;
   RW_OPERATION;
   SEL_LIST;
-  SET_OPTION;
-  SET_OPTION_STATEMENT;  
+  SET_CONNECTION_STATEMENT;
   SET_TRANSACTION_STATEMENT;
   SET_QUALIFIER;
   SERVER_NAME;
   SHOW_TABLE;
   SHOW_FUNCTION;
-  SINGLE_FETCH;
   SORT_KEY;
   SORT_SPECIFIERS;
-  STATEMENT;
   STORE;
   STORE_TYPE;
   SYSTEM;
-  SYSTEM_NAMES;	  
   TABLE_NAME;
   TABLE_DEF;
   TARGET_FIELDS;  
   QUALIFIED;
   FOR_COLUMN;
   NOT_NULL;
-  USING_DESCRIPTOR;
   VALUES;
-  VARIABLE;
   VIEW_NAME;
   WITH_DEFAULT;
-  WITH_HOLD;
-  WITHOUT_HOLD;
 }
 
+
 @header {
-package org.smeup.sys.db.syntax.ibmi.parser.dbl;
+package org.smeup.sys.db.syntax.ibmi.parser.ddl;
 import java.util.List;
 import java.util.ArrayList;
 }
 
 @lexer::header {
-package org.smeup.sys.db.syntax.ibmi.parser.dbl;
+package org.smeup.sys.db.syntax.ibmi.parser.ddl;
 
 }
 
@@ -184,35 +179,22 @@ fragment Y
 	:	'Y' | 'y';
 fragment Z
 	:	'Z' | 'z';
-fragment MULT
-	 :	'*' ;
-		
 /*
 ===============================================================================
   Reserved Keywords
 ===============================================================================
 */
-
-AFTER	:	A F T E R;
 AS : A S;
 ALIAS	:	A L I A S;
 ALL : A L L;
 ALLOW	:	 A L L O W;
-ALWBLK 	: A L W B L K;
-ALWCPYDTA : A L W C P Y D T A;	
-CLOSQLCSR : C L O S Q L C S R;
-CNULRQD :	C N U L R Q D;
 AND : A N D;
-ANY	:	A N Y;
 ASC : A S C;
-BEFORE 	:	B E F O R E;
-BOTH	:	 B O T H;
 BY : B Y;
 CALL: C A L L;
 CASE : C A S E;
 CASCADE	:	 C A S C A D E;
 CHARACTER : C H A R A C T E R;
-CLOSE	:	C L O S E;
 COALESCE : C O A L E S C E;
 COLUMN 	: C O L U M N;
 COUNT : C O U N T;
@@ -224,33 +206,17 @@ CONNECTION	:	C O N N E C T I O N;
 CROSS : C R O S S;
 CUBE : C U B E;
 CURRENT	:	 C U R R E N T;
-CURSOR	:	 C U R S O R;
-DATFMT 	:	D A T F M T;
-DATSEP  :	D A T S E P;
-DBGVIEW	:	D B G V I E W;
 DEFAULT	: D E F A U L T;	 
-DECLARE	:	 D E C L A R E;
-DECMPT  :	 D E C M P T;
-DFTRDBCOL: 	D F T R D B C O L;
 DESC : D E S C;
-DESCRIBE : D E S C R I B E;
-DESCRIPTOR : D E S C R I P T O R;	
 DISTINCT : D I S T I N C T;
-DISCONNECT : D I S C O N N E C T;
-DLYPRP	: D L Y P R P;	
+DISCONNECT : D I S C O N N E C T;	
 DROP : D R O P;
-DYNAMIC	:	 D Y N A M I C;
-DYNDFTCOL: D Y N D F T C O L;
-DYNUSRPRF: D Y N U S R P R F;
 END : E N D;
 ELSE : E L S E;
-EVENTF	:	E V E N T F;
 EXCEPT : E X C E P T;
 EXCLUSIVE:	 E X C L U S I V E;
-EXECUTE	:	E X E C U T E;
 EXTERNAL : E X T E R N A L;
 FALSE : F A L S E;
-FETCH	:	 F E T C H;
 FIRST : F I R S T;
 FOR 	:	 F O R;
 FORMAT : F O R M A T;
@@ -265,12 +231,9 @@ INNER : I N N E R;
 INSERT : I N S E R T;
 INTERSECT : I N T E R S E C T;
 INTO : I N T O;
-IMMEDIATE : I M M E D I A T E;			
 IS : I S;
 ISOLATION : I S O L A T I O N;	
 JOIN : J O I N;
-LABELS	:	 L A B E L S;
-LANGID	:	L A N G I D;
 LAST : L A S T;
 LEFT : L E F T;
 LEVEL	:	 L E V E L;
@@ -280,30 +243,19 @@ LOCATION : L O C A T I O N;
 LOCK	:	 L O C K;
 MODE	:	 M O D E;
 NAME	:	 N A M E;
-NAMES	:	 N A M E S;
-NAMING	:	N A M I N G;
 NATIONAL : N A T I O N A L;
 NATURAL : N A T U R A L;
-NEXT	:	N E X T;
 NO: N O;
 NOT : N O T;
 NULL : N U L L;
 NULLIF : N U L L I F;
 ON : O N;
 ONLY: O N L Y;
-OPEN	:	O P E N;
-OPTION 	:	 O P T I O N;
-OPTLOB	:	O P T L O B;
+OUTER : O U T E R;
 OR : O R;
 ORDER : O R D E R;
-OUTER : O U T E R;
-OUTPUT	:	O U T P U T;
-PRECISION : P R E C I S I O N;
-PREPARE	:	P R E P A R E;
-PRIOR	:	 P R I O R;
-RDBCNNMTH: R D B C N N M T H;	
+PRECISION : P R E C I S I ON;
 READ	:	 R E A D;
-RELATIVE:	R E L A T I V E;
 RELEASE	:	R E L E A S E;
 RENAME	:	 R E N A M E;
 REPEATABLE : R E P E A T A B L E;
@@ -313,22 +265,14 @@ RESTRICT:	 R E S T R I C T;
 RIGHT : R I G H T;
 ROLLBACK:	 R O L L B A C K;
 ROLLUP : R O L L U P;
-ROWS	:	R O W S;
 SET : S E T;
 SELECT : S E L E C T;
-SCROLL	:	S C R O L L;
 SHARE	:	 S H A R E;
 SERIALIZABLE 	:	 S E R I A L I Z A B L E;
+SQL: S Q L;
 SYSTEM	:	S Y S T E M;
-SQL	:	 S Q L;
-SQLCURRULE	:	S Q L C U R R U L E;
-SQLPATH	:	 S Q L P A T H;
-SRTSEQ	:	S R T S E Q;
 TABLE : T A B L E;
-TGTRLS	:	T G T R L S;
 THEN : T H E N;
-TIMFMT	:	T I M F M T;
-TIMSEP	:	T I M S E P;
 TO	:	 T O;
 TRANSACTION :	T R A N S A C T I O N;
 TRUE : T R U E;
@@ -338,78 +282,15 @@ UNIQUE : U N I Q U E;
 UNKNOWN : U N K N O W N;
 USING : U S I N G;
 USER	:	U S E R;
-USRPRF : U S R P R F;
 VALUES : V A L U E S;
 VARYING : V A R Y I N G;
 WHEN : W H E N;
 WHERE : W H E R E;
 WITH : W I T H;
-WITHOUT : W I T H O U T;
 WORK	:	 W O R K;
 WRITE: W R I T E;
 VIEW : V I E W;
 ZONE : Z O N E;
-
-
-/*
-Specials for set option
-*/
-S_ALL	:	 MULT A L L;
-S_ALLREAD : MULT A L L R E A D;	
-S_BLANK: MULT B L A N K;
-S_CHG	:	 MULT C H G;
-S_COLON	:	 MULT C O L O N;
-S_COMMA	:	 MULT C O M M A;
-S_CS: MULT C S;
-S_CURLIB:	 MULT C U R L I B;
-S_DASH	:	 MULT D A S H;
-S_DB2	:	MULT D B '2';
-S_DMY	:	 MULT D M Y;
-S_DUW	:	 MULT D U W;
-S_ENDACTGRP	:	MULT E N D A C T G R P;
-S_ENDMOD:	MULT E N D M O D;
-S_ENDPGM: MULT E N D P G M;
-S_ENDSQL:	 MULT E N D S Q L;
-S_ENDJOB: MULT E N D J O B;
-S_EUR	:	 MULT E U R;
-S_HEX	:	 MULT H E X;
-S_HMS	:	 MULT H M S;
-S_ISO	:	 MULT I S O;
-S_JIS	:	 MULT J I S;
-S_JUL	:	 MULT J U L;
-S_JOB	:	 MULT J O B;
-S_JOBRUN:	MULT J O B R U N;
-S_LANGIDSHR	:	MULT L A N G I D S H R;
-S_LANGIDUNQ	:	MULT L A N G I D U N Q;
-S_LIBL: MULT L I B L;
-S_LIST	:	 MULT L I S T;
-S_MDY	:	 MULT M D Y;
-S_NAMING:	MULT N A M I N G;
-S_NO	:	MULT N O;
-S_NONE	:	MULT N O N E;
-S_OPTIMIZE	:	MULT O P T I M I Z E;
-S_OWNER	:	 MULT O W N E R;
-S_PERIOD	:	MULT P E R I O D;
-S_PRINT	:	 MULT P R I N T;
-S_READ: MULT R E A D;
-S_RR: MULT R R;
-S_RUW: MULT R U W;
-S_SLASH	:	MULT S L A S H;
-S_SOURCE:	MULT S O U R C E;
-S_SQL: MULT S Q L;
-S_STD: MULT S T D;
-S_STMT	:	 MULT S T M T;
-S_SYS	:	 MULT S Y S;
-S_SYSVAL:	MULT S Y S V A L;
-S_USA	:	 MULT U S A;
-S_USER	:	 MULT U S E R;
-S_YES	:	MULT Y E S;
-S_YMD	:	MULT Y M D;
-
-
-
-
-
 /*
 ===============================================================================
   Data Type Tokens
@@ -577,115 +458,242 @@ blob_type
   : BLOB
   | BYTEA -> BLOB
   ;
-
 /*
 ===============================================================================
   SQL statement (Start Symbol)
 ===============================================================================
 */
-
 sql
   : statement EOF
   ;
-  
 statement
   : 
-  set_transaction_statement
-  |
-  execute_statement
-  |
-  execute_immediate_statement
-  |
-  open_statement
-  |
-  prepare_statement
-  |
-  declare_cursor_statement
-  |
-  describe_statement
-  |
-  fetch_statement
-  |
-  open_statement
-  |
-  close_statement
-  |
-  set_option_statement
+  | schema_statement
+  | index_statement
+  | transaction_statement
+  | control_statement
+  | connection_statement
+  /*
+  | data_statement
+   data_change_statement
+   */
+	;  
+
+/*  
+data_statement
+  : query_expression
+  ;
+data_change_statement
+  : insert_statement
+  ;
+*/  
   
+schema_statement
+  : create_table_statement
+  | create_view_statement
+  | create_alias_statement
+  | drop_alias_statement
+  | drop_table_statement
+  | drop_view_statement 
+  | rename_table_statement  
+  ;
+
+index_statement
+  : 
+  create_index_statement
+  |
+  drop_index_statement
+  |		
+  rename_index_statement
+  ;
+  
+transaction_statement
+	:
+	commit_statement			
+	|
+	lock_statement
+	|
+	release_statement
+	|
+	rollback_statement	
+	|
+	set_transaction_statement
+	;
+
+connection_statement
+	:
+	connect_statement
+	|
+	disconnect_statement
+	|
+	set_connection_statement
+	;	
+
+control_statement
+	:
+	call_procedure	
+	;	
+  
+  
+create_index_statement
+	:
+	CREATE (u=UNIQUE)? INDEX n=qualified_identifier ON t=table (m=method_specifier)?
+    LEFT_PAREN s=sort_specifier_list RIGHT_PAREN p=param_clause?
+    -> ^(CREATE_INDEX_STATEMENT $u? ^(INDEX_NAME $n)? ^(ON $t) $p? $s)		
+	;  
+
+drop_index_statement
+	:
+	DROP INDEX i=table	-> ^(DROP_INDEX_STATEMENT ^(INDEX_NAME $i))
+	;
+	
+  
+create_table_statement
+  : CREATE EXTERNAL TABLE t=table def=table_elements USING f=Identifier
+    p=param_clause? (LOCATION path=Character_String_Literal)
+      -> ^(CREATE_TABLE_STATEMENT ^(TABLE_NAME $t) EXTERNAL ^(TABLE_DEF $def) ^(USING $f) $p?
+         ^(LOCATION $path))
+  | CREATE TABLE t=table (def=table_elements)? (USING s=Identifier)?
+    (p=param_clause)? (AS q=query_expression)?
+      -> ^(CREATE_TABLE_STATEMENT ^(TABLE_NAME $t) ^(TABLE_DEF $def)? ^(USING $s)? $p? ^(AS $q)?)
+  ;
+table_elements
+  : LEFT_PAREN field_element (COMMA field_element)* RIGHT_PAREN
+    -> field_element+
+  ;
+  
+field_element
+  : Identifier (FOR COLUMN c=Identifier)? field_type (not_null)? (with_default)?-> ^(FIELD_DEF ^(FIELD_NAME Identifier) ^(FOR_COLUMN $c)? ^(FIELD_TYPE field_type) (not_null)? (with_default)?)
+  ;
+  
+not_null:
+	NOT NULL -> ^(NOT_NULL)	
   ;  
+ 
+with_default:
+	WITH DEFAULT -> ^(WITH_DEFAULT)	
+  ;    
   
-  /* SET OPTIONS */
-  set_option_statement
-  	:
-  	SET OPTION (options_assign) (',' options_assign)* -> ^(SET_OPTION_STATEMENT options_assign (options_assign)*)
-  	;  
+field_type
+  : data_type
+  ;
+
+create_view_statement
+  : 
+  CREATE VIEW t=table (col=ordinary_grouping_set)? /*AS q=query_expression*/ -> ^(CREATE_VIEW_STATEMENT ^(VIEW_NAME $t) ^(COLUMNS_LIST $col)? /*^(AS_EXPRESSION $q)*/) 
+  ;      
   
-options_assign
-  	:	
-  	o=ALWBLK EQUAL v=(S_READ|S_NONE|S_ALLREAD)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=ALWCPYDTA EQUAL v=(S_YES|S_NO|S_OPTIMIZE)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=CLOSQLCSR EQUAL v=(S_ENDACTGRP|S_ENDMOD|S_ENDPGM|S_ENDSQL|S_ENDJOB)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=CNULRQD EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=COMMIT EQUAL v=(S_CHG|S_NONE|S_CS|S_ALL|S_RR)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DATFMT EQUAL v=(S_JOB|S_ISO|S_EUR|S_USA|S_JIS|S_MDY|S_YMD|S_JUL)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DATSEP EQUAL v=(S_JOB|S_SLASH|'/'|S_PERIOD|'.'|S_COMMA|','|S_DASH|S_BLANK)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DECMPT EQUAL v=(S_PERIOD|S_COMMA|S_SYSVAL|S_JOB)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DBGVIEW EQUAL v=(S_NONE|S_SOURCE|S_STMT|S_LIST)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DFTRDBCOL EQUAL v=(S_NONE|Variable)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DLYPRP EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DYNDFTCOL EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=DYNUSRPRF EQUAL v=(S_OWNER|S_USER)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=EVENTF EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=LANGID EQUAL v=(S_JOB|S_JOBRUN|Variable)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=NAMING EQUAL v=(S_SYS|S_SQL)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=OPTLOB EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=OUTPUT EQUAL v=(S_NONE|S_PRINT)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=RDBCNNMTH EQUAL v=(S_DUW|S_RUW)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=SQLCURRULE EQUAL v=(S_DB2|S_STD)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=SQLPATH EQUAL v=(S_LIBL|Variable)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=CNULRQD EQUAL v=(S_YES|S_NO)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=SRTSEQ EQUAL v=(S_JOB|S_HEX|S_JOBRUN|S_LANGIDUNQ|S_LANGIDSHR|S_CURLIB|(S_LIBL)* Variable)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=TGTRLS EQUAL v=(Variable)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=TIMFMT EQUAL v=(S_HMS|S_ISO|S_EUR|S_USA|S_JIS)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=TIMSEP EQUAL v=(S_JOB|S_COLON|':'|S_PERIOD|'.'|S_COMMA|','|S_BLANK)-> ^(SET_OPTION[$o.text] $v)
-  	|
-  	o=USRPRF EQUAL v=(S_OWNER|S_USER|S_NAMING)-> ^(SET_OPTION[$o.text] $v)
-  	
-  	;	
-  
- /* SET TRANSACTION */ 
- set_transaction_statement
+create_alias_statement
+	: CREATE (or_replace)? ALIAS t=table FOR m=table -> ^(CREATE_ALIAS_STATEMENT (or_replace)? ^(ALIAS_NAME $t) ^(TABLE_NAME $m))
+		
+	;  
+	
+or_replace
+	:
+	OR REPLACE -> ^(OR_REPLACE)	
+	;
+
+drop_alias_statement
+	:
+	DROP ALIAS t=table -> ^(DROP_ALIAS_STATEMENT ^(ALIAS_NAME $t))	
+	;	
+
+commit_statement
+	:
+	COMMIT 	(WORK)? (h=HOLD)? -> ^(COMMIT_STATEMENT $h?) 
+	;	
+connect_statement
+	: CONNECT (TO s= Identifier (USER u=Identifier USING p=Character_String_Literal))? -> ^(CONNECT_STATEMENT (^(TO $s) ^(USER $u) ^(USING $p))?)
+ 	  |
+ 	  CONNECT RESET -> ^(CONNECT_STATEMENT RESET)
+	;	
+
+disconnect_statement
+	: DISCONNECT -> ^(DISCONNECT_STATEMENT)
+	  |
+	  DISCONNECT ALL -> ^(DISCONNECT_STATEMENT ALL)
+	  |
+	  DISCONNECT CURRENT -> ^(DISCONNECT_STATEMENT CURRENT) 
+	;		
+
+drop_table_statement
+  :
+	DROP TABLE t=table  -> ^(DROP_TABLE_STATEMENT ^(TABLE_NAME $t))
+	|
+	DROP TABLE t=table restrict -> ^(DROP_TABLE_STATEMENT ^(TABLE_NAME $t) restrict)
+	|
+	DROP TABLE t=table cascade -> ^(DROP_TABLE_STATEMENT ^(TABLE_NAME $t) cascade)
+	
+  ;  
+
+
+drop_view_statement
+  :
+	DROP VIEW v=table  -> ^(DROP_VIEW_STATEMENT ^(VIEW_NAME $v))
+	|
+	DROP VIEW v=table restrict -> ^(DROP_VIEW_STATEMENT ^(VIEW_NAME $v) restrict)
+	|
+	DROP VIEW v=table cascade -> ^(DROP_VIEW_STATEMENT ^(VIEW_NAME $v) cascade)	
+  ;    
+
+   	
+restrict:	
+	RESTRICT -> ^(RESTRICT)
+	; 
+ 
+cascade:	
+	CASCADE  -> ^(CASCADE)
+	;
+
+lock_statement
+	:
+	LOCK TABLE t=table IN SHARE MODE	-> ^(LOCK_TABLE_STATEMENT ^(TABLE_NAME $t) ^(SHARE)) 
+	|
+	LOCK TABLE t=table IN EXCLUSIVE MODE (allow_read)?	-> ^(LOCK_TABLE_STATEMENT ^(TABLE_NAME $t) ^(EXCLUSIVE) (allow_read)?) 
+	;	
+
+allow_read
+	:
+	ALLOW READ -> ^(ALLOW_READ)
+	;	
+
+rename_table_statement
+	:
+	RENAME TABLE t=table TO n=Identifier FOR SYSTEM NAME s=Identifier -> ^(RENAME_TABLE_STATEMENT ^(TABLE_NAME $t) ^(NEW_NAME $n) ^(SYSTEM $s))
+	;	
+
+rename_index_statement
+	:
+	RENAME INDEX t=table TO n=Identifier FOR SYSTEM NAME s=Identifier -> ^(RENAME_INDEX_STATEMENT ^(INDEX_NAME $t) ^(NEW_NAME $n) ^(SYSTEM $s))
+	;	
+		
+release_statement
+	: RELEASE s=Identifier-> ^(RELEASE_STATEMENT ^(SERVER_NAME $s))
+	  |
+	  RELEASE a=ALL  -> ^(RELEASE_STATEMENT ^(SERVER_NAME $a))
+	  |
+	  RELEASE ALL SQL   -> ^(RELEASE_STATEMENT ^(SERVER_NAME ALL_SQL))
+	  |
+	  RELEASE c=CURRENT -> ^(RELEASE_STATEMENT ^(SERVER_NAME $c)) 
+	;
+	
+rollback_statement
+	:
+	ROLLBACK (h=HOLD)? -> ^(ROLLBACK_STATEMENT ($h)?)
+	;	
+
+set_connection_statement
+	:
+	SET CONNECTION d=Identifier -> ^(SET_CONNECTION_STATEMENT ^(DB_NAME $d))
+	;	
+
+set_transaction_statement
 	:
 	SET TRANSACTION ISOLATION LEVEL i=isolation_level (COMMA r=read_operation)? ->
 	
 	^(SET_TRANSACTION_STATEMENT ^(ISOLATION_LEVEL $i) (^(RW_OPERATION $r))?) 
 	;
- 
+
 isolation_level
 	:
 	SERIALIZABLE
@@ -735,158 +743,30 @@ read_write
 	:
 	READ WRITE -> ^(READ_WRITE)	
 	;	
- 
- /* EXECUTE STATEMENT*/
- 
- 
- execute_statement
- 	:
- 	EXECUTE s=Identifier -> ^(EXECUTE_STATEMENT ^(STATEMENT $s))						    
-	;	
 	
-execute_immediate_statement
- 	:
- 	EXECUTE IMMEDIATE v=Variable -> ^(EXECUTE_IMMEDIATE_STATEMENT ^(VARIABLE $v))
-	;	
-
-/* OPEN STATEMENT */ 
- 
- open_statement
- 	:	
- 	OPEN c=Identifier ((USING v1=Variable)|(USING DESCRIPTOR (v2=Variable|d=Identifier)))? 	-> {$v1 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING ^(VARIABLE $v1)))
- 												-> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2)))
- 												-> {$d != null}? ^(OPEN_STATEMENT ^(CURSOR $c)  ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))
- 												-> ^(OPEN_STATEMENT ^(CURSOR $c))
- 												
- 	;
-
-/* PREPARE STATEMENT */ 	
- prepare_statement
- 	:	
- 	PREPARE s=Identifier (into_clause)? FROM v=Variable -> ^(PREPARE_STATEMENT ^(STATEMENT $s) (into_clause)? ^(FROM ^(VARIABLE $v)))
- 	;
- 
- /* DECLARE CURSOR STATEMENT */	
- declare_cursor_statement
- 	:
- 	DECLARE c=Identifier (d=DYNAMIC)? (sc=scroll)? CURSOR (h=hold)? FOR s=Identifier 
- 	-> ^(DECLARE_CURSOR_STATEMENT ^(CURSOR $c) ($d)? ($sc)? ($h)? ^(FOR ^(STATEMENT $s))) 	
- 	;
-
-scroll
-	:
-	SCROLL -> ^(SCROLL)
-	|
-	NO SCROLL -> ^(NO_SCROLL)	
-	; 
-
-hold
-	:
-	WITH HOLD -> ^(WITH_HOLD)	
-	|
-	WITHOUT HOLD -> ^(WITHOUT_HOLD)	
-	;
- 	
-/* DESCRIBE STATEMENT */
- describe_statement
- 	:	
- 	DESCRIBE s=Identifier into_clause ->^(DESCRIBE_STATEMENT ^(STATEMENT $s) into_clause)
- 	;
-/* FETCH STATEMENT*/ 
- fetch_statement
- 	:
- 	FETCH (fetch_position)? (FROM)? c=Identifier (fetch_into)? -> ^(FETCH_STATEMENT (fetch_position)? ^(CURSOR $c) (fetch_into)?)
- 	;	
- 
- fetch_position
- 	:	p= (NEXT|PRIOR|FIRST|LAST|BEFORE|AFTER|CURRENT) -> ^(FETCH_POSITION $p)
- 		|
- 		RELATIVE (v=Variable|i=NUMBER) -> {$v != null}?^(FETCH_POSITION ^(RELATIVE ^(VARIABLE $v)))
- 					       -> 	       ^(FETCH_POSITION ^(RELATIVE NUMBER))
- 	;
- 	
- fetch_into
- 	:
- 	single_fetch
- 	|
- 	multiple_row_fetch	
- 	;	
- 
- single_fetch
- 	:
- 	INTO v= Variable -> ^(SINGLE_FETCH ^(INTO ^(VARIABLE $v)))
- 	;
- 	
- 	
- multiple_row_fetch
- 	:	
- 	FOR (v=Variable|NUMBER) ROWS (mi=multiple_row)? INTO ds=Variable	-> {$v != null}?^(MULTIPLE_ROW_FETCH ^(FOR ^(VARIABLE $v)) ($mi)? ^(INTO ^(VARIABLE $ds)))
- 										->		^(MULTIPLE_ROW_FETCH ^(FOR NUMBER) ($mi)? ^(INTO ^(VARIABLE $ds))) 	
- 	;		
- 	
- multiple_row
- 	:
- 	USING DESCRIPTOR d=Variable ->^(DESCRIPTOR ^(VARIABLE $d)) 	
- 	;	
- 	
- /*CLOSE STATEMENT*/
- close_statement
- 	:
- 	CLOSE c=Identifier -> ^(CLOSE_STATEMENT ^(CURSOR $c))	
- 	;	 			
- 
- 
- /* SUB ITEMS*/
- into_clause
- 	:
- 	INTO (d=Identifier|v=Variable) (USING t=using_target)? 	-> {$d!=null}?	^(INTO ^(DESCRIPTOR $d) ^(USING $t)?) 	
-								-> 		^(INTO ^(VARIABLE $v) ^(USING $t)?) 	
-	;
- 
- using_target
-	:	
-	NAMES|LABELS|ANY|BOTH|ALL|system_names
-	;
 	
-system_names
+call_procedure
 	:
-	SYSTEM NAMES -> ^(SYSTEM_NAMES)
-	;	
-	
+	CALL i=qualified_identifier (LEFT_PAREN funcArgs? RIGHT_PAREN) -> ^(PROCEDURE_CALL_STATEMENT ^(PROCEDURE_NAME $i) ^(PROCEDURE_ARGS funcArgs?))
+	;
 
 
-
-table_elements
-  : LEFT_PAREN field_element (COMMA field_element)* RIGHT_PAREN
-    -> field_element+
+insert_statement
+  : INSERT 'into' table (LEFT_PAREN column_reference_list RIGHT_PAREN)? 'values' array
+  -> ^(INSERT ^(TABLE table) ^(VALUES array) ^(TARGET_FIELDS column_reference_list)?)
   ;
-  
-field_element
-  : Identifier (FOR COLUMN c=Identifier)? field_type (not_null)? (with_default)?-> ^(FIELD_DEF ^(FIELD_NAME Identifier) ^(FOR_COLUMN $c)? ^(FIELD_TYPE field_type) (not_null)? (with_default)?)
-  ;
-  
-not_null:
-	NOT NULL -> ^(NOT_NULL)	
-  ;  
- 
-with_default:
-	WITH DEFAULT -> ^(WITH_DEFAULT)	
-  ;    
-  
-field_type
-  : data_type
-  ;
-
-
-
-
 /*
 ===============================================================================
   <query_expression>
 ===============================================================================
 */
- 
 
+  
+/*
+===============================================================================
+  <insert stmt>
+===============================================================================
+*/
 query_expression
   : query_expression_body
   ;
@@ -937,7 +817,7 @@ derived_column
   ;
   
 column_reference
-	:	b=Identifier -> ^(COLUMN_NAME $b )
+	:	c=Identifier -> ^(COLUMN_NAME $c)
 	
 	;
 as_clause
@@ -1308,17 +1188,6 @@ Identifier
   : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|Digit|CHAR_SPECIAL)*
   ;
 /*
-
-/*
-===============================================================================
- Variable
-===============================================================================
-*/
-Variable
-  : ':'('a'..'z'|'A'..'Z'|Digit|'_'|CHAR_SPECIAL)+ { setText(getText().substring(1)); }
-  ;
-
-/*
 ===============================================================================
  Literal
 ===============================================================================
@@ -1363,21 +1232,21 @@ fragment
 CHAR_SPECIAL
   :
   (
-    '\u00A7'  //Â§
+    '\u00A7'  //§
     | '$'
     | '_'
     | '.'    
     | '^'
-    | '\u00e0' //Ã 
-    | '\u00e8' //Ã¨
-    | '\u00e9' //Ã©
-    | '\u00ec' //Ã¬
-    | '\u00f2' //Ã²
-    | '\u00f9' //Ã¹
+    | '\u00e0' //à
+    | '\u00e8' //è
+    | '\u00e9' //é
+    | '\u00ec' //ì
+    | '\u00f2' //ò
+    | '\u00f9' //ù
     | '"'
     | '?'    
     | ','   
-    | '\u00a3' //Â£	
+    | '\u00a3' //£	
     | '&'
     | '*'    
     | '/'
@@ -1389,6 +1258,7 @@ CHAR_SPECIAL
     | '!'
     | '\\'
     | '%'
+    | ':'
   )
   ;    
     

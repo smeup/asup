@@ -99,6 +99,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QSetTransactionStatement createSetTransactionStatement();
 
 	/**
+	 * Returns a new object of class '<em>Set Option Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Option Statement</em>'.
+	 * @generated
+	 */
+	QSetOptionStatement createSetOptionStatement();
+
+	/**
 	 * Returns a new object of class '<em>Open Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -124,6 +133,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	 * @generated
 	 */
 	QCloseStatement createCloseStatement();
+
+	/**
+	 * Returns a new object of class '<em>Option</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Option</em>'.
+	 * @generated
+	 */
+	QOption createOption();
 
 	/**
 	 * Returns the package supported by this factory.
