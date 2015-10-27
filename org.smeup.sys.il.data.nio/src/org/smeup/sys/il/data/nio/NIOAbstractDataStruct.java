@@ -29,6 +29,7 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 	@Override
 	public void clear() {
+		super.clear();
 		for (QBufferedData element : this.getElements())
 			element.clear();
 	}

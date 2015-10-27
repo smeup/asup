@@ -268,7 +268,7 @@ public class BaseCallableInjector {
 
 			} else if (field.getAnnotation(DataDef.class) != null) {
 				DataDef dataDef = field.getAnnotation(DataDef.class);
-
+				
 				if (Integer.class.isAssignableFrom(fieldClass)) {
 					object = Integer.parseInt(dataDef.value());
 				} else if (String.class.isAssignableFrom(fieldClass)) {
