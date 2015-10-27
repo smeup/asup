@@ -11,12 +11,10 @@
  */
 package org.smeup.sys.os.dtaq.base.api;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -31,22 +29,14 @@ public class BaseDataQueueSender {
 	@Inject
 	private QDataQueueManager dataQueueManager;
 	@Inject
-	private QDataManager dataManager;
-	
+	private QDataContext dataContext;	
 	@Inject
 	private QJob job;
-
-	private QDataFactory dataFactory;
-	
-	@PostConstruct
-	private void init() {
-		this.dataFactory = dataManager.createFactory(job.getContext());
-	}
 	
 	@Entry
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
 		
-		QCharacter character = dataFactory.createCharacter(data.getLength(), false, false);
+		QCharacter character = dataContext.getDataFactory().createCharacter(data.getLength(), false, false);
 		data.assign(character);
 		
 		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, character.toString());

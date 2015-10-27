@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDataWriter;
@@ -48,20 +48,17 @@ import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
+import org.smeup.sys.os.pgm.base.BaseProgramStatus;
 
 @Module(name="*RPJ")
 public class RPJProgramSupport {
 	
 	@Inject
 	private BaseCallableInjector injector;
-	
 	@Inject
-	public QDataFactory dataFactory;
-
+	public QDataContext dataContext;
 	@Inject
 	public QProgramManager programManager;
-	// @Inject
-	// public QCommandManager commandManager;
 	@Inject
 	public QJob job;
 	
@@ -142,8 +139,10 @@ public class RPJProgramSupport {
 	public QIndicator qINU8;
 	@DataDef
 	public QIndicator qINU9;
-	@DataDef
-	public ProgramStatus qSTATUS;
+	
+	@Overlay(name = "*PGMSTATUS")
+	private BaseProgramStatus programStatus;
+	
 	@DataDef
 	public Date qDATE;
 
@@ -157,13 +156,6 @@ public class RPJProgramSupport {
 
 	public Object getProgramOwner() {
 		return this.programOwner;
-	}
-	public static class ProgramStatus extends QDataStructWrapper {
-
-		private static final long serialVersionUID = 1L;
-
-		@DataDef(precision = 5)
-		public QDecimal qStatus;
 	}
 
 	public static class Date extends QDataStructWrapper {
@@ -221,7 +213,7 @@ public class RPJProgramSupport {
 
 	public QIndicator qBox(boolean boolean_) {
 
-		QIndicator qIndicator = dataFactory.createIndicator(true);
+		QIndicator qIndicator = dataContext.getDataFactory().createIndicator(true);
 		qIndicator.eval(boolean_);
 
 		return qIndicator;
@@ -232,27 +224,27 @@ public class RPJProgramSupport {
 		QDecimal qDecimal = null;
 
 		if(decimal == null)
-			qDecimal = dataFactory.createDecimal(0, 0, DecimalType.ZONED, false);
+			qDecimal = dataContext.getDataFactory().createDecimal(0, 0, DecimalType.ZONED, false);
 		else if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 9)
-			qDecimal = dataFactory.createDecimal(1, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 10 && Math.abs(decimal) <= 99)
-			qDecimal = dataFactory.createDecimal(2, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(2, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 100 && Math.abs(decimal) <= 999)
-			qDecimal = dataFactory.createDecimal(3, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(3, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 1000 && Math.abs(decimal) <= 9999)
-			qDecimal = dataFactory.createDecimal(4, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(4, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 10000 && Math.abs(decimal) <= 99999)
-			qDecimal = dataFactory.createDecimal(5, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 100000 && Math.abs(decimal) <= 999999)
-			qDecimal = dataFactory.createDecimal(6, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(6, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 1000000 && Math.abs(decimal) <= 9999999)
-			qDecimal = dataFactory.createDecimal(7, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(7, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 10000000 && Math.abs(decimal) <= 99999999)
-			qDecimal = dataFactory.createDecimal(8, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(8, 0, DecimalType.ZONED, true);
 		else if (Math.abs(decimal) >= 100000000 && Math.abs(decimal) <= 999999999)
-			qDecimal = dataFactory.createDecimal(9, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(9, 0, DecimalType.ZONED, true);
 		else
-			qDecimal = dataFactory.createDecimal(10, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
 		qDecimal.eval(decimal);
 
@@ -264,11 +256,11 @@ public class RPJProgramSupport {
 		QDecimal qDecimal = null;
 
 		if(double_ == null)
-			qDecimal = dataFactory.createDecimal(0, 0, DecimalType.ZONED, false);
+			qDecimal = dataContext.getDataFactory().createDecimal(0, 0, DecimalType.ZONED, false);
 		else if (Math.abs(double_) >= 0 && Math.abs(double_) <= 9)
-			qDecimal = dataFactory.createDecimal(1, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
 		else
-			qDecimal = dataFactory.createDecimal(10, 0, DecimalType.ZONED, true);
+			qDecimal = dataContext.getDataFactory().createDecimal(10, 0, DecimalType.ZONED, true);
 
 		qDecimal.eval(double_);
 
@@ -279,9 +271,9 @@ public class RPJProgramSupport {
 
 		QCharacter qCharacter = null;
 		if(character == null)
-			qCharacter = dataFactory.createCharacter(0, false, false);
+			qCharacter = dataContext.getDataFactory().createCharacter(0, false, false);
 		else
-			qCharacter = dataFactory.createCharacter(character.length(), false, true);
+			qCharacter = dataContext.getDataFactory().createCharacter(character.length(), false, true);
 		
 		qCharacter.eval(character);
 
@@ -290,14 +282,14 @@ public class RPJProgramSupport {
 
 	public QCharacter qBox(byte character) {
 
-		QCharacter qCharacter = dataFactory.createCharacter(1, false, true);
+		QCharacter qCharacter = dataContext.getDataFactory().createCharacter(1, false, true);
 		qCharacter.eval(character);
 
 		return qCharacter;
 	}
 
 	public QIndicator qCast(QCharacter xin) {
-		QIndicator indicator = dataFactory.createIndicator(false);
+		QIndicator indicator = dataContext.getDataFactory().createIndicator(false);
 		xin.assign(indicator);
 		return indicator;
 	}
@@ -369,7 +361,7 @@ public class RPJProgramSupport {
 
 	public QString qChar(int number) {
 
-		QCharacter character = dataFactory.createCharacter(19, true, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(19, true, true);
 		character.eval(Integer.toString(number));
 
 		return character;
@@ -413,7 +405,7 @@ public class RPJProgramSupport {
 
 	public QString qEditc(QNumeric numeric, String format) {
 		// TODO
-		QCharacter character = dataFactory.createCharacter(10, false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(10, false, true);
 		character.eval(numeric);
 
 		switch (format) {
@@ -439,10 +431,10 @@ public class RPJProgramSupport {
 		// TODO
 		QCharacter character = null;
 		if (numeric.getLength() == 1) {
-			character = dataFactory.createCharacter(numeric.getLength(), false, true);
+			character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
 			character.eval(Integer.toString(numeric.asInteger()));
 		} else {
-			character = dataFactory.createCharacter(numeric.getLength(), true, true);
+			character = dataContext.getDataFactory().createCharacter(numeric.getLength(), true, true);
 			character.eval(Double.toString(numeric.asDouble()).replaceAll("\\.", ""));
 		}
 
@@ -457,7 +449,7 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qEof() {
-		return this.dataFactory.getDataContext().endOfData();
+		return this.dataContext.getDataFactory().getDataContext().endOfData();
 	}
 
 	public QIndicator qOpen(QDataSet<?> dataSet) {
@@ -488,7 +480,7 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qFound() {
-		return this.dataFactory.getDataContext().found();
+		return this.dataContext.getDataFactory().getDataContext().found();
 	}
 
 	public QIndicator qFound(QDataSet<?> dataSet) {
@@ -526,7 +518,7 @@ public class RPJProgramSupport {
 
 	public QPointer qAlloc(Integer size) {
 		return null;
-//		return dataFactory.allocate(size.intValue());
+//		return dataContext.getDataFactory().allocate(size.intValue());
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
@@ -543,14 +535,14 @@ public class RPJProgramSupport {
 
 	public QIndicator qTestn(QString string) {
 
-		QIndicator indicator = dataFactory.createIndicator(true);
+		QIndicator indicator = dataContext.getDataFactory().createIndicator(true);
 		string.testn(indicator);
 
 		return indicator;
 	}
 
 	public QDecimal qSize(QBufferedData bufferedData) {
-		QDecimal decimal = dataFactory.createDecimal(7, 0, DecimalType.ZONED, true);
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(7, 0, DecimalType.ZONED, true);
 		decimal.eval(bufferedData.getSize());
 		return decimal;
 	}
@@ -560,7 +552,7 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qStatus() {
-		return qSTATUS.qStatus;
+		return programStatus.status;
 	}
 
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {
@@ -570,7 +562,7 @@ public class RPJProgramSupport {
 		sb.append(replacement);
 		sb.append(source.substring(from + length - 1));
 
-		QCharacter character = dataFactory.createCharacter(source.length(), false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(source.length(), false, true);
 		character.eval(sb.toString());
 
 		return character;
@@ -588,7 +580,7 @@ public class RPJProgramSupport {
 	public QString qTrim(QString source) {
 
 		String str = source.trim();
-		QCharacter character = dataFactory.createCharacter(str.length(), false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(str.length(), false, true);
 		character.eval(str);
 
 		return character;
@@ -602,7 +594,7 @@ public class RPJProgramSupport {
 	public QString qTriml(QString source) {
 
 		String str = source.trimL();
-		QCharacter character = dataFactory.createCharacter(str.length(), false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(str.length(), false, true);
 		character.eval(str);
 
 		return character;
@@ -617,7 +609,7 @@ public class RPJProgramSupport {
 
 		String str = source.trimR();
 		int length = str.length();
-		QCharacter character = dataFactory.createCharacter(length, false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
 		character.eval(str);
 
 		return character;
@@ -631,7 +623,7 @@ public class RPJProgramSupport {
 
 		String str = string1.trimR() + " " + string2.toString();
 		int length = str.length();
-		QCharacter character = dataFactory.createCharacter(length, false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
 		character.eval(str);
 
 		return character;
@@ -645,7 +637,7 @@ public class RPJProgramSupport {
 
 		String str = string1.trimR() + " " + string2.toString();
 		int length = str.length();
-		QCharacter character = dataFactory.createCharacter(length, false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
 		character.eval(str);
 
 		return character;
@@ -660,7 +652,7 @@ public class RPJProgramSupport {
 
 		String str = string1.trimR() + string2.toString();
 		int length = str.length();
-		QCharacter character = dataFactory.createCharacter(length, false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(length, false, true);
 		character.eval(str);
 
 		return character;
@@ -677,7 +669,7 @@ public class RPJProgramSupport {
 
 	public QString qStr(QPointer source, Integer length) {
 
-		QCharacter character = dataFactory.createCharacter(source.getLength(), false, false);
+		QCharacter character = dataContext.getDataFactory().createCharacter(source.getLength(), false, false);
 		source.assign(character);
 
 		return character;
@@ -760,15 +752,15 @@ public class RPJProgramSupport {
 
 		QDecimal decimal = null;
 		if (length >= 0 && length <= 9)
-			decimal = dataFactory.createDecimal(1, 0, DecimalType.ZONED, true);
+			decimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
 		else if (length >= 10 && length <= 99)
-			decimal = dataFactory.createDecimal(2, 0, DecimalType.ZONED, true);
+			decimal = dataContext.getDataFactory().createDecimal(2, 0, DecimalType.ZONED, true);
 		else if (length >= 100 && length <= 999)
-			decimal = dataFactory.createDecimal(3, 0, DecimalType.ZONED, true);
+			decimal = dataContext.getDataFactory().createDecimal(3, 0, DecimalType.ZONED, true);
 		else if (length >= 1000 && length <= 9999)
-			decimal = dataFactory.createDecimal(4, 0, DecimalType.ZONED, true);
+			decimal = dataContext.getDataFactory().createDecimal(4, 0, DecimalType.ZONED, true);
 		else
-			decimal = dataFactory.createDecimal(5, 0, DecimalType.ZONED, true);
+			decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 
 		decimal.eval(length);
 
@@ -843,7 +835,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataFactory.getDataContext().found().eval(result.ge(1));
+		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
 
 		return result;
 	}
@@ -867,7 +859,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataFactory.getDataContext().found().eval(result.ge(1));
+		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
 
 		return result;
 	}
@@ -891,7 +883,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataFactory.getDataContext().found().eval(result.ge(1));
+		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
 
 		return result;
 	}
@@ -958,7 +950,7 @@ public class RPJProgramSupport {
 		if (length == null)
 			length = source.getLength() - startIndex;
 
-		QCharacter string = dataFactory.createCharacter(length, false, false);
+		QCharacter string = dataContext.getDataFactory().createCharacter(length, false, false);
 		source.assign(string, startIndex);
 
 		return string;
@@ -983,14 +975,14 @@ public class RPJProgramSupport {
 
 		String str = source.substring(startIndex - 1, startIndex - 1 + length);
 
-		QCharacter string = dataFactory.createCharacter(str.length(), false, true);
+		QCharacter string = dataContext.getDataFactory().createCharacter(str.length(), false, true);
 		string.eval(str);
 
 		return string;
 	}
 	
 	public <P extends Object> P bindProcedure(Class<P> klass) {
-		return injector.prepareProcedure(job.getContext(), getProgramOwner(), klass);
+		return injector.prepareProcedure(getProgramOwner(), klass);
 	}
 
 	public QDatetime qDate() {

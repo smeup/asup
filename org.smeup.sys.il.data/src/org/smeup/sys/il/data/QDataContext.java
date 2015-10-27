@@ -52,5 +52,5 @@ public interface QDataContext extends QContextProvider {
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	QDataArea<QCharacter> getOrCreateLocalDataArea();
+	QDataStruct getInfoStruct();
 } // QDataContext

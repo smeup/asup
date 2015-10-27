@@ -26,6 +26,14 @@ import org.smeup.sys.il.data.term.QDataTerm;
  */
 public interface QDataManager {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" dataContextRequired="true"
+	 * @generated
+	 */
+	QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true"
 	 * @generated
@@ -38,6 +46,14 @@ public interface QDataManager {
 	 * @generated
 	 */
 	QDataContainer createDataContainer(QContext context, QObject object, EClass term);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextRequired="true"
+	 * @generated
+	 */
+	QDataContext createDataContext(QContext context);
 
 	/**
 	 * <!-- begin-user-doc -->

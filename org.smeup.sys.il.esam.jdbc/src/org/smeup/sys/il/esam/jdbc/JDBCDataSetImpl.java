@@ -44,6 +44,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		@Overlay(position = "397")
 		public QBinary rrn;
 	}
+	
 	private QConnection databaseConnection;
 
 	private JDBCAccessHelper jdbcAccessHelper;

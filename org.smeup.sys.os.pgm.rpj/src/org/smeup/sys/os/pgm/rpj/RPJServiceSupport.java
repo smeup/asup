@@ -14,14 +14,14 @@ package org.smeup.sys.os.pgm.rpj;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
 
 public class RPJServiceSupport {
 
 	@Inject
-	private QDataFactory qDF;
+	private QDataContext dataContext;
 
 	public QCharacter p_rxsos(String arg1, String arg2) {
 
@@ -53,7 +53,7 @@ public class RPJServiceSupport {
 			}
 		}
 		String string = nameBuffer.toString();
-		QCharacter value = qDF.createCharacter(string.length(), true, true);
+		QCharacter value = dataContext.getDataFactory().createCharacter(string.length(), true, true);
 		value.eval(string);
 
 		return value;
@@ -61,7 +61,7 @@ public class RPJServiceSupport {
 
 	public QCharacter p_rxatt(String arg0, String arg1, String arg2, QIndicator arg3, QCharacter arg4) {
 
-		QCharacter value = qDF.createCharacter(30000, true, true);
+		QCharacter value = dataContext.getDataFactory().createCharacter(30000, true, true);
 
 		// data una stringa cerca il valore fra "()" di un attributo
 		// cerco "(" nell'attributo
@@ -99,7 +99,7 @@ public class RPJServiceSupport {
 
 	public QCharacter p_rxlate(String arg0, String arg1, String arg2, String arg3) {
 
-		QCharacter value = qDF.createCharacter(32766, true, true);
+		QCharacter value = dataContext.getDataFactory().createCharacter(32766, true, true);
 
 		if (arg0 == null)
 			arg0 = "";
@@ -133,7 +133,7 @@ public class RPJServiceSupport {
 	}
 
 	public QCharacter p_rxval(String arg0, String arg1) {
-		QCharacter value = qDF.createCharacter(32766, true, true);
+		QCharacter value = dataContext.getDataFactory().createCharacter(32766, true, true);
 
 		String variable = arg1.trim() + "=\"";
 		int len = variable.length();
@@ -150,7 +150,7 @@ public class RPJServiceSupport {
 	}
 
 	public QCharacter p_rxele(String arg0, String arg1, Integer arg2, QCharacter arg3, QDecimal arg4, QDecimal arg5, QCharacter arg6) {
-		QCharacter value = qDF.createCharacter(32766, true, true);
+		QCharacter value = dataContext.getDataFactory().createCharacter(32766, true, true);
 		value.eval("");
 
 		String start = "<" + arg0.trim();

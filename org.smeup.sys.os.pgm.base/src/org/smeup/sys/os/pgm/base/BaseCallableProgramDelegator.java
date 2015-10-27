@@ -15,9 +15,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import javax.annotation.PostConstruct;
+
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.QCallableProgramDelegator;
 import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
@@ -26,6 +29,7 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 
 	private static final long serialVersionUID = 1L;
 
+	private QDataContext dataContext;
 	private Object delegate;
 
 	protected Method open;
@@ -36,9 +40,9 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	private boolean isStateless;
 
 	private InitStrategy initStrategy;
-	private Field £mubField = null;
 
-	protected BaseCallableProgramDelegator(Object delegate, InitStrategy initStrategy) {
+	protected BaseCallableProgramDelegator(QDataContext dataContext, Object delegate, InitStrategy initStrategy) {
+		this.dataContext = dataContext;
 		this.delegate = delegate;
 		this.initStrategy = initStrategy;
 	}
@@ -46,6 +50,9 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	@Override
 	public void open() {
 
+		dataContext.getContext().invoke(delegate, PostConstruct.class);
+		
+		Field £mubField = null;
 		try {
 			£mubField = delegate.getClass().getDeclaredField("£Mub");
 		} catch (NoSuchFieldException | SecurityException e1) {
@@ -65,7 +72,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				}
 				£mubField.setAccessible(false);
 			}
-
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e.getMessage());
 		} finally {
@@ -97,48 +103,8 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				paramsLength++;
 			}
 
-			if (£mubField != null) {
-				try {
-					£mubField.setAccessible(true);
-
-					Object £mub = £mubField.get(delegate);
-
-					Object £mu_£pds_1 = £mub.getClass().getField("£mu_£pds_1").get(£mub);
-					Object £pdspr = £mu_£pds_1.getClass().getField("£pdspr").get(£mu_£pds_1);
-					£pdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£pdspr, new Object[] { paramsLength });
-
-				} catch (NoSuchFieldException e) {
-					e.printStackTrace();
-				} finally {
-					£mubField.setAccessible(false);
-				}
-			}
-
-			Field £qpdsqqField = null;
-			try {
-				£qpdsqqField = delegate.getClass().getDeclaredField("£mu_£pdsqq_1");
-
-			} catch (Exception e) {
-				try {
-
-					if (£qpdsqqField == null && delegate.getClass().getSuperclass() != null)
-						try {
-							£qpdsqqField = delegate.getClass().getSuperclass().getDeclaredField("£mu_£pdsqq_1");
-						} catch (Exception e1) {
-
-						}
-				} catch (Exception e2) {
-				}
-
-			}
-
-			if (£qpdsqqField != null) {
-				£qpdsqqField.setAccessible(true);
-				Object £qpdsqq = £qpdsqqField.get(delegate);
-				Object £qpdspr = £qpdsqq.getClass().getField("£qdspr").get(£qpdsqq);
-				£qpdspr.getClass().getMethod("eval", Integer.TYPE).invoke(£qpdspr, new Object[] { paramsLength });
-				£qpdsqqField.setAccessible(false);
-			}
+			((BaseProgramStatus)dataContext.getInfoStruct()).params.eval(paramsLength);
+	
 			if (getQEntry().length > 0) {
 				this.entry.invoke(delegate, (Object[]) params);
 			} else

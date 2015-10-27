@@ -26,6 +26,7 @@ import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
@@ -192,29 +193,22 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@SuppressWarnings("resource")
 	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
 
-		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
-		if (activationGroup == null)
-			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
-
 		QCallableProgram callableProgram = null;
 
-		BaseCallableInjector callableInjector = activationGroup.getFrameworkContext().get(BaseCallableInjector.class);
-		if (callableInjector == null) {
-			callableInjector = activationGroup.getFrameworkContext().make(BaseCallableInjector.class);
-			activationGroup.getFrameworkContext().set(BaseCallableInjector.class, callableInjector);
-		}
+		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
 
 		if (QCallableProgram.class.isAssignableFrom(klass)) {
-			callableProgram = (QCallableProgram) callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
+			callableProgram = (QCallableProgram) callableInjector.prepareCallable(klass);
 		} else {
-			Object delegate = callableInjector.prepareCallable(activationGroup.getFrameworkContext(), klass);
+			Object delegate = callableInjector.prepareCallable(klass);
 			
 			InitStrategy initStrategy = InitStrategy.BASE;
 			Program programAnnotation = klass.getAnnotation(Program.class);
 			if(programAnnotation != null)
 				initStrategy = programAnnotation.initStrategy();
 			
-			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(delegate, initStrategy);
+			QDataContext dataContext = callableInjector.getDataContext();			
+			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(dataContext, delegate, initStrategy);
 
 			// search @Entry
 			for (Method method : klass.getMethods()) {
@@ -238,6 +232,16 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		if (callableProgram.getQProgram() == null)
 			callableProgram.setQProgram(program);
+
+		QDataContext dataContext = callableInjector.getDataContext();
+		
+		BaseProgramStatus programStatus = (BaseProgramStatus) dataContext.getInfoStruct();
+		programStatus.programName.eval(program.getName());
+		programStatus.programLibrary.eval(program.getLibrary());
+		programStatus.userName.eval(job.getJobUser());
+		programStatus.jobNumber.eval(job.getJobNumber());
+		programStatus.jobName.eval(job.getJobName());
+		programStatus.status.clear();
 
 		return callableProgram;
 	}

@@ -15,8 +15,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -38,7 +37,7 @@ public class JobDescriptionRetriever {
 	@Inject
 	private QJob job;
 	@Inject
-	private QDataManager dataManager;
+	private QDataContext dataContext;
 
 	public @Entry void main(@DataDef(length = 500) QCharacter receiverVariable, @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, @DataDef(length = 8) QCharacter formatName,
 			JobDescription jobDescription, @DataDef() QCharacter errorCode
@@ -51,7 +50,6 @@ public class JobDescriptionRetriever {
 	) {
 
 		try {
-			QDataFactory dataFactory = dataManager.createFactory(job.getContext());
 
 			QResourceWriter<QJobDescription> resource = resourceManager.getResourceWriter(job, QJobDescription.class, jobDescription.library.trimR());
 			QJobDescription qJobDescription = resource.lookup(jobDescription.name.trimR());
@@ -60,7 +58,7 @@ public class JobDescriptionRetriever {
 				throw new OperatingSystemException("Job Description " + jobDescription.name + " not exists in library " + jobDescription.library);
 
 			if (formatName.eq("JOBD0100")) {
-				JOBD0100 jobd0100 = dataFactory.createDataStruct(JOBD0100.class, 0, true);
+				JOBD0100 jobd0100 = dataContext.getDataFactory().createDataStruct(JOBD0100.class, 0, true);
 
 				jobd0100.jobDescriptionName.eval(qJobDescription.getName());
 				jobd0100.jobDescriptionLibrary.eval(qJobDescription.getLibrary());

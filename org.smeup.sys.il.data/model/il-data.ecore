@@ -847,7 +847,6 @@
       </eParameters>
     </eOperations>
     <eOperations name="getDataContext" lowerBound="1" eType="#//DataContext"/>
-    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDataTerm">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>
@@ -899,11 +898,7 @@
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
-    <eOperations name="getOrCreateLocalDataArea" lowerBound="1">
-      <eGenericType eClassifier="#//DataArea">
-        <eTypeArguments eClassifier="#//Character"/>
-      </eGenericType>
-    </eOperations>
+    <eOperations name="getInfoStruct" lowerBound="1" eType="#//DataStruct"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -1123,6 +1118,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
+      <eParameters name="dataContext" lowerBound="1" eType="#//DataContext"/>
+      <eParameters name="dataTerms">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eTypeArguments eClassifier="#//term/DataTerm">
+            <eTypeArguments/>
+          </eTypeArguments>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="useDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="dataTerms">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
@@ -1138,6 +1145,9 @@
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
       <eParameters name="object" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
       <eParameters name="term" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="createDataContext" lowerBound="1" eType="#//DataContext">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
     </eOperations>
     <eOperations name="createFactory" lowerBound="1" eType="#//DataFactory">
       <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>

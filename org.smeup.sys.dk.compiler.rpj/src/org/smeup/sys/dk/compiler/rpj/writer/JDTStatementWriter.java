@@ -839,7 +839,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 				methodExec.accept(this);
 
 				break;
-
 			}
 
 			QCompoundDataDef<?, ?> compoundDataDef = (QCompoundDataDef<?, ?>) dataTerm.getDefinition();

@@ -818,12 +818,6 @@
       <definition
           xsi:type="il-data-def:IndicatorDef"/>
     </datas>
-    <datas xsi:type="il-flow:FlowData"
-        name="*LDA">
-      <definition
-          xsi:type="il-data-def:CharacterDef"
-          length="1024"/>
-    </datas>
   </dataSection>
   <flowSection>
     <prototypes
@@ -1850,7 +1844,8 @@
     <prototypes
         name="%status">
       <definition
-          xsi:type="il-data-def:IndicatorDef"/>
+          xsi:type="il-data-def:DecimalDef"
+          precision="5"/>
     </prototypes>
     <prototypes
         name="%str">

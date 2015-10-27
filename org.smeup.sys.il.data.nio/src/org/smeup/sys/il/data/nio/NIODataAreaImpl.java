@@ -6,6 +6,8 @@ import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
+import org.smeup.sys.il.data.def.QCharacterDef;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -32,7 +34,7 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 	public void in() {
 
 		if (externalName.equalsIgnoreCase("*LDA")) {
-			QDataArea<QCharacter> localDataArea = getDataContext().getOrCreateLocalDataArea();
+			QDataArea<QCharacter> localDataArea = getLocalDataArea();
 			get().eval(localDataArea);
 		}
 		else {
@@ -50,7 +52,7 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 	public void out() {
 
 		if (externalName.equalsIgnoreCase("*LDA")) {
-			QDataArea<QCharacter> localDataArea = getDataContext().getOrCreateLocalDataArea();
+			QDataArea<QCharacter> localDataArea = getLocalDataArea();
 			localDataArea.eval(get());
 		}
 		else {
@@ -64,5 +66,19 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 			dataAreaWriter.save(qDataArea);
 
 		}
-	}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	private QDataArea<QCharacter> getLocalDataArea() {
+
+		QDataArea<QCharacter> localDataArea = getDataContext().getContext().get(QDataArea.class);
+		if (localDataArea == null) {
+			QCharacterDef argument = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+			argument.setLength(1024);
+			localDataArea = getDataContext().getDataFactory().createDataArea(argument, "*LDA", true);
+			getDataContext().getContext().set(QDataArea.class, localDataArea);
+		}
+
+		return localDataArea;
+	}
 }

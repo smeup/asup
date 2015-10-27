@@ -11,14 +11,12 @@
  */
 package org.smeup.sys.os.dtaara.base.api;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataManager;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -48,21 +46,14 @@ public @ToDo class DataAreaRetriever {
 	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
-	private QDataManager dataManager;
-	
-	private QDataFactory dataFactory;
-
-	@PostConstruct
-	private void init() {
-		this.dataFactory = dataManager.createFactory(job.getContext());
-	}
+	private QDataContext dataContext;
 	
 	public @Entry void main(DataAreaSpecification dataAreaParm,
 							QAdapter cLVariableForReturnedValue) {
 		try {
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
 
-			QCharacter character = dataFactory.createCharacter(area.getContent().length(), false, false);
+			QCharacter character = dataContext.getDataFactory().createCharacter(area.getContent().length(), false, false);
 			if (dataAreaParm.all()) {
 				cLVariableForReturnedValue.assign(character);
 			} else {

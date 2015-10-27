@@ -79,14 +79,6 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	QDataTerm<?> getDataTerm(String key);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QDataFactory getDataFactory();
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated

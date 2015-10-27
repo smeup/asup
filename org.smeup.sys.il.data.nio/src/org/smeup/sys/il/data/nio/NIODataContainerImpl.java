@@ -13,6 +13,7 @@ package org.smeup.sys.il.data.nio;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,29 +22,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.core.QOverlay;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
-import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDataDef;
-import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
@@ -51,7 +49,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private static final long serialVersionUID = 1L;
 
-	private QDataFactory dataFactory;
 	private QDataContext dataContext;
 
 	private Map<String, QDataTerm<?>> dataTerms;
@@ -62,60 +59,31 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private boolean useDefault;
 
-	protected NIODataContainerImpl(final NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
-		this.dataFactory = dataFactory;
+	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
 		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.useDefault = useDefault;
 
-		this.dataContext = new QDataContext() {
-
-			private QIndicator found = dataFactory.createIndicator(true);
-			private QIndicator endOfData = dataFactory.createIndicator(true);
-
-			@Override
-			public QIndicator found() {
-				return this.found;
-			}
-
-			@Override
-			public QIndicator endOfData() {
-				return this.endOfData;
-			}
-
-			@Override
-			public QDataFactory getDataFactory() {
-				return dataFactory;
-			}
-
-			@Override
-			public QContext getContext() {
-				return dataFactory.getContext();
-			}
-
-			@Override
-			@SuppressWarnings("unchecked")
-			public QDataArea<QCharacter> getOrCreateLocalDataArea() {
-
-				QDataArea<QCharacter> localDataArea = getDataContext().getContext().get(QDataArea.class);
-				if (localDataArea == null) {
-					QCharacterDef argument = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
-					argument.setLength(1024);
-					;
-					localDataArea = getDataContext().getDataFactory().createDataArea(argument, "*LDA", true);
-					getDataContext().getContext().set(QDataArea.class, localDataArea);
-				}
-
-				return localDataArea;
-			}
-		};
-		dataFactory.setDataContext(dataContext);
+		this.dataContext = dataContext;
+		
 	}
 
+	protected NIODataContainerImpl(NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
+		this.dataTerms = dataTerms;
+		this.datas = new HashMap<String, QData>();
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+		this.useDefault = useDefault;
+
+		this.dataContext = new NIODataContextImpl(dataFactory);
+	}
+	
 	@Override
 	public void close() {
+		this.dataWriter = null;
+		this.dataContext = null;
 		this.datas = new HashMap<String, QData>();
+		this.dataTerms = new HashMap<String, QDataTerm<?>>();
 	}
 
 	@Override
@@ -127,7 +95,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		dataTerm.setName(name);
 
-		dataTerm.setDefinition(getDataFactory().createDataDef(type, annotations));
+		dataTerm.setDefinition(getDataContext().getDataFactory().createDataDef(type, annotations));
 
 		for (Annotation annotation : annotations) {
 			if (annotation instanceof DataDef) {
@@ -141,11 +109,35 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				if (!_default.isEmpty())
 					dataTerm.setDefault(_default);
 			}
+
+			if (annotation instanceof Overlay) {
+				Overlay overlay = (Overlay) annotation;
+				QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+				qOverlay.setName(overlay.name());
+				qOverlay.setPosition(overlay.position());
+				dataTerm.getFacets().add(qOverlay);
+			}
 		}
 
-		QDataTerm<?> oldTerm = this.dataTerms.put(name, dataTerm);
-		if (oldTerm != null)
-			System.err.println("Unexpected condition " + dataTerm.getName() + ": sdhgbrf87stvbr86");
+		this.dataTerms.put(name, dataTerm);
+
+		QData previousData = this.datas.remove(name);
+		if (previousData != null) {
+
+			// remove child data
+			if (previousData instanceof QStruct<?>) {
+				for (Field field : previousData.getClass().getDeclaredFields()) {
+					if (QData.class.isAssignableFrom(field.getType()))
+						datas.remove(field.getName());
+				}
+			}
+
+			if (previousData instanceof QBufferedData) {
+				QData data = createData(dataTerm, false);
+				((QBufferedData) previousData).assign((QBufferedData) data);
+				datas.put(name, data);
+			}
+		}
 
 		return dataTerm;
 	}
@@ -167,7 +159,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			// root data
 			if (data == null) {
-				// data = getOrCreateData(qualifier);
 				data = getOrCreateData(qualifier);
 				if (data == null) {
 					System.err.println("Unexpected condition: c59tb45b94t4er9");
@@ -297,11 +288,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public QDataFactory getDataFactory() {
-		return dataFactory;
-	}
-
-	@Override
 	public QDataContext getDataContext() {
 		return dataContext;
 	}
@@ -370,8 +356,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			String s2 = data.toString();
 
 			result = !s1.equals(s2);
-			if (result)
-				"".toString();
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			result = false;
@@ -397,30 +381,60 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private QData getOrCreateData(String key, QDataTerm<?> dataTerm) {
 
 		QData data = datas.get(key);
-		if (data == null) {
-			if (dataTerm.getBased() != null) {
-				data = dataFactory.createData(dataTerm, false);
+		if (data != null)
+			return data;
 
-				QData rawData = getData(dataTerm.getBased());
-				if (rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData))
-					throw new IntegratedLanguageDataRuntimeException("Invalid based data: " + dataTerm);
+		data = createData(dataTerm, true);
 
-				QBufferedData rawBufferedData = (QBufferedData) rawData;
-				rawBufferedData.assign((QBufferedData) data);
-			} else {
-				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-				if (overlay == null) {
-					data = dataFactory.createData(dataTerm, true);
-				} else {
-					data = dataFactory.createData(dataTerm, false);
-					if (overlay.getName().equalsIgnoreCase("*LDA")) {
-						QDataArea<QCharacter> localDataArea = getDataContext().getOrCreateLocalDataArea();
-						localDataArea.assign((QBufferedData)data);
-					} else
-						"".toCharArray();
+		datas.put(key, data);
+		if (data instanceof QStruct<?>) {
+			for (Field field : data.getClass().getDeclaredFields()) {
+				if (QData.class.isAssignableFrom(field.getType())) {
+					try {
+						QData element = (QData) field.get(data);
+						if (element == null)
+							System.err.println("Unexpected condition: ducvfs8dtrf8tse7rd8ftds");
+
+						datas.put(field.getName(), element);
+					} catch (IllegalArgumentException | IllegalAccessException e) {
+						continue;
+					}
+
 				}
 			}
-			datas.put(key, data);
+		}
+
+		return data;
+	}
+
+	private QData createData(QDataTerm<?> dataTerm, boolean initialize) {
+
+		QDataFactory dataFactory = getDataContext().getDataFactory();
+
+		QData data;
+		if (dataTerm.getBased() != null) {
+			data = dataFactory.createData(dataTerm, initialize);
+
+			QData rawData = getData(dataTerm.getBased());
+			if (rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData))
+				throw new IntegratedLanguageDataRuntimeException("Invalid based data: " + dataTerm);
+
+			QBufferedData rawBufferedData = (QBufferedData) rawData;
+			rawBufferedData.assign((QBufferedData) data);
+		} else {
+			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+			if (overlay == null) {
+				data = dataFactory.createData(dataTerm, true);
+			} else {
+				data = dataFactory.createData(dataTerm, false);
+				if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
+					QDataStruct infoStruct = getDataContext().getInfoStruct();
+					infoStruct.assign((QBufferedData) data);
+				} else {
+					QData overlayData = getData(overlay.getName());
+					((QBufferedData)overlayData).assign((QBufferedData) data);
+				}
+			}
 		}
 
 		return data;
