@@ -37,10 +37,61 @@ tokens
 
 @parser::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
+  
+  import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 }
 
 @lexer::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
+}
+
+@parser::members {
+
+   @Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+    
+    public RuntimeException createException(RecognitionException e) {
+        String message = "";
+        boolean addTokenAndLine = true;
+        if (e instanceof NoViableAltException) {
+            message = "Syntax error. ";
+        } else if (e instanceof MissingTokenException) {
+            message = "Missing token ";
+        } else if (e instanceof UnwantedTokenException) {
+            UnwantedTokenException ex = (UnwantedTokenException) e;
+            ex.getUnexpectedToken().getText();
+            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+            addTokenAndLine = false;
+        } else {
+            message = "Syntax error near ";
+        }
+        if (addTokenAndLine) {
+            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+        }
+        return new IntegratedLanguageExpressionRuntimeException(message,e);
+    }
+}
+
+@rulecatch {
+    catch (RecognitionException e) {
+        RuntimeException re = createException(e);
+        throw re;
+    }
 }
 
 

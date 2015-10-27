@@ -54,7 +54,7 @@ public abstract class BaseTestLauncherImpl implements QTestLauncher {
 
 	@Override
 	public void removeListener(QContext context, QTestLauncherListener listener) {
-		if (listeners.containsKey(context) == false) {
+		if (listeners.containsKey(context)) {
 			listeners.get(context).remove(listener);
 		}
 		

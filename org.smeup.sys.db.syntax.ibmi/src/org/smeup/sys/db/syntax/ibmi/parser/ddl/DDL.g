@@ -107,8 +107,8 @@ tokens {
 
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.ddl;
-import java.util.List;
-import java.util.ArrayList;
+
+import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 }
 
 @lexer::header {
@@ -116,9 +116,52 @@ package org.smeup.sys.db.syntax.ibmi.parser.ddl;
 
 }
 
+@parser::members {
+
+   @Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+    
+    public RuntimeException createException(RecognitionException e) {
+        String message = "";
+        boolean addTokenAndLine = true;
+        if (e instanceof NoViableAltException) {
+            message = "Syntax error. ";
+        } else if (e instanceof MissingTokenException) {
+            message = "Missing token ";
+        } else if (e instanceof UnwantedTokenException) {
+            UnwantedTokenException ex = (UnwantedTokenException) e;
+            ex.getUnexpectedToken().getText();
+            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+            addTokenAndLine = false;
+        } else {
+            message = "Syntax error near ";
+        }
+        if (addTokenAndLine) {
+            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+        }
+        return new DataBaseSyntaxRuntimeException(message, e);
+    }
+}
+
 @rulecatch {
     catch (RecognitionException exc) {
-        throw exc;        
+        RuntimeException re = createException(exc);
+        throw re;
     }
 }
 
@@ -603,7 +646,7 @@ commit_statement
 	COMMIT 	(WORK)? (h=HOLD)? -> ^(COMMIT_STATEMENT $h?) 
 	;	
 connect_statement
-	: CONNECT (TO s= Identifier (USER u=Identifier USING p=Character_String_Literal))? -> ^(CONNECT_STATEMENT (^(TO $s) ^(USER $u) ^(USING $p))?)
+	: CONNECT (TO s= Identifier (USER u=Identifier USING p=Identifier))? -> ^(CONNECT_STATEMENT (^(TO $s) ^(USER $u) ^(USING $p))?)
  	  |
  	  CONNECT RESET -> ^(CONNECT_STATEMENT RESET)
 	;	
@@ -1193,7 +1236,7 @@ COMMENT
 ===============================================================================
 */
 Identifier
-  : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|Digit|CHAR_SPECIAL)*
+  : ('a'..'z'|'A'..'Z'|'_'|':') ('a'..'z'|'A'..'Z'|Digit|CHAR_SPECIAL)*
   ;
 /*
 ===============================================================================

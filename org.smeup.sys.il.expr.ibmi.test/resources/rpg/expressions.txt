@@ -1,4 +1,4 @@
-*INLR=*ON
+*INLR=*ON(
 ££B£2J = '1'
 £FUNPG <> *BLANK
 *IN37=*ON

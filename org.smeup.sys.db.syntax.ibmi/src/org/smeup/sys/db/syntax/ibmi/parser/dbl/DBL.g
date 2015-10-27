@@ -112,18 +112,60 @@ tokens {
 
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
-import java.util.List;
-import java.util.ArrayList;
+
+import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 }
 
 @lexer::header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
+}
 
+@parser::members {
+
+   @Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+    
+    public RuntimeException createException(RecognitionException e) {
+        String message = "";
+        boolean addTokenAndLine = true;
+        if (e instanceof NoViableAltException) {
+            message = "Syntax error. ";
+        } else if (e instanceof MissingTokenException) {
+            message = "Missing token ";
+        } else if (e instanceof UnwantedTokenException) {
+            UnwantedTokenException ex = (UnwantedTokenException) e;
+            ex.getUnexpectedToken().getText();
+            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+            addTokenAndLine = false;
+        } else {
+            message = "Syntax error near ";
+        }
+        if (addTokenAndLine) {
+            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+        }
+        return new DataBaseSyntaxRuntimeException(message, e);
+    }
 }
 
 @rulecatch {
     catch (RecognitionException exc) {
-        throw exc;        
+        RuntimeException re = createException(exc);
+        throw re;
     }
 }
 
@@ -752,13 +794,42 @@ execute_immediate_statement
 /* OPEN STATEMENT */ 
  
  open_statement
- 	:	
- 	OPEN c=Identifier ((USING v1=Variable)|(USING DESCRIPTOR (v2=Variable|d=Identifier)))? 	-> {$v1 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING ^(VARIABLE $v1)))
+ 	:
+ 	
+ 	/*
+ 	OPEN c=Identifier ((USING v1=Variable )|(USING DESCRIPTOR (v2=Variable|d=Identifier)))? 	-> {$v1 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING ^(VARIABLE $v1)))
  												-> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2)))
  												-> {$d != null}? ^(OPEN_STATEMENT ^(CURSOR $c)  ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))
  												-> ^(OPEN_STATEMENT ^(CURSOR $c))
- 												
+ 	*/
+ 		
+ 	open_using
+ 	|
+ 	open_using_descriptor
  	;
+ 
+ /* Caso OPEN DYN_CURSOR USING :HV_INT, :HV_VCHAR64*/
+ open_using	
+ 	:
+ 	OPEN c=Identifier USING using_variable (COMMA using_variable)* -> ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING using_variable (using_variable)*))
+ 	;
+
+using_variable
+	:
+	Variable -> ^(VARIABLE Variable)
+	;
+ /*
+ Casi	:	
+ OPEN DYN_CURSOR USING DESCRIPTOR :SQLDA
+ OPEN DYN_CURSOR USING DESCRIPTOR DESC
+ OPEN SYN_CURSOR
+ */
+ open_using_descriptor
+ 	:
+ 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Identifier))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
+ 								      -> {$d != null}? 	^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
+ 								      -> ^(OPEN_STATEMENT ^(CURSOR $c))			
+ 	;	
 
 /* PREPARE STATEMENT */ 	
  prepare_statement

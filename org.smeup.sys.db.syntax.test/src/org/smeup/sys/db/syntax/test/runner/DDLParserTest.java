@@ -28,14 +28,13 @@ import org.smeup.sys.dk.test.e4.E4TestHelper;
 @Test(category = "DB.SYNTAX", object = "DDL")
 public class DDLParserTest {
 	
-
 	@Inject
 	private QTestAsserter testAsserter;
 
 	@TestStarted
 	public void main() throws IOException {
 
-		for (String expression : E4TestHelper.readTextResource(this, "/resources/dbl/ddl.txt")) {
+		for (String expression : E4TestHelper.readTextResource(this, "/resources/ddl/ddl.txt")) {
 			try{
 				
 				DDLLexer lex = new DDLLexer(new ANTLRStringStream(expression));
