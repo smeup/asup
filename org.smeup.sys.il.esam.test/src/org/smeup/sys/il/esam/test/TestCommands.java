@@ -21,7 +21,7 @@ import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
@@ -47,12 +47,12 @@ public class TestCommands extends E4TestProviderImpl {
 		String catalog = interpreter.nextArgument();
 
 		QConnection connection = connectionManager.createConnection(catalog);
-		QDataFactory dataFactory = dataManager.createFactory(connection.getContext());
-		QAccessFactory accessFactory = accessManager.createFactory(connection, dataFactory.getDataContext());
+		QDataContext dataContext = dataManager.createDataContext(connection.getContext());
+		QAccessFactory accessFactory = accessManager.createFactory(connection, dataContext);
 
 		QContext testContext = connection.getContext().createChildContext("ILESAM");
 		testContext.set(QConnection.class, connection);
-		testContext.set(QDataFactory.class, dataFactory);
+		testContext.set(QDataContext.class, dataContext);
 		testContext.set(QAccessFactory.class, accessFactory);
 
 		QTestRunner testRunner = null;

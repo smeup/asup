@@ -36,7 +36,6 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -130,8 +129,6 @@ public class BaseCallableInjector {
 
 	public QData[] buildEntry(QContextProvider contextProvider, Method method) {
 
-		QDataFactory dataFactory = dataManager.createFactory(contextProvider.getContext());
-
 		Type[] types = method.getGenericParameterTypes();
 		Annotation[][] annotationss = method.getParameterAnnotations();
 
@@ -148,8 +145,8 @@ public class BaseCallableInjector {
 			for (Annotation annotation : annotations)
 				annotationsList.add(annotation);
 
-			QDataDef<?> dataType = dataFactory.createDataDef(type, annotationsList);
-			QData data = dataFactory.createData(dataType, false);
+			QDataDef<?> dataType = dataContext.getDataFactory().createDataDef(type, annotationsList);
+			QData data = dataContext.getDataFactory().createData(dataType, false);
 
 			entry[entryIndex] = data;
 			entryIndex++;
@@ -302,8 +299,7 @@ public class BaseCallableInjector {
 
 				if (!fileDef.prefix().isEmpty())
 					primaryRecordName = fileDef.prefix() + "_" + primaryRecordName;
-			} else
-				System.err.println("Unexpected condition " + field + ": ogaa6rs7rsa7d7sdf7as");
+			}
 
 			QRecord record = records.get(primaryRecordName.toLowerCase());
 			if (record == null) {
@@ -349,7 +345,7 @@ public class BaseCallableInjector {
 
 		// data
 		for (InjectableField field : datas) {
-
+			
 			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));		
 			QData data = dataContainer.resetData(dataTerm);
 			field.setValue(callable, data);

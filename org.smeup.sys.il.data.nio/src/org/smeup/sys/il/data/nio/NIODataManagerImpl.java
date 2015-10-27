@@ -27,7 +27,6 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -47,9 +46,7 @@ public class NIODataManagerImpl implements QDataManager {
 	@Override
 	public QDataContext createDataContext(QContext context) {
 
-		NIODataFactoryImpl nioDataFactoryImpl = new NIODataFactoryImpl(context, null);
-		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(nioDataFactoryImpl);
-		nioDataFactoryImpl.setDataContext(nioDataContextImpl);
+		NIODataContextImpl nioDataContextImpl = new NIODataContextImpl(context);
 		
 		return nioDataContextImpl;
 	}
@@ -61,7 +58,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 	@Override
 	public QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
-		return new NIODataContainerImpl(new NIODataFactoryImpl(context, null), dataTerms, useDefault);
+		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms, useDefault);
 	}
 
 	@Override
@@ -71,17 +68,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 		Map<String, QDataTerm<?>> dataTerms = buildDataTerms(frame, frameManager.getFrame(term));
 
-		return new NIODataContainerImpl(new NIODataFactoryImpl(context, null), dataTerms, true);
-	}
-
-	@Override
-	public QDataFactory createFactory(QContext context) {
-		return new NIODataFactoryImpl(context, null);
-	}
-
-	@Override
-	public QDataFactory createFactory(QContext context, QDataContext dataContext) {
-		return new NIODataFactoryImpl(context, dataContext);
+		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms, true);
 	}
 
 	@Override

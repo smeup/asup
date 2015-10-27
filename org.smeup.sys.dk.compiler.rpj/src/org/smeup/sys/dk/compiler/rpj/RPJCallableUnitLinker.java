@@ -29,7 +29,7 @@ import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -78,7 +78,7 @@ public class RPJCallableUnitLinker {
 	@Inject
 	private QExpressionParser expressionParser;
 	@Inject
-	private QDataFactory dataFactory;
+	private QDataContext dataContext;
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -160,7 +160,7 @@ public class RPJCallableUnitLinker {
 
 		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
-		RPJDataFormulasResolver dataFormulasResolver = new RPJDataFormulasResolver(compilationUnit, expressionParser, dataFactory);
+		RPJDataFormulasResolver dataFormulasResolver = new RPJDataFormulasResolver(compilationUnit, expressionParser, dataContext);
 		for (QDataTerm<?> dataTerm : dataTerms) {
 			dataFormulasResolver.reset();
 			dataTerm.accept(dataFormulasResolver);

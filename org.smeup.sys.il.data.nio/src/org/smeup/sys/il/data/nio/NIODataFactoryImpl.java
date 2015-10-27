@@ -28,7 +28,6 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.annotation.Overlay;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -92,20 +91,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
 
 public class NIODataFactoryImpl implements QDataFactory {
 
-	private QContext context;
 	private QDataContext dataContext;
 
-	protected NIODataFactoryImpl(QContext context, QDataContext dataContext) {
-		this.context = context;
+	protected NIODataFactoryImpl(QDataContext dataContext) {
 		this.dataContext = dataContext;
-	}
-
-	protected void setDataContext(QDataContext dataContext) {
-		this.dataContext = dataContext;
-	}
-
-	protected QContext getContext() {
-		return context;
 	}
 
 	@Override
@@ -158,7 +147,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 				if (!dataStructDef.getElements().isEmpty())
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdf9dfg7574c2dn");
 
-				delegator = (Class<? extends QDataStruct>) context.loadClass(dataStructDef.getClassDelegator());
+				delegator = (Class<? extends QDataStruct>) dataContext.getContext().loadClass(dataStructDef.getClassDelegator());
 
 				QDataStruct bufferedData = createDataStruct(delegator, dataStructDef.getLength(), initialize);
 				data = (D) bufferedData;
@@ -197,7 +186,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		else if (dataDef instanceof QPointerDef) {
 			QPointerDef pointerDef = (QPointerDef) dataDef;
 			pointerDef.toString();
-			data = (D) allocate(0);
+			data = (D) createPointer(0);
 		} else if (dataDef instanceof QDataAreaDef) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
 			data = (D) createDataArea(dataAreaDef.getArgument(), dataAreaDef.getExternalName(), initialize);
@@ -394,7 +383,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			if (!argument.getElements().isEmpty())
 				throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: sdf9dfg7574c2dn");
 
-			delegator = (Class<? extends QDataStruct>) context.loadClass(argument.getClassDelegator());
+			delegator = (Class<? extends QDataStruct>) dataContext.getContext().loadClass(argument.getClassDelegator());
 
 			QDataStruct bufferedData = createDataStruct(delegator, 0, false);
 			model = bufferedData;
@@ -783,7 +772,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer allocate(final int size) {
+	public QPointer createPointer(final int size) {
 
 		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl(getDataContext()) {
 

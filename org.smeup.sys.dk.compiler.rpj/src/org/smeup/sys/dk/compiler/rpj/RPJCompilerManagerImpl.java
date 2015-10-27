@@ -46,7 +46,7 @@ import org.smeup.sys.dk.compiler.rpj.writer.JDTProgramWriter;
 import org.smeup.sys.dk.compiler.rpj.writer.JDTStubWriter;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.esam.annotation.Format;
@@ -116,9 +116,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(module.getName()), module, null, moduleContexts, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
-		// dataFactory
-		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+		// dataContext
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataContext.class, dataContext);
 
 		// module
 		compilationUnit.getContext().set(QModule.class, module);
@@ -146,9 +146,9 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(file.getName()), file, null, compilationUnits, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
-		// dataFactory
-		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+		// dataContext
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataContext.class, dataContext);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
 		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
@@ -170,9 +170,10 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCompilationUnitImpl compilationUnit = new RPJCompilationUnitImpl(job.getContext().createChildContext(program.getName()), program, null, moduleContexts, caseSensitive);
 		compilationUnit.getContext().set(QCompilationUnit.class, compilationUnit);
 
-		// dataFactory
-		QDataFactory dataFactory = dataManager.createFactory(compilationUnit.getContext());
-		compilationUnit.getContext().set(QDataFactory.class, dataFactory);
+		// dataContext
+		QDataContext dataContext = dataManager.createDataContext(compilationUnit.getContext());
+		compilationUnit.getContext().set(QDataContext.class, dataContext);
+
 		compilationUnit.getContext().set(QProgram.class, program);
 
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);

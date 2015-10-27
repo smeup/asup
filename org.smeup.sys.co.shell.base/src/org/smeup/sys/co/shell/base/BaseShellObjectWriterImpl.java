@@ -28,7 +28,6 @@ import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
-import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -46,8 +45,8 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	private QStrings strings;
 
 	private EClass eClass = null;
+
 	private QDataContainer dataContainer = null;
-	private QDataFactory dataFactory = null;
 
 	private QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
@@ -69,7 +68,6 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 			this.eClass = eClass;
 			dataContainer = dataManager.createDataContainer(context, object, QCommunicationShellPackage.eINSTANCE.getShellData());
-			dataFactory = dataManager.createFactory(context);
 
 			for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
 				
@@ -78,7 +76,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 					data.accept(dataWriter.set(strings.firstToUpper(dataTerm.getName())));
 					streamWrite(data + "|");
 				} else if (data instanceof QNumeric) {
-					QCharacter character = dataFactory.createCharacter(dataTerm.getName().length(), false, true);
+					QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(dataTerm.getName().length(), false, true);
 					character.eval(strings.firstToUpper(dataTerm.getName()));
 					streamWrite(character + "|");
 				} else
@@ -120,7 +118,7 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 				data.accept(dataWriter.set(eEnumerator.getName()));
 				streamWrite(data + "|");
 			} else if (value instanceof Number) {
-				QCharacter character = dataFactory.createCharacter(dataTerm.getName().length(), false, true);
+				QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(dataTerm.getName().length(), false, true);
 				character.accept(dataWriter.set(value.toString()));
 				streamWrite(character + "|");
 			} else {

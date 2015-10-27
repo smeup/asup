@@ -21,6 +21,7 @@ import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.QCallableProgramDelegator;
 import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
@@ -112,7 +113,10 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 
 			return params;
 		} catch (InvocationTargetException e) {
-			throw new OperatingSystemRuntimeException(e.getTargetException());
+			if(e.getTargetException() instanceof OperatingSystemMessageException)
+				throw (OperatingSystemMessageException)e.getTargetException();
+			else
+				throw new OperatingSystemRuntimeException(e.getTargetException());
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		}

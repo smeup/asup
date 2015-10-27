@@ -25,7 +25,7 @@ import org.smeup.sys.dk.compiler.DevelopmentKitCompilerRuntimeException;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.QDerived;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -190,8 +190,8 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		if (charDefTo.getLength() == 0) {
 			if (dataStructDefFrom.getLength() == 0) {
 
-				QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
-				QDataStruct dataStructure = dataFactory.createDataStruct(dataStructDefFrom.getElements(), 0, false);
+				QDataContext dataContext = getCompilationUnit().getContext().get(QDataContext.class);
+				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(dataStructDefFrom.getElements(), 0, false);
 
 				if (dataStructure.getLength() == 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: ayetvayey654c7C");
@@ -207,8 +207,8 @@ public abstract class RPJAbstractDataRefactor extends DataTermVisitorImpl {
 		if (charDefTo.getLength() == 0) {
 			if (strollerDefFrom.getLength() == 0) {
 
-				QDataFactory dataFactory = getCompilationUnit().getContext().get(QDataFactory.class);
-				QDataStruct dataStructure = dataFactory.createDataStruct(strollerDefFrom.getElements(), 0, false);
+				QDataContext dataContext = getCompilationUnit().getContext().get(QDataContext.class);
+				QDataStruct dataStructure = dataContext.getDataFactory().createDataStruct(strollerDefFrom.getElements(), 0, false);
 
 				if (dataStructure.getLength() == 0)
 					throw new DevelopmentKitCompilerRuntimeException("Unexpected condition: kjhfvxzgjchvzxjchv");

@@ -35,13 +35,6 @@ import org.smeup.sys.il.data.term.QDataTerm;
  */
 public interface QDataFactory {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" sizeRequired="true"
-	 * @generated
-	 */
-	QPointer allocate(int size);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
@@ -158,6 +151,14 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" sizeRequired="true"
+	 * @generated
+	 */
+	QPointer createPointer(int size);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" initializeRequired="true"
 	 * @generated
 	 */
@@ -192,13 +193,5 @@ public interface QDataFactory {
 	 * @generated
 	 */
 	QDatetime createTimestamp(boolean initialize);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	QDataContext getDataContext();
 
 } // QDataFactory

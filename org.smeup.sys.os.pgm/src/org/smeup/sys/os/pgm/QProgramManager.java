@@ -8,7 +8,6 @@
 package org.smeup.sys.os.pgm;
 
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.jobs.QJob;
 
 /**
@@ -74,13 +73,13 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram loadProgram(QJob job, QProgram program) throws OperatingSystemException, OperatingSystemRuntimeProgramException;
+	QCallableProgram loadProgram(QJob job, QProgram program);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	QCallableProgram loadProgram(QJob job, Class<?> klass) throws OperatingSystemException, OperatingSystemRuntimeProgramException;
+	QCallableProgram loadProgram(QJob job, Class<?> klass);
 
 } // QProgramManager

@@ -66,18 +66,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.useDefault = useDefault;
 
 		this.dataContext = dataContext;
-		
+
 	}
 
-	protected NIODataContainerImpl(NIODataFactoryImpl dataFactory, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
-		this.dataTerms = dataTerms;
-		this.datas = new HashMap<String, QData>();
-		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-		this.useDefault = useDefault;
-
-		this.dataContext = new NIODataContextImpl(dataFactory);
-	}
-	
 	@Override
 	public void close() {
 		this.dataWriter = null;
@@ -372,6 +363,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = datas.get(key);
 		if (data == null) {
 			QDataTerm<?> dataTerm = getDataTerm(key);
+			if (dataTerm == null)
+				"".toCharArray();
 			data = getOrCreateData(key, dataTerm);
 		}
 
@@ -426,13 +419,18 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			if (overlay == null) {
 				data = dataFactory.createData(dataTerm, true);
 			} else {
-				data = dataFactory.createData(dataTerm, false);
-				if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
+				
+				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
+					data = dataFactory.createData(dataTerm, true);
+					System.err.println("Unexpected confition 5qf7rva9cwerc5: "+dataTerm);
+				} else if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
+					data = dataFactory.createData(dataTerm, false);
 					QDataStruct infoStruct = getDataContext().getInfoStruct();
 					infoStruct.assign((QBufferedData) data);
 				} else {
+					data = dataFactory.createData(dataTerm, false);
 					QData overlayData = getData(overlay.getName());
-					((QBufferedData)overlayData).assign((QBufferedData) data);
+					((QBufferedData) overlayData).assign((QBufferedData) data);
 				}
 			}
 		}

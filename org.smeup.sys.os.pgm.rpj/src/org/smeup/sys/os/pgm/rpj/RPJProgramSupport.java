@@ -295,19 +295,16 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(QString program, QData[] parameters) {
-		System.out.println(program);
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		System.out.println(program);
 		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
 
 		try {
-			System.out.println(program);
 			error.eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 		} catch (RuntimeException e) {
@@ -318,7 +315,6 @@ public class RPJProgramSupport {
 	public void qCall(String program, QData[] parameters, QIndicator error) {
 
 		try {
-			System.out.println(program);
 			error.eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 		} catch (RuntimeException e) {
@@ -328,7 +324,6 @@ public class RPJProgramSupport {
 
 	public void qCall(QString program, QData[] parameters, String errorHandling) {
 		try {
-			System.out.println(program);
 			qError(null).eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 		} catch (RuntimeException e) {
@@ -339,7 +334,6 @@ public class RPJProgramSupport {
 
 	public void qCall(String program, QData[] parameters, String errorHandling) {
 		try {
-			System.out.println(program);
 			qError().eval(false);
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
 		} catch (RuntimeException e) {
@@ -449,7 +443,7 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qEof() {
-		return this.dataContext.getDataFactory().getDataContext().endOfData();
+		return this.dataContext.endOfData();
 	}
 
 	public QIndicator qOpen(QDataSet<?> dataSet) {
@@ -480,7 +474,7 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qFound() {
-		return this.dataContext.getDataFactory().getDataContext().found();
+		return this.dataContext.found();
 	}
 
 	public QIndicator qFound(QDataSet<?> dataSet) {
@@ -835,7 +829,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
+		this.dataContext.found().eval(result.ge(1));
 
 		return result;
 	}
@@ -859,7 +853,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
+		this.dataContext.found().eval(result.ge(1));
 
 		return result;
 	}
@@ -883,7 +877,7 @@ public class RPJProgramSupport {
 		if (result == null)
 			result = qBox(0);
 
-		this.dataContext.getDataFactory().getDataContext().found().eval(result.ge(1));
+		this.dataContext.found().eval(result.ge(1));
 
 		return result;
 	}

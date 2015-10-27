@@ -19,7 +19,7 @@ import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -41,12 +41,12 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 	private QContext context;
 	private QConnection connection;
-	private QDataFactory dataFactory;
+	private QDataContext dataContext;
 
-	public JDBCAccessFactoryImpl(QContext context, QConnection connection, QDataFactory dataFactory) {
+	public JDBCAccessFactoryImpl(QContext context, QConnection connection, QDataContext dataContext) {
 		this.context = context;
 		this.connection = connection;
-		this.dataFactory = dataFactory;
+		this.dataContext = dataContext;
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		R record = null;
 		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		else
 			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 
@@ -86,13 +86,13 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		InfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
-			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, false);
 			infoStruct.assign(internalInfoStruct);
 		} else {
-			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, true);
 		}
 
-		return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
+		return new JDBCKeySequencedDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataContext);
 
 	}
 
@@ -118,7 +118,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		R record = null;
 		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		else
 			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 
@@ -134,13 +134,13 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		InfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
-			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, false);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, false);
 			infoStruct.assign(internalInfoStruct);
 		} else {
-			internalInfoStruct = dataFactory.createDataStruct(InfoStruct.class, 0, true);
+			internalInfoStruct = dataContext.getDataFactory().createDataStruct(InfoStruct.class, 0, true);
 		}
 
-		return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataFactory.getDataContext());
+		return new JDBCRelativeRecordDataSetImpl<R>(connection, new JDBCTableProvider(connection), index, record, name, accessMode, userOpen, internalInfoStruct, dataContext);
 	}
 
 	@Override
@@ -164,7 +164,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 		R record = null;
 		if (QDataStruct.class.isAssignableFrom(wrapper))
-			record = (R) this.dataFactory.createDataStruct((Class<QDataStruct>) wrapper, 0, true);
+			record = (R) this.dataContext.getDataFactory().createDataStruct((Class<QDataStruct>) wrapper, 0, true);
 		else
 			throw new IntegratedLanguageDataRuntimeException("Invalid record class: " + wrapper);
 

@@ -22,6 +22,7 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -47,8 +48,9 @@ public class DataStructureTester {
 	@TestStarted
 	public void main() throws IOException, ClassNotFoundException {
 
-		QDataFactory dataFactory = dataManager.createFactory(testRunner.getContext());
-
+		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
+		QDataFactory dataFactory = dataContext.getDataFactory();
+		
 		testAsserter.resetTime();
 		DataStructure dataStruct = dataFactory.createDataStruct(DataStructure.class, 0, true);
 		testAsserter.assertNotNull("DataStructure creation", dataStruct);

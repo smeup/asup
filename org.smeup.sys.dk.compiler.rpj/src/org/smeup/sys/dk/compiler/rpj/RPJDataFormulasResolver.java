@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
-import org.smeup.sys.il.data.QDataFactory;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
@@ -42,7 +42,7 @@ import org.smeup.sys.rt.core.QLogger;
 public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 	private QExpressionParser expressionParser;
-	private QDataFactory dataFactory;
+	private QDataContext dataContext;	
 
 	@Inject
 	private QExceptionManager exceptionManager;
@@ -52,15 +52,15 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 	private QJob job;
 
 	@Inject
-	public RPJDataFormulasResolver(QCompilationUnit compilationUnit, QExpressionParser expressionParser, QDataFactory dataFactory) {
+	public RPJDataFormulasResolver(QCompilationUnit compilationUnit, QExpressionParser expressionParser, QDataContext dataContext) {
 		super(compilationUnit);
 		this.expressionParser = expressionParser;
-		this.dataFactory = dataFactory;
+		this.dataContext = dataContext;
 	}
 
 	@Override
 	public RPJAbstractDataRefactor copy() {
-		return new RPJDataFormulasResolver(getCompilationUnit(), expressionParser, dataFactory);
+		return new RPJDataFormulasResolver(getCompilationUnit(), expressionParser, dataContext);
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 				QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>> compoundDataDef = (QCompoundDataDef<?, QDataTerm<QBufferedDataDef<?>>>) dataValue.getDefinition();
 
-				QDataStruct dataStruct = dataFactory.createDataStruct(compoundDataDef.getElements(), 0, false);
+				QDataStruct dataStruct = dataContext.getDataFactory().createDataStruct(compoundDataDef.getElements(), 0, false);
 				default_.setValue(Integer.toString(dataStruct.getSize()));
 
 				break;

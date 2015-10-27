@@ -32,13 +32,13 @@ import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceSetReader;
-import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
-import org.smeup.sys.os.pgm.OperatingSystemRuntimeProgramException;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
@@ -97,7 +97,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		Program programAnnotation = klass.getAnnotation(Program.class);
 		if(programAnnotation == null)
-			throw new OperatingSystemRuntimeProgramException("Program class not callable: "+klass);
+			throw new OperatingSystemRuntimeException("Program class not callable: "+klass);
 		
 		QProgram program = getProgram(job, null, programAnnotation.name());
 		
@@ -117,7 +117,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 	
 	@Override
-	public QCallableProgram loadProgram(QJob job, QProgram program) throws OperatingSystemRuntimeProgramException {
+	public QCallableProgram loadProgram(QJob job, QProgram program) {
 		
 		// API
 		String address = null;		
@@ -134,7 +134,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		Class<?> klass = job.getContext().loadClass(address);
 		
 		if(klass == null)
-			throw new OperatingSystemRuntimeProgramException("Class not found: "+address);
+			throw new OperatingSystemRuntimeException("Class not found: "+address);
 
 		QCallableProgram callableProgram = prepareCallableProgram(job, program, klass);
 		
@@ -142,7 +142,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram loadProgram(QJob job, Class<?> klass) throws OperatingSystemRuntimeProgramException {
+	public QCallableProgram loadProgram(QJob job, Class<?> klass) {
 
 		try {
 			QProgram program = null;
@@ -151,7 +151,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			return callableProgram;
 			
 		} catch (Exception e) {
-			throw new OperatingSystemRuntimeProgramException(e);
+			throw new OperatingSystemRuntimeException(e);
 		}
 		
 	}
@@ -246,7 +246,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return callableProgram;
 	}
 
-	public void assignParameters(QData[] paramsTo, QData[] paramsFrom) throws OperatingSystemRuntimeProgramException {
+	public void assignParameters(QData[] paramsTo, QData[] paramsFrom) {
 
 		int paramsLength = 0;
 
@@ -268,7 +268,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			} else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
 				assignList(paramsFrom[i], paramsTo[i]);
 			} else
-				throw new OperatingSystemRuntimeProgramException("Unexpected condition: nxt057t024xn", null);
+				throw new OperatingSystemRuntimeException("Unexpected condition: nxt057t024xn", null);
 		}
 	}
 
@@ -296,7 +296,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	}
 
-	private void callProgram(QJob job, QCallableProgram callableProgram, QData[] params) throws OperatingSystemRuntimeProgramException {
+	private void callProgram(QJob job, QCallableProgram callableProgram, QData[] params) {
 
 		synchronized (callableProgram) {
 				
@@ -312,7 +312,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			
 			// call
 			try {
-//				printOpenStack(job, programStack, callableProgram);
+				printOpenStack(job, programStack, callableProgram);
 				
 				// open 
 				if(!callableProgram.isOpen())
@@ -323,6 +323,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				// call
 				callableProgram.call();	
 			}
+			catch(OperatingSystemMessageException | OperatingSystemRuntimeException e) {
+				System.err.println(e);
+				throw e;
+			}		
 			catch(Exception e) {
 				Throwable cause = e.getCause();
 				if (cause != null && (cause instanceof OperatingSystemMessageException)) {
@@ -330,10 +334,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				} else {
 					e.printStackTrace();
 				}
-				throw new OperatingSystemRuntimeProgramException(e.getMessage(), e);
+				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			}		
 			finally {
-//				printCloseStack(job, programStack, callableProgram);
+				printCloseStack(job, programStack, callableProgram);
 	
 				// TODO release parameters
 				
@@ -370,7 +374,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QProgram program = programReader.lookup(library, name);
 		if(program == null) {
 			jobLogManager.error(job, "Program not found: "+name);
-			throw new OperatingSystemRuntimeProgramException(job.getJobName()+"("+job.getJobNumber()+")"+"\t"+"Program not found: "+name, null);
+			throw new OperatingSystemRuntimeException(job.getJobName()+"("+job.getJobNumber()+")"+"\t"+"Program not found: "+name, null);
 		}
 
 		return program;

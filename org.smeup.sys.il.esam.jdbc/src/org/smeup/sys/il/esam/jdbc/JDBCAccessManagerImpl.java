@@ -20,8 +20,6 @@ import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.esam.QAccessFactory;
 import org.smeup.sys.il.esam.QAccessManager;
 import org.smeup.sys.rt.core.QApplication;
@@ -30,8 +28,6 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 
 	@Inject
 	private QApplication application;
-	@Inject
-	private QDataManager dataManager;
 
 	@PostConstruct
 	public void init() {
@@ -47,9 +43,7 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 		
 		QConnection connection = context.getAdapter(contextProvider, QConnection.class);
 
-		QDataFactory dataFactory = dataManager.createFactory(context, dataContext);
-
-		return new JDBCAccessFactoryImpl(context, connection, dataFactory);
+		return new JDBCAccessFactoryImpl(context, connection, dataContext);
 	}
 
 }

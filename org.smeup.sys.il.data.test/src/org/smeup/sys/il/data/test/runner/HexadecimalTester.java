@@ -19,6 +19,7 @@ import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataManager;
 
@@ -35,7 +36,8 @@ public class HexadecimalTester {
 	@TestStarted
 	public void main() throws UnsupportedEncodingException {
 
-		QDataFactory dataFactory = dataManager.createFactory(testRunner.getContext());
+		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
+		QDataFactory dataFactory = dataContext.getDataFactory();
 
 		String inputHex = "C1A24BE4D7";
 
