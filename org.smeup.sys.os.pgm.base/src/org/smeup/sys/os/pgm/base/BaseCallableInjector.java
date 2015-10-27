@@ -270,7 +270,14 @@ public class BaseCallableInjector {
 					object = Integer.parseInt(dataDef.value());
 				} else if (String.class.isAssignableFrom(fieldClass)) {
 					object = dataDef.value();
-				} else
+				}
+				else if (Byte.class.isAssignableFrom(fieldClass)) {
+					if(dataDef.value().startsWith("X'")) {
+						object = convertHexToString(dataDef.value().substring(2, 4)).getBytes()[0];
+					}
+					else
+						System.err.println("Unexpected condition " + field.getDeclaringClass() + ": xw09ert98ery87tyrew");
+				}else
 					System.err.println("Unexpected condition " + field.getDeclaringClass() + ": x456b6439b57w6ervdas5");
 			}
 
@@ -492,5 +499,26 @@ public class BaseCallableInjector {
 		public String toString() {
 			return "InjectableField [field=" + field + ", class_=" + class_ + ", type=" + type + ", arguments=" + Arrays.toString(arguments) + "]";
 		}
+	}
+
+	public static String convertHexToString(String hex) {
+
+		StringBuilder sb = new StringBuilder();
+		StringBuilder temp = new StringBuilder();
+
+		// 49204c6f7665204a617661 split into two characters 49, 20, 4c...
+		for (int i = 0; i < hex.length() - 1; i += 2) {
+
+			// grab the hex in pairs
+			String output = hex.substring(i, (i + 2));
+			// convert hex to decimal
+			int decimal = Integer.parseInt(output, 16);
+			// convert the decimal to character
+			sb.append((char) decimal);
+
+			temp.append(decimal);
+		}
+
+		return sb.toString();
 	}
 }
