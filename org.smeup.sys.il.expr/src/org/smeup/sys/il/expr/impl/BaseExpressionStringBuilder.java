@@ -20,22 +20,21 @@ import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QExpression;
-import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
+import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
-import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 
-public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 
-	String result = "";
+public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
+	protected String result = "";
 
 	public String getResult() {
 		return result;
 	}
 
-	public ExpressionStringBuilderImpl reset() {
+	public BaseExpressionStringBuilder reset() {
 		result = "";
 		return this;
 	}
@@ -251,4 +250,5 @@ public class ExpressionStringBuilderImpl extends ExpressionVisitorImpl {
 		else if (predicateExpression instanceof QBooleanExpression)
 			visit((QBooleanExpression) predicateExpression);
 	}
+
 }

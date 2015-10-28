@@ -32,6 +32,8 @@ import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionVisitor;
+import org.smeup.sys.il.expr.QExpressionWriter;
+import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
@@ -101,6 +103,20 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	 * @generated
 	 */
 	private EClass expressionParserRegistryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionWriterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionWriterRegistryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -415,6 +431,24 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExpressionWriter() {
+		return expressionWriterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExpressionWriterRegistry() {
+		return expressionWriterRegistryEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -649,6 +683,10 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 
 		expressionParserRegistryEClass = createEClass(EXPRESSION_PARSER_REGISTRY);
 
+		expressionWriterEClass = createEClass(EXPRESSION_WRITER);
+
+		expressionWriterRegistryEClass = createEClass(EXPRESSION_WRITER_REGISTRY);
+
 		expressionVisitorEClass = createEClass(EXPRESSION_VISITOR);
 
 		functionTermExpressionEClass = createEClass(FUNCTION_TERM_EXPRESSION);
@@ -721,6 +759,10 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		EGenericType g2 = createEGenericType(this.getExpressionParser());
 		g1.getETypeArguments().add(g2);
 		expressionParserRegistryEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
+		g2 = createEGenericType(this.getExpressionWriter());
+		g1.getETypeArguments().add(g2);
+		expressionWriterRegistryEClass.getEGenericSuperTypes().add(g1);
 		functionTermExpressionEClass.getESuperTypes().add(this.getCompoundTermExpression());
 		logicalExpressionEClass.getESuperTypes().add(this.getPredicateExpression());
 		predicateExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -776,6 +818,13 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		addEParameter(op, ecorePackage.getEString(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(expressionParserRegistryEClass, QExpressionParserRegistry.class, "ExpressionParserRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(expressionWriterEClass, QExpressionWriter.class, "ExpressionWriter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(expressionWriterEClass, ecorePackage.getEString(), "writeExpression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getExpression(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(expressionWriterRegistryEClass, QExpressionWriterRegistry.class, "ExpressionWriterRegistry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(expressionVisitorEClass, QExpressionVisitor.class, "ExpressionVisitor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

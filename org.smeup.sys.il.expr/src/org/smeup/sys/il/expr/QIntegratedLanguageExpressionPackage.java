@@ -68,7 +68,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getRelationalExpression()
 	 * @generated
 	 */
-	int RELATIONAL_EXPRESSION = 14;
+	int RELATIONAL_EXPRESSION = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -78,7 +78,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getArithmeticOperator()
 	 * @generated
 	 */
-	int ARITHMETIC_OPERATOR = 16;
+	int ARITHMETIC_OPERATOR = 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -135,7 +135,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionVisitor()
 	 * @generated
 	 */
-	int EXPRESSION_VISITOR = 9;
+	int EXPRESSION_VISITOR = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.PredicateExpressionImpl <em>Predicate Expression</em>}' class.
@@ -145,7 +145,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getPredicateExpression()
 	 * @generated
 	 */
-	int PREDICATE_EXPRESSION = 12;
+	int PREDICATE_EXPRESSION = 14;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.LogicalExpressionImpl <em>Logical Expression</em>}' class.
@@ -155,7 +155,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getLogicalExpression()
 	 * @generated
 	 */
-	int LOGICAL_EXPRESSION = 11;
+	int LOGICAL_EXPRESSION = 13;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.TermExpressionImpl <em>Term Expression</em>}' class.
@@ -165,7 +165,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getTermExpression()
 	 * @generated
 	 */
-	int TERM_EXPRESSION = 15;
+	int TERM_EXPRESSION = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.AtomicTermExpressionImpl <em>Atomic Term Expression</em>}' class.
@@ -482,6 +482,44 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int EXPRESSION_PARSER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.expr.QExpressionWriter <em>Expression Writer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.expr.QExpressionWriter
+	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriter()
+	 * @generated
+	 */
+	int EXPRESSION_WRITER = 9;
+
+	/**
+	 * The number of structural features of the '<em>Expression Writer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_WRITER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.expr.QExpressionWriterRegistry <em>Expression Writer Registry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.expr.QExpressionWriterRegistry
+	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriterRegistry()
+	 * @generated
+	 */
+	int EXPRESSION_WRITER_REGISTRY = 10;
+
+	/**
+	 * The number of structural features of the '<em>Expression Writer Registry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_WRITER_REGISTRY_FEATURE_COUNT = QIntegratedLanguageCoreCtxPackage.PLUGIN_REGISTRY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Expression Visitor</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -497,7 +535,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getFunctionTermExpression()
 	 * @generated
 	 */
-	int FUNCTION_TERM_EXPRESSION = 10;
+	int FUNCTION_TERM_EXPRESSION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -582,7 +620,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getQualifiedTermExpression()
 	 * @generated
 	 */
-	int QUALIFIED_TERM_EXPRESSION = 13;
+	int QUALIFIED_TERM_EXPRESSION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -667,7 +705,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAssignmentOperator()
 	 * @generated
 	 */
-	int ASSIGNMENT_OPERATOR = 17;
+	int ASSIGNMENT_OPERATOR = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.AtomicType
@@ -678,7 +716,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getAtomicType()
 	 * @generated
 	 */
-	int ATOMIC_TYPE = 18;
+	int ATOMIC_TYPE = 20;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.ExpressionType <em>Expression Type</em>}' enum.
@@ -688,7 +726,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionType()
 	 * @generated
 	 */
-	int EXPRESSION_TYPE = 19;
+	int EXPRESSION_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -698,7 +736,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getLogicalOperator()
 	 * @generated
 	 */
-	int LOGICAL_OPERATOR = 20;
+	int LOGICAL_OPERATOR = 22;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -708,7 +746,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getRelationalOperator()
 	 * @generated
 	 */
-	int RELATIONAL_OPERATOR = 21;
+	int RELATIONAL_OPERATOR = 23;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QArithmeticExpression <em>Arithmetic Expression</em>}'.
@@ -903,6 +941,26 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExpressionParserRegistry();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QExpressionWriter <em>Expression Writer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression Writer</em>'.
+	 * @see org.smeup.sys.il.expr.QExpressionWriter
+	 * @generated
+	 */
+	EClass getExpressionWriter();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.expr.QExpressionWriterRegistry <em>Expression Writer Registry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression Writer Registry</em>'.
+	 * @see org.smeup.sys.il.expr.QExpressionWriterRegistry
+	 * @generated
+	 */
+	EClass getExpressionWriterRegistry();
 
 	/**
 	 * Returns the meta object for class '
@@ -1299,6 +1357,26 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXPRESSION_PARSER_REGISTRY = eINSTANCE.getExpressionParserRegistry();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.expr.QExpressionWriter <em>Expression Writer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.expr.QExpressionWriter
+		 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriter()
+		 * @generated
+		 */
+		EClass EXPRESSION_WRITER = eINSTANCE.getExpressionWriter();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.expr.QExpressionWriterRegistry <em>Expression Writer Registry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.expr.QExpressionWriterRegistry
+		 * @see org.smeup.sys.il.expr.impl.IntegratedLanguageExpressionPackageImpl#getExpressionWriterRegistry()
+		 * @generated
+		 */
+		EClass EXPRESSION_WRITER_REGISTRY = eINSTANCE.getExpressionWriterRegistry();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.expr.impl.ExpressionVisitorImpl <em>Expression Visitor</em>}' class.

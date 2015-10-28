@@ -72,7 +72,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	@Override
 	public String toString() {
 		
-		ExpressionStringBuilderImpl expressionStringBuilderImpl = new ExpressionStringBuilderImpl();
+		BaseExpressionStringBuilder expressionStringBuilderImpl = new BaseExpressionStringBuilder();
 		accept(expressionStringBuilderImpl);
 		
 		return expressionStringBuilderImpl.getResult();
