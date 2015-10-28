@@ -100,7 +100,6 @@ public class DataAreaCreator {
 		
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
 		newDataArea.setName(areaName);
-		newDataArea.setLibrary(libName);
 		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
 		newDataArea.setText(descriptionFrom(descrizioneTesto));
 		newDataArea.setContentLength(lunghezza.lunghezza.asInteger());
