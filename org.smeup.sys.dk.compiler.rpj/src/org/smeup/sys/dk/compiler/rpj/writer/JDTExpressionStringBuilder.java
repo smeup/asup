@@ -159,7 +159,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 		case SPECIAL:
 			source = Enum.class;
 			if (Specials.NULL.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
-				value = "qRPJ.qSP." + strings.removeFirstChar(expression.getValue()).toUpperCase();
+				value = "null";
 			else if (Specials.OMIT.name().equalsIgnoreCase(strings.removeFirstChar(expression.getValue())))
 				value = "null";
 			else

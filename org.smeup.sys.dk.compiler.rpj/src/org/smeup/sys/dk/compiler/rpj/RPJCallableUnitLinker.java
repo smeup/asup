@@ -371,7 +371,9 @@ public class RPJCallableUnitLinker {
 	public QCompilerLinker linkExternalFile(QContext context, QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QExternalFile externalFile) {
 
 		QFile file = getFile(externalFile.getName());
-
+		if(file == null)
+			return null;
+		
 		if (externalFile.getName().startsWith("*")) {
 			logger.info(excpetionManager.prepareException(job, RPJCompilerMessage.AS00101, externalFile.getName()));
 			return null;

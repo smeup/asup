@@ -22,7 +22,7 @@ import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QLIRTVOB")
-public @ToDo class ObjectDescriptionRetrieverCommad {
+public @ToDo class ObjectDescriptionAttributeRetriever {
 	public static enum QCPFMSG {
 		CPF9812, CPF9801
 	}

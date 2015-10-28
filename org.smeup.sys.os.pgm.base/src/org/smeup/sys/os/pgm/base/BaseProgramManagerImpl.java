@@ -390,7 +390,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			
 		}
 		text += ")";
-		System.out.println(job.getJobName()+"("+job.getJobNumber()+")"+"\t"+strings.appendChars(text, "\t", programStack.size(), true));
+		System.out.println(job.getJobName()+"("+job.getJobNumber()+")"+strings.appendChars(text, "\t", programStack.size()-1, true));
 	}
 	
 	protected void printCloseStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
@@ -400,7 +400,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		}
 		text += ")";
 		text += callableProgram.isStateless() ? "(LR)" : "(RT)";
-		System.out.println(job.getJobName()+"("+job.getJobNumber()+")"+"\t"+strings.appendChars(text, "\t", programStack.size(), true));		
+		System.out.println(job.getJobName()+"("+job.getJobNumber()+")"+strings.appendChars(text, "\t", programStack.size()-1, true));		
 	}
 	
 	protected long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {

@@ -39,6 +39,7 @@ import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
 import org.smeup.sys.il.flow.QRoutine;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
@@ -50,12 +51,11 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		writeImport(Program.class);
 		writeImport(RPJProgramSupport.class);
 		writeImport(OperatingSystemRuntimeException.class);
+		writeImport(OperatingSystemMessageException.class);
 		writeImport(List.class);
 	}
 
 	public void writeProgram(QProgram program) throws IOException {
-
-		System.out.println("Writing program: " + program);
 
 		refactCallableUnit(program);
 
@@ -86,7 +86,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 
 		writeSupportFields(callableUnitInfo);
 
-		writeModuleFields(modules, UnitScope.PROTECTED);
+		writeModuleFields(modules, UnitScope.PRIVATE);
 
 		if (program.getFileSection() != null) {
 			writeDataSets(program.getFileSection().getDataSets());
@@ -98,7 +98,7 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		}
 
 		if (program.getDataSection() != null)
-			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
+			writeDataFields(program.getDataSection(), UnitScope.PRIVATE);
 
 		if (program.getFlowSection() != null)
 			for (QProcedure procedure : program.getFlowSection().getProcedures())

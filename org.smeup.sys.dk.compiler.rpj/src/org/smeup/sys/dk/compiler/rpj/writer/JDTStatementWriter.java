@@ -93,7 +93,7 @@ import org.smeup.sys.il.flow.QStatement;
 import org.smeup.sys.il.flow.QUntil;
 import org.smeup.sys.il.flow.QWhile;
 import org.smeup.sys.il.flow.impl.StatementVisitorImpl;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 
 public class JDTStatementWriter extends StatementVisitorImpl {
 
@@ -463,14 +463,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		Block block = blocks.peek();
 
-		// dummy break
-		if (isParentFor(statement)) {
-			IfStatement ifSt = ast.newIfStatement();
-			ifSt.setExpression(ast.newBooleanLiteral(false));
-			ifSt.setThenStatement(ast.newBreakStatement());
-			block.statements().add(ifSt);
-		}
-
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 		methodInvocation.setExpression(ast.newSimpleName("qRPJ"));
 		methodInvocation.setName(ast.newSimpleName("qJump"));
@@ -480,6 +472,15 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
 		block.statements().add(expressionStatement);
+
+		// dummy break
+		if (isParentFor(statement)) {
+			block.statements().add(ast.newBreakStatement());
+//			IfStatement ifSt = ast.newIfStatement();
+//			ifSt.setExpression(ast.newName("qRPJ.FALSE"));
+//			ifSt.setThenStatement(ast.newBreakStatement());
+//			block.statements().add(ifSt);
+		}
 
 		return super.visit(statement);
 	}
@@ -580,7 +581,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		CatchClause catchClause = ast.newCatchClause();
 		SingleVariableDeclaration exceptionDeclaration = ast.newSingleVariableDeclaration();
 
-		Type exception = ast.newSimpleType(ast.newSimpleName(OperatingSystemRuntimeException.class.getSimpleName()));
+		Type exception = ast.newSimpleType(ast.newSimpleName(OperatingSystemMessageException.class.getSimpleName()));
 		exceptionDeclaration.setType(exception);
 		exceptionDeclaration.setName(ast.newSimpleName("e"));
 		catchClause.setException(exceptionDeclaration);
@@ -594,7 +595,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		MethodInvocation methodInvocation = ast.newMethodInvocation();
 		methodInvocation.setExpression(ast.newSimpleName("e"));
-		methodInvocation.setName(ast.newSimpleName("toString"));
+		methodInvocation.setName(ast.newSimpleName("getMessageName"));
 
 		switchStatement.setExpression(methodInvocation);
 

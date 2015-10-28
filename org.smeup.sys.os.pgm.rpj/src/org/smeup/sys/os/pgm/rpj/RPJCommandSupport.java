@@ -12,6 +12,7 @@
 package org.smeup.sys.os.pgm.rpj;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.annotation.Module;
+import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.cmd.QCallableCommand;
 import org.smeup.sys.os.cmd.QCommandManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -39,26 +41,49 @@ public class RPJCommandSupport {
 
 		if(caller == null)
 			return;
-		
-		
+				
 		Map<String, Object> variables = new HashMap<String, Object>();
+		loadVariables(caller.getClass(), caller, variables);
 		
-		for(Field field: caller.getClass().getFields()) {
+		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), command, variables, true);		
+		commandManager.executeCommand(job.getJobID(), callableCommand);
+		callableCommand.close();
+	}
+	
+	private void loadVariables(Class<?> klass, Object caller, Map<String, Object> variables) {
 
+		// recursively on superClass
+		if(klass.getSuperclass().getAnnotation(Program.class) != null)
+			loadVariables(klass.getSuperclass(), caller, variables);
+		
+		for(Field field: klass.getDeclaredFields()) {
+			
+			// TODO
+			if (field.getName().startsWith("$SWITCH_TABLE"))
+				continue;
 
-			Type type = field.getGenericType();
+			if (Modifier.isStatic(field.getModifiers())) {
+				if (Modifier.isFinal(field.getModifiers()))
+					continue;
+			}
 
-			Class<?> fieldKlass = null;
+			Class<?> fieldClass = null;
 
-			if (type instanceof ParameterizedType) {
-				fieldKlass = (Class<?>) ((ParameterizedType) type).getRawType();
+			Type fieldType = field.getGenericType();
+
+			ParameterizedType parType = null;
+			if (fieldType instanceof ParameterizedType) {
+				parType = (ParameterizedType) fieldType;
+				fieldClass = (Class<?>) parType.getRawType();
 			} else
-				fieldKlass = (Class<?>) type;
+				fieldClass = (Class<?>) fieldType;
 
-			if(QData.class.isAssignableFrom(fieldKlass)) {
+			if(QData.class.isAssignableFrom(fieldClass)) {
 				Object variable;
 				try {
+					field.setAccessible(true);
 					variable = field.get(caller);
+					field.setAccessible(false);
 					variables.put(field.getName(), variable);
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 					// TODO Auto-generated catch block
@@ -67,9 +92,5 @@ public class RPJCommandSupport {
 
 			}
 		}
-
-		QCallableCommand callableCommand = commandManager.prepareCommand(job.getJobID(), command, variables, true);		
-		commandManager.executeCommand(job.getJobID(), callableCommand);
-		callableCommand.close();
 	}
 }

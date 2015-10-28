@@ -227,14 +227,16 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 
 							DataDef dataDef = field.getAnnotation(DataDef.class);
 							if (dataDef == null) {
-								Class<?> dictionaryClass = klass.getDeclaringClass().getSuperclass();
+								Class<?> dictionaryClass = klass.getDeclaringClass();
 								Field dictionaryField = dictionaryClass.getField(field.getName());
-								if (dictionaryField == null)
-									continue;
+								if (dictionaryField == null) {
+									dictionaryClass = klass.getDeclaringClass().getSuperclass();	
+									dictionaryField = dictionaryClass.getField(field.getName());
+								}
 
 								dataDef = dictionaryField.getAnnotation(DataDef.class);
 							}
-
+							
 							if (dataDef == null)
 								continue;
 

@@ -422,7 +422,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
 					data = dataFactory.createData(dataTerm, true);
-					System.err.println("Unexpected confition 5qf7rva9cwerc5: "+dataTerm);
+					System.err.println("Unexpected condition 5qf7rva9cwerc5: "+dataTerm);
 				} else if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
 					data = dataFactory.createData(dataTerm, false);
 					QDataStruct infoStruct = getDataContext().getInfoStruct();

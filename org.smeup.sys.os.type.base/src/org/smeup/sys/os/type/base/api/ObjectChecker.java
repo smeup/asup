@@ -52,15 +52,12 @@ public @ToDo class ObjectChecker {
 							@DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
 							@ToDo @DataDef(dimension = 10, length = 10) QEnum<AUTHORITYEnum, QScroller<QCharacter>> authority) {
 		
-		if (objectType == null || objectType.trimR().equals("")) {
+		if (objectType == null || objectType.trimR().equals(""))
 			error("You must specify an object type");
-		}
 		
 		QType<?> type = typeRegistry.lookup(objectType.trimR());
-
-		if (type == null) {
+		if (type == null)
 			error("Wrong type: " + objectType.trimR());			
-		}
 		
 		QResourceReader<? extends QTypedObject> resourceReader = null;
 		
@@ -78,12 +75,14 @@ public @ToDo class ObjectChecker {
 		}
 
 		QTypedObject typedObject = resourceReader.lookup(object.name.trimR());;
-
-		if (typedObject == null) {
+		if (typedObject == null)
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9801, new String[] {"", object.name.trimR(), object.library.asData().trimR()});				
-		}
 		
-		if(!memberIfDataBaseFile.isEmpty()) {
+		switch (memberIfDataBaseFile.asEnum()) {
+		case NONE:
+		case FIRST:
+			break;
+		case OTHER:
 			if (typedObject instanceof QSourceFile) {
 				QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), typedObject.getLibrary(), QFile.class, typedObject.getName());
 				QSourceEntry fileMember = sourceManager.getChildEntry(job.getContext(), sourceEntry, memberIfDataBaseFile.asData().trimR()+".XMI");
@@ -93,6 +92,7 @@ public @ToDo class ObjectChecker {
 			} else {
 				error("Invalid file type: "+ objectType.trimR());
 			}
+			break;
 		}
 	}
 

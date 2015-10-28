@@ -170,6 +170,9 @@ public class RPJProgramSupport {
 		public QDecimal uyear;
 	}
 
+	public static final boolean FALSE = false;
+	public static final boolean TRUE = false;
+	
 	public static enum Specials {
 		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D;
 

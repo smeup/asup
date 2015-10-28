@@ -33,7 +33,7 @@ import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.os.file.QExternalFile;
 
 public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
-
+	
 	@Inject
 	public RPJDataLikeRefactor(QCompilationUnit compilationUnit) {
 		super(compilationUnit);

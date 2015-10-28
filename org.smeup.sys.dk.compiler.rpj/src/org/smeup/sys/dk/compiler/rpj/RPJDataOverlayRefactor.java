@@ -25,8 +25,15 @@ import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
 
 public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
+
+	@Inject
+	private QExceptionManager exceptionManager;
+	@Inject
+	private QJob job;
 
 	@Inject
 	public RPJDataOverlayRefactor(QCompilationUnit compilationUnit) {
@@ -44,9 +51,13 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		if (overlay.getName() == null)
 			return super.visit(dataTerm);
 
+		// TODO remove me
+		if (overlay.getName().equalsIgnoreCase("*LDA"))
+			overlay.setName("£udlda");
+		
 		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
 		if (overlayTerm == null)
-			throw new RuntimeException("Unexpected condition: 57as43534dftgasd8764xm0437");
+			throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00109, new String[] { overlay.getName() });
 
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:

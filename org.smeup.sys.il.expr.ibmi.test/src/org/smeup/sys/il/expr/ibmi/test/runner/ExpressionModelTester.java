@@ -14,7 +14,6 @@ package org.smeup.sys.il.expr.ibmi.test.runner;
 import java.io.IOException;
 
 import javax.inject.Inject;
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;

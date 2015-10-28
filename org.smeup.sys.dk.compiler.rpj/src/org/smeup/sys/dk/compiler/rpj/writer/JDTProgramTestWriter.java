@@ -112,7 +112,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		}
 
 		if (program.getDataSection() != null)
-			writeDataFields(program.getDataSection(), UnitScope.PROTECTED);
+			writeDataFields(program.getDataSection(), UnitScope.PRIVATE);
 
 		if (program.getFlowSection() != null)
 			for (QProcedure procedure : program.getFlowSection().getProcedures())
