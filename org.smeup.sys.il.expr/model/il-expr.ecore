@@ -104,6 +104,17 @@
     <eLiterals name="Function" value="43" literal="FUNC"/>
     <eLiterals name="Block" value="50" literal="BLC"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionWriter" abstract="true" interface="true">
+    <eOperations name="writeExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="expression" lowerBound="1" eType="#//Expression"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionWriterRegistry" abstract="true"
+      interface="true">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/PluginRegistry">
+      <eTypeArguments eClassifier="#//ExpressionWriter"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionVisitor" abstract="true">
     <eOperations name="endVisit">
       <eParameters name="expression" lowerBound="1" eType="#//ArithmeticExpression"/>

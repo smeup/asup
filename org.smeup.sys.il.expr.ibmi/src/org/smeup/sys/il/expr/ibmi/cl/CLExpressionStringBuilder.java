@@ -7,12 +7,12 @@
  *
  *
  * Contributors:
- *   Mattia Rocchi - Initial API and implementation
+ *   Dario Foresti - Initial API and implementation
  */
-package org.smeup.sys.dk.compiler.rpj;
+package org.smeup.sys.il.expr.ibmi.cl;
 
 import org.smeup.sys.il.expr.impl.BaseExpressionStringBuilder;
 
-public class RPJExpressionStringBuilder extends BaseExpressionStringBuilder {
-	//TODO: implements RPJ expression specifity
+public class CLExpressionStringBuilder extends BaseExpressionStringBuilder {
+	//TODO: implements CL expression specifity (CAT, BCAT, TCAT)
 }
