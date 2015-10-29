@@ -178,5 +178,16 @@ public class TestLauncherHelper {
 		return errorResult;
 	}
 	
+	public static boolean validateTestClassByObject(Class<?> testClass, String object) {
+		
+		boolean result = false;
+		
+		Test testAnnotation = testClass.getAnnotation(Test.class);
+		if (testAnnotation != null && testAnnotation.object() != null && testAnnotation.object().equalsIgnoreCase(object)) {
+			result = true;
+		}
+		return result;
+	}
+	
 	
 }

@@ -21,6 +21,7 @@ import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.dk.test.base.MultipleTestLauncherImpl;
+import org.smeup.sys.dk.test.base.TestLauncherHelper;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -47,8 +48,22 @@ public class LanguageMemoryTestLauncherImpl extends MultipleTestLauncherImpl {
 	public Collection<Class<?>> getTestClassList(String object) {
 		
 		Collection<Class<?>> testClasses = new ArrayList<Class<?>>();
-		testClasses.add(TestWrite.class);
-		testClasses.add(TestRead.class);
+		if (object.length() == 0) {			
+			testClasses.add(TestWrite.class);
+			testClasses.add(TestRead.class);
+			
+		} else {
+			// Filter test classes by object
+			
+			if (TestLauncherHelper.validateTestClassByObject(TestWrite.class, object)) {
+				testClasses.add(TestWrite.class);
+			}
+						
+			if (TestLauncherHelper.validateTestClassByObject(TestRead.class, object)) {
+				testClasses.add(TestRead.class);
+			}
+			
+		}
 		return testClasses;				
 	}
 

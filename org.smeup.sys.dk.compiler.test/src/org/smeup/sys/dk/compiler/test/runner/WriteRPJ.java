@@ -20,6 +20,8 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
+import org.smeup.sys.il.expr.QExpressionWriter;
+import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 
 @Test(category = "DK.COMPILER", object = "RPJ")
 public class WriteRPJ {
@@ -30,36 +32,30 @@ public class WriteRPJ {
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
 	
+	@Inject
+	private QExpressionWriterRegistry expressionWriterRegistry;
+		
+	
 	@TestStarted
 	public void main() {
 		QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
-		RPJExpressionStringBuilder strBuilder = new RPJExpressionStringBuilder();
+		QExpressionWriter expressionWriter = expressionWriterRegistry.lookup("RPJ");
 		
-		
-		strBuilder.reset();		
 		String testString = "A+B*C+D*E+F";
-		QExpression parseExpression = expressionParser.parseExpression(testString);			
-		parseExpression.accept(strBuilder);			
-		testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());
+		QExpression parseExpression = expressionParser.parseExpression(testString);					
+		testAsserter.assertEquals("String builder result", testString, expressionWriter.writeExpression(parseExpression));
 		
-		
-		strBuilder.reset();		
 		testString = "A = (B+C+D*E+F)*G";
-		parseExpression = expressionParser.parseExpression(testString);						 			
-		parseExpression.accept(strBuilder);		
-		testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());								
+		parseExpression = expressionParser.parseExpression(testString);						 						
+		testAsserter.assertEquals("String builder result", testString, expressionWriter.writeExpression(parseExpression));								
 		
-		strBuilder.reset();		
 		testString = "A*B*C*(D+E*F-G*H)";
 		parseExpression = expressionParser.parseExpression(testString);						 			
-		parseExpression.accept(strBuilder);
-		testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());						
+		testAsserter.assertEquals("String builder result", testString, expressionWriter.writeExpression(parseExpression));						
 		
-		strBuilder.reset();
 		testString= "(A+B)/(C*E+F)-G+H**L";
 		parseExpression = expressionParser.parseExpression(testString);						 			
-		parseExpression.accept(strBuilder);
-		testAsserter.assertEquals("String builder result", testString, strBuilder.getResult());						
+		testAsserter.assertEquals("String builder result", testString, expressionWriter.writeExpression(parseExpression));						
 		
 	}
 }

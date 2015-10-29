@@ -9,6 +9,8 @@ import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
+import org.smeup.sys.il.expr.QExpressionWriter;
+import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 
 @Test(category = "DK.COMPILER",  object = "EXTRPJ")
 public class WriteExtendedRPJ {
@@ -18,36 +20,29 @@ public class WriteExtendedRPJ {
 	
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
+	@Inject
+	private QExpressionWriterRegistry expressionWriterRegistry;
 	
 	@TestStarted
 	public void main() {
-		QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");
+		QExpressionParser expressionParser = expressionParserRegistry.lookup("RPG");		
+		QExpressionWriter expressionWriter = expressionWriterRegistry.lookup("EXTRPJ");
 		
-		RPJExtendedExpressionStringBuilder strExtBuilder = new RPJExtendedExpressionStringBuilder();
-		
-		strExtBuilder.reset();
 		String testString = "A+B*C+D*E+F";
-		QExpression parseExpression = expressionParser.parseExpression(testString);					
-		parseExpression.accept(strExtBuilder);			
-		testAsserter.assertEquals("Extended string builder result", "A.qPlus(B.qMult(C)).qPlus(D.qMult(E)).qPlus(F)", strExtBuilder.getResult());
+		QExpression parseExpression = expressionParser.parseExpression(testString);									
+		testAsserter.assertEquals("Extended string builder result", "A.qPlus(B.qMult(C)).qPlus(D.qMult(E)).qPlus(F)", expressionWriter.writeExpression(parseExpression));
 				
-		strExtBuilder.reset();
 		testString = "A = (B+C+D*E+F)*G";
 		parseExpression = expressionParser.parseExpression(testString);						 					
-		parseExpression.accept(strExtBuilder);	
-		testAsserter.assertEquals("Extended string builder result", "A.qEquals(B.qPlus(C).qPlus(D.qMult(E)).qPlus(F).qMult(G))", strExtBuilder.getResult());
+		testAsserter.assertEquals("Extended string builder result", "A.qEquals(B.qPlus(C).qPlus(D.qMult(E)).qPlus(F).qMult(G))", expressionWriter.writeExpression(parseExpression));
 				
-		strExtBuilder.reset();
 		testString = "A*B*C*(D+E*F-G*H)";
 		parseExpression = expressionParser.parseExpression(testString);						 			
-		parseExpression.accept(strExtBuilder);		
-		testAsserter.assertEquals("Extended string builder result", "A.qMult(B).qMult(C).qMult(D.qPlus(E.qMult(F)).qMinus(G.qMult(H)))", strExtBuilder.getResult());
+		testAsserter.assertEquals("Extended string builder result", "A.qMult(B).qMult(C).qMult(D.qPlus(E.qMult(F)).qMinus(G.qMult(H)))", expressionWriter.writeExpression(parseExpression));
 				
-		strExtBuilder.reset();
 		testString= "(A+B)/(C*E+F)-G+H**L";
 		parseExpression = expressionParser.parseExpression(testString);						 			
-		parseExpression.accept(strExtBuilder);				
-		testAsserter.assertEquals("Extended string builder result", "A.qPlus(B).qDiv(C.qMult(E).qPlus(F)).qMinus(G).qPlus(H.qPow(L))", strExtBuilder.getResult());
+		testAsserter.assertEquals("Extended string builder result", "A.qPlus(B).qDiv(C.qMult(E).qPlus(F)).qMinus(G).qPlus(H.qPow(L))", expressionWriter.writeExpression(parseExpression));
 		
 	}
 }
