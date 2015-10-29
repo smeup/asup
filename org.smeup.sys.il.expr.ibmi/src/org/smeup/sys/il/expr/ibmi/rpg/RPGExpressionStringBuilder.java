@@ -25,24 +25,24 @@ public class RPGExpressionStringBuilder extends BaseExpressionStringBuilder {
 				
 		if (functionName.startsWith("*ALL")) {
 			
-			result += "*ALL";
+			result.append("*ALL");
 			for (QExpression child : expression.getElements()) {
 				child.accept(this);
 			}		
 			
 		} else {
 		
-			result += expression.getValue();
+			result.append(expression.getValue());
 	
-			result += "(";
+			result.append("(");
 			boolean first = true;
 			for (QExpression child : expression.getElements()) {
 				if (!first)
-					result += ": ";
+					result.append(": ");
 				child.accept(this);
 				first = false;
 			}
-			result += ")";
+			result.append(")");
 		}
 
 		return false;

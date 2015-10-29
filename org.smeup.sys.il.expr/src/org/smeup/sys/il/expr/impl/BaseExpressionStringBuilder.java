@@ -28,14 +28,15 @@ import org.smeup.sys.il.expr.QRelationalExpression;
 
 
 public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
-	protected String result = "";
+	
+	protected StringBuffer result = new StringBuffer();
 
 	public String getResult() {
-		return result;
+		return result.toString();
 	}
 
 	public BaseExpressionStringBuilder reset() {
-		result = "";
+		result = new StringBuffer();
 		return this;
 	}
 
@@ -51,15 +52,15 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		switch (expression.getOperator()) {
 		case AND:
 			expression.getLeftOperand().accept(this);
-			result += " and ";
+			result.append(" and ");
 			break;
 		case NOT:
-			result += " not ";
+			result.append(" not ");
 			expression.getLeftOperand().accept(this);
 			break;
 		case OR:
 			expression.getLeftOperand().accept(this);
-			result += " or ";
+			result.append(" or ");
 			break;
 		}
 
@@ -76,22 +77,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		switch (expression.getOperator()) {
 		case EQUAL:
-			result += " = ";
+			result.append(" = ");
 			break;
 		case GREATER_THAN:
-			result += " > ";
+			result.append(" > ");
 			break;
 		case GREATER_THAN_EQUAL:
-			result += " >= ";
+			result.append(" >= ");
 			break;
 		case LESS_THAN:
-			result += " < ";
+			result.append(" < ");
 			break;
 		case LESS_THAN_EQUAL:
-			result += " >= ";
+			result.append(" >= ");
 			break;
 		case NOT_EQUAL:
-			result += " <> ";
+			result.append(" <> ");
 			break;
 		}
 
@@ -105,12 +106,12 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QArithmeticExpression expression) {
 
 		if (expression.getOperator() == ArithmeticOperator.SIGN_MINUS) {
-			result += "-";
+			result.append("-");
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35n4v5");
 		} else if (expression.getOperator() == ArithmeticOperator.SIGN_PLUS) {
-			result += "+";
+			result.append("+");
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35v5gt");
@@ -120,22 +121,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 			switch (expression.getOperator()) {
 
 			case DIVIDE:
-				result += "/";
+				result.append("/");
 				break;
 			case MINUS:
-				result += "-";
+				result.append("-");
 				break;
 			case MODULAR:
-				result += "%";
+				result.append("%");
 				break;
 			case MULT:
-				result += "*";
+				result.append("*");
 				break;
 			case PLUS:
-				result += "+";
+				result.append("+");
 				break;
 			case POWER:
-				result += "**";
+				result.append("**");
 				break;
 			case SIGN_MINUS:
 			case SIGN_PLUS:
@@ -157,22 +158,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		switch (expression.getOperator()) {
 		case ASSIGN:
-			result += " = ";
+			result.append(" = ");
 			break;
 		case DIVIDE_ASSIGN:
-			result += " /= ";
+			result.append(" /= ");
 			break;
 		case MINUS_ASSIGN:
-			result += " -= ";
+			result.append(" -= ");
 			break;
 		case PLUS_ASSIGN:
-			result += " += ";
+			result.append(" += ");
 			break;
 		case POWER_ASSIGN:
-			result += " **= ";
+			result.append(" **= ");
 			break;
 		case TIMES_ASSIGN:
-			result += " *= ";
+			result.append(" *= ");
 			break;
 		default:
 			break;
@@ -190,11 +191,11 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		if (expression.getType() == AtomicType.STRING) {
 			String value = expression.getValue().replaceAll("\'", "\''");
-			result += "'" + value + "'";
+			result.append("'" + value + "'");
 		} else if (expression.getType() == AtomicType.HEXADECIMAL) {
-			result += "x'" + expression.getValue() + "'";
+			result.append("x'" + expression.getValue() + "'");
 		} else
-			result += expression.getValue();
+			result.append(expression.getValue());
 
 		return false;
 	}
@@ -202,9 +203,9 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
-		result += "(";
+		result.append("(");
 		expression.getExpression().accept(this);
-		result += ")";
+		result.append(")");
 
 		return false;
 	}
@@ -212,17 +213,17 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		result += expression.getValue();
+		result.append(expression.getValue());
 
-		result += "(";
+		result.append("(");
 		boolean first = true;
 		for (QExpression child : expression.getElements()) {
 			if (!first)
-				result += ": ";
+				result.append(": ");
 			child.accept(this);
 			first = false;
 		}
-		result += ")";
+		result.append(")");
 
 		return false;
 	}
@@ -230,11 +231,11 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {
 
-		result += " " + expression.getValue();
+		result.append(" " + expression.getValue());
 
-		if (!result.contains("."))
+		if (!result.toString().contains("."))
 			for (QExpression child : expression.getElements()) {
-				result += ".";
+				result.append(".");
 				child.accept(this);
 			}
 

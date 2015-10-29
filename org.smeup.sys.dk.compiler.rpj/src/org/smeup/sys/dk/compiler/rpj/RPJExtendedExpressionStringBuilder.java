@@ -30,29 +30,29 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 
 		switch (expression.getOperator()) {
 		case EQUAL:
-			result += ".qEquals(";
+			result.append(".qEquals(");
 			break;
 		case GREATER_THAN:
-			result += ".qGt(";
+			result.append(".qGt(");
 			break;
 		case GREATER_THAN_EQUAL:
-			result += ".qGte(";
+			result.append(".qGte(");
 			break;
 		case LESS_THAN:
-			result += ".qLt(";
+			result.append(".qLt(");
 			break;
 		case LESS_THAN_EQUAL:
-			result += ".qLte(";
+			result.append(".qLte(");
 			break;
 		case NOT_EQUAL:
-			result += ".qNe)";
+			result.append(".qNe)");
 			break;
 		}
 
 		if (expression.getRightOperand() != null)
 			expression.getRightOperand().accept(this);
 
-		result += ")";
+		result.append(")");
 
 		return false;
 	}
@@ -65,35 +65,35 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35n4v5");
-			result += ".qNegative()";
+			result.append(".qNegative()");
 		} else if (expression.getOperator() == ArithmeticOperator.SIGN_PLUS) {
 
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35v5gt");
-			result += ".qPositive()";
+			result.append(".qPositive()");
 		} else {
 			expression.getLeftOperand().accept(this);
 
 			switch (expression.getOperator()) {
 
 			case DIVIDE:
-				result += ".qDiv(";
+				result.append(".qDiv(");
 				break;
 			case MINUS:
-				result += ".qMinus(";
+				result.append(".qMinus(");
 				break;
 			case MODULAR:
-				result += ".qModule(";
+				result.append(".qModule(");
 				break;
 			case MULT:
-				result += ".qMult(";
+				result.append(".qMult(");
 				break;
 			case PLUS:
-				result += ".qPlus(";
+				result.append(".qPlus(");
 				break;
 			case POWER:
-				result += ".qPow(";
+				result.append(".qPow(");
 				break;
 			case SIGN_MINUS:
 			case SIGN_PLUS:
@@ -103,7 +103,7 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 			if (expression.getRightOperand() != null)
 				expression.getRightOperand().accept(this);
 
-			result += ")";
+			result.append(")");
 		}
 
 		return false;
@@ -117,22 +117,22 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 
 		switch (expression.getOperator()) {
 		case ASSIGN:
-			result += ".eval(";
+			result.append(".eval(");
 			break;
 		case DIVIDE_ASSIGN:
-			result += ".evalDiv(";
+			result.append(".evalDiv(");
 			break;
 		case MINUS_ASSIGN:
-			result += ".evalMinus(";
+			result.append(".evalMinus(");
 			break;
 		case PLUS_ASSIGN:
-			result += ".evalPlus(";
+			result.append(".evalPlus(");
 			break;
 		case POWER_ASSIGN:
-			result += ".evalPow(";
+			result.append(".evalPow(");
 			break;
 		case TIMES_ASSIGN:
-			result += ".evalTimes(";
+			result.append(".evalTimes(");
 			break;
 		default:
 			break;
@@ -141,7 +141,7 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 		if (expression.getRightOperand() != null)
 			expression.getRightOperand().accept(this);
 
-		result += ")";
+		result.append(")");
 
 		return false;
 
@@ -150,9 +150,9 @@ public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuil
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
-		// result += "(";
+		// result.append("(";
 		expression.getExpression().accept(this);
-		// result += ")";
+		// result.append(")";
 
 		return false;
 	}

@@ -20,7 +20,7 @@ public class RPGExpressionWriterImpl implements QExpressionWriter {
 	@Override
 	public String writeExpression(QExpression expression) {
 		RPGExpressionStringBuilder expressionStrBuilder = new RPGExpressionStringBuilder();
-		expression.accept(expressionStrBuilder);
+		expression.accept(expressionStrBuilder);		
 		return expressionStrBuilder.getResult();
 	}
 
