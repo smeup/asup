@@ -313,9 +313,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 			if (rebuildNeeded(OperationDirection.FORWARD))
 				if (this.currentKeySet == null)
-					prepareAccess(OperationSet.SET_GREATER_THAN, buildKeySet(), OperationRead.READ, null);
+					prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ, null);
 				else
-					prepareAccess(OperationSet.SET_GREATER_THAN, this.currentKeySet, OperationRead.READ, null);
+					prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ, null);
 
 			return readNext();
 
@@ -397,9 +397,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		try {
 			if (rebuildNeeded(OperationDirection.BACKWARD))
 				if (this.currentKeySet == null)
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, buildKeySet(), OperationRead.READ_PRIOR, null);
+					prepareAccess(OperationSet.SET_GREATER_THAN, buildKeySet(), OperationRead.READ_PRIOR, null);
 				else
-					prepareAccess(OperationSet.SET_LOWER_LIMIT, this.currentKeySet, OperationRead.READ_PRIOR, null);
+					prepareAccess(OperationSet.SET_GREATER_THAN, this.currentKeySet, OperationRead.READ_PRIOR, null);
 			return readNext();
 
 		} catch (SQLException e) {

@@ -128,9 +128,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		QIndex index = getIndex(record);
-		if (index == null)
-			index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
+		QIndex index = TABLE_INDEX_RELATIVE_RECORD_NUMBER;
 
 		InfoStruct internalInfoStruct = null;
 		if (infoStruct != null) {
