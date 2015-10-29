@@ -17,7 +17,9 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.annotation.Module;
 
+@Module(name="*JAX")
 public class RPJServiceSupport {
 
 	@Inject
