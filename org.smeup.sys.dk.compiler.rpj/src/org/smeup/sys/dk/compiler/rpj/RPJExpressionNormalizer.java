@@ -23,6 +23,7 @@ import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QAtomicTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -49,12 +50,14 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 	@Inject
 	private QExpressionParser expressionParser;
 	@Inject
+	private QExpressionWriter expressionWriter;
+	@Inject
 	private QExceptionManager excpetionManager;
 	@Inject
 	private QLogger logger;
 	@Inject
 	private QJob job;
-
+	
 	private QMethodExec lastSetll = null;
 
 	@Override
@@ -77,13 +80,11 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 
 			// function to object method
 			if (dataTerm != null) {
-				RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-				expressionStringBuilder.visit((QFunctionTermExpression) assignmentExpression.getLeftOperand());
-				assignmentExpression.setLeftOperand((QTermExpression) expressionParser.parseExpression(expressionStringBuilder.getResult()));
+							
+				String leftOperand = expressionWriter.writeExpression(assignmentExpression.getLeftOperand());				
+				assignmentExpression.setLeftOperand((QTermExpression) expressionParser.parseExpression(leftOperand));
 
-				expressionStringBuilder = new RPJExpressionStringBuilder();
-				expressionStringBuilder.visit(assignmentExpression);
-				statement.setAssignment(expressionStringBuilder.getResult());
+				statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 
 				return true;
 			}
@@ -108,10 +109,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 						functionTermExpression.setValue("%all");
 						functionTermExpression.getElements().add(assignmentExpression.getRightOperand());
 						assignmentExpression.setRightOperand(functionTermExpression);
-
-						RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-						expressionStringBuilder.visit(assignmentExpression);
-						statement.setAssignment(expressionStringBuilder.getResult());
+						
+						statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 					}
 				}
 			}
@@ -137,10 +136,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 					QFunctionTermExpression functionTermExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createFunctionTermExpression();
 					functionTermExpression.setValue(atomicRightExpression.getValue());
 					assignmentExpression.setRightOperand(functionTermExpression);
-
-					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					expressionStringBuilder.visit(assignmentExpression);
-					statement.setAssignment(expressionStringBuilder.getResult());
+					
+					statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 				}
 			}
 			break;
@@ -172,10 +169,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		if (atomicTermExpression.getValue().isEmpty()) {
 			atomicTermExpression.setType(AtomicType.SPECIAL);
 			atomicTermExpression.setValue("*BLANKS");
-
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(assignmentExpression);
-			statement.setAssignment(expressionStringBuilder.getResult());
+			
+			statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 		}
 
 	}
@@ -187,10 +182,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		if (i == 0) {
 			atomicTermExpression.setType(AtomicType.SPECIAL);
 			atomicTermExpression.setValue("*ZEROS");
-
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(assignmentExpression);
-			statement.setAssignment(expressionStringBuilder.getResult());
+							
+			statement.setAssignment(expressionWriter.writeExpression(assignmentExpression));
 		}
 
 	}
@@ -210,9 +203,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(predicateExpression)) {
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());
+						
+			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 		}
 
 		return super.visit(statement);
@@ -224,9 +216,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(predicateExpression)) {
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());
+			
+			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 		}
 
 		return super.visit(statement);
@@ -238,9 +229,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(predicateExpression)) {
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());
+								
+			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 		}
 
 		return super.visit(statement);
@@ -252,9 +242,8 @@ public class RPJExpressionNormalizer extends StatementVisitorImpl {
 		QPredicateExpression predicateExpression = expressionParser.parsePredicate(statement.getCondition());
 
 		if (normalizePredicateExpression(predicateExpression)) {
-			RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-			expressionStringBuilder.visit(predicateExpression);
-			statement.setCondition(expressionStringBuilder.getResult());
+					
+			statement.setCondition(expressionWriter.writeExpression(predicateExpression));
 		}
 
 		return super.visit(statement);

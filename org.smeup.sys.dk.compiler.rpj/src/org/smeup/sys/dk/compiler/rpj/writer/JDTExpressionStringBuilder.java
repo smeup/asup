@@ -22,7 +22,6 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.rpj.RPJCompilerMessage;
-import org.smeup.sys.dk.compiler.rpj.RPJExpressionStringBuilder;
 import org.smeup.sys.il.core.QNamedNode;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.core.term.QTerm;
@@ -54,6 +53,7 @@ import org.smeup.sys.il.expr.QBooleanExpression;
 import org.smeup.sys.il.expr.QCompoundTermExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
 import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
@@ -78,11 +78,14 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Inject
 	private QExpressionParser expressionParser;
 	@Inject
+	private QExpressionWriter expressionWriter;
+	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QLogger logger;
 	@Inject
 	private QJob job;
+	
 
 	private StringBuffer buffer = new StringBuffer();
 	private Class<?> target;
@@ -768,14 +771,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 				QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
 
-				if (CompilationContextHelper.isPrimitive(compilationUnit, expressionChild)) {
-					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					expressionChild.accept(expressionStringBuilder);
-					methodExec.setObject("%box(" + expressionStringBuilder.getResult() + ")");
+				if (CompilationContextHelper.isPrimitive(compilationUnit, expressionChild)) {															
+					methodExec.setObject("%box(" + expressionWriter.writeExpression(expressionChild) + ")");
 				} else {
-					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					expressionChild.accept(expressionStringBuilder);
-					methodExec.setObject(expressionStringBuilder.getResult());
+					methodExec.setObject(expressionWriter.writeExpression(expressionChild));
 				}
 
 				methodExec.setMethod(expression.getValue());
@@ -783,11 +782,7 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				for (QExpression elementExpression : expression.getElements()) {
 					if (elementExpression == expressionChild)
 						continue;
-
-					RPJExpressionStringBuilder expressionStringBuilder = new RPJExpressionStringBuilder();
-					elementExpression.accept(expressionStringBuilder);
-
-					methodExec.getParameters().add(expressionStringBuilder.getResult());
+					methodExec.getParameters().add(expressionWriter.writeExpression(elementExpression));
 				}
 
 				JDTStatementWriter statementWriter = compilationUnit.getContext().make(JDTStatementWriter.class);

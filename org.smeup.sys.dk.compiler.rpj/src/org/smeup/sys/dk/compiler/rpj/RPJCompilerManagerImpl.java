@@ -53,6 +53,8 @@ import org.smeup.sys.il.esam.annotation.Format;
 import org.smeup.sys.il.esam.annotation.Query;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
+import org.smeup.sys.il.expr.QExpressionWriter;
+import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 import org.smeup.sys.il.flow.QCallableUnit;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
@@ -74,6 +76,8 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
+	@Inject
+	private QExpressionWriterRegistry expressionWriterRegistry;
 	@Inject
 	private QSourceManager sourceManager;
 	@Inject
@@ -126,12 +130,15 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
 		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
-		// expression parser
+		// expression parser and expression writer
 		if (module.getSetupSection() != null) {
 			String expressionType = module.getSetupSection().getExpressionType();
 			if (expressionType != null) {
 				QExpressionParser expressionParser = expressionParserRegistry.lookup(expressionType);
 				compilationUnit.getContext().set(QExpressionParser.class, expressionParser);
+				
+				QExpressionWriter expressionWriter = expressionWriterRegistry.lookup(QExpressionWriterRegistry.DEFAULT_WRITER);
+				compilationUnit.getContext().set(QExpressionWriter.class, expressionWriter);
 			}
 		}
 
@@ -179,13 +186,16 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		RPJCallableUnitLinker callableUnitLinker = compilationUnit.getContext().make(RPJCallableUnitLinker.class);
 		compilationUnit.getContext().set(RPJCallableUnitLinker.class, callableUnitLinker);
 
-		// expression parser
+		// expression parser and expression writer
 		if (program.getSetupSection() != null) {
 			String expressionType = program.getSetupSection().getExpressionType();
 			if (expressionType != null) {
 
 				QExpressionParser expressionParser = expressionParserRegistry.lookup(expressionType);
 				compilationUnit.getContext().set(QExpressionParser.class, expressionParser);
+				
+				QExpressionWriter expressionWriter = expressionWriterRegistry.lookup(QExpressionWriterRegistry.DEFAULT_WRITER);
+				compilationUnit.getContext().set(QExpressionWriter.class, expressionWriter);
 			}
 		}
 
@@ -268,8 +278,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 		return moduleContexts;
 	}
-
-	@SuppressWarnings("resource")
+	
 	private void loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, List<QCompilationUnit> moduleContexts, String moduleName, CaseSensitiveType caseSensitive) {
 
 		QCompilationUnit moduleContext = globalContexts.get(moduleName);
@@ -310,7 +319,6 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	}
 
-	@SuppressWarnings("resource")
 	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
 
 		QCompilationUnit moduleContext = globalContexts.get(moduleName);

@@ -30,6 +30,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ExpressionImpl() {
@@ -38,6 +39,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -47,6 +49,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -64,17 +67,21 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	@Override
 	public abstract ExpressionType getExpressionType();
 
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		
-		BaseExpressionStringBuilder expressionStringBuilderImpl = new BaseExpressionStringBuilder();
-		accept(expressionStringBuilderImpl);
-		
-		return expressionStringBuilderImpl.getResult();
+
+		return super.toString();
+
+		/*
+		 * BaseExpressionStringBuilder expressionStringBuilderImpl = new
+		 * BaseExpressionStringBuilder(); accept(expressionStringBuilderImpl);
+		 * 
+		 * return expressionStringBuilderImpl.getResult();
+		 */
 	}
 } // ExpressionImpl
