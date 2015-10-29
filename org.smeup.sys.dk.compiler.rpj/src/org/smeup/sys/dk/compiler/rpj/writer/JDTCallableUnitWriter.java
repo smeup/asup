@@ -231,16 +231,11 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 			if (dataSetTerm.isKeyedAccess()) {
 				writeImport(QKSDataSet.class);
 				className = QKSDataSet.class.getSimpleName();
-			} else
-				try {
+			} else {
 					writeImport(QRRDataSet.class);
 					className = QRRDataSet.class.getSimpleName();
-					// }
-				} catch (NullPointerException e) {
-					writeImport(QRRDataSet.class);
-					className = QRRDataSet.class.getSimpleName();
-				}
-
+			}
+			
 			Type dataSetType = getAST().newSimpleType(getAST().newSimpleName(className));
 			ParameterizedType parType = getAST().newParameterizedType(dataSetType);
 
