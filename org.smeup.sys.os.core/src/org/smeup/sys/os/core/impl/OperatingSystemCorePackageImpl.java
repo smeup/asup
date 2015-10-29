@@ -312,6 +312,15 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSystem_TemporaryLibrary() {
+		return (EAttribute)systemEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EClass getSystemManager() {
 		return systemManagerEClass;
@@ -417,6 +426,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(systemEClass, SYSTEM__STATUS);
 		createEAttribute(systemEClass, SYSTEM__SYSTEM_LIBRARY);
 		createEAttribute(systemEClass, SYSTEM__SYSTEM_USER);
+		createEAttribute(systemEClass, SYSTEM__TEMPORARY_LIBRARY);
 
 		systemManagerEClass = createEClass(SYSTEM_MANAGER);
 
@@ -490,6 +500,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getSystem_Status(), this.getSystemStatus(), "status", "STP", 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_SystemLibrary(), ecorePackage.getEString(), "systemLibrary", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_SystemUser(), ecorePackage.getEString(), "systemUser", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSystem_TemporaryLibrary(), ecorePackage.getEString(), "temporaryLibrary", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemManagerEClass, QSystemManager.class, "SystemManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

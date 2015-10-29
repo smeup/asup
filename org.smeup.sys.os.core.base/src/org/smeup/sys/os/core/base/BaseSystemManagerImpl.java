@@ -48,6 +48,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
 
 		// system libraries
+		job.getLibraries().add(getSystem().getTemporaryLibrary());
 		job.getLibraries().add(getSystem().getSystemLibrary());
 
 		// job context

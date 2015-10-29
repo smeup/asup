@@ -205,13 +205,22 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM__SYSTEM_USER = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Temporary Library</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 8;
+	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
@@ -438,6 +447,17 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EAttribute getSystem_SystemUser();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Temporary Library</em>'.
+	 * @see org.smeup.sys.os.core.QSystem#getTemporaryLibrary()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EAttribute getSystem_TemporaryLibrary();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -633,6 +653,14 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SYSTEM__SYSTEM_USER = eINSTANCE.getSystem_SystemUser();
+
+		/**
+		 * The meta object literal for the '<em><b>Temporary Library</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYSTEM__TEMPORARY_LIBRARY = eINSTANCE.getSystem_TemporaryLibrary();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.

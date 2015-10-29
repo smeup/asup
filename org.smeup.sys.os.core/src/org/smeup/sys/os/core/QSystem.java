@@ -29,6 +29,7 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *   <li>{@link org.smeup.sys.os.core.QSystem#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemUser <em>System User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}</li>
  * </ul>
  * </p>
  *
@@ -256,5 +257,31 @@ public interface QSystem extends QObjectLockable, QObjectNameable, QContextProvi
 	 * @generated
 	 */
 	void setSystemUser(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Temporary Library</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Temporary Library</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Temporary Library</em>' attribute.
+	 * @see #setTemporaryLibrary(String)
+	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_TemporaryLibrary()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getTemporaryLibrary();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Temporary Library</em>' attribute.
+	 * @see #getTemporaryLibrary()
+	 * @generated
+	 */
+	void setTemporaryLibrary(String value);
 
 } // QSystem

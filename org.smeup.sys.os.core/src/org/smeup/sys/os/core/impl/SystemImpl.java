@@ -34,6 +34,7 @@ import org.smeup.sys.os.core.SystemStatus;
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemUser <em>System User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getTemporaryLibrary <em>Temporary Library</em>}</li>
  * </ul>
  * </p>
  *
@@ -184,6 +185,26 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * @ordered
 	 */
 	protected String systemUser = SYSTEM_USER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTemporaryLibrary() <em>Temporary Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemporaryLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEMPORARY_LIBRARY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTemporaryLibrary() <em>Temporary Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemporaryLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected String temporaryLibrary = TEMPORARY_LIBRARY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -437,6 +458,27 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTemporaryLibrary() {
+		return temporaryLibrary;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTemporaryLibrary(String newTemporaryLibrary) {
+		String oldTemporaryLibrary = temporaryLibrary;
+		temporaryLibrary = newTemporaryLibrary;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY, oldTemporaryLibrary, temporaryLibrary));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -472,6 +514,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return getSystemLibrary();
 			case QOperatingSystemCorePackage.SYSTEM__SYSTEM_USER:
 				return getSystemUser();
+			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
+				return getTemporaryLibrary();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -507,6 +551,9 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__SYSTEM_USER:
 				setSystemUser((String)newValue);
+				return;
+			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
+				setTemporaryLibrary((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -544,6 +591,9 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__SYSTEM_USER:
 				setSystemUser(SYSTEM_USER_EDEFAULT);
 				return;
+			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
+				setTemporaryLibrary(TEMPORARY_LIBRARY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -572,6 +622,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return SYSTEM_LIBRARY_EDEFAULT == null ? systemLibrary != null : !SYSTEM_LIBRARY_EDEFAULT.equals(systemLibrary);
 			case QOperatingSystemCorePackage.SYSTEM__SYSTEM_USER:
 				return SYSTEM_USER_EDEFAULT == null ? systemUser != null : !SYSTEM_USER_EDEFAULT.equals(systemUser);
+			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
+				return TEMPORARY_LIBRARY_EDEFAULT == null ? temporaryLibrary != null : !TEMPORARY_LIBRARY_EDEFAULT.equals(temporaryLibrary);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -598,6 +650,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 		result.append(systemLibrary);
 		result.append(", systemUser: ");
 		result.append(systemUser);
+		result.append(", temporaryLibrary: ");
+		result.append(temporaryLibrary);
 		result.append(')');
 		return result.toString();
 	}

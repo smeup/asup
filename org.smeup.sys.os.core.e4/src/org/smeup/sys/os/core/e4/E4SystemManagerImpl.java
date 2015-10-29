@@ -36,6 +36,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 		this.system.setName("localhost");
 		this.system.setSystemUser("QASUP");
 		this.system.setSystemLibrary("QSYS");
+		this.system.setTemporaryLibrary("QTEMP");
 		this.system.setInstallPath(System.getProperty("osgi.instance.area"));
 	}
 
