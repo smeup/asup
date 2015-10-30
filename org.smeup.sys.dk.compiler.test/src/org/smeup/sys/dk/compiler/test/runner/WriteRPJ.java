@@ -13,7 +13,6 @@ package org.smeup.sys.dk.compiler.test.runner;
 
 import javax.inject.Inject;
 
-import org.smeup.sys.dk.compiler.rpj.RPJExpressionStringBuilder;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
