@@ -2380,6 +2380,12 @@
   </contents>
   <contents
       xsi:type="os-cmd:Command"
+      name="RTVGRPA"
+      text="Retrieve Group Attributes"
+      program="QWTCCRVG"
+      status="TODO"/>
+  <contents
+      xsi:type="os-cmd:Command"
       name="RTVJOBA"
       text="Retrieve Job Attributes"
       allowBatch="false"
