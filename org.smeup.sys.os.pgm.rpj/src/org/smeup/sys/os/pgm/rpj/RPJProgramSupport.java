@@ -297,6 +297,10 @@ public class RPJProgramSupport {
 		return indicator;
 	}
 
+	public void qCall(Class<?> program, QData[] parameters) {
+		programManager.callProgram(job, program, parameters);
+	}
+	
 	public void qCall(QString program, QData[] parameters) {
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
