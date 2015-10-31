@@ -12,12 +12,12 @@
 package org.smeup.sys.dk.compiler.rpj;
 
 import org.smeup.sys.il.expr.ArithmeticOperator;
+import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
-import org.smeup.sys.il.expr.impl.BaseExpressionStringBuilder;
 
 public class RPJExtendedExpressionStringBuilder extends BaseExpressionStringBuilder {
 

@@ -9,10 +9,9 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.expr.impl;
+package org.smeup.sys.il.expr.neutral;
 
 import org.smeup.sys.il.expr.ArithmeticOperator;
-import org.smeup.sys.il.expr.AtomicType;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.QArithmeticExpression;
 import org.smeup.sys.il.expr.QAssignmentExpression;
@@ -25,9 +24,10 @@ import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QQualifiedTermExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
+import org.smeup.sys.il.expr.impl.ExpressionVisitorImpl;
 
 
-public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
+public class NeutralExpressionStringBuilder extends ExpressionVisitorImpl {
 	
 	protected StringBuffer result = new StringBuffer();
 
@@ -35,7 +35,7 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		return result.toString();
 	}
 
-	public BaseExpressionStringBuilder reset() {
+	public NeutralExpressionStringBuilder reset() {
 		result = new StringBuffer();
 		return this;
 	}
@@ -52,15 +52,15 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		switch (expression.getOperator()) {
 		case AND:
 			expression.getLeftOperand().accept(this);
-			result.append(" and ");
+			result.append(" LE(AND) ");
 			break;
 		case NOT:
-			result.append(" not ");
+			result.append(" LE(NOT) ");
 			expression.getLeftOperand().accept(this);
 			break;
 		case OR:
 			expression.getLeftOperand().accept(this);
-			result.append(" or ");
+			result.append(" LE(OR) ");
 			break;
 		}
 
@@ -77,22 +77,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		switch (expression.getOperator()) {
 		case EQUAL:
-			result.append(" = ");
+			result.append(" RE(EQ) ");
 			break;
 		case GREATER_THAN:
-			result.append(" > ");
+			result.append(" RE(GT) ");
 			break;
 		case GREATER_THAN_EQUAL:
-			result.append(" >= ");
+			result.append(" RE(GTE) ");
 			break;
 		case LESS_THAN:
-			result.append(" < ");
+			result.append(" RE(LT) ");
 			break;
 		case LESS_THAN_EQUAL:
-			result.append(" >= ");
+			result.append(" RE(LTE) ");
 			break;
 		case NOT_EQUAL:
-			result.append(" <> ");
+			result.append(" RE(NE) ");
 			break;
 		}
 
@@ -106,12 +106,12 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	public boolean visit(QArithmeticExpression expression) {
 
 		if (expression.getOperator() == ArithmeticOperator.SIGN_MINUS) {
-			result.append("-");
+			result.append(" AE(SMINUS) ");
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35n4v5");
 		} else if (expression.getOperator() == ArithmeticOperator.SIGN_PLUS) {
-			result.append("+");
+			result.append(" AE(SPLUS) ");
 			expression.getLeftOperand().accept(this);
 			if (expression.getRightOperand() != null)
 				throw new IntegratedLanguageExpressionRuntimeException("Unexpected condition: kdsf43g77q35v5gt");
@@ -121,22 +121,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 			switch (expression.getOperator()) {
 
 			case DIVIDE:
-				result.append("/");
+				result.append("AE(DIV)");
 				break;
 			case MINUS:
-				result.append("-");
+				result.append("AE(MINUS)");
 				break;
 			case MODULAR:
-				result.append("%");
+				result.append("AE(MOD)");
 				break;
 			case MULT:
-				result.append("*");
+				result.append("AE(MULT)");
 				break;
 			case PLUS:
-				result.append("+");
+				result.append("AE(PLUS)");
 				break;
 			case POWER:
-				result.append("**");
+				result.append("AE(POW)");
 				break;
 			case SIGN_MINUS:
 			case SIGN_PLUS:
@@ -158,22 +158,22 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		switch (expression.getOperator()) {
 		case ASSIGN:
-			result.append(" = ");
+			result.append(" AS(ASS) ");
 			break;
 		case DIVIDE_ASSIGN:
-			result.append(" /= ");
+			result.append(" AS(DIV) ");
 			break;
 		case MINUS_ASSIGN:
-			result.append(" -= ");
+			result.append(" AS(MIN) ");
 			break;
 		case PLUS_ASSIGN:
-			result.append(" += ");
+			result.append(" AS(PLUS) ");
 			break;
 		case POWER_ASSIGN:
-			result.append(" **= ");
+			result.append(" AS(POW) ");
 			break;
 		case TIMES_ASSIGN:
-			result.append(" *= ");
+			result.append(" AS(TIMES) ");
 			break;
 		default:
 			break;
@@ -189,13 +189,42 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QAtomicTermExpression expression) {
 
-		if (expression.getType() == AtomicType.STRING) {
-			String value = expression.getValue().replaceAll("\'", "\''");
-			result.append("'" + value + "'");
-		} else if (expression.getType() == AtomicType.HEXADECIMAL) {
-			result.append("x'" + expression.getValue() + "'");
-		} else
-			result.append(expression.getValue());
+		String term = null;
+		
+		switch (expression.getType()) {
+		case STRING:
+				term = "AT(STRING)";
+			break;
+		case BOOLEAN:
+			term = "AT(BOOL)";
+			break;
+		case DATE:
+			term = "AT(DATE)";
+			break;
+		case FLOATING:
+			term = "AT(FLOAT)";
+			break;
+		case HEXADECIMAL:
+			term = "AT(HEX)";
+			break;
+		case INDICATOR:
+			term = "AT(INDICATOR)";
+			break;
+		case INTEGER:
+			term = "AT(INT)";
+			break;
+		case NAME:
+			term = "AT(NAME)";
+			break;
+		case SPECIAL:
+			term = "AT(SPECIAL(" + expression.getValue() + "))";
+			break;
+		default:
+			term = "AT(**)";
+			break;
+		}
+		
+		result.append(" " + term + " ");
 
 		return false;
 	}
@@ -203,9 +232,9 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QBlockExpression expression) {
 
-		result.append("(");
+		result.append(" BE[ ");
 		expression.getExpression().accept(this);
-		result.append(")");
+		result.append(" ] ");
 
 		return false;
 	}
@@ -213,17 +242,17 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
 
-		result.append(expression.getValue());
+		result.append(" FT(" + expression.getValue() + ")");
 
-		result.append("(");
+		result.append("[");
 		boolean first = true;
 		for (QExpression child : expression.getElements()) {
 			if (!first)
-				result.append(": ");
+				result.append(" ");
 			child.accept(this);
 			first = false;
 		}
-		result.append(")");
+		result.append("]");
 
 		return false;
 	}
@@ -231,13 +260,7 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {
 
-		result.append(" " + expression.getValue());
-
-		if (!result.toString().contains("."))
-			for (QExpression child : expression.getElements()) {
-				result.append(".");
-				child.accept(this);
-			}
+		result.append("QT()");
 
 		return false;
 	}

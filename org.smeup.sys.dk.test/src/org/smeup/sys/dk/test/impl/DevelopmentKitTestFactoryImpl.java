@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.smeup.sys.dk.test.*;
 import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QAssertionSuccess;
@@ -65,6 +66,7 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 		switch (eClass.getClassifierID()) {
 			case QDevelopmentKitTestPackage.ASSERTION_FAILED: return (EObject)createAssertionFailed();
 			case QDevelopmentKitTestPackage.ASSERTION_SUCCESS: return (EObject)createAssertionSuccess();
+			case QDevelopmentKitTestPackage.MESSAGE: return (EObject)createMessage();
 			case QDevelopmentKitTestPackage.TEST_CONTAINER: return (EObject)createTestContainer();
 			case QDevelopmentKitTestPackage.TEST_RESULT: return (EObject)createTestResult();
 			default:
@@ -118,6 +120,16 @@ public class DevelopmentKitTestFactoryImpl extends EFactoryImpl implements QDeve
 	public QAssertionSuccess createAssertionSuccess() {
 		AssertionSuccessImpl assertionSuccess = new AssertionSuccessImpl();
 		return assertionSuccess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QMessage createMessage() {
+		MessageImpl message = new MessageImpl();
+		return message;
 	}
 
 	/**

@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.dk.compiler.rpj;
 
-import org.smeup.sys.il.expr.impl.BaseExpressionStringBuilder;
+import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 
 public class RPJExpressionStringBuilder extends BaseExpressionStringBuilder {
 	//TODO: implements RPJ expression specifity
