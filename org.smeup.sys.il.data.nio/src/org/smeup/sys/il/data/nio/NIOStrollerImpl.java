@@ -45,8 +45,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(QString factor1) {
-		current().cat(factor1);
+	public QDataStruct cat(QString factor1) {
+		return (QDataStruct) current().cat(factor1);
 	}
 
 	@Override
@@ -80,8 +80,8 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(String factor1) {
-		current().cat(factor1);
+	public QDataStruct cat(String factor1) {
+		return (QDataStruct) current().cat(factor1);
 	}
 
 	@Override
@@ -818,5 +818,15 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public QNumeric qInth() {
 		return current().qInth();
+	}
+
+	@Override
+	public QString qPlus(String factor1) {
+		return current().qPlus(factor1);
+	}
+
+	@Override
+	public QString qPlus(QString factor1) {
+		return current().qPlus(factor1);
 	}
 }

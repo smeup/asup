@@ -63,7 +63,7 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 			
 			qDataArea = dataAreaWriter.lookup(externalName);
 			qDataArea.setContent(asString());
-			dataAreaWriter.save(qDataArea);
+			dataAreaWriter.save(qDataArea, true);
 
 		}
 	}

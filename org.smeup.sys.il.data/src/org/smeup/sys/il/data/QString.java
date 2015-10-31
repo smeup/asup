@@ -20,7 +20,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QString extends QBufferedData, QScanner, QCattable {
+public interface QString extends QBufferedData, QScanner, QCattable<QString> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"

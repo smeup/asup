@@ -542,6 +542,9 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cattable" abstract="true" interface="true">
+    <eTypeParameters name="D">
+      <eBounds eClassifier="#//Data"/>
+    </eTypeParameters>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -678,6 +681,7 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
+      <eGenericType eTypeParameter="#//Cattable/D"/>
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="cat">
@@ -720,12 +724,21 @@
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
-    <eOperations name="cat">
+    <eOperations name="cat" lowerBound="1">
+      <eGenericType eTypeParameter="#//Cattable/D"/>
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="qPlus">
+      <eGenericType eTypeParameter="#//Cattable/D"/>
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="qPlus" lowerBound="1">
+      <eGenericType eTypeParameter="#//Cattable/D"/>
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data" abstract="true" interface="true">
@@ -899,6 +912,7 @@
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getInfoStruct" lowerBound="1" eType="#//DataStruct"/>
+    <eOperations name="getTemporaryString" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
     <eTypeParameters name="D">
@@ -2307,8 +2321,7 @@
       <eTypeArguments eTypeParameter="#//Scroller/D"/>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="String" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData #//Scanner #//Cattable">
+  <eClassifiers xsi:type="ecore:EClass" name="String" abstract="true" interface="true">
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -2607,6 +2620,11 @@
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
     </eOperations>
+    <eGenericSuperTypes eClassifier="#//BufferedData"/>
+    <eGenericSuperTypes eClassifier="#//Scanner"/>
+    <eGenericSuperTypes eClassifier="#//Cattable">
+      <eTypeArguments eClassifier="#//String"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stroller" abstract="true" interface="true">
     <eTypeParameters name="D">

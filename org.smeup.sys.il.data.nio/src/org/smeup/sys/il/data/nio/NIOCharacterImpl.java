@@ -169,8 +169,9 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	/* cat */
 	@Override
-	public void cat(QString factor1) {
+	public QCharacter cat(QString factor1) {
 		cat(factor1, false);
+		return this;
 	}
 
 	@Override
@@ -181,8 +182,9 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 	
 	@Override
-	public void cat(String factor1) {
+	public QCharacter cat(String factor1) {
 		cat(factor1, false);
+		return this;
 	}
 
 	@Override
@@ -983,4 +985,15 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		return number;
 	}
 
+	@Override
+	public QString qPlus(QString factor1) {
+		return qPlus(factor1.s());
+	}
+
+	@Override
+	public QString qPlus(String factor1) {		
+		QString string = getDataContext().getTemporaryString();
+		string.eval(s()+factor1);
+		return string;
+	}
 }

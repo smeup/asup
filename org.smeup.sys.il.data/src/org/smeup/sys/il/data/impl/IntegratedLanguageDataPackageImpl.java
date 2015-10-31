@@ -910,6 +910,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		// Create type parameters
 		ETypeParameter arrayEClass_D = addETypeParameter(arrayEClass, "D");
 		ETypeParameter bufferedListEClass_D = addETypeParameter(bufferedListEClass, "D");
+		ETypeParameter cattableEClass_D = addETypeParameter(cattableEClass, "D");
 		ETypeParameter dataAreaEClass_D = addETypeParameter(dataAreaEClass, "D");
 		ETypeParameter dataDelegatorEClass_D = addETypeParameter(dataDelegatorEClass, "D");
 		ETypeParameter enumEClass_E = addETypeParameter(enumEClass, "E");
@@ -924,6 +925,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		arrayEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getBufferedData());
 		bufferedListEClass_D.getEBounds().add(g1);
+		g1 = createEGenericType(this.getData());
+		cattableEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getBufferedData());
 		dataAreaEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(this.getData());
@@ -992,9 +995,14 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(scrollerEClass_D);
 		g1.getETypeArguments().add(g2);
 		scrollerEClass.getEGenericSuperTypes().add(g1);
-		stringEClass.getESuperTypes().add(this.getBufferedData());
-		stringEClass.getESuperTypes().add(this.getScanner());
-		stringEClass.getESuperTypes().add(this.getCattable());
+		g1 = createEGenericType(this.getBufferedData());
+		stringEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getScanner());
+		stringEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getCattable());
+		g2 = createEGenericType(this.getString());
+		g1.getETypeArguments().add(g2);
+		stringEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getScroller());
 		g2 = createEGenericType(strollerEClass_D);
 		g1.getETypeArguments().add(g2);
@@ -1652,6 +1660,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(cattableEClass_D);
+		initEOperation(op, g1);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1693,12 +1703,24 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(cattableEClass, null, "cat", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(cattableEClass_D);
+		initEOperation(op, g1);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "qPlus", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(cattableEClass_D);
+		initEOperation(op, g1);
+
+		op = addEOperation(cattableEClass, null, "qPlus", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(cattableEClass_D);
+		initEOperation(op, g1);
 
 		initEClass(dataEClass, QData.class, "Data", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1868,6 +1890,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEOperation(dataContextEClass, this.getDataFactory(), "getDataFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(dataContextEClass, this.getDataStruct(), "getInfoStruct", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContextEClass, this.getString(), "getTemporaryString", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

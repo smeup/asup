@@ -41,8 +41,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(QString factor1) {
-		delegate.cat(factor1);
+	public QDataStruct cat(QString factor1) {
+		return (QDataStruct) delegate.cat(factor1);
 	}
 
 	@Override
@@ -76,8 +76,8 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(String factor1) {
-		delegate.cat(factor1);
+	public QDataStruct cat(String factor1) {
+		return (QDataStruct) delegate.cat(factor1);
 	}
 
 	@Override
@@ -1003,4 +1003,13 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		delegate.movea(value, startIndex, clear);
 	}
 
+	@Override
+	public QString qPlus(String factor1) {
+		return delegate.qPlus(factor1);
+	}
+
+	@Override
+	public QString qPlus(QString factor1) {
+		return delegate.qPlus(factor1);
+	}
 }

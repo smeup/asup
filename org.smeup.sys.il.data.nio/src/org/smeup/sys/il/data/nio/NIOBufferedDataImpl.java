@@ -116,12 +116,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target) {
 		assign(target, 1);
-
-		// TODO remove
-		if (target instanceof NIOCharacterVaryingImpl) {
-			System.err.println("Unexpected condition: dm5c46sdgfs5r4g5mc");
-			target.eval(this);
-		}
 	}
 
 	@Override

@@ -20,7 +20,7 @@ import java.lang.String;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QCattable {
+public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -235,7 +235,7 @@ public interface QCattable {
 	 * @model factor1Required="true"
 	 * @generated
 	 */
-	void cat(String factor1);
+	D cat(String factor1);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -312,10 +312,10 @@ public interface QCattable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true"
+	 * @model required="true" factor1Required="true"
 	 * @generated
 	 */
-	void cat(QString factor1);
+	D cat(QString factor1);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,5 +324,21 @@ public interface QCattable {
 	 * @generated
 	 */
 	void cat(QString factor1, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model factor1Required="true"
+	 * @generated
+	 */
+	D qPlus(String factor1);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" factor1Required="true"
+	 * @generated
+	 */
+	D qPlus(QString factor1);
 
 } // QCattable

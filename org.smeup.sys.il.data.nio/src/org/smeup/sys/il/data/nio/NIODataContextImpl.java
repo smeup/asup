@@ -5,6 +5,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.os.pgm.base.BaseProgramStatus;
 
 public class NIODataContextImpl implements QDataContext {
@@ -15,6 +16,7 @@ public class NIODataContextImpl implements QDataContext {
 	private QIndicator endOfData;
 	private QDataStruct infoStruct;
 	
+	private QString temporaryString;
 	
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
@@ -22,6 +24,8 @@ public class NIODataContextImpl implements QDataContext {
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
 		infoStruct = dataFactory.createDataStruct(BaseProgramStatus.class, 512, true);
+		
+		this.temporaryString = getDataFactory().createCharacter(64000, true, true);
 	}
 	
 	@Override public QIndicator found() {
@@ -46,5 +50,10 @@ public class NIODataContextImpl implements QDataContext {
 	@Override
 	public QDataStruct getInfoStruct() {
 		return infoStruct;
+	}
+
+	@Override
+	public QString getTemporaryString() {
+		return this.temporaryString;
 	}
 }

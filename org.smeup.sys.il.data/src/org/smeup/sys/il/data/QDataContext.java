@@ -53,4 +53,12 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	QDataStruct getInfoStruct();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QString getTemporaryString();
 } // QDataContext
