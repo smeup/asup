@@ -17,6 +17,7 @@ import org.smeup.sys.dk.test.QAssertionFailed;
 import org.smeup.sys.dk.test.QAssertionResult;
 import org.smeup.sys.dk.test.QAssertionSuccess;
 import org.smeup.sys.dk.test.QDevelopmentKitTestFactory;
+import org.smeup.sys.dk.test.QMessage;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunnerListener;
@@ -241,6 +242,15 @@ public class BaseTestAsserterImpl implements QTestAsserter {
 		notifyAssertResult(assertionFailed);
 
 		resetTime();
+	}
+	
+	public void message(String message){		
+		// Create message
+		QMessage messageAssertion = QDevelopmentKitTestFactory.eINSTANCE.createMessage();
+		messageAssertion.setMessage(message);
+		messageAssertion.setTime(System.currentTimeMillis() - time);	
+		testResult.getAssertResults().add(messageAssertion);
+		notifyAssertResult(messageAssertion);
 	}
 
 	/**

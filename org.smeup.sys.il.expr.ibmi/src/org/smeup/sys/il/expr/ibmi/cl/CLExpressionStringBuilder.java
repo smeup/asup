@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.il.expr.ibmi.cl;
 
-import org.smeup.sys.il.expr.impl.BaseExpressionStringBuilder;
+import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 
 public class CLExpressionStringBuilder extends BaseExpressionStringBuilder {
 	//TODO: implements CL expression specifity (CAT, BCAT, TCAT)

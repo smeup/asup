@@ -205,6 +205,43 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	int CALLABLE_TEST_FEATURE_COUNT = QIntegratedLanguageCoreJavaPackage.JAVA_CALLABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.MessageImpl <em>Message</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.test.impl.MessageImpl
+	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getMessage()
+	 * @generated
+	 */
+	int MESSAGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__MESSAGE = ASSERTION_RESULT__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__TIME = ASSERTION_RESULT__TIME;
+
+	/**
+	 * The number of structural features of the '<em>Message</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_FEATURE_COUNT = ASSERTION_RESULT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.TestRunnerImpl
 	 * <em>Test Runner</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
@@ -213,7 +250,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunner()
 	 * @generated
 	 */
-	int TEST_RUNNER = 11;
+	int TEST_RUNNER = 12;
 
 	/**
 	 * The number of structural features of the '<em>Test Runner</em>' class.
@@ -231,7 +268,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getSuiteTestRunner()
 	 * @generated
 	 */
-	int SUITE_TEST_RUNNER = 5;
+	int SUITE_TEST_RUNNER = 6;
 
 	/**
 	 * The number of structural features of the '<em>Suite Test Runner</em>' class.
@@ -250,7 +287,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestAsserter()
 	 * @generated
 	 */
-	int TEST_ASSERTER = 6;
+	int TEST_ASSERTER = 7;
 
 	/**
 	 * The number of structural features of the '<em>Test Asserter</em>' class.
@@ -267,7 +304,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestContainer()
 	 * @generated
 	 */
-	int TEST_CONTAINER = 7;
+	int TEST_CONTAINER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Tests</b></em>' containment reference list.
@@ -293,7 +330,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestRunnerListener()
 	 * @generated
 	 */
-	int TEST_RUNNER_LISTENER = 8;
+	int TEST_RUNNER_LISTENER = 9;
 
 	/**
 	 * The number of structural features of the '<em>Test Runner Listener</em>' class.
@@ -313,7 +350,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestManager()
 	 * @generated
 	 */
-	int TEST_MANAGER = 9;
+	int TEST_MANAGER = 10;
 
 	/**
 	 * The number of structural features of the '<em>Test Manager</em>' class.
@@ -332,7 +369,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestResult()
 	 * @generated
 	 */
-	int TEST_RESULT = 10;
+	int TEST_RESULT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Assert Results</b></em>' containment reference list.
@@ -403,7 +440,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getUnitTestRunner()
 	 * @generated
 	 */
-	int UNIT_TEST_RUNNER = 12;
+	int UNIT_TEST_RUNNER = 13;
 
 	/**
 	 * The number of structural features of the '<em>Unit Test Runner</em>' class.
@@ -421,7 +458,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncher()
 	 * @generated
 	 */
-	int TEST_LAUNCHER = 13;
+	int TEST_LAUNCHER = 14;
 
 	/**
 	 * The number of structural features of the '<em>Test Launcher</em>' class.
@@ -440,7 +477,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getTestLauncherListener()
 	 * @generated
 	 */
-	int TEST_LAUNCHER_LISTENER = 14;
+	int TEST_LAUNCHER_LISTENER = 15;
 
 	/**
 	 * The number of structural features of the '<em>Test Launcher Listener</em>' class.
@@ -459,7 +496,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getAssertionState()
 	 * @generated
 	 */
-	int ASSERTION_STATE = 15;
+	int ASSERTION_STATE = 16;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QAsserter <em>Asserter</em>}'.
@@ -527,6 +564,16 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCallableTest();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Message</em>'.
+	 * @see org.smeup.sys.dk.test.QMessage
+	 * @generated
+	 */
+	EClass getMessage();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.dk.test.QSuiteTestRunner <em>Suite Test Runner</em>}'.
@@ -802,6 +849,16 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CALLABLE_TEST = eINSTANCE.getCallableTest();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.MessageImpl <em>Message</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.test.impl.MessageImpl
+		 * @see org.smeup.sys.dk.test.impl.DevelopmentKitTestPackageImpl#getMessage()
+		 * @generated
+		 */
+		EClass MESSAGE = eINSTANCE.getMessage();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.test.impl.SuiteTestRunnerImpl <em>Suite Test Runner</em>}' class.

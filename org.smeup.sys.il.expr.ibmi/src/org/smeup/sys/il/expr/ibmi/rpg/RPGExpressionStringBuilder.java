@@ -11,9 +11,9 @@
  */
 package org.smeup.sys.il.expr.ibmi.rpg;
 
+import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QFunctionTermExpression;
-import org.smeup.sys.il.expr.impl.BaseExpressionStringBuilder;
 
 public class RPGExpressionStringBuilder extends BaseExpressionStringBuilder {
 	//TODO: implement RPG expression specifity

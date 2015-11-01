@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.AssertionState;
 import org.smeup.sys.dk.test.QAssertionResult;
+import org.smeup.sys.dk.test.QMessage;
 import org.smeup.sys.dk.test.QTestLauncher;
 import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestResult;
@@ -53,9 +54,11 @@ public class TestResultWriter implements QTestLauncherListener {
 				objectWriter.write(result);
 										
 				for (QAssertionResult assertionResult : result.getAssertResults()) {
-					if (assertionResult.getAssertionState().equals(AssertionState.FAILED)) {
+					if (assertionResult.getAssertionState().equals(AssertionState.FAILED) 
+							||
+						assertionResult instanceof QMessage	) {
 						objectWriter.write(assertionResult);
-					}
+					} 
 				}
 			
 			} catch (IOException e) {

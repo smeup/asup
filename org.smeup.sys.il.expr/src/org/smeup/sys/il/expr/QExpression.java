@@ -34,4 +34,12 @@ public interface QExpression extends QNode {
 	 */
 	ExpressionType getExpressionType();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model patternRequired="true"
+	 * @generated
+	 */
+	boolean match(String pattern);
+
 } // QExpression

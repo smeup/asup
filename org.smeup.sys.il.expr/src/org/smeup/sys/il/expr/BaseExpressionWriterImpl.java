@@ -10,17 +10,19 @@
  *   Dario Foresti - Initial implementation
  */
 
-package org.smeup.sys.il.expr.impl;
+package org.smeup.sys.il.expr;
 
-import org.smeup.sys.il.expr.QExpression;
-import org.smeup.sys.il.expr.QExpressionWriter;
+import org.smeup.sys.il.expr.neutral.NeutralExpressionStringBuilder;
+
 
 public class BaseExpressionWriterImpl implements QExpressionWriter {
 
 	//TODO
 	@Override
 	public String writeExpression(QExpression expression) {
-		return null;
+		NeutralExpressionStringBuilder builder = new NeutralExpressionStringBuilder();
+		expression.accept(builder);
+		return builder.getResult();
 	}
 
 }

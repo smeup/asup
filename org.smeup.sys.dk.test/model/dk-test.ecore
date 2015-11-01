@@ -79,6 +79,9 @@
     <eOperations name="fail">
       <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="message">
+      <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="success">
       <eParameters name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -103,6 +106,7 @@
       <eTypeArguments eClassifier="#//TestResult"/>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//AssertionResult"/>
   <eClassifiers xsi:type="ecore:EClass" name="SuiteTestRunner" abstract="true" eSuperTypes="#//TestRunner"/>
   <eClassifiers xsi:type="ecore:EClass" name="TestAsserter" abstract="true" interface="true"
       eSuperTypes="#//Asserter">

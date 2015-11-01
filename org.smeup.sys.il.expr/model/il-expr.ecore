@@ -69,6 +69,9 @@
       <eParameters name="visitor" lowerBound="1" eType="#//ExpressionVisitor"/>
     </eOperations>
     <eOperations name="getExpressionType" lowerBound="1" eType="#//ExpressionType"/>
+    <eOperations name="match" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="pattern" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionParser" abstract="true" interface="true">
     <eOperations name="parseExpression" eType="#//Expression">

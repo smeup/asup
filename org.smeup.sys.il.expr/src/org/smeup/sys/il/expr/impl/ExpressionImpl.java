@@ -9,6 +9,7 @@ package org.smeup.sys.il.expr.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.impl.NodeImpl;
+import org.smeup.sys.il.expr.ExpressionMatcher;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionVisitor;
@@ -30,7 +31,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ExpressionImpl() {
@@ -39,7 +39,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -49,7 +48,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -67,6 +65,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	@Override
 	public abstract ExpressionType getExpressionType();
 
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -80,4 +79,14 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 
 		return expressionStringBuilderImpl.getResult();
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean match(String pattern) {
+		return ExpressionMatcher.match(this, pattern);
+	}
+	
 } // ExpressionImpl
