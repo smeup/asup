@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.file.base.api;
 
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -55,20 +54,15 @@ public class DatabaseFileMembersList {
 
 	public static class ErrorCode extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		@DataDef(binaryType = BinaryType.BYTE)
-		@Overlay(position = "1")
+		@DataDef(binaryType = BinaryType.INTEGER, value = "272")
 		public QBinary £$01e1;
-		@DataDef(binaryType = BinaryType.BYTE)
-		@Overlay(position = "5")
+		@DataDef(binaryType = BinaryType.INTEGER)
 		public QBinary £$01e2;
 		@DataDef(length = 7)
-		@Overlay(position = "9")
 		public QCharacter £$01e3;
 		@DataDef(length = 1)
-		@Overlay(position = "16")
 		public QCharacter £$01e4;
 		@DataDef(length = 256)
-		@Overlay(position = "17")
 		public QCharacter £$01e5;
 	}
 }
