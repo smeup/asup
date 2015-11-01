@@ -681,6 +681,15 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSourceFile_FileType() {
+		return (EAttribute)sourceFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -857,6 +866,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		printerFileFieldEClass = createEClass(PRINTER_FILE_FIELD);
 
 		sourceFileEClass = createEClass(SOURCE_FILE);
+		createEAttribute(sourceFileEClass, SOURCE_FILE__FILE_TYPE);
 	}
 
 	/**
@@ -1069,6 +1079,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		initEClass(printerFileFieldEClass, QPrinterFileField.class, "PrinterFileField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sourceFileEClass, QSourceFile.class, "SourceFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSourceFile_FileType(), ecorePackage.getEString(), "fileType", null, 0, 1, QSourceFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

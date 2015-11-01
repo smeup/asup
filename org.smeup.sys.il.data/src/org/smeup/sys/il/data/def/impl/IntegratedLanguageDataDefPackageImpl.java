@@ -1547,6 +1547,9 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		initEClass(unaryAtomicBufferedDataDefEClass, QUnaryAtomicBufferedDataDef.class, "UnaryAtomicBufferedDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		op = addEOperation(unaryAtomicBufferedDataDefEClass, null, "setLength", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(unaryCompoundDataDefEClass, QUnaryCompoundDataDef.class, "UnaryCompoundDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(unaryDataDefEClass, QUnaryDataDef.class, "UnaryDataDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

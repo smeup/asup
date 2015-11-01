@@ -312,19 +312,21 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			
 			// call
 			try {
-				printOpenStack(job, programStack, callableProgram);
 				
 				// open 
 				if(!callableProgram.isOpen())
 					callableProgram.open();
 	
 				assignParameters(callableProgram.getQEntry(), params);
-								
+
+				printOpenStack(job, programStack, callableProgram);
+				
 				// call
 				callableProgram.call();	
 			}
 			catch(OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				System.err.println(e);
+				e.printStackTrace();
 				throw e;
 			}		
 			catch(Exception e) {

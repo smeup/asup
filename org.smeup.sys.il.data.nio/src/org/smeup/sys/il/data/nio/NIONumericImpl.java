@@ -17,7 +17,9 @@ import java.math.BigInteger;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNumeric {
 
@@ -694,15 +696,13 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	private QNumeric qIntOperation(Number value, boolean roundingMode) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 0);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(value.doubleValue());
 		return number;
 	}
 	
 	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true); 
 		number.eval(asDouble() / value.doubleValue());
 		if(remainderTarget!=null)
 			remainderTarget.eval(asDouble() % value.doubleValue());
@@ -735,8 +735,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	private QNumeric qMinusOperation(Number value) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() - value.doubleValue());
 		return number;
 	}
@@ -767,8 +766,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	private QNumeric qMultOperation(Number value) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() * value.doubleValue());
 		return number;
 	}
@@ -799,8 +797,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	private QNumeric qPlusOperation(Number value) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() + value.doubleValue());
 		return number;
 	}
@@ -831,12 +828,10 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	}
 
 	private QNumeric qRemOperation(Number value) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 5);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() % value.doubleValue());
 		return number;
 	}
-	
 	
 	@Override
 	public void time() {

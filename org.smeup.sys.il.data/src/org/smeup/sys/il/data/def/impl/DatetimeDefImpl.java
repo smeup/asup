@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.def.DataDefType;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -226,5 +227,66 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	@Override
 	public DataDefType getDataDefType() {
 		return DataDefType.DATETIME;
+	}
+	
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+
+		int length = 0;
+		// default format
+		
+		// TODO format		
+		switch (getType()) {
+		case DATE:
+			DateFormat dateFormat = DateFormat.get(getFormat());
+			switch (dateFormat) {
+			case DMY:
+				length = 8;
+				break;
+			case EUR:
+				length = 10;
+				break;
+			case ISO:
+				length = 10;
+				break;
+			case JIS:
+				length = 10;
+				break;
+			case JOBRUN:
+				length = 10;
+				break;
+			case JUL:
+				length = 6;
+				break;
+			case MDY:
+				length = 8;
+				break;
+			case USA:
+				length = 10;
+				break;
+			case YMD:
+				length = 8;
+				break;
+			}
+		case TIME:
+			return length = 8;
+		case TIME_STAMP:
+			return length = 26;
+		}
+		
+		return length; 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
 	}
 } // DatetimeDefImpl

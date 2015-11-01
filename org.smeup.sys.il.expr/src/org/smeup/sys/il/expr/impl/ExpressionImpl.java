@@ -9,6 +9,7 @@ package org.smeup.sys.il.expr.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.impl.NodeImpl;
+import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 import org.smeup.sys.il.expr.ExpressionMatcher;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QExpression;

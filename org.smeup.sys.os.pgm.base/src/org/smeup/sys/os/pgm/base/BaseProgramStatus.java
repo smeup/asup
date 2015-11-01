@@ -11,39 +11,39 @@ public class BaseProgramStatus extends QDataStructWrapper {
 	private static final long serialVersionUID = 1L;
 	
 	@DataDef(length = 10)
-	@Overlay(position = "1")
+	@Overlay(position = 1)
 	public QCharacter programName;	
 	@DataDef(precision = 5)
-	@Overlay(position = "11")
+	@Overlay(position = 11)
 	public QDecimal status;
 	@DataDef(length = 8)
-	@Overlay(position = "21")
+	@Overlay(position = 21)
 	public QCharacter line;
 	@DataDef(precision = 3)
-	@Overlay(position = "37")
+	@Overlay(position = 37)
 	public QDecimal params;
 	@DataDef(length = 10)
-	@Overlay(position = "81")
+	@Overlay(position = 81)
 	public QCharacter programLibrary;
 	@DataDef(length = 80)
-	@Overlay(position = "91")
+	@Overlay(position = 91)
 	public QCharacter messageText;
 	@DataDef(length = 8)
-	@Overlay(position = "201")
+	@Overlay(position = 201)
 	public QCharacter fileName;
 	@DataDef(length = 35)
-	@Overlay(position = "209")
+	@Overlay(position = 209)
 	public QCharacter fileInformation;
 	@DataDef(length = 10)
-	@Overlay(position = "244")
+	@Overlay(position = 244)
 	public QCharacter jobName;
 	@DataDef(length = 10)
-	@Overlay(position = "254")
+	@Overlay(position = 254)
 	public QCharacter userName;
 	@DataDef(precision = 6)
-	@Overlay(position = "264")
+	@Overlay(position = 264)
 	public QDecimal jobNumber;	
 	@DataDef(length = 10)
-	@Overlay(position = "334")
+	@Overlay(position = 334)
 	public QCharacter moduleName;
 }

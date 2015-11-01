@@ -1980,12 +1980,21 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int SOURCE_FILE__CREATION_INFO = FILE__CREATION_INFO;
 
 	/**
+	 * The feature id for the '<em><b>File Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FILE__FILE_TYPE = FILE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Source File</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOURCE_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 0;
+	int SOURCE_FILE_FEATURE_COUNT = FILE_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '
@@ -2460,6 +2469,17 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSourceFile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.file.QSourceFile#getFileType <em>File Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>File Type</em>'.
+	 * @see org.smeup.sys.os.file.QSourceFile#getFileType()
+	 * @see #getSourceFile()
+	 * @generated
+	 */
+	EAttribute getSourceFile_FileType();
 
 	/**
 	 * Returns the meta object for class '
@@ -2955,6 +2975,14 @@ public interface QOperatingSystemFilePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOURCE_FILE = eINSTANCE.getSourceFile();
+
+		/**
+		 * The meta object literal for the '<em><b>File Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOURCE_FILE__FILE_TYPE = eINSTANCE.getSourceFile_FileType();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.file.impl.FileOverrideImpl <em>File Override</em>}' class.

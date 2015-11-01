@@ -3046,6 +3046,9 @@
       <eTypeParameters name="D">
         <eBounds eClassifier="#//BufferedData"/>
       </eTypeParameters>
+      <eOperations name="setLength">
+        <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eOperations>
       <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
         <eTypeArguments eTypeParameter="#//def/UnaryAtomicBufferedDataDef/D"/>
       </eGenericSuperTypes>

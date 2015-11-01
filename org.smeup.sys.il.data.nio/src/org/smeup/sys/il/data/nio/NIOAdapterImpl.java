@@ -13,6 +13,8 @@ package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter {
 
@@ -38,29 +40,25 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 
 		if (value instanceof Byte) {
 			Byte number = (Byte) value;
-			NIONumericImpl numeric = new NIODecimalImpl(null, 15, 5);
-			numeric.allocate();
+			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Short) {
 			Short number = (Short) value;
-			NIONumericImpl numeric = new NIODecimalImpl(null, 15, 5);
-			numeric.allocate();
+			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Integer) {
 			Integer number = (Integer) value;
-			NIONumericImpl numeric = new NIODecimalImpl(null, 15, 5);
-			numeric.allocate();
+			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
 		} else if (value instanceof Long) {
 			Long number = (Long) value;
-			NIONumericImpl numeric = new NIODecimalImpl(null, 15, 5);
-			numeric.allocate();
+			QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 			numeric.eval(number);
 			setDelegate(numeric);
 
@@ -68,8 +66,7 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 			String string = value.toString();
 			try {
 				long number = Long.parseLong(string);
-				NIONumericImpl numeric = new NIODecimalImpl(null, 15, 5);
-				numeric.allocate();
+				QDecimal numeric = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 				numeric.eval(number);
 				setDelegate(numeric);
 			} catch (NumberFormatException e) {

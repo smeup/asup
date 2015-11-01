@@ -67,18 +67,16 @@ public interface QOverlay extends QFacet {
 	 * @model required="true"
 	 * @generated
 	 */
-	String getPosition();
+	int getPosition();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.il.core.QOverlay#getPosition
-	 * <em>Position</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Position</em>' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.il.core.QOverlay#getPosition <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Position</em>' attribute.
 	 * @see #getPosition()
 	 * @generated
 	 */
-	void setPosition(String value);
+	void setPosition(int value);
 
 } // QOverlay

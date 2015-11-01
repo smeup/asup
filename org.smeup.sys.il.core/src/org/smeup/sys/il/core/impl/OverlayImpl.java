@@ -58,7 +58,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String POSITION_EDEFAULT = null;
+	protected static final int POSITION_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -67,7 +67,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	 * @generated
 	 * @ordered
 	 */
-	protected String position = POSITION_EDEFAULT;
+	protected int position = POSITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -112,17 +112,17 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 	 * @generated
 	 */
 	@Override
-	public String getPosition() {
+	public int getPosition() {
 		return position;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setPosition(String newPosition) {
-		String oldPosition = position;
+	public void setPosition(int newPosition) {
+		int oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageCorePackage.OVERLAY__POSITION, oldPosition, position));
@@ -154,7 +154,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 				setName((String)newValue);
 				return;
 			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-				setPosition((String)newValue);
+				setPosition((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,7 +187,7 @@ public class OverlayImpl extends FacetImpl implements QOverlay {
 			case QIntegratedLanguageCorePackage.OVERLAY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QIntegratedLanguageCorePackage.OVERLAY__POSITION:
-				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+				return position != POSITION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

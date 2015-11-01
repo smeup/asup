@@ -166,7 +166,6 @@ public class RPJProgramSupport {
 		public QDecimal uyear4;
 
 		@DataDef(precision = 2)
-		@Overlay(position = "1")
 		public QDecimal uyear;
 	}
 

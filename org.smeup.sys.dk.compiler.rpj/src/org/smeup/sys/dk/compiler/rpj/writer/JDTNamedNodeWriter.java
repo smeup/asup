@@ -166,20 +166,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER) && !getCompilationUnit().equalsTermName(parentTerm.getName(), overlay.getName()))
 					writeAnnotation(field, Overlay.class, "name", getCompilationUnit().normalizeTermName(overlay.getName()));
 
-				if (overlay.getPosition() != null && !overlay.getPosition().equals(Overlay.POS_NEXT))
-					writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
-
 			} else {
 				if (overlay.getName() != null && !overlay.getName().equals(Overlay.NAME_OWNER))
 					writeAnnotation(field, Overlay.class, "name", overlay.getName());
-
-				if (overlay.getPosition() != null)
-					if (overlay.getPosition().equals(Overlay.POS_NEXT))
-						throw new RuntimeException("Unexpected runtime exception: nc707256c76045");
-					else
-						writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
 			}
 
+			if (overlay.getPosition() >= 1)
+				writeAnnotation(field, Overlay.class, "position", overlay.getPosition());
 		}
 
 		switch (scope) {
@@ -266,9 +259,6 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				}
 				dataStructureWriter.writeElements(elements);
 			}
-
-			if (containsPacked(compoundDataDef))
-				System.err.println(getCompilationUnit().getQualifiedName(dataTerm));
 		}
 
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
@@ -284,6 +274,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 	}
 
+	@SuppressWarnings("unused")
 	private boolean containsPacked(QCompoundDataDef<?, QDataTerm<?>> compoundDataDef) {
 
 		boolean result = false;

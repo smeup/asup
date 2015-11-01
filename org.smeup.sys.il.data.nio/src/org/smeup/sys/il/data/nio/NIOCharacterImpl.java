@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter {
 
@@ -901,8 +902,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	private QNumeric qIntOperation(String value, boolean roundingMode) {
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 15, 0);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 0, DecimalType.ZONED, true);
 		number.eval(Integer.parseInt(value.trim()));
 		return number;
 	}
@@ -967,8 +967,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		
 		getDataContext().found().eval(false);
 
-		NIODecimalImpl number = new NIODecimalImpl(getDataContext(), 5, 0);
-		number.allocate();
+		QDecimal number = getDataContext().getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true);
 		if (start == null)
 			start = 1;
 		

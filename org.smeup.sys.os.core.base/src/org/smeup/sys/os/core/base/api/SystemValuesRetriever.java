@@ -12,7 +12,6 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -32,19 +31,18 @@ public class SystemValuesRetriever {
 		"".toCharArray();
 	}
 
+
 	public static class QUSEC extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(binaryType = BinaryType.INTEGER)
-		@Overlay(position = "1")
 		public QBinary qusbprv;
 		@DataDef(binaryType = BinaryType.INTEGER)
-		@Overlay(position = "5")
 		public QBinary qusbavl;
 		@DataDef(length = 7)
-		@Overlay(position = "9")
 		public QCharacter qusei;
 		@DataDef(length = 1)
-		@Overlay(position = "16")
 		public QCharacter quserved;
+		@DataDef(length = 256)
+		public QCharacter qusecsta;
 	}
 }

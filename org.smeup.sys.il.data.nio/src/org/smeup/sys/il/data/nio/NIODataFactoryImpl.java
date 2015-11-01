@@ -444,9 +444,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 					Overlay overlay = (Overlay) annotation;
 
 					// TODO check name
-					if (overlay.position().equals(Overlay.POS_NEXT)) {
+					if (overlay.position() == 0) {
 					} else
-						p = Integer.parseInt(overlay.position());
+						p = overlay.position();
 
 					if (!overlay.name().equals(Overlay.NAME_OWNER)) {
 						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
@@ -457,7 +457,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 							arrayData.setListOwner(arrayOverlayed);
 
-							if (overlay.position().equals(Overlay.POS_NEXT)) {
+							if (overlay.position() == 0) {
 								if (previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
 									NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
 									p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
@@ -540,16 +540,16 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			QBufferedData dataElement = (QBufferedData) createData(dataTerm, false);
 
-			String position = null;
+			Integer position = null;
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay != null)
 				position = overlay.getPosition();
 
 			if (position != null)
-				if (position.equalsIgnoreCase(Overlay.POS_NEXT)) {
+				if (position == 0) {
 
 				} else
-					p = Integer.parseInt(position);
+					p = position;
 
 			dataStructureDelegate.addElement(dataTerm.getName(), dataElement, p - 1);
 			dataStructureDelegate.assign(dataElement, p);
@@ -602,9 +602,10 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		switch (type) {
 		case ZONED:
-			decimal = new NIODecimalImpl(getDataContext(), precision, scale);
+			decimal = new NIODecimalZonedImpl(getDataContext(), precision, scale);
 			break;
 		case PACKED:
+			decimal = new NIODecimalPackedImpl(getDataContext(), precision, scale);
 			break;
 		}
 
@@ -737,7 +738,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 						QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
 						if (!overlay.name().equals(Overlay.NAME_OWNER))
 							qOverlay.setName(overlay.name());
-						if (!overlay.position().equals(Overlay.POS_NEXT))
+						if (overlay.position() != 0)
 							qOverlay.setPosition(overlay.position());
 						object = qOverlay;
 					}

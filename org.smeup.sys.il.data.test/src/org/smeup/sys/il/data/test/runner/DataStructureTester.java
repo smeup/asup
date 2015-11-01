@@ -30,7 +30,6 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QRecordWrapper;
-import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 
 @Test(category = "IL.DATA", object = "DataStructure")
@@ -154,26 +153,22 @@ public class DataStructureTester {
 		public QArray<QCharacter> liv;
 
 		@DataDef(dimension = 50, length = 3)
-		@Overlay(name = "LIV", position = "01")
+		@Overlay(name = "LIV")
 		public QArray<QCharacter> livky;
 	}
 
 	public static class £MU_B£QQ50P_1 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-
 		@DataDef(dimension = 200, length = 3000, values = { "*HIVAL" })
 		public QArray<QCharacter> amb;
-
 		@DataDef(dimension = 200, length = 15)
-		@Overlay(name = "AMB", position = "01")
+		@Overlay(name = "amb")
 		public QArray<QCharacter> ambid;
-
-		@DataDef(dimension = 200)
-		@Overlay(name = "AMB")
-		public QStroller<B£QQF10F> ambtb;
-
+		@DataDef(dimension = 200, length = 2927)
+		@Overlay(name = "amb")
+		public QArray<QCharacter> ambtb;
 		@DataDef(dimension = 200, length = 4)
-		@Overlay(name = "AMB")
+		@Overlay(name = "amb")
 		public QArray<QCharacter> amblc;
 	}
 
@@ -314,28 +309,22 @@ public class DataStructureTester {
 
 	public static class £MU_£G90DA_1 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
 		@DataDef(dimension = 2000, length = 71)
 		public QArray<QCharacter> £g90at;
-		
 		@DataDef(dimension = 2000, length = 30)
-		@Overlay(name = "£G90AT", position = "1")
+		@Overlay(name = "£g90at", position = 1)
 		public QArray<QCharacter> £g90atk;
-		
 		@DataDef(dimension = 2000, length = 10)
-		@Overlay(name = "£G90AT", position = "1")
+		@Overlay(name = "£g90at", position = 1)
 		public QArray<QCharacter> £g90ats;
-		
 		@DataDef(dimension = 2000, length = 20)
-		@Overlay(name = "£G90AT", position = "11")
+		@Overlay(name = "£g90at", position = 11)
 		public QArray<QCharacter> £g90att;
-		
 		@DataDef(dimension = 2000, length = 40)
-		@Overlay(name = "£G90AT", position = "31")
+		@Overlay(name = "£g90at", position = 31)
 		public QArray<QCharacter> £g90ata;
-		
 		@DataDef(dimension = 2000, length = 1)
-		@Overlay(name = "£G90AT", position = "71")
+		@Overlay(name = "£g90at", position = 71)
 		public QArray<QCharacter> £g90ati;
 	}
 }

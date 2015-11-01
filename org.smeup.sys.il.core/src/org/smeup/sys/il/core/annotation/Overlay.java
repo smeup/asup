@@ -18,9 +18,8 @@ public @interface Overlay {
 
 	String name() default NAME_OWNER;
 
-	String position() default POS_NEXT;
+	int position() default 0;
 
 	public static final String NAME_OWNER = "*OWNER";
 	public static final String NAME_PGM_STATUS = "*PGMSTATUS";
-	public static final String POS_NEXT = "*NEXT";
 }

@@ -16,6 +16,7 @@ import org.smeup.sys.il.expr.neutral.NeutralExpressionStringBuilder;
 
 public class ExpressionMatcher {
 	
+	@SuppressWarnings("unused")
 	public static boolean match(QExpression expression, String pattern) {
 		
 		boolean result = false;

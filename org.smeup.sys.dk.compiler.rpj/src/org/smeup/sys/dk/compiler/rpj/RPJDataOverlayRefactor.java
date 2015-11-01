@@ -48,13 +48,26 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 		if (overlay == null)
 			return super.visit(dataTerm);
 
-		if (overlay.getName() == null)
-			return super.visit(dataTerm);
+		if (overlay.getName() == null) {
+			switch (dataTerm.getDataTermType()) {
+			case MULTIPLE_ATOMIC:
+				QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) dataTerm.getDefinition();
+				QUnaryAtomicBufferedDataDef<?> unaryAtomicBufferedDataDef = multipleAtomicBufferedDataDef.getArgument();
+								
+				unaryAtomicBufferedDataDef.setLength(unaryAtomicBufferedDataDef.getLength() / multipleAtomicBufferedDataDef.getDimension());
+				return super.visit(dataTerm);
+			case MULTIPLE_COMPOUND:
+				return super.visit(dataTerm);
+			case UNARY_COMPOUND:
+			case UNARY_ATOMIC:
+				return super.visit(dataTerm);
+			}
+		}
 
 		// TODO remove me
 		if (overlay.getName().equalsIgnoreCase("*LDA"))
 			overlay.setName("£udlda");
-		
+
 		QDataTerm<?> overlayTerm = getCompilationUnit().getDataTerm(overlay.getName(), true);
 		if (overlayTerm == null)
 			throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00109, new String[] { overlay.getName() });
@@ -77,19 +90,19 @@ public class RPJDataOverlayRefactor extends RPJAbstractDataRefactor {
 				return super.visit(dataTerm);
 
 			case MULTIPLE_ATOMIC:
-				QMultipleAtomicBufferedDataDef<?> multipleAtomicDataDef = (QMultipleAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject)overlayTerm.getDefinition());
+				QMultipleAtomicBufferedDataDef<?> multipleAtomicDataDef = (QMultipleAtomicBufferedDataDef<?>) EcoreUtil.copy((EObject) overlayTerm.getDefinition());
 				multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataTerm.getDefinition());
-				((QDataTerm<QMultipleAtomicDataDef<?>>)dataTerm).setDefinition(multipleAtomicDataDef);				
+				((QDataTerm<QMultipleAtomicDataDef<?>>) dataTerm).setDefinition(multipleAtomicDataDef);
 				appendDefinition(overlayTerm.getDefinition(), dataTerm);
-				
+
 				break;
 			case MULTIPLE_COMPOUND:
 				QStrollerDef<?> strollerDef = (QStrollerDef<?>) overlayTerm.getDefinition();
 				multipleAtomicDataDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
 				multipleAtomicDataDef.setDimension(strollerDef.getDimension());
-				setLength((QCharacterDef)dataTerm.getDefinition(), strollerDef);
+				setLength((QCharacterDef) dataTerm.getDefinition(), strollerDef);
 				multipleAtomicDataDef.setArgument((QUnaryAtomicBufferedDataDef<?>) dataTerm.getDefinition());
-				((QDataTerm<QMultipleAtomicDataDef<?>>)dataTerm).setDefinition(multipleAtomicDataDef);
+				((QDataTerm<QMultipleAtomicDataDef<?>>) dataTerm).setDefinition(multipleAtomicDataDef);
 				appendDefinition(overlayTerm.getDefinition(), dataTerm);
 				break;
 			}

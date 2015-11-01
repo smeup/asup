@@ -23,6 +23,11 @@ import org.smeup.sys.dk.test.QMessage;
  */
 public class MessageImpl extends AssertionResultImpl implements QMessage {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
