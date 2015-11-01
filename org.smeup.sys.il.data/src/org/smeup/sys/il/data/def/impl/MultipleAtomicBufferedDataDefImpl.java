@@ -105,13 +105,20 @@ public abstract class MultipleAtomicBufferedDataDefImpl<D extends QBufferedList<
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public int getLength() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return getDimension()*getArgument().getLength();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getDimension()*getArgument().getSize();
 	}
 
 	/**

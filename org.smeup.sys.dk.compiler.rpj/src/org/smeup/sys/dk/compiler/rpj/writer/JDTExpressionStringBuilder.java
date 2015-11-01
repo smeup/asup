@@ -814,8 +814,10 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 		QNamedNode namedNode = compilationUnit.getNamedNode(expression.getValue(), true);
 
-		if (namedNode == null)
+		if (namedNode == null) {
+			compilationUnit.getNamedNode(expression.getValue(), true);
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid term: " + expression.getValue());
+		}
 		// unary
 
 		// dataSet

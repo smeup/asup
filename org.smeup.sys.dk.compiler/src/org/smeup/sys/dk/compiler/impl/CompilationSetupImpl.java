@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.smeup.sys.dk.compiler.EntryType;
 import org.smeup.sys.dk.compiler.InternalType;
+import org.smeup.sys.dk.compiler.OptimizationType;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 
@@ -28,6 +29,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getEntryType <em>Entry Type</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getOptimizationType <em>Optimization Type</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getProcedureType <em>Procedure Type</em>}</li>
  * </ul>
  * </p>
@@ -74,6 +76,26 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 	 * @ordered
 	 */
 	protected EntryType entryType = ENTRY_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOptimizationType() <em>Optimization Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOptimizationType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final OptimizationType OPTIMIZATION_TYPE_EDEFAULT = OptimizationType.NONE;
+
+	/**
+	 * The cached value of the '{@link #getOptimizationType() <em>Optimization Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOptimizationType()
+	 * @generated
+	 * @ordered
+	 */
+	protected OptimizationType optimizationType = OPTIMIZATION_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getProcedureType() <em>Procedure Type</em>}' attribute.
@@ -165,6 +187,27 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OptimizationType getOptimizationType() {
+		return optimizationType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOptimizationType(OptimizationType newOptimizationType) {
+		OptimizationType oldOptimizationType = optimizationType;
+		optimizationType = newOptimizationType == null ? OPTIMIZATION_TYPE_EDEFAULT : newOptimizationType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QDevelopmentKitCompilerPackage.COMPILATION_SETUP__OPTIMIZATION_TYPE, oldOptimizationType, optimizationType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InternalType getProcedureType() {
 		return procedureType;
 	}
@@ -193,6 +236,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return getBasePackage();
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				return getEntryType();
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__OPTIMIZATION_TYPE:
+				return getOptimizationType();
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
 				return getProcedureType();
 		}
@@ -212,6 +257,9 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return;
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				setEntryType((EntryType)newValue);
+				return;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__OPTIMIZATION_TYPE:
+				setOptimizationType((OptimizationType)newValue);
 				return;
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
 				setProcedureType((InternalType)newValue);
@@ -234,6 +282,9 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				setEntryType(ENTRY_TYPE_EDEFAULT);
 				return;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__OPTIMIZATION_TYPE:
+				setOptimizationType(OPTIMIZATION_TYPE_EDEFAULT);
+				return;
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
 				setProcedureType(PROCEDURE_TYPE_EDEFAULT);
 				return;
@@ -253,6 +304,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 				return BASE_PACKAGE_EDEFAULT == null ? basePackage != null : !BASE_PACKAGE_EDEFAULT.equals(basePackage);
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__ENTRY_TYPE:
 				return entryType != ENTRY_TYPE_EDEFAULT;
+			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__OPTIMIZATION_TYPE:
+				return optimizationType != OPTIMIZATION_TYPE_EDEFAULT;
 			case QDevelopmentKitCompilerPackage.COMPILATION_SETUP__PROCEDURE_TYPE:
 				return procedureType != PROCEDURE_TYPE_EDEFAULT;
 		}
@@ -273,6 +326,8 @@ public class CompilationSetupImpl extends MinimalEObjectImpl.Container implement
 		result.append(basePackage);
 		result.append(", entryType: ");
 		result.append(entryType);
+		result.append(", optimizationType: ");
+		result.append(optimizationType);
 		result.append(", procedureType: ");
 		result.append(procedureType);
 		result.append(')');

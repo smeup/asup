@@ -883,7 +883,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
 			if (!(eClassifier instanceof EClass))
 				continue;
-
+			
 			EClass eClass = (EClass) eClassifier;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
@@ -936,6 +936,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				}
 				break;
 			}
+			
+			if(prototype != null)
+				break;
 		}
 		return prototype;
 	}

@@ -78,6 +78,15 @@ public class HexadecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QHexadeci
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return length/2;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

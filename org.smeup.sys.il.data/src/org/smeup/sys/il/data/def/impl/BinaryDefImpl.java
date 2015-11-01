@@ -160,6 +160,34 @@ public class BinaryDefImpl extends UnaryAtomicBufferedDataDefImpl<QBinary> imple
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
+	public int getSize() {
+
+		int size = 0;
+
+		switch (getType()) {
+		case BYTE:
+			size = 1;
+			break;
+		case SHORT:
+			size = 2;
+			break;
+		case INTEGER:
+			size = 4;
+			break;
+		case LONG:
+			size = 8;
+			break;
+		}
+
+		return size;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

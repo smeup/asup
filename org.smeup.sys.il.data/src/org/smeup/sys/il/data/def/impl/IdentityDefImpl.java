@@ -59,4 +59,22 @@ public class IdentityDefImpl extends UnaryAtomicBufferedDataDefImpl<QIdentity> i
 		return DataDefType.IDENTITY;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+		return 10;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
+	}
 } // IdentityDefImpl

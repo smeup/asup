@@ -394,7 +394,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 		}
 
 		QStroller<D> stroller = new NIOStrollerImpl(getDataContext(), model, dimension, sortDirection);
-		;
 
 		if (initialize)
 			initialize(stroller);

@@ -99,6 +99,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompilationSetup">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entryType" eType="#//EntryType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizationType" eType="#//OptimizationType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="procedureType" eType="#//InternalType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilationTrashCan">
@@ -184,6 +185,10 @@
   <eClassifiers xsi:type="ecore:EEnum" name="InternalType">
     <eLiterals name="Inner" value="10" literal="INNER"/>
     <eLiterals name="Nested" value="20" literal="NESTED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OptimizationType">
+    <eLiterals name="None" value="10" literal="NONE"/>
+    <eLiterals name="Position" value="20" literal="POS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnitConverter" abstract="true" interface="true">
     <eOperations name="createConversionUnit" lowerBound="1" eType="#//ConversionUnit">

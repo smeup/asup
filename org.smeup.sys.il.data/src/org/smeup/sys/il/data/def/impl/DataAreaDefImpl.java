@@ -300,4 +300,22 @@ public class DataAreaDefImpl<D extends QBufferedData> extends UnaryAtomicBuffere
 		return DataDefType.WRAPPER;
 	}
 
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+		return getArgument().getLength();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
+	}
+
 } //DataAreaDefImpl

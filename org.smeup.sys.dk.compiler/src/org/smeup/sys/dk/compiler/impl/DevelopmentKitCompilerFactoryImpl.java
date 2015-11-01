@@ -84,6 +84,8 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 				return createEntryTypeFromString(eDataType, initialValue);
 			case QDevelopmentKitCompilerPackage.INTERNAL_TYPE:
 				return createInternalTypeFromString(eDataType, initialValue);
+			case QDevelopmentKitCompilerPackage.OPTIMIZATION_TYPE:
+				return createOptimizationTypeFromString(eDataType, initialValue);
 			case QDevelopmentKitCompilerPackage.UNIT_SCOPE:
 				return createUnitScopeFromString(eDataType, initialValue);
 			default:
@@ -105,6 +107,8 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 				return convertEntryTypeToString(eDataType, instanceValue);
 			case QDevelopmentKitCompilerPackage.INTERNAL_TYPE:
 				return convertInternalTypeToString(eDataType, instanceValue);
+			case QDevelopmentKitCompilerPackage.OPTIMIZATION_TYPE:
+				return convertOptimizationTypeToString(eDataType, instanceValue);
 			case QDevelopmentKitCompilerPackage.UNIT_SCOPE:
 				return convertUnitScopeToString(eDataType, instanceValue);
 			default:
@@ -182,6 +186,26 @@ public class DevelopmentKitCompilerFactoryImpl extends EFactoryImpl implements Q
 	 * @generated
 	 */
 	public String convertInternalTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OptimizationType createOptimizationTypeFromString(EDataType eDataType, String initialValue) {
+		OptimizationType result = OptimizationType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOptimizationTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

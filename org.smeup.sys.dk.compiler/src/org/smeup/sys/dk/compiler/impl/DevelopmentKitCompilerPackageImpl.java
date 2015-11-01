@@ -19,6 +19,7 @@ import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
 import org.smeup.sys.dk.compiler.CaseSensitiveType;
 import org.smeup.sys.dk.compiler.EntryType;
 import org.smeup.sys.dk.compiler.InternalType;
+import org.smeup.sys.dk.compiler.OptimizationType;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationTrashCan;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
@@ -118,6 +119,13 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EEnum internalTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum optimizationTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,8 +271,17 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCompilationSetup_ProcedureType() {
+	public EAttribute getCompilationSetup_OptimizationType() {
 		return (EAttribute)compilationSetupEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCompilationSetup_ProcedureType() {
+		return (EAttribute)compilationSetupEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -370,6 +387,15 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getOptimizationType() {
+		return optimizationTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getUnitScope() {
 		return unitScopeEEnum;
 	}
@@ -421,6 +447,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		compilationSetupEClass = createEClass(COMPILATION_SETUP);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__BASE_PACKAGE);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__ENTRY_TYPE);
+		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__OPTIMIZATION_TYPE);
 		createEAttribute(compilationSetupEClass, COMPILATION_SETUP__PROCEDURE_TYPE);
 
 		compilationTrashCanEClass = createEClass(COMPILATION_TRASH_CAN);
@@ -440,6 +467,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		caseSensitiveTypeEEnum = createEEnum(CASE_SENSITIVE_TYPE);
 		entryTypeEEnum = createEEnum(ENTRY_TYPE);
 		internalTypeEEnum = createEEnum(INTERNAL_TYPE);
+		optimizationTypeEEnum = createEEnum(OPTIMIZATION_TYPE);
 		unitScopeEEnum = createEEnum(UNIT_SCOPE);
 	}
 
@@ -595,6 +623,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		initEClass(compilationSetupEClass, QCompilationSetup.class, "CompilationSetup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompilationSetup_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompilationSetup_EntryType(), this.getEntryType(), "entryType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCompilationSetup_OptimizationType(), this.getOptimizationType(), "optimizationType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCompilationSetup_ProcedureType(), this.getInternalType(), "procedureType", null, 0, 1, QCompilationSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compilationTrashCanEClass, QCompilationTrashCan.class, "CompilationTrashCan", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -709,6 +738,10 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		initEEnum(internalTypeEEnum, InternalType.class, "InternalType");
 		addEEnumLiteral(internalTypeEEnum, InternalType.INNER);
 		addEEnumLiteral(internalTypeEEnum, InternalType.NESTED);
+
+		initEEnum(optimizationTypeEEnum, OptimizationType.class, "OptimizationType");
+		addEEnumLiteral(optimizationTypeEEnum, OptimizationType.NONE);
+		addEEnumLiteral(optimizationTypeEEnum, OptimizationType.POSITION);
 
 		initEEnum(unitScopeEEnum, UnitScope.class, "UnitScope");
 		addEEnumLiteral(unitScopeEEnum, UnitScope.FRIENDLY);

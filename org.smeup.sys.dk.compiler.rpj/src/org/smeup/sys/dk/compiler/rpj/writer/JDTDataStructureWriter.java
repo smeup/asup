@@ -21,6 +21,7 @@ import org.eclipse.jdt.core.dom.Type;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.dk.compiler.rpj.RPJDataStructureHelper;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 
@@ -68,21 +69,23 @@ public class JDTDataStructureWriter extends JDTNamedNodeWriter {
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
 	}
 
-	public void writeDataStructure(QCompoundDataDef<?, QDataTerm<?>> dataPart) throws IOException {
+	public void writeDataStructure(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) throws IOException {
 
-		writeElements(dataPart.getElements());
+		RPJDataStructureHelper.normalizePositions(dataStructDef);
+		
+		for (QDataTerm<?> element : dataStructDef.getElements())
+			writeField(element, false, UnitScope.PUBLIC);
 
+		for (QDataTerm<?> element : dataStructDef.getElements())
+			writeInnerData(element, UnitScope.PUBLIC, true);
 	}
 
 	public void writeElements(List<QDataTerm<?>> elements) throws IOException {
 
-		// fields
-		for (QDataTerm<?> element : elements)
+		for (QDataTerm<?> element : elements)			
 			writeField(element, false, UnitScope.PUBLIC);
 
-		// elements
 		for (QDataTerm<?> element : elements)
 			writeInnerData(element, UnitScope.PUBLIC, true);
 	}
-
 }

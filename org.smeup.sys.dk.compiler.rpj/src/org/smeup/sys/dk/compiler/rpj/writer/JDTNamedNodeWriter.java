@@ -35,6 +35,7 @@ import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+import org.smeup.sys.dk.compiler.OptimizationType;
 import org.smeup.sys.dk.compiler.QCompilationSetup;
 import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.QCompilerLinker;
@@ -55,7 +56,9 @@ import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DataDefType;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.QArrayDef;
 import org.smeup.sys.il.data.def.QBinaryDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
@@ -128,14 +131,14 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public void writeField(QDataTerm<?> dataTerm, boolean nullInitialization, UnitScope scope) {
-
+		
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
 
 		// @ExternalDef
 		if (dataTerm.getDefinition() instanceof QDataAreaDef) {
-			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>)dataTerm.getDefinition();
+			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
 			writeAnnotation(field, DataDef.class, "externalName", dataAreaDef.getExternalName());
 		}
 
@@ -242,14 +245,16 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			QCompilerLinker compilerLinker = dataTerm.getFacet(QCompilerLinker.class);
 			if (compilerLinker == null) {
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
-
+				compilationSetup.setOptimizationType(OptimizationType.POSITION);
+				
 				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
 						QDataStructWrapper.class, scope, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
 			} else if (checkCompoundOverride(compoundDataDef)) {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
-
+				compilationSetup.setOptimizationType(OptimizationType.POSITION);
+				
 				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass,
 						scope, static_);
 				List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
@@ -261,6 +266,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				}
 				dataStructureWriter.writeElements(elements);
 			}
+
+			if (containsPacked(compoundDataDef))
+				System.err.println(getCompilationUnit().getQualifiedName(dataTerm));
 		}
 
 		QSpecial special = dataTerm.getFacet(QSpecial.class);
@@ -274,6 +282,23 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			target.bodyDeclarations().add(enumType);
 		}
 
+	}
+
+	private boolean containsPacked(QCompoundDataDef<?, QDataTerm<?>> compoundDataDef) {
+
+		boolean result = false;
+
+		for (QDataTerm<?> element : compoundDataDef.getElements()) {
+			if (element.getDefinition().getDataDefType().equals(DataDefType.DECIMAL)) {
+				QDecimalDef decimalDef = (QDecimalDef) element.getDefinition();
+				if (decimalDef.getType().equals(DecimalType.PACKED)) {
+					result = true;
+					break;
+				}
+			}
+		}
+
+		return result;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -475,6 +500,14 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (decimalDef.getScale() > 0)
 				writeAnnotation(node, DataDef.class, "scale", decimalDef.getScale());
 
+			switch (decimalDef.getType()) {
+			case PACKED:
+				writeAnnotation(node, DataDef.class, "packed", Boolean.TRUE);
+				break;
+			case ZONED:
+				break;
+			}
+
 		} else if (QHexadecimalDef.class.isAssignableFrom(klassDef)) {
 			QHexadecimalDef hexadecimalDef = (QHexadecimalDef) dataDef;
 			if (hexadecimalDef.getLength() > 0)
@@ -654,13 +687,13 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 					type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
 				} else {
 					Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
-					if(linkedClass != null)
+					if (linkedClass != null)
 						type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
- 					else {
- 						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
- 						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
+					else {
+						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
+						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
 						type = getAST().newSimpleType(getAST().newName(qualifiedName.toUpperCase()));
- 					}
+					}
 				}
 
 			} else {
@@ -695,11 +728,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 					// TODO setup
 					type = getAST().newSimpleType(getAST().newName(getCompilationUnit().normalizeTypeName(qualifiedName).split("\\.")));
 				} else {
-					if(linkedClass != null)
+					if (linkedClass != null)
 						type = getAST().newSimpleType(getAST().newName(linkedClass.getName().split("\\.")));
 					else {
- 						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
- 						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
+						QDataTerm<?> linkedDataTerm = getCompilationUnit().getDataTerm(compilerLinker.getLinkedTermName(), true);
+						String qualifiedName = getCompilationUnit().getQualifiedName(linkedDataTerm);
 						type = getAST().newSimpleType(getAST().newName(qualifiedName.toUpperCase()));
 					}
 				}

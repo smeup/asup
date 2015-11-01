@@ -2713,6 +2713,7 @@
         <eBounds eClassifier="#//BufferedData"/>
       </eTypeParameters>
       <eOperations name="getLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eOperations name="getSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eGenericSuperTypes eClassifier="#//def/DataDef">
         <eTypeArguments eTypeParameter="#//def/BufferedDataDef/D"/>
       </eGenericSuperTypes>

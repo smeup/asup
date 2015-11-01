@@ -137,6 +137,15 @@ public class StrollerDefImpl<D extends QStroller<?>> extends MultipleCompoundDat
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

@@ -141,13 +141,22 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int COMPILATION_SETUP__ENTRY_TYPE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Optimization Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPILATION_SETUP__OPTIMIZATION_TYPE = 2;
+
+	/**
 	 * The feature id for the '<em><b>Procedure Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_SETUP__PROCEDURE_TYPE = 2;
+	int COMPILATION_SETUP__PROCEDURE_TYPE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Compilation Setup</em>' class.
@@ -156,7 +165,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPILATION_SETUP_FEATURE_COUNT = 3;
+	int COMPILATION_SETUP_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.impl.CompilationTrashCanImpl <em>Compilation Trash Can</em>}' class.
@@ -301,6 +310,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	int INTERNAL_TYPE = 10;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.OptimizationType <em>Optimization Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.compiler.OptimizationType
+	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getOptimizationType()
+	 * @generated
+	 */
+	int OPTIMIZATION_TYPE = 11;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,7 +327,7 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getUnitScope()
 	 * @generated
 	 */
-	int UNIT_SCOPE = 11;
+	int UNIT_SCOPE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.compiler.CaseSensitiveType <em>Case Sensitive Type</em>}' enum.
@@ -383,6 +402,17 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCompilationSetup_EntryType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.compiler.QCompilationSetup#getOptimizationType <em>Optimization Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optimization Type</em>'.
+	 * @see org.smeup.sys.dk.compiler.QCompilationSetup#getOptimizationType()
+	 * @see #getCompilationSetup()
+	 * @generated
+	 */
+	EAttribute getCompilationSetup_OptimizationType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.compiler.QCompilationSetup#getProcedureType <em>Procedure Type</em>}'.
@@ -499,6 +529,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 	EEnum getInternalType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.dk.compiler.OptimizationType <em>Optimization Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Optimization Type</em>'.
+	 * @see org.smeup.sys.dk.compiler.OptimizationType
+	 * @generated
+	 */
+	EEnum getOptimizationType();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -593,6 +633,14 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPILATION_SETUP__ENTRY_TYPE = eINSTANCE.getCompilationSetup_EntryType();
+
+		/**
+		 * The meta object literal for the '<em><b>Optimization Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPILATION_SETUP__OPTIMIZATION_TYPE = eINSTANCE.getCompilationSetup_OptimizationType();
 
 		/**
 		 * The meta object literal for the '<em><b>Procedure Type</b></em>' attribute feature.
@@ -695,6 +743,16 @@ public interface QDevelopmentKitCompilerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum INTERNAL_TYPE = eINSTANCE.getInternalType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.OptimizationType <em>Optimization Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.compiler.OptimizationType
+		 * @see org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl#getOptimizationType()
+		 * @generated
+		 */
+		EEnum OPTIMIZATION_TYPE = eINSTANCE.getOptimizationType();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.compiler.UnitScope <em>Unit Scope</em>}' enum.

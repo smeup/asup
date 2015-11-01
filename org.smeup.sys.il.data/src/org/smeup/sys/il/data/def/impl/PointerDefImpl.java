@@ -170,4 +170,22 @@ public class PointerDefImpl extends UnaryAtomicBufferedDataDefImpl<QPointer> imp
 	public DataDefType getDataDefType() {
 		return DataDefType.POINTER;
 	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+		return 16;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
+	}
 } // PointerDefImpl

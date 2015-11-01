@@ -154,19 +154,36 @@ public abstract class DataDefImpl<D extends QData> extends ObjectImpl implements
 		return super.eIsSet(featureID);
 	}
 
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
+	 * 
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		StringBuilder result = new StringBuilder(getClass().getSimpleName());
+		result.append('@');
+		result.append(Integer.toHexString(hashCode()));
 
-		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (formulas: ");
 		result.append(formulas);
 		result.append(')');
+
+		if (eIsProxy()) {
+			result.append(" (eProxyURI: ");
+			result.append(eProxyURI());
+			if (eDynamicClass() != null) {
+				result.append(" eClass: ");
+				result.append(eDynamicClass());
+			}
+			result.append(')');
+		} else if (eDynamicClass() != null) {
+			result.append(" (eClass: ");
+			result.append(eDynamicClass());
+			result.append(')');
+		}
+
 		return result.toString();
 	}
-
 } // DataDefImpl

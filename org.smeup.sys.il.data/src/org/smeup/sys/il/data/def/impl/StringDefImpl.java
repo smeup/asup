@@ -58,4 +58,22 @@ public class StringDefImpl extends UnaryAtomicBufferedDataDefImpl<QString> imple
 	public DataDefType getDataDefType() {
 		return DataDefType.STRING;
 	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+		return 255;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
+	}
 } // StringDefImpl

@@ -27,4 +27,12 @@ public interface QBufferedDataDef<D extends QBufferedData> extends QDataDef<D> {
 	 */
 	int getLength();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	int getSize();
+
 } // QBufferedDataDef

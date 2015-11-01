@@ -57,5 +57,23 @@ public class IndicatorDefImpl extends UnaryAtomicBufferedDataDefImpl<QIndicator>
 	@Override
 	public DataDefType getDataDefType() {
 		return DataDefType.INDICATOR;
+	}	
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getLength() {
+		return 1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		return getLength();
 	}
 } // IndicatorDefImpl

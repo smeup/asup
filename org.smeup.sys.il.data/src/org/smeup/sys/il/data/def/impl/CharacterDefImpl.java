@@ -98,6 +98,18 @@ public class CharacterDefImpl extends UnaryAtomicBufferedDataDefImpl<QCharacter>
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public int getSize() {
+		if(isVarying())
+			return getLength()+2;
+		else
+			return getLength();
+	}
+	
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

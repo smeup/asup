@@ -181,6 +181,18 @@ public class DecimalDefImpl extends UnaryAtomicBufferedDataDefImpl<QDecimal> imp
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getSize() {
+		if(getType().equals(DecimalType.PACKED))
+			return getLength()/2+1;
+		else
+			return getLength();
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
