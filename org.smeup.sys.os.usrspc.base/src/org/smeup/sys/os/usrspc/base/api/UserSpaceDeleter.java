@@ -23,7 +23,6 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.usrspc.QUserSpace;
 
@@ -38,9 +37,13 @@ public class UserSpaceDeleter {
 	public @Entry void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
 		QResourceWriter<QUserSpace> userSpaceResource = resourceManager.getResourceWriter(job, QUserSpace.class, userSpace.library.trimR());
 		QUserSpace qUserSpace = userSpaceResource.lookup(userSpace.name.trimR());
-		if (qUserSpace == null)
-			throw new OperatingSystemRuntimeException("User Space not found: " + userSpace.name);
-		
+		if (qUserSpace == null){
+			errorCode.£$01e2.eval(43);
+			// TODO
+			System.err.println("User Space not found: " + userSpace.name);
+			//			throw new OperatingSystemRuntimeException("User Space not found: " + userSpace.name);
+			return;
+		}
 		userSpaceResource.delete(qUserSpace);
 	}
 
