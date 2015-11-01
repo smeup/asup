@@ -91,22 +91,24 @@ public class JobSubmitter {
 		QCallableProgram caller = programManager.getCaller(job.getJobID(), this);
 
 		// Job spawn
-		QJob childJob = jobManager.create(job);
+		QJob childJob = null;
 		
 		switch (jobName.asEnum()) {
 		// TODO
 		case JOBD:
+			childJob = jobManager.create(job);
 			break;
 		case OTHER:
 			if (!jobName.isEmpty()) {
-				childJob.setJobName(jobName.asData().trimR());
+				childJob = jobManager.create(job, jobName.asData().trimR());
 
 				// TODO remove -> QJobListener
 				if (childJob.getJobName().startsWith("LO_")) {
 					outputManager.setDefaultWriter(job.getContext(), "L");
 				}
 			}
-
+			else
+				childJob = jobManager.create(job);
 			break;
 		}
 

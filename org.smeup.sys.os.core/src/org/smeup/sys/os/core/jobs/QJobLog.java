@@ -19,7 +19,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getEntries <em>Entries</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getJobID <em>Job ID</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,32 +45,29 @@ public interface QJobLog extends QObjectNameable {
 	List<QJobLogEntry> getEntries();
 
 	/**
-	 * Returns the value of the '<em><b>Job ID</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Job</b></em>' reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Job ID</em>' attribute isn't clear, there
-	 * really should be more of a description here...
+	 * If the meaning of the '<em>Job</em>' reference isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>Job ID</em>' attribute.
-	 * @see #setJobID(String)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLog_JobID()
-	 * @model id="true" required="true"
+	 * @return the value of the '<em>Job</em>' reference.
+	 * @see #setJob(QJob)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLog_Job()
+	 * @model required="true" transient="true"
 	 * @generated
 	 */
-	String getJobID();
+	QJob getJob();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobLog#getJobID
-	 * <em>Job ID</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>Job ID</em>' attribute.
-	 * @see #getJobID()
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Job</em>' reference.
+	 * @see #getJob()
 	 * @generated
 	 */
-	void setJobID(String value);
+	void setJob(QJob value);
 
 } // QJobLog

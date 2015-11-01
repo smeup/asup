@@ -50,11 +50,27 @@ public interface QJobManager {
 	QJob create(String user, String password);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" userRequired="true" passwordRequired="true" jobNameRequired="true"
+	 * @generated
+	 */
+	QJob create(String user, String password, String jobName);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" credentialRequired="true"
 	 * @generated
 	 */
 	QJob create(QJob credential);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" credentialRequired="true" jobNameRequired="true"
+	 * @generated
+	 */
+	QJob create(QJob credential, String jobName);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

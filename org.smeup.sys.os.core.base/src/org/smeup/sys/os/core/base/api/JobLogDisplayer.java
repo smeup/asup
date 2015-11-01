@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -33,14 +32,13 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 
-
 @Program(name = "QMHDSPJL")
 public class JobLogDisplayer {
 
 	public static enum QCPFMSG {
 		CPF1070
 	}
-	
+
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
@@ -51,18 +49,14 @@ public class JobLogDisplayer {
 	private QExceptionManager exceptionManager;
 
 	@Entry
-	public void main(@Supported @DataDef(qualified = true) JobName jobName,
-			         @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
-			         @ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, 
-			         @ToDo OutputMemberOptions outputMemberOptions,
-			         @Supported @DataDef(length = 1) QEnum<YesNoEnum, QCharacter> shortFormat) {
+	public void main(@Supported @DataDef(qualified = true) JobName jobName, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
+			@ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, @ToDo OutputMemberOptions outputMemberOptions,
+			@Supported @DataDef(length = 1) QEnum<YesNoEnum, QCharacter> shortFormat) {
 
 		QJobLog jobLog = findJobLog(jobName);
-		QObjectWriter objectWriter = findWiter(output);		
-		new JobLogWriter(objectWriter, shortFormat.asEnum().asBoolean(), outputManager)
-		.write(jobLog);
+		QObjectWriter objectWriter = findWiter(output);
+		new JobLogWriter(objectWriter, shortFormat.asEnum().asBoolean(), outputManager).write(jobLog);
 	}
-
 
 	private QJobLog findJobLog(JobName jobName) {
 		QJobLog jobLog = null;
@@ -74,11 +68,11 @@ public class JobLogDisplayer {
 			jobLog = jobLogManager.lookup(job.getJobID(), jobName.name.asData().trimR(), jobName.user.trimR(), new Integer(jobName.number.trim()));
 			break;
 		}
-		
+
 		if (jobLog == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
 		}
-		
+
 		return jobLog;
 	}
 
@@ -87,10 +81,10 @@ public class JobLogDisplayer {
 		case TERM_STAR:
 			return outputManager.getDefaultWriter(job.getContext());
 		case PRINT:
-			return  outputManager.getObjectWriter(job.getContext(), "P");
+			return outputManager.getObjectWriter(job.getContext(), "P");
 		case OUTFILE:
 			throw new OperatingSystemRuntimeException("Unsupported output type " + output);
-		case APIDFN:		
+		case APIDFN:
 			throw new OperatingSystemRuntimeException("Unsupported output type " + output);
 		}
 		throw new OperatingSystemRuntimeException("Unsupported output type " + output);
@@ -112,10 +106,11 @@ public class JobLogDisplayer {
 	}
 
 	public static enum OutputEnum {
-		@Special(value = "*") TERM_STAR,
-		@Special(value = "L") PRINT,
-		@Special(value = "P") APIDFN,
-		@Special(value = "N") OUTFILE
+		@Special(value = "*")
+		TERM_STAR, @Special(value = "L")
+		PRINT, @Special(value = "P")
+		APIDFN, @Special(value = "N")
+		OUTFILE
 	}
 
 	public static class FileToReceiveOutput extends QDataStructWrapper {

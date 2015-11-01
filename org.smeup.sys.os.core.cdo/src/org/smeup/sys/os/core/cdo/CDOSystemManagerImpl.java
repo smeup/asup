@@ -76,7 +76,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		while (!locker.tryLock(QSystem.LOCK_TIMEOUT, LockType.WRITE));
 
 		// create job kernel
-		this.startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser());
+		this.startupJob = createJob(JobType.KERNEL, transactionSystem.getSystemUser(), "KERNEL_CDO");
 
 		// save
 		CDOResource resource = transaction.getOrCreateResource(CDO_CORE);
@@ -237,6 +237,11 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		return x;
 	}
 
+	@Override
+	protected QJob createJob(JobType jobType, String user, String jobName){
+		return super.createJob(jobType, user, jobName);
+	}
+	
 	public void updateStatus(JobStatus status) throws OperatingSystemException {
 		try {
 			// save job
@@ -247,11 +252,5 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		} catch (CommitException e) {
 			throw new OperatingSystemException(e);
 		}
-
-	}
-
-	@Override
-	protected QJob createJob(JobType jobType, String user){
-		return super.createJob(jobType, user);
 	}
 }

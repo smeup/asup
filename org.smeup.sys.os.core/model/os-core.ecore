@@ -161,9 +161,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="JobLog" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
       <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
           upperBound="-1" eType="#//jobs/JobLogEntry" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobID" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          iD="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="job" lowerBound="1" eType="#//jobs/Job"
+          transient="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobLogEntry" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="gravity" lowerBound="1"
@@ -213,7 +212,16 @@
         <eParameters name="password" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
+        <eParameters name="user" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="password" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
         <eParameters name="credential" lowerBound="1" eType="#//jobs/Job"/>
+      </eOperations>
+      <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
+        <eParameters name="credential" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
       <eOperations name="lookup" eType="#//jobs/Job">

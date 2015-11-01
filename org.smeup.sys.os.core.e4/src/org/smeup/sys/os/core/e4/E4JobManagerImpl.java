@@ -117,6 +117,11 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	@Override
 	public QJob create(String user, String password) {
+		return create(user, password, null);
+	}
+
+	@Override
+	public QJob create(String user, String password, String jobName) {
 
 		QJob startupJob = systemManager.getStartupJob();
 		QResourceReader<QUserProfile> userResource = resourceManager.getResourceReader(startupJob, QUserProfile.class, systemManager.getSystem().getSystemLibrary());
@@ -130,7 +135,7 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		if (!userProfile.isEnabled())
 			throw new OperatingSystemRuntimeException("User " + user + " is disabled");
 
-		QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName());
+		QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName(), jobName);
 
 		// add job description libraries
 		if (userProfile.getJobDescription() != null) {
@@ -169,7 +174,12 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 
 	@Override
 	public QJob create(QJob credential) {
-		return create(credential.getJobUser(), "*SAME");
+		return create(credential, null);
+	}
+
+	@Override
+	public QJob create(QJob credential, String jobName) {
+		return create(credential.getJobUser(), "*SAME", jobName);
 	}
 
 	@Override
@@ -236,5 +246,4 @@ public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
 		}
 		return executorService;
 	}
-
 }

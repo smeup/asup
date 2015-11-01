@@ -332,13 +332,13 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_LOG__ENTRIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Job ID</b></em>' attribute.
+	 * The feature id for the '<em><b>Job</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_LOG__JOB_ID = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int JOB_LOG__JOB = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Job Log</em>' class.
@@ -653,15 +653,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EReference getJobLog_Entries();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobLog#getJobID <em>Job ID</em>}'.
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Job ID</em>'.
-	 * @see org.smeup.sys.os.core.jobs.QJobLog#getJobID()
+	 * @return the meta object for the reference '<em>Job</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobLog#getJob()
 	 * @see #getJobLog()
 	 * @generated
 	 */
-	EAttribute getJobLog_JobID();
+	EReference getJobLog_Job();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLogEntry <em>Job Log Entry</em>}'.
@@ -987,12 +987,12 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EReference JOB_LOG__ENTRIES = eINSTANCE.getJobLog_Entries();
 
 		/**
-		 * The meta object literal for the '<em><b>Job ID</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Job</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOB_LOG__JOB_ID = eINSTANCE.getJobLog_JobID();
+		EReference JOB_LOG__JOB = eINSTANCE.getJobLog_Job();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogEntryImpl <em>Job Log Entry</em>}' class.

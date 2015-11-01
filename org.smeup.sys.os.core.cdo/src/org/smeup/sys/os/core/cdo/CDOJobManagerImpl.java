@@ -70,9 +70,14 @@ public class CDOJobManagerImpl implements QJobManager {
 		
 		new CDOJobCloser(this).start();
 	}
-
+	
 	@Override
 	public QJob create(String user, String password) {
+		return create(user, password, null);
+	}
+	
+	@Override
+	public QJob create(String user, String password, String jobName) {
 
 		QJob startupJob = systemManager.getStartupJob();
 		QResourceReader<QUserProfile> userResource = resourceManager.getResourceReader(startupJob, QUserProfile.class, systemManager.getSystem().getSystemLibrary());
@@ -93,7 +98,7 @@ public class CDOJobManagerImpl implements QJobManager {
 		try {
 			// System.out.println("lock system "+systemManager.getSystem().getName()+" jobManager");
 
-			QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName());
+			QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName(), jobName);
 
 			// add job description libraries
 			if (userProfile.getJobDescription() != null) {
@@ -136,8 +141,12 @@ public class CDOJobManagerImpl implements QJobManager {
 		}
 	}
 
-	@Override
 	public QJob create(QJob credential) {
+		return create(credential, null);
+	}
+	
+	@Override
+	public QJob create(QJob credential, String jobName) {
 		return create(credential.getJobUser(), "*SAME");
 	}
 

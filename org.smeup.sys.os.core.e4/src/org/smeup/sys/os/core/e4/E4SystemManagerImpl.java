@@ -48,7 +48,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	public QJob start() {
 
-		this.startupJob = createJob(JobType.KERNEL, "QASUP");
+		this.startupJob = createJob(JobType.KERNEL, "QASUP", "KERNEL_E4");
 					
 		return startupJob;
 	}
@@ -71,7 +71,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	}
 
 	@Override
-	protected QJob createJob(JobType jobType, String user) {
-		return super.createJob(jobType, user);
+	protected QJob createJob(JobType jobType, String user, String jobName){
+		return super.createJob(jobType, user, jobName);
 	}
 }

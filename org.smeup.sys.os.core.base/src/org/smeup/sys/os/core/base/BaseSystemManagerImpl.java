@@ -32,7 +32,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 	protected static final SimpleDateFormat HHMMSS = new SimpleDateFormat("HHmmss");
 
 
-	protected QJob createJob(JobType jobType, String user) {
+	protected QJob createJob(JobType jobType, String user, String jobName) {
 
 		// job
 		final QJob job = QOperatingSystemJobsFactory.eINSTANCE.createJob();
@@ -45,7 +45,10 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		// Calendar CALENDAR = Calendar.getInstance();
 		// YYYYMMDD.format(CALENDAR.getTime())+"/"+HHMMSS.format(CALENDAR.getTime();
 		NumberFormat numberFormat = new DecimalFormat("000000");
-		job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
+		if(jobName == null)
+			job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
+		else
+			job.setJobName(jobName);
 
 		// system libraries
 		job.getLibraries().add(getSystem().getTemporaryLibrary());

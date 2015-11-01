@@ -382,9 +382,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getJobLog_JobID() {
-		return (EAttribute)jobLogEClass.getEStructuralFeatures().get(1);
+	public EReference getJobLog_Job() {
+		return (EReference)jobLogEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -576,7 +575,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		jobLogEClass = createEClass(JOB_LOG);
 		createEReference(jobLogEClass, JOB_LOG__ENTRIES);
-		createEAttribute(jobLogEClass, JOB_LOG__JOB_ID);
+		createEReference(jobLogEClass, JOB_LOG__JOB);
 
 		jobLogEntryEClass = createEClass(JOB_LOG_ENTRY);
 		createEAttribute(jobLogEntryEClass, JOB_LOG_ENTRY__GRAVITY);
@@ -663,7 +662,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		initEClass(jobLogEClass, QJobLog.class, "JobLog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobLog_Entries(), this.getJobLogEntry(), null, "entries", null, 1, -1, QJobLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJobLog_JobID(), ecorePackage.getEString(), "jobID", null, 1, 1, QJobLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJobLog_Job(), this.getJob(), null, "job", null, 1, 1, QJobLog.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jobLogEntryEClass, QJobLogEntry.class, "JobLogEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJobLogEntry_Gravity(), ecorePackage.getEInt(), "gravity", null, 1, 1, QJobLogEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -708,7 +707,16 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, ecorePackage.getEString(), "password", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(jobManagerEClass, this.getJob(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "user", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "password", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "jobName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(jobManagerEClass, this.getJob(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJob(), "credential", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(jobManagerEClass, this.getJob(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getJob(), "credential", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "jobName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobManagerEClass, this.getJob(), "getActiveJobs", 1, -1, IS_UNIQUE, IS_ORDERED);
 
