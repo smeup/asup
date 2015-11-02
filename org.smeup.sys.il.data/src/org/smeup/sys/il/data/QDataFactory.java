@@ -86,11 +86,12 @@ public interface QDataFactory {
 	QDataDef<?> createDataDef(Type type, List<Annotation> annotations);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" elementsMany="true" lengthRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
+	<D extends QDataStruct> D createDataStruct(String name, List<QDataTerm<QBufferedDataDef<?>>> elements, int length, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -178,7 +179,7 @@ public interface QDataFactory {
 	 * @model required="true" argumentRequired="true" dimensionRequired="true" sortDirectionRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	<D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize);
+	<D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

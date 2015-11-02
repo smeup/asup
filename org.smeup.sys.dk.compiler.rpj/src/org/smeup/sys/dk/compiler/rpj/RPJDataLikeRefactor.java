@@ -74,7 +74,7 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();
 				if(containsLike(dataStructDefFrom)) 
 					visit(source);
-				setLength(charDefTo, dataStructDefFrom);
+				setLength(source.getName(), charDefTo, dataStructDefFrom);
 				break;
 			case MULTIPLE_ATOMIC:
 				QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) source.getDefinition();
@@ -85,7 +85,7 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
 				if(containsLike(strollerDef))
 					visit(source);
-				setLength(charDefTo, strollerDef);
+				setLength(source.getName(), charDefTo, strollerDef);
 				appendDefinition(strollerDef, target);
 				break;
 			}
@@ -142,7 +142,7 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QDataStructDef dataStructDefFrom = (QDataStructDef) source.getDefinition();
 				if(containsLike(dataStructDefFrom))
 					visit(source);
-				setLength(charDefTo, dataStructDefFrom);
+				setLength(source.getName(), charDefTo, dataStructDefFrom);
 				break;
 			case MULTIPLE_ATOMIC:
 				QMultipleAtomicDataDef<?> multipleAtomicSource = (QMultipleAtomicDataDef<?>) source.getDefinition();
@@ -153,7 +153,7 @@ public class RPJDataLikeRefactor extends RPJAbstractDataRefactor {
 				QStrollerDef<?> strollerDef = (QStrollerDef<?>) source.getDefinition();
 				if(containsLike(strollerDef))
 					visit(source);
-				setLength(charDefTo, strollerDef);
+				setLength(source.getName(), charDefTo, strollerDef);
 				appendDefinition(strollerDef, target.getDefinition());
 				break;
 			}

@@ -994,6 +994,7 @@
       <eTypeParameters name="D">
         <eBounds eClassifier="#//DataStruct"/>
       </eTypeParameters>
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="elements" upperBound="-1">
         <eGenericType eClassifier="#//term/DataTerm">
           <eTypeArguments eClassifier="#//def/BufferedDataDef">
@@ -1113,6 +1114,7 @@
       <eTypeParameters name="D">
         <eBounds eClassifier="#//DataStruct"/>
       </eTypeParameters>
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="argument" lowerBound="1">
         <eGenericType eClassifier="#//def/StrollerDef">
           <eTypeArguments/>

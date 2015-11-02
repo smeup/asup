@@ -132,7 +132,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		else if (dataDef instanceof QStrollerDef<?>) {
 			QStrollerDef<?> strollerDef = (QStrollerDef<?>) dataDef;
 
-			data = (D) createStroller(strollerDef, strollerDef.getDimension(), strollerDef.getOrder(), initialize);
+			data = (D) createStroller(null, strollerDef, strollerDef.getDimension(), strollerDef.getOrder(), initialize);
 		}
 		// list
 		else if (dataDef instanceof QListDef<?>) {
@@ -158,7 +158,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 				data = (D) bufferedData;
 			} else {
 				List<QDataTerm<QBufferedDataDef<?>>> arguments = dataStructDef.getElements();
-				QDataStruct bufferedData = createDataStruct(arguments, dataStructDef.getLength(), initialize);
+				QDataStruct bufferedData = createDataStruct(null, arguments, dataStructDef.getLength(), initialize);
 				data = (D) bufferedData;
 			}
 		}
@@ -378,7 +378,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public <D extends QDataStruct> QStroller<D> createStroller(QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize) {
+	public <D extends QDataStruct> QStroller<D> createStroller(String name, QStrollerDef<?> argument, int dimension, SortDirection sortDirection, boolean initialize) {
 
 		QDataStruct model = null;
 
@@ -394,7 +394,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			model = bufferedData;
 		} else {
 			List<QDataTerm<QBufferedDataDef<?>>> arguments = argument.getElements();
-			QDataStruct bufferedData = createDataStruct(arguments, 0, false);
+			QDataStruct bufferedData = createDataStruct(name, arguments, 0, false);
 			model = bufferedData;
 		}
 
@@ -536,31 +536,61 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <D extends QDataStruct> D createDataStruct(List<QDataTerm<QBufferedDataDef<?>>> dataTerms, int length, boolean initialize) {
+	public <D extends QDataStruct> D createDataStruct(String name, List<QDataTerm<QBufferedDataDef<?>>> dataTerms, int length, boolean initialize) {
 
 		NIODataStructImpl dataStructureDelegate = new NIODataStructImpl(getDataContext(), length);
 
-		int p = 1;
-		for (QDataTerm<?> dataTerm : dataTerms) {
+		int ownerNextPos = 1;
+		Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
 
+		for (QDataTerm<?> dataTerm : dataTerms) {
+			
 			QBufferedData dataElement = (QBufferedData) createData(dataTerm, false);
 
-			Integer position = null;
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
-			if (overlay != null)
-				position = overlay.getPosition();
+			if (overlay == null) {
+				dataStructureDelegate.addElement(dataTerm.getName(), dataElement, ownerNextPos);
+				ownerNextPos += dataElement.getSize();
+			} else if (overlay.getName() == null || overlay.getName().equals(Overlay.NAME_OWNER)) {
 
-			if (position != null)
-				if (position == 0) {
+				if (overlay.getPosition() >= 1)
+					ownerNextPos = overlay.getPosition();
 
-				} else
-					p = position;
+				dataStructureDelegate.addElement(dataTerm.getName(), dataElement, ownerNextPos);
+				ownerNextPos += dataElement.getSize();
+			} else {
+				
+				NIOBufferedDataImpl overlayedData = null;
+				if(overlay.getName().equalsIgnoreCase(name))
+					overlayedData = dataStructureDelegate;
+				else
+					overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.getName());				
+				
+				if (overlayedData == null)
+					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
-			dataStructureDelegate.addElement(dataTerm.getName(), dataElement, p - 1);
-			dataStructureDelegate.assign(dataElement, p);
+				QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
+				if (overlayedNextPos == null) {
+					overlayedNextPos = createDecimal(5, 0, DecimalType.PACKED, true);
+					overlayedNextPos.plus(overlayedData.getPosition()+1);
+					overlayedToNextPos.put(overlayedData, overlayedNextPos);
+				}
+				
+				if (overlay.getPosition() >= 1)
+					overlayedNextPos.eval(overlay.getPosition());
 
-			p += dataElement.getSize();
+				dataStructureDelegate.addElement(dataTerm.getName(), dataElement, overlayedNextPos.i());
 
+				if (overlayedData instanceof NIOBufferedListImpl<?>) {
+					NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
+					NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
+					arrayData.setListOwner(arrayOverlayed);
+
+					overlayedNextPos.plus(arrayData.getModel().getSize());
+				} else {
+					overlayedNextPos.plus(dataElement.getSize());
+				}
+			}
 		}
 
 		if (initialize)

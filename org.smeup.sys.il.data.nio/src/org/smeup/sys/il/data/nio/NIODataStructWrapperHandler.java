@@ -107,13 +107,13 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 			field.set(_wrapped, element);
 
 			if (_dynamicLength)
-				if (position + element.getSize() >= _length)
-					_length = position + element.getSize();
+				if (position -1 + element.getSize() >= _length)
+					_length = position -1 + element.getSize();
 
 		} catch (SecurityException | IllegalArgumentException | IllegalAccessException | NoSuchFieldException e) {
 			e.printStackTrace();
 		}
-		
+	
 		assign(element, position);
 	}
 

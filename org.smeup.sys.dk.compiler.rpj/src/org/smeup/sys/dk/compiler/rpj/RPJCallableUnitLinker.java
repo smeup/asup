@@ -454,6 +454,7 @@ public class RPJCallableUnitLinker {
 
 	private void appendElements(QDataTerm<QCompoundDataDef<?, QDataTerm<?>>> qDataTerm, QFileFormat<?> fileFormat) {
 
+		int pos = 0;
 		for (QDataTerm<?> element : fileFormat.getDefinition().getElements()) {
 
 			element = (QDataTerm<?>) EcoreUtil.copy((EObject) element);
@@ -461,7 +462,8 @@ public class RPJCallableUnitLinker {
 			QDerived derived = QIntegratedLanguageCoreFactory.eINSTANCE.createDerived();
 			element.getFacets().add(derived);
 
-			qDataTerm.getDefinition().getElements().add(element);
+			qDataTerm.getDefinition().getElements().add(pos, element);
+			pos++;
 		}
 	}
 
