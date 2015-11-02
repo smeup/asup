@@ -27,6 +27,8 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -54,7 +56,7 @@ public class XMIDatabaseFileCompiler {
 	private QLibraryManager libraryManager;
 
 	@Entry
-	public void main(FileRef fileRef) throws IOException {
+	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) throws IOException {
 
 		// file
 		QResourceReader<QFile> fileReader = null;
@@ -86,7 +88,7 @@ public class XMIDatabaseFileCompiler {
 			QDatabaseFile databaseFile = (QDatabaseFile) qFile;
 
 			try {
-				createJavaFile(databaseFile, library);
+				createJavaFile(databaseFile, library, libraryTo.trimR());
 			} catch (Exception e) {
 				System.err.println(e);
 			}
@@ -95,13 +97,16 @@ public class XMIDatabaseFileCompiler {
 		files.close();
 	}
 
-	private void createJavaFile(QDatabaseFile file, QLibrary library) throws IOException, OperatingSystemException {
+	private void createJavaFile(QDatabaseFile file, QLibrary library, String libraryTo) throws IOException, OperatingSystemException {
 
 		if (file.getApplication() == null)
 			throw new OperatingSystemException("Invalid file application: " + file);
 
+		if(libraryTo == null || libraryTo.isEmpty())
+			libraryTo = file.getLibrary();
+		
 		// create java source
-		QProject project = sourceManager.getProject(job.getContext(), file.getLibrary());
+		QProject project = sourceManager.getProject(job.getContext(), libraryTo);
 
 		String javaName = library.getPackageURI().resolve(file.getClassURI()) + ".java";
 		javaName = javaName.replaceAll("§", "Ç");

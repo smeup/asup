@@ -75,6 +75,17 @@
         </definition>
       </dataTerm>
     </parameters>
+    <parameters
+        name="TOLIB"
+        position="2">
+      <dataTerm
+          name="libraryTo"
+          restricted="true">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
+      </dataTerm>
+    </parameters>
   </contents>
   <contents
       xsi:type="os-cmd:Command"
