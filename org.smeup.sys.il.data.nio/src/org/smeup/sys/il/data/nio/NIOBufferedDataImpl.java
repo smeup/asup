@@ -25,7 +25,6 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
@@ -222,11 +221,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			_buffer = ByteBuffer.allocate(length);
 			_buffer.put(array);
 		}
-	}
-
-	@Override
-	public void accept(QDataVisitor visitor) {
-		visitor.visit(this);
 	}
 
 	@Override

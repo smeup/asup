@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.def.BinaryType;
 
 public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
@@ -149,5 +150,10 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public double asDouble() {
 		return asInteger();
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }

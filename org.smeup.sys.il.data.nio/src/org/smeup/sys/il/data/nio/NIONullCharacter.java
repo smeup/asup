@@ -9,5 +9,4 @@ public class NIONullCharacter extends NIOCharacterImpl {
 	public NIONullCharacter(QDataContext dataContext) {
 		super(dataContext);
 	}
-
 }

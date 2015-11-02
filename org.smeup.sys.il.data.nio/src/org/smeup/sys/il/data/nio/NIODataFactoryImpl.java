@@ -41,6 +41,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
@@ -831,6 +832,11 @@ public class NIODataFactoryImpl implements QDataFactory {
 			@Override
 			protected byte getFiller() {
 				return 0;
+			}
+			
+			@Override
+			public void accept(QDataVisitor visitor) {
+				visitor.visit(this);
 			}
 		};
 		bufferedData.allocate();

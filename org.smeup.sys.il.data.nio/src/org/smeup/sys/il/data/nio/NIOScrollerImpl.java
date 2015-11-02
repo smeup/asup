@@ -11,8 +11,11 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.util.Iterator;
+
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.SortDirection;
@@ -169,5 +172,17 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	@Override
 	public D[] asArray() {
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+
+		if (visitor.visit(this)) {
+
+			Iterator<D> datas = this.iterator();
+			while (datas.hasNext())
+				datas.next().accept(visitor);
+			visitor.endVisit(this);
+		}
 	}
 }

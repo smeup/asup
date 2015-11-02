@@ -12,11 +12,13 @@
 package org.smeup.sys.il.data.nio;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
@@ -80,7 +82,7 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		if(getListOwner() == null)
 			position = getModel().getSize() * (index - 1);
 		else
-			position = getListOwner().getModel().getLength() * (index - 1);		
+			position = getListOwner().getModel().getSize() * (index - 1);		
 		
 		assign(element, position+1);
 
@@ -499,4 +501,16 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		for(D element: this)
 			((QString)element).eval(value);
 	}
+
+	@Override
+	public void accept(QDataVisitor visitor) {
+
+		if (visitor.visit(this)) {
+
+			Iterator<D> datas = this.iterator();
+			while (datas.hasNext())
+				datas.next().accept(visitor);
+			visitor.endVisit(this);
+		}
+	}	
 }

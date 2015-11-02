@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QIndicator;
 
 public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator {
@@ -135,5 +136,10 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 		character.eval(this);
 
 		return character;
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }

@@ -389,7 +389,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				text += param.toString()+"|";
 			else
 				text += "|";
-			
+
+			if(text.length() > 100) {
+				text += "..";
+				break;
+			}
+
 		}
 		text += ")";
 		System.out.println(job.getJobName()+"("+job.getJobNumber()+")"+strings.appendChars(text, "\t", programStack.size()-1, true));
@@ -398,7 +403,15 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	protected void printCloseStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "<- "+callableProgram.getQProgram().getName()+" (";
 		for(QData param: callableProgram.getQEntry()) {
-			text += param.toString()+"|";
+			if(param != null)
+				text += param.toString()+"|";
+			else
+				text += "|";
+
+			if(text.length() > 100) {
+				text += "..";
+				break;
+			}
 		}
 		text += ")";
 		text += callableProgram.isStateless() ? "(LR)" : "(RT)";

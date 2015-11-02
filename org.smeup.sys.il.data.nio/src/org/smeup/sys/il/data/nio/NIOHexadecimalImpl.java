@@ -13,6 +13,7 @@ package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QHexadecimal;
 
 public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadecimal {
@@ -179,5 +180,10 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	public <E extends Enum<E>> boolean ne(E value) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }

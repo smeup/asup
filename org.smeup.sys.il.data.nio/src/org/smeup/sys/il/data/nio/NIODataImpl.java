@@ -14,7 +14,6 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataVisitor;
 
 public abstract class NIODataImpl implements QData {
 
@@ -31,11 +30,6 @@ public abstract class NIODataImpl implements QData {
 	}
 
 	public abstract NIODataImpl copy();
-
-	@Override
-	public void accept(QDataVisitor visitor) {
-		visitor.visit(this);
-	}
 
 	protected NIOBufferedDataImpl getNIOBufferedDataImpl(QData bufferedData) {
 

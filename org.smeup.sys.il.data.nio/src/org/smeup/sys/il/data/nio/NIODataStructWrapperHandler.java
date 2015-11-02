@@ -19,7 +19,6 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QDataVisitor;
 
 public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 
@@ -115,13 +114,5 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		}
 	
 		assign(element, position);
-	}
-
-	/*
-	 * @Override public QBufferedData getDelegate() { return _wrapped; }
-	 */
-	@Override
-	public void accept(QDataVisitor visitor) {
-		visitor.visit(_wrapped);
 	}
 }

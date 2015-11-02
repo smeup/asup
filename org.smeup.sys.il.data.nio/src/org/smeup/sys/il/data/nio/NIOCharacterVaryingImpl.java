@@ -30,7 +30,6 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 		super(dataContext, size);
 	}
 
-
 	@Override
 	public void clear() {
 		super.clear();

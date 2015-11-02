@@ -11,7 +11,6 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.smeup.sys.il.core.QNode;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -69,7 +68,7 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 	public void endVisit(QData data) {
 		try {
 			@SuppressWarnings("unchecked")
-			Method method = getMethod("endVisit", (Class<QNode>) data.getClass());
+			Method method = getMethod("endVisit", (Class<QData>) data.getClass());
 			if (method == null)
 				System.out.println(data);
 			method.invoke(this, new Object[] { data });
@@ -250,11 +249,13 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 
 		try {
 			@SuppressWarnings("unchecked")
-			Method method = getMethod("visit", (Class<QNode>) data.getClass());
+			Method method = getMethod("visit", (Class<QData>) data.getClass());
 			if (method == null) {
 				System.out.println(data);
 				return false;
 			}
+			else
+				"".toCharArray();
 			return (boolean) method.invoke(this, new Object[] { data });
 		} catch (Exception e) {
 			System.out.println(data);
@@ -443,7 +444,7 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 		return true;
 	}
 
-	protected Method getMethod(String name, Class<QNode> c) {
+	protected Method getMethod(String name, Class<QData> c) {
 		Method m = null;
 
 		Class<?>[] interfaces = c.getInterfaces();

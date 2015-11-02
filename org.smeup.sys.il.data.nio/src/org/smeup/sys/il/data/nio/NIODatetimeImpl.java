@@ -15,6 +15,7 @@ import java.util.Date;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -294,5 +295,10 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	public boolean eq(String value) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }

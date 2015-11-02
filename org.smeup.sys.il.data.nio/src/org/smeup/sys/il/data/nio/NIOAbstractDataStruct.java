@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.QDataVisitor;
 
 public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements QDataStruct {
 
@@ -43,4 +44,10 @@ public abstract class NIOAbstractDataStruct extends NIOCharacterImpl implements 
 
 		return true;
 	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
+	}
+
 }

@@ -13,6 +13,7 @@ package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 
@@ -194,5 +195,10 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 	@Override
 	public String asString() {
 		return target.asString();
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }

@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
@@ -18,6 +19,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -828,5 +830,17 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public QString qPlus(QString factor1) {
 		return current().qPlus(factor1);
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+
+		if (visitor.visit(this)) {
+
+			Iterator<D> datas = this.iterator();
+			while (datas.hasNext())
+				datas.next().accept(visitor);
+			visitor.endVisit(this);
+		}
 	}
 }

@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
@@ -68,5 +69,10 @@ public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal 
 		int result = Double.compare(d1, d2);
 
 		return result;
+	}
+	
+	@Override
+	public void accept(QDataVisitor visitor) {
+		visitor.visit(this);
 	}
 }
