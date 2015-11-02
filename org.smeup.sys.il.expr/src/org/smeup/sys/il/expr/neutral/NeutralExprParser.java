@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g 2015-10-31 11:20:07
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g 2015-11-02 17:59:19
 
   package org.smeup.sys.il.expr.neutral;
   
@@ -18,105 +18,110 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings("all")
 public class NeutralExprParser extends Parser {
 	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "A", "ALL", "AND", "ASSIGN", "ASSIGN_DIV", 
-		"ASSIGN_MIN", "ASSIGN_PLU", "ASSIGN_POW", "ASSIGN_TIM", "AT_BOOL", "AT_DATE", 
-		"AT_FLOAT", "AT_GENERIC", "AT_HEX", "AT_INDICATOR", "AT_INT", "AT_NAME", 
-		"AT_SPECIAL", "AT_STRING", "AXT", "B", "BIFUN_MARK", "BI_FUN", "BLOCK", 
-		"BLOCK_OPEN", "C", "CHAR_SPECIAL", "CLOSE_BRACE", "CLOSE_SQUARE", "D", 
-		"DIGIT", "DIGIT_SPECIAL", "DIV", "E", "EQ", "EscapeSequence", "F", "FUN", 
-		"FUN_START", "G", "GENERIC", "GT", "GTEQ", "H", "HexDigit", "I", "INDICATOR", 
-		"J", "K", "L", "LETTER", "LT", "LTEQ", "M", "MINUS", "MOD", "MULT", "N", 
-		"NE", "NOT", "O", "OPEN_BRACE", "OPEN_SQUARE", "OR", "P", "PLUS", "POW", 
-		"Q", "QT", "R", "S", "SMINUS", "SPECIAL", "SPECIAL_START", "SPLUS", "T", 
-		"TERM", "TIMES", "U", "UnicodeEscape", "V", "W", "WS", "X", "Y", "Z"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "A", "AE_DIV", "AE_GENERIC", "AE_MINUS", 
+		"AE_MOD", "AE_MULT", "AE_PLUS", "AE_POW", "AE_SMINUS", "AE_SPLUS", "AE_TIM", 
+		"ALL", "AS_ASS", "AS_DIV", "AS_GENERIC", "AS_MIN", "AS_PLUS", "AS_POW", 
+		"AS_TIM", "AT_BOOL", "AT_DATE", "AT_FLOAT", "AT_GENERIC", "AT_HEX", "AT_INDICATOR", 
+		"AT_INT", "AT_NAME", "AT_SPECIAL", "AT_STRING", "AXT", "B", "BE", "BIFUN_MARK", 
+		"BI_FUN", "BLOCK_OPEN", "C", "CHAR_SPECIAL", "CLOSE_BRACE", "CLOSE_SQUARE", 
+		"D", "DIGIT", "DIGIT_SPECIAL", "E", "EscapeSequence", "F", "FT", "FUN_START", 
+		"G", "GENERIC", "H", "HexDigit", "I", "INDICATOR", "J", "K", "L", "LETTER", 
+		"LE_AND", "LE_GENERIC", "LE_NOT", "LE_OR", "M", "N", "O", "OPEN_BRACE", 
+		"OPEN_SQUARE", "P", "Q", "QT", "R", "RE_EQ", "RE_GENERIC", "RE_GT", "RE_GTEQ", 
+		"RE_LT", "RE_LTEQ", "RE_NE", "S", "SPECIAL", "SPECIAL_START", "T", "TERM", 
+		"U", "UnicodeEscape", "V", "W", "WS", "X", "Y", "Z"
 	};
 	public static final int EOF=-1;
 	public static final int A=4;
-	public static final int ALL=5;
-	public static final int AND=6;
-	public static final int ASSIGN=7;
-	public static final int ASSIGN_DIV=8;
-	public static final int ASSIGN_MIN=9;
-	public static final int ASSIGN_PLU=10;
-	public static final int ASSIGN_POW=11;
-	public static final int ASSIGN_TIM=12;
-	public static final int AT_BOOL=13;
-	public static final int AT_DATE=14;
-	public static final int AT_FLOAT=15;
-	public static final int AT_GENERIC=16;
-	public static final int AT_HEX=17;
-	public static final int AT_INDICATOR=18;
-	public static final int AT_INT=19;
-	public static final int AT_NAME=20;
-	public static final int AT_SPECIAL=21;
-	public static final int AT_STRING=22;
-	public static final int AXT=23;
-	public static final int B=24;
-	public static final int BIFUN_MARK=25;
-	public static final int BI_FUN=26;
-	public static final int BLOCK=27;
-	public static final int BLOCK_OPEN=28;
-	public static final int C=29;
-	public static final int CHAR_SPECIAL=30;
-	public static final int CLOSE_BRACE=31;
-	public static final int CLOSE_SQUARE=32;
-	public static final int D=33;
-	public static final int DIGIT=34;
-	public static final int DIGIT_SPECIAL=35;
-	public static final int DIV=36;
-	public static final int E=37;
-	public static final int EQ=38;
-	public static final int EscapeSequence=39;
-	public static final int F=40;
-	public static final int FUN=41;
-	public static final int FUN_START=42;
-	public static final int G=43;
-	public static final int GENERIC=44;
-	public static final int GT=45;
-	public static final int GTEQ=46;
-	public static final int H=47;
-	public static final int HexDigit=48;
-	public static final int I=49;
-	public static final int INDICATOR=50;
-	public static final int J=51;
-	public static final int K=52;
-	public static final int L=53;
-	public static final int LETTER=54;
-	public static final int LT=55;
-	public static final int LTEQ=56;
-	public static final int M=57;
-	public static final int MINUS=58;
-	public static final int MOD=59;
-	public static final int MULT=60;
-	public static final int N=61;
-	public static final int NE=62;
-	public static final int NOT=63;
-	public static final int O=64;
-	public static final int OPEN_BRACE=65;
-	public static final int OPEN_SQUARE=66;
-	public static final int OR=67;
-	public static final int P=68;
-	public static final int PLUS=69;
-	public static final int POW=70;
+	public static final int AE_DIV=5;
+	public static final int AE_GENERIC=6;
+	public static final int AE_MINUS=7;
+	public static final int AE_MOD=8;
+	public static final int AE_MULT=9;
+	public static final int AE_PLUS=10;
+	public static final int AE_POW=11;
+	public static final int AE_SMINUS=12;
+	public static final int AE_SPLUS=13;
+	public static final int AE_TIM=14;
+	public static final int ALL=15;
+	public static final int AS_ASS=16;
+	public static final int AS_DIV=17;
+	public static final int AS_GENERIC=18;
+	public static final int AS_MIN=19;
+	public static final int AS_PLUS=20;
+	public static final int AS_POW=21;
+	public static final int AS_TIM=22;
+	public static final int AT_BOOL=23;
+	public static final int AT_DATE=24;
+	public static final int AT_FLOAT=25;
+	public static final int AT_GENERIC=26;
+	public static final int AT_HEX=27;
+	public static final int AT_INDICATOR=28;
+	public static final int AT_INT=29;
+	public static final int AT_NAME=30;
+	public static final int AT_SPECIAL=31;
+	public static final int AT_STRING=32;
+	public static final int AXT=33;
+	public static final int B=34;
+	public static final int BE=35;
+	public static final int BIFUN_MARK=36;
+	public static final int BI_FUN=37;
+	public static final int BLOCK_OPEN=38;
+	public static final int C=39;
+	public static final int CHAR_SPECIAL=40;
+	public static final int CLOSE_BRACE=41;
+	public static final int CLOSE_SQUARE=42;
+	public static final int D=43;
+	public static final int DIGIT=44;
+	public static final int DIGIT_SPECIAL=45;
+	public static final int E=46;
+	public static final int EscapeSequence=47;
+	public static final int F=48;
+	public static final int FT=49;
+	public static final int FUN_START=50;
+	public static final int G=51;
+	public static final int GENERIC=52;
+	public static final int H=53;
+	public static final int HexDigit=54;
+	public static final int I=55;
+	public static final int INDICATOR=56;
+	public static final int J=57;
+	public static final int K=58;
+	public static final int L=59;
+	public static final int LETTER=60;
+	public static final int LE_AND=61;
+	public static final int LE_GENERIC=62;
+	public static final int LE_NOT=63;
+	public static final int LE_OR=64;
+	public static final int M=65;
+	public static final int N=66;
+	public static final int O=67;
+	public static final int OPEN_BRACE=68;
+	public static final int OPEN_SQUARE=69;
+	public static final int P=70;
 	public static final int Q=71;
 	public static final int QT=72;
 	public static final int R=73;
-	public static final int S=74;
-	public static final int SMINUS=75;
-	public static final int SPECIAL=76;
-	public static final int SPECIAL_START=77;
-	public static final int SPLUS=78;
-	public static final int T=79;
-	public static final int TERM=80;
-	public static final int TIMES=81;
-	public static final int U=82;
-	public static final int UnicodeEscape=83;
-	public static final int V=84;
-	public static final int W=85;
-	public static final int WS=86;
-	public static final int X=87;
-	public static final int Y=88;
-	public static final int Z=89;
+	public static final int RE_EQ=74;
+	public static final int RE_GENERIC=75;
+	public static final int RE_GT=76;
+	public static final int RE_GTEQ=77;
+	public static final int RE_LT=78;
+	public static final int RE_LTEQ=79;
+	public static final int RE_NE=80;
+	public static final int S=81;
+	public static final int SPECIAL=82;
+	public static final int SPECIAL_START=83;
+	public static final int T=84;
+	public static final int TERM=85;
+	public static final int U=86;
+	public static final int UnicodeEscape=87;
+	public static final int V=88;
+	public static final int W=89;
+	public static final int WS=90;
+	public static final int X=91;
+	public static final int Y=92;
+	public static final int Z=93;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -194,7 +199,7 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "expression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:123:1: expression : logicalExpression ( ( ASSIGN | ASSIGN_DIV | ASSIGN_MIN | ASSIGN_PLU | ASSIGN_POW | ASSIGN_TIM ) ^ logicalExpression )* EOF !;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:123:1: expression : logicalExpression ( ( AS_ASS | AS_DIV | AS_MIN | AS_PLUS | AS_POW | AS_TIM | AS_GENERIC ) ^ logicalExpression )* EOF !;
 	public final NeutralExprParser.expression_return expression() throws RecognitionException {
 		NeutralExprParser.expression_return retval = new NeutralExprParser.expression_return();
 		retval.start = input.LT(1);
@@ -210,8 +215,8 @@ public class NeutralExprParser extends Parser {
 		CommonTree EOF4_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:2: ( logicalExpression ( ( ASSIGN | ASSIGN_DIV | ASSIGN_MIN | ASSIGN_PLU | ASSIGN_POW | ASSIGN_TIM ) ^ logicalExpression )* EOF !)
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:4: logicalExpression ( ( ASSIGN | ASSIGN_DIV | ASSIGN_MIN | ASSIGN_PLU | ASSIGN_POW | ASSIGN_TIM ) ^ logicalExpression )* EOF !
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:2: ( logicalExpression ( ( AS_ASS | AS_DIV | AS_MIN | AS_PLUS | AS_POW | AS_TIM | AS_GENERIC ) ^ logicalExpression )* EOF !)
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:4: logicalExpression ( ( AS_ASS | AS_DIV | AS_MIN | AS_PLUS | AS_POW | AS_TIM | AS_GENERIC ) ^ logicalExpression )* EOF !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
@@ -222,22 +227,22 @@ public class NeutralExprParser extends Parser {
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression1.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:22: ( ( ASSIGN | ASSIGN_DIV | ASSIGN_MIN | ASSIGN_PLU | ASSIGN_POW | ASSIGN_TIM ) ^ logicalExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:22: ( ( AS_ASS | AS_DIV | AS_MIN | AS_PLUS | AS_POW | AS_TIM | AS_GENERIC ) ^ logicalExpression )*
 			loop1:
 			while (true) {
 				int alt1=2;
 				int LA1_0 = input.LA(1);
-				if ( ((LA1_0 >= ASSIGN && LA1_0 <= ASSIGN_TIM)) ) {
+				if ( ((LA1_0 >= AS_ASS && LA1_0 <= AS_TIM)) ) {
 					alt1=1;
 				}
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:23: ( ASSIGN | ASSIGN_DIV | ASSIGN_MIN | ASSIGN_PLU | ASSIGN_POW | ASSIGN_TIM ) ^ logicalExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:124:23: ( AS_ASS | AS_DIV | AS_MIN | AS_PLUS | AS_POW | AS_TIM | AS_GENERIC ) ^ logicalExpression
 					{
 					set2=input.LT(1);
 					set2=input.LT(1);
-					if ( (input.LA(1) >= ASSIGN && input.LA(1) <= ASSIGN_TIM) ) {
+					if ( (input.LA(1) >= AS_ASS && input.LA(1) <= AS_TIM) ) {
 						input.consume();
 						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set2), root_0);
 						state.errorRecovery=false;
@@ -248,7 +253,7 @@ public class NeutralExprParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_logicalExpression_in_expression120);
+					pushFollow(FOLLOW_logicalExpression_in_expression122);
 					logicalExpression3=logicalExpression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -262,7 +267,7 @@ public class NeutralExprParser extends Parser {
 				}
 			}
 
-			EOF4=(Token)match(input,EOF,FOLLOW_EOF_in_expression124); if (state.failed) return retval;
+			EOF4=(Token)match(input,EOF,FOLLOW_EOF_in_expression126); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -294,52 +299,52 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "logicalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:127:1: logicalExpression : booleanAndExpression ( OR ^ booleanAndExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:127:1: logicalExpression : booleanAndExpression ( LE_OR ^ booleanAndExpression )* ;
 	public final NeutralExprParser.logicalExpression_return logicalExpression() throws RecognitionException {
 		NeutralExprParser.logicalExpression_return retval = new NeutralExprParser.logicalExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token OR6=null;
+		Token LE_OR6=null;
 		ParserRuleReturnScope booleanAndExpression5 =null;
 		ParserRuleReturnScope booleanAndExpression7 =null;
 
-		CommonTree OR6_tree=null;
+		CommonTree LE_OR6_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:2: ( booleanAndExpression ( OR ^ booleanAndExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:4: booleanAndExpression ( OR ^ booleanAndExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:2: ( booleanAndExpression ( LE_OR ^ booleanAndExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:4: booleanAndExpression ( LE_OR ^ booleanAndExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_booleanAndExpression_in_logicalExpression136);
+			pushFollow(FOLLOW_booleanAndExpression_in_logicalExpression138);
 			booleanAndExpression5=booleanAndExpression();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanAndExpression5.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:25: ( OR ^ booleanAndExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:25: ( LE_OR ^ booleanAndExpression )*
 			loop2:
 			while (true) {
 				int alt2=2;
 				int LA2_0 = input.LA(1);
-				if ( (LA2_0==OR) ) {
+				if ( (LA2_0==LE_OR) ) {
 					alt2=1;
 				}
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:26: OR ^ booleanAndExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:128:26: LE_OR ^ booleanAndExpression
 					{
-					OR6=(Token)match(input,OR,FOLLOW_OR_in_logicalExpression139); if (state.failed) return retval;
+					LE_OR6=(Token)match(input,LE_OR,FOLLOW_LE_OR_in_logicalExpression141); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					OR6_tree = (CommonTree)adaptor.create(OR6);
-					root_0 = (CommonTree)adaptor.becomeRoot(OR6_tree, root_0);
+					LE_OR6_tree = (CommonTree)adaptor.create(LE_OR6);
+					root_0 = (CommonTree)adaptor.becomeRoot(LE_OR6_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_booleanAndExpression_in_logicalExpression142);
+					pushFollow(FOLLOW_booleanAndExpression_in_logicalExpression144);
 					booleanAndExpression7=booleanAndExpression();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -384,56 +389,56 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "booleanAndExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:131:1: booleanAndExpression : equalityExpression ( AND ^ equalityExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:131:1: booleanAndExpression : booleanGenExpression ( LE_AND ^ booleanGenExpression )* ;
 	public final NeutralExprParser.booleanAndExpression_return booleanAndExpression() throws RecognitionException {
 		NeutralExprParser.booleanAndExpression_return retval = new NeutralExprParser.booleanAndExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token AND9=null;
-		ParserRuleReturnScope equalityExpression8 =null;
-		ParserRuleReturnScope equalityExpression10 =null;
+		Token LE_AND9=null;
+		ParserRuleReturnScope booleanGenExpression8 =null;
+		ParserRuleReturnScope booleanGenExpression10 =null;
 
-		CommonTree AND9_tree=null;
+		CommonTree LE_AND9_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:2: ( equalityExpression ( AND ^ equalityExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:4: equalityExpression ( AND ^ equalityExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:2: ( booleanGenExpression ( LE_AND ^ booleanGenExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:4: booleanGenExpression ( LE_AND ^ booleanGenExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_equalityExpression_in_booleanAndExpression156);
-			equalityExpression8=equalityExpression();
+			pushFollow(FOLLOW_booleanGenExpression_in_booleanAndExpression158);
+			booleanGenExpression8=booleanGenExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression8.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanGenExpression8.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:23: ( AND ^ equalityExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:25: ( LE_AND ^ booleanGenExpression )*
 			loop3:
 			while (true) {
 				int alt3=2;
 				int LA3_0 = input.LA(1);
-				if ( (LA3_0==AND) ) {
+				if ( (LA3_0==LE_AND) ) {
 					alt3=1;
 				}
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:24: AND ^ equalityExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:132:26: LE_AND ^ booleanGenExpression
 					{
-					AND9=(Token)match(input,AND,FOLLOW_AND_in_booleanAndExpression159); if (state.failed) return retval;
+					LE_AND9=(Token)match(input,LE_AND,FOLLOW_LE_AND_in_booleanAndExpression161); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AND9_tree = (CommonTree)adaptor.create(AND9);
-					root_0 = (CommonTree)adaptor.becomeRoot(AND9_tree, root_0);
+					LE_AND9_tree = (CommonTree)adaptor.create(LE_AND9);
+					root_0 = (CommonTree)adaptor.becomeRoot(LE_AND9_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_equalityExpression_in_booleanAndExpression162);
-					equalityExpression10=equalityExpression();
+					pushFollow(FOLLOW_booleanGenExpression_in_booleanAndExpression164);
+					booleanGenExpression10=booleanGenExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression10.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, booleanGenExpression10.getTree());
 
 					}
 					break;
@@ -466,6 +471,96 @@ public class NeutralExprParser extends Parser {
 	// $ANTLR end "booleanAndExpression"
 
 
+	public static class booleanGenExpression_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		@Override
+		public CommonTree getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "booleanGenExpression"
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:135:1: booleanGenExpression : equalityExpression ( LE_GENERIC ^ equalityExpression )* ;
+	public final NeutralExprParser.booleanGenExpression_return booleanGenExpression() throws RecognitionException {
+		NeutralExprParser.booleanGenExpression_return retval = new NeutralExprParser.booleanGenExpression_return();
+		retval.start = input.LT(1);
+
+		CommonTree root_0 = null;
+
+		Token LE_GENERIC12=null;
+		ParserRuleReturnScope equalityExpression11 =null;
+		ParserRuleReturnScope equalityExpression13 =null;
+
+		CommonTree LE_GENERIC12_tree=null;
+
+		try {
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:136:2: ( equalityExpression ( LE_GENERIC ^ equalityExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:137:3: equalityExpression ( LE_GENERIC ^ equalityExpression )*
+			{
+			root_0 = (CommonTree)adaptor.nil();
+
+
+			pushFollow(FOLLOW_equalityExpression_in_booleanGenExpression180);
+			equalityExpression11=equalityExpression();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression11.getTree());
+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:137:22: ( LE_GENERIC ^ equalityExpression )*
+			loop4:
+			while (true) {
+				int alt4=2;
+				int LA4_0 = input.LA(1);
+				if ( (LA4_0==LE_GENERIC) ) {
+					alt4=1;
+				}
+
+				switch (alt4) {
+				case 1 :
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:137:23: LE_GENERIC ^ equalityExpression
+					{
+					LE_GENERIC12=(Token)match(input,LE_GENERIC,FOLLOW_LE_GENERIC_in_booleanGenExpression183); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					LE_GENERIC12_tree = (CommonTree)adaptor.create(LE_GENERIC12);
+					root_0 = (CommonTree)adaptor.becomeRoot(LE_GENERIC12_tree, root_0);
+					}
+
+					pushFollow(FOLLOW_equalityExpression_in_booleanGenExpression186);
+					equalityExpression13=equalityExpression();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, equalityExpression13.getTree());
+
+					}
+					break;
+
+				default :
+					break loop4;
+				}
+			}
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+
+		    catch (RecognitionException e) {
+		        RuntimeException re = createException(e);
+		        throw re;
+		    }
+
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "booleanGenExpression"
+
+
 	public static class equalityExpression_return extends ParserRuleReturnScope {
 		CommonTree tree;
 		@Override
@@ -474,50 +569,50 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "equalityExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:135:1: equalityExpression : relationalExpression ( ( EQ | NE ) ^ relationalExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:140:1: equalityExpression : relationalExpression ( ( RE_EQ | RE_NE ) ^ relationalExpression )* ;
 	public final NeutralExprParser.equalityExpression_return equalityExpression() throws RecognitionException {
 		NeutralExprParser.equalityExpression_return retval = new NeutralExprParser.equalityExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set12=null;
-		ParserRuleReturnScope relationalExpression11 =null;
-		ParserRuleReturnScope relationalExpression13 =null;
+		Token set15=null;
+		ParserRuleReturnScope relationalExpression14 =null;
+		ParserRuleReturnScope relationalExpression16 =null;
 
-		CommonTree set12_tree=null;
+		CommonTree set15_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:136:2: ( relationalExpression ( ( EQ | NE ) ^ relationalExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:136:4: relationalExpression ( ( EQ | NE ) ^ relationalExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:141:2: ( relationalExpression ( ( RE_EQ | RE_NE ) ^ relationalExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:141:4: relationalExpression ( ( RE_EQ | RE_NE ) ^ relationalExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_relationalExpression_in_equalityExpression175);
-			relationalExpression11=relationalExpression();
+			pushFollow(FOLLOW_relationalExpression_in_equalityExpression200);
+			relationalExpression14=relationalExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression11.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression14.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:136:25: ( ( EQ | NE ) ^ relationalExpression )*
-			loop4:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:141:25: ( ( RE_EQ | RE_NE ) ^ relationalExpression )*
+			loop5:
 			while (true) {
-				int alt4=2;
-				int LA4_0 = input.LA(1);
-				if ( (LA4_0==EQ||LA4_0==NE) ) {
-					alt4=1;
+				int alt5=2;
+				int LA5_0 = input.LA(1);
+				if ( (LA5_0==RE_EQ||LA5_0==RE_NE) ) {
+					alt5=1;
 				}
 
-				switch (alt4) {
+				switch (alt5) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:136:26: ( EQ | NE ) ^ relationalExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:141:26: ( RE_EQ | RE_NE ) ^ relationalExpression
 					{
-					set12=input.LT(1);
-					set12=input.LT(1);
-					if ( input.LA(1)==EQ||input.LA(1)==NE ) {
+					set15=input.LT(1);
+					set15=input.LT(1);
+					if ( input.LA(1)==RE_EQ||input.LA(1)==RE_NE ) {
 						input.consume();
-						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set12), root_0);
+						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set15), root_0);
 						state.errorRecovery=false;
 						state.failed=false;
 					}
@@ -526,17 +621,17 @@ public class NeutralExprParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_relationalExpression_in_equalityExpression185);
-					relationalExpression13=relationalExpression();
+					pushFollow(FOLLOW_relationalExpression_in_equalityExpression210);
+					relationalExpression16=relationalExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression13.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, relationalExpression16.getTree());
 
 					}
 					break;
 
 				default :
-					break loop4;
+					break loop5;
 				}
 			}
 
@@ -571,50 +666,50 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "relationalExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:139:1: relationalExpression : additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:144:1: relationalExpression : additiveExpression ( ( RE_LT | RE_LTEQ | RE_GT | RE_GTEQ | RE_GENERIC ) ^ additiveExpression )* ;
 	public final NeutralExprParser.relationalExpression_return relationalExpression() throws RecognitionException {
 		NeutralExprParser.relationalExpression_return retval = new NeutralExprParser.relationalExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set15=null;
-		ParserRuleReturnScope additiveExpression14 =null;
-		ParserRuleReturnScope additiveExpression16 =null;
+		Token set18=null;
+		ParserRuleReturnScope additiveExpression17 =null;
+		ParserRuleReturnScope additiveExpression19 =null;
 
-		CommonTree set15_tree=null;
+		CommonTree set18_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:140:2: ( additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:140:4: additiveExpression ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:2: ( additiveExpression ( ( RE_LT | RE_LTEQ | RE_GT | RE_GTEQ | RE_GENERIC ) ^ additiveExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:4: additiveExpression ( ( RE_LT | RE_LTEQ | RE_GT | RE_GTEQ | RE_GENERIC ) ^ additiveExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_additiveExpression_in_relationalExpression198);
-			additiveExpression14=additiveExpression();
+			pushFollow(FOLLOW_additiveExpression_in_relationalExpression223);
+			additiveExpression17=additiveExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression14.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression17.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:140:23: ( ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression )*
-			loop5:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:23: ( ( RE_LT | RE_LTEQ | RE_GT | RE_GTEQ | RE_GENERIC ) ^ additiveExpression )*
+			loop6:
 			while (true) {
-				int alt5=2;
-				int LA5_0 = input.LA(1);
-				if ( ((LA5_0 >= GT && LA5_0 <= GTEQ)||(LA5_0 >= LT && LA5_0 <= LTEQ)) ) {
-					alt5=1;
+				int alt6=2;
+				int LA6_0 = input.LA(1);
+				if ( ((LA6_0 >= RE_GENERIC && LA6_0 <= RE_LTEQ)) ) {
+					alt6=1;
 				}
 
-				switch (alt5) {
+				switch (alt6) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:140:25: ( LT | LTEQ | GT | GTEQ ) ^ additiveExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:25: ( RE_LT | RE_LTEQ | RE_GT | RE_GTEQ | RE_GENERIC ) ^ additiveExpression
 					{
-					set15=input.LT(1);
-					set15=input.LT(1);
-					if ( (input.LA(1) >= GT && input.LA(1) <= GTEQ)||(input.LA(1) >= LT && input.LA(1) <= LTEQ) ) {
+					set18=input.LT(1);
+					set18=input.LT(1);
+					if ( (input.LA(1) >= RE_GENERIC && input.LA(1) <= RE_LTEQ) ) {
 						input.consume();
-						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set15), root_0);
+						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set18), root_0);
 						state.errorRecovery=false;
 						state.failed=false;
 					}
@@ -623,17 +718,17 @@ public class NeutralExprParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_additiveExpression_in_relationalExpression213);
-					additiveExpression16=additiveExpression();
+					pushFollow(FOLLOW_additiveExpression_in_relationalExpression240);
+					additiveExpression19=additiveExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression16.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, additiveExpression19.getTree());
 
 					}
 					break;
 
 				default :
-					break loop5;
+					break loop6;
 				}
 			}
 
@@ -668,50 +763,50 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "additiveExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:144:1: additiveExpression : multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:149:1: additiveExpression : multiplicativeExpression ( ( AE_PLUS | AE_MINUS ) ^ multiplicativeExpression )* ;
 	public final NeutralExprParser.additiveExpression_return additiveExpression() throws RecognitionException {
 		NeutralExprParser.additiveExpression_return retval = new NeutralExprParser.additiveExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set18=null;
-		ParserRuleReturnScope multiplicativeExpression17 =null;
-		ParserRuleReturnScope multiplicativeExpression19 =null;
+		Token set21=null;
+		ParserRuleReturnScope multiplicativeExpression20 =null;
+		ParserRuleReturnScope multiplicativeExpression22 =null;
 
-		CommonTree set18_tree=null;
+		CommonTree set21_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:2: ( multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:4: multiplicativeExpression ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:2: ( multiplicativeExpression ( ( AE_PLUS | AE_MINUS ) ^ multiplicativeExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:4: multiplicativeExpression ( ( AE_PLUS | AE_MINUS ) ^ multiplicativeExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression228);
-			multiplicativeExpression17=multiplicativeExpression();
+			pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression255);
+			multiplicativeExpression20=multiplicativeExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression17.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression20.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:29: ( ( PLUS | MINUS ) ^ multiplicativeExpression )*
-			loop6:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:29: ( ( AE_PLUS | AE_MINUS ) ^ multiplicativeExpression )*
+			loop7:
 			while (true) {
-				int alt6=2;
-				int LA6_0 = input.LA(1);
-				if ( (LA6_0==MINUS||LA6_0==PLUS) ) {
-					alt6=1;
+				int alt7=2;
+				int LA7_0 = input.LA(1);
+				if ( (LA7_0==AE_MINUS||LA7_0==AE_PLUS) ) {
+					alt7=1;
 				}
 
-				switch (alt6) {
+				switch (alt7) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:145:31: ( PLUS | MINUS ) ^ multiplicativeExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:31: ( AE_PLUS | AE_MINUS ) ^ multiplicativeExpression
 					{
-					set18=input.LT(1);
-					set18=input.LT(1);
-					if ( input.LA(1)==MINUS||input.LA(1)==PLUS ) {
+					set21=input.LT(1);
+					set21=input.LT(1);
+					if ( input.LA(1)==AE_MINUS||input.LA(1)==AE_PLUS ) {
 						input.consume();
-						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set18), root_0);
+						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set21), root_0);
 						state.errorRecovery=false;
 						state.failed=false;
 					}
@@ -720,17 +815,17 @@ public class NeutralExprParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression239);
-					multiplicativeExpression19=multiplicativeExpression();
+					pushFollow(FOLLOW_multiplicativeExpression_in_additiveExpression266);
+					multiplicativeExpression22=multiplicativeExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression19.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, multiplicativeExpression22.getTree());
 
 					}
 					break;
 
 				default :
-					break loop6;
+					break loop7;
 				}
 			}
 
@@ -765,50 +860,50 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "multiplicativeExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:148:1: multiplicativeExpression : unaryExpression ( ( MULT | DIV | MOD | POW ) ^ unaryExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:153:1: multiplicativeExpression : unaryExpression ( ( AE_MULT | AE_DIV | AE_MOD | AE_POW | AE_GENERIC ) ^ unaryExpression )* ;
 	public final NeutralExprParser.multiplicativeExpression_return multiplicativeExpression() throws RecognitionException {
 		NeutralExprParser.multiplicativeExpression_return retval = new NeutralExprParser.multiplicativeExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set21=null;
-		ParserRuleReturnScope unaryExpression20 =null;
-		ParserRuleReturnScope unaryExpression22 =null;
+		Token set24=null;
+		ParserRuleReturnScope unaryExpression23 =null;
+		ParserRuleReturnScope unaryExpression25 =null;
 
-		CommonTree set21_tree=null;
+		CommonTree set24_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:149:2: ( unaryExpression ( ( MULT | DIV | MOD | POW ) ^ unaryExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:3: unaryExpression ( ( MULT | DIV | MOD | POW ) ^ unaryExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:154:2: ( unaryExpression ( ( AE_MULT | AE_DIV | AE_MOD | AE_POW | AE_GENERIC ) ^ unaryExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:155:3: unaryExpression ( ( AE_MULT | AE_DIV | AE_MOD | AE_POW | AE_GENERIC ) ^ unaryExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression255);
-			unaryExpression20=unaryExpression();
+			pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression282);
+			unaryExpression23=unaryExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression20.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression23.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:19: ( ( MULT | DIV | MOD | POW ) ^ unaryExpression )*
-			loop7:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:155:19: ( ( AE_MULT | AE_DIV | AE_MOD | AE_POW | AE_GENERIC ) ^ unaryExpression )*
+			loop8:
 			while (true) {
-				int alt7=2;
-				int LA7_0 = input.LA(1);
-				if ( (LA7_0==DIV||(LA7_0 >= MOD && LA7_0 <= MULT)||LA7_0==POW) ) {
-					alt7=1;
+				int alt8=2;
+				int LA8_0 = input.LA(1);
+				if ( ((LA8_0 >= AE_DIV && LA8_0 <= AE_GENERIC)||(LA8_0 >= AE_MOD && LA8_0 <= AE_MULT)||LA8_0==AE_POW) ) {
+					alt8=1;
 				}
 
-				switch (alt7) {
+				switch (alt8) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:150:21: ( MULT | DIV | MOD | POW ) ^ unaryExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:155:21: ( AE_MULT | AE_DIV | AE_MOD | AE_POW | AE_GENERIC ) ^ unaryExpression
 					{
-					set21=input.LT(1);
-					set21=input.LT(1);
-					if ( input.LA(1)==DIV||(input.LA(1) >= MOD && input.LA(1) <= MULT)||input.LA(1)==POW ) {
+					set24=input.LT(1);
+					set24=input.LT(1);
+					if ( (input.LA(1) >= AE_DIV && input.LA(1) <= AE_GENERIC)||(input.LA(1) >= AE_MOD && input.LA(1) <= AE_MULT)||input.LA(1)==AE_POW ) {
 						input.consume();
-						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set21), root_0);
+						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(set24), root_0);
 						state.errorRecovery=false;
 						state.failed=false;
 					}
@@ -817,17 +912,17 @@ public class NeutralExprParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression270);
-					unaryExpression22=unaryExpression();
+					pushFollow(FOLLOW_unaryExpression_in_multiplicativeExpression299);
+					unaryExpression25=unaryExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression22.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryExpression25.getTree());
 
 					}
 					break;
 
 				default :
-					break loop7;
+					break loop8;
 				}
 			}
 
@@ -862,28 +957,28 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "unaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:153:1: unaryExpression : ( primaryExpression | NOT ^ primaryExpression | SMINUS ^ primaryExpression | SPLUS ^ primaryExpression );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:158:1: unaryExpression : ( primaryExpression | LE_NOT primaryExpression | AE_SMINUS ^ primaryExpression | AE_SPLUS ^ primaryExpression );
 	public final NeutralExprParser.unaryExpression_return unaryExpression() throws RecognitionException {
 		NeutralExprParser.unaryExpression_return retval = new NeutralExprParser.unaryExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token NOT24=null;
-		Token SMINUS26=null;
-		Token SPLUS28=null;
-		ParserRuleReturnScope primaryExpression23 =null;
-		ParserRuleReturnScope primaryExpression25 =null;
-		ParserRuleReturnScope primaryExpression27 =null;
-		ParserRuleReturnScope primaryExpression29 =null;
+		Token LE_NOT27=null;
+		Token AE_SMINUS29=null;
+		Token AE_SPLUS31=null;
+		ParserRuleReturnScope primaryExpression26 =null;
+		ParserRuleReturnScope primaryExpression28 =null;
+		ParserRuleReturnScope primaryExpression30 =null;
+		ParserRuleReturnScope primaryExpression32 =null;
 
-		CommonTree NOT24_tree=null;
-		CommonTree SMINUS26_tree=null;
-		CommonTree SPLUS28_tree=null;
+		CommonTree LE_NOT27_tree=null;
+		CommonTree AE_SMINUS29_tree=null;
+		CommonTree AE_SPLUS31_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:154:2: ( primaryExpression | NOT ^ primaryExpression | SMINUS ^ primaryExpression | SPLUS ^ primaryExpression )
-			int alt8=4;
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:159:2: ( primaryExpression | LE_NOT primaryExpression | AE_SMINUS ^ primaryExpression | AE_SPLUS ^ primaryExpression )
+			int alt9=4;
 			switch ( input.LA(1) ) {
 			case AT_BOOL:
 			case AT_DATE:
@@ -899,102 +994,102 @@ public class NeutralExprParser extends Parser {
 			case QT:
 			case SPECIAL_START:
 				{
-				alt8=1;
+				alt9=1;
 				}
 				break;
-			case NOT:
+			case LE_NOT:
 				{
-				alt8=2;
+				alt9=2;
 				}
 				break;
-			case SMINUS:
+			case AE_SMINUS:
 				{
-				alt8=3;
+				alt9=3;
 				}
 				break;
-			case SPLUS:
+			case AE_SPLUS:
 				{
-				alt8=4;
+				alt9=4;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 8, 0, input);
+					new NoViableAltException("", 9, 0, input);
 				throw nvae;
 			}
-			switch (alt8) {
+			switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:155:4: primaryExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:160:4: primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primaryExpression_in_unaryExpression286);
-					primaryExpression23=primaryExpression();
+					pushFollow(FOLLOW_primaryExpression_in_unaryExpression315);
+					primaryExpression26=primaryExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression23.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression26.getTree());
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:156:8: NOT ^ primaryExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:161:4: LE_NOT primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					NOT24=(Token)match(input,NOT,FOLLOW_NOT_in_unaryExpression295); if (state.failed) return retval;
+					LE_NOT27=(Token)match(input,LE_NOT,FOLLOW_LE_NOT_in_unaryExpression320); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					NOT24_tree = (CommonTree)adaptor.create(NOT24);
-					root_0 = (CommonTree)adaptor.becomeRoot(NOT24_tree, root_0);
+					LE_NOT27_tree = (CommonTree)adaptor.create(LE_NOT27);
+					adaptor.addChild(root_0, LE_NOT27_tree);
 					}
 
-					pushFollow(FOLLOW_primaryExpression_in_unaryExpression298);
-					primaryExpression25=primaryExpression();
+					pushFollow(FOLLOW_primaryExpression_in_unaryExpression322);
+					primaryExpression28=primaryExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression25.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression28.getTree());
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:157:8: SMINUS ^ primaryExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:162:8: AE_SMINUS ^ primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					SMINUS26=(Token)match(input,SMINUS,FOLLOW_SMINUS_in_unaryExpression307); if (state.failed) return retval;
+					AE_SMINUS29=(Token)match(input,AE_SMINUS,FOLLOW_AE_SMINUS_in_unaryExpression333); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					SMINUS26_tree = (CommonTree)adaptor.create(SMINUS26);
-					root_0 = (CommonTree)adaptor.becomeRoot(SMINUS26_tree, root_0);
+					AE_SMINUS29_tree = (CommonTree)adaptor.create(AE_SMINUS29);
+					root_0 = (CommonTree)adaptor.becomeRoot(AE_SMINUS29_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_primaryExpression_in_unaryExpression310);
-					primaryExpression27=primaryExpression();
+					pushFollow(FOLLOW_primaryExpression_in_unaryExpression336);
+					primaryExpression30=primaryExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression27.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression30.getTree());
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:158:8: SPLUS ^ primaryExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:163:8: AE_SPLUS ^ primaryExpression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					SPLUS28=(Token)match(input,SPLUS,FOLLOW_SPLUS_in_unaryExpression320); if (state.failed) return retval;
+					AE_SPLUS31=(Token)match(input,AE_SPLUS,FOLLOW_AE_SPLUS_in_unaryExpression346); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					SPLUS28_tree = (CommonTree)adaptor.create(SPLUS28);
-					root_0 = (CommonTree)adaptor.becomeRoot(SPLUS28_tree, root_0);
+					AE_SPLUS31_tree = (CommonTree)adaptor.create(AE_SPLUS31);
+					root_0 = (CommonTree)adaptor.becomeRoot(AE_SPLUS31_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_primaryExpression_in_unaryExpression323);
-					primaryExpression29=primaryExpression();
+					pushFollow(FOLLOW_primaryExpression_in_unaryExpression349);
+					primaryExpression32=primaryExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression29.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primaryExpression32.getTree());
 
 					}
 					break;
@@ -1029,61 +1124,61 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "primaryExpression"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:162:1: primaryExpression : ( block | atomic );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:167:1: primaryExpression : ( block | atomic );
 	public final NeutralExprParser.primaryExpression_return primaryExpression() throws RecognitionException {
 		NeutralExprParser.primaryExpression_return retval = new NeutralExprParser.primaryExpression_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope block30 =null;
-		ParserRuleReturnScope atomic31 =null;
+		ParserRuleReturnScope block33 =null;
+		ParserRuleReturnScope atomic34 =null;
 
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:163:2: ( block | atomic )
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0==BLOCK_OPEN) ) {
-				alt9=1;
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:168:2: ( block | atomic )
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0==BLOCK_OPEN) ) {
+				alt10=1;
 			}
-			else if ( ((LA9_0 >= AT_BOOL && LA9_0 <= AT_NAME)||LA9_0==AT_STRING||LA9_0==FUN_START||LA9_0==QT||LA9_0==SPECIAL_START) ) {
-				alt9=2;
+			else if ( ((LA10_0 >= AT_BOOL && LA10_0 <= AT_NAME)||LA10_0==AT_STRING||LA10_0==FUN_START||LA10_0==QT||LA10_0==SPECIAL_START) ) {
+				alt10=2;
 			}
 
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 9, 0, input);
+					new NoViableAltException("", 10, 0, input);
 				throw nvae;
 			}
 
-			switch (alt9) {
+			switch (alt10) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:163:4: block
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:168:4: block
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_block_in_primaryExpression347);
-					block30=block();
+					pushFollow(FOLLOW_block_in_primaryExpression373);
+					block33=block();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, block30.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, block33.getTree());
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:165:3: atomic
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:170:3: atomic
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_atomic_in_primaryExpression355);
-					atomic31=atomic();
+					pushFollow(FOLLOW_atomic_in_primaryExpression381);
+					atomic34=atomic();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, atomic31.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, atomic34.getTree());
 
 					}
 					break;
@@ -1118,63 +1213,63 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "block"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:168:1: block : BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE -> ^( BLOCK ( logicalExpression )+ ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:173:1: block : BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE -> ^( BE ( logicalExpression )+ ) ;
 	public final NeutralExprParser.block_return block() throws RecognitionException {
 		NeutralExprParser.block_return retval = new NeutralExprParser.block_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token BLOCK_OPEN32=null;
-		Token CLOSE_SQUARE34=null;
-		ParserRuleReturnScope logicalExpression33 =null;
+		Token BLOCK_OPEN35=null;
+		Token CLOSE_SQUARE37=null;
+		ParserRuleReturnScope logicalExpression36 =null;
 
-		CommonTree BLOCK_OPEN32_tree=null;
-		CommonTree CLOSE_SQUARE34_tree=null;
+		CommonTree BLOCK_OPEN35_tree=null;
+		CommonTree CLOSE_SQUARE37_tree=null;
 		RewriteRuleTokenStream stream_BLOCK_OPEN=new RewriteRuleTokenStream(adaptor,"token BLOCK_OPEN");
 		RewriteRuleTokenStream stream_CLOSE_SQUARE=new RewriteRuleTokenStream(adaptor,"token CLOSE_SQUARE");
 		RewriteRuleSubtreeStream stream_logicalExpression=new RewriteRuleSubtreeStream(adaptor,"rule logicalExpression");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:169:2: ( BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE -> ^( BLOCK ( logicalExpression )+ ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:169:4: BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:2: ( BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE -> ^( BE ( logicalExpression )+ ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:4: BLOCK_OPEN ( logicalExpression )+ CLOSE_SQUARE
 			{
-			BLOCK_OPEN32=(Token)match(input,BLOCK_OPEN,FOLLOW_BLOCK_OPEN_in_block369); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_BLOCK_OPEN.add(BLOCK_OPEN32);
+			BLOCK_OPEN35=(Token)match(input,BLOCK_OPEN,FOLLOW_BLOCK_OPEN_in_block395); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_BLOCK_OPEN.add(BLOCK_OPEN35);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:169:15: ( logicalExpression )+
-			int cnt10=0;
-			loop10:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:15: ( logicalExpression )+
+			int cnt11=0;
+			loop11:
 			while (true) {
-				int alt10=2;
-				int LA10_0 = input.LA(1);
-				if ( ((LA10_0 >= AT_BOOL && LA10_0 <= AT_NAME)||LA10_0==AT_STRING||LA10_0==BLOCK_OPEN||LA10_0==FUN_START||LA10_0==NOT||LA10_0==QT||LA10_0==SMINUS||(LA10_0 >= SPECIAL_START && LA10_0 <= SPLUS)) ) {
-					alt10=1;
+				int alt11=2;
+				int LA11_0 = input.LA(1);
+				if ( ((LA11_0 >= AE_SMINUS && LA11_0 <= AE_SPLUS)||(LA11_0 >= AT_BOOL && LA11_0 <= AT_NAME)||LA11_0==AT_STRING||LA11_0==BLOCK_OPEN||LA11_0==FUN_START||LA11_0==LE_NOT||LA11_0==QT||LA11_0==SPECIAL_START) ) {
+					alt11=1;
 				}
 
-				switch (alt10) {
+				switch (alt11) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:169:15: logicalExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:15: logicalExpression
 					{
-					pushFollow(FOLLOW_logicalExpression_in_block371);
-					logicalExpression33=logicalExpression();
+					pushFollow(FOLLOW_logicalExpression_in_block397);
+					logicalExpression36=logicalExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_logicalExpression.add(logicalExpression33.getTree());
+					if ( state.backtracking==0 ) stream_logicalExpression.add(logicalExpression36.getTree());
 					}
 					break;
 
 				default :
-					if ( cnt10 >= 1 ) break loop10;
+					if ( cnt11 >= 1 ) break loop11;
 					if (state.backtracking>0) {state.failed=true; return retval;}
-					EarlyExitException eee = new EarlyExitException(10, input);
+					EarlyExitException eee = new EarlyExitException(11, input);
 					throw eee;
 				}
-				cnt10++;
+				cnt11++;
 			}
 
-			CLOSE_SQUARE34=(Token)match(input,CLOSE_SQUARE,FOLLOW_CLOSE_SQUARE_in_block374); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_CLOSE_SQUARE.add(CLOSE_SQUARE34);
+			CLOSE_SQUARE37=(Token)match(input,CLOSE_SQUARE,FOLLOW_CLOSE_SQUARE_in_block400); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_SQUARE.add(CLOSE_SQUARE37);
 
 			// AST REWRITE
 			// elements: logicalExpression
@@ -1188,12 +1283,12 @@ public class NeutralExprParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 169:47: -> ^( BLOCK ( logicalExpression )+ )
+			// 174:47: -> ^( BE ( logicalExpression )+ )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:169:50: ^( BLOCK ( logicalExpression )+ )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:50: ^( BE ( logicalExpression )+ )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BLOCK, "BLOCK"), root_1);
+				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(BE, "BE"), root_1);
 				if ( !(stream_logicalExpression.hasNext()) ) {
 					throw new RewriteEarlyExitException();
 				}
@@ -1242,273 +1337,273 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "atomic"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:172:1: atomic : ( AT_BOOL | AT_DATE | AT_FLOAT | AT_HEX | AT_INDICATOR | AT_INT | AT_NAME | AT_STRING | AT_GENERIC | QT | special | function );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:177:1: atomic : ( AT_BOOL | AT_DATE | AT_FLOAT | AT_HEX | AT_INDICATOR | AT_INT | AT_NAME | AT_STRING | AT_GENERIC | QT | special | function );
 	public final NeutralExprParser.atomic_return atomic() throws RecognitionException {
 		NeutralExprParser.atomic_return retval = new NeutralExprParser.atomic_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token AT_BOOL35=null;
-		Token AT_DATE36=null;
-		Token AT_FLOAT37=null;
-		Token AT_HEX38=null;
-		Token AT_INDICATOR39=null;
-		Token AT_INT40=null;
-		Token AT_NAME41=null;
-		Token AT_STRING42=null;
-		Token AT_GENERIC43=null;
-		Token QT44=null;
-		ParserRuleReturnScope special45 =null;
-		ParserRuleReturnScope function46 =null;
+		Token AT_BOOL38=null;
+		Token AT_DATE39=null;
+		Token AT_FLOAT40=null;
+		Token AT_HEX41=null;
+		Token AT_INDICATOR42=null;
+		Token AT_INT43=null;
+		Token AT_NAME44=null;
+		Token AT_STRING45=null;
+		Token AT_GENERIC46=null;
+		Token QT47=null;
+		ParserRuleReturnScope special48 =null;
+		ParserRuleReturnScope function49 =null;
 
-		CommonTree AT_BOOL35_tree=null;
-		CommonTree AT_DATE36_tree=null;
-		CommonTree AT_FLOAT37_tree=null;
-		CommonTree AT_HEX38_tree=null;
-		CommonTree AT_INDICATOR39_tree=null;
-		CommonTree AT_INT40_tree=null;
-		CommonTree AT_NAME41_tree=null;
-		CommonTree AT_STRING42_tree=null;
-		CommonTree AT_GENERIC43_tree=null;
-		CommonTree QT44_tree=null;
+		CommonTree AT_BOOL38_tree=null;
+		CommonTree AT_DATE39_tree=null;
+		CommonTree AT_FLOAT40_tree=null;
+		CommonTree AT_HEX41_tree=null;
+		CommonTree AT_INDICATOR42_tree=null;
+		CommonTree AT_INT43_tree=null;
+		CommonTree AT_NAME44_tree=null;
+		CommonTree AT_STRING45_tree=null;
+		CommonTree AT_GENERIC46_tree=null;
+		CommonTree QT47_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:173:2: ( AT_BOOL | AT_DATE | AT_FLOAT | AT_HEX | AT_INDICATOR | AT_INT | AT_NAME | AT_STRING | AT_GENERIC | QT | special | function )
-			int alt11=12;
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:178:2: ( AT_BOOL | AT_DATE | AT_FLOAT | AT_HEX | AT_INDICATOR | AT_INT | AT_NAME | AT_STRING | AT_GENERIC | QT | special | function )
+			int alt12=12;
 			switch ( input.LA(1) ) {
 			case AT_BOOL:
 				{
-				alt11=1;
+				alt12=1;
 				}
 				break;
 			case AT_DATE:
 				{
-				alt11=2;
+				alt12=2;
 				}
 				break;
 			case AT_FLOAT:
 				{
-				alt11=3;
+				alt12=3;
 				}
 				break;
 			case AT_HEX:
 				{
-				alt11=4;
+				alt12=4;
 				}
 				break;
 			case AT_INDICATOR:
 				{
-				alt11=5;
+				alt12=5;
 				}
 				break;
 			case AT_INT:
 				{
-				alt11=6;
+				alt12=6;
 				}
 				break;
 			case AT_NAME:
 				{
-				alt11=7;
+				alt12=7;
 				}
 				break;
 			case AT_STRING:
 				{
-				alt11=8;
+				alt12=8;
 				}
 				break;
 			case AT_GENERIC:
 				{
-				alt11=9;
+				alt12=9;
 				}
 				break;
 			case QT:
 				{
-				alt11=10;
+				alt12=10;
 				}
 				break;
 			case SPECIAL_START:
 				{
-				alt11=11;
+				alt12=11;
 				}
 				break;
 			case FUN_START:
 				{
-				alt11=12;
+				alt12=12;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 11, 0, input);
+					new NoViableAltException("", 12, 0, input);
 				throw nvae;
 			}
-			switch (alt11) {
+			switch (alt12) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:174:3: AT_BOOL
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:179:3: AT_BOOL
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_BOOL35=(Token)match(input,AT_BOOL,FOLLOW_AT_BOOL_in_atomic397); if (state.failed) return retval;
+					AT_BOOL38=(Token)match(input,AT_BOOL,FOLLOW_AT_BOOL_in_atomic423); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_BOOL35_tree = (CommonTree)adaptor.create(AT_BOOL35);
-					adaptor.addChild(root_0, AT_BOOL35_tree);
+					AT_BOOL38_tree = (CommonTree)adaptor.create(AT_BOOL38);
+					adaptor.addChild(root_0, AT_BOOL38_tree);
 					}
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:175:4: AT_DATE
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:180:4: AT_DATE
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_DATE36=(Token)match(input,AT_DATE,FOLLOW_AT_DATE_in_atomic402); if (state.failed) return retval;
+					AT_DATE39=(Token)match(input,AT_DATE,FOLLOW_AT_DATE_in_atomic428); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_DATE36_tree = (CommonTree)adaptor.create(AT_DATE36);
-					adaptor.addChild(root_0, AT_DATE36_tree);
+					AT_DATE39_tree = (CommonTree)adaptor.create(AT_DATE39);
+					adaptor.addChild(root_0, AT_DATE39_tree);
 					}
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:176:5: AT_FLOAT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:181:5: AT_FLOAT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_FLOAT37=(Token)match(input,AT_FLOAT,FOLLOW_AT_FLOAT_in_atomic408); if (state.failed) return retval;
+					AT_FLOAT40=(Token)match(input,AT_FLOAT,FOLLOW_AT_FLOAT_in_atomic434); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_FLOAT37_tree = (CommonTree)adaptor.create(AT_FLOAT37);
-					adaptor.addChild(root_0, AT_FLOAT37_tree);
+					AT_FLOAT40_tree = (CommonTree)adaptor.create(AT_FLOAT40);
+					adaptor.addChild(root_0, AT_FLOAT40_tree);
 					}
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:177:4: AT_HEX
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:182:4: AT_HEX
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_HEX38=(Token)match(input,AT_HEX,FOLLOW_AT_HEX_in_atomic413); if (state.failed) return retval;
+					AT_HEX41=(Token)match(input,AT_HEX,FOLLOW_AT_HEX_in_atomic439); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_HEX38_tree = (CommonTree)adaptor.create(AT_HEX38);
-					adaptor.addChild(root_0, AT_HEX38_tree);
+					AT_HEX41_tree = (CommonTree)adaptor.create(AT_HEX41);
+					adaptor.addChild(root_0, AT_HEX41_tree);
 					}
 
 					}
 					break;
 				case 5 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:178:4: AT_INDICATOR
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:183:4: AT_INDICATOR
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_INDICATOR39=(Token)match(input,AT_INDICATOR,FOLLOW_AT_INDICATOR_in_atomic418); if (state.failed) return retval;
+					AT_INDICATOR42=(Token)match(input,AT_INDICATOR,FOLLOW_AT_INDICATOR_in_atomic444); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_INDICATOR39_tree = (CommonTree)adaptor.create(AT_INDICATOR39);
-					adaptor.addChild(root_0, AT_INDICATOR39_tree);
+					AT_INDICATOR42_tree = (CommonTree)adaptor.create(AT_INDICATOR42);
+					adaptor.addChild(root_0, AT_INDICATOR42_tree);
 					}
 
 					}
 					break;
 				case 6 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:179:4: AT_INT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:184:4: AT_INT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_INT40=(Token)match(input,AT_INT,FOLLOW_AT_INT_in_atomic423); if (state.failed) return retval;
+					AT_INT43=(Token)match(input,AT_INT,FOLLOW_AT_INT_in_atomic449); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_INT40_tree = (CommonTree)adaptor.create(AT_INT40);
-					adaptor.addChild(root_0, AT_INT40_tree);
+					AT_INT43_tree = (CommonTree)adaptor.create(AT_INT43);
+					adaptor.addChild(root_0, AT_INT43_tree);
 					}
 
 					}
 					break;
 				case 7 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:180:4: AT_NAME
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:185:4: AT_NAME
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_NAME41=(Token)match(input,AT_NAME,FOLLOW_AT_NAME_in_atomic428); if (state.failed) return retval;
+					AT_NAME44=(Token)match(input,AT_NAME,FOLLOW_AT_NAME_in_atomic454); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_NAME41_tree = (CommonTree)adaptor.create(AT_NAME41);
-					adaptor.addChild(root_0, AT_NAME41_tree);
+					AT_NAME44_tree = (CommonTree)adaptor.create(AT_NAME44);
+					adaptor.addChild(root_0, AT_NAME44_tree);
 					}
 
 					}
 					break;
 				case 8 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:181:4: AT_STRING
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:186:4: AT_STRING
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_STRING42=(Token)match(input,AT_STRING,FOLLOW_AT_STRING_in_atomic433); if (state.failed) return retval;
+					AT_STRING45=(Token)match(input,AT_STRING,FOLLOW_AT_STRING_in_atomic459); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_STRING42_tree = (CommonTree)adaptor.create(AT_STRING42);
-					adaptor.addChild(root_0, AT_STRING42_tree);
+					AT_STRING45_tree = (CommonTree)adaptor.create(AT_STRING45);
+					adaptor.addChild(root_0, AT_STRING45_tree);
 					}
 
 					}
 					break;
 				case 9 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:182:4: AT_GENERIC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:187:4: AT_GENERIC
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					AT_GENERIC43=(Token)match(input,AT_GENERIC,FOLLOW_AT_GENERIC_in_atomic438); if (state.failed) return retval;
+					AT_GENERIC46=(Token)match(input,AT_GENERIC,FOLLOW_AT_GENERIC_in_atomic464); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					AT_GENERIC43_tree = (CommonTree)adaptor.create(AT_GENERIC43);
-					adaptor.addChild(root_0, AT_GENERIC43_tree);
+					AT_GENERIC46_tree = (CommonTree)adaptor.create(AT_GENERIC46);
+					adaptor.addChild(root_0, AT_GENERIC46_tree);
 					}
 
 					}
 					break;
 				case 10 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:183:4: QT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:188:4: QT
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					QT44=(Token)match(input,QT,FOLLOW_QT_in_atomic443); if (state.failed) return retval;
+					QT47=(Token)match(input,QT,FOLLOW_QT_in_atomic469); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					QT44_tree = (CommonTree)adaptor.create(QT44);
-					adaptor.addChild(root_0, QT44_tree);
+					QT47_tree = (CommonTree)adaptor.create(QT47);
+					adaptor.addChild(root_0, QT47_tree);
 					}
 
 					}
 					break;
 				case 11 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:184:5: special
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:189:5: special
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_special_in_atomic449);
-					special45=special();
+					pushFollow(FOLLOW_special_in_atomic475);
+					special48=special();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, special45.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, special48.getTree());
 
 					}
 					break;
 				case 12 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:185:4: function
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:190:4: function
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_function_in_atomic454);
-					function46=function();
+					pushFollow(FOLLOW_function_in_atomic480);
+					function49=function();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, function46.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, function49.getTree());
 
 					}
 					break;
@@ -1543,7 +1638,7 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "special"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:188:1: special : SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE -> AT_SPECIAL[$s.text] ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:1: special : SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE -> AT_SPECIAL[$s.text] ;
 	public final NeutralExprParser.special_return special() throws RecognitionException {
 		NeutralExprParser.special_return retval = new NeutralExprParser.special_return();
 		retval.start = input.LT(1);
@@ -1551,33 +1646,33 @@ public class NeutralExprParser extends Parser {
 		CommonTree root_0 = null;
 
 		Token s=null;
-		Token SPECIAL_START47=null;
-		Token CLOSE_BRACE48=null;
-		Token CLOSE_BRACE49=null;
+		Token SPECIAL_START50=null;
+		Token CLOSE_BRACE51=null;
+		Token CLOSE_BRACE52=null;
 
 		CommonTree s_tree=null;
-		CommonTree SPECIAL_START47_tree=null;
-		CommonTree CLOSE_BRACE48_tree=null;
-		CommonTree CLOSE_BRACE49_tree=null;
+		CommonTree SPECIAL_START50_tree=null;
+		CommonTree CLOSE_BRACE51_tree=null;
+		CommonTree CLOSE_BRACE52_tree=null;
 		RewriteRuleTokenStream stream_SPECIAL_START=new RewriteRuleTokenStream(adaptor,"token SPECIAL_START");
 		RewriteRuleTokenStream stream_CLOSE_BRACE=new RewriteRuleTokenStream(adaptor,"token CLOSE_BRACE");
 		RewriteRuleTokenStream stream_SPECIAL=new RewriteRuleTokenStream(adaptor,"token SPECIAL");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:189:2: ( SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE -> AT_SPECIAL[$s.text] )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:189:4: SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:194:2: ( SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE -> AT_SPECIAL[$s.text] )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:194:4: SPECIAL_START s= SPECIAL CLOSE_BRACE CLOSE_BRACE
 			{
-			SPECIAL_START47=(Token)match(input,SPECIAL_START,FOLLOW_SPECIAL_START_in_special465); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_SPECIAL_START.add(SPECIAL_START47);
+			SPECIAL_START50=(Token)match(input,SPECIAL_START,FOLLOW_SPECIAL_START_in_special491); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_SPECIAL_START.add(SPECIAL_START50);
 
-			s=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_special469); if (state.failed) return retval; 
+			s=(Token)match(input,SPECIAL,FOLLOW_SPECIAL_in_special495); if (state.failed) return retval; 
 			if ( state.backtracking==0 ) stream_SPECIAL.add(s);
 
-			CLOSE_BRACE48=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_special471); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE48);
+			CLOSE_BRACE51=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_special497); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE51);
 
-			CLOSE_BRACE49=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_special473); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE49);
+			CLOSE_BRACE52=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_special499); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE52);
 
 			// AST REWRITE
 			// elements: 
@@ -1591,7 +1686,7 @@ public class NeutralExprParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 189:52: -> AT_SPECIAL[$s.text]
+			// 194:52: -> AT_SPECIAL[$s.text]
 			{
 				adaptor.addChild(root_0, (CommonTree)adaptor.create(AT_SPECIAL, (s!=null?s.getText():null)));
 			}
@@ -1631,24 +1726,24 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "function"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:192:1: function : FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE -> ^( FUN[$n.text] ( params )* ) ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:197:1: function : FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE -> ^( FT[$n.text] ( params )* ) ;
 	public final NeutralExprParser.function_return function() throws RecognitionException {
 		NeutralExprParser.function_return retval = new NeutralExprParser.function_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token FUN_START50=null;
-		Token CLOSE_BRACE51=null;
-		Token OPEN_SQUARE52=null;
-		Token CLOSE_SQUARE54=null;
+		Token FUN_START53=null;
+		Token CLOSE_BRACE54=null;
+		Token OPEN_SQUARE55=null;
+		Token CLOSE_SQUARE57=null;
 		ParserRuleReturnScope n =null;
-		ParserRuleReturnScope params53 =null;
+		ParserRuleReturnScope params56 =null;
 
-		CommonTree FUN_START50_tree=null;
-		CommonTree CLOSE_BRACE51_tree=null;
-		CommonTree OPEN_SQUARE52_tree=null;
-		CommonTree CLOSE_SQUARE54_tree=null;
+		CommonTree FUN_START53_tree=null;
+		CommonTree CLOSE_BRACE54_tree=null;
+		CommonTree OPEN_SQUARE55_tree=null;
+		CommonTree CLOSE_SQUARE57_tree=null;
 		RewriteRuleTokenStream stream_OPEN_SQUARE=new RewriteRuleTokenStream(adaptor,"token OPEN_SQUARE");
 		RewriteRuleTokenStream stream_CLOSE_BRACE=new RewriteRuleTokenStream(adaptor,"token CLOSE_BRACE");
 		RewriteRuleTokenStream stream_FUN_START=new RewriteRuleTokenStream(adaptor,"token FUN_START");
@@ -1657,51 +1752,51 @@ public class NeutralExprParser extends Parser {
 		RewriteRuleSubtreeStream stream_params=new RewriteRuleSubtreeStream(adaptor,"rule params");
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:2: ( FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE -> ^( FUN[$n.text] ( params )* ) )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:5: FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:2: ( FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE -> ^( FT[$n.text] ( params )* ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:5: FUN_START n= function_name CLOSE_BRACE OPEN_SQUARE ( params )* CLOSE_SQUARE
 			{
-			FUN_START50=(Token)match(input,FUN_START,FOLLOW_FUN_START_in_function491); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_FUN_START.add(FUN_START50);
+			FUN_START53=(Token)match(input,FUN_START,FOLLOW_FUN_START_in_function517); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_FUN_START.add(FUN_START53);
 
-			pushFollow(FOLLOW_function_name_in_function495);
+			pushFollow(FOLLOW_function_name_in_function521);
 			n=function_name();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_function_name.add(n.getTree());
-			CLOSE_BRACE51=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_function497); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE51);
+			CLOSE_BRACE54=(Token)match(input,CLOSE_BRACE,FOLLOW_CLOSE_BRACE_in_function523); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_BRACE.add(CLOSE_BRACE54);
 
-			OPEN_SQUARE52=(Token)match(input,OPEN_SQUARE,FOLLOW_OPEN_SQUARE_in_function499); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_OPEN_SQUARE.add(OPEN_SQUARE52);
+			OPEN_SQUARE55=(Token)match(input,OPEN_SQUARE,FOLLOW_OPEN_SQUARE_in_function525); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_OPEN_SQUARE.add(OPEN_SQUARE55);
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:55: ( params )*
-			loop12:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:55: ( params )*
+			loop13:
 			while (true) {
-				int alt12=2;
-				int LA12_0 = input.LA(1);
-				if ( ((LA12_0 >= AT_BOOL && LA12_0 <= AT_NAME)||LA12_0==AT_STRING||LA12_0==BLOCK_OPEN||LA12_0==FUN_START||LA12_0==NOT||LA12_0==QT||LA12_0==SMINUS||(LA12_0 >= SPECIAL_START && LA12_0 <= SPLUS)) ) {
-					alt12=1;
+				int alt13=2;
+				int LA13_0 = input.LA(1);
+				if ( ((LA13_0 >= AE_SMINUS && LA13_0 <= AE_SPLUS)||(LA13_0 >= AT_BOOL && LA13_0 <= AT_NAME)||LA13_0==AT_STRING||LA13_0==BLOCK_OPEN||LA13_0==FUN_START||LA13_0==LE_NOT||LA13_0==QT||LA13_0==SPECIAL_START) ) {
+					alt13=1;
 				}
 
-				switch (alt12) {
+				switch (alt13) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:55: params
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:55: params
 					{
-					pushFollow(FOLLOW_params_in_function501);
-					params53=params();
+					pushFollow(FOLLOW_params_in_function527);
+					params56=params();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_params.add(params53.getTree());
+					if ( state.backtracking==0 ) stream_params.add(params56.getTree());
 					}
 					break;
 
 				default :
-					break loop12;
+					break loop13;
 				}
 			}
 
-			CLOSE_SQUARE54=(Token)match(input,CLOSE_SQUARE,FOLLOW_CLOSE_SQUARE_in_function504); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_CLOSE_SQUARE.add(CLOSE_SQUARE54);
+			CLOSE_SQUARE57=(Token)match(input,CLOSE_SQUARE,FOLLOW_CLOSE_SQUARE_in_function530); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_CLOSE_SQUARE.add(CLOSE_SQUARE57);
 
 			// AST REWRITE
 			// elements: params
@@ -1715,13 +1810,13 @@ public class NeutralExprParser extends Parser {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 193:76: -> ^( FUN[$n.text] ( params )* )
+			// 198:76: -> ^( FT[$n.text] ( params )* )
 			{
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:79: ^( FUN[$n.text] ( params )* )
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:79: ^( FT[$n.text] ( params )* )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FUN, (n!=null?input.toString(n.start,n.stop):null)), root_1);
-				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:193:94: ( params )*
+				root_1 = (CommonTree)adaptor.becomeRoot((CommonTree)adaptor.create(FT, (n!=null?input.toString(n.start,n.stop):null)), root_1);
+				// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:198:93: ( params )*
 				while ( stream_params.hasNext() ) {
 					adaptor.addChild(root_1, stream_params.nextTree());
 				}
@@ -1767,28 +1862,28 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "function_name"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:196:1: function_name : ( BI_FUN | TERM | INDICATOR | ALL | GENERIC );
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:201:1: function_name : ( BI_FUN | TERM | INDICATOR | ALL | GENERIC );
 	public final NeutralExprParser.function_name_return function_name() throws RecognitionException {
 		NeutralExprParser.function_name_return retval = new NeutralExprParser.function_name_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		Token set55=null;
+		Token set58=null;
 
-		CommonTree set55_tree=null;
+		CommonTree set58_tree=null;
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:197:2: ( BI_FUN | TERM | INDICATOR | ALL | GENERIC )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:202:2: ( BI_FUN | TERM | INDICATOR | ALL | GENERIC )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			set55=input.LT(1);
+			set58=input.LT(1);
 			if ( input.LA(1)==ALL||input.LA(1)==BI_FUN||input.LA(1)==GENERIC||input.LA(1)==INDICATOR||input.LA(1)==TERM ) {
 				input.consume();
-				if ( state.backtracking==0 ) adaptor.addChild(root_0, (CommonTree)adaptor.create(set55));
+				if ( state.backtracking==0 ) adaptor.addChild(root_0, (CommonTree)adaptor.create(set58));
 				state.errorRecovery=false;
 				state.failed=false;
 			}
@@ -1828,195 +1923,195 @@ public class NeutralExprParser extends Parser {
 
 
 	// $ANTLR start "params"
-	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:210:1: params : logicalExpression ( logicalExpression )* ;
+	// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:215:1: params : logicalExpression ( logicalExpression )* ;
 	public final NeutralExprParser.params_return params() throws RecognitionException {
 		NeutralExprParser.params_return retval = new NeutralExprParser.params_return();
 		retval.start = input.LT(1);
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope logicalExpression56 =null;
-		ParserRuleReturnScope logicalExpression57 =null;
+		ParserRuleReturnScope logicalExpression59 =null;
+		ParserRuleReturnScope logicalExpression60 =null;
 
 
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:211:2: ( logicalExpression ( logicalExpression )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:212:3: logicalExpression ( logicalExpression )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:216:2: ( logicalExpression ( logicalExpression )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:217:3: logicalExpression ( logicalExpression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicalExpression_in_params583);
-			logicalExpression56=logicalExpression();
+			pushFollow(FOLLOW_logicalExpression_in_params609);
+			logicalExpression59=logicalExpression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression56.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression59.getTree());
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:212:21: ( logicalExpression )*
-			loop13:
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:217:21: ( logicalExpression )*
+			loop14:
 			while (true) {
-				int alt13=2;
+				int alt14=2;
 				switch ( input.LA(1) ) {
 				case BLOCK_OPEN:
 					{
-					int LA13_2 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_2 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_BOOL:
 					{
-					int LA13_3 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_3 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_DATE:
 					{
-					int LA13_4 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_4 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_FLOAT:
 					{
-					int LA13_5 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_5 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_HEX:
 					{
-					int LA13_6 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_6 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_INDICATOR:
 					{
-					int LA13_7 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_7 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_INT:
 					{
-					int LA13_8 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_8 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_NAME:
 					{
-					int LA13_9 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_9 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_STRING:
 					{
-					int LA13_10 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_10 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case AT_GENERIC:
 					{
-					int LA13_11 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_11 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case QT:
 					{
-					int LA13_12 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_12 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case SPECIAL_START:
 					{
-					int LA13_13 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_13 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				case FUN_START:
 					{
-					int LA13_14 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_14 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
-				case NOT:
+				case LE_NOT:
 					{
-					int LA13_15 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_15 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
-				case SMINUS:
+				case AE_SMINUS:
 					{
-					int LA13_16 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_16 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
-				case SPLUS:
+				case AE_SPLUS:
 					{
-					int LA13_17 = input.LA(2);
-					if ( (synpred42_NeutralExpr()) ) {
-						alt13=1;
+					int LA14_17 = input.LA(2);
+					if ( (synpred46_NeutralExpr()) ) {
+						alt14=1;
 					}
 
 					}
 					break;
 				}
-				switch (alt13) {
+				switch (alt14) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:212:22: logicalExpression
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:217:22: logicalExpression
 					{
-					pushFollow(FOLLOW_logicalExpression_in_params586);
-					logicalExpression57=logicalExpression();
+					pushFollow(FOLLOW_logicalExpression_in_params612);
+					logicalExpression60=logicalExpression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression57.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicalExpression60.getTree());
 
 					}
 					break;
 
 				default :
-					break loop13;
+					break loop14;
 				}
 			}
 
@@ -2042,12 +2137,12 @@ public class NeutralExprParser extends Parser {
 	}
 	// $ANTLR end "params"
 
-	// $ANTLR start synpred42_NeutralExpr
-	public final void synpred42_NeutralExpr_fragment() throws RecognitionException {
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:212:22: ( logicalExpression )
-		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:212:22: logicalExpression
+	// $ANTLR start synpred46_NeutralExpr
+	public final void synpred46_NeutralExpr_fragment() throws RecognitionException {
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:217:22: ( logicalExpression )
+		// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.il.expr\\src\\org\\smeup\\sys\\il\\expr\\neutral\\NeutralExpr.g:217:22: logicalExpression
 		{
-		pushFollow(FOLLOW_logicalExpression_in_synpred42_NeutralExpr586);
+		pushFollow(FOLLOW_logicalExpression_in_synpred46_NeutralExpr612);
 		logicalExpression();
 		state._fsp--;
 		if (state.failed) return;
@@ -2055,15 +2150,15 @@ public class NeutralExprParser extends Parser {
 		}
 
 	}
-	// $ANTLR end synpred42_NeutralExpr
+	// $ANTLR end synpred46_NeutralExpr
 
 	// Delegated rules
 
-	public final boolean synpred42_NeutralExpr() {
+	public final boolean synpred46_NeutralExpr() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred42_NeutralExpr_fragment(); // can never throw exception
+			synpred46_NeutralExpr_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -2076,63 +2171,66 @@ public class NeutralExprParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_logicalExpression_in_expression102 = new BitSet(new long[]{0x0000000000001F80L});
-	public static final BitSet FOLLOW_set_in_expression105 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_logicalExpression_in_expression120 = new BitSet(new long[]{0x0000000000001F80L});
-	public static final BitSet FOLLOW_EOF_in_expression124 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_booleanAndExpression_in_logicalExpression136 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-	public static final BitSet FOLLOW_OR_in_logicalExpression139 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_booleanAndExpression_in_logicalExpression142 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-	public static final BitSet FOLLOW_equalityExpression_in_booleanAndExpression156 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_AND_in_booleanAndExpression159 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_equalityExpression_in_booleanAndExpression162 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_relationalExpression_in_equalityExpression175 = new BitSet(new long[]{0x4000004000000002L});
-	public static final BitSet FOLLOW_set_in_equalityExpression178 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_relationalExpression_in_equalityExpression185 = new BitSet(new long[]{0x4000004000000002L});
-	public static final BitSet FOLLOW_additiveExpression_in_relationalExpression198 = new BitSet(new long[]{0x0180600000000002L});
-	public static final BitSet FOLLOW_set_in_relationalExpression202 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_additiveExpression_in_relationalExpression213 = new BitSet(new long[]{0x0180600000000002L});
-	public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression228 = new BitSet(new long[]{0x0400000000000002L,0x0000000000000020L});
-	public static final BitSet FOLLOW_set_in_additiveExpression232 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression239 = new BitSet(new long[]{0x0400000000000002L,0x0000000000000020L});
-	public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression255 = new BitSet(new long[]{0x1800001000000002L,0x0000000000000040L});
-	public static final BitSet FOLLOW_set_in_multiplicativeExpression259 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression270 = new BitSet(new long[]{0x1800001000000002L,0x0000000000000040L});
-	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression286 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NOT_in_unaryExpression295 = new BitSet(new long[]{0x00000400105FE000L,0x0000000000002100L});
-	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression298 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SMINUS_in_unaryExpression307 = new BitSet(new long[]{0x00000400105FE000L,0x0000000000002100L});
-	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression310 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SPLUS_in_unaryExpression320 = new BitSet(new long[]{0x00000400105FE000L,0x0000000000002100L});
-	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression323 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_block_in_primaryExpression347 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_atomic_in_primaryExpression355 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BLOCK_OPEN_in_block369 = new BitSet(new long[]{0x80000400105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_logicalExpression_in_block371 = new BitSet(new long[]{0x80000401105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_CLOSE_SQUARE_in_block374 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_BOOL_in_atomic397 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_DATE_in_atomic402 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_FLOAT_in_atomic408 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_HEX_in_atomic413 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_INDICATOR_in_atomic418 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_INT_in_atomic423 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_NAME_in_atomic428 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_STRING_in_atomic433 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AT_GENERIC_in_atomic438 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_QT_in_atomic443 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_special_in_atomic449 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_function_in_atomic454 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SPECIAL_START_in_special465 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-	public static final BitSet FOLLOW_SPECIAL_in_special469 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_CLOSE_BRACE_in_special471 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_CLOSE_BRACE_in_special473 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FUN_START_in_function491 = new BitSet(new long[]{0x0004100004000020L,0x0000000000010000L});
-	public static final BitSet FOLLOW_function_name_in_function495 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_CLOSE_BRACE_in_function497 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-	public static final BitSet FOLLOW_OPEN_SQUARE_in_function499 = new BitSet(new long[]{0x80000401105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_params_in_function501 = new BitSet(new long[]{0x80000401105FE000L,0x0000000000006900L});
-	public static final BitSet FOLLOW_CLOSE_SQUARE_in_function504 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicalExpression_in_params583 = new BitSet(new long[]{0x80000400105FE002L,0x0000000000006900L});
-	public static final BitSet FOLLOW_logicalExpression_in_params586 = new BitSet(new long[]{0x80000400105FE002L,0x0000000000006900L});
-	public static final BitSet FOLLOW_logicalExpression_in_synpred42_NeutralExpr586 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicalExpression_in_expression102 = new BitSet(new long[]{0x00000000007F0000L});
+	public static final BitSet FOLLOW_set_in_expression105 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_logicalExpression_in_expression122 = new BitSet(new long[]{0x00000000007F0000L});
+	public static final BitSet FOLLOW_EOF_in_expression126 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_booleanAndExpression_in_logicalExpression138 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+	public static final BitSet FOLLOW_LE_OR_in_logicalExpression141 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_booleanAndExpression_in_logicalExpression144 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+	public static final BitSet FOLLOW_booleanGenExpression_in_booleanAndExpression158 = new BitSet(new long[]{0x2000000000000002L});
+	public static final BitSet FOLLOW_LE_AND_in_booleanAndExpression161 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_booleanGenExpression_in_booleanAndExpression164 = new BitSet(new long[]{0x2000000000000002L});
+	public static final BitSet FOLLOW_equalityExpression_in_booleanGenExpression180 = new BitSet(new long[]{0x4000000000000002L});
+	public static final BitSet FOLLOW_LE_GENERIC_in_booleanGenExpression183 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_equalityExpression_in_booleanGenExpression186 = new BitSet(new long[]{0x4000000000000002L});
+	public static final BitSet FOLLOW_relationalExpression_in_equalityExpression200 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010400L});
+	public static final BitSet FOLLOW_set_in_equalityExpression203 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_relationalExpression_in_equalityExpression210 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010400L});
+	public static final BitSet FOLLOW_additiveExpression_in_relationalExpression223 = new BitSet(new long[]{0x0000000000000002L,0x000000000000F800L});
+	public static final BitSet FOLLOW_set_in_relationalExpression227 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_additiveExpression_in_relationalExpression240 = new BitSet(new long[]{0x0000000000000002L,0x000000000000F800L});
+	public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression255 = new BitSet(new long[]{0x0000000000000482L});
+	public static final BitSet FOLLOW_set_in_additiveExpression259 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_multiplicativeExpression_in_additiveExpression266 = new BitSet(new long[]{0x0000000000000482L});
+	public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression282 = new BitSet(new long[]{0x0000000000000B62L});
+	public static final BitSet FOLLOW_set_in_multiplicativeExpression286 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_unaryExpression_in_multiplicativeExpression299 = new BitSet(new long[]{0x0000000000000B62L});
+	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression315 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LE_NOT_in_unaryExpression320 = new BitSet(new long[]{0x000400417F800000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression322 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AE_SMINUS_in_unaryExpression333 = new BitSet(new long[]{0x000400417F800000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression336 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AE_SPLUS_in_unaryExpression346 = new BitSet(new long[]{0x000400417F800000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_primaryExpression_in_unaryExpression349 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_block_in_primaryExpression373 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_atomic_in_primaryExpression381 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BLOCK_OPEN_in_block395 = new BitSet(new long[]{0x800400417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_logicalExpression_in_block397 = new BitSet(new long[]{0x800404417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_CLOSE_SQUARE_in_block400 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_BOOL_in_atomic423 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_DATE_in_atomic428 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_FLOAT_in_atomic434 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_HEX_in_atomic439 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_INDICATOR_in_atomic444 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_INT_in_atomic449 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_NAME_in_atomic454 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_STRING_in_atomic459 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AT_GENERIC_in_atomic464 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_QT_in_atomic469 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_special_in_atomic475 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_function_in_atomic480 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SPECIAL_START_in_special491 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+	public static final BitSet FOLLOW_SPECIAL_in_special495 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_CLOSE_BRACE_in_special497 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_CLOSE_BRACE_in_special499 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FUN_START_in_function517 = new BitSet(new long[]{0x0110002000008000L,0x0000000000200000L});
+	public static final BitSet FOLLOW_function_name_in_function521 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_CLOSE_BRACE_in_function523 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+	public static final BitSet FOLLOW_OPEN_SQUARE_in_function525 = new BitSet(new long[]{0x800404417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_params_in_function527 = new BitSet(new long[]{0x800404417F803000L,0x0000000000080100L});
+	public static final BitSet FOLLOW_CLOSE_SQUARE_in_function530 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicalExpression_in_params609 = new BitSet(new long[]{0x800400417F803002L,0x0000000000080100L});
+	public static final BitSet FOLLOW_logicalExpression_in_params612 = new BitSet(new long[]{0x800400417F803002L,0x0000000000080100L});
+	public static final BitSet FOLLOW_logicalExpression_in_synpred46_NeutralExpr612 = new BitSet(new long[]{0x0000000000000002L});
 }

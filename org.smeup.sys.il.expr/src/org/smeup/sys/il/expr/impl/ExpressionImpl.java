@@ -10,11 +10,11 @@ package org.smeup.sys.il.expr.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.impl.NodeImpl;
 import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
-import org.smeup.sys.il.expr.ExpressionMatcher;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionVisitor;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
+import org.smeup.sys.il.expr.neutral.NeutralExpressionMatcher;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -87,7 +87,7 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	 * @generated NOT
 	 */
 	public boolean match(String pattern) {
-		return ExpressionMatcher.match(this, pattern);
+		return NeutralExpressionMatcher.getInstance().match(this, pattern);
 	}
 	
 } // ExpressionImpl

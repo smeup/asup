@@ -1,0 +1,8 @@
+*ALLx'0F'##FT(*ALL)[ AT(HEX) ]
+*ALLx'0F'##FT(**)[ AT(HEX) ]
+'F(EXD;*SCO;) 1(TA;' + %TRIM(£RITST)##AT(STRING) AE(PLUS) FT(%TRIM)[ AT(NAME) ]
+'F(EXD;*SCO;) 1(TA;' + %TRIM(£RITST)##AT(**) AE(**) FT(**)[ AT(**) ]
+%SUBST(£UIBME: 1: 7) = 'QUA.MAT'##FT(%SUBST)[ AT(NAME)   AT(INT)   AT(INT) ] RE(EQ)  AT(STRING)
+%SUBST(£UIBME: 1: 7) = 'QUA.MAT'##FT(**)[ AT(NAME)   AT(INT)   AT(INT) ] RE(**)  AT(STRING)
+%LEN(Xml_Str_T) < 3 or NATP = 200##FT(%LEN)[ AT(NAME) ] RE(LT)  AT(INT)  LE(OR)  AT(NAME)  RE(EQ)  AT(INT)
+%LEN(Xml_Str_T) < 3 or NATP = 200##FT(**)[ AT(**) ] RE(**)  AT(**)  LE(**)  AT(**)  RE(**)  AT(**)  

@@ -28,8 +28,8 @@ import org.smeup.sys.il.expr.QExpressionWriterRegistry;
 import org.smeup.sys.il.expr.neutral.NeutralExprLexer;
 import org.smeup.sys.il.expr.neutral.NeutralExprParser;
 
-@Test(category = "IL.EXPR", object = "NRM")
-public class NeutralExpressionTester {
+@Test(category = "IL.EXPR", object = "NPAR")
+public class NeutralExprParserTester {
 
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
@@ -59,7 +59,7 @@ public class NeutralExpressionTester {
 				String result = normalizedExpressionWriter.writeExpression(expressionParser.parseExpression(preparedExpr));
 				
 				// Parse normalized expr
-				//testAsserter.message("Inp:" + preparedExpr + " Norm:" + result);
+				testAsserter.message("Inp:" + preparedExpr + " Norm:" + result);
 				
 				NeutralExprLexer lex = new NeutralExprLexer(new ANTLRStringStream(result));
 				CommonTokenStream tokens = new CommonTokenStream(lex);
