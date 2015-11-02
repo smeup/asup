@@ -11,8 +11,8 @@ options
 
 tokens
 {	
-	FUN;
-	BLOCK;
+	FT;
+	BE;
 	AT_SPECIAL;
 }
 
@@ -121,41 +121,46 @@ tokens
 }
 
 expression
-	:	logicalExpression ((ASSIGN|ASSIGN_DIV|ASSIGN_MIN|ASSIGN_PLU|ASSIGN_POW|ASSIGN_TIM)^ logicalExpression)* EOF!
+	:	logicalExpression ((AS_ASS|AS_DIV|AS_MIN|AS_PLUS|AS_POW|AS_TIM|AS_GENERIC)^ logicalExpression)* EOF!
 	;
 
 logicalExpression
-	:	booleanAndExpression (OR^ booleanAndExpression )*
+	:	booleanAndExpression (LE_OR^ booleanAndExpression )*
 	;
 
 booleanAndExpression
-	:	equalityExpression (AND^ equalityExpression)*
+	:	booleanGenExpression (LE_AND^ booleanGenExpression)*
 	;
 
+booleanGenExpression
+	:	
+		equalityExpression (LE_GENERIC^ equalityExpression)*
+	;	
+
 equalityExpression
-	:	relationalExpression ((EQ|NE)^ relationalExpression)*
+	:	relationalExpression ((RE_EQ|RE_NE)^ relationalExpression)*
 	;
 
 relationalExpression
-	:	additiveExpression ( (LT|LTEQ|GT|GTEQ)^ additiveExpression )*
+	:	additiveExpression ( (RE_LT|RE_LTEQ|RE_GT|RE_GTEQ|RE_GENERIC)^ additiveExpression )*
 
 	;
 
 additiveExpression
-	:	multiplicativeExpression ( (PLUS|MINUS)^ multiplicativeExpression )*
+	:	multiplicativeExpression ( (AE_PLUS|AE_MINUS)^ multiplicativeExpression )*
 	;
 
 multiplicativeExpression
 	:
-		unaryExpression ( (MULT|DIV|MOD|POW)^ unaryExpression)*
+		unaryExpression ( (AE_MULT|AE_DIV|AE_MOD|AE_POW|AE_GENERIC)^ unaryExpression)*
 	;
 
 unaryExpression
 	:
 	 	primaryExpression
-    	|	NOT^ primaryExpression
-    	|	SMINUS^ primaryExpression 
-    	|	SPLUS^ primaryExpression  
+	|	LE_NOT primaryExpression 	
+    	|	AE_SMINUS^ primaryExpression 
+    	|	AE_SPLUS^ primaryExpression  
    	;
    	
   	
@@ -166,7 +171,7 @@ primaryExpression
 	;
 	
 block
-	: BLOCK_OPEN logicalExpression+ CLOSE_SQUARE -> ^(BLOCK logicalExpression+)
+	: BLOCK_OPEN logicalExpression+ CLOSE_SQUARE -> ^(BE logicalExpression+)
 	;	
 
 atomic
@@ -190,7 +195,7 @@ special
 	;
 	
 function
-	: 	FUN_START n=function_name CLOSE_BRACE OPEN_SQUARE params* CLOSE_SQUARE -> ^(FUN[$n.text] params*)		
+	: 	FUN_START n=function_name CLOSE_BRACE OPEN_SQUARE params* CLOSE_SQUARE -> ^(FT[$n.text] params*)		
 	;
 	
 function_name
@@ -263,52 +268,56 @@ SPECIAL
 		( AXT I S O)
 	;
 
-OR 	: 	L E OPEN_BRACE O R CLOSE_BRACE;
-AND 	: 	L E OPEN_BRACE A N D CLOSE_BRACE;
-NOT	:	L E OPEN_BRACE N O T CLOSE_BRACE;
+LE_OR 			:L E OPEN_BRACE O R CLOSE_BRACE;
+LE_AND 			:L E OPEN_BRACE A N D CLOSE_BRACE;
+LE_NOT			:L E OPEN_BRACE N O T CLOSE_BRACE;
+LE_GENERIC		:L E OPEN_BRACE AXT AXT CLOSE_BRACE;	
 
-EQ	:	R E OPEN_BRACE E Q CLOSE_BRACE;
-NE	:	R E OPEN_BRACE N E CLOSE_BRACE;
-LT	:	R E OPEN_BRACE L T CLOSE_BRACE;
-LTEQ	:	R E OPEN_BRACE L T E CLOSE_BRACE;
-GT	:	R E OPEN_BRACE G T CLOSE_BRACE;
-GTEQ	:	R E OPEN_BRACE G T E CLOSE_BRACE;
+RE_EQ			:R E OPEN_BRACE E Q CLOSE_BRACE;
+RE_NE			:R E OPEN_BRACE N E CLOSE_BRACE;
+RE_LT			:R E OPEN_BRACE L T CLOSE_BRACE;
+RE_LTEQ			:R E OPEN_BRACE L T E CLOSE_BRACE;
+RE_GT			:R E OPEN_BRACE G T CLOSE_BRACE;
+RE_GTEQ			:R E OPEN_BRACE G T E CLOSE_BRACE;
+RE_GENERIC		:R E OPEN_BRACE AXT AXT CLOSE_BRACE;
 
-PLUS	:	A E OPEN_BRACE P L U S CLOSE_BRACE;
-MINUS	:	A E OPEN_BRACE M I N U S CLOSE_BRACE;
-MULT	:	A E OPEN_BRACE M U L T CLOSE_BRACE;
-DIV	:	A E OPEN_BRACE D I V CLOSE_BRACE;
-MOD	:	A E OPEN_BRACE M O D CLOSE_BRACE;
-POW	:       A E OPEN_BRACE P O W CLOSE_BRACE;
-TIMES	:       A E OPEN_BRACE T I M CLOSE_BRACE;
-SMINUS  :	A E OPEN_BRACE S M I N U S CLOSE_BRACE; 
-SPLUS  :	A E OPEN_BRACE S P L U S CLOSE_BRACE; 
+AE_PLUS			:A E OPEN_BRACE P L U S CLOSE_BRACE;
+AE_MINUS		:A E OPEN_BRACE M I N U S CLOSE_BRACE;
+AE_MULT			:A E OPEN_BRACE M U L T CLOSE_BRACE;
+AE_DIV			:A E OPEN_BRACE D I V CLOSE_BRACE;
+AE_MOD			:A E OPEN_BRACE M O D CLOSE_BRACE;
+AE_POW			:A E OPEN_BRACE P O W CLOSE_BRACE;
+AE_TIM			:A E OPEN_BRACE T I M CLOSE_BRACE;
+AE_SMINUS  		:A E OPEN_BRACE S M I N U S CLOSE_BRACE; 
+AE_SPLUS  		:A E OPEN_BRACE S P L U S CLOSE_BRACE; 
+AE_GENERIC		:A E OPEN_BRACE AXT AXT CLOSE_BRACE;	
 
-ASSIGN		:	A S OPEN_BRACE A S S CLOSE_BRACE;
-ASSIGN_DIV	:	A S OPEN_BRACE D I V CLOSE_BRACE;
-ASSIGN_MIN	:	A S OPEN_BRACE M I N CLOSE_BRACE;
-ASSIGN_PLU	:	A S OPEN_BRACE P L U S CLOSE_BRACE;
-ASSIGN_POW	:	A S OPEN_BRACE P O W CLOSE_BRACE;
-ASSIGN_TIM	:	A S OPEN_BRACE T I M E S CLOSE_BRACE;
+AS_ASS			:A S OPEN_BRACE A S S CLOSE_BRACE;
+AS_DIV			:A S OPEN_BRACE D I V CLOSE_BRACE;
+AS_MIN			:A S OPEN_BRACE M I N CLOSE_BRACE;
+AS_PLUS			:A S OPEN_BRACE P L U S CLOSE_BRACE;
+AS_POW			:A S OPEN_BRACE P O W CLOSE_BRACE;
+AS_TIM			:A S OPEN_BRACE T I M E S CLOSE_BRACE;
+AS_GENERIC		:A S OPEN_BRACE AXT AXT CLOSE_BRACE;
 
-BLOCK_OPEN	: 	B E OPEN_SQUARE;
+BLOCK_OPEN		:B E OPEN_SQUARE;
 
-AT_STRING	:	A T OPEN_BRACE S T R I N G CLOSE_BRACE;
-AT_BOOL		:	A T OPEN_BRACE B O O L CLOSE_BRACE;	
-AT_DATE		:	A T OPEN_BRACE D A T E CLOSE_BRACE;
-AT_FLOAT	:	A T OPEN_BRACE F L O A T CLOSE_BRACE;
-AT_HEX		:	A T OPEN_BRACE H E X CLOSE_BRACE;
-AT_INDICATOR	:	A T OPEN_BRACE I N D I C A T O R CLOSE_BRACE;
-AT_INT		:	A T OPEN_BRACE I N T CLOSE_BRACE;
-AT_NAME		:	A T OPEN_BRACE N A M E CLOSE_BRACE;
-AT_GENERIC 	:	A T OPEN_BRACE AXT AXT CLOSE_BRACE;
+AT_STRING		:A T OPEN_BRACE S T R I N G CLOSE_BRACE;
+AT_BOOL			:A T OPEN_BRACE B O O L CLOSE_BRACE;	
+AT_DATE			:A T OPEN_BRACE D A T E CLOSE_BRACE;
+AT_FLOAT		:A T OPEN_BRACE F L O A T CLOSE_BRACE;
+AT_HEX			:A T OPEN_BRACE H E X CLOSE_BRACE;
+AT_INDICATOR		:A T OPEN_BRACE I N D I C A T O R CLOSE_BRACE;
+AT_INT			:A T OPEN_BRACE I N T CLOSE_BRACE;
+AT_NAME			:A T OPEN_BRACE N A M E CLOSE_BRACE;
+AT_GENERIC 		:A T OPEN_BRACE AXT AXT CLOSE_BRACE;
 
-QT		:	Q T OPEN_BRACE CLOSE_BRACE;
+QT			:Q T OPEN_BRACE CLOSE_BRACE;
 
-SPECIAL_START	:	A T OPEN_BRACE S P E C I A L OPEN_BRACE;
-FUN_START  	:	F T OPEN_BRACE;
+SPECIAL_START		:A T OPEN_BRACE S P E C I A L OPEN_BRACE;
+FUN_START  		:F T OPEN_BRACE;
 
-GENERIC		: 	AXT AXT;
+GENERIC			:AXT AXT;
 	
 BI_FUN	
 	:

@@ -173,7 +173,7 @@ public class NeutralExpressionStringBuilder extends ExpressionVisitorImpl {
 			result.append(" AS(POW) ");
 			break;
 		case TIMES_ASSIGN:
-			result.append(" AS(TIMES) ");
+			result.append(" AS(TIM) ");
 			break;
 		default:
 			break;
