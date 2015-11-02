@@ -469,7 +469,7 @@ public class RPJProgramSupport {
 	}
 
 	public QIndicator qError() {
-		return null;
+		return qBox(false);
 	}
 
 	public QIndicator qError(QDataSet<?> dataSet) {

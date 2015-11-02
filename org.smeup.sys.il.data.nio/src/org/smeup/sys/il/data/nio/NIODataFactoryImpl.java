@@ -17,7 +17,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -32,7 +34,6 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedDataDelegator;
-import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
@@ -92,13 +93,17 @@ import org.smeup.sys.il.data.term.QDataTerm;
 public class NIODataFactoryImpl implements QDataFactory {
 
 	private QDataContext dataContext;
-
+	QDataWriter dataWriter;
+	
 	protected NIODataFactoryImpl(QDataContext dataContext) {
 		this.dataContext = dataContext;
+		this.dataWriter  = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@Override
 	public QData createData(QDataTerm<?> dataTerm, boolean initialize) {
+		if (dataTerm.getName().equalsIgnoreCase("£G11DA"))
+			"".toString();
 		return createData((QDataDef<?>) dataTerm.getDefinition(), initialize);
 	}
 
@@ -424,8 +429,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		NIODataStructWrapperHandler dataStructureDelegate = new NIODataStructWrapperHandler(getDataContext(), length, dataStructure);
 
-		int p = 1;
-		QBufferedData previousElement = null;
+		int ownerNextPos = 1;
+		Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
+
 		for (Field field : classDelegator.getFields()) {
 
 			// annotations field
@@ -433,47 +439,48 @@ public class NIODataFactoryImpl implements QDataFactory {
 			for (Annotation annotation : field.getAnnotations())
 				annotations.add(annotation);
 
+			// create element
 			QDataDef<?> dataDef = createDataDef(field.getGenericType(), annotations);
-
 			QBufferedData dataElement = (QBufferedData) createData(dataDef, false);
 
-			// facets
-			for (Annotation annotation : field.getAnnotations()) {
+			Overlay overlay = field.getAnnotation(Overlay.class);
+			if (overlay == null) {
+				dataStructureDelegate.addElement(field.getName(), dataElement, ownerNextPos);
+				ownerNextPos += dataElement.getSize();
+			} else if (overlay.name().equals(Overlay.NAME_OWNER)) {
 
-				if (annotation instanceof Overlay) {
-					Overlay overlay = (Overlay) annotation;
+				if (overlay.position() >= 1)
+					ownerNextPos = overlay.position();
 
-					// TODO check name
-					if (overlay.position() == 0) {
-					} else
-						p = overlay.position();
+				dataStructureDelegate.addElement(field.getName(), dataElement, ownerNextPos);
+				ownerNextPos += dataElement.getSize();
+			} else {
+				NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.name());
+				if (overlayedData == null)
+					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
-					if (!overlay.name().equals(Overlay.NAME_OWNER)) {
-						QBufferedData overlayedData = dataStructureDelegate.getElement(overlay.name().toLowerCase());
+				QDecimal overlayedNextPos = overlayedToNextPos.get(overlayedData);
+				if (overlayedNextPos == null) {
+					overlayedNextPos = createDecimal(5, 0, DecimalType.PACKED, true);
+					overlayedNextPos.plus(overlayedData.getPosition()+1);
+					overlayedToNextPos.put(overlayedData, overlayedNextPos);
+				}
+				
+				if (overlay.position() >= 1)
+					overlayedNextPos.eval(overlay.position());
 
-						if (overlayedData instanceof QBufferedList<?>) {
-							NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
-							NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
+				dataStructureDelegate.addElement(field.getName(), dataElement, overlayedNextPos.i());
 
-							arrayData.setListOwner(arrayOverlayed);
+				if (overlayedData instanceof NIOBufferedListImpl<?>) {
+					NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
+					NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
+					arrayData.setListOwner(arrayOverlayed);
 
-							if (overlay.position() == 0) {
-								if (previousElement instanceof NIOBufferedListImpl<?> && previousElement != overlayedData) {
-									NIOBufferedListImpl<?> previousArrayData = (NIOBufferedListImpl<?>) previousElement;
-									p = p - previousArrayData.getSize() + previousArrayData.getModel().getLength();
-								}
-							}
-						}
-					}
+					overlayedNextPos.plus(arrayData.getModel().getSize());
+				} else {
+					overlayedNextPos.plus(dataElement.getSize());
 				}
 			}
-
-			dataStructureDelegate.addElement(field.getName(), dataElement, p - 1);
-			dataStructureDelegate.assign(dataElement, p);
-
-			p += dataElement.getSize();
-
-			previousElement = dataElement;
 		}
 
 		if (dataStructure instanceof QDataStructWrapper)
@@ -482,46 +489,44 @@ public class NIODataFactoryImpl implements QDataFactory {
 		if (initialize) {
 			initialize(dataStructure);
 
+			// default
 			for (Field field : classDelegator.getFields()) {
 
-				// facets
-				for (Annotation annotation : field.getAnnotations()) {
+				DataDef annotationDef = field.getAnnotation(DataDef.class);
+				if (annotationDef == null)
+					continue;
 
-					if (!(annotation instanceof DataDef))
-						continue;
+				QData dataElement = dataStructure.getElement(field.getName());
+				if (dataElement == null)
+					continue;
 
-					DataDef annotationDef = (DataDef) annotation;
-					QData dataElement = dataStructure.getElement(field.getName());
-					if (dataElement == null)
-						continue;
+				// default
+				if (dataElement instanceof QList<?>) {
+					QList<?> array = (QList<?>) dataElement;
+					int i = 1;
+					for (String value : annotationDef.values()) {
+						array.get(i).accept(dataWriter.set(value));
+						i++;
+					}
+				} else {
+					if (!annotationDef.value().isEmpty()) {
+						if (dataElement instanceof QString) {
 
-					QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+							String value = annotationDef.value();
+							if (value.startsWith("'") && value.endsWith("'")) {
+								value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
 
-					// default
-					if (dataElement instanceof QList<?>) {
-						QList<?> array = (QList<?>) dataElement;
-						int i = 1;
-						for (String value : annotationDef.values()) {
-							array.get(i).accept(dataWriter.set(value));
-							i++;
-						}
-					} else {
-						if (!annotationDef.value().isEmpty()) {
-							if (dataElement instanceof QString) {
-
-								String value = annotationDef.value();
-								if (value.startsWith("'") && value.endsWith("'")) {
-									value = value.substring(1).substring(0, value.lastIndexOf("'") - 1);
-
-									dataElement.accept(dataWriter.set(value));
-								} else
-									dataElement.accept(dataWriter.set(value));
-							} else {
-								dataElement.accept(dataWriter.set(annotationDef.value()));
+								dataElement.accept(dataWriter.set(value));
+							} 
+							else if(value.startsWith("*")) {
+								dataElement.accept(dataWriter.set(value));
 							}
+							else
+								dataElement.accept(dataWriter.set(value));
+						} else {
+							dataElement.accept(dataWriter.set(annotationDef.value()));
 						}
 					}
-
 				}
 			}
 		}

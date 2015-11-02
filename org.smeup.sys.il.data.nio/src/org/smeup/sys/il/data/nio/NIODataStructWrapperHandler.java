@@ -113,6 +113,8 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 		} catch (SecurityException | IllegalArgumentException | IllegalAccessException | NoSuchFieldException e) {
 			e.printStackTrace();
 		}
+		
+		assign(element, position);
 	}
 
 	/*

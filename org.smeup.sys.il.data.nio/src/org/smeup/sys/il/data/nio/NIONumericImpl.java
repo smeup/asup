@@ -527,7 +527,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 			System.err.println("Unexpected condition: c4564v94cr9ddvsdcrs");
 			return;
 		}
-		
 		eval(value, (String)null);
 	}
 

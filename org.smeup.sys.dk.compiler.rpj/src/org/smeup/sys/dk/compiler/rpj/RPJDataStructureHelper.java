@@ -1,6 +1,8 @@
 package org.smeup.sys.dk.compiler.rpj;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.smeup.sys.il.core.QOverlay;
@@ -17,9 +19,13 @@ public class RPJDataStructureHelper {
 
 		int expectedPosition = 1;
 
+		if(isReorderable(dataStructDef))
+			reorderDataStruct(dataStructDef);
+
 		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
 
-		int elemPos = 0;
+		int fillerProg = 0;
+		int elementProg = 0;
 		for (QDataTerm<?> element : listElements) {
 			if (!(element.getDefinition() instanceof QBufferedDataDef))
 				continue;
@@ -44,19 +50,19 @@ public class RPJDataStructureHelper {
 					private static final long serialVersionUID = 1L;
 				};
 
-				filler.setName("filler_" + elemPos);
+				filler.setName("filler_" + fillerProg);
 				QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 				characterDef.setLength(overlay.getPosition() - expectedPosition);
 				filler.setDefinition(characterDef);
-				dataStructDef.getElements().add(elemPos, filler);
+				dataStructDef.getElements().add(elementProg, filler);
 				expectedPosition += characterDef.getLength();
-				elemPos++;
-
+				fillerProg++;
+				elementProg++;
 				overlay.setPosition(0);
 				expectedPosition += bufferedDataDef.getSize();
 			}
-
-			elemPos++;
+			
+			elementProg++;
 		}
 
 		listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
@@ -91,6 +97,48 @@ public class RPJDataStructureHelper {
 				overlay.setPosition(overlay.getPosition() - relativePosition + 1);
 			}
 		}
+	}
+
+	private static void reorderDataStruct(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
+		
+		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
+		Collections.sort(listElements, new Comparator<QDataTerm<?>>() {
+
+			@Override
+			public int compare(QDataTerm<?> paramT1, QDataTerm<?> paramT2) {
+				
+				QOverlay overlay1 = paramT1.getFacet(QOverlay.class);
+				QOverlay overlay2 = paramT2.getFacet(QOverlay.class);
+				if(overlay1 == null || overlay2 == null)
+					throw new RuntimeException("Unexpected condition: wse98rfvw8e76rv8sd");
+
+				return 	Integer.compare(overlay1.getPosition(), overlay2.getPosition());
+			}
+		});
+		
+		dataStructDef.getElements().clear();
+		dataStructDef.getElements().addAll(listElements);
+	}
+
+	private static boolean isReorderable(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
+
+		boolean result = true;
+		
+		for (QDataTerm<?> element : dataStructDef.getElements()) {
+
+			QOverlay overlay = element.getFacet(QOverlay.class);
+			if (overlay == null) {
+				result = false;
+				break;
+			}
+			
+			if(overlay.getPosition() == 0) {
+				result = false;
+				break;
+			}
+		}
+		
+		return result;
 	}
 
 	private static Object[] searchOverlayedByPosition(QCompoundDataDef<?, QDataTerm<?>> dataStructDef, int position) {

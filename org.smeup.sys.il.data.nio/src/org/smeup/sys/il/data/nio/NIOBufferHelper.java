@@ -80,7 +80,12 @@ public class NIOBufferHelper {
 			else
 				buffer.limit(position + length);
 
-			buffer.position(position);
+			try {
+				buffer.position(position);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			buffer.position(0);
 			if (length > buffer.capacity())

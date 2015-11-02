@@ -48,6 +48,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 			// TODO
 			// System.err.println("Unexpected condition vv6666eqw5rqvcrqv: " +
 			// e);
+			e.printStackTrace();
 		}
 
 		return result;
@@ -61,7 +62,7 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 		try {
 			byte[] bytes = packed.toBytes(number.doubleValue());
 
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), bytes, true, INIT);
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
