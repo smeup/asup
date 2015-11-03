@@ -58,8 +58,8 @@ public class ExpressionMatcherTester {
 				match = expression.match(pattern);
 				testAsserter.assertTrue("Expression: " + input + "Pattern: " + pattern, match);
 				
-			} catch (IntegratedLanguageExpressionRuntimeException exc){
-					testAsserter.fail("Failed parsing: " + input);
+			} catch (Exception exc){
+					testAsserter.fail("Failed: " + input + "Msg: " + exc.getMessage());
 			}
 		}
 	}
