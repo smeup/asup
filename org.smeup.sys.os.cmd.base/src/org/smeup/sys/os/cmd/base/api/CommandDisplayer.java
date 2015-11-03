@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -44,7 +44,7 @@ public class CommandDisplayer {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(@DataDef(qualified = true) COMMAND command,
+	public @Main void main(@DataDef(qualified = true) COMMAND command,
 							@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 		CommandFinder commandFinder = new CommandFinder(job, resourceManager, exceptionManager);
 		QCommand qCommand = commandFinder.find(command.name.trimR(), command.library.asData().trimR());

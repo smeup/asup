@@ -24,7 +24,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -50,7 +50,7 @@ public class ObjectWorker {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@DataDef(qualified = true) OBJECT object, 
+	public @Main void main(@DataDef(qualified = true) OBJECT object, 
 							@DataDef(length = 7) QCharacter objectType,
 							@DataDef(length = 50) QCharacter text,
 							@DataDef(length = 2) QCharacter application) {

@@ -10,7 +10,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -47,7 +47,7 @@ public @ToDo class ObjectChecker {
 	private QSourceManager sourceManager;
 	
 	
-	public @Entry void main(@DataDef(qualified = true) OBJECT object,
+	public @Main void main(@DataDef(qualified = true) OBJECT object,
 							@DataDef(length = 7) QCharacter objectType,
 							@DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
 							@ToDo @DataDef(dimension = 10, length = 10) QEnum<AUTHORITYEnum, QScroller<QCharacter>> authority) {

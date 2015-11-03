@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -58,7 +58,7 @@ public @Supported class FileDeleter {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(
+	public @Main void main(
 			@Supported @DataDef(qualified = true) FILE file,
 			@ToDo @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system,
 			@ToDo @DataDef(length = 10) QEnum<REMOVECONSTRAINTEnum, QCharacter> removeConstraint) {

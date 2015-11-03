@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaq.QDataQueueManager;
@@ -33,7 +33,7 @@ public class BaseDataQueueSender {
 	@Inject
 	private QJob job;
 	
-	@Entry
+	@Main
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
 		
 		QCharacter character = dataContext.getDataFactory().createCharacter(data.getLength(), false, false);

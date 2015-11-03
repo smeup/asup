@@ -20,7 +20,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -35,7 +35,7 @@ public @ToDo class MessageReceiver {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(
+	public @Main void main(
 			CALLSTACKENTRYMESSAGEQUEUE callStackEntryMessageQueue,
 			@ToDo @DataDef(qualified = true) MESSAGEQUEUE messageQueue,
 			@ToDo @DataDef(length = 4) QEnum<MESSAGETYPEEnum, QCharacter> messageType,

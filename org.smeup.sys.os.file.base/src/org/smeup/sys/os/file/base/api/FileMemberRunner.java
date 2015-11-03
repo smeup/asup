@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -47,7 +47,7 @@ public class FileMemberRunner {
 	@Inject
 	private QJob job;
 
-	public @Entry void main(@DataDef(qualified = true) SourceFile sourceFile, @DataDef(length = 10) QCharacter sourceMember) {
+	public @Main void main(@DataDef(qualified = true) SourceFile sourceFile, @DataDef(length = 10) QCharacter sourceMember) {
 
 		QResourceReader<QFile> fileReader = null;
 

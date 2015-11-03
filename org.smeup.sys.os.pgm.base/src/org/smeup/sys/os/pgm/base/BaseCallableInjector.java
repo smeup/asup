@@ -167,9 +167,6 @@ public class BaseCallableInjector {
 
 		injectSmeupData(callable);
 
-		if (callable.getClass().getAnnotation(Program.class) == null)
-			return callable;
-
 		return callable;
 	}
 

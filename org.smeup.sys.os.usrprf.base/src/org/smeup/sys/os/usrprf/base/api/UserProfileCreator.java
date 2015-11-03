@@ -9,7 +9,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -21,7 +21,7 @@ public @Supported class UserProfileCreator {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(
+	public @Main void main(
 			@Supported @DataDef(length = 10) QCharacter userProfile,
 			@ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
 			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired,

@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -55,7 +55,7 @@ public class MessageDescriptionAdder {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile,
+	public @Main void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile,
 			@Supported @DataDef(length = 132) QCharacter firstLevelMessageText, @Supported @DataDef(length = 3000) QEnum<SecondLevelMessageTextEnum, QCharacter> secondLevelMessageText,
 			@Supported @DataDef(binaryType = BinaryType.SHORT) QBinary severityCode,
 			@Supported @DataDef(dimension = 99) QEnum<MessageDataFieldsFormatEnum, QStroller<MessageDataFieldsFormat>> messageDataFieldsFormats,

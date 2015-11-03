@@ -19,7 +19,7 @@ import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -34,7 +34,7 @@ public class JobAttributesRetriever {
 	private QJob job;
 
 
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(length = 10) QCharacter cLVarForJOB10,
 			@DataDef(length = 10) QCharacter cLVarForUSER10,
 			@DataDef(length = 6) QCharacter cLVarForNBR6,

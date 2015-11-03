@@ -32,7 +32,7 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -62,7 +62,7 @@ public class JobSubmitter {
 	@Inject
 	private QOutputManager outputManager;
 
-	@Entry
+	@Main
 	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, 
 			@ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
 			@ToDo @DataDef(qualified = true) JobDescription jobDescription, @ToDo @DataDef(qualified = true) JobQueue jobQueue,

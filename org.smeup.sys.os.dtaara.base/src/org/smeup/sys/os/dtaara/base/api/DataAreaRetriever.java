@@ -17,7 +17,7 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.QExceptionManager;
@@ -48,7 +48,7 @@ public @ToDo class DataAreaRetriever {
 	@Inject
 	private QDataContext dataContext;
 	
-	public @Entry void main(DataAreaSpecification dataAreaParm,
+	public @Main void main(DataAreaSpecification dataAreaParm,
 							QAdapter cLVariableForReturnedValue) {
 		try {
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());

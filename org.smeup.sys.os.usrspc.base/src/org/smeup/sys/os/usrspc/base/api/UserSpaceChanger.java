@@ -15,14 +15,14 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QUSCUSAT")
 public class UserSpaceChanger {
 
-	public @Entry void main(@DataDef(length = 10) QCharacter returnedLibrary, @DataDef(qualified = true) UserSpace userSpace, AttributeToChange attributeToChange, ErrorCode errorCode) {
+	public @Main void main(@DataDef(length = 10) QCharacter returnedLibrary, @DataDef(qualified = true) UserSpace userSpace, AttributeToChange attributeToChange, ErrorCode errorCode) {
 
 	}
 

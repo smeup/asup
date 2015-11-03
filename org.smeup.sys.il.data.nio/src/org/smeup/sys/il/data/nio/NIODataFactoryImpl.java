@@ -448,7 +448,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			if (overlay == null) {
 				dataStructureDelegate.addElement(field.getName(), dataElement, ownerNextPos);
 				ownerNextPos += dataElement.getSize();
-			} else if (overlay.name().equals(Overlay.NAME_OWNER)) {
+			} else if (overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER)) {
 
 				if (overlay.position() >= 1)
 					ownerNextPos = overlay.position();
@@ -456,7 +456,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 				dataStructureDelegate.addElement(field.getName(), dataElement, ownerNextPos);
 				ownerNextPos += dataElement.getSize();
 			} else {
-				NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.name());
+				// TODO remove lower
+				NIOBufferedDataImpl overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.name().toLowerCase());
 				if (overlayedData == null)
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
 
@@ -565,7 +566,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 				if(overlay.getName().equalsIgnoreCase(name))
 					overlayedData = dataStructureDelegate;
 				else
-					overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.getName());				
+					// TODO remove lowerCase
+					overlayedData = (NIOBufferedDataImpl) dataStructureDelegate.getElement(overlay.getName().toLowerCase());				
 				
 				if (overlayedData == null)
 					throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: s87rfysd8fsd");
@@ -772,8 +774,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 					if (object instanceof Overlay) {
 						Overlay overlay = (Overlay) object;
 						QOverlay qOverlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
-						if (!overlay.name().equals(Overlay.NAME_OWNER))
-							qOverlay.setName(overlay.name());
+						if (!overlay.name().equalsIgnoreCase(Overlay.NAME_OWNER))
+							// TODO remove lowerCase
+							qOverlay.setName(overlay.name().toLowerCase());
 						if (overlay.position() != 0)
 							qOverlay.setPosition(overlay.position());
 						object = qOverlay;

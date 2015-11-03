@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QWCCDAOC")
 public class ObjectDeallocator {
 
-	public @Entry void main(@ToDo @DataDef(dimension = 50) QStroller<ObjectSpecification> objectSpecifications, @ToDo @DataDef(length = 1) QEnum<LockScopeEnum, QCharacter> lockScope) {
+	public @Main void main(@ToDo @DataDef(dimension = 50) QStroller<ObjectSpecification> objectSpecifications, @ToDo @DataDef(length = 1) QEnum<LockScopeEnum, QCharacter> lockScope) {
 	}
 
 	public static class ObjectSpecification extends QDataStructWrapper {

@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
@@ -31,7 +31,7 @@ public class ProgramCaller {
 	@Inject
 	private QProgramManager programManager;
 
-	@Entry
+	@Main
 	public void main(
 			@ToDo @DataDef(qualified = true) ProgramRef program,
 			@ToDo @DataDef(dimension = 255) QList<QAdapter> parameters) {

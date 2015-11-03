@@ -15,15 +15,64 @@ import org.smeup.sys.il.data.term.impl.DataTermImpl;
 
 public class RPJDataStructureHelper {
 
-	public static void normalizePositions(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
-
-		int expectedPosition = 1;
+	public static void relativizePositions(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
 
 		if(isReorderable(dataStructDef))
 			reorderDataStruct(dataStructDef);
+		
+		setFillers(dataStructDef);
 
+		setRelativePositions(dataStructDef);
+	}
+
+	public static boolean isReorderable(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
+
+		boolean result = true;
+		
+		for (QDataTerm<?> element : dataStructDef.getElements()) {
+
+			QOverlay overlay = element.getFacet(QOverlay.class);
+			if (overlay == null) {
+				result = false;
+				break;
+			}
+			
+			if(overlay.getPosition() == 0) {
+				result = false;
+				break;
+			}
+		}
+		
+		return result;
+	}
+
+	public static void reorderDataStruct(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
+		
 		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
+		Collections.sort(listElements, new Comparator<QDataTerm<?>>() {
 
+			@Override
+			public int compare(QDataTerm<?> paramT1, QDataTerm<?> paramT2) {
+				
+				QOverlay overlay1 = paramT1.getFacet(QOverlay.class);
+				QOverlay overlay2 = paramT2.getFacet(QOverlay.class);
+				if(overlay1 == null || overlay2 == null)
+					throw new RuntimeException("Unexpected condition: wse98rfvw8e76rv8sd");
+
+				return 	Integer.compare(overlay1.getPosition(), overlay2.getPosition());
+			}
+		});
+		
+		dataStructDef.getElements().clear();
+		dataStructDef.getElements().addAll(listElements);
+	}
+
+	public static void setFillers(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
+
+		int expectedPosition = 1;
+		
+		// set filler
+		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
 		int fillerProg = 0;
 		int elementProg = 0;
 		for (QDataTerm<?> element : listElements) {
@@ -63,10 +112,12 @@ public class RPJDataStructureHelper {
 			}
 			
 			elementProg++;
-		}
+		}		
+	}
 
-		listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
+	public static void setRelativePositions(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
 
+		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
 		for (QDataTerm<?> element : listElements) {
 			if (!(element.getDefinition() instanceof QBufferedDataDef))
 				continue;
@@ -99,49 +150,7 @@ public class RPJDataStructureHelper {
 		}
 	}
 
-	private static void reorderDataStruct(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
-		
-		List<QDataTerm<?>> listElements = new ArrayList<QDataTerm<?>>(dataStructDef.getElements());
-		Collections.sort(listElements, new Comparator<QDataTerm<?>>() {
-
-			@Override
-			public int compare(QDataTerm<?> paramT1, QDataTerm<?> paramT2) {
-				
-				QOverlay overlay1 = paramT1.getFacet(QOverlay.class);
-				QOverlay overlay2 = paramT2.getFacet(QOverlay.class);
-				if(overlay1 == null || overlay2 == null)
-					throw new RuntimeException("Unexpected condition: wse98rfvw8e76rv8sd");
-
-				return 	Integer.compare(overlay1.getPosition(), overlay2.getPosition());
-			}
-		});
-		
-		dataStructDef.getElements().clear();
-		dataStructDef.getElements().addAll(listElements);
-	}
-
-	private static boolean isReorderable(QCompoundDataDef<?, QDataTerm<?>> dataStructDef) {
-
-		boolean result = true;
-		
-		for (QDataTerm<?> element : dataStructDef.getElements()) {
-
-			QOverlay overlay = element.getFacet(QOverlay.class);
-			if (overlay == null) {
-				result = false;
-				break;
-			}
-			
-			if(overlay.getPosition() == 0) {
-				result = false;
-				break;
-			}
-		}
-		
-		return result;
-	}
-
-	private static Object[] searchOverlayedByPosition(QCompoundDataDef<?, QDataTerm<?>> dataStructDef, int position) {
+	public static Object[] searchOverlayedByPosition(QCompoundDataDef<?, QDataTerm<?>> dataStructDef, int position) {
 
 		Object[] objects = null;
 
@@ -161,84 +170,4 @@ public class RPJDataStructureHelper {
 
 		return objects;
 	}
-
-	/*
-	 * 
-	 * public void writeElements(List<QDataTerm<?>> elements) throws IOException
-	 * {
-	 * 
-	 * int recalculatedPosition = 1; int expectedPosition = 1; Map<String,
-	 * Integer> nameToPosition = new HashMap<String, Integer>();
-	 * 
-	 * for (QDataTerm<?> element : elements) { if (!(element.getDefinition()
-	 * instanceof QBufferedDataDef<?>)) continue;
-	 * 
-	 * QBufferedDataDef<?> bufferedDataDef = (QBufferedDataDef<?>)
-	 * element.getDefinition();
-	 * 
-	 * QOverlay overlay = element.getFacet(QOverlay.class); if (overlay == null)
-	 * { writeField(element, false, UnitScope.PUBLIC);
-	 * 
-	 * expectedPosition += bufferedDataDef.getSize(); recalculatedPosition +=
-	 * bufferedDataDef.getLength();
-	 * 
-	 * nameToPosition.put(element.getName(), expectedPosition); continue; }
-	 * 
-	 * String position = overlay.getPosition(); if
-	 * (position.equalsIgnoreCase(Overlay.POS_NEXT) || expectedPosition ==
-	 * Integer.parseInt(position)) {
-	 * 
-	 * overlay.setPosition(Overlay.POS_NEXT); writeField(element, false,
-	 * UnitScope.PUBLIC);
-	 * 
-	 * expectedPosition += bufferedDataDef.getSize(); recalculatedPosition +=
-	 * bufferedDataDef.getLength();
-	 * 
-	 * nameToPosition.put(element.getName(), expectedPosition); } else { if
-	 * (Integer.parseInt(position) > expectedPosition) { // TODO filler
-	 * expectedPosition = Integer.parseInt(position);
-	 * 
-	 * if (expectedPosition < recalculatedPosition)
-	 * System.err.println("Unexpected condition: wer89tvbrybvt87ysdfgs"); else
-	 * recalculatedPosition = expectedPosition; } else {
-	 * 
-	 * QDataTerm<?> overlayedTerm = searchOverlayedByPosition(new
-	 * ArrayList<QDataTerm<?>>(elements), Integer.parseInt(position));
-	 * 
-	 * if (overlayedTerm == null || (overlay.getName() != null &&
-	 * !overlayedTerm.getName().equals(overlay.getName()))) {
-	 * System.err.println("Unexpected condition: pntv9erytysreytgopsr");
-	 * continue; } overlay.setName(overlayedTerm.getName());
-	 * 
-	 * if (Integer.parseInt(position) == 1)
-	 * overlay.setPosition(Overlay.POS_NEXT); else {
-	 * overlay.setPosition(position); } }
-	 * 
-	 * writeField(element, false, UnitScope.PUBLIC);
-	 * 
-	 * if (overlay.getName() == null) { expectedPosition +=
-	 * bufferedDataDef.getSize(); recalculatedPosition +=
-	 * bufferedDataDef.getLength();
-	 * 
-	 * nameToPosition.put(element.getName(), expectedPosition); continue; }
-	 * 
-	 * Integer overlayedExpectedPosition =
-	 * nameToPosition.get(overlay.getName()); if (overlayedExpectedPosition ==
-	 * null) System.err.println("Unexpected condition: lasdjhgfuysdfczxd");
-	 * 
-	 * if (overlayedExpectedPosition + bufferedDataDef.getSize() >=
-	 * expectedPosition) { expectedPosition = overlayedExpectedPosition;
-	 * recalculatedPosition = overlayedExpectedPosition;
-	 * 
-	 * nameToPosition.put(element.getName(), expectedPosition); } else {
-	 * expectedPosition += bufferedDataDef.getSize(); recalculatedPosition +=
-	 * bufferedDataDef.getLength();
-	 * 
-	 * nameToPosition.put(element.getName(), expectedPosition); }
-	 * 
-	 * } }
-	 * 
-	 * // elements for (QDataTerm<?> element : elements) writeInnerData(element,
-	 * UnitScope.PUBLIC, true); }
-	 */
 }

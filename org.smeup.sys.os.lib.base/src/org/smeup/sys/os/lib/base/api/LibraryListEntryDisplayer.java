@@ -23,7 +23,7 @@ import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -36,7 +36,7 @@ public class LibraryListEntryDisplayer {
 	@Inject
 	private QJob job;
 
-	public @Entry void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
+	public @Main void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 
 		QObjectWriter objectWriter = null;
 

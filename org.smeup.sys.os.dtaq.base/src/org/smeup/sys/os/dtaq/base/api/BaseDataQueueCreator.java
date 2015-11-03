@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.dtaq.DataQueueType;
@@ -33,7 +33,7 @@ public class BaseDataQueueCreator {
 	@Inject
 	private QJob job;
 
-	@Entry
+	@Main
 	public void main(@DataDef() DataQueue dataQueue, @DataDef(length = 1) QCharacter type, @DataDef() QBinary maximumEntryLength, @DataDef(length = 1) QCharacter forceToAuxiliaryStorage,
 			@DataDef(length = 1) QCharacter sequence, @DataDef() QBinary keyLength, @DataDef(length = 1) QCharacter includeSenderID, @DataDef() QueueSize queueSize,
 			@DataDef(length = 1) QCharacter automaticReclaim, @DataDef() RemoteDataQueue remoteDataQueue, @DataDef(length = 8) QCharacter remoteLocation,

@@ -70,7 +70,7 @@ import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.annotation.Optional;
 import org.smeup.sys.il.core.term.QTerm;
 import org.smeup.sys.il.data.QBufferedData;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDataSetTerm;
@@ -695,8 +695,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		// writeSuppressWarning(methodDeclaration);
 
 		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
-		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
-		writeImport(Entry.class);
+		entryAnnotation.setTypeName(getAST().newSimpleName(Main.class.getSimpleName()));
+		writeImport(Main.class);
 		methodDeclaration.modifiers().add(entryAnnotation);
 
 		for (String parameterName : parameterList.getParameters()) {
@@ -829,8 +829,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		methodDeclaration.setName(getAST().newSimpleName(name));
 
 		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
-		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
-		writeImport(Entry.class);
+		entryAnnotation.setTypeName(getAST().newSimpleName(Main.class.getSimpleName()));
+		writeImport(Main.class);
 		methodDeclaration.modifiers().add(entryAnnotation);
 
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));

@@ -23,7 +23,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -39,7 +39,7 @@ public @Supported class TestCaller {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(@Supported @DataDef(length=32) QCharacter component,  
+	public @Main void main(@Supported @DataDef(length=32) QCharacter component,  
 							@Supported @DataDef(length=32) QCharacter module,  
 							@Supported @DataDef(length=32) QCharacter object,  
 							@Supported @DataDef(length=1) QEnum<OUTPUTEnum, QCharacter> output) {

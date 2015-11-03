@@ -22,7 +22,7 @@ import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -57,7 +57,7 @@ public class DataAreaDisplayer {
 	private QExceptionManager exceptionManager;
 	
 	
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(qualified = true) QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification,
 			@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@DataDef(length = 1) QEnum<OUTPUTFORMATEnum, QCharacter> outputFormat,

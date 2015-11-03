@@ -10,7 +10,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -34,7 +34,7 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 	@Inject
 	private QJob job;
 
-	public @Entry void main(@Supported @DataDef(qualified = true) OBJECT object, @Supported @DataDef(length = 7) QEnum<OBJECTTYPEEnum, QCharacter> objectType, QEnum<ASPDEVICEEnum, ASPDEVICE> aSPDevice,
+	public @Main void main(@Supported @DataDef(qualified = true) OBJECT object, @Supported @DataDef(length = 7) QEnum<OBJECTTYPEEnum, QCharacter> objectType, QEnum<ASPDEVICEEnum, ASPDEVICE> aSPDevice,
 			@Supported @DataDef(length = 10) QCharacter cLVarForRTNLIB10, @Supported @DataDef(length = 10) QCharacter cLVarForOBJATR10, @DataDef(length = 10) QCharacter cLVarForUSRDFNATR10,
 			@Supported @DataDef(length = 50) QCharacter cLVarForTEXT50, @ToDo @DataDef(length = 10) QCharacter cLVarForOWNER10, @DataDef(length = 10) QCharacter cLVarForPGP10,
 			@DataDef(precision = 2) QDecimal cLVarForASP20, @DataDef(precision = 5) QDecimal cLVarForLIBASP50, @DataDef(length = 10) QCharacter cLVarForOBJASPDEV10,

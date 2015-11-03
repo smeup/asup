@@ -29,7 +29,7 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -55,7 +55,7 @@ public class XMIDatabaseFileCompiler {
 	@Inject
 	private QLibraryManager libraryManager;
 
-	@Entry
+	@Main
 	public void main(FileRef fileRef, @DataDef(length=10) QCharacter libraryTo) throws IOException {
 
 		// file

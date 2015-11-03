@@ -16,7 +16,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
@@ -24,7 +24,7 @@ import org.smeup.sys.il.data.def.BinaryType;
 public class DatabaseFileMembersList {
 
 
-	public @Entry void main(@DataDef(qualified = true) OBJECT object, 
+	public @Main void main(@DataDef(qualified = true) OBJECT object, 
 							@DataDef(length = 8) QCharacter formatName,
 							@DataDef(qualified = true) OBJECT objectName,
 							@DataDef(length = 10) QCharacter objectType,

@@ -12,12 +12,12 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 
 @Program(name = "QWTCCRVG")
 public class GroupAttributesRetriever {
-	public @Entry void main() {
+	public @Main void main() {
 		"".toCharArray();
 	}
 }

@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -36,7 +36,7 @@ public @Program(name = "QASSPLFP") class SpoolFilePrinter {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(@DataDef(length = 255) QCharacter spoolID) {
+	public @Main void main(@DataDef(length = 255) QCharacter spoolID) {
 
 		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
 		QSpoolFile spoolFile = spoolFileReader.lookup(spoolID.trimR());

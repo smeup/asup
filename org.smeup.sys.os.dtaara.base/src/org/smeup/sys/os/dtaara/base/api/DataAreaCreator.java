@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -66,7 +66,7 @@ public class DataAreaCreator {
 	private QResourceWriter<QDataArea> resourceWriter;
 	
 
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(qualified = true) QEnum<DATAAREAEnum, DATAAREA> dataArea,
 			@DataDef(length = 1) QEnum<TIPOEnum, QCharacter> tipo,
 			@DataDef(length = 1) LUNGHEZZA lunghezza,

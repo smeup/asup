@@ -17,7 +17,7 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -69,7 +69,7 @@ public @ToDo class DataAreaModifier {
 	@Inject
 	private  QStrings stringsUtils;
 	
-	public @Entry void main(DataAreaSpecification dataAreaParm, 
+	public @Main void main(DataAreaSpecification dataAreaParm, 
 							@DataDef(length = 2000) QCharacter value) {
 		try {
 			

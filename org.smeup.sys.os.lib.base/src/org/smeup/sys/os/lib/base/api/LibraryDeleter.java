@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -49,7 +49,7 @@ public class LibraryDeleter {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(@DataDef(length = 10) QCharacter library, @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice) {
+	public @Main void main(@DataDef(length = 10) QCharacter library, @DataDef(length = 10) QEnum<ASPDeviceEnum, QCharacter> aSPDevice) {
 
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 

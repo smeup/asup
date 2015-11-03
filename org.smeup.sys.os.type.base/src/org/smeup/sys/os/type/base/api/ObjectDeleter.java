@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -38,7 +38,7 @@ public class ObjectDeleter {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	@Entry
+	@Main
 	public <T extends QTypedObject> void main(Object object, @DataDef(length = 7) QCharacter objectType) {
 
 		String library = object.library.trimR();

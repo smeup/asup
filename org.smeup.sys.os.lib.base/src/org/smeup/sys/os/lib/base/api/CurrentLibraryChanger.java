@@ -17,7 +17,7 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -43,7 +43,7 @@ public @Supported class CurrentLibraryChanger {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@Supported @DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
+	public @Main void main(@Supported @DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
 		
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 

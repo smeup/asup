@@ -17,13 +17,13 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QWCRSVAL")
 public class SystemValuesRetriever {
-	public @Entry void main(@DataDef(length=10) QCharacter variable,
+	public @Main void main(@DataDef(length=10) QCharacter variable,
 							@DataDef(precision = 10) QDecimal length,
 							@DataDef(precision = 10, value = "1") QDecimal number,
 							@DataDef(length = 10) QCharacter names,							

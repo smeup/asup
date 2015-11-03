@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -47,7 +47,7 @@ public @ToDo @Program(name = "QSPWRKF") class SpoolFileWorker {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(@ToDo SELECTFILESFOR selectFilesFor, 
+	public @Main void main(@ToDo SELECTFILESFOR selectFilesFor, 
 			                @DataDef(qualified = true) QEnum<JOBNAMEEnum, JOBNAME> jobName,        TIMEPERIOD timePeriod,
 			                @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, 
 			                @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,

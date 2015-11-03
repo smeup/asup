@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -50,7 +50,7 @@ public class UserProfileChanger {
 		CPF2204, 	//Non trovato il profilo untente &1
 	}
 
-	public @Entry void main(@Supported @DataDef(length = 10) QCharacter userProfile, 
+	public @Main void main(@Supported @DataDef(length = 10) QCharacter userProfile, 
 							@DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
 							@DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired, 
 							@DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,

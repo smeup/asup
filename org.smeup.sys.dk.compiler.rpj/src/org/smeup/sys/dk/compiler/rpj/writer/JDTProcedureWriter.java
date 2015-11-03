@@ -19,7 +19,6 @@ import org.eclipse.jdt.core.dom.Assignment.Operator;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.FieldAccess;
-import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
@@ -33,7 +32,6 @@ import org.smeup.sys.dk.compiler.QCompilationUnit;
 import org.smeup.sys.dk.compiler.UnitScope;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
-import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Procedure;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -135,10 +133,10 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		methodDeclaration.setName(getAST().newSimpleName("qExec"));
 
-		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
+/*		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
 		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
 		writeImport(Entry.class);
-		methodDeclaration.modifiers().add(entryAnnotation);
+		methodDeclaration.modifiers().add(entryAnnotation);*/
 
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 

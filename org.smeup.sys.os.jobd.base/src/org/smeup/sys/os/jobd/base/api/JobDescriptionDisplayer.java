@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -50,7 +50,7 @@ public class JobDescriptionDisplayer {
 	@Inject
 	private QResourceManager resourceManager;
 
-	public @Entry void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
+	public @Main void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
 
 		QObjectWriter objectWriter = null;
 		switch (output.asEnum()) {

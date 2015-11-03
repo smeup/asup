@@ -13,7 +13,7 @@ package org.smeup.sys.os.cmd.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.out.QOutputManager;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.cmd.QCommand;
@@ -34,7 +34,7 @@ public class CommandParameterDisplayer {
 	@Inject
 	private QExceptionManager exceptionManager;
 
-	@Entry
+	@Main
 	public void main(CommandRef command) {
 		CommandFinder commandFinder = new CommandFinder(job, resourceManager, exceptionManager);
 		QCommand qCommand = commandFinder.find(command);

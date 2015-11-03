@@ -17,7 +17,7 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -49,7 +49,7 @@ public @Supported class LibraryClearer {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(
+	public @Main void main(
 			@Supported @DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library,
 			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
 		

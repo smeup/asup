@@ -11,13 +11,13 @@
  */
 package org.smeup.sys.os.file.base.api;
 
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 
 @Program(name = "QDMRTVFO")
 public class OverrideFileRetriever {
 
-	@Entry
+	@Main
 	public void main() {
 	}
 }

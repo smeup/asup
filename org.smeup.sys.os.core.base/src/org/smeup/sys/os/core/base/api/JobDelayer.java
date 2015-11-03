@@ -8,7 +8,7 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
@@ -20,7 +20,7 @@ public @Supported class JobDelayer {
 	public static enum QCPFMSG {
 	}
 
-	public @Entry void main(@Supported @DataDef(binaryType = BinaryType.INTEGER) QBinary seconds,
+	public @Main void main(@Supported @DataDef(binaryType = BinaryType.INTEGER) QBinary seconds,
 							@Supported @DataDef(length = 8) QCharacter resumeTime) {
 		int nrOfSeconds = seconds.asInteger();
 		if (nrOfSeconds > 0) {

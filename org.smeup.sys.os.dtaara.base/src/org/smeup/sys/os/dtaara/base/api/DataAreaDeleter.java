@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -49,7 +49,7 @@ public @ToDo class DataAreaDeleter {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(@DataDef(qualified = true) DATAAREA dataArea) {
+	public @Main void main(@DataDef(qualified = true) DATAAREA dataArea) {
 		checkLibrary(dataArea.library);
 		
 		String areaName = dataArea.nameGeneric.asData().trimR();

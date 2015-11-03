@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -48,7 +48,7 @@ public class JobDescriptionChanger {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) QEnum<JobQueueEnum, JobQueue> jobQueue,
+	public @Main void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) QEnum<JobQueueEnum, JobQueue> jobQueue,
 			@Supported @DataDef(length = 1) QEnum<JobPriorityonJOBQEnum, QCharacter> jobPriorityonJOBQ,
 			@Supported @DataDef(length = 1) QEnum<OutputPriorityonOUTQEnum, QCharacter> outputPriorityonOUTQ, @DataDef(length = 10) QEnum<PrintDeviceEnum, QCharacter> printDevice,
 			@DataDef(qualified = true) QEnum<OutputQueueEnum, OutputQueue> outputQueue, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,

@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -40,7 +40,7 @@ public class UserProfileRetriever {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(@DataDef(length = 10) QEnum<USERPROFILEEnum, QCharacter> userProfile, 
+	public @Main void main(@DataDef(length = 10) QEnum<USERPROFILEEnum, QCharacter> userProfile, 
 						    @DataDef(length = 10) QCharacter cLVarForRTNUSRPRF10,
 							@ToDo @DataDef(length = 100) QCharacter cLVarForSPCAUT100, 
 							@ToDo @DataDef(precision = 11) QDecimal cLVarForMAXSTG110, 

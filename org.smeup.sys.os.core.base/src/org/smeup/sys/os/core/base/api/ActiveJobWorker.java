@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -43,7 +43,7 @@ public class ActiveJobWorker {
 	@Inject
 	private QJobManager jobManager;
 
-	public @Entry void main(@ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output, @ToDo @DataDef(length = 1) QEnum<ResetStatusStatisticsEnum, QCharacter> resetStatusStatistics,
+	public @Main void main(@ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output, @ToDo @DataDef(length = 1) QEnum<ResetStatusStatisticsEnum, QCharacter> resetStatusStatistics,
 			@ToDo @DataDef(dimension = 25, length = 10) QEnum<SubsystemEnum, QScroller<QCharacter>> subsystem,
 			@ToDo @DataDef(precision = 3, scale = 1) QEnum<CPUPercentLimitEnum, QDecimal> cPUPercentLimit,
 			@ToDo @DataDef(precision = 4, scale = 1) QEnum<ResponseTimeLimitEnum, QDecimal> responseTimeLimit, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<SequenceEnum, QBinary> sequence,

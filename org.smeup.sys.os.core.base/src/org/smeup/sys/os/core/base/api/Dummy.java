@@ -11,13 +11,13 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 
 @Program(name = "QDUMMY")
 public class Dummy {
 
-	@Entry
+	@Main
 	public void main() {
 	}
 }

@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -42,7 +42,7 @@ public @ToDo @Program(name = "QWTCCCNJ") class JobTerminator {
 	@Inject
 	private QJobManager jobManager;
 	
-	public @Entry void main(
+	public @Main void main(
 			@Supported @DataDef(qualified = true) JobName jobName,
 			@ToDo @DataDef(length = 1) QEnum<HowToEndEnum, QCharacter> howToEnd,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QBinary controlledEndDelayTime,

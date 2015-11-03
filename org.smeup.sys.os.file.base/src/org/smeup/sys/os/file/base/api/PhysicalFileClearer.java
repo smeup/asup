@@ -23,7 +23,7 @@ import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -48,7 +48,7 @@ public class PhysicalFileClearer {
 	private QExceptionManager exceptionManager;
 
 	
-	@Entry
+	@Main
 	public void main(@DataDef(qualified = true) FILE file, @DataDef(length = 10) QEnum<Member, QCharacter> member) {
 
 		FileFinder fileFinder = new FileFinder(job, resourceManager);

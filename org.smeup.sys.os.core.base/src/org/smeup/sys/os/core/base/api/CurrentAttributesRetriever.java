@@ -16,14 +16,14 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QWCRTVCA")
 public class CurrentAttributesRetriever {
 
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(length = 1000) QCharacter rcvvar,
 			@DataDef(binaryType = BinaryType.BYTE, value = "1000") QBinary rcvlen,
 			@DataDef(length = 8) QCharacter format,

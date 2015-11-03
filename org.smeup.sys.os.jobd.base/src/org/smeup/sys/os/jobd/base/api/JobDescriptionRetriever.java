@@ -19,7 +19,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -39,7 +39,7 @@ public class JobDescriptionRetriever {
 	@Inject
 	private QDataContext dataContext;
 
-	public @Entry void main(@DataDef(length = 500) QCharacter receiverVariable, @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, @DataDef(length = 8) QCharacter formatName,
+	public @Main void main(@DataDef(length = 500) QCharacter receiverVariable, @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, @DataDef(length = 8) QCharacter formatName,
 			JobDescription jobDescription, @DataDef() QCharacter errorCode
 
 	// @DataDef() QPointer receiverVariable,

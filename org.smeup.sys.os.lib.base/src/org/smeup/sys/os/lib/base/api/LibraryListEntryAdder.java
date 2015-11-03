@@ -21,7 +21,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -46,7 +46,7 @@ public class LibraryListEntryAdder {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	@Entry
+	@Main
 	public void main(@DataDef(length = 10) QCharacter library, QEnum<LibraryListPositionEnum, LibraryListPosition> libraryListPosition) {
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
 		String newLibName = library.trimR();

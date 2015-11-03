@@ -17,7 +17,7 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.cmd.QCommandManager;
@@ -42,7 +42,7 @@ public @Supported class LibraryCopier {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Entry void main(
+	public @Main void main(
 			@Supported @DataDef(length = 10) QCharacter existingLibrary,
 			@Supported @DataDef(length = 10) QCharacter newLibrary,
 			@Supported @DataDef(length = 4) QEnum<CREATELIBRARYEnum, QCharacter> createLibrary,

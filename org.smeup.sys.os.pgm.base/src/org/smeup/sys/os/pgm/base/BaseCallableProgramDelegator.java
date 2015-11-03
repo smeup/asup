@@ -15,8 +15,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import javax.annotation.PostConstruct;
-
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
@@ -32,52 +30,80 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 
 	private QDataContext dataContext;
 	private Object delegate;
-
-	protected Method open;
-	protected Method entry;
-	protected Method close;
-
+	private Method entry;
+	private InitStrategy initStrategy;
+	
 	private boolean isOpen;
 	private boolean isStateless;
 
-	private InitStrategy initStrategy;
 
-	protected BaseCallableProgramDelegator(QDataContext dataContext, Object delegate, InitStrategy initStrategy) {
+	protected BaseCallableProgramDelegator(QDataContext dataContext, Object delegate, Method entry, InitStrategy initStrategy) {
 		this.dataContext = dataContext;
 		this.delegate = delegate;
+		this.entry = entry;
 		this.initStrategy = initStrategy;
 	}
 
 	@Override
 	public void open() {
 
-		dataContext.getContext().invoke(delegate, PostConstruct.class);
+		this.isOpen = false;
 		
-		Field £mubField = null;
 		try {
-			£mubField = delegate.getClass().getDeclaredField("£Mub");
-		} catch (NoSuchFieldException | SecurityException e1) {
+			Method qInzsr = delegate.getClass().getMethod("qINZSR");
+			qInzsr.setAccessible(true);
+			qInzsr.invoke(delegate, (Object[]) null);
+			qInzsr.setAccessible(false);
+
+			this.isOpen = true;
+			return;
+		} 
+		catch (SecurityException | NoSuchMethodException e) {
+		}
+		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			this.isOpen = true;
+			e.printStackTrace();
+		}
+		
+		try {
+			Field  £mubField = delegate.getClass().getDeclaredField("£Mub");
+			£mubField.setAccessible(true);
+			Object £mub = £mubField.get(delegate);
+			switch (initStrategy) {
+			case BASE:
+				£mub.getClass().getMethod("£mu_inzsr").invoke(£mub, (Object[]) null);
+				break;
+			case LIGHT:
+				£mub.getClass().getMethod("£mu_inzsrlt").invoke(£mub, (Object[]) null);
+				break;
+			}
+			£mubField.setAccessible(false);
+
+			this.isOpen = true;
+			return;
+		} catch (NoSuchFieldException | SecurityException | NoSuchMethodException e) {
+		}
+		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			this.isOpen = true;
+			e.printStackTrace();
 		}
 
 		try {
-			if (this.open == null && £mubField != null) {
-				£mubField.setAccessible(true);
-				Object £mub = £mubField.get(delegate);
-				switch (initStrategy) {
-				case BASE:
-					£mub.getClass().getMethod("£mu_inzsr").invoke(£mub, (Object[]) null);
-					break;
-				case LIGHT:
-					£mub.getClass().getMethod("£mu_inzsrlt").invoke(£mub, (Object[]) null);
-					break;
-				}
-				£mubField.setAccessible(false);
-			}
-		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e.getMessage());
-		} finally {
+			Method £inizi = delegate.getClass().getMethod("£inizi");
+			£inizi.setAccessible(true);
+			£inizi.invoke(delegate, (Object[]) null);
+			£inizi.setAccessible(false);
+			
 			this.isOpen = true;
+			return;			
+		} catch (SecurityException | NoSuchMethodException e1) {
 		}
+		catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			this.isOpen = true;
+			e.printStackTrace();
+		}
+		
+		this.isOpen = true;
 	}
 
 	public QData[] call() {
@@ -125,14 +151,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	@Override
 	public void close() {
 
-		try {
-			if (this.close != null)
-				this.close.invoke(delegate, (Object[]) null);
-		} catch (Exception e) {
-			throw new OperatingSystemRuntimeException(e.getMessage());
-		} finally {
-			this.isOpen = false;
-		}
 	}
 
 	@Override

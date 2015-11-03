@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
@@ -42,7 +42,7 @@ public @Program(name = "QSPHNMLT") class SpoolFileDeleter {
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
 
-	public @Entry void main(@DataDef(length = 255) QCharacter spoolID,
+	public @Main void main(@DataDef(length = 255) QCharacter spoolID,
 			                @DataDef(length = 10) QCharacter user) {
 
 		QResourceWriter<QSpoolFile> spoolFileWriter = resourceManager.getResourceWriter(job, QSpoolFile.class, job.getSystem().getSystemLibrary());

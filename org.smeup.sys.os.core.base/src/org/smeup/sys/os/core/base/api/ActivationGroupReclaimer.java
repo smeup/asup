@@ -15,7 +15,7 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 
@@ -26,7 +26,7 @@ public class ActivationGroupReclaimer {
 		CPF1653, CPF1654
 	}
 
-	public @Entry void main(@ToDo @DataDef(length = 10) QEnum<ACTIVATIONGROUPEnum, QCharacter> activationGroup, @ToDo @DataDef(length = 1) QEnum<CLOSEOPTIONEnum, QCharacter> closeOption) {
+	public @Main void main(@ToDo @DataDef(length = 10) QEnum<ACTIVATIONGROUPEnum, QCharacter> activationGroup, @ToDo @DataDef(length = 1) QEnum<CLOSEOPTIONEnum, QCharacter> closeOption) {
 	}
 
 	public static enum ACTIVATIONGROUPEnum {

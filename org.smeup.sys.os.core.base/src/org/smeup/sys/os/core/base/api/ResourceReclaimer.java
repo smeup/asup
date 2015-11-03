@@ -15,14 +15,14 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 
 @Program(name = "QWCCRCRC")
 public class ResourceReclaimer {
 
-	public @Entry void main(@ToDo @DataDef(length = 1) QEnum<ProgramLevelEnum, QCharacter> programLevel, @ToDo @DataDef(length = 1) QEnum<CloseOptionEnum, QCharacter> closeOption) {
+	public @Main void main(@ToDo @DataDef(length = 1) QEnum<ProgramLevelEnum, QCharacter> programLevel, @ToDo @DataDef(length = 1) QEnum<CloseOptionEnum, QCharacter> closeOption) {
 	}
 
 	public static enum ProgramLevelEnum {

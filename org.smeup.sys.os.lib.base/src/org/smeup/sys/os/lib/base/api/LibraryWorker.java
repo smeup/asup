@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -45,7 +45,7 @@ public class LibraryWorker {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(qualified = true) LIBRARY library,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNUMBEREnum, QBinary> aSPNumber,
 			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {

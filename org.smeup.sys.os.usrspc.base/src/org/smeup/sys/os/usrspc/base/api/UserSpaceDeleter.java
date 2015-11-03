@@ -17,7 +17,7 @@ import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -33,7 +33,7 @@ public class UserSpaceDeleter {
 	@Inject
 	private QResourceManager resourceManager;
 
-	public @Entry void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
+	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
 		QResourceWriter<QUserSpace> userSpaceResource = resourceManager.getResourceWriter(job, QUserSpace.class, userSpace.library.trimR());
 		QUserSpace qUserSpace = userSpaceResource.lookup(userSpace.name.trimR());
 		if (qUserSpace == null){

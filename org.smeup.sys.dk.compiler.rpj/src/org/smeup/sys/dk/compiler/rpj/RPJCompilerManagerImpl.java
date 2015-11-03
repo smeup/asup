@@ -279,6 +279,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		return moduleContexts;
 	}
 		
+	@SuppressWarnings("resource")
 	private void loadModule(QJob job, QResourceReader<org.smeup.sys.os.module.QModule> moduleReader, List<QCompilationUnit> moduleContexts, String moduleName, CaseSensitiveType caseSensitive) {
 
 		QCompilationUnit moduleContext = globalContexts.get(moduleName);
@@ -319,6 +320,7 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 
 	}
 	
+	@SuppressWarnings("resource")
 	private void loadInternalModule(QJob job, List<QCompilationUnit> moduleContexts, CaseSensitiveType caseSensitive, String moduleName) {
 
 		QCompilationUnit moduleContext = globalContexts.get(moduleName);

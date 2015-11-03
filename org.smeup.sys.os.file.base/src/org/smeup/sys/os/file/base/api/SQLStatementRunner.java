@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
@@ -44,7 +44,7 @@ public class SQLStatementRunner {
 	private QJobLogManager jobLogManager;
 	
 	@SuppressWarnings("resource")
-	@Entry
+	@Main
 	public void main(@DataDef(length = 5000) QCharacter sql, @DataDef(length = 10) QEnum<COMMITMENTCONTROLEnum, QCharacter> commitmentControl,
 			@DataDef(length = 10) QEnum<NAMINGEnum, QCharacter> naming, @DataDef(length = 8) QEnum<DATEFORMATEnum, QCharacter> dateFormat, @DataDef(length = 8) QCharacter dateSeparatorCharacter,
 			@DataDef(length = 8) QEnum<TIMEFORMATEnum, QCharacter> timeFormat, @DataDef(length = 8) QCharacter timeSeparatorCharacter,

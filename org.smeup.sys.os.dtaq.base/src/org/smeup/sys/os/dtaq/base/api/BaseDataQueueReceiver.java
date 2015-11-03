@@ -18,7 +18,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -36,7 +36,7 @@ public class BaseDataQueueReceiver {
 	@Inject
 	private QDataContext dataContext;
 
-	@Entry
+	@Main
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal length, QPointer data,
 			@DataDef(precision = 5, packed = true) QDecimal wait) {
 

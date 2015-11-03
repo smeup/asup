@@ -12,7 +12,7 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -45,7 +45,7 @@ public @Supported class PrinterFileOverride {
 	private QExceptionManager exceptionManager;
 
 
-	public @Entry void main(
+	public @Main void main(
 			@DataDef(length = 10) QEnum<FILEBEINGOVERRIDDENEnum, QCharacter> fileBeingOverridden,
 			@DataDef(qualified = true) OVERRIDINGTOPRINTERFILE overridingToPrinterFile,
 			@ToDo DEVICE device,

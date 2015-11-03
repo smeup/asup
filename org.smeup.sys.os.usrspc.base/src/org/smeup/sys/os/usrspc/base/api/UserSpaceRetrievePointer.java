@@ -16,14 +16,14 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QUSPTRUS")
 public class UserSpaceRetrievePointer {
 
-	public @Entry void main(@DataDef(qualified = true) UserSpace userSpace, QPointer retunrPointer, ErrorCode errorCode) {
+	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, QPointer retunrPointer, ErrorCode errorCode) {
 
 	}
 

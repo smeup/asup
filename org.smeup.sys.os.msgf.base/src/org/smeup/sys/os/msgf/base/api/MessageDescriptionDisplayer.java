@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -49,7 +49,7 @@ public class MessageDescriptionDisplayer {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Entry void main(@Supported QEnum<RangeOfMessageIdentifiersEnum, RangeOfMessageIdentifiers> rangeOfMessageIdentifiers, @Supported @DataDef(qualified = true) MessageFile messageFile,
+	public @Main void main(@Supported QEnum<RangeOfMessageIdentifiersEnum, RangeOfMessageIdentifiers> rangeOfMessageIdentifiers, @Supported @DataDef(qualified = true) MessageFile messageFile,
 			@ToDo @DataDef(length = 6) QEnum<DetailEnum, QCharacter> detail, @ToDo @DataDef(length = 1) QEnum<FormatMessageTextEnum, QCharacter> formatMessageText,
 			@Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
 

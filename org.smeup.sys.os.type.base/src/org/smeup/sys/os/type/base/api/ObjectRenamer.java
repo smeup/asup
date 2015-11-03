@@ -7,7 +7,7 @@ import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -37,7 +37,7 @@ public @Supported class ObjectRenamer {
 	@Inject
 	private QExceptionManager exceptionManager;
 
-	public @Entry void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object,
+	public @Main void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object,
 							@Supported @DataDef(length = 7) QCharacter objectType,
 							@Supported @DataDef(length = 10) QCharacter newObject,
 							@Unsupported @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice,

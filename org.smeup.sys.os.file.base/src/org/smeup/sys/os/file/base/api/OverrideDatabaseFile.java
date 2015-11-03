@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -37,7 +37,7 @@ public class OverrideDatabaseFile {
 	@Inject
 	private QJob job;
 
-	@Entry
+	@Main
 	public void main(@DataDef(length = 10) QCharacter file, FileRef fileTo, @DataDef(length = 10) QCharacter member) {
 
 		// TODO Intercept library special value

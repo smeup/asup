@@ -27,7 +27,7 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerFactory;
 import org.smeup.sys.dk.source.QProject;
 import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.QObjectIterator;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -53,7 +53,7 @@ public class XMIPrinterFileCompiler {
 	@Inject
 	private QLibraryManager libraryManager;
 
-	@Entry
+	@Main
 	public void main(FileRef fileRef) throws IOException {
 
 		// file

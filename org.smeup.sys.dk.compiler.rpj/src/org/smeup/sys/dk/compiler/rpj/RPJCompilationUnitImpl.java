@@ -887,6 +887,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			EClass eClass = (EClass) eClassifier;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
+				// TODO remove me
+				if(eOperation.getName().startsWith("qLookup"))
+					continue;
+				
 				if (!eOperation.getName().equalsIgnoreCase(normalizeTermName(name)))
 					continue;
 

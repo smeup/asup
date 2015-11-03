@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
-import org.smeup.sys.il.data.annotation.Entry;
+import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.QExceptionManager;
@@ -37,7 +37,7 @@ public class LibraryListEntryRemover {
 	@Inject
 	private QResourceManager resourceManager;
 	
-	public @Entry void main(@DataDef(length = 10) QCharacter library) {
+	public @Main void main(@DataDef(length = 10) QCharacter library) {
 		String libName = library.trimR();
 		
 		if (!exists(libName))
