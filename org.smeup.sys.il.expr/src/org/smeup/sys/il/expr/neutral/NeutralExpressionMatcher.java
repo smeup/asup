@@ -127,7 +127,7 @@ public class NeutralExpressionMatcher {
 				} 
 				
 				if (result) {
-					if (compareNode(node1.getChild(1), node2.getChild(2)) == false) {
+					if (compareNode(node1.getChild(1), node2.getChild(1)) == false) {
 					
 						result = false;
 					}
@@ -282,7 +282,7 @@ public class NeutralExpressionMatcher {
 						boolean tmp = true;
 						for (int i = 0; i < node1.getChildCount(); i++) {							
 							if (compareNode(node1.getChild(i), node2.getChild(i)) == false) {
-								tmpResult = false;
+								tmp = false;
 								break;
 							}
 						}
@@ -294,7 +294,7 @@ public class NeutralExpressionMatcher {
 				}
 			} 
 			
-			if (tmpResult = false) {
+			if (!tmpResult) {
 				result = false;
 			}
 		}

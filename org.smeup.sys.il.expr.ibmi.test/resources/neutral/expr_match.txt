@@ -6,3 +6,6 @@
 %SUBST(£UIBME: 1: 7) = 'QUA.MAT'##FT(**)[ AT(NAME)   AT(INT)   AT(INT) ] RE(**)  AT(STRING)
 %LEN(Xml_Str_T) < 3 or NATP = 200##FT(%LEN)[ AT(NAME) ] RE(LT)  AT(INT)  LE(OR)  AT(NAME)  RE(EQ)  AT(INT)
 %LEN(Xml_Str_T) < 3 or NATP = 200##FT(**)[ AT(**) ] RE(**)  AT(**)  LE(**)  AT(**)  RE(**)  AT(**)  
+A+B*(C+D)##AT(NAME) AE(PLUS) BE[ AT(NAME) AE(MULT) AT(NAME)]
+(A+B)*(C+D*(E+F))##BE[AT(NAME) AE(PLUS) AT(NAME)] AE(MULT) BE[ AT(NAME) AE(PLUS) AT(NAME) AE(MULT) BE[AT(NAME) AE(PLUS) AT(INT)]]
+(%SUBST(A: 1: 7)+B)*(C+D*(E+F))##BE[FT(**)[AT(NAME) AT(INT) AT(**)] AE(PLUS) AT(NAME)] AE(MULT) BE[ AT(NAME) AE(PLUS) AT(NAME) AE(MULT) BE[AT(NAME) AE(PLUS) AT(INT)]]

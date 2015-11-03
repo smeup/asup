@@ -15,8 +15,6 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import org.antlr.runtime.ANTLRStringStream;
-import org.antlr.runtime.CommonTokenStream;
 import org.smeup.sys.dk.test.QTestAsserter;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
@@ -25,8 +23,6 @@ import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QExpressionWriter;
 import org.smeup.sys.il.expr.QExpressionWriterRegistry;
-import org.smeup.sys.il.expr.neutral.NeutralExprLexer;
-import org.smeup.sys.il.expr.neutral.NeutralExprParser;
 
 @Test(category = "IL.EXPR", object = "NWRI")
 public class NeutralExprWriterTester {
