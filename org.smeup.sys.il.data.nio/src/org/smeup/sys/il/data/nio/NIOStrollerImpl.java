@@ -649,215 +649,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		return current().qSubst(start, length);
 	}
 
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QIndicator found) {
-		return current().qLookup(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QIndicator found) {
-		return current().qLookup(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QIndicator found) {
-		return current().qLookupgt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QIndicator found) {
-		return current().qLookupgt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QIndicator found) {
-		return current().qLookuplt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QIndicator found) {
-		return current().qLookuplt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return current().qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QIndicator found) {
-		return current().qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return current().qLookuplt(argument, array, start, elements, found);
-	}
 
 	@Override
 	public QCharacter qTrim() {
@@ -1032,6 +823,136 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		return current().qInth();
 	}
 
+	@Override
+	public QNumeric qLookup(QArray<?> array, QIndicator found) {
+		return current().qLookup(array, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array) {
+		return current().qLookup(array);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start) {
+		return current().qLookup(array, start);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start) {
+		return current().qLookup(array, start);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements) {
+		return current().qLookup(array, start, elements);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements) {
+		return current().qLookup(array, start, elements);
+	}
+	
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QIndicator found) {
+		return current().qLookup(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, QIndicator found) {
+		return current().qLookup(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return current().qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return current().qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return current().qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return current().qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QIndicator found) {
+		return current().qLookupgt(array, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QIndicator found) {
+		return current().qLookupgt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, QIndicator found) {
+		return current().qLookupgt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return current().qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return current().qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return current().qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return current().qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QIndicator found) {
+		return current().qLookuplt(array, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QIndicator found) {
+		return current().qLookuplt(array, start, found);	
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found) {
+		return current().qLookuplt(array, start, found);	
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return current().qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return current().qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return current().qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return current().qLookuplt(array, start, elements, found);
+	}
+	
 	@Override
 	public QString qPlus(String factor1) {
 		return current().qPlus(factor1);

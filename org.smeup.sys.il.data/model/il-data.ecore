@@ -1582,7 +1582,47 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lookuppable" abstract="true" interface="true">
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
+      <eParameters name="array" lowerBound="1">
+        <eGenericType eClassifier="#//Array">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1591,7 +1631,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1601,7 +1640,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1611,7 +1649,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1622,7 +1659,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1633,7 +1669,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1644,80 +1679,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1728,7 +1689,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1737,7 +1697,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1747,7 +1706,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1757,7 +1715,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1768,7 +1725,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1779,7 +1735,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1790,80 +1745,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1874,7 +1755,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1883,7 +1763,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1893,7 +1772,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1903,7 +1781,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1914,7 +1791,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1925,7 +1801,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>
@@ -1936,80 +1811,6 @@
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="#//Character"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="array" lowerBound="1">
-        <eGenericType eClassifier="#//Array">
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
-    </eOperations>
-    <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
-      <eParameters name="argument" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
           <eTypeArguments/>

@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,337 +22,209 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found);
+	QNumeric qLookup(QArray<?> array);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QNumeric start);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, Number start);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, Number start, Number elements);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, QIndicator found);
+	QNumeric qLookup(QArray<?> array, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, Number start, QIndicator found);
+	QNumeric qLookup(QArray<?> array, Number start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, QNumeric start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, Number start, Number elements, QIndicator found);
+	QNumeric qLookup(QArray<?> array, Number start, QNumeric elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookup(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, Number start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, QNumeric start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found);
+	QNumeric qLookupgt(QArray<?> array, Number start, QNumeric elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, QNumeric start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, Number start, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, Number start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, QNumeric start, Number elements, QIndicator found);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, Number start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookupgt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, Number start, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, Number start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" argumentRequired="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
-	 * @generated
-	 */
-	QNumeric qLookuplt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found);
+	QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found);
 
 } // QLookuppable
