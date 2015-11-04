@@ -9,14 +9,28 @@
   <foreignModel>dk-compiler.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitCompiler" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="dk-compiler.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//EntryType">
-      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//EntryType/Main"/>
-      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//EntryType/Entry"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//CaseSensitiveType">
       <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//CaseSensitiveType/Lower"/>
       <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//CaseSensitiveType/Upper"/>
       <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//CaseSensitiveType/Ignore"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//EntryType">
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//EntryType/Main"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//EntryType/Entry"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//InternalType">
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//InternalType/Inner"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//InternalType/Nested"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//OptimizationType">
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//OptimizationType/None"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//OptimizationType/Position"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dk-compiler.ecore#//UnitScope">
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//UnitScope/Friendly"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//UnitScope/Public"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//UnitScope/Protected"/>
+      <genEnumLiterals ecoreEnumLiteral="dk-compiler.ecore#//UnitScope/Private"/>
     </genEnums>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//CompilationUnit">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-compiler.ecore#//CompilationUnit/trashCan"/>
@@ -46,14 +60,19 @@
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getKeyList/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getKeyList/deep"/>
       </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getMethod">
+        <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getMethod/name"/>
+      </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getModule">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getModule/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getModule/deep"/>
       </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getNode"/>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getNamedNode">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getNamedNode/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getNamedNode/deep"/>
       </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getParentUnit"/>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getPrinter">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getPrinter/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getPrinter/deep"/>
@@ -69,7 +88,6 @@
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getQualifiedName">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getQualifiedName/namedNode"/>
       </genOperations>
-      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getRoot"/>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getRoutine">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getRoutine/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getRoutine/deep"/>
@@ -77,6 +95,9 @@
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/getStatement">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getStatement/name"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/getStatement/deep"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/normalizeModuleName">
+        <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/normalizeModuleName/name"/>
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/normalizeTermName">
         <genParameters ecoreParameter="dk-compiler.ecore#//CompilationUnit/normalizeTermName/name"/>
@@ -90,12 +111,21 @@
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/refresh"/>
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilationUnit/close"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="dk-compiler.ecore#//ConversionUnit">
+      <genOperations ecoreOperation="dk-compiler.ecore#//ConversionUnit/close"/>
+    </genClasses>
     <genClasses ecoreClass="dk-compiler.ecore#//CompilationSetup">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilationSetup/basePackage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilationSetup/entryType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilationSetup/optimizationType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilationSetup/procedureType"/>
     </genClasses>
     <genClasses ecoreClass="dk-compiler.ecore#//CompilationTrashCan">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-compiler.ecore#//CompilationTrashCan/dataTerms"/>
+    </genClasses>
+    <genClasses ecoreClass="dk-compiler.ecore#//CompilerLinker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilerLinker/linkedClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilerLinker/linkedTermName"/>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//CompilerManager">
       <genOperations ecoreOperation="dk-compiler.ecore#//CompilerManager/createChildCompilationUnit">
@@ -157,18 +187,34 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//UnitConverter">
+      <genOperations ecoreOperation="dk-compiler.ecore#//UnitConverter/createConversionUnit">
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/createConversionUnit/job"/>
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/createConversionUnit/module"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-compiler.ecore#//UnitConverter/createConversionUnit.1">
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/createConversionUnit.1/job"/>
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/createConversionUnit.1/program"/>
+      </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//UnitConverter/convertModule">
-        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertModule/job"/>
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertModule/conversionUnit"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertModule/module"/>
       </genOperations>
       <genOperations ecoreOperation="dk-compiler.ecore#//UnitConverter/convertProgram">
-        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertProgram/job"/>
+        <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertProgram/conversionUnit"/>
         <genParameters ecoreParameter="dk-compiler.ecore#//UnitConverter/convertProgram/program"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-compiler.ecore#//UnitConverterRegistry"/>
-    <genClasses ecoreClass="dk-compiler.ecore#//CompilerLinker">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//CompilerLinker/linkedClass"/>
-    </genClasses>
+    <nestedGenPackages prefix="DevelopmentKitCompilerAnalyzer" disposableProviderFactory="true"
+        adapterFactory="false" ecorePackage="dk-compiler.ecore#//anz">
+      <genClasses ecoreClass="dk-compiler.ecore#//anz/ProgramAnalisys">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-compiler.ecore#//anz/ProgramAnalisys/variables"/>
+      </genClasses>
+      <genClasses ecoreClass="dk-compiler.ecore#//anz/VariableRef">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//anz/VariableRef/variableName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//anz/VariableRef/occourence"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-compiler.ecore#//anz/VariableRef/methods"/>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

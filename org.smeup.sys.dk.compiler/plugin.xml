@@ -19,4 +19,12 @@
             genModel="model/dk-compiler.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated dk-compiler -->
+      <package
+            uri="http://www.smeup.org/asup/dk/compiler/anz"
+            class="org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage"
+            genModel="model/dk-compiler.genmodel"/>
+   </extension>
+
 </plugin>

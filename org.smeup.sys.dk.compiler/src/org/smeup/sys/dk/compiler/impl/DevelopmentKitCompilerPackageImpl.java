@@ -31,6 +31,8 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
 import org.smeup.sys.dk.compiler.QUnitConverter;
 import org.smeup.sys.dk.compiler.QUnitConverterRegistry;
 import org.smeup.sys.dk.compiler.UnitScope;
+import org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage;
+import org.smeup.sys.dk.compiler.anz.impl.DevelopmentKitCompilerAnalyzerPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
@@ -193,11 +195,16 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		QOperatingSystemModulePackage.eINSTANCE.eClass();
 		QOperatingSystemProgramPackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		DevelopmentKitCompilerAnalyzerPackageImpl theDevelopmentKitCompilerAnalyzerPackage = (DevelopmentKitCompilerAnalyzerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QDevelopmentKitCompilerAnalyzerPackage.eNS_URI) instanceof DevelopmentKitCompilerAnalyzerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QDevelopmentKitCompilerAnalyzerPackage.eNS_URI) : QDevelopmentKitCompilerAnalyzerPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theDevelopmentKitCompilerPackage.createPackageContents();
+		theDevelopmentKitCompilerAnalyzerPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theDevelopmentKitCompilerPackage.initializePackageContents();
+		theDevelopmentKitCompilerAnalyzerPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theDevelopmentKitCompilerPackage.freeze();
@@ -495,6 +502,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		QDevelopmentKitCompilerAnalyzerPackage theDevelopmentKitCompilerAnalyzerPackage = (QDevelopmentKitCompilerAnalyzerPackage)EPackage.Registry.INSTANCE.getEPackage(QDevelopmentKitCompilerAnalyzerPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
@@ -507,6 +515,9 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		QOperatingSystemFilePackage theOperatingSystemFilePackage = (QOperatingSystemFilePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemFilePackage.eNS_URI);
 		QOperatingSystemModulePackage theOperatingSystemModulePackage = (QOperatingSystemModulePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemModulePackage.eNS_URI);
 		QOperatingSystemProgramPackage theOperatingSystemProgramPackage = (QOperatingSystemProgramPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemProgramPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theDevelopmentKitCompilerAnalyzerPackage);
 
 		// Create type parameters
 
