@@ -372,7 +372,15 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qCheckr(String comparator, QString base, Integer start) {
-		return null;
+		if(start == null)
+			start = 1;
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
+		int i = base.qSubst(start).trimR().lastIndexOf(comparator)+1;
+		if(i>0)
+			decimal.eval(i);
+		else
+			decimal.eval(base.qSubst(start).trimR().length());
+		return decimal;
 	}
 
 	public QDecimal qDec(QNumeric numeric, int precision, int scale) {

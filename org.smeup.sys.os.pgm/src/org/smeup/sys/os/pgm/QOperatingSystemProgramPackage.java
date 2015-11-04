@@ -149,22 +149,13 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int CALLABLE_PROGRAM__QACTIVATION_GROUP = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>QEntry</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int CALLABLE_PROGRAM__QENTRY = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>QProgram</b></em>' reference. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int CALLABLE_PROGRAM__QPROGRAM = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int CALLABLE_PROGRAM__QPROGRAM = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Callable Program</em>' class.
@@ -172,7 +163,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QCallableProgramDelegator <em>Callable Program Delegator</em>}' class.
@@ -602,16 +593,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EReference getCallableProgram_QActivationGroup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QCallableProgram#getQEntry <em>QEntry</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>QEntry</em>'.
-	 * @see org.smeup.sys.os.pgm.QCallableProgram#getQEntry()
-	 * @see #getCallableProgram()
-	 * @generated
-	 */
-	EAttribute getCallableProgram_QEntry();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.smeup.sys.os.pgm.QCallableProgram#getQProgram <em>QProgram</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>QProgram</em>'.
@@ -890,13 +871,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CALLABLE_PROGRAM__QACTIVATION_GROUP = eINSTANCE.getCallableProgram_QActivationGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>QEntry</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CALLABLE_PROGRAM__QENTRY = eINSTANCE.getCallableProgram_QEntry();
 
 		/**
 		 * The meta object literal for the '<em><b>QProgram</b></em>' reference feature.

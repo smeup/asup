@@ -294,17 +294,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCallableProgram_QEntry() {
-		return (EAttribute)callableProgramEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getCallableProgram_QProgram() {
-		return (EReference)callableProgramEClass.getEStructuralFeatures().get(2);
+		return (EReference)callableProgramEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -470,7 +461,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		callableProgramEClass = createEClass(CALLABLE_PROGRAM);
 		createEReference(callableProgramEClass, CALLABLE_PROGRAM__QACTIVATION_GROUP);
-		createEAttribute(callableProgramEClass, CALLABLE_PROGRAM__QENTRY);
 		createEReference(callableProgramEClass, CALLABLE_PROGRAM__QPROGRAM);
 
 		callableProgramDelegatorEClass = createEClass(CALLABLE_PROGRAM_DELEGATOR);
@@ -581,10 +571,11 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCallableProgram_QActivationGroup(), this.getActivationGroup(), this.getActivationGroup_Programs(), "qActivationGroup", null, 0, 1, QCallableProgram.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCallableProgram_QEntry(), this.getParameterList(), "qEntry", null, 1, 1, QCallableProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallableProgram_QProgram(), this.getProgram(), null, "qProgram", null, 1, 1, QCallableProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(callableProgramEClass, this.getParameterList(), "getEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, ecorePackage.getEJavaObject(), "getRawProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
 
