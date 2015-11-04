@@ -42,7 +42,6 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
-import org.smeup.sys.il.flow.QParameterList;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
@@ -133,7 +132,7 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 		// main
 		if (program.getMain() != null) {
 			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
-			routine.setName("main");
+			routine.setName("*MAIN");
 			routine.setMain(program.getMain());
 			MethodDeclaration methodDeclaration = writeRoutine(routine);
 
@@ -177,34 +176,6 @@ public class JDTProgramTestWriter extends JDTProgramWriter {
 			for (QDataTerm<?> dataTerm : program.getDataSection().getDatas())
 				writeInnerData(dataTerm, UnitScope.PUBLIC, true);
 
-	}
-
-	public void writeEntry(QProgram program, List<String> modules) throws IOException {
-
-		if (program.getEntry() != null)
-			writeEntry(program.getEntry(), "qEntry");
-		else
-			for (String module : modules) {
-
-				QModule flowModule = getCompilationUnit().getModule(module, true);
-				if (flowModule == null)
-					throw new IOException("Invalid module: " + module);
-
-				if(flowModule.getFlowSection() == null) 
-					continue;
-				
-				QParameterList parameterList = null;
-				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
-					if (pl.getName().equals("*ENTRY")) {
-						parameterList = pl;
-						break;
-					}
-
-				if (parameterList != null) {
-					writeEntry(parameterList, "qEntry");
-					break;
-				}
-			}
 	}
 
 	@SuppressWarnings("unchecked")

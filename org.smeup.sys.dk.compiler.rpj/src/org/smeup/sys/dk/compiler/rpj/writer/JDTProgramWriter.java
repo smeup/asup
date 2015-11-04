@@ -32,13 +32,11 @@ import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.QConversion;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QParameterList;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QProgram;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
@@ -118,19 +116,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
-		// main
-		if (program.getMain() != null) {
-			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
-			routine.setName("main");
-			routine.setMain(program.getMain());
-			writeRoutine(routine);
-		}
-
 		// routines
-		if (program.getFlowSection() != null)
-			for (QRoutine routine : program.getFlowSection().getRoutines())
-				writeRoutine(routine);
-
+		writeRoutines(program);
+		
 		// procedures
 		if (program.getFlowSection() != null)
 			for (QProcedure procedure : program.getFlowSection().getProcedures())
@@ -145,10 +133,9 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 	public void writeEntry(QProgram program, List<String> modules) throws IOException {
 
 		if (program.getEntry() != null)
-			writeEntry(program.getEntry(), "qEntry");
+			writeEntry(program.getEntry(), "_params");
 		else {
 
-			boolean entry = false;
 			for (String module : modules) {
 
 				QModule flowModule = getCompilationUnit().getModule(module, true);
@@ -162,18 +149,14 @@ public class JDTProgramWriter extends JDTCallableUnitWriter {
 				for (QParameterList pl : flowModule.getFlowSection().getParameterLists())
 					if (pl.getName().equals("*ENTRY")) {
 						parameterList = pl;
-						entry = true;
 						break;
 					}
 
 				if (parameterList != null) {
-					writeEntry(parameterList, "qEntry");
-					entry = true;
+					writeEntry(parameterList, "_params");
 					break;
 				}
 			}
-			if (!entry)
-				writeEntry(null, "qEntry");
 		}
 		// scrivo una entry vuota
 	}

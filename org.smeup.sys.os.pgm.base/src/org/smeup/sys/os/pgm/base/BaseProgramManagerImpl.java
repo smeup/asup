@@ -215,13 +215,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 			}
 
-			if (entryMethod == null)
-				try {
-					entryMethod = klass.getMethod("main");
-				} catch (NoSuchMethodException | SecurityException e) {
-					e.printStackTrace();
-				}
-
 			QDataContext dataContext = callableInjector.getDataContext();
 			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(dataContext, delegate, entryMethod, initStrategy);
 			delegator.setQEntry(callableInjector.buildEntry(job, entryMethod));

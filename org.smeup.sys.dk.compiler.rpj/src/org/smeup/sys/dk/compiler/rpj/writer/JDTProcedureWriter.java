@@ -133,11 +133,6 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		methodDeclaration.setName(getAST().newSimpleName("qExec"));
 
-/*		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
-		entryAnnotation.setTypeName(getAST().newSimpleName(Entry.class.getSimpleName()));
-		writeImport(Entry.class);
-		methodDeclaration.modifiers().add(entryAnnotation);*/
-
 		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 		if (procedure.getReturnType() != null) {
