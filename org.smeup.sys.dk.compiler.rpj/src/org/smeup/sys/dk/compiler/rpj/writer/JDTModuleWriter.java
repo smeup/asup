@@ -24,11 +24,9 @@ import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitAnalyzer;
 import org.smeup.sys.dk.compiler.rpj.RPJCallableUnitInfo;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.term.QDataTerm;
-import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;
 import org.smeup.sys.il.flow.QModule;
 import org.smeup.sys.il.flow.QProcedure;
 import org.smeup.sys.il.flow.QPrototype;
-import org.smeup.sys.il.flow.QRoutine;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.rpj.RPJProgramSupport;
 
@@ -95,19 +93,8 @@ public class JDTModuleWriter extends JDTCallableUnitWriter {
 		// labels
 		writeLabels(callableUnitInfo.getLabels().keySet(), false, true);
 
-		// main
-		if (module.getMain() != null) {
-			QRoutine routine = QIntegratedLanguageFlowFactory.eINSTANCE.createRoutine();
-			routine.setName("main");
-			routine.setMain(module.getMain());
-
-			writeRoutine(routine);
-		}
-
 		// routines
-		if (module.getFlowSection() != null)
-			for (QRoutine routine : module.getFlowSection().getRoutines())
-				writeRoutine(routine);
+		writeRoutines(module);
 
 		// procedures
 		if (module.getFlowSection() != null)

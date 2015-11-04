@@ -103,7 +103,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public QData createData(QDataTerm<?> dataTerm, boolean initialize) {
-		if (dataTerm.getName().equalsIgnoreCase("£G11DA"))
+		if (dataTerm.getName().equalsIgnoreCase("£M5ADS"))
 			"".toString();
 		return createData((QDataDef<?>) dataTerm.getDefinition(), initialize);
 	}
@@ -323,7 +323,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 			}
 			dataDef = new MyDef((Class<?>) arguments.get(0), annotations, arguments.get(1));
 		}
-
 		// other
 		else {
 			// EMF reflection
@@ -747,6 +746,14 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		// merge annotations by reflection
 		for (Annotation annotation : annotations) {
+			
+			if(annotation instanceof DataDef) {
+				DataDef dataDef = (DataDef)annotation;
+				if(dataDef.packed()) {
+					QDecimalDef decimalDef = (QDecimalDef) eObject;
+					decimalDef.setType(DecimalType.PACKED);
+				}
+			}
 			for (Method method : annotation.getClass().getDeclaredMethods()) {
 
 				// EMF reflection

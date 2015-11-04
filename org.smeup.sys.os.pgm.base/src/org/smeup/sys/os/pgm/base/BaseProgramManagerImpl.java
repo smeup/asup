@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.pgm.base;
 
-import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,13 +21,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.java.QStrings;
-import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QList;
-import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceSetReader;
@@ -193,44 +190,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@SuppressWarnings("resource")
 	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
 
-		QCallableProgram callableProgram = null;
-
 		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
-
-		if (QCallableProgram.class.isAssignableFrom(klass)) {
-			callableProgram = (QCallableProgram) callableInjector.prepareCallable(klass);
-		} else {
-			Object delegate = callableInjector.prepareCallable(klass);
-
-			InitStrategy initStrategy = InitStrategy.BASE;
-			Program programAnnotation = klass.getAnnotation(Program.class);
-			if (programAnnotation != null)
-				initStrategy = programAnnotation.initStrategy();
-
-			Method entryMethod = null;
-			for (Method method : klass.getMethods()) {
-				if (method.isAnnotationPresent(Main.class)) {
-					entryMethod = method;
-					break;
-				}
-			}
-
-			if (entryMethod == null)
-				try {
-					entryMethod = klass.getMethod("main");
-				} catch (NoSuchMethodException | SecurityException e) {
-					e.printStackTrace();
-				}
-
-			QDataContext dataContext = callableInjector.getDataContext();
-			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(dataContext, delegate, entryMethod, initStrategy);
-			delegator.setQEntry(callableInjector.buildEntry(job, entryMethod));
-
-			callableProgram = delegator;
-		}
-
-		if (callableProgram.getQProgram() == null)
-			callableProgram.setQProgram(program);
 
 		QDataContext dataContext = callableInjector.getDataContext();
 
@@ -242,7 +202,25 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		programStatus.jobName.eval(job.getJobName());
 		programStatus.status.clear();
 
-		dataContext.getContext().invoke(callableProgram, PostConstruct.class);
+		QCallableProgram callableProgram = null;
+		if (QCallableProgram.class.isAssignableFrom(klass)) {
+			callableProgram = (QCallableProgram) callableInjector.prepareCallable(klass);
+
+			if (callableProgram.getQProgram() == null)
+				callableProgram.setQProgram(program);
+
+			dataContext.getContext().invoke(callableProgram, PostConstruct.class);
+		} else {
+			Object delegate = callableInjector.prepareCallable(klass);
+
+			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(dataContext, delegate);
+			callableProgram = delegator;
+
+			if (callableProgram.getQProgram() == null)
+				callableProgram.setQProgram(program);
+
+			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
+		}
 
 		return callableProgram;
 	}
@@ -316,18 +294,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			try {
 
 				// assign parameter
-				assignParameters(callableProgram.getQEntry(), params);
+				assignParameters(callableProgram.getEntry(), params);
 
 				// open
 				if (!callableProgram.isOpen())
 					callableProgram.open();
 
-				printOpenStack(job, programStack, callableProgram);
+//				printOpenStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
-				System.err.println(e);
 				e.printStackTrace();
 				throw e;
 			} catch (Exception e) {
@@ -339,7 +316,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
-				printCloseStack(job, programStack, callableProgram);
+//				printCloseStack(job, programStack, callableProgram);
 
 				// TODO release parameters
 
@@ -384,30 +361,33 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	protected void printOpenStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "-> " + callableProgram.getQProgram().getName() + " (";
-		for (QData param : callableProgram.getQEntry()) {
-			if (param.toString().length() > 100)
-				text += param.toString().substring(0, 100) + "..|";
-			else
-				text += param.toString() + "|";
 
-		}
+		if (callableProgram.getEntry() != null)
+			for (QData param : callableProgram.getEntry()) {
+				if (param.toString().length() > 100)
+					text += param.toString().substring(0, 100) + "..|";
+				else
+					text += param.toString() + "|";
+
+			}
 		text += ")";
 		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	protected void printCloseStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "<- " + callableProgram.getQProgram().getName() + " (";
-		for (QData param : callableProgram.getQEntry()) {
-			if (param != null)
-				if (param.toString().length() > 100)
-					text += param.toString().substring(0, 100) + "..|";
+		if (callableProgram.getEntry() != null)
+			for (QData param : callableProgram.getEntry()) {
+				if (param != null)
+					if (param.toString().length() > 100)
+						text += param.toString().substring(0, 100) + "..|";
+					else
+						text += param.toString() + "|";
 				else
-					text += param.toString() + "|";
-			else
-				text += "|";
-		}
+					text += "|";
+			}
 		text += ")";
-		text += callableProgram.isStateless() ? "(LR)" : "(RT)";
+		text += callableProgram.isStateless() ? "(RT)" : "(LR)";
 		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 

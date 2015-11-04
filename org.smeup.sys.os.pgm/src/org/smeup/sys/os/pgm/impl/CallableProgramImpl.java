@@ -29,7 +29,6 @@ import org.smeup.sys.os.pgm.QProgram;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl#getQActivationGroup <em>QActivation Group</em>}</li>
- *   <li>{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl#getQEntry <em>QEntry</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl#getQProgram <em>QProgram</em>}</li>
  * </ul>
  * </p>
@@ -42,24 +41,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The default value of the '{@link #getQEntry() <em>QEntry</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getQEntry()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final QData[] QENTRY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getQEntry() <em>QEntry</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getQEntry()
-	 * @generated
-	 * @ordered
-	 */
-	protected QData[] qEntry = QENTRY_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getQProgram() <em>QProgram</em>}' reference.
@@ -132,27 +113,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 	 * @generated
 	 */
 	@Override
-	public QData[] getQEntry() {
-		return qEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setQEntry(QData[] newQEntry) {
-		QData[] oldQEntry = qEntry;
-		qEntry = newQEntry;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QENTRY, oldQEntry, qEntry));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public QProgram getQProgram() {
 		return qProgram;
 	}
@@ -176,6 +136,17 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 	 */
 	@Override
 	public void close() {
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QData[] getEntry() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -268,8 +239,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 		switch (featureID) {
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QACTIVATION_GROUP:
 				return getQActivationGroup();
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QENTRY:
-				return getQEntry();
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QPROGRAM:
 				return getQProgram();
 		}
@@ -285,9 +254,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 		switch (featureID) {
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QACTIVATION_GROUP:
 				setQActivationGroup((QActivationGroup)newValue);
-				return;
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QENTRY:
-				setQEntry((QData[])newValue);
 				return;
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QPROGRAM:
 				setQProgram((QProgram)newValue);
@@ -306,9 +272,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QACTIVATION_GROUP:
 				setQActivationGroup((QActivationGroup)null);
 				return;
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QENTRY:
-				setQEntry(QENTRY_EDEFAULT);
-				return;
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QPROGRAM:
 				setQProgram((QProgram)null);
 				return;
@@ -325,27 +288,10 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 		switch (featureID) {
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QACTIVATION_GROUP:
 				return getQActivationGroup() != null;
-			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QENTRY:
-				return QENTRY_EDEFAULT == null ? qEntry != null : !QENTRY_EDEFAULT.equals(qEntry);
 			case QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QPROGRAM:
 				return qProgram != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qEntry: ");
-		result.append(qEntry);
-		result.append(')');
-		return result.toString();
 	}
 
 } // CallableProgramImpl

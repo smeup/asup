@@ -55,10 +55,10 @@ public interface QAccessFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" recordRequired="true" nameRequired="true"
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
 	 * @generated
 	 */
-	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+	<R extends QRecord> QKSDataSet<R> createKeySequencedDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -92,10 +92,10 @@ public interface QAccessFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" recordRequired="true" nameRequired="true"
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
 	 * @generated
 	 */
-	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+	<R extends QRecord> QRRDataSet<R> createRelativeRecordDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,9 +132,9 @@ public interface QAccessFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" recordRequired="true" nameRequired="true"
+	 * @model required="true" wrapperRequired="true" recordRequired="true"
 	 * @generated
 	 */
-	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(R record, String name, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
+	<R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct);
 
 } // QAccessFactory

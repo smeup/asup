@@ -603,11 +603,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(QNumeric value, String roundingMode) {
-		// TODO remove
-		if (value == null)
-			writeNumber(0, null);
-		else
-			writeNumber(value.asDouble(), roundingMode);
+		writeNumber(value.asDouble(), roundingMode);
 	}
 
 	@Override

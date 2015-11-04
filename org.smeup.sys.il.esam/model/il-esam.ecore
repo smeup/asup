@@ -67,10 +67,14 @@
       <eTypeParameters name="R">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createKeySequencedDataSet.4/R"/>
+        </eGenericType>
+      </eParameters>
       <eParameters name="record" lowerBound="1">
         <eGenericType eTypeParameter="#//AccessFactory/createKeySequencedDataSet.4/R"/>
       </eParameters>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="accessMode" eType="#//AccessMode"/>
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
@@ -140,10 +144,14 @@
       <eTypeParameters name="R">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.4/R"/>
+        </eGenericType>
+      </eParameters>
       <eParameters name="record" lowerBound="1">
         <eGenericType eTypeParameter="#//AccessFactory/createRelativeRecordDataSet.4/R"/>
       </eParameters>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="accessMode" eType="#//AccessMode"/>
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>
@@ -213,10 +221,14 @@
       <eTypeParameters name="R">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Record"/>
       </eTypeParameters>
+      <eParameters name="wrapper" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+          <eTypeArguments eTypeParameter="#//AccessFactory/createSourceMemberDataSet.4/R"/>
+        </eGenericType>
+      </eParameters>
       <eParameters name="record" lowerBound="1">
         <eGenericType eTypeParameter="#//AccessFactory/createSourceMemberDataSet.4/R"/>
       </eParameters>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="accessMode" eType="#//AccessMode"/>
       <eParameters name="userOpen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eParameters name="infoStruct" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct"/>

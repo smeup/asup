@@ -21,7 +21,6 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getQActivationGroup <em>QActivation Group</em>}</li>
- *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getQEntry <em>QEntry</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getQProgram <em>QProgram</em>}</li>
  * </ul>
  * </p>
@@ -62,32 +61,6 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	void setQProgram(QProgram value);
 
 	/**
-	 * Returns the value of the '<em><b>QEntry</b></em>' attribute. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>QEntry</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>QEntry</em>' attribute.
-	 * @see #setQEntry(QData[])
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram_QEntry()
-	 * @model dataType="org.smeup.sys.os.pgm.ParameterList" required="true"
-	 * @generated
-	 */
-	QData[] getQEntry();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QCallableProgram#getQEntry <em>QEntry</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>QEntry</em>' attribute.
-	 * @see #getQEntry()
-	 * @generated
-	 */
-	void setQEntry(QData[] value);
-
-	/**
 	 * Returns the value of the '<em><b>QActivation Group</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}'.
 	 * <!-- begin-user-doc -->
@@ -121,6 +94,14 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	 * @generated
 	 */
 	void close();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.smeup.sys.os.pgm.ParameterList"
+	 * @generated
+	 */
+	QData[] getEntry();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
