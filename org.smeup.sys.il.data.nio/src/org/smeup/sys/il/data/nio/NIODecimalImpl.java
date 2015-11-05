@@ -20,7 +20,6 @@ import org.smeup.sys.il.data.QDecimal;
 
 public abstract class NIODecimalImpl extends NIONumericImpl implements QDecimal {
 
-
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) -16;
 

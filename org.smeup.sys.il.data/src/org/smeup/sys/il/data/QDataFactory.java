@@ -152,10 +152,10 @@ public interface QDataFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sizeRequired="true"
+	 * @model required="true" sizeRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	QPointer createPointer(int size);
+	QPointer createPointer(int size, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc -->

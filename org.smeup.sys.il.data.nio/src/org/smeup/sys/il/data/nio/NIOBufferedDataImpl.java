@@ -29,6 +29,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
 
@@ -101,7 +102,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		}
 	}
 
-	public void allocate() {
+	protected void allocate() {
 
 		// TODO synchronize
 		if (_relative != null || _buffer != null)
@@ -346,16 +347,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public String toString() {
-		try {
-			return new String(asBytes());
-		} catch (Exception e) {
-			// TODO
-			return "";
-		}
-	}
-
-	@Override
-	public String asString() {
 		return new String(asBytes());
 	}
 
@@ -368,8 +359,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			switch (defaultComparator) {
 			case ASCII:
 
-				if (dataWriterImpl.object instanceof QBufferedData)
-					return asString().equals(((QBufferedData) dataWriterImpl.object).asString());
+				if (dataWriterImpl.object instanceof QString)
+					return toString().equals(((QString) dataWriterImpl.object).asString());
 				else
 					return toString().equals(dataWriterImpl.object.toString());
 
@@ -439,11 +430,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void movel(QDataWriter value, boolean clear) {
 		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public String s() {
-		return toString();
 	}
 
 	@Override

@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
@@ -54,11 +53,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	@Override
 	public short asShort() {
 		return readNumber().shortValue();
-	}
-
-	@Override
-	public String asString() {
-		return new String(asBytes());
 	}
 
 	public abstract int compareNumber(Number value);
@@ -540,11 +534,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	@Override
 	public void eval(long value) {
 		eval(value, (String)null);
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
-		move(value, true);
 	}
 
 	@Override

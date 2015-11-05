@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QCallableProgram;
@@ -143,6 +144,17 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QDataContext getDataContext() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QData[] getEntry() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -167,16 +179,6 @@ public abstract class CallableProgramImpl extends ObjectImpl implements QCallabl
 	 */
 	@Override
 	public boolean isOpen() {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public boolean isStateless() {
 		return true;
 	}
 

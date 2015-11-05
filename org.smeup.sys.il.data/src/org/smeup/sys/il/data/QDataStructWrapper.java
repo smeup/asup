@@ -246,17 +246,22 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
+	public void eval(QString value) {
+		delegate.eval(value);
+	}
+
+	@Override
+	public void eval(QIndicator value) {
+		delegate.eval(value);
+	}
+
+	@Override
 	public void eval(boolean value) {
 		delegate.eval(value);
 	}
 
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
-		delegate.eval(value);
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
 		delegate.eval(value);
 	}
 
@@ -271,7 +276,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void evalr(QBufferedData value) {
+	public void evalr(QString value) {
 		delegate.evalr(value);
 	}
 

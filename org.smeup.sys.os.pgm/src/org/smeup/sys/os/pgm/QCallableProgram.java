@@ -11,6 +11,7 @@ import java.io.Closeable;
 import java.util.concurrent.Callable;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 
 /**
@@ -98,6 +99,14 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDataContext getDataContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model kind="operation" dataType="org.smeup.sys.os.pgm.ParameterList"
 	 * @generated
 	 */
@@ -116,13 +125,6 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	 * @generated
 	 */
 	boolean isOpen();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
-	 * @generated
-	 */
-	boolean isStateless();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

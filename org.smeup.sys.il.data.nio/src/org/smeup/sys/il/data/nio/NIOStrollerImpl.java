@@ -42,7 +42,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 
 	@Override
 	public String asString() {
-		// absolute(1);
 		return current().asString();
 	}
 
@@ -152,11 +151,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void eval(QBufferedData value) {
-		current().eval(value);
-	}
-
-	@Override
 	public void eval(String value) {
 		current().eval(value);
 	}
@@ -171,11 +165,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().evalr(value);
 	}
 
-	@Override
-	public void evalr(QBufferedData value) {
-		current().evalr(value);
-	}
-	
 	@Override
 	public <E extends Enum<E>> boolean ge(E value) {
 		return current().ge(value);
@@ -973,5 +962,25 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 				datas.next().accept(visitor);
 			visitor.endVisit(this);
 		}
+	}
+
+	@Override
+	public String s() {
+		return asString();
+	}
+
+	@Override
+	public void eval(QIndicator value) {
+		current().eval(value);
+	}
+
+	@Override
+	public void eval(QString value) {
+		current().eval(value);		
+	}
+
+	@Override
+	public void evalr(QString value) {
+		current().evalr(value);		
 	}
 }

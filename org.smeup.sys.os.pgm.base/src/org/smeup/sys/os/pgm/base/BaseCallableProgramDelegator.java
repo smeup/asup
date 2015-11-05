@@ -49,7 +49,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	private Method _exit = null;
 
 	private boolean isOpen = false;
-	private boolean isStateless = true;
 	private QData[] entry = null;
 
 	private boolean apiMode = false;
@@ -268,11 +267,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	}
 
 	@Override
-	public boolean isStateless() {
-		return isStateless;
-	}
-
-	@Override
 	public Object getDelegate() {
 		return delegate;
 	}
@@ -316,5 +310,10 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	@Override
 	public QData[] getEntry() {
 		return entry;
+	}
+
+	@Override
+	public QDataContext getDataContext() {
+		return dataContext;
 	}
 }

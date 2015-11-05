@@ -13,7 +13,6 @@ package org.smeup.sys.il.data.nio;
 
 import java.util.Date;
 
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
@@ -164,13 +163,8 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public String asString() {
-		return new String(asBytes());
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
-		movel(value.toString(), true);
+	public void eval(QDatetime value) {
+		movel(value, true);
 	}
 
 	@Override

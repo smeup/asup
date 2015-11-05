@@ -86,6 +86,22 @@ public interface QIndicator extends QBufferedData {
 	void eval(String value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QIndicator value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QString value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated

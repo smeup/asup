@@ -45,22 +45,6 @@ public interface QList<D extends QData> extends QData, Iterable<D> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 *
-	 * @model indexRequired="true" valueRequired="true"
-	 * @generated
-	 */
-	void set(int index, D value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model indexRequired="true" valueRequired="true"
-	 * @generated
-	 */
-	void set(QNumeric index, D value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model required="true"
 	 * @generated
 	 */

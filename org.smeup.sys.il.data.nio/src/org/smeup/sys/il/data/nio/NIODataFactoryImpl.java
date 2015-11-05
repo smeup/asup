@@ -82,6 +82,7 @@ import org.smeup.sys.il.data.def.QIndicatorDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.def.QListDef;
+import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.def.QScrollerDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
@@ -103,8 +104,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public QData createData(QDataTerm<?> dataTerm, boolean initialize) {
-		if (dataTerm.getName().equalsIgnoreCase("£M5ADS"))
-			"".toString();
 		return createData((QDataDef<?>) dataTerm.getDefinition(), initialize);
 	}
 
@@ -191,8 +190,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			data = (D) createIndicator(initialize);
 		else if (dataDef instanceof QPointerDef) {
 			QPointerDef pointerDef = (QPointerDef) dataDef;
-			pointerDef.toString();
-			data = (D) createPointer(0);
+			data = (D) createPointer(pointerDef.getLength(), initialize);
 		} else if (dataDef instanceof QDataAreaDef) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
 			data = (D) createDataArea(dataAreaDef.getArgument(), dataAreaDef.getExternalName(), initialize);
@@ -750,8 +748,15 @@ public class NIODataFactoryImpl implements QDataFactory {
 			if(annotation instanceof DataDef) {
 				DataDef dataDef = (DataDef)annotation;
 				if(dataDef.packed()) {
-					QDecimalDef decimalDef = (QDecimalDef) eObject;
-					decimalDef.setType(DecimalType.PACKED);
+					if(eObject instanceof QMultipleAtomicBufferedDataDef<?>) {
+						QMultipleAtomicBufferedDataDef<?> multipleAtomicBufferedDataDef = (QMultipleAtomicBufferedDataDef<?>) eObject;
+						QDecimalDef decimalDef = (QDecimalDef) multipleAtomicBufferedDataDef.getArgument();
+						decimalDef.setType(DecimalType.PACKED);
+					}
+					else {
+						QDecimalDef decimalDef = (QDecimalDef) eObject;
+						decimalDef.setType(DecimalType.PACKED);
+					}
 				}
 			}
 			for (Method method : annotation.getClass().getDeclaredMethods()) {
@@ -818,7 +823,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer createPointer(final int size) {
+	public QPointer createPointer(final int size, boolean initialize) {
 
 		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl(getDataContext()) {
 
@@ -835,11 +840,6 @@ public class NIODataFactoryImpl implements QDataFactory {
 			}
 
 			@Override
-			public void eval(QBufferedData value) {
-				value.toString();
-			}
-
-			@Override
 			protected byte getFiller() {
 				return 0;
 			}
@@ -849,7 +849,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 				visitor.visit(this);
 			}
 		};
-		bufferedData.allocate();
+		if(initialize)
+			initialize(bufferedData);
+
 		return new NIOPointerImpl(getDataContext(), bufferedData);
 	}
 

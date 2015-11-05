@@ -45,6 +45,7 @@ import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
@@ -305,7 +306,12 @@ public class RPJProgramSupport {
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+		try {
+			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+		}
+		catch(Exception e) {
+			throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
+		}
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
@@ -413,15 +419,14 @@ public class RPJProgramSupport {
 
 	public QString qEditc(QNumeric numeric, String format) {
 		// TODO
-		QCharacter character = dataContext.getDataFactory().createCharacter(10, false, true);
-		character.eval(numeric);
+		QCharacter character = dataContext.getDataFactory().createCharacter(numeric.getLength(), false, true);
 
 		switch (format) {
 		case "Z":
 			character.eval(numberFormat.format(Double.parseDouble(character.s())));
-			// character.eval(character.s().replaceAll("0", " "));
 			break;
 		case "X":
+			character.move(numeric);
 			break;
 		default:
 			System.out.println("Unexpected condition: sbdofsd8frRWE6R");
@@ -780,6 +785,10 @@ public class RPJProgramSupport {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
 
+	public <BD extends QBufferedData> QNumeric qLookupEQ(BD argument, QList<BD> list, QDecimal startIndex, Integer numElements) {
+		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
+	}
+	
 	public <BD extends QBufferedData> QNumeric qLookup(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
@@ -869,6 +878,32 @@ public class RPJProgramSupport {
 
 		this.dataContext.found().eval(result.ge(1));
 
+		return result;
+	}
+
+	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, QNumeric startIndex, Integer numElements) {
+
+		if (startIndex == null)
+			startIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true).plus(1);
+
+		if (numElements == null || numElements == 0)
+			numElements = list.capacity();
+
+		QDecimal result = null;
+		for (int i = startIndex.i(); i <= numElements; i++) {
+			if (list.get(i).eq(argument)) {
+				result = qBox(i);
+				break;
+			}
+		}
+
+		if (result == null)
+			result = qBox(0);
+
+		this.dataContext.found().eval(result.ge(1));
+
+		startIndex.eval(result);
+		
 		return result;
 	}
 

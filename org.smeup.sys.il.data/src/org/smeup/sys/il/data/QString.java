@@ -22,6 +22,14 @@ import java.lang.String;
  */
 public interface QString extends QBufferedData, QScanner, QCattable<QString>, QLookuppable {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String asString();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -50,6 +58,14 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	void eval(String value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QString value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -70,7 +86,7 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	void evalr(QBufferedData value);
+	void evalr(QString value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -523,4 +539,12 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	 * @generated
 	 */
 	QCharacter qTrimr();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	String s();
 } // QString

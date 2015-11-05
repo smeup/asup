@@ -34,19 +34,7 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 		if(value != null)
 			value.assign(this);	
 	}
-
-	@Override
-	public void eval(QBufferedData value) {
-
-		if(value instanceof QPointer) {
-
-		}
-		else if(value == null)
-			"".toCharArray();
-		else
-			value.toString();
-	}
-
+	
 	@Override
 	public int getLength() {
 		return getBuffer().capacity()-getPosition();
@@ -190,11 +178,6 @@ public class NIOPointerImpl extends NIOBufferedDataImpl implements QPointer {
 	@Override
 	public String toString() {
 		return target.toString();
-	}
-
-	@Override
-	public String asString() {
-		return target.asString();
 	}
 	
 	@Override

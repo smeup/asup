@@ -15,7 +15,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -30,7 +29,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 
 	private static final long serialVersionUID = 1L;
-	private static final byte INIT = (byte) 64; // 32;
+	protected static final byte INIT = (byte) 64; // 32;
 	// TODO inseriti in NioBufferedDataImpl
 //	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
 //	private static final Charset CHARSET = Charset.forName(ENCODING);
@@ -44,6 +43,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public NIOCharacterImpl(QDataContext dataContext, int length) {
 		super(dataContext);
 		_length = length;
+	}
+
+
+	@Override
+	public void eval(QIndicator value) {
+		movel(value);
 	}
 
 	@Override
@@ -62,8 +67,8 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void evalr(QBufferedData value) {
-		evalr(value.s());
+	public void evalr(QString value) {
+		evalr(value.asString());
 	}
 
 	@Override
@@ -139,11 +144,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public String asString() {
-		return new String(asBytes());
-	}
-
-	@Override
-	public String toString() {
 		try {
 			return new String(asBytes(), getEncoding());
 		} catch (UnsupportedEncodingException e) {
@@ -155,18 +155,23 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
+	public String toString() {
+		return asString();
+	}
+
+	@Override
 	public String trim() {
-		return toString().trim();
+		return asString().trim();
 	}
 
 	@Override
 	public String trimL() {
-		return trimL(toString());
+		return trimL(asString());
 	}
 
 	@Override
 	public String trimR() {
-		return trimR(toString());
+		return trimR(asString());
 	}
 
 	/* cat */
@@ -180,7 +185,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public void cat(QString factor1, boolean clear) {
 		if(clear)
 			this.clear();
-		eval(trimR() + factor1.toString());
+		eval(trimR() + factor1.asString());
 	}
 	
 	@Override
@@ -196,27 +201,27 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	@Override
 	public void cat(String factor1, QString factor2) {
-		cat(factor1, factor2.s(), 0);
+		cat(factor1, factor2.asString(), 0);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, boolean clear) {
-		cat(factor1, factor2.s(), 0, clear);
+		cat(factor1, factor2.asString(), 0, clear);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2) {
-		cat(factor1.s(), factor2.s(), 0);
+		cat(factor1.asString(), factor2.asString(), 0);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, boolean clear) {
-		cat(factor1.s(), factor2.s(), 0, clear);
+		cat(factor1.asString(), factor2.asString(), 0, clear);
 	}
 	
 	@Override
 	public void cat(QString factor1, String factor2) {
-		cat(factor1.s(), factor2, 0);
+		cat(factor1.asString(), factor2, 0);
 	}
 
 	@Override
@@ -235,22 +240,22 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	@Override
 	public void cat(QString factor1, Number space) {
-		cat(factor1.s(), space, false);
+		cat(factor1.asString(), space, false);
 	}
 
 	@Override
 	public void cat(QString factor1, Number space, boolean clear) {
-		cat(factor1.s(), space, clear);
+		cat(factor1.asString(), space, clear);
 	}
 	
 	@Override
 	public void cat(QString factor1, QNumeric space) {
-		cat(factor1.s(), space.i(), false);
+		cat(factor1.asString(), space.i(), false);
 	}
 
 	@Override
 	public void cat(QString factor1, QNumeric space, boolean clear) {
-		cat(factor1.s(), space.i(), clear);
+		cat(factor1.asString(), space.i(), clear);
 	}
 	
 	@Override
@@ -285,7 +290,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			}
 		}else{
 			if (space == 0)
-				eval(factor1.trim() + factor2.toString());
+				eval(factor1.trim() + factor2);
 			else {
 				try {
 					String value = factor1.trim();
@@ -312,52 +317,52 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, QString factor2, int space) {
-		cat(factor1, factor2.s(), space, false);
+		cat(factor1, factor2.asString(), space, false);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, int space, boolean clear) {
-		cat(factor1, factor2.s(), space, clear);
+		cat(factor1, factor2.asString(), space, clear);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
-		cat(factor1, factor2.s(), space.i(), false);
+		cat(factor1, factor2.asString(), space.i(), false);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
-		cat(factor1, factor2.s(), space.i(), clear);
+		cat(factor1, factor2.asString(), space.i(), clear);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, int space) {
-		cat(factor1.s(), factor2.s(), space, false);
+		cat(factor1.asString(), factor2.asString(), space, false);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, int space, boolean clear) {
-		cat(factor1.s(), factor2.s(), space, clear);
+		cat(factor1.asString(), factor2.asString(), space, clear);
 	}
 	
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space) {
-		cat(factor1.s(), factor2.s(), space.i(), false);
+		cat(factor1.asString(), factor2.asString(), space.i(), false);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
-		cat(factor1.s(), factor2.s(), space.i(), clear);
+		cat(factor1.asString(), factor2.asString(), space.i(), clear);
 	}
 	
 	@Override
 	public void cat(QString factor1, String factor2, int space) {
-		cat(factor1.s(), factor2, space, false);
+		cat(factor1.asString(), factor2, space, false);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, int space, boolean clear) {
-		cat(factor1.s(), factor2, space, clear);
+		cat(factor1.asString(), factor2, space, clear);
 	}
 	
 	@Override
@@ -372,22 +377,22 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	@Override
 	public void cat(QString factor1, QString factor2, Number space) {
-		cat(factor1.s(), factor2.s(), space.intValue(), false);
+		cat(factor1.asString(), factor2.asString(), space.intValue(), false);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, Number space, boolean clear) {
-		cat(factor1.s(), factor2.s(), space.intValue(), clear);
+		cat(factor1.asString(), factor2.asString(), space.intValue(), clear);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, Number space) {
-		cat(factor1.s(), factor2, space.intValue(), false);
+		cat(factor1.asString(), factor2, space.intValue(), false);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, Number space, boolean clear) {
-		cat(factor1.s(), factor2, space.intValue(), clear);
+		cat(factor1.asString(), factor2, space.intValue(), clear);
 	}
 	
 	@Override
@@ -485,32 +490,32 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public boolean eq(QString value) {
-		return eq(value.toString());
+		return eq(value.asString());
 	}
 
 	@Override
 	public boolean ge(QString value) {
-		return ge(value.toString());
+		return ge(value.asString());
 	}
 
 	@Override
 	public boolean gt(QString value) {
-		return gt(value.toString());
+		return gt(value.asString());
 	}
 
 	@Override
 	public boolean le(QString value) {
-		return le(value.toString());
+		return le(value.asString());
 	}
 
 	@Override
 	public boolean lt(QString value) {
-		return lt(value.toString());
+		return lt(value.asString());
 	}
 
 	@Override
 	public boolean ne(QString value) {
-		return ne(value.toString());
+		return ne(value.asString());
 	}
 
 	@Override
@@ -604,7 +609,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void eval(QBufferedData value) {
+	public void eval(QString value) {
 		movel(value, true);
 	}
 
@@ -620,7 +625,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source) {
-		xlate(from.s(), to.s(), source, 1, false);
+		xlate(from.asString(), to.asString(), source, 1, false);
 	}
 
 	@Override
@@ -640,7 +645,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start, boolean clear) {
-		xlate(from, to, source.s(), start, false);
+		xlate(from, to, source.asString(), start, false);
 	}
 
 	@Override
@@ -670,7 +675,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
-		xlate(from, to.s(), source, start, clear);
+		xlate(from, to.asString(), source, start, clear);
 	}
 
 	@Override
@@ -700,7 +705,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
-		xlate(from.s(), to, source, start, clear);
+		xlate(from.asString(), to, source, start, clear);
 	}
 
 	@Override
@@ -710,7 +715,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
-		xlate(from.s(), to, source, start, clear);
+		xlate(from.asString(), to, source, start, clear);
 	}
 	
 	@Override
@@ -735,7 +740,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, String source, Number start, boolean clear) {
-		xlate(from.s(), to.s(), source, start, clear);
+		xlate(from.asString(), to.asString(), source, start, clear);
 	}
 
 	@Override
@@ -745,7 +750,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, String source, QNumeric start, boolean clear) {
-		xlate(from.s(), to.s(), source, start.i(), clear);
+		xlate(from.asString(), to.asString(), source, start.i(), clear);
 	}
 
 	@Override
@@ -760,7 +765,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source, Number start, boolean clear) {
-		xlate(from.s(), to.s(), source.s(), start, clear);
+		xlate(from.asString(), to.asString(), source.asString(), start, clear);
 	}
 
 	@Override
@@ -770,7 +775,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source, QNumeric start, boolean clear) {
-		xlate(from.s(), to.s(), source.s(), start.i(), clear);
+		xlate(from.asString(), to.asString(), source.asString(), start.i(), clear);
 	}
 
 	@Override
@@ -1023,7 +1028,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public void testn(QIndicator numeric) {
 		numeric.eval(true);
 		try {
-			Double.parseDouble(toString());
+			Double.parseDouble(asString());
 		} catch (Exception e) {
 			numeric.eval(false);
 		}
@@ -1051,12 +1056,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 	@Override
 	public QNumeric qInt() {
-		return qIntOperation(this.s(), false);
+		return qIntOperation(this.asString(), false);
 	}
 
 	@Override
 	public QNumeric qInth() {
-		return qIntOperation(this.s(), true);
+		return qIntOperation(this.asString(), true);
 	}
 
 	private QNumeric qIntOperation(String value, boolean roundingMode) {
@@ -1067,32 +1072,32 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	
 	@Override
 	public QNumeric qScan(QCharacter source) {
-		return qScan(source.s(), (Integer)null, null);
+		return qScan(source.asString(), (Integer)null, null);
 	}
 
 	@Override
 	public QNumeric qScan(QCharacter source, QIndicator found) {
-		return qScan(source.s(), (Integer)null, found);
+		return qScan(source.asString(), (Integer)null, found);
 	}
 
 	@Override
 	public QNumeric qScan(QCharacter source, QNumeric start) {
-		return qScan(source.s(), start.asInteger(), null);
+		return qScan(source.asString(), start.asInteger(), null);
 	}
 
 	@Override
 	public QNumeric qScan(QCharacter source, QNumeric start, QIndicator found) {
-		return qScan(source.s(), start.asInteger(), found);
+		return qScan(source.asString(), start.asInteger(), found);
 	}
 
 	@Override
 	public QNumeric qScan(QCharacter source, Number start) {
-		return qScan(source.s(), start, null);
+		return qScan(source.asString(), start, null);
 	}
 
 	@Override
 	public QNumeric qScan(QCharacter source, Number start, QIndicator found) {
-		return qScan(source.s(), start, found);
+		return qScan(source.asString(), start, found);
 	}
 
 	@Override
@@ -1129,7 +1134,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		if (start == null)
 			start = 1;
 		
-		int i = source.indexOf(toString(), start.intValue()-1);
+		int i = source.indexOf(asString(), start.intValue()-1);
 		if(i<0) 
 			number.eval(0);
 		else {
@@ -1144,7 +1149,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public QString qPlus(QString factor1) {
-		return qPlus(factor1.s());
+		return qPlus(factor1.asString());
 	}
 
 	@Override
@@ -1152,5 +1157,10 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		QString string = getDataContext().getTemporaryString();
 		string.eval(s()+factor1);
 		return string;
+	}
+
+	@Override
+	public String s() {
+		return asString();
 	}
 }

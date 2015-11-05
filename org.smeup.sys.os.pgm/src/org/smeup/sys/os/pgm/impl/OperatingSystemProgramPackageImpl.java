@@ -520,6 +520,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 
 		// Create type parameters
@@ -575,13 +576,13 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(callableProgramEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(callableProgramEClass, theIntegratedLanguageDataPackage.getDataContext(), "getDataContext", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(callableProgramEClass, this.getParameterList(), "getEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, ecorePackage.getEJavaObject(), "getRawProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, ecorePackage.getEBoolean(), "isOpen", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(callableProgramEClass, ecorePackage.getEBoolean(), "isStateless", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 

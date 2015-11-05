@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 
 
 /**
@@ -26,13 +25,6 @@ public interface QBufferedData extends QData, QMoveable {
 	 * @generated
 	 */
 	byte[] asBytes();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	String asString();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -62,13 +54,6 @@ public interface QBufferedData extends QData, QMoveable {
 	 * @generated
 	 */
 	boolean eq(QBufferedData value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(QBufferedData value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -151,13 +136,6 @@ public interface QBufferedData extends QData, QMoveable {
 	 * @generated
 	 */
 	QNumeric qLen();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	String s();
 
 	/**
 	 * <!-- begin-user-doc -->

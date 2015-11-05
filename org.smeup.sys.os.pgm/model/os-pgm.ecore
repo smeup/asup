@@ -30,10 +30,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true">
     <eOperations name="close"/>
+    <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContext"/>
     <eOperations name="getEntry" eType="#//ParameterList"/>
     <eOperations name="getRawProgram" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="isStateless" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="open"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="qActivationGroup" eType="#//ActivationGroup"
         transient="true" eOpposite="#//ActivationGroup/programs"/>
