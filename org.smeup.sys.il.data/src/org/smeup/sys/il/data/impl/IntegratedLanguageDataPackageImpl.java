@@ -2555,7 +2555,42 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(lookuppableEClass, QLookuppable.class, "Lookuppable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getArray());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2563,7 +2598,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2572,7 +2606,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2581,7 +2614,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2591,7 +2623,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2601,7 +2632,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2611,73 +2641,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookup", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2687,7 +2650,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2695,7 +2657,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2704,7 +2665,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2713,7 +2673,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2723,7 +2682,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2733,7 +2691,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2743,73 +2700,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookupgt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2819,7 +2709,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2827,7 +2716,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2836,7 +2724,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2845,7 +2732,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2855,7 +2741,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2865,7 +2750,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2875,73 +2759,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getCharacter(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getArray());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "array", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "elements", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getIndicator(), "found", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(lookuppableEClass, this.getNumeric(), "qLookuplt", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "argument", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);

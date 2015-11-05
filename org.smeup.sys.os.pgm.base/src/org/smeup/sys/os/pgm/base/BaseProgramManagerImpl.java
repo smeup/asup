@@ -300,7 +300,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				if (!callableProgram.isOpen())
 					callableProgram.open();
 
-//				printOpenStack(job, programStack, callableProgram);
+				printOpenStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
@@ -316,7 +316,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
-//				printCloseStack(job, programStack, callableProgram);
+				printCloseStack(job, programStack, callableProgram);
 
 				// TODO release parameters
 

@@ -7,6 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.dk.compiler,
+ org.smeup.sys.dk.compiler.anz,
+ org.smeup.sys.dk.compiler.anz.impl,
  org.smeup.sys.dk.compiler.impl
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

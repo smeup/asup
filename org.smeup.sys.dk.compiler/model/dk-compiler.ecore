@@ -220,4 +220,18 @@
     <eLiterals name="Protected" value="30" literal="PROTECTED"/>
     <eLiterals name="Private" value="40" literal="PRIVATE"/>
   </eClassifiers>
+  <eSubpackages name="anz" nsURI="http://www.smeup.org/asup/dk/compiler/anz" nsPrefix="dk-compiler-anz">
+    <eClassifiers xsi:type="ecore:EClass" name="ProgramAnalisys">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+          eType="#//anz/VariableRef" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="VariableRef">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="occourence" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="methods" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

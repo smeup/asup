@@ -828,253 +828,158 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QNumeric start) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, Number start) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, Number start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
+	public QNumeric qLookup(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, Number start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, Number start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
+	public QNumeric qLookupgt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, Number start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+	public QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1248,5 +1153,4 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 		string.eval(s()+factor1);
 		return string;
 	}
-
 }

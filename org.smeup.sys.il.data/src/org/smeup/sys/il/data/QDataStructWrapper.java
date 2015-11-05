@@ -875,216 +875,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookup(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookup(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookup(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookup(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookup(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookupgt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookupgt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookupgt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookupgt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookuplt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(QCharacter argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QIndicator found) {
-		return delegate.qLookuplt(argument, array, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, Number elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, QNumeric start, Number elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
-	public QNumeric qLookuplt(String argument, QArray<?> array, Number start, QNumeric elements, QIndicator found) {
-		return delegate.qLookuplt(argument, array, start, elements, found);
-	}
-
-	@Override
 	public QCharacter qTrim() {
 		return delegate.qTrim();
 	}
@@ -1213,6 +1003,136 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		delegate.movea(value, startIndex, clear);
 	}
 
+	@Override
+	public QNumeric qLookup(QArray<?> array) {
+		return delegate.qLookup(array);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start) {
+		return delegate.qLookup(array, start);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start) {
+		return delegate.qLookup(array, start);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements) {
+		return delegate.qLookup(array, start, elements);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements) {
+		return delegate.qLookup(array, start, elements);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QIndicator found) {
+		return delegate.qLookup(array, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QIndicator found) {
+		return delegate.qLookup(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, QIndicator found) {
+		return delegate.qLookup(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return delegate.qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return delegate.qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return delegate.qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookup(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return delegate.qLookup(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QIndicator found) {
+		return delegate.qLookupgt(array, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QIndicator found) {
+		return delegate.qLookupgt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, QIndicator found) {
+		return delegate.qLookupgt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return delegate.qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return delegate.qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return delegate.qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookupgt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return delegate.qLookupgt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QIndicator found) {
+		return delegate.qLookuplt(array, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QIndicator found) {
+		return delegate.qLookuplt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found) {
+		return delegate.qLookuplt(array, start, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, QNumeric elements, QIndicator found) {
+		return delegate.qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, Number elements, QIndicator found) {
+		return delegate.qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, QNumeric start, Number elements, QIndicator found) {
+		return delegate.qLookuplt(array, start, elements, found);
+	}
+
+	@Override
+	public QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found) {
+		return delegate.qLookuplt(array, start, elements, found);
+	}
+	
 	@Override
 	public QString qPlus(String factor1) {
 		return delegate.qPlus(factor1);
