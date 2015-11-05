@@ -142,7 +142,7 @@ public class JobSubmitter {
 
 				variables = new HashMap<String, Object>();
 
-				for (Field field : caller.getRawProgram().getClass().getFields()) {
+				for (Field field : caller.getRawProgram().getClass().getDeclaredFields()) {
 
 					Type type = field.getGenericType();
 
@@ -156,11 +156,15 @@ public class JobSubmitter {
 					if (QData.class.isAssignableFrom(fieldKlass)) {
 						Object variable;
 						try {
+							field.setAccessible(true);
 							variable = field.get(caller.getRawProgram());
 							variables.put(field.getName(), variable);
 						} catch (IllegalArgumentException | IllegalAccessException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
+						}
+						finally {
+							field.setAccessible(false);
 						}
 
 					}

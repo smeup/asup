@@ -13,6 +13,8 @@ package org.smeup.sys.il.data.nio;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
@@ -547,6 +549,11 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(QNumeric value) {
+		// TODO remove me
+		if(value == null) {			
+			clear();
+			return;
+		}
 		eval(value, (String)null);
 	}
 
@@ -830,8 +837,16 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	
 	@Override
 	public void time() {
-		// TODO Auto-generated method stub
-		
+
+		Calendar CALENDAR = Calendar.getInstance();
+		if (getLength() == 14) {
+			eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyyyy").format(CALENDAR.getTime())));
+		} else if (getLength() == 12) {
+			eval(Long.parseLong(new SimpleDateFormat("HHmmssddMMyy").format(CALENDAR.getTime())));
+		} else if (getLength() == 6) {
+			eval(Long.parseLong(new SimpleDateFormat("HHmmss").format(CALENDAR.getTime())));
+		} else
+			System.err.println("Unknown length: " + getLength());
 	}
 
 	@Override
