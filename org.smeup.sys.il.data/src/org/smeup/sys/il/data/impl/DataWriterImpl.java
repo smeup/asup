@@ -209,7 +209,7 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	private <E extends Enum<E>> void visitIndicatorData(QIndicator indicator) {
 
 		if (object instanceof QString)
-			indicator.eval((QString) object);
+			indicator.eval(((QString) object).asString());
 		else if (object instanceof Enum<?>)
 			indicator.eval((E) object);
 		else if (object instanceof String) {
@@ -227,9 +227,15 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	@SuppressWarnings("unchecked")
 	private <E extends Enum<E>> void visitNumericData(QNumeric numeric) {
 
-		if (object instanceof QBufferedData)
-			numeric.eval((QBufferedData) object);
-		else if (object instanceof String)
+		if (object instanceof QNumeric)
+			numeric.eval((QNumeric) object);
+		else if (object instanceof Enum<?>)
+			numeric.eval((E) object);
+		else if (object instanceof BigDecimal)
+			numeric.eval((BigDecimal) object);
+		else if (object instanceof Integer)
+			numeric.eval((Integer) object);
+		else
 			try {
 				if (!object.toString().isEmpty())
 					numeric.eval(Double.parseDouble(object.toString()));
@@ -238,14 +244,6 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		else if (object instanceof Enum<?>)
-			numeric.eval((E) object);
-		else if (object instanceof BigDecimal)
-			numeric.eval((BigDecimal) object);
-		else if (object instanceof Integer)
-			numeric.eval((Integer) object);
-		else
-			"".toCharArray();
 
 	}
 

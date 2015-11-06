@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QString;
 
 public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
@@ -48,7 +49,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	}
 
 	@Override
-	public void eval(QBufferedData value) {
+	public void eval(QString value) {
 		this.length = (value.getLength() > getSize() ? (short) getSize() : (short) value.getLength());
 
 		super.eval(value);

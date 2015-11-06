@@ -23,6 +23,7 @@ import java.util.Iterator;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
 
@@ -33,9 +34,11 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	private ArrayList<D> _elements;
 	private D _model;
 	private int _dimension;
-
+	private QDataWriter dataWriter;
+	
 	public NIOListImpl(QDataContext dataContext) {
 		super(dataContext);
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	public NIOListImpl(QDataContext dataContext, D model, int dimension) {
@@ -115,7 +118,8 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 
 		int i = 1;
 		for (D element : value) {
-			set(i, element);
+			dataWriter.set(element);
+			get(i).eval(dataWriter);
 			i++;
 		}
 	}
@@ -150,16 +154,6 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	@Override
 	public D get(QNumeric index) {
 		return get(index.asInteger());
-	}
-
-	@Override
-	public void set(int index, D value) {
-		_elements.add(index - 1, value);
-	}
-
-	@Override
-	public void set(QNumeric index, D value) {
-		set(index.asInteger(), value);
 	}
 
 	@Override

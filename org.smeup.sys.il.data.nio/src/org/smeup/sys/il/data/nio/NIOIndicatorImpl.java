@@ -11,11 +11,11 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QIndicator;
+import org.smeup.sys.il.data.QString;
 
 public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator {
 
@@ -80,7 +80,12 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	}
 
 	@Override
-	public void eval(QBufferedData value) {
+	public void eval(QIndicator value) {
+		NIOBufferHelper.movel(getBuffer(), getPosition(), 1, value.asBytes(), true, OFF);
+	}
+
+	@Override
+	public void eval(QString value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), 1, value.asBytes(), true, OFF);
 	}
 
@@ -141,5 +146,10 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
+	}
+
+	@Override
+	public String toString() {
+		return Boolean.toString(eq(true));
 	}
 }

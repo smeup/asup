@@ -5,6 +5,7 @@ import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -62,7 +63,10 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 			QResourceWriter<org.smeup.sys.os.dtaara.QDataArea> dataAreaWriter = resourceManager.getResourceWriter(getDataContext(), org.smeup.sys.os.dtaara.QDataArea.class, qDataArea.getLibrary());
 			
 			qDataArea = dataAreaWriter.lookup(externalName);
-			qDataArea.setContent(asString());
+			if(get() instanceof QString)
+				qDataArea.setContent(((QString)get()).asString());
+			else
+				qDataArea.setContent(new String(asBytes()));
 			dataAreaWriter.save(qDataArea, true);
 
 		}

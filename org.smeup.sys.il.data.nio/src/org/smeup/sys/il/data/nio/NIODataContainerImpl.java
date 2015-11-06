@@ -126,6 +126,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			if (previousData instanceof QBufferedData) {
 				QData data = createData(dataTerm, false);
+				QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+				if(overlay == null) {
+					overlay = QIntegratedLanguageCoreFactory.eINSTANCE.createOverlay();
+					overlay.setName("*PREVIOUS");
+					dataTerm.getFacets().add(overlay);
+				}
+
 				((QBufferedData) previousData).assign((QBufferedData) data);
 				datas.put(name, data);
 			}
@@ -266,9 +273,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QData data = getOrCreateData(key, dataTerm);
 
-		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
-		dataTerm.accept(resetter);
-
+		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+		if (overlay == null) {
+			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+			dataTerm.accept(resetter);
+		}
+		
 		return data;
 	}
 
@@ -418,12 +428,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		} else {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay == null) {
-				data = dataFactory.createData(dataTerm, true);
+				data = dataFactory.createData(dataTerm, initialize);
 			} else {
-				
+
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
 					data = dataFactory.createData(dataTerm, true);
-					System.err.println("Unexpected condition 5qf7rva9cwerc5: "+dataTerm);
+					System.err.println("Unexpected condition 5qf7rva9cwerc5: " + dataTerm);
 				} else if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
 					data = dataFactory.createData(dataTerm, false);
 					QDataStruct infoStruct = getDataContext().getInfoStruct();

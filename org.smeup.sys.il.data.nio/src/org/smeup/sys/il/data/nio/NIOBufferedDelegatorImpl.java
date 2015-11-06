@@ -63,11 +63,6 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	}
 
 	@Override
-	public String asString() {
-		return _delegate.asString();
-	}
-
-	@Override
 	public void clear() {
 		_delegate.clear();
 	}
@@ -112,11 +107,6 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
-		_delegate.eval(value);
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
 		_delegate.eval(value);
 	}
 
@@ -350,11 +340,6 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	@Override
 	public void movel(QDataWriter value, boolean clear) {
 		_delegate.movel(value, clear);
-	}
-
-	@Override
-	public String s() {
-		return _delegate.s();
 	}
 
 	@Override

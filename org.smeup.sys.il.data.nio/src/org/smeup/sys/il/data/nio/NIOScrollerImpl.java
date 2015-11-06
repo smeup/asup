@@ -16,7 +16,6 @@ import java.util.Iterator;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QScroller;
 import org.smeup.sys.il.data.SortDirection;
 
@@ -79,16 +78,6 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	@Override
-	public int getLength() {
-		return _dimension * getModel().getLength();
-	}
-
-	@Override
-	public int getSize() {
-		return _dimension * getModel().getSize();
-	}
-
-	@Override
 	public D absolute(int position) {
 		return get(position);
 	}
@@ -121,16 +110,6 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	@Override
 	protected byte getFiller() {
 		return ((NIOBufferedDataImpl)getModel()).getFiller();
-	}
-
-	@Override
-	public void set(int index, D value) {
-		get(index).eval(value);
-	}
-
-	@Override
-	public void set(QNumeric index, D value) {
-		set(index.asInteger(), value);
 	}
 
 	@Override

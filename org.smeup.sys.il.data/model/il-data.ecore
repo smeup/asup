@@ -25,7 +25,13 @@
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="qSubarr" lowerBound="1">
       <eGenericType eClassifier="#//Array">
@@ -266,7 +272,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="BufferedData" abstract="true" interface="true"
       eSuperTypes="#//Data #//Moveable">
     <eOperations name="asBytes" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="asString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="assign">
       <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
@@ -279,9 +284,6 @@
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -328,7 +330,6 @@
       <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedDataDelegator" abstract="true"
       interface="true">
@@ -526,6 +527,9 @@
     </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
@@ -1078,6 +1082,7 @@
     </eOperations>
     <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
       <eParameters name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createRecord" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createRecord/R"/>
@@ -1348,8 +1353,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datetime" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">
+    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
     <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="t" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
@@ -1447,9 +1458,6 @@
       </eParameters>
     </eOperations>
     <eOperations name="time"/>
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
       eSuperTypes="#//Numeric">
@@ -1524,6 +1532,12 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
+    </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
@@ -1566,18 +1580,6 @@
     <eOperations name="get">
       <eGenericType eTypeParameter="#//List/D"/>
       <eParameters name="index" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="set">
-      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value" lowerBound="1">
-        <eGenericType eTypeParameter="#//List/D"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="set">
-      <eParameters name="index" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="value" lowerBound="1">
-        <eGenericType eTypeParameter="#//List/D"/>
-      </eParameters>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lookuppable" abstract="true" interface="true">
@@ -2565,6 +2567,7 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="String" abstract="true" interface="true">
+    <eOperations name="asString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -2578,13 +2581,16 @@
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="evalr">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="evalr">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="value" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -2630,6 +2636,7 @@
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>
+    <eOperations name="s" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="testn" lowerBound="1">
       <eParameters name="numeric" lowerBound="1" eType="#//Indicator"/>
     </eOperations>

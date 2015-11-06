@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -33,16 +32,11 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	}
 
 	@Override
-	public String asString() {
+	public String toString() {
 
 		String string = getHexString(asBytes());
 
 		return string;
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
-		eval(value.toString());
 	}
 
 	@Override
@@ -83,7 +77,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	@Override
 	public void move(String value, boolean clear) {
 		// TODO Auto-generated method stub
-		value.toString();
 	}
 
 	@Override
@@ -101,7 +94,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	@Override
 	public void movel(String value, boolean clear) {
 		// TODO Auto-generated method stub
-		value.toString();
 	}
 
 	@Override

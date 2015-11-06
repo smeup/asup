@@ -59,7 +59,7 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 			
 			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	

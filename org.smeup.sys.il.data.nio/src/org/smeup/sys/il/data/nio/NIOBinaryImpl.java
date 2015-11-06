@@ -15,7 +15,6 @@ import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.def.BinaryType;
@@ -46,12 +45,6 @@ public class NIOBinaryImpl extends NIONumericImpl implements QBinary {
 	@Override
 	public boolean isSigned() {
 		return !_unsigned;
-	}
-
-	@Override
-	public void eval(QBufferedData value) {
-		// TODO Auto-generated method stub
-		value.toString();
 	}
 
 	@Override

@@ -24,9 +24,12 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
+import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
+import org.smeup.sys.il.data.def.DecimalType;
 
 public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBufferedDataImpl implements QBufferedList<D>, QBufferedData {
 
@@ -85,17 +88,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public byte[] asBytes() {
 		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
-	}
-
-	/*
-	 * @Override public void reset() { for (QBufferedData element : this) {
-	 * element.reset(); } }
-	 */
-
-	@Override
-	public void eval(QBufferedData value) {
-		for (QBufferedData element : this)
-			element.eval(value);
 	}
 
 	@Override
@@ -176,10 +168,20 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public String toString() {
 
-		StringBuffer sb = new StringBuffer(getSize());
+		StringBuffer sb = new StringBuffer();
+		QDecimal i = getDataContext().getDataFactory().createDecimal(4, 0, DecimalType.PACKED, true);
+		i.eval(1);
+		for (i.i(); i.le(capacity()); i.plus(1)) {
+			D element = get(i);
+			if (i.gt(1))
+				sb.append("\n");
 
-		for (QBufferedData element : this) {
-			sb.append(element);
+			sb.append(i + "[");
+			if (element.getLength() > 50)
+				sb.append(element.qSubst(1, 50).asString());
+			else
+				sb.append(element.qSubst(1).asString());
+			sb.append("]");
 		}
 
 		return sb.toString();
@@ -218,8 +220,6 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 		}
 	}
 
-
-
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
 
@@ -242,7 +242,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 		case ASCII:
 			List<String> stringList = new ArrayList<String>();
 			for (QBufferedData elementTarget : this) {
-				stringList.add(elementTarget.s());
+				stringList.add(elementTarget.toString());
 			}
 
 			Collections.sort(stringList, new Comparator<String>() {
@@ -345,7 +345,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QBufferedData value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, (byte) 32);
+		if (getModel() instanceof QString)
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, NIOCharacterImpl.INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, NIODecimalImpl.INIT);
 	}
 
 	@Override
@@ -362,9 +365,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public void movea(String value) {
 		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), false, (byte) 32);
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), false, NIOCharacterImpl.INIT);
 		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), false, (byte) 32);
+			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), false, NIOCharacterImpl.INIT);
 		}
 	}
 
@@ -406,7 +409,10 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, QBufferedData value, boolean clear) {
-		movea(targetIndex, value.s(), clear);
+		if (getModel() instanceof QString)
+			movea(targetIndex, value.asBytes(), clear, (byte) NIOCharacterImpl.INIT);
+		else
+			movea(targetIndex, value.asBytes(), clear, (byte) NIODecimalImpl.INIT);
 	}
 
 	@Override
@@ -416,14 +422,19 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, String value, boolean clear) {
+		try {
+			movea(targetIndex, value.getBytes(getEncoding()), clear, NIOCharacterImpl.INIT);
+		} catch (UnsupportedEncodingException e) {
+			movea(targetIndex, value.getBytes(), clear, NIOCharacterImpl.INIT);
+		}
+	}
+
+	private void movea(int targetIndex, byte[] value, boolean clear, byte filler) {
 		if (clear)
 			this.clear();
+
 		int position = ((this.getLength() / this.capacity()) * (targetIndex - 1));
-		try {
-			NIOBufferHelper.movel(getBuffer(), position, value.length(), value.getBytes(getEncoding()), clear, (byte) 32);
-		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), position, value.length(), value.getBytes(), clear, (byte) 32);
-		}
+		NIOBufferHelper.movel(getBuffer(), position, value.length, value, clear, filler);
 	}
 
 	@Override
@@ -473,73 +484,26 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, QArray<?> value, int sourceIndex, boolean clear) {
-		int idx = sourceIndex;
-		if (clear)
-			this.clear();
 
-		if (getSize() != value.getSize()) {
-			int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
-			int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
-			// TODO è corretto splittare i bytes???
-			try {
-				NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(getEncoding()), false, (byte) 32);
-			} catch (UnsupportedEncodingException e) {
-				NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), value.s().substring(positionSource).getBytes(), false, (byte) 32);
-			}
-		} else {
-			for (int i = targetIndex; i <= this.capacity(); i++) {
-				QBufferedData element = this.get(i);
-				element.movel(value.get(idx), true);
-				idx++;
-			}
-		}
-	}
+		int positionSource = ((value.getLength() / value.capacity()) * (sourceIndex - 1));
+		int positionTarget = ((this.getLength() / this.capacity()) * (targetIndex - 1));
 
-	@Override
-	public D[] asArray() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public D get(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void set(int index, D value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void set(QNumeric index, D value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int capacity() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		// TODO test me
+		byte[] bytes = value.asBytes();
+		bytes = Arrays.copyOfRange(bytes, positionSource, bytes.length);
+		if (getModel() instanceof QString)
+			NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), bytes, clear, NIOCharacterImpl.INIT);
+		else
+			NIOBufferHelper.movel(getBuffer(), positionTarget, value.getSize(), bytes, clear, NIODecimalImpl.INIT);
 	}
 
 	@Override
 	public int getLength() {
-		// TODO Auto-generated method stub
-		return 0;
+		return capacity() * getModel().getLength();
 	}
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return capacity() * getModel().getSize();
 	}
 }

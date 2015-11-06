@@ -99,7 +99,7 @@ public class RPJServiceSupport {
 
 	}
 
-	public QCharacter p_rxlate(String arg0, String arg1, String arg2, String arg3) {
+	public QCharacter p_rxlate(String arg0, String arg1, String arg2, Integer arg3) {
 
 		QCharacter value = dataContext.getDataFactory().createCharacter(32766, true, true);
 
@@ -109,8 +109,6 @@ public class RPJServiceSupport {
 			arg1 = "";
 		if (arg2 == null)
 			arg2 = "";
-		if (arg3 == null)
-			arg3 = "";
 		StringBuffer nameBuffer = new StringBuffer();
 		int $A = arg0.length();
 		int $B = arg1.length();

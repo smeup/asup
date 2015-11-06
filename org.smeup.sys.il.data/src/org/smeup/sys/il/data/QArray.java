@@ -42,7 +42,23 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
+	void eval(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
 	void eval(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void eval(QString value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
