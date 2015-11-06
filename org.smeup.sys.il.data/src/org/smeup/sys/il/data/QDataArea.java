@@ -41,6 +41,22 @@ public interface QDataArea<D extends QBufferedData> extends QBufferedData {
 	 * @model
 	 * @generated
 	 */
+	void in(QIndicator error);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	void out();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void out(QIndicator error);
 
 } // QDataArea

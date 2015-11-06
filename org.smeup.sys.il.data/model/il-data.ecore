@@ -838,7 +838,13 @@
       <eGenericType eTypeParameter="#//DataArea/D"/>
     </eOperations>
     <eOperations name="in"/>
+    <eOperations name="in">
+      <eParameters name="error" eType="#//Indicator"/>
+    </eOperations>
     <eOperations name="out"/>
+    <eOperations name="out">
+      <eParameters name="error" eType="#//Indicator"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
