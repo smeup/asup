@@ -1832,7 +1832,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataAreaEClass, null, "in", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(dataAreaEClass, null, "in", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(dataAreaEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dataAreaEClass, null, "out", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getIndicator(), "error", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataContainerEClass, QDataContainer.class, "DataContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

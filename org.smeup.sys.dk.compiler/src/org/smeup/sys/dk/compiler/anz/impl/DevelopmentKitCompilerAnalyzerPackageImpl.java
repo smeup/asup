@@ -11,24 +11,16 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
-
 import org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerFactory;
 import org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage;
 import org.smeup.sys.dk.compiler.anz.QProgramAnalisys;
 import org.smeup.sys.dk.compiler.anz.QVariableRef;
-
 import org.smeup.sys.dk.compiler.impl.DevelopmentKitCompilerPackageImpl;
-
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
-
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
-
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
-
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 
 /**
