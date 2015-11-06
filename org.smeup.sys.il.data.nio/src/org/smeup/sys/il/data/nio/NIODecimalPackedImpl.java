@@ -35,8 +35,6 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	@Override
 	public Number readNumber() {
 
-		packed = getDecimal(getPrecision(), getScale());
-
 		Number result = 0;
 		try {
 			if (getScale() > 0)
@@ -56,8 +54,6 @@ public class NIODecimalPackedImpl extends NIODecimalImpl {
 	
 	@Override
 	public void writeNumber(Number number, String roundingMode) {
-
-		AS400PackedDecimal packed = getDecimal(getPrecision(), getScale());
 
 		try {
 			byte[] bytes = packed.toBytes(number.doubleValue());

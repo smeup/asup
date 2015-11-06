@@ -35,8 +35,6 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	@Override
 	public Number readNumber() {
 
-		zoned = getDecimal(getPrecision(), getScale());
-
 		Number result = 0;
 		try {
 			if (getScale() > 0)
@@ -56,12 +54,10 @@ public class NIODecimalZonedImpl extends NIODecimalImpl {
 	@Override
 	public void writeNumber(Number number, String roundingMode) {
 
-		AS400ZonedDecimal zoned = getDecimal(getPrecision(), getScale());
-
 		try {
 			byte[] bytes = zoned.toBytes(number.doubleValue());
-
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getLength(), bytes, true, INIT);
+			
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), bytes, true, INIT);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
