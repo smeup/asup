@@ -19,7 +19,7 @@ import java.util.List;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccourence <em>Occourence</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getMethods <em>Methods</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getUses <em>Uses</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,19 +81,19 @@ public interface QVariableRef {
 	void setOccourence(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Methods</b></em>' attribute list.
+	 * Returns the value of the '<em><b>Uses</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Methods</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Uses</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Methods</em>' attribute list.
-	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Methods()
+	 * @return the value of the '<em>Uses</em>' attribute list.
+	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Uses()
 	 * @model
 	 * @generated
 	 */
-	List<String> getMethods();
+	List<String> getUses();
 
 } // QVariableRef

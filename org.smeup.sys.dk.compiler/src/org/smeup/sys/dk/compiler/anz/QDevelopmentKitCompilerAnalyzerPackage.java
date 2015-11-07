@@ -117,13 +117,13 @@ public interface QDevelopmentKitCompilerAnalyzerPackage extends EPackage {
 	int VARIABLE_REF__OCCOURENCE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Methods</b></em>' attribute list.
+	 * The feature id for the '<em><b>Uses</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_REF__METHODS = 2;
+	int VARIABLE_REF__USES = 2;
 
 	/**
 	 * The number of structural features of the '<em>Variable Ref</em>' class.
@@ -189,15 +189,15 @@ public interface QDevelopmentKitCompilerAnalyzerPackage extends EPackage {
 	EAttribute getVariableRef_Occourence();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getMethods <em>Methods</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getUses <em>Uses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Methods</em>'.
-	 * @see org.smeup.sys.dk.compiler.anz.QVariableRef#getMethods()
+	 * @return the meta object for the attribute list '<em>Uses</em>'.
+	 * @see org.smeup.sys.dk.compiler.anz.QVariableRef#getUses()
 	 * @see #getVariableRef()
 	 * @generated
 	 */
-	EAttribute getVariableRef_Methods();
+	EAttribute getVariableRef_Uses();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -266,12 +266,12 @@ public interface QDevelopmentKitCompilerAnalyzerPackage extends EPackage {
 		EAttribute VARIABLE_REF__OCCOURENCE = eINSTANCE.getVariableRef_Occourence();
 
 		/**
-		 * The meta object literal for the '<em><b>Methods</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Uses</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE_REF__METHODS = eINSTANCE.getVariableRef_Methods();
+		EAttribute VARIABLE_REF__USES = eINSTANCE.getVariableRef_Uses();
 
 	}
 
