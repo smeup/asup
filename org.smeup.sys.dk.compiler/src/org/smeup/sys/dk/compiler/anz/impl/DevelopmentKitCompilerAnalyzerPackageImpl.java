@@ -166,7 +166,7 @@ public class DevelopmentKitCompilerAnalyzerPackageImpl extends EPackageImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariableRef_Methods() {
+	public EAttribute getVariableRef_Uses() {
 		return (EAttribute)variableRefEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -204,7 +204,7 @@ public class DevelopmentKitCompilerAnalyzerPackageImpl extends EPackageImpl impl
 		variableRefEClass = createEClass(VARIABLE_REF);
 		createEAttribute(variableRefEClass, VARIABLE_REF__VARIABLE_NAME);
 		createEAttribute(variableRefEClass, VARIABLE_REF__OCCOURENCE);
-		createEAttribute(variableRefEClass, VARIABLE_REF__METHODS);
+		createEAttribute(variableRefEClass, VARIABLE_REF__USES);
 	}
 
 	/**
@@ -243,7 +243,7 @@ public class DevelopmentKitCompilerAnalyzerPackageImpl extends EPackageImpl impl
 		initEClass(variableRefEClass, QVariableRef.class, "VariableRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableRef_VariableName(), ecorePackage.getEString(), "variableName", null, 1, 1, QVariableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariableRef_Occourence(), ecorePackage.getEInt(), "occourence", null, 1, 1, QVariableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableRef_Methods(), ecorePackage.getEString(), "methods", null, 0, -1, QVariableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableRef_Uses(), ecorePackage.getEString(), "uses", null, 0, -1, QVariableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //DevelopmentKitCompilerAnalyzerPackageImpl

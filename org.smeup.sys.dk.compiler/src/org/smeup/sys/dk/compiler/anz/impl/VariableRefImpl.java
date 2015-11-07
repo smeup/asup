@@ -33,7 +33,7 @@ import org.smeup.sys.dk.compiler.anz.QVariableRef;
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getOccourence <em>Occourence</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getMethods <em>Methods</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getUses <em>Uses</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,14 +81,14 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	protected int occourence = OCCOURENCE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' attribute list.
+	 * The cached value of the '{@link #getUses() <em>Uses</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMethods()
+	 * @see #getUses()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> methods;
+	protected EList<String> uses;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,11 +156,11 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<String> getMethods() {
-		if (methods == null) {
-			methods = new EDataTypeUniqueEList<String>(String.class, this, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__METHODS);
+	public List<String> getUses() {
+		if (uses == null) {
+			uses = new EDataTypeUniqueEList<String>(String.class, this, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES);
 		}
-		return methods;
+		return uses;
 	}
 
 	/**
@@ -175,8 +175,8 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 				return getVariableName();
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
 				return getOccourence();
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__METHODS:
-				return getMethods();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
+				return getUses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -196,9 +196,9 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
 				setOccourence((Integer)newValue);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__METHODS:
-				getMethods().clear();
-				getMethods().addAll((Collection<? extends String>)newValue);
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
+				getUses().clear();
+				getUses().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,8 +218,8 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
 				setOccourence(OCCOURENCE_EDEFAULT);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__METHODS:
-				getMethods().clear();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
+				getUses().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -237,8 +237,8 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
 				return occourence != OCCOURENCE_EDEFAULT;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__METHODS:
-				return methods != null && !methods.isEmpty();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
+				return uses != null && !uses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -257,8 +257,8 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 		result.append(variableName);
 		result.append(", occourence: ");
 		result.append(occourence);
-		result.append(", methods: ");
-		result.append(methods);
+		result.append(", uses: ");
+		result.append(uses);
 		result.append(')');
 		return result.toString();
 	}
