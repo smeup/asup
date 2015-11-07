@@ -32,12 +32,12 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.wiring.BundleWiring;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QAdapterFactory;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.impl.ContextImpl;
-import org.smeup.sys.os.core.QSystem;
 
 @SuppressWarnings("restriction")
 public abstract class E4ContextImpl extends ContextImpl {
@@ -126,7 +126,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	@Override
 	public Class<?> loadClassByName(String className) {
 						
-		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
+		BundleContext bundleContext = FrameworkUtil.getBundle(QObject.class).getBundleContext();
 		
 		Class<?> class_ = null;
 		BundleWiring bundleWiring = null;		

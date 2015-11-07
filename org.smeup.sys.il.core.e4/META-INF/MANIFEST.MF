@@ -6,11 +6,10 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
-Require-Bundle: org.smeup.sys.il.core,
- org.eclipse.e4.core.contexts,
+Require-Bundle: org.eclipse.e4.core.contexts,
  org.eclipse.e4.core.di,
  org.eclipse.core.runtime,
- org.smeup.sys.os.core
+ org.smeup.sys.il.core
 Import-Package: org.osgi.framework,
  org.osgi.service.log;version="1.3.0"
 Export-Package: org.smeup.sys.il.core.e4,
