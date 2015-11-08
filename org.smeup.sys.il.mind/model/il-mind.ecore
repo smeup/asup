@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mind" nsURI="http://www.smeup.org/asup/il/mind" nsPrefix="il-mind">
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="terms" upperBound="-1"
+        eType="#//MindTerm" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MindManager" abstract="true" interface="true">
+    <eOperations name="buildTheory" eType="#//Theory">
+      <eTypeParameters name="O">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
+      </eTypeParameters>
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+      <eParameters name="frame" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Frame">
+          <eTypeArguments eTypeParameter="#//MindManager/buildTheory/O"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="createReasoner" eType="#//Reasoner">
+      <eParameters name="context" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MindTerm" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//term/Term">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Question" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="#//MindTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subject" eType="#//MindTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relation" eType="#//MindTerm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//MindTerm"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Theory" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="facts" upperBound="-1"
+        eType="#//MindTerm" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reasoner" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+    <eOperations name="buildQuestion" lowerBound="1" eType="#//Question">
+      <eParameters name="question" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="close"/>
+    <eOperations name="loadTheory">
+      <eParameters name="theory" lowerBound="1" eType="#//Theory"/>
+    </eOperations>
+    <eOperations name="query" lowerBound="1" upperBound="-1" eType="#//Goal">
+      <eParameters name="question" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="query" lowerBound="1" upperBound="-1" eType="#//Goal">
+      <eParameters name="question" lowerBound="1" eType="#//Question"/>
+    </eOperations>
+    <eOperations name="reload"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Integrated Language Mind GNU
+Bundle-SymbolicName: org.smeup.sys.il.mind.gnu
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.smeup.sys.il.mind
+Bundle-ClassPath: lib/gnuprologjava-0.2.5.jar,
+ .
+Import-Package: org.osgi.framework
+Export-Package: org.smeup.sys.il.mind.gnu
