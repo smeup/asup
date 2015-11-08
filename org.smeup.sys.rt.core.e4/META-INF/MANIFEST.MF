@@ -6,8 +6,7 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Export-Package: org.smeup.sys.rt.core.e4
 Require-Bundle: org.smeup.sys.rt.core,
- org.smeup.sys.il.core.e4,
- org.smeup.sys.dk.test
+ org.smeup.sys.il.core.e4
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.e4.core.contexts,
