@@ -70,15 +70,6 @@ public interface QOperatingSystemProgramFactory extends EFactory {
 	QProgramStack createProgramStack();
 
 	/**
-	 * Returns a new object of class '<em>Program Status</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @return a new object of class '<em>Program Status</em>'.
-	 * @generated
-	 */
-	QProgramStatus createProgramStatus();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -49,7 +49,7 @@ import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
-import org.smeup.sys.os.pgm.base.BaseProgramStatus;
+import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
 
 @Module(name="*RPJ")
 public class RPJProgramSupport {
@@ -61,10 +61,13 @@ public class RPJProgramSupport {
 	@Inject
 	public QProgramManager programManager;
 	@Inject
-	public QJob job;
+	public QJob job;	
 	
 	@Inject @Program(name = "*OWNER")
 	private Object programOwner;
+	
+	@Overlay(name = "*PGMSTATUS")
+	private BaseProgramStatusImpl programStatus;
 
 	@DataDef(dimension = 99)
 	public QArray<QIndicator> qIN;
@@ -140,9 +143,6 @@ public class RPJProgramSupport {
 	public QIndicator qINU8;
 	@DataDef
 	public QIndicator qINU9;
-	
-	@Overlay(name = "*PGMSTATUS")
-	private BaseProgramStatus programStatus;
 	
 	@DataDef
 	public Date qDATE;
@@ -565,7 +565,7 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qStatus() {
-		return programStatus.status;
+		return programStatus.getStatusCode();
 	}
 
 	public QString qReplace(String replacement, String source, Integer from, Integer length) {

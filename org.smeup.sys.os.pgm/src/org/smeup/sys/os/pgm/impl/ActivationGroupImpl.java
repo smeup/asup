@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectImpl;
@@ -104,20 +104,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrograms()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public QContext getFrameworkContext() {
 		return frameworkContext;
@@ -184,7 +170,7 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public List<QCallableProgram> getPrograms() {
 		if (programs == null) {
-			programs = new EObjectContainmentWithInverseEList<QCallableProgram>(QCallableProgram.class, this, QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS, QOperatingSystemProgramPackage.CALLABLE_PROGRAM__QACTIVATION_GROUP);
+			programs = new EObjectContainmentEList<QCallableProgram>(QCallableProgram.class, this, QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS);
 		}
 		return programs;
 	}
@@ -198,7 +184,7 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	public QCallableProgram lookup(QProgram program) {
 		QCallableProgram qCallableProgram = null;
 		for (QCallableProgram callableProgram : getPrograms())
-			if (callableProgram.getQProgram().getLibrary().equals(program.getLibrary()) && callableProgram.getQProgram().getName().equals(program.getName())) {
+			if (callableProgram.getProgram().getLibrary().equals(program.getLibrary()) && callableProgram.getProgram().getName().equals(program.getName())) {
 				qCallableProgram = callableProgram;
 				break;
 			}

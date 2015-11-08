@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -128,34 +129,17 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgram()
 	 * @generated
 	 */
-	int PROGRAM = 4;
+	int PROGRAM = 3;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl <em>Callable Program</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QCallableProgram <em>Callable Program</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @see org.smeup.sys.os.pgm.impl.CallableProgramImpl
+	 * @see org.smeup.sys.os.pgm.QCallableProgram
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgram()
 	 * @generated
 	 */
 	int CALLABLE_PROGRAM = 2;
-
-	/**
-	 * The feature id for the '<em><b>QActivation Group</b></em>' container reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALLABLE_PROGRAM__QACTIVATION_GROUP = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>QProgram</b></em>' reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int CALLABLE_PROGRAM__QPROGRAM = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Callable Program</em>' class.
@@ -163,26 +147,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QCallableProgramDelegator <em>Callable Program Delegator</em>}' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see org.smeup.sys.os.pgm.QCallableProgramDelegator
-	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgramDelegator()
-	 * @generated
-	 */
-	int CALLABLE_PROGRAM_DELEGATOR = 3;
-
-	/**
-	 * The number of structural features of the '<em>Callable Program Delegator</em>' class.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALLABLE_PROGRAM_DELEGATOR_FEATURE_COUNT = 0;
+	int CALLABLE_PROGRAM_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute. <!--
@@ -288,7 +253,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramContainer()
 	 * @generated
 	 */
-	int PROGRAM_CONTAINER = 5;
+	int PROGRAM_CONTAINER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -332,7 +297,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramManager()
 	 * @generated
 	 */
-	int PROGRAM_MANAGER = 6;
+	int PROGRAM_MANAGER = 5;
 
 	/**
 	 * The number of structural features of the '<em>Program Manager</em>' class.
@@ -350,7 +315,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramSource()
 	 * @generated
 	 */
-	int PROGRAM_SOURCE = 7;
+	int PROGRAM_SOURCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute. <!--
@@ -385,7 +350,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStack()
 	 * @generated
 	 */
-	int PROGRAM_STACK = 8;
+	int PROGRAM_STACK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Date Enter</b></em>' attribute. <!--
@@ -414,23 +379,14 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_STACK_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.ProgramStatusImpl <em>Program Status</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QProgramStatus <em>Program Status</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @see org.smeup.sys.os.pgm.impl.ProgramStatusImpl
+	 * @see org.smeup.sys.os.pgm.QProgramStatus
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStatus()
 	 * @generated
 	 */
-	int PROGRAM_STATUS = 9;
-
-	/**
-	 * The feature id for the '<em><b>Callable Program</b></em>' reference. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int PROGRAM_STATUS__CALLABLE_PROGRAM = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+	int PROGRAM_STATUS = 8;
 
 	/**
 	 * The number of structural features of the '<em>Program Status</em>' class.
@@ -438,7 +394,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROGRAM_STATUS_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int PROGRAM_STATUS_FEATURE_COUNT = QIntegratedLanguageDataPackage.DATA_STRUCT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '<em>Parameter List</em>' data type.
@@ -447,7 +403,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 	 * @generated
 	 */
-	int PARAMETER_LIST = 10;
+	int PARAMETER_LIST = 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QActivationGroup <em>Activation Group</em>}'.
@@ -579,40 +535,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EClass getCallableProgram();
 
 	/**
-	 * Returns the meta object for the container reference '
-	 * {@link org.smeup.sys.os.pgm.QCallableProgram#getQActivationGroup
-	 * <em>QActivation Group</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @return the meta object for the container reference '
-	 *         <em>QActivation Group</em>'.
-	 * @see org.smeup.sys.os.pgm.QCallableProgram#getQActivationGroup()
-	 * @see #getCallableProgram()
-	 * @generated
-	 */
-	EReference getCallableProgram_QActivationGroup();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.smeup.sys.os.pgm.QCallableProgram#getQProgram <em>QProgram</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>QProgram</em>'.
-	 * @see org.smeup.sys.os.pgm.QCallableProgram#getQProgram()
-	 * @see #getCallableProgram()
-	 * @generated
-	 */
-	EReference getCallableProgram_QProgram();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QCallableProgramDelegator <em>Callable Program Delegator</em>}'.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @return the meta object for class '<em>Callable Program Delegator</em>'.
-	 * @see org.smeup.sys.os.pgm.QCallableProgramDelegator
-	 * @generated
-	 */
-	EClass getCallableProgramDelegator();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramContainer <em>Program Container</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Program Container</em>'.
@@ -720,19 +642,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProgramStatus();
-
-	/**
-	 * Returns the meta object for the reference '
-	 * {@link org.smeup.sys.os.pgm.QProgramStatus#getCallableProgram
-	 * <em>Callable Program</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @return the meta object for the reference '<em>Callable Program</em>'.
-	 * @see org.smeup.sys.os.pgm.QProgramStatus#getCallableProgram()
-	 * @see #getProgramStatus()
-	 * @generated
-	 */
-	EReference getProgramStatus_CallableProgram();
 
 	/**
 	 * Returns the meta object for data type '<em>Parameter List</em>'.
@@ -855,39 +764,14 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		EReference PROGRAM__SOURCE = eINSTANCE.getProgram_Source();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.CallableProgramImpl <em>Callable Program</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QCallableProgram <em>Callable Program</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * @see org.smeup.sys.os.pgm.impl.CallableProgramImpl
+		 * @see org.smeup.sys.os.pgm.QCallableProgram
 		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgram()
 		 * @generated
 		 */
 		EClass CALLABLE_PROGRAM = eINSTANCE.getCallableProgram();
-
-		/**
-		 * The meta object literal for the '<em><b>QActivation Group</b></em>' container reference feature.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @generated
-		 */
-		EReference CALLABLE_PROGRAM__QACTIVATION_GROUP = eINSTANCE.getCallableProgram_QActivationGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>QProgram</b></em>' reference feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CALLABLE_PROGRAM__QPROGRAM = eINSTANCE.getCallableProgram_QProgram();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QCallableProgramDelegator <em>Callable Program Delegator</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.pgm.QCallableProgramDelegator
-		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getCallableProgramDelegator()
-		 * @generated
-		 */
-		EClass CALLABLE_PROGRAM_DELEGATOR = eINSTANCE.getCallableProgramDelegator();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.ProgramContainerImpl <em>Program Container</em>}' class.
@@ -972,21 +856,14 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		EAttribute PROGRAM_STACK__DATE_EXIT = eINSTANCE.getProgramStack_DateExit();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.ProgramStatusImpl <em>Program Status</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QProgramStatus <em>Program Status</em>}' class.
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * @see org.smeup.sys.os.pgm.impl.ProgramStatusImpl
+		 * @see org.smeup.sys.os.pgm.QProgramStatus
 		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStatus()
 		 * @generated
 		 */
 		EClass PROGRAM_STATUS = eINSTANCE.getProgramStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Callable Program</b></em>' reference feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROGRAM_STATUS__CALLABLE_PROGRAM = eINSTANCE.getProgramStatus_CallableProgram();
 
 		/**
 		 * The meta object literal for the '<em>Parameter List</em>' data type.

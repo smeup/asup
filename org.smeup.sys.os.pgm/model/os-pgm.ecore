@@ -10,7 +10,7 @@
         transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="programs" upperBound="-1"
-        eType="#//CallableProgram" transient="true" containment="true" eOpposite="#//CallableProgram/qActivationGroup"/>
+        eType="#//CallableProgram" transient="true" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivationGroupManager" abstract="true"
       interface="true">
@@ -28,26 +28,20 @@
       <eParameters name="activationGroup" lowerBound="1" eType="#//ActivationGroup"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true" interface="true">
     <eOperations name="close"/>
     <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//DataContext"/>
     <eOperations name="getEntry" eType="#//ParameterList"/>
+    <eOperations name="getProgram" lowerBound="1" eType="#//Program"/>
+    <eOperations name="getProgramStatus" lowerBound="1" eType="#//ProgramStatus"/>
     <eOperations name="getRawProgram" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="open"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="qActivationGroup" eType="#//ActivationGroup"
-        transient="true" eOpposite="#//ActivationGroup/programs"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="qProgram" lowerBound="1"
-        eType="#//Program" resolveProxies="false"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCallable">
       <eTypeArguments eClassifier="#//ParameterList"/>
     </eGenericSuperTypes>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CallableProgramDelegator" abstract="true"
-      interface="true">
-    <eOperations name="getDelegate" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ParameterList" instanceClassName="org.smeup.sys.il.data.QData[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="Program" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
@@ -143,8 +137,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateEnter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateExit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProgramStatus" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="callableProgram" lowerBound="1"
-        eType="#//CallableProgram"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProgramStatus" abstract="true" interface="true"
+      eSuperTypes="../../org.smeup.sys.il.data/model/il-data.ecore#//DataStruct">
+    <eOperations name="getJobNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Decimal"/>
+    <eOperations name="getJobName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Character"/>
+    <eOperations name="getParametersNumber" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Decimal"/>
+    <eOperations name="getProgramName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Character"/>
+    <eOperations name="getProgramLibrary" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Character"/>
+    <eOperations name="getStatusCode" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Decimal"/>
+    <eOperations name="getUserName" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Character"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -25,7 +25,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
-import org.smeup.sys.os.pgm.QCallableProgramDelegator;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgram;
@@ -65,12 +64,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass callableProgramEClass = null;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass callableProgramDelegatorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -285,33 +278,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EReference getCallableProgram_QActivationGroup() {
-		return (EReference)callableProgramEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCallableProgram_QProgram() {
-		return (EReference)callableProgramEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCallableProgramDelegator() {
-		return callableProgramDelegatorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getProgramContainer() {
 		return programContainerEClass;
 	}
@@ -407,15 +373,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getProgramStatus_CallableProgram() {
-		return (EReference)programStatusEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -460,10 +417,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		activationGroupManagerEClass = createEClass(ACTIVATION_GROUP_MANAGER);
 
 		callableProgramEClass = createEClass(CALLABLE_PROGRAM);
-		createEReference(callableProgramEClass, CALLABLE_PROGRAM__QACTIVATION_GROUP);
-		createEReference(callableProgramEClass, CALLABLE_PROGRAM__QPROGRAM);
-
-		callableProgramDelegatorEClass = createEClass(CALLABLE_PROGRAM_DELEGATOR);
 
 		programEClass = createEClass(PROGRAM);
 		createEAttribute(programEClass, PROGRAM__ACTIVATION_GROUP);
@@ -487,7 +440,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		createEAttribute(programStackEClass, PROGRAM_STACK__DATE_EXIT);
 
 		programStatusEClass = createEClass(PROGRAM_STATUS);
-		createEReference(programStatusEClass, PROGRAM_STATUS__CALLABLE_PROGRAM);
 
 		// Create data types
 		parameterListEDataType = createEDataType(PARAMETER_LIST);
@@ -544,13 +496,13 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		programContainerEClass.getEGenericSuperTypes().add(g1);
 		programSourceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		programStackEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		programStatusEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		programStatusEClass.getESuperTypes().add(theIntegratedLanguageDataPackage.getDataStruct());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(activationGroupEClass, QActivationGroup.class, "ActivationGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getActivationGroup_FrameworkContext(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "frameworkContext", null, 1, 1, QActivationGroup.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivationGroup_Name(), ecorePackage.getEString(), "name", null, 1, 1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getActivationGroup_Programs(), this.getCallableProgram(), this.getCallableProgram_QActivationGroup(), "programs", null, 0, -1, QActivationGroup.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getActivationGroup_Programs(), this.getCallableProgram(), null, "programs", null, 0, -1, QActivationGroup.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(activationGroupEClass, this.getCallableProgram(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -570,9 +522,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getActivationGroup(), "activationGroup", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCallableProgram_QActivationGroup(), this.getActivationGroup(), this.getActivationGroup_Programs(), "qActivationGroup", null, 0, 1, QCallableProgram.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCallableProgram_QProgram(), this.getProgram(), null, "qProgram", null, 1, 1, QCallableProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(callableProgramEClass, QCallableProgram.class, "CallableProgram", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(callableProgramEClass, null, "close", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -580,15 +530,15 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(callableProgramEClass, this.getParameterList(), "getEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(callableProgramEClass, this.getProgram(), "getProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(callableProgramEClass, this.getProgramStatus(), "getProgramStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(callableProgramEClass, ecorePackage.getEJavaObject(), "getRawProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, ecorePackage.getEBoolean(), "isOpen", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(callableProgramDelegatorEClass, QCallableProgramDelegator.class, "CallableProgramDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(callableProgramDelegatorEClass, ecorePackage.getEObject(), "getDelegate", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(programEClass, QProgram.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgram_ActivationGroup(), ecorePackage.getEString(), "activationGroup", "*DFT", 0, 1, QProgram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -668,8 +618,21 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(programStackEClass, ecorePackage.getEInt(), "size", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(programStatusEClass, QProgramStatus.class, "ProgramStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProgramStatus_CallableProgram(), this.getCallableProgram(), null, "callableProgram", null, 1, 1, QProgramStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(programStatusEClass, QProgramStatus.class, "ProgramStatus", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getDecimal(), "getJobNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getCharacter(), "getJobName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getDecimal(), "getParametersNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getCharacter(), "getProgramName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getCharacter(), "getProgramLibrary", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getDecimal(), "getStatusCode", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(programStatusEClass, theIntegratedLanguageDataPackage.getCharacter(), "getUserName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(parameterListEDataType, QData[].class, "ParameterList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

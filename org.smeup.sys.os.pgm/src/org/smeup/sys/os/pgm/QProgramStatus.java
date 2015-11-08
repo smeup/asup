@@ -7,48 +7,75 @@
  */
 package org.smeup.sys.os.pgm;
 
-import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataStruct;
+import org.smeup.sys.il.data.QDecimal;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Program Status</b></em>'. <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.QProgramStatus#getCallableProgram <em>Callable Program</em>}</li>
- * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStatus()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface QProgramStatus extends QObject {
-	/**
-	 * Returns the value of the '<em><b>Callable Program</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Callable Program</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Callable Program</em>' reference.
-	 * @see #setCallableProgram(QCallableProgram)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStatus_CallableProgram()
-	 * @model required="true"
-	 * @generated
-	 */
-	QCallableProgram getCallableProgram();
+public interface QProgramStatus extends QDataStruct {
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QProgramStatus#getCallableProgram <em>Callable Program</em>}' reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Callable Program</em>' reference.
-	 * @see #getCallableProgram()
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
 	 * @generated
 	 */
-	void setCallableProgram(QCallableProgram value);
+	QCharacter getProgramName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QCharacter getProgramLibrary();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QCharacter getUserName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDecimal getJobNumber();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QCharacter getJobName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDecimal getParametersNumber();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QDecimal getStatusCode();
 
 } // QProgramStatus

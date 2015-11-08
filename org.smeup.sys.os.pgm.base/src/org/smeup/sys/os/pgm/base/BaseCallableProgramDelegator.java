@@ -19,8 +19,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.annotation.Entry;
@@ -32,15 +32,19 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
-import org.smeup.sys.os.pgm.QCallableProgramDelegator;
-import org.smeup.sys.os.pgm.impl.CallableProgramImpl;
+import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramStatus;
 
-public class BaseCallableProgramDelegator extends CallableProgramImpl implements QCallableProgramDelegator {
+public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container implements QCallableProgram {
 
 	private static final long serialVersionUID = 1L;
 
 	private QDataContext dataContext;
+	private QProgram program;
+	private QProgramStatus programStatus;
 	private Object delegate;
+	
 	private InitStrategy initStrategy;
 
 	private Method _open = null;
@@ -53,8 +57,10 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 
 	private boolean apiMode = false;
 
-	protected BaseCallableProgramDelegator(QDataContext dataContext, Object delegate) {
+	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, Object delegate) {
 		this.dataContext = dataContext;
+		this.program = program;
+		this.programStatus = programStatus;
 		this.delegate = delegate;
 
 		analyzeDelegate(delegate);
@@ -170,25 +176,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 			if (_entry != null)
 				_entry.invoke(getDelegate());
 
-			if (getEntry() == null)
-				((BaseProgramStatus) dataContext.getInfoStruct()).params.clear();
-			else {
-				int paramsLength = 0;
-				for (QData param : getEntry()) {
-
-					if (!(param instanceof QBufferedData)) {
-						paramsLength++;
-						continue;
-					}
-
-					if (((QBufferedData) param).isNull())
-						break;
-
-					paramsLength++;
-				}
-				((BaseProgramStatus) dataContext.getInfoStruct()).params.eval(paramsLength);
-			}
-
 			_main.invoke(delegate);
 
 			// @PostMain
@@ -217,24 +204,9 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 				_entry.invoke(getDelegate());
 
 			if (getEntry() == null) {
-				((BaseProgramStatus) dataContext.getInfoStruct()).params.clear();
-				// _main.invoke(delegate, new Object[0]());
+				_main.invoke(delegate);
 				return entry;
 			} else {
-				int paramsLength = 0;
-				for (QData param : getEntry()) {
-
-					if (!(param instanceof QBufferedData)) {
-						paramsLength++;
-						continue;
-					}
-
-					if (((QBufferedData) param).isNull())
-						break;
-
-					paramsLength++;
-				}
-				((BaseProgramStatus) dataContext.getInfoStruct()).params.eval(paramsLength);
 				_main.invoke(delegate, (Object[]) getEntry());
 			}
 
@@ -266,7 +238,6 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 		return isOpen;
 	}
 
-	@Override
 	public Object getDelegate() {
 		return delegate;
 	}
@@ -315,5 +286,15 @@ public class BaseCallableProgramDelegator extends CallableProgramImpl implements
 	@Override
 	public QDataContext getDataContext() {
 		return dataContext;
+	}
+
+	@Override
+	public QProgram getProgram() {
+		return program;
+	}
+
+	@Override
+	public QProgramStatus getProgramStatus() {
+		return this.programStatus;
 	}
 }

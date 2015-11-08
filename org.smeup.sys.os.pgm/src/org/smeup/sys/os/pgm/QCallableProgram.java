@@ -18,77 +18,12 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QCallable Program</b></em>'. <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getQActivationGroup <em>QActivation Group</em>}</li>
- *   <li>{@link org.smeup.sys.os.pgm.QCallableProgram#getQProgram <em>QProgram</em>}</li>
- * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram()
- * @model abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.il.core.java.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.il.core.java.JavaCloseable"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.il.core.java.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.il.core.java.JavaCloseable"
  * @generated
  */
 public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable {
-	/**
-	 * Returns the value of the '<em><b>QProgram</b></em>' reference. <!--
-	 * begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>QProgram</em>' reference isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 *
-	 * @return the value of the '<em>QProgram</em>' reference.
-	 * @see #setQProgram(QProgram)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram_QProgram()
-	 * @model resolveProxies="false" required="true"
-	 * @generated
-	 */
-	QProgram getQProgram();
-
-	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.os.pgm.QCallableProgram#getQProgram
-	 * <em>QProgram</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @param value
-	 *            the new value of the '<em>QProgram</em>' reference.
-	 * @see #getQProgram()
-	 * @generated
-	 */
-	void setQProgram(QProgram value);
-
-	/**
-	 * Returns the value of the '<em><b>QActivation Group</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>QActivation Group</em>' container reference
-	 * isn't clear, there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>QActivation Group</em>' container reference.
-	 * @see #setQActivationGroup(QActivationGroup)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram_QActivationGroup()
-	 * @see org.smeup.sys.os.pgm.QActivationGroup#getPrograms
-	 * @model opposite="programs"
-	 * @generated
-	 */
-	QActivationGroup getQActivationGroup();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QCallableProgram#getQActivationGroup <em>QActivation Group</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>QActivation Group</em>' container reference.
-	 * @see #getQActivationGroup()
-	 * @generated
-	 */
-	void setQActivationGroup(QActivationGroup value);
-
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
@@ -111,6 +46,22 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	 * @generated
 	 */
 	QData[] getEntry();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QProgram getProgram();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QProgramStatus getProgramStatus();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

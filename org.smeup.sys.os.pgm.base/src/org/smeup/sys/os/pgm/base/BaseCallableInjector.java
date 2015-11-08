@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -57,6 +58,9 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
+import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramStatus;
 
 public class BaseCallableInjector {
 
@@ -87,9 +91,18 @@ public class BaseCallableInjector {
 		return dataContext;
 	}
 
-	public <C> C prepareCallable(Class<C> klass) {
+	public QCallableProgram prepareCallable(QProgram program, Class<?> klass) {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>(), true);
+
+		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, new ArrayList<Annotation>());
+		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
+		programStatus.getProgramName().eval(program.getName());
+		programStatus.getProgramLibrary().eval(program.getLibrary());
+		programStatus.getUserName().eval(job.getJobUser());
+		programStatus.getJobNumber().eval(job.getJobNumber());
+		programStatus.getJobName().eval(job.getJobName());
+		programStatus.getStatusCode().clear();
 
 		try {
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
@@ -97,8 +110,13 @@ public class BaseCallableInjector {
 			Map<String, Object> sharedModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
-			C callable = injectData(null, klass, dataContainer, accessFactory, sharedModules, records);
-			return callable;
+			Object  delegate = injectData(null, klass, dataContainer, accessFactory, sharedModules, records);
+			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate);
+			
+			QDataContext dataContext = getDataContext();
+			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
+
+			return callableProgram;
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {

@@ -25,7 +25,6 @@ import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
-import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Program;
@@ -189,45 +188,15 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
-	@SuppressWarnings("resource")
 	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
 
 		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
-
-		QDataContext dataContext = callableInjector.getDataContext();
-
-		BaseProgramStatus programStatus = (BaseProgramStatus) dataContext.getInfoStruct();
-		programStatus.programName.eval(program.getName());
-		programStatus.programLibrary.eval(program.getLibrary());
-		programStatus.userName.eval(job.getJobUser());
-		programStatus.jobNumber.eval(job.getJobNumber());
-		programStatus.jobName.eval(job.getJobName());
-		programStatus.status.clear();
-
-		QCallableProgram callableProgram = null;
-		if (QCallableProgram.class.isAssignableFrom(klass)) {
-			callableProgram = (QCallableProgram) callableInjector.prepareCallable(klass);
-
-			if (callableProgram.getQProgram() == null)
-				callableProgram.setQProgram(program);
-
-			dataContext.getContext().invoke(callableProgram, PostConstruct.class);
-		} else {
-			Object delegate = callableInjector.prepareCallable(klass);
-
-			BaseCallableProgramDelegator delegator = new BaseCallableProgramDelegator(dataContext, delegate);
-			callableProgram = delegator;
-
-			if (callableProgram.getQProgram() == null)
-				callableProgram.setQProgram(program);
-
-			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
-		}
-
+		QCallableProgram callableProgram = callableInjector.prepareCallable(program, klass);
+		
 		return callableProgram;
 	}
 
-	public void assignParameters(QCallableProgram callableProgram, QData[] paramsFrom) {
+	private void assignParameters(QCallableProgram callableProgram, QData[] paramsFrom) {
 
 		QData[] paramsTo = callableProgram.getEntry();
 		
@@ -236,7 +205,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (paramsTo != null && paramsFrom != null)
 			paramsLength = paramsFrom.length < paramsTo.length ? paramsFrom.length : paramsTo.length;
 
-		((BaseProgramStatus) callableProgram.getDataContext().getInfoStruct()).params.eval(paramsLength);
+		callableProgram.getProgramStatus().getParametersNumber().eval(paramsLength);
 		
 		// assign data pointers
 		for (int i = 0; i < paramsLength; i++) {
@@ -337,8 +306,6 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			} finally {
 				printReceiveStack(job, programStack, callableProgram);
 
-				// TODO release parameters
-
 				// remove program from stack
 				programStack.setDateExit(new Date());
 				programStack.pop();
@@ -375,7 +342,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
-		String text = "-> " + callableProgram.getQProgram().getName() + " (";
+		String text = "-> " + callableProgram.getProgram().getName() + " (";
 
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
@@ -384,7 +351,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
-		String text = "<- " + callableProgram.getQProgram().getName() + " (";
+		String text = "<- " + callableProgram.getProgram().getName() + " (";
 		if (callableProgram.getEntry() != null)				
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";

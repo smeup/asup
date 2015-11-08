@@ -21,7 +21,6 @@ import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramContainer;
 import org.smeup.sys.os.pgm.QProgramSource;
 import org.smeup.sys.os.pgm.QProgramStack;
-import org.smeup.sys.os.pgm.QProgramStatus;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -70,7 +69,6 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 			case QOperatingSystemProgramPackage.PROGRAM_CONTAINER: return (EObject)createProgramContainer();
 			case QOperatingSystemProgramPackage.PROGRAM_SOURCE: return (EObject)createProgramSource();
 			case QOperatingSystemProgramPackage.PROGRAM_STACK: return (EObject)createProgramStack();
-			case QOperatingSystemProgramPackage.PROGRAM_STATUS: return (EObject)createProgramStatus();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -152,16 +150,6 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	public QProgramStack createProgramStack() {
 		ProgramStackImpl programStack = new ProgramStackImpl();
 		return programStack;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QProgramStatus createProgramStatus() {
-		ProgramStatusImpl programStatus = new ProgramStatusImpl();
-		return programStatus;
 	}
 
 	/**
