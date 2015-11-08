@@ -846,6 +846,21 @@
       <eParameters name="error" eType="#//Indicator"/>
     </eOperations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAreaFactory" abstract="true" interface="true">
+    <eOperations name="createDataArea" lowerBound="1">
+      <eGenericType eClassifier="#//DataArea">
+        <eTypeArguments eTypeParameter="#//DataAreaFactory/createDataArea/D"/>
+      </eGenericType>
+      <eTypeParameters name="D">
+        <eBounds eClassifier="#//BufferedData"/>
+      </eTypeParameters>
+      <eParameters name="dataContext" lowerBound="1" eType="#//DataContext"/>
+      <eParameters name="argument" lowerBound="1">
+        <eGenericType eTypeParameter="#//DataAreaFactory/createDataArea/D"/>
+      </eParameters>
+      <eParameters name="externalName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
       eSuperTypes="#//term/DataTermContainer ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
@@ -921,7 +936,6 @@
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
-    <eOperations name="getInfoStruct" lowerBound="1" eType="#//DataStruct"/>
     <eOperations name="getTemporaryString" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">

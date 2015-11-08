@@ -37,6 +37,7 @@ import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
+import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
@@ -94,12 +95,14 @@ import org.smeup.sys.il.data.term.QDataTerm;
 
 public class NIODataFactoryImpl implements QDataFactory {
 
+	private QDataAreaFactory dataAreaFactory;
 	private QDataContext dataContext;
-	QDataWriter dataWriter;
+	private QDataWriter dataWriter;
 	
-	protected NIODataFactoryImpl(QDataContext dataContext) {
+	protected NIODataFactoryImpl(QDataContext dataContext, QDataAreaFactory dataAreaFactory) {
 		this.dataContext = dataContext;
 		this.dataWriter  = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+		this.dataAreaFactory = dataAreaFactory;
 	}
 
 	@Override
@@ -341,7 +344,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 	public <D extends QBufferedData> QDataArea<D> createDataArea(QBufferedDataDef<D> argument, String externalName, boolean initialize) {
 
 		D argumentData = (D) createData(argument, initialize);
-		NIODataAreaImpl<D> nioDataAreaImpl = new NIODataAreaImpl<D>(getDataContext(), argumentData, externalName);
+		QDataArea<D> nioDataAreaImpl = dataAreaFactory.createDataArea(getDataContext(), argumentData, externalName);
 
 		return nioDataAreaImpl;
 	}

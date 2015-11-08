@@ -1,12 +1,11 @@
 package org.smeup.sys.il.data.nio;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QString;
-import org.smeup.sys.os.pgm.base.BaseProgramStatus;
 
 public class NIODataContextImpl implements QDataContext {
 	
@@ -14,18 +13,17 @@ public class NIODataContextImpl implements QDataContext {
 	private QDataFactory dataFactory;
 	private QIndicator found;
 	private QIndicator endOfData;
-	private QDataStruct infoStruct;
 	
 	private QString temporaryString;
 	
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
-		dataFactory = new NIODataFactoryImpl(this);		
+		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
+		dataFactory = new NIODataFactoryImpl(this, dataAreaFactory);		
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
-		infoStruct = dataFactory.createDataStruct(BaseProgramStatus.class, 512, true);
 		
-		this.temporaryString = getDataFactory().createCharacter(64000, true, true);
+		this.temporaryString = dataFactory.createCharacter(64000, true, true);
 	}
 	
 	@Override public QIndicator found() {
@@ -45,11 +43,6 @@ public class NIODataContextImpl implements QDataContext {
 	@Override
 	public QContext getContext() {
 		return context;
-	}
-
-	@Override
-	public QDataStruct getInfoStruct() {
-		return infoStruct;
 	}
 
 	@Override

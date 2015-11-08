@@ -35,7 +35,6 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
@@ -434,15 +433,13 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 				if (Overlay.NAME_OWNER.equalsIgnoreCase(overlay.getName())) {
 					data = dataFactory.createData(dataTerm, true);
 					System.err.println("Unexpected condition 5qf7rva9cwerc5: " + dataTerm);
-				} else if (overlay.getName().equalsIgnoreCase("*PGMSTATUS")) {
-					data = dataFactory.createData(dataTerm, false);
-					QDataStruct infoStruct = getDataContext().getInfoStruct();
-					infoStruct.assign((QBufferedData) data);
-				} else {
+				}  else {
 					data = dataFactory.createData(dataTerm, false);
 					// TODO remove lowerCase
-					QData overlayData = getData(overlay.getName().toLowerCase());
-					((QBufferedData) overlayData).assign((QBufferedData) data);
+					QData overlayedData = getData(overlay.getName().toLowerCase());
+					if(overlayedData == null)
+						"".toCharArray();
+					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
 		}

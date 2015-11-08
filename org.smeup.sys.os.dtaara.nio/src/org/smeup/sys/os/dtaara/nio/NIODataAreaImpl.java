@@ -1,4 +1,4 @@
-package org.smeup.sys.il.data.nio;
+package org.smeup.sys.os.dtaara.nio;
 
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataArea;
@@ -7,6 +7,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.nio.NIOBufferedDelegatorImpl;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -53,8 +54,8 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 	@Override
 	public void in(QIndicator error) {
 		try {
-			error.eval(false);
 			in();
+			error.eval(false);			
 		} catch (RuntimeException e) {
 			error.eval(true);
 		}
@@ -87,8 +88,8 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 	@Override
 	public void out(QIndicator error) {
 		try {
-			error.eval(false);
 			out();
+			error.eval(false);			
 		} catch (RuntimeException e) {
 			error.eval(true);
 		}
