@@ -147,18 +147,48 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public void delete(QIndicator notFound, QIndicator error) {
+		delete(null, notFound, error);
+	}
+
+	@Override
+	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
+
+		try {
+			if(keyList!=null){
+				setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
+				if (rebuildNeeded(OperationDirection.FORWARD)) {
+
+					Object[] keySet = null;
+
+					if (isBeforeFirst())
+						keySet = this.currentKeySet;
+					else
+						keySet = buildKeySet();
+
+					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList);
+				}
+
+				readNext();
+
+				if(!isEndOfData())
+					this.statement.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			}else{
+				this.statement.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			}
+			
+
+		} catch (SQLException e) {
+			handleSQLException(e);
+		}
 		
 		if(notFound != null)
-			notFound.eval(!isFound());
-		
+			notFound.eval(isEndOfData());
+
 		if (error != null)
 			error.eval(onError());
 		
-		// TODO
-		if(notFound != null)
-			notFound.eval(true);
 	}
-
+	
 	@Override
 	public R get() {
 		return this.record;
