@@ -14979,8 +14979,7 @@
     <parameters
         allowVariable="true"
         name="CRTDATE"
-        position="17"
-        status="POS">
+        position="17">
       <dataTerm
           name="cLVarForCRTDATE13">
         <definition
@@ -15039,8 +15038,7 @@
     <parameters
         allowVariable="true"
         name="CRTUSER"
-        position="22"
-        status="POS">
+        position="22">
       <dataTerm
           name="cLVarForCRTUSER10">
         <definition
