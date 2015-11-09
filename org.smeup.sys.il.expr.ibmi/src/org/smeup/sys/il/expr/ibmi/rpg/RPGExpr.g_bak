@@ -37,10 +37,107 @@ tokens
 
 @parser::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
+  
+  import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 }
 
 @lexer::header {
   package org.smeup.sys.il.expr.ibmi.rpg;
+  
+  import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
+}
+
+@lexer::members {
+
+	@Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+		
+	
+	public RuntimeException createException(RecognitionException e) {
+        String message = "";
+        boolean addTokenAndLine = true;
+        if (e instanceof NoViableAltException) {
+            message = "Syntax error. ";
+        } else if (e instanceof MissingTokenException) {
+            message = "Missing token ";
+        } else if (e instanceof UnwantedTokenException) {
+            UnwantedTokenException ex = (UnwantedTokenException) e;
+            ex.getUnexpectedToken().getText();
+            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+            addTokenAndLine = false;
+        } else {
+            message = "Syntax error near ";
+        }
+        if (addTokenAndLine) {
+            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+        }
+        return new IntegratedLanguageExpressionRuntimeException(message,e);
+    }
+}
+
+
+@parser::members {
+
+   @Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+   @Override
+   public void reportError(RecognitionException e) {
+      super.reportError(e);
+      RuntimeException re = createException(e);
+      recover(input, e);
+      throw re;
+   }
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+    
+    public RuntimeException createException(RecognitionException e) {
+        String message = "";
+        boolean addTokenAndLine = true;
+        if (e instanceof NoViableAltException) {
+            message = "Syntax error. ";
+        } else if (e instanceof MissingTokenException) {
+            message = "Missing token ";
+        } else if (e instanceof UnwantedTokenException) {
+            UnwantedTokenException ex = (UnwantedTokenException) e;
+            ex.getUnexpectedToken().getText();
+            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+            addTokenAndLine = false;
+        } else {
+            message = "Syntax error near ";
+        }
+        if (addTokenAndLine) {
+            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
+        }
+        return new IntegratedLanguageExpressionRuntimeException(message,e);
+    }
+}
+
+@rulecatch {
+    catch (RecognitionException e) {
+        RuntimeException re = createException(e);
+        throw re;
+    }
 }
 
 
@@ -109,29 +206,35 @@ value
 	|	STRING
 	|	HEX -> ^(HEX[$HEX.text.substring(2, $HEX.text.length() -1 )])
 	|	(SPECIAL -> TERM[$SPECIAL.text])
+	|	(IN -> TERM[$IN.text])
+	|	(INNR -> TERM[$INNR.text])
+	|	(INNU -> TERM[$INNU.text])
+	|	(ALL -> TERM[$ALL.text])
+	|	(ALLX -> TERM[$ALLX.text])
 	|	filler
 	|	special
 	|	bi_function
 	|	usr_function
 	|   	indicator
 	|	TERM
+
 	;
 	
 indicator
 	:
-		IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
+		MULT IN '(' logicalExpression ')' -> ^(BI_FUNCTION["*IN"] logicalExpression)  	// Caso *IN(nn)
 		|
-		INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(3)])	 		// Caso *INnn
+		MULT INNR ->	^(BI_FUNCTION["*IN"] INTEGER[$INNR.text.substring(2)])	// Caso *INnn
 		|
-		INNU -> ^(INDICATOR[$INNU.text])				        	// Caso *INU0 - *INU8
+		MULT INNU -> ^(INDICATOR["*" + $INNU.text])				        	// Caso *INU0 - *INU8
 		|
-		IN -> ^(INDICATOR[$IN.text])							// Caso *IN
+		MULT IN -> ^(INDICATOR["*" + $IN.text])							// Caso *IN
 	;		
 	
 filler	:	
-		ALL -> ^(BI_FUNCTION["*ALL"] STRING[$ALL.text.substring(5, $ALL.text.length()-1)])
+		MULT ALL  -> ^(BI_FUNCTION["*ALL"] STRING[$ALL.text.substring(4, $ALL.text.length()-1)])			
 		|
-		ALLX -> ^(BI_FUNCTION["*ALL"] HEX[$ALLX.text.substring(6, $ALLX.text.length()-1)])	
+		MULT ALLX -> ^(BI_FUNCTION["*ALL"] HEX[$ALLX.text.substring(5, $ALLX.text.length()-1)])					
 	;
 
 special	:
@@ -228,85 +331,85 @@ BI_FUN  :	'%'TERM
 	;
 
 IN 	:
-	MULT I N
+	I N
 	;
 	
 INNR	:
-	MULT I N ('0'..'9') ('0'..'9')
+	I N ('0'..'9') ('0'..'9')
 	;
 	
 INNU	:	
 	
-	MULT I N U ('1'..'8')
+	I N U ('1'..'8')
 	|
-	MULT I N H ('1'..'8')
+	I N H ('1'..'8')
 	|
-	MULT I N M R
+	I N M R
 	|
-	MULT I N O (A | G | V | F)
+	I N O (A | G | V | F)
 	|
-	MULT I N L ('1'..'9')
+	I N L ('1'..'9')
 	|
-	MULT I N L R
+	I N L R
 	|
-	MULT I N R T
+	I N R T
 	|
-	MULT I N K A
+	I N K A
 	|
-	MULT I N K B
+	I N K B
 	|
-	MULT I N K C
+	I N K C
 	|
-	MULT I N K D
+	I N K D
 	|
-	MULT I N K E
+	I N K E
 	|
-	MULT I N K F
+	I N K F
 	|
-	MULT I N K G
+	I N K G
 	|
-	MULT I N K H
+	I N K H
 	|
-	MULT I N K I
+	I N K I
 	|
-	MULT I N K J
+	I N K J
 	|
-	MULT I N K K
+	I N K K
 	|
-	MULT I N K L
+	I N K L
 	|
-	MULT I N K M
+	I N K M
 	|
-	MULT I N K N
+	I N K N
 	|
-	MULT I N K P
+	I N K P
 	|
-	MULT I N K Q
+	I N K Q
 	|
-	MULT I N K R
+	I N K R
 	|
-	MULT I N K S
+	I N K S
 	|
-	MULT I N K T
+	I N K T
 	|
-	MULT I N K U
+	I N K U
 	|
-	MULT I N K V
+	I N K V
 	|
-	MULT I N K W
+	I N K W
 	|	
-	MULT I N K X
+	I N K X
 	|
-	MULT I N K Y	
+	I N K Y	
 	
 	;	
 
 ALL	:
-	MULT A L L '\'' ~('\''|'\r'|'\n'|'\t')+ '\''
+	A L L '\'' ~('\''|'\r'|'\n'|'\t')+ '\'' 
 	;	
 
 ALLX    :
-	MULT A L L HEX	
+	A L L HEX
 	;
 
 HEX	:   ('X\''|'x\'') (HexDigit)+ '\''

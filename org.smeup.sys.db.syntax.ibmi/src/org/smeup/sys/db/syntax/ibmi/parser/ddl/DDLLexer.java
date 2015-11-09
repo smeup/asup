@@ -1,6 +1,8 @@
-// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g 2015-10-27 12:51:00
+// $ANTLR 3.5.1 C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g 2015-11-09 18:03:52
 
 package org.smeup.sys.db.syntax.ibmi.parser.ddl;
+
+import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 
 
 
@@ -291,6 +293,27 @@ public class DDLLexer extends Lexer {
 	public static final int Z=278;
 	public static final int ZONE=279;
 
+
+		@Override
+	  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+	    	throw new MismatchedTokenException(ttype, input);
+	  	}
+
+	    @Override    
+	    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+			String msg = "Lexer error. Input: " + e.input.toString();
+	        msg += " " + getErrorHeader(e);
+	        msg += " Msg: " + getErrorMessage(e, tokenNames);
+	        throw new DataBaseSyntaxRuntimeException(msg , e);
+	    }	
+
+	   @Override
+	  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+	    	throw e;
+	    }
+
+
+
 	// delegates
 	// delegators
 	public Lexer[] getDelegates() {
@@ -311,8 +334,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = T__280;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:12:8: ( 'into' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:12:10: 'into'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:35:8: ( 'into' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:35:10: 'into'
 			{
 			match("into"); 
 
@@ -332,8 +355,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = T__281;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:13:8: ( 'values' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:13:10: 'values'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:36:8: ( 'values' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:36:10: 'values'
 			{
 			match("values"); 
 
@@ -351,7 +374,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "A"
 	public final void mA() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:174:2: ( 'A' | 'a' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:170:2: ( 'A' | 'a' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
@@ -374,7 +397,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "B"
 	public final void mB() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:176:2: ( 'B' | 'b' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:172:2: ( 'B' | 'b' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
@@ -397,7 +420,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "C"
 	public final void mC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:178:2: ( 'C' | 'c' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:174:2: ( 'C' | 'c' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
@@ -420,7 +443,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "D"
 	public final void mD() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:180:2: ( 'D' | 'd' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:176:2: ( 'D' | 'd' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
@@ -443,7 +466,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "E"
 	public final void mE() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:182:2: ( 'E' | 'e' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:178:2: ( 'E' | 'e' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
@@ -466,7 +489,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "F"
 	public final void mF() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:184:2: ( 'F' | 'f' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:180:2: ( 'F' | 'f' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
@@ -489,7 +512,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "G"
 	public final void mG() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:186:2: ( 'G' | 'g' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:182:2: ( 'G' | 'g' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='G'||input.LA(1)=='g' ) {
@@ -512,7 +535,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "H"
 	public final void mH() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:188:2: ( 'H' | 'h' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:184:2: ( 'H' | 'h' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='H'||input.LA(1)=='h' ) {
@@ -535,7 +558,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "I"
 	public final void mI() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:190:2: ( 'I' | 'i' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:186:2: ( 'I' | 'i' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
@@ -558,7 +581,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "J"
 	public final void mJ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:192:2: ( 'J' | 'j' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:188:2: ( 'J' | 'j' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='J'||input.LA(1)=='j' ) {
@@ -581,7 +604,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "K"
 	public final void mK() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:194:2: ( 'K' | 'k' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:190:2: ( 'K' | 'k' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='K'||input.LA(1)=='k' ) {
@@ -604,7 +627,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "L"
 	public final void mL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:196:2: ( 'L' | 'l' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:192:2: ( 'L' | 'l' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
@@ -627,7 +650,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "M"
 	public final void mM() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:198:2: ( 'M' | 'm' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:194:2: ( 'M' | 'm' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='M'||input.LA(1)=='m' ) {
@@ -650,7 +673,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "N"
 	public final void mN() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:200:2: ( 'N' | 'n' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:196:2: ( 'N' | 'n' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='N'||input.LA(1)=='n' ) {
@@ -673,7 +696,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "O"
 	public final void mO() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:202:2: ( 'O' | 'o' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:198:2: ( 'O' | 'o' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
@@ -696,7 +719,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "P"
 	public final void mP() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:204:2: ( 'P' | 'p' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:200:2: ( 'P' | 'p' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='P'||input.LA(1)=='p' ) {
@@ -719,7 +742,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Q"
 	public final void mQ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:206:2: ( 'Q' | 'q' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:202:2: ( 'Q' | 'q' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='Q'||input.LA(1)=='q' ) {
@@ -742,7 +765,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "R"
 	public final void mR() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:208:2: ( 'R' | 'r' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:204:2: ( 'R' | 'r' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='R'||input.LA(1)=='r' ) {
@@ -765,7 +788,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "S"
 	public final void mS() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:210:2: ( 'S' | 's' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:206:2: ( 'S' | 's' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
@@ -788,7 +811,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "T"
 	public final void mT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:212:2: ( 'T' | 't' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:208:2: ( 'T' | 't' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
@@ -811,7 +834,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "U"
 	public final void mU() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:214:2: ( 'U' | 'u' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:210:2: ( 'U' | 'u' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
@@ -834,7 +857,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "V"
 	public final void mV() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:216:2: ( 'V' | 'v' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:212:2: ( 'V' | 'v' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
@@ -857,7 +880,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "W"
 	public final void mW() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:218:2: ( 'W' | 'w' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:214:2: ( 'W' | 'w' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
@@ -880,7 +903,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "X"
 	public final void mX() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:220:2: ( 'X' | 'x' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:216:2: ( 'X' | 'x' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -903,7 +926,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Y"
 	public final void mY() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:222:2: ( 'Y' | 'y' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:218:2: ( 'Y' | 'y' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='Y'||input.LA(1)=='y' ) {
@@ -926,7 +949,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Z"
 	public final void mZ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:224:2: ( 'Z' | 'z' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:220:2: ( 'Z' | 'z' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( input.LA(1)=='Z'||input.LA(1)=='z' ) {
@@ -951,8 +974,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = AS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:230:4: ( A S )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:230:6: A S
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:226:4: ( A S )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:226:6: A S
 			{
 			mA(); 
 
@@ -974,8 +997,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ALIAS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:231:7: ( A L I A S )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:231:9: A L I A S
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:227:7: ( A L I A S )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:227:9: A L I A S
 			{
 			mA(); 
 
@@ -1003,8 +1026,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ALL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:232:5: ( A L L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:232:7: A L L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:228:5: ( A L L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:228:7: A L L
 			{
 			mA(); 
 
@@ -1028,8 +1051,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ALLOW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:233:7: ( A L L O W )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:233:10: A L L O W
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:229:7: ( A L L O W )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:229:10: A L L O W
 			{
 			mA(); 
 
@@ -1057,8 +1080,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:234:5: ( A N D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:234:7: A N D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:230:5: ( A N D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:230:7: A N D
 			{
 			mA(); 
 
@@ -1082,8 +1105,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ASC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:235:5: ( A S C )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:235:7: A S C
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:231:5: ( A S C )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:231:7: A S C
 			{
 			mA(); 
 
@@ -1107,8 +1130,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:236:4: ( B Y )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:236:6: B Y
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:232:4: ( B Y )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:232:6: B Y
 			{
 			mB(); 
 
@@ -1130,8 +1153,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CALL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:237:5: ( C A L L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:237:7: C A L L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:233:5: ( C A L L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:233:7: C A L L
 			{
 			mC(); 
 
@@ -1157,8 +1180,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CASE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:238:6: ( C A S E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:238:8: C A S E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:234:6: ( C A S E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:234:8: C A S E
 			{
 			mC(); 
 
@@ -1184,8 +1207,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CASCADE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:239:9: ( C A S C A D E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:239:12: C A S C A D E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:235:9: ( C A S C A D E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:235:12: C A S C A D E
 			{
 			mC(); 
 
@@ -1217,8 +1240,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CHARACTER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:240:11: ( C H A R A C T E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:240:13: C H A R A C T E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:236:11: ( C H A R A C T E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:236:13: C H A R A C T E R
 			{
 			mC(); 
 
@@ -1254,8 +1277,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COALESCE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:241:10: ( C O A L E S C E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:241:12: C O A L E S C E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:237:10: ( C O A L E S C E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:237:12: C O A L E S C E
 			{
 			mC(); 
 
@@ -1289,8 +1312,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COLUMN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:242:9: ( C O L U M N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:242:11: C O L U M N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:238:9: ( C O L U M N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:238:11: C O L U M N
 			{
 			mC(); 
 
@@ -1320,8 +1343,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COUNT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:243:7: ( C O U N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:243:9: C O U N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:239:7: ( C O U N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:239:9: C O U N T
 			{
 			mC(); 
 
@@ -1349,8 +1372,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CREATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:244:8: ( C R E A T E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:244:10: C R E A T E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:240:8: ( C R E A T E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:240:10: C R E A T E
 			{
 			mC(); 
 
@@ -1380,8 +1403,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COMMIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:245:8: ( C O M M I T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:245:11: C O M M I T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:241:8: ( C O M M I T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:241:11: C O M M I T
 			{
 			mC(); 
 
@@ -1411,8 +1434,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COMMITTED;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:246:11: ( C O M M I T T E D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:246:14: C O M M I T T E D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:242:11: ( C O M M I T T E D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:242:14: C O M M I T T E D
 			{
 			mC(); 
 
@@ -1448,8 +1471,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CONNECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:247:9: ( C O N N E C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:247:12: C O N N E C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:243:9: ( C O N N E C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:243:12: C O N N E C T
 			{
 			mC(); 
 
@@ -1481,8 +1504,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CONNECTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:248:12: ( C O N N E C T I O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:248:14: C O N N E C T I O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:244:12: ( C O N N E C T I O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:244:14: C O N N E C T I O N
 			{
 			mC(); 
 
@@ -1520,8 +1543,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CROSS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:249:7: ( C R O S S )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:249:9: C R O S S
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:245:7: ( C R O S S )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:245:9: C R O S S
 			{
 			mC(); 
 
@@ -1549,8 +1572,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CUBE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:250:6: ( C U B E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:250:8: C U B E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:246:6: ( C U B E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:246:8: C U B E
 			{
 			mC(); 
 
@@ -1576,8 +1599,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CURRENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:251:9: ( C U R R E N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:251:12: C U R R E N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:247:9: ( C U R R E N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:247:12: C U R R E N T
 			{
 			mC(); 
 
@@ -1609,8 +1632,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DEFAULT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:252:9: ( D E F A U L T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:252:11: D E F A U L T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:248:9: ( D E F A U L T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:248:11: D E F A U L T
 			{
 			mD(); 
 
@@ -1642,8 +1665,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DESC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:253:6: ( D E S C )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:253:8: D E S C
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:249:6: ( D E S C )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:249:8: D E S C
 			{
 			mD(); 
 
@@ -1669,8 +1692,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DISTINCT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:254:10: ( D I S T I N C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:254:12: D I S T I N C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:250:10: ( D I S T I N C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:250:12: D I S T I N C T
 			{
 			mD(); 
 
@@ -1704,8 +1727,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DISCONNECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:255:12: ( D I S C O N N E C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:255:14: D I S C O N N E C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:251:12: ( D I S C O N N E C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:251:14: D I S C O N N E C T
 			{
 			mD(); 
 
@@ -1743,8 +1766,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DROP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:256:6: ( D R O P )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:256:8: D R O P
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:252:6: ( D R O P )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:252:8: D R O P
 			{
 			mD(); 
 
@@ -1770,8 +1793,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = END;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:257:5: ( E N D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:257:7: E N D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:253:5: ( E N D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:253:7: E N D
 			{
 			mE(); 
 
@@ -1795,8 +1818,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ELSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:258:6: ( E L S E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:258:8: E L S E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:254:6: ( E L S E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:254:8: E L S E
 			{
 			mE(); 
 
@@ -1822,8 +1845,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = EXCEPT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:259:8: ( E X C E P T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:259:10: E X C E P T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:255:8: ( E X C E P T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:255:10: E X C E P T
 			{
 			mE(); 
 
@@ -1853,8 +1876,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = EXCLUSIVE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:260:10: ( E X C L U S I V E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:260:13: E X C L U S I V E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:256:10: ( E X C L U S I V E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:256:13: E X C L U S I V E
 			{
 			mE(); 
 
@@ -1890,8 +1913,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = EXTERNAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:261:10: ( E X T E R N A L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:261:12: E X T E R N A L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:257:10: ( E X T E R N A L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:257:12: E X T E R N A L
 			{
 			mE(); 
 
@@ -1925,8 +1948,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FALSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:262:7: ( F A L S E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:262:9: F A L S E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:258:7: ( F A L S E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:258:9: F A L S E
 			{
 			mF(); 
 
@@ -1954,8 +1977,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FIRST;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:263:7: ( F I R S T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:263:9: F I R S T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:259:7: ( F I R S T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:259:9: F I R S T
 			{
 			mF(); 
 
@@ -1983,8 +2006,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:264:6: ( F O R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:264:9: F O R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:260:6: ( F O R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:260:9: F O R
 			{
 			mF(); 
 
@@ -2008,8 +2031,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FORMAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:265:8: ( F O R M A T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:265:10: F O R M A T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:261:8: ( F O R M A T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:261:10: F O R M A T
 			{
 			mF(); 
 
@@ -2039,8 +2062,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FULL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:266:6: ( F U L L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:266:8: F U L L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:262:6: ( F U L L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:262:8: F U L L
 			{
 			mF(); 
 
@@ -2066,8 +2089,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FROM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:267:6: ( F R O M )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:267:8: F R O M
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:263:6: ( F R O M )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:263:8: F R O M
 			{
 			mF(); 
 
@@ -2093,8 +2116,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = GROUP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:268:7: ( G R O U P )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:268:9: G R O U P
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:264:7: ( G R O U P )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:264:9: G R O U P
 			{
 			mG(); 
 
@@ -2122,8 +2145,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = HAVING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:269:8: ( H A V I N G )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:269:10: H A V I N G
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:265:8: ( H A V I N G )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:265:10: H A V I N G
 			{
 			mH(); 
 
@@ -2153,8 +2176,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = HOLD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:270:6: ( H O L D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:270:9: H O L D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:266:6: ( H O L D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:266:9: H O L D
 			{
 			mH(); 
 
@@ -2180,8 +2203,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = IN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:271:4: ( I N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:271:6: I N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:267:4: ( I N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:267:6: I N
 			{
 			mI(); 
 
@@ -2203,8 +2226,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INDEX;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:272:7: ( I N D E X )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:272:9: I N D E X
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:268:7: ( I N D E X )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:268:9: I N D E X
 			{
 			mI(); 
 
@@ -2232,8 +2255,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INNER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:273:7: ( I N N E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:273:9: I N N E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:269:7: ( I N N E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:269:9: I N N E R
 			{
 			mI(); 
 
@@ -2261,8 +2284,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INSERT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:274:8: ( I N S E R T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:274:10: I N S E R T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:270:8: ( I N S E R T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:270:10: I N S E R T
 			{
 			mI(); 
 
@@ -2292,8 +2315,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INTERSECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:275:11: ( I N T E R S E C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:275:13: I N T E R S E C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:271:11: ( I N T E R S E C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:271:13: I N T E R S E C T
 			{
 			mI(); 
 
@@ -2329,8 +2352,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INTO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:276:6: ( I N T O )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:276:8: I N T O
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:272:6: ( I N T O )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:272:8: I N T O
 			{
 			mI(); 
 
@@ -2356,8 +2379,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = IS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:277:4: ( I S )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:277:6: I S
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:273:4: ( I S )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:273:6: I S
 			{
 			mI(); 
 
@@ -2379,8 +2402,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ISOLATION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:278:11: ( I S O L A T I O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:278:13: I S O L A T I O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:274:11: ( I S O L A T I O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:274:13: I S O L A T I O N
 			{
 			mI(); 
 
@@ -2416,8 +2439,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = JOIN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:279:6: ( J O I N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:279:8: J O I N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:275:6: ( J O I N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:275:8: J O I N
 			{
 			mJ(); 
 
@@ -2443,8 +2466,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LAST;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:280:6: ( L A S T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:280:8: L A S T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:276:6: ( L A S T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:276:8: L A S T
 			{
 			mL(); 
 
@@ -2470,8 +2493,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LEFT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:281:6: ( L E F T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:281:8: L E F T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:277:6: ( L E F T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:277:8: L E F T
 			{
 			mL(); 
 
@@ -2497,8 +2520,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LEVEL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:282:7: ( L E V E L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:282:10: L E V E L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:278:7: ( L E V E L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:278:10: L E V E L
 			{
 			mL(); 
 
@@ -2526,8 +2549,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LIKE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:283:6: ( L I K E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:283:8: L I K E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:279:6: ( L I K E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:279:8: L I K E
 			{
 			mL(); 
 
@@ -2553,8 +2576,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LIMIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:284:7: ( L I M I T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:284:9: L I M I T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:280:7: ( L I M I T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:280:9: L I M I T
 			{
 			mL(); 
 
@@ -2582,8 +2605,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LOCATION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:285:10: ( L O C A T I O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:285:12: L O C A T I O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:281:10: ( L O C A T I O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:281:12: L O C A T I O N
 			{
 			mL(); 
 
@@ -2617,8 +2640,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LOCK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:286:6: ( L O C K )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:286:9: L O C K
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:282:6: ( L O C K )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:282:9: L O C K
 			{
 			mL(); 
 
@@ -2644,8 +2667,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = MODE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:287:6: ( M O D E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:287:9: M O D E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:283:6: ( M O D E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:283:9: M O D E
 			{
 			mM(); 
 
@@ -2671,8 +2694,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:288:6: ( N A M E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:288:9: N A M E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:284:6: ( N A M E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:284:9: N A M E
 			{
 			mN(); 
 
@@ -2698,8 +2721,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NATIONAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:289:10: ( N A T I O N A L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:289:12: N A T I O N A L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:285:10: ( N A T I O N A L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:285:12: N A T I O N A L
 			{
 			mN(); 
 
@@ -2733,8 +2756,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NATURAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:290:9: ( N A T U R A L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:290:11: N A T U R A L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:286:9: ( N A T U R A L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:286:11: N A T U R A L
 			{
 			mN(); 
 
@@ -2766,8 +2789,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:291:3: ( N O )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:291:5: N O
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:287:3: ( N O )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:287:5: N O
 			{
 			mN(); 
 
@@ -2789,8 +2812,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:292:5: ( N O T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:292:7: N O T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:288:5: ( N O T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:288:7: N O T
 			{
 			mN(); 
 
@@ -2814,8 +2837,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NULL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:293:6: ( N U L L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:293:8: N U L L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:289:6: ( N U L L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:289:8: N U L L
 			{
 			mN(); 
 
@@ -2841,8 +2864,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NULLIF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:294:8: ( N U L L I F )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:294:10: N U L L I F
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:290:8: ( N U L L I F )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:290:10: N U L L I F
 			{
 			mN(); 
 
@@ -2872,8 +2895,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:295:4: ( O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:295:6: O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:291:4: ( O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:291:6: O N
 			{
 			mO(); 
 
@@ -2895,8 +2918,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ONLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:296:5: ( O N L Y )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:296:7: O N L Y
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:292:5: ( O N L Y )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:292:7: O N L Y
 			{
 			mO(); 
 
@@ -2922,8 +2945,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = OUTER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:297:7: ( O U T E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:297:9: O U T E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:293:7: ( O U T E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:293:9: O U T E R
 			{
 			mO(); 
 
@@ -2951,8 +2974,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:298:4: ( O R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:298:6: O R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:294:4: ( O R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:294:6: O R
 			{
 			mO(); 
 
@@ -2974,8 +2997,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ORDER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:299:7: ( O R D E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:299:9: O R D E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:295:7: ( O R D E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:295:9: O R D E R
 			{
 			mO(); 
 
@@ -3003,8 +3026,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = PRECISION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:300:11: ( P R E C I S I ON )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:300:13: P R E C I S I ON
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:296:11: ( P R E C I S I ON )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:296:13: P R E C I S I ON
 			{
 			mP(); 
 
@@ -3038,8 +3061,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = READ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:301:6: ( R E A D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:301:9: R E A D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:297:6: ( R E A D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:297:9: R E A D
 			{
 			mR(); 
 
@@ -3065,8 +3088,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RELEASE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:302:9: ( R E L E A S E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:302:11: R E L E A S E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:298:9: ( R E L E A S E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:298:11: R E L E A S E
 			{
 			mR(); 
 
@@ -3098,8 +3121,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RENAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:303:8: ( R E N A M E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:303:11: R E N A M E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:299:8: ( R E N A M E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:299:11: R E N A M E
 			{
 			mR(); 
 
@@ -3129,8 +3152,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = REPEATABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:304:12: ( R E P E A T A B L E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:304:14: R E P E A T A B L E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:300:12: ( R E P E A T A B L E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:300:14: R E P E A T A B L E
 			{
 			mR(); 
 
@@ -3168,8 +3191,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = REPLACE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:305:9: ( R E P L A C E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:305:12: R E P L A C E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:301:9: ( R E P L A C E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:301:12: R E P L A C E
 			{
 			mR(); 
 
@@ -3201,8 +3224,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RESET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:306:7: ( R E S E T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:306:10: R E S E T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:302:7: ( R E S E T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:302:10: R E S E T
 			{
 			mR(); 
 
@@ -3230,8 +3253,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RESTRICT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:307:9: ( R E S T R I C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:307:12: R E S T R I C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:303:9: ( R E S T R I C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:303:12: R E S T R I C T
 			{
 			mR(); 
 
@@ -3265,8 +3288,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RIGHT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:308:7: ( R I G H T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:308:9: R I G H T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:304:7: ( R I G H T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:304:9: R I G H T
 			{
 			mR(); 
 
@@ -3294,8 +3317,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ROLLBACK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:309:9: ( R O L L B A C K )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:309:12: R O L L B A C K
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:305:9: ( R O L L B A C K )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:305:12: R O L L B A C K
 			{
 			mR(); 
 
@@ -3329,8 +3352,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ROLLUP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:310:8: ( R O L L U P )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:310:10: R O L L U P
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:306:8: ( R O L L U P )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:306:10: R O L L U P
 			{
 			mR(); 
 
@@ -3360,8 +3383,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:311:5: ( S E T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:311:7: S E T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:307:5: ( S E T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:307:7: S E T
 			{
 			mS(); 
 
@@ -3385,8 +3408,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SELECT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:312:8: ( S E L E C T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:312:10: S E L E C T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:308:8: ( S E L E C T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:308:10: S E L E C T
 			{
 			mS(); 
 
@@ -3416,8 +3439,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SHARE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:313:7: ( S H A R E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:313:10: S H A R E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:309:7: ( S H A R E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:309:10: S H A R E
 			{
 			mS(); 
 
@@ -3445,8 +3468,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SERIALIZABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:314:15: ( S E R I A L I Z A B L E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:314:18: S E R I A L I Z A B L E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:310:15: ( S E R I A L I Z A B L E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:310:18: S E R I A L I Z A B L E
 			{
 			mS(); 
 
@@ -3488,8 +3511,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SYSTEM;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:315:8: ( S Y S T E M )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:315:10: S Y S T E M
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:311:8: ( S Y S T E M )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:311:10: S Y S T E M
 			{
 			mS(); 
 
@@ -3519,8 +3542,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SQL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:316:5: ( S Q L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:316:8: S Q L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:312:5: ( S Q L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:312:8: S Q L
 			{
 			mS(); 
 
@@ -3544,8 +3567,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TABLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:317:7: ( T A B L E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:317:9: T A B L E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:313:7: ( T A B L E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:313:9: T A B L E
 			{
 			mT(); 
 
@@ -3573,8 +3596,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:318:6: ( T H E N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:318:8: T H E N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:314:6: ( T H E N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:314:8: T H E N
 			{
 			mT(); 
 
@@ -3600,8 +3623,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TO;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:319:4: ( T O )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:319:7: T O
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:315:4: ( T O )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:315:7: T O
 			{
 			mT(); 
 
@@ -3623,8 +3646,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TRANSACTION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:320:13: ( T R A N S A C T I O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:320:15: T R A N S A C T I O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:316:13: ( T R A N S A C T I O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:316:15: T R A N S A C T I O N
 			{
 			mT(); 
 
@@ -3664,8 +3687,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TRUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:321:6: ( T R U E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:321:8: T R U E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:317:6: ( T R U E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:317:8: T R U E
 			{
 			mT(); 
 
@@ -3691,8 +3714,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = UNCOMMITTED;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:322:13: ( U N C O M M I T T E D )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:322:16: U N C O M M I T T E D
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:318:13: ( U N C O M M I T T E D )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:318:16: U N C O M M I T T E D
 			{
 			mU(); 
 
@@ -3732,8 +3755,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = UNION;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:323:7: ( U N I O N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:323:9: U N I O N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:319:7: ( U N I O N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:319:9: U N I O N
 			{
 			mU(); 
 
@@ -3761,8 +3784,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = UNIQUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:324:8: ( U N I Q U E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:324:10: U N I Q U E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:320:8: ( U N I Q U E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:320:10: U N I Q U E
 			{
 			mU(); 
 
@@ -3792,8 +3815,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = UNKNOWN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:325:9: ( U N K N O W N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:325:11: U N K N O W N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:321:9: ( U N K N O W N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:321:11: U N K N O W N
 			{
 			mU(); 
 
@@ -3825,8 +3848,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = USING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:326:7: ( U S I N G )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:326:9: U S I N G
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:322:7: ( U S I N G )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:322:9: U S I N G
 			{
 			mU(); 
 
@@ -3854,8 +3877,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = USER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:327:6: ( U S E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:327:8: U S E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:323:6: ( U S E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:323:8: U S E R
 			{
 			mU(); 
 
@@ -3881,8 +3904,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VALUES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:328:8: ( V A L U E S )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:328:10: V A L U E S
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:324:8: ( V A L U E S )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:324:10: V A L U E S
 			{
 			mV(); 
 
@@ -3912,8 +3935,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VARYING;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:329:9: ( V A R Y I N G )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:329:11: V A R Y I N G
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:325:9: ( V A R Y I N G )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:325:11: V A R Y I N G
 			{
 			mV(); 
 
@@ -3945,8 +3968,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = WHEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:330:6: ( W H E N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:330:8: W H E N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:326:6: ( W H E N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:326:8: W H E N
 			{
 			mW(); 
 
@@ -3972,8 +3995,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = WHERE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:331:7: ( W H E R E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:331:9: W H E R E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:327:7: ( W H E R E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:327:9: W H E R E
 			{
 			mW(); 
 
@@ -4001,8 +4024,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = WITH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:332:6: ( W I T H )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:332:8: W I T H
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:328:6: ( W I T H )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:328:8: W I T H
 			{
 			mW(); 
 
@@ -4028,8 +4051,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = WORK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:333:6: ( W O R K )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:333:9: W O R K
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:329:6: ( W O R K )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:329:9: W O R K
 			{
 			mW(); 
 
@@ -4055,8 +4078,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = WRITE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:334:6: ( W R I T E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:334:8: W R I T E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:330:6: ( W R I T E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:330:8: W R I T E
 			{
 			mW(); 
 
@@ -4084,8 +4107,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VIEW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:335:6: ( V I E W )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:335:8: V I E W
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:331:6: ( V I E W )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:331:8: V I E W
 			{
 			mV(); 
 
@@ -4111,8 +4134,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ZONE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:336:6: ( Z O N E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:336:8: Z O N E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:332:6: ( Z O N E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:332:8: Z O N E
 			{
 			mZ(); 
 
@@ -4138,8 +4161,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BOOLEAN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:342:9: ( B O O L E A N )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:342:11: B O O L E A N
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:338:9: ( B O O L E A N )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:338:11: B O O L E A N
 			{
 			mB(); 
 
@@ -4171,8 +4194,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BOOL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:343:6: ( B O O L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:343:8: B O O L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:339:6: ( B O O L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:339:8: B O O L
 			{
 			mB(); 
 
@@ -4198,8 +4221,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:344:5: ( B I T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:344:7: B I T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:340:5: ( B I T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:340:7: B I T
 			{
 			mB(); 
 
@@ -4223,8 +4246,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VARBIT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:345:8: ( V A R B I T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:345:10: V A R B I T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:341:8: ( V A R B I T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:341:10: V A R B I T
 			{
 			mV(); 
 
@@ -4254,8 +4277,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INT1;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:346:6: ( I N T '1' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:346:8: I N T '1'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:342:6: ( I N T '1' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:342:8: I N T '1'
 			{
 			mI(); 
 
@@ -4280,8 +4303,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INT2;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:347:6: ( I N T '2' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:347:8: I N T '2'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:343:6: ( I N T '2' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:343:8: I N T '2'
 			{
 			mI(); 
 
@@ -4306,8 +4329,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INT4;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:348:6: ( I N T '4' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:348:8: I N T '4'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:344:6: ( I N T '4' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:344:8: I N T '4'
 			{
 			mI(); 
 
@@ -4332,8 +4355,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INT8;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:349:6: ( I N T '8' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:349:8: I N T '8'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:345:6: ( I N T '8' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:345:8: I N T '8'
 			{
 			mI(); 
 
@@ -4358,8 +4381,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TINYINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:350:9: ( T I N Y I N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:350:11: T I N Y I N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:346:9: ( T I N Y I N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:346:11: T I N Y I N T
 			{
 			mT(); 
 
@@ -4391,8 +4414,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SMALLINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:351:10: ( S M A L L I N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:351:12: S M A L L I N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:347:10: ( S M A L L I N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:347:12: S M A L L I N T
 			{
 			mS(); 
 
@@ -4426,8 +4449,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:352:5: ( I N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:352:7: I N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:348:5: ( I N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:348:7: I N T
 			{
 			mI(); 
 
@@ -4451,8 +4474,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INTEGER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:353:9: ( I N T E G E R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:353:11: I N T E G E R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:349:9: ( I N T E G E R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:349:11: I N T E G E R
 			{
 			mI(); 
 
@@ -4484,8 +4507,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BIGINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:354:8: ( B I G I N T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:354:10: B I G I N T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:350:8: ( B I G I N T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:350:10: B I G I N T
 			{
 			mB(); 
 
@@ -4515,8 +4538,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FLOAT4;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:355:8: ( F L O A T '4' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:355:10: F L O A T '4'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:351:8: ( F L O A T '4' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:351:10: F L O A T '4'
 			{
 			mF(); 
 
@@ -4545,8 +4568,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FLOAT8;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:356:8: ( F L O A T '8' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:356:10: F L O A T '8'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:352:8: ( F L O A T '8' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:352:10: F L O A T '8'
 			{
 			mF(); 
 
@@ -4575,8 +4598,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = REAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:357:6: ( R E A L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:357:8: R E A L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:353:6: ( R E A L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:353:8: R E A L
 			{
 			mR(); 
 
@@ -4602,8 +4625,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = FLOAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:358:7: ( F L O A T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:358:9: F L O A T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:354:7: ( F L O A T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:354:9: F L O A T
 			{
 			mF(); 
 
@@ -4631,8 +4654,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DOUBLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:359:8: ( D O U B L E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:359:10: D O U B L E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:355:8: ( D O U B L E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:355:10: D O U B L E
 			{
 			mD(); 
 
@@ -4662,8 +4685,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NUMERIC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:360:9: ( N U M E R I C )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:360:11: N U M E R I C
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:356:9: ( N U M E R I C )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:356:11: N U M E R I C
 			{
 			mN(); 
 
@@ -4695,8 +4718,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DECIMAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:361:9: ( D E C I M A L )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:361:11: D E C I M A L
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:357:9: ( D E C I M A L )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:357:11: D E C I M A L
 			{
 			mD(); 
 
@@ -4728,8 +4751,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DEC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:362:6: ( D E C )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:362:8: D E C
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:358:6: ( D E C )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:358:8: D E C
 			{
 			mD(); 
 
@@ -4753,8 +4776,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = CHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:363:6: ( C H A R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:363:8: C H A R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:359:6: ( C H A R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:359:8: C H A R
 			{
 			mC(); 
 
@@ -4780,8 +4803,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VARCHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:364:9: ( V A R C H A R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:364:11: V A R C H A R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:360:9: ( V A R C H A R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:360:11: V A R C H A R
 			{
 			mV(); 
 
@@ -4813,8 +4836,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NCHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:365:7: ( N C H A R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:365:9: N C H A R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:361:7: ( N C H A R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:361:9: N C H A R
 			{
 			mN(); 
 
@@ -4842,8 +4865,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NVARCHAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:366:10: ( N V A R C H A R )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:366:12: N V A R C H A R
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:362:10: ( N V A R C H A R )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:362:12: N V A R C H A R
 			{
 			mN(); 
 
@@ -4877,8 +4900,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DATE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:367:6: ( D A T E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:367:8: D A T E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:363:6: ( D A T E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:363:8: D A T E
 			{
 			mD(); 
 
@@ -4904,8 +4927,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TIME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:368:6: ( T I M E )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:368:8: T I M E
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:364:6: ( T I M E )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:364:8: T I M E
 			{
 			mT(); 
 
@@ -4931,8 +4954,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TIMETZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:369:8: ( T I M E T Z )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:369:10: T I M E T Z
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:365:8: ( T I M E T Z )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:365:10: T I M E T Z
 			{
 			mT(); 
 
@@ -4962,8 +4985,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TIMESTAMP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:370:11: ( T I M E S T A M P )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:370:13: T I M E S T A M P
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:366:11: ( T I M E S T A M P )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:366:13: T I M E S T A M P
 			{
 			mT(); 
 
@@ -4999,8 +5022,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TIMESTAMPTZ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:371:13: ( T I M E S T A M P T Z )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:371:15: T I M E S T A M P T Z
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:367:13: ( T I M E S T A M P T Z )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:367:15: T I M E S T A M P T Z
 			{
 			mT(); 
 
@@ -5040,8 +5063,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = TEXT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:372:6: ( T E X T )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:372:8: T E X T
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:368:6: ( T E X T )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:368:8: T E X T
 			{
 			mT(); 
 
@@ -5067,8 +5090,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BINARY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:373:8: ( B I N A R Y )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:373:10: B I N A R Y
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:369:8: ( B I N A R Y )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:369:10: B I N A R Y
 			{
 			mB(); 
 
@@ -5098,8 +5121,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = VARBINARY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:374:11: ( V A R B I N A R Y )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:374:13: V A R B I N A R Y
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:370:11: ( V A R B I N A R Y )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:370:13: V A R B I N A R Y
 			{
 			mV(); 
 
@@ -5135,8 +5158,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BLOB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:375:6: ( B L O B )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:375:8: B L O B
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:371:6: ( B L O B )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:371:8: B L O B
 			{
 			mB(); 
 
@@ -5162,8 +5185,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BYTEA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:376:7: ( B Y T E A )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:376:9: B Y T E A
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:372:7: ( B Y T E A )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:372:9: B Y T E A
 			{
 			mB(); 
 
@@ -5191,8 +5214,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = INET4;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:377:7: ( I N E T '4' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:377:9: I N E T '4'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:373:7: ( I N E T '4' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:373:9: I N E T '4'
 			{
 			mI(); 
 
@@ -5219,8 +5242,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = ASSIGN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:9: ( ':=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:11: ':='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1200:9: ( ':=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1200:11: ':='
 			{
 			match(":="); 
 
@@ -5240,8 +5263,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = EQUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1205:8: ( '=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1205:10: '='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1201:8: ( '=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1201:10: '='
 			{
 			match('='); 
 			}
@@ -5260,8 +5283,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = SEMI_COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1206:12: ( ';' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1206:15: ';'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1202:12: ( ';' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1202:15: ';'
 			{
 			match(';'); 
 			}
@@ -5280,8 +5303,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1207:7: ( ',' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1207:9: ','
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1203:7: ( ',' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1203:9: ','
 			{
 			match(','); 
 			}
@@ -5300,7 +5323,7 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NOT_EQUAL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:12: ( '<>' | '!=' | '~=' | '^=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:12: ( '<>' | '!=' | '~=' | '^=' )
 			int alt1=4;
 			switch ( input.LA(1) ) {
 			case '<':
@@ -5330,28 +5353,28 @@ public class DDLLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:14: '<>'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:14: '<>'
 					{
 					match("<>"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:21: '!='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:21: '!='
 					{
 					match("!="); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:28: '~='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:28: '~='
 					{
 					match("~="); 
 
 					}
 					break;
 				case 4 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:34: '^='
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1204:34: '^='
 					{
 					match("^="); 
 
@@ -5373,8 +5396,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LTH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1209:5: ( '<' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1209:7: '<'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1205:5: ( '<' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1205:7: '<'
 			{
 			match('<'); 
 			}
@@ -5393,8 +5416,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1210:5: ( '<=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1210:7: '<='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1206:5: ( '<=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1206:7: '<='
 			{
 			match("<="); 
 
@@ -5414,8 +5437,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = GTH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1211:7: ( '>' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1211:9: '>'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1207:7: ( '>' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1207:9: '>'
 			{
 			match('>'); 
 			}
@@ -5434,8 +5457,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = GEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1212:7: ( '>=' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1212:9: '>='
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:7: ( '>=' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1208:9: '>='
 			{
 			match(">="); 
 
@@ -5455,8 +5478,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = LEFT_PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1213:12: ( '(' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1213:15: '('
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1209:12: ( '(' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1209:15: '('
 			{
 			match('('); 
 			}
@@ -5475,8 +5498,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = RIGHT_PAREN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1214:13: ( ')' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1214:15: ')'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1210:13: ( ')' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1210:15: ')'
 			{
 			match(')'); 
 			}
@@ -5495,8 +5518,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1215:7: ( '+' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1215:9: '+'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1211:7: ( '+' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1211:9: '+'
 			{
 			match('+'); 
 			}
@@ -5515,8 +5538,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1216:7: ( '-' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1216:9: '-'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1212:7: ( '-' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1212:9: '-'
 			{
 			match('-'); 
 			}
@@ -5535,8 +5558,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = MULTIPLY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1217:9: ( '*' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1217:11: '*'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1213:9: ( '*' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1213:11: '*'
 			{
 			match('*'); 
 			}
@@ -5555,8 +5578,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DIVIDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1218:9: ( '/' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1218:11: '/'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1214:9: ( '/' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1214:11: '/'
 			{
 			match('/'); 
 			}
@@ -5575,8 +5598,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = MODULAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1219:9: ( '%' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1219:11: '%'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1215:9: ( '%' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1215:11: '%'
 			{
 			match('%'); 
 			}
@@ -5595,8 +5618,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = DOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1220:5: ( '.' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1220:7: '.'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1216:5: ( '.' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1216:7: '.'
 			{
 			match('.'); 
 			}
@@ -5615,10 +5638,10 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = NUMBER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:8: ( ( Digit )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:10: ( Digit )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1217:8: ( ( Digit )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1217:10: ( Digit )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:10: ( Digit )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1217:10: ( Digit )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -5665,7 +5688,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Digit"
 	public final void mDigit() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1224:7: ( '0' .. '9' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1220:7: ( '0' .. '9' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -5690,14 +5713,14 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = REAL_NUMBER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
 			int alt9=3;
 			alt9 = dfa9.predict(input);
 			switch (alt9) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:9: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:9: ( '0' .. '9' )+
 					int cnt3=0;
 					loop3:
 					while (true) {
@@ -5731,7 +5754,7 @@ public class DDLLexer extends Lexer {
 					}
 
 					match('.'); 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:25: ( '0' .. '9' )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:25: ( '0' .. '9' )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -5760,7 +5783,7 @@ public class DDLLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:37: ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:37: ( EXPONENT )?
 					int alt5=2;
 					int LA5_0 = input.LA(1);
 					if ( (LA5_0=='E'||LA5_0=='e') ) {
@@ -5768,7 +5791,7 @@ public class DDLLexer extends Lexer {
 					}
 					switch (alt5) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1225:37: EXPONENT
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1221:37: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -5780,10 +5803,10 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1222:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
 					{
 					match('.'); 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:13: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1222:13: ( '0' .. '9' )+
 					int cnt6=0;
 					loop6:
 					while (true) {
@@ -5816,7 +5839,7 @@ public class DDLLexer extends Lexer {
 						cnt6++;
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:25: ( EXPONENT )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1222:25: ( EXPONENT )?
 					int alt7=2;
 					int LA7_0 = input.LA(1);
 					if ( (LA7_0=='E'||LA7_0=='e') ) {
@@ -5824,7 +5847,7 @@ public class DDLLexer extends Lexer {
 					}
 					switch (alt7) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:25: EXPONENT
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1222:25: EXPONENT
 							{
 							mEXPONENT(); 
 
@@ -5836,9 +5859,9 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1227:9: ( '0' .. '9' )+ EXPONENT
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1223:9: ( '0' .. '9' )+ EXPONENT
 					{
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1227:9: ( '0' .. '9' )+
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1223:9: ( '0' .. '9' )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -5891,7 +5914,7 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1230:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0=='/') ) {
@@ -5925,11 +5948,11 @@ public class DDLLexer extends Lexer {
 
 			switch (alt13) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1230:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1230:14: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:14: (~ ( '\\n' | '\\r' ) )*
 					loop10:
 					while (true) {
 						int alt10=2;
@@ -5958,7 +5981,7 @@ public class DDLLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1230:28: ( '\\r' )?
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:28: ( '\\r' )?
 					int alt11=2;
 					int LA11_0 = input.LA(1);
 					if ( (LA11_0=='\r') ) {
@@ -5966,7 +5989,7 @@ public class DDLLexer extends Lexer {
 					}
 					switch (alt11) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1230:28: '\\r'
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1226:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -5979,11 +6002,11 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1231:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1227:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1231:14: ( options {greedy=false; } : . )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1227:14: ( options {greedy=false; } : . )*
 					loop12:
 					while (true) {
 						int alt12=2;
@@ -6004,7 +6027,7 @@ public class DDLLexer extends Lexer {
 
 						switch (alt12) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1231:42: .
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1227:42: .
 							{
 							matchAny(); 
 							}
@@ -6036,8 +6059,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = Identifier;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1239:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ':' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )* )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1239:5: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ':' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1235:3: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ':' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )* )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1235:5: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | ':' ) ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
 			{
 			if ( input.LA(1)==':'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -6047,7 +6070,7 @@ public class DDLLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1239:33: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1235:33: ( 'a' .. 'z' | 'A' .. 'Z' | Digit | CHAR_SPECIAL )*
 			loop14:
 			while (true) {
 				int alt14=2;
@@ -6090,7 +6113,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Control_Characters"
 	public final void mControl_Characters() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1249:37: ( '\\u0001' .. '\\u001F' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1245:37: ( '\\u0001' .. '\\u001F' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( (input.LA(1) >= '\u0001' && input.LA(1) <= '\u001F') ) {
@@ -6113,7 +6136,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "Extended_Control_Characters"
 	public final void mExtended_Control_Characters() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1251:37: ( '\\u0080' .. '\\u009F' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1247:37: ( '\\u0080' .. '\\u009F' )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( (input.LA(1) >= '\u0080' && input.LA(1) <= '\u009F') ) {
@@ -6138,7 +6161,7 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = Character_String_Literal;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1252:5: ( Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote | Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1248:5: ( Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote | Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote )
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0=='\'') ) {
@@ -6156,11 +6179,11 @@ public class DDLLexer extends Lexer {
 
 			switch (alt17) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1252:7: Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1248:7: Quote ( ESC_SEQ |~ ( '\\\\' | Quote ) )* Quote
 					{
 					mQuote(); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1252:13: ( ESC_SEQ |~ ( '\\\\' | Quote ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1248:13: ( ESC_SEQ |~ ( '\\\\' | Quote ) )*
 					loop15:
 					while (true) {
 						int alt15=3;
@@ -6174,14 +6197,14 @@ public class DDLLexer extends Lexer {
 
 						switch (alt15) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1252:15: ESC_SEQ
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1248:15: ESC_SEQ
 							{
 							mESC_SEQ(); 
 
 							}
 							break;
 						case 2 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1252:25: ~ ( '\\\\' | Quote )
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1248:25: ~ ( '\\\\' | Quote )
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -6205,11 +6228,11 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:7: Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1250:7: Double_Quote ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )* Double_Quote
 					{
 					mDouble_Quote(); 
 
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:20: ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )*
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1250:20: ( ESC_SEQ |~ ( '\\\\' | Double_Quote ) )*
 					loop16:
 					while (true) {
 						int alt16=3;
@@ -6223,14 +6246,14 @@ public class DDLLexer extends Lexer {
 
 						switch (alt16) {
 						case 1 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:22: ESC_SEQ
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1250:22: ESC_SEQ
 							{
 							mESC_SEQ(); 
 
 							}
 							break;
 						case 2 :
-							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:32: ~ ( '\\\\' | Double_Quote )
+							// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1250:32: ~ ( '\\\\' | Double_Quote )
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -6269,8 +6292,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = Quote;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1258:3: ( '\\'' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1258:5: '\\''
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:3: ( '\\'' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1254:5: '\\''
 			{
 			match('\''); 
 			}
@@ -6289,8 +6312,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = Double_Quote;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1260:3: ( '\"' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1260:5: '\"'
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1256:3: ( '\"' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1256:5: '\"'
 			{
 			match('\"'); 
 			}
@@ -6307,8 +6330,8 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "EXPONENT"
 	public final void mEXPONENT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1263:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1263:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1259:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1259:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -6318,7 +6341,7 @@ public class DDLLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1263:22: ( '+' | '-' )?
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1259:22: ( '+' | '-' )?
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='+'||LA18_0=='-') ) {
@@ -6341,7 +6364,7 @@ public class DDLLexer extends Lexer {
 
 			}
 
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1263:33: ( '0' .. '9' )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1259:33: ( '0' .. '9' )+
 			int cnt19=0;
 			loop19:
 			while (true) {
@@ -6386,7 +6409,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "HEX_DIGIT"
 	public final void mHEX_DIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1265:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1261:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -6409,7 +6432,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "ESC_SEQ"
 	public final void mESC_SEQ() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1268:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1264:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
 			int alt20=3;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0=='\\') ) {
@@ -6464,7 +6487,7 @@ public class DDLLexer extends Lexer {
 
 			switch (alt20) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1268:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1264:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 					{
 					match('\\'); 
 					if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -6478,14 +6501,14 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1269:9: UNICODE_ESC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1265:9: UNICODE_ESC
 					{
 					mUNICODE_ESC(); 
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1270:9: OCTAL_ESC
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1266:9: OCTAL_ESC
 					{
 					mOCTAL_ESC(); 
 
@@ -6503,7 +6526,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "OCTAL_ESC"
 	public final void mOCTAL_ESC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1274:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1270:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
 			int alt21=3;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0=='\\') ) {
@@ -6561,7 +6584,7 @@ public class DDLLexer extends Lexer {
 
 			switch (alt21) {
 				case 1 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1274:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1270:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '3') ) {
@@ -6591,7 +6614,7 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1275:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1271:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -6613,7 +6636,7 @@ public class DDLLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1276:9: '\\\\' ( '0' .. '7' )
+					// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1272:9: '\\\\' ( '0' .. '7' )
 					{
 					match('\\'); 
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
@@ -6638,8 +6661,8 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "UNICODE_ESC"
 	public final void mUNICODE_ESC() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1280:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1280:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1276:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1276:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
 			{
 			match('\\'); 
 			match('u'); 
@@ -6663,7 +6686,7 @@ public class DDLLexer extends Lexer {
 	// $ANTLR start "CHAR_SPECIAL"
 	public final void mCHAR_SPECIAL() throws RecognitionException {
 		try {
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1285:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | '\\u00a3' | '&' | '*' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' | '%' | ':' ) )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1281:3: ( ( '\\u00A7' | '$' | '_' | '.' | '^' | '\\u00e0' | '\\u00e8' | '\\u00e9' | '\\u00ec' | '\\u00f2' | '\\u00f9' | '\"' | '?' | '\\u00a3' | '&' | '*' | '=' | '>' | '<' | '+' | '-' | '!' | '\\\\' | '%' | ':' ) )
 			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:
 			{
 			if ( (input.LA(1) >= '!' && input.LA(1) <= '\"')||(input.LA(1) >= '$' && input.LA(1) <= '&')||(input.LA(1) >= '*' && input.LA(1) <= '+')||(input.LA(1) >= '-' && input.LA(1) <= '.')||input.LA(1)==':'||(input.LA(1) >= '<' && input.LA(1) <= '?')||input.LA(1)=='\\'||(input.LA(1) >= '^' && input.LA(1) <= '_')||input.LA(1)=='\u00A3'||input.LA(1)=='\u00A7'||input.LA(1)=='\u00E0'||(input.LA(1) >= '\u00E8' && input.LA(1) <= '\u00E9')||input.LA(1)=='\u00EC'||input.LA(1)=='\u00F2'||input.LA(1)=='\u00F9' ) {
@@ -6688,8 +6711,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = Space;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1319:7: ( ' ' )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1319:9: ' '
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1315:7: ( ' ' )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1315:9: ' '
 			{
 			match(' '); 
 
@@ -6711,10 +6734,10 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = White_Space;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1323:13: ( ( Control_Characters | Extended_Control_Characters )+ )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1323:15: ( Control_Characters | Extended_Control_Characters )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1319:13: ( ( Control_Characters | Extended_Control_Characters )+ )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1319:15: ( Control_Characters | Extended_Control_Characters )+
 			{
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1323:15: ( Control_Characters | Extended_Control_Characters )+
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1319:15: ( Control_Characters | Extended_Control_Characters )+
 			int cnt22=0;
 			loop22:
 			while (true) {
@@ -6766,8 +6789,8 @@ public class DDLLexer extends Lexer {
 		try {
 			int _type = BAD;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1327:5: ( . )
-			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1327:7: .
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1323:5: ( . )
+			// C:\\Users\\darfores\\git\\asup_0_7_0\\org.smeup.sys.db.syntax.ibmi\\src\\org\\smeup\\sys\\db\\syntax\\ibmi\\parser\\ddl\\DDL.g:1323:7: .
 			{
 			matchAny(); 
 
@@ -8052,7 +8075,7 @@ public class DDLLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1224:1: REAL_NUMBER : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+			return "1220:1: REAL_NUMBER : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
 		}
 	}
 

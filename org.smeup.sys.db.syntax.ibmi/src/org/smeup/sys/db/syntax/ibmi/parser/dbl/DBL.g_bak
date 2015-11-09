@@ -168,6 +168,7 @@ package org.smeup.sys.db.syntax.ibmi.parser.dbl;
         throw re;
     }
 }
+
 /*
 ===============================================================================
   Tokens for Case Insensitive Keywords
@@ -793,13 +794,42 @@ execute_immediate_statement
 /* OPEN STATEMENT */ 
  
  open_statement
- 	:	
- 	OPEN c=Identifier ((USING v1=Variable)|(USING DESCRIPTOR (v2=Variable|d=Identifier)))? 	-> {$v1 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING ^(VARIABLE $v1)))
+ 	:
+ 	
+ 	/*
+ 	OPEN c=Identifier ((USING v1=Variable )|(USING DESCRIPTOR (v2=Variable|d=Identifier)))? 	-> {$v1 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING ^(VARIABLE $v1)))
  												-> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2)))
  												-> {$d != null}? ^(OPEN_STATEMENT ^(CURSOR $c)  ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))
  												-> ^(OPEN_STATEMENT ^(CURSOR $c))
- 												
+ 	*/
+ 		
+ 	open_using
+ 	|
+ 	open_using_descriptor
  	;
+ 
+ /* Caso OPEN DYN_CURSOR USING :HV_INT, :HV_VCHAR64*/
+ open_using	
+ 	:
+ 	OPEN c=Identifier USING using_variable (COMMA using_variable)* -> ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING using_variable (using_variable)*))
+ 	;
+
+using_variable
+	:
+	Variable -> ^(VARIABLE Variable)
+	;
+ /*
+ Casi	:	
+ OPEN DYN_CURSOR USING DESCRIPTOR :SQLDA
+ OPEN DYN_CURSOR USING DESCRIPTOR DESC
+ OPEN SYN_CURSOR
+ */
+ open_using_descriptor
+ 	:
+ 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Identifier))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
+ 								      -> {$d != null}? 	^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
+ 								      -> ^(OPEN_STATEMENT ^(CURSOR $c))			
+ 	;	
 
 /* PREPARE STATEMENT */ 	
  prepare_statement

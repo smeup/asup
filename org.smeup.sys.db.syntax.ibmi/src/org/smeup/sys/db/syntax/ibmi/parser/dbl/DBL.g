@@ -118,7 +118,31 @@ import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 
 @lexer::header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
+import org.smeup.sys.db.syntax.DataBaseSyntaxRuntimeException;
 }
+
+@lexer::members {
+
+	@Override
+  	protected Object recoverFromMismatchedToken(IntStream input, int ttype, BitSet follow) throws RecognitionException {
+    	throw new MismatchedTokenException(ttype, input);
+  	}
+
+    @Override    
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+		String msg = "Lexer error. Input: " + e.input.toString();
+        msg += " " + getErrorHeader(e);
+        msg += " Msg: " + getErrorMessage(e, tokenNames);
+        throw new DataBaseSyntaxRuntimeException(msg , e);
+    }	
+
+   @Override
+  	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
+    	throw e;
+    }
+
+}
+
 
 @parser::members {
 
@@ -127,47 +151,20 @@ package org.smeup.sys.db.syntax.ibmi.parser.dbl;
     	throw new MismatchedTokenException(ttype, input);
   	}
 
-   @Override
-   public void reportError(RecognitionException e) {
-      super.reportError(e);
-      RuntimeException re = createException(e);
-      recover(input, e);
-      throw re;
-   }
+	@Override    
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+		String msg = "Parser error. Input: " + e.input.toString();
+        msg += " " + getErrorHeader(e);
+        msg += " Msg: " + getErrorMessage(e, tokenNames);
+        throw new DataBaseSyntaxRuntimeException(msg , e);
+    }	
 
    @Override
   	public Object recoverFromMismatchedSet(IntStream input, RecognitionException e, BitSet follow) throws RecognitionException {
     	throw e;
     }
-    
-    public RuntimeException createException(RecognitionException e) {
-        String message = "";
-        boolean addTokenAndLine = true;
-        if (e instanceof NoViableAltException) {
-            message = "Syntax error. ";
-        } else if (e instanceof MissingTokenException) {
-            message = "Missing token ";
-        } else if (e instanceof UnwantedTokenException) {
-            UnwantedTokenException ex = (UnwantedTokenException) e;
-            ex.getUnexpectedToken().getText();
-            message = "Unkown token '" + ex.getUnexpectedToken().getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-            addTokenAndLine = false;
-        } else {
-            message = "Syntax error near ";
-        }
-        if (addTokenAndLine) {
-            message = message + "'" + e.token.getText() + "' at line " + e.token.getLine() + ":" + e.token.getCharPositionInLine();
-        }
-        return new DataBaseSyntaxRuntimeException(message, e);
-    }
 }
 
-@rulecatch {
-    catch (RecognitionException exc) {
-        RuntimeException re = createException(exc);
-        throw re;
-    }
-}
 
 /*
 ===============================================================================

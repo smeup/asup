@@ -38,7 +38,7 @@ public class CLExpressionTester {
 
 		for (String expression : E4TestHelper.readTextResource(this, "/resources/cl/expressions.txt")){
 			try {
-				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression));
+				testAsserter.assertNotNull("Parse " + expression, expressionParser.parseExpression(expression.trim()));
 			} catch(Exception exc) {
 				testAsserter.fail("Cannot parse expression \"" + expression + " Error message: " + exc.getMessage());
 			}
