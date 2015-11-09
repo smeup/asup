@@ -20308,13 +20308,11 @@
       xsi:type="os-cmd:Command"
       name="DSPFD"
       text="Display File Description"
-      program="QWHDSPFD"
-      status="TODO">
+      program="QWHDSPFD">
     <parameters
         allowVariable="true"
         name="FILE"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="file">
         <cardinality
