@@ -51,24 +51,34 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			}
 
 			QList<?> list = (QList<?>) data;
-
-			int i = 1;
-			for (String value : default_.getValues()) {
-
-				QSpecialElement specialElement = getSpecialElement(term, value);
-				if (specialElement != null) {
-
-					// set default at current index
-					if (specialElement.isUnary())
-						list.get(i).accept(dataWriter.set(specialElement));
-					else
-						// set default from current index to remaining
-						for (int e = i; e <= list.capacity(); e++)
-							list.get(e).accept(dataWriter.set(specialElement));
-				} else
-					list.get(i).accept(dataWriter.set(value));
-
-				i++;
+			
+			if (default_.getValue() != null && default_.getValue().length()>0){
+			
+				//Default defined as single value
+				QSpecialElement specialElement = getSpecialElement(term, default_.getValue());
+				if (specialElement != null) {					
+					list.get(0).accept(dataWriter.set(specialElement));
+					
+				} else {
+					list.get(0).accept(dataWriter.set(default_.getValue()));
+				}
+			} else {
+				
+				// Default defined as multiple values
+				if (!default_.getValues().isEmpty()) {
+				
+					int i = 1;
+					for (String value : default_.getValues()) {
+		
+						QSpecialElement specialElement = getSpecialElement(term, value);
+						if (specialElement != null) {
+							list.get(i).accept(dataWriter.set(specialElement));					
+						} else
+							list.get(i).accept(dataWriter.set(value));
+		
+						i++;
+					}
+				}
 			}
 
 			break;
@@ -78,7 +88,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			list = (QList<?>) data;
 			default_ = term.getDefault();
 			if (default_ != null) {
-				i = 1;
+				int i = 1;
 				for (String value : default_.getValues()) {
 
 					QSpecialElement specialElement = getSpecialElement(term, value);
