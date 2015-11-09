@@ -28,7 +28,7 @@ import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 @Program(name = "QWHDSPFD")
 public @Supported class FileDescriptionDisplayer {
 	public static enum QCPFMSG {
-		CPF3012,     //File &1 non trovato nella libreria &2.
+		CPF3012,    //File &1 non trovato nella libreria &2.
 		CPF3020     //Nessun file di &1 in &2 ha il FILEATR specificato. 
 	}
 
@@ -61,6 +61,19 @@ public @Supported class FileDescriptionDisplayer {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF3012, new String[] {file.nameGeneric.trimR(), file.library.asData().trimR()});		
 
 		checkType(fileAttributes, qFile);
+		
+		switch (output.asEnum()) {
+		case OUTFILE:
+			
+			break;
+
+		case PRINT:
+			
+			break;
+		case TERM_STAR:
+			
+			break;
+		}
 	}
 
 	private void checkType(QScroller<QCharacter> fileAttributes, QFile file) {
@@ -75,7 +88,48 @@ public @Supported class FileDescriptionDisplayer {
 	}
 
 	public static enum TYPEOFINFORMATIONEnum {
-		ALL, BASATR, ATR, ACCPTH, MBRLIST, SELECT, SEQ, RCDFMT, MBR, SPOOL, JOIN, TRG, CST, NODGRP
+		ALL,  
+		BASATR {
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDBASI";
+			}
+		}, 
+		ACCPTH {
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDACCP";
+			}
+		}, 
+		MBRLIST {
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDMBRL";
+			}
+		}, 
+		SELECT {
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDSELO";
+			}
+		}, 
+		SEQ, 
+		RCDFMT {
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDRFMT";
+			}
+		}, 
+		MBR{
+			@Override
+			public String baseOutputFileName() {
+				return "QAFDMBR";
+			}
+		}, 
+		ATR, SPOOL, JOIN, TRG, CST, NODGRP;
+		public String baseOutputFileName() {
+			throw new RuntimeException("Unsupported information type " + this.name());			
+		}
 	}
 
 	public static enum OUTPUTEnum {
