@@ -35,6 +35,17 @@ public class JDBCAccessHelper {
 		return this.sqlObjectNameHelper;
 	}
 
+	public String buildDelete(Table table, QRecord record, int recordNumber) {
+
+		StringBuffer sbUpdate = new StringBuffer();
+
+		sbUpdate.append("DELETE");
+		sbUpdate.append(" " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table));
+		sbUpdate.append(" WHERE QASRRN=" + recordNumber);
+
+		return sbUpdate.toString();
+	}
+	
 	public String buildSelect(Table table, QIndex index, OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead) {
 
 		StringBuffer querySelect = new StringBuffer();
