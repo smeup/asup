@@ -20374,8 +20374,7 @@
     <parameters
         allowVariable="true"
         name="TYPE"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="typeOfInformation"
           restricted="true">
@@ -20426,8 +20425,7 @@
     <parameters
         allowVariable="true"
         name="OUTPUT"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="output"
           restricted="true">
@@ -20453,8 +20451,7 @@
     <parameters
         allowVariable="true"
         name="FILEATR"
-        position="4"
-        status="TODO">
+        position="4">
       <dataTerm
           name="fileAttributes"
           restricted="true">
@@ -20502,8 +20499,7 @@
     <parameters
         allowVariable="true"
         name="OUTFILE"
-        position="5"
-        status="TODO">
+        position="5">
       <dataTerm
           name="fileToReceiveOutput">
         <definition
@@ -20547,7 +20543,7 @@
         allowVariable="true"
         name="OUTMBR"
         position="6"
-        status="TODO">
+        status="UNS">
       <dataTerm
           name="outputMemberOptions">
         <definition
@@ -20596,7 +20592,7 @@
         allowVariable="true"
         name="SYSTEM"
         position="7"
-        status="TODO">
+        status="UNS">
       <dataTerm
           name="system"
           restricted="true">
