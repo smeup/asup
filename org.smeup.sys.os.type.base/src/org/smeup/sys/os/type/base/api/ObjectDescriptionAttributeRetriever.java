@@ -1,6 +1,5 @@
 package org.smeup.sys.os.type.base.api;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,7 +12,6 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QEnum;
-import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
