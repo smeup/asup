@@ -57,10 +57,10 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				//Default defined as single value
 				QSpecialElement specialElement = getSpecialElement(term, default_.getValue());
 				if (specialElement != null) {					
-					list.get(1).accept(dataWriter.set(specialElement));
+					list.accept(dataWriter.set(specialElement));
 					
 				} else {
-					list.get(1).accept(dataWriter.set(default_.getValue()));
+					list.accept(dataWriter.set(default_.getValue()));
 				}
 			} else {
 				
