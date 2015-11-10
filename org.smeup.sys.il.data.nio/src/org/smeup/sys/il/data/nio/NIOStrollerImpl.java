@@ -56,11 +56,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(QString factor1, QString factor2, int space) {
-		current().cat(factor1, factor2, space);
-	}
-
-	@Override
 	public void cat(QString factor1, QString factor2, Number space) {
 		current().cat(factor1, factor2, space);
 	}
@@ -68,11 +63,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void cat(QString factor1, String factor2) {
 		current().cat(factor1, factor2);
-	}
-
-	@Override
-	public void cat(QString factor1, String factor2, int space) {
-		current().cat(factor1, factor2, space);
 	}
 
 	@Override
@@ -91,11 +81,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(String factor1, QString factor2, int space) {
-		current().cat(factor1, factor2, space);
-	}
-
-	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
 		current().cat(factor1, factor2, space);
 	}
@@ -103,11 +88,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void cat(String factor1, String factor2) {
 		current().cat(factor1, factor2);
-	}
-
-	@Override
-	public void cat(String factor1, String factor2, int space) {
-		current().cat(factor1, factor2, space);
 	}
 
 	@Override
@@ -123,6 +103,26 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	@Override
 	public void cat(String factor1, Number space) {
 		current().cat(factor1, space);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, Number space) {
+		current().cat(factor1, factor2, space);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, Number space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space) {
+		current().cat(factor1, factor2, space);		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space, boolean clear) {
+		current().cat(factor1, factor2, space, clear);	
 	}
 
 	@Override
@@ -708,17 +708,7 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(String factor1, String factor2, int space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);
-	}
-
-	@Override
 	public void cat(String factor1, String factor2, QNumeric space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);
-	}
-
-	@Override
-	public void cat(String factor1, QString factor2, int space, boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 
@@ -728,17 +718,7 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public void cat(QString factor1, QString factor2, int space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);
-	}
-
-	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
-		current().cat(factor1, factor2, space, clear);
-	}
-
-	@Override
-	public void cat(QString factor1, String factor2, int space, boolean clear) {
 		current().cat(factor1, factor2, space, clear);
 	}
 

@@ -11,11 +11,13 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
@@ -309,7 +311,11 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void move(String value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(), clear, getFiller());
+		try {
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
+		} catch (UnsupportedEncodingException e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
 	}
 
 	@Override
@@ -324,7 +330,11 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void movel(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(), clear, getFiller());
+		try {
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
+		} catch (UnsupportedEncodingException e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
 	}
 
 	@Override

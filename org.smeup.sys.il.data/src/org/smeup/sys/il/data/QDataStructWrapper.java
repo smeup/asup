@@ -51,11 +51,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(QString factor1, QString factor2, int space) {
-		delegate.cat(factor1, factor2, space);
-	}
-
-	@Override
 	public void cat(QString factor1, QString factor2, Number space) {
 		delegate.cat(factor1, factor2, space);
 	}
@@ -63,11 +58,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public void cat(QString factor1, String factor2) {
 		delegate.cat(factor1, factor2);
-	}
-
-	@Override
-	public void cat(QString factor1, String factor2, int space) {
-		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
@@ -86,11 +76,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(String factor1, QString factor2, int space) {
-		delegate.cat(factor1, factor2, space);
-	}
-
-	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
 		delegate.cat(factor1, factor2, space);
 	}
@@ -98,11 +83,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public void cat(String factor1, String factor2) {
 		delegate.cat(factor1, factor2);
-	}
-
-	@Override
-	public void cat(String factor1, String factor2, int space) {
-		delegate.cat(factor1, factor2, space);
 	}
 
 	@Override
@@ -126,17 +106,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(String factor1, String factor2, int space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);
-	}
-
-	@Override
 	public void cat(String factor1, String factor2, QNumeric space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);
-	}
-
-	@Override
-	public void cat(String factor1, QString factor2, int space, boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
@@ -146,17 +116,7 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void cat(QString factor1, QString factor2, int space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);
-	}
-
-	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
-		delegate.cat(factor1, factor2, space, clear);
-	}
-
-	@Override
-	public void cat(QString factor1, String factor2, int space, boolean clear) {
 		delegate.cat(factor1, factor2, space, clear);
 	}
 
@@ -219,7 +179,27 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public void cat(QString factor1, boolean clear) {
 		delegate.cat(factor1, clear);
 	}
-	
+
+	@Override
+	public void cat(String factor1, String factor2, Number space) {
+		delegate.cat(factor1, factor2, space);
+	}
+
+	@Override
+	public void cat(String factor1, String factor2, Number space, boolean clear) {
+		delegate.cat(factor1, factor2, space, clear);		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space) {
+		delegate.cat(factor1, factor2, space);		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space, boolean clear) {
+		delegate.cat(factor1, factor2, space, clear);		
+	}
+
 	@Override
 	public void clear() {
 		delegate.clear();

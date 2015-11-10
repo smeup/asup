@@ -21,6 +21,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
@@ -300,13 +301,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public void movea(String value, boolean clear) {
-		if (clear)
-			this.clear();
+	public void movea(String value, boolean clear) {		
 		try {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
 		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), clear, getFiller());
+			throw new IntegratedLanguageDataRuntimeException(e);
 		}
 	}
 
@@ -476,7 +475,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void move(String value, boolean clear) {
-		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(), clear, getFiller());
+		try {
+			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
+		} catch (UnsupportedEncodingException e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
 	}
 
 	@Override
@@ -493,7 +496,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movel(String value, boolean clear) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(), clear, getFiller());
+		try {
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
+		} catch (UnsupportedEncodingException e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
 	}
 
 	@Override

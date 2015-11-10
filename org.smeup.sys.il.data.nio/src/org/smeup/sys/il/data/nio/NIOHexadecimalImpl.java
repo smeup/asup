@@ -75,11 +75,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	}
 
 	@Override
-	public void move(String value, boolean clear) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public <E extends Enum<E>> void move(E value) {
 		// TODO Auto-generated method stub
 
@@ -89,11 +84,6 @@ public class NIOHexadecimalImpl extends NIOBufferedDataImpl implements QHexadeci
 	public <E extends Enum<E>> void move(E value, boolean clear) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override

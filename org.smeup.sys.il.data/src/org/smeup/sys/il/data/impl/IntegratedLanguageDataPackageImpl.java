@@ -1568,98 +1568,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1667,6 +1579,39 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1680,24 +1625,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1710,15 +1637,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1728,20 +1646,80 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "factor2", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaNumber(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(cattableEClass, null, "cat", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getString(), "factor1", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "space", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 

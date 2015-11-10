@@ -552,98 +552,10 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
       <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -651,6 +563,39 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -664,24 +609,6 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -693,15 +620,6 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
     </eOperations>
@@ -711,20 +629,80 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="#//String"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>

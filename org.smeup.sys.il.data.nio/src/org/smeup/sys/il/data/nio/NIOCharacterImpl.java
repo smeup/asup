@@ -102,16 +102,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void move(String value, boolean clear) {
-
-		try {
-			NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.getBytes(getEncoding()), clear, INIT);
-		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.move(getBuffer(), getPosition(), _length, value.getBytes(), clear, INIT);
-		}
-	}
-
-	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
 	}
@@ -127,19 +117,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, new byte[] { NIOIndicatorImpl.ON }, true, NIOIndicatorImpl.OFF);
 		else
 			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, new byte[] { NIOIndicatorImpl.OFF }, true, NIOIndicatorImpl.OFF);
-	}
-
-	@Override
-	public void movel(String value, boolean clear) {
-
-		if (value == null)
-			value = "";
-
-		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, value.getBytes(getEncoding()), clear, INIT);
-		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), _length, value.getBytes(), clear, INIT);
-		}
 	}
 
 	@Override
@@ -196,46 +173,47 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, boolean clear) {
-		cat(factor1, (String)null, 0, clear);
+		cat(factor1, (String)null, (Number)null, clear);
 	}
 	
 	@Override
 	public void cat(String factor1, QString factor2) {
-		cat(factor1, factor2.asString(), 0);
+		cat(factor1, factor2.asString(), (Number)null, false);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, boolean clear) {
-		cat(factor1, factor2.asString(), 0, clear);
+		cat(factor1, factor2.asString(), (Number)null, clear);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2) {
-		cat(factor1.asString(), factor2.asString(), 0);
+		cat(factor1.asString(), factor2.asString(), (Number)null, false);
 	}
 
 	@Override
 	public void cat(QString factor1, QString factor2, boolean clear) {
-		cat(factor1.asString(), factor2.asString(), 0, clear);
+		cat(factor1.asString(), factor2.asString(), (Number)null, clear);
 	}
 	
 	@Override
 	public void cat(QString factor1, String factor2) {
-		cat(factor1.asString(), factor2, 0);
+		cat(factor1.asString(), factor2, (Number)null, false);
 	}
 
 	@Override
 	public void cat(QString factor1, String factor2, boolean clear) {
+		cat(factor1.asString(), factor2, (Number)null, clear);
 	}
 	
 	@Override
 	public void cat(String factor1, String factor2) {
-		cat(factor1, factor2, 0, false);
+		cat(factor1, factor2, (Number)null, false);
 	}
 
 	@Override
 	public void cat(String factor1, String factor2, boolean clear) {
-		cat(factor1, factor2, 0, clear);
+		cat(factor1, factor2, (Number)null, clear);
 	}
 	
 	@Override
@@ -269,32 +247,27 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void cat(String factor1, String factor2, int space) {
-		cat(factor1, factor2, space, false);
-	}
-
-	@Override
-	public void cat(String factor1, String factor2, int space, boolean clear) {
+	public void cat(String factor1, String factor2, Number space, boolean clear) {
 		if(factor2 == null){
-			if (space == 0)
-				eval(trimR() + factor1);
+			if (space == null)
+				eval(this + factor1);
 			else {
 				try {
 					String value = trimR();
-					int length = value.length() + space;
+					int length = value.length() + space.intValue();
 					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
 					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), clear, INIT);
 				} catch (UnsupportedEncodingException e) {
 					throw new RuntimeException(e);
 				}
 			}
-		}else{
-			if (space == 0)
-				eval(factor1.trim() + factor2);
+		} else{
+			if (space == null)
+				eval(factor1 + factor2);
 			else {
 				try {
 					String value = factor1.trim();
-					int length = value.length() + space;
+					int length = value.length() + space.intValue();
 					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
 					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), clear, INIT);
 				} catch (UnsupportedEncodingException e) {
@@ -316,16 +289,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void cat(String factor1, QString factor2, int space) {
-		cat(factor1, factor2.asString(), space, false);
-	}
-
-	@Override
-	public void cat(String factor1, QString factor2, int space, boolean clear) {
-		cat(factor1, factor2.asString(), space, clear);
-	}
-
-	@Override
 	public void cat(String factor1, QString factor2, QNumeric space) {
 		cat(factor1, factor2.asString(), space.i(), false);
 	}
@@ -333,16 +296,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public void cat(String factor1, QString factor2, QNumeric space, boolean clear) {
 		cat(factor1, factor2.asString(), space.i(), clear);
-	}
-
-	@Override
-	public void cat(QString factor1, QString factor2, int space) {
-		cat(factor1.asString(), factor2.asString(), space, false);
-	}
-
-	@Override
-	public void cat(QString factor1, QString factor2, int space, boolean clear) {
-		cat(factor1.asString(), factor2.asString(), space, clear);
 	}
 	
 	@Override
@@ -353,16 +306,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	@Override
 	public void cat(QString factor1, QString factor2, QNumeric space, boolean clear) {
 		cat(factor1.asString(), factor2.asString(), space.i(), clear);
-	}
-	
-	@Override
-	public void cat(QString factor1, String factor2, int space) {
-		cat(factor1.asString(), factor2, space, false);
-	}
-
-	@Override
-	public void cat(QString factor1, String factor2, int space, boolean clear) {
-		cat(factor1.asString(), factor2, space, clear);
 	}
 	
 	@Override
@@ -394,7 +337,24 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public void cat(QString factor1, String factor2, Number space, boolean clear) {
 		cat(factor1.asString(), factor2, space.intValue(), clear);
 	}
-	
+
+	@Override
+	public void cat(String factor1, String factor2, Number space) {
+		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cat(String factor1, QString factor2, Number space, boolean clear) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	public boolean eq(String value) {
 
