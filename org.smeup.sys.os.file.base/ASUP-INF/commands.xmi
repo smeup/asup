@@ -20486,7 +20486,9 @@
               name="*ICFF"/>
         </facets>
         <default
-            value="*ALL"/>
+            value="">
+          <values>*ALL</values>
+        </default>
         <definition
             xsi:type="il-data-def:ScrollerDef"
             dimension="12">

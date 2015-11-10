@@ -130,10 +130,8 @@ public class DefaultImpl extends FacetImpl implements QDefault {
 	 */
 	@Override
 	public boolean isEmpty() {
-		
-		
-		
-		if (getValue() == null || getValue().length() == 0)
+				
+		if (getValue() == null)
 			return this.getValues().isEmpty();
 		else
 			return getValue().isEmpty();
