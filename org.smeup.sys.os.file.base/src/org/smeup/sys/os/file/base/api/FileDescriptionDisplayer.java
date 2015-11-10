@@ -2,8 +2,9 @@ package org.smeup.sys.os.file.base.api;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.db.core.QTableColumnDef;
+import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.dk.core.annotation.Supported;
-import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.core.out.QOutputManager;
@@ -16,14 +17,19 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
+import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
+import org.smeup.sys.rt.core.QApplication;
 
 @Program(name = "QWHDSPFD")
 public @Supported class FileDescriptionDisplayer {
@@ -42,15 +48,19 @@ public @Supported class FileDescriptionDisplayer {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QStrings stringUtils;
+	@Inject
+	private QJobLogManager jobLogManager;
+	@Inject
+	private QApplication application;
 
 	
 	
 	public @Main void main(
 			@Supported @DataDef(qualified = true) FILE file,
-			@Supported @DataDef(dimension = 10, length = 8) QEnum<TYPEOFINFORMATIONEnum, QScroller<QCharacter>> typeOfInformation,
+			@Supported @DataDef(dimension = 10, length = 8) QScroller<QCharacter> typeOfInformation,
 			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@Supported @DataDef(dimension = 12, length = 5) QScroller<QCharacter> fileAttributes,
-			@Supported @DataDef(qualified = true) FILETORECEIVEOUTPUT fileToReceiveOutput,
+			@Supported @DataDef(qualified = true) FILE fileToReceiveOutput,
 			@Unsupported OUTPUTMEMBEROPTIONS outputMemberOptions,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
 
@@ -64,7 +74,9 @@ public @Supported class FileDescriptionDisplayer {
 		
 		switch (output.asEnum()) {
 		case OUTFILE:
-			
+			TYPEOFINFORMATIONEnum informationType = TYPEOFINFORMATIONEnum.valueOf(stringUtils.removeFirstChar(typeOfInformation.first().trimR()));
+			QFile qFileTo = createDestinationFile(fileFinder, fileToReceiveOutput, informationType);
+			informationType.writeTo(application, qFile, qFileTo);
 			break;
 
 		case PRINT:
@@ -76,6 +88,21 @@ public @Supported class FileDescriptionDisplayer {
 		}
 	}
 
+	private QFile createDestinationFile(FileFinder fileFinder, 
+										FILE toFile, 
+										TYPEOFINFORMATIONEnum typeofinformationEnum) {
+		QResourceWriter<QFile> fileWriter = fileFinder.writerFor(toFile.library);
+		String toFileName = toFile.nameGeneric.trimR();
+		QFile qFileTo = fileWriter.lookup(toFileName);
+		if(qFileTo == null) {
+			QFile qFileFrom = fileFinder.lookup(typeofinformationEnum.baseOutputFileName(), "QSYS");
+			qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+		}	
+		return qFileTo;
+	}
+
+
+	
 	private void checkType(QScroller<QCharacter> fileAttributes, QFile file) {
 		for (QCharacter attribute : fileAttributes) {
 			String attributeName = stringUtils.removeFirstChar(attribute.trimR());
@@ -94,6 +121,11 @@ public @Supported class FileDescriptionDisplayer {
 			public String baseOutputFileName() {
 				return "QAFDBASI";
 			}
+			@Override
+			public void writeTo(QApplication application, QFile fileToDescribe, QFile destinationFile) {
+				QTableDef destinationTable = application.getContext().getAdapter(destinationFile, QTableDef.class);
+				System.out.println(destinationTable);
+			}		
 		}, 
 		ACCPTH {
 			@Override
@@ -129,6 +161,10 @@ public @Supported class FileDescriptionDisplayer {
 		ATR, SPOOL, JOIN, TRG, CST, NODGRP;
 		public String baseOutputFileName() {
 			throw new RuntimeException("Unsupported information type " + this.name());			
+		}
+
+		public void writeTo(QApplication application, QFile fileToDescribe, QFile destinationFile) {
+			throw new RuntimeException("Unsupported information type " + this.name());	
 		}
 	}
 
@@ -179,17 +215,6 @@ public @Supported class FileDescriptionDisplayer {
 		};
 	}
 
-	public static class FILETORECEIVEOUTPUT extends QDataStructWrapper {
-		private static final long serialVersionUID = 1L;
-		@DataDef(length = 10)
-		public QCharacter name;
-		@DataDef(length = 10, value = "*LIBL")
-		public QEnum<LIBRARYEnum, QCharacter> library;
-
-		public static enum LIBRARYEnum {
-			LIBL, CURLIB, OTHER
-		}
-	}
 
 	public static class OUTPUTMEMBEROPTIONS extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
