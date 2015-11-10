@@ -148,7 +148,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		// default
 		QDefault default_ = dataTerm.getDefault();
-		if (!default_.isEmpty()) {
+		if (default_ != null && !default_.isEmpty()) {
 			if (default_.getValue() != null)
 				writeAnnotation(field, DataDef.class, "value", default_.getValue());
 			else
