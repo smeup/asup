@@ -16,8 +16,6 @@ import java.sql.SQLException;
 
 import javax.inject.Inject;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -41,12 +39,12 @@ import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.base.api.tools.Displayer;
+import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
@@ -88,8 +86,9 @@ public @ToDo class FileCopier {
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<ERRORSALLOWEDEnum, QBinary> errorsAllowed,
 			@ToDo @DataDef(length = 1) QEnum<COMPRESSOUTDELETEDRECORDSEnum, QCharacter> compressOutDeletedRecords) {
 
+		FileFinder fileFinder = new FileFinder(job, resourceManager);
 		
-		QResourceReader<QFile> fileReader = writerFor(fromFile.library);
+		QResourceReader<QFile> fileReader = fileFinder.writerFor(fromFile.library);
 		
 		QFile qFileFrom = fileReader.lookup(fromFile.name.trimR());
 		if(qFileFrom == null)
@@ -116,18 +115,19 @@ public @ToDo class FileCopier {
 				connection.close(statement);
 			}
 		} else {
-			//
 			String toFileName = toFile.name.asData().trimR();
-			QResourceWriter<QFile> fileWriter = writerFor(toFile.library);
+			//
+			QResourceWriter<QFile> fileWriter = fileFinder.writerFor(toFile.library);
 			QFile qFileTo = fileWriter.lookup(toFileName);
-			fileDataDuplicator.setFileTo(qFileTo);
 			if(qFileTo == null) {
 				if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
 					throw exceptionManager.prepareException(job, QCPFMSG.CPF2861, new String[] {toFileName, toFile.library.asData().trimR()});	
 				} else {
-					qFileTo = createFile(qFileFrom, toFileName, fileWriter);
+					qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
 				}
 			}
+			//
+			fileDataDuplicator.setFileTo(qFileTo);
 			if (replaceOrAddRecords.asEnum().equals(REPLACEORADDRECORDSEnum.REPLACE)) {
 				fileDataDuplicator.clearFileTo();
 			}
@@ -136,45 +136,22 @@ public @ToDo class FileCopier {
 	}
 
 
-	private QFile createFile(QFile qFileFrom, String toFileName, QResourceWriter<QFile> fileWriter) {
-		QFile qFileTo = (QFile) EcoreUtil.copy((EObject)qFileFrom);
-		qFileTo.setName(toFileName);
-		fileWriter.save(qFileTo);
-		jobLogManager.info(job, "File " + toFileName + " created in library " + qFileTo.getLibrary());
-		return qFileTo;
-	}
-
-	private QResourceWriter<QFile> writerFor(QEnum<LIBRARYEnum, QCharacter> lib) {
-		switch (lib.asEnum()) {
-		case CURLIB:
-			return resourceManager.getResourceWriter(job, QFile.class, Scope.CURRENT_LIBRARY);
-		case LIBL:
-			return resourceManager.getResourceWriter(job, QFile.class, Scope.LIBRARY_LIST);
-		case OTHER:
-			return resourceManager.getResourceWriter(job, QFile.class, lib.asData().trimR());
-		}
-		throw new RuntimeException("Unknown library type " + lib);
-	}
-
-
-	public static enum LIBRARYEnum {
-		LIBL , 
-		CURLIB, 
-		OTHER;
-	}
-	
 	public static class FROMFILE extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QCharacter name;
+		
 		@DataDef(length = 10)
 		public QEnum<LIBRARYEnum, QCharacter> library;
 	}
 
 	public static class TOFILE extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
+		
 		@DataDef(length = 10)
 		public QEnum<NAMEEnum, QCharacter> name;
+		
 		@DataDef(length = 10)
 		public QEnum<LIBRARYEnum, QCharacter> library;
 
