@@ -9,6 +9,7 @@ package org.smeup.sys.dk.compiler;
 
 import java.io.Closeable;
 import java.util.List;
+import java.util.Map;
 import org.smeup.sys.db.esql.QCursorTerm;
 import org.smeup.sys.db.esql.QStatementTerm;
 import org.smeup.sys.il.core.QNameable;
@@ -106,6 +107,14 @@ public interface QCompilationUnit extends QContextProvider, Closeable {
 	 * @generated
 	 */
 	QDataSetTerm getDataSet(String name, boolean deep);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	Map<String, QDataTerm<?>> getDataTerms(boolean deep);
 
 	/**
 	 * <!-- begin-user-doc -->

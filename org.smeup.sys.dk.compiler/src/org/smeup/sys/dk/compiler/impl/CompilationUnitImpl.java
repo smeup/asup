@@ -8,6 +8,7 @@
 package org.smeup.sys.dk.compiler.impl;
 
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -262,6 +263,17 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 		throw new UnsupportedOperationException();
 	}
 	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map<String, QDataTerm<?>> getDataTerms(boolean deep) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

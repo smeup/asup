@@ -161,6 +161,7 @@ public class RPJCallableUnitLinker {
 		List<QDataTerm<?>> dataTerms = new ArrayList<QDataTerm<?>>(dataSection.getDatas());
 
 		RPJDataFormulasResolver dataFormulasResolver = new RPJDataFormulasResolver(compilationUnit, expressionParser, dataContext);
+		compilationUnit.getContext().inject(dataFormulasResolver);
 		for (QDataTerm<?> dataTerm : dataTerms) {
 			dataFormulasResolver.reset();
 			dataTerm.accept(dataFormulasResolver);

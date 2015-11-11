@@ -21,6 +21,15 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="getDataTerms" lowerBound="1">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eTypeArguments eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
+          <eTypeArguments/>
+        </eTypeArguments>
+      </eGenericType>
+      <eParameters name="deep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
     <eOperations name="getDataTerm" lowerBound="1">
       <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//term/DataTerm">
         <eTypeArguments/>
@@ -228,9 +237,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="VariableRef">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="occourence" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="occurences" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="uses" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="statements" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>

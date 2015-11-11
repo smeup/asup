@@ -60,7 +60,9 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 
 	@Override
 	public RPJAbstractDataRefactor copy() {
-		return new RPJDataFormulasResolver(getCompilationUnit(), expressionParser, dataContext);
+		RPJDataFormulasResolver dataFormulasResolver = new RPJDataFormulasResolver(getCompilationUnit(), expressionParser, dataContext);
+		getCompilationUnit().getContext().inject(dataFormulasResolver);
+		return dataFormulasResolver;
 	}
 
 	@Override

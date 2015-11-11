@@ -18,8 +18,8 @@ import java.util.List;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccourence <em>Occourence</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getUses <em>Uses</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccurences <em>Occurences</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getStatements <em>Statements</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,45 +55,45 @@ public interface QVariableRef {
 	void setVariableName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Occourence</b></em>' attribute.
+	 * Returns the value of the '<em><b>Occurences</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Occourence</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Occurences</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Occourence</em>' attribute.
-	 * @see #setOccourence(int)
-	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Occourence()
+	 * @return the value of the '<em>Occurences</em>' attribute.
+	 * @see #setOccurences(int)
+	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Occurences()
 	 * @model required="true"
 	 * @generated
 	 */
-	int getOccourence();
+	int getOccurences();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccourence <em>Occourence</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccurences <em>Occurences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Occourence</em>' attribute.
-	 * @see #getOccourence()
+	 * @param value the new value of the '<em>Occurences</em>' attribute.
+	 * @see #getOccurences()
 	 * @generated
 	 */
-	void setOccourence(int value);
+	void setOccurences(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Uses</b></em>' attribute list.
+	 * Returns the value of the '<em><b>Statements</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Uses</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Statements</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uses</em>' attribute list.
-	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Uses()
+	 * @return the value of the '<em>Statements</em>' attribute list.
+	 * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef_Statements()
 	 * @model
 	 * @generated
 	 */
-	List<String> getUses();
+	List<String> getStatements();
 
 } // QVariableRef

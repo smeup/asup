@@ -554,6 +554,17 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(compilationUnitEClass, null, "getDataTerms", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
+		g1.getETypeArguments().add(g2);
+		EGenericType g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		initEOperation(op, g1);
+
 		op = addEOperation(compilationUnitEClass, null, "getDataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "deep", 0, 1, IS_UNIQUE, IS_ORDERED);

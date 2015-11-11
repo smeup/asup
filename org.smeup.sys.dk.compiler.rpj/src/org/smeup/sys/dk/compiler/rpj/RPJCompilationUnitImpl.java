@@ -64,12 +64,12 @@ import org.smeup.sys.os.file.QExternalFile;
 import org.smeup.sys.os.file.QFileFormat;
 
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
-
+	
 	private QContext context;
 	private QNameable node;
 
 	private QCompilationUnit parentUnit;
-	private List<QCompilationUnit> childUnits;
+	protected List<QCompilationUnit> childUnits;
 	private CaseSensitiveType caseSensitive;
 
 	private List<QDataSetTerm> dataSets;
@@ -195,7 +195,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		return keyListTerm;
 
 	}
-
+	
+	
+	
 	@Override
 	public QDataTerm<?> getDataTerm(String name, boolean deep) {
 
@@ -322,6 +324,121 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 
 		return dataTerm;
 	}
+		
+	
+	@Override
+	public Map<String, QDataTerm<?>> getDataTerms(boolean deep) {
+		
+		cachedTerms = new HashMap<String, QDataTerm<?>>();
+		
+		QCallableUnit callableUnit = (QCallableUnit) getNode();
+		
+		// search on dataTermContainer
+		if (callableUnit.getDataSection() != null){
+			for (QDataTerm<?> dataTerm: callableUnit.getDataSection().getDatas()){				
+				cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
+			}
+		}	
+
+		if (getNode() instanceof QProcedure) {
+			QProcedure qProcedure = (QProcedure) getNode();
+
+			for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters()) {
+				
+				QDataTerm<?> dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
+				cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
+			}				
+		}
+		
+		// Deep search
+		if (deep) {
+			
+			// Deep search on module
+			for (QCompilationUnit compilationUnit : this.childUnits){
+				Map<String, QDataTerm<?>> dataTerms = compilationUnit.getDataTerms(true);
+				for (String dataTermName: dataTerms.keySet()){
+					cachedTerms.put(dataTermName, dataTerms.get(dataTermName));
+				}
+			}
+			
+			// Deep search on parent unit
+			if (this.parentUnit != null) {
+				for (String dataTermName: this.parentUnit.getDataTerms(true).keySet()){
+					cachedTerms.put(dataTermName, this.parentUnit.getDataTerms(true).get(dataTermName));
+				}
+			}
+		}
+
+
+		// DataSet	
+
+		List<QDataSetTerm> renamedFiles = new ArrayList<QDataSetTerm>();
+
+		for (QDataSetTerm dataSetTerm : dataSets) {
+
+			QExternalFile externalFile = dataSetTerm.getFacet(QExternalFile.class);
+
+			if (externalFile == null && dataSetTerm.getFormatName() != null && !dataSetTerm.getFormatName().isEmpty()) {
+				renamedFiles.add(dataSetTerm);
+				continue;
+			}
+
+			if (externalFile != null && !externalFile.getFormat().equals(dataSetTerm.getFormatName())) {
+				renamedFiles.add(dataSetTerm);
+				continue;
+			}
+
+			if (dataSetTerm.getFormat() == null)
+				continue;
+
+			// search on primary dataSet
+			
+			for (QDataTerm<?> dataTerm : dataSetTerm.getFormat().getDefinition().getElements()) {			
+				cachedTerms.put(normalizeTermName(dataTerm.getName()), dataTerm);
+			}
+		}
+		
+		// Renamed dataSet
+		for (QDataSetTerm dataSetTerm : renamedFiles) {
+			
+			if (dataSetTerm.getFormat() != null) {								
+				//Format name
+				cachedTerms.put(normalizeTermName(dataSetTerm.getFormat().getName()), dataSetTerm.getFormat());
+				// Format definition
+				for (QDataTerm<?> definitionTerm: dataSetTerm.getFormat().getDefinition().getElements()){
+					cachedTerms.put(normalizeTermName(definitionTerm.getName()), definitionTerm);
+				}
+			}
+		}
+
+
+		// Display
+		
+		for (QDisplayTerm displayTerm : displays) {
+			if (displayTerm.getFormat() != null) {
+				
+				for (QDataTerm<?> definitionTerm: displayTerm.getFormat().getDefinition().getElements()){
+					cachedTerms.put(normalizeTermName(definitionTerm.getName()), definitionTerm);
+				}
+			}
+		}
+
+
+		// Printers
+		for (QPrintTerm printTerm : printers) {
+			
+			if (printTerm.getFormat() != null) {
+				
+				for (QDataTerm<?> definitionTerm: printTerm.getFormat().getDefinition().getElements()){
+					cachedTerms.put(normalizeTermName(definitionTerm.getName()), definitionTerm);
+				}
+			}
+		}
+
+
+		return cachedTerms;
+	}
+
 
 	@Override
 	public QDisplayTerm getDisplay(String name, boolean deep) {

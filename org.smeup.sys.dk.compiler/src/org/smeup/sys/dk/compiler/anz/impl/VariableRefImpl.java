@@ -32,8 +32,8 @@ import org.smeup.sys.dk.compiler.anz.QVariableRef;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getOccourence <em>Occourence</em>}</li>
- *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getUses <em>Uses</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getOccurences <em>Occurences</em>}</li>
+ *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getStatements <em>Statements</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,34 +61,34 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	protected String variableName = VARIABLE_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOccourence() <em>Occourence</em>}' attribute.
+	 * The default value of the '{@link #getOccurences() <em>Occurences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOccourence()
+	 * @see #getOccurences()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int OCCOURENCE_EDEFAULT = 0;
+	protected static final int OCCURENCES_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getOccourence() <em>Occourence</em>}' attribute.
+	 * The cached value of the '{@link #getOccurences() <em>Occurences</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOccourence()
+	 * @see #getOccurences()
 	 * @generated
 	 * @ordered
 	 */
-	protected int occourence = OCCOURENCE_EDEFAULT;
+	protected int occurences = OCCURENCES_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getUses() <em>Uses</em>}' attribute list.
+	 * The cached value of the '{@link #getStatements() <em>Statements</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUses()
+	 * @see #getStatements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> uses;
+	protected EList<String> statements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,8 +135,8 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getOccourence() {
-		return occourence;
+	public int getOccurences() {
+		return occurences;
 	}
 
 	/**
@@ -144,11 +144,11 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOccourence(int newOccourence) {
-		int oldOccourence = occourence;
-		occourence = newOccourence;
+	public void setOccurences(int newOccurences) {
+		int oldOccurences = occurences;
+		occurences = newOccurences;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE, oldOccourence, occourence));
+			eNotify(new ENotificationImpl(this, Notification.SET, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCURENCES, oldOccurences, occurences));
 	}
 
 	/**
@@ -156,11 +156,11 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<String> getUses() {
-		if (uses == null) {
-			uses = new EDataTypeUniqueEList<String>(String.class, this, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES);
+	public List<String> getStatements() {
+		if (statements == null) {
+			statements = new EDataTypeUniqueEList<String>(String.class, this, QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__STATEMENTS);
 		}
-		return uses;
+		return statements;
 	}
 
 	/**
@@ -173,10 +173,10 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 		switch (featureID) {
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__VARIABLE_NAME:
 				return getVariableName();
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
-				return getOccourence();
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
-				return getUses();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCURENCES:
+				return getOccurences();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__STATEMENTS:
+				return getStatements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -193,12 +193,12 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__VARIABLE_NAME:
 				setVariableName((String)newValue);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
-				setOccourence((Integer)newValue);
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCURENCES:
+				setOccurences((Integer)newValue);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
-				getUses().clear();
-				getUses().addAll((Collection<? extends String>)newValue);
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__STATEMENTS:
+				getStatements().clear();
+				getStatements().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,11 +215,11 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__VARIABLE_NAME:
 				setVariableName(VARIABLE_NAME_EDEFAULT);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
-				setOccourence(OCCOURENCE_EDEFAULT);
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCURENCES:
+				setOccurences(OCCURENCES_EDEFAULT);
 				return;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
-				getUses().clear();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__STATEMENTS:
+				getStatements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -235,10 +235,10 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 		switch (featureID) {
 			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__VARIABLE_NAME:
 				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCOURENCE:
-				return occourence != OCCOURENCE_EDEFAULT;
-			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__USES:
-				return uses != null && !uses.isEmpty();
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__OCCURENCES:
+				return occurences != OCCURENCES_EDEFAULT;
+			case QDevelopmentKitCompilerAnalyzerPackage.VARIABLE_REF__STATEMENTS:
+				return statements != null && !statements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -255,10 +255,10 @@ public class VariableRefImpl extends MinimalEObjectImpl.Container implements QVa
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (variableName: ");
 		result.append(variableName);
-		result.append(", occourence: ");
-		result.append(occourence);
-		result.append(", uses: ");
-		result.append(uses);
+		result.append(", occurences: ");
+		result.append(occurences);
+		result.append(", statements: ");
+		result.append(statements);
 		result.append(')');
 		return result.toString();
 	}

@@ -73,26 +73,36 @@ public class BaseExpressionBuilder {
 		String leftString = null;
 		String rightString = null;
 
-		// operator
+		// Find the leftmost assignment operator position in expression
+		
 		boolean found = false;
+		int position = -1;
+		int operator = -1;
 		for (int i = 0; i < ASS_STR_OP.length; i++) {
-
 			int p = expression.indexOf(ASS_STR_OP[i]);
 
-			if (p > 0) {
-				ast.setOperator(ASS_OP[i]);
-
-				leftString = expression.substring(0, p);
-				rightString = expression.substring(p + ASS_STR_OP[i].length());
-
+			if (p > 0 ) {
+				
+				if (position < 0) {
+					position = p;
+					operator = i;					
+					
+				} else {
+					if (p<position) {
+						position=p;						
+					}
+				}
 				found = true;
-
-				break;
 			}
 		}
 
-		if (!found)
+		if (found) {
+			leftString = expression.substring(0, position);
+			rightString = expression.substring(position + ASS_STR_OP[operator].length());			
+			ast.setOperator(ASS_OP[operator]);
+		} else{
 			throw new IntegratedLanguageExpressionRuntimeException("Attempted to analyze as assignment an incompatible expression");
+		}
 
 		// TODO remove and change parser
 		// if (leftString.startsWith("&"))
