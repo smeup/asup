@@ -68,6 +68,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	private OperationRead currentOpRead;
 	private QStatement statement;
+	private QStatement statementUpdate;
 
 	private ResultSet resultSet;
 	private InfoStruct infoStruct;
@@ -133,11 +134,14 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		if (this.statement != null)
 			this.statement.close();
+
+		if (this.statementUpdate != null)
+			this.statementUpdate.close();
 	}
 
 	@Override
 	public void delete() {
-		delete(null, null);
+		delete(null, null, null);
 	}
 
 	@Override
@@ -152,6 +156,9 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
+
+		this.error = false;
+		this.equal = false;
 
 		try {
 			if(keyList!=null){
@@ -171,11 +178,15 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 				readNext();
 
 				if(!isEndOfData())
-					this.statement.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 			}else{
-				this.statement.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 			}
-			
+
+			this.found = true;
+			this.dataContext.found().eval(true);
+			this.endOfData = isEndOfData();
+			this.dataContext.endOfData().eval(isEndOfData());
 
 		} catch (SQLException e) {
 			handleSQLException(e);
@@ -186,7 +197,6 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 		if (error != null)
 			error.eval(onError());
-		
 	}
 	
 	@Override
@@ -285,10 +295,13 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		init();
 
 		try {
-			if (this.accessMode == AccessMode.INPUT)
+			if (this.accessMode == AccessMode.INPUT){
 				statement = databaseConnection.createStatement(true);
-			else
+				statementUpdate = databaseConnection.createStatement(true);
+			} else {
 				statement = databaseConnection.createStatement(true, true);
+				statementUpdate = databaseConnection.createStatement(true, true);
+			}
 
 			this.currentTable = this.tableProvider.getTable(null, this.tableName);
 
