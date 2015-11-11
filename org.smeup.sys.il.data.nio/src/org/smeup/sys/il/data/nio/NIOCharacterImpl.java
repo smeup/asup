@@ -340,19 +340,17 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void cat(String factor1, String factor2, Number space) {
-		
+		cat(factor1, factor2, space.intValue(), false);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, Number space) {
-		// TODO Auto-generated method stub
-		
+		cat(factor1, factor2.asString(), space.intValue(), false);
 	}
 
 	@Override
 	public void cat(String factor1, QString factor2, Number space, boolean clear) {
-		// TODO Auto-generated method stub
-		
+		cat(factor1, factor2.asString(), space, clear);
 	}
 
 	@Override
