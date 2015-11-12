@@ -72,7 +72,7 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 30) QEnum<PrintTextEnum, QCharacter> printText, @ToDo @DataDef(length = 80) QEnum<RoutingDataEnum, QCharacter> routingData,
 			@ToDo @DataDef(length = 3000) QEnum<RequestDataOrCommandEnum, QCharacter> requestDataOrCommand, @ToDo @DataDef(length = 10) QEnum<SystemLibraryListEnum, QCharacter> systemLibraryList,
 			@ToDo @DataDef(length = 10) QEnum<CurrentLibraryEnum, QCharacter> currentLibrary,
-			@ToDo @DataDef(dimension = 250, length = 10) QEnum<InitialLibraryListEnum, QScroller<QCharacter>> initialLibraryList,
+			@ToDo @DataDef(dimension = 250, length = 10) QScroller<QEnum<InitialLibraryListEnum, QCharacter>> initialLibraryList,
 			@ToDo @DataDef(length = 10) QEnum<InitialASPGroupEnum, QCharacter> initialASPGroup, @ToDo MessageLogging messageLogging,
 			@ToDo @DataDef(length = 1) QEnum<LogCLProgramCommandsEnum, QCharacter> logCLProgramCommands, @ToDo @DataDef(length = 10) QEnum<JobLogOutputEnum, QCharacter> jobLogOutput,
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<JobMessageQueueMaximumSizeEnum, QBinary> jobMessageQueueMaximumSize,

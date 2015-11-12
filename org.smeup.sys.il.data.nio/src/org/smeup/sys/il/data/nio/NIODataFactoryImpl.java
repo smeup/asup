@@ -242,8 +242,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
 
 			// argument
-			QUnaryAtomicBufferedDataDef<?> argument = (QUnaryAtomicBufferedDataDef<?>) createDataDef(arguments.get(0), annotations);
-			arrayDef.setArgument(argument);
+			QDataDef<?> argumentDef = createDataDef(arguments.get(0), annotations);
+			if(argumentDef instanceof QEnumDef) {
+				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
+				arrayDef.setArgument((QUnaryAtomicBufferedDataDef<?>) enumDef.getDelegate());
+			}
+			else
+				arrayDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
 
 			dataDef = arrayDef;
 		}
@@ -275,8 +280,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 			QScrollerDef<?> scrollerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createScrollerDef();
 
 			// argument
-			QUnaryAtomicBufferedDataDef<?> argument = (QUnaryAtomicBufferedDataDef<?>) createDataDef(arguments.get(0), annotations);
-			scrollerDef.setArgument(argument);
+			QDataDef<?> argumentDef = createDataDef(arguments.get(0), annotations);
+			if(argumentDef instanceof QEnumDef) {
+				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
+				scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) enumDef.getDelegate());
+			}
+			else
+				scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
 
 			dataDef = scrollerDef;
 		}
@@ -289,8 +299,13 @@ public class NIODataFactoryImpl implements QDataFactory {
 			}
 
 			QListDef<?> listDef = new MyDef();
-			QUnaryAtomicDataDef<?> argument = (QUnaryAtomicDataDef<?>) createDataDef(arguments.get(0), annotations);
-			listDef.setArgument(argument);
+			QDataDef<?> argumentDef = (QUnaryAtomicDataDef<?>) createDataDef(arguments.get(0), annotations);
+			if(argumentDef instanceof QEnumDef) {
+				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
+				listDef.setArgument((QUnaryAtomicDataDef<?>) enumDef.getDelegate());
+			}
+			else
+				listDef.setArgument((QUnaryAtomicDataDef<?>) argumentDef);
 
 			dataDef = listDef;
 		}

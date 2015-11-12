@@ -11,7 +11,10 @@
  */
 package org.smeup.sys.db.syntax.base;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
@@ -178,15 +181,15 @@ public abstract class BaseDefinitionWriterImpl extends StatementWriterImpl imple
 	public String selectData(Table table) {
 		return "SELECT * FROM " + getQualifiedNameInSQLFormat(table);
 	}
-
+	
 	@Override
 	@SuppressWarnings("unchecked")
-	public String insertData(Table table) {
+	public String insertData(Table table, List<String> fieldNames) {
 		StringBuffer result = new StringBuffer("INSERT INTO " + getQualifiedNameInSQLFormat(table));
 		String tkn1 = "";
 		String tkn2 = "";
 		boolean first = true;
-		for (Column column : (List<Column>) table.getColumns()) {
+		for (Column column : filter((List<Column>) table.getColumns(), fieldNames)) {
 
 			if (column.getIdentitySpecifier() != null)
 				continue;
@@ -203,7 +206,34 @@ public abstract class BaseDefinitionWriterImpl extends StatementWriterImpl imple
 		result.append("(" + tkn1 + ") VALUES(" + tkn2 + ")");
 
 		return result.toString();
+	}
 
+	private List<Column> filter(List<Column> columns, List<String> fieldNames) {
+		if (fieldNames == null) {
+			return columns;
+		}
+		List<Column> result = new ArrayList<Column>();
+		Map<String, Column> columnMap = toMap(columns);
+		for (String name : fieldNames) {
+			Column column = columnMap.get(name);
+			if (column!= null) {
+				result.add(column);
+			}
+		}
+		return result;
+	}
+
+	private Map<String, Column> toMap(List<Column> columns) {
+		HashMap<String, Column> result = new HashMap<String, Column>();
+		for (Column column : columns) {
+			result.put(column.getName(), column);
+		}
+		return result;
+	}
+
+	@Override
+	public String insertData(Table table) {
+		return insertData(table, null);
 	}
 
 	protected String getNameInSQLFormat(String schema, QTableColumnDef table) {
