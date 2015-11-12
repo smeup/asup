@@ -30,7 +30,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  *
  * @generated
  */
-public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> extends UnaryAtomicDataDefImpl<D> implements QEnumDef<E, D> {
+public abstract class EnumDefImpl<E extends Enum<E>, D extends QBufferedData> extends UnaryAtomicBufferedDataDefImpl<D> implements QEnumDef<E, D> {
 	/**
 	 *
 	 */
