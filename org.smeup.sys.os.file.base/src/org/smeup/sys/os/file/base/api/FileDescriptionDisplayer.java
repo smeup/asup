@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,13 +32,17 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
+import org.smeup.sys.os.file.QFileFormatKey;
+import org.smeup.sys.os.file.QFileFormatKeyField;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
+import org.smeup.sys.os.file.impl.PhysicalFileImpl;
 import org.smeup.sys.rt.core.QApplication;
 
 @Program(name = "QWHDSPFD")
@@ -68,9 +73,9 @@ public @Supported class FileDescriptionDisplayer {
 	
 	public @Main void main(
 			@Supported @DataDef(qualified = true) FILE file,
-			@Supported @DataDef(dimension = 10, length = 8) QScroller<QCharacter> typeOfInformation,
+			@Supported @DataDef(dimension = 10, length = 8)  QScroller<QEnum<TYPEOFINFORMATIONEnum, QCharacter>> typeOfInformation,
 			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
-			@Supported @DataDef(dimension = 12, length = 5) QScroller<QCharacter> fileAttributes,
+			@Supported @DataDef(dimension = 12, length = 5) QScroller<QEnum<FILEATTRIBUTESEnum, QCharacter>> fileAttributes,
 			@Supported @DataDef(qualified = true) FILE fileToReceiveOutput,
 			@Unsupported OUTPUTMEMBEROPTIONS outputMemberOptions,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
@@ -85,16 +90,16 @@ public @Supported class FileDescriptionDisplayer {
 		
 		switch (output.asEnum()) {
 		case OUTFILE:
-			TYPEOFINFORMATIONEnum informationType = TYPEOFINFORMATIONEnum.valueOf(stringUtils.removeFirstChar(typeOfInformation.first().trimR()));
+			TYPEOFINFORMATIONEnum informationType = typeOfInformation.get(0).asEnum();
 			QFile qFileTo = createDestinationFile(fileFinder, fileToReceiveOutput, informationType);
 			writeInfosTo(qFileTo, informationType.assignments(qFile));
 			break;
 
 		case PRINT:
-			
+			//TODO
 			break;
 		case TERM_STAR:
-			
+			//TODO			
 			break;
 		}
 	}
@@ -130,12 +135,9 @@ public @Supported class FileDescriptionDisplayer {
 		return qFileTo;
 	}
 
-
-	
-	private void checkType(QScroller<QCharacter> fileAttributes, QFile file) {
-		for (QCharacter attribute : fileAttributes) {
-			String attributeName = stringUtils.removeFirstChar(attribute.trimR());
-			if (!stringUtils.isEmptyTrim(attributeName) && FILEATTRIBUTESEnum.valueOf(attributeName).includes(file)) {
+	private void checkType(QScroller<QEnum<FILEATTRIBUTESEnum, QCharacter>> fileAttributes, QFile file) {
+		for (QEnum<FILEATTRIBUTESEnum, QCharacter> attribute : fileAttributes) {
+			if (attribute.asEnum().includes(file)) {
 				return;
 			}
 		}
@@ -183,29 +185,57 @@ public @Supported class FileDescriptionDisplayer {
 			@SuppressWarnings({ "serial", "unchecked" })
 			@Override
 			public LinkedHashMap<String, Object>[] assignments(final QFile fileToDescribe) {
-				LinkedHashMap<String, Object>[] result = new LinkedHashMap[] {
+				QDatabaseFile databaseFile = (QDatabaseFile) fileToDescribe;
+				List<LinkedHashMap<String, Object>> result = new ArrayList<LinkedHashMap<String,Object>>(); 
+				final QFileFormatKey key = databaseFile.getDatabaseFormat().getFormatKey();
+				int i = 1;
+				for (QFileFormatKeyField keyField : key.getKeyFields()) {
+					LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+					map.put("APRCEN", "1"); //Secolo chiamata
+					Date now = new Date();
+					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+					map.put("APRDAT", dayFormatter.format(now));
+					SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
+					map.put("APRTIM", hourFormatter.format(now));
+					map.put("APFILE", fileToDescribe.getName());
+					map.put("APLIB", fileToDescribe.getLibrary());
+					FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
+					map.put("APFTYP", typeDescripion.descr1);
+					map.put("APFILA", typeDescripion.descr2);
+					map.put("APFATR", typeDescripion.descr3);
+					//	
+					map.put("APUNIQ", key.isUnique() ? "Y" : "N");
+					QPhysicalFile referredPF = findPF(fileToDescribe);
+					map.put("APBOF", referredPF.getName());
+					map.put("APBOL", referredPF.getLibrary());
+					map.put("APNKYF", key.getKeyFields().size());
+					map.put("APKEYF", keyField.getName());
+					map.put("APKSEQ", keyField.isDescend() ? "D" : "A");
+					map.put("APKEYN", i++);
 						
-				};
-//				return new LinkedHashMap<String, Object>() {{
-//					put("APRCEN", "1"); //Secolo chiamata
-//					Date now = new Date();
-//					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-//					put("APRDAT", dayFormatter.format(now));
-//					SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
-//					put("APRTIM", hourFormatter.format(now));
-//					put("APFILE", fileToDescribe.getName());
-//					put("APLIB", fileToDescribe.getLibrary());
-//					FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
-//					put("APFTYP", typeDescripion.descr1);
-//					put("APFILA", typeDescripion.descr2);
-//					put("APFATR", typeDescripion.descr3);
-//
-//					put("ATTXT", fileToDescribe.getText());
-//					Date creationDate = fileToDescribe.getCreationInfo().getCreationDate();
-//					put("ATFCDT", dayFormatter.format(creationDate));
-//					put("ATFCTM", hourFormatter.format(creationDate));
-//				}};
-				return result;
+					result.add(map);
+				}
+
+				return result.toArray(new LinkedHashMap[0]);
+			}
+			@SuppressWarnings("serial")
+			private QPhysicalFile findPF(final QFile fileToDescribe) {
+				if (fileToDescribe instanceof QPhysicalFile) {
+					return (QPhysicalFile) fileToDescribe;
+				}
+				if (fileToDescribe instanceof QLogicalFile) {
+					List<String> tables = ((QLogicalFile) fileToDescribe).getTables();
+					final String fileName = tables.get(0);
+					return new PhysicalFileImpl(){
+						public String getName() {
+							return fileName;
+						};
+						public String getLibrary() {
+							return fileToDescribe.getLibrary();
+						}
+					};
+				}
+				throw new RuntimeException("Wrong file type for " + fileToDescribe);
 			}			
 		}, 
 		MBRLIST {
