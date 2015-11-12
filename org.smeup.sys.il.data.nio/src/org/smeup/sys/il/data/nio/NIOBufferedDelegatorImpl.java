@@ -44,7 +44,10 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	@Override
 	public void accept(QDataVisitor visitor) {
-		_delegate.accept(visitor);
+		if(_delegate == null)
+			visitor.visit(this);
+		else
+			_delegate.accept(visitor);
 	}
 
 	@Override
@@ -64,7 +67,8 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	@Override
 	public void clear() {
-		_delegate.clear();
+		if (_delegate != null)
+			_delegate.clear();
 	}
 
 	@Override
@@ -150,7 +154,7 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 		if (_delegate == null)
 			return true;
 
-		return _delegate.isNull();		
+		return _delegate.isNull();
 	}
 
 	@Override
@@ -422,7 +426,7 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	public void movea(QArray<?> value, QNumeric startIndex) {
 		_delegate.movea(value, startIndex);
 	}
-	
+
 	public void movea(QArray<?> value, int startIndex, boolean clear) {
 		_delegate.movea(value, startIndex, clear);
 	}
