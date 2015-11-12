@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.db.syntax;
 
+import java.util.List;
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
@@ -156,5 +157,13 @@ public interface QDefinitionWriter extends QStatementWriter {
 	 * @generated
 	 */
 	String insertData(Table table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" tableRequired="true" fieldNamesMany="true"
+	 * @generated
+	 */
+	String insertData(Table table, List<String> fieldNames);
 
 } // SyntaxBuilder

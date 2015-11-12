@@ -69,4 +69,12 @@ public interface QPreparedStatement extends QStatement {
 	 */
 	void setString(int position, String value) throws SQLException;
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" positionRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	void setObject(int position, Object value) throws SQLException;
+
 } // QPreparedStatement

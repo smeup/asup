@@ -1,9 +1,18 @@
 package org.smeup.sys.os.file.base.api;
 
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+
 import javax.inject.Inject;
 
-import org.smeup.sys.db.core.QTableColumnDef;
-import org.smeup.sys.db.core.QTableDef;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.smeup.sys.db.core.QConnection;
+import org.smeup.sys.db.core.QPreparedStatement;
+import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.java.QStrings;
@@ -18,12 +27,12 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
-import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
@@ -52,6 +61,8 @@ public @Supported class FileDescriptionDisplayer {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QApplication application;
+	@Inject
+	private QDefinitionWriter definitionWriter;
 
 	
 	
@@ -76,7 +87,7 @@ public @Supported class FileDescriptionDisplayer {
 		case OUTFILE:
 			TYPEOFINFORMATIONEnum informationType = TYPEOFINFORMATIONEnum.valueOf(stringUtils.removeFirstChar(typeOfInformation.first().trimR()));
 			QFile qFileTo = createDestinationFile(fileFinder, fileToReceiveOutput, informationType);
-			informationType.writeTo(application, qFile, qFileTo);
+			writeInfosTo(qFileTo, informationType.assignments(qFile));
 			break;
 
 		case PRINT:
@@ -85,6 +96,22 @@ public @Supported class FileDescriptionDisplayer {
 		case TERM_STAR:
 			
 			break;
+		}
+	}
+
+	private void writeInfosTo(final QFile qFileTo, final LinkedHashMap<String, Object> assignments) {
+		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+		Table tableTo = connection.getCatalogMetaData().getTable(qFileTo.getLibrary(), qFileTo.getName());
+		String sqlInsert = definitionWriter.insertData(tableTo, new ArrayList<String>(assignments.keySet()));
+		try (QPreparedStatement stmt = connection.prepareStatement(sqlInsert);) {
+			int i = 1;
+			for (Object value: assignments.values()) {
+				stmt.setObject(i++, value);
+			}
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new OperatingSystemRuntimeException(e);
 		}
 	}
 
@@ -121,11 +148,38 @@ public @Supported class FileDescriptionDisplayer {
 			public String baseOutputFileName() {
 				return "QAFDBASI";
 			}
+			@SuppressWarnings("serial")
 			@Override
-			public void writeTo(QApplication application, QFile fileToDescribe, QFile destinationFile) {
-				QTableDef destinationTable = application.getContext().getAdapter(destinationFile, QTableDef.class);
-				System.out.println(destinationTable);
-			}		
+			public LinkedHashMap<String, Object> assignments(final QFile fileToDescribe) {
+				return new LinkedHashMap<String, Object>() {{
+					put("ATRCEN", "1"); //Secolo chiamata
+					Date now = new Date();
+					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+					put("ATRDAT", dayFormatter.format(now));
+					SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
+					put("ATRTIM", hourFormatter.format(now));
+					put("ATFILE", fileToDescribe.getName());
+					put("ATLIB", fileToDescribe.getLibrary());
+					FileTypeDescripion typeDescripion = type(fileToDescribe);
+					put("ATFTYP", typeDescripion.descr1);
+					put("ATFILA", typeDescripion.descr2);
+					put("ATFATR", typeDescripion.descr3);
+					put("ATTXT", fileToDescribe.getText());
+					Date creationDate = fileToDescribe.getCreationInfo().getCreationDate();
+					put("ATFCDT", dayFormatter.format(creationDate));
+					put("ATFCTM", hourFormatter.format(creationDate));
+				}
+
+				private FileTypeDescripion type(QFile fileToDescribe) {
+					if (fileToDescribe instanceof QLogicalFile) {
+						return new FileTypeDescripion("L", "*LGL", "LF");
+					}
+					if (fileToDescribe instanceof QPhysicalFile) {
+						return new FileTypeDescripion("P", "*PHY", "PF");
+					}			
+					throw new RuntimeException("Unsupported file type: " + fileToDescribe);
+				}};
+			}
 		}, 
 		ACCPTH {
 			@Override
@@ -163,7 +217,7 @@ public @Supported class FileDescriptionDisplayer {
 			throw new RuntimeException("Unsupported information type " + this.name());			
 		}
 
-		public void writeTo(QApplication application, QFile fileToDescribe, QFile destinationFile) {
+		public LinkedHashMap<String, Object> assignments(QFile fileToDescribe) {
 			throw new RuntimeException("Unsupported information type " + this.name());	
 		}
 	}
@@ -245,4 +299,17 @@ public @Supported class FileDescriptionDisplayer {
 		@Special(value = "A")
 		ALL
 	}
+	
+
+	private static class FileTypeDescripion {
+		public String descr1;
+		public String descr2;
+		public String descr3;
+		public FileTypeDescripion(String descr1, String descr2, String descr3) {
+			this.descr1 = descr1;
+			this.descr2 = descr2;
+			this.descr3 = descr3;
+		}
+	}
 }
+
