@@ -29,8 +29,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.jobd.QJobDescription;
@@ -56,7 +56,7 @@ public class JobDescriptionCreator {
 			@Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription, @Supported @DataDef(length = 10) QEnum<UserEnum, QCharacter> user,
 			@DataDef(length = 15) QEnum<AccountingCodeEnum, QCharacter> accountingCode, @DataDef(length = 30) QEnum<PrintTextEnum, QCharacter> printText,
 			@ToDo @DataDef(length = 80) QEnum<RoutingDataEnum, QCharacter> routingData, @ToDo @DataDef(length = 256) QEnum<RequestDataOrCommandEnum, QCharacter> requestDataOrCommand,
-			@Supported @DataDef(dimension = 250, length = 10) QEnum<InitialLibraryListEnum, QScroller<QCharacter>> initialLibraryList,
+			@Supported @DataDef(dimension = 250, length = 10) QScroller<QEnum<InitialLibraryListEnum, QCharacter>> initialLibraryList,
 			@DataDef(length = 10) QEnum<InitialASPGroupEnum, QCharacter> initialASPGroup, MessageLogging messageLogging,
 			@DataDef(length = 1) QEnum<LogCLProgramCommandsEnum, QCharacter> logCLProgramCommands, @DataDef(length = 10) QEnum<JobLogOutputEnum, QCharacter> jobLogOutput,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<JobMessageQueueMaximumSizeEnum, QBinary> jobMessageQueueMaximumSize,
@@ -159,22 +159,22 @@ public class JobDescriptionCreator {
 		}
 
 		// INLLIBL
-		switch (initialLibraryList.asEnum()) {
-		case NONE:
-			qJobDescription.getLibraries().clear();
-			break;
-		case SYSVAL:
-			// TODO
-			break;
-		case OTHER:
-			qJobDescription.getLibraries().clear();
-			for (QCharacter initialLibrary : initialLibraryList.asData()) {
-				if (initialLibrary.isEmpty())
-					continue;
+		for (QEnum<InitialLibraryListEnum, QCharacter> initialLibrary : initialLibraryList) {
 
-				qJobDescription.getLibraries().add(initialLibrary.trimR());
+			if (initialLibrary.asData().isEmpty())
+				continue;
+
+			switch (initialLibrary.asEnum()) {
+			case NONE:
+				qJobDescription.getLibraries().clear();
+				break;
+			case SYSVAL:
+				// TODO
+				break;
+			case OTHER:
+				qJobDescription.getLibraries().add(initialLibrary.asData().asString());
+				break;
 			}
-			break;
 		}
 
 		resource.save(qJobDescription);

@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.jobd.base.api;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -55,7 +57,7 @@ public class JobDescriptionChanger {
 			@Supported @DataDef(length = 10) QEnum<UserEnum, QCharacter> user, @DataDef(length = 15) QEnum<AccountingCodeEnum, QCharacter> accountingCode,
 			@DataDef(length = 30) QEnum<PrintTextEnum, QCharacter> printText, @DataDef(length = 80) QEnum<RoutingDataEnum, QCharacter> routingData,
 			@DataDef(length = 256) QEnum<RequestDataOrCommandEnum, QCharacter> requestDataOrCommand,
-			@Supported @DataDef(dimension = 250, length = 10) QEnum<InitialLibraryListEnum, QScroller<QCharacter>> initialLibraryList,
+			@Supported @DataDef(dimension = 250, length = 10) QScroller<QEnum<InitialLibraryListEnum, QCharacter>> initialLibraryList,
 			@DataDef(length = 10) QEnum<InitialASPGroupEnum, QCharacter> initialASPGroup, MessageLogging messageLogging,
 			@DataDef(length = 1) QEnum<LogCLProgramCommandsEnum, QCharacter> logCLProgramCommands, @DataDef(length = 10) QEnum<JobLogOutputEnum, QCharacter> jobLogOutput,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<JobMessageQueueMaximumSizeEnum, QBinary> jobMessageQueueMaximumSize,
@@ -182,24 +184,27 @@ public class JobDescriptionChanger {
 		}
 
 		// INLLIBL
-		switch (initialLibraryList.asEnum()) {
-		case NONE:
-			qJobDescription.getLibraries().clear();
-			break;
-		case SAME:
-			break;
-		case SYSVAL:
-			// TODO
-			break;
-		case OTHER:
-			qJobDescription.getLibraries().clear();
-			for (QCharacter initialLibrary : initialLibraryList.asData()) {
-				if (initialLibrary.trimR().isEmpty())
-					continue;
+		List<String> libraries = qJobDescription.getLibraries();
+		qJobDescription.getLibraries().clear();
+		for (QEnum<InitialLibraryListEnum, QCharacter> initialLibrary : initialLibraryList) {
 
-				qJobDescription.getLibraries().add(initialLibrary.trimR());
+			if (initialLibrary.asData().isEmpty())
+				continue;
+
+			switch (initialLibrary.asEnum()) {
+			case NONE:
+				qJobDescription.getLibraries().clear();
+				break;
+			case SAME:
+				qJobDescription.getLibraries().addAll(libraries);
+				break;
+			case SYSVAL:
+				// TODO
+				break;
+			case OTHER:
+				qJobDescription.getLibraries().add(initialLibrary.asData().asString());
+				break;
 			}
-			break;
 		}
 
 		resource.save(qJobDescription, true);

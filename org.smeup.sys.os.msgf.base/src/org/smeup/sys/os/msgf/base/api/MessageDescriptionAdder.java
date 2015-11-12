@@ -60,11 +60,11 @@ public class MessageDescriptionAdder {
 			@Supported @DataDef(binaryType = BinaryType.SHORT) QBinary severityCode,
 			@Supported @DataDef(dimension = 99) QEnum<MessageDataFieldsFormatEnum, QStroller<MessageDataFieldsFormat>> messageDataFieldsFormats,
 			@DataDef(length = 1) QEnum<ReplyTypeEnum, QCharacter> replyType, QEnum<MaximumReplyLengthEnum, MaximumReplyLength> maximumReplyLength,
-			@DataDef(dimension = 20, length = 32) QEnum<ValidReplyValueEnum, QScroller<QCharacter>> validReplyValues,
+			@DataDef(dimension = 20, length = 32) QScroller<QEnum<ValidReplyValueEnum, QCharacter>> validReplyValues,
 			@DataDef(dimension = 20) QEnum<SpecialReplyValueEnum, QStroller<SpecialReplyValue>> specialReplyValues, QEnum<RangeOfReplyValuesEnum, RangeOfReplyValues> rangeOfReplyValues,
 			QEnum<RelationshipForValidRepliesEnum, RelationshipForValidReplies> relationshipForValidReplies, @DataDef(length = 132) QEnum<DefaultReplyValueEnum, QCharacter> defaultReplyValue,
 			@DataDef(qualified = true) QEnum<DefaultProgramToCallEnum, DefaultProgramToCall> defaultProgramToCall,
-			@DataDef(dimension = 102, binaryType = BinaryType.SHORT) QEnum<DataToBeDumpedEnum, QScroller<QBinary>> dataToBeDumped, LevelOfMessage levelOfMessage, AlertOptions alertOptions,
+			@DataDef(dimension = 102, binaryType = BinaryType.SHORT) QScroller<QEnum<DataToBeDumpedEnum, QBinary>> dataToBeDumped, LevelOfMessage levelOfMessage, AlertOptions alertOptions,
 			@DataDef(length = 1) QEnum<LogProblemEnum, QCharacter> logProblem, @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID) {
 
 		QResourceWriter<QMessageFile> resource = null;
