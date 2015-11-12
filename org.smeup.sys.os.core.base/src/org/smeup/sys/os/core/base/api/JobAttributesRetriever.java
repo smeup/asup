@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
+import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -32,7 +33,8 @@ public class JobAttributesRetriever {
 
 	@Inject
 	private QJob job;
-
+	@Inject
+	private QStrings stringsUtil;
 
 	public @Main void main(
 			@DataDef(length = 10) QCharacter cLVarForJOB10,
@@ -138,15 +140,11 @@ public class JobAttributesRetriever {
 	}
 
 	private void fillLibraries(QCharacter userLibraries) {
-		userLibraries.clear();
-		int length = 0;
+		StringBuffer libList = new StringBuffer();
 		for (String library : job.getLibraries()) {
-			if (userLibraries.isEmpty())
-				userLibraries.cat(library);
-			else
-				userLibraries.cat(library, 10 - length);
-
-			length = library.length();
+			libList.append(stringsUtil.lSet(library, 11));
 		}
+		userLibraries.clear();
+		userLibraries.eval(libList.toString());
 	}
 }

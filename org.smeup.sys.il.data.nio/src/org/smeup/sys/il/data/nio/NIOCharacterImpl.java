@@ -426,10 +426,10 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 		switch (defaultComparator) {
 		case ASCII:
-			return trimR().compareTo(trimR(value)) <= 0;
+			return trimR().compareTo(trimR(value)) < 0;
 
 		case EBCDIC:
-			return compareString(value) <= 0;
+			return compareString(value) < 0;
 		}
 
 		return false;
