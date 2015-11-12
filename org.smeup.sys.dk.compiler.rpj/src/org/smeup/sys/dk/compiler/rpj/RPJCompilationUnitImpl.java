@@ -938,8 +938,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next())
 			if (ch == '§')
 				s.append('ç');
-			else if (it.getIndex() == 0)
-				s.append(String.valueOf(ch).toUpperCase());
 			else
 				s.append(ch);
 		name = s.toString();

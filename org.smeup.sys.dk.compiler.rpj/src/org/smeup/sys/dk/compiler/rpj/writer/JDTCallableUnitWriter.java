@@ -754,7 +754,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		writeImport(Main.class);
 		methodDeclaration.modifiers().add(entryAnnotation);
 
-		for (String parameterName : parameterList.getParameters()) {
+		for (String parameterName : parameterList.getParameters()) {			
 			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
 
 			SingleVariableDeclaration parameterVariable = getAST().newSingleVariableDeclaration();
