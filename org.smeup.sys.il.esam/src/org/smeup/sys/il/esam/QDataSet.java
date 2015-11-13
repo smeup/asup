@@ -65,14 +65,6 @@ public interface QDataSet<R extends QRecord> {
 	void delete(QIndicator notFound, QIndicator error);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
-	 * @generated
-	 */
-	void delete(Object[] keyList, QIndicator notFound, QIndicator error);
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated

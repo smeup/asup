@@ -141,62 +141,17 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 
 	@Override
 	public void delete() {
-		delete(null, null, null);
+		deleteRecord(null, null, null);
 	}
 
 	@Override
 	public void delete(QIndicator notFound) {
-		delete(notFound, null);
+		deleteRecord(null, notFound, null);
 	}
 
 	@Override
 	public void delete(QIndicator notFound, QIndicator error) {
-		delete(null, notFound, error);
-	}
-
-	@Override
-	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
-
-		this.error = false;
-		this.equal = false;
-
-		try {
-			if(keyList!=null){
-				setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
-				if (rebuildNeeded(OperationDirection.FORWARD)) {
-
-					Object[] keySet = null;
-
-					if (isBeforeFirst())
-						keySet = this.currentKeySet;
-					else
-						keySet = buildKeySet();
-
-					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList);
-				}
-
-				readNext();
-
-				if(!isEndOfData())
-					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
-			}else{
-				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
-			}
-
-			this.found = true;
-			this.dataContext.found().eval(true);
-			this.endOfData = isEndOfData();
-			this.dataContext.endOfData().eval(isEndOfData());
-
-		} catch (SQLException e) {
-			handleSQLException(e);
-		}
-		
-		if(notFound != null)
-			notFound.eval(isEndOfData());
-
-		if (error != null)
-			error.eval(onError());
+		deleteRecord(null, notFound, error);
 	}
 	
 	@Override
@@ -495,6 +450,50 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 		this.currentOpSet = opSet;
 		this.currentKeySet = keyList;
 		this.currentOpRead = null;
+	}
+	
+	protected void deleteRecord(Object[] keyList, QIndicator notFound, QIndicator error) {
+
+		this.error = false;
+		this.equal = false;
+
+		try {
+			if(keyList!=null){
+				setKeySet(OperationSet.SET_LOWER_LIMIT, keyList);
+				if (rebuildNeeded(OperationDirection.FORWARD)) {
+
+					Object[] keySet = null;
+
+					if (isBeforeFirst())
+						keySet = this.currentKeySet;
+					else
+						keySet = buildKeySet();
+
+					prepareAccess(this.currentOpSet, keySet, OperationRead.READ_EQUAL, keyList);
+				}
+
+				readNext();
+
+				if(!isEndOfData())
+					this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			}else{
+				this.statementUpdate.executeUpdate(jdbcAccessHelper.buildDelete(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			}
+
+			this.found = true;
+			this.dataContext.found().eval(true);
+			this.endOfData = isEndOfData();
+			this.dataContext.endOfData().eval(isEndOfData());
+
+		} catch (SQLException e) {
+			handleSQLException(e);
+		}
+		
+		if(notFound != null)
+			notFound.eval(isEndOfData());
+
+		if (error != null)
+			error.eval(onError());
 	}
 
 	@Override
