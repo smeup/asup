@@ -243,12 +243,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			// argument
 			QDataDef<?> argumentDef = createDataDef(arguments.get(0), annotations);
-			if(argumentDef instanceof QEnumDef) {
-				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
-				arrayDef.setArgument((QUnaryAtomicBufferedDataDef<?>) enumDef.getDelegate());
-			}
-			else
-				arrayDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
+			arrayDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
 
 			dataDef = arrayDef;
 		}
@@ -281,12 +276,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			// argument
 			QDataDef<?> argumentDef = createDataDef(arguments.get(0), annotations);
-			if(argumentDef instanceof QEnumDef) {
-				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
-				scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) enumDef.getDelegate());
-			}
-			else
-				scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);
+			scrollerDef.setArgument((QUnaryAtomicBufferedDataDef<?>) argumentDef);			
 
 			dataDef = scrollerDef;
 		}
@@ -300,12 +290,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 			QListDef<?> listDef = new MyDef();
 			QDataDef<?> argumentDef = (QUnaryAtomicDataDef<?>) createDataDef(arguments.get(0), annotations);
-			if(argumentDef instanceof QEnumDef) {
-				QEnumDef<?, ?> enumDef = (QEnumDef<?, ?>) argumentDef;
-				listDef.setArgument((QUnaryAtomicDataDef<?>) enumDef.getDelegate());
-			}
-			else
-				listDef.setArgument((QUnaryAtomicDataDef<?>) argumentDef);
+			listDef.setArgument((QUnaryAtomicDataDef<?>) argumentDef);
 
 			dataDef = listDef;
 		}

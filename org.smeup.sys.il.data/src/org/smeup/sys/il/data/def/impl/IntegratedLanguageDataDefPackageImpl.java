@@ -1306,7 +1306,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getDecimal());
 		g1.getETypeArguments().add(g2);
 		decimalDefEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getUnaryAtomicDataDef());
+		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
 		g2 = createEGenericType(enumDefEClass_D);
 		g1.getETypeArguments().add(g2);
 		enumDefEClass.getEGenericSuperTypes().add(g1);
