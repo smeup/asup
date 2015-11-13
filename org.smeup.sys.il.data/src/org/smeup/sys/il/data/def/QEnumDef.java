@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QBufferedData;
  * @model abstract="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
  * @generated
  */
-public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QUnaryAtomicDataDef<D> {
+public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QUnaryAtomicBufferedDataDef<D> {
 	/**
 	 * Returns the value of the '<em><b>Delegate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

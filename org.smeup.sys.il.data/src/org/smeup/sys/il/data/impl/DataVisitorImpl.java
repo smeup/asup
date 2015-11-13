@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -250,12 +251,9 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 		try {
 			@SuppressWarnings("unchecked")
 			Method method = getMethod("visit", (Class<QData>) data.getClass());
-			if (method == null) {
-				System.out.println(data);
-				return false;
-			}
-			else
-				"".toCharArray();
+			if (method == null) 
+				throw new IntegratedLanguageDataRuntimeException("Unexpected condition: n97rt9e8rbste");
+
 			return (boolean) method.invoke(this, new Object[] { data });
 		} catch (Exception e) {
 			System.out.println(data);

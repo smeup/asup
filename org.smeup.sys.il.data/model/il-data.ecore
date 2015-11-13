@@ -3115,7 +3115,7 @@
           <eTypeArguments eTypeParameter="#//def/EnumDef/E"/>
         </eGenericType>
       </eStructuralFeatures>
-      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/EnumDef/D"/>
       </eGenericSuperTypes>
     </eClassifiers>

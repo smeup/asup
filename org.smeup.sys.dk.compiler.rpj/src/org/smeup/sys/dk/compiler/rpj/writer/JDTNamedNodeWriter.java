@@ -131,7 +131,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 	@SuppressWarnings("unchecked")
 	public void writeField(QDataTerm<?> dataTerm, boolean nullInitialization, UnitScope scope) {
-		
+
 		VariableDeclarationFragment variable = getAST().newVariableDeclarationFragment();
 		variable.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(dataTerm.getName())));
 		FieldDeclaration field = getAST().newFieldDeclaration(variable);
@@ -239,7 +239,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			if (compilerLinker == null) {
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 				compilationSetup.setOptimizationType(OptimizationType.POSITION);
-				
+
 				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm),
 						QDataStructWrapper.class, scope, static_);
 				dataStructureWriter.writeDataStructure(compoundDataDef);
@@ -247,7 +247,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				Class<QDataStruct> linkedClass = (Class<QDataStruct>) compilerLinker.getLinkedClass();
 				QCompilationSetup compilationSetup = QDevelopmentKitCompilerFactory.eINSTANCE.createCompilationSetup();
 				compilationSetup.setOptimizationType(OptimizationType.POSITION);
-				
+
 				JDTDataStructureWriter dataStructureWriter = new JDTDataStructureWriter(this, getCompilationUnit(), compilationSetup, getCompilationUnit().normalizeTypeName(dataTerm), linkedClass,
 						scope, static_);
 				List<QDataTerm<?>> elements = new ArrayList<QDataTerm<?>>();
@@ -621,7 +621,8 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 
 		Type type = null;
 		Type wrapper = null;
-
+		QSpecial special = dataTerm.getFacet(QSpecial.class);
+		
 		switch (dataTerm.getDataTermType()) {
 		case MULTIPLE_ATOMIC:
 			QMultipleAtomicDataDef<?> multipleAtomicDataDef = (QMultipleAtomicDataDef<?>) dataDef;
@@ -633,7 +634,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			ParameterizedType parType = getAST().newParameterizedType(wrapper);
 
 			String argument = innerDataDefinition.getDataClass().getSimpleName();
-			parType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(argument)));
+			Type argumentType = getAST().newSimpleType(getAST().newSimpleName(argument));
+			if (special != null)
+				argumentType = buildSpecial(dataTerm, special, argumentType);
+			
+			parType.typeArguments().add(argumentType);
 			type = parType;
 
 			break;
@@ -654,6 +659,9 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				type = parType;
 			}
 
+			if (special != null)
+				type = buildSpecial(dataTerm, special, type);
+			
 			break;
 
 		case MULTIPLE_COMPOUND:
@@ -694,9 +702,11 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			}
 
 			wrapper = getAST().newSimpleType(getAST().newSimpleName(compoundDataDef.getDataClass().getSimpleName()));
+			if (special != null)
+				wrapper = buildSpecial(dataTerm, special, wrapper);
+
 			parType = getAST().newParameterizedType(wrapper);
 
-			argument = compoundDataDef.getDataClass().getSimpleName();
 			parType.typeArguments().add(type);
 			type = parType;
 
@@ -741,25 +751,29 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				}
 			}
 
+			if (special != null)
+				type = buildSpecial(dataTerm, special, type);
+
 			break;
-		}
-
-		QSpecial special = dataTerm.getFacet(QSpecial.class);
-		if (special != null) {
-			writeImport(QEnum.class);
-			Type enumerator = getAST().newSimpleType(getAST().newSimpleName(QEnum.class.getSimpleName()));
-			ParameterizedType parEnumType = getAST().newParameterizedType(enumerator);
-			// E
-			parEnumType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(dataTerm) + "Enum")));
-			// D
-			parEnumType.typeArguments().add(type);
-
-			type = parEnumType;
 		}
 
 		return type;
 	}
 
+	@SuppressWarnings("unchecked")
+	private Type buildSpecial(QDataTerm<?> dataTerm, QSpecial special, Type type) {
+
+		writeImport(QEnum.class);
+		Type enumerator = getAST().newSimpleType(getAST().newSimpleName(QEnum.class.getSimpleName()));
+		ParameterizedType parEnumType = getAST().newParameterizedType(enumerator);
+		// E
+		parEnumType.typeArguments().add(getAST().newSimpleType(getAST().newSimpleName(getCompilationUnit().normalizeTypeName(dataTerm) + "Enum")));
+		// D
+		parEnumType.typeArguments().add(type);
+
+		return parEnumType;
+	}
+	
 	public boolean checkCompoundOverride(QCompoundDataDef<?, ?> compoundDataDef) {
 
 		for (QDataTerm<?> element : compoundDataDef.getElements())

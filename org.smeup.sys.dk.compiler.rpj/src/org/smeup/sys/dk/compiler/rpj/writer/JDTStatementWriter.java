@@ -680,7 +680,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		DoStatement doSt = ast.newDoStatement();
 
-		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
+//		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
+		QPredicateExpression condition = expressionParser.parsePredicate("not("+statement.getCondition()+")");
+
 		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
 		doSt.setExpression(expression);
 

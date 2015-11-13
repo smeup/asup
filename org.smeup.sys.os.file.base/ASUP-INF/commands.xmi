@@ -20411,8 +20411,12 @@
           <elements
               name="*NODGRP"/>
         </facets>
-        <default
-            value="*ALL"/>
+        <facets
+            xsi:type="il-core-meta:Cardinality"
+            max="10"/>
+        <default>
+          <values>*ALL</values>
+        </default>
         <definition
             xsi:type="il-data-def:ScrollerDef"
             dimension="10">
@@ -20485,8 +20489,10 @@
           <elements
               name="*ICFF"/>
         </facets>
-        <default
-            value="">
+        <facets
+            xsi:type="il-core-meta:Cardinality"
+            max="12"/>
+        <default>
           <values>*ALL</values>
         </default>
         <definition

@@ -73,7 +73,7 @@ public @Supported class PrinterFileOverride {
 			CODEDFONT codedFont,
 			@DataDef(qualified = true) PAGEDEFINITION pageDefinition,
 			@DataDef(qualified = true) FORMDEFINITION formDefinition,
-			@DataDef(dimension = 4, length = 4) QEnum<AFPCHARACTERSEnum, QScroller<QCharacter>> aFPCharacters,
+			@DataDef(dimension = 4, length = 4) QScroller<QEnum<AFPCHARACTERSEnum, QCharacter>> aFPCharacters,
 			@DataDef(length = 1) QEnum<TABLEREFERENCECHARACTERSEnum, QCharacter> tableReferenceCharacters,
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<DEGREEOFPAGEROTATIONEnum, QBinary> degreeOfPageRotation,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<PAGESPERSIDEEnum, QBinary> pagesPerSide,
@@ -86,7 +86,7 @@ public @Supported class PrinterFileOverride {
 			BACKSIDEOVERLAY backSideOverlay,
 			@DataDef(length = 1) QEnum<CONVERTLINEDATAEnum, QCharacter> convertLineData,
 			@DataDef(length = 1) QEnum<IPDSPASSTHROUGHEnum, QCharacter> iPDSPassThrough,
-			@DataDef(dimension = 4, length = 10) QEnum<USERRESOURCELIBRARYLISTEnum, QScroller<QCharacter>> userResourceLibraryList,
+			@DataDef(dimension = 4, length = 10) QScroller<QEnum<USERRESOURCELIBRARYLISTEnum, QCharacter>> userResourceLibraryList,
 			@DataDef(length = 1) QEnum<CORNERSTAPLEEnum, QCharacter> cornerStaple,
 			EDGESTITCH edgeStitch,
 			SADDLESTITCH saddleStitch,
@@ -105,7 +105,7 @@ public @Supported class PrinterFileOverride {
 			@DataDef(length = 1) QEnum<OUTPUTPRIORITYONOUTQEnum, QCharacter> outputPriorityonOUTQ,
 			@DataDef(length = 10) QEnum<USERDATAEnum, QCharacter> userData,
 			@DataDef(length = 10) QEnum<SPOOLFILEOWNEREnum, QCharacter> spoolFileOwner,
-			@DataDef(dimension = 4, length = 10) QEnum<USERDEFINEDOPTIONEnum, QScroller<QCharacter>> userDefinedOption,
+			@DataDef(dimension = 4, length = 10) QScroller<QEnum<USERDEFINEDOPTIONEnum, QCharacter>> userDefinedOption,
 			@DataDef(length = 255) QEnum<USERDEFINEDDATAEnum, QCharacter> userDefinedData,
 			USERDEFINEDOBJECT userDefinedObject,
 			@DataDef(length = 10) QEnum<SPOOLFILENAMEEnum, QCharacter> spoolFileName,
@@ -914,7 +914,7 @@ public @Supported class PrinterFileOverride {
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QEnum<NUMBEROFSTAPLESEnum, QBinary> numberOfStaples;
 		@DataDef(dimension = 122, precision = 7, scale = 4)
-		public QEnum<STAPLEOFFSETSEnum, QScroller<QDecimal>> stapleOffsets;
+		public QScroller<QEnum<STAPLEOFFSETSEnum, QDecimal>> stapleOffsets;
 
 		public static enum REFERENCEEDGEEnum {
 			@Special(value = "X'00'")
@@ -949,7 +949,7 @@ public @Supported class PrinterFileOverride {
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QEnum<NUMBEROFSTAPLESEnum, QBinary> numberOfStaples;
 		@DataDef(dimension = 122, precision = 7, scale = 4)
-		public QEnum<STAPLEOFFSETSEnum, QScroller<QDecimal>> stapleOffsets;
+		public QScroller<QEnum<STAPLEOFFSETSEnum, QDecimal>> stapleOffsets;
 
 		public static enum REFERENCEEDGEEnum {
 			@Special(value = "X'00'")

@@ -50,7 +50,7 @@ public @ToDo class ObjectChecker {
 	public @Main void main(@DataDef(qualified = true) OBJECT object,
 							@DataDef(length = 7) QCharacter objectType,
 							@DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
-							@ToDo @DataDef(dimension = 10, length = 10) QEnum<AUTHORITYEnum, QScroller<QCharacter>> authority) {
+							@ToDo @DataDef(dimension = 10, length = 10) QScroller<QEnum<AUTHORITYEnum, QCharacter>> authority) {
 		
 		if (objectType == null || objectType.trimR().equals(""))
 			error("You must specify an object type");

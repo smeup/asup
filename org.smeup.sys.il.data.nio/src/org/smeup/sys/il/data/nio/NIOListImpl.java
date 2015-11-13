@@ -46,6 +46,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 		this._model = model;
 		this._dimension = dimension;
 		this._elements = new ArrayList<D>(_dimension);
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -119,7 +120,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 		int i = 1;
 		for (D element : value) {
 			dataWriter.set(element);
-			get(i).eval(dataWriter);
+			get(i).accept(dataWriter);
 			i++;
 		}
 	}
