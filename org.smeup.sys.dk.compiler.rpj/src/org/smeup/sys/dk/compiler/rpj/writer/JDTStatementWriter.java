@@ -57,9 +57,12 @@ import org.smeup.sys.il.esam.QDataSetTerm;
 import org.smeup.sys.il.esam.QDisplayTerm;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
+import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QAssignmentExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
+import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
+import org.smeup.sys.il.expr.QLogicalExpression;
 import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.expr.QRelationalExpression;
 import org.smeup.sys.il.expr.QTermExpression;
@@ -681,9 +684,12 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		DoStatement doSt = ast.newDoStatement();
 
 //		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
-		QPredicateExpression condition = expressionParser.parsePredicate("not("+statement.getCondition()+")");
+		
+		QLogicalExpression logicalExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createLogicalExpression();
+		logicalExpression.setOperator(LogicalOperator.NOT);
+		logicalExpression.setLeftOperand(expressionParser.parsePredicate(statement.getCondition()));
 
-		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
+		Expression expression = buildExpression(ast, logicalExpression, CompilationContextHelper.getJavaClass(compilationUnit, logicalExpression));
 		doSt.setExpression(expression);
 
 		block.statements().add(doSt);
