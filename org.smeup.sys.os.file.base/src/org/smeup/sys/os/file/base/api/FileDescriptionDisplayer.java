@@ -40,8 +40,10 @@ import org.smeup.sys.os.file.QFileFormatKeyField;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
+import org.smeup.sys.os.file.QSourceFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
+import org.smeup.sys.os.file.base.api.tools.RecordCounter;
 import org.smeup.sys.os.file.impl.PhysicalFileImpl;
 import org.smeup.sys.rt.core.QApplication;
 
@@ -104,6 +106,7 @@ public @Supported class FileDescriptionDisplayer {
 		}
 	}
 
+
 	private void writeInfosTo(final QFile qFileTo, final LinkedHashMap<String, Object> assignments[]) {
 		QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 		Table tableTo = connection.getCatalogMetaData().getTable(qFileTo.getLibrary(), qFileTo.getName());
@@ -156,24 +159,16 @@ public @Supported class FileDescriptionDisplayer {
 			@Override
 			public LinkedHashMap<String, Object>[] assignments(final QFile fileToDescribe) {
 				LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
-				result[0] = new LinkedHashMap<String, Object>() {{
-					put("ATRCEN", "1"); //Secolo chiamata
-					Date now = new Date();
-					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-					put("ATRDAT", dayFormatter.format(now));
-					SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
-					put("ATRTIM", hourFormatter.format(now));
-					put("ATFILE", fileToDescribe.getName());
-					put("ATLIB", fileToDescribe.getLibrary());
-					FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
-					put("ATFTYP", typeDescripion.descr1);
-					put("ATFILA", typeDescripion.descr2);
-					put("ATFATR", typeDescripion.descr3);
-					put("ATTXT", fileToDescribe.getText());
-					Date creationDate = fileToDescribe.getCreationInfo().getCreationDate();
-					put("ATFCDT", dayFormatter.format(creationDate));
-					put("ATFCTM", hourFormatter.format(creationDate));
-				}};
+				result[0] = new LinkedHashMap<String, Object>();
+				addDefaultData("AT", result[0], fileToDescribe);
+				//
+				result[0].put("ATTXT", fileToDescribe.getText());
+				Date creationDate = fileToDescribe.getCreationInfo().getCreationDate();
+				result[0].put("ATFCCN", 1);
+				DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+				result[0].put("ATFCDT", dayFormatter.format(creationDate));
+				SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
+				result[0].put("ATFCTM", hourFormatter.format(creationDate));
 				return result;
 			}
 		}, 
@@ -182,7 +177,7 @@ public @Supported class FileDescriptionDisplayer {
 			public String baseOutputFileName() {
 				return "QAFDACCP";
 			}
-			@SuppressWarnings({ "serial", "unchecked" })
+			@SuppressWarnings({"unchecked" })
 			@Override
 			public LinkedHashMap<String, Object>[] assignments(final QFile fileToDescribe) {
 				QDatabaseFile databaseFile = (QDatabaseFile) fileToDescribe;
@@ -191,18 +186,7 @@ public @Supported class FileDescriptionDisplayer {
 				int i = 1;
 				for (QFileFormatKeyField keyField : key.getKeyFields()) {
 					LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-					map.put("APRCEN", "1"); //Secolo chiamata
-					Date now = new Date();
-					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-					map.put("APRDAT", dayFormatter.format(now));
-					SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
-					map.put("APRTIM", hourFormatter.format(now));
-					map.put("APFILE", fileToDescribe.getName());
-					map.put("APLIB", fileToDescribe.getLibrary());
-					FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
-					map.put("APFTYP", typeDescripion.descr1);
-					map.put("APFILA", typeDescripion.descr2);
-					map.put("APFATR", typeDescripion.descr3);
+					addDefaultData("AP", map, fileToDescribe);
 					//	
 					map.put("APUNIQ", key.isUnique() ? "Y" : "N");
 					QPhysicalFile referredPF = findPF(fileToDescribe);
@@ -243,6 +227,23 @@ public @Supported class FileDescriptionDisplayer {
 			public String baseOutputFileName() {
 				return "QAFDMBRL";
 			}
+			@SuppressWarnings({ "serial", "unchecked" })
+			@Override
+			public LinkedHashMap<String, Object>[] assignments(final QFile fileToDescribe) {
+				LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
+				result[0] = new LinkedHashMap<String, Object>();
+				addDefaultData("ML", result[0], fileToDescribe);
+				//Per file fisici. TODO: gestione source?
+				result[0].put("MLNOMB", 1); //Nr. membri
+				result[0].put("MLNAME", fileToDescribe.getName());
+//				result[0].put("MLNRCD", countRecordsOf(fileToDescribe));
+				Date creationDate = fileToDescribe.getCreationInfo().getCreationDate();
+				result[0].put("MLCCEN", 1);
+				DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+				result[0].put("MLCDAT", dayFormatter.format(creationDate));
+				result[0].put("MLMTXT", fileToDescribe.getText());
+				return result;
+			}
 		}, 
 		SELECT {
 			@Override
@@ -270,6 +271,21 @@ public @Supported class FileDescriptionDisplayer {
 
 		public LinkedHashMap<String, Object>[] assignments(QFile fileToDescribe) {
 			throw new RuntimeException("Unsupported information type " + this.name());	
+		}
+		
+		private static void addDefaultData(String prefix, LinkedHashMap<String, Object> map, QFile fileToDescribe) {
+			map.put(prefix + "RCEN", "1"); //Secolo chiamata
+			Date now = new Date();
+			DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+			map.put(prefix + "RDAT", dayFormatter.format(now));
+			SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
+			map.put(prefix + "RTIM", hourFormatter.format(now));
+			map.put(prefix + "FILE", fileToDescribe.getName());
+			map.put(prefix + "LIB", fileToDescribe.getLibrary());
+			FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
+			map.put(prefix + "FTYP", typeDescripion.descr1);
+			map.put(prefix + "FILA", typeDescripion.descr2);
+			map.put(prefix + "FATR", typeDescripion.descr3);
 		}
 	}
 
@@ -352,6 +368,7 @@ public @Supported class FileDescriptionDisplayer {
 	}
 	
 
+	
 	private static class FileTypeDescripion {
 		public String descr1;
 		public String descr2;
@@ -368,6 +385,9 @@ public @Supported class FileDescriptionDisplayer {
 				return new FileTypeDescripion("L", "*LGL", "LF");
 			}
 			if (fileToDescribe instanceof QPhysicalFile) {
+				return new FileTypeDescripion("P", "*PHY", "PF");
+			}
+			if (fileToDescribe instanceof QSourceFile) {
 				return new FileTypeDescripion("P", "*PHY", "PF");
 			}			
 			throw new RuntimeException("Unsupported file type: " + fileToDescribe);
