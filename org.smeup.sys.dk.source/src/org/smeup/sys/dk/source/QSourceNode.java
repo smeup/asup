@@ -53,4 +53,20 @@ public interface QSourceNode extends QObject {
 	 * @generated
 	 */
 	boolean isRoot();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	String getText();
 } // QSourceNode

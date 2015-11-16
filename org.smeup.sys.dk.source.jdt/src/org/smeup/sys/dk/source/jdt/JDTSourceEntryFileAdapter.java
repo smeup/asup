@@ -11,9 +11,13 @@
  */
 package org.smeup.sys.dk.source.jdt;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -61,6 +65,39 @@ public class JDTSourceEntryFileAdapter implements QSourceEntry {
 			throw new IOException(e);
 		}
 //		return new FileInputStream(getLocation().getRawPath());
+	}
+
+	@Override
+	public String getName() {
+		String fileName = file.getName();
+		if (fileName.toUpperCase().endsWith(".XMI")) {
+			return fileName.substring(0, fileName.length() - 4);
+		}
+		return fileName;
+	}
+
+	@Override
+	//TODO: migliorare implementazione
+	public String getText() {
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(file.getContents()));
+			String line;
+				line = reader.readLine();
+	        if (line != null){
+	            line = reader.readLine();
+	            if (line != null) {
+	            	Pattern pattern = Pattern.compile("text=\"(.*?)\"");
+	            	Matcher m = pattern.matcher(line);
+	            	if (m.find()) {
+	            		String result = m.group();
+	            		return result.substring(6, result.length()-1);
+	            	}
+	            }
+	        }
+	        return null;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

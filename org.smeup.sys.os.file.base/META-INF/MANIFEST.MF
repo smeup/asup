@@ -20,3 +20,4 @@ Require-Bundle: org.smeup.sys.os.file,
  org.smeup.sys.il.esam
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Import-Package: org.smeup.sys.dk.source

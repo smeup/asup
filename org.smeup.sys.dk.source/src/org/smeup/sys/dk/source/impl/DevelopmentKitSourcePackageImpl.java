@@ -396,6 +396,10 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		addEOperation(sourceNodeEClass, ecorePackage.getEBoolean(), "isRoot", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(sourceNodeEClass, ecorePackage.getEString(), "getName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(sourceNodeEClass, ecorePackage.getEString(), "getText", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 	}

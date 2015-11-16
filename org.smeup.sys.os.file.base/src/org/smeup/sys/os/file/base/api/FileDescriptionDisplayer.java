@@ -18,6 +18,8 @@ import org.smeup.sys.db.core.QStatement;
 import org.smeup.sys.db.syntax.QDefinitionWriter;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
+import org.smeup.sys.dk.source.QSourceEntry;
+import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -65,7 +67,8 @@ public @Supported class FileDescriptionDisplayer {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QDefinitionWriter definitionWriter;
-
+	@Inject
+	private QSourceManager sourceManager;
 	
 	
 	public @Main void main(
@@ -225,19 +228,33 @@ public @Supported class FileDescriptionDisplayer {
 			@SuppressWarnings({"unchecked" })
 			@Override
 			public LinkedHashMap<String, Object>[] assignments(final RichQFile fileToDescribe) {
-				LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
-				result[0] = new LinkedHashMap<String, Object>();
-				addDefaultData("ML", result[0], fileToDescribe.qFile);
-				//Per file fisici. TODO: gestione source?
-				result[0].put("MLNOMB", 1); //Nr. membri
-				result[0].put("MLNAME", fileToDescribe.qFile.getName());
-				result[0].put("MLNRCD", fileToDescribe.countRecords());
-				Date creationDate = fileToDescribe.qFile.getCreationInfo().getCreationDate();
-				result[0].put("MLCCEN", 1);
-				DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-				result[0].put("MLCDAT", dayFormatter.format(creationDate));
-				result[0].put("MLMTXT", fileToDescribe.qFile.getText());
-				return result;
+				if (fileToDescribe.qFile instanceof QDatabaseFile) {
+					LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
+					result[0] = new LinkedHashMap<String, Object>();
+					addDefaultData("ML", result[0], fileToDescribe.qFile);
+					result[0].put("MLNOMB", 1); //Nr. membri
+					result[0].put("MLNAME", fileToDescribe.qFile.getName());
+					result[0].put("MLNRCD", fileToDescribe.countRecords());
+					Date creationDate = fileToDescribe.qFile.getCreationInfo().getCreationDate();
+					result[0].put("MLCCEN", 1);
+					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
+					result[0].put("MLCDAT", dayFormatter.format(creationDate));
+					result[0].put("MLMTXT", fileToDescribe.qFile.getText());
+					return result;
+				} else if (fileToDescribe.qFile instanceof QSourceFile) {
+					List<QSourceEntry> members = fileToDescribe.getMembers();
+					List<LinkedHashMap<String, Object>> result = new ArrayList<LinkedHashMap<String,Object>>();
+					for (QSourceEntry member : members) {
+						LinkedHashMap<String, Object> memberDescription = new LinkedHashMap<String, Object>();
+						addDefaultData("ML", memberDescription, fileToDescribe.qFile);
+						memberDescription.put("MLNOMB", members.size()); //Nr. membri
+						memberDescription.put("MLNAME", member.getName());
+						memberDescription.put("MLMTXT", member.getText());
+						result.add(memberDescription);
+					}
+					return result.toArray(new LinkedHashMap[0]);
+				}
+				throw new RuntimeException("Wrong file type " + fileToDescribe.qFile);
 			}
 		}, 
 		SELECT {
@@ -371,6 +388,11 @@ public @Supported class FileDescriptionDisplayer {
 			this.qFile = qFile;
 		}
 		
+		public List<QSourceEntry> getMembers() {
+			QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), qFile.getLibrary(), QFile.class, qFile.getName());
+			return FileDescriptionDisplayer.this.sourceManager.listChildEntries(job.getContext(), sourceEntry);
+		}
+
 		public int countRecords() {
 			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
 			Table table = connection.getCatalogMetaData().getTable(qFile.getLibrary(), qFile.getName());
