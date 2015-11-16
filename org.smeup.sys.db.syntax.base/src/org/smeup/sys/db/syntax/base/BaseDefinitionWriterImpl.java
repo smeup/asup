@@ -178,6 +178,11 @@ public abstract class BaseDefinitionWriterImpl extends StatementWriterImpl imple
 	}
 
 	@Override
+	public String countRecords(Table table) {
+		return "SELECT COUNT(*) FROM " + getQualifiedNameInSQLFormat(table);
+	}
+	
+	@Override
 	public String selectData(Table table) {
 		return "SELECT * FROM " + getQualifiedNameInSQLFormat(table);
 	}

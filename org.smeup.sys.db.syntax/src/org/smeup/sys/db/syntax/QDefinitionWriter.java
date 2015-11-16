@@ -156,6 +156,14 @@ public interface QDefinitionWriter extends QStatementWriter {
 	 * @model required="true" tableRequired="true"
 	 * @generated
 	 */
+	String countRecords(Table table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" tableRequired="true"
+	 * @generated
+	 */
 	String insertData(Table table);
 
 	/**
