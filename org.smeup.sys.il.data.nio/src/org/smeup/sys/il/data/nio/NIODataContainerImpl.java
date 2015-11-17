@@ -35,8 +35,6 @@ import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
-import org.smeup.sys.il.data.QDataWriter;
-import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -54,23 +52,18 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private Map<String, QData> datas;
 
-	private QDataWriter dataWriter;
-
 	private boolean useDefault;
 
 	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
-		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		this.useDefault = useDefault;
 
 		this.dataContext = dataContext;
-
 	}
 
 	@Override
 	public void close() {
-		this.dataWriter = null;
 		this.dataContext = null;
 		this.datas = new HashMap<String, QData>();
 		this.dataTerms = new HashMap<String, QDataTerm<?>>();
@@ -274,7 +267,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 		if (overlay == null) {
-			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+			NIODataResetter resetter = new NIODataResetter(data);
 			dataTerm.accept(resetter);
 		}
 		
@@ -311,7 +304,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = getOrCreateData(dataTerm);
 		data.clear();
 
-		NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+		NIODataResetter resetter = new NIODataResetter(data);
 		dataTerm.accept(resetter);
 
 		try {
@@ -347,7 +340,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		data.clear();
 
 		if (useDefault) {
-			NIODataResetter resetter = new NIODataResetter(data, dataWriter);
+			NIODataResetter resetter = new NIODataResetter(data);
 			dataTerm.accept(resetter);
 		}
 
