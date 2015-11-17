@@ -342,6 +342,10 @@
               unary="true"
               value="*NONE"/>
         </facets>
+        <facets
+            xsi:type="il-core-meta:Default">
+          <values>*SAME</values>
+        </facets>
         <cardinality
             max="250"/>
         <definition
