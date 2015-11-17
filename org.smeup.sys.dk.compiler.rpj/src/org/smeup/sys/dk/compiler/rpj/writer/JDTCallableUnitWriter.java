@@ -651,7 +651,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 		Assignment assignment = getAST().newAssignment();
 		assignment.setLeftHandSide(buildExpression(getCompilationUnit().normalizeTermName(procedure.getName())));
-		assignment.setRightHandSide(buildExpression("qRPJ.bindProcedure(" + getCompilationUnit().normalizeTypeName(procedure.getName()) + ".class)"));
+		assignment.setRightHandSide(buildExpression("qRPJ.bindProcedure(this, " + getCompilationUnit().normalizeTypeName(procedure.getName()) + ".class)"));
 		assignment.setOperator(Operator.ASSIGN);
 		ifStatement.setThenStatement(getAST().newExpressionStatement(assignment));
 
@@ -719,7 +719,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		try {
 
 			boolean static_ = false;
-			UnitScope scope = UnitScope.PRIVATE;
+			UnitScope scope = UnitScope.PROTECTED;
 
 			switch (getCompilationSetup().getProcedureType()) {
 			case INNER:

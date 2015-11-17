@@ -19,6 +19,7 @@ import org.eclipse.jdt.core.dom.Assignment.Operator;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.FieldAccess;
+import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
@@ -55,10 +56,10 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 
 		writeImport(Procedure.class);
 		writeImport(RPJProcedureSupport.class);
-		
+
 		if (static_)
 			getTarget().modifiers().add(getAST().newModifier(Modifier.ModifierKeyword.STATIC_KEYWORD));
-		
+
 		this.static_ = static_;
 		this.scope = scope;
 	}
@@ -117,10 +118,10 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 		// datas
 		if (procedure.getDataSection() != null)
 			for (QDataTerm<?> dataTerm : procedure.getDataSection().getDatas()) {
-				
-				if(getCompilationUnit().getParentUnit().getDataTerm(dataTerm.getName(), false) != null)
+
+				if (getCompilationUnit().getParentUnit().getDataTerm(dataTerm.getName(), false) != null)
 					continue;
-				
+
 				writeInnerData(dataTerm, scope, static_);
 			}
 	}
@@ -164,7 +165,7 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 					thisAccess.setExpression(getAST().newThisExpression());
 					thisAccess.setName(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
 
-					if (delegateTerm.isConstant()) {						
+					if (delegateTerm.isConstant()) {
 						Assignment assignment = getAST().newAssignment();
 
 						assignment.setLeftHandSide(thisAccess);
@@ -180,11 +181,19 @@ public class JDTProcedureWriter extends JDTCallableUnitWriter {
 						methodInvocation.setName(getAST().newSimpleName("assign"));
 						methodInvocation.setExpression(getAST().newSimpleName(getCompilationUnit().normalizeTermName(entryParameter.getName())));
 						methodInvocation.arguments().add(thisAccess);
-						
 						ExpressionStatement expressionStatement = getAST().newExpressionStatement(methodInvocation);
-						block.statements().add(expressionStatement);
-					}
+						if (entryParameter.isNullable()) {
+							IfStatement ifStatement = getAST().newIfStatement();
+							String expression = getCompilationUnit().normalizeTermName(entryParameter.getName()) + " != null";
+							ifStatement.setExpression(buildExpression(expression));
 
+							ifStatement.setThenStatement(expressionStatement);
+							block.statements().add(ifStatement);
+
+						} else {
+							block.statements().add(expressionStatement);
+						}
+					}
 				}
 			}
 		}
