@@ -16,6 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 import javax.inject.Inject;
 
@@ -98,7 +99,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
-		
+
 		// retrieve job
 		QJob job = jobManager.lookup(contextID);
 		if (job == null)
@@ -110,8 +111,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		CLRow clRow = null;
 		try {
 			clRow = result.getRows().iterator().next();
-		}
-		catch(NoSuchElementException e) {
+		} catch (NoSuchElementException e) {
 			result.toString();
 		}
 		CLCommand clCommand = clRow.getCommand();
@@ -152,7 +152,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 				break;
 			case UNSUPPORTED:
 				developmentStatus.setValue(DevelopmentStatusType.UNSUPPORTED);
-				dataTerm.getFacets().add(developmentStatus);				
+				dataTerm.getFacets().add(developmentStatus);
 				break;
 			}
 			dataTerms.put(commandParameter.getName(), dataTerm);
@@ -193,9 +193,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			else
 				value = "";
 
-			// replace variable with prefix '&'
-			// value = replaceVariable(value, variables);
-
 			// Assign value
 			QDataTerm<?> dataTerm = dataTerms.get(commandParameter.getName());
 
@@ -217,21 +214,29 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		QData data = dataContainer.getData(dataTerm);
 
 		if (value.startsWith("&")) {
-			Object variable = variables.get(value.substring(1).toLowerCase());
 
-			if (variable == null)
-				return data;
+			int e = 1;
+			StringTokenizer st = new StringTokenizer(value);
+			while (st.hasMoreTokens()) {
+				String token = st.nextToken();
 
-			if (!(variable instanceof QBufferedData))
-				return data;
-			
-			if (data instanceof QBufferedData) {
-				((QBufferedData) variable).assign((QBufferedData) data);	
-			}
-			else if(data instanceof QList<?>) {			
-				QList<?> list = (QList<?>) data;
-				if(list.capacity()>0)
-					((QAdapter)list.get(1)).eval(variable);			
+				Object variable = variables.get(token.substring(1).toLowerCase());
+
+				if (variable == null)
+					continue;
+
+				if (!(variable instanceof QBufferedData))
+					continue;
+
+				if (data instanceof QBufferedData) {
+					((QBufferedData) variable).assign((QBufferedData) data);
+				} else if (data instanceof QList<?>) {
+					QList<?> list = (QList<?>) data;
+					((QBufferedData) variable).assign((QBufferedData) list.get(e));
+//					((QAdapter) list.get(e)).eval(variable);
+				}
+
+				e++;
 			}
 
 			return data;
@@ -689,7 +694,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	@Override
 	public QDataContainer decodeCommand(String contextID, String command, boolean useDefaults) {
 
-		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);		
+		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);
 		return callableCommand.getDataContainer();
 	}
 
