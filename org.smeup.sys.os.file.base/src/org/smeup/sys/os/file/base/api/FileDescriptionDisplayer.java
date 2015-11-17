@@ -1,8 +1,10 @@
 package org.smeup.sys.os.file.base.api;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -17,7 +19,9 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
+import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
@@ -40,6 +44,7 @@ import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
+import org.smeup.sys.os.file.base.api.tools.Displayer;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 
@@ -86,6 +91,8 @@ public @Supported class FileDescriptionDisplayer {
 
 		checkType(fileAttributes, qFile);
 		
+		QObjectWriter objectWriter = null;
+
 		switch (output.asEnum()) {
 		case OUTFILE:
 			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
@@ -94,12 +101,22 @@ public @Supported class FileDescriptionDisplayer {
 			break;
 
 		case PRINT:
-			//TODO
+			objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			break;
 		case TERM_STAR:
-			//TODO			
+			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		}
+		
+		if (objectWriter != null) {
+			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
+			writeInfosTo(objectWriter, informationType.assignments(new RichQFile(qFile)));			
+		}
+	}
+
+
+	private void writeInfosTo(QObjectWriter objectWriter, LinkedHashMap<String, Object>[] assignments) {
+		new Displayer(objectWriter).display(Arrays.asList(assignments));
 	}
 
 
