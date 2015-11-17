@@ -19,7 +19,9 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.SortDirection;
@@ -109,7 +111,11 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void eval(QArray<D> value) {
-		movea(value, true);
+		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+		for(int e=1; e<=capacity();e++) {
+			dataWriter.set(value.get(e));
+			get(e).eval(dataWriter);
+		}
 	}
 
 	@Override
