@@ -585,22 +585,22 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source) {
-		xlate(from.asString(), to.asString(), source, 1, false);
+		xlate(from.asString(), to.asString(), source.asString(), 1, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source) {
-		xlate(from, to, source, 1, false);
+		xlate(from, to, source.asString(), 1, false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, boolean clear) {
-		xlate(from, to, source, 1, clear);
+		xlate(from, to, source.asString(), 1, clear);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, Number start) {
-		xlate(from, to, source, start, false);
+		xlate(from, to, source.asString(), start, false);
 	}
 
 	@Override
@@ -610,72 +610,72 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start) {
-		xlate(from, to, source, start, false);
+		xlate(from, to, source.asString(), start.i(), false);
 	}
 
 	@Override
 	public void xlate(String from, String to, QString source, QNumeric start, boolean clear) {
-		xlate(from, to, source, start.i(), clear);
+		xlate(from, to, source.asString(), start.i(), clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source) {
-		xlate(from, to, source, 1, false);
+		xlate(from, to.asString(), source.asString(), 1, false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, boolean clear) {
-		xlate(from, to, source, 1, clear);
+		xlate(from, to.asString(), source.asString(), 1, clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start) {
-		xlate(from, to, source, start, false);
+		xlate(from, to.asString(), source.asString(), start, false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, Number start, boolean clear) {
-		xlate(from, to.asString(), source, start, clear);
+		xlate(from, to.asString(), source.asString(), start, clear);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start) {
-		xlate(from, to, source, start.i(), false);
+		xlate(from, to.asString(), source.asString(), start.i(), false);
 	}
 
 	@Override
 	public void xlate(String from, QString to, QString source, QNumeric start, boolean clear) {
-		xlate(from, to, source, start.i(), clear);
+		xlate(from, to.asString(), source.asString(), start.i(), clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source) {
-		xlate(from, to, source, 1, false);
+		xlate(from.asString(), to, source.asString(), 1, false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, boolean clear) {
-		xlate(from, to, source, 1, clear);
+		xlate(from.asString(), to, source.asString(), 1, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to, source.asString(), start, false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, Number start, boolean clear) {
-		xlate(from.asString(), to, source, start, clear);
+		xlate(from.asString(), to, source.asString(), start, clear);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to, source.asString(), start.i(), false);
 	}
 
 	@Override
 	public void xlate(QString from, String to, QString source, QNumeric start, boolean clear) {
-		xlate(from.asString(), to, source, start, clear);
+		xlate(from.asString(), to, source.asString(), start.i(), clear);
 	}
 	
 	@Override
@@ -685,17 +685,17 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, String source) {
-		xlate(from, to, source, 1, false);
+		xlate(from.asString(), to.asString(), source, 1, false);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, boolean clear) {
-		xlate(from, to, source, 1, clear);
+		xlate(from.asString(), to.asString(), source, 1, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, String source, Number start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to.asString(), source, start, false);
 	}
 
 	@Override
@@ -705,7 +705,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, String source, QNumeric start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to.asString(), source, start.i(), false);
 	}
 
 	@Override
@@ -715,12 +715,12 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source, boolean clear) {
-		xlate(from, to, source, 1, clear);
+		xlate(from.asString(), to.asString(), source.asString(), 1, clear);
 	}
 
 	@Override
 	public void xlate(QString from, QString to, QString source, Number start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to.asString(), source.asString(), start, false);
 	}
 
 	@Override
@@ -730,7 +730,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(QString from, QString to, QString source, QNumeric start) {
-		xlate(from, to, source, start, false);
+		xlate(from.asString(), to.asString(), source.asString(), start.i(), false);
 	}
 
 	@Override
@@ -771,7 +771,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public void xlate(String from, String to, String source, QNumeric start) {
-		xlate(from, to, source, start, false);
+		xlate(from, to, source, start.i(), false);
 	}
 
 	@Override
