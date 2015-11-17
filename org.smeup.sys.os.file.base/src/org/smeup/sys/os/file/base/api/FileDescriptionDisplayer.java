@@ -46,13 +46,16 @@ import org.smeup.sys.os.file.QPrinterFile;
 import org.smeup.sys.os.file.QSourceFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
+import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 import org.smeup.sys.os.file.impl.PhysicalFileImpl;
 
 @Program(name = "QWHDSPFD")
 public @Supported class FileDescriptionDisplayer {
 	public static enum QCPFMSG {
 		CPF3012,    //File &1 non trovato nella libreria &2.
-		CPF3020     //Nessun file di &1 in &2 ha il FILEATR specificato. 
+		CPF3020,    //Nessun file di &1 in &2 ha il FILEATR specificato. 
+		CPF3083,    //Il valore &4, specificato nel parametro TYPE, non è  consentito per &3, file &1 nella libreria &2. I tipi *SPOOL, *SELECT e *JOIN non sono consentiti per un file fisico.
+		CPF3064,   //Liberia &1 non trovata
 	}
 
 	@Inject
@@ -131,7 +134,11 @@ public @Supported class FileDescriptionDisplayer {
 		QFile qFileTo = fileWriter.lookup(toFileName);
 		if(qFileTo == null) {
 			QFile qFileFrom = fileFinder.lookup(typeofinformationEnum.baseOutputFileName(), "QSYS");
-			qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+			try {
+				qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+			} catch (LibraryNotFoundException e) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF3064, toFile.library.asData().trimR());
+			}
 		}	
 		return qFileTo;
 	}
@@ -262,6 +269,18 @@ public @Supported class FileDescriptionDisplayer {
 			public String baseOutputFileName() {
 				return "QAFDSELO";
 			}
+			@Override
+			@SuppressWarnings("unchecked")
+			public LinkedHashMap<String, Object>[] assignments(final RichQFile fileToDescribe) {
+				if (!(fileToDescribe.qFile instanceof QLogicalFile)) {
+					fileToDescribe.throwException(QCPFMSG.CPF3020, new String[] {fileToDescribe.qFile.getName(), fileToDescribe.qFile.getLibrary(), FileTypeDescripion.forType(fileToDescribe.qFile).descr1, "*SELECT"});		
+				}
+				//TODO: implementazione incompleta
+				LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
+				result[0] = new LinkedHashMap<String, Object>();
+				addDefaultData("SO", result[0], fileToDescribe.qFile);
+				return result;
+			}
 		}, 
 		SEQ, 
 		RCDFMT {
@@ -381,16 +400,19 @@ public @Supported class FileDescriptionDisplayer {
 	
 
 	private class RichQFile {
-
 		public final QFile qFile;
 
 		public RichQFile(QFile qFile) {
 			this.qFile = qFile;
 		}
 		
+		public void throwException(QCPFMSG cpf, String[] variables) {
+			throw exceptionManager.prepareException(job, cpf, variables);
+		}
+
 		public List<QSourceEntry> getMembers() {
 			QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), qFile.getLibrary(), QFile.class, qFile.getName());
-			return FileDescriptionDisplayer.this.sourceManager.listChildEntries(job.getContext(), sourceEntry);
+			return sourceManager.listChildEntries(job.getContext(), sourceEntry);
 		}
 
 		public int countRecords() {

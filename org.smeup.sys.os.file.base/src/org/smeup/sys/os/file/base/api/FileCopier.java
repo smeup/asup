@@ -45,11 +45,12 @@ import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.base.api.tools.Displayer;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
+import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 
 @Program(name = "QCPEX0FL")
 public @ToDo class FileCopier {
 	public static enum QCPFMSG {
-		CPF2802, CPF2801, CPF2861
+		CPF2802, CPF2801, CPF2861, CPF9810 
 	}
 
 	@Inject
@@ -123,7 +124,11 @@ public @ToDo class FileCopier {
 				if (createFile.asEnum().equals(CREATEFILEEnum.NO)) {
 					throw exceptionManager.prepareException(job, QCPFMSG.CPF2861, new String[] {toFileName, toFile.library.asData().trimR()});	
 				} else {
-					qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+					try {
+						qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+					} catch (LibraryNotFoundException e) {
+						throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {toFile.library.asData().trimR()});	
+					}
 				}
 			}
 			//
