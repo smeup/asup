@@ -111,11 +111,19 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void eval(QArray<D> value) {
+		
+		int capacity = capacity();
+		if(value.capacity() < capacity)
+			capacity = value.capacity();
+		
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-		for(int e=1; e<=capacity();e++) {
+		for(int e=1; e<=capacity;e++) {
 			dataWriter.set(value.get(e));
 			get(e).eval(dataWriter);
 		}
+		
+		for(int e=capacity+1; e<=capacity();e++) 
+			get(e).clear();
 	}
 
 	@Override

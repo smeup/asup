@@ -297,6 +297,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				// call
 				callableProgram.call();
+				
+				if (!callableProgram.isOpen()) {
+					QProgram program = callableProgram.getProgram();
+					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
+					activationGroup.remove(program);
+				}
+					
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				e.printStackTrace();
 				throw e;
