@@ -66,8 +66,14 @@ public class ObjectDescriptionRetriever {
 			resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), object.library.asData().trimR());
 			break;
 		}
+
+		$$dati.clear();
+		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());
+		// TODO
+		qusec.clear();
+		if(objectNameable == null)
+			qusec.qusbavl.eval(1);
 		
-		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());;
 		if(objectNameable instanceof QTypedObject) {		
 			QTypedObject typedObject = (QTypedObject) objectNameable;
 			if(typedObject != null) {
