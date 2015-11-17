@@ -423,7 +423,7 @@ public class RPJProgramSupport {
 
 		switch (format) {
 		case "Z":
-			character.eval(numberFormat.format(Double.parseDouble(character.s())));
+			character.eval(numberFormat.format(numeric.asInteger()));
 			break;
 		case "X":
 			character.move(numeric);
@@ -1024,8 +1024,8 @@ public class RPJProgramSupport {
 		return string;
 	}
 	
-	public <P extends Object> P bindProcedure(Class<P> klass) {
-		return injector.prepareProcedure(getProgramOwner(), klass);
+	public <P extends Object> P bindProcedure(Object owner, Class<P> klass) {
+		return injector.prepareProcedure(owner, klass);
 	}
 
 	public QDatetime qDate() {

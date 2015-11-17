@@ -127,9 +127,11 @@ public class BaseCallableInjector {
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>(), true);
-
+		Constructor<?> constructor = null;
+		
 		try {
-			Constructor<?> constructor = klass.getDeclaredConstructor(owner.getClass());
+			constructor = klass.getDeclaredConstructor(owner.getClass());
+			constructor.setAccessible(true);
 			@SuppressWarnings("unchecked")
 			P callable = (P) constructor.newInstance(owner);
 
@@ -142,6 +144,8 @@ public class BaseCallableInjector {
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
+			if(constructor != null)
+				constructor.setAccessible(false);
 			dataContainer.close();
 		}
 	}
@@ -181,7 +185,9 @@ public class BaseCallableInjector {
 			// TODO
 			if (field.getName().startsWith("$SWITCH_TABLE"))
 				continue;
-
+			if (field.getName().startsWith("this$"))
+				continue;
+			
 			if (Modifier.isStatic(field.getModifiers())) {
 				if (Modifier.isFinal(field.getModifiers()))
 					continue;

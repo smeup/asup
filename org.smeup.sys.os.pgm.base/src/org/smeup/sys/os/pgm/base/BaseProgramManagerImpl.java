@@ -245,7 +245,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QList<D> listFrom = (QList<D>) from;
 		QList<D> listTo = (QList<D>) to;
 
-		listTo.eval(listFrom);
+		int e = 1;
+		for(D elementFrom: listFrom) {
+			D elementTo = listTo.get(e);
+			((QBufferedData)elementFrom).assign((QBufferedData)elementTo);
+			e++;
+		}
 	}
 
 	@Override

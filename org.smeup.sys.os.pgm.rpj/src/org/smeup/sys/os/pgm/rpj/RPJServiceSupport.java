@@ -149,7 +149,7 @@ public class RPJServiceSupport {
 		return value;
 	}
 
-	public QCharacter p_rxele(String arg0, String arg1, Integer arg2, QCharacter arg3, QDecimal arg4, QDecimal arg5, QCharacter arg6) {
+	public QCharacter p_rxele(String arg0, String arg1, QCharacter arg3, QDecimal arg4, QCharacter arg6) {
 		QCharacter value = dataContext.getDataFactory().createCharacter(32766, true, true);
 		value.eval("");
 
