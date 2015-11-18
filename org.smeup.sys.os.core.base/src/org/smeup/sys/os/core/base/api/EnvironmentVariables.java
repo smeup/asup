@@ -43,6 +43,6 @@ public class EnvironmentVariables {
 
 	@Override
 	public String toString() {
-		return level + "\n" + variables;
+		return "" + variables;
 	}
 }
