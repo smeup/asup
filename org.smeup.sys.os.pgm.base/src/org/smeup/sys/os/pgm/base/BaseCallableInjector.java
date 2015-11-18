@@ -77,14 +77,15 @@ public class BaseCallableInjector {
 	@Inject
 	private QJob job;
 
-	private QDataContext dataContext;
-
 	private QResourceReader<QFile> fileReader;
+	private QDataContext dataContext;
+	private Map<String, Object> callerModules;
 
 	@PostConstruct
 	public void init() {
 		this.fileReader = resourceManager.getResourceReader(job, QFile.class, Scope.LIBRARY_LIST);
 		this.dataContext = dataManager.createDataContext(job.getContext());
+		this.callerModules = new HashMap<String, Object>();
 	}
 
 	public QDataContext getDataContext() {
@@ -107,10 +108,10 @@ public class BaseCallableInjector {
 		try {
 			QAccessFactory accessFactory = esamManager.createFactory(job, dataContainer.getDataContext());
 
-			Map<String, Object> sharedModules = new HashMap<String, Object>();
+			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
-			Object  delegate = injectData(null, klass, dataContainer, accessFactory, sharedModules, records);
+			Object  delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
 			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate);
 			
 			QDataContext dataContext = getDataContext();
@@ -135,10 +136,10 @@ public class BaseCallableInjector {
 			@SuppressWarnings("unchecked")
 			P callable = (P) constructor.newInstance(owner);
 
-			Map<String, Object> sharedModules = new HashMap<String, Object>();
+			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
-			injectFields(owner, klass, callable, dataContainer, null, sharedModules, records);
+			injectFields(owner, klass, callable, dataContainer, null, unitModules, records);
 
 			return callable;
 		} catch (Exception e) {
@@ -150,7 +151,7 @@ public class BaseCallableInjector {
 		}
 	}
 
-	private <C> C injectData(Object owner, Class<C> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> sharedModules, Map<String, QRecord> records)
+	private <C> C injectData(Object owner, Class<C> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		C callable = klass.newInstance();
@@ -158,7 +159,7 @@ public class BaseCallableInjector {
 		if (owner == null)
 			owner = callable;
 
-		injectFields(owner, klass, callable, dataContainer, accessFactory, sharedModules, records);
+		injectFields(owner, klass, callable, dataContainer, accessFactory, unitModules, records);
 
 		// injectSmeupData(callable);
 
@@ -166,12 +167,12 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> sharedModules,
+	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
 			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
-			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, sharedModules, records);
+			injectFields(owner, klass.getSuperclass(), callable, dataContainer, accessFactory, unitModules, records);
 
 		QContext context = dataContainer.getDataContext().getContext();
 
@@ -241,10 +242,26 @@ public class BaseCallableInjector {
 				object = dataContainer.getDataContext();
 			// Module
 			else if (fieldClass.getAnnotation(Module.class) != null) {
-				object = sharedModules.get(fieldClass.getSimpleName());
+				Module module = fieldClass.getAnnotation(Module.class);
+				switch (module.scope()) {
+				case OWNER:
+					object = callerModules.get(fieldClass.getSimpleName());
+					break;
+				case UNIT:
+					object = unitModules.get(fieldClass.getSimpleName());
+					break;
+				}
+				
 				if (object == null) {
-					object = injectData(owner, fieldClass, dataContainer, accessFactory, sharedModules, records);
-					sharedModules.put(fieldClass.getSimpleName(), object);
+					object = injectData(owner, fieldClass, dataContainer, accessFactory, unitModules, records);
+					switch (module.scope()) {
+					case OWNER:
+						callerModules.put(fieldClass.getSimpleName(), object);
+						break;
+					case UNIT:
+						unitModules.put(fieldClass.getSimpleName(), object);
+						break;
+					}
 				}
 			}
 			// Caller

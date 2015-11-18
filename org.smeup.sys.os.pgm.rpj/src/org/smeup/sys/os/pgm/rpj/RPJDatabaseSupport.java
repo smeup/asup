@@ -18,9 +18,10 @@ import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
+import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.def.BinaryType;
 
-@Module(name="*SQL")
+@Module(name="*SQL", scope = Scope.OWNER)
 public class RPJDatabaseSupport {
 
 	@DataDef

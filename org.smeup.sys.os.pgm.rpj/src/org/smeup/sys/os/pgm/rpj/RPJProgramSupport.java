@@ -41,6 +41,7 @@ import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.data.annotation.Module.Scope;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
@@ -51,7 +52,7 @@ import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
 import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
 
-@Module(name="*RPJ")
+@Module(name="*RPJ", scope = Scope.OWNER)
 public class RPJProgramSupport {
 	
 	@Inject
