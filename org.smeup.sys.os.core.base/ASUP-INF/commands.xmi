@@ -12,13 +12,11 @@
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"
       text="Add Environment Variable"
-      program="QP0ZADDE"
-      status="POS">
+      program="QP0ZADDE">
     <parameters
         allowVariable="true"
         name="ENVVAR"
-        position="1"
-        status="POS">
+        position="1">
       <dataTerm
           name="environmentVariable">
         <definition
@@ -29,8 +27,7 @@
     <parameters
         allowVariable="true"
         name="VALUE"
-        position="2"
-        status="POS">
+        position="2">
       <dataTerm
           name="initialValue">
         <facets
@@ -76,8 +73,7 @@
     <parameters
         allowVariable="true"
         name="LEVEL"
-        position="4"
-        status="POS">
+        position="4">
       <dataTerm
           name="level"
           restricted="true">
@@ -98,20 +94,179 @@
     <parameters
         allowVariable="true"
         name="REPLACE"
-        position="5"
-        status="POS">
+        position="5">
       <dataTerm
           name="replaceExistingEntry"
           restricted="true">
         <facets
             xsi:type="il-core:Special">
           <elements
-              name="*NO"/>
+              name="*NO"
+              value="N"/>
           <elements
-              name="*YES"/>
+              name="*YES"
+              value="Y"/>
         </facets>
         <default
             value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="4"/>
+      </dataTerm>
+    </parameters>
+    <source
+        type="CMD"
+        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;ADDENVVAR&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHP0ZCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;ADDENVVAR&quot; MaxPos=&quot;3&quot; Prompt=&quot;Add Environment Variable&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;ENVVAR&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Environment variable&quot; Len=&quot;128&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Initial value&quot; Len=&quot;1024&quot; Rstd=&quot;NO&quot; Dft=&quot;*NULL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NULL&quot; MapTo=&quot;*NULL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CCSID&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;INT4&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Coded character set ID&quot; Rstd=&quot;NO&quot; Dft=&quot;*JOB&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;65535&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;__PGM&quot; ChoicePgm=&quot;QTBCCLST&quot; ChoiceLib=&quot;QSYS&quot;>&lt;SpcVal>&lt;Value Val=&quot;*JOB&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*HEX&quot; MapTo=&quot;65535&quot;/>&lt;/SpcVal>&lt;ChoicePgmText Text= &quot;*JOB, *HEX...&quot;>&lt;/ChoicePgmText>&lt;ChoicePgmValues>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*HEX&quot;/>&lt;Value Val=&quot;37&quot;/>&lt;Value Val=&quot;256&quot;/>&lt;Value Val=&quot;273&quot;/>&lt;Value Val=&quot;277&quot;/>&lt;Value Val=&quot;278&quot;/>&lt;Value Val=&quot;280&quot;/>&lt;Value Val=&quot;284&quot;/>&lt;Value Val=&quot;285&quot;/>&lt;Value Val=&quot;290&quot;/>&lt;Value Val=&quot;297&quot;/>&lt;Value Val=&quot;420&quot;/>&lt;Value Val=&quot;423&quot;/>&lt;Value Val=&quot;424&quot;/>&lt;Value Val=&quot;425&quot;/>&lt;Value Val=&quot;500&quot;/>&lt;Value Val=&quot;833&quot;/>&lt;Value Val=&quot;836&quot;/>&lt;Value Val=&quot;838&quot;/>&lt;Value Val=&quot;870&quot;/>&lt;Value Val=&quot;871&quot;/>&lt;Value Val=&quot;875&quot;/>&lt;Value Val=&quot;880&quot;/>&lt;Value Val=&quot;905&quot;/>&lt;Value Val=&quot;918&quot;/>&lt;Value Val=&quot;924&quot;/>&lt;Value Val=&quot;930&quot;/>&lt;Value Val=&quot;933&quot;/>&lt;Value Val=&quot;935&quot;/>&lt;Value Val=&quot;937&quot;/>&lt;Value Val=&quot;939&quot;/>&lt;Value Val=&quot;1025&quot;/>&lt;Value Val=&quot;1026&quot;/>&lt;Value Val=&quot;1027&quot;/>&lt;Value Val=&quot;1047&quot;/>&lt;Value Val=&quot;1097&quot;/>&lt;Value Val=&quot;1112&quot;/>&lt;Value Val=&quot;1122&quot;/>&lt;Value Val=&quot;1123&quot;/>&lt;Value Val=&quot;1130&quot;/>&lt;Value Val=&quot;1132&quot;/>&lt;Value Val=&quot;1137&quot;/>&lt;Value Val=&quot;1140&quot;/>&lt;Value Val=&quot;1141&quot;/>&lt;Value Val=&quot;1142&quot;/>&lt;Value Val=&quot;1143&quot;/>&lt;Value Val=&quot;1144&quot;/>&lt;Value Val=&quot;1145&quot;/>&lt;Value Val=&quot;1146&quot;/>&lt;Value Val=&quot;1147&quot;/>&lt;Value Val=&quot;1148&quot;/>&lt;Value Val=&quot;1149&quot;/>&lt;Value Val=&quot;1153&quot;/>&lt;Value Val=&quot;1154&quot;/>&lt;Value Val=&quot;1155&quot;/>&lt;Value Val=&quot;1156&quot;/>&lt;Value Val=&quot;1157&quot;/>&lt;Value Val=&quot;1158&quot;/>&lt;Value Val=&quot;1160&quot;/>&lt;Value Val=&quot;1164&quot;/>&lt;Value Val=&quot;1166&quot;/>&lt;Value Val=&quot;1364&quot;/>&lt;Value Val=&quot;1371&quot;/>&lt;Value Val=&quot;1377&quot;/>&lt;Value Val=&quot;1388&quot;/>&lt;Value Val=&quot;1399&quot;/>&lt;Value Val=&quot;4971&quot;/>&lt;Value Val=&quot;5026&quot;/>&lt;Value Val=&quot;5035&quot;/>&lt;Value Val=&quot;5123&quot;/>&lt;Value Val=&quot;8612&quot;/>&lt;Value Val=&quot;9030&quot;/>&lt;Value Val=&quot;12708&quot;/>&lt;Value Val=&quot;13121&quot;/>&lt;Value Val=&quot;13124&quot;/>&lt;Value Val=&quot;28709&quot;/>&lt;Value Val=&quot;57777&quot;/>&lt;Value Val=&quot;62211&quot;/>&lt;Value Val=&quot;62224&quot;/>&lt;Value Val=&quot;62235&quot;/>&lt;Value Val=&quot;62245&quot;/>&lt;Value Val=&quot;62251&quot;/>&lt;Value Val=&quot;65535&quot;/>&lt;/ChoicePgmValues>&lt;/Parm>&lt;Parm Kwd=&quot;LEVEL&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Level&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*JOB&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*JOB, *SYS&quot; >&lt;Values>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*SYS&quot;/>&lt;/Values>&lt;/Parm>&lt;Parm Kwd=&quot;REPLACE&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Replace existing entry&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;Values>&lt;Value Val=&quot;*NO&quot;/>&lt;Value Val=&quot;*YES&quot;/>&lt;/Values>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+  </contents>
+  <contents
+      xsi:type="os-cmd:Command"
+      name="RMVENVVAR"
+      text="Remove Environment Variable"
+      program="QP0ZDLTE">
+    <parameters
+        allowVariable="true"
+        name="ENVVAR"
+        position="1">
+      <dataTerm
+          name="environmentVariable">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="128"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="LEVEL"
+        position="4">
+      <dataTerm
+          name="level"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOB"/>
+          <elements
+              name="*SYS"/>
+        </facets>
+        <default
+            value="*JOB"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="4"/>
+      </dataTerm>
+    </parameters>
+    <source
+        type="CMD"
+        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;ADDENVVAR&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHP0ZCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;ADDENVVAR&quot; MaxPos=&quot;3&quot; Prompt=&quot;Add Environment Variable&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;ENVVAR&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Environment variable&quot; Len=&quot;128&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Initial value&quot; Len=&quot;1024&quot; Rstd=&quot;NO&quot; Dft=&quot;*NULL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NULL&quot; MapTo=&quot;*NULL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CCSID&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;INT4&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Coded character set ID&quot; Rstd=&quot;NO&quot; Dft=&quot;*JOB&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;65535&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;__PGM&quot; ChoicePgm=&quot;QTBCCLST&quot; ChoiceLib=&quot;QSYS&quot;>&lt;SpcVal>&lt;Value Val=&quot;*JOB&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*HEX&quot; MapTo=&quot;65535&quot;/>&lt;/SpcVal>&lt;ChoicePgmText Text= &quot;*JOB, *HEX...&quot;>&lt;/ChoicePgmText>&lt;ChoicePgmValues>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*HEX&quot;/>&lt;Value Val=&quot;37&quot;/>&lt;Value Val=&quot;256&quot;/>&lt;Value Val=&quot;273&quot;/>&lt;Value Val=&quot;277&quot;/>&lt;Value Val=&quot;278&quot;/>&lt;Value Val=&quot;280&quot;/>&lt;Value Val=&quot;284&quot;/>&lt;Value Val=&quot;285&quot;/>&lt;Value Val=&quot;290&quot;/>&lt;Value Val=&quot;297&quot;/>&lt;Value Val=&quot;420&quot;/>&lt;Value Val=&quot;423&quot;/>&lt;Value Val=&quot;424&quot;/>&lt;Value Val=&quot;425&quot;/>&lt;Value Val=&quot;500&quot;/>&lt;Value Val=&quot;833&quot;/>&lt;Value Val=&quot;836&quot;/>&lt;Value Val=&quot;838&quot;/>&lt;Value Val=&quot;870&quot;/>&lt;Value Val=&quot;871&quot;/>&lt;Value Val=&quot;875&quot;/>&lt;Value Val=&quot;880&quot;/>&lt;Value Val=&quot;905&quot;/>&lt;Value Val=&quot;918&quot;/>&lt;Value Val=&quot;924&quot;/>&lt;Value Val=&quot;930&quot;/>&lt;Value Val=&quot;933&quot;/>&lt;Value Val=&quot;935&quot;/>&lt;Value Val=&quot;937&quot;/>&lt;Value Val=&quot;939&quot;/>&lt;Value Val=&quot;1025&quot;/>&lt;Value Val=&quot;1026&quot;/>&lt;Value Val=&quot;1027&quot;/>&lt;Value Val=&quot;1047&quot;/>&lt;Value Val=&quot;1097&quot;/>&lt;Value Val=&quot;1112&quot;/>&lt;Value Val=&quot;1122&quot;/>&lt;Value Val=&quot;1123&quot;/>&lt;Value Val=&quot;1130&quot;/>&lt;Value Val=&quot;1132&quot;/>&lt;Value Val=&quot;1137&quot;/>&lt;Value Val=&quot;1140&quot;/>&lt;Value Val=&quot;1141&quot;/>&lt;Value Val=&quot;1142&quot;/>&lt;Value Val=&quot;1143&quot;/>&lt;Value Val=&quot;1144&quot;/>&lt;Value Val=&quot;1145&quot;/>&lt;Value Val=&quot;1146&quot;/>&lt;Value Val=&quot;1147&quot;/>&lt;Value Val=&quot;1148&quot;/>&lt;Value Val=&quot;1149&quot;/>&lt;Value Val=&quot;1153&quot;/>&lt;Value Val=&quot;1154&quot;/>&lt;Value Val=&quot;1155&quot;/>&lt;Value Val=&quot;1156&quot;/>&lt;Value Val=&quot;1157&quot;/>&lt;Value Val=&quot;1158&quot;/>&lt;Value Val=&quot;1160&quot;/>&lt;Value Val=&quot;1164&quot;/>&lt;Value Val=&quot;1166&quot;/>&lt;Value Val=&quot;1364&quot;/>&lt;Value Val=&quot;1371&quot;/>&lt;Value Val=&quot;1377&quot;/>&lt;Value Val=&quot;1388&quot;/>&lt;Value Val=&quot;1399&quot;/>&lt;Value Val=&quot;4971&quot;/>&lt;Value Val=&quot;5026&quot;/>&lt;Value Val=&quot;5035&quot;/>&lt;Value Val=&quot;5123&quot;/>&lt;Value Val=&quot;8612&quot;/>&lt;Value Val=&quot;9030&quot;/>&lt;Value Val=&quot;12708&quot;/>&lt;Value Val=&quot;13121&quot;/>&lt;Value Val=&quot;13124&quot;/>&lt;Value Val=&quot;28709&quot;/>&lt;Value Val=&quot;57777&quot;/>&lt;Value Val=&quot;62211&quot;/>&lt;Value Val=&quot;62224&quot;/>&lt;Value Val=&quot;62235&quot;/>&lt;Value Val=&quot;62245&quot;/>&lt;Value Val=&quot;62251&quot;/>&lt;Value Val=&quot;65535&quot;/>&lt;/ChoicePgmValues>&lt;/Parm>&lt;Parm Kwd=&quot;LEVEL&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Level&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*JOB&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*JOB, *SYS&quot; >&lt;Values>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*SYS&quot;/>&lt;/Values>&lt;/Parm>&lt;Parm Kwd=&quot;REPLACE&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Replace existing entry&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;Values>&lt;Value Val=&quot;*NO&quot;/>&lt;Value Val=&quot;*YES&quot;/>&lt;/Values>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+  </contents>
+  <contents
+      xsi:type="os-cmd:Command"
+      name="CHGENVVAR"
+      text="Change Environment Variable"
+      program="QP0ZCHGE">
+    <parameters
+        allowVariable="true"
+        name="ENVVAR"
+        position="1">
+      <dataTerm
+          name="environmentVariable">
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="128"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="VALUE"
+        position="2">
+      <dataTerm
+          name="initialValue">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NULL"
+              value="*NULL"/>
+        </facets>
+        <default
+            value="*NULL"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1024"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="CCSID"
+        position="3"
+        status="POS">
+      <dataTerm
+          name="codedCharacterSetID">
+        <facets
+            xsi:type="il-core-meta:Range"
+            max="65535"
+            min="1"/>
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOB"
+              value="0"/>
+          <elements
+              name="*HEX"
+              value="65535"/>
+        </facets>
+        <default
+            value="*JOB"/>
+        <definition
+            xsi:type="il-data-def:BinaryDef"
+            type="INTEGER"/>
+      </dataTerm>
+    </parameters>
+    <parameters
+        allowVariable="true"
+        name="LEVEL"
+        position="4">
+      <dataTerm
+          name="level"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOB"/>
+          <elements
+              name="*SYS"/>
+        </facets>
+        <default
+            value="*JOB"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="4"/>
+      </dataTerm>
+    </parameters>
+    <source
+        type="CMD"
+        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;ADDENVVAR&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHP0ZCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;ADDENVVAR&quot; MaxPos=&quot;3&quot; Prompt=&quot;Add Environment Variable&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;ENVVAR&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Environment variable&quot; Len=&quot;128&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;VALUE&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Initial value&quot; Len=&quot;1024&quot; Rstd=&quot;NO&quot; Dft=&quot;*NULL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NULL&quot; MapTo=&quot;*NULL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CCSID&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;INT4&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Coded character set ID&quot; Rstd=&quot;NO&quot; Dft=&quot;*JOB&quot; RangeMinVal=&quot;1&quot; RangeMaxVal=&quot;65535&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;__PGM&quot; ChoicePgm=&quot;QTBCCLST&quot; ChoiceLib=&quot;QSYS&quot;>&lt;SpcVal>&lt;Value Val=&quot;*JOB&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*HEX&quot; MapTo=&quot;65535&quot;/>&lt;/SpcVal>&lt;ChoicePgmText Text= &quot;*JOB, *HEX...&quot;>&lt;/ChoicePgmText>&lt;ChoicePgmValues>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*HEX&quot;/>&lt;Value Val=&quot;37&quot;/>&lt;Value Val=&quot;256&quot;/>&lt;Value Val=&quot;273&quot;/>&lt;Value Val=&quot;277&quot;/>&lt;Value Val=&quot;278&quot;/>&lt;Value Val=&quot;280&quot;/>&lt;Value Val=&quot;284&quot;/>&lt;Value Val=&quot;285&quot;/>&lt;Value Val=&quot;290&quot;/>&lt;Value Val=&quot;297&quot;/>&lt;Value Val=&quot;420&quot;/>&lt;Value Val=&quot;423&quot;/>&lt;Value Val=&quot;424&quot;/>&lt;Value Val=&quot;425&quot;/>&lt;Value Val=&quot;500&quot;/>&lt;Value Val=&quot;833&quot;/>&lt;Value Val=&quot;836&quot;/>&lt;Value Val=&quot;838&quot;/>&lt;Value Val=&quot;870&quot;/>&lt;Value Val=&quot;871&quot;/>&lt;Value Val=&quot;875&quot;/>&lt;Value Val=&quot;880&quot;/>&lt;Value Val=&quot;905&quot;/>&lt;Value Val=&quot;918&quot;/>&lt;Value Val=&quot;924&quot;/>&lt;Value Val=&quot;930&quot;/>&lt;Value Val=&quot;933&quot;/>&lt;Value Val=&quot;935&quot;/>&lt;Value Val=&quot;937&quot;/>&lt;Value Val=&quot;939&quot;/>&lt;Value Val=&quot;1025&quot;/>&lt;Value Val=&quot;1026&quot;/>&lt;Value Val=&quot;1027&quot;/>&lt;Value Val=&quot;1047&quot;/>&lt;Value Val=&quot;1097&quot;/>&lt;Value Val=&quot;1112&quot;/>&lt;Value Val=&quot;1122&quot;/>&lt;Value Val=&quot;1123&quot;/>&lt;Value Val=&quot;1130&quot;/>&lt;Value Val=&quot;1132&quot;/>&lt;Value Val=&quot;1137&quot;/>&lt;Value Val=&quot;1140&quot;/>&lt;Value Val=&quot;1141&quot;/>&lt;Value Val=&quot;1142&quot;/>&lt;Value Val=&quot;1143&quot;/>&lt;Value Val=&quot;1144&quot;/>&lt;Value Val=&quot;1145&quot;/>&lt;Value Val=&quot;1146&quot;/>&lt;Value Val=&quot;1147&quot;/>&lt;Value Val=&quot;1148&quot;/>&lt;Value Val=&quot;1149&quot;/>&lt;Value Val=&quot;1153&quot;/>&lt;Value Val=&quot;1154&quot;/>&lt;Value Val=&quot;1155&quot;/>&lt;Value Val=&quot;1156&quot;/>&lt;Value Val=&quot;1157&quot;/>&lt;Value Val=&quot;1158&quot;/>&lt;Value Val=&quot;1160&quot;/>&lt;Value Val=&quot;1164&quot;/>&lt;Value Val=&quot;1166&quot;/>&lt;Value Val=&quot;1364&quot;/>&lt;Value Val=&quot;1371&quot;/>&lt;Value Val=&quot;1377&quot;/>&lt;Value Val=&quot;1388&quot;/>&lt;Value Val=&quot;1399&quot;/>&lt;Value Val=&quot;4971&quot;/>&lt;Value Val=&quot;5026&quot;/>&lt;Value Val=&quot;5035&quot;/>&lt;Value Val=&quot;5123&quot;/>&lt;Value Val=&quot;8612&quot;/>&lt;Value Val=&quot;9030&quot;/>&lt;Value Val=&quot;12708&quot;/>&lt;Value Val=&quot;13121&quot;/>&lt;Value Val=&quot;13124&quot;/>&lt;Value Val=&quot;28709&quot;/>&lt;Value Val=&quot;57777&quot;/>&lt;Value Val=&quot;62211&quot;/>&lt;Value Val=&quot;62224&quot;/>&lt;Value Val=&quot;62235&quot;/>&lt;Value Val=&quot;62245&quot;/>&lt;Value Val=&quot;62251&quot;/>&lt;Value Val=&quot;65535&quot;/>&lt;/ChoicePgmValues>&lt;/Parm>&lt;Parm Kwd=&quot;LEVEL&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Level&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*JOB&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*JOB, *SYS&quot; >&lt;Values>&lt;Value Val=&quot;*JOB&quot;/>&lt;Value Val=&quot;*SYS&quot;/>&lt;/Values>&lt;/Parm>&lt;Parm Kwd=&quot;REPLACE&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Replace existing entry&quot; Len=&quot;4&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;Values>&lt;Value Val=&quot;*NO&quot;/>&lt;Value Val=&quot;*YES&quot;/>&lt;/Values>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+  </contents>
+  <contents
+      xsi:type="os-cmd:Command"
+      name="WRKENVVAR"
+      text="Work with Environment Variable"
+      program="QP0ZWRKE">
+    <parameters
+        allowVariable="true"
+        name="LEVEL"
+        position="4">
+      <dataTerm
+          name="level"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOB"/>
+          <elements
+              name="*SYS"/>
+        </facets>
+        <default
+            value="*JOB"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="4"/>
