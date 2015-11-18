@@ -5,6 +5,9 @@
     <eOperations name="lookup" eType="#//CallableProgram">
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
+    <eOperations name="remove">
+      <eParameters name="program" lowerBound="1" eType="#//Program"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="frameworkContext" lowerBound="1"
         eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
         transient="true" containment="true"/>

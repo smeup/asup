@@ -256,6 +256,8 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 			string.eval((QString) object);
 		else if (object instanceof String) {
 			String s = (String) object;
+			if(s.startsWith("'*") && s.endsWith("'"))
+				s = s.substring(1).substring(0, s.lastIndexOf("'") - 1);
 			string.eval(s);
 		} else if (object instanceof Enum<?>)
 			string.eval((E) object);

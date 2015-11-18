@@ -67,20 +67,20 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 			case CHARACTER:
 				QCharacterDef characterDef = (QCharacterDef)columnDef;
 				if(characterDef.isVarying())
-					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ")");
+					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
 				else if (characterDef.getLength() <= 254)
-					result.append(getNameInSQLFormat(column) + " CHAR(" + characterDef.getLength() + ")");
+					result.append(getNameInSQLFormat(column) + " CHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
 				else
-					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ")");
+					result.append(getNameInSQLFormat(column) + " VARCHAR(" + characterDef.getLength() + ") DEFAULT '' NOT NULL");
 				break;
 			case DECIMAL:
 				QDecimalDef decimalDef = (QDecimalDef)columnDef;
 				if (decimalDef.getLength() > 31)
-					result.append(getNameInSQLFormat(column) + " DECFLOAT(34)");
+					result.append(getNameInSQLFormat(column) + " DECFLOAT(34) DEFAULT 0 NOT NULL");
 				else if (decimalDef.getScale() != 0)
-					result.append(getNameInSQLFormat(column) + " DECIMAL(" + decimalDef.getLength() + ", " + decimalDef.getScale() + ")");
+					result.append(getNameInSQLFormat(column) + " DECIMAL(" + decimalDef.getLength() + ", " + decimalDef.getScale() + ") DEFAULT 0 NOT NULL");
 				else
-					result.append(getNameInSQLFormat(column) + " DECIMAL(" + decimalDef.getLength() + ", 0)");
+					result.append(getNameInSQLFormat(column) + " DECIMAL(" + decimalDef.getLength() + ", 0) DEFAULT 0 NOT NULL");
 				break;
 			default:
 				result.append(getNameInSQLFormat(column) + " " + columnDef.getDataDefType().getName().toUpperCase());

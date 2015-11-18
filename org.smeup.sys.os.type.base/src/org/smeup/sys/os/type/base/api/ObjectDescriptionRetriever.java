@@ -37,23 +37,23 @@ public class ObjectDescriptionRetriever {
 	QUSD0200 qusd0200;
 	@Inject
 	Object object;
-	
+
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QTypeRegistry typeRegistry;
 	@Inject
 	private QJob job;
-	
+
 	public @Main void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QCharacter $fmtob,
 			@DataDef(length = 20) QCharacter $nomog, @DataDef(length = 10) QCharacter $tipog, QUSEC qusec) {
 
 		QType<?> type = typeRegistry.lookup($tipog.trimR());
-		if(type == null)
+		if (type == null)
 			return;
-		
-		QResourceReader<?> resourceReader = null;
-		
+
+		QResourceReader<? extends QTypedObject> resourceReader = null;
+
 		object.eval($nomog);
 		switch (object.library.asEnum()) {
 		case CURLIB:
@@ -66,17 +66,24 @@ public class ObjectDescriptionRetriever {
 			resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), object.library.asData().trimR());
 			break;
 		}
-		
-		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());;
-		if(objectNameable instanceof QTypedObject) {		
-			QTypedObject typedObject = (QTypedObject) objectNameable;
-			if(typedObject != null) {
-				qusd0200.qustd12.eval(typedObject.getText());
-				qusd0200.qusrl02.eval(typedObject.getLibrary());
-				qusd0200.qusobjt01.eval(type.getName());
 
-				$$dati.eval(qusd0200);
-			}
+		$$dati.clear();
+		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());
+		// TODO
+		qusec.clear();
+		if (objectNameable == null) {
+			qusec.qusbavl.eval(1);
+			return;
+		}
+
+		QTypedObject typedObject = (QTypedObject) objectNameable;
+		if (typedObject != null) {
+			if (typedObject.getText() != null)
+				qusd0200.qustd12.eval(typedObject.getText());
+			qusd0200.qusrl02.eval(typedObject.getLibrary());
+			qusd0200.qusobjt01.eval(type.getName());
+
+			$$dati.eval(qusd0200);
 		}
 	}
 
@@ -91,7 +98,6 @@ public class ObjectDescriptionRetriever {
 			LIBL, CURLIB, OTHER
 		}
 	}
-
 
 	public static class QUSD0100 extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
@@ -340,7 +346,6 @@ public class ObjectDescriptionRetriever {
 		@DataDef(length = 10)
 		public QCharacter quspg03;
 	}
-	
 
 	public static class QUSEC extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

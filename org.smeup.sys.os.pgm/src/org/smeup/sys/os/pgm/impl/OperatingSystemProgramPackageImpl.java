@@ -507,6 +507,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		EOperation op = addEOperation(activationGroupEClass, this.getCallableProgram(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(activationGroupEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(activationGroupManagerEClass, QActivationGroupManager.class, "ActivationGroupManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(activationGroupManagerEClass, this.getActivationGroup(), "create", 1, 1, IS_UNIQUE, IS_ORDERED);

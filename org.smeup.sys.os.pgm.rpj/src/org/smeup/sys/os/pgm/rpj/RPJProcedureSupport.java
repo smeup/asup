@@ -18,9 +18,9 @@ import org.smeup.sys.il.data.annotation.Module;
 @Module(name="*PRO")
 public class RPJProcedureSupport {
 	
-	@DataDef(length = 3)
+	@DataDef(precision = 3)
 	private QDecimal qParms;
-
+	
 	public QDecimal qParms() {
 		return this.qParms;
 	}

@@ -1,11 +1,10 @@
 package org.smeup.sys.os.file.base.api;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -20,7 +19,9 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
+import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QEnum;
@@ -31,6 +32,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -38,21 +40,22 @@ import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDisplayFile;
 import org.smeup.sys.os.file.QFile;
-import org.smeup.sys.os.file.QFileFormatKey;
-import org.smeup.sys.os.file.QFileFormatKeyField;
 import org.smeup.sys.os.file.QLogicalFile;
 import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.file.QPrinterFile;
-import org.smeup.sys.os.file.QSourceFile;
 import org.smeup.sys.os.file.base.api.FileFinder.FILE;
+import org.smeup.sys.os.file.base.api.tools.Displayer;
 import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator;
-import org.smeup.sys.os.file.impl.PhysicalFileImpl;
+import org.smeup.sys.os.file.base.api.tools.FileStructureDuplicator.LibraryNotFoundException;
 
 @Program(name = "QWHDSPFD")
 public @Supported class FileDescriptionDisplayer {
 	public static enum QCPFMSG {
 		CPF3012,    //File &1 non trovato nella libreria &2.
-		CPF3020     //Nessun file di &1 in &2 ha il FILEATR specificato. 
+		CPF3020,    //Nessun file di &1 in &2 ha il FILEATR specificato. 
+		CPF3083,    //Il valore &4, specificato nel parametro TYPE, non è  consentito per &3, file &1 nella libreria &2. I tipi *SPOOL, *SELECT e *JOIN non sono consentiti per un file fisico.
+		CPF3064,    //Liberia &1 non trovata
+		CPF3081,    //Il valore &4 specificato nel parametro TYPE non è consentito per &3, file &1 nella libreria &2    
 	}
 
 	@Inject
@@ -73,7 +76,7 @@ public @Supported class FileDescriptionDisplayer {
 	
 	public @Main void main(
 			@Supported @DataDef(qualified = true) FILE file,
-			@Supported @DataDef(dimension = 10, length = 8)  QScroller<QEnum<TYPEOFINFORMATIONEnum, QCharacter>> typeOfInformation,
+			@Supported @DataDef(dimension = 10, length = 8)  QScroller<QEnum<TypeOfFileInformationEnum, QCharacter>> typeOfInformation,
 			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
 			@Supported @DataDef(dimension = 12, length = 5) QScroller<QEnum<FILEATTRIBUTESEnum, QCharacter>> fileAttributes,
 			@Supported @DataDef(qualified = true) FILE fileToReceiveOutput,
@@ -88,20 +91,32 @@ public @Supported class FileDescriptionDisplayer {
 
 		checkType(fileAttributes, qFile);
 		
+		QObjectWriter objectWriter = null;
+
 		switch (output.asEnum()) {
 		case OUTFILE:
-			TYPEOFINFORMATIONEnum informationType = typeOfInformation.first().asEnum();
+			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
 			QFile qFileTo = createDestinationFile(fileFinder, fileToReceiveOutput, informationType);
 			writeInfosTo(qFileTo, informationType.assignments(new RichQFile(qFile)));
 			break;
 
 		case PRINT:
-			//TODO
+			objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			break;
 		case TERM_STAR:
-			//TODO			
+			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		}
+		
+		if (objectWriter != null) {
+			TypeOfFileInformationEnum informationType = typeOfInformation.first().asEnum();
+			writeInfosTo(objectWriter, informationType.assignments(new RichQFile(qFile)));			
+		}
+	}
+
+
+	private void writeInfosTo(QObjectWriter objectWriter, LinkedHashMap<String, Object>[] assignments) {
+		new Displayer(objectWriter).display(Arrays.asList(assignments));
 	}
 
 
@@ -125,13 +140,17 @@ public @Supported class FileDescriptionDisplayer {
 
 	private QFile createDestinationFile(FileFinder fileFinder, 
 										FILE toFile, 
-										TYPEOFINFORMATIONEnum typeofinformationEnum) {
+										TypeOfFileInformationEnum typeofinformationEnum) {
 		QResourceWriter<QFile> fileWriter = fileFinder.writerFor(toFile.library);
 		String toFileName = toFile.nameGeneric.trimR();
 		QFile qFileTo = fileWriter.lookup(toFileName);
 		if(qFileTo == null) {
 			QFile qFileFrom = fileFinder.lookup(typeofinformationEnum.baseOutputFileName(), "QSYS");
-			qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+			try {
+				qFileTo = new FileStructureDuplicator(job, jobLogManager).createFile(qFileFrom, toFileName, fileWriter);
+			} catch (LibraryNotFoundException e) {
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF3064, toFile.library.asData().trimR());
+			}
 		}	
 		return qFileTo;
 	}
@@ -146,160 +165,6 @@ public @Supported class FileDescriptionDisplayer {
 		throw exceptionManager.prepareException(job, QCPFMSG.CPF3020, new String[] {file.getName(), file.getLibrary()});				
 	}
 
-	public static enum TYPEOFINFORMATIONEnum {
-		ALL,  
-		BASATR {
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDBASI";
-			}
-			@SuppressWarnings({"unchecked" })
-			@Override
-			public LinkedHashMap<String, Object>[] assignments(final RichQFile fileToDescribe) {
-				LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
-				result[0] = new LinkedHashMap<String, Object>();
-				addDefaultData("AT", result[0], fileToDescribe.qFile);
-				//
-				result[0].put("ATTXT", fileToDescribe.qFile.getText());
-				Date creationDate = fileToDescribe.qFile.getCreationInfo().getCreationDate();
-				result[0].put("ATFCCN", 1);
-				DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-				result[0].put("ATFCDT", dayFormatter.format(creationDate));
-				SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
-				result[0].put("ATFCTM", hourFormatter.format(creationDate));
-				return result;
-			}
-		}, 
-		ACCPTH {
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDACCP";
-			}
-			@SuppressWarnings({"unchecked" })
-			@Override
-			public LinkedHashMap<String, Object>[] assignments(final RichQFile fileToDescribe) {
-				QDatabaseFile databaseFile = (QDatabaseFile) fileToDescribe;
-				List<LinkedHashMap<String, Object>> result = new ArrayList<LinkedHashMap<String,Object>>(); 
-				final QFileFormatKey key = databaseFile.getDatabaseFormat().getFormatKey();
-				int i = 1;
-				for (QFileFormatKeyField keyField : key.getKeyFields()) {
-					LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-					addDefaultData("AP", map, fileToDescribe.qFile);
-					//	
-					map.put("APUNIQ", key.isUnique() ? "Y" : "N");
-					QPhysicalFile referredPF = findPF(fileToDescribe.qFile);
-					map.put("APBOF", referredPF.getName());
-					map.put("APBOL", referredPF.getLibrary());
-					map.put("APNKYF", key.getKeyFields().size());
-					map.put("APKEYF", keyField.getName());
-					map.put("APKSEQ", keyField.isDescend() ? "D" : "A");
-					map.put("APKEYN", i++);
-						
-					result.add(map);
-				}
-
-				return result.toArray(new LinkedHashMap[0]);
-			}
-			@SuppressWarnings("serial")
-			private QPhysicalFile findPF(final QFile fileToDescribe) {
-				if (fileToDescribe instanceof QPhysicalFile) {
-					return (QPhysicalFile) fileToDescribe;
-				}
-				if (fileToDescribe instanceof QLogicalFile) {
-					List<String> tables = ((QLogicalFile) fileToDescribe).getTables();
-					final String fileName = tables.get(0);
-					return new PhysicalFileImpl(){
-						public String getName() {
-							return fileName;
-						};
-						public String getLibrary() {
-							return fileToDescribe.getLibrary();
-						}
-					};
-				}
-				throw new RuntimeException("Wrong file type for " + fileToDescribe);
-			}			
-		}, 
-		MBRLIST {
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDMBRL";
-			}
-			@SuppressWarnings({"unchecked" })
-			@Override
-			public LinkedHashMap<String, Object>[] assignments(final RichQFile fileToDescribe) {
-				if (fileToDescribe.qFile instanceof QDatabaseFile) {
-					LinkedHashMap<String, Object>[] result = new LinkedHashMap[1];
-					result[0] = new LinkedHashMap<String, Object>();
-					addDefaultData("ML", result[0], fileToDescribe.qFile);
-					result[0].put("MLNOMB", 1); //Nr. membri
-					result[0].put("MLNAME", fileToDescribe.qFile.getName());
-					result[0].put("MLNRCD", fileToDescribe.countRecords());
-					Date creationDate = fileToDescribe.qFile.getCreationInfo().getCreationDate();
-					result[0].put("MLCCEN", 1);
-					DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-					result[0].put("MLCDAT", dayFormatter.format(creationDate));
-					result[0].put("MLMTXT", fileToDescribe.qFile.getText());
-					return result;
-				} else if (fileToDescribe.qFile instanceof QSourceFile) {
-					List<QSourceEntry> members = fileToDescribe.getMembers();
-					List<LinkedHashMap<String, Object>> result = new ArrayList<LinkedHashMap<String,Object>>();
-					for (QSourceEntry member : members) {
-						LinkedHashMap<String, Object> memberDescription = new LinkedHashMap<String, Object>();
-						addDefaultData("ML", memberDescription, fileToDescribe.qFile);
-						memberDescription.put("MLNOMB", members.size()); //Nr. membri
-						memberDescription.put("MLNAME", member.getName());
-						memberDescription.put("MLMTXT", member.getText());
-						result.add(memberDescription);
-					}
-					return result.toArray(new LinkedHashMap[0]);
-				}
-				throw new RuntimeException("Wrong file type " + fileToDescribe.qFile);
-			}
-		}, 
-		SELECT {
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDSELO";
-			}
-		}, 
-		SEQ, 
-		RCDFMT {
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDRFMT";
-			}
-		}, 
-		MBR{
-			@Override
-			public String baseOutputFileName() {
-				return "QAFDMBR";
-			}
-		}, 
-		ATR, SPOOL, JOIN, TRG, CST, NODGRP;
-		public String baseOutputFileName() {
-			throw new RuntimeException("Unsupported information type " + this.name());			
-		}
-
-		public LinkedHashMap<String, Object>[] assignments(RichQFile fileToDescribe) {
-			throw new RuntimeException("Unsupported information type " + this.name());	
-		}
-		
-		private static void addDefaultData(String prefix, LinkedHashMap<String, Object> map, QFile fileToDescribe) {
-			map.put(prefix + "RCEN", "1"); //Secolo chiamata
-			Date now = new Date();
-			DateFormat dayFormatter = new SimpleDateFormat("yyMMdd");
-			map.put(prefix + "RDAT", dayFormatter.format(now));
-			SimpleDateFormat hourFormatter = new SimpleDateFormat("hhmmss");
-			map.put(prefix + "RTIM", hourFormatter.format(now));
-			map.put(prefix + "FILE", fileToDescribe.getName());
-			map.put(prefix + "LIB", fileToDescribe.getLibrary());
-			FileTypeDescripion typeDescripion = FileTypeDescripion.forType(fileToDescribe);
-			map.put(prefix + "FTYP", typeDescripion.descr1);
-			map.put(prefix + "FILA", typeDescripion.descr2);
-			map.put(prefix + "FATR", typeDescripion.descr3);
-		}
-	}
 
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
@@ -380,17 +245,20 @@ public @Supported class FileDescriptionDisplayer {
 	}
 	
 
-	private class RichQFile {
-
+	public class RichQFile {
 		public final QFile qFile;
 
 		public RichQFile(QFile qFile) {
 			this.qFile = qFile;
 		}
 		
+		public OperatingSystemMessageException createException(QCPFMSG cpf, String[] variables) {
+			return exceptionManager.prepareException(job, cpf, variables);
+		}
+
 		public List<QSourceEntry> getMembers() {
 			QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), qFile.getLibrary(), QFile.class, qFile.getName());
-			return FileDescriptionDisplayer.this.sourceManager.listChildEntries(job.getContext(), sourceEntry);
+			return sourceManager.listChildEntries(job.getContext(), sourceEntry);
 		}
 
 		public int countRecords() {
@@ -408,29 +276,11 @@ public @Supported class FileDescriptionDisplayer {
 				throw new RuntimeException(e);
 			}
 		}
+
+		public QDatabaseFile findFile(String table) {
+			return (QDatabaseFile)new FileFinder(job, resourceManager).lookup(table, this.qFile.getLibrary());			
+		}
 	}
 	
-	private static class FileTypeDescripion {
-		public String descr1;
-		public String descr2;
-		public String descr3;
-
-		public FileTypeDescripion(String descr1, String descr2, String descr3) {
-			this.descr1 = descr1;
-			this.descr2 = descr2;
-			this.descr3 = descr3;
-		}
-		
-		public static FileTypeDescripion forType(QFile fileToDescribe) {
-			if (fileToDescribe instanceof QLogicalFile) {
-				return new FileTypeDescripion("L", "*LGL", "LF");
-			}
-			if ((fileToDescribe instanceof QPhysicalFile) || 
-				(fileToDescribe instanceof QSourceFile)) {
-				return new FileTypeDescripion("P", "*PHY", "PF");
-			}
-			throw new RuntimeException("Unsupported file type: " + fileToDescribe);
-		}
-	}
 }
 

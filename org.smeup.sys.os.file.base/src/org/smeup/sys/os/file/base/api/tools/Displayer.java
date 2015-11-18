@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -114,6 +116,30 @@ public class Displayer {
 		}
 
 		return eClass;
+	}
+
+	public void display(List<LinkedHashMap<String, Object>> assignments) {
+		try {
+			objectWriter.initialize();
+			
+//			EClass eClass = createEClass(resultSet);
+//			QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
+//
+//			boolean firstTime = true;
+//			while(next(resultSet) || firstTime) {
+//				firstTime = false;
+//				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
+//					((EObject) qObject).eSet(eStructuralFeature, getString(resultSet, eStructuralFeature.getName()));
+//				}	
+//				try {
+//					objectWriter.write(qObject);
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+		} finally {
+			objectWriter.flush();
+		}		
 	}
 
 }

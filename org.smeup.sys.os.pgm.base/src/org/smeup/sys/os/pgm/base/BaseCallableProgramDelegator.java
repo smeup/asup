@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.smeup.sys.il.data.InitStrategy;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.annotation.Entry;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Open;
@@ -44,7 +45,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 	private QProgram program;
 	private QProgramStatus programStatus;
 	private Object delegate;
-	
+
 	private InitStrategy initStrategy;
 
 	private Method _open = null;
@@ -54,7 +55,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 
 	private boolean isOpen = false;
 	private QData[] entry = null;
-
+	private QIndicator inlr = null;
 	private boolean apiMode = false;
 
 	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, Object delegate) {
@@ -87,8 +88,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			} else if (method.isAnnotationPresent(Entry.class)) {
 				try {
 					entry = (QData[]) method.invoke(delegate);
-				} 
-				catch (InvocationTargetException e) {
+				} catch (InvocationTargetException e) {
 					if (e.getTargetException() instanceof OperatingSystemMessageException)
 						throw (OperatingSystemMessageException) e.getTargetException();
 					if (e.getTargetException() instanceof OperatingSystemRuntimeException)
@@ -121,8 +121,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 					_open.invoke(delegate);
 					break;
 				}
-			} 
-			catch (InvocationTargetException e) {
+			} catch (InvocationTargetException e) {
 				if (e.getTargetException() instanceof OperatingSystemMessageException)
 					throw (OperatingSystemMessageException) e.getTargetException();
 				if (e.getTargetException() instanceof OperatingSystemRuntimeException)
@@ -150,8 +149,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 				£mubField.setAccessible(false);
 
 			} catch (NoSuchFieldException | SecurityException | NoSuchMethodException e) {
-			} 
-			catch (InvocationTargetException e) {
+			} catch (InvocationTargetException e) {
 				if (e.getTargetException() instanceof OperatingSystemMessageException)
 					throw (OperatingSystemMessageException) e.getTargetException();
 				if (e.getTargetException() instanceof OperatingSystemRuntimeException)
@@ -163,6 +161,17 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			}
 		}
 
+		try {
+			Field qrpjField = delegate.getClass().getDeclaredField("qRPJ");
+			qrpjField.setAccessible(true);
+			Object qrpj = qrpjField.get(delegate);
+			Field inlrField = qrpj.getClass().getDeclaredField("qINLR");
+			inlr = (QIndicator) inlrField.get(qrpj);
+			qrpjField.setAccessible(false);
+
+		} catch (Exception e) {
+		} 
+		
 		isOpen = true;
 	}
 
@@ -172,7 +181,10 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			return callAPIMode();
 
 		try {
-			// @PreMain
+			if(inlr != null)
+				inlr.eval(false);
+			
+			// @Pre Main
 			if (_entry != null)
 				_entry.invoke(getDelegate());
 
@@ -182,9 +194,11 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			if (_exit != null)
 				_exit.invoke(getDelegate());
 
+			if(inlr != null && inlr.asBoolean())
+				close();
+				
 			return getEntry();
-		} 
-		catch (InvocationTargetException e) {
+		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof OperatingSystemMessageException)
 				throw (OperatingSystemMessageException) e.getTargetException();
 			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
@@ -215,8 +229,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 				_exit.invoke(getDelegate());
 
 			return getEntry();
-		}
-		catch (InvocationTargetException e) {
+		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof OperatingSystemMessageException)
 				throw (OperatingSystemMessageException) e.getTargetException();
 			if (e.getTargetException() instanceof OperatingSystemRuntimeException)
@@ -230,7 +243,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 
 	@Override
 	public void close() {
-
+		isOpen = false;
 	}
 
 	@Override
@@ -250,11 +263,11 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 	private QData[] buildEntry(Method method) {
 
 		Type[] types = method.getGenericParameterTypes();
-		if(types.length == 0)
+		if (types.length == 0)
 			return null;
 
 		Annotation[][] annotationss = method.getParameterAnnotations();
-		
+
 		// build entry
 		QData[] entry = new QData[types.length];
 		int entryIndex = 0;

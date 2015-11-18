@@ -123,11 +123,17 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target, int position) {
 
+		NIOBufferedDataImpl nioBufferedData = null;
+		if(target instanceof NIOAdapterImpl)  {
+			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
+			nioAdapterImpl.setDelegate(this);
+			return;
+		}
+
 		if (position <= 0)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
 
-		NIOBufferedDataImpl nioBufferedData = getNIOBufferedDataImpl(target);
-
+		nioBufferedData = getNIOBufferedDataImpl(target);
 		if (nioBufferedData == null)
 			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
 

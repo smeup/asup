@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataArea;
 import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
@@ -29,9 +30,9 @@ public class NIODataResetter extends DataTermVisitorImpl {
 	private QData data;
 	private QDataWriter dataWriter;
 
-	public NIODataResetter(QData data, QDataWriter dataWriter) {
+	public NIODataResetter(QData data) {
 		this.data = data;
-		this.dataWriter = dataWriter;
+		this.dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -110,7 +111,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 				for (QStruct<?> struct : (QList<QStruct<?>>) list)
 					// elements
 					for (QDataTerm<?> child : ((QCompoundDataDef<?, ?>) term.getDefinition()).getElements()) {
-						NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()), dataWriter);
+						NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()));
 						child.accept(childResetter);
 					}
 
@@ -165,7 +166,7 @@ public class NIODataResetter extends DataTermVisitorImpl {
 			if (result) {
 				
 				for (QDataTerm<?> child : compoundDef.getElements()) {
-					NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()), dataWriter);
+					NIODataResetter childResetter = new NIODataResetter(struct.getElement(child.getName()));
 					child.accept(childResetter);
 				}
 			}

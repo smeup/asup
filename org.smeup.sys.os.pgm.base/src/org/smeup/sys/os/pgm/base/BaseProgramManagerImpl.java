@@ -245,7 +245,12 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QList<D> listFrom = (QList<D>) from;
 		QList<D> listTo = (QList<D>) to;
 
-		listTo.eval(listFrom);
+		int e = 1;
+		for(D elementFrom: listFrom) {
+			D elementTo = listTo.get(e);
+			((QBufferedData)elementFrom).assign((QBufferedData)elementTo);
+			e++;
+		}
 	}
 
 	@Override
@@ -292,6 +297,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				// call
 				callableProgram.call();
+				
+				if (!callableProgram.isOpen()) {
+					QProgram program = callableProgram.getProgram();
+					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
+					activationGroup.remove(program);
+				}
+					
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				e.printStackTrace();
 				throw e;

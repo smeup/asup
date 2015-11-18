@@ -19,13 +19,13 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.BinaryType;
 
-@Program(name = "QUSCRTUS")
-public class UserSpaceCreator {
+@Program(name = "QUSRTVUS")
+public class UserSpaceRetriever {
 
-	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, @DataDef(length = 10) QCharacter extendedAttribute, @DataDef(binaryType = BinaryType.BYTE) QBinary initialSize,
-			@DataDef(length = 1) QCharacter initialValue, @DataDef(length = 10) QCharacter publicAuthority, @DataDef(length = 50) QCharacter textDescription,
-			@DataDef(length = 10) QCharacter replace, ErrorCode errorCode, @DataDef(length = 10) QCharacter domain, @DataDef(binaryType = BinaryType.BYTE) QBinary transferSizeRequest,
-			@DataDef(length = 1) QCharacter optimumSpaceAlignement) {
+	public @Main void main(@DataDef(qualified = true) UserSpace userSpace,
+			@DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition, 
+			@DataDef(binaryType = BinaryType.INTEGER) QBinary dateLength, 
+			ErrorCode errorCode) {
 		// TODO
 		errorCode.£$01e2.eval(1);
 
@@ -38,7 +38,6 @@ public class UserSpaceCreator {
 		@DataDef(length = 10, value = "*LIBL")
 		public QCharacter library;
 	}
-
 
 	public static class ErrorCode extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
