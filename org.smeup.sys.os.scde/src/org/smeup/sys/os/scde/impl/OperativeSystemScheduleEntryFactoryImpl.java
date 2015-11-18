@@ -61,7 +61,7 @@ public class OperativeSystemScheduleEntryFactoryImpl extends EFactoryImpl implem
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY: return (EObject)createScheduledEntry();
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY: return (EObject)createScheduleEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -72,9 +72,9 @@ public class OperativeSystemScheduleEntryFactoryImpl extends EFactoryImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QScheduledEntry createScheduledEntry() {
-		ScheduledEntryImpl scheduledEntry = new ScheduledEntryImpl();
-		return scheduledEntry;
+	public QScheduleEntry createScheduleEntry() {
+		ScheduleEntryImpl scheduleEntry = new ScheduleEntryImpl();
+		return scheduleEntry;
 	}
 
 	/**

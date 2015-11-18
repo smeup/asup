@@ -11,25 +11,25 @@ import org.smeup.sys.il.core.QObjectNameable;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Scheduled Entry</b></em>'.
+ * A representation of the model object '<em><b>Schedule Entry</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledDate <em>Scheduled Date</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledTime <em>Scheduled Time</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduledEntry#getDescription <em>Description</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduledEntry#getCommandToRun <em>Command To Run</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduledEntry#getUser <em>User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry()
+ * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry()
  * @model
  * @generated
  */
-public interface QScheduledEntry extends QObjectNameable {
+public interface QScheduleEntry extends QObjectNameable {
 	/**
 	 * Returns the value of the '<em><b>Scheduled Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -40,7 +40,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduled Date</em>' attribute.
 	 * @see #setScheduledDate(String)
-	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry_ScheduledDate()
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_ScheduledDate()
 	 * @model required="true"
 	 *        annotation="il-data length='8'"
 	 * @generated
@@ -48,7 +48,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	String getScheduledDate();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledDate <em>Scheduled Date</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Scheduled Date</em>' attribute.
@@ -67,7 +67,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scheduled Time</em>' attribute.
 	 * @see #setScheduledTime(String)
-	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry_ScheduledTime()
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_ScheduledTime()
 	 * @model required="true"
 	 *        annotation="il-data length='8'"
 	 * @generated
@@ -75,7 +75,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	String getScheduledTime();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledTime <em>Scheduled Time</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Scheduled Time</em>' attribute.
@@ -94,14 +94,14 @@ public interface QScheduledEntry extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry_Description()
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_Description()
 	 * @model annotation="il-data length='50'"
 	 * @generated
 	 */
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduledEntry#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -120,7 +120,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Command To Run</em>' attribute.
 	 * @see #setCommandToRun(String)
-	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry_CommandToRun()
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_CommandToRun()
 	 * @model required="true"
 	 *        annotation="il-data length='256'"
 	 * @generated
@@ -128,7 +128,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	String getCommandToRun();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduledEntry#getCommandToRun <em>Command To Run</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Command To Run</em>' attribute.
@@ -147,7 +147,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
-	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduledEntry_User()
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_User()
 	 * @model required="true"
 	 *        annotation="il-data length='10'"
 	 * @generated
@@ -155,7 +155,7 @@ public interface QScheduledEntry extends QObjectNameable {
 	String getUser();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduledEntry#getUser <em>User</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>User</em>' attribute.
@@ -164,4 +164,4 @@ public interface QScheduledEntry extends QObjectNameable {
 	 */
 	void setUser(String value);
 
-} // QScheduledEntry
+} // QScheduleEntry

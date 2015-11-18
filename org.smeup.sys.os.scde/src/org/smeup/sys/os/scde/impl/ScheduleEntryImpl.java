@@ -16,32 +16,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage;
-import org.smeup.sys.os.scde.QScheduledEntry;
+import org.smeup.sys.os.scde.QScheduleEntry;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Scheduled Entry</b></em>'.
+ * An implementation of the model object '<em><b>Schedule Entry</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl#getScheduledDate <em>Scheduled Date</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl#getCommandToRun <em>Command To Run</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl#getUser <em>User</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledDate <em>Scheduled Date</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getCommandToRun <em>Command To Run</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getUser <em>User</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduledEntry {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	
+public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEntry {
 	/**
 	 * The default value of the '{@link #getScheduledDate() <em>Scheduled Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -147,7 +141,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ScheduledEntryImpl() {
+	protected ScheduleEntryImpl() {
 		super();
 	}
 
@@ -158,7 +152,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return QOperativeSystemScheduleEntryPackage.Literals.SCHEDULED_ENTRY;
+		return QOperativeSystemScheduleEntryPackage.Literals.SCHEDULE_ENTRY;
 	}
 
 	/**
@@ -179,7 +173,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		String oldScheduledDate = scheduledDate;
 		scheduledDate = newScheduledDate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_DATE, oldScheduledDate, scheduledDate));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE, oldScheduledDate, scheduledDate));
 	}
 
 	/**
@@ -200,7 +194,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		String oldScheduledTime = scheduledTime;
 		scheduledTime = newScheduledTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_TIME, oldScheduledTime, scheduledTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME, oldScheduledTime, scheduledTime));
 	}
 
 	/**
@@ -221,7 +215,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -242,7 +236,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		String oldCommandToRun = commandToRun;
 		commandToRun = newCommandToRun;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__COMMAND_TO_RUN, oldCommandToRun, commandToRun));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__COMMAND_TO_RUN, oldCommandToRun, commandToRun));
 	}
 
 	/**
@@ -263,7 +257,7 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		String oldUser = user;
 		user = newUser;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__USER, oldUser, user));
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER, oldUser, user));
 	}
 
 	/**
@@ -274,15 +268,15 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_DATE:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
 				return getScheduledDate();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_TIME:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return getScheduledTime();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__DESCRIPTION:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__DESCRIPTION:
 				return getDescription();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__COMMAND_TO_RUN:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__COMMAND_TO_RUN:
 				return getCommandToRun();
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__USER:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return getUser();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -296,19 +290,19 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_DATE:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
 				setScheduledDate((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_TIME:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__DESCRIPTION:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__COMMAND_TO_RUN:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__COMMAND_TO_RUN:
 				setCommandToRun((String)newValue);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__USER:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser((String)newValue);
 				return;
 		}
@@ -323,19 +317,19 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_DATE:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
 				setScheduledDate(SCHEDULED_DATE_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_TIME:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				setScheduledTime(SCHEDULED_TIME_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__DESCRIPTION:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__COMMAND_TO_RUN:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__COMMAND_TO_RUN:
 				setCommandToRun(COMMAND_TO_RUN_EDEFAULT);
 				return;
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__USER:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				setUser(USER_EDEFAULT);
 				return;
 		}
@@ -350,15 +344,15 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_DATE:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_DATE:
 				return SCHEDULED_DATE_EDEFAULT == null ? scheduledDate != null : !SCHEDULED_DATE_EDEFAULT.equals(scheduledDate);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__SCHEDULED_TIME:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__SCHEDULED_TIME:
 				return SCHEDULED_TIME_EDEFAULT == null ? scheduledTime != null : !SCHEDULED_TIME_EDEFAULT.equals(scheduledTime);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__DESCRIPTION:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__COMMAND_TO_RUN:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__COMMAND_TO_RUN:
 				return COMMAND_TO_RUN_EDEFAULT == null ? commandToRun != null : !COMMAND_TO_RUN_EDEFAULT.equals(commandToRun);
-			case QOperativeSystemScheduleEntryPackage.SCHEDULED_ENTRY__USER:
+			case QOperativeSystemScheduleEntryPackage.SCHEDULE_ENTRY__USER:
 				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
 		}
 		return super.eIsSet(featureID);
@@ -388,4 +382,4 @@ public class ScheduledEntryImpl extends ObjectNameableImpl implements QScheduled
 		return result.toString();
 	}
 
-} //ScheduledEntryImpl
+} //ScheduleEntryImpl

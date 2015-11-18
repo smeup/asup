@@ -62,14 +62,14 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	QOperativeSystemScheduleEntryPackage eINSTANCE = org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl <em>Scheduled Entry</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl <em>Schedule Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.scde.impl.ScheduledEntryImpl
-	 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.impl.ScheduleEntryImpl
+	 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduleEntry()
 	 * @generated
 	 */
-	int SCHEDULED_ENTRY = 0;
+	int SCHEDULE_ENTRY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Scheduled Date</b></em>' attribute.
@@ -78,7 +78,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY__SCHEDULED_DATE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int SCHEDULE_ENTRY__SCHEDULED_DATE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scheduled Time</b></em>' attribute.
@@ -87,7 +87,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int SCHEDULE_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -96,7 +96,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY__DESCRIPTION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int SCHEDULE_ENTRY__DESCRIPTION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Command To Run</b></em>' attribute.
@@ -105,7 +105,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY__COMMAND_TO_RUN = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int SCHEDULE_ENTRY__COMMAND_TO_RUN = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute.
@@ -114,82 +114,82 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of structural features of the '<em>Scheduled Entry</em>' class.
+	 * The number of structural features of the '<em>Schedule Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.os.scde.QScheduledEntry <em>Scheduled Entry</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.os.scde.QScheduleEntry <em>Schedule Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Scheduled Entry</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry
+	 * @return the meta object for class '<em>Schedule Entry</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry
 	 * @generated
 	 */
-	EClass getScheduledEntry();
+	EClass getScheduleEntry();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledDate <em>Scheduled Date</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Scheduled Date</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry#getScheduledDate()
-	 * @see #getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate()
+	 * @see #getScheduleEntry()
 	 * @generated
 	 */
-	EAttribute getScheduledEntry_ScheduledDate();
+	EAttribute getScheduleEntry_ScheduledDate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduledEntry#getScheduledTime <em>Scheduled Time</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Scheduled Time</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry#getScheduledTime()
-	 * @see #getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime()
+	 * @see #getScheduleEntry()
 	 * @generated
 	 */
-	EAttribute getScheduledEntry_ScheduledTime();
+	EAttribute getScheduleEntry_ScheduledTime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduledEntry#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry#getDescription()
-	 * @see #getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getDescription()
+	 * @see #getScheduleEntry()
 	 * @generated
 	 */
-	EAttribute getScheduledEntry_Description();
+	EAttribute getScheduleEntry_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduledEntry#getCommandToRun <em>Command To Run</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Command To Run</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry#getCommandToRun()
-	 * @see #getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun()
+	 * @see #getScheduleEntry()
 	 * @generated
 	 */
-	EAttribute getScheduledEntry_CommandToRun();
+	EAttribute getScheduleEntry_CommandToRun();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduledEntry#getUser <em>User</em>}'.
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>User</em>'.
-	 * @see org.smeup.sys.os.scde.QScheduledEntry#getUser()
-	 * @see #getScheduledEntry()
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getUser()
+	 * @see #getScheduleEntry()
 	 * @generated
 	 */
-	EAttribute getScheduledEntry_User();
+	EAttribute getScheduleEntry_User();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -214,14 +214,14 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.scde.impl.ScheduledEntryImpl <em>Scheduled Entry</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl <em>Schedule Entry</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.scde.impl.ScheduledEntryImpl
-		 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduledEntry()
+		 * @see org.smeup.sys.os.scde.impl.ScheduleEntryImpl
+		 * @see org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryPackageImpl#getScheduleEntry()
 		 * @generated
 		 */
-		EClass SCHEDULED_ENTRY = eINSTANCE.getScheduledEntry();
+		EClass SCHEDULE_ENTRY = eINSTANCE.getScheduleEntry();
 
 		/**
 		 * The meta object literal for the '<em><b>Scheduled Date</b></em>' attribute feature.
@@ -229,7 +229,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_ENTRY__SCHEDULED_DATE = eINSTANCE.getScheduledEntry_ScheduledDate();
+		EAttribute SCHEDULE_ENTRY__SCHEDULED_DATE = eINSTANCE.getScheduleEntry_ScheduledDate();
 
 		/**
 		 * The meta object literal for the '<em><b>Scheduled Time</b></em>' attribute feature.
@@ -237,7 +237,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_ENTRY__SCHEDULED_TIME = eINSTANCE.getScheduledEntry_ScheduledTime();
+		EAttribute SCHEDULE_ENTRY__SCHEDULED_TIME = eINSTANCE.getScheduleEntry_ScheduledTime();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -245,7 +245,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_ENTRY__DESCRIPTION = eINSTANCE.getScheduledEntry_Description();
+		EAttribute SCHEDULE_ENTRY__DESCRIPTION = eINSTANCE.getScheduleEntry_Description();
 
 		/**
 		 * The meta object literal for the '<em><b>Command To Run</b></em>' attribute feature.
@@ -253,7 +253,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_ENTRY__COMMAND_TO_RUN = eINSTANCE.getScheduledEntry_CommandToRun();
+		EAttribute SCHEDULE_ENTRY__COMMAND_TO_RUN = eINSTANCE.getScheduleEntry_CommandToRun();
 
 		/**
 		 * The meta object literal for the '<em><b>User</b></em>' attribute feature.
@@ -261,7 +261,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_ENTRY__USER = eINSTANCE.getScheduledEntry_User();
+		EAttribute SCHEDULE_ENTRY__USER = eINSTANCE.getScheduleEntry_User();
 
 	}
 

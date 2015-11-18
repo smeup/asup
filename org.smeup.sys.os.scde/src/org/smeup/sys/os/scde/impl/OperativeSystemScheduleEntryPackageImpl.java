@@ -8,20 +8,15 @@
 package org.smeup.sys.os.scde.impl;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage;
-import org.smeup.sys.os.scde.QScheduledEntry;
+import org.smeup.sys.os.scde.QScheduleEntry;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,8 +30,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scheduledEntryEClass = null;
-
+	private EClass scheduleEntryEClass = null;
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
@@ -106,8 +100,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getScheduledEntry() {
-		return scheduledEntryEClass;
+	public EClass getScheduleEntry() {
+		return scheduleEntryEClass;
 	}
 
 	/**
@@ -115,8 +109,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScheduledEntry_ScheduledDate() {
-		return (EAttribute)scheduledEntryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getScheduleEntry_ScheduledDate() {
+		return (EAttribute)scheduleEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -124,8 +118,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScheduledEntry_ScheduledTime() {
-		return (EAttribute)scheduledEntryEClass.getEStructuralFeatures().get(1);
+	public EAttribute getScheduleEntry_ScheduledTime() {
+		return (EAttribute)scheduleEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -133,8 +127,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScheduledEntry_Description() {
-		return (EAttribute)scheduledEntryEClass.getEStructuralFeatures().get(2);
+	public EAttribute getScheduleEntry_Description() {
+		return (EAttribute)scheduleEntryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -142,8 +136,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScheduledEntry_CommandToRun() {
-		return (EAttribute)scheduledEntryEClass.getEStructuralFeatures().get(3);
+	public EAttribute getScheduleEntry_CommandToRun() {
+		return (EAttribute)scheduleEntryEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -151,8 +145,8 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScheduledEntry_User() {
-		return (EAttribute)scheduledEntryEClass.getEStructuralFeatures().get(4);
+	public EAttribute getScheduleEntry_User() {
+		return (EAttribute)scheduleEntryEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -183,12 +177,12 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 		isCreated = true;
 
 		// Create classes and their features
-		scheduledEntryEClass = createEClass(SCHEDULED_ENTRY);
-		createEAttribute(scheduledEntryEClass, SCHEDULED_ENTRY__SCHEDULED_DATE);
-		createEAttribute(scheduledEntryEClass, SCHEDULED_ENTRY__SCHEDULED_TIME);
-		createEAttribute(scheduledEntryEClass, SCHEDULED_ENTRY__DESCRIPTION);
-		createEAttribute(scheduledEntryEClass, SCHEDULED_ENTRY__COMMAND_TO_RUN);
-		createEAttribute(scheduledEntryEClass, SCHEDULED_ENTRY__USER);
+		scheduleEntryEClass = createEClass(SCHEDULE_ENTRY);
+		createEAttribute(scheduleEntryEClass, SCHEDULE_ENTRY__SCHEDULED_DATE);
+		createEAttribute(scheduleEntryEClass, SCHEDULE_ENTRY__SCHEDULED_TIME);
+		createEAttribute(scheduleEntryEClass, SCHEDULE_ENTRY__DESCRIPTION);
+		createEAttribute(scheduleEntryEClass, SCHEDULE_ENTRY__COMMAND_TO_RUN);
+		createEAttribute(scheduleEntryEClass, SCHEDULE_ENTRY__USER);
 	}
 
 	/**
@@ -222,15 +216,15 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		scheduledEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		scheduleEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(scheduledEntryEClass, QScheduledEntry.class, "ScheduledEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getScheduledEntry_ScheduledDate(), ecorePackage.getEString(), "scheduledDate", null, 1, 1, QScheduledEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScheduledEntry_ScheduledTime(), ecorePackage.getEString(), "scheduledTime", null, 1, 1, QScheduledEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScheduledEntry_Description(), ecorePackage.getEString(), "description", null, 0, 1, QScheduledEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScheduledEntry_CommandToRun(), ecorePackage.getEString(), "commandToRun", null, 1, 1, QScheduledEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScheduledEntry_User(), ecorePackage.getEString(), "user", null, 1, 1, QScheduledEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(scheduleEntryEClass, QScheduleEntry.class, "ScheduleEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScheduleEntry_ScheduledDate(), ecorePackage.getEString(), "scheduledDate", null, 1, 1, QScheduleEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScheduleEntry_ScheduledTime(), ecorePackage.getEString(), "scheduledTime", null, 1, 1, QScheduleEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScheduleEntry_Description(), ecorePackage.getEString(), "description", null, 0, 1, QScheduleEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScheduleEntry_CommandToRun(), ecorePackage.getEString(), "commandToRun", null, 1, 1, QScheduleEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScheduleEntry_User(), ecorePackage.getEString(), "user", null, 1, 1, QScheduleEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -249,7 +243,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
 		addAnnotation
-		  (getScheduledEntry_ScheduledDate(), 
+		  (getScheduleEntry_ScheduledDate(), 
 		   source, 
 		   new String[] {
 			 "length", "8"
@@ -258,7 +252,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getScheduledEntry_ScheduledTime(), 
+		  (getScheduleEntry_ScheduledTime(), 
 		   source, 
 		   new String[] {
 			 "length", "8"
@@ -267,7 +261,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getScheduledEntry_Description(), 
+		  (getScheduleEntry_Description(), 
 		   source, 
 		   new String[] {
 			 "length", "50"
@@ -276,7 +270,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getScheduledEntry_CommandToRun(), 
+		  (getScheduleEntry_CommandToRun(), 
 		   source, 
 		   new String[] {
 			 "length", "256"
@@ -285,7 +279,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getScheduledEntry_User(), 
+		  (getScheduleEntry_User(), 
 		   source, 
 		   new String[] {
 			 "length", "10"

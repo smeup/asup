@@ -27,13 +27,13 @@ public interface QOperativeSystemScheduleEntryFactory extends EFactory {
 	QOperativeSystemScheduleEntryFactory eINSTANCE = org.smeup.sys.os.scde.impl.OperativeSystemScheduleEntryFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Scheduled Entry</em>'.
+	 * Returns a new object of class '<em>Schedule Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Scheduled Entry</em>'.
+	 * @return a new object of class '<em>Schedule Entry</em>'.
 	 * @generated
 	 */
-	QScheduledEntry createScheduledEntry();
+	QScheduleEntry createScheduleEntry();
 
 	/**
 	 * Returns the package supported by this factory.
