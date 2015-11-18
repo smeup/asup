@@ -9,6 +9,7 @@ package org.smeup.sys.os.core.jobs.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -49,6 +50,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobDateFormat <em>Job Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getTimeSeparator <em>Time Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -315,6 +317,16 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected String timeSeparator = TIME_SEPARATOR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected Map<String, String> variables;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -633,6 +645,27 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map<String, String> getVariables() {
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVariables(Map<String, String> newVariables) {
+		Map<String, String> oldVariables = variables;
+		variables = newVariables;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__VARIABLES, oldVariables, variables));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -775,6 +808,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getDateSeparator();
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return getTimeSeparator();
+			case QOperatingSystemJobsPackage.JOB__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -837,6 +872,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator((String)newValue);
 				return;
+			case QOperatingSystemJobsPackage.JOB__VARIABLES:
+				setVariables((Map<String, String>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -896,6 +934,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator(TIME_SEPARATOR_EDEFAULT);
 				return;
+			case QOperatingSystemJobsPackage.JOB__VARIABLES:
+				setVariables((Map<String, String>)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -939,6 +980,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return DATE_SEPARATOR_EDEFAULT == null ? dateSeparator != null : !DATE_SEPARATOR_EDEFAULT.equals(dateSeparator);
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return TIME_SEPARATOR_EDEFAULT == null ? timeSeparator != null : !TIME_SEPARATOR_EDEFAULT.equals(timeSeparator);
+			case QOperatingSystemJobsPackage.JOB__VARIABLES:
+				return variables != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -978,6 +1021,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(dateSeparator);
 		result.append(", timeSeparator: ");
 		result.append(timeSeparator);
+		result.append(", variables: ");
+		result.append(variables);
 		result.append(')');
 		return result.toString();
 	}
