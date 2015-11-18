@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core;
 
+import java.util.Map;
 import org.smeup.sys.il.core.QObjectNameable;
 
 import org.smeup.sys.il.core.ctx.QContext;
@@ -30,6 +31,7 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -283,5 +285,31 @@ public interface QSystem extends QObjectLockable, QObjectNameable, QContextProvi
 	 * @generated
 	 */
 	void setTemporaryLibrary(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' attribute.
+	 * @see #setVariables(Map)
+	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_Variables()
+	 * @model required="true" transient="true"
+	 * @generated
+	 */
+	Map<String, String> getVariables();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variables</em>' attribute.
+	 * @see #getVariables()
+	 * @generated
+	 */
+	void setVariables(Map<String, String> value);
 
 } // QSystem

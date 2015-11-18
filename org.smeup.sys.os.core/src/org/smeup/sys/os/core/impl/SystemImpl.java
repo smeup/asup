@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.impl;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -35,6 +36,7 @@ import org.smeup.sys.os.core.SystemStatus;
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getTemporaryLibrary <em>Temporary Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -205,6 +207,16 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * @ordered
 	 */
 	protected String temporaryLibrary = TEMPORARY_LIBRARY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected Map<String, String> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -479,6 +491,27 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Map<String, String> getVariables() {
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVariables(Map<String, String> newVariables) {
+		Map<String, String> oldVariables = variables;
+		variables = newVariables;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__VARIABLES, oldVariables, variables));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -516,6 +549,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return getSystemUser();
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return getTemporaryLibrary();
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -525,6 +560,7 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -554,6 +590,9 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return;
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary((String)newValue);
+				return;
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
+				setVariables((Map<String, String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -594,6 +633,9 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary(TEMPORARY_LIBRARY_EDEFAULT);
 				return;
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
+				setVariables((Map<String, String>)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -624,6 +666,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return SYSTEM_USER_EDEFAULT == null ? systemUser != null : !SYSTEM_USER_EDEFAULT.equals(systemUser);
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return TEMPORARY_LIBRARY_EDEFAULT == null ? temporaryLibrary != null : !TEMPORARY_LIBRARY_EDEFAULT.equals(temporaryLibrary);
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
+				return variables != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -652,6 +696,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 		result.append(systemUser);
 		result.append(", temporaryLibrary: ");
 		result.append(temporaryLibrary);
+		result.append(", variables: ");
+		result.append(variables);
 		result.append(')');
 		return result.toString();
 	}

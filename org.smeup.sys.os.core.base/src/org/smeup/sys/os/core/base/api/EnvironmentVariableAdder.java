@@ -11,6 +11,11 @@
  */
 package org.smeup.sys.os.core.base.api;
 
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
@@ -20,32 +25,50 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.enums.YesNoEnum;
+import org.smeup.sys.os.core.jobs.QJob;
 
-@Program(name = "QP0ZADDE")
+@Supported @Program(name = "QP0ZADDE")
 public class EnvironmentVariableAdder {
 
-	public @Main void main(@ToDo @DataDef(length = 128) QCharacter environmentVariable, @ToDo @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, @ToDo @DataDef(length = 4) QEnum<LevelEnum, QCharacter> level,
-			@ToDo @DataDef(length = 4) QEnum<ReplaceExistingEntryEnum, QCharacter> replaceExistingEntry) {
+	@Inject
+	private QJob job;
+	
+	public @Main void main(
+			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
+			@Supported @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
+			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, 
+			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level,
+			@Supported @DataDef(length = 4) QEnum<YesNoEnum, QCharacter> replaceExistingEntry) {
 
-		"".toCharArray();
+		new EnvironmentVariables(job, level.asEnum())
+		.setValue(environmentVariable.trimR(), getValue(initialValue), replaceExistingEntry.asEnum().asBoolean())
+		.save();
 	}
 
+
+	private String getValue(QEnum<InitialValueEnum, QCharacter> initialValue) {
+		switch (initialValue.asEnum()) {
+		case NULL:
+			return null;
+		case OTHER:
+			return initialValue.asData().trimR();
+		}
+		throw new RuntimeException("Wrong initial value: " + initialValue);
+	}
+
+
 	public static enum InitialValueEnum {
-		NULL, OTHER
+		NULL, 
+		OTHER
 	}
 
 	public static enum CodedCharacterSetIDEnum {
 		@Special(value = "0")
-		JOB, @Special(value = "65535")
-		HEX, OTHER
+		JOB, 
+		@Special(value = "65535")
+		HEX, 
+		OTHER
 	}
 
-	public static enum LevelEnum {
-		JOB, SYS
-	}
-
-	public static enum ReplaceExistingEntryEnum {
-		NO, YES
-	}
 }
