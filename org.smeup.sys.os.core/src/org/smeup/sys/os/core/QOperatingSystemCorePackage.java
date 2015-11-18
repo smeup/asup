@@ -214,13 +214,22 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__VARIABLES = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 9;
+	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
@@ -458,6 +467,17 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EAttribute getSystem_TemporaryLibrary();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variables</em>'.
+	 * @see org.smeup.sys.os.core.QSystem#getVariables()
+	 * @see #getSystem()
+	 * @generated
+	 */
+	EAttribute getSystem_Variables();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -661,6 +681,14 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SYSTEM__TEMPORARY_LIBRARY = eINSTANCE.getSystem_TemporaryLibrary();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SYSTEM__VARIABLES = eINSTANCE.getSystem_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.

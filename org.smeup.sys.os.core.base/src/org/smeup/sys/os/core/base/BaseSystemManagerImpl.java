@@ -14,6 +14,7 @@ package org.smeup.sys.os.core.base;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
@@ -84,6 +85,9 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		job.setContext(jobContext);
 		
 		jobContext.set(QJob.class, job);
+		
+		//
+		job.setVariables(new LinkedHashMap<String, String>());
 		
 		return job;
 	}

@@ -17,8 +17,12 @@ import java.lang.annotation.Target;
 public @interface Module {
 
 	String name();
-
 	String text() default "";
+	Scope scope() default Scope.UNIT;
 	
 	boolean generated() default true;
+	
+	public static enum Scope {
+		OWNER, UNIT;
+	}
 }

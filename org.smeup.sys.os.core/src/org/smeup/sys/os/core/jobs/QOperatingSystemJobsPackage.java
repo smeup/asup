@@ -218,13 +218,22 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 15;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__VARIABLES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
+
+	/**
 	 * The number of structural features of the '<em>Job</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
+	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.
@@ -632,6 +641,17 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJob_TimeSeparator();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variables</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getVariables()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EAttribute getJob_Variables();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLog <em>Job Log</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -967,6 +987,14 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB__TIME_SEPARATOR = eINSTANCE.getJob_TimeSeparator();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB__VARIABLES = eINSTANCE.getJob_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.

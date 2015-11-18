@@ -17,6 +17,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -35,6 +36,7 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 
 public class Displayer {
 
+	private EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
 	private QObjectWriter objectWriter;
 
 	public Displayer(QObjectWriter objectWriter) {
@@ -82,8 +84,21 @@ public class Displayer {
 	}
 
 	private EClass createEClass(ResultSet resultSet) throws SQLException {
-		EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
+		EClass eClass = createBaseEClass();
 
+		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+
+		for (int c = 1; c <= resultSetMetaData.getColumnCount(); c++) {
+			String columnName = resultSetMetaData.getColumnName(c);
+			int columnLength = resultSetMetaData.getPrecision(c);
+
+			createAttribute(eClass, columnName, columnLength);
+		}
+
+		return eClass;
+	}
+
+	private EClass createBaseEClass() {
 		EPackage ePackage = ecoreFactory.createEPackage();
 		ePackage.setName("PIPPO");
 		ePackage.setNsPrefix("asup");
@@ -94,27 +109,6 @@ public class Displayer {
 		eClass.getESuperTypes().add(QIntegratedLanguageCorePackage.eINSTANCE.getObjectNameable());
 
 		ePackage.getEClassifiers().add(eClass);
-
-		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-
-		for (int c = 1; c <= resultSetMetaData.getColumnCount(); c++) {
-
-			String columnName = resultSetMetaData.getColumnName(c);
-			int columnLength = resultSetMetaData.getPrecision(c);
-
-			EAttribute eAttribute = ecoreFactory.createEAttribute();
-			eAttribute.setName(columnName);
-			eAttribute.setEType(EcorePackage.eINSTANCE.getEString());
-
-			EAnnotation eAnnotation = ecoreFactory.createEAnnotation();
-			eAnnotation.setSource(QIntegratedLanguageDataPackage.eNS_PREFIX);
-			eAnnotation.getReferences().add(QIntegratedLanguageDataDefPackage.eINSTANCE.getCharacterDef());
-			eAnnotation.getDetails().put("length", Integer.toString(columnLength));
-			eAttribute.getEAnnotations().add(eAnnotation);
-
-			eClass.getEStructuralFeatures().add(eAttribute);
-		}
-
 		return eClass;
 	}
 
@@ -122,24 +116,54 @@ public class Displayer {
 		try {
 			objectWriter.initialize();
 			
-//			EClass eClass = createEClass(resultSet);
-//			QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
-//
-//			boolean firstTime = true;
-//			while(next(resultSet) || firstTime) {
-//				firstTime = false;
-//				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
-//					((EObject) qObject).eSet(eStructuralFeature, getString(resultSet, eStructuralFeature.getName()));
-//				}	
-//				try {
-//					objectWriter.write(qObject);
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
+			EClass eClass = createEClass(assignments);
+			QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
+			for (LinkedHashMap<String, Object> row : assignments) {
+				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
+					((EObject) qObject).eSet(eStructuralFeature, getString(row, eStructuralFeature.getName()));
+				}	
+				try {
+					objectWriter.write(qObject);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		} finally {
 			objectWriter.flush();
 		}		
+	}
+
+	private String getString(LinkedHashMap<String, Object> row, String name) {
+		return "" + row.get(name);
+	}
+
+	private EClass createEClass(List<LinkedHashMap<String, Object>> assignments) {
+		EClass eClass = createBaseEClass();
+		
+		if (assignments != null && assignments.size() > 0) {
+			LinkedHashMap<String, Object> row = assignments.get(0);
+			Set<String> keys = row.keySet();
+			for (String columnName : keys) {
+				int columnLength = Math.max(columnName.length(), getString(row, columnName).length());
+				createAttribute(eClass, columnName, columnLength);
+			}			
+		}
+
+		return eClass;
+	}
+
+	private void createAttribute(EClass eClass, String columnName,	int columnLength) {
+		EAttribute eAttribute = ecoreFactory.createEAttribute();
+		eAttribute.setName(columnName);
+		eAttribute.setEType(EcorePackage.eINSTANCE.getEString());
+
+		EAnnotation eAnnotation = ecoreFactory.createEAnnotation();
+		eAnnotation.setSource(QIntegratedLanguageDataPackage.eNS_PREFIX);
+		eAnnotation.getReferences().add(QIntegratedLanguageDataDefPackage.eINSTANCE.getCharacterDef());
+		eAnnotation.getDetails().put("length", Integer.toString(columnLength));
+		eAttribute.getEAnnotations().add(eAnnotation);
+
+		eClass.getEStructuralFeatures().add(eAttribute);
 	}
 
 }

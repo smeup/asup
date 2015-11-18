@@ -8,6 +8,7 @@
 package org.smeup.sys.os.core.jobs;
 
 import java.util.List;
+import java.util.Map;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
@@ -37,6 +38,7 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -420,6 +422,32 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setTimeSeparator(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variables</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' attribute.
+	 * @see #setVariables(Map)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_Variables()
+	 * @model required="true" transient="true"
+	 * @generated
+	 */
+	Map<String, String> getVariables();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variables</em>' attribute.
+	 * @see #getVariables()
+	 * @generated
+	 */
+	void setVariables(Map<String, String> value);
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.
