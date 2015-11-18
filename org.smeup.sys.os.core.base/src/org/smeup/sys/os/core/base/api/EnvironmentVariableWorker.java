@@ -12,14 +12,20 @@
 package org.smeup.sys.os.core.base.api;
 
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.il.core.out.QObjectWriter;
+import org.smeup.sys.il.core.out.QOutputManager;
+import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Supported @Program(name = "QP0ZWRKE")
@@ -27,10 +33,23 @@ public class EnvironmentVariableWorker {
 
 	@Inject
 	private QJob job;
+	@Inject
+	private QOutputManager outputManager;
 	
 	public @Main void main(@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level) {
-		//TODO
-		System.out.println(new EnvironmentVariables(job, level.asEnum()));
+		
+		try {
+			String label = "Environment variables for level " + level;
+			QWritableObject objectToWrite = outputManager.getWritableObject(label,132);
+			objectToWrite.setObject(new EnvironmentVariables(job, level.asEnum()).toString());
+
+			QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
+			objectWriter.initialize();
+			objectWriter.write(objectToWrite.getObjectToWrite());
+			objectWriter.flush();
+		} catch (IOException e) {
+			throw new OperatingSystemRuntimeException(e);
+		}
 	}
 
 }
