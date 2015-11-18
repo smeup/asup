@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -26,6 +25,8 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.enums.YesNoEnum;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Supported @Program(name = "QP0ZADDE")
@@ -33,6 +34,10 @@ public class EnvironmentVariableAdder {
 
 	@Inject
 	private QJob job;
+	@Inject
+	private QSystemManager systemManager;
+	@Inject
+	private QResourceManager resourceManager;
 	
 	public @Main void main(
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
@@ -43,7 +48,7 @@ public class EnvironmentVariableAdder {
 
 		new EnvironmentVariables(job, level.asEnum())
 		.setValue(environmentVariable.trimR(), getValue(initialValue), replaceExistingEntry.asEnum().asBoolean())
-		.save();
+		.save(systemManager, resourceManager);
 	}
 
 

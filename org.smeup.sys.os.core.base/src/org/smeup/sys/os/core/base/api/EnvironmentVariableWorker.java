@@ -37,7 +37,6 @@ public class EnvironmentVariableWorker {
 	private QOutputManager outputManager;
 	
 	public @Main void main(@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level) {
-		
 		try {
 			String label = "Environment variables for level " + level;
 			QWritableObject objectToWrite = outputManager.getWritableObject(label,132);

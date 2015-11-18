@@ -1,7 +1,13 @@
 package org.smeup.sys.os.core.base.api;
 
+import java.io.IOException;
 import java.util.Map;
 
+import org.smeup.sys.il.core.out.QObjectWriter;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 public class EnvironmentVariables {
@@ -35,9 +41,10 @@ public class EnvironmentVariables {
 		return this;
 	}
 
-	public void save() {
+	public void save(QSystemManager systemManager, QResourceManager resourceManager) {
 		if (EnvironmentVariableLevelEnum.SYS.equals(level)) {
-			//TODO
+			QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, systemManager.getSystem().getSystemLibrary());
+			systemWriter.save(systemManager.getSystem(), true);
 		}
 	}
 
