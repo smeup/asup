@@ -7,4 +7,5 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.il.memo,
  org.smeup.sys.os.scde,
- javax.inject
+ javax.inject,
+ org.smeup.sys.os.scde.base

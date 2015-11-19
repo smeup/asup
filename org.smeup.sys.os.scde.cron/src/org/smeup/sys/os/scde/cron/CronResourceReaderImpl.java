@@ -13,14 +13,13 @@ package org.smeup.sys.os.scde.cron;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.il.memo.impl.ResourceReaderImpl;
 import org.smeup.sys.os.scde.QScheduleEntry;
+import org.smeup.sys.os.scde.base.SCDEBaseResourceReaderImpl;
 
-public class CronResourceReaderImpl extends ResourceReaderImpl<QScheduleEntry> {
+public class CronResourceReaderImpl extends SCDEBaseResourceReaderImpl {
 	
 	public CronResourceReaderImpl(QContextProvider contextProvider, String name) {
-		setContextProvider(contextProvider);
-		setName(name);
+		super(contextProvider, name);
 	}
 
 	@Override

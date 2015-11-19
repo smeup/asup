@@ -9,7 +9,7 @@
  *   Dario Foresti				- Initial API and implementation
  *
  */
-package org.smeup.sys.os.scde.cron;
+package org.smeup.sys.os.scde.base;
 
 import java.util.List;
 
@@ -20,27 +20,28 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceProviderImpl;
 
-public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QScheduleEntry> {
+public class SCDEBaseResourceProviderImpl<T extends QScheduleEntry> implements QResourceProvider {
 	
 
 	@Inject
-	public CronResourceProviderImpl(QResourceManager resourceManager) {
+	public SCDEBaseResourceProviderImpl(QResourceManager resourceManager) {
 		
-		super(resourceManager);		
+		// Register as provider for QScheduleEntry objects
+		resourceManager.registerProvider(QScheduleEntry.class, this);
 	}
 	
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
-		QResourceReader<T> resourceReader = (QResourceReader<T>) new CronResourceReaderImpl(contextProvider, resource);
+		QResourceReader<T> resourceReader = (QResourceReader<T>) new SCDEBaseResourceReaderImpl(contextProvider, resource);
 
 		return resourceReader;
 
@@ -52,7 +53,7 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 		
 		List<String> containers = resources(contextProvider, scope);
 
-		QResourceSetReader<T> resourceReader = (QResourceSetReader<T>) new CronResourceSetReaderImpl(contextProvider, containers);
+		QResourceSetReader<T> resourceReader = (QResourceSetReader<T>) new SCDEBaseResourceSetReaderImpl(contextProvider, containers);
 
 		return resourceReader;
 	}
@@ -61,7 +62,7 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 
-		QResourceWriter<T> resourceWriter = (QResourceWriter<T>) new CronResourceWriterImpl(contextProvider, resource);
+		QResourceWriter<T> resourceWriter = (QResourceWriter<T>) new SCDEBaseResourceWriterImpl(contextProvider, resource);
 
 		return resourceWriter;
 	}

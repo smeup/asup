@@ -9,15 +9,15 @@
  *   Dario Foresti				- Initial API and implementation   
  *
  */
-package org.smeup.sys.os.scde.cron;
+package org.smeup.sys.os.scde.base;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceWriterImpl;
 
-public class CronResourceWriterImpl extends SCDEBaseResourceWriterImpl {
+public class SCDEBaseResourceWriterImpl extends SCDEBaseResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
 
-	public CronResourceWriterImpl(QContextProvider contextProvider, String container) {
+	public SCDEBaseResourceWriterImpl(QContextProvider contextProvider, String container) {
 		super(contextProvider, container);
 	}
 

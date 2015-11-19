@@ -9,19 +9,19 @@
  *   Dario Foresti				- Initial API and implementation
  *
  */
-package org.smeup.sys.os.scde.cron;
+package org.smeup.sys.os.scde.base;
 
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceSetReaderImpl;
 
-public class CronResourceSetReaderImpl extends SCDEBaseResourceSetReaderImpl {
+public class SCDEBaseResourceSetReaderImpl extends ResourceSetReaderImpl<QScheduleEntry> {
 
-	public CronResourceSetReaderImpl(QContextProvider contextProvider, List<String> resources) {		
-		super(contextProvider, resources);
+	public SCDEBaseResourceSetReaderImpl(QContextProvider contextProvider, List<String> resources) {		
+		setContextProvider(contextProvider);
 	}
 
 	@Override
