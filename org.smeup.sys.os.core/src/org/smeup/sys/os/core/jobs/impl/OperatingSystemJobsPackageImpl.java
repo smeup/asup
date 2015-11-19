@@ -19,7 +19,6 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-import org.smeup.sys.il.expr.QIntegratedLanguageExpressionPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
@@ -169,7 +168,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		// Initialize simple dependencies
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
-		QIntegratedLanguageExpressionPackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies

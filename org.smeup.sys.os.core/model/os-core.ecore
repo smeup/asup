@@ -82,6 +82,13 @@
       <eParameters name="message" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
       <eParameters name="variables" lowerBound="1" eType="#//MessageVariableList"/>
     </eOperations>
+    <eOperations name="prepareException" eType="#//MessageException">
+      <eParameters name="job" eType="#//jobs/Job"/>
+      <eParameters name="message" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="messageFileName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="messageFileLib" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="variables" lowerBound="1" eType="#//MessageVariableList"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>

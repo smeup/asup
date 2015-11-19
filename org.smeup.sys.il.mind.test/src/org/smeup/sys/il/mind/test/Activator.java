@@ -27,7 +27,7 @@ public class Activator implements BundleActivator {
 		QTheory theory = mindManager.buildTheory(context, frame);
 		
 		for(QMindTerm mindTerm: theory.getFacts())
-			System.out.println(mindTerm);
+			mindTerm.toString();
 	}
 
 	@Override
