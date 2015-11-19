@@ -84,4 +84,13 @@ public class EnvironmentVariablesManager {
 		}
 		return result.toString();
 	}
+
+	public EnvironmentVariablesManager remove(String key) {
+		this.variables.remove(getEnvironmentVariable(key));
+		return this;
+	}
+
+	public boolean contains(String key) {
+		return getEnvironmentVariable(key) != null;
+	}
 }
