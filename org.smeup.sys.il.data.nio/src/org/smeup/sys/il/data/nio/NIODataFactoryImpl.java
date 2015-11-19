@@ -417,7 +417,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 	@Override
 	public <D extends QDataStruct> D createDataStruct(Class<D> classDelegator, int length, boolean initialize) {
-
+		
 		// data structure
 		D dataStructure = null;
 
@@ -477,7 +477,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 					NIOBufferedListImpl<?> arrayOverlayed = (NIOBufferedListImpl<?>) overlayedData;
 					NIOBufferedListImpl<?> arrayData = (NIOBufferedListImpl<?>) dataElement;
 					arrayData.setListOwner(arrayOverlayed);
-
+					arrayOverlayed.assign(dataElement, overlayedNextPos.asInteger());
 					overlayedNextPos.plus(arrayData.getModel().getSize());
 				} else {
 					overlayedNextPos.plus(dataElement.getSize());
