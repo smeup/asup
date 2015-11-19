@@ -42,4 +42,20 @@ public interface QFileManager {
 	 * @generated
 	 */
 	List<QFileOverride> listFileOverride(QContext context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	QFileOverride removeFileOverride(QContext context, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextRequired="true"
+	 * @generated
+	 */
+	void removeAllFileOverride(QContext context);
 } // QFileManager

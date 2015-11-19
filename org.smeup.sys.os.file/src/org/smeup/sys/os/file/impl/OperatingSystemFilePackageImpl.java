@@ -1028,6 +1028,13 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		op = addEOperation(fileManagerEClass, this.getFileOverride(), "listFileOverride", 1, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(fileManagerEClass, this.getFileOverride(), "removeFileOverride", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileManagerEClass, null, "removeAllFileOverride", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(fileMemberEClass, QFileMember.class, "FileMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFileMember_File(), this.getFileMembered(), null, "file", null, 1, 1, QFileMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFileMember_Name(), ecorePackage.getEString(), "name", null, 1, 1, QFileMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

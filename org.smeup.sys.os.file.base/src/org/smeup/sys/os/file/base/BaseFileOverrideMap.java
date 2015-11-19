@@ -42,4 +42,8 @@ public class BaseFileOverrideMap {
 	public void remove(String name) {
 		this.files.remove(name);
 	}
+	
+	public void removeAll() {
+		this.files.clear();
+	}
 }

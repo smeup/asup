@@ -76,4 +76,17 @@ public class BaseFileManagerImpl implements QFileManager {
 
 		return getFileMapOverride(context).list();
 	}
+
+	@Override
+	public QFileOverride removeFileOverride(QContext context, String name) {
+		QFileOverride fileOverride = getFileMapOverride(context).get(name);
+		return fileOverride;
+	}
+
+	@Override
+	public void removeAllFileOverride(QContext context) {
+		
+		BaseFileOverrideMap fileMapOverride = getFileMapOverride(context);
+		fileMapOverride.removeAll();
+	}
 }
