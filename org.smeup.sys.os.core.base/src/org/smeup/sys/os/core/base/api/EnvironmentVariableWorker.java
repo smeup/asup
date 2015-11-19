@@ -41,7 +41,7 @@ public class EnvironmentVariableWorker {
 		try {
 			String label = "Environment variables for level " + level;
 			QWritableObject objectToWrite = outputManager.getWritableObject(label, 132);
-			objectToWrite.setObject(new EnvironmentVariables(job, level.asEnum()).toString());
+			objectToWrite.setObject(new EnvironmentVariablesManager(job, level.asEnum()).toString());
 
 			QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
 			objectWriter.initialize();

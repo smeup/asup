@@ -38,13 +38,16 @@ public class EnvironmentVariableAdder {
 	private QSystemManager systemManager;
 	@Inject
 	private QResourceManager resourceManager;
-
-	@Main
-	public void main(@Supported @DataDef(length = 128) QCharacter environmentVariable, @Supported @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID,
-			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level, @Supported @DataDef(length = 4) QEnum<YesNoEnum, QCharacter> replaceExistingEntry) {
-
-		new EnvironmentVariables(job, level.asEnum()).setValue(environmentVariable.trimR(), getValue(initialValue), replaceExistingEntry.asEnum().asBoolean()).save(systemManager, resourceManager);
+	public @Main void main(
+			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
+			@Supported @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
+			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, 
+			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level,
+			@Supported @DataDef(length = 4) QEnum<YesNoEnum, QCharacter> replaceExistingEntry) {
+	
+		new EnvironmentVariablesManager(job, level.asEnum())
+		.setValue(environmentVariable.trimR(), getValue(initialValue), replaceExistingEntry.asEnum().asBoolean())
+		.save(systemManager, resourceManager);
 	}
 
 	private String getValue(QEnum<InitialValueEnum, QCharacter> initialValue) {
@@ -66,5 +69,4 @@ public class EnvironmentVariableAdder {
 		JOB, @Special(value = "65535")
 		HEX, OTHER
 	}
-
 }

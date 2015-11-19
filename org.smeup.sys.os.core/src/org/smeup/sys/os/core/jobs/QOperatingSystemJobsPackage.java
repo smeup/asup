@@ -218,7 +218,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 15;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' attribute.
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -641,15 +641,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJob_TimeSeparator();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variables</em>'.
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
 	 * @see org.smeup.sys.os.core.jobs.QJob#getVariables()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EAttribute getJob_Variables();
+	EReference getJob_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLog <em>Job Log</em>}'.
@@ -989,12 +989,12 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EAttribute JOB__TIME_SEPARATOR = eINSTANCE.getJob_TimeSeparator();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOB__VARIABLES = eINSTANCE.getJob_Variables();
+		EReference JOB__VARIABLES = eINSTANCE.getJob_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.

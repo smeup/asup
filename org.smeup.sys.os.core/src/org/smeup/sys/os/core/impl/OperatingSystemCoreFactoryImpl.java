@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.os.core.DateFormat;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
+import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
@@ -68,6 +69,7 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemCorePackage.CREATION_INFO: return (EObject)createCreationInfo();
 			case QOperatingSystemCorePackage.SYSTEM: return (EObject)createSystem();
+			case QOperatingSystemCorePackage.ENVIRONMENT_VARIABLE: return (EObject)createEnvironmentVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -139,6 +141,16 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	public QSystem createSystem() {
 		SystemImpl system = new SystemImpl();
 		return system;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QEnvironmentVariable createEnvironmentVariable() {
+		EnvironmentVariableImpl environmentVariable = new EnvironmentVariableImpl();
+		return environmentVariable;
 	}
 
 	/**

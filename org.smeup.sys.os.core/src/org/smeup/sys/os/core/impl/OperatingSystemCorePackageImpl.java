@@ -26,6 +26,7 @@ import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.DateFormat;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
+import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
@@ -63,6 +64,13 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass systemManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass environmentVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -321,8 +329,8 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSystem_Variables() {
-		return (EAttribute)systemEClass.getEStructuralFeatures().get(9);
+	public EReference getSystem_Variables() {
+		return (EReference)systemEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -333,6 +341,33 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	@Override
 	public EClass getSystemManager() {
 		return systemManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEnvironmentVariable() {
+		return environmentVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEnvironmentVariable_Name() {
+		return (EAttribute)environmentVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEnvironmentVariable_Value() {
+		return (EAttribute)environmentVariableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -436,9 +471,13 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(systemEClass, SYSTEM__SYSTEM_LIBRARY);
 		createEAttribute(systemEClass, SYSTEM__SYSTEM_USER);
 		createEAttribute(systemEClass, SYSTEM__TEMPORARY_LIBRARY);
-		createEAttribute(systemEClass, SYSTEM__VARIABLES);
+		createEReference(systemEClass, SYSTEM__VARIABLES);
 
 		systemManagerEClass = createEClass(SYSTEM_MANAGER);
+
+		environmentVariableEClass = createEClass(ENVIRONMENT_VARIABLE);
+		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__NAME);
+		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__VALUE);
 
 		exceptionManagerEClass = createEClass(EXCEPTION_MANAGER);
 
@@ -494,6 +533,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		systemEClass.getESuperTypes().add(theIntegratedLanguageLockPackage.getObjectLockable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
+		environmentVariableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(creationInfoEClass, QCreationInfo.class, "CreationInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -511,12 +551,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getSystem_SystemLibrary(), ecorePackage.getEString(), "systemLibrary", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_SystemUser(), ecorePackage.getEString(), "systemUser", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSystem_TemporaryLibrary(), ecorePackage.getEString(), "temporaryLibrary", null, 1, 1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
-		EGenericType g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEString());
-		g1.getETypeArguments().add(g2);
-		initEAttribute(getSystem_Variables(), g1, "variables", null, 1, 1, QSystem.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSystem_Variables(), this.getEnvironmentVariable(), null, "variables", null, 0, -1, QSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemManagerEClass, QSystemManager.class, "SystemManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -526,11 +561,15 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(systemManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(environmentVariableEClass, QEnvironmentVariable.class, "EnvironmentVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEnvironmentVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnvironmentVariable_Value(), ecorePackage.getEString(), "value", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(exceptionManagerEClass, QExceptionManager.class, "ExceptionManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		EOperation op = addEOperation(exceptionManagerEClass, this.getMessageException(), "prepareException", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
 		t1.getEBounds().add(g1);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaEnum(), "message", 1, 1, IS_UNIQUE, IS_ORDERED);

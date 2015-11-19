@@ -214,7 +214,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM__TEMPORARY_LIBRARY = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' attribute.
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -251,6 +251,43 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.impl.EnvironmentVariableImpl
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getEnvironmentVariable()
+	 * @generated
+	 */
+	int ENVIRONMENT_VARIABLE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Environment Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,7 +295,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getExceptionManager()
 	 * @generated
 	 */
-	int EXCEPTION_MANAGER = 3;
+	int EXCEPTION_MANAGER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Exception Manager</em>' class.
@@ -277,7 +314,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemStatus()
 	 * @generated
 	 */
-	int SYSTEM_STATUS = 4;
+	int SYSTEM_STATUS = 5;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.DateFormat <em>Date Format</em>}' enum.
@@ -287,7 +324,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getDateFormat()
 	 * @generated
 	 */
-	int DATE_FORMAT = 5;
+	int DATE_FORMAT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.TimeFormat <em>Time Format</em>}' enum.
@@ -297,7 +334,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getTimeFormat()
 	 * @generated
 	 */
-	int TIME_FORMAT = 6;
+	int TIME_FORMAT = 7;
 
 	/**
 	 * The meta object id for the '<em>Message Variable List</em>' data type.
@@ -306,7 +343,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageVariableList()
 	 * @generated
 	 */
-	int MESSAGE_VARIABLE_LIST = 7;
+	int MESSAGE_VARIABLE_LIST = 8;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -316,7 +353,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 8;
+	int MESSAGE_EXCEPTION = 9;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QCreationInfo <em>Creation Info</em>}'.
@@ -467,15 +504,15 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EAttribute getSystem_TemporaryLibrary();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variables</em>'.
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
 	 * @see org.smeup.sys.os.core.QSystem#getVariables()
 	 * @see #getSystem()
 	 * @generated
 	 */
-	EAttribute getSystem_Variables();
+	EReference getSystem_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}'.
@@ -486,6 +523,38 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSystemManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QEnvironmentVariable <em>Environment Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Environment Variable</em>'.
+	 * @see org.smeup.sys.os.core.QEnvironmentVariable
+	 * @generated
+	 */
+	EClass getEnvironmentVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QEnvironmentVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.os.core.QEnvironmentVariable#getName()
+	 * @see #getEnvironmentVariable()
+	 * @generated
+	 */
+	EAttribute getEnvironmentVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.QEnvironmentVariable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.smeup.sys.os.core.QEnvironmentVariable#getValue()
+	 * @see #getEnvironmentVariable()
+	 * @generated
+	 */
+	EAttribute getEnvironmentVariable_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}'.
@@ -683,12 +752,12 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		EAttribute SYSTEM__TEMPORARY_LIBRARY = eINSTANCE.getSystem_TemporaryLibrary();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SYSTEM__VARIABLES = eINSTANCE.getSystem_Variables();
+		EReference SYSTEM__VARIABLES = eINSTANCE.getSystem_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
@@ -699,6 +768,32 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SYSTEM_MANAGER = eINSTANCE.getSystemManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.impl.EnvironmentVariableImpl
+		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getEnvironmentVariable()
+		 * @generated
+		 */
+		EClass ENVIRONMENT_VARIABLE = eINSTANCE.getEnvironmentVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENVIRONMENT_VARIABLE__NAME = eINSTANCE.getEnvironmentVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENVIRONMENT_VARIABLE__VALUE = eINSTANCE.getEnvironmentVariable_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.

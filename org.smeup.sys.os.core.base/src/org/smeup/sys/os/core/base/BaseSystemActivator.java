@@ -51,6 +51,10 @@ public class BaseSystemActivator {
 
 		// System
 		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, systemManager.getSystem().getSystemLibrary());
+		QSystem persistedSystem = systemWriter.lookup(system.getName());
+		if (persistedSystem != null) {
+			system.getVariables().addAll(persistedSystem.getVariables());
+		}
 		systemWriter.save(systemManager.getSystem(), true);
 
 		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, system.getSystemLibrary());
