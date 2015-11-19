@@ -26,7 +26,6 @@ public class JDTStubWriter extends JDTProgramWriter {
 	}
 
 	public void writeSkeleton(QProgram program) throws IOException {
-		System.out.println("Writing " + program.getName());
 		
 		writeProgramAnnotation(program);
 

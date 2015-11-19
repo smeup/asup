@@ -746,13 +746,13 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 		getTarget().bodyDeclarations().add(methodDeclaration);
 
-		methodDeclaration.setName(getAST().newSimpleName(name));
-		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
-
 		MarkerAnnotation entryAnnotation = getAST().newMarkerAnnotation();
 		entryAnnotation.setTypeName(getAST().newSimpleName(Main.class.getSimpleName()));
 		writeImport(Main.class);
 		methodDeclaration.modifiers().add(entryAnnotation);
+
+		methodDeclaration.setName(getAST().newSimpleName(name));
+		methodDeclaration.modifiers().add(getAST().newModifier(ModifierKeyword.PUBLIC_KEYWORD));
 
 		for (String parameterName : parameterList.getParameters()) {			
 			QDataTerm<?> dataTerm = getCompilationUnit().getDataTerm(parameterName, true);
