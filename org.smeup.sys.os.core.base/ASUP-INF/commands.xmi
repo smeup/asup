@@ -145,11 +145,14 @@
         <facets
             xsi:type="il-core:Special">
           <elements
+              name="*SAME"
+              value="*SAME"/>
+          <elements
               name="*NULL"
               value="*NULL"/>
         </facets>
         <default
-            value="*NULL"/>
+            value="*SAME"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="1024"/>
