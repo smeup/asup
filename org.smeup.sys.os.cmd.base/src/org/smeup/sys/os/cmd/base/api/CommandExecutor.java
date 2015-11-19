@@ -39,7 +39,7 @@ public class CommandExecutor {
 	}
 
 	@Main
-	public void main(@DataDef(length = 2000) QCharacter command) {
+	public void main(@DataDef(length = 20000) QCharacter command) {
 
 		String commandString = command.trimR();
 		Map<String, Object> programsVariables = null;
