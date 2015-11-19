@@ -24,40 +24,4 @@
             genModel="model/os-core.genmodel"/>
    </extension>
 
-   <extension
-         id="cdo_store"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.asup.rt.core.e4.application"
-            name="As.UP CDO Store">
-         <property
-               name="appName"
-               value="As.UP CDO Store">
-         </property>
-      </product>
-   </extension>
-   <extension
-         id="application_cdo"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.asup.rt.core.e4.application"
-            name="As.UP Application CDO">
-         <property
-               name="appName"
-               value="As.UP Application CDO">
-         </property>
-      </product>
-   </extension>
-   <extension
-         id="application_e4"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.smeup.sys.rt.core.e4.application"
-            name="As.UP Application E4 Flux">
-         <property
-               name="appName"
-               value="As.UP Application E4 Flux">
-         </property>
-      </product>
-   </extension>
 </plugin>

@@ -30,21 +30,57 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 	}
 
 	@Override
+	public OperatingSystemMessageException prepareException(QJob job, String messageName, String messageFileName, String messageFileLib, Object[] variables) {
+		QMessageDescription messageDescription = findMessageDescription(job, messageName, messageFileName, reader(job, messageFileLib));
+
+		String messageText = "Invalid message file: " + messageFileName;
+		String name = messageFileName.toString();
+		int severity = -1;
+
+		if (messageDescription != null) {
+			messageText = messageDescription.getMessageText();
+			name = messageDescription.getName();
+			severity = messageDescription.getSeverity();
+		}
+
+		for (int i = 0; i < variables.length; i++)
+			messageText = messageText.replaceFirst("&" + (i + 1), Matcher.quoteReplacement("" + variables[i]));
+
+		OperatingSystemMessageException messageException = new OperatingSystemMessageException(name, messageText, severity);
+
+		return messageException;
+	}
+
+	
+	private QResourceReader<QMessageFile> reader(QJob job, String messageFileLib) {
+		try {
+			Scope libraryScope = Scope.valueOf(messageFileLib);
+			return resourceManager.getResourceReader(job, QMessageFile.class, libraryScope);
+		} catch (Exception e) {
+			return resourceManager.getResourceReader(job, QMessageFile.class, messageFileLib);
+		}		
+	}
+
+	@Override
 	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object[] variables) {
 
 		if (variables == null)
 			variables = new Object[] {};
-
-		QResourceReader<QMessageFile> messageFileReader = resourceManager.getResourceReader(job, QMessageFile.class, Scope.LIBRARY_LIST);
-
-		QMessageFile messageFile = null;
 
 		String messageFileName = null;
 		if (message.getClass().getAnnotation(MessageFile.class) != null)
 			messageFileName = message.getClass().getAnnotation(MessageFile.class).name();
 		else
 			messageFileName = message.getClass().getSimpleName();
+		
+		String messageName = message.name();
+		
+		return prepareException(job, messageName, messageFileName, "*LIBL", variables);
+	}
 
+
+	private QMessageDescription findMessageDescription(QJob job, String messageName, String messageFileName, QResourceReader<QMessageFile> messageFileReader) {
+		QMessageFile messageFile = null;
 		if (messageFileName.equalsIgnoreCase("QCPFMSG")) {
 			if (cpfMessageFile == null) {
 				synchronized (this) {
@@ -62,27 +98,8 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 		QMessageDescription messageDescription = null;
 		if (messageFile != null)
-			messageDescription = messageFile.lookup(message.name());
-
-		String messageText = "Invalid message file: " + message;
-		String name = message.toString();
-		int severity = 0;
-
-		if (messageDescription != null) {
-			messageText = messageDescription.getMessageText();
-			name = messageDescription.getName();
-			severity = messageDescription.getSeverity();
-		}
-
-		for (int i = 0; i < variables.length; i++)
-			messageText = messageText.replaceFirst("&" + (i + 1), Matcher.quoteReplacement("" + variables[i]));
-
-		OperatingSystemMessageException messageException = new OperatingSystemMessageException(name, messageText, severity);
-
-		// TODO ???
-		// jobLogManager.addEntry(job, severity, messageText);
-
-		return messageException;
-
+			messageDescription = messageFile.lookup(messageName);
+		return messageDescription;
 	}
+
 }

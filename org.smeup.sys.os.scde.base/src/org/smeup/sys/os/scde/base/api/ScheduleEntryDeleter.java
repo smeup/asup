@@ -13,7 +13,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
 
-@Program(name = "RMVJOBSCDE")
+@Program(name = "QWCCRMYC")
 public class ScheduleEntryDeleter {
 	
 	@Inject

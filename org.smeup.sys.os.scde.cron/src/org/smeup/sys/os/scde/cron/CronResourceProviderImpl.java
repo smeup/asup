@@ -25,9 +25,9 @@ import org.smeup.sys.il.memo.QResourceSetReader;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceProviderImpl;
+import org.smeup.sys.os.scde.base.SCDEAbstractResourceProviderImpl;
 
-public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QScheduleEntry> {
+public class CronResourceProviderImpl extends SCDEAbstractResourceProviderImpl<QScheduleEntry> {
 	
 
 	@Inject
