@@ -332,15 +332,6 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getScheduleEntry_ScheduledDate(), 
-		   source, 
-		   new String[] {
-			 "length", "8"
-		   },
-		   new URI[] {
-			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
-		   });	
-		addAnnotation
 		  (getScheduleEntry_ScheduledDay(), 
 		   source, 
 		   new String[] {

@@ -46,7 +46,7 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @return the value of the '<em>Scheduled Date</em>' attribute.
 	 * @see #setScheduledDate(String)
 	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_ScheduledDate()
-	 * @model annotation="il-data length='8'"
+	 * @model
 	 * @generated
 	 */
 	String getScheduledDate();

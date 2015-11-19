@@ -46,7 +46,7 @@ public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEn
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The default value of the '{@link #getScheduledDate() <em>Scheduled Date</em>}' attribute.
+	 * The default value of the '{@link #getCommandToRun() <em>Command To Run</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCommandToRun()

@@ -4,38 +4,28 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.smeup.sys.os.scde.QScheduleEntry;
-
 public class CronSystemWrapper {
 	
-	public static String REBOOT = "@reboot";		// Lancia il comando all'avvio del sistema
-	public static String YEARLY = "@yearly";		// Lancia il comando una volta all'anno. Uguale a "0 0 1 1 *"
-	public static String ANNUALLY= "@annually"; 	// come @yearly
-	public static String MONTLY = "@monthly";  		// Lancia il comando una volta al mese. Uguale a "0 0 1 * *"
-	public static String WEEKLY = "@weekly";		// Lancia il comando una volta alla settimana. Uguale a "0 0 * * 0"
-	public static String DAiLY = "@daily";			// Lancia il comando una volta al giorno. Uguale a "0 0 * * *"
-	public static String MIDNIGHT = "@midnight";	// come @daily
-	public static String HOURLY = "@hourly";		// Lancia il comando una volta all'ora. Uguale a "0 * * * *"
+	String webServiceAddress = "127.0.0.1";
 	
-
-	public void addCronTask(String name, String server, String mask, String user, String command){
+	public void addCronTask(String taskName, String taskID, String mask, String user, String command){
 
 		executeBashScript("addcron",
-				mask,
-				server,
-				buildID(),
-				user,
-				command,
-				name);
+						  mask,
+						  webServiceAddress,
+						  taskID,
+						  user,
+						  command,
+						  taskName);
 	}
 	
-	public void removeCronTask(String name){
+	public void removeCronTask(String taskName){
 		
 		executeBashScript("removeCron",
-						 name);
+						 taskName);
 	}
 	
-	public String lookupCronTask(String name) {
+	public String lookupCronTask(String taskName) {
 		String result = null;
 		
 		return result;
@@ -67,7 +57,5 @@ public class CronSystemWrapper {
 	    }
 	}
 	
-	private String buildID() {
-		return "" + Math.round(Math.random()*1000000);
-	}
+
 }
