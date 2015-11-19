@@ -17,6 +17,7 @@ import gnu.prolog.database.PrologTextLoaderState;
 import gnu.prolog.vm.Environment;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
@@ -81,7 +82,10 @@ public class GNUReasonerImpl implements QReasoner {
 
 		PrologTextLoaderState ptls = environment.getPrologTextLoaderState();
 		try {
-			new PrologTextLoader(ptls, new InputStreamReader(resource.openStream()));
+			InputStream inputStream = resource.openStream();
+			InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+			new PrologTextLoader(ptls, inputStreamReader);
+			inputStream.close();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

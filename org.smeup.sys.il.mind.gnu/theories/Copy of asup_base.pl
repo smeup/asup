@@ -4,6 +4,7 @@
 
 /* Use as */
 asup_usa(_object, _interface) :- asup_ako(_object, _interface).
+asup_usa(_object, _object).
 
 /* Used by */
 asup_usb(_interface, _object) :- asup_usa(_object, _interface).

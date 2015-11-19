@@ -116,22 +116,24 @@ public class GNUQuestionResolver {
 	}
 
 	private QMindTerm buildTerm(Term term) {
+		if(term == null)
+			return null;
 
+		term = term.dereference();		
 		QMindTerm mindTerm = QIntegratedLanguageMindFactory.eINSTANCE.createMindTerm();
-		Term left = term.dereference();
-		if (left instanceof CompoundTerm) {
-			CompoundTerm ct = (CompoundTerm) left;
+		if (term instanceof CompoundTerm) {
+			CompoundTerm ct = (CompoundTerm) term;
 			System.out.println(ct.tag.functor.value);
 			mindTerm.setName(ct.args[0].toString());
-		} else if (left instanceof JavaObjectTerm) {
-			JavaObjectTerm jo = (JavaObjectTerm) left;
+		} else if (term instanceof JavaObjectTerm) {
+			JavaObjectTerm jo = (JavaObjectTerm) term;
 			if (jo.value instanceof QFrame) {
 				mindTerm.setName(((QFrame<?>) jo.value).getName());
 			} else if (jo.value instanceof QObjectNameable) {
 				mindTerm.setName(((QObjectNameable) jo.value).getName());
 			}
 		} else {
-			mindTerm.setName(TermWriter.toString(left));
+			mindTerm.setName(TermWriter.toString(term));
 		}
 
 		return mindTerm;

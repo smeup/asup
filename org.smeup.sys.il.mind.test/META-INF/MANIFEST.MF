@@ -10,3 +10,4 @@ Import-Package: org.osgi.framework
 Require-Bundle: org.smeup.sys.il.core.e4,
  org.smeup.sys.il.mind,
  org.smeup.sys.il.mind.gnu
+Bundle-ActivationPolicy: lazy

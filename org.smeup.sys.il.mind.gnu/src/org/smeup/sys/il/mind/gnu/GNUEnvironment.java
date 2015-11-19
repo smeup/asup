@@ -1,3 +1,14 @@
+/**
+ *  Copyright (c) 2012, 2015 Sme.UP and others.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ *
+ *
+ * Contributors:
+ *   Mattia Rocchi - Initial API and implementation
+ */
 package org.smeup.sys.il.mind.gnu;
 
 import gnu.prolog.database.Predicate;
@@ -13,10 +24,10 @@ public class GNUEnvironment extends Environment {
 	public synchronized PrologCode loadPrologCode(CompoundTermTag tag) throws PrologException {
 		// simple variant, later I will need to add compilation.
 		Predicate p = prologTextLoaderState.getModule().getDefinedPredicate(tag);
-		if (p == null) // case of undefined predicate
-		{
+		// case of undefined predicate
+		if (p == null) 
 			return getUndefinedPredicateCode(tag);
-		}
+		
 		switch (p.getType()) {
 		case CONTROL:
 			// really only call should be loaded in this way

@@ -6,7 +6,7 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.smeup.sys.il.mind
-Bundle-ClassPath: lib/gnuprologjava-0.2.5.jar,
- .
+Bundle-ClassPath: .,
+ lib/gnuprologjava-0.2.6.jar
 Import-Package: org.osgi.framework
 Export-Package: org.smeup.sys.il.mind.gnu

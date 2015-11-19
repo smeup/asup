@@ -36,9 +36,11 @@ public class GNUTheoryBuilder {
 		for (QSlot slot : frame.getSlots())
 			theory.getFacts().add(buildTerm("asup_slot(" + frame.getName() + ", " + slot.getName() + ")."));
 
-		for (QSlot slot : frame.getSlots())
-			theory.getFacts().add(buildTerm("asup_domain(" + frame.getName() + ", " + slot.getName() + ", " + slot.getDomain().getName() + ")."));
-
+		for (QSlot slot : frame.getSlots()) {
+			if(slot.getDomain() != null)
+				theory.getFacts().add(buildTerm("asup_domain(" + frame.getName() + ", " + slot.getName() + ", " + slot.getDomain().getName() + ")."));
+		}
+		
 		return theory;
 	}
 

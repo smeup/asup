@@ -27,7 +27,7 @@ public class GNUTheoryReader extends Reader {
 		StringBuffer sb = new StringBuffer();
 		
 		for(QMindTerm term: theory.getFacts()) 
-			sb.append(term.toString()+"\n");
+			sb.append(term.getName()+"\n");
 
 		sr = new StringReader(sb.toString());
 	}
