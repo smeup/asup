@@ -37,6 +37,11 @@ import org.smeup.sys.os.scde.QScheduleEntry;
  */
 public class ScheduleEntryImpl extends ObjectNameableImpl implements QScheduleEntry {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getScheduledDate() <em>Scheduled Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

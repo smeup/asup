@@ -1,9 +1,7 @@
 package org.smeup.sys.os.core.base.api;
 
-import java.io.IOException;
 import java.util.Map;
 
-import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QSystem;

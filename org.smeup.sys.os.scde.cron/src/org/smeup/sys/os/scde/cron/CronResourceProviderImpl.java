@@ -36,7 +36,7 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 		super(resourceManager);		
 	}
 	
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked"})
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
 
@@ -46,7 +46,7 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 
 	}
 
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked"})
 	@Override
 	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 		
@@ -57,7 +57,7 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 		return resourceReader;
 	}
 
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked"})
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource) {
 
@@ -66,7 +66,6 @@ public class CronResourceProviderImpl extends SCDEBaseResourceProviderImpl<QSche
 		return resourceWriter;
 	}
 	
-	@SuppressWarnings({"hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
