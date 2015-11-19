@@ -36,4 +36,12 @@ public interface QExceptionManager {
 	 */
 	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object[] variables);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="org.smeup.sys.os.core.MessageException" messageRequired="true" messageFileNameRequired="true" messageFileLibRequired="true" variablesDataType="org.smeup.sys.os.core.MessageVariableList" variablesRequired="true"
+	 * @generated
+	 */
+	OperatingSystemMessageException prepareException(QJob job, String message, String messageFileName, String messageFileLib, Object[] variables);
+
 } // QExceptionManager
