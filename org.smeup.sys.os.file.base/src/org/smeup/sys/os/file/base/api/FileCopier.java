@@ -64,7 +64,8 @@ public @ToDo class FileCopier {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Main void main(
+	@Main 
+	public void main(
 			@Supported @DataDef(qualified = true) FROMFILE fromFile,
 			@Supported @DataDef(qualified = true) TOFILE toFile,
 			@Supported @DataDef(length = 10) QEnum<FROMMEMBEREnum, QCharacter> fromMember,

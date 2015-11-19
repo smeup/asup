@@ -50,10 +50,8 @@ public class ObjectWorker {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@DataDef(qualified = true) OBJECT object, 
-							@DataDef(length = 7) QCharacter objectType,
-							@DataDef(length = 50) QCharacter text,
-							@DataDef(length = 2) QCharacter application) {
+	@Main
+	public void main(@DataDef(qualified = true) OBJECT object, @DataDef(length = 7) QCharacter objectType, @DataDef(length = 50) QCharacter text, @DataDef(length = 2) QCharacter application) {
 
 		QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
 		objectWriter.initialize();
@@ -61,24 +59,24 @@ public class ObjectWorker {
 		List<QType<?>> types = findTypes(objectType);
 		for (QType<?> type : types) {
 			QResourceReader<?> resourceReader = findReader(object, type);
-			try(QObjectIterator<?> objectIterator = findIterator(object.nameGeneric, resourceReader);) {
+			try (QObjectIterator<?> objectIterator = findIterator(object.nameGeneric, resourceReader);) {
 				while (objectIterator.hasNext()) {
 					QObject qObject = null;
 					try {
 						qObject = objectIterator.next();
-	
+
 						if (qObject instanceof QTypedObject) {
 							QTypedObject qTypedObject = (QTypedObject) qObject;
 							// text
 							if (!text.isNull() && !text.isEmpty())
 								if (qTypedObject.getText() == null || qTypedObject.getText().toUpperCase().indexOf(text.trimR().toUpperCase()) < 0)
 									continue;
-	
+
 							// application
 							if (!application.isNull() && !application.isEmpty())
 								if (qTypedObject.getApplication() == null || qTypedObject.getApplication().toUpperCase().indexOf(application.trimR().toUpperCase()) < 0)
 									continue;
-	
+
 						}
 						objectWriter.write(qObject);
 					} catch (Exception e) {
@@ -87,7 +85,7 @@ public class ObjectWorker {
 				}
 			}
 		}
-		
+
 		objectWriter.flush();
 	}
 
@@ -126,7 +124,7 @@ public class ObjectWorker {
 	}
 
 	@SuppressWarnings("resource")
-	private QObjectIterator<?> findIterator(QEnum<NameGenericEnum, QCharacter> nameGeneric,	QResourceReader<?> resourceReader) {
+	private QObjectIterator<?> findIterator(QEnum<NameGenericEnum, QCharacter> nameGeneric, QResourceReader<?> resourceReader) {
 		QObjectIterator<?> result = null;
 		switch (nameGeneric.asEnum()) {
 		case ALL:
@@ -143,7 +141,7 @@ public class ObjectWorker {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10)
 		public QEnum<NameGenericEnum, QCharacter> nameGeneric;
-		
+
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LibraryEnum, QCharacter> library;
 

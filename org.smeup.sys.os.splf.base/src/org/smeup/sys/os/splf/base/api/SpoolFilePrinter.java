@@ -32,19 +32,20 @@ public @Program(name = "QASSPLFP") class SpoolFilePrinter {
 	private QJob job;
 	@Inject
 	private QSpoolFileWriter spoolFileWriter;
-	
+
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(@DataDef(length = 255) QCharacter spoolID) {
+	@Main
+	public void main(@DataDef(length = 255) QCharacter spoolID) {
 
 		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
 		QSpoolFile spoolFile = spoolFileReader.lookup(spoolID.trimR());
-		
+
 		if (spoolFile == null) {
 			throw new OperatingSystemRuntimeException("Invalid spool ID");
 		}
-		
+
 		spoolFileWriter.writeSpoolFile(job.getContext(), spoolFile);
 	}
 }

@@ -30,13 +30,14 @@ import org.smeup.sys.os.core.jobs.QJob;
 
 @Program(name = "QLIDSPLL")
 public class LibraryListEntryDisplayer {
-	
+
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
 	private QJob job;
 
-	public @Main void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
+	@Main
+	public void main(@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 
 		QObjectWriter objectWriter = null;
 
@@ -47,12 +48,12 @@ public class LibraryListEntryDisplayer {
 		}
 
 		objectWriter.initialize();
-		
-		QWritableObject objectToWrite =outputManager.getWritableObject("Library");
-		
+
+		QWritableObject objectToWrite = outputManager.getWritableObject("Library");
+
 		List<String> libs = new ArrayList<String>();
-		libs.add(job.getCurrentLibrary() + " - CUR") ;
-		libs.addAll(job.getLibraries());				
+		libs.add(job.getCurrentLibrary() + " - CUR");
+		libs.addAll(job.getLibraries());
 		for (String lib : libs) {
 			objectToWrite.setObject(lib);
 			try {
@@ -66,9 +67,8 @@ public class LibraryListEntryDisplayer {
 
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
-		TERM_STAR, 
-		@Special(value = "L")
+		TERM_STAR, @Special(value = "L")
 		PRINT
 	}
-	
+
 }

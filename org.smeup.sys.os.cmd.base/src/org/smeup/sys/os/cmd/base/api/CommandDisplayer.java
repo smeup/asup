@@ -44,7 +44,8 @@ public class CommandDisplayer {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Main void main(@DataDef(qualified = true) COMMAND command,
+	@Main 
+	public void main(@DataDef(qualified = true) COMMAND command,
 							@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 		CommandFinder commandFinder = new CommandFinder(job, resourceManager, exceptionManager);
 		QCommand qCommand = commandFinder.find(command.name.trimR(), command.library.asData().trimR());

@@ -47,7 +47,7 @@ public class ObjectDeleter {
 		if (objectType == null || objectType.trimR().equals("")) {
 			throw new OperatingSystemRuntimeException("You must specify an object type type");
 		}
-		
+
 		@SuppressWarnings("unchecked")
 		QResourceWriter<T> resource = (QResourceWriter<T>) resourceManager.getResourceWriter(job, typeRegistry.lookup(objectType.trimR()).getTypedClass(), library);
 		T qObject = resource.lookup(name);

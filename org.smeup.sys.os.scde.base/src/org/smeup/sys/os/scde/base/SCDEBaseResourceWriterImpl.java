@@ -23,7 +23,7 @@ public class SCDEBaseResourceWriterImpl extends SCDEBaseResourceReaderImpl imple
 
 	@Override
 	public synchronized void delete(QScheduleEntry object) {
-		//TODO
+		// TODO
 		throw new UnsupportedOperationException();
 	}
 
@@ -34,7 +34,7 @@ public class SCDEBaseResourceWriterImpl extends SCDEBaseResourceReaderImpl imple
 
 	@Override
 	public synchronized void save(QScheduleEntry object, boolean replace) {
-		//TODO
+		// TODO
 		throw new UnsupportedOperationException();
 	}
 }

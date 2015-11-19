@@ -45,31 +45,28 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 		QObjectWriter objectWriter = outputManager.getDefaultWriter(context);
 		List<QSpoolFileRow> rows = spoolFile.getRows();
 		objectWriter.initialize();
-		
+
 		EClass eClass = createBaseObjectEClass(columnNameFor(spoolFile));
 		QObject qObject = (QObject) eClass.getEPackage().getEFactoryInstance().create(eClass);
-		
-	
+
 		for (QSpoolFileRow qSpoolFileRow : rows) {
 			try {
 				for (EStructuralFeature eStructuralFeature : eClass.getEStructuralFeatures()) {
 					((EObject) qObject).eSet(eStructuralFeature, qSpoolFileRow.getContent());
-				}	
+				}
 
 				objectWriter.write(qObject);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		objectWriter.flush();
 	}
-
 
 	private String columnNameFor(QSpoolFile spoolFile) {
 		return spoolFile.getJobUser() + "_" + spoolFile.getJobName() + "_" + spoolFile.getJobNumber();
 	}
-
 
 	private EClass createBaseObjectEClass(String columnName) {
 		EcoreFactory ecoreFactory = EcoreFactory.eINSTANCE;
@@ -85,7 +82,7 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 
 		ePackage.getEClassifiers().add(eClass);
 		//
-		int columnLength = 198; 
+		int columnLength = 198;
 
 		EAttribute eAttribute = ecoreFactory.createEAttribute();
 		eAttribute.setName(columnName);
@@ -98,7 +95,7 @@ public class BaseSpoolFileWriterImpl implements QSpoolFileWriter {
 		eAttribute.getEAnnotations().add(eAnnotation);
 
 		eClass.getEStructuralFeatures().add(eAttribute);
-		
+
 		return eClass;
 	}
 

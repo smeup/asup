@@ -37,83 +37,38 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 	@Inject
 	private QJob job;
 
-	public @Main void main(
-			@Supported @DataDef(qualified = true) OBJECT object, 
-			@Supported @DataDef(length = 7) QEnum<OBJECTTYPEEnum, QCharacter> objectType, QEnum<ASPDEVICEEnum, ASPDEVICE> aSPDevice,
-			@Supported @DataDef(length = 10) QCharacter cLVarForRTNLIB10, 
-			@Supported @DataDef(length = 10) QCharacter cLVarForOBJATR10, 
-			@DataDef(length = 10) QCharacter cLVarForUSRDFNATR10,
-			@Supported @DataDef(length = 50) QCharacter cLVarForTEXT50, 
-			@ToDo @DataDef(length = 10) QCharacter cLVarForOWNER10, 
-			@DataDef(length = 10) QCharacter cLVarForPGP10,
-			@DataDef(precision = 2) QDecimal cLVarForASP20, 
-			@DataDef(precision = 5) QDecimal cLVarForLIBASP50, 
-			@DataDef(length = 10) QCharacter cLVarForOBJASPDEV10,
-			@DataDef(length = 10) QCharacter cLVarForOBJASPGRP10, 
-			@DataDef(length = 10) QCharacter cLVarForLIBASPDEV10, 
-			@DataDef(length = 10) QCharacter cLVarForLIBASPGRP10,
-			@DataDef(length = 1) QCharacter cLVarForOVFASP1, 
-			@Supported @DataDef(length = 13) QCharacter cLVarForCRTDATE13, 
-			@DataDef(length = 13) QCharacter cLVarForCHGDATE13,
-			@DataDef(length = 13) QCharacter cLVarForSAVDATE13, 
-			@DataDef(length = 13) QCharacter cLVarForSAVACTDATE13, 
-			@DataDef(length = 13) QCharacter cLVarForRSTDATE13,
-			@Supported @DataDef(length = 10) QCharacter cLVarForCRTUSER10, 
-			@DataDef(length = 8) QCharacter cLVarForCRTSYSTEM8, 
-			@DataDef(length = 2) QCharacter cLVarForOBJDMN2,
-			@DataDef(length = 1) QCharacter cLVarForUSEUPD1, 
-			@DataDef(length = 7) QCharacter cLVarForUSEDATE7, 
-			@DataDef(precision = 5) QDecimal cLVarForUSECOUNT50,
-			@DataDef(length = 7) QCharacter cLVarForRESETDATE7, 
-			@DataDef(length = 10) QCharacter cLVarForSTG10, 
-			@DataDef(length = 1) QCharacter cLVarForCPR1,
-			@ToDo @DataDef(precision = 15) QDecimal cLVarForSIZE150, 
-			@DataDef(precision = 15) QDecimal cLVarForSPCSIZE150, 
-			@DataDef(length = 1) QCharacter cLVarForSPCALIGN1,
-			@DataDef(precision = 15) QDecimal cLVarForSAVSIZE150, 
-			@DataDef(length = 10) QCharacter cLVarForSAVCMD10, 
-			@DataDef(precision = 4) QDecimal cLVarForSAVSEQNBR40,
-			@DataDef(precision = 10) QDecimal cLVarForSAVLRGSEQ100, 
-			@DataDef(length = 71) QCharacter cLVarForSAVVOL71, 
-			@DataDef(length = 10) QCharacter cLVarForSAVDEV10,
-			@DataDef(length = 10) QCharacter cLVarForSAVF10, 
-			@DataDef(length = 10) QCharacter cLVarForSAVFLIB10, 
-			@DataDef(length = 17) QCharacter cLVarForSAVLABEL17,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForSRCF10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForSRCFLIB10, 
-			@ToDo @DataDef(length = 10) QCharacter cLVarForSRCMBR10,
-			@DataDef(length = 13) QCharacter cLVarForSRCDATE13, 
-			@DataDef(length = 9) QCharacter cLVarForSYSLVL9, 
-			@DataDef(length = 16) QCharacter cLVarForCOMPILER16,
-			@ToDo @DataDef(length = 8) QCharacter cLVarForOBJLVL8, 
-			@DataDef(length = 1) QCharacter cLVarForALWAPICHG1, 
-			@DataDef(length = 1) QCharacter cLVarForAPICHG1,
-			@DataDef(length = 1) QCharacter cLVarForUSRCHG1, 
-			@DataDef(length = 16) QCharacter cLVarForLICPGM16, 
-			@DataDef(length = 10) QCharacter cLVarForPTF10,
-			@DataDef(length = 10) QCharacter cLVarForAPAR10, 
-			@DataDef(length = 10) QCharacter cLVarForOBJAUD10, 
-			@DataDef(length = 1) QCharacter cLVarForOBJSIG1,
-			@DataDef(length = 1) QCharacter cLVarForSYSSIG1, 
-			@DataDef(length = 1) QCharacter cLVarForMLTSIG1, 
-			@DataDef(length = 1) QCharacter cLVarForJRNSTS1,
-			@DataDef(length = 10) QCharacter cLVarForJRN10, 
-			@DataDef(length = 10) QCharacter cLVarForJRNLIB10, 
-			@DataDef(length = 1) QCharacter cLVarForJRNIMG1,
-			@DataDef(length = 1) QCharacter cLVarForJRNOMTE1, 
-			@DataDef(length = 13) QCharacter cLVarForJRNSTRDATE13, 
-			@DataDef(length = 10) QCharacter cLVarForSTRJRNRCV10,
-			@DataDef(length = 10) QCharacter cLVarForJRNRCVLIB10, 
-			@DataDef(length = 10) QCharacter cLVarForRCVLIBASP10, 
-			@DataDef(length = 10) QCharacter cLVarForRCVLIBGRP10) {
+	@Main
+	public void main(@Supported @DataDef(qualified = true) OBJECT object, @Supported @DataDef(length = 7) QEnum<OBJECTTYPEEnum, QCharacter> objectType, QEnum<ASPDEVICEEnum, ASPDEVICE> aSPDevice,
+			@Supported @DataDef(length = 10) QCharacter cLVarForRTNLIB10, @Supported @DataDef(length = 10) QCharacter cLVarForOBJATR10, @DataDef(length = 10) QCharacter cLVarForUSRDFNATR10,
+			@Supported @DataDef(length = 50) QCharacter cLVarForTEXT50, @ToDo @DataDef(length = 10) QCharacter cLVarForOWNER10, @DataDef(length = 10) QCharacter cLVarForPGP10,
+			@DataDef(precision = 2) QDecimal cLVarForASP20, @DataDef(precision = 5) QDecimal cLVarForLIBASP50, @DataDef(length = 10) QCharacter cLVarForOBJASPDEV10,
+			@DataDef(length = 10) QCharacter cLVarForOBJASPGRP10, @DataDef(length = 10) QCharacter cLVarForLIBASPDEV10, @DataDef(length = 10) QCharacter cLVarForLIBASPGRP10,
+			@DataDef(length = 1) QCharacter cLVarForOVFASP1, @Supported @DataDef(length = 13) QCharacter cLVarForCRTDATE13, @DataDef(length = 13) QCharacter cLVarForCHGDATE13,
+			@DataDef(length = 13) QCharacter cLVarForSAVDATE13, @DataDef(length = 13) QCharacter cLVarForSAVACTDATE13, @DataDef(length = 13) QCharacter cLVarForRSTDATE13,
+			@Supported @DataDef(length = 10) QCharacter cLVarForCRTUSER10, @DataDef(length = 8) QCharacter cLVarForCRTSYSTEM8, @DataDef(length = 2) QCharacter cLVarForOBJDMN2,
+			@DataDef(length = 1) QCharacter cLVarForUSEUPD1, @DataDef(length = 7) QCharacter cLVarForUSEDATE7, @DataDef(precision = 5) QDecimal cLVarForUSECOUNT50,
+			@DataDef(length = 7) QCharacter cLVarForRESETDATE7, @DataDef(length = 10) QCharacter cLVarForSTG10, @DataDef(length = 1) QCharacter cLVarForCPR1,
+			@ToDo @DataDef(precision = 15) QDecimal cLVarForSIZE150, @DataDef(precision = 15) QDecimal cLVarForSPCSIZE150, @DataDef(length = 1) QCharacter cLVarForSPCALIGN1,
+			@DataDef(precision = 15) QDecimal cLVarForSAVSIZE150, @DataDef(length = 10) QCharacter cLVarForSAVCMD10, @DataDef(precision = 4) QDecimal cLVarForSAVSEQNBR40,
+			@DataDef(precision = 10) QDecimal cLVarForSAVLRGSEQ100, @DataDef(length = 71) QCharacter cLVarForSAVVOL71, @DataDef(length = 10) QCharacter cLVarForSAVDEV10,
+			@DataDef(length = 10) QCharacter cLVarForSAVF10, @DataDef(length = 10) QCharacter cLVarForSAVFLIB10, @DataDef(length = 17) QCharacter cLVarForSAVLABEL17,
+			@ToDo @DataDef(length = 10) QCharacter cLVarForSRCF10, @ToDo @DataDef(length = 10) QCharacter cLVarForSRCFLIB10, @ToDo @DataDef(length = 10) QCharacter cLVarForSRCMBR10,
+			@DataDef(length = 13) QCharacter cLVarForSRCDATE13, @DataDef(length = 9) QCharacter cLVarForSYSLVL9, @DataDef(length = 16) QCharacter cLVarForCOMPILER16,
+			@ToDo @DataDef(length = 8) QCharacter cLVarForOBJLVL8, @DataDef(length = 1) QCharacter cLVarForALWAPICHG1, @DataDef(length = 1) QCharacter cLVarForAPICHG1,
+			@DataDef(length = 1) QCharacter cLVarForUSRCHG1, @DataDef(length = 16) QCharacter cLVarForLICPGM16, @DataDef(length = 10) QCharacter cLVarForPTF10,
+			@DataDef(length = 10) QCharacter cLVarForAPAR10, @DataDef(length = 10) QCharacter cLVarForOBJAUD10, @DataDef(length = 1) QCharacter cLVarForOBJSIG1,
+			@DataDef(length = 1) QCharacter cLVarForSYSSIG1, @DataDef(length = 1) QCharacter cLVarForMLTSIG1, @DataDef(length = 1) QCharacter cLVarForJRNSTS1,
+			@DataDef(length = 10) QCharacter cLVarForJRN10, @DataDef(length = 10) QCharacter cLVarForJRNLIB10, @DataDef(length = 1) QCharacter cLVarForJRNIMG1,
+			@DataDef(length = 1) QCharacter cLVarForJRNOMTE1, @DataDef(length = 13) QCharacter cLVarForJRNSTRDATE13, @DataDef(length = 10) QCharacter cLVarForSTRJRNRCV10,
+			@DataDef(length = 10) QCharacter cLVarForJRNRCVLIB10, @DataDef(length = 10) QCharacter cLVarForRCVLIBASP10, @DataDef(length = 10) QCharacter cLVarForRCVLIBGRP10) {
 
 		// TODO remove star or remove enum
-		QType<?> type = typeRegistry.lookup("*"+objectType.asData().trimR());
-		if(type == null)
+		QType<?> type = typeRegistry.lookup("*" + objectType.asData().trimR());
+		if (type == null)
 			return;
-		
+
 		QResourceReader<?> resourceReader = null;
-		
+
 		switch (object.library.asEnum()) {
 		case CURLIB:
 			resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
@@ -125,11 +80,12 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 			resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), object.library.asData().trimR());
 			break;
 		}
-		
-		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());;
-		if(objectNameable instanceof QTypedObject) {		
+
+		QObjectNameable objectNameable = resourceReader.lookup(object.name.trimR());
+		;
+		if (objectNameable instanceof QTypedObject) {
 			QTypedObject typedObject = (QTypedObject) objectNameable;
-			if(typedObject != null) {
+			if (typedObject != null) {
 				cLVarForTEXT50.eval(typedObject.getText());
 				cLVarForRTNLIB10.eval(typedObject.getLibrary());
 				cLVarForOBJATR10.eval(typedObject.getAttribute());
@@ -140,7 +96,7 @@ public @ToDo class ObjectDescriptionAttributeRetriever {
 	}
 
 	private String formatDate(Date date) {
-		return "1" + new SimpleDateFormat("yyMMddhhmmss").format(date);		
+		return "1" + new SimpleDateFormat("yyMMddhhmmss").format(date);
 	}
 
 	public static class OBJECT extends QDataStructWrapper {

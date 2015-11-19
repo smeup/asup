@@ -38,13 +38,12 @@ public class JobLogWriter {
 			this.objectToWrite = outputManager.getWritableObject("Message", 132);
 		}
 	}
-	
+
 	public void write(QJobLog jobLog) {
 		objectWriter.initialize();
 		write(objectWriter, jobLog);
-		objectWriter.flush();		
+		objectWriter.flush();
 	}
-	
 
 	private void write(QObjectWriter objectWriter, QJobLog jobLog) {
 		try {

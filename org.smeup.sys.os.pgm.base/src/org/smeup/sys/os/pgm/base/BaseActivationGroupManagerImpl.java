@@ -22,7 +22,7 @@ import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 
 public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
-	private Map<QJob, Map<String, QActivationGroup>> contextToMapActivationGroup = new WeakHashMap<QJob, Map<String,QActivationGroup>>();
+	private Map<QJob, Map<String, QActivationGroup>> contextToMapActivationGroup = new WeakHashMap<QJob, Map<String, QActivationGroup>>();
 
 	@Override
 	public void register(QJob job, QActivationGroup activationGroup) {
@@ -38,11 +38,11 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
 		// retrieve job activation groups
 		Map<String, QActivationGroup> mapActivationGroup = contextToMapActivationGroup.get(job);
-		if(mapActivationGroup == null) { 
+		if (mapActivationGroup == null) {
 			mapActivationGroup = new HashMap<String, QActivationGroup>();
 			contextToMapActivationGroup.put(job, mapActivationGroup);
-		}		
-		
+		}
+
 		return mapActivationGroup;
 	}
 
@@ -52,12 +52,12 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		// create
 		QActivationGroup activationGroup = QOperatingSystemProgramFactory.eINSTANCE.createActivationGroup();
 		activationGroup.setName(name);
-		activationGroup.setFrameworkContext(job.getContext().createChildContext(job.getJobName()+"/"+name));
+		activationGroup.setFrameworkContext(job.getContext().createChildContext(job.getJobName() + "/" + name));
 
 		// register on job
-		if(register)
+		if (register)
 			register(job, activationGroup);
-		
+
 		return activationGroup;
 
 	}

@@ -19,7 +19,6 @@ import org.smeup.sys.os.dtaara.QOperatingSystemDataAreaFactory;
 
 public class BaseDataAreaManagerImpl implements QDataAreaManager {
 
-	
 	@Override
 	public QDataArea getLocalDataArea(QContext context) {
 		QDataArea localDataArea = context.get(QDataArea.class);

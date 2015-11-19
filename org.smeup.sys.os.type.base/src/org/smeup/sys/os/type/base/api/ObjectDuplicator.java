@@ -58,8 +58,9 @@ public @Supported class ObjectDuplicator {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	public @Main void main(@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject, @Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
+
+	@Main
+	public void main(@Supported @DataDef(length = 10) QEnum<FROMOBJECTEnum, QCharacter> fromObject, @Supported @DataDef(length = 10) QEnum<FROMLIBRARYEnum, QCharacter> fromLibrary,
 			@Supported @DataDef(dimension = 57, length = 7) QScroller<QCharacter> objectTypes, @Supported @DataDef(length = 10) QEnum<TOLIBRARYEnum, QCharacter> toLibrary,
 			@Supported @DataDef(length = 10) QEnum<NEWOBJECTEnum, QCharacter> newObjectName, @DataDef(length = 10) QEnum<FROMASPDEVICEEnum, QCharacter> fromASPDevice,
 			@DataDef(length = 10) QEnum<TOASPDEVICEEnum, QCharacter> toASPDevice, @Supported @DataDef(length = 1) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
@@ -69,18 +70,18 @@ public @Supported class ObjectDuplicator {
 		if (fromLibrary.asEnum().equals(FROMLIBRARYEnum.OTHER)) {
 			checkLibrary(fromLibrary.asData().trimR());
 		}
-		
+
 		if (toLibrary.asEnum().equals(TOLIBRARYEnum.OTHER)) {
 			checkLibrary(toLibrary.asData().trimR());
 		}
 
 		List<QType<?>> types = typesFrom(objectTypes);
-		
+
 		for (QType<?> type : types) {
-			
-			if(!type.isPersistent())
+
+			if (!type.isPersistent())
 				continue;
-			
+
 			QResourceReader<?> resourceReader = null;
 			switch (fromLibrary.asEnum()) {
 			case CURLIB:
@@ -100,12 +101,12 @@ public @Supported class ObjectDuplicator {
 				case ALL:
 					objectIterator = resourceReader.find(null);
 					break;
-	
+
 				case OTHER:
 					objectIterator = resourceReader.find(fromObject.asData().trimR());
 					break;
 				}
-	
+
 				while (objectIterator.hasNext()) {
 					duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
 				}
@@ -118,14 +119,12 @@ public @Supported class ObjectDuplicator {
 
 	}
 
-
 	private void checkLibrary(String libName) {
 		QType<?> libType = typeRegistry.lookup("*LIB");
 		QResourceSetReader<?> resourceReader = resourceManager.getResourceReader(job, libType.getTypedClass(), Scope.ALL);
 		if (!resourceReader.exists(libName))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libName });
 	}
-
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void duplicate(QEnum<TOLIBRARYEnum, QCharacter> toLibrary, QEnum<NEWOBJECTEnum, QCharacter> newObjectName, QType<?> type, QTypedObject objToDuplicate, DUPLICATEDATAEnum duplicateData) {

@@ -50,7 +50,8 @@ public class JobDescriptionCreator {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) JobQueue jobQueue,
+	@Main
+	public void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) JobQueue jobQueue,
 			@Supported @DataDef(length = 1) QCharacter jobPriorityonJOBQ, @Supported @DataDef(length = 1) QCharacter outputPriorityonOUTQ,
 			@DataDef(length = 10) QEnum<PrintDeviceEnum, QCharacter> printDevice, @DataDef(qualified = true) QEnum<OutputQueueEnum, OutputQueue> outputQueue,
 			@Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription, @Supported @DataDef(length = 10) QEnum<UserEnum, QCharacter> user,
@@ -101,7 +102,7 @@ public class JobDescriptionCreator {
 
 		// JOBQ
 		QTypedRef<QTypedObject> refJobQueue = QOperatingSystemTypeFactory.eINSTANCE.createTypedRef();
- 
+
 		refJobQueue.setName(jobQueue.name.trimR());
 		switch (jobQueue.library.asEnum()) {
 		case LIBL:

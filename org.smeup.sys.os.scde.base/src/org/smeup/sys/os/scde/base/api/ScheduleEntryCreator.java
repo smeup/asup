@@ -17,22 +17,16 @@ public @ToDo class ScheduleEntryCreator {
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(
-			@ToDo @DataDef(length = 10) QEnum<JOBNAMEEnum, QCharacter> jobName,
-			@ToDo @DataDef(length = 512) QCharacter commandToRun,
-			@ToDo @DataDef(length = 1) QEnum<FREQUENCYEnum, QCharacter> frequency,
-			@ToDo @DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
+	@Main
+	public void main(@ToDo @DataDef(length = 10) QEnum<JOBNAMEEnum, QCharacter> jobName, @ToDo @DataDef(length = 512) QCharacter commandToRun,
+			@ToDo @DataDef(length = 1) QEnum<FREQUENCYEnum, QCharacter> frequency, @ToDo @DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
 			@ToDo @DataDef(dimension = 7, length = 1) QScroller<QEnum<SCHEDULEDAYEnum, QCharacter>> scheduleDay,
 			@ToDo @DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
-			@DataDef(dimension = 5, length = 1) QScroller<QEnum<RELATIVEDAYOFMONTHEnum, QCharacter>> relativeDayOfMonth,
-			@ToDo @DataDef(length = 5) QEnum<SAVEEnum, QCharacter> save,
+			@DataDef(dimension = 5, length = 1) QScroller<QEnum<RELATIVEDAYOFMONTHEnum, QCharacter>> relativeDayOfMonth, @ToDo @DataDef(length = 5) QEnum<SAVEEnum, QCharacter> save,
 			@DataDef(dimension = 20, datetimeType = DatetimeType.DATE) QScroller<QEnum<OMITDATEEnum, QDatetime>> omitDate,
-			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction,
-			@DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
-			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
-			@ToDo @DataDef(length = 10) QEnum<USEREnum, QCharacter> user,
-			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue,
-			@ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
+			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction, @DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
+			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue, @ToDo @DataDef(length = 10) QEnum<USEREnum, QCharacter> user,
+			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue, @ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
 	}
 
 	public static enum JOBNAMEEnum {

@@ -26,7 +26,8 @@ public class ActivationGroupReclaimer {
 		CPF1653, CPF1654
 	}
 
-	public @Main void main(@ToDo @DataDef(length = 10) QEnum<ACTIVATIONGROUPEnum, QCharacter> activationGroup, @ToDo @DataDef(length = 1) QEnum<CLOSEOPTIONEnum, QCharacter> closeOption) {
+	@Main
+	public void main(@ToDo @DataDef(length = 10) QEnum<ACTIVATIONGROUPEnum, QCharacter> activationGroup, @ToDo @DataDef(length = 1) QEnum<CLOSEOPTIONEnum, QCharacter> closeOption) {
 	}
 
 	public static enum ACTIVATIONGROUPEnum {

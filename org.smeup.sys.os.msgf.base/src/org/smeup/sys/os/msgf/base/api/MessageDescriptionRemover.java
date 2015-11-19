@@ -42,7 +42,8 @@ public class MessageDescriptionRemover {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile) {
+	@Main
+	public void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile) {
 
 		QResourceWriter<QMessageFile> resource = null;
 

@@ -48,17 +48,17 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		if (notifier == null) {
 			notifier = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceNotifier();
 			notifiers.put(klass, notifier);
-			
+
 			// TODO retrieve listener hierarchy
-			if(QTypedObject.class.isAssignableFrom(klass)) {
+			if (QTypedObject.class.isAssignableFrom(klass)) {
 				QResourceNotifier<T> typedNotifier = (QResourceNotifier<T>) notifiers.get(QTypedObject.class);
-				if(typedNotifier != null) {
-					for(QResourceListener<T> resourceListener: typedNotifier.getListeners()) 
+				if (typedNotifier != null) {
+					for (QResourceListener<T> resourceListener : typedNotifier.getListeners())
 						notifier.registerListener(resourceListener);
 				}
 			}
 		}
-		
+
 		notifier.registerListener(listener);
 	}
 
@@ -101,7 +101,7 @@ public class BaseResourceManagerImpl implements QResourceManager {
 
 		QResourceProvider resourceProvider = providers.get(klass);
 		if (resourceProvider == null)
-//			resourceProvider = providers.get(QTypedObject.class);
+			// resourceProvider = providers.get(QTypedObject.class);
 			resourceProvider = providers.get(QObjectNameable.class);
 
 		return resourceProvider;
@@ -113,13 +113,12 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		QResourceNotifier<T> notifier = (QResourceNotifier<T>) notifiers.get(klass);
 		if (notifier == null) {
 			// TODO retrieve listener hierarchy
-			if(QTypedObject.class.isAssignableFrom(klass)) {
+			if (QTypedObject.class.isAssignableFrom(klass)) {
 				QResourceNotifier<T> typedNotifier = (QResourceNotifier<T>) notifiers.get(QTypedObject.class);
-				if(typedNotifier != null) 
+				if (typedNotifier != null)
 					resource.setNotifier(typedNotifier);
 			}
-		}
-		else
+		} else
 			resource.setNotifier(notifier);
 	}
 

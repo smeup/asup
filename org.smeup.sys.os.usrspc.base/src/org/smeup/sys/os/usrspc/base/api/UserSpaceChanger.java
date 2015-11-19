@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSCUSAT")
 public class UserSpaceChanger {
 
-	public @Main void main(@DataDef(length = 10) QCharacter returnedLibrary, @DataDef(qualified = true) UserSpace userSpace, AttributeToChange attributeToChange, ErrorCode errorCode) {
+	@Main
+	public void main(@DataDef(length = 10) QCharacter returnedLibrary, @DataDef(qualified = true) UserSpace userSpace, AttributeToChange attributeToChange, ErrorCode errorCode) {
 
 	}
 

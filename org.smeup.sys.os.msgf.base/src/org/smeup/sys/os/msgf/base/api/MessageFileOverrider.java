@@ -40,7 +40,8 @@ public class MessageFileOverrider {
 	@Inject
 	private QJob job;
 
-	public @Main void main(@Supported @DataDef(length = 10) QCharacter messageFileBeingOverridden, @Supported @DataDef(qualified = true) OverridingToMessageFile overridingToMessageFile,
+	@Main
+	public void main(@Supported @DataDef(length = 10) QCharacter messageFileBeingOverridden, @Supported @DataDef(qualified = true) OverridingToMessageFile overridingToMessageFile,
 			@DataDef(length = 1) QEnum<SecureFromOtherOverridesEnum, QCharacter> secureFromOtherOverrides) {
 
 		QResourceReader<QMessageFile> resource = null;

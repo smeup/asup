@@ -22,9 +22,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSRTVUS")
 public class UserSpaceRetriever {
 
-	public @Main void main(@DataDef(qualified = true) UserSpace userSpace,
-			@DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition, 
-			@DataDef(binaryType = BinaryType.INTEGER) QBinary dateLength, 
+	@Main
+	public void main(@DataDef(qualified = true) UserSpace userSpace, @DataDef(binaryType = BinaryType.INTEGER) QBinary startPosition, @DataDef(binaryType = BinaryType.INTEGER) QBinary dateLength,
 			ErrorCode errorCode) {
 		// TODO
 		errorCode.£$01e2.eval(1);

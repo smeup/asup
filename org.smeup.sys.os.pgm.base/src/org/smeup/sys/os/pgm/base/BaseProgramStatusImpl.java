@@ -10,9 +10,9 @@ import org.smeup.sys.os.pgm.QProgramStatus;
 public class BaseProgramStatusImpl extends QDataStructWrapper implements QProgramStatus {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@DataDef(length = 10)
-	public QCharacter programName;	
+	public QCharacter programName;
 	@DataDef(precision = 5)
 	public QDecimal statusCode;
 	@DataDef(precision = 5)
@@ -34,7 +34,7 @@ public class BaseProgramStatusImpl extends QDataStructWrapper implements QProgra
 	@DataDef(length = 10)
 	public QCharacter programLibrary;
 	@DataDef(length = 80)
-	public QCharacter messageText;	
+	public QCharacter messageText;
 	@DataDef(length = 8)
 	@Overlay(position = 201)
 	public QCharacter fileName;
@@ -49,7 +49,7 @@ public class BaseProgramStatusImpl extends QDataStructWrapper implements QProgra
 	public QCharacter userName;
 	@DataDef(precision = 6)
 	@Overlay(position = 264)
-	public QDecimal jobNumber;	
+	public QDecimal jobNumber;
 	@DataDef(length = 10)
 	@Overlay(position = 334)
 	public QCharacter moduleName;
@@ -58,26 +58,32 @@ public class BaseProgramStatusImpl extends QDataStructWrapper implements QProgra
 	public QCharacter getProgramName() {
 		return this.programName;
 	}
+
 	@Override
 	public QCharacter getProgramLibrary() {
 		return this.programLibrary;
 	}
+
 	@Override
 	public QCharacter getUserName() {
 		return this.userName;
 	}
+
 	@Override
 	public QDecimal getJobNumber() {
 		return this.jobNumber;
 	}
+
 	@Override
 	public QCharacter getJobName() {
 		return this.jobName;
 	}
+
 	@Override
 	public QDecimal getStatusCode() {
 		return this.statusCode;
 	}
+
 	@Override
 	public QDecimal getParametersNumber() {
 		return this.parametersNumber;

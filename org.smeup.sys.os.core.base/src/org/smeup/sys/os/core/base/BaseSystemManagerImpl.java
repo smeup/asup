@@ -32,7 +32,6 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 	protected static final SimpleDateFormat YYYYMMDD = new SimpleDateFormat("yyyyMMdd");
 	protected static final SimpleDateFormat HHMMSS = new SimpleDateFormat("HHmmss");
 
-
 	protected QJob createJob(JobType jobType, String user, String jobName) {
 
 		// job
@@ -46,7 +45,7 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		// Calendar CALENDAR = Calendar.getInstance();
 		// YYYYMMDD.format(CALENDAR.getTime())+"/"+HHMMSS.format(CALENDAR.getTime();
 		NumberFormat numberFormat = new DecimalFormat("000000");
-		if(jobName == null)
+		if (jobName == null)
 			job.setJobName("QAS" + numberFormat.format(job.getJobNumber()));
 		else
 			job.setJobName(jobName);
@@ -56,24 +55,24 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		job.getLibraries().add(getSystem().getSystemLibrary());
 
 		// job context
-		
+
 		QContextDescription contextDescription = new QContextDescription() {
-			
+
 			@Override
 			public String getSystemLibrary() {
 				return job.getSystem().getSystemLibrary();
 			}
-			
+
 			@Override
 			public String getName() {
 				return job.getJobName();
 			}
-			
+
 			@Override
 			public List<String> getLibraryPath() {
 				return job.getLibraries();
 			}
-			
+
 			@Override
 			public String getCurrentLibrary() {
 				return job.getCurrentLibrary();
@@ -83,16 +82,15 @@ public abstract class BaseSystemManagerImpl implements QSystemManager {
 		QContext jobContext = getSystem().getContext().createChildContext(contextDescription, ContextInjectionStrategy.LOCAL);
 		job.setJobID(jobContext.getID());
 		job.setContext(jobContext);
-		
+
 		jobContext.set(QJob.class, job);
-		
+
 		//
 		job.setVariables(new LinkedHashMap<String, String>());
-		
+
 		return job;
 	}
 
 	protected abstract int nextJobID();
 
-	
 }

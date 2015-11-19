@@ -51,7 +51,8 @@ public class FileDisplayer {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Main void main(@DataDef(qualified = true) FILE file,
+	@Main 
+	public void main(@DataDef(qualified = true) FILE file,
 			                @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output) {
 		
 

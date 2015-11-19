@@ -34,12 +34,12 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 	private QResourceManager resourceManager;
 	@Inject
 	private QSourceManager sourceManager;
-	
+
 	@PostConstruct
 	public void init() {
 		resourceManager.registerListener(QLibrary.class, this);
 	}
-	
+
 	@Override
 	public void handleEvent(QResourceEvent<QLibrary> event) {
 
@@ -52,20 +52,24 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 		QProject project = null;
 		switch (event.getType()) {
 		case PRE_SAVE:
-			
+
 			project = sourceManager.getProject(contextProvider.getContext(), library.getName());
 			if (project == null) {
 				QProjectDef projectDef = QDevelopmentKitSourceFactory.eINSTANCE.createProjectDef();
 				projectDef.setText(library.getText());
 				projectDef.setName(library.getName());
 				try {
-					project = sourceManager.createProject(contextProvider.getContext(), projectDef, false);					
-					
-/*					Repository repository = org.eclipse.flux.core.Activator.getDefault().getRepository();
-					if (repository.getProject(project.getName()) == null) {
-						repository.addProject(ResourcesPlugin.getWorkspace().getRoot().getProject(project.getName()));
-					}
-*/
+					project = sourceManager.createProject(contextProvider.getContext(), projectDef, false);
+
+					/*
+					 * Repository repository =
+					 * org.eclipse.flux.core.Activator.getDefault
+					 * ().getRepository(); if
+					 * (repository.getProject(project.getName()) == null) {
+					 * repository
+					 * .addProject(ResourcesPlugin.getWorkspace().getRoot
+					 * ().getProject(project.getName())); }
+					 */
 				} catch (IOException e) {
 					// TODO
 					e.printStackTrace();
@@ -74,7 +78,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 
 			break;
 		case PRE_DELETE:
-			
+
 			project = sourceManager.getProject(contextProvider.getContext(), library.getName());
 			if (project != null) {
 				try {
@@ -83,7 +87,7 @@ public class BaseLibraryListenerImpl implements QResourceListener<QLibrary> {
 					new OperatingSystemRuntimeException(e);
 				}
 			}
-			
+
 			break;
 		default:
 			break;

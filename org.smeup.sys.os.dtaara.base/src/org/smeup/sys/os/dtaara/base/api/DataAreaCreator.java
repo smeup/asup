@@ -43,15 +43,15 @@ import org.smeup.sys.os.lib.QLibrary;
 @Program(name = "QWCCCRVC")
 public class DataAreaCreator {
 	public static enum QCPFMSG {
-		CPF1021, //Non è stata trovata la libreria &1 per l'area dati &2
-		CPF1023, //L'area dati &1 esiste in &2
-		CPF1024, //I parametri TYPE e VALUE non sono compatibili.         
-		CPF1025, //I parametri LEN e VALUE non sono compatibili.          
-		CPF1026, //Il parametro VALUE deve essere '0' o '1'.              
-		CPF1047, //La lunghezza non è valida per l'area dati &1 in &2.    
-		CPF1062, //La stringa nulla non è valida come valore di caratteri.
-		//OK
-		CPC0904 //Area dati &1 creata nella libreria &2
+		CPF1021, // Non è stata trovata la libreria &1 per l'area dati &2
+		CPF1023, // L'area dati &1 esiste in &2
+		CPF1024, // I parametri TYPE e VALUE non sono compatibili.
+		CPF1025, // I parametri LEN e VALUE non sono compatibili.
+		CPF1026, // Il parametro VALUE deve essere '0' o '1'.
+		CPF1047, // La lunghezza non è valida per l'area dati &1 in &2.
+		CPF1062, // La stringa nulla non è valida come valore di caratteri.
+		// OK
+		CPC0904 // Area dati &1 creata nella libreria &2
 	}
 
 	@Inject
@@ -61,29 +61,22 @@ public class DataAreaCreator {
 	@Inject
 	private QJob job;
 	@Inject
-	private  QStrings stringsUtils;
-	
-	private QResourceWriter<QDataArea> resourceWriter;
-	
+	private QStrings stringsUtils;
 
-	public @Main void main(
-			@DataDef(qualified = true) QEnum<DATAAREAEnum, DATAAREA> dataArea,
-			@DataDef(length = 1) QEnum<TIPOEnum, QCharacter> tipo,
-			@DataDef(length = 1) LUNGHEZZA lunghezza,
-			@DataDef(length = 2000) QCharacter valoreIniziale,
-			@Unsupported @DataDef(qualified = true) AREADATIREMOTA areaDatiRemota,
-			@Unsupported @DataDef(length = 8) QEnum<UBICAZIONEREMOTAEnum, QCharacter> ubicazioneRemota,
-			@Unsupported @DataDef(length = 18) QCharacter databaseRelazionale,
+	private QResourceWriter<QDataArea> resourceWriter;
+
+	@Main
+	public void main(@DataDef(qualified = true) QEnum<DATAAREAEnum, DATAAREA> dataArea, @DataDef(length = 1) QEnum<TIPOEnum, QCharacter> tipo, @DataDef(length = 1) LUNGHEZZA lunghezza,
+			@DataDef(length = 2000) QCharacter valoreIniziale, @Unsupported @DataDef(qualified = true) AREADATIREMOTA areaDatiRemota,
+			@Unsupported @DataDef(length = 8) QEnum<UBICAZIONEREMOTAEnum, QCharacter> ubicazioneRemota, @Unsupported @DataDef(length = 18) QCharacter databaseRelazionale,
 			@Unsupported @DataDef(length = 10) QEnum<DESCRIZIONEUNITAAPPCEnum, QCharacter> descrizioneUnitaAPPC,
-			@Unsupported @DataDef(length = 8) QEnum<UBICAZIONELOCALEEnum, QCharacter> ubicazioneLocale,
-			@Unsupported @DataDef(length = 8) QEnum<MODALITAEnum, QCharacter> modalita,
-			@Unsupported @DataDef(length = 8) QEnum<RETEREMOTAEnum, QCharacter> reteRemota,
-			@DataDef(length = 50) QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto,
+			@Unsupported @DataDef(length = 8) QEnum<UBICAZIONELOCALEEnum, QCharacter> ubicazioneLocale, @Unsupported @DataDef(length = 8) QEnum<MODALITAEnum, QCharacter> modalita,
+			@Unsupported @DataDef(length = 8) QEnum<RETEREMOTAEnum, QCharacter> reteRemota, @DataDef(length = 50) QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto,
 			@ToDo @DataDef(length = 10) QEnum<AUTORIZZAZIONEEnum, QCharacter> autorizzazione) {
-		
+
 		String areaName = dataArea.asData().name.trimR();
 		String libName = dataArea.asData().library.asData().trimR();
-		
+
 		switch (dataArea.asData().library.asEnum()) {
 		case CURLIB:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, Scope.CURRENT_LIBRARY);
@@ -92,12 +85,11 @@ public class DataAreaCreator {
 		case OTHER:
 			resourceWriter = resourceManager.getResourceWriter(job, QDataArea.class, libName);
 			break;
-		}	
+		}
 
 		checkLibrary(libName, areaName);
 		checkExistence(areaName, libName);
-		
-		
+
 		QDataArea newDataArea = QOperatingSystemDataAreaFactory.eINSTANCE.createDataArea();
 		newDataArea.setName(areaName);
 		newDataArea.setDataAreaType(tipo.asEnum().dataAreaType);
@@ -115,8 +107,8 @@ public class DataAreaCreator {
 		}
 
 		resourceWriter.save(newDataArea);
-		
-		exceptionManager.prepareException(job, QCPFMSG.CPC0904, new String[] {areaName, libName});
+
+		exceptionManager.prepareException(job, QCPFMSG.CPC0904, new String[] { areaName, libName });
 	}
 
 	private String descriptionFrom(QEnum<DESCRIZIONETESTOEnum, QCharacter> descrizioneTesto) {
@@ -124,29 +116,27 @@ public class DataAreaCreator {
 		case BLANK:
 			return "";
 		case OTHER:
-			return  descrizioneTesto.asData().trimR();
+			return descrizioneTesto.asData().trimR();
 		}
 		return "";
 	}
 
-
 	private void checkExistence(String areaName, String libName) {
 		if (resourceWriter.exists(areaName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] {areaName, libName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1023, new String[] { areaName, libName });
 		}
 	}
 
 	private void checkLibrary(String libName, String areaName) {
 		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] {libName, areaName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { libName, areaName });
 		}
 	}
 
-
 	public static class DATAAREA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10)
 		public QCharacter name;
 		@DataDef(length = 10, value = "*LIBL")
@@ -162,42 +152,42 @@ public class DataAreaCreator {
 	}
 
 	public static enum TIPOEnum {
-				
+
 		@Special(value = "D")
 		DEC(DataAreaType.DECIMAL),
-		
+
 		@Special(value = "C")
 		CHAR(DataAreaType.CHARACTER),
-		
+
 		@Special(value = "L")
-		LGL(DataAreaType.LOGICAL), 
-				
+		LGL(DataAreaType.LOGICAL),
+
 		@Special(value = "R")
 		DDM(DataAreaType.DISTRIBUTED);
-		
+
 		public final DataAreaType dataAreaType;
-		
-		TIPOEnum (DataAreaType dataAreaType) {
+
+		TIPOEnum(DataAreaType dataAreaType) {
 			this.dataAreaType = dataAreaType;
 		}
 	}
 
 	public static class LUNGHEZZA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QBinary lunghezza;
-		
+
 		@DataDef(binaryType = BinaryType.SHORT)
 		public QBinary posizioniDecimali;
 	}
 
 	public static class AREADATIREMOTA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10)
 		public QCharacter nome;
-		
+
 		@DataDef(length = 10)
 		public QEnum<LIBRERIAEnum, QCharacter> libreria;
 
@@ -228,8 +218,7 @@ public class DataAreaCreator {
 
 	public static enum DESCRIZIONETESTOEnum {
 		@Special(value = "")
-		BLANK, 
-		OTHER
+		BLANK, OTHER
 	}
 
 	public static enum AUTORIZZAZIONEEnum {

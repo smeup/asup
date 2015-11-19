@@ -21,13 +21,14 @@ import org.smeup.sys.os.type.base.api.tools.ObjectNameAndLib;
 
 @Program(name = "QLIRNOBJ")
 public @Supported class ObjectRenamer {
-	
+
 	public static enum QCPFMSG {
-		CPF2160,     //Il tipo di oggetto *&1 non è eleggibile per la funzione richiesta.                                             
-		CPF2105,     //Non trovato oggetto &1 in &2 tipo *&3. 
-		CPF2110,     //Libreria &1 non trovata.               
+		CPF2160, // Il tipo di oggetto *&1 non è eleggibile per la funzione
+					// richiesta.
+		CPF2105, // Non trovato oggetto &1 in &2 tipo *&3.
+		CPF2110, // Libreria &1 non trovata.
 	}
-	
+
 	@Inject
 	private QTypeRegistry typeRegistry;
 	@Inject
@@ -37,30 +38,26 @@ public @Supported class ObjectRenamer {
 	@Inject
 	private QExceptionManager exceptionManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object,
-							@Supported @DataDef(length = 7) QCharacter objectType,
-							@Supported @DataDef(length = 10) QCharacter newObject,
-							@Unsupported @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice,
-							@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
-		
+	@Main
+	public void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object, @Supported @DataDef(length = 7) QCharacter objectType, @Supported @DataDef(length = 10) QCharacter newObject,
+			@Unsupported @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, @Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
+
 		QType<?> type = type(objectType);
-		
+
 		if (type == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2160, new String[]{objectType.trimR()});			
-		}
-		
-		QResourceWriter<?> resourceWriter = resourceWriter(type, object);
-		
-		String oldObjectName = object.name.trimR();
-		if(!resourceWriter.exists(oldObjectName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[]{oldObjectName, 
-																				       object.library.asData().trimR(),
-																				       objectType.trimR()});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2160, new String[] { objectType.trimR() });
 		}
 
-//		QObjectNameable qObject = resourceWriter.lookup(oldObjectName);
-//		
-//		resourceWriter.save(qObject);
+		QResourceWriter<?> resourceWriter = resourceWriter(type, object);
+
+		String oldObjectName = object.name.trimR();
+		if (!resourceWriter.exists(oldObjectName)) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[] { oldObjectName, object.library.asData().trimR(), objectType.trimR() });
+		}
+
+		// QObjectNameable qObject = resourceWriter.lookup(oldObjectName);
+		//
+		// resourceWriter.save(qObject);
 	}
 
 	public QResourceWriter<?> resourceWriter(QType<?> type, ObjectNameAndLib object) {
@@ -75,21 +72,20 @@ public @Supported class ObjectRenamer {
 		case OTHER:
 			resourceReader = resourceManager.getResourceWriter(job, type.getTypedClass(), object.library.asData().trimR());
 			break;
-		}		
+		}
 		return resourceReader;
 	}
 
 	private QType<?> type(QCharacter typeAsQCharacter) {
 		String objectTypeString = typeAsQCharacter.trimR();
 		if (objectTypeString != null && !"".equals(objectTypeString)) {
-				QType<?> typeFound = typeRegistry.lookup(translateTypeName(objectTypeString));
-				if (typeFound != null) {
-					return typeFound;
-				}
+			QType<?> typeFound = typeRegistry.lookup(translateTypeName(objectTypeString));
+			if (typeFound != null) {
+				return typeFound;
+			}
 		}
 		return null;
 	}
-	
 
 	private String translateTypeName(String objectTypeString) {
 		if (objectTypeString.startsWith("*")) {
@@ -98,18 +94,15 @@ public @Supported class ObjectRenamer {
 		return "*" + objectTypeString;
 	}
 
-
 	public static enum ASPDEVICEEnum {
 		@Special(value = "*")
-		TERM_STAR, 
-		CURASPGRP, 
-		SYSBAS, 
-		OTHER
+		TERM_STAR, CURASPGRP, SYSBAS, OTHER
 	}
 
 	public static enum SYSTEMEnum {
-		@Special(value = "L") LCL, 
-		@Special(value = "R") RMT, 
-		@Special(value = "F") FILETYPE
+		@Special(value = "L")
+		LCL, @Special(value = "R")
+		RMT, @Special(value = "F")
+		FILETYPE
 	}
 }

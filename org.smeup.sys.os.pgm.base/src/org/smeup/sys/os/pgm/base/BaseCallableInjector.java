@@ -111,9 +111,9 @@ public class BaseCallableInjector {
 			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
-			Object  delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
+			Object delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
 			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate);
-			
+
 			QDataContext dataContext = getDataContext();
 			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
 
@@ -129,7 +129,7 @@ public class BaseCallableInjector {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>(), true);
 		Constructor<?> constructor = null;
-		
+
 		try {
 			constructor = klass.getDeclaredConstructor(owner.getClass());
 			constructor.setAccessible(true);
@@ -145,7 +145,7 @@ public class BaseCallableInjector {
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);
 		} finally {
-			if(constructor != null)
+			if (constructor != null)
 				constructor.setAccessible(false);
 			dataContainer.close();
 		}
@@ -167,8 +167,8 @@ public class BaseCallableInjector {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules,
-			Map<String, QRecord> records) throws IllegalArgumentException, IllegalAccessException, InstantiationException {
+	private void injectFields(Object owner, Class<?> klass, Object callable, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
+			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
 		// recursively on superClass
 		if (klass.getSuperclass().getAnnotation(Program.class) != null)
@@ -188,7 +188,7 @@ public class BaseCallableInjector {
 				continue;
 			if (field.getName().startsWith("this$"))
 				continue;
-			
+
 			if (Modifier.isStatic(field.getModifiers())) {
 				if (Modifier.isFinal(field.getModifiers()))
 					continue;
@@ -251,7 +251,7 @@ public class BaseCallableInjector {
 					object = unitModules.get(fieldClass.getSimpleName());
 					break;
 				}
-				
+
 				if (object == null) {
 					object = injectData(owner, fieldClass, dataContainer, accessFactory, unitModules, records);
 					switch (module.scope()) {

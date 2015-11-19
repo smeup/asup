@@ -22,7 +22,7 @@ public class ProgramRef extends QDataStructWrapper {
 	public QEnum<LibraryEnum, QCharacter> library;
 
 	public static enum LibraryEnum {
-		LIBL, CURLIB, USRLIBL, ALLUSR,  OTHER
+		LIBL, CURLIB, USRLIBL, ALLUSR, OTHER
 	}
 
 }

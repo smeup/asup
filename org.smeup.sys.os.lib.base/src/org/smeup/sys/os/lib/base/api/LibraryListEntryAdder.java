@@ -36,7 +36,7 @@ public class LibraryListEntryAdder {
 	public static enum QCPFMSG {
 		CPF2110, CPF2149
 	}
-	
+
 	@Inject
 	private QJob job;
 	@Inject
@@ -45,17 +45,17 @@ public class LibraryListEntryAdder {
 	private QLists lists;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
+
 	@Main
 	public void main(@DataDef(length = 10) QCharacter library, QEnum<LibraryListPositionEnum, LibraryListPosition> libraryListPosition) {
-		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
+		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 		String newLibName = library.trimR();
 		QLibrary qLib = libraryWriter.lookup(newLibName);
-		
+
 		if (qLib == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {newLibName});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { newLibName });
 		}
-		
+
 		switch (libraryListPosition.asEnum()) {
 		case FIRST:
 			lists.addFirst(job.getLibraries(), library.trimR());
@@ -66,13 +66,12 @@ public class LibraryListEntryAdder {
 		case OTHER:
 			String oldLibName = libraryListPosition.asData().referenceLibrary.trimR();
 			if (!job.getLibraries().contains(oldLibName)) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2149, new String[] {oldLibName});				
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2149, new String[] { oldLibName });
 			}
 			substitute(libraryListPosition.asData().listPosition.asEnum(), oldLibName, newLibName, job.getLibraries());
 			break;
 		}
 	}
-
 
 	private void substitute(LibraryListPosition.ListPositionEnum libPositionEnum, String oldLib, String newLib, List<String> libraries) {
 		switch (libPositionEnum) {

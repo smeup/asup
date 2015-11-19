@@ -56,18 +56,18 @@ public class BaseBundleManagerImpl implements QBundleManager {
 	private QResourceManager resourceManager;
 
 	private ResourceSet resourceSet = new ResourceSetImpl();
-	
+
 	@Override
 	public boolean isRegisterable(QContext context, String symbolicName) {
 
 		Bundle bundle = Platform.getBundle(symbolicName);
-		if(bundle == null)
+		if (bundle == null)
 			return false;
-		
+
 		Enumeration<String> models = bundle.getEntryPaths("ASUP-INF");
-		if(models == null)
+		if (models == null)
 			return false;
-		
+
 		return true;
 	}
 
@@ -75,13 +75,13 @@ public class BaseBundleManagerImpl implements QBundleManager {
 	public void register(QContext context, String symbolicName) {
 
 		// exclude
-		if(!isRegisterable(context, symbolicName))
+		if (!isRegisterable(context, symbolicName))
 			return;
 
 		Bundle bundle = Platform.getBundle(symbolicName);
-		
+
 		QJob job = context.get(QJob.class);
-		
+
 		registerBundle(job, bundle);
 	}
 
@@ -89,284 +89,269 @@ public class BaseBundleManagerImpl implements QBundleManager {
 	public void unregister(QContext context, String symbolicName) {
 
 		// exclude
-		if(!isRegisterable(context, symbolicName))
+		if (!isRegisterable(context, symbolicName))
 			return;
 
 		Bundle bundle = Platform.getBundle(symbolicName);
-		
+
 		QJob job = context.get(QJob.class);
 		unregisterBundle(job, bundle);
-		
+
 	}
 
 	private synchronized void registerBundle(QJob job, Bundle bundle) {
 
-		System.out.println("Registering bundle: "+bundle.getSymbolicName());
-		
+		System.out.println("Registering bundle: " + bundle.getSymbolicName());
+
 		// As.UP introspection
 		Enumeration<String> models = bundle.getEntryPaths("ASUP-INF");
-				
+
 		// context
 		while (models.hasMoreElements()) {
-			
+
 			URL entry = bundle.getEntry(models.nextElement());
-			if(entry == null)
+			if (entry == null)
 				continue;
 
 			// XMI only
-			if(!(entry.toString().endsWith(".xmi")))
+			if (!(entry.toString().endsWith(".xmi")))
 				continue;
 
 			Resource resource = null;
 			try {
 				resource = resourceSet.createResource(URI.createURI(entry.toString()));
 				resource.load(Collections.EMPTY_MAP);
-			}
-			catch(Exception e) {
-				System.out.println("Error on loading resource "+entry);
+			} catch (Exception e) {
+				System.out.println("Error on loading resource " + entry);
 				return;
 			}
-	
+
 			// type check
 			EObject eObject = resource.getContents().get(0);
-			
-			if(eObject instanceof QProgramContainer) {
+
+			if (eObject instanceof QProgramContainer) {
 				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, systemManager.getSystem().getSystemLibrary());
-				QProgramContainer programContainer = (QProgramContainer)eObject;
+				QProgramContainer programContainer = (QProgramContainer) eObject;
 
 				// package introspection
-				if(programContainer.isScanPackage()) {
+				if (programContainer.isScanPackage()) {
 					List<QProgram> programs = loadPrograms(bundle, programContainer.getBasePackage());
-					for(QProgram program: programs) {						
+					for (QProgram program : programs) {
 						try {
 							programWriter.save(program, true);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: "+e.getMessage());
-						}					
+							System.err.println("Unexpected error: " + e.getMessage());
+						}
 					}
 				}
-				
+
 				// container read
-				List<QProgram > programs = new ArrayList<>(programContainer.getContents());
-				for(QProgram program: programs) {
-					
+				List<QProgram> programs = new ArrayList<>(programContainer.getContents());
+				for (QProgram program : programs) {
+
 					try {
 						// set address
-						if(program.getAddress() == null) {
+						if (program.getAddress() == null) {
 							URI uriAddress = URI.createPlatformPluginURI(bundle.getSymbolicName(), true);
-							uriAddress = uriAddress.appendSegment(programContainer.getBasePackage()+"."+program.getName());
+							uriAddress = uriAddress.appendSegment(programContainer.getBasePackage() + "." + program.getName());
 							program.setAddress(uriAddress.toString());
 						}
 						programWriter.save(program, true);
 					} catch (Exception e) {
-						System.err.println("Unexpected error: "+e.getMessage());
-					}					
+						System.err.println("Unexpected error: " + e.getMessage());
+					}
 				}
-			}
-			else if(eObject instanceof QModuleContainer) {
+			} else if (eObject instanceof QModuleContainer) {
 				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, systemManager.getSystem().getSystemLibrary());
-				QModuleContainer moduleContainer = (QModuleContainer)eObject;
+				QModuleContainer moduleContainer = (QModuleContainer) eObject;
 
 				// package introspection
-				if(moduleContainer.isScanPackage()) {
+				if (moduleContainer.isScanPackage()) {
 					List<QModule> modules = loadModules(bundle, moduleContainer.getBasePackage());
-					for(QModule module: modules) {						
+					for (QModule module : modules) {
 						try {
 							moduleWriter.save(module, true);
 						} catch (Exception e) {
-							System.err.println("Unexpected error: "+e.getMessage());
-						}					
+							System.err.println("Unexpected error: " + e.getMessage());
+						}
 					}
 				}
-				
+
 				// container read
-				List<QModule > modules = new ArrayList<>(moduleContainer.getContents());
-				for(QModule module: modules) {
-					
+				List<QModule> modules = new ArrayList<>(moduleContainer.getContents());
+				for (QModule module : modules) {
+
 					try {
 						// set address
-						if(module.getAddress() == null) {
+						if (module.getAddress() == null) {
 							URI uriAddress = URI.createPlatformPluginURI(bundle.getSymbolicName(), true);
-							uriAddress = uriAddress.appendSegment(moduleContainer.getBasePackage()+"."+module.getName());
+							uriAddress = uriAddress.appendSegment(moduleContainer.getBasePackage() + "." + module.getName());
 							module.setAddress(uriAddress.toString());
 						}
 						moduleWriter.save(module, true);
 					} catch (Exception e) {
-						System.err.println("Unexpected error: "+e.getMessage());
-					}					
-				}
-			}
-			else if(eObject instanceof QCommandContainer) {
-				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());				
-				QCommandContainer commandContainer = (QCommandContainer)eObject;
-				List<QCommand > commands = new ArrayList<>(commandContainer.getContents()); 
-				
-				for(QCommand command: commands) {
-					try {
-//						if(command.getStatus() == CommandStatus.SUPPORTED ||
-//						   command.getStatus() == CommandStatus.TODO)
-						
-							command.setAddress(entry.toString());
-							command.setTypeName(commandContainer.getTypeName());
-							commandWriter.save(command, true);
-							
-					} catch (Exception e) {
-						System.err.println("Unexpected error: "+e.getMessage());
+						System.err.println("Unexpected error: " + e.getMessage());
 					}
 				}
-			}
-			else
-				System.out.println("Unknown entry "+eObject);
+			} else if (eObject instanceof QCommandContainer) {
+				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());
+				QCommandContainer commandContainer = (QCommandContainer) eObject;
+				List<QCommand> commands = new ArrayList<>(commandContainer.getContents());
+
+				for (QCommand command : commands) {
+					try {
+						// if(command.getStatus() == CommandStatus.SUPPORTED ||
+						// command.getStatus() == CommandStatus.TODO)
+
+						command.setAddress(entry.toString());
+						command.setTypeName(commandContainer.getTypeName());
+						commandWriter.save(command, true);
+
+					} catch (Exception e) {
+						System.err.println("Unexpected error: " + e.getMessage());
+					}
+				}
+			} else
+				System.out.println("Unknown entry " + eObject);
 		}
-	
+
 	}
 
 	private synchronized void unregisterBundle(QJob job, Bundle bundle) {
 
-		System.out.println("Unregistering bundle: "+bundle.getSymbolicName());
-		
+		System.out.println("Unregistering bundle: " + bundle.getSymbolicName());
+
 		// As.UP introspection
 		Enumeration<String> models = bundle.getEntryPaths("ASUP-INF");
-				
+
 		// context
 		while (models.hasMoreElements()) {
-			
+
 			URL entry = bundle.getEntry(models.nextElement());
-			if(entry == null)
+			if (entry == null)
 				continue;
 
 			// XMI only
-			if(!(entry.toString().endsWith(".xmi")))
+			if (!(entry.toString().endsWith(".xmi")))
 				continue;
 
 			Resource resource = null;
 			try {
 				resource = resourceSet.createResource(URI.createURI(entry.toString()));
 				resource.load(Collections.EMPTY_MAP);
-				
-			}
-			catch(Exception e) {
+
+			} catch (Exception e) {
 				e.printStackTrace();
 				return;
 			}
-	
+
 			// type check
 			EObject eObject = resource.getContents().get(0);
-			
-			if(eObject instanceof QProgramContainer) {
+
+			if (eObject instanceof QProgramContainer) {
 				QResourceWriter<QProgram> programWriter = resourceManager.getResourceWriter(job, QProgram.class, systemManager.getSystem().getSystemLibrary());
-				QProgramContainer programContainer = (QProgramContainer)eObject;
-				
+				QProgramContainer programContainer = (QProgramContainer) eObject;
 
 				// package introspection
-				if(programContainer.isScanPackage()) {
+				if (programContainer.isScanPackage()) {
 					List<QProgram> programs = loadPrograms(bundle, programContainer.getBasePackage());
-					for(QProgram program: programs) {
+					for (QProgram program : programs) {
 						QProgram previousProgram = programWriter.lookup(program.getName());
-						if(previousProgram != null) {
+						if (previousProgram != null) {
 							try {
 								programWriter.delete(previousProgram);
+							} catch (Exception e) {
+								System.err.println("Unexpected error: " + e.getMessage());
 							}
-							catch(Exception e) {
-								System.err.println("Unexpected error: "+e.getMessage());
-							}						
-						}					
+						}
 					}
 				}
-				
-				List<QProgram > programs = new ArrayList<>(programContainer.getContents());
-				for(QProgram program: programs) {
+
+				List<QProgram> programs = new ArrayList<>(programContainer.getContents());
+				for (QProgram program : programs) {
 					QProgram previousProgram = programWriter.lookup(program.getName());
-					if(previousProgram != null) {
+					if (previousProgram != null) {
 						try {
 							programWriter.delete(previousProgram);
+						} catch (Exception e) {
+							System.err.println("Unexpected error: " + e.getMessage());
 						}
-						catch(Exception e) {
-							System.err.println("Unexpected error: "+e.getMessage());
-						}						
-					}					
-				}
-			}
-			else if(eObject instanceof QModuleContainer) {
-				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, systemManager.getSystem().getSystemLibrary());
-				QModuleContainer moduleContainer = (QModuleContainer)eObject;
-				
-
-				// package introspection
-				if(moduleContainer.isScanPackage()) {
-					List<QModule> modules = loadModules(bundle, moduleContainer.getBasePackage());
-					for(QModule module: modules) {
-						QModule previousModule = moduleWriter.lookup(module.getName());
-						if(previousModule != null) {
-							try {
-								moduleWriter.delete(previousModule);
-							}
-							catch(Exception e) {
-								System.err.println("Unexpected error: "+e.getMessage());
-							}						
-						}					
 					}
 				}
-				
+			} else if (eObject instanceof QModuleContainer) {
+				QResourceWriter<QModule> moduleWriter = resourceManager.getResourceWriter(job, QModule.class, systemManager.getSystem().getSystemLibrary());
+				QModuleContainer moduleContainer = (QModuleContainer) eObject;
+
+				// package introspection
+				if (moduleContainer.isScanPackage()) {
+					List<QModule> modules = loadModules(bundle, moduleContainer.getBasePackage());
+					for (QModule module : modules) {
+						QModule previousModule = moduleWriter.lookup(module.getName());
+						if (previousModule != null) {
+							try {
+								moduleWriter.delete(previousModule);
+							} catch (Exception e) {
+								System.err.println("Unexpected error: " + e.getMessage());
+							}
+						}
+					}
+				}
+
 				List<QModule> modules = new ArrayList<>(moduleContainer.getContents());
-				for(QModule module: modules) {
+				for (QModule module : modules) {
 					QModule previousModule = moduleWriter.lookup(module.getName());
-					if(previousModule != null) {
+					if (previousModule != null) {
 						try {
 							moduleWriter.delete(previousModule);
+						} catch (Exception e) {
+							System.err.println("Unexpected error: " + e.getMessage());
 						}
-						catch(Exception e) {
-							System.err.println("Unexpected error: "+e.getMessage());
-						}						
-					}					
+					}
 				}
-			}
-			else if(eObject instanceof QCommandContainer) {
-				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());				
-				QCommandContainer commandContainer = (QCommandContainer)eObject;
-				List<QCommand > commands = new ArrayList<>(commandContainer.getContents()); 
-				for(QCommand command: commands) {
+			} else if (eObject instanceof QCommandContainer) {
+				QResourceWriter<QCommand> commandWriter = resourceManager.getResourceWriter(job, QCommand.class, systemManager.getSystem().getSystemLibrary());
+				QCommandContainer commandContainer = (QCommandContainer) eObject;
+				List<QCommand> commands = new ArrayList<>(commandContainer.getContents());
+				for (QCommand command : commands) {
 					QCommand previousCommand = commandWriter.lookup(command.getName());
-					if(previousCommand != null) {
+					if (previousCommand != null) {
 						try {
 							commandWriter.delete(previousCommand);
+						} catch (Exception e) {
+							System.err.println("Unexpected error: " + e.getMessage());
 						}
-						catch(Exception e) {
-							System.err.println("Unexpected error: "+e.getMessage());
-						}
-					}	
+					}
 				}
-			}
-			else
-				System.out.println("Unknown entry "+eObject);			
+			} else
+				System.out.println("Unknown entry " + eObject);
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private List<QProgram> loadPrograms(Bundle bundle, String basePackage) {
-		
+
 		List<QProgram> programs = new ArrayList<>();
-		
+
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);
-		for(String resource: bundleWiring.listResources(basePackage.replace('.', '/'), null, BundleWiring.LISTRESOURCES_LOCAL)) {
+		for (String resource : bundleWiring.listResources(basePackage.replace('.', '/'), null, BundleWiring.LISTRESOURCES_LOCAL)) {
 			Class<?> klass = null;
 			try {
 				String resourceURI = resource.replace(".class", "").replace('/', '.');
-				if(resourceURI.contains("$"))
+				if (resourceURI.contains("$"))
 					continue;
 				klass = bundle.loadClass(resourceURI);
 			} catch (ClassNotFoundException e) {
 				continue;
 			}
-			if(QCallableProgram.class.isAssignableFrom(klass) || klass.getAnnotation(Program.class) != null)
-				programs.add(buildProgram(bundle, (Class<QCallableProgram>)klass));
+			if (QCallableProgram.class.isAssignableFrom(klass) || klass.getAnnotation(Program.class) != null)
+				programs.add(buildProgram(bundle, (Class<QCallableProgram>) klass));
 		}
-		
+
 		return programs;
 	}
-	
+
 	private QProgram buildProgram(Bundle bundle, Class<?> klass) {
-		
+
 		QProgram qProgram = QOperatingSystemProgramFactory.eINSTANCE.createProgram();
 
 		// address
@@ -374,27 +359,26 @@ public class BaseBundleManagerImpl implements QBundleManager {
 		uriAddress = uriAddress.appendSegment(bundle.getSymbolicName());
 		uriAddress = uriAddress.appendSegment(klass.getName());
 		qProgram.setAddress(uriAddress.toString());
-		
+
 		// annotation
 		Program programAnnotation = klass.getAnnotation(Program.class);
-		if(programAnnotation != null) {
-			qProgram.setName(programAnnotation.name());			
-			if(!programAnnotation.text().isEmpty()) 
+		if (programAnnotation != null) {
+			qProgram.setName(programAnnotation.name());
+			if (!programAnnotation.text().isEmpty())
 				qProgram.setText(programAnnotation.text());
-		}
-		else
+		} else
 			qProgram.setName(klass.getSimpleName());
-		
+
 		return qProgram;
 	}
 
 	@SuppressWarnings("unchecked")
 	private List<QModule> loadModules(Bundle bundle, String basePackage) {
-		
+
 		List<QModule> modules = new ArrayList<>();
-		
+
 		BundleWiring bundleWiring = bundle.adapt(BundleWiring.class);
-		for(String resource: bundleWiring.listResources(basePackage.replace('.', '/'), null, BundleWiring.LISTRESOURCES_LOCAL)) {
+		for (String resource : bundleWiring.listResources(basePackage.replace('.', '/'), null, BundleWiring.LISTRESOURCES_LOCAL)) {
 			Class<?> klass = null;
 			try {
 				klass = bundle.loadClass(resource.replace(".class", "").replace('/', '.'));
@@ -402,16 +386,16 @@ public class BaseBundleManagerImpl implements QBundleManager {
 				e.printStackTrace();
 				continue;
 			}
- 
-			if(klass.getAnnotation(Module.class) != null)
-				modules.add(buildModule(bundle, (Class<QCallableProgram>)klass));
+
+			if (klass.getAnnotation(Module.class) != null)
+				modules.add(buildModule(bundle, (Class<QCallableProgram>) klass));
 		}
-		
+
 		return modules;
 	}
-	
+
 	private QModule buildModule(Bundle bundle, Class<?> klass) {
-		
+
 		QModule qModule = QOperatingSystemModuleFactory.eINSTANCE.createModule();
 
 		// address
@@ -419,17 +403,16 @@ public class BaseBundleManagerImpl implements QBundleManager {
 		uriAddress = uriAddress.appendSegment(bundle.getSymbolicName());
 		uriAddress = uriAddress.appendSegment(klass.getName());
 		qModule.setAddress(uriAddress.toString());
-		
+
 		// annotation
 		Module moduleAnnotation = klass.getAnnotation(Module.class);
-		if(moduleAnnotation != null) {
-			qModule.setName(moduleAnnotation.name());			
-			if(!moduleAnnotation.text().isEmpty()) 
+		if (moduleAnnotation != null) {
+			qModule.setName(moduleAnnotation.name());
+			if (!moduleAnnotation.text().isEmpty())
 				qModule.setText(moduleAnnotation.text());
-		}
-		else
+		} else
 			qModule.setName(klass.getSimpleName());
-		
+
 		return qModule;
 	}
 
@@ -437,48 +420,47 @@ public class BaseBundleManagerImpl implements QBundleManager {
 	public void visit(QContext context, String bundleName, QBundleVisitor visitor) {
 
 		// bundle
-		Bundle bundle = Platform.getBundle(bundleName);		
-		if(bundle == null)
-			throw new OperatingSystemRuntimeException("Bundle not found: "+bundleName);
-		
+		Bundle bundle = Platform.getBundle(bundleName);
+		if (bundle == null)
+			throw new OperatingSystemRuntimeException("Bundle not found: " + bundleName);
+
 		// As.UP introspection
 		Enumeration<String> models = bundle.getEntryPaths("ASUP-INF");
-				
+
 		// context
 		while (models.hasMoreElements()) {
-			
+
 			URL entry = bundle.getEntry(models.nextElement());
-			if(entry == null)
+			if (entry == null)
 				continue;
 
 			// XMI only
-			if(!(entry.toString().endsWith(".xmi")))
+			if (!(entry.toString().endsWith(".xmi")))
 				continue;
 
 			Resource resource = null;
 			try {
 				resource = resourceSet.createResource(URI.createURI(entry.toString()));
 				resource.load(Collections.EMPTY_MAP);
-				
-			}
-			catch(Exception e) {
+
+			} catch (Exception e) {
 				e.printStackTrace();
 				return;
 			}
-	
+
 			// type check
 			EObject eObject = resource.getContents().get(0);
-			
-			if(eObject instanceof QObjectContainer) {
-				QObjectContainer<?> objectContainer = (QObjectContainer<?>)eObject;
-				
+
+			if (eObject instanceof QObjectContainer) {
+				QObjectContainer<?> objectContainer = (QObjectContainer<?>) eObject;
+
 				// enter
 				visitor.visitEnter(objectContainer);
-				
+
 				// visit
-				for (QObject qObject: objectContainer.getContents()) 
+				for (QObject qObject : objectContainer.getContents())
 					visitor.visit(qObject);
-				
+
 				// exit
 				visitor.visitExit(objectContainer);
 			}

@@ -39,7 +39,8 @@ public class JobDescriptionRetriever {
 	@Inject
 	private QDataContext dataContext;
 
-	public @Main void main(@DataDef(length = 500) QCharacter receiverVariable, @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, @DataDef(length = 8) QCharacter formatName,
+	@Main
+	public void main(@DataDef(length = 500) QCharacter receiverVariable, @DataDef(binaryType = BinaryType.SHORT) QBinary receiveVariableLength, @DataDef(length = 8) QCharacter formatName,
 			JobDescription jobDescription, @DataDef() QCharacter errorCode
 
 	// @DataDef() QPointer receiverVariable,

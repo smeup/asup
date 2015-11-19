@@ -11,23 +11,23 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.rt.core.QApplicationManager;
 
-public  @Program(name = "QWCCSDSC")  class PowerManager {
+public @Program(name = "QWCCSDSC") class PowerManager {
 
 	@Inject
 	private QApplicationManager applicationManager;
-	
-	public @Main void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart) {
-		if (RESTARTEnum.YES.equals(restart.asEnum())){
+
+	@Main
+	public void main(@Supported @DataDef(length = 4) QEnum<RESTARTEnum, QCharacter> restart) {
+		if (RESTARTEnum.YES.equals(restart.asEnum())) {
 			applicationManager.restart();
 		} else {
-			applicationManager.stop();			
+			applicationManager.stop();
 		}
 	}
-	
+
 	public static enum RESTARTEnum {
-		@Special("*NO") 
-		NO,
-		@Special("*YES") 		
+		@Special("*NO")
+		NO, @Special("*YES")
 		YES
 	}
 }

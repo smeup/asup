@@ -36,10 +36,11 @@ import org.smeup.sys.os.lib.QLibrary;
 @Program(name = "QLIDLDTAARA")
 public @ToDo class DataAreaDeleter {
 	public static enum QCPFMSG {
-		CPF2105,     //Non trovato oggetto &1 in &2 tipo *&3.                     
-		CPF2110,     //Libreria &1 non trovata.                                   
-		CPF2117,    //&4 oggetti di tipo *&3 sono stati cancellati. &5 oggetti non sono stati cancellati.         
-		CPC2191     //È stato cancellato l'oggetto &1 in &2 di tipo *&3
+		CPF2105, // Non trovato oggetto &1 in &2 tipo *&3.
+		CPF2110, // Libreria &1 non trovata.
+		CPF2117, // &4 oggetti di tipo *&3 sono stati cancellati. &5 oggetti non
+					// sono stati cancellati.
+		CPC2191 // È stato cancellato l'oggetto &1 in &2 di tipo *&3
 	}
 
 	@Inject
@@ -48,29 +49,29 @@ public @ToDo class DataAreaDeleter {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	public @Main void main(@DataDef(qualified = true) DATAAREA dataArea) {
+
+	@Main
+	public void main(@DataDef(qualified = true) DATAAREA dataArea) {
 		checkLibrary(dataArea.library);
-		
+
 		String areaName = dataArea.nameGeneric.asData().trimR();
 		String libName = dataArea.library.asData().trimR();
-		
+
 		QResourceReader<QDataArea> reader = findReader(dataArea);
-		
+
 		int deleted = 0;
-		try(QObjectIterator<QDataArea> objectIterator = findIterator(dataArea.nameGeneric, reader);) {
+		try (QObjectIterator<QDataArea> objectIterator = findIterator(dataArea.nameGeneric, reader);) {
 			while (objectIterator.hasNext()) {
 				QDataArea nextDataArea = objectIterator.next();
-				findWriter(nextDataArea.getLibrary())
-				.delete(nextDataArea);
-				exceptionManager.prepareException(job, QCPFMSG.CPC2191, new String[] {nextDataArea.getName(), nextDataArea.getLibrary(), "DTAARA"});			
+				findWriter(nextDataArea.getLibrary()).delete(nextDataArea);
+				exceptionManager.prepareException(job, QCPFMSG.CPC2191, new String[] { nextDataArea.getName(), nextDataArea.getLibrary(), "DTAARA" });
 				deleted++;
 			}
 			if (deleted == 0) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[] {areaName, libName, "DTAARA"});				
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[] { areaName, libName, "DTAARA" });
 			}
 		}
-		exceptionManager.prepareException(job, QCPFMSG.CPF2117, new String[] {"", "", "DTAARA", "" + deleted, "0"});
+		exceptionManager.prepareException(job, QCPFMSG.CPF2117, new String[] { "", "", "DTAARA", "" + deleted, "0" });
 	}
 
 	private void checkLibrary(QEnum<LIBRARYEnum, QCharacter> library) {
@@ -78,14 +79,13 @@ public @ToDo class DataAreaDeleter {
 			QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 			String libraryString = library.asData().trimR();
 			if (!resourceReader.exists(libraryString)) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libraryString});
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libraryString });
 			}
 		}
 	}
 
-	
 	@SuppressWarnings("resource")
-	private QObjectIterator<QDataArea> findIterator(QEnum<NAMEGENERICEnum, QCharacter> nameGeneric,	QResourceReader<QDataArea> reader) {
+	private QObjectIterator<QDataArea> findIterator(QEnum<NAMEGENERICEnum, QCharacter> nameGeneric, QResourceReader<QDataArea> reader) {
 		QObjectIterator<QDataArea> result = null;
 		switch (nameGeneric.asEnum()) {
 		case ALL:
@@ -126,14 +126,13 @@ public @ToDo class DataAreaDeleter {
 	private QResourceWriter<QDataArea> findWriter(String library) {
 		return resourceManager.getResourceWriter(job, QDataArea.class, library);
 	}
-	
-	
+
 	public static class DATAAREA extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10)
 		public QEnum<NAMEGENERICEnum, QCharacter> nameGeneric;
-		
+
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LIBRARYEnum, QCharacter> library;
 

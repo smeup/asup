@@ -23,22 +23,18 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSLOBJ")
 public class ObjectsList {
 
-
-	public @Main void main(@DataDef(qualified = true) OBJECT object, 
-							@DataDef(length = 8) QCharacter formatName,
-							@DataDef(qualified = true) OBJECT objectName,
-							@DataDef(length = 10) QCharacter objectType,
-							ErrorCode errorCode) {
+	@Main
+	public void main(@DataDef(qualified = true) OBJECT object, @DataDef(length = 8) QCharacter formatName, @DataDef(qualified = true) OBJECT objectName, @DataDef(length = 10) QCharacter objectType,
+			ErrorCode errorCode) {
 		// TODO
 		errorCode.£$01e2.eval(1);
 	}
-
 
 	public static class OBJECT extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10)
 		public QEnum<NameGenericEnum, QCharacter> nameGeneric;
-		
+
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LibraryEnum, QCharacter> library;
 

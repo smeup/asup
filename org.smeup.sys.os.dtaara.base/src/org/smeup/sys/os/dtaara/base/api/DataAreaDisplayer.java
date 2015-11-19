@@ -36,15 +36,15 @@ import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.Libr
 
 @Program(name = "QWCCDSVC")
 public class DataAreaDisplayer {
-	
+
 	public static enum QCPFMSG {
-		CPF1015,    //Non è stata trovata l'area dati &1 in &2.                 
-		CPF1021,    //Non è stata trovata la libreria &1 per l'area dati &2.    
-		CPF1046,    //DTAARA(*GDA) non è valido perché il lavoro non è un lavoro di gruppo.                                         
-		CPF9871     //Si è verificato un errore durante l'elaborazione.
+		CPF1015, // Non è stata trovata l'area dati &1 in &2.
+		CPF1021, // Non è stata trovata la libreria &1 per l'area dati &2.
+		CPF1046, // DTAARA(*GDA) non è valido perché il lavoro non è un lavoro
+					// di gruppo.
+		CPF9871 // Si è verificato un errore durante l'elaborazione.
 	}
 
-	
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
@@ -55,12 +55,10 @@ public class DataAreaDisplayer {
 	private QDataAreaManager dataAreaManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	
-	public @Main void main(
-			@DataDef(qualified = true) QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification,
-			@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
-			@DataDef(length = 1) QEnum<OUTPUTFORMATEnum, QCharacter> outputFormat,
+
+	@Main
+	public void main(@DataDef(qualified = true) QEnum<ExistingDataAreaSpecification.DATAAREAEnum, ExistingDataAreaSpecification> dataAreaSpecification,
+			@DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output, @DataDef(length = 1) QEnum<OUTPUTFORMATEnum, QCharacter> outputFormat,
 			@Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
 
 		try {
@@ -69,7 +67,7 @@ public class DataAreaDisplayer {
 			objectWriter.initialize();
 			objectWriter.write(area);
 			objectWriter.flush();
-			
+
 			String label = "Data area";
 			QWritableObject objectToWrite = outputManager.getWritableObject(label, Math.max(label.length(), area.getContentLength()));
 			objectToWrite.setObject(area.getContent());
@@ -78,9 +76,9 @@ public class DataAreaDisplayer {
 			objectWriter.write(objectToWrite.getObjectToWrite());
 			objectWriter.flush();
 		} catch (DataAreaNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[]{e.dataAreaName, e.libraryName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[] { e.dataAreaName, e.libraryName });
 		} catch (LibraryNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[]{e.libraryName, e.dataAreaName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { e.libraryName, e.dataAreaName });
 		} catch (IOException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871, new String[0]);
 		}
@@ -94,11 +92,10 @@ public class DataAreaDisplayer {
 		}
 	}
 
-
 	public static enum OUTPUTEnum {
 		@Special(value = "*")
-		TERM_STAR, 
-		
+		TERM_STAR,
+
 		@Special(value = "L")
 		PRINT
 	}
@@ -106,7 +103,7 @@ public class DataAreaDisplayer {
 	public static enum OUTPUTFORMATEnum {
 		@Special(value = "C")
 		CHAR,
-		
+
 		@Special(value = "H")
 		HEX
 	}
@@ -114,7 +111,7 @@ public class DataAreaDisplayer {
 	public static enum SYSTEMEnum {
 		@Special(value = "L")
 		LCL,
-		
+
 		@Special(value = "R")
 		RMT
 	}

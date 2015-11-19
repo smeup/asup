@@ -26,33 +26,32 @@ import org.smeup.sys.os.type.QTypedObject;
 
 public class BaseTypedListenerImpl implements QResourceListener<QTypedObject> {
 
-
 	@Inject
 	private QResourceManager resourceManager;
-	
+
 	@PostConstruct
 	public void init() {
 		resourceManager.registerListener(QTypedObject.class, this);
 	}
-	
+
 	@Override
 	public void handleEvent(QResourceEvent<QTypedObject> event) {
 		switch (event.getType()) {
 		case PRE_SAVE:
 			QResource<QTypedObject> resource = event.getResource();
 			QTypedObject typedObject = event.getSource();
-			
+
 			EObject eObject = (EObject) typedObject;
-			
+
 			// library
 			eObject.eSet(QOperatingSystemTypePackage.eINSTANCE.getTypedObject_Library(), resource.getName());
 
 			QJob job = resource.getContextProvider().getContext().get(QJob.class);
-			
+
 			// creation info
 			if (typedObject.getCreationInfo() == null)
 				typedObject.setCreationInfo(QOperatingSystemCoreHelper.buildCreationInfo(job));
-			
+
 			break;
 
 		default:

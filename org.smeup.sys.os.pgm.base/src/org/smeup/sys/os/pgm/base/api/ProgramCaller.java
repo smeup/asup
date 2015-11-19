@@ -32,14 +32,12 @@ public class ProgramCaller {
 	private QProgramManager programManager;
 
 	@Main
-	public void main(
-			@ToDo @DataDef(qualified = true) ProgramRef program,
-			@ToDo @DataDef(dimension = 255) QList<QAdapter> parameters) {
+	public void main(@ToDo @DataDef(qualified = true) ProgramRef program, @ToDo @DataDef(dimension = 255) QList<QAdapter> parameters) {
 
 		QData[] params = new QData[parameters.count()];
-		for(int i=1; i<=params.length; i++) 			
-			params[i-1] = parameters.get(i);
-		
+		for (int i = 1; i <= params.length; i++)
+			params[i - 1] = parameters.get(i);
+
 		programManager.callProgram(job.getJobID(), program.library.asData().trimR(), program.name.trimR(), params);
 	}
 }

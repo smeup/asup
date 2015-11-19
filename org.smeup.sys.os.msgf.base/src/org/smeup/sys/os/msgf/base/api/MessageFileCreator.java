@@ -43,8 +43,9 @@ public class MessageFileCreator {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) MessageFile messageFile, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
-			FileSize fileSize, @DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority, @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID) {
+	@Main
+	public void main(@Supported @DataDef(qualified = true) MessageFile messageFile, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription, FileSize fileSize,
+			@DataDef(length = 10) QEnum<AuthorityEnum, QCharacter> authority, @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID) {
 
 		QResourceWriter<QMessageFile> resource = null;
 		String library = null;
@@ -67,7 +68,7 @@ public class MessageFileCreator {
 
 		// MSGF
 		qMessageFile.setName(messageFile.name.trimR());
-//		qMessageFile.setLibrary(library);
+		// qMessageFile.setLibrary(library);
 
 		// TEXT
 		switch (textDescription.asEnum()) {

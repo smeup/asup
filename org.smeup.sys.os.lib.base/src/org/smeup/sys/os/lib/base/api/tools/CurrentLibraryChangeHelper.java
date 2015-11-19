@@ -15,16 +15,13 @@ public class CurrentLibraryChangeHelper {
 	public static enum QCPFMSG {
 		CPF2110
 	}
-	
+
 	private QJob job;
 	private QLibraryManager libraryManager;
 	private QJobLogManager jobLogManager;
 	private QExceptionManager exceptionManager;
 
-	public CurrentLibraryChangeHelper(QJob job,
-									  QLibraryManager libraryManager,
-									  QJobLogManager jobLogManager, 
-									  QExceptionManager exceptionManager) {
+	public CurrentLibraryChangeHelper(QJob job, QLibraryManager libraryManager, QJobLogManager jobLogManager, QExceptionManager exceptionManager) {
 		this.job = job;
 		this.libraryManager = libraryManager;
 		this.jobLogManager = jobLogManager;
@@ -37,7 +34,7 @@ public class CurrentLibraryChangeHelper {
 		switch (currentLibrary.asEnum()) {
 		case SAME:
 			break;
-		
+
 		case CRTDFT:
 			job.setCurrentLibrary(null);
 			break;
@@ -47,13 +44,13 @@ public class CurrentLibraryChangeHelper {
 			QLibrary qLibrary = libraryWriter.lookup(libName);
 
 			if (qLibrary == null)
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});		
-			
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libName });
+
 			job.setCurrentLibrary(libName);
 			break;
 		}
-		
-		jobLogManager.info(job, "Current library is now " + job.getCurrentLibrary());		
+
+		jobLogManager.info(job, "Current library is now " + job.getCurrentLibrary());
 	}
 
 }

@@ -49,7 +49,8 @@ public class MessageDescriptionDisplayer {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported QEnum<RangeOfMessageIdentifiersEnum, RangeOfMessageIdentifiers> rangeOfMessageIdentifiers, @Supported @DataDef(qualified = true) MessageFile messageFile,
+	@Main
+	public void main(@Supported QEnum<RangeOfMessageIdentifiersEnum, RangeOfMessageIdentifiers> rangeOfMessageIdentifiers, @Supported @DataDef(qualified = true) MessageFile messageFile,
 			@ToDo @DataDef(length = 6) QEnum<DetailEnum, QCharacter> detail, @ToDo @DataDef(length = 1) QEnum<FormatMessageTextEnum, QCharacter> formatMessageText,
 			@Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
 

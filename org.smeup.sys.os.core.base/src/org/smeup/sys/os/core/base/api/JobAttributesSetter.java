@@ -28,9 +28,10 @@ import org.smeup.sys.os.core.jobs.QJobManager;
 @Program(name = "QWTCCCHJ")
 public @Supported class JobAttributesSetter {
 	public static enum QCPFMSG {
-		CPF1321, //Il lavoro &1 utente &2 numero di lavoro &3 non trovati
-		CPF1156, //Job &3/&2/&1 job switch &4 not valid. 
-		CPD0082, //Il valore &3, indicato per una data, non è valido per il parametro &2
+		CPF1321, // Il lavoro &1 utente &2 numero di lavoro &3 non trovati
+		CPF1156, // Job &3/&2/&1 job switch &4 not valid.
+		CPD0082, // Il valore &3, indicato per una data, non è valido per il
+					// parametro &2
 	}
 
 	@Inject
@@ -40,82 +41,59 @@ public @Supported class JobAttributesSetter {
 	@Inject
 	private QJobManager jobManager;
 
-	
-	public @Main void main(
-			@DataDef(qualified = true) JobName jobName,
-			@ToDo @DataDef(length = 1) QEnum<JOBPRIORITYONJOBQEnum, QCharacter> jobPriorityonJOBQ,
-			@ToDo @DataDef(length = 1) QEnum<OUTPUTPRIORITYONOUTQEnum, QCharacter> outputPriorityonOUTQ,
-			@ToDo @DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
-			@ToDo @DataDef(qualified = true) QEnum<OUTPUTQUEUEEnum, OUTPUTQUEUE> outputQueue,
-			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<RUNPRIORITYEnum, QBinary> runPriority,
-			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
-			@DataDef(length = 30) QEnum<PRINTTEXTEnum, QCharacter> printText,
-			MESSAGELOGGING messageLogging,
-			@DataDef(length = 1) QEnum<LOGCLPROGRAMCOMMANDSEnum, QCharacter> logCLProgramCommands,
-			@DataDef(length = 10) QEnum<JOBLOGOUTPUTEnum, QCharacter> jobLogOutput,
+	@Main
+	public void main(@DataDef(qualified = true) JobName jobName, @ToDo @DataDef(length = 1) QEnum<JOBPRIORITYONJOBQEnum, QCharacter> jobPriorityonJOBQ,
+			@ToDo @DataDef(length = 1) QEnum<OUTPUTPRIORITYONOUTQEnum, QCharacter> outputPriorityonOUTQ, @ToDo @DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
+			@ToDo @DataDef(qualified = true) QEnum<OUTPUTQUEUEEnum, OUTPUTQUEUE> outputQueue, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<RUNPRIORITYEnum, QBinary> runPriority,
+			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue, @DataDef(length = 30) QEnum<PRINTTEXTEnum, QCharacter> printText, MESSAGELOGGING messageLogging,
+			@DataDef(length = 1) QEnum<LOGCLPROGRAMCOMMANDSEnum, QCharacter> logCLProgramCommands, @DataDef(length = 10) QEnum<JOBLOGOUTPUTEnum, QCharacter> jobLogOutput,
 			@ToDo @DataDef(length = 10) QEnum<JOBMESSAGEQUEUEFULLACTIONEnum, QCharacter> jobMessageQueueFullAction,
-			@ToDo @DataDef(length = 1) QEnum<INQUIRYMESSAGEREPLYEnum, QCharacter> inquiryMessageReply,
-			@DataDef(length = 7) QEnum<BREAKMESSAGEHANDLINGEnum, QCharacter> breakMessageHandling,
-			@ToDo @DataDef(length = 7) QEnum<STATUSMESSAGEEnum, QCharacter> statusMessage,
-			@DataDef(length = 1) QEnum<DDMCONVERSATIONEnum, QCharacter> dDMConversation,
-			@DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
-			@DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
-			@DataDef(datetimeType = DatetimeType.DATE) QEnum<JOBDATEEnum, QDatetime> jobDate,
-			@DataDef(binaryType = BinaryType.SHORT) QEnum<DATEFORMATEnum, QBinary> dateFormat,
-			@ToDo @DataDef(length = 1) QEnum<DATESEPARATOREnum, QCharacter> dateSeparator,
-			@ToDo @DataDef(length = 1) QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator,
-			@ToDo @DataDef(length = 8) QEnum<JOBSWITCHESEnum, QCharacter> jobSwitches,
-			@DataDef(binaryType = BinaryType.INTEGER) QEnum<TIMESLICEEnum, QBinary> timeSlice,
-			@DataDef(length = 1) QEnum<ELIGIBLEFORPURGEEnum, QCharacter> eligibleForPurge,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<DEFAULTWAITTIMEEnum, QBinary> defaultWaitTime,
-			@DataDef(length = 13) QEnum<DEVICERECOVERYACTIONEnum, QCharacter> deviceRecoveryAction,
-			@DataDef(length = 10) QEnum<TIMESLICEENDPOOLEnum, QCharacter> timeSliceEndPool,
-			@DataDef(length = 10) QEnum<PRINTKEYFORMATEnum, QCharacter> printKeyFormat,
-			@DataDef(qualified = true) QEnum<SORTSEQUENCEEnum, SORTSEQUENCE> sortSequence,
-			@ToDo @DataDef(length = 3) QEnum<LANGUAGEIDEnum, QCharacter> languageID,
-			@ToDo @DataDef(length = 2) QEnum<COUNTRYORREGIONIDEnum, QCharacter> countryOrRegionID,
-			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID,
-			@ToDo @DataDef(length = 1) QEnum<DECIMALFORMATEnum, QCharacter> decimalFormat,
-			@DataDef(length = 10) QEnum<CHARACTERIDENTIFIERCONTROLEnum, QCharacter> characterIdentifierControl,
-			@DataDef(length = 10) QEnum<SPOOLEDFILEACTIONEnum, QCharacter> spooledFileAction,
-			@DataDef(length = 10) QEnum<WORKLOADCAPPINGGROUPEnum, QCharacter> wORKLOADCAPPINGGROUP,
-			@DataDef(length = 10) QEnum<DUPLICATEJOBOPTIONEnum, QCharacter> duplicateJobOption) {
-		
+			@ToDo @DataDef(length = 1) QEnum<INQUIRYMESSAGEREPLYEnum, QCharacter> inquiryMessageReply, @DataDef(length = 7) QEnum<BREAKMESSAGEHANDLINGEnum, QCharacter> breakMessageHandling,
+			@ToDo @DataDef(length = 7) QEnum<STATUSMESSAGEEnum, QCharacter> statusMessage, @DataDef(length = 1) QEnum<DDMCONVERSATIONEnum, QCharacter> dDMConversation,
+			@DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate, @DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
+			@DataDef(datetimeType = DatetimeType.DATE) QEnum<JOBDATEEnum, QDatetime> jobDate, @DataDef(binaryType = BinaryType.SHORT) QEnum<DATEFORMATEnum, QBinary> dateFormat,
+			@ToDo @DataDef(length = 1) QEnum<DATESEPARATOREnum, QCharacter> dateSeparator, @ToDo @DataDef(length = 1) QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator,
+			@ToDo @DataDef(length = 8) QEnum<JOBSWITCHESEnum, QCharacter> jobSwitches, @DataDef(binaryType = BinaryType.INTEGER) QEnum<TIMESLICEEnum, QBinary> timeSlice,
+			@DataDef(length = 1) QEnum<ELIGIBLEFORPURGEEnum, QCharacter> eligibleForPurge, @ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<DEFAULTWAITTIMEEnum, QBinary> defaultWaitTime,
+			@DataDef(length = 13) QEnum<DEVICERECOVERYACTIONEnum, QCharacter> deviceRecoveryAction, @DataDef(length = 10) QEnum<TIMESLICEENDPOOLEnum, QCharacter> timeSliceEndPool,
+			@DataDef(length = 10) QEnum<PRINTKEYFORMATEnum, QCharacter> printKeyFormat, @DataDef(qualified = true) QEnum<SORTSEQUENCEEnum, SORTSEQUENCE> sortSequence,
+			@ToDo @DataDef(length = 3) QEnum<LANGUAGEIDEnum, QCharacter> languageID, @ToDo @DataDef(length = 2) QEnum<COUNTRYORREGIONIDEnum, QCharacter> countryOrRegionID,
+			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID, @ToDo @DataDef(length = 1) QEnum<DECIMALFORMATEnum, QCharacter> decimalFormat,
+			@DataDef(length = 10) QEnum<CHARACTERIDENTIFIERCONTROLEnum, QCharacter> characterIdentifierControl, @DataDef(length = 10) QEnum<SPOOLEDFILEACTIONEnum, QCharacter> spooledFileAction,
+			@DataDef(length = 10) QEnum<WORKLOADCAPPINGGROUPEnum, QCharacter> wORKLOADCAPPINGGROUP, @DataDef(length = 10) QEnum<DUPLICATEJOBOPTIONEnum, QCharacter> duplicateJobOption) {
+
 		/*
-		cLVarForSWS8.eval(job.getSwitches());
-		cLVarForDATE6.eval(varForDate());
-		cLVarForDATFMT4.eval(job.getJobDateFormat().getLiteral());
-		cLVarForDATSEP1.eval(job.getDateSeparator());
-		cLVarForTIMSEP1.eval(job.getTimeSeparator());
-		//
-		cLVarForDFTWAIT70.eval(1);
-		//
-		cLVarForCCSID50.eval(UTF_8);
-		cLVarForDFTCCSID50.eval(UTF_8); 		 
+		 * cLVarForSWS8.eval(job.getSwitches());
+		 * cLVarForDATE6.eval(varForDate());
+		 * cLVarForDATFMT4.eval(job.getJobDateFormat().getLiteral());
+		 * cLVarForDATSEP1.eval(job.getDateSeparator());
+		 * cLVarForTIMSEP1.eval(job.getTimeSeparator()); //
+		 * cLVarForDFTWAIT70.eval(1); // cLVarForCCSID50.eval(UTF_8);
+		 * cLVarForDFTCCSID50.eval(UTF_8);
 		 */
-	
+
 		try {
 			QJob jobToChange = jobName.findJob(job, jobManager);
-			
+
 			setSwitches(jobToChange, jobSwitches);
-			
+
 			setJobDate(jobToChange, jobDate);
 
 			setJobDateFormat(jobToChange, dateFormat);
-			
+
 			setDateSeparator(jobToChange, dateSeparator);
-			
+
 			setTimeSeparator(jobToChange, timeSeparator);
 		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
 		}
 	}
 
-	private void setTimeSeparator(QJob jobToChange,	QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator) {
+	private void setTimeSeparator(QJob jobToChange, QEnum<TIMESEPARATOREnum, QCharacter> timeSeparator) {
 		timeSeparator.asEnum().setTimeSeparator(jobToChange);
 	}
 
-	private void setDateSeparator(QJob jobToChange,	QEnum<DATESEPARATOREnum, QCharacter> dateSeparator) {
+	private void setDateSeparator(QJob jobToChange, QEnum<DATESEPARATOREnum, QCharacter> dateSeparator) {
 		dateSeparator.asEnum().setDateSeparator(jobToChange);
 	}
 
@@ -127,8 +105,7 @@ public @Supported class JobAttributesSetter {
 		try {
 			jobDate.asEnum().setJobDate(jobToChange, jobDate.asData().toString());
 		} catch (Exception e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPD0082, 
-					new String[] {"", "DATE", jobDate.asData().toString()});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPD0082, new String[] { "", "DATE", jobDate.asData().toString() });
 		}
 	}
 
@@ -137,15 +114,14 @@ public @Supported class JobAttributesSetter {
 		try {
 			jobSwitches.asEnum().setSwitches(jobToChange, jobSwitchesString);
 		} catch (Exception e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, 
-					new String[] {jobToChange.getName(), jobToChange.getCreationInfo().getCreationUser(), "" + jobToChange.getJobNumber(), jobSwitchesString});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobToChange.getName(), jobToChange.getCreationInfo().getCreationUser(), "" + jobToChange.getJobNumber(),
+					jobSwitchesString });
 		}
 	}
 
 	public static enum JOBPRIORITYONJOBQEnum {
 		@Special(value = "*")
-		SAME, 
-		OTHER
+		SAME, OTHER
 	}
 
 	public static enum OUTPUTPRIORITYONOUTQEnum {
@@ -297,11 +273,11 @@ public @Supported class JobAttributesSetter {
 				DateFormat fmt = JobDateFormatter.forType(jobToChange.getJobDateFormat());
 				jobToChange.getCreationInfo().setCreationDate(fmt.parse(dateString));
 			}
-		}, 
+		},
 		OTHER {
 			@Override
 			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
-				
+
 			}
 		};
 		public abstract void setJobDate(QJob jobToChange, String dateString) throws Exception;
@@ -312,9 +288,9 @@ public @Supported class JobAttributesSetter {
 		SAME {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				//Nothing to do
+				// Nothing to do
 			}
-		}, 
+		},
 		@Special(value = "0")
 		SYSVAL {
 			@Override
@@ -322,28 +298,28 @@ public @Supported class JobAttributesSetter {
 				// TODO ????
 			}
 		},
-		
+
 		@Special(value = "1")
 		YMD {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setJobDateFormat(JobDateFormat.YEAR_MONTH_DAY);
 			}
-		}, 
+		},
 		@Special(value = "2")
 		MDY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				jobToChange.setJobDateFormat(JobDateFormat.MONTH_DAY_YEAR);				
+				jobToChange.setJobDateFormat(JobDateFormat.MONTH_DAY_YEAR);
 			}
-		}, 
+		},
 		@Special(value = "3")
 		DMY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setJobDateFormat(JobDateFormat.DAY_MONTH_YEAR);
 			}
-		}, 
+		},
 		@Special(value = "4")
 		JUL {
 			@Override
@@ -360,63 +336,63 @@ public @Supported class JobAttributesSetter {
 		SAME {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
-				//Nothing to do
+				// Nothing to do
 			}
-		}, 
-		
+		},
+
 		@Special(value = "X'00'")
 		SYSVAL {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				// TODO ??
 			}
-		}, 
-		
+		},
+
 		@Special(value = "X'40'")
 		BLANK {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("");
 			}
-		}, 
-		
+		},
+
 		@Special(value = "/")
 		slash {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("/");
 			}
-		}, 
-		
+		},
+
 		@Special(value = "-")
 		minus {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
-				jobToChange.setDateSeparator("-");				
+				jobToChange.setDateSeparator("-");
 			}
-		}, 
-		
+		},
+
 		@Special(value = ".")
 		dot {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
-				jobToChange.setDateSeparator("0");				
+				jobToChange.setDateSeparator("0");
 			}
-		}, 
-		
+		},
+
 		@Special(value = "")
 		blank {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator(" ");
 			}
-		}, 
-		
+		},
+
 		@Special(value = ",")
 		comma {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
-				jobToChange.setDateSeparator(",");				
+				jobToChange.setDateSeparator(",");
 			}
 		};
 
@@ -428,50 +404,50 @@ public @Supported class JobAttributesSetter {
 		SAME {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
-				//Nothing to do
+				// Nothing to do
 			}
-		}, 
-		
+		},
+
 		@Special(value = "X'00'")
 		SYSVAL {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				// TODO ??
 			}
-		}, 
-		
+		},
+
 		@Special(value = "X'40'")
 		BLANK {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator("");
 			}
-		}, 
-		
+		},
+
 		@Special(value = ":")
 		column {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
-				jobToChange.setTimeSeparator(":");				
+				jobToChange.setTimeSeparator(":");
 			}
-		}, 
-		
+		},
+
 		@Special(value = ".")
 		dot {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
-				jobToChange.setTimeSeparator(".");				
+				jobToChange.setTimeSeparator(".");
 			}
-		}, 
-		
+		},
+
 		@Special(value = "")
 		blank {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
-				jobToChange.setTimeSeparator("");				
+				jobToChange.setTimeSeparator("");
 			}
-		}, 
-		
+		},
+
 		@Special(value = ",")
 		comma {
 			@Override
@@ -486,13 +462,13 @@ public @Supported class JobAttributesSetter {
 		SAME {
 			@Override
 			public void setSwitches(QJob jobToChange, String trimR) throws Exception {
-				//Nothing to do
+				// Nothing to do
 			}
-		}, 
+		},
 		OTHER {
 			@Override
 			public void setSwitches(QJob jobToChange, String jobSwitches) throws Exception {
-				char[] parameterSwitches = jobSwitches.toCharArray();	
+				char[] parameterSwitches = jobSwitches.toCharArray();
 				if (parameterSwitches.length != 8) {
 					throw new Exception();
 				}
@@ -502,23 +478,21 @@ public @Supported class JobAttributesSetter {
 					switch (parameterSwitches[i]) {
 					case '0':
 					case '1':
-						newSwitches[i] = parameterSwitches[i]; 
+						newSwitches[i] = parameterSwitches[i];
 						break;
 					case 'X':
-						newSwitches[i] = oldSwitches[i]; 					
+						newSwitches[i] = oldSwitches[i];
 					default:
 						throw new Exception();
 					}
 				}
 				jobToChange.setSwitches(new String(newSwitches));
 			}
-		}
-	;
+		};
 
 		public abstract void setSwitches(QJob jobToChange, String trimR) throws Exception;
 	}
-	
-	
+
 	public static enum TIMESLICEEnum {
 		@Special(value = "0")
 		SAME, OTHER

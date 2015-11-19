@@ -21,55 +21,36 @@ public @Supported class UserProfileCreator {
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(
-			@Supported @DataDef(length = 10) QCharacter userProfile,
-			@ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
-			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired,
-			@Supported @DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,
-			@Supported @DataDef(binaryType = BinaryType.SHORT) QEnum<UserClassEnum, QBinary> userClass,
-			@DataDef(length = 1) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel,
+	@Main
+	public void main(@Supported @DataDef(length = 10) QCharacter userProfile, @ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
+			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired, @Supported @DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,
+			@Supported @DataDef(binaryType = BinaryType.SHORT) QEnum<UserClassEnum, QBinary> userClass, @DataDef(length = 1) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel,
 			@DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary,
 			@Supported @DataDef(qualified = true) QEnum<INITIALPROGRAMTOCALLEnum, INITIALPROGRAMTOCALL> initialProgramToCall,
-			@DataDef(qualified = true) QEnum<INITIALMENUEnum, INITIALMENU> initialMenu,
-			@ToDo @DataDef(length = 1) QEnum<LIMITCAPABILITIESEnum, QCharacter> limitCapabilities,
+			@DataDef(qualified = true) QEnum<INITIALMENUEnum, INITIALMENU> initialMenu, @ToDo @DataDef(length = 1) QEnum<LIMITCAPABILITIESEnum, QCharacter> limitCapabilities,
 			@Supported @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription,
 			@ToDo @DataDef(dimension = 8, length = 4) QScroller<QEnum<SPECIALAUTHORITYEnum, QCharacter>> specialAuthority,
-			@DataDef(length = 1) QEnum<SPECIALENVIRONMENTEnum, QCharacter> specialEnvironment,
-			@DataDef(length = 1) QEnum<DISPLAYSIGNONINFORMATIONEnum, QCharacter> displaySignOnInformation,
+			@DataDef(length = 1) QEnum<SPECIALENVIRONMENTEnum, QCharacter> specialEnvironment, @DataDef(length = 1) QEnum<DISPLAYSIGNONINFORMATIONEnum, QCharacter> displaySignOnInformation,
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<PASSWORDEXPIRATIONINTERVALEnum, QBinary> passwordExpirationInterval,
 			@DataDef(binaryType = BinaryType.SHORT) QEnum<BLOCKPASSWORDCHANGEEnum, QBinary> blockPasswordChange,
-			@DataDef(length = 1) QEnum<LOCALPASSWORDMANAGEMENTEnum, QCharacter> localPasswordManagement,
-			@DataDef(length = 1) QEnum<LIMITDEVICESESSIONSEnum, QCharacter> limitDeviceSessions,
+			@DataDef(length = 1) QEnum<LOCALPASSWORDMANAGEMENTEnum, QCharacter> localPasswordManagement, @DataDef(length = 1) QEnum<LIMITDEVICESESSIONSEnum, QCharacter> limitDeviceSessions,
 			@DataDef(length = 1) QEnum<KEYBOARDBUFFERINGEnum, QCharacter> keyboardBuffering,
-			@DataDef(binaryType = BinaryType.INTEGER) QEnum<MAXIMUMALLOWEDSTORAGEEnum, QBinary> maximumAllowedStorage,
-			@DataDef(length = 1) QCharacter highestSchedulePriority,
-			@Supported @DataDef(qualified = true) JOBDESCRIPTION jobDescription,
-			@ToDo @DataDef(length = 10) QEnum<GROUPPROFILEEnum, QCharacter> groupProfile,
-			@ToDo @DataDef(length = 1) QEnum<OWNEREnum, QCharacter> owner,
-			@DataDef(length = 1) QEnum<GROUPAUTHORITYEnum, QCharacter> groupAuthority,
+			@DataDef(binaryType = BinaryType.INTEGER) QEnum<MAXIMUMALLOWEDSTORAGEEnum, QBinary> maximumAllowedStorage, @DataDef(length = 1) QCharacter highestSchedulePriority,
+			@Supported @DataDef(qualified = true) JOBDESCRIPTION jobDescription, @ToDo @DataDef(length = 10) QEnum<GROUPPROFILEEnum, QCharacter> groupProfile,
+			@ToDo @DataDef(length = 1) QEnum<OWNEREnum, QCharacter> owner, @DataDef(length = 1) QEnum<GROUPAUTHORITYEnum, QCharacter> groupAuthority,
 			@DataDef(length = 1) QEnum<GROUPAUTHORITYTYPEEnum, QCharacter> groupAuthorityType,
 			@DataDef(dimension = 15, length = 10) QScroller<QEnum<SUPPLEMENTALGROUPSEnum, QCharacter>> supplementalGroups,
-			@DataDef(length = 15) QEnum<ACCOUNTINGCODEEnum, QCharacter> accountingCode,
-			@DataDef(length = 8) QEnum<DOCUMENTPASSWORDEnum, QCharacter> documentPassword,
-			@DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue,
-			@DataDef(length = 1) QEnum<DELIVERYEnum, QCharacter> delivery,
-			@DataDef(binaryType = BinaryType.SHORT) QBinary severityCodeFilter,
-			@DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
-			@DataDef(qualified = true) QEnum<OUTPUTQUEUEEnum, OUTPUTQUEUE> outputQueue,
-			@ToDo @DataDef(qualified = true) QEnum<ATTENTIONPROGRAMEnum, ATTENTIONPROGRAM> attentionProgram,
-			@DataDef(qualified = true) QEnum<SORTSEQUENCEEnum, SORTSEQUENCE> sortSequence,
-			@DataDef(length = 3) QEnum<LANGUAGEIDEnum, QCharacter> languageID,
-			@DataDef(length = 2) QEnum<COUNTRYORREGIONIDEnum, QCharacter> countryOrRegionID,
-			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID,
+			@DataDef(length = 15) QEnum<ACCOUNTINGCODEEnum, QCharacter> accountingCode, @DataDef(length = 8) QEnum<DOCUMENTPASSWORDEnum, QCharacter> documentPassword,
+			@DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue, @DataDef(length = 1) QEnum<DELIVERYEnum, QCharacter> delivery,
+			@DataDef(binaryType = BinaryType.SHORT) QBinary severityCodeFilter, @DataDef(length = 10) QEnum<PRINTDEVICEEnum, QCharacter> printDevice,
+			@DataDef(qualified = true) QEnum<OUTPUTQUEUEEnum, OUTPUTQUEUE> outputQueue, @ToDo @DataDef(qualified = true) QEnum<ATTENTIONPROGRAMEnum, ATTENTIONPROGRAM> attentionProgram,
+			@DataDef(qualified = true) QEnum<SORTSEQUENCEEnum, SORTSEQUENCE> sortSequence, @DataDef(length = 3) QEnum<LANGUAGEIDEnum, QCharacter> languageID,
+			@DataDef(length = 2) QEnum<COUNTRYORREGIONIDEnum, QCharacter> countryOrRegionID, @DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID,
 			@DataDef(length = 10) QEnum<CHARACTERIDENTIFIERCONTROLEnum, QCharacter> characterIdentifierControl,
-			@DataDef(dimension = 6, length = 2) QScroller<QEnum<LOCALEJOBATTRIBUTESEnum, QCharacter>> localeJobAttributes,
-			@DataDef(length = 2048) QEnum<LOCALEEnum, QCharacter> locale,
-			@DataDef(dimension = 7, length = 10) QScroller<QEnum<USEROPTIONSEnum, QCharacter>> userOptions,
-			@DataDef(precision = 10) QEnum<USERIDNUMBEREnum, QDecimal> userIDNumber,
-			@DataDef(precision = 10) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber,
-			@DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
-			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation,
-			@ToDo @DataDef(length = 10) QEnum<AUTHORITYEnum, QCharacter> authority) {
+			@DataDef(dimension = 6, length = 2) QScroller<QEnum<LOCALEJOBATTRIBUTESEnum, QCharacter>> localeJobAttributes, @DataDef(length = 2048) QEnum<LOCALEEnum, QCharacter> locale,
+			@DataDef(dimension = 7, length = 10) QScroller<QEnum<USEROPTIONSEnum, QCharacter>> userOptions, @DataDef(precision = 10) QEnum<USERIDNUMBEREnum, QDecimal> userIDNumber,
+			@DataDef(precision = 10) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber, @DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
+			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation, @ToDo @DataDef(length = 10) QEnum<AUTHORITYEnum, QCharacter> authority) {
 	}
 
 	public static enum USERPASSWORDEnum {
@@ -83,7 +64,6 @@ public @Supported class UserProfileCreator {
 		YES
 	}
 
-
 	public static enum ASSISTANCELEVELEnum {
 		@Special(value = "X'40'")
 		SYSVAL, @Special(value = "B")
@@ -94,8 +74,7 @@ public @Supported class UserProfileCreator {
 
 	public static enum CURRENTLIBRARYEnum {
 		@Special(value = "X'40404040404040404040'")
-		CRTDFT, 
-		OTHER
+		CRTDFT, OTHER
 	}
 
 	public static class INITIALPROGRAMTOCALL extends QDataStructWrapper {

@@ -32,7 +32,7 @@ public @Program(name = "QSPHNMLT") class SpoolFileDeleter {
 	public static enum QCPFMSG {
 		CPF3309, CPC3305
 	}
-	
+
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -42,36 +42,36 @@ public @Program(name = "QSPHNMLT") class SpoolFileDeleter {
 	@Inject
 	private QExpressionParserRegistry expressionParserRegistry;
 
-	public @Main void main(@DataDef(length = 255) QCharacter spoolID,
-			                @DataDef(length = 10) QCharacter user) {
+	@Main
+	public void main(@DataDef(length = 255) QCharacter spoolID, @DataDef(length = 10) QCharacter user) {
 
 		QResourceWriter<QSpoolFile> spoolFileWriter = resourceManager.getResourceWriter(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
-		
+
 		if (valid(spoolID)) {
 			deleteSpoolByID(spoolID, spoolFileWriter);
 		} else {
 			deleteSpoolByUser(user, spoolFileWriter);
 		}
-		
+
 	}
 
-	private void deleteSpoolByUser(QCharacter user,	QResourceWriter<QSpoolFile> spoolFileWriter) {
+	private void deleteSpoolByUser(QCharacter user, QResourceWriter<QSpoolFile> spoolFileWriter) {
 		QExpressionParser expressionParser = expressionParserRegistry.lookup(QExpressionParserRegistry.DEFAULT_PARSER);
 		QPredicateExpression filter = expressionParser.parsePredicate("jobUser *EQ '" + user.trimR() + "'");
-		try(QObjectIterator<QSpoolFile> spoolIterator = spoolFileWriter.findByExpression(filter);) {
+		try (QObjectIterator<QSpoolFile> spoolIterator = spoolFileWriter.findByExpression(filter);) {
 			int deleted = 0;
 			while (spoolIterator.hasNext()) {
 				spoolFileWriter.delete(spoolIterator.next());
 				deleted++;
 			}
-			throw exceptionManager.prepareException(job, QCPFMSG.CPC3305, new String[] {"" + deleted, "0"});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPC3305, new String[] { "" + deleted, "0" });
 		}
 	}
 
 	private void deleteSpoolByID(QCharacter spoolID, QResourceWriter<QSpoolFile> spoolFileWriter) {
 		QSpoolFile spoolFile = spoolFileWriter.lookup(spoolID.trimR());
 		if (spoolFile == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF3309, new String[] {spoolID.trimR()});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF3309, new String[] { spoolID.trimR() });
 		}
 		spoolFileWriter.delete(spoolFile);
 	}

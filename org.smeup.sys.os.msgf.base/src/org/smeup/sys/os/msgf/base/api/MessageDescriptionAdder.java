@@ -49,13 +49,14 @@ public class MessageDescriptionAdder {
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
-	private QExceptionManager exceptionManager;	
+	private QExceptionManager exceptionManager;
 	@Inject
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile,
+	@Main
+	public void main(@Supported @DataDef(length = 7) QCharacter messageIdentifier, @Supported @DataDef(qualified = true) MessageFile messageFile,
 			@Supported @DataDef(length = 132) QCharacter firstLevelMessageText, @Supported @DataDef(length = 3000) QEnum<SecondLevelMessageTextEnum, QCharacter> secondLevelMessageText,
 			@Supported @DataDef(binaryType = BinaryType.SHORT) QBinary severityCode,
 			@Supported @DataDef(dimension = 99) QEnum<MessageDataFieldsFormatEnum, QStroller<MessageDataFieldsFormat>> messageDataFieldsFormats,

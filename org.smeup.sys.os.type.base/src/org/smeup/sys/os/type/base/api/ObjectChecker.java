@@ -28,7 +28,7 @@ import org.smeup.sys.os.type.QTypedObject;
 
 @Program(name = "QLICKOBJ")
 public @ToDo class ObjectChecker {
-	
+
 	public static enum QCPFMSG {
 		CPF9801, CPF9815, CPF9810, CPF9899
 	}
@@ -45,22 +45,20 @@ public @ToDo class ObjectChecker {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QSourceManager sourceManager;
-	
-	
-	public @Main void main(@DataDef(qualified = true) OBJECT object,
-							@DataDef(length = 7) QCharacter objectType,
-							@DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
-							@ToDo @DataDef(dimension = 10, length = 10) QScroller<QEnum<AUTHORITYEnum, QCharacter>> authority) {
-		
+
+	@Main
+	public void main(@DataDef(qualified = true) OBJECT object, @DataDef(length = 7) QCharacter objectType, @DataDef(length = 10) QEnum<MEMBERIFDATABASEFILEEnum, QCharacter> memberIfDataBaseFile,
+			@ToDo @DataDef(dimension = 10, length = 10) QScroller<QEnum<AUTHORITYEnum, QCharacter>> authority) {
+
 		if (objectType == null || objectType.trimR().equals(""))
 			error("You must specify an object type");
-		
+
 		QType<?> type = typeRegistry.lookup(objectType.trimR());
 		if (type == null)
-			error("Wrong type: " + objectType.trimR());			
-		
+			error("Wrong type: " + objectType.trimR());
+
 		QResourceReader<? extends QTypedObject> resourceReader = null;
-		
+
 		switch (object.library.asEnum()) {
 		case CURLIB:
 			resourceReader = resourceManager.getResourceReader(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
@@ -74,10 +72,11 @@ public @ToDo class ObjectChecker {
 			break;
 		}
 
-		QTypedObject typedObject = resourceReader.lookup(object.name.trimR());;
+		QTypedObject typedObject = resourceReader.lookup(object.name.trimR());
+		;
 		if (typedObject == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF9801, new String[] {"", object.name.trimR(), object.library.asData().trimR()});				
-		
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9801, new String[] { "", object.name.trimR(), object.library.asData().trimR() });
+
 		switch (memberIfDataBaseFile.asEnum()) {
 		case NONE:
 		case FIRST:
@@ -85,12 +84,12 @@ public @ToDo class ObjectChecker {
 		case OTHER:
 			if (typedObject instanceof QSourceFile) {
 				QSourceEntry sourceEntry = sourceManager.getObjectEntry(job.getContext(), typedObject.getLibrary(), QFile.class, typedObject.getName());
-				QSourceEntry fileMember = sourceManager.getChildEntry(job.getContext(), sourceEntry, memberIfDataBaseFile.asData().trimR()+".XMI");
+				QSourceEntry fileMember = sourceManager.getChildEntry(job.getContext(), sourceEntry, memberIfDataBaseFile.asData().trimR() + ".XMI");
 				if (fileMember == null) {
-					throw exceptionManager.prepareException(job, QCPFMSG.CPF9815, new String[] {"", typedObject.getName(), typedObject.getLibrary(), "",  memberIfDataBaseFile.asData().trimR()});											
+					throw exceptionManager.prepareException(job, QCPFMSG.CPF9815, new String[] { "", typedObject.getName(), typedObject.getLibrary(), "", memberIfDataBaseFile.asData().trimR() });
 				}
 			} else {
-				error("Invalid file type: "+ objectType.trimR());
+				error("Invalid file type: " + objectType.trimR());
 			}
 			break;
 		}
@@ -98,22 +97,22 @@ public @ToDo class ObjectChecker {
 
 	private void error(String message) {
 		jobLogManager.error(job, message);
-		throw exceptionManager.prepareException(job, QCPFMSG.CPF9899, new String[] {});		
+		throw exceptionManager.prepareException(job, QCPFMSG.CPF9899, new String[] {});
 	}
 
 	private void checkLibrary(String libName) {
 
 		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libName))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {libName});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] { libName });
 	}
-	
+
 	public static class OBJECT extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
-		
+
 		@DataDef(length = 10)
 		public QCharacter name;
-		
+
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LIBRARYEnum, QCharacter> library;
 
@@ -121,7 +120,6 @@ public @ToDo class ObjectChecker {
 			LIBL, CURLIB, OTHER
 		}
 	}
-
 
 	public static enum MEMBERIFDATABASEFILEEnum {
 		NONE, FIRST, OTHER

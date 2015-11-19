@@ -71,8 +71,8 @@ public @Supported class FileDescriptionDisplayer {
 	@Inject
 	private QSourceManager sourceManager;
 	
-	
-	public @Main void main(
+	@Main 
+	public void main(
 			@Supported @DataDef(qualified = true) FILE file,
 			@Supported @DataDef(dimension = 10, length = 8)  QScroller<QEnum<TypeOfFileInformationEnum, QCharacter>> typeOfInformation,
 			@Supported @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,

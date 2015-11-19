@@ -30,32 +30,30 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
 public @ToDo @Program(name = "QWTCCCNJ") class JobTerminator {
-	
+
 	public static enum QCPFMSG {
-		CPF1321, //Il lavoro &1 utente &2 numero di lavoro &3 non trovati
+		CPF1321, // Il lavoro &1 utente &2 numero di lavoro &3 non trovati
 	}
-	
+
 	@Inject
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QJobManager jobManager;
-	
-	public @Main void main(
-			@Supported @DataDef(qualified = true) JobName jobName,
-			@ToDo @DataDef(length = 1) QEnum<HowToEndEnum, QCharacter> howToEnd,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QBinary controlledEndDelayTime,
-			@ToDo @DataDef(length = 1) QEnum<DeleteSpooledFilesEnum, QCharacter> deleteSpooledFiles,
+
+	@Main
+	public void main(@Supported @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(length = 1) QEnum<HowToEndEnum, QCharacter> howToEnd,
+			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QBinary controlledEndDelayTime, @ToDo @DataDef(length = 1) QEnum<DeleteSpooledFilesEnum, QCharacter> deleteSpooledFiles,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<MaximumLogEntriesEnum, QBinary> maximumLogEntries,
 			@ToDo @DataDef(length = 7) QEnum<AdditionalInteractiveJobsEnum, QCharacter> additionalInteractiveJobs,
 			@ToDo @DataDef(length = 10) QEnum<DuplicateJobOptionEnum, QCharacter> duplicateJobOption) {
-		
+
 		try {
 			QJob jobToTerminate = jobName.findJob(job, jobManager);
-			jobManager.close(jobToTerminate);						
+			jobManager.close(jobToTerminate);
 		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
 		}
 	}
 

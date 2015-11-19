@@ -35,7 +35,7 @@ public @Supported class LibraryClearer {
 	public static enum QCPFMSG {
 		CPF2110
 	}
-	
+
 	@Inject
 	private QJob job;
 	@Inject
@@ -48,25 +48,24 @@ public @Supported class LibraryClearer {
 	private QJobLogManager jobLogManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	public @Main void main(
-			@Supported @DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library,
-			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
-		
+
+	@Main
+	public void main(@Supported @DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library, @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
+
 		QLibrary qLibrary = findLibrary(library);
-		
+
 		if (qLibrary == null)
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {library.asData().trimR()});	
-		
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { library.asData().trimR() });
+
 		new LibraryHandler(qLibrary, job, typeRegistry, resourceManager).clear();
-		
+
 		jobLogManager.info(job, "Cleared library " + qLibrary.getName());
 	}
 
 	private QLibrary findLibrary(QEnum<LIBRARYEnum, QCharacter> library) {
 		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 		QLibrary qLibrary = null;
-		
+
 		switch (library.asEnum()) {
 		case OTHER:
 			qLibrary = libraryWriter.lookup(library.asData().trimR());
@@ -76,7 +75,7 @@ public @Supported class LibraryClearer {
 			qLibrary = libraryWriter.lookup(job.getCurrentLibrary());
 			break;
 		}
-			
+
 		return qLibrary;
 	}
 

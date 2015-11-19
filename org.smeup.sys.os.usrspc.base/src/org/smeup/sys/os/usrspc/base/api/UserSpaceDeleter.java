@@ -33,14 +33,17 @@ public class UserSpaceDeleter {
 	@Inject
 	private QResourceManager resourceManager;
 
-	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
+	@Main
+	public void main(@DataDef(qualified = true) UserSpace userSpace, ErrorCode errorCode) {
 		QResourceWriter<QUserSpace> userSpaceResource = resourceManager.getResourceWriter(job, QUserSpace.class, userSpace.library.trimR());
 		QUserSpace qUserSpace = userSpaceResource.lookup(userSpace.name.trimR());
-		if (qUserSpace == null){
+		if (qUserSpace == null) {
 			errorCode.£$01e2.eval(43);
 			// TODO
 			System.err.println("User Space not found: " + userSpace.name);
-			//			throw new OperatingSystemRuntimeException("User Space not found: " + userSpace.name);
+			// throw new
+			// OperatingSystemRuntimeException("User Space not found: " +
+			// userSpace.name);
 			return;
 		}
 		userSpaceResource.delete(qUserSpace);

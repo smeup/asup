@@ -34,7 +34,7 @@ public class DeleteObject {
 		 * URI uri = URI.createURI(objectLink.trimR()); String library =
 		 * uri.scheme().toUpperCase(); String type = uri.host(); String name =
 		 * uri.lastSegment();
-		 *
+		 * 
 		 * QSourceEntry sourceEntry = sourceManager.getObjectEntry(job, library,
 		 * type, name); if(sourceEntry != null) sourceManager.removeEntry(job,
 		 * sourceEntry); else throw new

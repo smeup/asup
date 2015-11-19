@@ -43,7 +43,8 @@ public class ActiveJobWorker {
 	@Inject
 	private QJobManager jobManager;
 
-	public @Main void main(@ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output, @ToDo @DataDef(length = 1) QEnum<ResetStatusStatisticsEnum, QCharacter> resetStatusStatistics,
+	@Main
+	public void main(@ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output, @ToDo @DataDef(length = 1) QEnum<ResetStatusStatisticsEnum, QCharacter> resetStatusStatistics,
 			@ToDo @DataDef(dimension = 25, length = 10) QScroller<QEnum<SubsystemEnum, QCharacter>> subsystem,
 			@ToDo @DataDef(precision = 3, scale = 1) QEnum<CPUPercentLimitEnum, QDecimal> cPUPercentLimit,
 			@ToDo @DataDef(precision = 4, scale = 1) QEnum<ResponseTimeLimitEnum, QDecimal> responseTimeLimit, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<SequenceEnum, QBinary> sequence,

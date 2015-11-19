@@ -6,13 +6,12 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 
 public class ObjectNameAndLib extends QDataStructWrapper {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@DataDef(length = 10)
 	public QCharacter name;
-	
+
 	@DataDef(length = 10, value = "*LIBL")
 	public QEnum<LIBRARYEnum, QCharacter> library;
 
@@ -20,6 +19,4 @@ public class ObjectNameAndLib extends QDataStructWrapper {
 		LIBL, CURLIB, OTHER
 	}
 
-
 }
-

@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSCRTUS")
 public class UserSpaceCreator {
 
-	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, @DataDef(length = 10) QCharacter extendedAttribute, @DataDef(binaryType = BinaryType.BYTE) QBinary initialSize,
+	@Main
+	public void main(@DataDef(qualified = true) UserSpace userSpace, @DataDef(length = 10) QCharacter extendedAttribute, @DataDef(binaryType = BinaryType.BYTE) QBinary initialSize,
 			@DataDef(length = 1) QCharacter initialValue, @DataDef(length = 10) QCharacter publicAuthority, @DataDef(length = 50) QCharacter textDescription,
 			@DataDef(length = 10) QCharacter replace, ErrorCode errorCode, @DataDef(length = 10) QCharacter domain, @DataDef(binaryType = BinaryType.BYTE) QBinary transferSizeRequest,
 			@DataDef(length = 1) QCharacter optimumSpaceAlignement) {
@@ -38,7 +39,6 @@ public class UserSpaceCreator {
 		@DataDef(length = 10, value = "*LIBL")
 		public QCharacter library;
 	}
-
 
 	public static class ErrorCode extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

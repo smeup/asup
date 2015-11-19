@@ -58,7 +58,8 @@ public @Supported class FileDeleter {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Main void main(
+	@Main 
+	public void main(
 			@Supported @DataDef(qualified = true) FILE file,
 			@ToDo @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system,
 			@ToDo @DataDef(length = 10) QEnum<REMOVECONSTRAINTEnum, QCharacter> removeConstraint) {

@@ -17,7 +17,9 @@ import org.smeup.sys.il.data.annotation.Program;
 
 @Program(name = "QWTCCRVG")
 public class GroupAttributesRetriever {
-	public @Main void main() {
+
+	@Main
+	public void main() {
 		"".toCharArray();
 	}
 }

@@ -32,9 +32,10 @@ import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.Libr
 @Program(name = "QCLRTVDA")
 public @ToDo class DataAreaRetriever {
 	public static enum QCPFMSG {
-		CPF1015,     //Non è stata trovata l'area dati &1 in &2.             
-		CPF1021,     //Non è stata trovata la libreria &1 per l'area dati &2.
-        CPF9899,    //Si è verificato un errore durante l'elaborazione del comando.  
+		CPF1015, // Non è stata trovata l'area dati &1 in &2.
+		CPF1021, // Non è stata trovata la libreria &1 per l'area dati &2.
+		CPF9899, // Si è verificato un errore durante l'elaborazione del
+					// comando.
 	}
 
 	@Inject
@@ -47,9 +48,9 @@ public @ToDo class DataAreaRetriever {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QDataContext dataContext;
-	
-	public @Main void main(DataAreaSpecification dataAreaParm,
-							QAdapter cLVariableForReturnedValue) {
+
+	@Main
+	public void main(DataAreaSpecification dataAreaParm, QAdapter cLVariableForReturnedValue) {
 		try {
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
 
@@ -58,16 +59,16 @@ public @ToDo class DataAreaRetriever {
 				cLVariableForReturnedValue.assign(character);
 			} else {
 				SUBSTRINGSPECIFICATIONS substringSpec = dataAreaParm.substringSpecifications.asData();
-				cLVariableForReturnedValue.assign(character, substringSpec.substringStartingPosition.asInteger());				
+				cLVariableForReturnedValue.assign(character, substringSpec.substringStartingPosition.asInteger());
 			}
-			
+
 		} catch (DataAreaNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[]{e.dataAreaName, e.libraryName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[] { e.dataAreaName, e.libraryName });
 		} catch (LibraryNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[]{e.libraryName, e.dataAreaName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { e.libraryName, e.dataAreaName });
 		} catch (RuntimeException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF9899, new String[0]);
-		}	
+		}
 	}
 
 }

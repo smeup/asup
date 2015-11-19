@@ -19,7 +19,7 @@ import org.smeup.sys.os.lib.base.api.tools.CurrentLibraryChangeHelper;
 
 @Program(name = "QLICHLIB")
 public class LibraryListChanger {
-	
+
 	public static enum QCPFMSG {
 		CPF2110
 	}
@@ -32,19 +32,19 @@ public class LibraryListChanger {
 	private QLibraryManager libraryManager;
 	@Inject
 	private QJobLogManager jobLogManager;
-	
-	public @Main void main(
-			@DataDef(dimension = 250, length = 10) QScroller<QEnum<LIBRARIESFORCURRENTTHREADEnum, QCharacter>> librariesForCurrentThread,
+
+	@Main
+	public void main(@DataDef(dimension = 250, length = 10) QScroller<QEnum<LIBRARIESFORCURRENTTHREADEnum, QCharacter>> librariesForCurrentThread,
 			@DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
-		
+
 		switch (librariesForCurrentThread.first().asEnum()) {
 		case SAME:
 			break;
-		
+
 		case NONE:
 			job.getLibraries().removeAll(job.getLibraries());
 			break;
-		
+
 		case OTHER:
 			librariesForCurrentThread.count();
 			List<String> newLibList = new ArrayList<String>();
@@ -60,7 +60,7 @@ public class LibraryListChanger {
 			}
 			break;
 		}
-		
+
 		new CurrentLibraryChangeHelper(job, libraryManager, jobLogManager, exceptionManager).changeCurrentLibrary(currentLibrary);
 	}
 

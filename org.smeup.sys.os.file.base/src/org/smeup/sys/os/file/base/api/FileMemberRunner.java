@@ -47,7 +47,8 @@ public class FileMemberRunner {
 	@Inject
 	private QJob job;
 
-	public @Main void main(@DataDef(qualified = true) SourceFile sourceFile, @DataDef(length = 10) QCharacter sourceMember) {
+	@Main 
+	public void main(@DataDef(qualified = true) SourceFile sourceFile, @DataDef(length = 10) QCharacter sourceMember) {
 
 		QResourceReader<QFile> fileReader = null;
 

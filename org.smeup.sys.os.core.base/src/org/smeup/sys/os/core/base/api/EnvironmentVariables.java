@@ -16,26 +16,26 @@ public class EnvironmentVariables {
 
 	public EnvironmentVariables(QJob job, EnvironmentVariableLevelEnum level) {
 		this.job = job;
-		this.level = level;		
+		this.level = level;
 		this.variables = initVariables();
 	}
 
 	private Map<String, String> initVariables() {
 		switch (level) {
 		case JOB:
-			return job.getVariables();						
-			
+			return job.getVariables();
+
 		case SYS:
-			return job.getSystem().getVariables();			
+			return job.getSystem().getVariables();
 		}
-		
-		throw new RuntimeException("Wrong level type: " + level);		
+
+		throw new RuntimeException("Wrong level type: " + level);
 	}
 
 	public EnvironmentVariables setValue(String key, String value, boolean replace) {
 		if (replace || !this.variables.containsKey(key)) {
 			this.variables.put(key, value);
-		} 
+		}
 		return this;
 	}
 

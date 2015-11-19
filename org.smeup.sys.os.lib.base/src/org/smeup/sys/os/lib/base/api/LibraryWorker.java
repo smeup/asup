@@ -35,7 +35,7 @@ import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QMNWRKXX1")
 public class LibraryWorker {
-	
+
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
@@ -45,15 +45,14 @@ public class LibraryWorker {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(
-			@DataDef(qualified = true) LIBRARY library,
-			@DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNUMBEREnum, QBinary> aSPNumber,
+	@Main
+	public void main(@DataDef(qualified = true) LIBRARY library, @DataDef(binaryType = BinaryType.SHORT) QEnum<ASPNUMBEREnum, QBinary> aSPNumber,
 			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice) {
-		
-		try(QObjectIterator<?> objectIterator =  findIterator(library);) {
+
+		try (QObjectIterator<?> objectIterator = findIterator(library);) {
 			QObjectWriter objectWriter = outputManager.getDefaultWriter(job.getContext());
 			objectWriter.initialize();
-	
+
 			QObject qObject = null;
 			while (objectIterator.hasNext()) {
 				try {
@@ -62,11 +61,10 @@ public class LibraryWorker {
 				} catch (Exception e) {
 					jobLogManager.error(job, qObject + " " + e.getMessage());
 				}
-			}		
+			}
 			objectWriter.flush();
 		}
 	}
-		
 
 	@SuppressWarnings("resource")
 	private QObjectIterator<?> findIterator(LIBRARY library) {

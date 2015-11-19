@@ -26,7 +26,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QWCCALOC")
 public class ObjectAllocator {
 
-	public @Main void main(@ToDo @DataDef(dimension = 50) QStroller<ObjectSpecification> objectSpecifications, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<WaitTimeEnum, QBinary> waitTime,
+	@Main
+	public void main(@ToDo @DataDef(dimension = 50) QStroller<ObjectSpecification> objectSpecifications, @ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<WaitTimeEnum, QBinary> waitTime,
 			@ToDo @DataDef(length = 1) QEnum<LockScopeEnum, QCharacter> lockScope, @ToDo @DataDef(length = 1) QEnum<LockConflictActionEnum, QCharacter> lockConflictAction) {
 
 		int i = 0;

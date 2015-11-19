@@ -23,7 +23,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSPTRUS")
 public class UserSpaceRetrievePointer {
 
-	public @Main void main(@DataDef(qualified = true) UserSpace userSpace, QPointer retunrPointer, ErrorCode errorCode) {
+	@Main
+	public void main(@DataDef(qualified = true) UserSpace userSpace, QPointer retunrPointer, ErrorCode errorCode) {
 
 	}
 

@@ -37,7 +37,7 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 
 	PrintStream ps;
 	String prefix;
-	
+
 	public BaseProgramMemoryPrinter(PrintStream ps) {
 		this.ps = ps;
 		this.prefix = null;
@@ -46,7 +46,7 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
-	
+
 	@Override
 	public boolean visit(QArray<?> data) {
 		return super.visit(data);
@@ -54,38 +54,38 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 
 	@Override
 	public boolean visit(QBinary data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QBoolean data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QCharacter data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QDataStruct data) {
-		
+
 		print("");
-		
+
 		Iterator<QBufferedData> elements = data.getElements().iterator();
 		BaseProgramMemoryPrinter childPrinter = new BaseProgramMemoryPrinter(ps);
-		while(elements.hasNext()) {
+		while (elements.hasNext()) {
 			elements.next().accept(childPrinter);
-			if(elements.hasNext())
+			if (elements.hasNext())
 				ps.print("/");
 		}
 
@@ -94,72 +94,72 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 
 	@Override
 	public boolean visit(QDatetime data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QDecimal data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QEnum<?, ?> data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QFloating data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QGraphic data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QHexadecimal data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QIdentity data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QIndicator data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
 
 	@Override
 	public boolean visit(QPointer data) {
-		
-		print(data);		
+
+		print(data);
 
 		return super.visit(data);
 	}
@@ -173,11 +173,11 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 	public boolean visit(QStroller<?> data) {
 		return super.visit(data);
 	}
-	
+
 	private void print(Object object) {
-		if(prefix != null)
+		if (prefix != null)
 			ps.print(prefix);
-		
+
 		ps.print(object.toString());
 		ps.flush();
 	}

@@ -50,7 +50,8 @@ public class JobDescriptionChanger {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) QEnum<JobQueueEnum, JobQueue> jobQueue,
+	@Main
+	public void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(qualified = true) QEnum<JobQueueEnum, JobQueue> jobQueue,
 			@Supported @DataDef(length = 1) QEnum<JobPriorityonJOBQEnum, QCharacter> jobPriorityonJOBQ,
 			@Supported @DataDef(length = 1) QEnum<OutputPriorityonOUTQEnum, QCharacter> outputPriorityonOUTQ, @DataDef(length = 10) QEnum<PrintDeviceEnum, QCharacter> printDevice,
 			@DataDef(qualified = true) QEnum<OutputQueueEnum, OutputQueue> outputQueue, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
@@ -152,7 +153,7 @@ public class JobDescriptionChanger {
 		case USRPRF:
 			refOutQueue = QOperatingSystemTypeFactory.eINSTANCE.createTypedRef();
 			refOutQueue.setName(outputQueue.getSpecialName());
-			qJobDescription.setOutQueue(refOutQueue);			
+			qJobDescription.setOutQueue(refOutQueue);
 			break;
 		case OTHER:
 

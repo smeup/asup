@@ -25,12 +25,12 @@ import org.smeup.sys.os.dtaara.QDataAreaManager;
 import org.smeup.sys.os.lib.QLibrary;
 
 public class ExistingDataAreaSpecification extends QDataStructWrapper {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@DataDef(length = 10)
 	public QCharacter name;
-	
+
 	@DataDef(length = 10, value = "*LIBL")
 	public QEnum<LIBRARYEnum, QCharacter> library;
 
@@ -43,7 +43,7 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 	}
 
 	public QDataArea findDataArea(QJob job, QResourceManager resourceManager, QDataAreaManager dataAreaManager, DATAAREAEnum dataAreaType) throws DataAreaNotFoundException, LibraryNotFoundException {
-		switch(dataAreaType) {
+		switch (dataAreaType) {
 		case LDA:
 			return dataAreaManager.getLocalDataArea(job.getContext());
 		case OTHER:
@@ -51,7 +51,7 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 			String libraryName = library.asData().trimR();
 			QDataArea result = findReader(job, resourceManager).lookup(dataAreaName);
 			if (result == null) {
-				throw new DataAreaNotFoundException(dataAreaName, libraryName);				
+				throw new DataAreaNotFoundException(dataAreaName, libraryName);
 			}
 			return result;
 		default:
@@ -74,19 +74,19 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 			resourceReader = resourceManager.getResourceReader(job, QDataArea.class, libraryName);
 			break;
 		}
-		return resourceReader;	
+		return resourceReader;
 	}
-		
+
 	private void checkLibrary(QResourceManager resourceManager, QJob job, String libraryName, String dataAreaName) throws LibraryNotFoundException {
 		QResourceSetReader<QLibrary> resourceReader = resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL);
 		if (!resourceReader.exists(libraryName)) {
 			throw new LibraryNotFoundException(dataAreaName, libraryName);
-		}		
+		}
 	}
 
 	public class LibraryNotFoundException extends Exception {
 		private static final long serialVersionUID = 1L;
-		
+
 		public final String dataAreaName;
 		public final String libraryName;
 
@@ -98,7 +98,7 @@ public class ExistingDataAreaSpecification extends QDataStructWrapper {
 
 	public class DataAreaNotFoundException extends Exception {
 		private static final long serialVersionUID = 1L;
-		
+
 		public final String dataAreaName;
 		public final String libraryName;
 

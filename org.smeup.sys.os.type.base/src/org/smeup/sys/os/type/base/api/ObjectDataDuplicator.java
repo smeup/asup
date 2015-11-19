@@ -28,13 +28,12 @@ public class ObjectDataDuplicator {
 		this.connection = connection;
 	}
 
-
 	public void duplicateData(QTypedObject objToDuplicate, QTypedObject duplicatedObject) {
 		Table tableFrom = connection.getCatalogMetaData().getTable(objToDuplicate.getLibrary(), objToDuplicate.getName());
 		Table tableTo = connection.getCatalogMetaData().getTable(duplicatedObject.getLibrary(), duplicatedObject.getName());
 		duplicateData(tableFrom, tableTo);
 	}
-	
+
 	public void duplicateData(Table tableFrom, Table tableTo) {
 		QDefinitionWriter definitionWriter = connection.getContext().get(QDefinitionWriter.class);
 		String command = definitionWriter.copyTableData(tableFrom, tableTo, connection.getCatalogGenerationStrategy().isCreateRelativeRecordNumber());

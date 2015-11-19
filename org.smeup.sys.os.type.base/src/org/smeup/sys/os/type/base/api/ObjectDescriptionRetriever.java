@@ -45,7 +45,8 @@ public class ObjectDescriptionRetriever {
 	@Inject
 	private QJob job;
 
-	public @Main void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QCharacter $fmtob,
+	@Main
+	public void main(@DataDef(length = 180) QCharacter $$dati, @DataDef(binaryType = BinaryType.BYTE) QBinary $dtaln, @DataDef(length = 8) QCharacter $fmtob,
 			@DataDef(length = 20) QCharacter $nomog, @DataDef(length = 10) QCharacter $tipog, QUSEC qusec) {
 
 		QType<?> type = typeRegistry.lookup($tipog.trimR());

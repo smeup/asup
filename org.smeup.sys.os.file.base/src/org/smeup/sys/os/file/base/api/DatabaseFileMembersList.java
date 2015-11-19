@@ -23,8 +23,8 @@ import org.smeup.sys.il.data.def.BinaryType;
 @Program(name = "QUSLMBR")
 public class DatabaseFileMembersList {
 
-
-	public @Main void main(@DataDef(qualified = true) OBJECT object, 
+	@Main 
+	public void main(@DataDef(qualified = true) OBJECT object, 
 							@DataDef(length = 8) QCharacter formatName,
 							@DataDef(qualified = true) OBJECT objectName,
 							@DataDef(length = 10) QCharacter objectType,

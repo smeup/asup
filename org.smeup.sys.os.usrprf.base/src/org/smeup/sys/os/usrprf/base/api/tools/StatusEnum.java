@@ -9,14 +9,14 @@ public enum StatusEnum {
 		public boolean isEnabled() {
 			throw new UnsupportedOperationException("'SAME' status hasn't a boolean value");
 		}
-	}, 
+	},
 	@Special(value = "X'40'")
 	ENABLED {
 		@Override
 		public boolean isEnabled() {
 			return true;
 		}
-	}, 
+	},
 	@Special(value = "D")
 	DISABLED {
 		@Override
@@ -24,6 +24,6 @@ public enum StatusEnum {
 			return false;
 		}
 	};
-	
+
 	public abstract boolean isEnabled();
 }

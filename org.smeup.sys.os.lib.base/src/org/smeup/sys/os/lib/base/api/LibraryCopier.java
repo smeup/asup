@@ -32,7 +32,7 @@ public @Supported class LibraryCopier {
 	public static enum QCPFMSG {
 		CPF2365, CPF2110, CPF2111
 	}
-	
+
 	@Inject
 	private QJob job;
 	@Inject
@@ -41,37 +41,34 @@ public @Supported class LibraryCopier {
 	private QCommandManager commandManager;
 	@Inject
 	private QExceptionManager exceptionManager;
-	
-	public @Main void main(
-			@Supported @DataDef(length = 10) QCharacter existingLibrary,
-			@Supported @DataDef(length = 10) QCharacter newLibrary,
-			@Supported @DataDef(length = 4) QEnum<CREATELIBRARYEnum, QCharacter> createLibrary,
-			@Supported @DataDef(length = 4) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
-			@DataDef(length = 4) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints,
-			@DataDef(length = 4) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
+
+	@Main
+	public void main(@Supported @DataDef(length = 10) QCharacter existingLibrary, @Supported @DataDef(length = 10) QCharacter newLibrary,
+			@Supported @DataDef(length = 4) QEnum<CREATELIBRARYEnum, QCharacter> createLibrary, @Supported @DataDef(length = 4) QEnum<DUPLICATEDATAEnum, QCharacter> duplicateData,
+			@DataDef(length = 4) QEnum<DUPLICATECONSTRAINTSEnum, QCharacter> duplicateConstraints, @DataDef(length = 4) QEnum<DUPLICATETRIGGERSEnum, QCharacter> duplicateTriggers,
 			@DataDef(length = 4) QEnum<DUPLICATEFILEIDENTIFIERSEnum, QCharacter> duplicateFileIdentifiers) {
-		
-		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);	
+
+		QResourceWriter<QLibrary> libraryWriter = libraryManager.getLibraryWriter(job);
 
 		String existingLibName = existingLibrary.trimR();
 		String newLibName = newLibrary.trimR();
-		
+
 		if (existingLibName.equalsIgnoreCase(newLibName)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2365, new String[] {});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2365, new String[] {});
 		}
-		
+
 		QLibrary qExistingLibrary = libraryWriter.lookup(existingLibName);
-		
+
 		if (qExistingLibrary == null) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {existingLibName});	
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { existingLibName });
 		}
-		
+
 		QLibrary qNewLibrary = libraryWriter.lookup(newLibName);
-		
+
 		switch (createLibrary.asEnum()) {
 		case YES:
 			if (qNewLibrary != null) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] {newLibName});	
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2111, new String[] { newLibName });
 			}
 			qNewLibrary = QOperatingSystemLibraryFactory.eINSTANCE.createLibrary();
 			qNewLibrary.setName(newLibName);
@@ -80,18 +77,13 @@ public @Supported class LibraryCopier {
 
 		case NO:
 			if (qNewLibrary == null) {
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {newLibName});				
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { newLibName });
 			}
 			break;
 		}
 
-		String command = 
-				"CRTDUPOBJ OBJ(*ALL)" +
-			    " FROMLIB(" + existingLibrary.trimR() + ")" +
-                " OBJTYPE(*ALL)" +
-			    " TOLIB(" + newLibName + ")" +
-                " NEWOBJ(*OBJ)" + 
-				" DATA(" + duplicateData.asData().trimR() + ")";
+		String command = "CRTDUPOBJ OBJ(*ALL)" + " FROMLIB(" + existingLibrary.trimR() + ")" + " OBJTYPE(*ALL)" + " TOLIB(" + newLibName + ")" + " NEWOBJ(*OBJ)" + " DATA("
+				+ duplicateData.asData().trimR() + ")";
 		commandManager.executeCommandImmediate(job.getJobID(), command, null, true);
 	}
 

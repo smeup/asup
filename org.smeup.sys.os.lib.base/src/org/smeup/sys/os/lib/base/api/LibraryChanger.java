@@ -31,7 +31,7 @@ public class LibraryChanger {
 	public static enum QCPFMSG {
 		CPF9810
 	}
-	
+
 	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
@@ -39,13 +39,10 @@ public class LibraryChanger {
 	@Inject
 	private QLibraryManager libraryManager;
 
-	public @Main void main(
-			@DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library,
-			@DataDef(length = 7) QEnum<LIBRARYTYPEEnum, QCharacter> libraryType,
-			@DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription,
-			@DataDef(length = 10) QEnum<CREATEAUTHORITYEnum, QCharacter> createAuthority,
-			@DataDef(length = 10) QEnum<CREATEOBJECTAUDITINGEnum, QCharacter> createObjectAuditing,
-			@DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
+	@Main
+	public void main(@DataDef(length = 10) QEnum<LIBRARYEnum, QCharacter> library, @DataDef(length = 7) QEnum<LIBRARYTYPEEnum, QCharacter> libraryType,
+			@DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription, @DataDef(length = 10) QEnum<CREATEAUTHORITYEnum, QCharacter> createAuthority,
+			@DataDef(length = 10) QEnum<CREATEOBJECTAUDITINGEnum, QCharacter> createObjectAuditing, @DataDef(length = 1) QEnum<SYNCHRONIZEDLIBEnum, QCharacter> synchronizedLib) {
 
 		String libraryName = null;
 
@@ -60,12 +57,11 @@ public class LibraryChanger {
 
 		if (libraryName != null && libraryName.length() > 0) {
 
-			QResourceReader<QLibrary> libraryReader = libraryManager
-					.getLibraryReader(job);
+			QResourceReader<QLibrary> libraryReader = libraryManager.getLibraryReader(job);
 
 			if (!libraryReader.exists(libraryName))
-				throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] {libraryName});		
-			
+				throw exceptionManager.prepareException(job, QCPFMSG.CPF9810, new String[] { libraryName });
+
 			QLibrary qLibrary = libraryReader.lookup(libraryName);
 
 			String text = null;

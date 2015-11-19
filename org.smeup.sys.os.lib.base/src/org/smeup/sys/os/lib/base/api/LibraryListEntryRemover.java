@@ -29,28 +29,27 @@ public class LibraryListEntryRemover {
 	public static enum QCPFMSG {
 		CPF2104, CPF2110, CPF9999
 	}
-	
+
 	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QJob job;
 	@Inject
 	private QResourceManager resourceManager;
-	
-	public @Main void main(@DataDef(length = 10) QCharacter library) {
+
+	@Main
+	public void main(@DataDef(length = 10) QCharacter library) {
 		String libName = library.trimR();
-		
+
 		if (!exists(libName))
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] {libName});		
-		
-		if (!job.getLibraries().remove(libName))			
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF2104, new String[] {libName});		
-		
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2110, new String[] { libName });
+
+		if (!job.getLibraries().remove(libName))
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2104, new String[] { libName });
+
 	}
 
 	private boolean exists(String libName) {
-		return resourceManager
-			   .getResourceReader(job, QLibrary.class, Scope.ALL)
-			   .exists(libName);
+		return resourceManager.getResourceReader(job, QLibrary.class, Scope.ALL).exists(libName);
 	}
 }

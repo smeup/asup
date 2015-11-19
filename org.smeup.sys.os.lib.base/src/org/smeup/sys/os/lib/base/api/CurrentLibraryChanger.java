@@ -25,9 +25,9 @@ import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.lib.QLibraryManager;
 import org.smeup.sys.os.lib.base.api.tools.CurrentLibraryChangeHelper;
 
-@Program(name = "QLICHLLE") 
+@Program(name = "QLICHLLE")
 public @Supported class CurrentLibraryChanger {
-	
+
 	public static enum QCPFMSG {
 		CPF2110
 	}
@@ -41,7 +41,8 @@ public @Supported class CurrentLibraryChanger {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
+	@Main
+	public void main(@Supported @DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary) {
 		new CurrentLibraryChangeHelper(job, libraryManager, jobLogManager, exceptionManager).changeCurrentLibrary(currentLibrary);
 	}
 }

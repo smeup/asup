@@ -29,16 +29,16 @@ public class BaseSystemActivator {
 
 	@ComponentStarted
 	public void start(QApplication application, QResourceManager resourceManager, QSystemManager systemManager) {
-			
+
 		QSystem system = systemManager.getSystem();
 		QContext systemContext = application.getContext().createChildContext(system.getName());
 		system.setContext(systemContext);
-		
+
 		QJob job = systemManager.start();
-		
+
 		BaseBundleListener bundleListener = systemContext.make(BaseBundleListener.class);
 		bundleListener.init(job);
-		
+
 		// Library
 		QResourceWriter<QLibrary> resourceLibrary = resourceManager.getResourceWriter(job, QLibrary.class, system.getSystemLibrary());
 		if (!resourceLibrary.exists(system.getSystemLibrary())) {
@@ -48,11 +48,11 @@ public class BaseSystemActivator {
 			library.setText("As.UP System Library");
 			resourceLibrary.save(library);
 		}
-		
+
 		// System
 		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, systemManager.getSystem().getSystemLibrary());
 		systemWriter.save(systemManager.getSystem(), true);
-		
+
 		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, system.getSystemLibrary());
 
 		if (!userProfileWriter.exists(system.getSystemUser())) {
@@ -65,10 +65,9 @@ public class BaseSystemActivator {
 			resourceUserProfile.save(userProfile);
 		}
 
-		
 		application.getContext().set(QSystem.class, systemManager.getSystem());
 
 		application.getContext().set(QJob.class, job);
 
-	}	
+	}
 }

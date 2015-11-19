@@ -28,44 +28,28 @@ import org.smeup.sys.os.core.jobs.QJob;
 
 @Program(name = "QMHRCVMS")
 public @ToDo class MessageReceiver {
-	
+
 	@Inject
 	private QJob job;
-	
+
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(
-			CALLSTACKENTRYMESSAGEQUEUE callStackEntryMessageQueue,
-			@ToDo @DataDef(qualified = true) MESSAGEQUEUE messageQueue,
-			@ToDo @DataDef(length = 4) QEnum<MESSAGETYPEEnum, QCharacter> messageType,
-			@DataDef(length = 4) QEnum<MESSAGEKEYEnum, QCharacter> messageKey,
-			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<WAITTIMEEnum, QBinary> waitTime,
-			@ToDo @DataDef(length = 1) QEnum<REMOVEMESSAGEEnum, QCharacter> removeMessage,
-			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID,
-			@DataDef(length = 1) QEnum<REJECTDEFAULTREPLYEnum, QCharacter> rejectDefaultReply,
-			@ToDo @DataDef(length = 4) QCharacter cLVarForKEYVAR4,
-			@ToDo @DataDef(length = 1) QCharacter cLVarFor1stLevelText,
-			@ToDo @DataDef(precision = 5) QDecimal cLVarForMSGLEN50,
-			@ToDo @DataDef(length = 1) QCharacter cLVarFor2ndLevelText,
-			@ToDo @DataDef(precision = 5) QDecimal cLVarForSECLVLLEN50,
-			@ToDo @DataDef(length = 1024, varying = true) QCharacter cLVarForMsgData,
-			@ToDo @DataDef(precision = 5) QDecimal cLVarForMSGDTALEN50,
-			@ToDo @DataDef(length = 7) QCharacter cLVarForMSGID7,
-			@ToDo @DataDef(precision = 2) QDecimal cLVarForSEV20,
-			@ToDo @DataDef(length = 80) QCharacter cLVarForSENDER80,
-			@DataDef(length = 1) QEnum<SENDERFORMATEnum, QCharacter> senderFormat,
-			@ToDo @DataDef(length = 2) QCharacter cLVarForRTNTYPE2,
-			@ToDo @DataDef(length = 9) QCharacter cLVarForALROPT9,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForMSGF10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForMSGFLIB10,
-			@ToDo @DataDef(length = 10) QCharacter cLVarForSNDMSGFLIB10,
-			@DataDef(precision = 5) QDecimal cLVarForTextCCSID50,
-			@DataDef(precision = 5) QDecimal cLVarForDataCCSID50) {
-		
-		
-		String lastMessage = job.getMessages().get(job.getMessages().size()-1); 
-		cLVarForMsgData.eval("                    "+lastMessage+"              ");
+	@Main
+	public void main(CALLSTACKENTRYMESSAGEQUEUE callStackEntryMessageQueue, @ToDo @DataDef(qualified = true) MESSAGEQUEUE messageQueue,
+			@ToDo @DataDef(length = 4) QEnum<MESSAGETYPEEnum, QCharacter> messageType, @DataDef(length = 4) QEnum<MESSAGEKEYEnum, QCharacter> messageKey,
+			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<WAITTIMEEnum, QBinary> waitTime, @ToDo @DataDef(length = 1) QEnum<REMOVEMESSAGEEnum, QCharacter> removeMessage,
+			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CODEDCHARACTERSETIDEnum, QBinary> codedCharacterSetID, @DataDef(length = 1) QEnum<REJECTDEFAULTREPLYEnum, QCharacter> rejectDefaultReply,
+			@ToDo @DataDef(length = 4) QCharacter cLVarForKEYVAR4, @ToDo @DataDef(length = 1) QCharacter cLVarFor1stLevelText, @ToDo @DataDef(precision = 5) QDecimal cLVarForMSGLEN50,
+			@ToDo @DataDef(length = 1) QCharacter cLVarFor2ndLevelText, @ToDo @DataDef(precision = 5) QDecimal cLVarForSECLVLLEN50,
+			@ToDo @DataDef(length = 1024, varying = true) QCharacter cLVarForMsgData, @ToDo @DataDef(precision = 5) QDecimal cLVarForMSGDTALEN50,
+			@ToDo @DataDef(length = 7) QCharacter cLVarForMSGID7, @ToDo @DataDef(precision = 2) QDecimal cLVarForSEV20, @ToDo @DataDef(length = 80) QCharacter cLVarForSENDER80,
+			@DataDef(length = 1) QEnum<SENDERFORMATEnum, QCharacter> senderFormat, @ToDo @DataDef(length = 2) QCharacter cLVarForRTNTYPE2, @ToDo @DataDef(length = 9) QCharacter cLVarForALROPT9,
+			@ToDo @DataDef(length = 10) QCharacter cLVarForMSGF10, @ToDo @DataDef(length = 10) QCharacter cLVarForMSGFLIB10, @ToDo @DataDef(length = 10) QCharacter cLVarForSNDMSGFLIB10,
+			@DataDef(precision = 5) QDecimal cLVarForTextCCSID50, @DataDef(precision = 5) QDecimal cLVarForDataCCSID50) {
+
+		String lastMessage = job.getMessages().get(job.getMessages().size() - 1);
+		cLVarForMsgData.eval("                    " + lastMessage + "              ");
 	}
 
 	public static class CALLSTACKENTRYMESSAGEQUEUE extends QDataStructWrapper {

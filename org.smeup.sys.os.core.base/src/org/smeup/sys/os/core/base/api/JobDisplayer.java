@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-
 import java.io.IOException;
 
 import javax.inject.Inject;
@@ -34,14 +33,13 @@ import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
-
 @Program(name = "QMHDSPJ")
 public class JobDisplayer {
 
 	public static enum QCPFMSG {
 		CPF1070
 	}
-	
+
 	@Inject
 	private QOutputManager outputManager;
 	@Inject
@@ -52,10 +50,8 @@ public class JobDisplayer {
 	private QJobManager jobManager;
 
 	@Main
-	public void main(@Supported @DataDef(qualified = true) JobName jobName,
-			         @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
-			         @ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, 
-			         @ToDo OutputMemberOptions outputMemberOptions) {
+	public void main(@Supported @DataDef(qualified = true) JobName jobName, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
+			@ToDo @DataDef(qualified = true) FileToReceiveOutput fileToReceiveOutput, @ToDo OutputMemberOptions outputMemberOptions) {
 
 		try {
 			QJob jobFound = jobName.findJob(job, jobManager);
@@ -68,32 +64,30 @@ public class JobDisplayer {
 			}
 			objectWriter.flush();
 		} catch (JobNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] {jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim()});				
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
 		}
 	}
-
-
 
 	private QObjectWriter findWiter(QEnum<OutputEnum, QCharacter> output) {
 		switch (output.asEnum()) {
 		case TERM_STAR:
 			return outputManager.getDefaultWriter(job.getContext());
 		case PRINT:
-			return  outputManager.getObjectWriter(job.getContext(), "P");
+			return outputManager.getObjectWriter(job.getContext(), "P");
 		case OUTFILE:
 			throw new OperatingSystemRuntimeException("Unsupported output type " + output);
-		case APIDFN:		
+		case APIDFN:
 			throw new OperatingSystemRuntimeException("Unsupported output type " + output);
 		}
 		throw new OperatingSystemRuntimeException("Unsupported output type " + output);
 	}
 
-
 	public static enum OutputEnum {
-		@Special(value = "*") TERM_STAR,
-		@Special(value = "L") PRINT,
-		@Special(value = "P") APIDFN,
-		@Special(value = "N") OUTFILE
+		@Special(value = "*")
+		TERM_STAR, @Special(value = "L")
+		PRINT, @Special(value = "P")
+		APIDFN, @Special(value = "N")
+		OUTFILE
 	}
 
 	public static class FileToReceiveOutput extends QDataStructWrapper {

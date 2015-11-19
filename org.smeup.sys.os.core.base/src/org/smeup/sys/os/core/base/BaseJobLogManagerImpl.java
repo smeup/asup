@@ -72,7 +72,7 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 				entry.setGravity(gravity);
 				entry.setMessage(message);
 				entry.setCreationDate(QOperatingSystemCoreHelper.now());
-				
+
 				// add
 				jobLog.getEntries().add(entry);
 
@@ -82,7 +82,6 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 			}
 		};
 	}
-
 
 	@Override
 	public QJobLog lookup(QJob job) {

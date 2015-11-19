@@ -22,7 +22,8 @@ import org.smeup.sys.il.data.annotation.Special;
 @Program(name = "QWCCRCRC")
 public class ResourceReclaimer {
 
-	public @Main void main(@ToDo @DataDef(length = 1) QEnum<ProgramLevelEnum, QCharacter> programLevel, @ToDo @DataDef(length = 1) QEnum<CloseOptionEnum, QCharacter> closeOption) {
+	@Main
+	public void main(@ToDo @DataDef(length = 1) QEnum<ProgramLevelEnum, QCharacter> programLevel, @ToDo @DataDef(length = 1) QEnum<CloseOptionEnum, QCharacter> closeOption) {
 	}
 
 	public static enum ProgramLevelEnum {

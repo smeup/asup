@@ -28,15 +28,14 @@ import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
 public class SCDEBaseResourceProviderImpl<T extends QScheduleEntry> implements QResourceProvider {
-	
 
 	@Inject
 	public SCDEBaseResourceProviderImpl(QResourceManager resourceManager) {
-		
+
 		// Register as provider for QScheduleEntry objects
 		resourceManager.registerProvider(QScheduleEntry.class, this);
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
@@ -50,7 +49,7 @@ public class SCDEBaseResourceProviderImpl<T extends QScheduleEntry> implements Q
 	@SuppressWarnings({ "unchecked", "hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
-		
+
 		List<String> containers = resources(contextProvider, scope);
 
 		QResourceSetReader<T> resourceReader = (QResourceSetReader<T>) new SCDEBaseResourceSetReaderImpl(contextProvider, containers);
@@ -66,8 +65,8 @@ public class SCDEBaseResourceProviderImpl<T extends QScheduleEntry> implements Q
 
 		return resourceWriter;
 	}
-	
-	@SuppressWarnings({"hiding" })
+
+	@SuppressWarnings({ "hiding" })
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 
@@ -79,9 +78,8 @@ public class SCDEBaseResourceProviderImpl<T extends QScheduleEntry> implements Q
 		throw new IntegratedLanguageMemoryRuntimeException("Unsupported scope " + scope);
 	}
 
-
 	private List<String> resources(QContextProvider contextProvider, Scope scope) {
-		//TODO
+		// TODO
 		throw new UnsupportedOperationException();
 	}
 }

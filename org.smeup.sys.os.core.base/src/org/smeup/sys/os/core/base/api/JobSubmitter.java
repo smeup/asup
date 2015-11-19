@@ -63,8 +63,7 @@ public class JobSubmitter {
 	private QOutputManager outputManager;
 
 	@Main
-	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, 
-			@ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
+	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
 			@ToDo @DataDef(qualified = true) JobDescription jobDescription, @ToDo @DataDef(qualified = true) JobQueue jobQueue,
 			@ToDo @DataDef(length = 1) QEnum<JobPriorityonJOBQEnum, QCharacter> jobPriorityonJOBQ, @ToDo @DataDef(length = 1) QEnum<OutputPriorityonOUTQEnum, QCharacter> outputPriorityonOUTQ,
 			@ToDo @DataDef(length = 10) QEnum<PrintDeviceEnum, QCharacter> printDevice, @ToDo @DataDef(qualified = true) OutputQueue outputQueue,
@@ -92,7 +91,7 @@ public class JobSubmitter {
 
 		// Job spawn
 		QJob childJob = null;
-		
+
 		switch (jobName.asEnum()) {
 		// TODO
 		case JOBD:
@@ -106,8 +105,7 @@ public class JobSubmitter {
 				if (childJob.getJobName().startsWith("LO_")) {
 					outputManager.setDefaultWriter(job.getContext(), "L");
 				}
-			}
-			else
+			} else
 				childJob = jobManager.create(job);
 			break;
 		}
@@ -162,8 +160,7 @@ public class JobSubmitter {
 						} catch (IllegalArgumentException | IllegalAccessException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
-						finally {
+						} finally {
 							field.setAccessible(false);
 						}
 
@@ -172,12 +169,12 @@ public class JobSubmitter {
 			}
 
 			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables, true);
-			
+
 			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			QJobLog jobLog = jobLogManager.lookup(qJob);
-			
+
 			new JobLogWriter(objectWriter).write(jobLog);
-			
+
 			jobManager.close(qJob);
 		}
 	}

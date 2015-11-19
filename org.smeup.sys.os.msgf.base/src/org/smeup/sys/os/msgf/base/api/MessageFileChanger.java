@@ -42,7 +42,8 @@ public class MessageFileChanger {
 	@Inject
 	private QJobLogManager jobLogManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) MessageFile messageFile, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
+	@Main
+	public void main(@Supported @DataDef(qualified = true) MessageFile messageFile, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
 			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID) {
 
 		QResourceWriter<QMessageFile> resource = null;

@@ -33,7 +33,7 @@ public class JobDateFormatter {
 			return new JobDateFormatter().yyMMdd();
 		case JULIAN:
 			return new JobDateFormatter().julian();
-        default:			
+		default:
 			throw new RuntimeException("Unknokwn date format: " + format);
 		}
 	}

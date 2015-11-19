@@ -23,7 +23,9 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 
 public @ToDo @Program(name = "WRKJOB") class WRKJOB {
-	public @Main void main(@ToDo @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
+
+	@Main
+	public void main(@ToDo @DataDef(qualified = true) JobName jobName, @ToDo @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output,
 			@ToDo @DataDef(binaryType = BinaryType.SHORT) QEnum<OptionEnum, QBinary> option, @ToDo @DataDef(length = 10) QEnum<DuplicateJobOptionEnum, QCharacter> duplicateJobOption) {
 	}
 

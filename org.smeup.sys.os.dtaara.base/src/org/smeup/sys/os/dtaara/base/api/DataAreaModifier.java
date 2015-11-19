@@ -41,21 +41,24 @@ import org.smeup.sys.os.dtaara.base.api.tools.ExistingDataAreaSpecification.Libr
 @Program(name = "QWCCCHVC")
 public @ToDo class DataAreaModifier {
 	public static enum QCPFMSG {
-		CPF1015,    //Non è stata trovata l'area dati &1 in &2.              
-		CPF1019,    //Il parametro VALUE non è corretto.                     
-		CPF1020,    //Il parametro VALUE è troppo lungo.                     
-		CPF1021,    //Non è stata trovata la libreria &1 per l'area dati &2. 
-		CPF1026,    //Il parametro VALUE deve essere '0' o '1'.              
-		CPF1062,    //La stringa nulla non è valida come valore di caratteri.
-		CPF1087,    //Per l'area dati logica o decimale non è consentita la sottostringa.                                            
-		CPF1088,    //La posizione iniziale si trova al di fuori dell'area dati.                                                    
-		CPF1089,    //La sottostringa specificata per l'area dati non è valida.                                                  
-		CPF1138,    //Il parametro VALUE non è di tipo valido per l'area dati &1.                                                      
-		CPF1155,    //Il parametro VALUE è troppo lungo per l'area dati &1.    
-		CPF1162,    //L'allineamento dei limiti per l'area dati &1 non è valido.
-        CPF1170,    //La posizione iniziale si trova al di fuori dell'area dati &1.                                                 
-        CPF1192,    //La sottostringa specificata per l'area dati &1 non è valida.                                                  
-        CPF9899,    //Si è verificato un errore durante l'elaborazione del comando.                                                 
+		CPF1015, // Non è stata trovata l'area dati &1 in &2.
+		CPF1019, // Il parametro VALUE non è corretto.
+		CPF1020, // Il parametro VALUE è troppo lungo.
+		CPF1021, // Non è stata trovata la libreria &1 per l'area dati &2.
+		CPF1026, // Il parametro VALUE deve essere '0' o '1'.
+		CPF1062, // La stringa nulla non è valida come valore di caratteri.
+		CPF1087, // Per l'area dati logica o decimale non è consentita la
+					// sottostringa.
+		CPF1088, // La posizione iniziale si trova al di fuori dell'area dati.
+		CPF1089, // La sottostringa specificata per l'area dati non è valida.
+		CPF1138, // Il parametro VALUE non è di tipo valido per l'area dati &1.
+		CPF1155, // Il parametro VALUE è troppo lungo per l'area dati &1.
+		CPF1162, // L'allineamento dei limiti per l'area dati &1 non è valido.
+		CPF1170, // La posizione iniziale si trova al di fuori dell'area dati
+					// &1.
+		CPF1192, // La sottostringa specificata per l'area dati &1 non è valida.
+		CPF9899, // Si è verificato un errore durante l'elaborazione del
+					// comando.
 	}
 
 	@Inject
@@ -67,39 +70,35 @@ public @ToDo class DataAreaModifier {
 	@Inject
 	private QExceptionManager exceptionManager;
 	@Inject
-	private  QStrings stringsUtils;
-	
-	public @Main void main(DataAreaSpecification dataAreaParm, 
-							@DataDef(length = 2000) QCharacter value) {
+	private QStrings stringsUtils;
+
+	@Main
+	public void main(DataAreaSpecification dataAreaParm, @DataDef(length = 2000) QCharacter value) {
 		try {
-			
+
 			QDataArea area = dataAreaParm.dataAreaSpecification.asData().findDataArea(job, resourceManager, dataAreaManager, dataAreaParm.dataAreaSpecification.asEnum());
-			
-			
+
 			if (!dataAreaParm.all() && !area.getDataAreaType().equals(DataAreaType.CHARACTER)) {
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF1087, new String[0]);
 			}
-			
-			
+
 			DataAreaEditor dataAreaEditor = new DataAreaEditor(area, stringsUtils);
-			
+
 			if (dataAreaParm.all()) {
 				dataAreaEditor.setValue(value.trimR());
 			} else {
 				SUBSTRINGSPECIFICATIONS substringspecification = dataAreaParm.substringSpecifications.asData();
-				dataAreaEditor.setValue(value.trimR(), 
-										substringspecification.substringStartingPosition.asInteger(),
-										substringspecification.substringLength.asInteger());
+				dataAreaEditor.setValue(value.trimR(), substringspecification.substringStartingPosition.asInteger(), substringspecification.substringLength.asInteger());
 			}
-			
+
 			if (dataAreaParm.dataAreaSpecification.asEnum().equals(ExistingDataAreaSpecification.DATAAREAEnum.OTHER)) {
 				resourceWriter(area.getLibrary()).save(area, true);
 			}
-			
+
 		} catch (DataAreaNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[]{e.dataAreaName, e.libraryName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1015, new String[] { e.dataAreaName, e.libraryName });
 		} catch (LibraryNotFoundException e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[]{e.libraryName, e.dataAreaName});
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1021, new String[] { e.libraryName, e.dataAreaName });
 		} catch (DataTooLongException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1020, new String[0]);
 		} catch (TypeAndValueMismatchException e) {
@@ -115,10 +114,8 @@ public @ToDo class DataAreaModifier {
 		}
 	}
 
-
 	private QResourceWriter<QDataArea> resourceWriter(String libName) {
 		return resourceManager.getResourceWriter(job, QDataArea.class, libName);
 	}
-
 
 }

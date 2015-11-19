@@ -192,21 +192,21 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
 		QCallableProgram callableProgram = callableInjector.prepareCallable(program, klass);
-		
+
 		return callableProgram;
 	}
 
 	private void assignParameters(QCallableProgram callableProgram, QData[] paramsFrom) {
 
 		QData[] paramsTo = callableProgram.getEntry();
-		
+
 		int paramsLength = 0;
 
 		if (paramsTo != null && paramsFrom != null)
 			paramsLength = paramsFrom.length < paramsTo.length ? paramsFrom.length : paramsTo.length;
 
 		callableProgram.getProgramStatus().getParametersNumber().eval(paramsLength);
-		
+
 		// assign data pointers
 		for (int i = 0; i < paramsLength; i++) {
 
@@ -224,17 +224,16 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			} else
 				throw new OperatingSystemRuntimeException("Unexpected condition: nxt057t024xn", null);
 		}
-		
-		if(paramsTo == null) 
+
+		if (paramsTo == null)
 			return;
 
 		QCharacter nullReference = callableProgram.getDataContext().getDataFactory().createCharacter(1, false, false);
-		for(int i=paramsLength; i<paramsTo.length; i++) {
-			if(paramsTo[i] instanceof QBufferedData) {
-				QBufferedData bufferedData = (QBufferedData)paramsTo[i];
+		for (int i = paramsLength; i < paramsTo.length; i++) {
+			if (paramsTo[i] instanceof QBufferedData) {
+				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
 				nullReference.assign(bufferedData);
-			}
-			else
+			} else
 				paramsTo[i].clear();
 		}
 	}
@@ -246,9 +245,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		QList<D> listTo = (QList<D>) to;
 
 		int e = 1;
-		for(D elementFrom: listFrom) {
+		for (D elementFrom : listFrom) {
 			D elementTo = listTo.get(e);
-			((QBufferedData)elementFrom).assign((QBufferedData)elementTo);
+			((QBufferedData) elementFrom).assign((QBufferedData) elementTo);
 			e++;
 		}
 	}
@@ -297,13 +296,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 				// call
 				callableProgram.call();
-				
+
 				if (!callableProgram.isOpen()) {
 					QProgram program = callableProgram.getProgram();
 					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 					activationGroup.remove(program);
 				}
-					
+
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
 				e.printStackTrace();
 				throw e;
@@ -364,14 +363,13 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "<- " + callableProgram.getProgram().getName() + " (";
-		if (callableProgram.getEntry() != null)				
+		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
 		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
-	
 	private String formatStackParameters(QData[] entry) {
 		String text = "";
 		for (QData param : entry) {
@@ -382,15 +380,14 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			String paramValue = null;
 			if (param instanceof QString) {
 				QString stringData = (QString) param;
-				if(stringData.isNull()) {
+				if (stringData.isNull()) {
 					text += "|";
 					continue;
 				}
 				paramValue = stringData.asString();
-			}
-			else if (param instanceof QBufferedData) {
+			} else if (param instanceof QBufferedData) {
 				QBufferedData bufferedData = (QBufferedData) param;
-				if(bufferedData.isNull()) {
+				if (bufferedData.isNull()) {
 					text += "|";
 					continue;
 				}

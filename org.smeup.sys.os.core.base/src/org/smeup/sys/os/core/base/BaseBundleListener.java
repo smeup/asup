@@ -35,7 +35,7 @@ public class BaseBundleListener implements BundleListener, CommandProvider {
 
 		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
 		bundleContext.addBundleListener(this);
-		
+
 		bundleContext.registerService(CommandProvider.class, this, null);
 	}
 

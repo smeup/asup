@@ -10,8 +10,8 @@ public enum UserClassEnum {
 		public UserClass getUserClass() {
 			return null;
 		}
-	}, 
-	
+	},
+
 	@Special(value = "100")
 	USER {
 		@Override
@@ -19,38 +19,38 @@ public enum UserClassEnum {
 			return UserClass.USER;
 		}
 	},
-	
+
 	@Special(value = "200")
-	SYSOPR{
+	SYSOPR {
 		@Override
 		public UserClass getUserClass() {
 			return UserClass.SYSOPR;
 		}
 	},
-	
+
 	@Special(value = "300")
-	PGMR{
+	PGMR {
 		@Override
 		public UserClass getUserClass() {
 			return UserClass.PGMR;
 		}
 	},
-	
+
 	@Special(value = "400")
-	SECADM{
+	SECADM {
 		@Override
 		public UserClass getUserClass() {
 			return UserClass.SECADM;
 		}
 	},
-	
+
 	@Special(value = "500")
-	SECOFR{
+	SECOFR {
 		@Override
 		public UserClass getUserClass() {
 			return UserClass.SECOFR;
 		}
 	};
-	
+
 	public abstract UserClass getUserClass();
 }

@@ -16,7 +16,8 @@ public class MemberDescriptionRetriever {
 	public QUSM0200 qusm0200;
 	public QUSM0300 qusm0300;
 
-	public @Main void main(@DataDef(length = 30000) QCharacter $$dati, @DataDef(binaryType = BinaryType.INTEGER) QCharacter $$len, @DataDef(length = 8) QCharacter format, FileRef fileRef,
+	@Main 
+	public void main(@DataDef(length = 30000) QCharacter $$dati, @DataDef(binaryType = BinaryType.INTEGER) QCharacter $$len, @DataDef(length = 8) QCharacter format, FileRef fileRef,
 			@DataDef(length = 10) QCharacter member, @DataDef(length = 1) QCharacter over, QUSEC usec) {
 
 		switch (format.trimR()) {

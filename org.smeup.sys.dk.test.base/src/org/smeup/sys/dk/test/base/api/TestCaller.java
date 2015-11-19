@@ -39,7 +39,8 @@ public @Supported class TestCaller {
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(@Supported @DataDef(length=32) QCharacter component,  
+	@Main 
+	public void main(@Supported @DataDef(length=32) QCharacter component,  
 							@Supported @DataDef(length=32) QCharacter module,  
 							@Supported @DataDef(length=32) QCharacter object,  
 							@Supported @DataDef(length=1) QEnum<OUTPUTEnum, QCharacter> output) {

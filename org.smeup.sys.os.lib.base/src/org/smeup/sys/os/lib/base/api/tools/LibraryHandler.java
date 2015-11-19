@@ -42,9 +42,9 @@ public class LibraryHandler {
 	public void clear() {
 		for (QType<?> type : typeRegistry.list()) {
 
-			if(QType.class.isAssignableFrom(type.getTypedClass()))
+			if (QType.class.isAssignableFrom(type.getTypedClass()))
 				continue;
-			
+
 			if (QFile.class.isAssignableFrom(type.getTypedClass()))
 				deleteFileType(type, qLibrary.getName());
 			else
@@ -75,7 +75,7 @@ public class LibraryHandler {
 		try (QObjectIterator<T> typedObjects = typeWriter.find(null);) {
 			while (typedObjects.hasNext()) {
 				T typedObject = typedObjects.next();
-	
+
 				if (typedObject instanceof QPhysicalFile)
 					physicalFiles.add(typedObject);
 				else

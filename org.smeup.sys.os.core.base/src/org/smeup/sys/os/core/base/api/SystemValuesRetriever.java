@@ -23,14 +23,12 @@ import org.smeup.sys.il.data.def.BinaryType;
 
 @Program(name = "QWCRSVAL")
 public class SystemValuesRetriever {
-	public @Main void main(@DataDef(length=10) QCharacter variable,
-							@DataDef(precision = 10) QDecimal length,
-							@DataDef(precision = 10, value = "1") QDecimal number,
-							@DataDef(length = 10) QCharacter names,							
-							QUSEC error) {
+
+	@Main
+	public void main(@DataDef(length = 10) QCharacter variable, @DataDef(precision = 10) QDecimal length, @DataDef(precision = 10, value = "1") QDecimal number,
+			@DataDef(length = 10) QCharacter names, QUSEC error) {
 		"".toCharArray();
 	}
-
 
 	public static class QUSEC extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;

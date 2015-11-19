@@ -170,8 +170,8 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			qrpjField.setAccessible(false);
 
 		} catch (Exception e) {
-		} 
-		
+		}
+
 		isOpen = true;
 	}
 
@@ -181,9 +181,9 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			return callAPIMode();
 
 		try {
-			if(inlr != null)
+			if (inlr != null)
 				inlr.eval(false);
-			
+
 			// @Pre Main
 			if (_entry != null)
 				_entry.invoke(getDelegate());
@@ -194,9 +194,9 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 			if (_exit != null)
 				_exit.invoke(getDelegate());
 
-			if(inlr != null && inlr.asBoolean())
+			if (inlr != null && inlr.asBoolean())
 				close();
-				
+
 			return getEntry();
 		} catch (InvocationTargetException e) {
 			if (e.getTargetException() instanceof OperatingSystemMessageException)

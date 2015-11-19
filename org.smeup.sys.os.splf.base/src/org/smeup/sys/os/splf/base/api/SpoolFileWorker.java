@@ -47,12 +47,10 @@ public @ToDo @Program(name = "QSPWRKF") class SpoolFileWorker {
 	public static enum QCPFMSG {
 	}
 
-	public @Main void main(@ToDo SELECTFILESFOR selectFilesFor, 
-			                @DataDef(qualified = true) QEnum<JOBNAMEEnum, JOBNAME> jobName,        TIMEPERIOD timePeriod,
-			                @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, 
-			                @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
-			                @DataDef(length = 7) QEnum<DISPLAYFORMATEnum, QCharacter> displayFormat, 
-			                @DataDef(length = 10) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel) {
+	@Main
+	public void main(@ToDo SELECTFILESFOR selectFilesFor, @DataDef(qualified = true) QEnum<JOBNAMEEnum, JOBNAME> jobName, TIMEPERIOD timePeriod,
+			@DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, @DataDef(length = 1) QEnum<OUTPUTEnum, QCharacter> output,
+			@DataDef(length = 7) QEnum<DISPLAYFORMATEnum, QCharacter> displayFormat, @DataDef(length = 10) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel) {
 
 		QResourceReader<QSpoolFile> spoolFileReader = resourceManager.getResourceReader(job, QSpoolFile.class, job.getSystem().getSystemLibrary());
 
@@ -69,7 +67,7 @@ public @ToDo @Program(name = "QSPWRKF") class SpoolFileWorker {
 
 		objectWriter.initialize();
 
-		try(QObjectIterator<QSpoolFile> spoolFileIterator = spoolFileReader.find(null);) {
+		try (QObjectIterator<QSpoolFile> spoolFileIterator = spoolFileReader.find(null);) {
 			while (spoolFileIterator.hasNext()) {
 				QSpoolFile spoolFile = spoolFileIterator.next();
 				try {

@@ -50,7 +50,8 @@ public class JobDescriptionDisplayer {
 	@Inject
 	private QResourceManager resourceManager;
 
-	public @Main void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
+	@Main
+	public void main(@Supported @DataDef(qualified = true) JobDescription jobDescription, @Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
 
 		QObjectWriter objectWriter = null;
 		switch (output.asEnum()) {

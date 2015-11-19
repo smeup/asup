@@ -13,7 +13,6 @@ package org.smeup.sys.os.jobd.base;
 
 import org.smeup.sys.os.jobd.QJobDescriptionManager;
 
-
 public class BaseJobDescriptionManagerImpl implements QJobDescriptionManager {
 
 }
