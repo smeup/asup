@@ -12,10 +12,11 @@
 package org.smeup.sys.os.scde.cron;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.ResourceEventType;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceWriterImpl;
 
-public class CronResourceWriterImpl extends SCDEBaseResourceWriterImpl {
+public class CronResourceWriterImpl extends CronResourceReaderImpl implements QResourceWriter<QScheduleEntry>{
 
 	private CronSystemWrapper cronWrapper;
 	private CronAdapter cronAdapter;
@@ -28,7 +29,11 @@ public class CronResourceWriterImpl extends SCDEBaseResourceWriterImpl {
 
 	@Override
 	public synchronized void delete(QScheduleEntry scheduleEntry) {
+		fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, scheduleEntry);
+		
 		cronWrapper.removeCronTask(scheduleEntry.getEntryNumber());
+		
+		fireEvent(resourceEvent, ResourceEventType.POST_DELETE, scheduleEntry);
 	}
 
 	@Override
@@ -38,6 +43,8 @@ public class CronResourceWriterImpl extends SCDEBaseResourceWriterImpl {
 
 	@Override
 	public synchronized void save(QScheduleEntry scheduleEntry, boolean replace) {
+		
+		fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, scheduleEntry);
 		
 		String cronMap = cronAdapter.getCronTimeMask(scheduleEntry);
 		
@@ -49,11 +56,12 @@ public class CronResourceWriterImpl extends SCDEBaseResourceWriterImpl {
 								cronMap, 
 								scheduleEntry.getUser(), 
 								scheduleEntry.getCommandToRun());	
+		
+		fireEvent(resourceEvent, ResourceEventType.POST_SAVE, scheduleEntry);
 	}
 	
 	//TODO: buildID doesn't return unique ID
 	private String buildID() {
 		return "" + Math.round(Math.random()*1000000);
 	}
-	
 }

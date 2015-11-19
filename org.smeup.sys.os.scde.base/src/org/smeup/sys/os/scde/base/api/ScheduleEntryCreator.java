@@ -19,7 +19,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
-@Program(name = "ADDJOBSCDE")
+@Program(name = "QWCCAAYC")
 public @ToDo class ScheduleEntryCreator {
 
 	@Inject

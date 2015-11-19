@@ -18,28 +18,19 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.impl.ResourceSetReaderImpl;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
-public class SCDEBaseResourceSetReaderImpl extends ResourceSetReaderImpl<QScheduleEntry> {
+public abstract class SCDEAbstractResourceSetReaderImpl extends ResourceSetReaderImpl<QScheduleEntry> {
 
-	public SCDEBaseResourceSetReaderImpl(QContextProvider contextProvider, List<String> resources) {
+	public SCDEAbstractResourceSetReaderImpl(QContextProvider contextProvider, List<String> resources) {
 		setContextProvider(contextProvider);
 	}
 
 	@Override
-	public QScheduleEntry lookup(String resource, String name) {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
+	public abstract QScheduleEntry lookup(String resource, String name);
 
 	@Override
-	public boolean exists(String resource, String name) {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
+	public abstract boolean exists(String resource, String name); 
 
 	@Override
-	public QObjectIterator<QScheduleEntry> find(String resource, String nameFilter) {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
+	public abstract QObjectIterator<QScheduleEntry> find(String resource, String nameFilter);
 
 }

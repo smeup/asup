@@ -16,9 +16,9 @@ import java.util.List;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.os.scde.QScheduleEntry;
-import org.smeup.sys.os.scde.base.SCDEBaseResourceSetReaderImpl;
+import org.smeup.sys.os.scde.base.SCDEAbstractResourceSetReaderImpl;
 
-public class CronResourceSetReaderImpl extends SCDEBaseResourceSetReaderImpl {
+public class CronResourceSetReaderImpl extends SCDEAbstractResourceSetReaderImpl {
 
 	public CronResourceSetReaderImpl(QContextProvider contextProvider, List<String> resources) {		
 		super(contextProvider, resources);
