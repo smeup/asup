@@ -22,6 +22,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 public @Supported class MessageRetriever {
 	
 	public static enum QCPFMSG {
+		CPF2407	    //Message file &1 in &2 not found. 
 	}
 	
 	@Inject
@@ -54,6 +55,10 @@ public @Supported class MessageRetriever {
 												  messageFile.library.asData().trimR(), 
 												  messageDataFieldValues.trimR().split("\\s+"));
 
+		if (msgException.getSeverity() < 0) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2407, new String[]{messageFile.name.trimR(), messageFile.library.asData().trimR()});
+		}
+		
 		cLVarFor1stLevelText.eval(msgException.getMessageText());
 		cLVarForMSGLEN50.eval(msgException.getMessageText().length());
 		

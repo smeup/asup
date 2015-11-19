@@ -35,7 +35,7 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 
 		String messageText = "Invalid message file: " + messageFileName;
 		String name = messageFileName.toString();
-		int severity = 0;
+		int severity = -1;
 
 		if (messageDescription != null) {
 			messageText = messageDescription.getMessageText();
