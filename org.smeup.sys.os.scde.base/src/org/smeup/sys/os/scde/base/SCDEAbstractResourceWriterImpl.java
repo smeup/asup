@@ -15,26 +15,18 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
-public class SCDEBaseResourceWriterImpl extends SCDEBaseResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
+public abstract class SCDEAbstractResourceWriterImpl extends SCDEAbstractResourceReaderImpl implements QResourceWriter<QScheduleEntry> {
 
-	public SCDEBaseResourceWriterImpl(QContextProvider contextProvider, String container) {
+	public SCDEAbstractResourceWriterImpl(QContextProvider contextProvider, String container) {
 		super(contextProvider, container);
 	}
 
 	@Override
-	public synchronized void delete(QScheduleEntry object) {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
+	public abstract void delete(QScheduleEntry object); 
 
 	@Override
-	public synchronized void save(QScheduleEntry object) {
-		save(object, false);
-	}
-
+	public abstract void save(QScheduleEntry object);
+	
 	@Override
-	public synchronized void save(QScheduleEntry object, boolean replace) {
-		// TODO
-		throw new UnsupportedOperationException();
-	}
+	public abstract void save(QScheduleEntry object, boolean replace); 
 }
