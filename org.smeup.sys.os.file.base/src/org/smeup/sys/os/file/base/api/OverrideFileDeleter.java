@@ -34,17 +34,22 @@ public @ToDo class OverrideFileDeleter {
 			@ToDo @DataDef(length = 1) QEnum<CALLLEVELEnum, QCharacter> callLevel) {
 
 		for (QEnum<OVERRIDDENFILEEnum, QCharacter> overriddenFile : overriddenFiles) {
-			
+			if (overriddenFile.asData().isEmpty())
+				break;
+
 			switch (overriddenFile.asEnum()) {
 			case ALL:
 				fileManager.removeAllFileOverride(job.getContext());
 				break;
-			case OTHER:				
+			case OTHER:
+				if (overriddenFile.asData().isEmpty())
+					break;
+
 				QFileOverride fileOverride = fileManager.removeFileOverride(job.getContext(), overriddenFile.asData().trimR());
-				if(fileOverride == null)
+				if (fileOverride == null)
 					throw exceptionManager.prepareException(job, QCPFMSG.CPF9841, overriddenFile.asData().trimR());
 
-				continue;
+				break;
 			case PRTF:
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF0000, overriddenFile.asData().asString());
 			}
