@@ -441,6 +441,9 @@ public class BaseCallableInjector {
 		else if (classRecord.getSuperclass() == QRecordWrapper.class)
 			return classRecord;
 
+		if (classRecord.getSuperclass() != null && classRecord.getSuperclass().getSuperclass() == QRecordWrapper.class)
+			return (Class<? extends QRecord>) classRecord.getSuperclass();
+		
 		// logical
 		boolean extended = false;
 		for (Field field : classRecord.getDeclaredFields()) {
