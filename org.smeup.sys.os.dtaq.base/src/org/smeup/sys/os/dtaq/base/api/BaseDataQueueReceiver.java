@@ -37,15 +37,20 @@ public class BaseDataQueueReceiver {
 	private QDataContext dataContext;
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal length, QPointer data,
-			@DataDef(precision = 5, packed = true) QDecimal wait) {
+	public void main(@DataDef(length = 10) QCharacter name,
+			@DataDef(length = 10) QCharacter library,
+			@DataDef(precision = 5, packed = true) QDecimal length,
+			QPointer data, @DataDef(precision = 5, packed = true) QDecimal wait) {
 
 		// content
-		String content = dataQueueManager.readDataQueue(job.getJobID(), library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100, null, null);
+		String content = dataQueueManager.readDataQueue(job.getJobID(),
+				library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100,
+				null, null);
 
-		System.out.println("dtaq:\t"+content);
-		
-		QCharacter character = dataContext.getDataFactory().createCharacter(content.length(), false, false);
+		System.out.println("dtaq:\t" + content);
+
+		QCharacter character = dataContext.getDataFactory().createCharacter(
+				content.length(), false, false);
 		data.assign(character);
 
 		character.movel(content, false);

@@ -29,16 +29,21 @@ public class BaseDataQueueSender {
 	@Inject
 	private QDataQueueManager dataQueueManager;
 	@Inject
-	private QDataContext dataContext;	
+	private QDataContext dataContext;
 	@Inject
 	private QJob job;
-	
+
 	@Main
-	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
-		
-		QCharacter character = dataContext.getDataFactory().createCharacter(data.getLength(), false, false);
+	public void main(@DataDef(length = 10) QCharacter name,
+			@DataDef(length = 10) QCharacter library,
+			@DataDef(precision = 5, packed = true) QDecimal dataLength,
+			QPointer data) {
+
+		QCharacter character = dataContext.getDataFactory().createCharacter(
+				data.getLength(), false, false);
 		data.assign(character);
-		
-		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, character.toString());
+
+		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(),
+				name.trimR(), null, character.toString());
 	}
 } // QSNDDTAQImpl

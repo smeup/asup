@@ -34,13 +34,27 @@ public class BaseDataQueueCreator {
 	private QJob job;
 
 	@Main
-	public void main(@DataDef() DataQueue dataQueue, @DataDef(length = 1) QCharacter type, @DataDef() QBinary maximumEntryLength, @DataDef(length = 1) QCharacter forceToAuxiliaryStorage,
-			@DataDef(length = 1) QCharacter sequence, @DataDef() QBinary keyLength, @DataDef(length = 1) QCharacter includeSenderID, @DataDef() QueueSize queueSize,
-			@DataDef(length = 1) QCharacter automaticReclaim, @DataDef() RemoteDataQueue remoteDataQueue, @DataDef(length = 8) QCharacter remoteLocation,
-			@DataDef(length = 18) QCharacter relationalDatabase, @DataDef(length = 10) QCharacter aPPCDeviceDescription, @DataDef(length = 8) QCharacter localLocation,
-			@DataDef(length = 8) QCharacter mode, @DataDef(length = 8) QCharacter remoteNetworkIdentifier, @DataDef(length = 50) QCharacter textDescription,
+	public void main(@DataDef() DataQueue dataQueue,
+			@DataDef(length = 1) QCharacter type,
+			@DataDef() QBinary maximumEntryLength,
+			@DataDef(length = 1) QCharacter forceToAuxiliaryStorage,
+			@DataDef(length = 1) QCharacter sequence,
+			@DataDef() QBinary keyLength,
+			@DataDef(length = 1) QCharacter includeSenderID,
+			@DataDef() QueueSize queueSize,
+			@DataDef(length = 1) QCharacter automaticReclaim,
+			@DataDef() RemoteDataQueue remoteDataQueue,
+			@DataDef(length = 8) QCharacter remoteLocation,
+			@DataDef(length = 18) QCharacter relationalDatabase,
+			@DataDef(length = 10) QCharacter aPPCDeviceDescription,
+			@DataDef(length = 8) QCharacter localLocation,
+			@DataDef(length = 8) QCharacter mode,
+			@DataDef(length = 8) QCharacter remoteNetworkIdentifier,
+			@DataDef(length = 50) QCharacter textDescription,
 			@DataDef(length = 10) QCharacter authority) {
 
-		dataQueueManager.createDataQueue(job.getJobID(), dataQueue.library.trimR(), dataQueue.name.trimR(), DataQueueType.FIFO, maximumEntryLength.asInteger());
+		dataQueueManager.createDataQueue(job.getJobID(),
+				dataQueue.library.trimR(), dataQueue.name.trimR(),
+				DataQueueType.FIFO, maximumEntryLength.asInteger());
 	}
 }

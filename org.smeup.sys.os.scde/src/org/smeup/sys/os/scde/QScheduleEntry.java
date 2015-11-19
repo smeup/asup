@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.scde;
 
+import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 
 /**
@@ -17,10 +18,14 @@ import org.smeup.sys.il.core.QObjectNameable;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}</li>
- *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getEntryNumber <em>Entry Number</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getFrequency <em>Frequency</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getJobName <em>Job Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDate <em>Scheduled Date</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDay <em>Scheduled Day</em>}</li>
+ *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}</li>
  * </ul>
  * </p>
@@ -41,8 +46,7 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @return the value of the '<em>Scheduled Date</em>' attribute.
 	 * @see #setScheduledDate(String)
 	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_ScheduledDate()
-	 * @model required="true"
-	 *        annotation="il-data length='8'"
+	 * @model annotation="il-data length='8'"
 	 * @generated
 	 */
 	String getScheduledDate();
@@ -56,6 +60,22 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @generated
 	 */
 	void setScheduledDate(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Scheduled Day</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scheduled Day</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scheduled Day</em>' attribute list.
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_ScheduledDay()
+	 * @model annotation="il-data length='8'"
+	 * @generated
+	 */
+	List<String> getScheduledDay();
 
 	/**
 	 * Returns the value of the '<em><b>Scheduled Time</b></em>' attribute.
@@ -109,6 +129,86 @@ public interface QScheduleEntry extends QObjectNameable {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Entry Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Entry Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Entry Number</em>' attribute.
+	 * @see #setEntryNumber(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_EntryNumber()
+	 * @model annotation="il-data length='6'"
+	 * @generated
+	 */
+	String getEntryNumber();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getEntryNumber <em>Entry Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Entry Number</em>' attribute.
+	 * @see #getEntryNumber()
+	 * @generated
+	 */
+	void setEntryNumber(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Frequency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Frequency</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Frequency</em>' attribute.
+	 * @see #setFrequency(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_Frequency()
+	 * @model required="true"
+	 *        annotation="il-data length='1'"
+	 * @generated
+	 */
+	String getFrequency();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getFrequency <em>Frequency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Frequency</em>' attribute.
+	 * @see #getFrequency()
+	 * @generated
+	 */
+	void setFrequency(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Job Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Job Name</em>' attribute.
+	 * @see #setJobName(String)
+	 * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry_JobName()
+	 * @model required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	String getJobName();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.scde.QScheduleEntry#getJobName <em>Job Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Job Name</em>' attribute.
+	 * @see #getJobName()
+	 * @generated
+	 */
+	void setJobName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Command To Run</b></em>' attribute.

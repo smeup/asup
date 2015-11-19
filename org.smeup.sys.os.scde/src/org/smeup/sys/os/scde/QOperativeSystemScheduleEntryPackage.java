@@ -72,22 +72,13 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	int SCHEDULE_ENTRY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Scheduled Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Command To Run</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__SCHEDULED_DATE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Scheduled Time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCHEDULE_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int SCHEDULE_ENTRY__COMMAND_TO_RUN = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -96,16 +87,61 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__DESCRIPTION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int SCHEDULE_ENTRY__DESCRIPTION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Command To Run</b></em>' attribute.
+	 * The feature id for the '<em><b>Entry Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__COMMAND_TO_RUN = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int SCHEDULE_ENTRY__ENTRY_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Frequency</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__FREQUENCY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__JOB_NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Scheduled Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__SCHEDULED_DATE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Scheduled Day</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__SCHEDULED_DAY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Scheduled Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_ENTRY__SCHEDULED_TIME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' attribute.
@@ -114,7 +150,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int SCHEDULE_ENTRY__USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Schedule Entry</em>' class.
@@ -123,7 +159,7 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+	int SCHEDULE_ENTRY_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 
 	/**
@@ -148,6 +184,17 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	EAttribute getScheduleEntry_ScheduledDate();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledDay <em>Scheduled Day</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Scheduled Day</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getScheduledDay()
+	 * @see #getScheduleEntry()
+	 * @generated
+	 */
+	EAttribute getScheduleEntry_ScheduledDay();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +215,39 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getScheduleEntry_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getEntryNumber <em>Entry Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Entry Number</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getEntryNumber()
+	 * @see #getScheduleEntry()
+	 * @generated
+	 */
+	EAttribute getScheduleEntry_EntryNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getFrequency <em>Frequency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Frequency</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getFrequency()
+	 * @see #getScheduleEntry()
+	 * @generated
+	 */
+	EAttribute getScheduleEntry_Frequency();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getJobName <em>Job Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job Name</em>'.
+	 * @see org.smeup.sys.os.scde.QScheduleEntry#getJobName()
+	 * @see #getScheduleEntry()
+	 * @generated
+	 */
+	EAttribute getScheduleEntry_JobName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}'.
@@ -232,6 +312,14 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		EAttribute SCHEDULE_ENTRY__SCHEDULED_DATE = eINSTANCE.getScheduleEntry_ScheduledDate();
 
 		/**
+		 * The meta object literal for the '<em><b>Scheduled Day</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_ENTRY__SCHEDULED_DAY = eINSTANCE.getScheduleEntry_ScheduledDay();
+
+		/**
 		 * The meta object literal for the '<em><b>Scheduled Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -246,6 +334,30 @@ public interface QOperativeSystemScheduleEntryPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCHEDULE_ENTRY__DESCRIPTION = eINSTANCE.getScheduleEntry_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Entry Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_ENTRY__ENTRY_NUMBER = eINSTANCE.getScheduleEntry_EntryNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Frequency</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_ENTRY__FREQUENCY = eINSTANCE.getScheduleEntry_Frequency();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_ENTRY__JOB_NAME = eINSTANCE.getScheduleEntry_JobName();
 
 		/**
 		 * The meta object literal for the '<em><b>Command To Run</b></em>' attribute feature.

@@ -1,0 +1,10 @@
+#! /bin/bash
+curl --data "cmd=INI&sessionID=$2&user=$3" http://$1:8282/WSService
+
+FUN=F(EXB;MUJ08_SE;EXE.CMD)%201(J1;CMD;$4)
+
+curl --data "cmd=FUN&sessionID=$2&fun=$FUN" http://$1:8282/WSService
+curl --data "cmd=CLO&sessionID=$2" http://$1:8282/WSService
+
+
+

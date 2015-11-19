@@ -1,5 +1,7 @@
 package org.smeup.sys.os.scde.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -11,22 +13,85 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
+import org.smeup.sys.os.scde.QScheduleEntry;
 
 @Program(name = "ADDJOBSCDE")
 public @ToDo class ScheduleEntryCreator {
+
+	@Inject
+	private QResourceManager resourceManager;
+
+	@Inject
+	private QJob job;
+
 	public static enum QCPFMSG {
+
 	}
 
-	@Main
-	public void main(@ToDo @DataDef(length = 10) QEnum<JOBNAMEEnum, QCharacter> jobName, @ToDo @DataDef(length = 512) QCharacter commandToRun,
-			@ToDo @DataDef(length = 1) QEnum<FREQUENCYEnum, QCharacter> frequency, @ToDo @DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
+	public @Main void main(
+			@ToDo @DataDef(length = 10) QEnum<JOBNAMEEnum, QCharacter> jobName,
+			@ToDo @DataDef(length = 512) QCharacter commandToRun,
+			@ToDo @DataDef(length = 1) QEnum<FREQUENCYEnum, QCharacter> frequency,
+			@ToDo @DataDef(datetimeType = DatetimeType.DATE) QEnum<SCHEDULEDATEEnum, QDatetime> scheduleDate,
 			@ToDo @DataDef(dimension = 7, length = 1) QScroller<QEnum<SCHEDULEDAYEnum, QCharacter>> scheduleDay,
 			@ToDo @DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
-			@DataDef(dimension = 5, length = 1) QScroller<QEnum<RELATIVEDAYOFMONTHEnum, QCharacter>> relativeDayOfMonth, @ToDo @DataDef(length = 5) QEnum<SAVEEnum, QCharacter> save,
+			@DataDef(dimension = 5, length = 1) QScroller<QEnum<RELATIVEDAYOFMONTHEnum, QCharacter>> relativeDayOfMonth,
+			@ToDo @DataDef(length = 5) QEnum<SAVEEnum, QCharacter> save,
 			@DataDef(dimension = 20, datetimeType = DatetimeType.DATE) QScroller<QEnum<OMITDATEEnum, QDatetime>> omitDate,
-			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction, @DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
-			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue, @ToDo @DataDef(length = 10) QEnum<USEREnum, QCharacter> user,
-			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue, @ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
+			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction,
+			@DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
+			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
+			@ToDo @DataDef(length = 10) QEnum<USEREnum, QCharacter> user,
+			@ToDo @DataDef(qualified = true) QEnum<MESSAGEQUEUEEnum, MESSAGEQUEUE> messageQueue,
+			@ToDo @DataDef(length = 50) QEnum<TEXTDESCRIPTIONEnum, QCharacter> textDescription) {
+
+		QResourceWriter<QScheduleEntry> resourceWriter = resourceManager.getResourceWriter(job, QScheduleEntry.class, job.getSystem().getSystemLibrary());
+
+		QScheduleEntry scheduleEntry = QOperativeSystemScheduleEntryFactory.eINSTANCE.createScheduleEntry();
+
+		scheduleEntry.setJobName(jobName.asData().trimR());
+		scheduleEntry.setFrequency(frequency.asData().trimR());
+		
+		
+		switch(scheduleDate.asEnum()) {
+		case CURRENT:		
+		case MONTHEND:			
+		case MONTHSTR:
+		case OTHER:
+			scheduleEntry.setScheduledDate(scheduleDate.asData().toString());
+			break;
+		case NONE:
+			break;	
+		}
+		
+		for (QEnum<SCHEDULEDAYEnum, QCharacter> enumElem : scheduleDay) {
+
+			switch(enumElem.asEnum()){
+			case ALL:			
+			case MON:
+			case TUE:
+			case WED:
+			case THU:
+			case FRI:					
+			case SAT:			
+			case SUN:			
+				scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());		
+				break;	
+			case NONE:
+				break;		
+			}
+		}
+
+		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
+		scheduleEntry.setCommandToRun(commandToRun.asString());
+		scheduleEntry.setUser(user.asData().asString());
+		scheduleEntry.setDescription(textDescription.asData().asString());
+
+		resourceWriter.save(scheduleEntry);
 	}
 
 	public static enum JOBNAMEEnum {

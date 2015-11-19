@@ -1,0 +1,4 @@
+#!/bin/bash
+CMD="${5// /%20}"
+(crontab -l ; echo "$1 sh call_ws $2 $3 $4 $CMD $6") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
+
