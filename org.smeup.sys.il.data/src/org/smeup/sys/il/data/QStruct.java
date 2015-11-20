@@ -29,13 +29,6 @@ public interface QStruct<D extends QData> extends QData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model positionRequired="true"
-	 * @generated
-	 */
-	D getElement(int position);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

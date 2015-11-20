@@ -69,6 +69,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		this.dataTerms = new HashMap<String, QDataTerm<?>>();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations) {
 
@@ -110,7 +111,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 			// remove child data
 			if (previousData instanceof QStruct<?>) {
-				for (Field field : previousData.getClass().getDeclaredFields()) {
+				for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) previousData.getClass())) {
 					if (QData.class.isAssignableFrom(field.getType()))
 						datas.remove(field.getName());
 				}
@@ -374,6 +375,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		return data;
 	}
 
+	@SuppressWarnings("unchecked")
 	private QData getOrCreateData(String key, QDataTerm<?> dataTerm) {
 
 		QData data = datas.get(key);
@@ -384,7 +386,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		datas.put(key, data);
 		if (data instanceof QStruct<?>) {
-			for (Field field : data.getClass().getDeclaredFields()) {
+			for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (QData.class.isAssignableFrom(field.getType())) {
 					try {
 						QData element = (QData) field.get(data);

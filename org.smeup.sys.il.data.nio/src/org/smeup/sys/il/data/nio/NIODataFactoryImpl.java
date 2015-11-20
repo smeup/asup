@@ -433,7 +433,8 @@ public class NIODataFactoryImpl implements QDataFactory {
 		int ownerNextPos = 1;
 		Map<QBufferedData, QDecimal> overlayedToNextPos = new HashMap<QBufferedData, QDecimal>();
 
-		for (Field field : classDelegator.getFields()) {
+		List<Field> fields = NIOStructHelper.getFields(classDelegator);
+		for (Field field : fields) {
 
 			// annotations field
 			List<Annotation> annotations = new ArrayList<Annotation>();
@@ -492,7 +493,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 			initialize(dataStructure);
 
 			// default
-			for (Field field : classDelegator.getFields()) {
+			for (Field field : fields) {
 
 				DataDef annotationDef = field.getAnnotation(DataDef.class);
 				if (annotationDef == null)

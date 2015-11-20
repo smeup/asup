@@ -2900,10 +2900,6 @@
       <eGenericType eTypeParameter="#//Struct/D"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getElement">
-      <eGenericType eTypeParameter="#//Struct/D"/>
-      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
     <eOperations name="getElements" lowerBound="1" upperBound="-1">
       <eGenericType eTypeParameter="#//Struct/D"/>
     </eOperations>

@@ -57,22 +57,6 @@ public class NIODataStructWrapperHandler extends NIOAbstractDataStruct {
 	}
 
 	@Override
-	public QBufferedData getElement(int position) {
-
-		try {
-			Field field = _wrapped.getClass().getFields()[position - 1];
-			if (field == null)
-				return null;
-
-			return (QBufferedData) field.get(_wrapped);
-
-		} catch (SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
 	public List<QBufferedData> getElements() {
 
 		if (cachedElements == null)

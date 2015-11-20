@@ -337,32 +337,31 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	}
 
 	private void setRecord(QFileMemberRow fileMemberRow) {
-
 		
 		switch (this.record.getElements().size()) {
 		case 0:
 			return;
 		case 1:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement(1).eval(dataWriter);
+			record.getElement("srcseq").eval(dataWriter);
 			return;
 		case 2:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement(1).eval(dataWriter);
+			record.getElement("srcseq").eval(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement(2).eval(dataWriter);
+			record.getElement("srcdat").eval(dataWriter);
 
 			return;
 		case 3:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement(1).eval(dataWriter);
+			record.getElement("srcseq").eval(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement(2).eval(dataWriter);
+			record.getElement("srcdat").eval(dataWriter);
 
 			dataWriter.set(fileMemberRow.getContent());
-			record.getElement(3).eval(dataWriter);
+			record.getElement("srcdta").eval(dataWriter);
 			return;
 		}
 	}

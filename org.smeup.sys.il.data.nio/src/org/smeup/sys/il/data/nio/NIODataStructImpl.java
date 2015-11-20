@@ -42,20 +42,6 @@ public class NIODataStructImpl extends NIOAbstractDataStruct {
 		return _elements.get(name);
 	}
 
-	@Override
-	public QBufferedData getElement(int position) {
-
-		int i = 1;
-		for (QBufferedData data : _elements.values()) {
-
-			if (i == position)
-				return data;
-
-			i++;
-		}
-		return null;
-	}
-
 	protected void addElement(String name, QBufferedData element, int position) {
 
 		// virtual name '/n'

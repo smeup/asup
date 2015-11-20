@@ -181,11 +181,6 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 	}
 
 	@Override
-	public QBufferedData getElement(int position) {
-		return current().getElement(position);
-	}
-
-	@Override
 	public QBufferedData getElement(String name) {
 		return current().getElement(name);
 	}

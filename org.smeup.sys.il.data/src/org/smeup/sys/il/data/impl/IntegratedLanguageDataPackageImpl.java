@@ -3848,11 +3848,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(structEClass_D);
 		initEOperation(op, g1);
 
-		op = addEOperation(structEClass, null, "getElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(structEClass_D);
-		initEOperation(op, g1);
-
 		op = addEOperation(structEClass, null, "getElements", 1, -1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(structEClass_D);
 		initEOperation(op, g1);

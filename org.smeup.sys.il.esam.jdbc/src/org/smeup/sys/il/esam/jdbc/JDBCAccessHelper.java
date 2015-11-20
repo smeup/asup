@@ -113,19 +113,20 @@ public class JDBCAccessHelper {
 		sbUpdate.append(" " + getSQLObjectNameHelper().getQualifiedNameInSQLFormat(table));
 		sbUpdate.append(" SET ");
 
-		int position = 1;
+		boolean first = true;
 		for (Column column : (List<Column>) table.getColumns()) {
 
 			String columnName = column.getName().replaceAll("ç", "§").toUpperCase();
 			if (columnName.equalsIgnoreCase("QASRRN"))
 				continue;
 
-			if (position > 1)
+			if (!first)
 				sbUpdate.append(", ");
 
 			sbUpdate.append("\"" + columnName + "\"" + "=");
 
-			QBufferedData element = record.getElement(position);
+			// TODO remove me
+			QBufferedData element = record.getElement(columnName.toLowerCase());
 			if (element instanceof QString)
 				sbUpdate.append("'" + element.toString() + "'");
 			else if (element instanceof QDecimal) {
@@ -137,7 +138,7 @@ public class JDBCAccessHelper {
 			} else
 				System.err.println("Unexpected condition: dsjhflsdjhfsdfo9s98");
 
-			position++;
+			first = false;
 		}
 
 		sbUpdate.append(" WHERE QASRRN=" + recordNumber);

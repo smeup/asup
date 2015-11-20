@@ -291,11 +291,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public QBufferedData getElement(int position) {
-		return delegate.getElement(position);
-	}
-
-	@Override
 	public QBufferedData getElement(String name) {
 		return delegate.getElement(name);
 	}
