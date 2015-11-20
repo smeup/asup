@@ -126,7 +126,7 @@ public class JDBCAccessHelper {
 			sbUpdate.append("\"" + columnName + "\"" + "=");
 
 			// TODO remove me
-			QBufferedData element = record.getElement(columnName.toLowerCase());
+			QBufferedData element = record.getElement(columnName.replaceAll("ç", "§").toLowerCase());
 			if (element instanceof QString)
 				sbUpdate.append("'" + element.toString() + "'");
 			else if (element instanceof QDecimal) {
