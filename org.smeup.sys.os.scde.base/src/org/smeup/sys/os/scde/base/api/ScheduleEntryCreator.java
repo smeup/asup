@@ -70,20 +70,10 @@ public @ToDo class ScheduleEntryCreator {
 		
 		for (QEnum<SCHEDULEDAYEnum, QCharacter> enumElem : scheduleDay) {
 
-			switch(enumElem.asEnum()){
-			case ALL:			
-			case MON:
-			case TUE:
-			case WED:
-			case THU:
-			case FRI:					
-			case SAT:			
-			case SUN:			
-				scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());		
-				break;	
-			case NONE:
-				break;		
-			}
+			if (enumElem.asData().isEmpty())
+				continue;
+			
+			scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());	
 		}
 
 		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
