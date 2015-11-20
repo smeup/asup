@@ -42,9 +42,6 @@ public @ToDo class OverrideFileDeleter {
 				fileManager.removeAllFileOverride(job.getContext());
 				break;
 			case OTHER:
-				if (overriddenFile.asData().isEmpty())
-					break;
-
 				QFileOverride fileOverride = fileManager.removeFileOverride(job.getContext(), overriddenFile.asData().trimR());
 				if (fileOverride == null)
 					throw exceptionManager.prepareException(job, QCPFMSG.CPF9841, overriddenFile.asData().trimR());
