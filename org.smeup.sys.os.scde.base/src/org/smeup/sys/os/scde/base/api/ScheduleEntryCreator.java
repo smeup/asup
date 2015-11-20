@@ -41,7 +41,7 @@ public @ToDo class ScheduleEntryCreator {
 			@ToDo @DataDef(datetimeType = DatetimeType.TIME) QEnum<SCHEDULETIMEEnum, QDatetime> scheduleTime,
 			@DataDef(dimension = 5, length = 1) QScroller<QEnum<RELATIVEDAYOFMONTHEnum, QCharacter>> relativeDayOfMonth,
 			@ToDo @DataDef(length = 5) QEnum<SAVEEnum, QCharacter> save,
-			@DataDef(dimension = 20, datetimeType = DatetimeType.DATE) QScroller<QEnum<OMITDATEEnum, QDatetime>> omitDate,
+			@DataDef(dimension = 20, datetimeType = DatetimeType.DATE) QScroller<QEnum<OMITDATEEnum, QDatetime>> omitDates,
 			@ToDo @DataDef(length = 1) QEnum<RECOVERYACTIONEnum, QCharacter> recoveryAction,
 			@DataDef(qualified = true) QEnum<JOBDESCRIPTIONEnum, JOBDESCRIPTION> jobDescription,
 			@DataDef(qualified = true) QEnum<JOBQUEUEEnum, JOBQUEUE> jobQueue,
@@ -76,6 +76,19 @@ public @ToDo class ScheduleEntryCreator {
 			scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());	
 		}
 
+		for (QEnum<OMITDATEEnum, QDatetime> omitDate: omitDates) {
+			if (omitDate.isEmpty())
+				break; // TODO or continue?
+			
+			switch (omitDate.asEnum()) {
+			case NONE:
+				break;
+			case OTHER:
+				System.out.println(omitDate.asData().asTime());
+				break;
+			}
+		}
+		
 		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
 		scheduleEntry.setCommandToRun(commandToRun.asString());
 		scheduleEntry.setUser(user.asData().asString());
