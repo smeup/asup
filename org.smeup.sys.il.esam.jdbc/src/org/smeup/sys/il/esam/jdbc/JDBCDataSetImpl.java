@@ -529,7 +529,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 *
 			 * this.resultSet.moveToCurrentRow();
 			 */
-			this.statement.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildUpdate(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.dataContext.found().eval(true);
@@ -564,7 +564,7 @@ public abstract class JDBCDataSetImpl<R extends QRecord> implements QDataSet<R> 
 			 * this.resultSet.moveToCurrentRow();
 			 */
 
-			this.statement.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
+			this.statementUpdate.executeUpdate(jdbcAccessHelper.buildWrite(this.currentTable, this.record, this.infoStruct.rrn.asInteger()));
 
 			this.found = true;
 			this.dataContext.found().eval(true);
