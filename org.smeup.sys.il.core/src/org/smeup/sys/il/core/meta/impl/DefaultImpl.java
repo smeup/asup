@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 
@@ -30,7 +31,7 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  *
  * @generated
  */
-public class DefaultImpl extends FacetImpl implements QDefault {
+public class DefaultImpl extends ObjectImpl implements QDefault {
 	/**
 	 *
 	 */

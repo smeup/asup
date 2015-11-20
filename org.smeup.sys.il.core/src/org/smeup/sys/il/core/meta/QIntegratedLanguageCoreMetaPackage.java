@@ -128,7 +128,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFAULT__VALUE = FACET_FEATURE_COUNT + 0;
+	int DEFAULT__VALUE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' attribute list. <!--
@@ -137,7 +137,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFAULT__VALUES = FACET_FEATURE_COUNT + 1;
+	int DEFAULT__VALUES = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Default</em>' class. <!--
@@ -146,7 +146,7 @@ public interface QIntegratedLanguageCoreMetaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFAULT_FEATURE_COUNT = FACET_FEATURE_COUNT + 2;
+	int DEFAULT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.meta.impl.DomainImpl <em>Domain</em>}' class.

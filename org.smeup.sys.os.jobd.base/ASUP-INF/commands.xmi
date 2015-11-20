@@ -1269,12 +1269,11 @@
               unary="true"
               value="*NONE"/>
         </facets>
-        <facets
-            xsi:type="il-core-meta:Default">
-          <values>*SYSVAL</values>
-        </facets>
         <cardinality
             max="250"/>
+        <default>
+          <values>*SYSVAL</values>
+        </default>
         <definition
             xsi:type="il-data-def:ScrollerDef"
             dimension="250">

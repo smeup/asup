@@ -396,7 +396,7 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 
 		// Add supertypes to classes
 		cardinalityEClass.getESuperTypes().add(this.getFacet());
-		defaultEClass.getESuperTypes().add(this.getFacet());
+		defaultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		domainEClass.getESuperTypes().add(this.getFacet());
 		facetEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		frameEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getNameable());

@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.os.msgf.*;
 import org.smeup.sys.os.msgf.QMessageDataField;
 import org.smeup.sys.os.msgf.QMessageDescription;
 import org.smeup.sys.os.msgf.QMessageFile;

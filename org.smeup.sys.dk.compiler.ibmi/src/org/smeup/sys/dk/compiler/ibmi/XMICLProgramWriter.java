@@ -703,7 +703,7 @@ public class XMICLProgramWriter {
 		if (varValue != null) {
 			QDefault default_ = QIntegratedLanguageCoreMetaFactory.eINSTANCE.createDefault();
 			default_.setValue(varValue);
-			dataTerm.getFacets().add(default_);
+			dataTerm.setDefault(default_);
 		}
 
 		// Create DataDef

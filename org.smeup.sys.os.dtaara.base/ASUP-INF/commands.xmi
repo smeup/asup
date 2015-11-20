@@ -124,8 +124,7 @@
         position="2">
       <dataTerm
           name="value">
-        <facets
-            xsi:type="il-core-meta:Default"
+        <default
             value=""/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -272,8 +271,7 @@
         position="4">
       <dataTerm
           name="valoreIniziale">
-        <facets
-            xsi:type="il-core-meta:Default"
+        <default
             value=""/>
         <definition
             xsi:type="il-data-def:CharacterDef"

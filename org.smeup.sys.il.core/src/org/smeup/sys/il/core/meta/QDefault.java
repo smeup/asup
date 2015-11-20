@@ -8,6 +8,7 @@
 package org.smeup.sys.il.core.meta;
 
 import java.util.List;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -25,7 +26,7 @@ import java.util.List;
  * @model
  * @generated
  */
-public interface QDefault extends QFacet {
+public interface QDefault extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
 	 * begin-user-doc -->
