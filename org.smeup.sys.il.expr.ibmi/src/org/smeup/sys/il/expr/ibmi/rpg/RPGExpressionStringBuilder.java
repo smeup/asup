@@ -12,40 +12,9 @@
 package org.smeup.sys.il.expr.ibmi.rpg;
 
 import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
-import org.smeup.sys.il.expr.QExpression;
-import org.smeup.sys.il.expr.QFunctionTermExpression;
 
 public class RPGExpressionStringBuilder extends BaseExpressionStringBuilder {
-	//TODO: implement RPG expression specifity
 	
-	@Override
-	public boolean visit(QFunctionTermExpression expression) {
-		
-		String functionName = expression.getValue();
-				
-		if (functionName.startsWith("*ALL")) {
-			
-			result.append("*ALL");
-			for (QExpression child : expression.getElements()) {
-				child.accept(this);
-			}		
-			
-		} else {
-		
-			result.append(expression.getValue());
 	
-			result.append("(");
-			boolean first = true;
-			for (QExpression child : expression.getElements()) {
-				if (!first)
-					result.append(": ");
-				child.accept(this);
-				first = false;
-			}
-			result.append(")");
-		}
-
-		return false;
-	}
-
+	
 }

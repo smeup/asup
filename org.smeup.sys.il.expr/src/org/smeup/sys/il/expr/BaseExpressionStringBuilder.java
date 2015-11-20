@@ -197,23 +197,38 @@ public class BaseExpressionStringBuilder extends ExpressionVisitorImpl {
 		return false;
 	}
 
+	
 	@Override
 	public boolean visit(QFunctionTermExpression expression) {
-
-		result.append(expression.getValue());
-
-		result.append("(");
-		boolean first = true;
-		for (QExpression child : expression.getElements()) {
-			if (!first)
-				result.append(": ");
-			child.accept(this);
-			first = false;
+		
+		String functionName = expression.getValue();
+				
+		if (functionName.startsWith("*ALL")) {
+			
+			result.append("*ALL");
+			for (QExpression child : expression.getElements()) {
+				child.accept(this);
+			}		
+			
+		} else {
+		
+			result.append(expression.getValue());
+	
+			result.append("(");
+			boolean first = true;
+			for (QExpression child : expression.getElements()) {
+				if (!first)
+					result.append(": ");
+				child.accept(this);
+				first = false;
+			}
+			result.append(")");
 		}
-		result.append(")");
 
 		return false;
 	}
+
+	
 
 	@Override
 	public boolean visit(QQualifiedTermExpression expression) {
