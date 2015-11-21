@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Franco Lombardo - Initial API and implementation
+ *   Mattia Rocchi   - Further implementation
  */
 package org.smeup.sys.os.core.base.api;
 
@@ -37,7 +38,7 @@ import org.smeup.sys.os.core.jobs.QJobManager;
 public class JobDisplayer {
 
 	public static enum QCPFMSG {
-		CPF1070
+		CPF9871, CPF1070
 	}
 
 	@Inject
@@ -57,14 +58,12 @@ public class JobDisplayer {
 			QJob jobFound = jobName.findJob(job, jobManager);
 			QObjectWriter objectWriter = findWiter(output);
 			objectWriter.initialize();
-			try {
-				objectWriter.write(jobFound);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			objectWriter.write(jobFound);
 			objectWriter.flush();
 		} catch (JobNotFoundException e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
+		} catch (IOException e) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF9871);
 		}
 	}
 

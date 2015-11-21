@@ -69,9 +69,8 @@ public class JobLogDisplayer {
 			break;
 		}
 
-		if (jobLog == null) {
+		if (jobLog == null) 
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF1070, new String[] { jobName.name.asData().trimR(), jobName.user.trimR(), jobName.number.trim() });
-		}
 
 		return jobLog;
 	}

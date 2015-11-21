@@ -29,7 +29,8 @@ import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
-public @ToDo @Program(name = "QWTCCCNJ") class JobTerminator {
+@Program(name = "QWTCCCNJ")
+public class JobTerminator {
 
 	public static enum QCPFMSG {
 		CPF1321, // Il lavoro &1 utente &2 numero di lavoro &3 non trovati

@@ -23,6 +23,14 @@ public interface QExceptionManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.il.core.java.JavaEnum" messageRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.il.core.java.JavaEnum" messageRequired="true" variableRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */

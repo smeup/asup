@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2012, 2015 Sme.UP and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Initial API and implementation
+ * 	Mattia Rocchi
+ */
 package org.smeup.sys.os.core.base;
 
 import java.util.regex.Matcher;
@@ -20,6 +30,11 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 	private QResourceManager resourceManager;
 
 	private QMessageFile cpfMessageFile;
+
+	@Override
+	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message) {
+		return prepareException(job, message, null);
+	}
 
 	@Override
 	public <E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object variable) {
@@ -101,5 +116,4 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 			messageDescription = messageFile.lookup(messageName);
 		return messageDescription;
 	}
-
 }

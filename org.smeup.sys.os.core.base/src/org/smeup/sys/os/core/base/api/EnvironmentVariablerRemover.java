@@ -41,7 +41,8 @@ public class EnvironmentVariablerRemover {
 	@Inject
 	private QExceptionManager exceptionManager;
 	
-	public @Main void main(
+	@Main
+	public void main(
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
 			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level) {
 	

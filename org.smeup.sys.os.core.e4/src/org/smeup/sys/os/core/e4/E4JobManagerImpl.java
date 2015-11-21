@@ -29,16 +29,16 @@ import org.smeup.sys.il.expr.QPredicateExpression;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystemManager;
-import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.base.BaseJobManagerImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QJobListener;
-import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
@@ -46,7 +46,7 @@ import org.smeup.sys.rt.core.QApplication;
 import org.smeup.sys.rt.core.auth.QAuthenticationManager;
 import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
-public class E4JobManagerImpl implements QJobManager, QAuthenticationManager {
+public class E4JobManagerImpl extends BaseJobManagerImpl implements QAuthenticationManager {
 
 	private Map<String, QJob> activeJobs;
 	private Map<String, ExecutorService> jobExecutorServices;

@@ -72,6 +72,13 @@
       </eTypeParameters>
       <eParameters name="job" eType="#//jobs/Job"/>
       <eParameters name="message" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+    </eOperations>
+    <eOperations name="prepareException" eType="#//MessageException">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="job" eType="#//jobs/Job"/>
+      <eParameters name="message" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
       <eParameters name="variable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
     <eOperations name="prepareException" eType="#//MessageException">
@@ -238,6 +245,12 @@
       <eOperations name="create" lowerBound="1" eType="#//jobs/Job">
         <eParameters name="credential" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="jobName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="delay">
+        <eParameters name="millis" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eOperations>
+      <eOperations name="delay">
+        <eParameters name="resumeTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
       <eOperations name="lookup" eType="#//jobs/Job">

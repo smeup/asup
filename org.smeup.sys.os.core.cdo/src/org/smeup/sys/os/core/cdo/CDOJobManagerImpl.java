@@ -35,6 +35,7 @@ import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.base.BaseJobManagerImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
@@ -46,7 +47,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
 
-public class CDOJobManagerImpl implements QJobManager {
+public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager {
 
 	private CDOSystemManagerImpl systemManager;
 	private QResourceManager resourceManager;

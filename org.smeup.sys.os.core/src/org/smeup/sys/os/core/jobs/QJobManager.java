@@ -73,6 +73,22 @@ public interface QJobManager {
 	QJob create(QJob credential, String jobName);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model millisRequired="true"
+	 * @generated
+	 */
+	void delay(long millis);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model resumeTimeRequired="true"
+	 * @generated
+	 */
+	void delay(String resumeTime);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated

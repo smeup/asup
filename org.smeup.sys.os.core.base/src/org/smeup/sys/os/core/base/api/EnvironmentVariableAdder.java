@@ -38,7 +38,9 @@ public class EnvironmentVariableAdder {
 	private QSystemManager systemManager;
 	@Inject
 	private QResourceManager resourceManager;
-	public @Main void main(
+	
+	@Main
+	public void main(
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
 			@Supported @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, 
