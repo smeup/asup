@@ -50,19 +50,19 @@ public class BaseExpressionBuilder {
 		Tree tree = this.expressionHelper.parse(expression);
 		switch (this.expressionHelper.getExpressionType(tree)) {
 		case ARITHMETIC:
-			qExpression = buildAsArithmetic(tree);
+			return qExpression = buildAsArithmetic(tree);
 		case ASSIGNMENT:
-			qExpression = buildAsAssignment(expression);
+			return qExpression = buildAsAssignment(expression);
 		case ATOMIC:
 		case QUALIFIED:
 		case FUNCTION:
-			qExpression = buildAsTerm(tree);
+			return qExpression = buildAsTerm(tree);
 		case BLOCK:
-			qExpression = buildAsBlock(tree);
+			return qExpression = buildAsBlock(tree);
 		case BOOLEAN:
 		case LOGICAL:
 		case RELATIONAL:
-			qExpression = buildAsPredicate(tree);
+			return qExpression = buildAsPredicate(tree);
 		}
 
 		return qExpression;
