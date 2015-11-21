@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<os-cmd:CommandContainer 
-
+<os-cmd:CommandContainer
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,241 +8,563 @@
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
     xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore"
-
-typeName="*SCDE">
-  <contents xsi:type="os-cmd:Command" name="ADDJOBSCDE" text="Add Schedule Entry" program="QWCCAAYC" status="TODO">
-    <parameters allowVariable="true" name="JOB" position="1" status="TODO">
-      <dataTerm name="jobName">
-        <facets xsi:type="il-core:Format" type="NAME"/>
-        <facets xsi:type="il-core:Special">
-          <elements name="*JOBD" value="*JOBD"/>
+    typeName="*SCDE">
+  <contents
+      xsi:type="os-cmd:Command"
+      name="ADDJOBSCDE"
+      text="Add Schedule Entry"
+      program="QWCCAAYC"
+      status="TODO">
+    <parameters
+        allowVariable="true"
+        name="JOB"
+        position="1"
+        status="TODO">
+      <dataTerm
+          name="jobName">
+        <facets
+            xsi:type="il-core:Format"
+            type="NAME"/>
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOBD"
+              value="*JOBD"/>
         </facets>
-        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+        <facets
+            xsi:type="il-core-meta:Cardinality"
+            min="1"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="CMD" position="2" status="TODO">
-      <dataTerm name="commandToRun">
-        <facets xsi:type="il-core:Format" type="SCMD"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="512"/>
+    <parameters
+        allowVariable="true"
+        name="CMD"
+        position="2"
+        status="TODO">
+      <dataTerm
+          name="commandToRun">
+        <facets
+            xsi:type="il-core:Format"
+            type="SCMD"/>
+        <facets
+            xsi:type="il-core-meta:Cardinality"
+            min="1"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="512"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="FRQ" position="3" status="TODO">
-      <dataTerm name="frequency" restricted="true">
-        <facets xsi:type="il-core:Special">
-          <elements name="*ONCE" value="O"/>
-          <elements name="*WEEKLY" value="W"/>
-          <elements name="*MONTHLY" value="M"/>
+    <parameters
+        allowVariable="true"
+        name="FRQ"
+        position="3"
+        status="TODO">
+      <dataTerm
+          name="frequency"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*ONCE"
+              value="O"/>
+          <elements
+              name="*WEEKLY"
+              value="W"/>
+          <elements
+              name="*MONTHLY"
+              value="M"/>
         </facets>
-        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
+        <facets
+            xsi:type="il-core-meta:Cardinality"
+            min="1"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="SCDDATE" position="4" status="TODO">
-      <dataTerm name="scheduleDate">
-        <facets xsi:type="il-core:Special">
-          <elements name="*CURRENT" value="0000001"/>
-          <elements name="*MONTHSTR" value="0000002"/>
-          <elements name="*MONTHEND" value="0000003"/>
-          <elements name="*NONE" value="0000004"/>
+    <parameters
+        allowVariable="true"
+        name="SCDDATE"
+        position="4"
+        status="TODO">
+      <dataTerm
+          name="scheduleDate">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*CURRENT"
+              value="0000001"/>
+          <elements
+              name="*MONTHSTR"
+              value="0000002"/>
+          <elements
+              name="*MONTHEND"
+              value="0000003"/>
+          <elements
+              name="*NONE"
+              value="0000004"/>
         </facets>
-        <default value="*CURRENT"/>
-        <definition xsi:type="il-data-def:DatetimeDef"/>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:DatetimeDef"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="SCDDAY" position="5" status="TODO">
-      <dataTerm name="scheduleDay" restricted="true">
-        <facets xsi:type="il-core:Special">
-          <elements name="*NONE" unary="true" value="0"/>
-          <elements name="*ALL" unary="true" value="8"/>
-          <elements name="*MON" value="1"/>
-          <elements name="*TUE" value="2"/>
-          <elements name="*WED" value="3"/>
-          <elements name="*THU" value="4"/>
-          <elements name="*FRI" value="5"/>
-          <elements name="*SAT" value="6"/>
-          <elements name="*SUN" value="7"/>
+    <parameters
+        allowVariable="true"
+        name="SCDDAY"
+        position="5"
+        status="TODO">
+      <dataTerm
+          name="scheduleDay"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NONE"
+              unary="true"
+              value="0"/>
+          <elements
+              name="*ALL"
+              unary="true"
+              value="8"/>
+          <elements
+              name="*MON"
+              value="1"/>
+          <elements
+              name="*TUE"
+              value="2"/>
+          <elements
+              name="*WED"
+              value="3"/>
+          <elements
+              name="*THU"
+              value="4"/>
+          <elements
+              name="*FRI"
+              value="5"/>
+          <elements
+              name="*SAT"
+              value="6"/>
+          <elements
+              name="*SUN"
+              value="7"/>
         </facets>
-        <cardinality max="7"/>
+        <cardinality
+            max="7"/>
         <default>
           <values>*NONE</values>
         </default>
-        <definition xsi:type="il-data-def:ScrollerDef" dimension="7">
-          <argument xsi:type="il-data-def:CharacterDef" length="1"/>
+        <definition
+            xsi:type="il-data-def:ScrollerDef"
+            dimension="7">
+          <argument
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="SCDTIME" position="6" status="TODO">
-      <dataTerm name="scheduleTime">
-        <facets xsi:type="il-core:Special">
-          <elements name="*CURRENT" value="999999"/>
+    <parameters
+        allowVariable="true"
+        name="SCDTIME"
+        position="6"
+        status="TODO">
+      <dataTerm
+          name="scheduleTime">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*CURRENT"
+              value="999999"/>
         </facets>
-        <default value="*CURRENT"/>
-        <definition xsi:type="il-data-def:DatetimeDef" type="TIME"/>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:DatetimeDef"
+            type="TIME"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="RELDAYMON" position="7" status="POS">
-      <dataTerm name="relativeDayOfMonth" restricted="true">
-        <facets xsi:type="il-core:Special">
-          <elements name="*LAST" value="6"/>
-          <elements name="1"/>
-          <elements name="2"/>
-          <elements name="3"/>
-          <elements name="4"/>
-          <elements name="5"/>
+    <parameters
+        allowVariable="true"
+        name="RELDAYMON"
+        position="7"
+        status="POS">
+      <dataTerm
+          name="relativeDayOfMonth"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*LAST"
+              value="6"/>
+          <elements
+              name="1"/>
+          <elements
+              name="2"/>
+          <elements
+              name="3"/>
+          <elements
+              name="4"/>
+          <elements
+              name="5"/>
         </facets>
-        <cardinality max="5"/>
+        <cardinality
+            max="5"/>
         <default>
           <values>1</values>
         </default>
-        <definition xsi:type="il-data-def:ScrollerDef" dimension="5">
-          <argument xsi:type="il-data-def:CharacterDef" length="1"/>
+        <definition
+            xsi:type="il-data-def:ScrollerDef"
+            dimension="5">
+          <argument
+              xsi:type="il-data-def:CharacterDef"
+              length="1"/>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="SAVE" position="8" status="TODO">
-      <dataTerm name="save" restricted="true">
-        <facets xsi:type="il-core:Special">
-          <elements name="*NO" value="*NO"/>
-          <elements name="*YES" value="*YES"/>
+    <parameters
+        allowVariable="true"
+        name="SAVE"
+        position="8"
+        status="TODO">
+      <dataTerm
+          name="save"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NO"
+              value="*NO"/>
+          <elements
+              name="*YES"
+              value="*YES"/>
         </facets>
-        <default value="*NO"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="5"/>
+        <default
+            value="*NO"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="5"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="OMITDATE" position="9" status="POS">
-      <dataTerm name="omitDate">
-        <facets xsi:type="il-core:Special">
-          <elements name="*NONE" value="0000001"/>
+    <parameters
+        allowVariable="true"
+        name="OMITDATE"
+        position="9"
+        status="POS">
+      <dataTerm
+          name="omitDate">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*NONE"
+              value="0000001"/>
         </facets>
-        <cardinality max="20"/>
+        <cardinality
+            max="20"/>
         <default>
           <values>*NONE</values>
         </default>
-        <definition xsi:type="il-data-def:ScrollerDef" dimension="20">
-          <argument xsi:type="il-data-def:DatetimeDef"/>
+        <definition
+            xsi:type="il-data-def:ScrollerDef"
+            dimension="20">
+          <argument
+              xsi:type="il-data-def:DatetimeDef"/>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="RCYACN" position="10" status="TODO">
-      <dataTerm name="recoveryAction" restricted="true">
-        <facets xsi:type="il-core:Special">
-          <elements name="*SBMRLS" value="R"/>
-          <elements name="*SBMHLD" value="H"/>
-          <elements name="*NOSBM" value="N"/>
+    <parameters
+        allowVariable="true"
+        name="RCYACN"
+        position="10"
+        status="TODO">
+      <dataTerm
+          name="recoveryAction"
+          restricted="true">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*SBMRLS"
+              value="R"/>
+          <elements
+              name="*SBMHLD"
+              value="H"/>
+          <elements
+              name="*NOSBM"
+              value="N"/>
         </facets>
-        <default value="*NOSBM"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="1"/>
+        <default
+            value="*NOSBM"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="1"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="JOBD" position="11" status="POS">
-      <dataTerm name="jobDescription">
-        <facets xsi:type="il-core:Special">
-          <elements name="*USRPRF" unary="true" value="*USRPRF"/>
+    <parameters
+        allowVariable="true"
+        name="JOBD"
+        position="11"
+        status="POS">
+      <dataTerm
+          name="jobDescription">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*USRPRF"
+              unary="true"
+              value="*USRPRF"/>
         </facets>
-        <default value="*USRPRF"/>
-        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
-          <elements xsi:type="os-cmd:CommandData" name="name">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+        <default
+            value="*USRPRF"/>
+        <definition
+            xsi:type="il-data-def:DataStructDef"
+            qualified="true">
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="name">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
-          <elements xsi:type="os-cmd:CommandData" name="library">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core:Special">
-              <elements name="*LIBL" value="*LIBL"/>
-              <elements name="*CURLIB" value="*CURLIB"/>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="library">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <facets
+                xsi:type="il-core:Special">
+              <elements
+                  name="*LIBL"
+                  value="*LIBL"/>
+              <elements
+                  name="*CURLIB"
+                  value="*CURLIB"/>
             </facets>
-            <default value="*LIBL"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+            <default
+                value="*LIBL"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="JOBQ" position="12" status="POS">
-      <dataTerm name="jobQueue">
-        <facets xsi:type="il-core:Special">
-          <elements name="*JOBD" unary="true" value="*JOBD"/>
+    <parameters
+        allowVariable="true"
+        name="JOBQ"
+        position="12"
+        status="POS">
+      <dataTerm
+          name="jobQueue">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*JOBD"
+              unary="true"
+              value="*JOBD"/>
         </facets>
-        <default value="*JOBD"/>
-        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
-          <elements xsi:type="os-cmd:CommandData" name="name">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+        <default
+            value="*JOBD"/>
+        <definition
+            xsi:type="il-data-def:DataStructDef"
+            qualified="true">
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="name">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
-          <elements xsi:type="os-cmd:CommandData" name="library">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core:Special">
-              <elements name="*LIBL" value="*LIBL"/>
-              <elements name="*CURLIB" value="*CURLIB"/>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="library">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <facets
+                xsi:type="il-core:Special">
+              <elements
+                  name="*LIBL"
+                  value="*LIBL"/>
+              <elements
+                  name="*CURLIB"
+                  value="*CURLIB"/>
             </facets>
-            <default value="*LIBL"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+            <default
+                value="*LIBL"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="USER" position="13" status="TODO">
-      <dataTerm name="user">
-        <facets xsi:type="il-core:Format" type="NAME"/>
-        <facets xsi:type="il-core:Special">
-          <elements name="*CURRENT" value="*CURRENT"/>
-          <elements name="*JOBD" value="*JOBD"/>
+    <parameters
+        allowVariable="true"
+        name="USER"
+        position="13"
+        status="TODO">
+      <dataTerm
+          name="user">
+        <facets
+            xsi:type="il-core:Format"
+            type="NAME"/>
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*CURRENT"
+              value="*CURRENT"/>
+          <elements
+              name="*JOBD"
+              value="*JOBD"/>
         </facets>
-        <default value="*CURRENT"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+        <default
+            value="*CURRENT"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="MSGQ" position="14" status="TODO">
-      <dataTerm name="messageQueue">
-        <facets xsi:type="il-core:Special">
-          <elements name="*USRPRF" unary="true" value="*USRPRF"/>
-          <elements name="*NONE" unary="true" value="*NONE"/>
+    <parameters
+        allowVariable="true"
+        name="MSGQ"
+        position="14"
+        status="TODO">
+      <dataTerm
+          name="messageQueue">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*USRPRF"
+              unary="true"
+              value="*USRPRF"/>
+          <elements
+              name="*NONE"
+              unary="true"
+              value="*NONE"/>
         </facets>
-        <default value="*USRPRF"/>
-        <definition xsi:type="il-data-def:DataStructDef" qualified="true">
-          <elements xsi:type="os-cmd:CommandData" name="name">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+        <default
+            value="*USRPRF"/>
+        <definition
+            xsi:type="il-data-def:DataStructDef"
+            qualified="true">
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="name">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
-          <elements xsi:type="os-cmd:CommandData" name="library">
-            <facets xsi:type="il-core:Format" type="NAME"/>
-            <facets xsi:type="il-core:Special">
-              <elements name="*LIBL" value="*LIBL"/>
-              <elements name="*CURLIB" value="*CURLIB"/>
+          <elements
+              xsi:type="os-cmd:CommandData"
+              name="library">
+            <facets
+                xsi:type="il-core:Format"
+                type="NAME"/>
+            <facets
+                xsi:type="il-core:Special">
+              <elements
+                  name="*LIBL"
+                  value="*LIBL"/>
+              <elements
+                  name="*CURLIB"
+                  value="*CURLIB"/>
             </facets>
-            <default value="*LIBL"/>
-            <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+            <default
+                value="*LIBL"/>
+            <definition
+                xsi:type="il-data-def:CharacterDef"
+                length="10"/>
           </elements>
         </definition>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="TEXT" position="15" status="TODO">
-      <dataTerm name="textDescription">
-        <facets xsi:type="il-core:Special">
-          <elements name="*BLANK" value=""/>
+    <parameters
+        allowVariable="true"
+        name="TEXT"
+        position="15"
+        status="TODO">
+      <dataTerm
+          name="textDescription">
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*BLANK"
+              value=""/>
         </facets>
-        <default value="*BLANK"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="50"/>
+        <default
+            value="*BLANK"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="50"/>
       </dataTerm>
     </parameters>
-    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;ADDJOBSCDE&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;ADDJOBSCDE&quot; MaxPos=&quot;3&quot; Prompt=&quot;Add Job Schedule Entry&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CMD&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CMDSTR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Command to run&quot; Len=&quot;512&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Command&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;FRQ&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Frequency&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ONCE, *WEEKLY, *MONTHLY&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ONCE&quot; MapTo=&quot;O&quot;/>&lt;Value Val=&quot;*WEEKLY&quot; MapTo=&quot;W&quot;/>&lt;Value Val=&quot;*MONTHLY&quot; MapTo=&quot;M&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDDATE&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Schedule date&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;0000001&quot;/>&lt;Value Val=&quot;*MONTHSTR&quot; MapTo=&quot;0000002&quot;/>&lt;Value Val=&quot;*MONTHEND&quot; MapTo=&quot;0000003&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0000004&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDDAY&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;7&quot; Prompt=&quot;Schedule day&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*NONE&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NONE, *ALL, *MON, *TUE...&quot; >&lt;SngVal>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;8&quot;/>&lt;/SngVal>&lt;SpcVal>&lt;Value Val=&quot;*MON&quot; MapTo=&quot;1&quot;/>&lt;Value Val=&quot;*TUE&quot; MapTo=&quot;2&quot;/>&lt;Value Val=&quot;*WED&quot; MapTo=&quot;3&quot;/>&lt;Value Val=&quot;*THU&quot; MapTo=&quot;4&quot;/>&lt;Value Val=&quot;*FRI&quot; MapTo=&quot;5&quot;/>&lt;Value Val=&quot;*SAT&quot; MapTo=&quot;6&quot;/>&lt;Value Val=&quot;*SUN&quot; MapTo=&quot;7&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDTIME&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Schedule time&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;999999&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RELDAYMON&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;5&quot; Prompt=&quot;Relative day of month&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;1&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LAST, 1, 2, 3, 4, 5&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LAST&quot; MapTo=&quot;6&quot;/>&lt;/SpcVal>&lt;Values>&lt;Value Val=&quot;1&quot;/>&lt;Value Val=&quot;2&quot;/>&lt;Value Val=&quot;3&quot;/>&lt;Value Val=&quot;4&quot;/>&lt;Value Val=&quot;5&quot;/>&lt;/Values>&lt;PmtCtl CtlKwd=&quot;SCDDAY&quot; NbrTrueRel=&quot;GE&quot; NbrTrue=&quot;1&quot; LglRel=&quot;AND&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;1&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;2&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;3&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;4&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;5&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;6&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;7&quot;/>&lt;/PmtCtl>&lt;PmtCtl CtlKwd=&quot;FRQ&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;M&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;OMITDATE&quot; PosNbr=&quot;9&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;20&quot; Prompt=&quot;Omit date&quot; Rstd=&quot;NO&quot; Dft=&quot;*NONE&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0000001&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RCYACN&quot; PosNbr=&quot;10&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Recovery action&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*NOSBM&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*SBMRLS, *SBMHLD, *NOSBM&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SBMRLS&quot; MapTo=&quot;R&quot;/>&lt;Value Val=&quot;*SBMHLD&quot; MapTo=&quot;H&quot;/>&lt;Value Val=&quot;*NOSBM&quot; MapTo=&quot;N&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SAVE&quot; PosNbr=&quot;8&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Save&quot; Len=&quot;5&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NO&quot; MapTo=&quot;*NO&quot;/>&lt;Value Val=&quot;*YES&quot; MapTo=&quot;*YES&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;FRQ&quot; NbrTrueRel=&quot;GT&quot; NbrTrue=&quot;0&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;O&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;JOBD&quot; PosNbr=&quot;11&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job description&quot; Rstd=&quot;NO&quot; Dft=&quot;*USRPRF&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*USRPRF&quot; >&lt;SngVal>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;JOBQ&quot; PosNbr=&quot;12&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job queue&quot; Rstd=&quot;NO&quot; Dft=&quot;*JOBD&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*JOBD&quot; >&lt;SngVal>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;USER&quot; PosNbr=&quot;13&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;*CURRENT&quot;/>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;MSGQ&quot; PosNbr=&quot;14&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Message queue&quot; Rstd=&quot;NO&quot; Dft=&quot;*USRPRF&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*USRPRF, *NONE&quot; >&lt;SngVal>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;*NONE&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;TEXT&quot; PosNbr=&quot;15&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Text &amp;apos;description&amp;apos;&quot; Len=&quot;50&quot; Rstd=&quot;NO&quot; Dft=&quot;*BLANK&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BLANK&quot; MapTo=&quot;&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;ALWAYS&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD1617&quot;>&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QSYS&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QSPL&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDOC&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDBSHR&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QRJE&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QLPAUTO&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QLPINSTALL&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QTSTRQS&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDFTOWN&quot; />&lt;/Dep>&lt;Dep CtlKwdRel=&quot;ALWAYS&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD0925&quot;>&lt;DepParm Kwd=&quot;SCDDATE&quot; Rel=&quot;EQ&quot; CmpVal=&quot;0000004&quot; />&lt;DepParm Kwd=&quot;SCDDAY&quot; Rel=&quot;EQ&quot; CmpVal=&quot;0&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source
+        type="CMD"
+        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;ADDJOBSCDE&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;ADDJOBSCDE&quot; MaxPos=&quot;3&quot; Prompt=&quot;Add Job Schedule Entry&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;NAME&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;CMD&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CMDSTR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Command to run&quot; Len=&quot;512&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Command&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;FRQ&quot; PosNbr=&quot;3&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Frequency&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*ONCE, *WEEKLY, *MONTHLY&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ONCE&quot; MapTo=&quot;O&quot;/>&lt;Value Val=&quot;*WEEKLY&quot; MapTo=&quot;W&quot;/>&lt;Value Val=&quot;*MONTHLY&quot; MapTo=&quot;M&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDDATE&quot; PosNbr=&quot;4&quot; KeyParm=&quot;NO&quot; Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Schedule date&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;0000001&quot;/>&lt;Value Val=&quot;*MONTHSTR&quot; MapTo=&quot;0000002&quot;/>&lt;Value Val=&quot;*MONTHEND&quot; MapTo=&quot;0000003&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0000004&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDDAY&quot; PosNbr=&quot;5&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;7&quot; Prompt=&quot;Schedule day&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*NONE&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NONE, *ALL, *MON, *TUE...&quot; >&lt;SngVal>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;8&quot;/>&lt;/SngVal>&lt;SpcVal>&lt;Value Val=&quot;*MON&quot; MapTo=&quot;1&quot;/>&lt;Value Val=&quot;*TUE&quot; MapTo=&quot;2&quot;/>&lt;Value Val=&quot;*WED&quot; MapTo=&quot;3&quot;/>&lt;Value Val=&quot;*THU&quot; MapTo=&quot;4&quot;/>&lt;Value Val=&quot;*FRI&quot; MapTo=&quot;5&quot;/>&lt;Value Val=&quot;*SAT&quot; MapTo=&quot;6&quot;/>&lt;Value Val=&quot;*SUN&quot; MapTo=&quot;7&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SCDTIME&quot; PosNbr=&quot;6&quot; KeyParm=&quot;NO&quot; Type=&quot;TIME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Schedule time&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Time&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;999999&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RELDAYMON&quot; PosNbr=&quot;7&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;5&quot; Prompt=&quot;Relative day of month&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;1&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*LAST, 1, 2, 3, 4, 5&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LAST&quot; MapTo=&quot;6&quot;/>&lt;/SpcVal>&lt;Values>&lt;Value Val=&quot;1&quot;/>&lt;Value Val=&quot;2&quot;/>&lt;Value Val=&quot;3&quot;/>&lt;Value Val=&quot;4&quot;/>&lt;Value Val=&quot;5&quot;/>&lt;/Values>&lt;PmtCtl CtlKwd=&quot;SCDDAY&quot; NbrTrueRel=&quot;GE&quot; NbrTrue=&quot;1&quot; LglRel=&quot;AND&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;1&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;2&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;3&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;4&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;5&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;6&quot;/>&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;7&quot;/>&lt;/PmtCtl>&lt;PmtCtl CtlKwd=&quot;FRQ&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;M&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;OMITDATE&quot; PosNbr=&quot;9&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;DATE&quot; Min=&quot;0&quot; Max=&quot;20&quot; Prompt=&quot;Omit date&quot; Rstd=&quot;NO&quot; Dft=&quot;*NONE&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Date&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;0000001&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;RCYACN&quot; PosNbr=&quot;10&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Recovery action&quot; Len=&quot;1&quot; Rstd=&quot;YES&quot; Dft=&quot;*NOSBM&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*SBMRLS, *SBMHLD, *NOSBM&quot; >&lt;SpcVal>&lt;Value Val=&quot;*SBMRLS&quot; MapTo=&quot;R&quot;/>&lt;Value Val=&quot;*SBMHLD&quot; MapTo=&quot;H&quot;/>&lt;Value Val=&quot;*NOSBM&quot; MapTo=&quot;N&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;SAVE&quot; PosNbr=&quot;8&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTCTL&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Save&quot; Len=&quot;5&quot; Rstd=&quot;YES&quot; Dft=&quot;*NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*NO, *YES&quot; >&lt;SpcVal>&lt;Value Val=&quot;*NO&quot; MapTo=&quot;*NO&quot;/>&lt;Value Val=&quot;*YES&quot; MapTo=&quot;*YES&quot;/>&lt;/SpcVal>&lt;PmtCtl CtlKwd=&quot;FRQ&quot; NbrTrueRel=&quot;GT&quot; NbrTrue=&quot;0&quot; >&lt;PmtCtlCond Rel=&quot;EQ&quot; CmpVal=&quot;O&quot;/>&lt;/PmtCtl>&lt;/Parm>&lt;Parm Kwd=&quot;JOBD&quot; PosNbr=&quot;11&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job description&quot; Rstd=&quot;NO&quot; Dft=&quot;*USRPRF&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*USRPRF&quot; >&lt;SngVal>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;JOBQ&quot; PosNbr=&quot;12&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Job queue&quot; Rstd=&quot;NO&quot; Dft=&quot;*JOBD&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*JOBD&quot; >&lt;SngVal>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;USER&quot; PosNbr=&quot;13&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;User&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*CURRENT&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*CURRENT&quot; MapTo=&quot;*CURRENT&quot;/>&lt;Value Val=&quot;*JOBD&quot; MapTo=&quot;*JOBD&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Parm Kwd=&quot;MSGQ&quot; PosNbr=&quot;14&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;QUAL&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Message queue&quot; Rstd=&quot;NO&quot; Dft=&quot;*USRPRF&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;*USRPRF, *NONE&quot; >&lt;SngVal>&lt;Value Val=&quot;*USRPRF&quot; MapTo=&quot;*USRPRF&quot;/>&lt;Value Val=&quot;*NONE&quot; MapTo=&quot;*NONE&quot;/>&lt;/SngVal>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;/Qual>&lt;Qual Type=&quot;NAME&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Library&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; Dft=&quot;*LIBL&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name&quot; >&lt;SpcVal>&lt;Value Val=&quot;*LIBL&quot; MapTo=&quot;*LIBL&quot;/>&lt;Value Val=&quot;*CURLIB&quot; MapTo=&quot;*CURLIB   &quot;/>&lt;/SpcVal>&lt;/Qual>&lt;/Parm>&lt;Parm Kwd=&quot;TEXT&quot; PosNbr=&quot;15&quot; KeyParm=&quot;NO&quot; PmtCtl=&quot;PMTRQS&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Text &amp;apos;description&amp;apos;&quot; Len=&quot;50&quot; Rstd=&quot;NO&quot; Dft=&quot;*BLANK&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Character value&quot; >&lt;SpcVal>&lt;Value Val=&quot;*BLANK&quot; MapTo=&quot;&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;Dep CtlKwdRel=&quot;ALWAYS&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;0&quot; MsgID=&quot;CPD1617&quot;>&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QSYS&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QSPL&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDOC&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDBSHR&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QRJE&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QLPAUTO&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QLPINSTALL&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QTSTRQS&quot; />&lt;DepParm Kwd=&quot;USER&quot; Rel=&quot;EQ&quot; CmpVal=&quot;QDFTOWN&quot; />&lt;/Dep>&lt;Dep CtlKwdRel=&quot;ALWAYS&quot; NbrTrueRel=&quot;EQ&quot; NbrTrue=&quot;1&quot; MsgID=&quot;CPD0925&quot;>&lt;DepParm Kwd=&quot;SCDDATE&quot; Rel=&quot;EQ&quot; CmpVal=&quot;0000004&quot; />&lt;DepParm Kwd=&quot;SCDDAY&quot; Rel=&quot;EQ&quot; CmpVal=&quot;0&quot; />&lt;/Dep>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
-  <contents xsi:type="os-cmd:Command" name="RMVJOBSCDE" text="Remove Job Schedule Entry" program="QWCCRMYC" status="POS">
-    <parameters allowVariable="true" name="JOB" position="1" status="POS">
-      <dataTerm name="jobName">
-        <facets xsi:type="il-core:Format" type="GENERIC"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="10"/>
+  <contents
+      xsi:type="os-cmd:Command"
+      name="RMVJOBSCDE"
+      text="Remove Job Schedule Entry"
+      program="QWCCRMYC"
+      status="POS">
+    <parameters
+        allowVariable="true"
+        name="JOB"
+        position="1"
+        status="POS">
+      <dataTerm
+          name="jobName">
+        <facets
+            xsi:type="il-core:Format"
+            type="GENERIC"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="10"/>
       </dataTerm>
     </parameters>
-    <parameters allowVariable="true" name="ENTRYNBR" position="2" status="POS">
-      <dataTerm name="entryNumber">
-        <facets xsi:type="il-core-meta:Range" max="999999" min="000001"/>
-        <facets xsi:type="il-core:Special">
-          <elements name="*ONLY" value="*ONLY"/>
-          <elements name="*ALL" value="*ALL"/>
+    <parameters
+        allowVariable="true"
+        name="ENTRYNBR"
+        position="2"
+        status="POS">
+      <dataTerm
+          name="entryNumber">
+        <facets
+            xsi:type="il-core-meta:Range"
+            max="999999"
+            min="000001"/>
+        <facets
+            xsi:type="il-core:Special">
+          <elements
+              name="*ONLY"
+              value="*ONLY"/>
+          <elements
+              name="*ALL"
+              value="*ALL"/>
         </facets>
-        <default value="*ONLY"/>
-        <definition xsi:type="il-data-def:CharacterDef" length="6"/>
+        <default
+            value="*ONLY"/>
+        <definition
+            xsi:type="il-data-def:CharacterDef"
+            length="6"/>
       </dataTerm>
     </parameters>
-    <source type="CMD" content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;RMVJOBSCDE&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;RMVJOBSCDE&quot; MaxPos=&quot;1&quot; Prompt=&quot;Remove Job Schedule Entry&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;ENTRYNBR&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Entry number&quot; Len=&quot;6&quot; Rstd=&quot;NO&quot; Dft=&quot;*ONLY&quot; RangeMinVal=&quot;000001&quot; RangeMaxVal=&quot;999999&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;YES&quot; DspInput=&quot;YES&quot; Choice=&quot;000001-999999&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ONLY&quot; MapTo=&quot;*ONLY&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
+    <source
+        type="CMD"
+        content="&#xA;&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?>&#xA;&lt;QcdCLCmd DTDVersion=&quot;1.0&quot;>&lt;Cmd CmdName=&quot;RMVJOBSCDE&quot; CmdLib=&quot;__LIBL&quot; CCSID=&quot;37&quot; HlpPnlGrp=&quot;QHWCCMD&quot; HlpPnlGrpLib=&quot;__LIBL&quot; HlpID=&quot;RMVJOBSCDE&quot; MaxPos=&quot;1&quot; Prompt=&quot;Remove Job Schedule Entry&quot; MsgF=&quot;QCPFMSG&quot; MsgFLib=&quot;__LIBL&quot; ExecBatch=&quot;YES&quot; ChgCmdExit=&quot;NO&quot; RtvCmdExit=&quot;NO&quot;>&lt;Parm Kwd=&quot;JOB&quot; PosNbr=&quot;1&quot; KeyParm=&quot;NO&quot; Type=&quot;GENERIC&quot; Min=&quot;1&quot; Max=&quot;1&quot; Prompt=&quot;Job name&quot; Len=&quot;10&quot; Rstd=&quot;NO&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;YES&quot; Full=&quot;NO&quot; DspInput=&quot;YES&quot; Choice=&quot;Name, generic*&quot; >&lt;/Parm>&lt;Parm Kwd=&quot;ENTRYNBR&quot; PosNbr=&quot;2&quot; KeyParm=&quot;NO&quot; Type=&quot;CHAR&quot; Min=&quot;0&quot; Max=&quot;1&quot; Prompt=&quot;Entry number&quot; Len=&quot;6&quot; Rstd=&quot;NO&quot; Dft=&quot;*ONLY&quot; RangeMinVal=&quot;000001&quot; RangeMaxVal=&quot;999999&quot; AlwUnprt=&quot;YES&quot; AlwVar=&quot;YES&quot; Expr=&quot;NO&quot; Full=&quot;YES&quot; DspInput=&quot;YES&quot; Choice=&quot;000001-999999&quot; >&lt;SpcVal>&lt;Value Val=&quot;*ONLY&quot; MapTo=&quot;*ONLY&quot;/>&lt;Value Val=&quot;*ALL&quot; MapTo=&quot;*ALL&quot;/>&lt;/SpcVal>&lt;/Parm>&lt;/Cmd>&lt;/QcdCLCmd>&#xA;"/>
   </contents>
 </os-cmd:CommandContainer>

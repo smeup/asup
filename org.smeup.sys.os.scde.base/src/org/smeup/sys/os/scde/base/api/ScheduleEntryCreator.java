@@ -55,18 +55,7 @@ public @ToDo class ScheduleEntryCreator {
 
 		scheduleEntry.setJobName(jobName.asData().trimR());
 		scheduleEntry.setFrequency(frequency.asData().trimR());
-		
-		
-		switch(scheduleDate.asEnum()) {
-		case CURRENT:		
-		case MONTHEND:			
-		case MONTHSTR:
-		case OTHER:
-			scheduleEntry.setScheduledDate(scheduleDate.asData().toString());
-			break;
-		case NONE:
-			break;	
-		}
+		scheduleEntry.setScheduledDate(scheduleDate.asData().toString().trim());
 		
 		for (QEnum<SCHEDULEDAYEnum, QCharacter> enumElem : scheduleDay) {
 
@@ -90,9 +79,10 @@ public @ToDo class ScheduleEntryCreator {
 		}
 		
 		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
-		scheduleEntry.setCommandToRun(commandToRun.asString());
-		scheduleEntry.setUser(user.asData().asString());
-		scheduleEntry.setDescription(textDescription.asData().asString());
+		scheduleEntry.setCommandToRun(commandToRun.asString().trim());
+		scheduleEntry.setUser(user.asData().asString().trim());
+		scheduleEntry.setDescription(textDescription.asData().asString().trim());
+
 
 		resourceWriter.save(scheduleEntry);
 	}

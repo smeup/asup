@@ -49,7 +49,7 @@ public class CronAdapter {
 				monthDay = "1";
 				month = "*";
 				weekDay = "*";
-			} else {
+			} else if(scheduleEntry.getScheduledDate().trim().length() == 6){
 				String data = scheduleEntry.getScheduledDate();
 				monthDay = data.substring(0, 2);
 				month = data.substring(2,4);
@@ -96,7 +96,7 @@ public class CronAdapter {
 		
 		if ("999999".equalsIgnoreCase(scheduleEntry.getScheduledTime())){
 			//CURRENT
-		} else {
+		} else if (scheduleEntry.getScheduledTime().length() == 6){
 			//HHMMSS
 			String time = scheduleEntry.getScheduledTime();
 			
