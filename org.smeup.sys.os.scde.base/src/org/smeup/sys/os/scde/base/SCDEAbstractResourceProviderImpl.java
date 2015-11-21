@@ -32,15 +32,15 @@ public abstract class SCDEAbstractResourceProviderImpl<T extends QScheduleEntry>
 		resourceManager.registerProvider(QScheduleEntry.class, this);
 	}
 
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({"hiding" })
 	@Override
 	public abstract <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource);
 	
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({"hiding" })
 	@Override
 	public abstract <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope);
 	
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "hiding" })
 	@Override
 	public abstract <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String resource);
 	
