@@ -26,6 +26,11 @@ import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.base.BaseExpressionHelper;
 
 public class RPGExpressionHelper implements BaseExpressionHelper {
+	
+	@Override
+	public String getExpressionFormat() {
+		return "RPG";
+	}
 
 	@Override
 	public ExpressionType getExpressionType(Tree node) {

@@ -413,6 +413,15 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExpression_ExpressionFormat() {
+		return (EAttribute)expressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -678,6 +687,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		createEReference(compoundTermExpressionEClass, COMPOUND_TERM_EXPRESSION__ELEMENTS);
 
 		expressionEClass = createEClass(EXPRESSION);
+		createEAttribute(expressionEClass, EXPRESSION__EXPRESSION_FORMAT);
 
 		expressionParserEClass = createEClass(EXPRESSION_PARSER);
 
@@ -794,6 +804,7 @@ public class IntegratedLanguageExpressionPackageImpl extends EPackageImpl implem
 		initEReference(getCompoundTermExpression_Elements(), this.getExpression(), null, "elements", null, 0, -1, QCompoundTermExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, QExpression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExpression_ExpressionFormat(), ecorePackage.getEString(), "expressionFormat", null, 0, 1, QExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(expressionEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getExpressionVisitor(), "visitor", 1, 1, IS_UNIQUE, IS_ORDERED);

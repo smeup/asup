@@ -35,4 +35,6 @@ public interface BaseExpressionHelper {
 	public String normalizeText(String text);
 
 	public String getFunctionName(Tree node);
+	
+	public String getExpressionFormat();
 }
