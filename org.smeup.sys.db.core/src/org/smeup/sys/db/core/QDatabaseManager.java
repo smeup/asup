@@ -98,6 +98,22 @@ public interface QDatabaseManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" tableRequired="true"
+	 * @generated
+	 */
+	void renameTable(QConnection connection, Table table, String newName) throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" indexRequired="true"
+	 * @generated
+	 */
+	void renameIndex(QConnection connection, Index index, String newName) throws SQLException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" exceptions="org.smeup.sys.db.core.DatabaseException" tableRequired="true"
 	 * @generated
 	 */

@@ -161,6 +161,22 @@ public interface QDefinitionWriter extends QStatementWriter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model required="true" tableRequired="true" newNameRequired="true"
+	 * @generated
+	 */
+	String renameTable(Table table, String newName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" indexRequired="true" newNameRequired="true"
+	 * @generated
+	 */
+	String renameIndex(Index index, String newName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" tableRequired="true"
 	 * @generated
 	 */

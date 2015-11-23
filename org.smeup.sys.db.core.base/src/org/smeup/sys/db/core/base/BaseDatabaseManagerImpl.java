@@ -431,4 +431,43 @@ public class BaseDatabaseManagerImpl implements QDatabaseManager {
 
 		return catalogContainer;
 	}
+
+	@Override
+	public void renameTable(QConnection connection, Table table, String newName) throws SQLException {
+
+		QCatalogContainer catalogContainer = getCatalogContainer(connection);
+
+		QStatement statement = null;
+		try {
+			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
+			String command = definitionWriter.renameTable(table, newName);
+
+			statement = connection.createStatement(true);
+			statement.execute(command);
+
+		} finally {
+			if (statement != null)
+				statement.close();
+		}
+
+//		catalogContainer.removeTable(table);		
+	}
+
+	@Override
+	public void renameIndex(QConnection connection, Index index, String newName)	throws SQLException {
+		QCatalogContainer catalogContainer = getCatalogContainer(connection);
+
+		QStatement statement = null;
+		try {
+			QDefinitionWriter definitionWriter = catalogContainer.getCatalogContext().get(QDefinitionWriter.class);
+			String command = definitionWriter.renameIndex(index, newName);
+
+			statement = connection.createStatement(true);
+			statement.execute(command);
+
+		} finally {
+			if (statement != null)
+				statement.close();
+		}
+	}
 }

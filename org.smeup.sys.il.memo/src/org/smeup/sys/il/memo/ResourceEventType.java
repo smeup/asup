@@ -66,7 +66,23 @@ public enum ResourceEventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	POST_DELETE(70, "PostDelete", "POSTDLT");
+	POST_DELETE(70, "PostDelete", "POSTDLT"), /**
+	 * The '<em><b>Pre Rename</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PRE_RENAME_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PRE_RENAME(80, "PreRename", "PRERNM"), /**
+	 * The '<em><b>Post Rename</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #POST_RENAME_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	POST_RENAME(90, "PostRename", "POSTRNM");
 
 	/**
 	 * The '<em><b>Pre Save</b></em>' literal value.
@@ -144,6 +160,36 @@ public enum ResourceEventType implements Enumerator {
 	public static final int POST_DELETE_VALUE = 70;
 
 	/**
+	 * The '<em><b>Pre Rename</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Pre Rename</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PRE_RENAME
+	 * @model name="PreRename" literal="PRERNM"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PRE_RENAME_VALUE = 80;
+
+	/**
+	 * The '<em><b>Post Rename</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Post Rename</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #POST_RENAME
+	 * @model name="PostRename" literal="POSTRNM"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int POST_RENAME_VALUE = 90;
+
+	/**
 	 * An array of all the '<em><b>Resource Event Type</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -154,6 +200,8 @@ public enum ResourceEventType implements Enumerator {
 			POST_LOAD,
 			PRE_DELETE,
 			POST_DELETE,
+			PRE_RENAME,
+			POST_RENAME,
 		};
 
 	/**
@@ -205,6 +253,8 @@ public enum ResourceEventType implements Enumerator {
 			case POST_LOAD_VALUE: return POST_LOAD;
 			case PRE_DELETE_VALUE: return PRE_DELETE;
 			case POST_DELETE_VALUE: return POST_DELETE;
+			case PRE_RENAME_VALUE: return PRE_RENAME;
+			case POST_RENAME_VALUE: return POST_RENAME;
 		}
 		return null;
 	}

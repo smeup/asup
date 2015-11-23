@@ -39,6 +39,7 @@
         <eTypeArguments eTypeParameter="#//ResourceEvent/T"/>
       </eGenericType>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="additionalInfo" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResourceEventType">
     <eLiterals name="PreSave" value="10" literal="PRESAVE"/>
@@ -46,6 +47,8 @@
     <eLiterals name="PostLoad" value="30" literal="POSTLOAD"/>
     <eLiterals name="PreDelete" value="60" literal="PREDLT"/>
     <eLiterals name="PostDelete" value="70" literal="POSTDLT"/>
+    <eLiterals name="PreRename" value="80" literal="PRERNM"/>
+    <eLiterals name="PostRename" value="90" literal="POSTRNM"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceListener" abstract="true" interface="true">
     <eTypeParameters name="T">
@@ -246,6 +249,14 @@
         <eGenericType eTypeParameter="#//ResourceWriter/T"/>
       </eParameters>
       <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="rename">
+      <eParameters name="oldObject" lowerBound="1">
+        <eGenericType eTypeParameter="#//ResourceWriter/T"/>
+      </eParameters>
+      <eParameters name="newObject" lowerBound="1">
+        <eGenericType eTypeParameter="#//ResourceWriter/T"/>
+      </eParameters>
     </eOperations>
     <eGenericSuperTypes eClassifier="#//ResourceReader">
       <eTypeArguments eTypeParameter="#//ResourceWriter/T"/>
