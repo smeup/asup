@@ -11,9 +11,12 @@
  */
 package org.smeup.sys.os.scde.cron;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
-import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 import org.smeup.sys.os.scde.base.SCDEAbstractResourceReaderImpl;
 
@@ -42,8 +45,17 @@ public class CronResourceReaderImpl extends SCDEAbstractResourceReaderImpl {
 
 	@Override
 	public QObjectIterator<QScheduleEntry> find(String nameFilter) {
-		//TODO		
-		throw new UnsupportedOperationException();
+		
+		List<String> listCronTasks = cronWrapper.listCronTasks(nameFilter);
+		
+		List<QScheduleEntry> listScheduleEntry = new ArrayList<QScheduleEntry>();
+		
+		for (String cronTask: listCronTasks) {
+			listScheduleEntry.add(cronAdapter.getScheduleEntry(cronTask));
+		}
+		
+		return new ScheduleEntryIterator(listScheduleEntry);
+		
 	}
 
 	@Override
@@ -58,5 +70,37 @@ public class CronResourceReaderImpl extends SCDEAbstractResourceReaderImpl {
 		}
 		
 		return entry;		
+	}
+	
+	
+	private class ScheduleEntryIterator implements QObjectIterator<QScheduleEntry> {
+		
+		private Iterator<QScheduleEntry> entryIterator;
+
+		public ScheduleEntryIterator(List<QScheduleEntry> entryList) {
+			entryIterator = entryList.iterator();
+		}
+
+		@Override
+		public void close() {
+
+		}
+
+		@Override
+		public boolean hasNext() {
+			
+			return entryIterator.hasNext();
+		}
+
+		@Override
+		public QScheduleEntry next() {
+
+			return entryIterator.next();
+		}
+
+		@Override
+		public void remove() {
+			entryIterator.remove();			
+		}		
 	}
 }

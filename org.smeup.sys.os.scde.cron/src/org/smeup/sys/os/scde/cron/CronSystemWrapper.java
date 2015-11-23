@@ -33,20 +33,19 @@ public class CronSystemWrapper
 	public String lookupCronTask(String taskName) {
 		String result = null;
 		
-		List<String> listCronTasks = listCronTasks();
+		List<String> listCronTasks = listCronTasks(taskName);
 		
-		for (String task: listCronTasks) {
-			if (task.contains(taskName)) {
-				result = task;
-				break;
-			}
+		if (listCronTasks.size() > 0) {
+			result = listCronTasks.get(0);
 		}
 		
 		return result;
 	}
 	
-	
-	public List<String> listCronTasks() {
+	/*
+	 * "*" listing all cron tasks
+	 */
+	public List<String> listCronTasks(String nameFilter) {
 		
 		List<String> result = new ArrayList<String>();
 
@@ -62,9 +61,12 @@ public class CronSystemWrapper
 	        process.waitFor();			
 	        
 	        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
 			String line = null;
 			while ( (line = reader.readLine()) != null) {
-			   result.add(line);		   
+				if ("*".equalsIgnoreCase(nameFilter) || line.contains(nameFilter)) {
+					result.add(line);
+				}
 			}
         } catch (IOException e) {
 			// TODO Auto-generated catch block
