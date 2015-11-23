@@ -2,6 +2,7 @@ package org.smeup.sys.os.scde.cron;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class CronSystemWrapper
 	
 	public void removeCronTask(String taskName){
 		
-		executeBashScript("removeCron",
+		executeBashScript("removecron",
 						 taskName);
 	}
 	
@@ -54,30 +55,33 @@ public class CronSystemWrapper
 		parms.add("-l");
 		
 		ProcessBuilder pb = new ProcessBuilder(parms);
-        pb.inheritIO();
-        try {
+
+		try {
         	
 	        Process process = pb.start();
-	        process.waitFor();			
-	        
-	        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-			String line = null;
-			while ( (line = reader.readLine()) != null) {
-				if ("*".equalsIgnoreCase(nameFilter) || line.contains(nameFilter)) {
+		
+	        //Read out dir output
+	        InputStream is = process.getInputStream();
+	        InputStreamReader isr = new InputStreamReader(is);
+	        BufferedReader br = new BufferedReader(isr);
+	        String line;
+        
+	        while ((line = br.readLine()) != null) {	
+	        	
+	        	if (line.length() > 0 && ("*".equalsIgnoreCase(nameFilter) || line.contains(nameFilter))) {
 					result.add(line);
 				}
-			}
-        } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
+	        }
+        
+	        //Wait process exit	        
+	        process.waitFor();
 	        
-	    }
-		
+		} catch(IOException e){
+			e.printStackTrace();
+		} catch (InterruptedException e) {			
+			e.printStackTrace();
+		}
+
 		return result;
 		
 	}

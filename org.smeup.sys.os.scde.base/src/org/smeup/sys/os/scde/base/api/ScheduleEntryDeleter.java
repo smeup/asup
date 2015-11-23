@@ -30,15 +30,13 @@ public class ScheduleEntryDeleter {
 		
 		QResourceWriter<QScheduleEntry> resourceWriter = resourceManager.getResourceWriter(job, QScheduleEntry.class, job.getSystem().getSystemLibrary());
 
-		String entryName = jobName.asString();
+		String entryName = jobName.asString().trim();
 		
 		if (resourceWriter.exists(entryName)) {
 		
 			QScheduleEntry scheduleEntry = resourceWriter.lookup(entryName);
 			resourceWriter.delete(scheduleEntry);
-		}
-		
-		
+		}		
 	}
 
 	public static enum ENTRYNUMBEREnum {

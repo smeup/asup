@@ -58,11 +58,12 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 		scheduleEntry.setEntryNumber(entryNumber);
 		
 		cronWrapper.addCronTask(scheduleEntry.getName(),
+								scheduleEntry.getDescription(),
 								scheduleEntry.getEntryNumber(),
 								cronMap, 
 								scheduleEntry.getUser(), 
-								scheduleEntry.getCommandToRun(),
-								scheduleEntry.getDescription());	
+								scheduleEntry.getCommandToRun()
+								);	
 		
 		fireEvent(resourceEvent, ResourceEventType.POST_SAVE, scheduleEntry);
 	}

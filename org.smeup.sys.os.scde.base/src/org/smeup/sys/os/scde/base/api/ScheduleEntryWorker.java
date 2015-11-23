@@ -60,11 +60,26 @@ public class ScheduleEntryWorker {
 			objectWriter = outputManager.getDefaultWriter(job.getContext());
 			break;
 		}
+		
+		String strJobName = "";
+		
+		switch (jobName.asEnum()){
+		case ALL:
+				strJobName = "*";
+			break;
+		case OTHER:
+				strJobName = jobName.asData().asString();
+			break;
+		default:
+			break;
+		
+		}
+		
 
 		objectWriter.initialize();
 		
 		QResourceReader<QScheduleEntry> resourceReader = resourceManager.getResourceReader(job, QScheduleEntry.class, job.getSystem().getSystemLibrary());
-		QObjectIterator<QScheduleEntry> objectIterator = resourceReader.find(null);
+		QObjectIterator<QScheduleEntry> objectIterator = resourceReader.find(strJobName);
 
 		QObject qObject = null;
 		while (objectIterator.hasNext()) {
