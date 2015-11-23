@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
@@ -54,8 +53,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QResourceManager resourceManager;
 	@Inject
 	private QActivationGroupManager activationGroupManager;
-	@Inject
-	private QStrings strings;
+	
 
 	private Map<Thread, QResourceSetReader<QProgram>> programReaders;
 	private Map<String, QProgramStack> programStacks;

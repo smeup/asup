@@ -31,8 +31,7 @@
               name="*JOBD"
               value="*JOBD"/>
         </facets>
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -49,8 +48,7 @@
         <facets
             xsi:type="il-core:Format"
             type="SCMD"/>
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -77,8 +75,7 @@
               name="*MONTHLY"
               value="M"/>
         </facets>
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"

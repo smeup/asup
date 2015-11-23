@@ -201,7 +201,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables);
 
 			// required
-			if (data != null && data.isEmpty() && commandParameter.isRequired())
+			if ((data == null || (data != null && data.isEmpty())) && commandParameter.isRequired())
 				throw new OperatingSystemRuntimeException("Required parameter: " + commandParameter.getName());
 		}
 		return callableCommand;
