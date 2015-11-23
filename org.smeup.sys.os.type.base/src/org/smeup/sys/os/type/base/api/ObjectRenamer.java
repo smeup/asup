@@ -1,9 +1,15 @@
 package org.smeup.sys.os.type.base.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
@@ -17,6 +23,8 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QLogicalFile;
+import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
 import org.smeup.sys.os.type.QTypedObject;
@@ -65,9 +73,44 @@ public @Supported class ObjectRenamer {
 		}
 		
 		QTypedObject objToRename = (QTypedObject) resourceWriter.lookup(oldObjectName);
+		List<String> indexNames = findIndexesFor(objToRename);
 		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject) objToRename);
 		duplicatedObject.setName(newName);
 		resourceWriter.rename(objToRename, duplicatedObject);
+		adjustIndexes(resourceWriter, newName, objToRename, indexNames);
+	}
+
+
+	private void adjustIndexes(QResourceWriter<QTypedObject> resourceWriter,
+			String newName, QTypedObject objToRename, List<String> indexNames) {
+		for (String indexName : indexNames) {
+			QLogicalFile logical = (QLogicalFile) resourceWriter.lookup(indexName);
+			String creationStmt = logical.getCreationStatement();
+			if (creationStmt != null) {
+				String newSQL = creationStmt.replace(objToRename.getName(), newName);
+				logical.setCreationStatement(newSQL);
+			}
+			List<String> tables = logical.getTables();
+			tables.remove(objToRename.getName());
+			tables.add(newName);
+			resourceWriter.save(logical);
+		}
+	}
+
+
+	@SuppressWarnings("unchecked")
+	private List<String> findIndexesFor(QTypedObject objToRename) {
+		List<String> indexNames = new ArrayList<String>();
+		if (objToRename instanceof QPhysicalFile) {
+			QConnection connection = job.getContext().getAdapter(job, QConnection.class);
+			Table table = connection.getCatalogMetaData().getTable(objToRename.getLibrary(), objToRename.getName());
+			for (Index newIndex : (List<Index>) table.getIndex()) {
+				if (!newIndex.isSystemGenerated()) {
+					indexNames.add(newIndex.getName());
+				}
+			}
+		}
+		return indexNames;
 	}
 
 
