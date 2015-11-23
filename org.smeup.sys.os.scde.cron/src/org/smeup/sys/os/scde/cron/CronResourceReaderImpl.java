@@ -13,19 +13,31 @@ package org.smeup.sys.os.scde.cron;
 
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 import org.smeup.sys.os.scde.base.SCDEAbstractResourceReaderImpl;
 
 public class CronResourceReaderImpl extends SCDEAbstractResourceReaderImpl {
 	
+	protected CronSystemWrapper cronWrapper;
+	protected CronAdapter cronAdapter;
+
 	public CronResourceReaderImpl(QContextProvider contextProvider, String name) {
 		super(contextProvider, name);
+		
+		this.cronWrapper = new CronSystemWrapper();
+		this.cronAdapter = new CronAdapter();
 	}
 
 	@Override
 	public boolean exists(String name) {
-		//TODO
-		throw new UnsupportedOperationException();
+		
+		boolean result = false;
+		if (cronWrapper.lookupCronTask(name) != null) {
+			result = true;
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -36,7 +48,15 @@ public class CronResourceReaderImpl extends SCDEAbstractResourceReaderImpl {
 
 	@Override
 	public QScheduleEntry lookup(String name) {
-		//TODO
-		throw new UnsupportedOperationException();
+		
+		QScheduleEntry entry = null;
+		
+		String cronTask = cronWrapper.lookupCronTask(name);
+		
+		if (cronTask != null) {
+			entry = cronAdapter.getScheduleEntry(cronTask);
+		}
+		
+		return entry;		
 	}
 }

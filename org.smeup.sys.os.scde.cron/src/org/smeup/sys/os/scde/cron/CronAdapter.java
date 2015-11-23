@@ -13,7 +13,9 @@
 package org.smeup.sys.os.scde.cron;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
+import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
 public class CronAdapter {
@@ -109,12 +111,93 @@ public class CronAdapter {
 		return cronMask;	
 	}
 	
+	
+	/*
+	 * CronTask format:
+	 * 
+	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server taskID user command taskName taskDescription
+	 *
+	 */
+	@SuppressWarnings("unused")
 	public QScheduleEntry getScheduleEntry(String cronTask) {
 		
-		//TODO		
-		throw new UnsupportedOperationException();	
+		QScheduleEntry scheduleEntry = QOperativeSystemScheduleEntryFactory.eINSTANCE.createScheduleEntry();
+		
+		StringTokenizer tokenizer = new StringTokenizer(cronTask); 
+		String minute = tokenizer.nextToken();
+		String hour = tokenizer.nextToken();
+		String monthDay = tokenizer.nextToken();
+		String month = tokenizer.nextToken();
+		String weekDay = tokenizer.nextToken();			
+		String sh	= tokenizer.nextToken();
+		String bash = tokenizer.nextToken();
+		String server = tokenizer.nextToken();
+		String id = tokenizer.nextToken();
+		String user = tokenizer.nextToken();
+		String cmd = tokenizer.nextToken();
+		String name = tokenizer.nextToken();
+		String description = "";
+		if (tokenizer.hasMoreElements()) {
+			description = tokenizer.nextToken();
+		} 
+		
+		//TODO: manage month, monthDay and special values combinations
+
+		// Manage minute-hour		
+		if (minute.length() == 1) {
+			minute = "0" + minute;
+		}
+		
+		if (hour.length() == 1) {
+			hour = "0" + hour;
+		}
+		scheduleEntry.setScheduledTime(hour + minute + "00");
+	
+		//Manage dayOfWeek		
+		StringTokenizer dayOfWeekTokenizer= new StringTokenizer(weekDay, ",", false);
+		
+		String wDay = null;
+		while (dayOfWeekTokenizer.hasMoreElements()) {
+			
+			wDay = dayOfWeekTokenizer.nextToken();
+			
+			if("*".equalsIgnoreCase(wDay)) {
+				//ALL
+				scheduleEntry.getScheduledDay().add("8");
+				break;					
+			} else if("mon".equalsIgnoreCase(wDay)) {
+				//MON
+				scheduleEntry.getScheduledDay().add("1");
+			} else if("tue".equalsIgnoreCase(wDay)) {
+				// TUE
+				scheduleEntry.getScheduledDay().add("2");
+			} else if("wed".equalsIgnoreCase(wDay)) {
+				//WED
+				scheduleEntry.getScheduledDay().add("3");
+			} else if("thu".equalsIgnoreCase(wDay)) {
+				//THU
+				scheduleEntry.getScheduledDay().add("4");
+			} else if("fri".equalsIgnoreCase(wDay)) {
+				//FRI
+				scheduleEntry.getScheduledDay().add("5");
+			} else if("sat".equalsIgnoreCase(wDay)) {
+				//SAT
+				scheduleEntry.getScheduledDay().add("6");
+			} else if("sun".equalsIgnoreCase(wDay)) {
+				//SUN
+				scheduleEntry.getScheduledDay().add("8");
+			}
+		}
 		
 		
+		
+		scheduleEntry.setEntryNumber(id);
+		scheduleEntry.setUser(user);
+		scheduleEntry.setJobName(name);
+		scheduleEntry.setCommandToRun(cmd);
+		scheduleEntry.setDescription(description);
+
+		return scheduleEntry;
 	}
 
 }
