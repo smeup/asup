@@ -69,7 +69,8 @@ public class BaseExceptionManagerImpl implements QExceptionManager {
 	
 	private QResourceReader<QMessageFile> reader(QJob job, String messageFileLib) {
 		try {
-			Scope libraryScope = Scope.valueOf(messageFileLib);
+//			Scope libraryScope = Scope.valueOf(messageFileLib);
+			Scope libraryScope = Scope.get(messageFileLib);
 			return resourceManager.getResourceReader(job, QMessageFile.class, libraryScope);
 		} catch (Exception e) {
 			return resourceManager.getResourceReader(job, QMessageFile.class, messageFileLib);
