@@ -23,7 +23,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
-@Program(name = "WRKJOBSCDE")
+@Program(name = "QWCCWRYC")
 public class ScheduleEntryWorker {
 	
 	@Inject
