@@ -21,11 +21,9 @@ import org.smeup.sys.il.core.meta.QDefault;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
-import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QMultipleDataDef;
-import org.smeup.sys.il.data.def.QPointerDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.ExpressionType;
 import org.smeup.sys.il.expr.QAssignmentExpression;
@@ -123,23 +121,7 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 			return;
 
 		QCompoundTermExpression compoundTermExpression = (QCompoundTermExpression) value;
-		if (compoundTermExpression.getValue().toLowerCase().equals("%addr")) {
-
-			if (!dataTerm.getDefinition().getDataClass().equals(QPointer.class))
-				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
-
-			QPointerDef pointerDef = (QPointerDef) dataTerm.getDefinition();
-			if (pointerDef.getTarget() != null)
-				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
-
-			QDataTerm<?> dataValue = getDataValue(value);
-			if (dataValue == null)
-				throw exceptionManager.prepareException(job, RPJCompilerMessage.AS00108, dataTerm);
-
-			pointerDef.setTarget(dataValue.getName());
-
-			default_.clear();
-		} else if (compoundTermExpression.getValue().toUpperCase().equals("*ALL")) {
+		if (compoundTermExpression.getValue().toUpperCase().equals("*ALL")) {
 			"".toCharArray();
 			// TODO calculate on @PostConstruct
 		} else {

@@ -27,8 +27,8 @@ import org.smeup.sys.il.data.def.DatetimeType;
 public @interface DataDef {
 
 	// common
+	String based() default "";	
 	String value() default "";
-	String target() default "";
 	String[] formulas() default {};
 	String externalName() default "";
 			
@@ -56,5 +56,4 @@ public @interface DataDef {
 
 	// binary
 	BinaryType binaryType() default BinaryType.BYTE;
-
 }
