@@ -665,8 +665,9 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 			block.statements().add(returnSt);
 		} else {
 			// dummy condition
+			
 			IfStatement ifSt = ast.newIfStatement();
-			ifSt.setExpression(ast.newBooleanLiteral(true));
+			ifSt.setExpression(ast.newName("qRPJ.TRUE"));			
 			ifSt.setThenStatement(returnSt);
 
 			block.statements().add(ifSt);
