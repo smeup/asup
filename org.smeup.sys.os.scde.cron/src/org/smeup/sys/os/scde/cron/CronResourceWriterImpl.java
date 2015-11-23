@@ -90,4 +90,9 @@ public class CronResourceWriterImpl extends CronResourceReaderImpl implements QR
 
 	  return data.substring(beginIndex, endIndex);	  
 	}
+
+	@Override
+	public void rename(QScheduleEntry oldObject, QScheduleEntry newObject) {
+		throw new UnsupportedOperationException();
+	}
 }

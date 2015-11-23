@@ -146,13 +146,22 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	int RESOURCE_EVENT__RESOURCE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Additional Info</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_EVENT__ADDITIONAL_INFO = 3;
+
+	/**
 	 * The number of structural features of the '<em>Resource Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_EVENT_FEATURE_COUNT = 3;
+	int RESOURCE_EVENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}' class.
@@ -484,6 +493,17 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 	EReference getResourceEvent_Resource();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo <em>Additional Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Additional Info</em>'.
+	 * @see org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo()
+	 * @see #getResourceEvent()
+	 * @generated
+	 */
+	EReference getResourceEvent_AdditionalInfo();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -666,6 +686,13 @@ public interface QIntegratedLanguageMemoryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE_EVENT__RESOURCE = eINSTANCE.getResourceEvent_Resource();
+		/**
+		 * The meta object literal for the '<em><b>Additional Info</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE_EVENT__ADDITIONAL_INFO = eINSTANCE.getResourceEvent_AdditionalInfo();
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.memo.QResourceListener <em>Resource Listener</em>}' class.
 		 * <!-- begin-user-doc -->

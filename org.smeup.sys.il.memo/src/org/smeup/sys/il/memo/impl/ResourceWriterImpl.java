@@ -71,4 +71,15 @@ public abstract class ResourceWriterImpl<T extends QObjectNameable> extends Reso
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void rename(T oldObject, T newObject) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
 } // QResourceWriterImpl

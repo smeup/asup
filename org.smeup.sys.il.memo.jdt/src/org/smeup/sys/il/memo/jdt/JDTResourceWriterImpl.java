@@ -33,18 +33,23 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 
 	@Override
 	public synchronized void delete(T object) {
-
-		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName());
-		if (entry == null)
-			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
-
 		try {
 			fireEvent(resourceEvent, ResourceEventType.PRE_DELETE, object);
-			sourceManager.removeEntry(getContextProvider().getContext(), entry);
+
+			doDelete(object);
+			
 			fireEvent(resourceEvent, ResourceEventType.POST_DELETE, object);
 		} catch (IOException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
+	}
+
+	private void doDelete(T object) throws IOException {
+		QSourceEntry entry = sourceManager.getObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName());
+		if (entry == null)
+			throw new IntegratedLanguageMemoryRuntimeException("Object " + object.getName() + " not found");
+
+		sourceManager.removeEntry(getContextProvider().getContext(), entry);
 	}
 
 	@Override
@@ -54,19 +59,37 @@ public class JDTResourceWriterImpl<T extends QObjectNameable> extends JDTResourc
 
 	@Override
 	public synchronized void save(T object, boolean replace) {
-
 		try {
-
 			fireEvent(resourceEvent, ResourceEventType.PRE_SAVE, object);
 			
-			ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
-			emfConverter.writeToStream((EObject) object, outpuStream);
-
-			sourceManager.createObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
+			doSave(object, replace);
 			
 			fireEvent(resourceEvent, ResourceEventType.POST_SAVE, object);
 		} catch (IOException e) {
 			throw new IntegratedLanguageMemoryRuntimeException(e);
 		}
+	}
+
+	private void doSave(T object, boolean replace) throws IOException {
+		ByteArrayOutputStream outpuStream = new ByteArrayOutputStream();
+		emfConverter.writeToStream((EObject) object, outpuStream);
+
+		sourceManager.createObjectEntry(getContextProvider().getContext(), getName(), klass, object.getName(), replace, new ByteArrayInputStream(outpuStream.toByteArray()));
+	}
+
+	@Override
+	public void rename(T oldObject, T newObject) {
+		try {
+			resourceEvent.setAdditionalInfo(newObject);
+			fireEvent(resourceEvent, ResourceEventType.PRE_RENAME, oldObject);
+			
+			doSave(newObject, true);
+			doDelete(oldObject);
+
+			fireEvent(resourceEvent, ResourceEventType.POST_RENAME, oldObject);
+		} catch (IOException e) {
+			throw new IntegratedLanguageMemoryRuntimeException(e);
+		}
+		
 	}
 }

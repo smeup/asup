@@ -11,6 +11,7 @@
  */
 package org.smeup.sys.db.syntax.mysql;
 
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.schema.helper.SQLObjectNameHelper;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
@@ -58,6 +59,18 @@ public class MySQLDefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	@Override
 	public String copyTableData(Table tableFrom, Table tableTo,
 			boolean isCreateRelativeRecordNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String renameTable(Table table, String newName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String renameIndex(Index index, String newName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
