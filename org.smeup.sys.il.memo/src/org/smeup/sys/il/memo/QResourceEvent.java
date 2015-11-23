@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.memo;
 
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
 
 /**
@@ -19,6 +20,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *   <li>{@link org.smeup.sys.il.memo.QResourceEvent#getSource <em>Source</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.QResourceEvent#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.QResourceEvent#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo <em>Additional Info</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,5 +116,31 @@ public interface QResourceEvent<T extends QObjectNameable> {
 	 * @generated
 	 */
 	void setResource(QResource<T> value);
+
+	/**
+	 * Returns the value of the '<em><b>Additional Info</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Additional Info</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Additional Info</em>' reference.
+	 * @see #setAdditionalInfo(QObject)
+	 * @see org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage#getResourceEvent_AdditionalInfo()
+	 * @model
+	 * @generated
+	 */
+	QObject getAdditionalInfo();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.il.memo.QResourceEvent#getAdditionalInfo <em>Additional Info</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Additional Info</em>' reference.
+	 * @see #getAdditionalInfo()
+	 * @generated
+	 */
+	void setAdditionalInfo(QObject value);
 
 } // QResourceEvent

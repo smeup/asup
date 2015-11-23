@@ -2,6 +2,8 @@ package org.smeup.sys.os.type.base.api;
 
 import javax.inject.Inject;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.data.QCharacter;
@@ -17,6 +19,7 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.type.QType;
 import org.smeup.sys.os.type.QTypeRegistry;
+import org.smeup.sys.os.type.QTypedObject;
 import org.smeup.sys.os.type.base.api.tools.ObjectNameAndLib;
 
 @Program(name = "QLIRNOBJ")
@@ -43,14 +46,13 @@ public @Supported class ObjectRenamer {
 					 @Supported @DataDef(length = 7) QCharacter objectType, 
 					 @Supported @DataDef(length = 10) QCharacter newObject,
 			         @Unsupported @DataDef(length = 10) QEnum<ASPDEVICEEnum, QCharacter> aSPDevice, @Unsupported @DataDef(length = 1) QEnum<SYSTEMEnum, QCharacter> system) {
-
 		QType<?> type = type(objectType);
 
 		if (type == null) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2160, new String[] {objectType.trimR()});
 		}
 
-		QResourceWriter<?> resourceWriter = resourceWriter(type, object);
+		QResourceWriter<QTypedObject> resourceWriter = resourceWriter(type, object);
 
 		String oldObjectName = object.name.trimR();
 		if (!resourceWriter.exists(oldObjectName)) {
@@ -62,22 +64,25 @@ public @Supported class ObjectRenamer {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2112, new String[] {newName, object.library.asData().trimR(), objectType.trimR()});
 		}
 		
-		// QObjectNameable qObject = resourceWriter.lookup(oldObjectName);
-		//
-		// resourceWriter.save(qObject);
+		QTypedObject objToRename = (QTypedObject) resourceWriter.lookup(oldObjectName);
+		QTypedObject duplicatedObject = (QTypedObject) EcoreUtil.copy((EObject) objToRename);
+		duplicatedObject.setName(newName);
+		resourceWriter.rename(objToRename, duplicatedObject);
 	}
 
-	public QResourceWriter<?> resourceWriter(QType<?> type, ObjectNameAndLib object) {
-		QResourceWriter<?> resourceReader = null;
+
+	@SuppressWarnings("unchecked")
+	public QResourceWriter<QTypedObject> resourceWriter(QType<?> type, ObjectNameAndLib object) {
+		QResourceWriter<QTypedObject> resourceReader = null;
 		switch (object.library.asEnum()) {
 		case CURLIB:
-			resourceReader = resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
+			resourceReader = (QResourceWriter<QTypedObject>) resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.CURRENT_LIBRARY);
 			break;
 		case LIBL:
-			resourceReader = resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.LIBRARY_LIST);
+			resourceReader = (QResourceWriter<QTypedObject>) resourceManager.getResourceWriter(job, type.getTypedClass(), Scope.LIBRARY_LIST);
 			break;
 		case OTHER:
-			resourceReader = resourceManager.getResourceWriter(job, type.getTypedClass(), object.library.asData().trimR());
+			resourceReader = (QResourceWriter<QTypedObject>) resourceManager.getResourceWriter(job, type.getTypedClass(), object.library.asData().trimR());
 			break;
 		}
 		return resourceReader;

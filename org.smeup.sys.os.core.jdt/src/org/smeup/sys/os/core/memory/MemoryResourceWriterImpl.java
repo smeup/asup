@@ -49,4 +49,9 @@ public class MemoryResourceWriterImpl <T extends QObjectNameable> extends Memory
 		}
 	}
 
+	@Override
+	public void rename(T oldObject, T newObject) {
+		// TODO Auto-generated method stub
+	}
+
 }

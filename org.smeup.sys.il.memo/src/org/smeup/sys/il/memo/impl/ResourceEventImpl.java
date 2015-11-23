@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.il.memo.QResource;
@@ -28,6 +29,7 @@ import org.smeup.sys.il.memo.ResourceEventType;
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceEventImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceEventImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.memo.impl.ResourceEventImpl#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.smeup.sys.il.memo.impl.ResourceEventImpl#getAdditionalInfo <em>Additional Info</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +70,16 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 	 * @ordered
 	 */
 	protected QResource<T> resource;
+
+	/**
+	 * The cached value of the '{@link #getAdditionalInfo() <em>Additional Info</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAdditionalInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected QObject additionalInfo;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -184,6 +196,44 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QObject getAdditionalInfo() {
+		if (additionalInfo != null && ((EObject)additionalInfo).eIsProxy()) {
+			InternalEObject oldAdditionalInfo = (InternalEObject)additionalInfo;
+			additionalInfo = (QObject)eResolveProxy(oldAdditionalInfo);
+			if (additionalInfo != oldAdditionalInfo) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO, oldAdditionalInfo, additionalInfo));
+			}
+		}
+		return additionalInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QObject basicGetAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAdditionalInfo(QObject newAdditionalInfo) {
+		QObject oldAdditionalInfo = additionalInfo;
+		additionalInfo = newAdditionalInfo;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO, oldAdditionalInfo, additionalInfo));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -198,6 +248,9 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__RESOURCE:
 				if (resolve) return getResource();
 				return basicGetResource();
+			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO:
+				if (resolve) return getAdditionalInfo();
+				return basicGetAdditionalInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -219,6 +272,9 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__RESOURCE:
 				setResource((QResource<T>)newValue);
 				return;
+			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO:
+				setAdditionalInfo((QObject)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -239,6 +295,9 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__RESOURCE:
 				setResource((QResource<T>)null);
 				return;
+			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO:
+				setAdditionalInfo((QObject)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -256,6 +315,8 @@ public class ResourceEventImpl<T extends QObjectNameable> extends MinimalEObject
 				return type != TYPE_EDEFAULT;
 			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__RESOURCE:
 				return resource != null;
+			case QIntegratedLanguageMemoryPackage.RESOURCE_EVENT__ADDITIONAL_INFO:
+				return additionalInfo != null;
 		}
 		return super.eIsSet(featureID);
 	}

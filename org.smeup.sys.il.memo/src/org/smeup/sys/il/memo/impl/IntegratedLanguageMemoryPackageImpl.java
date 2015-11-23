@@ -247,6 +247,15 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getResourceEvent_AdditionalInfo() {
+		return (EReference)resourceEventEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResourceListener() {
 		return resourceListenerEClass;
 	}
@@ -369,6 +378,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		createEReference(resourceEventEClass, RESOURCE_EVENT__SOURCE);
 		createEAttribute(resourceEventEClass, RESOURCE_EVENT__TYPE);
 		createEReference(resourceEventEClass, RESOURCE_EVENT__RESOURCE);
+		createEReference(resourceEventEClass, RESOURCE_EVENT__ADDITIONAL_INFO);
 
 		resourceListenerEClass = createEClass(RESOURCE_LISTENER);
 
@@ -485,6 +495,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g2 = createEGenericType(resourceEventEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getResourceEvent_Resource(), g1, null, "resource", null, 0, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResourceEvent_AdditionalInfo(), theIntegratedLanguageCorePackage.getObject(), null, "additionalInfo", null, 0, 1, QResourceEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceListenerEClass, QResourceListener.class, "ResourceListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -661,6 +672,12 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEParameter(op, g1, "object", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(resourceWriterEClass, null, "rename", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(resourceWriterEClass_T);
+		addEParameter(op, g1, "oldObject", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(resourceWriterEClass_T);
+		addEParameter(op, g1, "newObject", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(resourceEventTypeEEnum, ResourceEventType.class, "ResourceEventType");
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_SAVE);
@@ -668,6 +685,8 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_LOAD);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_DELETE);
 		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_DELETE);
+		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.PRE_RENAME);
+		addEEnumLiteral(resourceEventTypeEEnum, ResourceEventType.POST_RENAME);
 
 		initEEnum(scopeEEnum, Scope.class, "Scope");
 		addEEnumLiteral(scopeEEnum, Scope.ALL);

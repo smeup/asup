@@ -25,6 +25,8 @@ import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.db.core.QIndexDef;
 import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
+import org.smeup.sys.il.core.QObject;
+import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.memo.QResourceEvent;
@@ -57,8 +59,11 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		if (!(file instanceof QDatabaseFile))
 			return;
 
-		if (event.getType() != ResourceEventType.PRE_SAVE && event.getType() != ResourceEventType.PRE_DELETE)
+		if (event.getType() != ResourceEventType.PRE_SAVE && 
+			event.getType() != ResourceEventType.PRE_DELETE &&
+			event.getType() != ResourceEventType.PRE_RENAME) {
 			return;
+		}
 
 		QContextProvider contextProvider = event.getResource().getContextProvider();
 
@@ -72,22 +77,34 @@ public class BaseFileListenerImpl implements QResourceListener<QFile> {
 		if (schema == null)
 			throw new OperatingSystemRuntimeException("Schema not found: " + file.getLibrary());
 
-		switch (event.getType()) {
-		case PRE_SAVE:
-			try {
+		try {
+			switch (event.getType()) {
+			case PRE_SAVE:
 				createFile(jobContext, file, connection, schema);
-			} catch (SQLException e) {
-				throw new OperatingSystemRuntimeException(e);
-			}
-			break;
-		case PRE_DELETE:
-			try {
+				break;
+			case PRE_RENAME:
+				renameFile(jobContext, file, connection, schema, event.getAdditionalInfo());
+				break;			
+			case PRE_DELETE:
 				deleteFile(jobContext, file, connection, schema);
-			} catch (SQLException e) {
-				throw new OperatingSystemRuntimeException(e);
+			default:
+				break;
 			}
-		default:
-			break;
+		} catch (SQLException e) {
+			throw new OperatingSystemRuntimeException(e);
+		}
+	}
+
+	private void renameFile(QContext jobContext, QFile file, QConnection connection, Schema schema, QObject newFile) throws SQLException {
+		if (file instanceof QPhysicalFile) {
+			Table table = connection.getCatalogMetaData().getTable(schema.getName(), file.getName());
+			databaseManager.renameTable(connection, table, ((QObjectNameable)newFile).getName());
+		} else if (file instanceof QLogicalFile) {
+			QLogicalFile logicalFile = (QLogicalFile) file;
+			Index index = connection.getCatalogMetaData().getIndex(schema.getName(), logicalFile.getTables().get(0), file.getName());
+			if (index != null) {
+				databaseManager.renameIndex(connection, index, ((QObjectNameable)newFile).getName());
+			}
 		}
 	}
 

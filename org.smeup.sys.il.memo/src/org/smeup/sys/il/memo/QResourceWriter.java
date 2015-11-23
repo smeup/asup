@@ -40,4 +40,12 @@ public interface QResourceWriter<T extends QObjectNameable> extends QResourceRea
 	 */
 	void save(T object, boolean replace);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model oldObjectRequired="true" newObjectRequired="true"
+	 * @generated
+	 */
+	void rename(T oldObject, T newObject);
+
 } // QResourceWriter
