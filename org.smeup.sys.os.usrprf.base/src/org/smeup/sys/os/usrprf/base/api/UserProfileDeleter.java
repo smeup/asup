@@ -46,7 +46,7 @@ public @Supported class UserProfileDeleter {
 			QEnum<PRIMARYGROUPOPTIONEnum, PRIMARYGROUPOPTION> primaryGroupOption,
 			@DataDef(length = 10) QEnum<EIMASSOCIATIONEnum, QCharacter> eIMAssociation) {
 		
-		QResourceWriter<QUserProfile> resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, "QSYS");
+		QResourceWriter<QUserProfile> resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
 		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
 		if (qUserProfile == null) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF2204, new String[]{userProfile.trimR()});

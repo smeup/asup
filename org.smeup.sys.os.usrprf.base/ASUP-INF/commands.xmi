@@ -5151,7 +5151,7 @@
       text="Work with User Profiles"
       allowBatch="false"
       classCMD="true"
-      program="QMNWRKXX"
+      program="QMNWRKUSR"
       status="POS">
     <parameters
         allowVariable="true"
