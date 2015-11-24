@@ -3359,13 +3359,11 @@
       xsi:type="os-cmd:Command"
       name="DLTUSRPRF"
       text="Delete User Profile"
-      program="QSYDLUP"
-      status="TODO">
+      program="QSYDLUP">
     <parameters
         allowVariable="true"
         name="USRPRF"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="userProfile">
         <facets
