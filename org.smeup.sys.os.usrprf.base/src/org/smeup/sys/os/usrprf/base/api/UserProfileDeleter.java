@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.usrprf.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -18,11 +20,24 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.usrprf.QUserProfile;
 
 @Program(name = "QSYDLUP")
 public @Supported class UserProfileDeleter {
 	public static enum QCPFMSG {
+		CPF2204     //Non è stato trovato il profilo utente &1
 	}
+	
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QJob job;
+	@Inject
+	private QExceptionManager exceptionManager;
 
 	@Main
 	public void main(
@@ -30,8 +45,17 @@ public @Supported class UserProfileDeleter {
 			QEnum<OWNEDOBJECTOPTIONEnum, OWNEDOBJECTOPTION> ownedObjectOption,
 			QEnum<PRIMARYGROUPOPTIONEnum, PRIMARYGROUPOPTION> primaryGroupOption,
 			@DataDef(length = 10) QEnum<EIMASSOCIATIONEnum, QCharacter> eIMAssociation) {
+		
+		QResourceWriter<QUserProfile> resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, "QSYS");
+		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
+		if (qUserProfile == null) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2204, new String[]{userProfile.trimR()});
+		}
+		
+		resourceWriter.delete(qUserProfile);
 	}
 
+	
 	public static class OWNEDOBJECTOPTION extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 7)
