@@ -13,7 +13,7 @@
       xsi:type="os-cmd:Command"
       name="CHGUSRPRF"
       text="Change User Profile"
-      program="QSYUP">
+      program="QASCHGUS">
     <parameters
         allowVariable="true"
         name="USRPRF"
@@ -1748,7 +1748,7 @@
       name="CRTUSRPRF"
       text="Create User Profile"
       classCMD="true"
-      program="QSYUP"
+      program="QASCRTUS"
       status="TODO">
     <parameters
         allowVariable="true"
@@ -3359,13 +3359,11 @@
       xsi:type="os-cmd:Command"
       name="DLTUSRPRF"
       text="Delete User Profile"
-      program="QSYDLUP"
-      status="TODO">
+      program="QSYDLUP">
     <parameters
         allowVariable="true"
         name="USRPRF"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="userProfile">
         <facets
@@ -5153,7 +5151,7 @@
       text="Work with User Profiles"
       allowBatch="false"
       classCMD="true"
-      program="QMNWRKXX"
+      program="QMNWRKUSR"
       status="POS">
     <parameters
         allowVariable="true"

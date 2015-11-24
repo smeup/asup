@@ -1,5 +1,7 @@
 package org.smeup.sys.os.usrprf.base.api;
 
+import javax.inject.Inject;
+
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.il.data.QBinary;
@@ -13,18 +15,36 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceWriter;
+import org.smeup.sys.os.core.QExceptionManager;
+import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobLogManager;
+import org.smeup.sys.os.usrprf.QOperatingSystemUserProfileFactory;
+import org.smeup.sys.os.usrprf.QUserProfile;
 import org.smeup.sys.os.usrprf.base.api.tools.StatusEnum;
 import org.smeup.sys.os.usrprf.base.api.tools.UserClassEnum;
 
-@Program(name = "QSYUP")
+@Program(name = "QASCRTUS")
 public @Supported class UserProfileCreator {
 	public static enum QCPFMSG {
+		CPF2214, //Il profilo utente &1 esiste già
 	}
+	
+	@Inject
+	private QResourceManager resourceManager;
+	@Inject
+	private QJob job;
+	@Inject
+	private QJobLogManager jobLogManager;
+	@Inject
+	private QExceptionManager exceptionManager;
 
 	@Main
 	public void main(@Supported @DataDef(length = 10) QCharacter userProfile, @ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
 			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired, @Supported @DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,
-			@Supported @DataDef(binaryType = BinaryType.SHORT) QEnum<UserClassEnum, QBinary> userClass, @DataDef(length = 1) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel,
+			@Supported @DataDef(binaryType = BinaryType.SHORT) QEnum<UserClassEnum, QBinary> userClass, 
+			@DataDef(length = 1) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel,
 			@DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary,
 			@Supported @DataDef(qualified = true) QEnum<INITIALPROGRAMTOCALLEnum, INITIALPROGRAMTOCALL> initialProgramToCall,
 			@DataDef(qualified = true) QEnum<INITIALMENUEnum, INITIALMENU> initialMenu, @ToDo @DataDef(length = 1) QEnum<LIMITCAPABILITIESEnum, QCharacter> limitCapabilities,
@@ -51,6 +71,28 @@ public @Supported class UserProfileCreator {
 			@DataDef(dimension = 7, length = 10) QScroller<QEnum<USEROPTIONSEnum, QCharacter>> userOptions, @DataDef(precision = 10) QEnum<USERIDNUMBEREnum, QDecimal> userIDNumber,
 			@DataDef(precision = 10) QEnum<GROUPIDNUMBEREnum, QDecimal> groupIDNumber, @DataDef(length = 2048) QEnum<HOMEDIRECTORYEnum, QCharacter> homeDirectory,
 			QEnum<EIMASSOCIATIONEnum, EIMASSOCIATION> eIMAssociation, @ToDo @DataDef(length = 10) QEnum<AUTHORITYEnum, QCharacter> authority) {
+		
+		QResourceWriter<QUserProfile> resourceWriter = null;
+		resourceWriter = resourceManager.getResourceWriter(job, QUserProfile.class, job.getSystem().getSystemLibrary());
+
+		QUserProfile qUserProfile = resourceWriter.lookup(userProfile.trimR());
+		if (qUserProfile != null) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2214, new String[] { userProfile.trimR() });
+		}
+
+		qUserProfile = QOperatingSystemUserProfileFactory.eINSTANCE.createUserProfile();
+		qUserProfile.setName(userProfile.trimR());
+		
+		switch(textDescription.asEnum()) {
+		case OTHER:
+			qUserProfile.setText(textDescription.asData().trimR());
+			break;
+		case BLANK:
+			qUserProfile.setText("");
+		}
+		
+		resourceWriter.save(qUserProfile);
+		jobLogManager.info(job, "Created user " + userProfile.trimR());
 	}
 
 	public static enum USERPASSWORDEnum {
@@ -119,7 +161,8 @@ public @Supported class UserProfileCreator {
 
 	public static enum TEXTDESCRIPTIONEnum {
 		@Special(value = "")
-		BLANK, OTHER
+		BLANK, 
+		OTHER
 	}
 
 	public static enum SPECIALAUTHORITYEnum {

@@ -34,7 +34,7 @@ import org.smeup.sys.os.usrprf.QUserProfile;
 import org.smeup.sys.os.usrprf.base.api.tools.StatusEnum;
 import org.smeup.sys.os.usrprf.base.api.tools.UserClassEnum;
 
-@Program(name = "QSYUP")
+@Program(name = "QASCHGUS")
 public class UserProfileChanger {
 
 	@Inject

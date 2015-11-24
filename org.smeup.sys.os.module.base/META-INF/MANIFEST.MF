@@ -5,5 +5,8 @@ Bundle-SymbolicName: org.smeup.sys.os.module.base
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.smeup.sys.os.module;visibility:=reexport
-Export-Package: org.smeup.sys.os.module.base
+Require-Bundle: org.smeup.sys.os.module,
+ org.smeup.sys.dk.core,
+ org.smeup.sys.il.core
+Export-Package: org.smeup.sys.os.module.base,
+ org.smeup.sys.os.module.base.api
