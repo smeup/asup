@@ -1,5 +1,8 @@
 package org.smeup.sys.os.scde.base.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
@@ -64,7 +67,8 @@ public @ToDo class ScheduleEntryCreator {
 			
 			scheduleEntry.getScheduledDay().add(enumElem.asData().trimR());	
 		}
-
+				
+		List<String> omitDatesList = new ArrayList<String>();
 		for (QEnum<OMITDATEEnum, QDatetime> omitDate: omitDates) {
 			if (omitDate.isEmpty())
 				break; // TODO or continue?
@@ -72,15 +76,64 @@ public @ToDo class ScheduleEntryCreator {
 			switch (omitDate.asEnum()) {
 			case NONE:
 				break;
-			case OTHER:
-				System.out.println(omitDate.asData().asTime());
+			case OTHER:	
+				omitDatesList.add(omitDate.asData().toString());
 				break;
 			}
 		}
 		
+		List<String> relativeDays = new ArrayList<String>();
+		
+		for (QEnum<RELATIVEDAYOFMONTHEnum, QCharacter> relativeDay :relativeDayOfMonth) {
+			if (relativeDay.isEmpty())
+				break;
+		
+			switch(relativeDay.asEnum()) {
+			case LAST:
+					relativeDays.add(relativeDay.asData().asString());
+				break;
+			case NUM_1:
+				relativeDays.add("1");
+				break;
+			case NUM_2:
+				relativeDays.add("2");
+				break;
+			case NUM_3:
+				relativeDays.add("3");
+				break;
+			case NUM_4:
+				relativeDays.add("4");
+				break;
+			case NUM_5:
+				relativeDays.add("5");
+				break;
+			default:
+				break;
+			}
+		}
+
 		scheduleEntry.setScheduledTime(scheduleTime.asData().toString());
+		
 		scheduleEntry.setCommandToRun(commandToRun.asString().trim());
-		scheduleEntry.setUser(user.asData().asString().trim());
+		
+		String userName = "";
+		switch(user.asEnum()) {
+		case CURRENT:
+				userName = job.getJobUser();
+			break;
+		case JOBD:
+				//TODO: estrarre user dalla jobd (per ora come CURRENT)
+			userName = job.getJobUser();
+			break;
+		case OTHER:
+				userName = user.asData().asString(); 
+			break;
+		default:
+			break;
+			
+		}		
+		scheduleEntry.setUser(userName);
+		
 		scheduleEntry.setDescription(textDescription.asData().asString().trim());
 
 

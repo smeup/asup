@@ -198,7 +198,8 @@
               name="*LAST"
               value="6"/>
           <elements
-              name="1"/>
+              name="1"
+              value=""/>
           <elements
               name="2"/>
           <elements
