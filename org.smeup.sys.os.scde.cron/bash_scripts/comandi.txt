@@ -1,11 +1,26 @@
 - Edita tabella cron: crontab -e
 - Lista tesk schedulati: crontab -l
 - Visualizza log cron tab:   grep CRON /var/log/syslog
+- Chiamata a servlet rest con comano curl:
+ 
+ curl --data "user=FORDAR&fun=F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL))" http://127.0.0.1:8282/WSRestService
 
-- Esempio aggiunta task:  ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM
-- Esempio rimozione task:  ./removecron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM
+Chiamata script per registrazione crontask:
+
+*** addcron ***
+
+	Parametri:	1) Maschera cron
+				2) Server
+				3) Id task
+				4) Utente
+				5) Comando (tra doppi apici)
+				6) Nome task				
+				7) Descrizione task
+	Esempio: ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM DESCRIPTION
+
+*** removecron ***
+
+	Parametri: 1) Nome task o Id task 	
+ 	
+ 	Esempio:  ./removecron WRKOBJ_PGM
  
- 
- Nuovo formato:
- 
- * * * * * curl --data "user=FORDAR&fun=WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" http://127.0.0.1:8282/SLWSService
