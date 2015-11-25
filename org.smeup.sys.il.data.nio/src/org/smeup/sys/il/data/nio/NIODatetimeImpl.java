@@ -11,8 +11,12 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
@@ -103,6 +107,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		case TIME:
 			break;
 		case TIME_STAMP:
+			length = 26;
 			break;
 		}
 
@@ -269,8 +274,20 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	@Override
 	public void time() {
-		// TODO Auto-generated method stub
-		
+		Calendar CALENDAR = Calendar.getInstance();
+		switch (_type) {
+		case DATE:
+			// TODO
+			break;
+		case TIME:
+			// TODO
+			break;
+		case TIME_STAMP:
+//			String timeStamp= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(CALENDAR.getTime());
+			String timeStamp= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz").format(CALENDAR.getTime());
+			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), timeStamp.getBytes(), true, getFiller());
+			break;
+		}
 	}
 
 	@Override
