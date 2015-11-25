@@ -19,7 +19,7 @@ public class CronSystemWrapper
 						  webServiceAddress,
 						  taskID,
 						  user,
-						  command,
+						  "\"" + command + "\"",
 						  taskName, 
 						  taskDescription
 						  );

@@ -5,3 +5,7 @@
 - Esempio aggiunta task:  ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM
 - Esempio rimozione task:  ./removecron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM
  
+ 
+ Nuovo formato:
+ 
+ * * * * * curl --data "user=FORDAR&fun=WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" http://127.0.0.1:8282/SLWSService
