@@ -56,6 +56,7 @@ public class CronSystemWrapper
 		
 		ProcessBuilder pb = new ProcessBuilder(parms);
 
+		BufferedReader br = null;
 		try {
         	
 	        Process process = pb.start();
@@ -63,7 +64,7 @@ public class CronSystemWrapper
 	        //Read out dir output
 	        InputStream is = process.getInputStream();
 	        InputStreamReader isr = new InputStreamReader(is);
-	        BufferedReader br = new BufferedReader(isr);
+	        br = new BufferedReader(isr);
 	        String line;
         
 	        while ((line = br.readLine()) != null) {	
@@ -81,7 +82,16 @@ public class CronSystemWrapper
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}
-
+		finally {
+			if(br != null)
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		
 		return result;
 		
 	}
