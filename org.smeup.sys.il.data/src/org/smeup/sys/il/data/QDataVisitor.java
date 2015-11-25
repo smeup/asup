@@ -50,13 +50,6 @@ public interface QDataVisitor {
 	 * @model dataRequired="true"
 	 * @generated
 	 */
-	void endVisit(QBoolean data);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model dataRequired="true"
-	 * @generated
-	 */
 	void endVisit(QCharacter data);
 
 	/**
@@ -177,13 +170,6 @@ public interface QDataVisitor {
 	 * @generated
 	 */
 	boolean visit(QBinary data);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model dataRequired="true"
-	 * @generated
-	 */
-	boolean visit(QBoolean data);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

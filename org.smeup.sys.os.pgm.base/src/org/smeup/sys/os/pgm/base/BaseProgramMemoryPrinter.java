@@ -16,7 +16,6 @@ import java.util.Iterator;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBoolean;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStruct;
@@ -54,14 +53,6 @@ public class BaseProgramMemoryPrinter extends DataVisitorImpl {
 
 	@Override
 	public boolean visit(QBinary data) {
-
-		print(data);
-
-		return super.visit(data);
-	}
-
-	@Override
-	public boolean visit(QBoolean data) {
 
 		print(data);
 

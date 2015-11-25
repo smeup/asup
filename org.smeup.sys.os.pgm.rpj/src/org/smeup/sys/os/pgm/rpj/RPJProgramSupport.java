@@ -27,9 +27,9 @@ import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -41,8 +41,8 @@ import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Module;
-import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Module.Scope;
+import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
@@ -154,7 +154,7 @@ public class RPJProgramSupport {
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
-	QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
+	QDataFiller dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
 	NumberFormat numberFormat = new DecimalFormat();
 
 	public Object getProgramOwner() {
@@ -703,30 +703,24 @@ public class RPJProgramSupport {
 		return qBox(Math.abs(numeric.asDouble()));
 	}
 
-	/* All */
-	public QDataWriter qAll(QNumeric numeric) {
-		return this.dataWriter.set(numeric);
+	public QDataFiller qAll(byte numeric) {
+		return this.dataFiller.set(numeric);
 	}
 
-	public QDataWriter qAll(byte numeric) {
-		return QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter().set(numeric);
+	public QDataFiller qAll(QString string) {
+		return this.dataFiller.set(string);
 	}
 
-	public QDataWriter qAll(QString string) {
-		return QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter().set(string);
+	public QDataFiller qAll(String string) {
+		return this.dataFiller.set(string);
 	}
 
-	public QDataWriter qAll(String string) {
-		return QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter().set(string);
+	public QDataFiller qAll(int numeric) {
+		return this.dataFiller.set(numeric);
 	}
-
-	public QDataWriter qAll(int numeric) {
-		return this.dataWriter.set(numeric);
-	}
-
-	public QArray<QCharacter> qAll(QArray<QCharacter> $fltlis) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public QDataFiller qAll(QNumeric numeric) {
+		return this.dataFiller.set(numeric);
 	}
 
 	public QNumeric qAbs(Integer numeric) {

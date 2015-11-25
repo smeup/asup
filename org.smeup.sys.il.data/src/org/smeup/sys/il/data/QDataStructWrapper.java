@@ -221,11 +221,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public boolean eq(QDataWriter value) {
-		return delegate.eq(value);
-	}
-
-	@Override
 	public void eval(QString value) {
 		delegate.eval(value);
 	}
@@ -261,11 +256,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void eval(QDataWriter value) {
-		delegate.eval(value);
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean ge(E value) {
 		return delegate.ge(value);
 	}
@@ -277,11 +267,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	@Override
 	public boolean ge(String value) {
-		return delegate.ge(value);
-	}
-
-	@Override
-	public boolean ge(QDataWriter value) {
 		return delegate.ge(value);
 	}
 
@@ -316,11 +301,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public boolean gt(QDataWriter value) {
-		return delegate.gt(value);
-	}
-
-	@Override
 	public boolean isEmpty() {
 		return delegate.isEmpty();
 	}
@@ -346,11 +326,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public boolean le(QDataWriter value) {
-		return delegate.le(value);
-	}
-
-	@Override
 	public int getLength() {
 		return delegate.getLength();
 	}
@@ -367,11 +342,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 
 	@Override
 	public boolean lt(String value) {
-		return delegate.lt(value);
-	}
-
-	@Override
-	public boolean lt(QDataWriter value) {
 		return delegate.lt(value);
 	}
 
@@ -520,11 +490,6 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.ne(value);
 	}
 
-	@Override
-	public boolean ne(QDataWriter value) {
-		return delegate.ne(value);
-	}
-
 	public void setDelegate(QDataStruct delegate) {
 		this.delegate = delegate;
 	}
@@ -555,22 +520,22 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	}
 
 	@Override
-	public void move(QDataWriter value) {
+	public void move(QDataFiller value) {
 		delegate.move(value);
 	}
 
 	@Override
-	public void move(QDataWriter value, boolean clear) {
+	public void move(QDataFiller value, boolean clear) {
 		delegate.move(value, clear);
 	}
 
 	@Override
-	public void movel(QDataWriter value) {
+	public void movel(QDataFiller value) {
 		delegate.movel(value);
 	}
 
 	@Override
-	public void movel(QDataWriter value, boolean clear) {
+	public void movel(QDataFiller value, boolean clear) {
 		delegate.movel(value, clear);
 	}
 
@@ -1131,5 +1096,33 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	@Override
 	public int getPosition() {
 		return delegate.getPosition();
+	}
+
+	public boolean eq(QDataFiller value) {
+		return delegate.eq(value);
+	}
+
+	public void eval(QDataFiller value) {
+		delegate.eval(value);
+	}
+
+	public boolean ge(QDataFiller value) {
+		return delegate.ge(value);
+	}
+
+	public boolean gt(QDataFiller value) {
+		return delegate.gt(value);
+	}
+
+	public boolean le(QDataFiller value) {
+		return delegate.le(value);
+	}
+
+	public boolean lt(QDataFiller value) {
+		return delegate.lt(value);
+	}
+
+	public boolean ne(QDataFiller value) {
+		return delegate.ne(value);
 	}
 }

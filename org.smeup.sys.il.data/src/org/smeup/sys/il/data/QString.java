@@ -103,6 +103,14 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	boolean ge(QString value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean ge(QHexadecimal value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
@@ -129,6 +137,14 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	 * @generated
 	 */
 	boolean le(QString value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	boolean le(QHexadecimal value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -78,18 +78,20 @@ public interface QMoveable {
 	<E extends Enum<E>> void move(E value, boolean clear);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void move(QDataWriter value);
+	void move(QDataFiller value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void move(QDataWriter value, boolean clear);
+	void move(QDataFiller value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -224,18 +226,20 @@ public interface QMoveable {
 	<E extends Enum<E>> void movel(E value, boolean clear);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void movel(QDataWriter value);
+	void movel(QDataFiller value);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model clearRequired="true"
 	 * @generated
 	 */
-	void movel(QDataWriter value, boolean clear);
+	void movel(QDataFiller value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

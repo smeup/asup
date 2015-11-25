@@ -72,11 +72,6 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	@Override
-	public void eval(byte value) {
-		NIOBufferHelper.movel(getBuffer(), getPosition(), _length, new byte[] { value }, true, INIT);
-	}
-
-	@Override
 	public int getLength() {
 		return _length;
 	}

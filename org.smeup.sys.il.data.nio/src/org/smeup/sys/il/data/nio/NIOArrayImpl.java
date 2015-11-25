@@ -30,12 +30,13 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	private static final long serialVersionUID = 1L;
 
 	private D[] _elements;
-
+	private QDataWriter dataWriter;
 	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
 		super(dataContext, model, sortDirection);
 
 		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+		dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 	}
 
 	@Override
@@ -93,10 +94,9 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 		if (value.capacity() < capacity)
 			capacity = value.capacity();
 
-		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		for (int e = 1; e <= capacity; e++) {
 			dataWriter.set(value.get(e));
-			get(e).eval(dataWriter);
+			get(e).accept(dataWriter);
 		}
 
 		for (int e = capacity + 1; e <= capacity(); e++)

@@ -26,7 +26,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
@@ -325,85 +325,23 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public boolean eq(QDataWriter value) {
-
-		if (value instanceof DataWriterImpl) {
-			DataWriterImpl dataWriterImpl = (DataWriterImpl) value;
-
-			switch (defaultComparator) {
-			case ASCII:
-
-				if (dataWriterImpl.object instanceof QString)
-					return toString().equals(((QString) dataWriterImpl.object).asString());
-				else
-					return toString().equals(dataWriterImpl.object.toString());
-
-			case EBCDIC:
-
-				if (dataWriterImpl.object instanceof QBufferedData)
-					return eq((QBufferedData) dataWriterImpl.object);
-				else
-					return toString().equals(dataWriterImpl.object.toString());
-
-			}
-		}
-
-		return false;
-	}
-
-	@Override
-	public void eval(QDataWriter value) {
-		this.accept(value);
-	}
-
-	@Override
-	public boolean ge(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean gt(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean le(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean lt(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean ne(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void move(QDataWriter value) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void move(QDataWriter value, boolean clear) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void movel(QDataWriter value) {
+	public void move(QDataFiller value) {
 		accept(value);
 	}
 
 	@Override
-	public void movel(QDataWriter value, boolean clear) {
-		// TODO Auto-generated method stub
+	public void move(QDataFiller value, boolean clear) {
+		accept(value);
+	}
+
+	@Override
+	public void movel(QDataFiller value) {
+		accept(value);
+	}
+
+	@Override
+	public void movel(QDataFiller value, boolean clear) {
+		accept(value);
 	}
 
 	@Override
@@ -634,6 +572,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		return new String(hexChars);
 	}
 
+	@Override
+	public void eval(byte value) {
+		_eval(new byte[] { value });
+	}
+
 	protected void _eval(byte[] value) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value, true, getFiller());
 	}
@@ -687,6 +630,68 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			return _storage.getPosition() + _position;
 		else
 			return _position;
+	}
+
+	@Override
+	public void eval(QDataFiller value) {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public boolean eq(QDataFiller value) {
+
+		if (value instanceof DataWriterImpl) {
+			DataWriterImpl dataWriterImpl = (DataWriterImpl) value;
+
+			switch (defaultComparator) {
+			case ASCII:
+
+				if (dataWriterImpl.object instanceof QString)
+					return toString().equals(((QString) dataWriterImpl.object).asString());
+				else
+					return toString().equals(dataWriterImpl.object.toString());
+
+			case EBCDIC:
+
+				if (dataWriterImpl.object instanceof QBufferedData)
+					return eq((QBufferedData) dataWriterImpl.object);
+				else
+					return toString().equals(dataWriterImpl.object.toString());
+
+			}
+		}
+
+		return false;
+	}
+
+	@Override
+	public boolean ge(QDataFiller value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean gt(QDataFiller value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean le(QDataFiller value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean lt(QDataFiller value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean ne(QDataFiller value) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/*

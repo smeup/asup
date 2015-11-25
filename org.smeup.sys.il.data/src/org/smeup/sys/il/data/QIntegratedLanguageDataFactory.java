@@ -25,9 +25,18 @@ public interface QIntegratedLanguageDataFactory extends EFactory {
 	QIntegratedLanguageDataFactory eINSTANCE = org.smeup.sys.il.data.impl.IntegratedLanguageDataFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Data Filler</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Filler</em>'.
+	 * @generated
+	 */
+	QDataFiller createDataFiller();
+
+	/**
 	 * Returns a new object of class '<em>Data Reader</em>'.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Data Reader</em>'.
 	 * @generated
 	 */

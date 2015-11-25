@@ -8,6 +8,7 @@
 package org.smeup.sys.il.data;
 
 import java.io.Serializable;
+import java.lang.Enum;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,7 +23,6 @@ public interface QData extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model visitorRequired="true"
 	 * @generated
 	 */
@@ -30,7 +30,6 @@ public interface QData extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model
 	 * @generated
 	 */
@@ -38,71 +37,34 @@ public interface QData extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean eq(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean eq(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void eval(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	void eval(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean ge(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean ge(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean gt(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean gt(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -110,50 +72,23 @@ public interface QData extends Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean le(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean le(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean lt(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean lt(QDataWriter value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model EBounds="org.asup.il.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> boolean ne(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @model
-	 * @generated
-	 */
-	boolean ne(QDataWriter value);
 
 } // QData

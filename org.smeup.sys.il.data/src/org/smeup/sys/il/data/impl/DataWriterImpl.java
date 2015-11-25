@@ -7,14 +7,12 @@
  */
 package org.smeup.sys.il.data.impl;
 
-import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBoolean;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStruct;
@@ -131,12 +129,6 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	public boolean visit(QBinary data) {
 		visitNumericData(data);
 		return false;
-	}
-
-	@Override
-	public boolean visit(QBoolean data) {
-		// TODO Auto-generated method stub
-		return super.visit(data);
 	}
 
 	@Override

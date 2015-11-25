@@ -14,40 +14,12 @@ package org.smeup.sys.il.data;
 public interface QCharacter extends QString {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" valueRequired="true"
-	 * @generated
-	 */
-	boolean eq(byte value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void eval(byte value);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
 	void eval(QIndicator value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	boolean ge(QHexadecimal value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	boolean le(QHexadecimal value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

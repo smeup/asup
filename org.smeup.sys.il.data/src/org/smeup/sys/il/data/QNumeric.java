@@ -176,14 +176,6 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean eq(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -296,14 +288,6 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean ge(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
@@ -315,14 +299,6 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	boolean gt(QNumeric value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean gt(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -347,14 +323,6 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean le(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
@@ -366,14 +334,6 @@ public interface QNumeric extends QBufferedData {
 	 * @generated
 	 */
 	boolean lt(QNumeric value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean lt(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

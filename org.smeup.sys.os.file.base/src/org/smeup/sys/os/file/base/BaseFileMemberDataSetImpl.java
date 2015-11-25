@@ -343,25 +343,25 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 			return;
 		case 1:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").eval(dataWriter);
+			record.getElement("srcseq").accept(dataWriter);
 			return;
 		case 2:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").eval(dataWriter);
+			record.getElement("srcseq").accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement("srcdat").eval(dataWriter);
+			record.getElement("srcdat").accept(dataWriter);
 
 			return;
 		case 3:
 			dataWriter.set(fileMemberRow.getSequence());
-			record.getElement("srcseq").eval(dataWriter);
+			record.getElement("srcseq").accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getDate());
-			record.getElement("srcdat").eval(dataWriter);
+			record.getElement("srcdat").accept(dataWriter);
 
 			dataWriter.set(fileMemberRow.getContent());
-			record.getElement("srcdta").eval(dataWriter);
+			record.getElement("srcdta").accept(dataWriter);
 			return;
 		}
 	}

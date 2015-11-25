@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.data.InitStrategy;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataReader;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
@@ -62,6 +63,7 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QIntegratedLanguageDataPackage.DATA_FILLER: return (EObject)createDataFiller();
 			case QIntegratedLanguageDataPackage.DATA_READER: return (EObject)createDataReader();
 			case QIntegratedLanguageDataPackage.DATA_WRITER: return (EObject)createDataWriter();
 			default:
@@ -106,10 +108,20 @@ public class IntegratedLanguageDataFactoryImpl extends EFactoryImpl implements Q
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public QDataFiller createDataFiller() {
+		DataFillerImpl dataFiller = new DataFillerImpl();
+		return dataFiller;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QDataReader createDataReader() {
 		DataReaderImpl dataReader = new DataReaderImpl();
 		return dataReader;

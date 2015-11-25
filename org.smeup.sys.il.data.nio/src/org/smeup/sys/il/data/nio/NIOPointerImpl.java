@@ -16,7 +16,6 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
-import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
@@ -85,19 +84,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public boolean eq(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> void eval(E value) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eval(QDataWriter value) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -109,19 +96,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public boolean ge(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean gt(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean gt(QDataWriter value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -141,31 +116,13 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	}
 
 	@Override
-	public boolean le(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean lt(E value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean lt(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean ne(QDataWriter value) {
 		// TODO Auto-generated method stub
 		return false;
 	}

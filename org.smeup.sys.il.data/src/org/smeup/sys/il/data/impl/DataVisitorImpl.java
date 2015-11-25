@@ -15,7 +15,6 @@ import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
-import org.smeup.sys.il.data.QBoolean;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataStruct;
@@ -103,15 +102,6 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 	 */
 	@Override
 	public void endVisit(QBinary data) {
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public void endVisit(QBoolean data) {
 	}
 
 	/**
@@ -289,17 +279,6 @@ public abstract class DataVisitorImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean visit(QBinary data) {
 		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated NOT
-	 */
-	@Override
-	public boolean visit(QBoolean data) {
-		return true;
-
 	}
 
 	/**

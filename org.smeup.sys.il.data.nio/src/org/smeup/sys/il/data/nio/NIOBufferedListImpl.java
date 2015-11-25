@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
-import org.smeup.sys.il.data.QDataWriter;
+import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
@@ -352,12 +352,12 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	}
 
 	@Override
-	public void movea(QDataWriter value) {
+	public void movea(QDataFiller value) {
 		movea(1, value);
 	}
 
 	@Override
-	public void movea(int targetIndex, QDataWriter value) {
+	public void movea(int targetIndex, QDataFiller value) {
 		for (int i = targetIndex; i <= capacity(); i++)
 			get(i).accept(value);
 	}

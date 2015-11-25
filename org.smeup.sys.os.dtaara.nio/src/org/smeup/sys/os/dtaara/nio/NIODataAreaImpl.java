@@ -47,7 +47,7 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 		
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 		dataWriter.set(qDataArea.getContent());	
-		get().eval(dataWriter);
+		get().accept(dataWriter);
 	}
 
 	@Override

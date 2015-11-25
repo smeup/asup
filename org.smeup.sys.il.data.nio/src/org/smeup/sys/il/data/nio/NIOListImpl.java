@@ -195,25 +195,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	@Override
-	public boolean eq(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void eval(QDataWriter value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean ge(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean ge(QDataWriter value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -225,19 +207,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	@Override
-	public boolean gt(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean le(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean le(QDataWriter value) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -249,19 +219,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 	}
 
 	@Override
-	public boolean lt(QDataWriter value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean ne(QDataWriter value) {
 		// TODO Auto-generated method stub
 		return false;
 	}

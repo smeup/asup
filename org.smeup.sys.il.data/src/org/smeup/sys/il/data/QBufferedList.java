@@ -44,11 +44,12 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	void movea(QBufferedData value, boolean clear);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
-	void movea(QDataWriter value);
+	void movea(QDataFiller value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -86,7 +87,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	 * @model targetIndexRequired="true"
 	 * @generated
 	 */
-	void movea(int targetIndex, QDataWriter value);
+	void movea(int targetIndex, QDataFiller value);
 
 	/**
 	 * <!-- begin-user-doc -->

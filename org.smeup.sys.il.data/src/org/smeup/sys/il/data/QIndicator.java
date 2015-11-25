@@ -7,8 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.Enum;
 import java.lang.String;
+
 
 
 /**
@@ -58,14 +58,6 @@ public interface QIndicator extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean eq(E value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated
 	 */
@@ -107,14 +99,6 @@ public interface QIndicator extends QBufferedData {
 	 * @generated
 	 */
 	boolean ne(QIndicator value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
-	 * @generated
-	 */
-	@Override
-	<E extends Enum<E>> boolean ne(E value);
 
 	/**
 	 * <!-- begin-user-doc -->
