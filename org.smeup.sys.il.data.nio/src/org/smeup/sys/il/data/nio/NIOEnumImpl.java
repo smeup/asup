@@ -105,5 +105,4 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 		eval(special.value());
 
 	}
-
 }

@@ -1223,16 +1223,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER_DEF__FORMULAS = UNARY_ATOMIC_BUFFERED_DATA_DEF__FORMULAS;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
-	 * @generated
-	 * @ordered
-	 */
-	int POINTER_DEF__TARGET = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
+	int POINTER_DEF__FORMULAS = UNARY_ATOMIC_DATA_DEF__FORMULAS;
 
 	/**
 	 * The number of structural features of the '<em>Pointer Def</em>' class.
@@ -1240,7 +1231,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+	int POINTER_DEF_FEATURE_COUNT = UNARY_ATOMIC_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '
@@ -2009,16 +2000,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EClass getPointerDef();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QPointerDef#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target</em>'.
-	 * @see org.smeup.sys.il.data.def.QPointerDef#getTarget()
-	 * @see #getPointerDef()
-	 * @generated
-	 */
-	EAttribute getPointerDef_Target();
-
-	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.def.QScrollerDef <em>Scroller Def</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Scroller Def</em>'.
@@ -2643,13 +2624,6 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EClass POINTER_DEF = eINSTANCE.getPointerDef();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute POINTER_DEF__TARGET = eINSTANCE.getPointerDef_Target();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.ScrollerDefImpl <em>Scroller Def</em>}' class.

@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
@@ -41,10 +42,9 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
 	private static final Charset CHARSET = Charset.forName(ENCODING);
 
-	private NIOBufferedDataImpl _relative;
-	private int _position;
-
-	private transient ByteBuffer _buffer;
+	protected transient ByteBuffer _buffer;
+	protected QStorable _storage;
+	protected int _position;
 
 	public NIOBufferedDataImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -71,20 +71,18 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 
-			// remove buffer and parent reference
-			// TODO synchronize
-			NIOBufferedDataImpl tempRelative = _relative;
+			QStorable tempRelative = _storage;
 			ByteBuffer tempBuffer = _buffer;
 			int tempPosition = _position;
 			QDataContext tempDataContext = getDataContext();
 
-			_relative = null;
+			_storage = null;
 			_buffer = null;
 			_position = 0;
 			_dataContext = null;
 			oos.writeObject(this);
 
-			_relative = tempRelative;
+			_storage = tempRelative;
 			_buffer = tempBuffer;
 			_position = tempPosition;
 			_dataContext = tempDataContext;
@@ -106,7 +104,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	protected void allocate() {
 
 		// TODO synchronize
-		if (_relative != null || _buffer != null)
+		if (_storage != null || _buffer != null)
 			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dmn8432m75n030");
 
 		_buffer = ByteBuffer.allocate(getSize());
@@ -123,28 +121,13 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target, int position) {
 
-		NIOBufferedDataImpl nioBufferedData = null;
 		if(target instanceof NIOAdapterImpl)  {
 			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
 			nioAdapterImpl.setDelegate(this);
 			return;
 		}
 
-		if (position <= 0)
-			throw new IntegratedLanguageCoreRuntimeException("Unexpected condition: dm5c46dsfgdsf7405mc");
-
-		nioBufferedData = getNIOBufferedDataImpl(target);
-		if (nioBufferedData == null)
-			throw new IntegratedLanguageCoreRuntimeException("No buffer reference found: " + target.getClass());
-
-		// TODO synchronize
-		// if (nioBufferedData._buffer != null)
-		// System.err.println("Unexpected condition: dmn8432m75n031");
-
-		nioBufferedData._relative = this;
-		nioBufferedData._buffer = null;
-		nioBufferedData._position = position - 1;
-		nioBufferedData._dataContext = getDataContext();
+		NIOBufferHelper.assign(this, target, position);
 	}
 
 	@Override
@@ -172,19 +155,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		// TODO synchronize
 		if (_buffer != null)
 			return _buffer;
-		else if (_relative != null)
-			return _relative.getBuffer();
+		else if (_storage != null)
+			return (ByteBuffer) _storage.getStore();
 		else
 			return null;
-	}
-
-	protected int getPosition() {
-
-		// TODO synchronize
-		if (_relative != null)
-			return _relative.getPosition() + _position;
-		else
-			return _position;
 	}
 
 	public String getEncoding() {
@@ -206,7 +180,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		stream.writeInt(array.length);
 		stream.write(array);
-		stream.writeObject(_relative);
+		stream.writeObject(_storage);
 		stream.writeInt(_position);
 	}
 
@@ -216,7 +190,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		byte[] array = new byte[length];
 		stream.read(array);
 		Object object = stream.readObject();
-		_relative = (NIOBufferedDataImpl) object;
+		_storage = (NIOBufferedDataImpl) object;
 		_position = stream.readInt();
 
 		// TODO
@@ -233,7 +207,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public byte[] asBytes() {
-		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
+		return NIOBufferHelper.readBytes(this);
 	}
 
 	@Override
@@ -348,11 +322,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void movel(QBufferedData value, boolean clear) {
 		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.asBytes(), clear, getFiller());
-	}
-
-	@Override
-	public String toString() {
-		return new String(asBytes());
 	}
 
 	@Override
@@ -704,4 +673,29 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Object getStore() {
+		return getBuffer();
+	}
+
+	@Override
+	public int getPosition() {
+
+		// TODO synchronize
+		if (_storage != null)
+			return _storage.getPosition() + _position;
+		else
+			return _position;
+	}
+
+	/*
+	@Override
+	public void setStore(Object store) {
+		if(store instanceof NIOBufferedDataImpl)
+			_relative = (NIOBufferedDataImpl) store;
+		else
+			throw new IntegratedLanguageDataRuntimeException("Invalid store: " + store.getClass().getName());
+	}
+	*/
 }

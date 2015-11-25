@@ -90,7 +90,7 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 			copy = (NIOBufferedDelegatorImpl) ois.readObject();
 			ois.close();
 			if (_delegate != null)
-				copy._delegate = getNIOBufferedDataImpl(_delegate).copy();
+				copy._delegate = NIOBufferHelper.getNIOBufferedDataImpl(_delegate).copy();
 
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
@@ -433,5 +433,15 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	public void movea(QArray<?> value, QNumeric startIndex, boolean clear) {
 		_delegate.movea(value, startIndex, clear);
+	}
+
+	@Override
+	public Object getStore() {
+		return _delegate.getStore();
+	}
+
+	@Override
+	public int getPosition() {
+		return _delegate.getPosition();
 	}
 }

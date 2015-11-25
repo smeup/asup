@@ -18,27 +18,13 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QBufferedData extends QData, QMoveable {
+public interface QBufferedData extends QData, QMoveable, QStorable {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
 	 */
 	byte[] asBytes();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	void assign(QBufferedData value);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueRequired="true" positionRequired="true"
-	 * @generated
-	 */
-	void assign(QBufferedData value, int position);
 
 	/**
 	 * <!-- begin-user-doc -->

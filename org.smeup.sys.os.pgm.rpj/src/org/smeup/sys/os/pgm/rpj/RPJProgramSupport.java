@@ -23,6 +23,7 @@ import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
+import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
@@ -531,8 +532,7 @@ public class RPJProgramSupport {
 	}
 
 	public QPointer qAlloc(Integer size) {
-		return null;
-//		return dataContext.getDataFactory().allocate(size.intValue());
+		return dataContext.getDataFactory().createPointer(size);
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
@@ -561,6 +561,12 @@ public class RPJProgramSupport {
 		return decimal;
 	}
 
+	public QDecimal qSize(QBufferedList<?> bufferedData) {
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(7, 0, DecimalType.ZONED, true);
+		decimal.eval(bufferedData.getSize()/bufferedData.capacity());
+		return decimal;
+	}
+	
 	public QDecimal qRem(QNumeric ope1, QNumeric ope2) {
 		return null;
 	}
@@ -681,14 +687,6 @@ public class RPJProgramSupport {
 
 	}
 
-	public QString qStr(QPointer source, Integer length) {
-
-		QCharacter character = dataContext.getDataFactory().createCharacter(source.getLength(), false, false);
-		source.assign(character);
-
-		return character;
-	}
-	
 	public QString qXlate(String oldString, String newString, QString source) {
 		return null;
 	}

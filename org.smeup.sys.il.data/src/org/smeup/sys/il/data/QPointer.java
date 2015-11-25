@@ -16,7 +16,7 @@ package org.smeup.sys.il.data;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QPointer extends QBufferedData {
+public interface QPointer extends QData, QStorable {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,4 +172,20 @@ public interface QPointer extends QBufferedData {
 	 * @generated
 	 */
 	QPointer power(QNumeric value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QString qStr();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" lengthRequired="true"
+	 * @generated
+	 */
+	QString qStr(int length);
 } // QPointer

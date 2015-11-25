@@ -113,7 +113,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 37;
+	int STRING = 38;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QCharacter <em>Character</em>}' class.
@@ -353,7 +353,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStruct()
 	 * @generated
 	 */
-	int STRUCT = 39;
+	int STRUCT = 40;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QStroller <em>Stroller</em>}' class.
@@ -362,7 +362,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStroller()
 	 * @generated
 	 */
-	int STROLLER = 38;
+	int STROLLER = 39;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.QDataStruct
@@ -723,7 +723,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int POINTER_FEATURE_COUNT = BUFFERED_DATA_FEATURE_COUNT + 0;
+	int POINTER_FEATURE_COUNT = DATA_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Struct</em>' class. <!--
@@ -781,6 +781,25 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	int SCROLLER_FEATURE_COUNT = BUFFERED_LIST_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.QStorable <em>Storable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.QStorable
+	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStorable()
+	 * @generated
+	 */
+	int STORABLE = 37;
+
+	/**
+	 * The number of structural features of the '<em>Storable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORABLE_FEATURE_COUNT = 0;
+
+	/**
 	 * The number of structural features of the '<em>Stroller</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -797,7 +816,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getInitStrategy()
 	 * @generated
 	 */
-	int INIT_STRATEGY = 40;
+	int INIT_STRATEGY = 41;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.data.SortDirection <em>Sort Direction</em>}' enum.
@@ -807,7 +826,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getSortDirection()
 	 * @generated
 	 */
-	int SORT_DIRECTION = 41;
+	int SORT_DIRECTION = 42;
 
 	/**
 	 * The meta object id for the '<em>Data Array</em>' data type. <!--
@@ -816,7 +835,7 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getDataArray()
 	 * @generated
 	 */
-	int DATA_ARRAY = 42;
+	int DATA_ARRAY = 43;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QAdapter <em>Adapter</em>}'.
@@ -1189,6 +1208,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getScroller();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QStorable <em>Storable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Storable</em>'.
+	 * @see org.smeup.sys.il.data.QStorable
+	 * @generated
+	 */
+	EClass getStorable();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.il.data.QString <em>String</em>}'.
@@ -1629,6 +1658,16 @@ public interface QIntegratedLanguageDataPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SCROLLER = eINSTANCE.getScroller();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.QStorable <em>Storable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.QStorable
+		 * @see org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl#getStorable()
+		 * @generated
+		 */
+		EClass STORABLE = eINSTANCE.getStorable();
 
 		/**
 		 * The meta object literal for the '

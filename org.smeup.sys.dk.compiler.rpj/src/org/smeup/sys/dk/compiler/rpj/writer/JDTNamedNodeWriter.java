@@ -155,6 +155,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 				writeAnnotation(field, DataDef.class, "values", default_.getValues());
 		}
 
+		// based
+		if(dataTerm.getBased() != null)
+			writeAnnotation(field, DataDef.class, "based", getCompilationUnit().normalizeTermName(dataTerm.getBased()));
+		
 		// @Overlay
 		if (dataTerm.getFacet(QOverlay.class) != null) {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
@@ -472,10 +476,7 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			QIndicatorDef indicatorDef = (QIndicatorDef) dataDef;
 			indicatorDef.toString();
 		} else if (QPointerDef.class.isAssignableFrom(klassDef)) {
-			QPointerDef pointerDef = (QPointerDef) dataDef;
 			writeImport(QPointer.class);
-			if (pointerDef.getTarget() != null)
-				writeAnnotation(node, DataDef.class, "target", pointerDef.getTarget());
 		} else if (QDatetimeDef.class.isAssignableFrom(klassDef)) {
 			QDatetimeDef datetimeDef = (QDatetimeDef) dataDef;
 			writeImport(DatetimeType.class);

@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import org.smeup.sys.il.data.QBufferedDataDelegator;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContext;
 
@@ -30,20 +29,6 @@ public abstract class NIODataImpl implements QData {
 	}
 
 	public abstract NIODataImpl copy();
-
-	protected NIOBufferedDataImpl getNIOBufferedDataImpl(QData bufferedData) {
-
-		NIOBufferedDataImpl nioBufferedData = null;
-
-		if (bufferedData instanceof NIOBufferedDataImpl)
-			nioBufferedData = (NIOBufferedDataImpl) bufferedData;
-		else if (bufferedData instanceof QBufferedDataDelegator) {
-			QBufferedDataDelegator dataDelegator = (QBufferedDataDelegator) bufferedData;
-			nioBufferedData = getNIOBufferedDataImpl(dataDelegator.getDelegate());
-		}
-
-		return nioBufferedData;
-	}
 	
 	public enum ComparatorType {
 		ASCII, EBCDIC;

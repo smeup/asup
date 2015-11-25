@@ -35,6 +35,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataManager;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QRecordWrapper;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -176,11 +177,12 @@ public class BaseCallableInjector {
 
 		QContext context = dataContainer.getDataContext().getContext();
 
-		List<InjectableField> datas = new ArrayList<InjectableField>();
+		List<InjectableField> datas = new ArrayList<InjectableField>();		
 		List<InjectableField> dataStructures = new ArrayList<InjectableField>();
 		List<InjectableField> dataSets = new LinkedList<InjectableField>();
 		List<InjectableField> infoFields = new ArrayList<InjectableField>();
-
+		List<InjectableField> pointers = new ArrayList<InjectableField>();
+		
 		for (Field field : klass.getDeclaredFields()) {
 
 			// TODO
@@ -228,6 +230,9 @@ public class BaseCallableInjector {
 			// DataStruct
 			else if (QDataStruct.class.isAssignableFrom(fieldClass))
 				dataStructures.add(injectableField);
+			// Pointers
+			else if (QPointer.class.isAssignableFrom(fieldClass))
+				pointers.add(injectableField);			
 			// Data
 			else if (QData.class.isAssignableFrom(fieldClass))
 				datas.add(injectableField);
@@ -332,6 +337,14 @@ public class BaseCallableInjector {
 			}
 
 			field.setValue(callable, dataSet);
+		}
+		
+		// pointers
+		for (InjectableField field : pointers) {
+
+			QDataTerm<?> dataTerm = dataContainer.createDataTerm(field.getName(), field.getType(), Arrays.asList(field.getField().getAnnotations()));
+			QData data = dataContainer.resetData(dataTerm);
+			field.setValue(callable, data);
 		}
 
 		// dataStructure

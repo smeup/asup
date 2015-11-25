@@ -87,7 +87,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public byte[] asBytes() {
-		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
+		return NIOBufferHelper.readBytes(this);
 	}
 
 	@Override

@@ -36,6 +36,7 @@ import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -92,6 +93,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 				if (!_default.isEmpty())
 					dataTerm.setDefault(_default);
+				
+				if(!dataDef.based().isEmpty())
+					dataTerm.setBased(dataDef.based());
 			}
 
 			if (annotation instanceof Overlay) {
@@ -243,6 +247,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	@Override
 	public QDataTerm<?> getDataTerm(String key) {
+		
 		QDataTerm<?> dataTerm = dataTerms.get(key);
 
 		return dataTerm;
@@ -411,14 +416,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		QData data;
 		if (dataTerm.getBased() != null) {
-			data = dataFactory.createData(dataTerm, initialize);
+			data = dataFactory.createData(dataTerm, false);
 
 			QData rawData = getData(dataTerm.getBased());
-			if (rawData == null || !(rawData instanceof QBufferedData) || !(data instanceof QBufferedData))
+			if (rawData == null || !(rawData instanceof QStorable) || !(data instanceof QBufferedData))
 				throw new IntegratedLanguageDataRuntimeException("Invalid based data: " + dataTerm);
 
-			QBufferedData rawBufferedData = (QBufferedData) rawData;
-			rawBufferedData.assign((QBufferedData) data);
+			QStorable rawStorable = (QStorable) rawData;
+			rawStorable.assign((QBufferedData) data);
 		} else {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay == null) {

@@ -823,15 +823,6 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPointerDef_Target() {
-		return (EAttribute)pointerDefEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getScrollerDef() {
 		return scrollerDefEClass;
 	}
@@ -1089,7 +1080,6 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		numericDefEClass = createEClass(NUMERIC_DEF);
 
 		pointerDefEClass = createEClass(POINTER_DEF);
-		createEAttribute(pointerDefEClass, POINTER_DEF__TARGET);
 
 		scrollerDefEClass = createEClass(SCROLLER_DEF);
 		createEAttribute(scrollerDefEClass, SCROLLER_DEF__ORDER);
@@ -1364,7 +1354,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getNumeric());
 		g1.getETypeArguments().add(g2);
 		numericDefEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getUnaryAtomicBufferedDataDef());
+		g1 = createEGenericType(this.getUnaryAtomicDataDef());
 		g2 = createEGenericType(theIntegratedLanguageDataPackage.getPointer());
 		g1.getETypeArguments().add(g2);
 		pointerDefEClass.getEGenericSuperTypes().add(g1);
@@ -1532,7 +1522,6 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		initEClass(numericDefEClass, QNumericDef.class, "NumericDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pointerDefEClass, QPointerDef.class, "PointerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPointerDef_Target(), ecorePackage.getEString(), "target", null, 0, 1, QPointerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scrollerDefEClass, QScrollerDef.class, "ScrollerDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getScrollerDef_Order(), theIntegratedLanguageDataPackage.getSortDirection(), "order", "A", 0, 1, QScrollerDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

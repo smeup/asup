@@ -1848,33 +1848,6 @@
           precision="5"/>
     </prototypes>
     <prototypes
-        name="%str">
-      <definition
-          xsi:type="il-data-def:CharacterDef"
-          varying="true"/>
-      <entry>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              name="source">
-            <definition
-                xsi:type="il-data-def:PointerDef"/>
-          </delegate>
-        </parameters>
-        <parameters>
-          <delegate
-              xsi:type="il-flow:FlowData"
-              constant="true"
-              name="length">
-            <cardinality
-                min="1"/>
-            <definition
-                xsi:type="il-data-def:NumericDef"/>
-          </delegate>
-        </parameters>
-      </entry>
-    </prototypes>
-    <prototypes
         name="%switch">
       <definition
           xsi:type="il-data-def:IndicatorDef"/>

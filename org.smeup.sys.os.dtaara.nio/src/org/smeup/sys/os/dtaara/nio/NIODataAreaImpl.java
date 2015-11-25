@@ -30,7 +30,6 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 	public D get() {
 		return (D) getDelegate();
 	}
-
 	
 	@Override
 	public void in() {

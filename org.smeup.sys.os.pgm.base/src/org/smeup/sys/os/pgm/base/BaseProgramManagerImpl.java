@@ -20,11 +20,13 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.smeup.sys.il.data.QAdapter;
+import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QList;
+import org.smeup.sys.il.data.QPointer;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.memo.QResourceManager;
@@ -53,7 +55,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QResourceManager resourceManager;
 	@Inject
 	private QActivationGroupManager activationGroupManager;
-	
+	@Inject
+	private QStrings strings;
 
 	private Map<Thread, QResourceSetReader<QProgram>> programReaders;
 	private Map<String, QProgramStack> programStacks;
@@ -211,16 +214,22 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			if (paramsFrom[i] == null)
 				continue;
 
-			if (paramsTo[i] instanceof QAdapter) {
-				QAdapter adapter = (QAdapter) paramsTo[i];
-				adapter.eval(adapter.getDelegate());
-			} else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QBufferedData) {
+			if (paramsTo[i] instanceof QPointer) {
+				QPointer pointer = (QPointer) paramsTo[i];
+				pointer.eval(((QBufferedData) paramsFrom[i]).qAddr());
+			} else if (paramsTo[i] instanceof QBufferedData && paramsFrom[i] instanceof QStorable) {
 				QBufferedData bufferedData = (QBufferedData) paramsTo[i];
-				((QBufferedData) paramsFrom[i]).assign(bufferedData);
+				((QStorable) paramsFrom[i]).assign(bufferedData);
 			} else if (paramsTo[i] instanceof QList<?> && paramsFrom[i] instanceof QList<?>) {
 				assignList(paramsFrom[i], paramsTo[i]);
 			} else
 				throw new OperatingSystemRuntimeException("Unexpected condition: nxt057t024xn", null);
+			/*
+			if (paramsTo[i] instanceof QAdapter) {
+				QAdapter adapter = (QAdapter) paramsTo[i];
+				adapter.eval(adapter.getDelegate());
+			}  
+			 */
 		}
 
 		if (paramsTo == null)
@@ -356,7 +365,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
@@ -365,7 +374,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
-//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	private String formatStackParameters(QData[] entry) {

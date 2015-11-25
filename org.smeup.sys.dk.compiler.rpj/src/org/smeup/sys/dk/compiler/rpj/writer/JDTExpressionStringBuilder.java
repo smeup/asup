@@ -304,7 +304,6 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 				writeValue(Integer.class, target, value.toString());
 			else if (String.class.isAssignableFrom(target))
 				writeValue(String.class, target, value.toString());
-
 			else if (QNumeric.class.isAssignableFrom(target))
 				writeValue(Integer.class, target, value.toString());
 			else if (QString.class.isAssignableFrom(target))

@@ -187,6 +187,14 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	boolean isContiguous();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model arrayRequired="true"
 	 * @generated
 	 */

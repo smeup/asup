@@ -58,6 +58,7 @@ import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScanner;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.QStruct;
@@ -300,6 +301,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass scrollerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass storableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -744,6 +752,15 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStorable() {
+		return storableEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -898,6 +915,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		scrollerEClass = createEClass(SCROLLER);
 
+		storableEClass = createEClass(STORABLE);
+
 		stringEClass = createEClass(STRING);
 
 		strollerEClass = createEClass(STROLLER);
@@ -993,6 +1012,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		booleanEClass.getESuperTypes().add(this.getData());
 		bufferedDataEClass.getESuperTypes().add(this.getData());
 		bufferedDataEClass.getESuperTypes().add(this.getMoveable());
+		bufferedDataEClass.getESuperTypes().add(this.getStorable());
 		g1 = createEGenericType(this.getDataDelegator());
 		g2 = createEGenericType(this.getBufferedData());
 		g1.getETypeArguments().add(g2);
@@ -1024,7 +1044,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		indicatorEClass.getESuperTypes().add(this.getBufferedData());
 		listEClass.getESuperTypes().add(this.getData());
 		numericEClass.getESuperTypes().add(this.getBufferedData());
-		pointerEClass.getESuperTypes().add(this.getBufferedData());
+		pointerEClass.getESuperTypes().add(this.getData());
+		pointerEClass.getESuperTypes().add(this.getStorable());
 		g1 = createEGenericType(this.getStruct());
 		g2 = createEGenericType(this.getBufferedData());
 		g1.getETypeArguments().add(g2);
@@ -1159,6 +1180,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(arrayEClass, null, "divide", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "roundingMode", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(arrayEClass, ecorePackage.getEBoolean(), "isContiguous", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(arrayEClass, null, "minus", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getArray());
@@ -1311,13 +1334,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(bufferedDataEClass, QBufferedData.class, "BufferedData", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(bufferedDataEClass, ecorePackage.getEByteArray(), "asBytes", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedDataEClass, null, "assign", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(bufferedDataEClass, null, "assign", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "eq", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -2094,8 +2110,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		op = addEOperation(dataFactoryEClass, this.getPointer(), "createPointer", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "size", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "initialize", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "bufferLength", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataFactoryEClass, null, "createRecord", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "R");
@@ -3437,6 +3452,11 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(pointerEClass, this.getPointer(), "power", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(pointerEClass, this.getString(), "qStr", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(pointerEClass, this.getString(), "qStr", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "length", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(recordEClass, QRecord.class, "Record", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(scannerEClass, QScanner.class, "Scanner", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3517,6 +3537,21 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(scrollerEClass, null, "previous", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(scrollerEClass_D);
 		initEOperation(op, g1);
+
+		initEClass(storableEClass, QStorable.class, "Storable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(storableEClass, null, "assign", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(storableEClass, null, "assign", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "target", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "position", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(storableEClass, ecorePackage.getEInt(), "getPosition", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(storableEClass, ecorePackage.getEJavaObject(), "getStore", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(storableEClass, ecorePackage.getEBoolean(), "isEmpty", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stringEClass, QString.class, "String", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

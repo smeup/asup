@@ -1122,4 +1122,14 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public QString qPlus(QString factor1) {
 		return delegate.qPlus(factor1);
 	}
+
+	@Override
+	public Object getStore() {
+		return delegate.getStore();
+	}
+
+	@Override
+	public int getPosition() {
+		return delegate.getPosition();
+	}
 }

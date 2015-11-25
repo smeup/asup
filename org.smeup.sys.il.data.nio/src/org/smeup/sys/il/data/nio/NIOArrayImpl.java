@@ -11,12 +11,11 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 
 import org.smeup.sys.il.data.QArray;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
@@ -30,53 +29,46 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	private static final long serialVersionUID = 1L;
 
-	// private D[] _elements;
+	private D[] _elements;
 
-	private int dimension = 0;
-
-	public NIOArrayImpl(QDataContext dataContext) {
-		super(dataContext);
-	}
-
+	@SuppressWarnings("unchecked")
 	public NIOArrayImpl(QDataContext dataContext, D model, int dimension, SortDirection sortDirection) {
 		super(dataContext, model, sortDirection);
-		this.dimension = dimension;
-		// this._elements = (D[]) Array.newInstance(model.getClass(),
-		// dimension);
+
+		this._elements = (D[]) Array.newInstance(model.getClass(), dimension);
+	}
+
+	@Override
+	public boolean isContiguous() {
+		return getListOwner() == null;
 	}
 
 	@Override
 	public void clear() {
-		NIOBufferHelper.clear(getBuffer(), getPosition(), getSize(), getFiller());
+		NIOBufferHelper.clear(this);
 	}
 
 	@Override
 	public int capacity() {
-		return dimension;
+		return _elements.length;
 	}
 
 	@Override
 	public int count() {
-		return capacity();
+		return _elements.length;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public D get(int index) {
 
-		/*
-		 * D element = _elements[index - 1]; if (element == null) { element =
-		 * (D) getModel().copy(); int position = 0;
-		 * 
-		 * if(getLengthSlot() == 0) position = getModel().getSize() * (index -
-		 * 1); else position = getLengthSlot() * (index - 1);
-		 * 
-		 * slice(element, position); _elements[index - 1] = element; }
-		 */
+		D element = _elements[index - 1];
+		if (element != null)
+			return element;
 
-		D element = (D) getModel().copy();
+		element = (D) getModel().copy();
+
 		int position = 0;
-
 		if (getListOwner() == null)
 			position = getModel().getSize() * (index - 1);
 		else
@@ -84,45 +76,30 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 		assign(element, position + 1);
 
+		_elements[index - 1] = element;
+
 		return element;
 	}
 
 	@Override
-	public int getLength() {
-		return capacity() * getModel().getLength();
-	}
-
-	@Override
-	public int getSize() {
-		return capacity() * getModel().getSize();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public D[] asArray() {
-
-		List<QBufferedData> dataList = new ArrayList<QBufferedData>();
-		for (QBufferedData elementTarget : this) {
-			dataList.add(elementTarget);
-		}
-
-		return (D[]) dataList.toArray();
+		return Arrays.copyOf(_elements, capacity());
 	}
 
 	@Override
 	public void eval(QArray<D> value) {
-		
+
 		int capacity = capacity();
-		if(value.capacity() < capacity)
+		if (value.capacity() < capacity)
 			capacity = value.capacity();
-		
+
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
-		for(int e=1; e<=capacity;e++) {
+		for (int e = 1; e <= capacity; e++) {
 			dataWriter.set(value.get(e));
 			get(e).eval(dataWriter);
 		}
-		
-		for(int e=capacity+1; e<=capacity();e++) 
+
+		for (int e = capacity + 1; e <= capacity(); e++)
 			get(e).clear();
 	}
 
@@ -198,12 +175,10 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void plus(QArray<D> array, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				if (i > array.capacity())
-					break;
-				((QNumeric) this.get(i)).plus((QNumeric) array.get(i));
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			if (i > array.capacity())
+				break;
+			((QNumeric) this.get(i)).plus((QNumeric) array.get(i));
 		}
 	}
 
@@ -264,12 +239,10 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void divide(QArray<D> array, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				if (i > array.capacity())
-					break;
-				((QNumeric) this.get(i)).divide((QNumeric) array.get(i));
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			if (i > array.capacity())
+				break;
+			((QNumeric) this.get(i)).divide((QNumeric) array.get(i));
 		}
 	}
 
@@ -330,12 +303,10 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void minus(QArray<D> array, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				if (i > array.capacity())
-					break;
-				((QNumeric) this.get(i)).minus((QNumeric) array.get(i));
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			if (i > array.capacity())
+				break;
+			((QNumeric) this.get(i)).minus((QNumeric) array.get(i));
 		}
 	}
 
@@ -396,12 +367,10 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 
 	@Override
 	public void mult(QArray<D> array, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				if (i > array.capacity())
-					break;
-				((QNumeric) this.get(i)).mult((QNumeric) array.get(i));
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			if (i > array.capacity())
+				break;
+			((QNumeric) this.get(i)).mult((QNumeric) array.get(i));
 		}
 	}
 
@@ -456,34 +425,26 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	private void operationDivide(Number value, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				((QNumeric) this.get(i)).divide(value.doubleValue());
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			((QNumeric) this.get(i)).divide(value.doubleValue());
 		}
 	}
 
 	private void operationMult(Number value, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				((QNumeric) this.get(i)).mult(value.doubleValue());
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			((QNumeric) this.get(i)).mult(value.doubleValue());
 		}
 	}
 
 	private void operationMinus(Number value, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				((QNumeric) this.get(i)).minus(value.doubleValue());
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			((QNumeric) this.get(i)).minus(value.doubleValue());
 		}
 	}
 
 	private void operationPlus(Number value, String roundingMode) {
-		if (this.getModel() instanceof QNumeric) {
-			for (int i = 1; i <= this.capacity(); i++) {
-				((QNumeric) this.get(i)).plus(value.doubleValue());
-			}
+		for (int i = 1; i <= this.capacity(); i++) {
+			((QNumeric) this.get(i)).plus(value.doubleValue());
 		}
 	}
 
@@ -506,6 +467,12 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 	}
 
 	@Override
+	public void eval(QString value) {
+		for (D element : this)
+			((QString) element).eval(value);
+	}
+
+	@Override
 	public void accept(QDataVisitor visitor) {
 
 		if (visitor.visit(this)) {
@@ -513,13 +480,8 @@ public class NIOArrayImpl<D extends NIOBufferedDataImpl> extends NIOBufferedList
 			Iterator<D> datas = this.iterator();
 			while (datas.hasNext())
 				datas.next().accept(visitor);
-			visitor.endVisit(this);
 		}
-	}
 
-	@Override
-	public void eval(QString value) {
-		for (D element : this)
-			((QString) element).eval(value);		
+		visitor.endVisit(this);
 	}
 }

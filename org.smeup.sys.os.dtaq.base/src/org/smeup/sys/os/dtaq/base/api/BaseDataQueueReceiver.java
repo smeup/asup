@@ -14,7 +14,6 @@ package org.smeup.sys.os.dtaq.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -33,28 +32,17 @@ public class BaseDataQueueReceiver {
 	public QResourceManager resourceManager;
 	@Inject
 	private QJob job;
-	@Inject
-	private QDataContext dataContext;
 
 	@Main
-	public void main(@DataDef(length = 10) QCharacter name,
-			@DataDef(length = 10) QCharacter library,
-			@DataDef(precision = 5, packed = true) QDecimal length,
-			QPointer data, @DataDef(precision = 5, packed = true) QDecimal wait) {
+	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal length, QPointer data,
+			@DataDef(precision = 5, packed = true) QDecimal wait) {
 
 		// content
-		String content = dataQueueManager.readDataQueue(job.getJobID(),
-				library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100,
-				null, null);
+		String content = dataQueueManager.readDataQueue(job.getJobID(), library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100, null, null);
 
 		System.out.println("dtaq:\t" + content);
 
-		QCharacter character = dataContext.getDataFactory().createCharacter(
-				content.length(), false, false);
-		data.assign(character);
-
-		character.movel(content, false);
-
+		data.qStr(content.length()).eval(content);
 		length.eval(content.length());
 	}
 }

@@ -111,6 +111,7 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="isContiguous" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="minus">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
@@ -270,15 +271,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Boolean" abstract="true" interface="true"
       eSuperTypes="#//Data"/>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedData" abstract="true" interface="true"
-      eSuperTypes="#//Data #//Moveable">
+      eSuperTypes="#//Data #//Moveable #//Storable">
     <eOperations name="asBytes" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByteArray"/>
-    <eOperations name="assign">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
-    </eOperations>
-    <eOperations name="assign">
-      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
-      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
@@ -1079,8 +1073,7 @@
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
-      <eParameters name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eParameters name="bufferLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="createRecord" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createRecord/R"/>
@@ -2414,7 +2407,7 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pointer" abstract="true" interface="true"
-      eSuperTypes="#//BufferedData">
+      eSuperTypes="#//Data #//Storable">
     <eOperations name="dealloc"/>
     <eOperations name="divide" eType="#//Pointer">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
@@ -2478,6 +2471,10 @@
     </eOperations>
     <eOperations name="power" eType="#//Pointer">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qStr" lowerBound="1" eType="#//String"/>
+    <eOperations name="qStr" lowerBound="1" eType="#//String">
+      <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Record" abstract="true" interface="true">
@@ -2563,6 +2560,18 @@
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Scroller/D"/>
     </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storable" abstract="true" interface="true">
+    <eOperations name="assign">
+      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
+    <eOperations name="assign">
+      <eParameters name="target" lowerBound="1" eType="#//BufferedData"/>
+      <eParameters name="position" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="getPosition" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getStore" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="String" abstract="true" interface="true">
     <eOperations name="asString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -3233,8 +3242,7 @@
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PointerDef">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
+      <eGenericSuperTypes eClassifier="#//def/UnaryAtomicDataDef">
         <eTypeArguments eClassifier="#//Pointer"/>
       </eGenericSuperTypes>
     </eClassifiers>

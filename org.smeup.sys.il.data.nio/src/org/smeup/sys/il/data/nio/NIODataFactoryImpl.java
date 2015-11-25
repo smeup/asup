@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,6 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataStructWrapper;
-import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
@@ -55,6 +55,7 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScroller;
+import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.SortDirection;
@@ -192,8 +193,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 		} else if (dataDef instanceof QIndicatorDef)
 			data = (D) createIndicator(initialize);
 		else if (dataDef instanceof QPointerDef) {
-			QPointerDef pointerDef = (QPointerDef) dataDef;
-			data = (D) createPointer(pointerDef.getLength(), initialize);
+			data = (D) createPointer(0);
 		} else if (dataDef instanceof QDataAreaDef) {
 			QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataDef;
 			data = (D) createDataArea(dataAreaDef.getArgument(), dataAreaDef.getExternalName(), initialize);
@@ -334,7 +334,7 @@ public class NIODataFactoryImpl implements QDataFactory {
 
 		if (dataDef == null)
 			throw new IntegratedLanguageCoreRuntimeException("Unknown class: " + klass);
-
+		
 		injectAnnotations(annotations, dataDef);
 
 		return dataDef;
@@ -827,36 +827,42 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QPointer createPointer(final int size, boolean initialize) {
-
-		NIOBufferedDataImpl bufferedData = new NIOBufferedDataImpl(getDataContext()) {
-
-			private static final long serialVersionUID = 1L;
-
+	public QPointer createPointer(final int bufferLength) {
+		
+		if(bufferLength < 0)
+			System.out.println(bufferLength);
+		
+		QStorable storable = new QStorable() {
+			
+			ByteBuffer byteBuffer = ByteBuffer.allocate(bufferLength);
+			
 			@Override
-			public int getSize() {
-				return size;
+			public boolean isEmpty() {
+				return bufferLength == 0;
+			}
+			
+			@Override
+			public Object getStore() {
+				return byteBuffer;
 			}
 
 			@Override
-			public int getLength() {
-				return size;
-			}
-
-			@Override
-			protected byte getFiller() {
+			public int getPosition() {
 				return 0;
 			}
 			
 			@Override
-			public void accept(QDataVisitor visitor) {
-				visitor.visit(this);
+			public void assign(QBufferedData target, int position) {
+				NIOBufferHelper.assign(this, target, position);
+			}
+			
+			@Override
+			public void assign(QBufferedData target) {
+				NIOBufferHelper.assign(this, target);				
 			}
 		};
-		if(initialize)
-			initialize(bufferedData);
-
-		return new NIOPointerImpl(getDataContext(), bufferedData);
+		
+		return new NIOPointerImpl(getDataContext(), storable);
 	}
 
 	public QDataContext getDataContext() {
