@@ -56,7 +56,8 @@ public @Supported class UserProfileCreator {
 			@DataDef(length = 1) QEnum<LOCALPASSWORDMANAGEMENTEnum, QCharacter> localPasswordManagement, @DataDef(length = 1) QEnum<LIMITDEVICESESSIONSEnum, QCharacter> limitDeviceSessions,
 			@DataDef(length = 1) QEnum<KEYBOARDBUFFERINGEnum, QCharacter> keyboardBuffering,
 			@DataDef(binaryType = BinaryType.INTEGER) QEnum<MAXIMUMALLOWEDSTORAGEEnum, QBinary> maximumAllowedStorage, @DataDef(length = 1) QCharacter highestSchedulePriority,
-			@Supported @DataDef(qualified = true) JOBDESCRIPTION jobDescription, @ToDo @DataDef(length = 10) QEnum<GROUPPROFILEEnum, QCharacter> groupProfile,
+			@Supported @DataDef(qualified = true) JOBDESCRIPTION jobDescription, 
+			@ToDo @DataDef(length = 10) QEnum<GROUPPROFILEEnum, QCharacter> groupProfile,
 			@ToDo @DataDef(length = 1) QEnum<OWNEREnum, QCharacter> owner, @DataDef(length = 1) QEnum<GROUPAUTHORITYEnum, QCharacter> groupAuthority,
 			@DataDef(length = 1) QEnum<GROUPAUTHORITYTYPEEnum, QCharacter> groupAuthorityType,
 			@DataDef(dimension = 15, length = 10) QScroller<QEnum<SUPPLEMENTALGROUPSEnum, QCharacter>> supplementalGroups,
@@ -91,9 +92,52 @@ public @Supported class UserProfileCreator {
 			qUserProfile.setText("");
 		}
 		
+		// JOBD
+		qUserProfile.setJobDescription(jobDescription.name.trimR());
+
+		// Enabled
+		switch (status.asEnum()) {
+		case SAME:
+			break;
+		default:
+			qUserProfile.setEnabled(status.asEnum().isEnabled());
+			break;
+		}
+
+		// User class
+		switch (userClass.asEnum()) {
+		case SAME:
+			break;
+
+		default:
+			qUserProfile.setUserClass(userClass.asEnum().getUserClass());
+			break;
+		}
+
+		// Initial program
+		switch (initialProgramToCall.asEnum()) {
+		case NONE:
+			qUserProfile.setInitialProgram("*NONE");
+			break;
+		case OTHER:
+			INITIALPROGRAMTOCALL pgmSpecification = initialProgramToCall.asData();
+			qUserProfile.setInitialProgram(getLibrary(pgmSpecification) + "/" + pgmSpecification.name.trimR());
+			break;
+		}
+		
 		resourceWriter.save(qUserProfile);
 		jobLogManager.info(job, "Created user " + userProfile.trimR());
 	}
+
+	private String getLibrary(INITIALPROGRAMTOCALL pgmSpecification) {
+		switch (pgmSpecification.library.asEnum()) {
+		case CURLIB:
+			return job.getCurrentLibrary();
+		default:
+			return pgmSpecification.library.asData().trimR();
+		}
+	}
+
 
 	public static enum USERPASSWORDEnum {
 		@Special(value = "*USER")
@@ -245,6 +289,7 @@ public @Supported class UserProfileCreator {
 		private static final long serialVersionUID = 1L;
 		@DataDef(length = 10, value = "QDFTJOBD")
 		public QCharacter name;
+		
 		@DataDef(length = 10, value = "*LIBL")
 		public QEnum<LIBRARYEnum, QCharacter> library;
 
