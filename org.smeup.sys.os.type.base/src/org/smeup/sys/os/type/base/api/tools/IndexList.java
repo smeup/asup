@@ -5,18 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.constraints.Index;
-import org.eclipse.datatools.modelbase.sql.query.TableInDatabase;
-import org.eclipse.datatools.modelbase.sql.query.helper.StatementHelper;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
-import org.eclipse.datatools.sqltools.parsers.sql.query.SQLQueryParseResult;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.syntax.QDefinitionParseResult;
 import org.smeup.sys.db.syntax.QDefinitionParser;
 import org.smeup.sys.db.syntax.QDefinitionStatement;
-import org.smeup.sys.db.syntax.QQueryParser;
 import org.smeup.sys.db.syntax.ddl.QCreateIndexStatement;
 import org.smeup.sys.db.syntax.ddl.QCreateViewStatement;
-import org.smeup.sys.db.syntax.ddl.impl.CreateViewStatementImpl;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.file.QLogicalFile;
@@ -29,13 +24,11 @@ public class IndexList {
 	private List<String> indexNames;
 	private QJob job;
 	private QDefinitionParser definitionParser;
-	private QQueryParser queryParser;
 	
 	public IndexList(QJob job, QTypedObject objToRename) {
 		this.job = job;
 		this.objToRename = objToRename;
 		this.definitionParser = job.getContext().get(QDefinitionParser.class); //???
-		this.queryParser = job.getContext().get(QQueryParser.class); //????
 		this.indexNames = findIndexes();
 	}
 	
