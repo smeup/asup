@@ -95,7 +95,7 @@
               value="S"/>
           <elements
               name="*ENABLED"
-              value="X'40'"/>
+              value="E"/>
           <elements
               name="*DISABLED"
               value="D"/>
@@ -1826,9 +1826,11 @@
             xsi:type="il-core:Special">
           <elements
               name="*ENABLED"
-              value="X'40'"/>
+              unary="true"
+              value="E"/>
           <elements
               name="*DISABLED"
+              unary="true"
               value="D"/>
         </facets>
         <default

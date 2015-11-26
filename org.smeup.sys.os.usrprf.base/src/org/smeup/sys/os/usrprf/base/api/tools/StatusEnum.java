@@ -10,7 +10,7 @@ public enum StatusEnum {
 			throw new UnsupportedOperationException("'SAME' status hasn't a boolean value");
 		}
 	},
-	@Special(value = "X'40'")
+	@Special(value = "E")
 	ENABLED {
 		@Override
 		public boolean isEnabled() {

@@ -41,8 +41,10 @@ public @Supported class UserProfileCreator {
 	private QExceptionManager exceptionManager;
 
 	@Main
-	public void main(@Supported @DataDef(length = 10) QCharacter userProfile, @ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
-			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired, @Supported @DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,
+	public void main(@Supported @DataDef(length = 10) QCharacter userProfile,
+			@ToDo @DataDef(length = 128) QEnum<USERPASSWORDEnum, QCharacter> userPassword,
+			@ToDo @DataDef(length = 1) QEnum<SETPASSWORDTOEXPIREDEnum, QCharacter> setPasswordToExpired, 
+			@Supported @DataDef(length = 1) QEnum<StatusEnum, QCharacter> status,
 			@Supported @DataDef(binaryType = BinaryType.SHORT) QEnum<UserClassEnum, QBinary> userClass, 
 			@DataDef(length = 1) QEnum<ASSISTANCELEVELEnum, QCharacter> assistanceLevel,
 			@DataDef(length = 10) QEnum<CURRENTLIBRARYEnum, QCharacter> currentLibrary,
@@ -96,13 +98,7 @@ public @Supported class UserProfileCreator {
 		qUserProfile.setJobDescription(jobDescription.name.trimR());
 
 		// Enabled
-		switch (status.asEnum()) {
-		case SAME:
-			break;
-		default:
-			qUserProfile.setEnabled(status.asEnum().isEnabled());
-			break;
-		}
+		qUserProfile.setEnabled(status.asEnum().isEnabled());
 
 		// User class
 		switch (userClass.asEnum()) {
