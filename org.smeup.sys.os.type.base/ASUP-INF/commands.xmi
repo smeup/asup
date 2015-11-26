@@ -10549,13 +10549,11 @@
       xsi:type="os-cmd:Command"
       name="MOVOBJ"
       text="Move Object"
-      program="QLIMVOBJ"
-      status="TODO">
+      program="QLIMVOBJ">
     <parameters
         allowVariable="true"
         name="OBJ"
-        position="1"
-        status="TODO">
+        position="1">
       <dataTerm
           name="object">
         <cardinality
@@ -10602,8 +10600,7 @@
     <parameters
         allowVariable="true"
         name="OBJTYPE"
-        position="2"
-        status="TODO">
+        position="2">
       <dataTerm
           name="objectType"
           restricted="true">
@@ -10812,8 +10809,7 @@
     <parameters
         allowVariable="true"
         name="TOLIB"
-        position="3"
-        status="TODO">
+        position="3">
       <dataTerm
           name="toLibrary">
         <facets
