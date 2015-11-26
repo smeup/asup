@@ -63,6 +63,7 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.DataType;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.FloatingType;
@@ -90,6 +91,7 @@ import org.smeup.sys.il.data.def.QScrollerDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.def.impl.EnumDefImpl;
 import org.smeup.sys.il.data.def.impl.ListDefImpl;
 import org.smeup.sys.il.data.term.QDataTerm;
@@ -171,22 +173,22 @@ public class NIODataFactoryImpl implements QDataFactory {
 			// QAdapterDef adapterDef = (QAdapterDef)dataDef;
 			data = (D) new NIOAdapterImpl(getDataContext());
 		else if (dataDef instanceof QBinaryDef) {
-			QBinaryDef binaryType = (QBinaryDef) dataDef;
-			data = (D) createBinary(binaryType.getType(), binaryType.isUnsigned(), initialize);
+			QBinaryDef binaryDef = (QBinaryDef) dataDef;
+			data = (D) createBinary(binaryDef.getType(), binaryDef.isUnsigned(), initialize);
 		} else if (dataDef instanceof QCharacterDef) {
-			QCharacterDef characterType = (QCharacterDef) dataDef;
-			data = (D) createCharacter(characterType.getLength(), characterType.isVarying(), initialize);
+			QCharacterDef characterDef = (QCharacterDef) dataDef;
+			data = (D) createCharacter(characterDef.getLength(), characterDef.isVarying(), initialize);
 		} else if (dataDef instanceof QDatetimeDef) {
-			QDatetimeDef datetimeType = (QDatetimeDef) dataDef;
-			data = (D) createDate(datetimeType.getType(), datetimeType.getFormat(), initialize);
+			QDatetimeDef datetimeDef = (QDatetimeDef) dataDef;
+			data = (D) createDate(datetimeDef.getType(), datetimeDef.getDateFormat(), datetimeDef.getTimeFormat(), initialize);
 		} else if (dataDef instanceof QDecimalDef) {
-			QDecimalDef decimalType = (QDecimalDef) dataDef;
-			data = (D) createDecimal(decimalType.getPrecision(), decimalType.getScale(), decimalType.getType(), initialize);
+			QDecimalDef decimalDef = (QDecimalDef) dataDef;
+			data = (D) createDecimal(decimalDef.getPrecision(), decimalDef.getScale(), decimalDef.getType(), initialize);
 		} else if (dataDef instanceof QEnumDef<?, ?>)
 			data = _createData(dataDef, initialize);
 		else if (dataDef instanceof QFloatingDef) {
-			QFloatingDef floatingType = (QFloatingDef) dataDef;
-			data = (D) createFloating(floatingType.getType(), initialize);
+			QFloatingDef floatingDef = (QFloatingDef) dataDef;
+			data = (D) createFloating(floatingDef.getType(), initialize);
 		} else if (dataDef instanceof QHexadecimalDef) {
 			QHexadecimalDef hexadecimalDef = (QHexadecimalDef) dataDef;
 			data = (D) createHexadecimal(hexadecimalDef.getLength(), initialize);
@@ -666,9 +668,9 @@ public class NIODataFactoryImpl implements QDataFactory {
 	}
 
 	@Override
-	public QDatetime createDate(DatetimeType type, String format, boolean initialize) {
+	public QDatetime createDate(DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat, boolean initialize) {
 
-		NIODatetimeImpl datetime = new NIODatetimeImpl(getDataContext(), type, format);
+		NIODatetimeImpl datetime = new NIODatetimeImpl(getDataContext(), type, dateFormat, timeFormat);
 
 		if (initialize)
 			initialize(datetime);

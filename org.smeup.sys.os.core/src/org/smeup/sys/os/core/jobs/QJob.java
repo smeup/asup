@@ -11,6 +11,7 @@ import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QSystem;
@@ -22,9 +23,11 @@ import org.smeup.sys.os.core.QSystem;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCreationInfo <em>Creation Info</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateFormat <em>Date Format</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobName <em>Job Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobNumber <em>Job Number</em>}</li>
@@ -33,10 +36,8 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getMessages <em>Messages</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCurrentLibrary <em>Current Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getDateSeparator <em>Date Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}</li>
  * </ul>
@@ -310,6 +311,36 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setCurrentLibrary(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Date Format</b></em>' attribute.
+	 * The default value is <code>"*DMY"</code>.
+	 * The literals are from the enumeration {@link org.smeup.sys.il.data.def.DateFormat}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Date Format</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Date Format</em>' attribute.
+	 * @see org.smeup.sys.il.data.def.DateFormat
+	 * @see #setDateFormat(DateFormat)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_DateFormat()
+	 * @model default="*DMY"
+	 * @generated
+	 */
+	DateFormat getDateFormat();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getDateFormat <em>Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Date Format</em>' attribute.
+	 * @see org.smeup.sys.il.data.def.DateFormat
+	 * @see #getDateFormat()
+	 * @generated
+	 */
+	void setDateFormat(DateFormat value);
+
+	/**
 	 * Returns the value of the '<em><b>Switches</b></em>' attribute.
 	 * The default value is <code>"00000000"</code>.
 	 * <!-- begin-user-doc -->
@@ -336,36 +367,6 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	void setSwitches(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Job Date Format</b></em>' attribute.
-	 * The default value is <code>"*DMY"</code>.
-	 * The literals are from the enumeration {@link org.smeup.sys.os.core.jobs.JobDateFormat}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Job Date Format</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job Date Format</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
-	 * @see #setJobDateFormat(JobDateFormat)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobDateFormat()
-	 * @model default="*DMY"
-	 * @generated
-	 */
-	JobDateFormat getJobDateFormat();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobDateFormat <em>Job Date Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Job Date Format</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobDateFormat
-	 * @see #getJobDateFormat()
-	 * @generated
-	 */
-	void setJobDateFormat(JobDateFormat value);
 
 	/**
 	 * Returns the value of the '<em><b>Date Separator</b></em>' attribute.

@@ -8,6 +8,8 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 public class NIODataContextImpl implements QDataContext {
 
@@ -16,7 +18,10 @@ public class NIODataContextImpl implements QDataContext {
 	private QIndicator found;
 	private QIndicator endOfData;
 	private QString temporaryString;
+
 	private static final Charset CHARSET = Charset.forName("IBM-280");
+	private static final DateFormat DATEFMT = DateFormat.ISO;
+	private static final TimeFormat TIMEFMT = TimeFormat.ISO;
 
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
@@ -56,5 +61,15 @@ public class NIODataContextImpl implements QDataContext {
 	@Override
 	public QString getTemporaryString() {
 		return this.temporaryString;
+	}
+
+	@Override
+	public DateFormat getDateFormat() {
+		return DATEFMT;
+	}
+
+	@Override
+	public TimeFormat getTimeFormat() {
+		return TIMEFMT;
 	}
 }

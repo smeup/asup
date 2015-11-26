@@ -41,25 +41,6 @@
     <eLiterals name="Ending" value="70" literal="END"/>
     <eLiterals name="Stopped" value="80" literal="STP"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DateFormat">
-    <eLiterals name="MDY" value="10" literal="*MDY"/>
-    <eLiterals name="DMY" value="20" literal="*DMY"/>
-    <eLiterals name="YMD" value="30" literal="*YMD"/>
-    <eLiterals name="JUL" value="40" literal="*JUL"/>
-    <eLiterals name="ISO" value="50" literal="*ISO"/>
-    <eLiterals name="USA" value="60" literal="*USA"/>
-    <eLiterals name="EUR" value="70" literal="*EUR"/>
-    <eLiterals name="JIS" value="80" literal="*JIS"/>
-    <eLiterals name="JOBRUN" value="90" literal="*JOBRUN"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TimeFormat">
-    <eLiterals name="HMS" value="10" literal="*HMS"/>
-    <eLiterals name="ISO" value="20" literal="*ISO"/>
-    <eLiterals name="USA" value="30" literal="*USA"/>
-    <eLiterals name="EUR" value="40" literal="*EUR"/>
-    <eLiterals name="JIS" value="50" literal="*JIS"/>
-    <eLiterals name="JOBRUN" value="60" literal="*JOBRUN"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
@@ -101,12 +82,24 @@
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
   <eSubpackages name="jobs" nsURI="http://www.smeup.org/asup/os/core/jobs" nsPrefix="os-core-jobs">
     <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
-          eType="#//System" transient="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
           transient="true" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="QGPL">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateFormat" eType="ecore:EEnum ../../org.smeup.sys.il.data/model/il-data.ecore#//def/DateFormat"
+          defaultValueLiteral="*DMY"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral="/">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="1"/>
+        </eAnnotations>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobID" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           iD="true">
@@ -136,26 +129,14 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="messages" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="QGPL">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="10"/>
-        </eAnnotations>
-      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="switches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral="00000000">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="8"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobDateFormat" eType="#//jobs/JobDateFormat"
-          defaultValueLiteral="*DMY"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          defaultValueLiteral="/">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="1"/>
-        </eAnnotations>
-      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="system" lowerBound="1"
+          eType="#//System" transient="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeSeparator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral=":">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
@@ -252,6 +233,9 @@
       <eOperations name="delay">
         <eParameters name="resumeTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
+      <eOperations name="executorFor" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaExecutorService">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+      </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
       <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -279,9 +263,6 @@
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="status" lowerBound="1" eType="#//jobs/JobStatus"/>
       </eOperations>
-      <eOperations name="executorFor" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaExecutorService">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobStatus">
       <eLiterals name="Active" value="10" literal="ACT"/>
@@ -297,12 +278,6 @@
       <eLiterals name="Kernel" value="10" literal="KRN"/>
       <eLiterals name="Interactive" value="20" literal="INT"/>
       <eLiterals name="Batch" value="30" literal="BCH"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="JobDateFormat">
-      <eLiterals name="YearMonthDay" value="10" literal="*YMD"/>
-      <eLiterals name="MonthDayYear" value="20" literal="*MDY"/>
-      <eLiterals name="DayMonthYear" value="30" literal="*DMY"/>
-      <eLiterals name="Julian" value="40" literal="*JUL"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

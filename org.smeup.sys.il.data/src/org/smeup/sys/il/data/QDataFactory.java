@@ -14,6 +14,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.def.FloatingType;
@@ -22,6 +23,7 @@ import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QDataDef;
 import org.smeup.sys.il.data.def.QStrollerDef;
 import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.term.QDataTerm;
 
 /**
@@ -101,11 +103,12 @@ public interface QDataFactory {
 	<D extends QDataStruct> D createDataStruct(Class<D> wrapper, int length, boolean initialize);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" typeRequired="true" formatRequired="true" initializeRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" typeRequired="true" dateFormatRequired="true" timeFormatRequired="true" initializeRequired="true"
 	 * @generated
 	 */
-	QDatetime createDate(DatetimeType type, String format, boolean initialize);
+	QDatetime createDate(DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat, boolean initialize);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

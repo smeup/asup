@@ -60,6 +60,7 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 import org.smeup.sys.il.data.def.QUnaryCompoundDataDef;
 import org.smeup.sys.il.data.def.QUnaryDataDef;
 import org.smeup.sys.il.data.def.QWrapperDef;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
@@ -305,6 +306,13 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	 * @generated
 	 */
 	private EEnum floatingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum timeFormatEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -603,12 +611,21 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getDatetimeDef_Format() {
+	public EAttribute getDatetimeDef_DateFormat() {
 		return (EAttribute)datetimeDefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDatetimeDef_TimeFormat() {
+		return (EAttribute)datetimeDefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -981,6 +998,15 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTimeFormat() {
+		return timeFormatEEnum;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1043,7 +1069,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		datetimeDefEClass = createEClass(DATETIME_DEF);
 		createEAttribute(datetimeDefEClass, DATETIME_DEF__TYPE);
-		createEAttribute(datetimeDefEClass, DATETIME_DEF__FORMAT);
+		createEAttribute(datetimeDefEClass, DATETIME_DEF__DATE_FORMAT);
+		createEAttribute(datetimeDefEClass, DATETIME_DEF__TIME_FORMAT);
 
 		decimalDefEClass = createEClass(DECIMAL_DEF);
 		createEAttribute(decimalDefEClass, DECIMAL_DEF__PRECISION);
@@ -1108,6 +1135,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		dateFormatEEnum = createEEnum(DATE_FORMAT);
 		decimalTypeEEnum = createEEnum(DECIMAL_TYPE);
 		floatingTypeEEnum = createEEnum(FLOATING_TYPE);
+		timeFormatEEnum = createEEnum(TIME_FORMAT);
 	}
 
 	/**
@@ -1467,7 +1495,8 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 
 		initEClass(datetimeDefEClass, QDatetimeDef.class, "DatetimeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDatetimeDef_Type(), this.getDatetimeType(), "type", null, 1, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDatetimeDef_Format(), ecorePackage.getEString(), "format", null, 0, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatetimeDef_DateFormat(), this.getDateFormat(), "dateFormat", null, 0, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatetimeDef_TimeFormat(), this.getTimeFormat(), "timeFormat", null, 0, 1, QDatetimeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decimalDefEClass, QDecimalDef.class, "DecimalDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDecimalDef_Precision(), ecorePackage.getEInt(), "precision", null, 1, 1, QDecimalDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1600,6 +1629,14 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		initEEnum(floatingTypeEEnum, FloatingType.class, "FloatingType");
 		addEEnumLiteral(floatingTypeEEnum, FloatingType.SINGLE);
 		addEEnumLiteral(floatingTypeEEnum, FloatingType.DOUBLE);
+
+		initEEnum(timeFormatEEnum, TimeFormat.class, "TimeFormat");
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.HMS);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.ISO);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.USA);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.EUR);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.JIS);
+		addEEnumLiteral(timeFormatEEnum, TimeFormat.JOBRUN);
 	}
 
 } // IntegratedLanguageDataDefPackageImpl

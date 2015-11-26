@@ -21,7 +21,6 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
 import org.smeup.sys.os.core.base.api.tools.JobName;
 import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
-import org.smeup.sys.os.core.jobs.JobDateFormat;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -270,7 +269,7 @@ public @Supported class JobAttributesSetter_sav {
 		SAME {
 			@Override
 			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
-				DateFormat fmt = JobDateFormatter.forType(jobToChange.getJobDateFormat());
+				DateFormat fmt = JobDateFormatter.forType(jobToChange.getDateFormat());
 				jobToChange.getCreationInfo().setCreationDate(fmt.parse(dateString));
 			}
 		},
@@ -303,28 +302,28 @@ public @Supported class JobAttributesSetter_sav {
 		YMD {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				jobToChange.setJobDateFormat(JobDateFormat.YEAR_MONTH_DAY);
+				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.YMD);
 			}
 		},
 		@Special(value = "2")
 		MDY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				jobToChange.setJobDateFormat(JobDateFormat.MONTH_DAY_YEAR);
+				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.MDY);
 			}
 		},
 		@Special(value = "3")
 		DMY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				jobToChange.setJobDateFormat(JobDateFormat.DAY_MONTH_YEAR);
+				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.DMY);
 			}
 		},
 		@Special(value = "4")
 		JUL {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
-				jobToChange.setJobDateFormat(JobDateFormat.JULIAN);
+				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.JUL);
 			}
 		};
 

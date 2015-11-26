@@ -18,11 +18,15 @@ import org.smeup.sys.dk.core.annotation.ToDo;
 import org.smeup.sys.dk.core.annotation.Unsupported;
 import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QCharacter;
+import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
+import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 
@@ -35,7 +39,9 @@ public class JobAttributesRetriever {
 	private QJob job;
 	@Inject
 	private QStrings stringsUtil;
-
+	@Inject
+	private QDataContext dataContext;
+	
 	@Main
 	public void main(@DataDef(length = 10) QCharacter cLVarForJOB10, @DataDef(length = 10) QCharacter cLVarForUSER10, @DataDef(length = 6) QCharacter cLVarForNBR6,
 			@DataDef(length = 10) QCharacter cLVarForCURUSER10, @DataDef(length = 1) QCharacter cLVarForTYPE1, @DataDef(length = 1) QCharacter cLVarForSUBTYPE1,
@@ -72,8 +78,12 @@ public class JobAttributesRetriever {
 		cLVarForINQMSGRPY10.eval("*DFT");
 		cLVarForSTSMSG7.eval("*NORMAL");
 		cLVarForSWS8.eval(job.getSwitches());
-		cLVarForDATE6.eval(varForDate());
-		cLVarForDATFMT4.eval(job.getJobDateFormat().getLiteral());
+		
+		QDatetime dateTime = dataContext.getDataFactory().createDate(DatetimeType.DATE, DateFormat.JOBRUN, null, true);
+		dateTime.eval(job.getCreationInfo().getCreationDate());	
+		
+		cLVarForDATE6.eval(dateTime.qEditd(DateFormat.JOBRUN, "", TimeFormat.JOBRUN, ""));
+		cLVarForDATFMT4.eval(job.getDateFormat().getLiteral());
 		cLVarForDATSEP1.eval(job.getDateSeparator());
 		cLVarForTIMSEP1.eval(job.getTimeSeparator());
 		//
@@ -81,10 +91,6 @@ public class JobAttributesRetriever {
 		//
 		cLVarForCCSID50.eval(UTF_8);
 		cLVarForDFTCCSID50.eval(UTF_8);
-	}
-
-	private String varForDate() {
-		return JobDateFormatter.forType(job.getJobDateFormat()).format(job.getCreationInfo().getCreationDate());
 	}
 
 	private String varFor(JobType jobType) {

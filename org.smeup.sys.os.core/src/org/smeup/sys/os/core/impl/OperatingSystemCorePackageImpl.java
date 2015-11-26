@@ -22,7 +22,6 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
-import org.smeup.sys.os.core.DateFormat;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QEnvironmentVariable;
@@ -32,7 +31,6 @@ import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.SystemStatus;
-import org.smeup.sys.os.core.TimeFormat;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl;
 
@@ -84,20 +82,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EEnum systemStatusEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum dateFormatEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum timeFormatEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -392,26 +376,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EEnum getDateFormat() {
-		return dateFormatEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getTimeFormat() {
-		return timeFormatEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getMessageVariableList() {
 		return messageVariableListEDataType;
 	}
@@ -481,8 +445,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Create enums
 		systemStatusEEnum = createEEnum(SYSTEM_STATUS);
-		dateFormatEEnum = createEEnum(DATE_FORMAT);
-		timeFormatEEnum = createEEnum(TIME_FORMAT);
 
 		// Create data types
 		messageVariableListEDataType = createEDataType(MESSAGE_VARIABLE_LIST);
@@ -601,25 +563,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.STARTED);
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.ENDING);
 		addEEnumLiteral(systemStatusEEnum, SystemStatus.STOPPED);
-
-		initEEnum(dateFormatEEnum, DateFormat.class, "DateFormat");
-		addEEnumLiteral(dateFormatEEnum, DateFormat.MDY);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.DMY);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.YMD);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.JUL);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.ISO);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.USA);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.EUR);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.JIS);
-		addEEnumLiteral(dateFormatEEnum, DateFormat.JOBRUN);
-
-		initEEnum(timeFormatEEnum, TimeFormat.class, "TimeFormat");
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.HMS);
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.ISO);
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.USA);
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.EUR);
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.JIS);
-		addEEnumLiteral(timeFormatEEnum, TimeFormat.JOBRUN);
 
 		// Initialize data types
 		initEDataType(messageVariableListEDataType, Object[].class, "MessageVariableList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

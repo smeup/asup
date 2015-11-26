@@ -16,25 +16,6 @@
       <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemStatus/Ending"/>
       <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//SystemStatus/Stopped"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//DateFormat">
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/MDY"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/DMY"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/YMD"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/JUL"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/ISO"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/USA"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/EUR"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/JIS"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//DateFormat/JOBRUN"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//TimeFormat">
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/HMS"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/ISO"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/USA"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/EUR"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/JIS"/>
-      <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//TimeFormat/JOBRUN"/>
-    </genEnums>
     <genDataTypes ecoreDataType="os-core.ecore#//MessageVariableList"/>
     <genDataTypes ecoreDataType="os-core.ecore#//MessageException"/>
     <genClasses ecoreClass="os-core.ecore#//CreationInfo">
@@ -67,21 +48,26 @@
       <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException">
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException/job"/>
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException/message"/>
-        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException/variable"/>
         <genTypeParameters ecoreTypeParameter="os-core.ecore#//ExceptionManager/prepareException/E"/>
       </genOperations>
       <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException.1">
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.1/job"/>
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.1/message"/>
-        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.1/variables"/>
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.1/variable"/>
         <genTypeParameters ecoreTypeParameter="os-core.ecore#//ExceptionManager/prepareException.1/E"/>
       </genOperations>
       <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException.2">
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.2/job"/>
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.2/message"/>
-        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.2/messageFileName"/>
-        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.2/messageFileLib"/>
         <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.2/variables"/>
+        <genTypeParameters ecoreTypeParameter="os-core.ecore#//ExceptionManager/prepareException.2/E"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException.3">
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/job"/>
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/message"/>
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/messageFileName"/>
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/messageFileLib"/>
+        <genParameters ecoreParameter="os-core.ecore#//ExceptionManager/prepareException.3/variables"/>
       </genOperations>
     </genClasses>
     <nestedGenPackages prefix="OperatingSystemJobs" basePackage="org.smeup.sys.os.core"
@@ -107,17 +93,12 @@
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Interactive"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Batch"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//jobs/JobDateFormat">
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobDateFormat/YearMonthDay"/>
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobDateFormat/MonthDayYear"/>
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobDateFormat/DayMonthYear"/>
-        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobDateFormat/Julian"/>
-      </genEnums>
       <genClasses ecoreClass="os-core.ecore#//jobs/Job">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/system"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/context"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/creationInfo"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/currentLibrary"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/dateFormat"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/dateSeparator"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobID"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobName"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobNumber"/>
@@ -126,10 +107,9 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobUser"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/libraries"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/messages"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/currentLibrary"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/switches"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/jobDateFormat"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/dateSeparator"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/system"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/Job/timeSeparator"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/variables"/>
       </genClasses>
@@ -201,6 +181,12 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.3/credential"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/create.3/jobName"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay/millis"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay.1">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay.1/resumeTime"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/getActiveJobs"/>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup/contextID"/>
@@ -208,12 +194,18 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup/user"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup/number"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.1">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.1/contextID"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.1/name"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.1/user"/>
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.1/number"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookupActiveJob">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob/contextID"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookupActiveJob/jobID"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.1">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.1/contextID"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup.2">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup.2/contextID"/>
         </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/registerListener">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/registerListener/listener"/>

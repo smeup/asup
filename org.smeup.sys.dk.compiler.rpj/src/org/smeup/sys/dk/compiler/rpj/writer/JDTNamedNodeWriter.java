@@ -481,8 +481,10 @@ public class JDTNamedNodeWriter extends JDTNodeWriter {
 			QDatetimeDef datetimeDef = (QDatetimeDef) dataDef;
 			writeImport(DatetimeType.class);
 			writeAnnotation(node, DataDef.class, "datetimeType", datetimeDef.getType());
-			if (datetimeDef.getFormat() != null)
-				writeAnnotation(node, DataDef.class, "datetimeFormat", datetimeDef.getFormat());
+			if (datetimeDef.getDateFormat() != null)
+				writeAnnotation(node, DataDef.class, "dateFormat", datetimeDef.getDateFormat());
+			if (datetimeDef.getTimeFormat() != null)
+				writeAnnotation(node, DataDef.class, "timeFormat", datetimeDef.getTimeFormat());
 		} else if (QDecimalDef.class.isAssignableFrom(klassDef)) {
 			QDecimalDef decimalDef = (QDecimalDef) dataDef;
 

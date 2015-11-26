@@ -10,6 +10,8 @@ package org.smeup.sys.il.data;
 import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 
 /**
@@ -47,6 +49,22 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	QDataFactory getDataFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	DateFormat getDateFormat();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	TimeFormat getTimeFormat();
 
 	/**
 	 * <!-- begin-user-doc -->

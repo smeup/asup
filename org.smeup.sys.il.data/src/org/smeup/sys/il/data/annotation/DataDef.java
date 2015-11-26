@@ -17,7 +17,9 @@ import javax.inject.Qualifier;
 
 import org.smeup.sys.il.data.SortDirection;
 import org.smeup.sys.il.data.def.BinaryType;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 @Qualifier
 @Documented
@@ -52,8 +54,9 @@ public @interface DataDef {
 
 	// datetime
 	DatetimeType datetimeType() default DatetimeType.DATE;
-	String datetimeFormat() default "";
-
+	DateFormat dateFormat() default DateFormat.ISO;
+	TimeFormat timeFormat() default TimeFormat.ISO;
+	
 	// binary
 	BinaryType binaryType() default BinaryType.BYTE;
 }

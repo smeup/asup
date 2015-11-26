@@ -85,8 +85,6 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 				return createJobStatusFromString(eDataType, initialValue);
 			case QOperatingSystemJobsPackage.JOB_TYPE:
 				return createJobTypeFromString(eDataType, initialValue);
-			case QOperatingSystemJobsPackage.JOB_DATE_FORMAT:
-				return createJobDateFormatFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -106,8 +104,6 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 				return convertJobStatusToString(eDataType, instanceValue);
 			case QOperatingSystemJobsPackage.JOB_TYPE:
 				return convertJobTypeToString(eDataType, instanceValue);
-			case QOperatingSystemJobsPackage.JOB_DATE_FORMAT:
-				return convertJobDateFormatToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -193,26 +189,6 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	 * @generated
 	 */
 	public String convertJobTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JobDateFormat createJobDateFormatFromString(EDataType eDataType, String initialValue) {
-		JobDateFormat result = JobDateFormat.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJobDateFormatToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

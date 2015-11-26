@@ -131,6 +131,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 				return createDecimalTypeFromString(eDataType, initialValue);
 			case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
 				return createFloatingTypeFromString(eDataType, initialValue);
+			case QIntegratedLanguageDataDefPackage.TIME_FORMAT:
+				return createTimeFormatFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -155,6 +157,8 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 				return convertDecimalTypeToString(eDataType, instanceValue);
 			case QIntegratedLanguageDataDefPackage.FLOATING_TYPE:
 				return convertFloatingTypeToString(eDataType, instanceValue);
+			case QIntegratedLanguageDataDefPackage.TIME_FORMAT:
+				return convertTimeFormatToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -455,6 +459,26 @@ public class IntegratedLanguageDataDefFactoryImpl extends EFactoryImpl implement
 	 * @generated
 	 */
 	public String convertFloatingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeFormat createTimeFormatFromString(EDataType eDataType, String initialValue) {
+		TimeFormat result = TimeFormat.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTimeFormatToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

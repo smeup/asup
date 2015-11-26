@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.os.core.DateFormat;
 import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QEnvironmentVariable;
@@ -21,7 +20,6 @@ import org.smeup.sys.os.core.QOperatingSystemCoreFactory;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.SystemStatus;
-import org.smeup.sys.os.core.TimeFormat;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,10 +83,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 		switch (eDataType.getClassifierID()) {
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return createSystemStatusFromString(eDataType, initialValue);
-			case QOperatingSystemCorePackage.DATE_FORMAT:
-				return createDateFormatFromString(eDataType, initialValue);
-			case QOperatingSystemCorePackage.TIME_FORMAT:
-				return createTimeFormatFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
 				return createMessageVariableListFromString(eDataType, initialValue);
 			case QOperatingSystemCorePackage.MESSAGE_EXCEPTION:
@@ -108,10 +102,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 		switch (eDataType.getClassifierID()) {
 			case QOperatingSystemCorePackage.SYSTEM_STATUS:
 				return convertSystemStatusToString(eDataType, instanceValue);
-			case QOperatingSystemCorePackage.DATE_FORMAT:
-				return convertDateFormatToString(eDataType, instanceValue);
-			case QOperatingSystemCorePackage.TIME_FORMAT:
-				return convertTimeFormatToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.MESSAGE_VARIABLE_LIST:
 				return convertMessageVariableListToString(eDataType, instanceValue);
 			case QOperatingSystemCorePackage.MESSAGE_EXCEPTION:
@@ -170,46 +160,6 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	 * @generated
 	 */
 	public String convertSystemStatusToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DateFormat createDateFormatFromString(EDataType eDataType, String initialValue) {
-		DateFormat result = DateFormat.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertDateFormatToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TimeFormat createTimeFormatFromString(EDataType eDataType, String initialValue) {
-		TimeFormat result = TimeFormat.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertTimeFormatToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

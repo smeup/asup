@@ -21,10 +21,10 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
+import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QSystem;
-import org.smeup.sys.os.core.jobs.JobDateFormat;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -36,9 +36,11 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCreationInfo <em>Creation Info</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCurrentLibrary <em>Current Library</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateFormat <em>Date Format</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateSeparator <em>Date Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobName <em>Job Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobNumber <em>Job Number</em>}</li>
@@ -47,10 +49,8 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getLibraries <em>Libraries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getMessages <em>Messages</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCurrentLibrary <em>Current Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSwitches <em>Switches</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobDateFormat <em>Job Date Format</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getDateSeparator <em>Date Separator</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariables <em>Variables</em>}</li>
  * </ul>
@@ -59,16 +59,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * @generated
  */
 public class JobImpl extends ObjectNameableImpl implements QJob {
-
-	/**
-	 * The cached value of the '{@link #getSystem() <em>System</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSystem()
-	 * @generated
-	 * @ordered
-	 */
-	protected QSystem system;
 
 	/**
 	 *
@@ -93,6 +83,66 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected QCreationInfo creationInfo;
+
+	/**
+	 * The default value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CURRENT_LIBRARY_EDEFAULT = "QGPL";
+
+	/**
+	 * The cached value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected String currentLibrary = CURRENT_LIBRARY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDateFormat() <em>Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final DateFormat DATE_FORMAT_EDEFAULT = DateFormat.DMY;
+
+	/**
+	 * The cached value of the '{@link #getDateFormat() <em>Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateFormat dateFormat = DATE_FORMAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDateSeparator() <em>Date Separator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateSeparator()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DATE_SEPARATOR_EDEFAULT = "/";
+
+	/**
+	 * The cached value of the '{@link #getDateSeparator() <em>Date Separator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateSeparator()
+	 * @generated
+	 * @ordered
+	 */
+	protected String dateSeparator = DATE_SEPARATOR_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getJobID() <em>Job ID</em>}' attribute.
@@ -221,26 +271,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	protected EList<String> messages;
 
 	/**
-	 * The default value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentLibrary()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String CURRENT_LIBRARY_EDEFAULT = "QGPL";
-
-	/**
-	 * The cached value of the '{@link #getCurrentLibrary() <em>Current Library</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentLibrary()
-	 * @generated
-	 * @ordered
-	 */
-	protected String currentLibrary = CURRENT_LIBRARY_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getSwitches() <em>Switches</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -261,44 +291,14 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	protected String switches = SWITCHES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getJobDateFormat() <em>Job Date Format</em>}' attribute.
+	 * The cached value of the '{@link #getSystem() <em>System</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJobDateFormat()
+	 * @see #getSystem()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final JobDateFormat JOB_DATE_FORMAT_EDEFAULT = JobDateFormat.DAY_MONTH_YEAR;
-
-	/**
-	 * The cached value of the '{@link #getJobDateFormat() <em>Job Date Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobDateFormat()
-	 * @generated
-	 * @ordered
-	 */
-	protected JobDateFormat jobDateFormat = JOB_DATE_FORMAT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDateSeparator() <em>Date Separator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDateSeparator()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DATE_SEPARATOR_EDEFAULT = "/";
-
-	/**
-	 * The cached value of the '{@link #getDateSeparator() <em>Date Separator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDateSeparator()
-	 * @generated
-	 * @ordered
-	 */
-	protected String dateSeparator = DATE_SEPARATOR_EDEFAULT;
+	protected QSystem system;
 
 	/**
 	 * The default value of the '{@link #getTimeSeparator() <em>Time Separator</em>}' attribute.
@@ -567,6 +567,27 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DateFormat getDateFormat() {
+		return dateFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDateFormat(DateFormat newDateFormat) {
+		DateFormat oldDateFormat = dateFormat;
+		dateFormat = newDateFormat == null ? DATE_FORMAT_EDEFAULT : newDateFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__DATE_FORMAT, oldDateFormat, dateFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getSwitches() {
 		return switches;
 	}
@@ -581,27 +602,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		switches = newSwitches;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__SWITCHES, oldSwitches, switches));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JobDateFormat getJobDateFormat() {
-		return jobDateFormat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setJobDateFormat(JobDateFormat newJobDateFormat) {
-		JobDateFormat oldJobDateFormat = jobDateFormat;
-		jobDateFormat = newJobDateFormat == null ? JOB_DATE_FORMAT_EDEFAULT : newJobDateFormat;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_DATE_FORMAT, oldJobDateFormat, jobDateFormat));
 	}
 
 	/**
@@ -770,13 +770,16 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB__SYSTEM:
-				if (resolve) return getSystem();
-				return basicGetSystem();
 			case QOperatingSystemJobsPackage.JOB__CONTEXT:
 				return getContext();
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				return getCreationInfo();
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				return getCurrentLibrary();
+			case QOperatingSystemJobsPackage.JOB__DATE_FORMAT:
+				return getDateFormat();
+			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
+				return getDateSeparator();
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return getJobID();
 			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
@@ -793,14 +796,11 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getLibraries();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				return getMessages();
-			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
-				return getCurrentLibrary();
 			case QOperatingSystemJobsPackage.JOB__SWITCHES:
 				return getSwitches();
-			case QOperatingSystemJobsPackage.JOB__JOB_DATE_FORMAT:
-				return getJobDateFormat();
-			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
-				return getDateSeparator();
+			case QOperatingSystemJobsPackage.JOB__SYSTEM:
+				if (resolve) return getSystem();
+				return basicGetSystem();
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return getTimeSeparator();
 			case QOperatingSystemJobsPackage.JOB__VARIABLES:
@@ -817,14 +817,20 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB__SYSTEM:
-				setSystem((QSystem)newValue);
-				return;
 			case QOperatingSystemJobsPackage.JOB__CONTEXT:
 				setContext((QContext)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				setCreationInfo((QCreationInfo)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				setCurrentLibrary((String)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB__DATE_FORMAT:
+				setDateFormat((DateFormat)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
+				setDateSeparator((String)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID((String)newValue);
@@ -852,17 +858,11 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				getMessages().clear();
 				getMessages().addAll((Collection<? extends String>)newValue);
 				return;
-			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
-				setCurrentLibrary((String)newValue);
-				return;
 			case QOperatingSystemJobsPackage.JOB__SWITCHES:
 				setSwitches((String)newValue);
 				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_DATE_FORMAT:
-				setJobDateFormat((JobDateFormat)newValue);
-				return;
-			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
-				setDateSeparator((String)newValue);
+			case QOperatingSystemJobsPackage.JOB__SYSTEM:
+				setSystem((QSystem)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator((String)newValue);
@@ -882,14 +882,20 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB__SYSTEM:
-				setSystem((QSystem)null);
-				return;
 			case QOperatingSystemJobsPackage.JOB__CONTEXT:
 				setContext((QContext)null);
 				return;
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				setCreationInfo((QCreationInfo)null);
+				return;
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				setCurrentLibrary(CURRENT_LIBRARY_EDEFAULT);
+				return;
+			case QOperatingSystemJobsPackage.JOB__DATE_FORMAT:
+				setDateFormat(DATE_FORMAT_EDEFAULT);
+				return;
+			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
+				setDateSeparator(DATE_SEPARATOR_EDEFAULT);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				setJobID(JOB_ID_EDEFAULT);
@@ -915,17 +921,11 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				getMessages().clear();
 				return;
-			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
-				setCurrentLibrary(CURRENT_LIBRARY_EDEFAULT);
-				return;
 			case QOperatingSystemJobsPackage.JOB__SWITCHES:
 				setSwitches(SWITCHES_EDEFAULT);
 				return;
-			case QOperatingSystemJobsPackage.JOB__JOB_DATE_FORMAT:
-				setJobDateFormat(JOB_DATE_FORMAT_EDEFAULT);
-				return;
-			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
-				setDateSeparator(DATE_SEPARATOR_EDEFAULT);
+			case QOperatingSystemJobsPackage.JOB__SYSTEM:
+				setSystem((QSystem)null);
 				return;
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator(TIME_SEPARATOR_EDEFAULT);
@@ -944,12 +944,16 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemJobsPackage.JOB__SYSTEM:
-				return system != null;
 			case QOperatingSystemJobsPackage.JOB__CONTEXT:
 				return context != null;
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				return creationInfo != null;
+			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
+				return CURRENT_LIBRARY_EDEFAULT == null ? currentLibrary != null : !CURRENT_LIBRARY_EDEFAULT.equals(currentLibrary);
+			case QOperatingSystemJobsPackage.JOB__DATE_FORMAT:
+				return dateFormat != DATE_FORMAT_EDEFAULT;
+			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
+				return DATE_SEPARATOR_EDEFAULT == null ? dateSeparator != null : !DATE_SEPARATOR_EDEFAULT.equals(dateSeparator);
 			case QOperatingSystemJobsPackage.JOB__JOB_ID:
 				return JOB_ID_EDEFAULT == null ? jobID != null : !JOB_ID_EDEFAULT.equals(jobID);
 			case QOperatingSystemJobsPackage.JOB__JOB_NAME:
@@ -966,14 +970,10 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return libraries != null && !libraries.isEmpty();
 			case QOperatingSystemJobsPackage.JOB__MESSAGES:
 				return messages != null && !messages.isEmpty();
-			case QOperatingSystemJobsPackage.JOB__CURRENT_LIBRARY:
-				return CURRENT_LIBRARY_EDEFAULT == null ? currentLibrary != null : !CURRENT_LIBRARY_EDEFAULT.equals(currentLibrary);
 			case QOperatingSystemJobsPackage.JOB__SWITCHES:
 				return SWITCHES_EDEFAULT == null ? switches != null : !SWITCHES_EDEFAULT.equals(switches);
-			case QOperatingSystemJobsPackage.JOB__JOB_DATE_FORMAT:
-				return jobDateFormat != JOB_DATE_FORMAT_EDEFAULT;
-			case QOperatingSystemJobsPackage.JOB__DATE_SEPARATOR:
-				return DATE_SEPARATOR_EDEFAULT == null ? dateSeparator != null : !DATE_SEPARATOR_EDEFAULT.equals(dateSeparator);
+			case QOperatingSystemJobsPackage.JOB__SYSTEM:
+				return system != null;
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return TIME_SEPARATOR_EDEFAULT == null ? timeSeparator != null : !TIME_SEPARATOR_EDEFAULT.equals(timeSeparator);
 			case QOperatingSystemJobsPackage.JOB__VARIABLES:
@@ -991,7 +991,13 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (jobID: ");
+		result.append(" (currentLibrary: ");
+		result.append(currentLibrary);
+		result.append(", dateFormat: ");
+		result.append(dateFormat);
+		result.append(", dateSeparator: ");
+		result.append(dateSeparator);
+		result.append(", jobID: ");
 		result.append(jobID);
 		result.append(", jobName: ");
 		result.append(jobName);
@@ -1007,14 +1013,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(libraries);
 		result.append(", messages: ");
 		result.append(messages);
-		result.append(", currentLibrary: ");
-		result.append(currentLibrary);
 		result.append(", switches: ");
 		result.append(switches);
-		result.append(", jobDateFormat: ");
-		result.append(jobDateFormat);
-		result.append(", dateSeparator: ");
-		result.append(dateSeparator);
 		result.append(", timeSeparator: ");
 		result.append(timeSeparator);
 		result.append(')');

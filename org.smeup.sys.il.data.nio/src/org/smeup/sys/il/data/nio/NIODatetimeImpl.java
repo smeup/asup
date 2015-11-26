@@ -11,16 +11,19 @@
  */
 package org.smeup.sys.il.data.nio;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
@@ -28,41 +31,28 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	protected static final byte INIT = (byte) -16;
 
 	private DatetimeType _type;
-	private String _format;
+	private DateFormat _dateFormat;
+	private TimeFormat _timeFormat;
 
 	public NIODatetimeImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
 
-	public NIODatetimeImpl(QDataContext dataContext, DatetimeType type, String format) {
+	public NIODatetimeImpl(QDataContext dataContext, DatetimeType type, DateFormat dateFormat, TimeFormat timeFormat) {
 		super(dataContext);
-		
+
 		this._type = type;
-		this._format = format;
 
-		// default format
-		if (format == null || format.isEmpty())
-			switch (type) {
-			case DATE:
-				this._format = "*ISO";
-				break;
-			case TIME:
-				this._format = "*ISO";
-				break;
-			case TIME_STAMP:
-				this._format = "*ISOISO";
-				break;
-			}
+		if (dateFormat == null)
+			this._dateFormat = getDataContext().getDateFormat();
+		else
+			this._dateFormat = dateFormat;
+
+		if (timeFormat == null)
+			this._timeFormat = getDataContext().getTimeFormat();
+		else
+			this._timeFormat = timeFormat;
 	}
-
-	/*
-	 * @Override public void reset() { if (_value != null)
-	 * NIOBufferHelper.movel(getBuffer(), getPosition(), length(), _value, true,
-	 * INIT); else Arrays.fill(getBuffer().array(), getPosition(), getPosition()
-	 * + length(), INIT);
-	 *
-	 * }
-	 */
 
 	@Override
 	public int getLength() {
@@ -71,8 +61,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 		switch (_type) {
 		case DATE:
-			DateFormat dateFormat = DateFormat.get(_format);
-			switch (dateFormat) {
+			switch (_dateFormat) {
 			case DMY:
 				length = 8;
 				break;
@@ -103,6 +92,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			}
 			break;
 		case TIME:
+			length = 8;
 			break;
 		case TIME_STAMP:
 			length = 26;
@@ -213,49 +203,49 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	@Override
 	public <E extends Enum<E>> void adddur(int duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void adddur(QNumeric duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void adddur(int duration, E format) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void adddur(QNumeric duration, E format) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void subdur(int duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void subdur(QNumeric duration, E format, QDatetime value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void subdur(int duration, E format) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public <E extends Enum<E>> void subdur(QNumeric duration, E format) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -272,20 +262,8 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	@Override
 	public void time() {
-		Calendar CALENDAR = Calendar.getInstance();
-		switch (_type) {
-		case DATE:
-			// TODO
-			break;
-		case TIME:
-			// TODO
-			break;
-		case TIME_STAMP:
-//			String timeStamp= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(CALENDAR.getTime());
-			String timeStamp= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssz").format(CALENDAR.getTime());
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), timeStamp.getBytes(), true, getFiller());
-			break;
-		}
+		String result = getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(Calendar.getInstance());
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), result.getBytes(getDataContext().getCharset()), true, getFiller());
 	}
 
 	@Override
@@ -293,7 +271,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
@@ -301,7 +279,95 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	@Override
 	public String toString() {
-		return new String(asBytes());
+		return new String(asBytes(), getDataContext().getCharset());
 	}
 
+	@Override
+	public Date asDate() {
+
+		try {
+			Date date = getDateFormat(_type, _dateFormat, null, _timeFormat, null).parse(new String(asBytes(), getDataContext().getCharset()));
+			return date;
+		} catch (ParseException e) {
+			throw new IntegratedLanguageDataRuntimeException(e);
+		}
+	}
+
+	@Override
+	public String qEditd(DateFormat dateFormat, String dateSeparator, TimeFormat timeFormat, String timeSeparator) {
+		String result = getDateFormat(_type, dateFormat, dateSeparator, timeFormat, timeSeparator).format(asDate());
+		return result;
+	}
+
+	private SimpleDateFormat getDateFormat(DatetimeType datetimeType, DateFormat dateFormat, String dateSeparator, TimeFormat timeFormat, String timeSeparator) {
+		
+		SimpleDateFormat simpleDateFormat = null;
+		switch (datetimeType) {
+		case DATE:
+			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator));
+			break;
+		case TIME:
+			simpleDateFormat = new SimpleDateFormat(toJavaFormat(timeFormat, timeSeparator));
+			break;
+		case TIME_STAMP:
+			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator) + "'T'" + toJavaFormat(timeFormat, timeSeparator));
+			break;
+		}
+
+		return simpleDateFormat;
+	}
+	
+	private String toJavaFormat(DateFormat dateFormat, String separator) {
+
+		String format = null;
+		switch (dateFormat) {
+		case DMY:
+			format = "dd-MM-yy";
+		case EUR:
+			format = "yyyy-MM-dd";
+		case ISO:
+			format = "yyyy-MM-dd";
+		case JIS:
+			format = "yyyy-MM-dd";
+		case JOBRUN:
+			format = "yy-MM-dd";
+		case JUL:
+			format = "yy-D";
+		case MDY:
+			format = "MM-dd-yy";
+		case USA:
+			format = "yyyy-MM-dd";
+		case YMD:
+			format = "yy-MM-dd";
+		}
+
+		if (separator != null)
+			format = format.replaceAll("-", separator);
+
+		return format;
+	}
+
+	private String toJavaFormat(TimeFormat timeFormat, String separator) {
+
+		String format = null;
+		switch (timeFormat) {
+		case EUR:
+			format = "HH:mm:ssz";
+		case HMS:
+			format = "HH:mm:ssz";
+		case ISO:
+			format = "HH:mm:ssz";
+		case JIS:
+			format = "HH:mm:ssz";
+		case JOBRUN:
+			format = "HH:mm:ssz";
+		case USA:
+			format = "HH:mm:ssz";
+		}
+
+		if (separator != null)
+			format = format.replaceAll(":", separator);
+
+		return format;
+	}
 }

@@ -317,33 +317,13 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM_STATUS = 5;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.DateFormat <em>Date Format</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.DateFormat
-	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getDateFormat()
-	 * @generated
-	 */
-	int DATE_FORMAT = 6;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.TimeFormat <em>Time Format</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.TimeFormat
-	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getTimeFormat()
-	 * @generated
-	 */
-	int TIME_FORMAT = 7;
-
-	/**
 	 * The meta object id for the '<em>Message Variable List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageVariableList()
 	 * @generated
 	 */
-	int MESSAGE_VARIABLE_LIST = 8;
+	int MESSAGE_VARIABLE_LIST = 6;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -353,7 +333,7 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 9;
+	int MESSAGE_EXCEPTION = 7;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.QCreationInfo <em>Creation Info</em>}'.
@@ -577,26 +557,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	EEnum getSystemStatus();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.DateFormat <em>Date Format</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Date Format</em>'.
-	 * @see org.smeup.sys.os.core.DateFormat
-	 * @generated
-	 */
-	EEnum getDateFormat();
-
-	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.TimeFormat <em>Time Format</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Time Format</em>'.
-	 * @see org.smeup.sys.os.core.TimeFormat
-	 * @generated
-	 */
-	EEnum getTimeFormat();
-
-	/**
 	 * Returns the meta object for data type '<em>Message Variable List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -814,26 +774,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum SYSTEM_STATUS = eINSTANCE.getSystemStatus();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.core.DateFormat <em>Date Format</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.DateFormat
-		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getDateFormat()
-		 * @generated
-		 */
-		EEnum DATE_FORMAT = eINSTANCE.getDateFormat();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.core.TimeFormat <em>Time Format</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.TimeFormat
-		 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getTimeFormat()
-		 * @generated
-		 */
-		EEnum TIME_FORMAT = eINSTANCE.getTimeFormat();
 
 		/**
 		 * The meta object literal for the '<em>Message Variable List</em>' data type.

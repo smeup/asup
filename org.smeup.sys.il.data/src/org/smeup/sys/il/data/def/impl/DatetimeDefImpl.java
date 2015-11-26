@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.il.data.def.QDatetimeDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -26,7 +27,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getDateFormat <em>Date Format</em>}</li>
+ *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getTimeFormat <em>Time Format</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,22 +59,44 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	protected DatetimeType type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getFormat()
+	 * The default value of the '{@link #getDateFormat() <em>Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFormat()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FORMAT_EDEFAULT = null;
+	protected static final DateFormat DATE_FORMAT_EDEFAULT = DateFormat.MDY;
 
 	/**
-	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getFormat()
+	 * The cached value of the '{@link #getDateFormat() <em>Date Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDateFormat()
 	 * @generated
 	 * @ordered
 	 */
-	protected String format = FORMAT_EDEFAULT;
+	protected DateFormat dateFormat = DATE_FORMAT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTimeFormat() <em>Time Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TimeFormat TIME_FORMAT_EDEFAULT = TimeFormat.HMS;
+
+	/**
+	 * The cached value of the '{@link #getTimeFormat() <em>Time Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected TimeFormat timeFormat = TIME_FORMAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -113,24 +137,45 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getFormat() {
-		return format;
+	public DateFormat getDateFormat() {
+		return dateFormat;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setFormat(String newFormat) {
-		String oldFormat = format;
-		format = newFormat;
+	public void setDateFormat(DateFormat newDateFormat) {
+		DateFormat oldDateFormat = dateFormat;
+		dateFormat = newDateFormat == null ? DATE_FORMAT_EDEFAULT : newDateFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT, oldFormat, format));
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT, oldDateFormat, dateFormat));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeFormat getTimeFormat() {
+		return timeFormat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimeFormat(TimeFormat newTimeFormat) {
+		TimeFormat oldTimeFormat = timeFormat;
+		timeFormat = newTimeFormat == null ? TIME_FORMAT_EDEFAULT : newTimeFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT, oldTimeFormat, timeFormat));
 	}
 
 	/**
@@ -142,8 +187,10 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				return getType();
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				return getFormat();
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
+				return getDateFormat();
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
+				return getTimeFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,8 +205,11 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				setType((DatetimeType)newValue);
 				return;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				setFormat((String)newValue);
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
+				setDateFormat((DateFormat)newValue);
+				return;
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
+				setTimeFormat((TimeFormat)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,8 +225,11 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				setFormat(FORMAT_EDEFAULT);
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
+				setDateFormat(DATE_FORMAT_EDEFAULT);
+				return;
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
+				setTimeFormat(TIME_FORMAT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -191,8 +244,10 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		switch (featureID) {
 			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TYPE:
 				return type != TYPE_EDEFAULT;
-			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__FORMAT:
-				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__DATE_FORMAT:
+				return dateFormat != DATE_FORMAT_EDEFAULT;
+			case QIntegratedLanguageDataDefPackage.DATETIME_DEF__TIME_FORMAT:
+				return timeFormat != TIME_FORMAT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,8 +263,10 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (type: ");
 		result.append(type);
-		result.append(", format: ");
-		result.append(format);
+		result.append(", dateFormat: ");
+		result.append(dateFormat);
+		result.append(", timeFormat: ");
+		result.append(timeFormat);
 		result.append(')');
 		return result.toString();
 	}
@@ -242,8 +299,7 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 		// TODO format		
 		switch (getType()) {
 		case DATE:
-			DateFormat dateFormat = DateFormat.get(getFormat());
-			switch (dateFormat) {
+			switch (getDateFormat()) {
 			case DMY:
 				length = 8;
 				break;
@@ -273,8 +329,10 @@ public class DatetimeDefImpl extends UnaryAtomicBufferedDataDefImpl<QDatetime> i
 				break;
 			}
 		case TIME:
+			// TODO
 			return length = 8;
 		case TIME_STAMP:
+			// TODO
 			return length = 26;
 		}
 		

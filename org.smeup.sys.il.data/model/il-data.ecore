@@ -909,10 +909,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataContext" abstract="true" interface="true"
       eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-    <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
-    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
+    <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCharset"/>
+    <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
+    <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
+    <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
     <eOperations name="getTemporaryString" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
@@ -1021,7 +1023,8 @@
     </eOperations>
     <eOperations name="createDate" lowerBound="1" eType="#//Datetime">
       <eParameters name="type" lowerBound="1" eType="#//def/DatetimeType"/>
-      <eParameters name="format" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="dateFormat" lowerBound="1" eType="#//def/DateFormat"/>
+      <eParameters name="timeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createDecimal" lowerBound="1" eType="#//Decimal">
@@ -1349,17 +1352,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datetime" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">
-    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    </eOperations>
-    <eOperations name="eval">
-      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
-    </eOperations>
-    <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eOperations name="t" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="adddur">
       <eTypeParameters name="E">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
@@ -1396,6 +1388,40 @@
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="format">
         <eGenericType eTypeParameter="#//Datetime/adddur.3/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="asDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eOperations name="asTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eOperations>
+    <eOperations name="eval">
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
+    </eOperations>
+    <eOperations name="qDiff" eType="#//Numeric">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/qDiff/E"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="qEditd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="dateFormat" lowerBound="1" eType="#//def/DateFormat"/>
+      <eParameters name="dateSeparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="timeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
+      <eParameters name="timeSeparator" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="qSubdt" eType="#//Numeric">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="portion">
+        <eGenericType eTypeParameter="#//Datetime/qSubdt/E"/>
       </eParameters>
     </eOperations>
     <eOperations name="subdur">
@@ -1436,23 +1462,7 @@
         <eGenericType eTypeParameter="#//Datetime/subdur.3/E"/>
       </eParameters>
     </eOperations>
-    <eOperations name="qDiff" eType="#//Numeric">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
-      <eParameters name="format">
-        <eGenericType eTypeParameter="#//Datetime/qDiff/E"/>
-      </eParameters>
-    </eOperations>
-    <eOperations name="qSubdt" eType="#//Numeric">
-      <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
-      </eTypeParameters>
-      <eParameters name="portion">
-        <eGenericType eTypeParameter="#//Datetime/qSubdt/E"/>
-      </eParameters>
-    </eOperations>
+    <eOperations name="t" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="time"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Decimal" abstract="true" interface="true"
@@ -2240,22 +2250,6 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
-    <eOperations name="time"/>
-    <eOperations name="qRem" eType="#//Numeric">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
-    </eOperations>
-    <eOperations name="qRem" eType="#//Numeric">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    </eOperations>
-    <eOperations name="qRem" eType="#//Numeric">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="qRem" eType="#//Numeric">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    </eOperations>
-    <eOperations name="qRem" eType="#//Numeric">
-      <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
     <eOperations name="qDiv" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -2338,7 +2332,23 @@
     <eOperations name="qPlus" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eOperations>
+    <eOperations name="qRem" eType="#//Numeric">
+      <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eOperations name="qUns" eType="#//Numeric"/>
+    <eOperations name="time"/>
     <eOperations name="xfoot">
       <eParameters name="array" lowerBound="1">
         <eGenericType eClassifier="#//Array">
@@ -3023,7 +3033,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="DatetimeDef">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
           eType="#//def/DatetimeType"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateFormat" eType="#//def/DateFormat"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeFormat" eType="#//def/TimeFormat"/>
       <eGenericSuperTypes eClassifier="#//def/UnaryAtomicBufferedDataDef">
         <eTypeArguments eClassifier="#//Datetime"/>
       </eGenericSuperTypes>
@@ -3238,6 +3249,14 @@
       <eGenericSuperTypes eClassifier="#//def/BufferedDataDef">
         <eTypeArguments eTypeParameter="#//def/StrollerDef/D"/>
       </eGenericSuperTypes>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="TimeFormat">
+      <eLiterals name="HMS" value="10" literal="*HMS"/>
+      <eLiterals name="ISO" value="20" literal="*ISO"/>
+      <eLiterals name="USA" value="30" literal="*USA"/>
+      <eLiterals name="EUR" value="40" literal="*EUR"/>
+      <eLiterals name="JIS" value="50" literal="*JIS"/>
+      <eLiterals name="JOBRUN" value="60" literal="*JOBRUN"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="UnaryAtomicDataDef" abstract="true">
       <eTypeParameters name="D">

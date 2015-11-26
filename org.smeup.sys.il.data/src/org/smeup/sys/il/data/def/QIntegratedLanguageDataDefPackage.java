@@ -811,13 +811,22 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int DATETIME_DEF__TYPE = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Format</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 *
+	 * The feature id for the '<em><b>Date Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATETIME_DEF__FORMAT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+	int DATETIME_DEF__DATE_FORMAT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Time Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATETIME_DEF__TIME_FORMAT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Datetime Def</em>' class.
@@ -825,7 +834,7 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATETIME_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 2;
+	int DATETIME_DEF_FEATURE_COUNT = UNARY_ATOMIC_BUFFERED_DATA_DEF_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '
@@ -1496,6 +1505,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	int FLOATING_TYPE = 38;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.data.def.TimeFormat <em>Time Format</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.data.def.TimeFormat
+	 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getTimeFormat()
+	 * @generated
+	 */
+	int TIME_FORMAT = 39;
+
+	/**
 	 * Returns the meta object for class '
 	 * {@link org.smeup.sys.il.data.def.QAdapterDef <em>Adapter Def</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -1755,14 +1774,26 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EAttribute getDatetimeDef_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QDatetimeDef#getFormat <em>Format</em>}'.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Format</em>'.
-	 * @see org.smeup.sys.il.data.def.QDatetimeDef#getFormat()
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QDatetimeDef#getDateFormat <em>Date Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date Format</em>'.
+	 * @see org.smeup.sys.il.data.def.QDatetimeDef#getDateFormat()
 	 * @see #getDatetimeDef()
 	 * @generated
 	 */
-	EAttribute getDatetimeDef_Format();
+	EAttribute getDatetimeDef_DateFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.data.def.QDatetimeDef#getTimeFormat <em>Time Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Format</em>'.
+	 * @see org.smeup.sys.il.data.def.QDatetimeDef#getTimeFormat()
+	 * @see #getDatetimeDef()
+	 * @generated
+	 */
+	EAttribute getDatetimeDef_TimeFormat();
 
 	/**
 	 * Returns the meta object for class '
@@ -2179,6 +2210,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 	EEnum getFloatingType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.data.def.TimeFormat <em>Time Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Time Format</em>'.
+	 * @see org.smeup.sys.il.data.def.TimeFormat
+	 * @generated
+	 */
+	EEnum getTimeFormat();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -2416,11 +2457,20 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		EAttribute DATETIME_DEF__TYPE = eINSTANCE.getDatetimeDef_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
+		 * The meta object literal for the '<em><b>Date Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATETIME_DEF__FORMAT = eINSTANCE.getDatetimeDef_Format();
+		EAttribute DATETIME_DEF__DATE_FORMAT = eINSTANCE.getDatetimeDef_DateFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATETIME_DEF__TIME_FORMAT = eINSTANCE.getDatetimeDef_TimeFormat();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl <em>Decimal Def</em>}' class.
@@ -2789,6 +2839,16 @@ public interface QIntegratedLanguageDataDefPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum FLOATING_TYPE = eINSTANCE.getFloatingType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.data.def.TimeFormat <em>Time Format</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.data.def.TimeFormat
+		 * @see org.smeup.sys.il.data.def.impl.IntegratedLanguageDataDefPackageImpl#getTimeFormat()
+		 * @generated
+		 */
+		EEnum TIME_FORMAT = eINSTANCE.getTimeFormat();
 
 	}
 

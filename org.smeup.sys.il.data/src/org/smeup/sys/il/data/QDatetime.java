@@ -10,6 +10,8 @@ package org.smeup.sys.il.data;
 import java.lang.Enum;
 import java.lang.String;
 import java.util.Date;
+import org.smeup.sys.il.data.def.DateFormat;
+import org.smeup.sys.il.data.def.TimeFormat;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -85,6 +87,14 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Date asDate();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
 	 * @generated
 	 */
@@ -121,6 +131,14 @@ public interface QDatetime extends QBufferedData {
 	 * @generated
 	 */
 	<E extends Enum<E>> QNumeric qDiff(QDatetime value, E format);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dateFormatRequired="true" dateSeparatorRequired="true" timeFormatRequired="true" timeSeparatorRequired="true"
+	 * @generated
+	 */
+	String qEditd(DateFormat dateFormat, String dateSeparator, TimeFormat timeFormat, String timeSeparator);
 
 	/**
 	 * <!-- begin-user-doc -->
