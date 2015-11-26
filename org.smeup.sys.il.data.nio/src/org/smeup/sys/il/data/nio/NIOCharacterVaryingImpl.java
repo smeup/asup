@@ -39,7 +39,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	@Override
 	public byte[] asBytes() {
-		return NIOBufferHelper.readBytes(this);
+		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getLength());
 	}
 
 	@Override
