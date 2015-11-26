@@ -221,11 +221,23 @@ public class EnvironmentVariableImpl extends ObjectNameableImpl implements QEnvi
 		return result.toString();
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	@Override
 	public int hashCode() {
 		return getName().hashCode();
 	}
-	
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null || (obj instanceof QEnvironmentVariable)) {
