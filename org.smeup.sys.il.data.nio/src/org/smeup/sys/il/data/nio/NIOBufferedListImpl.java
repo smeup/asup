@@ -238,92 +238,62 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 		int i = 0;
 
-		switch (defaultComparator) {
-		case ASCII:
-			List<String> stringList = new ArrayList<String>();
-			for (QBufferedData elementTarget : this) {
-				stringList.add(elementTarget.toString());
+		if (getListOwner() != null) {
+			List<byte[]> dataList = new ArrayList<byte[]>();
+
+			for (QBufferedData elementTarget : getListOwner()) {
+				dataList.add(elementTarget.asBytes());
 			}
 
-			Collections.sort(stringList, new Comparator<String>() {
-				public int compare(String param1, String param2) {
+			Collections.sort(dataList, new Comparator<byte[]>() {
+				@Override
+				public int compare(byte[] param1, byte[] param2) {
+
+					byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
+					byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
 
 					switch (getSortDirection()) {
 					case ASCEND:
-						return param1.compareTo(param2);
+						return compareBytes(b1, b2);
 					case DESCEND:
-						return param1.compareTo(param2) * -1;
+						return compareBytes(b1, b2) * -1;
 					}
 
-					return param1.compareTo(param2);
+					return compareBytes(b1, b2);
 				}
 			});
 
-			for (QBufferedData elementTarget : this) {
-				elementTarget.movel(stringList.get(i));
+			for (byte[] bd : dataList) {
+
+				((NIOBufferedDataImpl) getListOwner().get(i + 1))._eval(bd);
 				i++;
 			}
 
-			break;
-		case EBCDIC:
+		} else {
 
-			if (getListOwner() != null) {
-				List<byte[]> dataList = new ArrayList<byte[]>();
+			List<byte[]> dataList = new ArrayList<byte[]>();
+			for (QBufferedData elementTarget : this) {
+				dataList.add(elementTarget.asBytes());
+			}
 
-				for (QBufferedData elementTarget : getListOwner()) {
-					dataList.add(elementTarget.asBytes());
-				}
+			Collections.sort(dataList, new Comparator<byte[]>() {
+				@Override
+				public int compare(byte[] param1, byte[] param2) {
 
-				Collections.sort(dataList, new Comparator<byte[]>() {
-					@Override
-					public int compare(byte[] param1, byte[] param2) {
-
-						byte[] b1 = Arrays.copyOfRange(param1, getPosition(), getPosition() + getModel().getLength());
-						byte[] b2 = Arrays.copyOfRange(param2, getPosition(), getPosition() + getModel().getLength());
-
-						switch (getSortDirection()) {
-						case ASCEND:
-							return compareBytes(b1, b2);
-						case DESCEND:
-							return compareBytes(b1, b2) * -1;
-						}
-
-						return compareBytes(b1, b2);
-					}
-				});
-
-				for (byte[] bd : dataList) {
-
-					((NIOBufferedDataImpl) getListOwner().get(i + 1))._eval(bd);
-					i++;
-				}
-
-			} else {
-
-				List<byte[]> dataList = new ArrayList<byte[]>();
-				for (QBufferedData elementTarget : this) {
-					dataList.add(elementTarget.asBytes());
-				}
-
-				Collections.sort(dataList, new Comparator<byte[]>() {
-					@Override
-					public int compare(byte[] param1, byte[] param2) {
-
-						switch (getSortDirection()) {
-						case ASCEND:
-							return compareBytes(param1, param2);
-						case DESCEND:
-							return compareBytes(param1, param2) * -1;
-						}
-
+					switch (getSortDirection()) {
+					case ASCEND:
 						return compareBytes(param1, param2);
+					case DESCEND:
+						return compareBytes(param1, param2) * -1;
 					}
-				});
 
-				for (byte[] bd : dataList) {
-					((NIOBufferedDataImpl) this.get(i + 1))._eval(bd);
-					i++;
+					return compareBytes(param1, param2);
 				}
+			});
+
+			for (byte[] bd : dataList) {
+				((NIOBufferedDataImpl) this.get(i + 1))._eval(bd);
+				i++;
 			}
 		}
 	}

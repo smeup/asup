@@ -29,8 +29,4 @@ public abstract class NIODataImpl implements QData {
 	}
 
 	public abstract NIODataImpl copy();
-	
-	public enum ComparatorType {
-		ASCII, EBCDIC;
-	}
 }

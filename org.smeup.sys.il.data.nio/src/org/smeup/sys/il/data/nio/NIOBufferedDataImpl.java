@@ -31,14 +31,12 @@ import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
-import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.data.impl.DataWriterImpl;
 
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
 
 	private static final long serialVersionUID = 1L;
-	protected static final ComparatorType defaultComparator = ComparatorType.EBCDIC;
 	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
 	private static final Charset CHARSET = Charset.forName(ENCODING);
 
@@ -121,7 +119,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void assign(QBufferedData target, int position) {
 
-		if(target instanceof NIOAdapterImpl)  {
+		if (target instanceof NIOAdapterImpl) {
 			NIOAdapterImpl nioAdapterImpl = (NIOAdapterImpl) target;
 			nioAdapterImpl.setDelegate(this);
 			return;
@@ -281,7 +279,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	}
 
 	@Override
-	public void movea(String value, boolean clear) {		
+	public void movea(String value, boolean clear) {
 		try {
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
 		} catch (UnsupportedEncodingException e) {
@@ -634,7 +632,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void eval(QDataFiller value) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
+		"".toCharArray();
 	}
 
 	@Override
@@ -643,22 +642,10 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		if (value instanceof DataWriterImpl) {
 			DataWriterImpl dataWriterImpl = (DataWriterImpl) value;
 
-			switch (defaultComparator) {
-			case ASCII:
-
-				if (dataWriterImpl.object instanceof QString)
-					return toString().equals(((QString) dataWriterImpl.object).asString());
-				else
-					return toString().equals(dataWriterImpl.object.toString());
-
-			case EBCDIC:
-
-				if (dataWriterImpl.object instanceof QBufferedData)
-					return eq((QBufferedData) dataWriterImpl.object);
-				else
-					return toString().equals(dataWriterImpl.object.toString());
-
-			}
+			if (dataWriterImpl.object instanceof QBufferedData)
+				return eq((QBufferedData) dataWriterImpl.object);
+			else
+				return toString().equals(dataWriterImpl.object.toString());
 		}
 
 		return false;
@@ -693,14 +680,4 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	/*
-	@Override
-	public void setStore(Object store) {
-		if(store instanceof NIOBufferedDataImpl)
-			_relative = (NIOBufferedDataImpl) store;
-		else
-			throw new IntegratedLanguageDataRuntimeException("Invalid store: " + store.getClass().getName());
-	}
-	*/
 }
