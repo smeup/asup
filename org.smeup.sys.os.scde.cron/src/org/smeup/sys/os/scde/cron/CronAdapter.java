@@ -115,7 +115,7 @@ public class CronAdapter {
 	/*
 	 * CronTask format:
 	 * 
-	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server taskID user command taskName taskDescription
+	 *  mm hh dayOfMonth month dayOfWeek sh call_ws server taskID user "command" taskName "taskDescription"
 	 *
 	 */
 	@SuppressWarnings("unused")
@@ -134,11 +134,17 @@ public class CronAdapter {
 		String server = tokenizer.nextToken();
 		String id = tokenizer.nextToken();
 		String user = tokenizer.nextToken();
-		String cmd = tokenizer.nextToken();
+						
+		String cmd = "";
+		while (!cmd.endsWith("\"")) {
+				cmd += tokenizer.nextToken();
+		}
+	
 		String name = tokenizer.nextToken();
+		
 		String description = "";
-		if (tokenizer.hasMoreElements()) {
-			description = tokenizer.nextToken();
+		while (tokenizer.hasMoreElements() && !cmd.endsWith("\"")) {
+			description += tokenizer.nextToken();
 		} 
 		
 		//TODO: manage month, monthDay and special values combinations

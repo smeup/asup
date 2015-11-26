@@ -15,8 +15,8 @@ Chiamata script per registrazione crontask:
 				4) Utente
 				5) Comando (tra doppi apici)
 				6) Nome task				
-				7) Descrizione task
-	Esempio: ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM DESCRIPTION
+				7) Descrizione task (tra doppi apici)
+	Esempio: ./addcron "* * * * *" 127.0.0.1 123456 FORDAR "WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL)" WRKOBJ_PGM "Descrizione del task"
 
 *** removecron ***
 
