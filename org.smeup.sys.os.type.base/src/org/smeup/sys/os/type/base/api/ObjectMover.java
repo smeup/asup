@@ -50,6 +50,7 @@ public @ToDo class ObjectMover {
 	private QExceptionManager exceptionManager;
 	@Inject
 	private QJobLogManager jobLogManager;
+	@Inject
 	
 	@Main
 	public void main(

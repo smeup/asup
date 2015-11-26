@@ -54,7 +54,7 @@ public @Supported class ObjectRenamer {
 	private QJob job;
 	@Inject
 	private QExceptionManager exceptionManager;
-
+	
 	@Main
 	public void main(@Supported @DataDef(qualified = true) ObjectNameAndLib object, 
 					 @Supported @DataDef(length = 7) QCharacter objectType, 
