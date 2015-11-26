@@ -298,4 +298,10 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
+
+	@Override
+	public String toString() {
+		return new String(asBytes());
+	}
+
 }
