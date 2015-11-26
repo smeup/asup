@@ -16,11 +16,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
 public abstract class BaseJobManagerImpl implements QJobManager {
 	
 	private static final int MILLIS_IN_ONE_DAY = 1000 * 60 * 60 * 24;
+	@Override
+	public QJob lookup(String contextID, String name, String user, String number) {
+		return lookup(contextID, name, user, Integer.parseInt(number));
+	}
 	
 	@Override
 	public void delay(long millis) {
