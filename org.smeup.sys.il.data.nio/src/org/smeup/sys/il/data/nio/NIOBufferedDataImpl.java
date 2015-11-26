@@ -69,7 +69,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 
-			QStorable tempRelative = _storage;
+			QStorable tempStorage = _storage;
 			ByteBuffer tempBuffer = _buffer;
 			int tempPosition = _position;
 			QDataContext tempDataContext = getDataContext();
@@ -80,7 +80,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			_dataContext = null;
 			oos.writeObject(this);
 
-			_storage = tempRelative;
+			_storage = tempStorage;
 			_buffer = tempBuffer;
 			_position = tempPosition;
 			_dataContext = tempDataContext;
@@ -205,7 +205,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public byte[] asBytes() {
-		return NIOBufferHelper.readBytes(this);
+		return NIOBufferHelper.readBytes(getBuffer(), getPosition(), getSize());
 	}
 
 	@Override

@@ -22,11 +22,7 @@ import org.smeup.sys.il.data.QStorable;
 
 public class NIOBufferHelper {
 
-	public static byte[] readBytes(NIOBufferedDataImpl bufferedData) {
-		return readBytes(bufferedData.getBuffer(), bufferedData.getPosition(), bufferedData.getSize());
-	}
-
-	private static byte[] readBytes(ByteBuffer buffer, int position, int length) {
+	public static byte[] readBytes(ByteBuffer buffer, int position, int length) {
 		assert buffer != null;
 
 		prepare(buffer, position, length);
