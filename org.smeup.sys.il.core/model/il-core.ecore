@@ -276,6 +276,8 @@
         abstract="true" interface="true">
       <eTypeParameters name="V"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JavaCharset" instanceClassName="java.nio.charset.Charset"
+        abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="JavaCloseable" instanceClassName="java.io.Closeable"
         abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="JavaExecutorService" instanceClassName="java.util.concurrent.ExecutorService"

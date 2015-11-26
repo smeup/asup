@@ -286,9 +286,15 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
+    <eOperations name="fill">
+      <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
+    </eOperations>
     <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
@@ -299,16 +305,25 @@
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="#//BufferedData"/>
+    </eOperations>
+    <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+    </eOperations>
+    <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="#//BufferedData"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
@@ -897,6 +912,7 @@
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
+    <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCharset"/>
     <eOperations name="getTemporaryString" lowerBound="1" eType="#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataDelegator" abstract="true" interface="true">
@@ -1118,14 +1134,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFiller" eSuperTypes="#//DataVisitor">
     <eOperations name="set" eType="#//DataFiller">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
-    <eOperations name="set" eType="#//DataFiller">
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="set" eType="#//DataFiller">
       <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
+    <eOperations name="get" lowerBound="1" eType="#//BufferedData"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataManager" abstract="true" interface="true">
     <eOperations name="createDataContainer" lowerBound="1" eType="#//DataContainer">

@@ -36,8 +36,9 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 	@Override
 	public E asEnum() {
 
-		String value = toString().trim();
-
+		// TODO encoding
+		String value = new String(asBytes(), getDataContext().getCharset()).trim(); 
+		
 		for (Field field : _klass.getFields()) {
 			Special special = field.getAnnotation(Special.class);
 			if (special == null) {
@@ -47,7 +48,12 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 				return Enum.valueOf(_klass, field.getName());
 		}
 
-		return Enum.valueOf(_klass, "OTHER");
+		try {
+			return Enum.valueOf(_klass, "OTHER");
+		}
+		catch(Exception e) {
+			return null;
+		}
 	}
 
 	@SuppressWarnings("unchecked")

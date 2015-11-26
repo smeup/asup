@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.QArray;
@@ -111,14 +110,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 
 	@Override
 	public String asString() {
-		try {
-			return new String(asBytes(), getEncoding());
-		} catch (UnsupportedEncodingException e) {
-			return new String(asBytes());
-		} catch (Exception e) {
-			// TODO
-			return "";
-		}
+		return new String(asBytes(), getDataContext().getCharset());
 	}
 
 	@Override
@@ -242,27 +234,19 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 			if (space == null)
 				eval(this + factor1);
 			else {
-				try {
-					String value = trimR();
-					int length = value.length() + space.intValue();
-					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
-					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getEncoding()), clear, INIT);
-				} catch (UnsupportedEncodingException e) {
-					throw new RuntimeException(e);
-				}
+				String value = trimR();
+				int length = value.length() + space.intValue();
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getDataContext().getCharset()), clear, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor1.getBytes(getDataContext().getCharset()), clear, INIT);
 			}
 		} else {
 			if (space == null)
 				eval(factor1 + factor2);
 			else {
-				try {
-					String value = factor1.trim();
-					int length = value.length() + space.intValue();
-					NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getEncoding()), clear, INIT);
-					NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getEncoding()), clear, INIT);
-				} catch (UnsupportedEncodingException e) {
-					throw new RuntimeException(e);
-				}
+				String value = factor1.trim();
+				int length = value.length() + space.intValue();
+				NIOBufferHelper.movel(getBuffer(), getPosition(), length, value.getBytes(getDataContext().getCharset()), clear, INIT);
+				NIOBufferHelper.movel(getBuffer(), getPosition() + length, _length, factor2.getBytes(getDataContext().getCharset()), clear, INIT);
 			}
 		}
 
@@ -939,23 +923,7 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	}
 
 	public int compareString(String value) {
-
-		/*
-		 * ByteBuffer b1 = ByteBuffer.wrap(asBytes()); ByteBuffer b2 =
-		 * ByteBuffer.wrap(value.getBytes(CHARSET)); int result =
-		 * b1.compareTo(b2);
-		 * 
-		 * System.out.println(bytesToHex(asBytes()));
-		 * System.out.println(bytesToHex(value.getBytes(CHARSET)));
-		 */
-
-		// int result = compareBytes(asBytes(), value.getBytes(CHARSET));
-		int result = compareBytes(asBytes(), value.getBytes(getCharset()));
-
-		/*
-		 * try { return compareBytes(asBytes(), b2.getBytes(getEncoding())); }
-		 * catch (UnsupportedEncodingException e) { e.printStackTrace(); }
-		 */
+		int result = compareBytes(asBytes(), value.getBytes(getDataContext().getCharset()));
 
 		return result;
 	}

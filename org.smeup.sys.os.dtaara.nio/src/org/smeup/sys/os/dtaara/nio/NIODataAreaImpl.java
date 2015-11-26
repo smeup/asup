@@ -66,7 +66,11 @@ public class NIODataAreaImpl<D extends QBufferedData> extends NIOBufferedDelegat
 		if (externalName.equalsIgnoreCase("*LDA")) {
 			QDataAreaManager dataAreaManager = getDataContext().getContext().get(QDataAreaManager.class);
 			org.smeup.sys.os.dtaara.QDataArea localDataArea = dataAreaManager.getLocalDataArea(getDataContext().getContext());
-			localDataArea.setContent(get().toString());
+			// TODO
+			if(get() instanceof QString)
+				localDataArea.setContent(((QString)get()).asString());
+			else
+				localDataArea.setContent(new String(asBytes()));
 		}
 		else {
 			QResourceManager resourceManager = getDataContext().getContext().get(QResourceManager.class);

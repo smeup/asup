@@ -12,7 +12,6 @@
 package org.smeup.sys.il.data.nio;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
@@ -79,7 +78,7 @@ public class NIOBufferHelper {
 
 		fill(buffer, position, buffer.limit(), filler);
 	}
-
+	
 	public static void prepare(ByteBuffer buffer, int position, int length) {
 		assert buffer != null;
 
@@ -104,15 +103,26 @@ public class NIOBufferHelper {
 		}
 	}
 
-	public static void fill(ByteBuffer buffer, int position, int length, byte filler) {
-
-		if (buffer.hasArray())
-			Arrays.fill(buffer.array(), position, length, filler);
-		else
-			for (int i = position; i < length; i++)
-				buffer.put(filler);
+	private static void fill(ByteBuffer buffer, int position, int length, byte filler) {
+		for (int i = position; i < length; i++)
+			buffer.put(filler);
 	}
+	
+	public static void fill(ByteBuffer buffer, int position, int length, byte[] filler) {
+		assert buffer != null;
 
+		if(filler.length == 0)
+			"".toCharArray();
+		
+		prepare(buffer, position, length);
+
+		for (int i = position; i < length; i++) {
+			buffer.put(filler);
+			if(filler.length>1)
+				position = position+filler.length-1;
+		}
+	}
+	
 	public static void assign(QStorable storable, QBufferedData target) {
 		assign(storable, target, 1);
 	}

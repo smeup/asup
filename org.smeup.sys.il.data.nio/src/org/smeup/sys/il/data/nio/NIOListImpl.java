@@ -75,7 +75,7 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIOBufferedDelegatorImpl) ois.readObject();
 			ois.close();
-
+			copy._dataContext = getDataContext();
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -182,6 +182,9 @@ public class NIOListImpl<D extends NIODataImpl> extends NIODataImpl implements Q
 				sb.append(", ");
 			sb.append(element.toString().trim());
 			first = false;
+			
+			if(sb.length() > 1000)
+				break;			
 		}
 
 		sb.append("]");

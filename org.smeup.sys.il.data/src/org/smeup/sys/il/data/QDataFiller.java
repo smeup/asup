@@ -7,7 +7,6 @@
  */
 package org.smeup.sys.il.data;
 
-import java.lang.String;
 
 
 /**
@@ -28,21 +27,13 @@ public interface QDataFiller extends QDataVisitor {
 	 * @model valueRequired="true"
 	 * @generated
 	 */
-	QDataFiller set(int value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
-	QDataFiller set(String value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model valueRequired="true"
-	 * @generated
-	 */
 	QDataFiller set(QBufferedData value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true"
+	 * @generated
+	 */
+	QBufferedData get();
 } // QDataFiller

@@ -32,7 +32,6 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
 		// TODO Auto-generated method stub
-		value.toString();
 	}
 
 	@Override
@@ -73,7 +72,7 @@ public class NIOAdapterImpl extends NIOBufferedDelegatorImpl implements QAdapter
 				int stringLength = string.length();
 				if (stringLength == 0)
 					stringLength = 32;
-				NIOCharacterImpl character = new NIOCharacterImpl(null, stringLength);
+				NIOCharacterImpl character = new NIOCharacterImpl(getDataContext(), stringLength);
 				character.allocate();
 				character.eval(string);
 

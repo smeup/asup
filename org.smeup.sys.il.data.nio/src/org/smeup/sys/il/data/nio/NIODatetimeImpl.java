@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.def.DatetimeType;
 public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	private static final long serialVersionUID = 1L;
-	private static byte INIT = (byte) 32;
+	protected static final byte INIT = (byte) -16;
 
 	private DatetimeType _type;
 	private String _format;

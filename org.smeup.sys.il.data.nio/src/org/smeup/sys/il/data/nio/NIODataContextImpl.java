@@ -1,5 +1,7 @@
 package org.smeup.sys.il.data.nio;
 
+import java.nio.charset.Charset;
+
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QDataAreaFactory;
 import org.smeup.sys.il.data.QDataContext;
@@ -8,25 +10,31 @@ import org.smeup.sys.il.data.QIndicator;
 import org.smeup.sys.il.data.QString;
 
 public class NIODataContextImpl implements QDataContext {
-	
-	private QContext context;	
+
+	private QContext context;
 	private QDataFactory dataFactory;
 	private QIndicator found;
 	private QIndicator endOfData;
-	
 	private QString temporaryString;
-	
+	private static final Charset CHARSET = Charset.forName("IBM-280");
+
 	public NIODataContextImpl(QContext context) {
 		this.context = context;
 		QDataAreaFactory dataAreaFactory = context.get(QDataAreaFactory.class);
-		dataFactory = new NIODataFactoryImpl(this, dataAreaFactory);		
+		dataFactory = new NIODataFactoryImpl(this, dataAreaFactory);
 		found = dataFactory.createIndicator(true);
 		endOfData = dataFactory.createIndicator(true);
-		
+
 		this.temporaryString = dataFactory.createCharacter(64000, true, true);
 	}
 	
-	@Override public QIndicator found() {
+	@Override
+	public Charset getCharset() {
+		return CHARSET;
+	}
+
+	@Override
+	public QIndicator found() {
 		return this.found;
 	}
 

@@ -11,13 +11,11 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDecimal;
@@ -155,7 +153,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public QNumeric divide(short value) {
-		return divide(value, (String)null);
+		return divide(value, (String) null);
 	}
 
 	@Override
@@ -163,17 +161,17 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() / value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(short value, QNumeric remainderTarget) {
 		eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(long value) {
-		return divide(value, (String)null);
+		return divide(value, (String) null);
 	}
 
 	@Override
@@ -181,17 +179,17 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() / value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(long value, QNumeric remainderTarget) {
 		eval(asDouble() / value);
 		remainderTarget.eval(asDouble() % value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(int value) {
-		return divide(value, (String)null);
+		return divide(value, (String) null);
 	}
 
 	@Override
@@ -206,10 +204,10 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		remainderTarget.eval(asDouble() % value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(double value) {
-		return divide(value, (String)null);
+		return divide(value, (String) null);
 	}
 
 	@Override
@@ -224,10 +222,10 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		remainderTarget.eval(asDouble() % value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric divide(QNumeric value) {
-		return divide(value, (String)null);
+		return divide(value, (String) null);
 	}
 
 	@Override
@@ -241,8 +239,8 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() / value.asDouble());
 		remainderTarget.eval(asDouble() % value.asDouble());
 		return this;
-	}	
-	
+	}
+
 	@Override
 	public QNumeric minus(int value) {
 		return minus(value, null);
@@ -253,7 +251,6 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() - value);
 		return this;
 	}
-	
 
 	@Override
 	public QNumeric minus(long value) {
@@ -276,7 +273,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() - value.asDouble());
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric minus(short value) {
 		return minus(value, null);
@@ -298,7 +295,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() - value);
 		return this;
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> void move(E value) {
 		move(getPrimitive(value));
@@ -311,11 +308,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void move(String value, boolean clear) {
-		try {
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
-		} catch (UnsupportedEncodingException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
@@ -330,11 +323,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void movel(String value, boolean clear) {
-		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
-		} catch (UnsupportedEncodingException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
@@ -358,7 +347,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() * value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric mult(QNumeric value) {
 		return mult(value, null);
@@ -380,7 +369,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() * value);
 		return this;
 	}
-	
+
 	@Override
 	public QNumeric mult(double value) {
 		return mult(value, null);
@@ -391,7 +380,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asDouble() * value);
 		return this;
 	}
-	
+
 	@Override
 	public <E extends Enum<E>> boolean ne(E value) {
 		return !eq(value);
@@ -485,7 +474,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		eval(asLong() ^ value);
 		return this;
 	}
-	
+
 	public abstract Number readNumber();
 
 	@Override
@@ -529,32 +518,32 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(double value) {
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
 	public void eval(int value) {
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
 	public void eval(long value) {
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
 	public void eval(QNumeric value) {
 		// TODO remove me
-		if(value == null) {			
+		if (value == null) {
 			clear();
 			return;
 		}
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
 	public void eval(short value) {
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
@@ -564,7 +553,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void eval(BigDecimal value) {
-		eval(value, (String)null);
+		eval(value, (String) null);
 	}
 
 	@Override
@@ -673,12 +662,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 		NIONumericImpl number = (NIONumericImpl) copy();
 		number.allocate();
-		
-		if(asShort() > 0)
+
+		if (asShort() > 0)
 			number.eval(this);
 		else
-			number.eval(this.asDouble()*-1);
-			
+			number.eval(this.asDouble() * -1);
+
 		return number;
 	}
 
@@ -697,15 +686,15 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		number.eval(value.doubleValue());
 		return number;
 	}
-	
+
 	private QNumeric qDivOperation(Number value, QNumeric remainderTarget) {
-		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true); 
+		QDecimal number = getDataContext().getDataFactory().createDecimal(15, 5, DecimalType.ZONED, true);
 		number.eval(asDouble() / value.doubleValue());
-		if(remainderTarget!=null)
+		if (remainderTarget != null)
 			remainderTarget.eval(asDouble() % value.doubleValue());
 		return number;
 	}
-	
+
 	@Override
 	public QNumeric qMinus(short value) {
 		return qMinusOperation(value);
@@ -767,7 +756,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		number.eval(asDouble() * value.doubleValue());
 		return number;
 	}
-	
+
 	@Override
 	public QNumeric qPlus(short value) {
 		return qPlusOperation(value);
@@ -798,7 +787,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		number.eval(asDouble() + value.doubleValue());
 		return number;
 	}
-	
+
 	@Override
 	public QNumeric qRem(int value) {
 		return qRemOperation(value);
@@ -829,7 +818,7 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 		number.eval(asDouble() % value.doubleValue());
 		return number;
 	}
-	
+
 	@Override
 	public void time() {
 
@@ -851,10 +840,10 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 
 	@Override
 	public void xfoot(QArray<?> array, String roundingMode) {
-		for(int i=1; i<=array.capacity();i++){
-			if(i > array.capacity())
+		for (int i = 1; i <= array.capacity(); i++) {
+			if (i > array.capacity())
 				break;
-			((QNumeric)this).plus((QNumeric)array.get(i));
+			((QNumeric) this).plus((QNumeric) array.get(i));
 		}
 	}
 }

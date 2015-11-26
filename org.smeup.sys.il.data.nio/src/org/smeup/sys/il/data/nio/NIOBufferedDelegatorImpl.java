@@ -80,18 +80,22 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(baos);
 			QBufferedData temp = _delegate;
+			QDataContext tempDataContext = getDataContext();
 			_delegate = null;
+			_dataContext = null;
 			oos.writeObject(this);
 			_delegate = temp;
+			_dataContext = tempDataContext;
 			oos.close();
 
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIOBufferedDelegatorImpl) ois.readObject();
 			ois.close();
-			if (_delegate != null)
+			if (_delegate != null) {
 				copy._delegate = NIOBufferHelper.getNIOBufferedDataImpl(_delegate).copy();
-
+			}
+			copy._dataContext = _dataContext;
 			return copy;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -448,5 +452,26 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	@Override
 	public int getPosition() {
 		return _delegate.getPosition();
+	}
+
+	@Override
+	public void fill(QBufferedData value) {
+		_delegate.fill(value);
+	}
+
+	public boolean ge(QBufferedData value) {
+		return _delegate.ge(value);
+	}
+
+	public boolean gt(QBufferedData value) {
+		return _delegate.gt(value);
+	}
+
+	public boolean le(QBufferedData value) {
+		return _delegate.le(value);
+	}
+
+	public boolean lt(QBufferedData value) {
+		return _delegate.lt(value);
 	}
 }

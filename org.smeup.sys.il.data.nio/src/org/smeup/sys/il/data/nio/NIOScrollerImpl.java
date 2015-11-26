@@ -41,12 +41,14 @@ public class NIOScrollerImpl<D extends QBufferedData> extends NIOBufferedListImp
 	}
 
 	@Override
-	public void allocate() {
+	public NIOScrollerImpl<D> allocate() {
 		super.allocate();
 
 		clear();
 
 		absolute(1);
+		
+		return this;
 	}
 
 	@Override

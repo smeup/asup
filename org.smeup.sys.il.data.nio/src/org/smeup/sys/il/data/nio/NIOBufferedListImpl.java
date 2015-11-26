@@ -11,7 +11,6 @@
  */
 package org.smeup.sys.il.data.nio;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,6 +23,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedList;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QNumeric;
@@ -182,6 +182,9 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 			else
 				sb.append(element.qSubst(1).asString());
 			sb.append("]");
+			
+			if(sb.length() > 1000)
+				break;
 		}
 
 		return sb.toString();
@@ -334,11 +337,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(String value) {
-		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), false, NIOCharacterImpl.INIT);
-		} catch (UnsupportedEncodingException e) {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(), false, NIOCharacterImpl.INIT);
-		}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), false, NIOCharacterImpl.INIT);
 	}
 
 	@Override
@@ -392,11 +391,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, String value, boolean clear) {
-		try {
-			movea(targetIndex, value.getBytes(getEncoding()), clear, NIOCharacterImpl.INIT);
-		} catch (UnsupportedEncodingException e) {
-			movea(targetIndex, value.getBytes(), clear, NIOCharacterImpl.INIT);
-		}
+		movea(targetIndex, value.getBytes(getDataContext().getCharset()), clear, NIOCharacterImpl.INIT);
 	}
 
 	private void movea(int targetIndex, byte[] value, boolean clear, byte filler) {
@@ -475,5 +470,24 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 	@Override
 	public int getSize() {
 		return capacity() * getModel().getSize();
+	}
+
+	@Override
+	public void accept(QDataVisitor visitor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected byte getFiller() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void fill(QBufferedData filler) {
+		for (QBufferedData element : this) {
+			element.fill(filler);
+		}
 	}
 }

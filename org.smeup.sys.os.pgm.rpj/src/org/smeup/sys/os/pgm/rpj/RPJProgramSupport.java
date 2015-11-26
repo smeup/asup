@@ -704,7 +704,7 @@ public class RPJProgramSupport {
 	}
 
 	public QDataFiller qAll(byte numeric) {
-		return this.dataFiller.set(numeric);
+		return this.dataFiller.set(qBox(numeric));
 	}
 
 	public QDataFiller qAll(QString string) {
@@ -712,11 +712,11 @@ public class RPJProgramSupport {
 	}
 
 	public QDataFiller qAll(String string) {
-		return this.dataFiller.set(string);
+		return this.dataFiller.set(qBox(string));
 	}
 
 	public QDataFiller qAll(int numeric) {
-		return this.dataFiller.set(numeric);
+		return this.dataFiller.set(qBox(numeric));
 	}
 	
 	public QDataFiller qAll(QNumeric numeric) {

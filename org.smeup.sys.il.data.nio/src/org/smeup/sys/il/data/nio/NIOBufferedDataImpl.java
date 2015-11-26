@@ -16,12 +16,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
@@ -32,13 +29,10 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.def.DecimalType;
-import org.smeup.sys.il.data.impl.DataWriterImpl;
 
 public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBufferedData {
 
 	private static final long serialVersionUID = 1L;
-	private static final String ENCODING = "IBM-280";// "ISO-8859-1";
-	private static final Charset CHARSET = Charset.forName(ENCODING);
 
 	protected transient ByteBuffer _buffer;
 	protected QStorable _storage;
@@ -89,7 +83,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bais);
 			copy = (NIOBufferedDataImpl) ois.readObject();
-
+			copy._dataContext = tempDataContext;
 			ois.close();
 
 			return copy;
@@ -99,7 +93,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		}
 	}
 
-	protected void allocate() {
+	protected NIOBufferedDataImpl allocate() {
 
 		// TODO synchronize
 		if (_storage != null || _buffer != null)
@@ -109,6 +103,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 		// TODO performances
 		clear();
+
+		return this;
 	}
 
 	@Override
@@ -157,14 +153,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 			return (ByteBuffer) _storage.getStore();
 		else
 			return null;
-	}
-
-	public String getEncoding() {
-		return ENCODING;
-	}
-
-	public Charset getCharset() {
-		return CHARSET;
 	}
 
 	private void writeObject(ObjectOutputStream stream) throws IOException {
@@ -280,11 +268,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void movea(String value, boolean clear) {
-		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getEncoding()), clear, getFiller());
-		} catch (UnsupportedEncodingException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), value.length(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
@@ -351,7 +335,6 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -386,11 +369,7 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void move(String value, boolean clear) {
-		try {
-			NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
-		} catch (UnsupportedEncodingException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		NIOBufferHelper.move(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
@@ -402,47 +381,51 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public <E extends Enum<E>> void move(E value, boolean clear) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void movel(String value, boolean clear) {
-		try {
-			NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getEncoding()), clear, getFiller());
-		} catch (UnsupportedEncodingException e) {
-			throw new IntegratedLanguageDataRuntimeException(e);
-		}
+		NIOBufferHelper.movel(getBuffer(), getPosition(), getSize(), value.getBytes(getDataContext().getCharset()), clear, getFiller());
 	}
 
 	@Override
 	public <E extends Enum<E>> void movel(E value) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public <E extends Enum<E>> void movel(E value, boolean clear) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public boolean eq(QBufferedData value) {
-
 		return compareBytes(asBytes(), value.asBytes()) == 0;
-
-		/*
-		 * byte[] a = asBytes(); byte[] a2 = value.asBytes();
-		 * 
-		 * if(a2.length > a.length) a2 = Arrays.copyOfRange(a2, 0, a.length);
-		 * 
-		 * return Arrays.equals(a, a2);
-		 */
 	}
 
 	@Override
 	public boolean ne(QBufferedData value) {
-		return !eq(value);
+		return compareBytes(asBytes(), value.asBytes()) != 0;
+	}
+
+	@Override
+	public boolean ge(QBufferedData value) {
+		return compareBytes(asBytes(), value.asBytes()) >= 0;
+	}
+
+	@Override
+	public boolean gt(QBufferedData value) {
+		return compareBytes(asBytes(), value.asBytes()) > 0;
+	}
+
+	@Override
+	public boolean le(QBufferedData value) {
+		return compareBytes(asBytes(), value.asBytes()) <= 0;
+	}
+
+	@Override
+	public boolean lt(QBufferedData value) {
+		return compareBytes(asBytes(), value.asBytes()) < 0;
 	}
 
 	@Override
@@ -632,52 +615,65 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 
 	@Override
 	public void eval(QDataFiller value) {
-		// TODO Auto-generated method stub
-		"".toCharArray();
+		accept(value);
 	}
 
 	@Override
 	public boolean eq(QDataFiller value) {
 
-		if (value instanceof DataWriterImpl) {
-			DataWriterImpl dataWriterImpl = (DataWriterImpl) value;
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
 
-			if (dataWriterImpl.object instanceof QBufferedData)
-				return eq((QBufferedData) dataWriterImpl.object);
-			else
-				return toString().equals(dataWriterImpl.object.toString());
-		}
-
-		return false;
+		return eq(copy);
 	}
 
 	@Override
 	public boolean ge(QDataFiller value) {
-		// TODO Auto-generated method stub
-		return false;
+
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
+
+		return ge(copy);
 	}
 
 	@Override
 	public boolean gt(QDataFiller value) {
-		// TODO Auto-generated method stub
-		return false;
+
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
+
+		return gt(copy);
 	}
 
 	@Override
 	public boolean le(QDataFiller value) {
-		// TODO Auto-generated method stub
-		return false;
+
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
+
+		return le(copy);
 	}
 
 	@Override
 	public boolean lt(QDataFiller value) {
-		// TODO Auto-generated method stub
-		return false;
+
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
+
+		return lt(copy);
 	}
 
 	@Override
 	public boolean ne(QDataFiller value) {
-		// TODO Auto-generated method stub
-		return false;
+
+		QBufferedData copy = copy().allocate();
+		copy.fill(value.get());
+
+		return ne(copy);
+	}
+
+	@Override
+	public void fill(QBufferedData filler) {
+		NIOBufferHelper.fill(getBuffer(), getPosition(), getLength(), filler.asBytes());
 	}
 }

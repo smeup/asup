@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.il.data;
 
+import java.nio.charset.Charset;
+
 import org.smeup.sys.il.core.ctx.QContextProvider;
 
 
@@ -45,6 +47,14 @@ public interface QDataContext extends QContextProvider {
 	 * @generated
 	 */
 	QDataFactory getDataFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" type="org.smeup.sys.il.core.java.JavaCharset" required="true"
+	 * @generated
+	 */
+	Charset getCharset();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -17,6 +17,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Dictionary;
 import java.util.Iterator;
 import java.util.List;
@@ -61,6 +62,13 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass javaCallableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaCharsetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,6 +313,15 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	@Override
 	public EClass getJavaCallable() {
 		return javaCallableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaCharset() {
+		return javaCharsetEClass;
 	}
 
 	/**
@@ -570,6 +587,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 		// Create classes and their features
 		javaCallableEClass = createEClass(JAVA_CALLABLE);
 
+		javaCharsetEClass = createEClass(JAVA_CHARSET);
+
 		javaCloseableEClass = createEClass(JAVA_CLOSEABLE);
 
 		javaExecutorServiceEClass = createEClass(JAVA_EXECUTOR_SERVICE);
@@ -646,6 +665,8 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(javaCallableEClass, Callable.class, "JavaCallable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaCharsetEClass, Charset.class, "JavaCharset", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaCloseableEClass, Closeable.class, "JavaCloseable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 

@@ -1125,4 +1125,25 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public boolean ne(QDataFiller value) {
 		return delegate.ne(value);
 	}
+
+	@Override
+	public void fill(QBufferedData value) {
+		delegate.fill(value);
+	}
+
+	public boolean ge(QBufferedData value) {
+		return delegate.ge(value);
+	}
+
+	public boolean gt(QBufferedData value) {
+		return delegate.gt(value);
+	}
+
+	public boolean le(QBufferedData value) {
+		return delegate.le(value);
+	}
+
+	public boolean lt(QBufferedData value) {
+		return delegate.lt(value);
+	}
 }

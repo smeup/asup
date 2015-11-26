@@ -150,6 +150,6 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 
 	@Override
 	public String toString() {
-		return Boolean.toString(eq(true));
+		return Boolean.toString(asBoolean());
 	}
 }

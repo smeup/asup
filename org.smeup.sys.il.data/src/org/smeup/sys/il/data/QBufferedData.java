@@ -66,6 +66,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	void eval(byte value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model valueRequired="true"
+	 * @generated
+	 */
+	void fill(QBufferedData value);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
@@ -86,6 +94,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	 * @model
 	 * @generated
 	 */
+	boolean ge(QBufferedData value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	boolean ge(QDataFiller value);
 
 	/**
@@ -95,6 +111,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	 * @generated
 	 */
 	boolean gt(byte value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean gt(QBufferedData value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,6 +156,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	 * @model
 	 * @generated
 	 */
+	boolean le(QBufferedData value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
 	boolean le(QDataFiller value);
 
 	/**
@@ -141,6 +173,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	 * @generated
 	 */
 	boolean lt(byte value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean lt(QBufferedData value);
 
 	/**
 	 * <!-- begin-user-doc -->

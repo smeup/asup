@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.il.data.impl;
 
+import java.lang.String;
 import java.math.BigDecimal;
 
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +20,6 @@ import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
-import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.QFloating;
 import org.smeup.sys.il.data.QGraphic;
 import org.smeup.sys.il.data.QHexadecimal;
@@ -153,12 +153,6 @@ public class DataWriterImpl extends DataVisitorImpl implements QDataWriter {
 	public boolean visit(QDecimal data) {
 		visitNumericData(data);
 		return false;
-	}
-
-	@Override
-	public boolean visit(QEnum<?, ?> data) {
-		// TODO Auto-generated method stub
-		return super.visit(data);
 	}
 
 	@Override

@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.il.data.test.runner;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.test.QTestRunner;
@@ -31,10 +29,8 @@ public class HexadecimalTester {
 	@Inject
 	private QTestRunner testRunner;
 
-	private static String ENCODING = "IBM-280";
-
 	@TestStarted
-	public void main() throws UnsupportedEncodingException {
+	public void main() {
 
 		QDataContext dataContext = dataManager.createDataContext(testRunner.getContext());
 		QDataFactory dataFactory = dataContext.getDataFactory();
@@ -48,7 +44,7 @@ public class HexadecimalTester {
 		}
 
 		QCharacter character = dataFactory.createCharacter(15, false, true);
-		character.movel(new String(bytes, ENCODING));
+		character.movel(new String(bytes, dataContext.getCharset()));
 
 	}
 }

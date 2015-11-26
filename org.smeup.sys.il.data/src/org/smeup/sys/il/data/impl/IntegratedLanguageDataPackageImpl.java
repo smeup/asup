@@ -1350,10 +1350,16 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(bufferedDataEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(bufferedDataEClass, null, "fill", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "isNull", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "ge", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "ge", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "ge", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1366,16 +1372,25 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "gt", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "gt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "le", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "le", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "le", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "lt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "lt", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBufferedData(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "lt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1937,6 +1952,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContextEClass, this.getDataFactory(), "getDataFactory", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(dataContextEClass, theIntegratedLanguageCoreJavaPackage.getJavaCharset(), "getCharset", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(dataContextEClass, this.getString(), "getTemporaryString", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataDelegatorEClass, QDataDelegator.class, "DataDelegator", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2157,13 +2174,9 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEClass(dataFillerEClass, QDataFiller.class, "DataFiller", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(dataFillerEClass, this.getDataFiller(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEInt(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataFillerEClass, this.getDataFiller(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataFillerEClass, this.getDataFiller(), "set", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataFillerEClass, this.getBufferedData(), "get", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataManagerEClass, QDataManager.class, "DataManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
