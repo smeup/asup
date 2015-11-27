@@ -19,8 +19,7 @@
         position="1">
       <dataTerm
           name="environmentVariable">
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -134,8 +133,7 @@
         position="1">
       <dataTerm
           name="environmentVariable">
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
@@ -229,8 +227,7 @@
         position="1">
       <dataTerm
           name="environmentVariable">
-        <facets
-            xsi:type="il-core-meta:Cardinality"
+        <cardinality
             min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
