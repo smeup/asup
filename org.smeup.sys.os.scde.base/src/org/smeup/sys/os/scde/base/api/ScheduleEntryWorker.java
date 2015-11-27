@@ -38,6 +38,7 @@ public class ScheduleEntryWorker {
 	private QResourceManager resourceManager;
 	
 	public static enum QCPFMSG {
+		//TODO: manage command CPF
 	}
 
 	@Main

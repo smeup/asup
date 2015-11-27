@@ -32,7 +32,7 @@ public @ToDo class ScheduleEntryCreator {
 	private QJob job;
 
 	public static enum QCPFMSG {
-
+		//TODO: manage command CPF
 	}
 
 	public @Main void main(
