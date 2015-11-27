@@ -19,6 +19,8 @@
         position="1">
       <dataTerm
           name="environmentVariable">
+        <cardinality
+            min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="128"/>
@@ -131,6 +133,8 @@
         position="1">
       <dataTerm
           name="environmentVariable">
+        <cardinality
+            min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="128"/>
@@ -223,6 +227,8 @@
         position="1">
       <dataTerm
           name="environmentVariable">
+        <cardinality
+            min="1"/>
         <definition
             xsi:type="il-data-def:CharacterDef"
             length="128"/>

@@ -19,7 +19,7 @@ import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
-@Program(name = "CHGJOB")
+@Program(name = "QWTCCCHJ")
 public @Supported class JobAttributesSetter {
 
 	public static enum QCPFMSG {
