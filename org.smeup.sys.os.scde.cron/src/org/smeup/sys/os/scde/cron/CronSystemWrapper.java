@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+
 public class CronSystemWrapper
  {
 	
@@ -78,17 +80,16 @@ public class CronSystemWrapper
 	        process.waitFor();
 	        
 		} catch(IOException e){
-			e.printStackTrace();
+			throw new OperatingSystemRuntimeException(e);
 		} catch (InterruptedException e) {			
-			e.printStackTrace();
+			
 		}
 		finally {
 			if(br != null)
 				try {
 					br.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new OperatingSystemRuntimeException(e);
 				}
 		}
 		
@@ -111,11 +112,9 @@ public class CronSystemWrapper
 	        Process process = pb.start();
 	        process.waitFor();
 	    } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	    	throw new OperatingSystemRuntimeException(e);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} finally {
 	        
 	    }

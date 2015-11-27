@@ -23,6 +23,7 @@ public class ScheduleEntryDeleter {
 	private QJob job;
 	
 	public static enum QCPFMSG {
+		//TODO: manage command CPF
 	}
 
 	public @Main void main(@DataDef(length = 10) QCharacter jobName,
