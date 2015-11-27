@@ -16,7 +16,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +30,7 @@ import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.QIntegratedLanguageCoreFactory;
 import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.annotation.Overlay;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -55,7 +55,6 @@ import org.smeup.sys.il.data.QList;
 import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QScroller;
-import org.smeup.sys.il.data.QStorable;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.QStroller;
 import org.smeup.sys.il.data.SortDirection;
@@ -825,46 +824,15 @@ public class NIODataFactoryImpl implements QDataFactory {
 		QList<D> list = new NIOListImpl(getDataContext(), model, dimension);
 
 		return list;
-
 	}
 
 	@Override
 	public QPointer createPointer(final int bufferLength) {
 		
 		if(bufferLength < 0)
-			System.out.println(bufferLength);
+			throw new IntegratedLanguageDataRuntimeException("Invalid bufferLength");
 		
-		QStorable storable = new QStorable() {
-			
-			ByteBuffer byteBuffer = ByteBuffer.allocate(bufferLength);
-			
-			@Override
-			public boolean isEmpty() {
-				return bufferLength == 0;
-			}
-			
-			@Override
-			public Object getStore() {
-				return byteBuffer;
-			}
-
-			@Override
-			public int getPosition() {
-				return 0;
-			}
-			
-			@Override
-			public void assign(QBufferedData target, int position) {
-				NIOBufferHelper.assign(this, target, position);
-			}
-			
-			@Override
-			public void assign(QBufferedData target) {
-				NIOBufferHelper.assign(this, target);				
-			}
-		};
-		
-		return new NIOPointerImpl(getDataContext(), storable);
+		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(bufferLength));
 	}
 
 	public QDataContext getDataContext() {

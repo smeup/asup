@@ -150,8 +150,8 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 		if (_buffer != null)
 			return _buffer;
 		else if (_storage != null)
-			return (ByteBuffer) _storage.getStore();
-		else
+			return NIOBufferHelper.getBuffer(_storage);
+		else 
 			return null;
 	}
 

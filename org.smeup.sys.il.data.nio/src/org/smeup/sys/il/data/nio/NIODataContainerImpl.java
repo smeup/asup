@@ -36,7 +36,7 @@ import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFactory;
 import org.smeup.sys.il.data.QList;
-import org.smeup.sys.il.data.QStorable;
+import org.smeup.sys.il.data.QPointer;
 import org.smeup.sys.il.data.QStruct;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.def.QDataDef;
@@ -418,12 +418,11 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		if (dataTerm.getBased() != null) {
 			data = dataFactory.createData(dataTerm, false);
 
-			QData rawData = getData(dataTerm.getBased());
-			if (rawData == null || !(rawData instanceof QStorable) || !(data instanceof QBufferedData))
+			QPointer basedPointer = (QPointer) getData(dataTerm.getBased());
+			if (basedPointer == null || !(data instanceof QBufferedData))
 				throw new IntegratedLanguageDataRuntimeException("Invalid based data: " + dataTerm);
 
-			QStorable rawStorable = (QStorable) rawData;
-			rawStorable.assign((QBufferedData) data);
+			basedPointer.assign((QBufferedData) data);
 		} else {
 			QOverlay overlay = dataTerm.getFacet(QOverlay.class);
 			if (overlay == null) {

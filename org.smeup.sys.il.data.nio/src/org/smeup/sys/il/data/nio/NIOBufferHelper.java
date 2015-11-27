@@ -154,4 +154,17 @@ public class NIOBufferHelper {
 
 		return nioBufferedData;
 	}
+	
+	public static ByteBuffer getBuffer(QStorable storable) {
+
+		if (storable instanceof NIOBufferedDataImpl)
+			return ((NIOBufferedDataImpl) storable).getBuffer();
+		else if (storable instanceof NIOPointerImpl)
+			return ((NIOPointerImpl) storable).getBuffer();
+		else if (storable != null) {
+			return (ByteBuffer) storable.getStore();
+		} else
+			return null;
+	}
+
 }

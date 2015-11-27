@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.ByteBuffer;
 
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
@@ -32,11 +33,11 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	private static final long serialVersionUID = 1L;
 
 	protected QStorable _storage = null;
-	
+
 	public NIOPointerImpl(QDataContext dataContext) {
 		super(dataContext);
 	}
-	
+
 	public NIOPointerImpl(QDataContext dataContext, QStorable storage) {
 		super(dataContext);
 		this._storage = storage;
@@ -44,14 +45,14 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public void assign(QBufferedData target) {
-		this._storage.assign(target);
+		NIOBufferHelper.assign(this, target);
 	}
 
 	@Override
 	public void assign(QBufferedData target, int position) {
-		this._storage.assign(target, position);
+		NIOBufferHelper.assign(this, target);
 	}
-	
+
 	@Override
 	public void eval(QPointer value) {
 		this._storage = (QStorable) value.getStore();
@@ -60,16 +61,16 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	@Override
 	public void dealloc() {
 	}
-	
+
 	@Override
 	public void accept(QDataVisitor visitor) {
 		visitor.visit(this);
 	}
-	
+
 	public QString qStr() {
 		return qStr(getByteSize(_storage));
 	}
-	
+
 	public QString qStr(int length) {
 
 		QCharacter character = getDataContext().getDataFactory().createCharacter(length, false, false);
@@ -80,7 +81,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -92,7 +93,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	@Override
 	public <E extends Enum<E>> void eval(E value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -109,7 +110,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public boolean isEmpty() {
-		if(_storage == null)
+		if (_storage == null)
 			return true;
 		else
 			return _storage.isEmpty();
@@ -255,7 +256,7 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 	@Override
 	public NIODataImpl copy() {
-		
+
 		try {
 
 			NIOBufferedDataImpl copy = null;
@@ -287,6 +288,13 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 		}
 	}
 
+	protected ByteBuffer getBuffer() {
+		if(_storage != null)
+			return NIOBufferHelper.getBuffer(_storage);
+		else
+			return null;
+	}
+
 	@Override
 	public Object getStore() {
 		return _storage;
@@ -296,16 +304,16 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 	public int getPosition() {
 		return _storage.getPosition();
 	}
-	
+
 	private int getByteSize(QStorable storable) {
-		if(storable instanceof QBufferedData)
-			return ((QBufferedData)storable).getSize();
+		if (storable instanceof QBufferedData)
+			return ((QBufferedData) storable).getSize();
 		else
-			throw new IntegratedLanguageDataRuntimeException("Invalid storage: "+storable);
+			throw new IntegratedLanguageDataRuntimeException("Invalid storage: " + storable);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "SPP:"+_storage.hashCode();
+		return "SPP:" + _storage.hashCode();
 	}
 }
