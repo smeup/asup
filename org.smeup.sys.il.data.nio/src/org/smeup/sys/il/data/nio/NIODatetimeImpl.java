@@ -311,7 +311,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			simpleDateFormat = new SimpleDateFormat(toJavaFormat(timeFormat, timeSeparator));
 			break;
 		case TIME_STAMP:
-			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator) + "'-'" + toJavaFormat(timeFormat, timeSeparator));
+			simpleDateFormat = new SimpleDateFormat(toJavaFormat(dateFormat, dateSeparator) + "-" + toJavaFormat(timeFormat, timeSeparator));
 			break;
 		}
 
@@ -362,22 +362,22 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		String format = null;
 		switch (timeFormat) {
 		case EUR:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		case HMS:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		case ISO:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		case JIS:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		case JOBRUN:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		case USA:
-			format = "HH.mm.ss.SSS000";
+			format = "HH.mm.ss.SSSSSS";
 			break;
 		}
 
