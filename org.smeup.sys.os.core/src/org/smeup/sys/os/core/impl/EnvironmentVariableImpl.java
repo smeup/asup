@@ -34,6 +34,11 @@ import org.smeup.sys.os.core.QOperatingSystemCorePackage;
  */
 public class EnvironmentVariableImpl extends ObjectNameableImpl implements QEnvironmentVariable {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
