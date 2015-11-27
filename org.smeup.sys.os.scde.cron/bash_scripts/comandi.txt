@@ -3,7 +3,12 @@
 - Visualizza log cron tab:   grep CRON /var/log/syslog
 - Chiamata a servlet rest con comano curl:
  
- curl --data "user=FORDAR&fun=F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL))" http://127.0.0.1:8282/WSRestService
+ curl --data "user=FORDAR&fun=F(EXB;MUJ08_SE;EXE.CMD) 1(J1;CMD;WRKOBJ OBJTYPE(*PGM) OBJ(P_MULT/*ALL))" http://127.0.0.1:8282/SLWSService
+ 
+ Per test da browser:
+ 
+ http://127.0.0.1:8282/SLWSService?user=ASUP&fun=F(EXB;MUJ08_SE;EXE.CMD)%201(J1;CMD;WRKJOBSCDE)
+ 
 
 Chiamata script per registrazione crontask:
 
