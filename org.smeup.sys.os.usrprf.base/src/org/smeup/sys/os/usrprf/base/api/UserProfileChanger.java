@@ -114,20 +114,16 @@ public class UserProfileChanger {
 		switch (status.asEnum()) {
 		case SAME:
 			break;
-		default:
+		case DISABLED:
+			qUserProfile.setEnabled(!status.asEnum().isEnabled());
+			break;
+		case ENABLED:
 			qUserProfile.setEnabled(status.asEnum().isEnabled());
 			break;
 		}
-
+		
 		// User class
-		switch (userClass.asEnum()) {
-		case SAME:
-			break;
-
-		default:
-			qUserProfile.setUserClass(userClass.asEnum().getUserClass());
-			break;
-		}
+//		qUserProfile.setUserClass(userClass.asEnum().getUserClass());
 
 		// Initial program
 		switch (initialProgramToCall.asEnum()) {
@@ -148,12 +144,18 @@ public class UserProfileChanger {
 	}
 
 	private String getLibrary(INITIALPROGRAMTOCALL pgmSpecification) {
+		String library = "";
 		switch (pgmSpecification.library.asEnum()) {
 		case CURLIB:
 			return job.getCurrentLibrary();
-		default:
-			return pgmSpecification.library.asData().trimR();
+		case LIBL:
+			library = pgmSpecification.library.asData().trimR();
+			break;
+		case OTHER:
+			library = pgmSpecification.library.asData().trimR();
+			break;
 		}
+		return library;
 	}
 
 	public static enum USERPASSWORDEnum {
