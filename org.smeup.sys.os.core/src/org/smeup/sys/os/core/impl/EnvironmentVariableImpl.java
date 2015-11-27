@@ -8,9 +8,13 @@
 package org.smeup.sys.os.core.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
+
 import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 
@@ -48,11 +52,6 @@ public class EnvironmentVariableImpl extends ObjectNameableImpl implements QEnvi
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -221,29 +220,4 @@ public class EnvironmentVariableImpl extends ObjectNameableImpl implements QEnvi
 		return result.toString();
 	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public int hashCode() {
-		return getName().hashCode();
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null || (obj instanceof QEnvironmentVariable)) {
-			return false;
-		}
-		return ((QEnvironmentVariable)obj).getName().equals(getName());
-	}
-	
 } //EnvironmentVariableImpl
