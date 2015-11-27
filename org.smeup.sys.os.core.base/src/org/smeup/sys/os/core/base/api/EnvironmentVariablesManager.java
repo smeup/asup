@@ -29,39 +29,39 @@ public class EnvironmentVariablesManager {
 
 	public EnvironmentVariablesManager(QJob job, EnvironmentVariableLevelEnum level) {
 		this.job = job;
-		this.level = level;		
+		this.level = level;
 		this.variables = initVariables();
 	}
 
 	private List<QEnvironmentVariable> initVariables() {
 		switch (level) {
 		case JOB:
-			return job.getVariables();						
-			
+			return job.getVariables();
+
 		case SYS:
-			return job.getSystem().getVariables();			
+			return job.getSystem().getVariables();
 		}
-		
-		throw new RuntimeException("Wrong level type: " + level);		
+
+		throw new RuntimeException("Wrong level type: " + level);
 	}
 
 	public EnvironmentVariablesManager setValue(String key, String value, boolean replace) {
-		 QEnvironmentVariable containedVariable = getEnvironmentVariable(key);
-		 if (containedVariable == null) {
-			 containedVariable = newVariable(key, value);
-			 variables.add(containedVariable);
-		 } else {
-			 if (replace) {
-				 containedVariable.setValue(value);
-			 }
-		 }
+		QEnvironmentVariable containedVariable = getEnvironmentVariable(key);
+		if (containedVariable == null) {
+			containedVariable = newVariable(key, value);
+			variables.add(containedVariable);
+		} else {
+			if (replace) {
+				containedVariable.setValue(value);
+			}
+		}
 		return this;
 	}
 
 	public QEnvironmentVariable getEnvironmentVariable(String variableName) {
 		QEnvironmentVariable environmentVariable = null;
-		for(QEnvironmentVariable envVariable: variables) {
-			if(envVariable.getName().equalsIgnoreCase(variableName)) {
+		for (QEnvironmentVariable envVariable : variables) {
+			if (envVariable.getName().equalsIgnoreCase(variableName)) {
 				environmentVariable = envVariable;
 				break;
 			}
@@ -69,7 +69,6 @@ public class EnvironmentVariablesManager {
 		return environmentVariable;
 	}
 
-	
 	private QEnvironmentVariable newVariable(String key, String value) {
 		QEnvironmentVariable result = QOperatingSystemCoreFactory.eINSTANCE.createEnvironmentVariable();
 		result.setName(key);
@@ -88,10 +87,7 @@ public class EnvironmentVariablesManager {
 	public String toString() {
 		StringBuffer result = new StringBuffer();
 		for (QEnvironmentVariable qEnvironmentVariable : variables) {
-			result.append(qEnvironmentVariable.getName())
-			      .append(" = ")
-			      .append(qEnvironmentVariable.getValue())
-			      .append("\n");
+			result.append(qEnvironmentVariable.getName()).append(" = ").append(qEnvironmentVariable.getValue()).append("\n");
 		}
 		return result.toString();
 	}
