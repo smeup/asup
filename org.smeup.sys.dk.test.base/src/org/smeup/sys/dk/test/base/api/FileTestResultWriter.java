@@ -11,12 +11,14 @@
  */
 package org.smeup.sys.dk.test.base.api;
 
+import java.io.IOException;
+
 import org.smeup.sys.dk.test.QTestLauncher;
-import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.QTestResult;
 import org.smeup.sys.dk.test.QTestRunner;
+import org.smeup.sys.il.core.QObject;
 
-public class FileTestResultWriter implements QTestLauncherListener {
+public class FileTestResultWriter extends AbstractTestResultWriter {
 	
 	// Implements QTestLauncherListener methods
 
@@ -33,5 +35,23 @@ public class FileTestResultWriter implements QTestLauncherListener {
 	public void resultAdded(QTestRunner runner, QTestResult result) {
 		
 			
+	}
+
+	@Override
+	public void flush() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void write(QObject object) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }
