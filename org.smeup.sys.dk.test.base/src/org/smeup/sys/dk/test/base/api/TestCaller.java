@@ -17,9 +17,10 @@ import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.dk.test.QTestLauncher;
-import org.smeup.sys.dk.test.QTestLauncherListener;
 import org.smeup.sys.dk.test.base.TestLauncherHelper;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.out.QObjectWriter;
+import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -33,6 +34,9 @@ public @Supported class TestCaller {
 		
 	@Inject
 	private QJob job;
+	
+	@Inject
+	private QOutputManager outputManager;
 
 	private OUTPUTEnum outputEnum;
 	
@@ -54,23 +58,33 @@ public @Supported class TestCaller {
 		
 			QContext context = job.getContext();
 			
-			QTestLauncherListener resultWriter = null;
+			AbstractTestResultWriter resultWriter = null;
+			
+			QContext childContext = job.getContext().createChildContext("TestResultWriter");
+			
+			QObjectWriter objectWriter;
 			
 			switch(outputEnum){
 			case FILE:
+				
 				resultWriter = context.make(FileTestResultWriter.class);
 				break;
 				
 			case PRINT:
-				resultWriter = context.make(TestResultWriter.class);
-				((TestResultWriter)resultWriter).setOutputWriterName("P");
-			case TERM_STAR:				
-			default:
-				resultWriter = context.make(TestResultWriter.class);
-				break;
-			
+				objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+				childContext.set(QObjectWriter.class, objectWriter);
+				resultWriter = childContext.make(TestResultWriter.class);				
+			break;	
+				
+			case TERM_STAR:		
+				objectWriter = outputManager.getDefaultWriter(job.getContext());
+				childContext.set(QObjectWriter.class, objectWriter);
+				resultWriter = childContext.make(TestResultWriter.class);
+			break;
 			}
-
+			
+			resultWriter.initialize();
+			
 			for (QTestLauncher testLauncher: testLauncherList) {
 				testLauncher.registerListener(context, resultWriter);
 				testLauncher.init(context);
@@ -78,6 +92,8 @@ public @Supported class TestCaller {
 				testLauncher.destroy(context);
 				testLauncher.removeListener(context, resultWriter);
 			}
+			
+			resultWriter.flush();
 		}				
 	}
 	
