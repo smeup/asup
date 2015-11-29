@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -833,6 +834,20 @@ public class NIODataFactoryImpl implements QDataFactory {
 			throw new IntegratedLanguageDataRuntimeException("Invalid bufferLength");
 		
 		return new NIOPointerImpl(getDataContext(), new NIOStorageImpl(bufferLength));
+	}
+
+	@Override
+	public QPointer createPointer(QPointer pointer, int newSize) {
+
+		NIOPointerImpl oldPointer = (NIOPointerImpl)pointer;
+		ByteBuffer oldBuffer = oldPointer.getBuffer();
+		
+		NIOPointerImpl newPointer = (NIOPointerImpl) createPointer(newSize);		
+		ByteBuffer newBuffer = newPointer.getBuffer();
+		
+		NIOBufferHelper.movel(newBuffer, 0, newSize, oldBuffer.array(), false, (byte)0);
+		
+		return newPointer;
 	}
 
 	public QDataContext getDataContext() {

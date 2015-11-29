@@ -279,7 +279,7 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 
 	@Override
 	public String toString() {
-		return new String(asBytes(), getDataContext().getCharset());
+		return asDate().toString();
 	}
 
 	@Override

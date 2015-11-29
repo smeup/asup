@@ -17,7 +17,7 @@ import java.util.List;
 import org.smeup.sys.db.core.QConnection;
 import org.smeup.sys.db.core.QDatabaseManager;
 import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
@@ -39,12 +39,12 @@ import org.smeup.sys.os.file.base.BaseFileMemberProvider;
 
 public class JDBCAccessFactoryImpl implements QAccessFactory {
 
-	private QContext context;
+	private QContextProvider contextProvider;
 	private QConnection connection;
 	private QDataContext dataContext;
 
-	public JDBCAccessFactoryImpl(QContext context, QConnection connection, QDataContext dataContext) {
-		this.context = context;
+	public JDBCAccessFactoryImpl(QContextProvider contextProvider, QConnection connection, QDataContext dataContext) {
+		this.contextProvider = contextProvider;
 		this.connection = connection;
 		this.dataContext = dataContext;
 	}
@@ -172,7 +172,7 @@ public class JDBCAccessFactoryImpl implements QAccessFactory {
 	@Override
 	public <R extends QRecord> QSMDataSet<R> createSourceMemberDataSet(Class<R> wrapper, R record, AccessMode accessMode, boolean userOpen, QDataStruct infoStruct) {
 
-		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(context, wrapper.getSimpleName());
+		BaseFileMemberProvider fileMemberProvider = new BaseFileMemberProvider(contextProvider, wrapper.getSimpleName());
 
 		QSMDataSet<R> dataSet = new BaseFileMemberDataSetImpl<R>(fileMemberProvider, record, accessMode, userOpen);
 

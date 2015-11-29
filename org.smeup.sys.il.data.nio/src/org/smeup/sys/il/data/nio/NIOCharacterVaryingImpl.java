@@ -19,7 +19,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	private static final long serialVersionUID = 1L;
 
-	private short length;
+	protected short __length;
 
 	public NIOCharacterVaryingImpl(QDataContext dataContext) {
 		super(dataContext);
@@ -32,7 +32,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	@Override
 	public void clear() {
 		super.clear();
-		this.length = 0;
+		this.__length = 0;
 	}
 
 	@Override
@@ -42,13 +42,13 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	@Override
 	public void eval(boolean value) {
-		this.length = 1;
+		this.__length = 1;
 		super.eval(value);
 	}
 
 	@Override
 	public void eval(QString value) {
-		this.length = (value.getLength() > getSize() ? (short) getSize() : (short) value.getLength());
+		this.__length = (value.getLength() > getSize() ? (short) getSize() : (short) value.getLength());
 
 		super.eval(value);
 	}
@@ -61,14 +61,14 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 			return;
 		}
 
-		this.length = (value.length() > getSize() ? (short) getSize() : (short) value.length());
+		this.__length = (value.length() > getSize() ? (short) getSize() : (short) value.length());
 
 		super.eval(value);
 	}
 
 	@Override
 	public int getLength() {
-		return this.length;
+		return this.__length;
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 	@Override
 	public void eval(byte value) {
 
-		this.length = 1;
+		this.__length = 1;
 
 		super.eval(value);
 	}

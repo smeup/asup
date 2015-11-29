@@ -1081,7 +1081,11 @@
       <eParameters name="initialize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
-      <eParameters name="bufferLength" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="size" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eOperations>
+    <eOperations name="createPointer" lowerBound="1" eType="#//Pointer">
+      <eParameters name="pointer" lowerBound="1" eType="#//Pointer"/>
+      <eParameters name="newSize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eOperations name="createRecord" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createRecord/R"/>

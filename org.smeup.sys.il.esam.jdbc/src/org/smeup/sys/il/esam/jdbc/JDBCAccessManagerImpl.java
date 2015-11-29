@@ -43,7 +43,7 @@ public class JDBCAccessManagerImpl implements QAccessManager {
 		
 		QConnection connection = context.getAdapter(contextProvider, QConnection.class);
 
-		return new JDBCAccessFactoryImpl(context, connection, dataContext);
+		return new JDBCAccessFactoryImpl(contextProvider, connection, dataContext);
 	}
 
 }

@@ -14,6 +14,7 @@ package org.smeup.sys.il.data.nio;
 import java.util.Arrays;
 
 import org.smeup.sys.il.data.QArray;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -38,6 +39,18 @@ public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter 
 	public NIOCharacterImpl(QDataContext dataContext, int length) {
 		super(dataContext);
 		_length = length;
+	}
+
+	@Override
+	public void assign(QBufferedData target) {
+		super.assign(target);
+		// TODO remove
+		if (target instanceof NIOCharacterVaryingImpl) {
+			if(!isNull()) {
+				NIOCharacterVaryingImpl nioCharacterVaryingImpl = (NIOCharacterVaryingImpl) target;
+				nioCharacterVaryingImpl.eval(this);
+			}
+		}
 	}
 
 	@Override

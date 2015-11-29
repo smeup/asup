@@ -12,7 +12,10 @@
 package org.smeup.sys.il.data.nio;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
+import org.eclipse.emf.common.util.Enumerator;
+import org.smeup.sys.il.data.IntegratedLanguageDataRuntimeException;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QEnum;
@@ -33,26 +36,40 @@ public class NIOEnumImpl<E extends Enum<E>, D extends QBufferedData> extends NIO
 		this._klass = klass;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public E asEnum() {
 
 		// TODO encoding
-		String value = new String(asBytes(), getDataContext().getCharset()).trim(); 
-		
-		for (Field field : _klass.getFields()) {
-			Special special = field.getAnnotation(Special.class);
-			if (special == null) {
-				if (value.equals("*" + field.getName().toUpperCase()))
-					return Enum.valueOf(_klass, field.getName());
-			} else if (special.value().equals(value))
-				return Enum.valueOf(_klass, field.getName());
-		}
+		String value = new String(asBytes(), getDataContext().getCharset()).trim();
 
-		try {
-			return Enum.valueOf(_klass, "OTHER");
-		}
-		catch(Exception e) {
-			return null;
+		if (Enumerator.class.isAssignableFrom(_klass)) {
+
+			try {
+				Method method = _klass.getMethod("get", String.class);
+				E enumerator = (E) method.invoke(_klass, value);
+				if(enumerator == null)
+					enumerator = (E) method.invoke(_klass, "*OTHER");
+				return enumerator;
+			}
+			catch(Exception e) {
+				throw new IntegratedLanguageDataRuntimeException(e);
+			}
+		} else {
+			for (Field field : _klass.getFields()) {
+
+				Special special = field.getAnnotation(Special.class);
+				if (special == null) {
+					if (value.equals("*" + field.getName().toUpperCase()))
+						return Enum.valueOf(_klass, field.getName());
+				} else if (special.value().equals(value))
+					return Enum.valueOf(_klass, field.getName());
+			}
+			try {
+				return Enum.valueOf(_klass, "OTHER");
+			} catch (Exception e) {
+				return null;
+			}
 		}
 	}
 

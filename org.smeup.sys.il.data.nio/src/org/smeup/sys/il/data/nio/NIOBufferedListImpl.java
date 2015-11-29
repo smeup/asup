@@ -183,7 +183,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 				sb.append(element.qSubst(1).asString());
 			sb.append("]");
 			
-			if(sb.length() > 1000)
+			if(sb.length() > 5000)
 				break;
 		}
 
