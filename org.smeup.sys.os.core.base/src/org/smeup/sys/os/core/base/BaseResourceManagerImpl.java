@@ -29,7 +29,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.type.QTypedObject;
 
-public class BaseResourceManagerImpl implements QResourceManager {
+public class BaseResourceManagerImpl extends BaseResourceProviderImpl implements QResourceManager {
 
 	private final Map<Class<? extends QObjectNameable>, QResourceNotifier<? extends QObject>> notifiers;
 	private final Map<Class<? extends QObjectNameable>, QResourceProvider> providers;
@@ -97,6 +97,15 @@ public class BaseResourceManagerImpl implements QResourceManager {
 		return resourceWriter;
 	}
 
+	@Override
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
+		QResourceProvider resourceProvider = getResourceProvider(klass);
+		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, scope);
+		prepareListener(resourceWriter, klass);
+
+		return resourceWriter;
+	}
+
 	private <T extends QObjectNameable> QResourceProvider getResourceProvider(Class<T> klass) {
 
 		QResourceProvider resourceProvider = providers.get(klass);
@@ -120,14 +129,5 @@ public class BaseResourceManagerImpl implements QResourceManager {
 			}
 		} else
 			resource.setNotifier(notifier);
-	}
-
-	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope) {
-		QResourceProvider resourceProvider = getResourceProvider(klass);
-		QResourceWriter<T> resourceWriter = resourceProvider.getResourceWriter(contextProvider, klass, scope);
-		prepareListener(resourceWriter, klass);
-
-		return resourceWriter;
 	}
 }

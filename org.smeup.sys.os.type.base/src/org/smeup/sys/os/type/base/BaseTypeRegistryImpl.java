@@ -24,6 +24,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.IntegratedLanguageMemoryRuntimeException;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceProvider;
 import org.smeup.sys.il.memo.QResourceReader;
@@ -40,7 +41,7 @@ import org.smeup.sys.os.type.QTypedObject;
 import org.smeup.sys.os.type.impl.TypeImpl;
 import org.smeup.sys.rt.core.QApplication;
 
-public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegistry, QResourceProvider {
+public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegistry, QResourceProvider {
 
 	@Inject
 	private QResourceManager resourceManager;
@@ -60,8 +61,8 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 			for (Bundle bundle : bundleContext.getBundles()) {
 
 				try {
-					Class<T> typedClass = (Class<T>) bundle.loadClass(type.getTypedClassName());
-					this.types.add(new InternalType<T>((QType<T>) type, typedClass));
+					Class<TP> typedClass = (Class<TP>) bundle.loadClass(type.getTypedClassName());
+					this.types.add(new InternalType<TP>((QType<TP>) type, typedClass));
 					break;
 				} catch (ClassNotFoundException e) {
 				}
@@ -69,6 +70,40 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 		}
 
 		this.resourceManager.registerProvider(QType.class, this);
+	}
+	
+	@Override
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+
+		switch (scope) {
+		case ALL:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+		case ALL_USER:
+			return getResourceReader(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceReader(contextProvider, klass, name);
+		}
+		
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
+	}
+
+	@Override
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+		
+		switch (scope) {
+		case ALL:
+		case ALL_USER:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+			return getResourceWriter(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceWriter(contextProvider, klass, name);
+		}
+				
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 
 	@Override
@@ -130,7 +165,6 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	}
 
-	@SuppressWarnings("hiding")
 	private class InternalType<T extends QTypedObject> extends TypeImpl<T> {
 
 		private static final long serialVersionUID = 1L;
@@ -253,25 +287,23 @@ public class BaseTypeRegistryImpl<T extends QTypedObject> implements QTypeRegist
 
 	}
 
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked"})
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String container) {
 		return (QResourceReader<T>) new TypeResourceReader();
 	}
 
-	@SuppressWarnings({ "unchecked", "hiding" })
+	@SuppressWarnings({ "unchecked"})
 	@Override
 	public <T extends QObjectNameable> QResourceSetReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope) {
 		return (QResourceSetReader<T>) new TypeResourceSetReader();
 	}
 
-	@SuppressWarnings("hiding")
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, String container) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
 	}
 
-	@SuppressWarnings("hiding")
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, Scope scope) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);

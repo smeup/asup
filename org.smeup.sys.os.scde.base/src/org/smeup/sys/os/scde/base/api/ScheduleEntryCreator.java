@@ -23,7 +23,8 @@ import org.smeup.sys.os.scde.QOperativeSystemScheduleEntryFactory;
 import org.smeup.sys.os.scde.QScheduleEntry;
 
 @Program(name = "QWCCAAYC")
-public @ToDo class ScheduleEntryCreator {
+@ToDo
+public class ScheduleEntryCreator {
 
 	@Inject
 	private QResourceManager resourceManager;
@@ -35,7 +36,8 @@ public @ToDo class ScheduleEntryCreator {
 		//TODO: manage command CPF
 	}
 
-	public @Main void main(
+	@Main
+	public void main(
 			@ToDo @DataDef(length = 10) QEnum<JOBNAMEEnum, QCharacter> jobName,
 			@ToDo @DataDef(length = 512) QCharacter commandToRun,
 			@ToDo @DataDef(length = 1) QEnum<FREQUENCYEnum, QCharacter> frequency,
