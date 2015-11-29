@@ -71,7 +71,15 @@ public enum Scope implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ALL_USER(50, "AllUser", "*ALLUSR");
+	ALL_USER(50, "AllUser", "*ALLUSR"), /**
+	 * The '<em><b>Other</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OTHER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OTHER(99, "Other", "*OTHER");
 
 	/**
 	 * The '<em><b>All</b></em>' literal value.
@@ -149,6 +157,21 @@ public enum Scope implements Enumerator {
 	public static final int ALL_USER_VALUE = 50;
 
 	/**
+	 * The '<em><b>Other</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Other</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OTHER
+	 * @model name="Other" literal="*OTHER"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OTHER_VALUE = 99;
+
+	/**
 	 * An array of all the '<em><b>Scope</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,6 +184,7 @@ public enum Scope implements Enumerator {
 			CURRENT_LIBRARY,
 			USER_LIBRARY_LIST,
 			ALL_USER,
+			OTHER,
 		};
 
 	/**
@@ -216,6 +240,7 @@ public enum Scope implements Enumerator {
 			case CURRENT_LIBRARY_VALUE: return CURRENT_LIBRARY;
 			case USER_LIBRARY_LIST_VALUE: return USER_LIBRARY_LIST;
 			case ALL_USER_VALUE: return ALL_USER;
+			case OTHER_VALUE: return OTHER;
 		}
 		return null;
 	}

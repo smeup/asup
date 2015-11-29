@@ -31,6 +31,14 @@ public interface QResourceProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model contextProviderRequired="true" klassRequired="true"
 	 * @generated
 	 */
@@ -51,5 +59,13 @@ public interface QResourceProvider {
 	 * @generated
 	 */
 	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" klassRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	<T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name);
 
 } // QResourceProvider

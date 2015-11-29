@@ -39,6 +39,23 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 		
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
+	
+	@Override
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+
+		switch (scope) {
+		case ALL:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+		case ALL_USER:
+			return getResourceReader(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceReader(contextProvider, klass, name);
+		}
+		
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
+	}
 
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String resource) {
@@ -64,6 +81,23 @@ public class JDTResourceProviderImpl implements QResourceProvider {
 		QResourceWriter<T> resourceWriter = new JDTResourceWriterImpl<T>(contextProvider, sourceManager, resource, klass);
 
 		return resourceWriter;
+	}
+
+	@Override
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+		
+		switch (scope) {
+		case ALL:
+		case ALL_USER:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+			return getResourceWriter(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceWriter(contextProvider, klass, name);
+		}
+				
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 
 	@Override

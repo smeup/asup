@@ -45,6 +45,23 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 		this.socketConfig = socketConfig;
 		resourceManager.registerProvider(QObjectNameable.class, this);
 	}
+	
+	@Override
+	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+
+		switch (scope) {
+		case ALL:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+		case ALL_USER:
+			return getResourceReader(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceReader(contextProvider, klass, name);
+		}
+		
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
+	}
 
 	@Override
 	public <T extends QObjectNameable> QResourceReader<T> getResourceReader(QContextProvider contextProvider, Class<T> klass, String name) {
@@ -148,6 +165,23 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 			session.options().getNet4jProtocol().setTimeout(60000);
 		}
 		return session;
+	}
+
+	@Override
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+		
+		switch (scope) {
+		case ALL:
+		case ALL_USER:
+		case CURRENT_LIBRARY:
+		case LIBRARY_LIST:
+		case USER_LIBRARY_LIST:
+			return getResourceWriter(contextProvider, klass, scope);
+		case OTHER:
+			return getResourceWriter(contextProvider, klass, name);
+		}
+				
+		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
 	}
 
 	@Override

@@ -577,6 +577,22 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceReader());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(resourceProviderEClass, null, "getResourceReader", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceSetReader());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -607,6 +623,22 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getResourceWriter());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
+		op = addEOperation(resourceProviderEClass, null, "getResourceWriter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "T");
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObjectNameable());
+		t1.getEBounds().add(g1);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEJavaClass());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(this.getResourceWriter());
 		g2 = createEGenericType(t1);
 		g1.getETypeArguments().add(g2);
@@ -694,6 +726,7 @@ public class IntegratedLanguageMemoryPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(scopeEEnum, Scope.CURRENT_LIBRARY);
 		addEEnumLiteral(scopeEEnum, Scope.USER_LIBRARY_LIST);
 		addEEnumLiteral(scopeEEnum, Scope.ALL_USER);
+		addEEnumLiteral(scopeEEnum, Scope.OTHER);
 
 		// Create resource
 		createResource(eNS_URI);
