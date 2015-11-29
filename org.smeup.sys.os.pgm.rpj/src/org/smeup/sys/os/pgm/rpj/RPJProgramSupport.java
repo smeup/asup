@@ -536,11 +536,11 @@ public class RPJProgramSupport {
 	}
 
 	public QPointer qRealloc(QPointer pointer, QNumeric size) {
-		return null;
+		return qRealloc(pointer, size.asInteger());
 	}
 
 	public QPointer qRealloc(QPointer pointer, Integer size) {
-		return null;
+		return dataContext.getDataFactory().createPointer(pointer, size);
 	}
 
 	public void qDealloc(QPointer pointer) {
