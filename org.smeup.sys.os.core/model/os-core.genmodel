@@ -23,6 +23,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//CreationInfo/creationUser"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//CreationInfo/creationSystem"/>
     </genClasses>
+    <genClasses ecoreClass="os-core.ecore#//EnvironmentVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/value"/>
+    </genClasses>
     <genClasses ecoreClass="os-core.ecore#//System">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/context"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//System/creationInfo"/>
@@ -39,10 +43,6 @@
       <genOperations ecoreOperation="os-core.ecore#//SystemManager/getSystem"/>
       <genOperations ecoreOperation="os-core.ecore#//SystemManager/start"/>
       <genOperations ecoreOperation="os-core.ecore#//SystemManager/stop"/>
-    </genClasses>
-    <genClasses ecoreClass="os-core.ecore#//EnvironmentVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//EnvironmentVariable/value"/>
     </genClasses>
     <genClasses image="false" ecoreClass="os-core.ecore#//ExceptionManager">
       <genOperations ecoreOperation="os-core.ecore#//ExceptionManager/prepareException">
@@ -187,6 +187,9 @@
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay.1">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay.1/resumeTime"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/executorFor">
+          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/executorFor/job"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/getActiveJobs"/>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup/contextID"/>
@@ -214,8 +217,32 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/job"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/status"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/executorFor">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/executorFor/job"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="OperatingSystemEnvironment" basePackage="org.smeup.sys.os.core"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="os-core.ecore#//env">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//env/EnvironmentLevel">
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//env/EnvironmentLevel/System"/>
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//env/EnvironmentLevel/Job"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="os-core.ecore#//env/EnvironmentVariableManager">
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/addVariable">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/level"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/variable"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/addVariable/replace"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/changeVariable">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/level"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/variable"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/replace"/>
+        </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/removeVariable">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/level"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/name"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/replace"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>

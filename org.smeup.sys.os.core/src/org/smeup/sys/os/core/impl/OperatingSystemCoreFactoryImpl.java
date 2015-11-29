@@ -66,8 +66,8 @@ public class OperatingSystemCoreFactoryImpl extends EFactoryImpl implements QOpe
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QOperatingSystemCorePackage.CREATION_INFO: return (EObject)createCreationInfo();
-			case QOperatingSystemCorePackage.SYSTEM: return (EObject)createSystem();
 			case QOperatingSystemCorePackage.ENVIRONMENT_VARIABLE: return (EObject)createEnvironmentVariable();
+			case QOperatingSystemCorePackage.SYSTEM: return (EObject)createSystem();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -112,7 +112,54 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystem()
 	 * @generated
 	 */
-	int SYSTEM = 1;
+	int SYSTEM = 2;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.QSystemManager
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemManager()
+	 * @generated
+	 */
+	int SYSTEM_MANAGER = 3;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.impl.EnvironmentVariableImpl
+	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getEnvironmentVariable()
+	 * @generated
+	 */
+	int ENVIRONMENT_VARIABLE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Environment Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
@@ -232,16 +279,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	int SYSTEM_FEATURE_COUNT = QIntegratedLanguageLockPackage.OBJECT_LOCKABLE_FEATURE_COUNT + 10;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.QSystemManager <em>System Manager</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.QSystemManager
-	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getSystemManager()
-	 * @generated
-	 */
-	int SYSTEM_MANAGER = 2;
-
-	/**
 	 * The number of structural features of the '<em>System Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,43 +286,6 @@ public interface QOperatingSystemCorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_MANAGER_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.impl.EnvironmentVariableImpl
-	 * @see org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl#getEnvironmentVariable()
-	 * @generated
-	 */
-	int ENVIRONMENT_VARIABLE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Environment Variable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.QExceptionManager <em>Exception Manager</em>}' class.

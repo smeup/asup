@@ -24,4 +24,12 @@
             genModel="model/os-core.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated os-core -->
+      <package
+            uri="http://www.smeup.org/asup/os/core/env"
+            class="org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage"
+            genModel="model/os-core.genmodel"/>
+   </extension>
+
 </plugin>

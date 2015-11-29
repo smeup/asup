@@ -31,6 +31,8 @@ import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.SystemStatus;
+import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
+import org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl;
 
@@ -149,14 +151,17 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Obtain or create and register interdependencies
 		OperatingSystemJobsPackageImpl theOperatingSystemJobsPackage = (OperatingSystemJobsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI) instanceof OperatingSystemJobsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI) : QOperatingSystemJobsPackage.eINSTANCE);
+		OperatingSystemEnvironmentPackageImpl theOperatingSystemEnvironmentPackage = (OperatingSystemEnvironmentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI) instanceof OperatingSystemEnvironmentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI) : QOperatingSystemEnvironmentPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theOperatingSystemCorePackage.createPackageContents();
 		theOperatingSystemJobsPackage.createPackageContents();
+		theOperatingSystemEnvironmentPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theOperatingSystemCorePackage.initializePackageContents();
 		theOperatingSystemJobsPackage.initializePackageContents();
+		theOperatingSystemEnvironmentPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theOperatingSystemCorePackage.freeze();
@@ -423,6 +428,10 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(creationInfoEClass, CREATION_INFO__CREATION_USER);
 		createEAttribute(creationInfoEClass, CREATION_INFO__CREATION_SYSTEM);
 
+		environmentVariableEClass = createEClass(ENVIRONMENT_VARIABLE);
+		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__NAME);
+		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__VALUE);
+
 		systemEClass = createEClass(SYSTEM);
 		createEReference(systemEClass, SYSTEM__CONTEXT);
 		createEReference(systemEClass, SYSTEM__CREATION_INFO);
@@ -436,10 +445,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		createEReference(systemEClass, SYSTEM__VARIABLES);
 
 		systemManagerEClass = createEClass(SYSTEM_MANAGER);
-
-		environmentVariableEClass = createEClass(ENVIRONMENT_VARIABLE);
-		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__NAME);
-		createEAttribute(environmentVariableEClass, ENVIRONMENT_VARIABLE__VALUE);
 
 		exceptionManagerEClass = createEClass(EXCEPTION_MANAGER);
 
@@ -476,6 +481,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Obtain other dependent packages
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
+		QOperatingSystemEnvironmentPackage theOperatingSystemEnvironmentPackage = (QOperatingSystemEnvironmentPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageLockPackage theIntegratedLanguageLockPackage = (QIntegratedLanguageLockPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageLockPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
@@ -483,6 +489,7 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Add subpackages
 		getESubpackages().add(theOperatingSystemJobsPackage);
+		getESubpackages().add(theOperatingSystemEnvironmentPackage);
 
 		// Create type parameters
 
@@ -490,16 +497,20 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 
 		// Add supertypes to classes
 		creationInfoEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		environmentVariableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageLockPackage.getObjectLockable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		systemEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		environmentVariableEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(creationInfoEClass, QCreationInfo.class, "CreationInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCreationInfo_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, QCreationInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCreationInfo_CreationUser(), ecorePackage.getEString(), "creationUser", null, 0, 1, QCreationInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCreationInfo_CreationSystem(), ecorePackage.getEString(), "creationSystem", null, 0, 1, QCreationInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(environmentVariableEClass, QEnvironmentVariable.class, "EnvironmentVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEnvironmentVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnvironmentVariable_Value(), ecorePackage.getEString(), "value", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, QSystem.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSystem_Context(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "context", null, 0, 1, QSystem.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -520,10 +531,6 @@ public class OperatingSystemCorePackageImpl extends EPackageImpl implements QOpe
 		addEOperation(systemManagerEClass, theOperatingSystemJobsPackage.getJob(), "start", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(systemManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(environmentVariableEClass, QEnvironmentVariable.class, "EnvironmentVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnvironmentVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnvironmentVariable_Value(), ecorePackage.getEString(), "value", null, 1, 1, QEnvironmentVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(exceptionManagerEClass, QExceptionManager.class, "ExceptionManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

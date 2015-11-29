@@ -6,6 +6,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationSystem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
         transient="true" containment="true"/>
@@ -40,11 +45,6 @@
     <eLiterals name="Started" value="20" literal="STR"/>
     <eLiterals name="Ending" value="70" literal="END"/>
     <eLiterals name="Stopped" value="80" literal="STP"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExceptionManager" abstract="true" interface="true">
     <eOperations name="prepareException" eType="#//MessageException">
@@ -278,6 +278,33 @@
       <eLiterals name="Kernel" value="10" literal="KRN"/>
       <eLiterals name="Interactive" value="20" literal="INT"/>
       <eLiterals name="Batch" value="30" literal="BCH"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="env" nsURI="http://www.smeup.org/asup/os/core/env" nsPrefix="os-core-env">
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableManager" abstract="true"
+        interface="true">
+      <eOperations name="addVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="variable" lowerBound="1" eType="#//EnvironmentVariable"/>
+        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+      <eOperations name="changeVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="variable" lowerBound="1" eType="#//EnvironmentVariable"/>
+        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+      <eOperations name="removeVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="name" lowerBound="1" eType="#//EnvironmentVariable"/>
+        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EnvironmentLevel">
+      <eLiterals name="System" value="10" literal="*SYS"/>
+      <eLiterals name="Job" value="20" literal="*JOB"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

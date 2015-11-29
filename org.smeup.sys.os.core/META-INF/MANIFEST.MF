@@ -7,6 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: www.smeup.com
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.core,
+ org.smeup.sys.os.core.env,
+ org.smeup.sys.os.core.env.impl,
  org.smeup.sys.os.core.impl,
  org.smeup.sys.os.core.jobs,
  org.smeup.sys.os.core.jobs.impl

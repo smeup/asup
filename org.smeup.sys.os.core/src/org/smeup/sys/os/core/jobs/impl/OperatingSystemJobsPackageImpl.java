@@ -22,6 +22,8 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
+import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
+import org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl;
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
@@ -165,14 +167,17 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		// Obtain or create and register interdependencies
 		OperatingSystemCorePackageImpl theOperatingSystemCorePackage = (OperatingSystemCorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI) instanceof OperatingSystemCorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemCorePackage.eNS_URI) : QOperatingSystemCorePackage.eINSTANCE);
+		OperatingSystemEnvironmentPackageImpl theOperatingSystemEnvironmentPackage = (OperatingSystemEnvironmentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI) instanceof OperatingSystemEnvironmentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemEnvironmentPackage.eNS_URI) : QOperatingSystemEnvironmentPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theOperatingSystemJobsPackage.createPackageContents();
 		theOperatingSystemCorePackage.createPackageContents();
+		theOperatingSystemEnvironmentPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theOperatingSystemJobsPackage.initializePackageContents();
 		theOperatingSystemCorePackage.initializePackageContents();
+		theOperatingSystemEnvironmentPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theOperatingSystemJobsPackage.freeze();
