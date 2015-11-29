@@ -23,7 +23,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.smeup.sys.dk.source.QSourceEntry;
 import org.smeup.sys.dk.source.QSourceManager;
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileMember;
 import org.smeup.sys.os.file.QFileMemberManager;
@@ -32,14 +36,16 @@ import org.smeup.sys.os.file.QFileMembered;
 public class JDTFileMemberManagerImpl implements QFileMemberManager {
 
 	@Inject
+	private QResourceManager resourceManager;
+	@Inject
 	private QSourceManager sourceManager;
 
 	@Override
-	public List<QFileMember> list(QContext context, String library, QFileMembered file) {
+	public List<QFileMember> list(QContextProvider contextProvider, QFileMembered file) {
 
-		QSourceEntry fileEntry = sourceManager.getObjectEntry(context, library, QFile.class, file.getName());
+		QSourceEntry fileEntry = sourceManager.getObjectEntry(contextProvider.getContext(), file.getLibrary(), QFile.class, file.getName());
 
-		List<QSourceEntry> entries = sourceManager.listChildEntries(context, fileEntry);
+		List<QSourceEntry> entries = sourceManager.listChildEntries(contextProvider.getContext(), fileEntry);
 
 		ResourceSet resSet = new ResourceSetImpl();
 		List<QFileMember> members = new ArrayList<QFileMember>();
@@ -47,7 +53,9 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 			try {
 				Resource resource = resSet.createResource(URI.createURI(fileEntry.getLocation().toString()));
 				resource.load(entry.getInputStream(), null);
-				members.add((QFileMember) resource.getContents().get(0));
+				QFileMember fileMember = (QFileMember) resource.getContents().get(0);
+				fileMember.setFile(file);
+				members.add(fileMember);
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -56,13 +64,13 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 	}
 
 	@Override
-	public QFileMember lookup(QContext context, String library, QFileMembered file, String name) {
+	public QFileMember lookup(QContextProvider contextProvider, QFileMembered file, String name) {
 
-		QSourceEntry sourceFile = sourceManager.getObjectEntry(context, library, QFile.class, file.getName());
+		QSourceEntry sourceFile = sourceManager.getObjectEntry(contextProvider.getContext(), file.getLibrary(), QFile.class, file.getName());
 		if (sourceFile == null)
 			return null;
 
-		QSourceEntry sourceMember = sourceManager.getChildEntry(context, sourceFile, name+".XMI");
+		QSourceEntry sourceMember = sourceManager.getChildEntry(contextProvider.getContext(), sourceFile, name + ".XMI");
 		if (sourceMember == null)
 			return null;
 
@@ -76,6 +84,37 @@ public class JDTFileMemberManagerImpl implements QFileMemberManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		fileMember.setFile(file);
 		return fileMember;
+	}
+
+	@Override
+	public QFileMember lookup(QContextProvider contextProvider, Scope scope, String library, String file, String name) {
+
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, scope, library);
+
+		QFileMember fileMember = null;
+		try (QObjectIterator<QFile> fileList = fileReader.find(file);) {
+			while (fileList.hasNext()) {
+				QFile qFile = fileList.next();
+				fileMember = lookup(contextProvider, (QFileMembered) qFile, name);
+				if (fileMember != null)
+					break;
+			}
+		}
+
+		return fileMember;
+	}
+
+	@Override
+	public QFileMember lookup(QContextProvider contextProvider, String resource, String file, String name) {
+
+		QResourceReader<QFile> fileReader = resourceManager.getResourceReader(contextProvider, QFile.class, resource);
+		QFile qFile = fileReader.lookup(file);
+		if (qFile == null)
+			return null;
+		
+		return lookup(contextProvider, (QFileMembered) qFile, name);
 	}
 }

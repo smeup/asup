@@ -260,49 +260,49 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public <E extends Enum<E>> void setgt(E keyField) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber) {
 		// TODO Auto-generated method stub
-		
+		"".toString();		
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber, QIndicator notFound) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void setgt(int relativeRecordNumber, QIndicator notFound, QIndicator error) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void setgt(QNumeric relativeRecordNumber, QIndicator notFound, QIndicator error) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public <E extends Enum<E>> void setll(E keyField) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
@@ -369,36 +369,36 @@ public class BaseFileMemberDataSetImpl<R extends QRecord> implements QSMDataSet<
 	@Override
 	public void unlock() {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void unlock(QIndicator error) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void update(QIndicator error) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void write() {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 
 	@Override
 	public void write(QIndicator error) {
 		// TODO Auto-generated method stub
-		
+		"".toString();
 	}
 }

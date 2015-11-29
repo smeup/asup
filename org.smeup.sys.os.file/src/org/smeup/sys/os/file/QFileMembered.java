@@ -18,6 +18,14 @@ package org.smeup.sys.os.file;
  */
 public interface QFileMembered {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	String getLibrary();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
 	 * @generated

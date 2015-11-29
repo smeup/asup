@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.os.file.base;
 
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileMember;
@@ -24,25 +24,25 @@ public class BaseFileMemberProvider {
 	private QFileManager fileManager;
 	private QFileMemberManager fileMemberManager;
 	
-	private QContext context;
+	private QContextProvider contextProvider;
 	private String name;
 
-	public BaseFileMemberProvider(QContext context, String name) {
-		this.context = context;
+	public BaseFileMemberProvider(QContextProvider contextProvider, String name) {
+		this.contextProvider = contextProvider;
 		this.name = name;
 		
-		this.fileManager = context.get(QFileManager.class);
-		this.fileMemberManager = context.get(QFileMemberManager.class);
+		this.fileManager = contextProvider.getContext().get(QFileManager.class);
+		this.fileMemberManager = contextProvider.getContext().get(QFileMemberManager.class);
 	}
 
 	public QFileMember getFileMember() {
 		
-		QFileOverride fileOverride = fileManager.getFileOverride(context, name);
+		QFileOverride fileOverride = fileManager.getFileOverride(contextProvider.getContext(), name);
 		if(fileOverride == null)
 			return null;
 				
 		QFile fileMembered = fileOverride.getFileTo();
-		QFileMember fileMember = fileMemberManager.lookup(context, fileMembered.getLibrary(), (QFileMembered) fileMembered, fileOverride.getMemberTo());
+		QFileMember fileMember = fileMemberManager.lookup(contextProvider, (QFileMembered) fileMembered, fileOverride.getMemberTo());
 		
 		return fileMember;
 	}

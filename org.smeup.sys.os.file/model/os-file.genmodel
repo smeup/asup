@@ -6,7 +6,7 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" providerRootExtendsClass="" language="EN"
-    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-file.ecore</foreignModel>
   <genPackages prefix="OperatingSystemFile" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -29,6 +29,7 @@
     <genClasses ecoreClass="os-file.ecore#//ExternalFile">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//ExternalFile/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//ExternalFile/format"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//ExternalFile/rule"/>
     </genClasses>
     <genClasses ecoreClass="os-file.ecore#//File">
       <genOperations ecoreOperation="os-file.ecore#//File/getClassURI"/>
@@ -48,13 +49,22 @@
     </genClasses>
     <genClasses image="false" ecoreClass="os-file.ecore#//FileManager">
       <genOperations ecoreOperation="os-file.ecore#//FileManager/getFileOverride">
-        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/job"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/fileName"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/getFileOverride/name"/>
       </genOperations>
       <genOperations ecoreOperation="os-file.ecore#//FileManager/setFileOverride">
-        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/job"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/fileFrom"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/fileTo"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/setFileOverride/fileOverride"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileManager/listFileOverride">
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/listFileOverride/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileManager/removeFileOverride">
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/removeFileOverride/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/removeFileOverride/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileManager/removeAllFileOverride">
+        <genParameters ecoreParameter="os-file.ecore#//FileManager/removeAllFileOverride/context"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="os-file.ecore#//FileMember">
@@ -66,13 +76,26 @@
     </genClasses>
     <genClasses image="false" ecoreClass="os-file.ecore#//FileMemberManager">
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/list">
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/context"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/library"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/file"/>
       </genOperations>
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup">
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/library"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/scope"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/file"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup.1">
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/resource"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/file"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup.2">
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/file"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/name"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="os-file.ecore#//FileMemberRow">
@@ -82,7 +105,13 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-file.ecore#//FileMemberRow/fileMember"/>
     </genClasses>
     <genClasses image="false" ecoreClass="os-file.ecore#//FileMembered">
+      <genOperations ecoreOperation="os-file.ecore#//FileMembered/getLibrary"/>
       <genOperations ecoreOperation="os-file.ecore#//FileMembered/getName"/>
+    </genClasses>
+    <genClasses ecoreClass="os-file.ecore#//FileOverride">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileOverride/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-file.ecore#//FileOverride/fileTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//FileOverride/memberTo"/>
     </genClasses>
     <genClasses ecoreClass="os-file.ecore#//LogicalFile">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//LogicalFile/creationStatement"/>
@@ -95,6 +124,8 @@
     <genClasses ecoreClass="os-file.ecore#//PrinterFileFormat"/>
     <genClasses ecoreClass="os-file.ecore#//PrinterFileFormatDef"/>
     <genClasses ecoreClass="os-file.ecore#//PrinterFileField"/>
-    <genClasses ecoreClass="os-file.ecore#//SourceFile"/>
+    <genClasses ecoreClass="os-file.ecore#//SourceFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-file.ecore#//SourceFile/fileType"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

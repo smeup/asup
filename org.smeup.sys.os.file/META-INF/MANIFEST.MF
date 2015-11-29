@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.os.core;visibility:=reexport,
  org.smeup.sys.os.type;visibility:=reexport,
  org.smeup.sys.il.expr;visibility:=reexport,
- org.smeup.sys.il.lock;visibility:=reexport
+ org.smeup.sys.il.lock;visibility:=reexport,
+ org.smeup.sys.il.memo;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

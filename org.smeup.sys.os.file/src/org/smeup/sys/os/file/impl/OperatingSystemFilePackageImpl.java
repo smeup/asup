@@ -22,6 +22,7 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
+import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
 import org.smeup.sys.os.file.QDatabaseFile;
 import org.smeup.sys.os.file.QDatabaseFileField;
 import org.smeup.sys.os.file.QDatabaseFileFormat;
@@ -267,6 +268,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageMemoryPackage.eINSTANCE.eClass();
 		QOperatingSystemTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -900,6 +902,7 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QIntegratedLanguageMemoryPackage theIntegratedLanguageMemoryPackage = (QIntegratedLanguageMemoryPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageMemoryPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter fileFormatEClass_DD = addETypeParameter(fileFormatEClass, "DD");
@@ -1045,15 +1048,26 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		initEClass(fileMemberManagerEClass, QFileMemberManager.class, "FileMemberManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "list", 0, -1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "library", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getFileMembered(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "member", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageMemoryPackage.getScope(), "scope", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "member", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(fileMemberManagerEClass, this.getFileMember(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContextProvider(), "contextProvider", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "library", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "file", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "member", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fileMemberRowEClass, QFileMemberRow.class, "FileMemberRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileMemberRow_Sequence(), ecorePackage.getEInt(), "sequence", null, 0, 1, QFileMemberRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1062,6 +1076,8 @@ public class OperatingSystemFilePackageImpl extends EPackageImpl implements QOpe
 		initEReference(getFileMemberRow_FileMember(), this.getFileMember(), this.getFileMember_Rows(), "fileMember", null, 1, 1, QFileMemberRow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fileMemberedEClass, QFileMembered.class, "FileMembered", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(fileMemberedEClass, ecorePackage.getEString(), "getLibrary", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(fileMemberedEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
 

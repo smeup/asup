@@ -9,7 +9,8 @@ package org.smeup.sys.os.file;
 
 import java.util.List;
 
-import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.ctx.QContextProvider;
+import org.smeup.sys.il.memo.Scope;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,17 +23,35 @@ import org.smeup.sys.il.core.ctx.QContext;
  */
 public interface QFileMemberManager {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model contextRequired="true" libraryRequired="true" fileRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" fileRequired="true"
 	 * @generated
 	 */
-	List<QFileMember> list(QContext context, String library, QFileMembered file);
+	List<QFileMember> list(QContextProvider contextProvider, QFileMembered file);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model contextRequired="true" fileRequired="true" nameRequired="true"
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" libraryRequired="true" fileRequired="true" memberRequired="true"
 	 * @generated
 	 */
-	QFileMember lookup(QContext context, String library, QFileMembered file, String name);
+	QFileMember lookup(QContextProvider contextProvider, String library, String file, String member);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" fileRequired="true" memberRequired="true"
+	 * @generated
+	 */
+	QFileMember lookup(QContextProvider contextProvider, QFileMembered file, String member);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model contextProviderRequired="true" libraryRequired="true" fileRequired="true" memberRequired="true"
+	 * @generated
+	 */
+	QFileMember lookup(QContextProvider contextProvider, Scope scope, String library, String file, String member);
 
 } // QFileMemberManager

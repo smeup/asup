@@ -74,7 +74,7 @@ public class FileMemberRunner {
 
 		QFileMembered fileMembered = (QFileMembered) qFile;
 
-		QFileMember fileMember = fileMemberManager.lookup(job.getContext(), sourceFile.library.asData().trimR(), fileMembered, sourceMember.trimR());
+		QFileMember fileMember = fileMemberManager.lookup(job, fileMembered, sourceMember.trimR());
 		if (fileMember == null)
 			throw new OperatingSystemRuntimeException("File member not found: " + sourceFile + "/" + sourceMember);
 
