@@ -27,6 +27,8 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -34,8 +36,12 @@ import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.file.QDatabaseFileField;
+import org.smeup.sys.os.file.QDatabaseFileFormat;
+import org.smeup.sys.os.file.QDatabaseFileFormatDef;
 import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QOperatingSystemFileFactory;
+import org.smeup.sys.os.file.QPhysicalFile;
 import org.smeup.sys.os.lib.QLibrary;
 
 @Program(name = "QDDCPF")
@@ -90,7 +96,7 @@ public @ToDo class FileCreator {
 		case OTHER:
 			QResourceReader<QLibrary> libraryWriter = resourceManager.getResourceReader(job, QLibrary.class, systemManager.getSystem().getSystemLibrary());
 
-			if (libraryWriter.exists(file.library.asData().trimR()))
+			if (!libraryWriter.exists(file.library.asData().trimR()))
 				throw exceptionManager.prepareException(job, QCPFMSG.CPF3204, new String[] {fileNameString, file.library.asData().trimR()});
 		
 			fileWriter = resourceManager.getResourceWriter(job, QFile.class, file.library.asData().trimR());
@@ -100,10 +106,53 @@ public @ToDo class FileCreator {
 		if(fileWriter.exists(fileNameString))
 			throw exceptionManager.prepareException(job, QCPFMSG.CPF5813, new String[] {fileNameString, file.library.asData().trimR()});
 		
-		QFile qFile = QOperatingSystemFileFactory.eINSTANCE.createPhysicalFile();
+		QPhysicalFile qFile = QOperatingSystemFileFactory.eINSTANCE.createPhysicalFile();
 		qFile.setName(fileNameString);
+		switch (textDescription.asEnum()) {
+		case BLANK:
+			//Nothing
+			break;
 
-		//TODO
+		case OTHER:
+			qFile.setText(textDescription.asData().trimR());
+			break;
+
+		case SRCMBRTXT:
+			//TODO
+			break;
+		}
+		
+		if (recordLengthIfNoDDS.asInteger() == 0) {
+			throw new UnsupportedOperationException("DDS are not yet supported!");		
+		}
+		
+		switch (fileType.asEnum()) {
+		case SRC:
+			throw new UnsupportedOperationException("SRC files are not yet supported!");					
+
+		case DATA:
+			//Nothing
+			break;
+		}
+		
+		QDatabaseFileFormat fileFormat =  QOperatingSystemFileFactory.eINSTANCE.createDatabaseFileFormat();
+		fileFormat.setName(fileNameString);
+		QDatabaseFileFormatDef formatDef = QOperatingSystemFileFactory.eINSTANCE.createDatabaseFileFormatDef();
+		QDatabaseFileField field = createCharField(recordLengthIfNoDDS, fileNameString);
+		formatDef.getElements().add(field);
+		fileFormat.setDefinition(formatDef);
+		qFile.setDatabaseFormat(fileFormat);
+		
+		fileWriter.save(qFile);
+	}
+
+	private QDatabaseFileField createCharField(QBinary recordLengthIfNoDDS, String fileNameString) {
+		QDatabaseFileField field = QOperatingSystemFileFactory.eINSTANCE.createDatabaseFileField();
+		field.setName(fileNameString);
+		QUnaryAtomicBufferedDataDef<QCharacter> definition = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+		definition.setLength(recordLengthIfNoDDS.asInteger());		
+		field.setDefinition(definition);
+		return field;
 	}
 
 	public static class FILE extends QDataStructWrapper {
