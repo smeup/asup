@@ -14,6 +14,7 @@ package org.smeup.sys.os.msgf.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.il.core.QObjectIterator;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;
@@ -25,8 +26,8 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
-import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.il.memo.Scope;
+import org.smeup.sys.os.core.QExceptionManager;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.msgf.QMessageFile;
@@ -35,13 +36,19 @@ import org.smeup.sys.os.msgf.QMessageFile;
 @Program(name = "QMHCHMSF")
 public class MessageFileChanger {
 
+	public static enum QCPFMSG {
+		CPF2407, //Non è stato trovato il file messaggi &1 nella libreria &2 
+	}
+
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
 	private QJob job;
 	@Inject
 	private QJobLogManager jobLogManager;
-
+	@Inject
+	private QExceptionManager exceptionManager;
+	
 	@Main
 	public void main(@Supported @DataDef(qualified = true) MessageFile messageFile, @Supported @DataDef(length = 50) QEnum<TextDescriptionEnum, QCharacter> textDescription,
 			@DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID) {
@@ -74,33 +81,37 @@ public class MessageFileChanger {
 		String name = null;
 		switch (messageFile.name.asEnum()) {
 		case ALL:
-			// TODO
-			// il nome può essere anche *ALL, gestiamo questa cosa?
-			name = messageFile.name.getSpecialName();
+			name = "*";
 			break;
 		case OTHER:
 			name = messageFile.name.asData().trimR();
 			break;
 		}
 
-		QMessageFile qMessageFile = resource.lookup(name);
-		if (qMessageFile == null)
-			throw new OperatingSystemRuntimeException("Message File " + name + " not exists in library " + library);
 
-		// TEXT
-		switch (textDescription.asEnum()) {
-		case SAME:
-			break;
-		case BLANK:
-			qMessageFile.setText("");
-			break;
-		case OTHER:
-			qMessageFile.setText(textDescription.asData().trimR());
-			break;
+		int changed = 0;
+		try (QObjectIterator<QMessageFile> qMessageFiles = resource.find(name)) {
+			while (qMessageFiles.hasNext()) {
+				QMessageFile qMessageFile = qMessageFiles.next();
+				switch (textDescription.asEnum()) {
+				case SAME:
+					break;
+				case BLANK:
+					qMessageFile.setText("");
+					break;
+				case OTHER:
+					qMessageFile.setText(textDescription.asData().trimR());
+					break;
+				}
+			
+				resource.save(qMessageFile, true);
+				changed++;
+				jobLogManager.info(job, "Message File " + name + " changed");
+			}
 		}
-
-		resource.save(qMessageFile, true);
-		jobLogManager.info(job, "Message File " + name + " changed");
+		if (changed == 0) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2407, new String[] {name, library});
+		}
 	}
 
 	public static class MessageFile extends QDataStructWrapper {

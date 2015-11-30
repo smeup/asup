@@ -46,6 +46,10 @@ import org.smeup.sys.os.msgf.QOperatingSystemMessageFileFactory;
 @Program(name = "QMHCRMSD")
 public class MessageDescriptionAdder {
 
+	public static enum QCPFMSG {
+		CPF2407, CPF2412
+	}
+	
 	@Inject
 	private QResourceManager resourceManager;
 	@Inject
@@ -192,9 +196,7 @@ public class MessageDescriptionAdder {
 		jobLogManager.info(job, "Message Description " + messageIdentifier + " added to Message File " + messageFile.name.trimR());
 	}
 
-	public static enum QCPFMSG {
-		CPF2407, CPF2412
-	}
+
 
 	public static class MessageFile extends QDataStructWrapper {
 		private static final long serialVersionUID = 1L;
