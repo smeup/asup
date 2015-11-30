@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.os.core.env;
 
+import java.util.List;
 import org.smeup.sys.os.core.QEnvironmentVariable;
 
 import org.smeup.sys.os.core.jobs.QJob;
@@ -37,6 +38,14 @@ public interface QEnvironmentVariableManager {
 	 * @generated
 	 */
 	void changeVariable(QJob job, EnvironmentLevel level, QEnvironmentVariable variable, boolean replace);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" levelRequired="true"
+	 * @generated
+	 */
+	List<QEnvironmentVariable> listVariables(QJob job, EnvironmentLevel level);
 
 	/**
 	 * <!-- begin-user-doc -->

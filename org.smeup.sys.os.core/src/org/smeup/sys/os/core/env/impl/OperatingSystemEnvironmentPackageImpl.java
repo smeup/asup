@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -21,6 +22,7 @@ import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 
 import org.smeup.sys.os.core.env.EnvironmentLevel;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentFactory;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
@@ -44,6 +46,13 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass environmentVariableManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass environmentVariableContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,6 +148,24 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEnvironmentVariableContainer() {
+		return environmentVariableContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEnvironmentVariableContainer_Variables() {
+		return (EReference)environmentVariableContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEnvironmentLevel() {
 		return environmentLevelEEnum;
 	}
@@ -172,6 +199,9 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 
 		// Create classes and their features
 		environmentVariableManagerEClass = createEClass(ENVIRONMENT_VARIABLE_MANAGER);
+
+		environmentVariableContainerEClass = createEClass(ENVIRONMENT_VARIABLE_CONTAINER);
+		createEReference(environmentVariableContainerEClass, ENVIRONMENT_VARIABLE_CONTAINER__VARIABLES);
 
 		// Create enums
 		environmentLevelEEnum = createEEnum(ENVIRONMENT_LEVEL);
@@ -225,11 +255,18 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		addEParameter(op, theOperatingSystemCorePackage.getEnvironmentVariable(), "variable", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(environmentVariableManagerEClass, theOperatingSystemCorePackage.getEnvironmentVariable(), "listVariables", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getEnvironmentLevel(), "level", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(environmentVariableManagerEClass, null, "removeVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getEnvironmentLevel(), "level", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemCorePackage.getEnvironmentVariable(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(environmentVariableContainerEClass, QEnvironmentVariableContainer.class, "EnvironmentVariableContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEnvironmentVariableContainer_Variables(), theOperatingSystemCorePackage.getEnvironmentVariable(), null, "variables", null, 0, -1, QEnvironmentVariableContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(environmentLevelEEnum, EnvironmentLevel.class, "EnvironmentLevel");

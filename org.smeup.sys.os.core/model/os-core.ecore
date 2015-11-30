@@ -281,6 +281,10 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="env" nsURI="http://www.smeup.org/asup/os/core/env" nsPrefix="os-core-env">
+    <eClassifiers xsi:type="ecore:EEnum" name="EnvironmentLevel">
+      <eLiterals name="System" value="10" literal="*SYS"/>
+      <eLiterals name="Job" value="20" literal="*JOB"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableManager" abstract="true"
         interface="true">
       <eOperations name="addVariable">
@@ -295,6 +299,10 @@
         <eParameters name="variable" lowerBound="1" eType="#//EnvironmentVariable"/>
         <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
+      <eOperations name="listVariables" upperBound="-1" eType="#//EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+      </eOperations>
       <eOperations name="removeVariable">
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
@@ -302,9 +310,9 @@
         <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="EnvironmentLevel">
-      <eLiterals name="System" value="10" literal="*SYS"/>
-      <eLiterals name="Job" value="20" literal="*JOB"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableContainer">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+          eType="#//EnvironmentVariable" containment="true"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

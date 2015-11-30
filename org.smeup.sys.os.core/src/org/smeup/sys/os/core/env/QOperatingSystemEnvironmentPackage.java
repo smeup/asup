@@ -10,6 +10,7 @@ package org.smeup.sys.os.core.env;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,6 +80,34 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	int ENVIRONMENT_VARIABLE_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl <em>Environment Variable Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl
+	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableContainer()
+	 * @generated
+	 */
+	int ENVIRONMENT_VARIABLE_CONTAINER = 1;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_CONTAINER__VARIABLES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Environment Variable Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,7 +115,7 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentLevel()
 	 * @generated
 	 */
-	int ENVIRONMENT_LEVEL = 1;
+	int ENVIRONMENT_LEVEL = 2;
 
 
 	/**
@@ -98,6 +127,27 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getEnvironmentVariableManager();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.env.QEnvironmentVariableContainer <em>Environment Variable Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Environment Variable Container</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariableContainer
+	 * @generated
+	 */
+	EClass getEnvironmentVariableContainer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.env.QEnvironmentVariableContainer#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariableContainer#getVariables()
+	 * @see #getEnvironmentVariableContainer()
+	 * @generated
+	 */
+	EReference getEnvironmentVariableContainer_Variables();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}'.
@@ -140,6 +190,24 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENVIRONMENT_VARIABLE_MANAGER = eINSTANCE.getEnvironmentVariableManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl <em>Environment Variable Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl
+		 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableContainer()
+		 * @generated
+		 */
+		EClass ENVIRONMENT_VARIABLE_CONTAINER = eINSTANCE.getEnvironmentVariableContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENVIRONMENT_VARIABLE_CONTAINER__VARIABLES = eINSTANCE.getEnvironmentVariableContainer_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}' enum.

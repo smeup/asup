@@ -62,6 +62,7 @@ public class OperatingSystemEnvironmentFactoryImpl extends EFactoryImpl implemen
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QOperatingSystemEnvironmentPackage.ENVIRONMENT_VARIABLE_CONTAINER: return (EObject)createEnvironmentVariableContainer();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +96,16 @@ public class OperatingSystemEnvironmentFactoryImpl extends EFactoryImpl implemen
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QEnvironmentVariableContainer createEnvironmentVariableContainer() {
+		EnvironmentVariableContainerImpl environmentVariableContainer = new EnvironmentVariableContainerImpl();
+		return environmentVariableContainer;
 	}
 
 	/**
