@@ -38,6 +38,7 @@ import org.smeup.sys.il.core.meta.QCardinality;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaFactory;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QArrayDef;
+import org.smeup.sys.il.data.def.QBufferDef;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
 import org.smeup.sys.il.data.def.QDataAreaDef;
@@ -1051,6 +1052,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					prototype.setDefinition(decimalDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
 					QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
+					QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
+					arrayDef.setArgument(bufferDef);
 					prototype.setDefinition(arrayDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getPointer())) {
 					QPointerDef pointerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createPointerDef();
