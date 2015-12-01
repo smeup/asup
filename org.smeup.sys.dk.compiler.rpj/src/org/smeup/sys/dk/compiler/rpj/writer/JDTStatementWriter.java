@@ -59,6 +59,7 @@ import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.expr.IntegratedLanguageExpressionRuntimeException;
 import org.smeup.sys.il.expr.LogicalOperator;
 import org.smeup.sys.il.expr.QAssignmentExpression;
+import org.smeup.sys.il.expr.QBlockExpression;
 import org.smeup.sys.il.expr.QExpression;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QIntegratedLanguageExpressionFactory;
@@ -684,11 +685,11 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 		DoStatement doSt = ast.newDoStatement();
 
-//		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
-		
 		QLogicalExpression logicalExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createLogicalExpression();
 		logicalExpression.setOperator(LogicalOperator.NOT);
-		logicalExpression.setLeftOperand(expressionParser.parsePredicate(statement.getCondition()));
+		QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
+		blockExpression.setExpression(expressionParser.parsePredicate(statement.getCondition()));
+		logicalExpression.setLeftOperand(blockExpression);
 
 		Expression expression = buildExpression(ast, logicalExpression, CompilationContextHelper.getJavaClass(compilationUnit, logicalExpression));
 		doSt.setExpression(expression);
