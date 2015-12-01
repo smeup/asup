@@ -582,7 +582,7 @@ public class RPJProgramSupport {
 		sb.append(replacement);
 		sb.append(source.substring(from + length - 1));
 
-		QCharacter character = dataContext.getDataFactory().createCharacter(source.length(), false, true);
+		QCharacter character = dataContext.getDataFactory().createCharacter(sb.length(), false, true);
 		character.eval(sb.toString());
 
 		return character;
