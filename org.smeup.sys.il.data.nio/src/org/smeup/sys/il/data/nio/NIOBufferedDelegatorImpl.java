@@ -20,7 +20,6 @@ import java.io.ObjectOutputStream;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QBufferedDataDelegator;
-import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
 import org.smeup.sys.il.data.QDataVisitor;
@@ -372,36 +371,6 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 
 	public QPointer qAddr() {
 		return _delegate.qAddr();
-	}
-
-	@Override
-	public QCharacter qSubst(QNumeric start, QNumeric length) {
-		return _delegate.qSubst(start, length);
-	}
-
-	@Override
-	public QCharacter qSubst(QNumeric start) {
-		return _delegate.qSubst(start);
-	}
-
-	@Override
-	public QCharacter qSubst(Number start, Number length) {
-		return _delegate.qSubst(start, length);
-	}
-
-	@Override
-	public QCharacter qSubst(Number start) {
-		return _delegate.qSubst(start);
-	}
-
-	@Override
-	public QCharacter qSubst(QNumeric start, Number length) {
-		return _delegate.qSubst(start, length);
-	}
-
-	@Override
-	public QCharacter qSubst(Number start, QNumeric length) {
-		return _delegate.qSubst(start, length);
 	}
 
 	public boolean eq(byte value) {

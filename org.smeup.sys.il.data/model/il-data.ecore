@@ -262,6 +262,46 @@
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1">
+      <eGenericType eClassifier="#//Array">
+        <eTypeArguments eClassifier="#//Character"/>
+      </eGenericType>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eGenericSuperTypes eClassifier="#//BufferedList">
       <eTypeArguments eTypeParameter="#//Array/D"/>
     </eGenericSuperTypes>
@@ -339,28 +379,6 @@
     </eOperations>
     <eOperations name="qAddr" lowerBound="1" eType="#//Pointer"/>
     <eOperations name="qLen" lowerBound="1" eType="#//Numeric"/>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-    </eOperations>
-    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BufferedDataDelegator" abstract="true"
       interface="true">
@@ -2609,6 +2627,28 @@
     </eOperations>
     <eOperations name="qInt" eType="#//Numeric"/>
     <eOperations name="qInth" eType="#//Numeric"/>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+    </eOperations>
+    <eOperations name="qSubst" lowerBound="1" eType="#//Character">
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTriml" lowerBound="1" eType="#//Character"/>
     <eOperations name="qTrimr" lowerBound="1" eType="#//Character"/>

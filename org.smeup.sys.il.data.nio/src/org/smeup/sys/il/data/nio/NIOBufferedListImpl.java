@@ -177,10 +177,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 				sb.append("\n");
 
 			sb.append(i + "[");
-			if (element.getLength() > 50)
-				sb.append(element.qSubst(1, 50).asString());
-			else
-				sb.append(element.qSubst(1).asString());
+			sb.append(new String(element.asBytes(), getDataContext().getCharset()));
 			sb.append("]");
 			
 			if(sb.length() > 5000)

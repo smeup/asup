@@ -25,7 +25,7 @@ import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.def.DecimalType;
 
-public class NIOCharacterImpl extends NIOBufferedDataImpl implements QCharacter {
+public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 
 	private static final long serialVersionUID = 1L;
 	protected static final byte INIT = (byte) 64; // 32;

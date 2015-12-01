@@ -212,6 +212,54 @@ public interface QString extends QBufferedData, QScanner, QCattable<QString>, QL
 	QNumeric qInth();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(QNumeric start, QNumeric length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(QNumeric start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(Number start, Number length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(Number start);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(QNumeric start, Number length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthRequired="true"
+	 * @generated
+	 */
+	QCharacter qSubst(Number start, QNumeric length);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true"
 	 * @generated
