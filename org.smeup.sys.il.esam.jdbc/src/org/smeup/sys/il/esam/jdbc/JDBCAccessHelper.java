@@ -17,19 +17,36 @@ import java.util.List;
 import org.eclipse.datatools.modelbase.sql.schema.helper.SQLObjectNameHelper;
 import org.eclipse.datatools.modelbase.sql.tables.Column;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
+import org.smeup.sys.il.core.java.QStrings;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QRecord;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.esam.IntegratedLanguageEsamRuntimeException;
 import org.smeup.sys.il.esam.OperationDirection;
 import org.smeup.sys.il.esam.OperationRead;
 import org.smeup.sys.il.esam.OperationSet;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
+import org.smeup.sys.rt.core.QApplication;
 
 public class JDBCAccessHelper {
 
 	private SQLObjectNameHelper sqlObjectNameHelper = new SQLObjectNameHelper();
+
+	// TODO remove me
+	private QStrings strings = null;
+	private static String HIVAL = "HIVAL";
+	private static String LOVAL = "LOVAL";
+
+	public JDBCAccessHelper() {
+		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
+		ServiceReference<QStrings> stringsReference = bundleContext.getServiceReference(QStrings.class);
+		this.strings = bundleContext.getService(stringsReference);
+	}
 
 	protected SQLObjectNameHelper getSQLObjectNameHelper() {
 		return this.sqlObjectNameHelper;
@@ -45,7 +62,7 @@ public class JDBCAccessHelper {
 
 		return sbUpdate.toString();
 	}
-	
+
 	public String buildSelect(Table table, QIndex index, OperationSet opSet, Object[] keySet, OperationRead opRead, Object[] keyRead) {
 
 		StringBuffer querySelect = new StringBuffer();
@@ -225,9 +242,21 @@ public class JDBCAccessHelper {
 				sbFields.append(getSQLObjectNameHelper().getIdentifierQuoteString() + indexColumnName + getSQLObjectNameHelper().getIdentifierQuoteString());
 
 				// append value
-				byte[] bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
-				Arrays.fill(bytes, (byte) 32);
-				sbValues.append(keySet[i].toString() + new String(bytes));
+				byte[] bytes = null;
+				if (keySet[i] instanceof Enum<?>) {
+					Enum<?> keySetEnum = (Enum<?>) keySet[i];
+					if (keySetEnum.name().equals(HIVAL))
+						sbValues.append(strings.string(indexColumn.getLength(), "9"));
+					else if (keySetEnum.name().equals(LOVAL))
+						sbValues.append(strings.string(indexColumn.getLength(), " "));
+					else
+						throw new IntegratedLanguageEsamRuntimeException("Invalid special " + keySetEnum.name() + " for  column " + indexColumnName);
+					
+				} else {
+					bytes = new byte[indexColumn.getLength() - keySet[i].toString().length()];
+					Arrays.fill(bytes, (byte) 32);
+					sbValues.append(keySet[i].toString() + new String(bytes));
+				}				
 			}
 
 			if (i + 1 < keySet.length)
