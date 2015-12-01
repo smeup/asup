@@ -48,6 +48,12 @@ public class NIOCharacterVaryingImpl extends NIOCharacterImpl {
 
 	@Override
 	public void eval(QString value) {
+
+		if (value == null) {
+			clear();
+			return;
+		}
+
 		this.__length = (value.getLength() > getSize() ? (short) getSize() : (short) value.getLength());
 
 		super.eval(value);
