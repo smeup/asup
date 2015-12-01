@@ -45,7 +45,7 @@ import org.smeup.sys.os.type.QTypedObject;
 @Program(name = "QLICRDUP")
 public @Supported class ObjectDuplicator {
 	public static enum QCPFMSG {
-		CPF2130, CPF2110
+		CPF2130, CPF2110, CPF2105
 	}
 
 	@Inject
@@ -77,6 +77,7 @@ public @Supported class ObjectDuplicator {
 
 		List<QType<?>> types = typesFrom(objectTypes);
 
+		int duplicated = 0;
 		for (QType<?> type : types) {
 
 			if (!type.isPersistent())
@@ -109,6 +110,7 @@ public @Supported class ObjectDuplicator {
 
 				while (objectIterator.hasNext()) {
 					duplicate(toLibrary, newObjectName, type, (QTypedObject) objectIterator.next(), duplicateData.asEnum());
+					duplicated++;
 				}
 			} finally {
 				if (objectIterator != null) {
@@ -116,7 +118,17 @@ public @Supported class ObjectDuplicator {
 				}
 			}
 		}
+		if (duplicated == 0) {
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF2105, new String[] {fromObject.asData().trimR(), fromLibrary.asData().trimR(), describe(types) });
+		}
+	}
 
+	private String describe(List<QType<?>> types) {
+		StringBuffer result = new StringBuffer();
+		for (QType<?> qType : types) {
+			result.append(qType.getName()).append(" ");
+		}
+		return result.toString();
 	}
 
 	private void checkLibrary(String libName) {
