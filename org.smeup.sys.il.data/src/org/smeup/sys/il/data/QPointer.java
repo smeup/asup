@@ -188,4 +188,12 @@ public interface QPointer extends QData, QStorable {
 	 * @generated
 	 */
 	QString qStr(int length);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" lengthRequired="true"
+	 * @generated
+	 */
+	QString qStr(QNumeric length);
 } // QPointer

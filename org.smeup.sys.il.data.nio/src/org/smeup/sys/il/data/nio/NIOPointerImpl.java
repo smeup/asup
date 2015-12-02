@@ -78,6 +78,12 @@ public class NIOPointerImpl extends NIODataImpl implements QPointer {
 
 		return character;
 	}
+	
+	@Override
+	public QString qStr(QNumeric length) {
+		return qStr(length.i());
+	}
+
 
 	@Override
 	public void clear() {

@@ -2457,6 +2457,9 @@
     <eOperations name="qStr" lowerBound="1" eType="#//String">
       <eParameters name="length" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="qStr" lowerBound="1" eType="#//String">
+      <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Record" abstract="true" interface="true">
     <eGenericSuperTypes eClassifier="#//Struct">
