@@ -1044,7 +1044,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
 				prototype.setName(name);
 
-				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter())) {
+				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter()) ||
+					eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getString())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getNumeric())) {
@@ -1052,8 +1053,14 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					prototype.setDefinition(decimalDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
 					QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
-					QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
-					arrayDef.setArgument(bufferDef);
+					if(eOperation.getName().equals("qSubst")) {
+						QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
+						arrayDef.setArgument(characterDef);
+					}
+					else {
+						QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
+						arrayDef.setArgument(bufferDef);
+					}
 					prototype.setDefinition(arrayDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getPointer())) {
 					QPointerDef pointerDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createPointerDef();
