@@ -819,7 +819,7 @@
     </eOperations>
     <eOperations name="setgt">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="keyField" lowerBound="1">
         <eGenericType eTypeParameter="#//RRDataSet/setgt.6/E"/>
@@ -830,7 +830,7 @@
     </eOperations>
     <eOperations name="setll">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="keyField" lowerBound="1">
         <eGenericType eTypeParameter="#//RRDataSet/setll.1/E"/>

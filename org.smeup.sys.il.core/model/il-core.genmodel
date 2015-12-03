@@ -7,7 +7,8 @@
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" suppressGenModelAnnotations="false" copyrightFields="false"
     editPluginID="org.smeup.sys.il.core.edit" editorPluginID="org.smeup.sys.il.core.editor"
-    language="EN" interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
+    language="EN" usedGenPackages="../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>il-core.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageCore" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="il-core.ecore#/">
@@ -27,6 +28,9 @@
       <genEnumLiterals ecoreEnumLiteral="il-core.ecore#//FormatType/SimpleName"/>
     </genEnums>
     <genClasses image="false" ecoreClass="il-core.ecore#//Annotation"/>
+    <genClasses ecoreClass="il-core.ecore#//AnnotationScope">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationScope/name"/>
+    </genClasses>
     <genClasses ecoreClass="il-core.ecore#//AnnotationTest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationTest/expression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//AnnotationTest/message"/>
@@ -110,6 +114,10 @@
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/createChildContext.1/name"/>
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/createChildContext.1/injectionStrategy"/>
         </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/createChildContext.2">
+          <genParameters ecoreParameter="il-core.ecore#//ctx/Context/createChildContext.2/contextDescription"/>
+          <genParameters ecoreParameter="il-core.ecore#//ctx/Context/createChildContext.2/injectionStrategy"/>
+        </genOperations>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/get">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/get/clazz"/>
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Context/get/T"/>
@@ -119,13 +127,16 @@
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/getAdapter/adapter"/>
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Context/getAdapter/T"/>
         </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/getContextDescription"/>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/getID"/>
-        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/getName"/>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/inject">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/inject/object"/>
         </genOperations>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/loadClass">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/loadClass/address"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/Context/loadClassByName">
+          <genParameters ecoreParameter="il-core.ecore#//ctx/Context/loadClassByName/className"/>
         </genOperations>
         <genOperations ecoreOperation="il-core.ecore#//ctx/Context/invoke">
           <genParameters ecoreParameter="il-core.ecore#//ctx/Context/invoke/object"/>
@@ -152,6 +163,12 @@
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/Context/set.1/T"/>
         </genOperations>
       </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//ctx/ContextDescription">
+        <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getCurrentLibrary"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getLibraryPath"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getName"/>
+        <genOperations ecoreOperation="il-core.ecore#//ctx/ContextDescription/getSystemLibrary"/>
+      </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//ctx/ContextProvider">
         <genOperations ecoreOperation="il-core.ecore#//ctx/ContextProvider/getContext"/>
       </genClasses>
@@ -174,89 +191,6 @@
         <genOperations ecoreOperation="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry">
           <genParameters ecoreParameter="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry/klass"/>
           <genTypeParameters ecoreTypeParameter="il-core.ecore#//ctx/PluginRegistryFactory/createPluginRegistry/T"/>
-        </genOperations>
-      </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="IntegratedLanguageCoreJava" basePackage="org.smeup.sys.il.core"
-        disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-core.ecore#//java">
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaAnnotation"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaCloseable"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaDictionary">
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/JavaDictionary/K"/>
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/JavaDictionary/V"/>
-      </genDataTypes>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaException"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaInputStream"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaIOException"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaIterable"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaIterator"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaMap">
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/JavaMap/K"/>
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/JavaMap/V"/>
-      </genDataTypes>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaOutputStream"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaProperties"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaRunnable"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaThrowable"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaType"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaURI"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaURL"/>
-      <genDataTypes ecoreDataType="il-core.ecore#//java/JavaWriter"/>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/JavaCallable">
-        <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/JavaCallable/V"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/JavaEnum"/>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/JavaList"/>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/JavaNumber"/>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/Files">
-        <genOperations ecoreOperation="il-core.ecore#//java/Files/getBaseName">
-          <genParameters ecoreParameter="il-core.ecore#//java/Files/getBaseName/fileName"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/Streams">
-        <genOperations ecoreOperation="il-core.ecore#//java/Streams/copy">
-          <genParameters ecoreParameter="il-core.ecore#//java/Streams/copy/input"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Streams/copy/output"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/Lists">
-        <genOperations ecoreOperation="il-core.ecore#//java/Lists/addFirst">
-          <genParameters ecoreParameter="il-core.ecore#//java/Lists/addFirst/list"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Lists/addFirst/element"/>
-          <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/Lists/addFirst/E"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Lists/addLast">
-          <genParameters ecoreParameter="il-core.ecore#//java/Lists/addLast/list"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Lists/addLast/element"/>
-          <genTypeParameters ecoreTypeParameter="il-core.ecore#//java/Lists/addLast/E"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/Strings">
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/appendChars">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/appendChars/string"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/appendChars/chars"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/appendChars/times"/>
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/appendChars/before"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/firstToUpper">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/firstToUpper/string"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/removeFirstChar">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/removeFirstChar/string"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/removeLastChar">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/removeLastChar/string"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/trimL">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/trimL/string"/>
-        </genOperations>
-        <genOperations ecoreOperation="il-core.ecore#//java/Strings/trimR">
-          <genParameters ecoreParameter="il-core.ecore#//java/Strings/trimR/string"/>
-        </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="il-core.ecore#//java/URIs">
-        <genOperations ecoreOperation="il-core.ecore#//java/URIs/getBaseName">
-          <genParameters ecoreParameter="il-core.ecore#//java/URIs/getBaseName/uri"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>
@@ -307,8 +241,8 @@
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getDomain"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/isTransient"/>
         <genOperations ecoreOperation="il-core.ecore#//meta/Slot/isVolatile"/>
-        <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getFacet">
-          <genParameters ecoreParameter="il-core.ecore#//meta/Slot/getFacet/nsPrefix"/>
+        <genOperations ecoreOperation="il-core.ecore#//meta/Slot/getValue">
+          <genParameters ecoreParameter="il-core.ecore#//meta/Slot/getValue/nsPrefix"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>
@@ -319,6 +253,12 @@
         <genOperations ecoreOperation="il-core.ecore#//out/ObjectWriter/initialize"/>
         <genOperations ecoreOperation="il-core.ecore#//out/ObjectWriter/write">
           <genParameters ecoreParameter="il-core.ecore#//out/ObjectWriter/write/object"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//out/WritableObject">
+        <genOperations ecoreOperation="il-core.ecore#//out/WritableObject/getObjectToWrite"/>
+        <genOperations ecoreOperation="il-core.ecore#//out/WritableObject/setObject">
+          <genParameters ecoreParameter="il-core.ecore#//out/WritableObject/setObject/object"/>
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="il-core.ecore#//out/ObjectWriterFactory">
@@ -344,6 +284,13 @@
           <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/setDefaultWriter/context"/>
           <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/setDefaultWriter/name"/>
         </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//out/OutputManager/getWritableObject">
+          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject/label"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//out/OutputManager/getWritableObject.1">
+          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject.1/label"/>
+          <genParameters ecoreParameter="il-core.ecore#//out/OutputManager/getWritableObject.1/columnLength"/>
+        </genOperations>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="IntegratedLanguageCoreTerm" basePackage="org.smeup.sys.il.core"
@@ -355,6 +302,113 @@
       <genClasses image="false" ecoreClass="il-core.ecore#//term/TermContainer">
         <genTypeParameters ecoreTypeParameter="il-core.ecore#//term/TermContainer/T"/>
         <genOperations ecoreOperation="il-core.ecore#//term/TermContainer/getTerms"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Util" basePackage="org.smeup.sys.il.core" disposableProviderFactory="true"
+        ecorePackage="il-core.ecore#//util">
+      <genClasses image="false" ecoreClass="il-core.ecore#//util/Files">
+        <genOperations ecoreOperation="il-core.ecore#//util/Files/getBaseName">
+          <genParameters ecoreParameter="il-core.ecore#//util/Files/getBaseName/fileName"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//util/Streams">
+        <genOperations ecoreOperation="il-core.ecore#//util/Streams/copy">
+          <genParameters ecoreParameter="il-core.ecore#//util/Streams/copy/input"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Streams/copy/output"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//util/Lists">
+        <genOperations ecoreOperation="il-core.ecore#//util/Lists/addFirst">
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addFirst/list"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addFirst/element"/>
+          <genTypeParameters ecoreTypeParameter="il-core.ecore#//util/Lists/addFirst/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Lists/addLast">
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addLast/list"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addLast/element"/>
+          <genTypeParameters ecoreTypeParameter="il-core.ecore#//util/Lists/addLast/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Lists/addBefore">
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addBefore/list"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addBefore/oldElement"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addBefore/newElement"/>
+          <genTypeParameters ecoreTypeParameter="il-core.ecore#//util/Lists/addBefore/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Lists/addAfter">
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addAfter/list"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addAfter/oldElement"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Lists/addAfter/newElement"/>
+          <genTypeParameters ecoreTypeParameter="il-core.ecore#//util/Lists/addAfter/E"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//util/Strings">
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/appendChars">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/appendChars/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/appendChars/chars"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/appendChars/times"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/appendChars/before"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/firstToUpper">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/firstToUpper/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/removeFirstChar">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/removeFirstChar/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/removeLastChar">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/removeLastChar/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/trimL">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/trimL/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/trimR">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/trimR/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/isEmptyTrim">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/isEmptyTrim/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/isOneOf">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/isOneOf/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/isOneOf/values"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/checkEquals">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/checkEquals/string1"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/checkEquals/string2"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/left">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/left/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/left/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/lSet">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/lSet/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/lSet/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/lSet.1">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/lSet.1/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/lSet.1/nrOfChars"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/lSet.1/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/string">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/string/nrOfChars"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/string/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/rSet">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/rSet/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/rSet/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/rSet.1">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/rSet.1/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/rSet.1/nrOfChars"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/rSet.1/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="il-core.ecore#//util/Strings/right">
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/right/string"/>
+          <genParameters ecoreParameter="il-core.ecore#//util/Strings/right/nrOfChars"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="il-core.ecore#//util/URIs">
+        <genOperations ecoreOperation="il-core.ecore#//util/URIs/getBaseName">
+          <genParameters ecoreParameter="il-core.ecore#//util/URIs/getBaseName/uri"/>
+        </genOperations>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

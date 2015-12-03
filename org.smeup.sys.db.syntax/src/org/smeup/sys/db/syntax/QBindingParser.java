@@ -24,7 +24,7 @@ public interface QBindingParser extends QStatementParser {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" streamDataType="org.smeup.sys.il.core.java.JavaInputStream" streamRequired="true"
+	 * @model exceptions="org.smeup.sys.db.core.DatabaseException" streamDataType="org.smeup.sys.mi.core.JavaInputStream" streamRequired="true"
 	 * @generated
 	 */
 	QBindingParseResult parseBinding(InputStream stream) throws SQLException;

@@ -18,7 +18,7 @@ import org.smeup.sys.il.core.ctx.QContextProvider;
  *
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getConversionUnit()
- * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.il.core.java.JavaCloseable"
+ * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QConversionUnit extends QContextProvider, Closeable {

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java;
+package org.smeup.sys.il.core.util;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * <em><b>Strings</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getStrings()
+ * @see org.smeup.sys.il.core.util.QUtilPackage#getStrings()
  * @model interface="true" abstract="true"
  * @generated
  */

@@ -11,19 +11,15 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.co.core.QCommunicationCoreFactory;
 import org.smeup.sys.co.core.QCommunicationCorePackage;
 import org.smeup.sys.co.core.QOutputWrapper;
 import org.smeup.sys.co.core.QServerSocket;
 import org.smeup.sys.co.core.QServerSocketConfig;
 import org.smeup.sys.co.core.QServerSocketManager;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -241,7 +237,7 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Create type parameters
@@ -256,16 +252,16 @@ public class CommunicationCorePackageImpl extends EPackageImpl implements QCommu
 
 		EOperation op = addEOperation(outputWrapperEClass, null, "flush", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(outputWrapperEClass, null, "write", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(outputWrapperEClass, null, "register", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaWriter(), "writer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaWriter(), "writer", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(outputWrapperEClass, null, "unregister", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);

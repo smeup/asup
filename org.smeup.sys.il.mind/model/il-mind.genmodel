@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
-    copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.il.mind/src" modelPluginID="org.smeup.sys.il.mind"
     modelName="As.UP Integrated Language Mind" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>il-mind.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageMind" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="il-mind.ecore#/">
-    <genClasses image="false" ecoreClass="il-mind.ecore#//MindManager"/>
-    <genClasses ecoreClass="il-mind.ecore#//MindTerm"/>
+    <genClasses ecoreClass="il-mind.ecore#//Goal">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Goal/terms"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-mind.ecore#//MindManager">
+      <genOperations ecoreOperation="il-mind.ecore#//MindManager/buildTheory">
+        <genParameters ecoreParameter="il-mind.ecore#//MindManager/buildTheory/context"/>
+        <genParameters ecoreParameter="il-mind.ecore#//MindManager/buildTheory/frame"/>
+        <genTypeParameters ecoreTypeParameter="il-mind.ecore#//MindManager/buildTheory/O"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-mind.ecore#//MindManager/createReasoner">
+        <genParameters ecoreParameter="il-mind.ecore#//MindManager/createReasoner/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="il-mind.ecore#//MindTerm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-mind.ecore#//MindTerm/name"/>
+    </genClasses>
+    <genClasses ecoreClass="il-mind.ecore#//Question">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Question/object"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Question/subject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Question/relation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Question/rule"/>
+    </genClasses>
+    <genClasses ecoreClass="il-mind.ecore#//Theory">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-mind.ecore#//Theory/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-mind.ecore#//Theory/facts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-mind.ecore#//Reasoner">
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/buildQuestion">
+        <genParameters ecoreParameter="il-mind.ecore#//Reasoner/buildQuestion/question"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/close"/>
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/loadTheory">
+        <genParameters ecoreParameter="il-mind.ecore#//Reasoner/loadTheory/theory"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/query">
+        <genParameters ecoreParameter="il-mind.ecore#//Reasoner/query/question"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/query.1">
+        <genParameters ecoreParameter="il-mind.ecore#//Reasoner/query.1/question"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-mind.ecore#//Reasoner/reload"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java.impl;
+package org.smeup.sys.il.core.util.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,14 +19,15 @@ import java.net.URL;
 import java.util.Dictionary;
 import java.util.Map;
 import java.util.Properties;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaFactory;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaFactory;
+import org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--

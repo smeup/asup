@@ -9,11 +9,11 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.java.asf;
+package org.smeup.sys.il.core.util.asf;
 
 import java.net.URI;
 
-import org.smeup.sys.il.core.java.QURIs;
+import org.smeup.sys.il.core.util.QURIs;
 
 public class ASFURIsImpl implements QURIs {
 

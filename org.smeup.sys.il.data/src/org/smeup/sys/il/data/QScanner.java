@@ -56,7 +56,7 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(QCharacter source, Number start);
@@ -64,7 +64,7 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(QCharacter source, Number start, QIndicator found);
@@ -104,7 +104,7 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(String source, Number start);
@@ -112,7 +112,7 @@ public interface QScanner {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" sourceRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qScan(String source, Number start, QIndicator found);

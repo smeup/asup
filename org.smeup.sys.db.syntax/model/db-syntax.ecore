@@ -11,7 +11,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="BindingParser" abstract="true" interface="true"
       eSuperTypes="#//StatementParser">
     <eOperations name="parseBinding" eType="#//BindingParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
-      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"/>
+      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
     </eOperations>
     <eOperations name="parseBinding" eType="#//BindingParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,7 +37,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DefinitionParser" abstract="true" interface="true"
       eSuperTypes="#//StatementParser">
     <eOperations name="parseDefinition" eType="#//DefinitionParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
-      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"/>
+      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
     </eOperations>
     <eOperations name="parseDefinition" eType="#//DefinitionParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -184,7 +184,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="QueryParser" abstract="true" interface="true"
       eSuperTypes="#//StatementParser">
     <eOperations name="parseQuery" eType="#//SQLQueryParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
-      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaInputStream"/>
+      <eParameters name="stream" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaInputStream"/>
     </eOperations>
     <eOperations name="parseQuery" eType="#//SQLQueryParseResult" eExceptions="ecore:EDataType ../../org.smeup.sys.db.core/model/db-core.ecore#//DatabaseException">
       <eParameters name="sql" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

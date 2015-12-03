@@ -46,7 +46,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, Number start);
@@ -62,7 +62,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, Number start, Number elements);
@@ -78,7 +78,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, Number start, QIndicator found);
@@ -94,7 +94,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, Number start, Number elements, QIndicator found);
@@ -102,7 +102,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, QNumeric start, Number elements, QIndicator found);
@@ -110,7 +110,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookup(QArray<?> array, Number start, QNumeric elements, QIndicator found);
@@ -134,7 +134,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookupgt(QArray<?> array, Number start, QIndicator found);
@@ -150,7 +150,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookupgt(QArray<?> array, Number start, Number elements, QIndicator found);
@@ -158,7 +158,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookupgt(QArray<?> array, QNumeric start, Number elements, QIndicator found);
@@ -166,7 +166,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookupgt(QArray<?> array, Number start, QNumeric elements, QIndicator found);
@@ -190,7 +190,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookuplt(QArray<?> array, Number start, QIndicator found);
@@ -206,7 +206,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookuplt(QArray<?> array, Number start, Number elements, QIndicator found);
@@ -214,7 +214,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.il.core.java.JavaNumber" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startRequired="true" elementsType="org.smeup.sys.mi.core.JavaNumber" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookuplt(QArray<?> array, QNumeric start, Number elements, QIndicator found);
@@ -222,7 +222,7 @@ public interface QLookuppable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
+	 * @model required="true" arrayRequired="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" elementsRequired="true" foundRequired="true"
 	 * @generated
 	 */
 	QNumeric qLookuplt(QArray<?> array, Number start, QNumeric elements, QIndicator found);

@@ -16,10 +16,8 @@ import org.smeup.sys.il.core.QObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.smeup.sys.il.lock.QObjectLockable#getLockRead <em>Lock Read
- * </em>}</li>
- * <li>{@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite <em>Lock Write
- * </em>}</li>
+ *   <li>{@link org.smeup.sys.il.lock.QObjectLockable#getLockRead <em>Lock Read</em>}</li>
+ *   <li>{@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite <em>Lock Write</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,14 +27,13 @@ import org.smeup.sys.il.core.QObject;
  */
 public interface QObjectLockable extends QObject {
 	/**
-	 * Returns the value of the '<em><b>Lock Read</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Lock Read</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Lock Read</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Lock Read</em>' containment reference.
 	 * @see #setLockRead(QLockRead)
 	 * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getObjectLockable_LockRead()
@@ -46,28 +43,23 @@ public interface QObjectLockable extends QObject {
 	QLockRead getLockRead();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.lock.QObjectLockable#getLockRead
-	 * <em>Lock Read</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.lock.QObjectLockable#getLockRead <em>Lock Read</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Lock Read</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Lock Read</em>' containment reference.
 	 * @see #getLockRead()
 	 * @generated
 	 */
 	void setLockRead(QLockRead value);
 
 	/**
-	 * Returns the value of the '<em><b>Lock Write</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Lock Write</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Lock Write</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Lock Write</em>' containment reference.
 	 * @see #setLockWrite(QLockWrite)
 	 * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getObjectLockable_LockWrite()
@@ -77,14 +69,10 @@ public interface QObjectLockable extends QObject {
 	QLockWrite getLockWrite();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite
-	 * <em>Lock Write</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite <em>Lock Write</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Lock Write</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Lock Write</em>' containment reference.
 	 * @see #getLockWrite()
 	 * @generated
 	 */

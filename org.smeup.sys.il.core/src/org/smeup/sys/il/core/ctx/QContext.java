@@ -104,7 +104,7 @@ public interface QContext {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model objectRequired="true" qualifierRequired="true" ABounds="org.smeup.sys.il.core.java.JavaAnnotation"
+	 * @model objectRequired="true" qualifierRequired="true" ABounds="org.smeup.sys.mi.core.JavaAnnotation"
 	 * @generated
 	 */
 	<A extends Annotation> void invoke(Object object, Class<A> qualifier) throws IntegratedLanguageCoreRuntimeException;

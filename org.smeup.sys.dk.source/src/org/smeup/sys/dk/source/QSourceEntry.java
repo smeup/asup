@@ -17,7 +17,7 @@ import java.io.InputStream;
 public interface QSourceEntry extends QSourceNode {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaInputStream" exceptions="org.smeup.sys.il.core.java.JavaIOException"
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaInputStream" exceptions="org.smeup.sys.mi.core.JavaIOException"
 	 * @generated
 	 */
 	InputStream getInputStream() throws IOException;

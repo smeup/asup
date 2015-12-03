@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -586,7 +586,7 @@ public interface QDatabaseCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATEMENT_FEATURE_COUNT = QIntegratedLanguageCoreJavaPackage.JAVA_CLOSEABLE_FEATURE_COUNT + 0;
+	int STATEMENT_FEATURE_COUNT = QMachineInterfaceCorePackage.JAVA_CLOSEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Prepared Statement</em>' class.

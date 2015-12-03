@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.usrspc.QOperatingSystemUserSpaceFactory;
 import org.smeup.sys.os.usrspc.QOperatingSystemUserSpacePackage;
 import org.smeup.sys.os.usrspc.QUserSpace;
@@ -80,7 +81,7 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 		isInited = true;
 
 		// Initialize simple dependencies
-		org.smeup.sys.os.type.QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QOperatingSystemTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemUserSpacePackage.createPackageContents();
@@ -190,7 +191,7 @@ public class OperatingSystemUserSpacePackageImpl extends EPackageImpl implements
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		org.smeup.sys.os.type.QOperatingSystemTypePackage theOperatingSystemTypePackage = (org.smeup.sys.os.type.QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(org.smeup.sys.os.type.QOperatingSystemTypePackage.eNS_URI);
+		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 
 		// Create type parameters
 

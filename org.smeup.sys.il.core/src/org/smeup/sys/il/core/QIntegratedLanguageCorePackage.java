@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -349,7 +349,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_ITERATOR_FEATURE_COUNT = QIntegratedLanguageCoreJavaPackage.JAVA_ITERATOR_FEATURE_COUNT + 0;
+	int OBJECT_ITERATOR_FEATURE_COUNT = QMachineInterfaceCorePackage.JAVA_ITERATOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.impl.ObjectNameableImpl <em>Object Nameable</em>}' class.

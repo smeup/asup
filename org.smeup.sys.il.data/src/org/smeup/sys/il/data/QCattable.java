@@ -24,7 +24,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, String factor2, Number space);
@@ -32,7 +32,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, String factor2, Number space, boolean clear);
@@ -56,7 +56,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, QString factor2, Number space);
@@ -64,7 +64,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, QString factor2, Number space, boolean clear);
@@ -104,7 +104,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, QString factor2, Number space);
@@ -112,7 +112,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, QString factor2, Number space, boolean clear);
@@ -120,7 +120,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, String factor2, Number space);
@@ -128,7 +128,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" factor2Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, String factor2, Number space, boolean clear);
@@ -216,7 +216,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, Number space);
@@ -224,7 +224,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(QString factor1, Number space, boolean clear);
@@ -232,7 +232,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true"
+	 * @model factor1Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, Number space);
@@ -240,7 +240,7 @@ public interface QCattable<D extends QData> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model factor1Required="true" spaceType="org.smeup.sys.il.core.java.JavaNumber" spaceRequired="true" clearRequired="true"
+	 * @model factor1Required="true" spaceType="org.smeup.sys.mi.core.JavaNumber" spaceRequired="true" clearRequired="true"
 	 * @generated
 	 */
 	void cat(String factor1, Number space, boolean clear);

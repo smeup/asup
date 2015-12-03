@@ -14,7 +14,7 @@ package org.smeup.sys.os.dtaara.base.api;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;

@@ -23,37 +23,36 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.smeup.sys.il.lock.QIntegratedLanguageLockFactory
  * @model kind="package"
  * @generated
  */
 public interface QIntegratedLanguageLockPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "lock";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.smeup.org/asup/il/lock";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "il-lock";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	QIntegratedLanguageLockPackage eINSTANCE = org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl.init();
@@ -72,17 +71,14 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Lock Manager</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LOCK_MANAGER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.lock.impl.LockReadImpl <em>Lock Read</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.smeup.sys.il.lock.impl.LockReadImpl <em>Lock Read</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.lock.impl.LockReadImpl
 	 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockRead()
 	 * @generated
@@ -99,10 +95,8 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	int LOCK_READ_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.lock.impl.LockWriteImpl <em>Lock Write</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.smeup.sys.il.lock.impl.LockWriteImpl <em>Lock Write</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.lock.impl.LockWriteImpl
 	 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockWrite()
 	 * @generated
@@ -112,18 +106,15 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Lock Write</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int LOCK_WRITE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.smeup.sys.il.lock.impl.ObjectLockableImpl
-	 * <em>Object Lockable</em>}' class. <!-- begin-user-doc --> <!--
+	 * The meta object id for the '{@link org.smeup.sys.il.lock.impl.ObjectLockableImpl <em>Object Lockable</em>}' class.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see org.smeup.sys.il.lock.impl.ObjectLockableImpl
 	 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getObjectLockable()
 	 * @generated
@@ -133,25 +124,22 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	/**
 	 * The feature id for the '<em><b>Lock Read</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_LOCKABLE__LOCK_READ = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Lock Write</b></em>' containment
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Lock Write</b></em>' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_LOCKABLE__LOCK_WRITE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Object Lockable</em>'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The number of structural features of the '<em>Object Lockable</em>' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
@@ -171,16 +159,14 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	/**
 	 * The number of structural features of the '<em>Object Locker</em>' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 * @ordered
 	 */
 	int OBJECT_LOCKER_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.lock.LockType
-	 * <em>Lock Type</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.smeup.sys.il.lock.LockType <em>Lock Type</em>}' enum.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.lock.LockType
 	 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockType()
 	 * @generated
@@ -221,10 +207,8 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	EClass getLockWrite();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.lock.QObjectLockable <em>Object Lockable</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.il.lock.QObjectLockable <em>Object Lockable</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @return the meta object for class '<em>Object Lockable</em>'.
 	 * @see org.smeup.sys.il.lock.QObjectLockable
 	 * @generated
@@ -232,12 +216,9 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	EClass getObjectLockable();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.il.lock.QObjectLockable#getLockRead
-	 * <em>Lock Read</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the containment reference '<em>Lock Read</em>
-	 *         '.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.lock.QObjectLockable#getLockRead <em>Lock Read</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lock Read</em>'.
 	 * @see org.smeup.sys.il.lock.QObjectLockable#getLockRead()
 	 * @see #getObjectLockable()
 	 * @generated
@@ -245,12 +226,9 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	EReference getObjectLockable_LockRead();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite
-	 * <em>Lock Write</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the meta object for the containment reference '
-	 *         <em>Lock Write</em>'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.il.lock.QObjectLockable#getLockWrite <em>Lock Write</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lock Write</em>'.
 	 * @see org.smeup.sys.il.lock.QObjectLockable#getLockWrite()
 	 * @see #getObjectLockable()
 	 * @generated
@@ -269,9 +247,8 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	EClass getObjectLocker();
 
 	/**
-	 * Returns the meta object for enum '{@link org.smeup.sys.il.lock.LockType
-	 * <em>Lock Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.lock.LockType <em>Lock Type</em>}'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Lock Type</em>'.
 	 * @see org.smeup.sys.il.lock.LockType
 	 * @generated
@@ -297,15 +274,12 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.lock.QLockManager <em>Lock Manager</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.smeup.sys.il.lock.QLockManager <em>Lock Manager</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.lock.QLockManager
 		 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockManager()
 		 * @generated
@@ -313,10 +287,8 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 		EClass LOCK_MANAGER = eINSTANCE.getLockManager();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.lock.impl.LockReadImpl <em>Lock Read</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.smeup.sys.il.lock.impl.LockReadImpl <em>Lock Read</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.lock.impl.LockReadImpl
 		 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockRead()
 		 * @generated
@@ -324,10 +296,8 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 		EClass LOCK_READ = eINSTANCE.getLockRead();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.lock.impl.LockWriteImpl <em>Lock Write</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.smeup.sys.il.lock.impl.LockWriteImpl <em>Lock Write</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.lock.impl.LockWriteImpl
 		 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getLockWrite()
 		 * @generated
@@ -335,11 +305,9 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 		EClass LOCK_WRITE = eINSTANCE.getLockWrite();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.lock.impl.ObjectLockableImpl
-		 * <em>Object Lockable</em>}' class. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '{@link org.smeup.sys.il.lock.impl.ObjectLockableImpl <em>Object Lockable</em>}' class.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @see org.smeup.sys.il.lock.impl.ObjectLockableImpl
 		 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getObjectLockable()
 		 * @generated
@@ -347,28 +315,24 @@ public interface QIntegratedLanguageLockPackage extends EPackage {
 		EClass OBJECT_LOCKABLE = eINSTANCE.getObjectLockable();
 
 		/**
-		 * The meta object literal for the '<em><b>Lock Read</b></em>'
-		 * containment reference feature. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em><b>Lock Read</b></em>' containment reference feature.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference OBJECT_LOCKABLE__LOCK_READ = eINSTANCE.getObjectLockable_LockRead();
 
 		/**
-		 * The meta object literal for the '<em><b>Lock Write</b></em>'
-		 * containment reference feature. <!-- begin-user-doc --> <!--
+		 * The meta object literal for the '<em><b>Lock Write</b></em>' containment reference feature.
+		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
-		 * 
 		 * @generated
 		 */
 		EReference OBJECT_LOCKABLE__LOCK_WRITE = eINSTANCE.getObjectLockable_LockWrite();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.lock.QObjectLocker <em>Object Locker</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.smeup.sys.il.lock.QObjectLocker <em>Object Locker</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.smeup.sys.il.lock.QObjectLocker
 		 * @see org.smeup.sys.il.lock.impl.IntegratedLanguageLockPackageImpl#getObjectLocker()
 		 * @generated

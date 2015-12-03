@@ -17,16 +17,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Lock Type</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- * 
  * @see org.smeup.sys.il.lock.QIntegratedLanguageLockPackage#getLockType()
  * @model
  * @generated
  */
 public enum LockType implements Enumerator {
 	/**
-	 * The '<em><b>Read</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Read</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #READ_VALUE
 	 * @generated
 	 * @ordered
@@ -34,9 +33,9 @@ public enum LockType implements Enumerator {
 	READ(10, "Read", "READ"),
 
 	/**
-	 * The '<em><b>Write</b></em>' literal object. <!-- begin-user-doc --> <!--
+	 * The '<em><b>Write</b></em>' literal object.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @see #WRITE_VALUE
 	 * @generated
 	 * @ordered
@@ -44,13 +43,13 @@ public enum LockType implements Enumerator {
 	WRITE(20, "Write", "WRITE");
 
 	/**
-	 * The '<em><b>Read</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Read</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Read</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #READ
 	 * @model name="Read" literal="READ"
 	 * @generated
@@ -59,13 +58,13 @@ public enum LockType implements Enumerator {
 	public static final int READ_VALUE = 10;
 
 	/**
-	 * The '<em><b>Write</b></em>' literal value. <!-- begin-user-doc -->
+	 * The '<em><b>Write</b></em>' literal value.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>Write</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @see #WRITE
 	 * @model name="Write" literal="WRITE"
 	 * @generated
@@ -79,26 +78,29 @@ public enum LockType implements Enumerator {
 	 * 
 	 * @generated
 	 */
-	private static final LockType[] VALUES_ARRAY = new LockType[] { READ, WRITE, };
+	private static final LockType[] VALUES_ARRAY = new LockType[] {
+			READ,
+			WRITE,
+		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Lock Type</b></em>'
-	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * A public read-only list of all the '<em><b>Lock Type</b></em>' enumerators.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final List<LockType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Lock Type</b></em>' literal with the specified
-	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Lock Type</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static LockType get(String literal) {
-		for (LockType result : VALUES_ARRAY) {
-			if (result.toString().equals(literal))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			LockType result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
 				return result;
+			}
 		}
 		return null;
 	}
@@ -106,58 +108,53 @@ public enum LockType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Lock Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static LockType getByName(String name) {
-		for (LockType result : VALUES_ARRAY) {
-			if (result.getName().equals(name))
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			LockType result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
 				return result;
+			}
 		}
 		return null;
 	}
 
 	/**
-	 * Returns the '<em><b>Lock Type</b></em>' literal with the specified
-	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the '<em><b>Lock Type</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static LockType get(int value) {
 		switch (value) {
-		case READ_VALUE:
-			return READ;
-		case WRITE_VALUE:
-			return WRITE;
+			case READ_VALUE: return READ;
+			case WRITE_VALUE: return WRITE;
 		}
 		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	private LockType(int value, String name, String literal) {
@@ -168,38 +165,34 @@ public enum LockType implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public int getValue() {
-		return value;
+	  return value;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getName() {
-		return name;
+	  return name;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String getLiteral() {
-		return literal;
+	  return literal;
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string
-	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

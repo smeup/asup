@@ -127,7 +127,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void setll(E keyField);
@@ -191,7 +191,7 @@ public interface QRRDataSet<R extends QRecord> extends QDataSet<R> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model keyFieldRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void setgt(E keyField);

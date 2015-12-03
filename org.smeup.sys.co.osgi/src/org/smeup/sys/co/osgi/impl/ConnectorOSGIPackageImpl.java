@@ -15,7 +15,6 @@ import org.smeup.sys.co.osgi.QCommunicationManager;
 import org.smeup.sys.co.osgi.QConnectorOSGIFactory;
 import org.smeup.sys.co.osgi.QConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.QEndPoint;
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,9 +81,6 @@ public class ConnectorOSGIPackageImpl extends EPackageImpl implements QConnector
 		ConnectorOSGIPackageImpl theConnectorOSGIPackage = (ConnectorOSGIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConnectorOSGIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ConnectorOSGIPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theConnectorOSGIPackage.createPackageContents();

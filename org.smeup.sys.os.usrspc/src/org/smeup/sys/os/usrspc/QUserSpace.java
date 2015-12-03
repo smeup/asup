@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.usrspc;
 
+import org.smeup.sys.os.type.QTypedObject;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QUser Space</b></em>'. <!-- end-user-doc -->
@@ -23,7 +25,7 @@ package org.smeup.sys.os.usrspc;
  * @model
  * @generated
  */
-public interface QUserSpace extends org.smeup.sys.os.type.QTypedObject {
+public interface QUserSpace extends QTypedObject {
 	/**
 	 * Returns the value of the '<em><b>Header</b></em>' attribute. <!--
 	 * begin-user-doc -->

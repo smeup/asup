@@ -24,14 +24,14 @@ public interface QFile extends QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI"
 	 * @generated
 	 */
 	URI getClassURI();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI"
 	 * @generated
 	 */
 	URI getPackageInfoURI();

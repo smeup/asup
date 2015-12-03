@@ -45,14 +45,14 @@ public interface QMessageFile extends QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" nameType="org.smeup.sys.il.core.java.JavaEnum" nameRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model required="true" nameType="org.smeup.sys.mi.core.JavaEnum" nameRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> QMessageDescription lookup(Enum<E> name);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model required="true" nameRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> QMessageDescription lookup(String name);

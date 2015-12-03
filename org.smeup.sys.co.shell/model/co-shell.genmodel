@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
     copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
-    modelDirectory="/org.smeup.sys.co.shell/src" modelPluginID="org.smeup.sys.co.shell" modelName="As.UP Communication Shell"
-    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelDirectory="/org.smeup.sys.co.shell/src" modelPluginID="org.smeup.sys.co.shell"
+    modelName="As.UP Communication Shell" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
+    complianceLevel="7.0" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.core/model/co-core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>co-shell.ecore</foreignModel>
   <genPackages prefix="CommunicationShell" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="co-shell.ecore#/">
-    <genClasses image="false" ecoreClass="co-shell.ecore#//ShellOutputWrapper"/>
+    <genClasses ecoreClass="co-shell.ecore#//ShellCredentials"/>
     <genClasses ecoreClass="co-shell.ecore#//ShellData"/>
+    <genClasses image="false" ecoreClass="co-shell.ecore#//ShellOutputWrapper"/>
+    <genClasses image="false" ecoreClass="co-shell.ecore#//ShellManager">
+      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/executeCommand">
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/executeCommand/contextID"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/executeCommand/command"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/executeCommand/variables"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/executeCommand/useDefaults"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/decodeCommand">
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/decodeCommand/contextID"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/decodeCommand/command"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/decodeCommand/useDefaults"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/encodeCommand">
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/contextID"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/container"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/encodeCommand/useDefaults"/>
+      </genOperations>
+      <genOperations ecoreOperation="co-shell.ecore#//ShellManager/setDefaultWriter">
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/setDefaultWriter/contextID"/>
+        <genParameters ecoreParameter="co-shell.ecore#//ShellManager/setDefaultWriter/name"/>
+      </genOperations>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

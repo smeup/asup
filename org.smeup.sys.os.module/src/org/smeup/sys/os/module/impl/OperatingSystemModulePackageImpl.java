@@ -15,14 +15,15 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.module.QModuleContainer;
 import org.smeup.sys.os.module.QModuleManager;
 import org.smeup.sys.os.module.QModuleSource;
 import org.smeup.sys.os.module.QOperatingSystemModuleFactory;
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,7 +107,7 @@ public class OperatingSystemModulePackageImpl extends EPackageImpl implements QO
 		isInited = true;
 
 		// Initialize simple dependencies
-		org.smeup.sys.os.type.QOperatingSystemTypePackage.eINSTANCE.eClass();
+		QOperatingSystemTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theOperatingSystemModulePackage.createPackageContents();
@@ -280,8 +281,8 @@ public class OperatingSystemModulePackageImpl extends EPackageImpl implements QO
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		org.smeup.sys.os.type.QOperatingSystemTypePackage theOperatingSystemTypePackage = (org.smeup.sys.os.type.QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(org.smeup.sys.os.type.QOperatingSystemTypePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 
 		// Create type parameters
@@ -301,9 +302,9 @@ public class OperatingSystemModulePackageImpl extends EPackageImpl implements QO
 		initEAttribute(getModule_Address(), ecorePackage.getEString(), "address", null, 0, 1, QModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModule_Source(), this.getModuleSource(), null, "source", null, 0, 1, QModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(moduleEClass, theIntegratedLanguageCoreJavaPackage.getJavaURI(), "getClassURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(moduleEClass, theMachineInterfaceCorePackage.getJavaURI(), "getClassURI", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(moduleEClass, theIntegratedLanguageCoreJavaPackage.getJavaURI(), "getPackageInfoURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(moduleEClass, theMachineInterfaceCorePackage.getJavaURI(), "getPackageInfoURI", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(moduleManagerEClass, QModuleManager.class, "ModuleManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

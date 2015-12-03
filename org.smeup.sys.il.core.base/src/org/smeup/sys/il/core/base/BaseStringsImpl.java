@@ -15,7 +15,7 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.List;
 
-import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.core.util.QStrings;
 
 public class BaseStringsImpl implements QStrings {
 

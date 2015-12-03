@@ -19,7 +19,7 @@ import java.sql.SQLException;
  *
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getStatement()
- * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.java.JavaCloseable"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QStatement extends Closeable {

@@ -8,6 +8,7 @@
 package org.smeup.sys.os.module;
 
 import java.net.URI;
+import org.smeup.sys.os.type.QTypedObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -25,7 +26,7 @@ import java.net.URI;
  * @model
  * @generated
  */
-public interface QModule extends org.smeup.sys.os.type.QTypedObject {
+public interface QModule extends QTypedObject {
 
 	/**
 	 * Returns the value of the '<em><b>Address</b></em>' attribute. <!--
@@ -84,14 +85,14 @@ public interface QModule extends org.smeup.sys.os.type.QTypedObject {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI"
 	 * @generated
 	 */
 	URI getClassURI();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.smeup.sys.il.core.java.JavaURI"
+	 * @model kind="operation" dataType="org.smeup.sys.mi.core.JavaURI"
 	 * @generated
 	 */
 	URI getPackageInfoURI();

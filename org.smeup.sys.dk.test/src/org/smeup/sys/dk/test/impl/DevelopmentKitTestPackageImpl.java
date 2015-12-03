@@ -37,8 +37,8 @@ import org.smeup.sys.dk.test.QTestRunnerListener;
 import org.smeup.sys.dk.test.QUnitTestRunner;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -548,7 +548,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
@@ -559,7 +559,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		assertionFailedEClass.getESuperTypes().add(this.getAssertionResult());
 		assertionResultEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		assertionSuccessEClass.getESuperTypes().add(this.getAssertionResult());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaCallable());
+		EGenericType g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
 		EGenericType g2 = createEGenericType(this.getTestResult());
 		g1.getETypeArguments().add(g2);
 		callableTestEClass.getEGenericSuperTypes().add(g1);

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -73,7 +74,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__APPLICATION = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
+	int MODULE__APPLICATION = QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
@@ -82,7 +83,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__LIBRARY = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
+	int MODULE__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -91,7 +92,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__NAME = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__NAME;
+	int MODULE__NAME = QOperatingSystemTypePackage.TYPED_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -100,7 +101,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__TEXT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__TEXT;
+	int MODULE__TEXT = QOperatingSystemTypePackage.TYPED_OBJECT__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
@@ -108,7 +109,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__CREATION_INFO = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
+	int MODULE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Address</b></em>' attribute. <!--
@@ -117,7 +118,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__ADDRESS = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+	int MODULE__ADDRESS = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' containment reference.
@@ -125,7 +126,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__SOURCE = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
+	int MODULE__SOURCE = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class. <!--
@@ -134,7 +135,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int MODULE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.module.QModuleManager <em>Module Manager</em>}' class.
@@ -208,7 +209,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_CONTAINER__CONTENTS = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_CONTAINER__CONTENTS;
+	int MODULE_CONTAINER__CONTENTS = QOperatingSystemTypePackage.TYPED_CONTAINER__CONTENTS;
 
 	/**
 	 * The feature id for the '<em><b>Base Package</b></em>' attribute. <!--
@@ -217,7 +218,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_CONTAINER__BASE_PACKAGE = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 0;
+	int MODULE_CONTAINER__BASE_PACKAGE = QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scan Package</b></em>' attribute. <!--
@@ -226,7 +227,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_CONTAINER__SCAN_PACKAGE = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 1;
+	int MODULE_CONTAINER__SCAN_PACKAGE = QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Module Container</em>' class.
@@ -234,7 +235,7 @@ public interface QOperatingSystemModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_CONTAINER_FEATURE_COUNT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 2;
+	int MODULE_CONTAINER_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '

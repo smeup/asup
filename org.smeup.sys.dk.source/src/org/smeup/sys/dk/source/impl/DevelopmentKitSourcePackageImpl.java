@@ -23,7 +23,7 @@ import org.smeup.sys.dk.source.QSourceManager;
 import org.smeup.sys.dk.source.QSourceNode;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -257,7 +257,7 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 
 		// Create type parameters
@@ -282,8 +282,8 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 
 		initEClass(sourceEntryEClass, QSourceEntry.class, "SourceEntry", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(sourceEntryEClass, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "getInputStream", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		EOperation op = addEOperation(sourceEntryEClass, theMachineInterfaceCorePackage.getJavaInputStream(), "getInputStream", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		initEClass(sourceManagerEClass, QSourceManager.class, "SourceManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -291,15 +291,15 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProjectDef(), "project", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createChildEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSourceNode(), "parent", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createObjectEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
@@ -313,8 +313,8 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		addEParameter(op, g1, "type", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaInputStream(), "content", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "createObjectEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "T");
@@ -330,12 +330,12 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		addEParameter(op, ecorePackage.getEBoolean(), "replace", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "content", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, null, "deleteProject", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getProject(), "project", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(sourceManagerEClass, this.getSourceEntry(), "getChildEntry", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -384,11 +384,11 @@ public class DevelopmentKitSourcePackageImpl extends EPackageImpl implements QDe
 		op = addEOperation(sourceManagerEClass, null, "removeEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getSourceEntry(), "entry", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		initEClass(sourceNodeEClass, QSourceNode.class, "SourceNode", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(sourceNodeEClass, theIntegratedLanguageCoreJavaPackage.getJavaURI(), "getLocation", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(sourceNodeEClass, theMachineInterfaceCorePackage.getJavaURI(), "getLocation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(sourceNodeEClass, this.getSourceNode(), "getParent", 0, 1, IS_UNIQUE, IS_ORDERED);
 

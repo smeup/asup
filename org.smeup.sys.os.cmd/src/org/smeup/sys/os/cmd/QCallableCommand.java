@@ -28,7 +28,7 @@ import org.smeup.sys.il.data.QDataContainer;
  * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCallableCommand()
- * @model superTypes="org.smeup.sys.il.core.Object org.smeup.sys.il.core.java.JavaCloseable"
+ * @model superTypes="org.smeup.sys.il.core.Object org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QCallableCommand extends QObject, Closeable {

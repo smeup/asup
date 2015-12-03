@@ -293,7 +293,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SchemaDef" eSuperTypes="#//DatabaseObjectDef"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+      eSuperTypes="../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="close" lowerBound="1"/>
     <eOperations name="execute" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         eExceptions="#//DatabaseException">

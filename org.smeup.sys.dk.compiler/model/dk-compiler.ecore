@@ -6,7 +6,7 @@
     <eLiterals name="Upper" value="20" literal="U"/>
     <eLiterals name="Ignore" value="30" literal="I"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+  <eClassifiers xsi:type="ecore:EClass" name="CompilationUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="equalsTermName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="target" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -102,7 +102,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trashCan" eType="#//CompilationTrashCan"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConversionUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+  <eClassifiers xsi:type="ecore:EClass" name="ConversionUnit" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="close"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompilationSetup">
@@ -151,40 +151,40 @@
     <eOperations name="linkCompilationUnit">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
     </eOperations>
-    <eOperations name="writeDatabaseFile" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeDatabaseFile" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writeDisplayFile" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeDisplayFile" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writeModule" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeModule" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writePrinterFile" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writePrinterFile" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writeProgram" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeProgram" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writeProgramTest" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeProgramTest" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
-    <eOperations name="writeStub" eExceptions="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaIOException">
+    <eOperations name="writeStub" eExceptions="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaIOException">
       <eParameters name="compilationUnit" lowerBound="1" eType="#//CompilationUnit"/>
       <eParameters name="setup" eType="#//CompilationSetup"/>
-      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaOutputStream"/>
+      <eParameters name="output" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaOutputStream"/>
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EntryType">

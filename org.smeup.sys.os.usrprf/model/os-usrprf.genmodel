@@ -5,17 +5,26 @@
     modelPluginID="org.smeup.sys.os.usrprf" modelName="As.UP Operating System UserProfile"
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-usrprf.ecore</foreignModel>
   <genPackages prefix="OperatingSystemUserProfile" basePackage="org.smeup.sys.os"
       disposableProviderFactory="true" adapterFactory="false" fileExtensions="osusrprfcore"
       ecorePackage="os-usrprf.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-usrprf.ecore#//UserClass">
+      <genEnumLiterals ecoreEnumLiteral="os-usrprf.ecore#//UserClass/User"/>
+      <genEnumLiterals ecoreEnumLiteral="os-usrprf.ecore#//UserClass/Sysopr"/>
+      <genEnumLiterals ecoreEnumLiteral="os-usrprf.ecore#//UserClass/Pgmr"/>
+      <genEnumLiterals ecoreEnumLiteral="os-usrprf.ecore#//UserClass/Secadm"/>
+      <genEnumLiterals ecoreEnumLiteral="os-usrprf.ecore#//UserClass/Secofr"/>
+    </genEnums>
     <genClasses ecoreClass="os-usrprf.ecore#//UserProfile">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/jobDescription"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/initialProgram"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/messageQueue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/outQueue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/userClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-usrprf.ecore#//UserProfile/enabled"/>
     </genClasses>
     <genClasses image="false" ecoreClass="os-usrprf.ecore#//UserProfileManager"/>
   </genPackages>

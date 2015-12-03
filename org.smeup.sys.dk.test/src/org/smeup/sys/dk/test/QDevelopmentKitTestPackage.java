@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -202,7 +202,7 @@ public interface QDevelopmentKitTestPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALLABLE_TEST_FEATURE_COUNT = QIntegratedLanguageCoreJavaPackage.JAVA_CALLABLE_FEATURE_COUNT + 0;
+	int CALLABLE_TEST_FEATURE_COUNT = QMachineInterfaceCorePackage.JAVA_CALLABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.test.impl.MessageImpl <em>Message</em>}' class.

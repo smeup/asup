@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java.impl;
+package org.smeup.sys.il.core.util.impl;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Callable;
-
 import java.util.concurrent.ExecutorService;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
@@ -37,19 +37,19 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
 import org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl;
-import org.smeup.sys.il.core.java.QFiles;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaFactory;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
-import org.smeup.sys.il.core.java.QLists;
-import org.smeup.sys.il.core.java.QStreams;
-import org.smeup.sys.il.core.java.QStrings;
-import org.smeup.sys.il.core.java.QURIs;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
+import org.smeup.sys.il.core.util.QFiles;
+import org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaFactory;
+import org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaPackage;
+import org.smeup.sys.il.core.util.QLists;
+import org.smeup.sys.il.core.util.QStreams;
+import org.smeup.sys.il.core.util.QStrings;
+import org.smeup.sys.il.core.util.QURIs;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -240,7 +240,7 @@ public class IntegratedLanguageCoreJavaPackageImpl extends EPackageImpl implemen
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#eNS_URI
+	 * @see org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

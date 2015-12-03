@@ -5,7 +5,7 @@
     runtimeJar="true" modelName="As.UP Operating System Core" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-core.ecore</foreignModel>
   <genPackages prefix="OperatingSystemCore" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -238,12 +238,19 @@
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/variable"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/changeVariable/replace"/>
         </genOperations>
+        <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/listVariables">
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/listVariables/job"/>
+          <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/listVariables/level"/>
+        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//env/EnvironmentVariableManager/removeVariable">
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/job"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/level"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/name"/>
           <genParameters ecoreParameter="os-core.ecore#//env/EnvironmentVariableManager/removeVariable/replace"/>
         </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="os-core.ecore#//env/EnvironmentVariableContainer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//env/EnvironmentVariableContainer/variables"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

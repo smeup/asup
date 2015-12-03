@@ -6,7 +6,7 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     rootImplementsInterface="" suppressEMFTypes="true" featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" providerRootExtendsClass="" language="EN"
-    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type"
+    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-file.ecore</foreignModel>
   <genPackages prefix="OperatingSystemFile" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -76,26 +76,26 @@
     </genClasses>
     <genClasses image="false" ecoreClass="os-file.ecore#//FileMemberManager">
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/list">
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/context"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/library"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/contextProvider"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/list/file"/>
       </genOperations>
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup">
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/context"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/scope"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/contextProvider"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/file"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/name"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup/member"/>
       </genOperations>
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup.1">
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/context"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/resource"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/contextProvider"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/scope"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/library"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/file"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/name"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.1/member"/>
       </genOperations>
       <genOperations ecoreOperation="os-file.ecore#//FileMemberManager/lookup.2">
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/context"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/contextProvider"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/library"/>
         <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/file"/>
-        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/name"/>
+        <genParameters ecoreParameter="os-file.ecore#//FileMemberManager/lookup.2/member"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="os-file.ecore#//FileMemberRow">

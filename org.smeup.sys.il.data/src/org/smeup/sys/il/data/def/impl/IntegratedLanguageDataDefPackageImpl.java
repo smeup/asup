@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DataDefType;
@@ -64,6 +63,7 @@ import org.smeup.sys.il.data.def.TimeFormat;
 import org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -1164,7 +1164,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter arrayDefEClass_D = addETypeParameter(arrayDefEClass, "D");
@@ -1211,7 +1211,7 @@ public class IntegratedLanguageDataDefPackageImpl extends EPackageImpl implement
 		dataDefEClass_D.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		dataAreaDefEClass_D.getEBounds().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		enumDefEClass_E.getEBounds().add(g1);
 		g1 = createEGenericType(theIntegratedLanguageDataPackage.getBufferedData());
 		enumDefEClass_D.getEBounds().add(g1);

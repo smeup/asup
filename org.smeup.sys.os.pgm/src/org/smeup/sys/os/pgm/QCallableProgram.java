@@ -20,7 +20,7 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
  *
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getCallableProgram()
- * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.il.core.java.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.il.core.java.JavaCloseable"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.Object org.smeup.sys.mi.core.JavaCallable<org.smeup.sys.os.pgm.ParameterList> org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable {

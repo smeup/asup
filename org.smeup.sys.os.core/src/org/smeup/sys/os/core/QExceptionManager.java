@@ -23,7 +23,7 @@ public interface QExceptionManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.il.core.java.JavaEnum" messageRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.mi.core.JavaEnum" messageRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message);
@@ -31,7 +31,7 @@ public interface QExceptionManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.il.core.java.JavaEnum" messageRequired="true" variableRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.mi.core.JavaEnum" messageRequired="true" variableRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object variable);
@@ -39,7 +39,7 @@ public interface QExceptionManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.il.core.java.JavaEnum" messageRequired="true" variablesDataType="org.smeup.sys.os.core.MessageVariableList" variablesRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model dataType="org.smeup.sys.os.core.MessageException" messageType="org.smeup.sys.mi.core.JavaEnum" messageRequired="true" variablesDataType="org.smeup.sys.os.core.MessageVariableList" variablesRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> OperatingSystemMessageException prepareException(QJob job, Enum<E> message, Object[] variables);

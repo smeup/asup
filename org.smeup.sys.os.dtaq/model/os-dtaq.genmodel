@@ -6,7 +6,7 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" testSuiteClass="org.smeup.sys.os.dtaq.tests.AsUPOSDataQueueAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-dtaq.ecore</foreignModel>
   <genPackages prefix="OperatingSystemDataQueue" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -66,6 +66,25 @@
         <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/peekDataQueue/timeout"/>
         <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/peekDataQueue/key"/>
         <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/peekDataQueue/searchType"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-dtaq.ecore#//DataQueueManager/createDataQueue">
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/createDataQueue/contextID"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/createDataQueue/library"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/createDataQueue/name"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/createDataQueue/type"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/createDataQueue/maxEntryLength"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1">
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1/contextID"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1/library"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1/name"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1/key"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/writeDataQueue.1/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-dtaq.ecore#//DataQueueManager/deleteDataQueue">
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/deleteDataQueue/contextID"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/deleteDataQueue/library"/>
+        <genParameters ecoreParameter="os-dtaq.ecore#//DataQueueManager/deleteDataQueue/name"/>
       </genOperations>
     </genClasses>
   </genPackages>
