@@ -146,7 +146,6 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 				break;
 			case "%len":
 				stringValue = null;
-				System.out.println(dataValue.getDataTermType());
 				if (dataValue.getDataTermType().isUnary()){
 					try {
 						stringValue = Integer.toString(((QBufferedDataDef<?>)dataValue.getDefinition()).getLength());
