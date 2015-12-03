@@ -246,11 +246,11 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getAssertionResult_Message() {
+	public EAttribute getAssertionResult_AssertionState() {
 		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -259,8 +259,17 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAssertionResult_Time() {
+	public EAttribute getAssertionResult_Message() {
 		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAssertionResult_Time() {
+		return (EAttribute)assertionResultEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -484,6 +493,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		assertionFailedEClass = createEClass(ASSERTION_FAILED);
 
 		assertionResultEClass = createEClass(ASSERTION_RESULT);
+		createEAttribute(assertionResultEClass, ASSERTION_RESULT__ASSERTION_STATE);
 		createEAttribute(assertionResultEClass, ASSERTION_RESULT__MESSAGE);
 		createEAttribute(assertionResultEClass, ASSERTION_RESULT__TIME);
 
@@ -661,10 +671,9 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		initEClass(assertionFailedEClass, QAssertionFailed.class, "AssertionFailed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(assertionResultEClass, QAssertionResult.class, "AssertionResult", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssertionResult_AssertionState(), this.getAssertionState(), "assertionState", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertionResult_Message(), ecorePackage.getEString(), "message", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertionResult_Time(), ecorePackage.getELong(), "time", null, 0, 1, QAssertionResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(assertionResultEClass, this.getAssertionState(), "getAssertionState", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(assertionSuccessEClass, QAssertionSuccess.class, "AssertionSuccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
