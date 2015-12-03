@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.QBufferedData;
  * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getEnumDef()
- * @model abstract="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+ * @model abstract="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
  * @generated
  */
 public interface QEnumDef<E extends Enum<E>, D extends QBufferedData> extends QUnaryAtomicBufferedDataDef<D> {

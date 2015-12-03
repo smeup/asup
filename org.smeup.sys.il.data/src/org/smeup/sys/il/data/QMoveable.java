@@ -65,14 +65,14 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void move(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void move(E value, boolean clear);
@@ -95,14 +95,14 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber"
 	 * @generated
 	 */
 	void move(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" clearRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" clearRequired="true"
 	 * @generated
 	 */
 	void move(Number value, boolean clear);
@@ -213,14 +213,14 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movel(E value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model clearRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movel(E value, boolean clear);
@@ -243,14 +243,14 @@ public interface QMoveable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber"
 	 * @generated
 	 */
 	void movel(Number value);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" clearRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" clearRequired="true"
 	 * @generated
 	 */
 	void movel(Number value, boolean clear);

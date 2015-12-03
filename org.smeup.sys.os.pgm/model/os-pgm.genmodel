@@ -7,7 +7,7 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.os.pgm.edit"
-    editorPluginID="org.smeup.sys.os.pgm.editor" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    editorPluginID="org.smeup.sys.os.pgm.editor" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-pgm.ecore</foreignModel>
   <genPackages prefix="OperatingSystemProgram" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -19,6 +19,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-pgm.ecore#//ActivationGroup/programs"/>
       <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroup/lookup">
         <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroup/lookup/program"/>
+      </genOperations>
+      <genOperations ecoreOperation="os-pgm.ecore#//ActivationGroup/remove">
+        <genParameters ecoreParameter="os-pgm.ecore#//ActivationGroup/remove/program"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="os-pgm.ecore#//ActivationGroupManager">
@@ -37,18 +40,14 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="os-pgm.ecore#//CallableProgram">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference os-pgm.ecore#//CallableProgram/qActivationGroup"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference os-pgm.ecore#//CallableProgram/qProgram"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/close"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getDataContext"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getEntry"/>
+      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getProgram"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getProgramStatus"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/getRawProgram"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/isOpen"/>
       <genOperations ecoreOperation="os-pgm.ecore#//CallableProgram/open"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="os-pgm.ecore#//CallableProgramDelegator">
-      <genOperations ecoreOperation="os-pgm.ecore#//CallableProgramDelegator/getDelegate"/>
     </genClasses>
     <genClasses ecoreClass="os-pgm.ecore#//Program">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-pgm.ecore#//Program/activationGroup"/>

@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
@@ -44,6 +43,7 @@ import org.smeup.sys.il.esam.QPrint;
 import org.smeup.sys.il.esam.QPrintTerm;
 import org.smeup.sys.il.esam.QRRDataSet;
 import org.smeup.sys.il.esam.QSMDataSet;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -629,7 +629,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter dataSetEClass_R = addETypeParameter(dataSetEClass, "R");
@@ -1474,7 +1474,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(rrDataSetEClass, null, "setgt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		t1.getEBounds().add(g1);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1484,7 +1484,7 @@ public class IntegratedLanguageEsamPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(rrDataSetEClass, null, "setll", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaEnum());
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		t1.getEBounds().add(g1);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "keyField", 1, 1, IS_UNIQUE, IS_ORDERED);

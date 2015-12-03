@@ -5,14 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java;
+package org.smeup.sys.il.core.util;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Files</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getFiles()
+ * @see org.smeup.sys.il.core.util.QUtilPackage#getFiles()
  * @model interface="true" abstract="true"
  * @generated
  */

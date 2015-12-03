@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.module.QModuleSource;
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
+import org.smeup.sys.os.type.impl.TypedObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -31,7 +32,7 @@ import org.smeup.sys.os.module.QOperatingSystemModulePackage;
  *
  * @generated
  */
-public class ModuleImpl extends org.smeup.sys.os.type.impl.TypedObjectImpl implements QModule {
+public class ModuleImpl extends TypedObjectImpl implements QModule {
 	/**
 	 * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

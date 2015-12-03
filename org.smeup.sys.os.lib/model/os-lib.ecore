@@ -18,7 +18,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="../../org.smeup.sys.os.type/model/os-type.ecore#//TypedObject">
     <eOperations name="isRootLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isChildLibrary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="getPackageURI" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaURI"/>
+    <eOperations name="getPackageURI" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaURI"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePackage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dependencies" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

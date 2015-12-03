@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java;
+package org.smeup.sys.il.core.util;
 
 import java.util.List;
 
@@ -14,21 +14,21 @@ import java.util.List;
  * <em><b>Lists</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getLists()
+ * @see org.smeup.sys.il.core.util.QUtilPackage#getLists()
  * @model interface="true" abstract="true"
  * @generated
  */
 public interface QLists {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" elementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addFirst(List<E> list, E element);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" elementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addLast(List<E> list, E element);
@@ -36,7 +36,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
 	 * @generated
 	 */
 	<E> void addBefore(List<E> list, E oldElement, E newElement);
@@ -44,7 +44,7 @@ public interface QLists {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model listType="org.smeup.sys.il.core.java.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
+	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" oldElementRequired="true" newElementRequired="true"
 	 * @generated
 	 */
 	<E> void addAfter(List<E> list, E oldElement, E newElement);

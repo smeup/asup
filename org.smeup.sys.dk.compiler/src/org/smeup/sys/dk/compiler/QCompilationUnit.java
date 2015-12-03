@@ -38,7 +38,7 @@ import org.smeup.sys.il.flow.QRoutine;
  * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilationUnit()
- * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.il.core.java.JavaCloseable"
+ * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QCompilationUnit extends QContextProvider, Closeable {

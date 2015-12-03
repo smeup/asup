@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.memo.QIntegratedLanguageMemoryPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.lib.LibraryType;
 import org.smeup.sys.os.lib.QLibrary;
@@ -257,7 +257,7 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageMemoryPackage theIntegratedLanguageMemoryPackage = (QIntegratedLanguageMemoryPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageMemoryPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -294,7 +294,7 @@ public class OperatingSystemLibraryPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(libraryEClass, ecorePackage.getEBoolean(), "isChildLibrary", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(libraryEClass, theIntegratedLanguageCoreJavaPackage.getJavaURI(), "getPackageURI", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(libraryEClass, theMachineInterfaceCorePackage.getJavaURI(), "getPackageURI", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(libraryTypeEEnum, LibraryType.class, "LibraryType");

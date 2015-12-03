@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://www.smeup.org/asup/mi/core" nsPrefix="mi-core">
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaAnnotation" instanceClassName="java.lang.annotation.Annotation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaCallable" instanceClassName="java.util.concurrent.Callable"
+      abstract="true" interface="true">
+    <eTypeParameters name="V"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaCharset" instanceClassName="java.nio.charset.Charset"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaCloseable" instanceClassName="java.io.Closeable"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaExecutorService" instanceClassName="java.util.concurrent.ExecutorService"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaDictionary" instanceClassName="java.util.Dictionary">
+    <eTypeParameters name="K"/>
+    <eTypeParameters name="V"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaEnum" instanceTypeName="java.lang.Enum&lt;E>"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaException" instanceClassName="java.lang.Exception"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaInputStream" instanceClassName="java.io.InputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaIOException" instanceClassName="java.io.IOException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaIterable" instanceTypeName="java.lang.Iterable&lt;T>"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaIterator" instanceClassName="java.util.Iterator"
+      abstract="true" interface="true">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaList" instanceTypeName="java.util.List&lt;E>"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaMap" instanceClassName="java.util.Map">
+    <eTypeParameters name="K"/>
+    <eTypeParameters name="V"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaNumber" instanceClassName="java.lang.Number"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaOutputStream" instanceClassName="java.io.OutputStream"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaProperties" instanceClassName="java.util.Properties"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaRunnable" instanceClassName="java.lang.Runnable"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaThrowable" instanceClassName="java.lang.Throwable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaThread" instanceClassName="java.lang.Thread"
+      abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaType" instanceClassName="java.lang.reflect.Type"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaURI" instanceClassName="java.net.URI"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaURL" instanceClassName="java.net.URL"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaWriter" instanceClassName="java.io.Writer"/>
+</ecore:EPackage>

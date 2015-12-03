@@ -21,7 +21,6 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QLockManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model contextRequired="true"
 	 * @generated
 	 */

@@ -7,11 +7,16 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" editorPluginID="/org.smeup.sys.os.lib.editor" language="EN"
-    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type"
+    usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.il.memo/model/il-memo.genmodel#//memo ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-lib.ecore</foreignModel>
   <genPackages prefix="OperatingSystemLibrary" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
       adapterFactory="false" fileExtensions="" ecorePackage="os-lib.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-lib.ecore#//LibraryType">
+      <genEnumLiterals ecoreEnumLiteral="os-lib.ecore#//LibraryType/Production"/>
+      <genEnumLiterals ecoreEnumLiteral="os-lib.ecore#//LibraryType/Test"/>
+      <genEnumLiterals ecoreEnumLiteral="os-lib.ecore#//LibraryType/Temporary"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="os-lib.ecore#//LibraryManager">
       <genOperations ecoreOperation="os-lib.ecore#//LibraryManager/getLibraryReader">
         <genParameters ecoreParameter="os-lib.ecore#//LibraryManager/getLibraryReader/job"/>
@@ -23,6 +28,7 @@
     <genClasses ecoreClass="os-lib.ecore#//Library">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-lib.ecore#//Library/basePackage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-lib.ecore#//Library/dependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-lib.ecore#//Library/libraryType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-lib.ecore#//Library/parentLibrary"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-lib.ecore#//Library/synchronized"/>
       <genOperations ecoreOperation="os-lib.ecore#//Library/isRootLibrary"/>

@@ -4,15 +4,10 @@
     modelDirectory="/org.smeup.sys.co.osgi.ecf/src" modelPluginID="org.smeup.sys.co.osgi.ecf"
     modelName="As.UP Container OSGI ECF" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.co.osgi/model/co-osgi.genmodel#//osgi"
-    classNamePattern="">
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" classNamePattern="">
   <foreignModel>co-osgi-ecf.ecore</foreignModel>
   <genPackages prefix="ECFConnectorOSGI" basePackage="org.smeup.sys.co.osgi" disposableProviderFactory="true"
       adapterFactory="false" utilityPackageSuffix="" ecorePackage="co-osgi-ecf.ecore#/">
-    <genClasses ecoreClass="co-osgi-ecf.ecore#//ECFCommunicationManager"/>
-    <genClasses ecoreClass="co-osgi-ecf.ecore#//ECFServerActivator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference co-osgi-ecf.ecore#//ECFServerActivator/containerConfig"/>
-    </genClasses>
     <genClasses ecoreClass="co-osgi-ecf.ecore#//ECFServerContainerConfig">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-osgi-ecf.ecore#//ECFServerContainerConfig/serverContainerType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute co-osgi-ecf.ecore#//ECFServerContainerConfig/containerId"/>

@@ -102,7 +102,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionSuccess" eSuperTypes="#//AssertionResult"/>
   <eClassifiers xsi:type="ecore:EClass" name="CallableTest" abstract="true" interface="true">
-    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCallable">
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCallable">
       <eTypeArguments eClassifier="#//TestResult"/>
     </eGenericSuperTypes>
   </eClassifiers>

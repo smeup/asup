@@ -5,25 +5,26 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java;
+package org.smeup.sys.il.core.util;
 
-import java.net.URI;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>UR Is</b></em>'. <!-- end-user-doc -->
+ * <em><b>Streams</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage#getURIs()
+ * @see org.smeup.sys.il.core.util.QUtilPackage#getStreams()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QURIs {
+public interface QStreams {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" uriDataType="org.smeup.sys.il.core.java.JavaURI" uriRequired="true"
+	 * @model inputDataType="org.smeup.sys.mi.core.JavaInputStream" inputRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
-	String getBaseName(URI uri);
+	void copy(InputStream input, OutputStream output);
 
-} // QURIs
+} // QStreams

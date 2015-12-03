@@ -4,28 +4,28 @@
     modelDirectory="/org.smeup.sys.co.core/src" modelPluginID="org.smeup.sys.co.core"
     modelName="As.UP Communication Core" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>co-core.ecore</foreignModel>
   <genPackages prefix="CommunicationCore" basePackage="org.smeup.sys.co" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="co-core.ecore#/">
     <genClasses image="false" ecoreClass="co-core.ecore#//OutputWrapper">
       <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/flush">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/flush/jobID"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/flush/contextID"/>
       </genOperations>
       <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/write">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/jobID"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/contextID"/>
         <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/write/value"/>
       </genOperations>
       <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/register">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/jobID"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/contextID"/>
         <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/register/writer"/>
       </genOperations>
       <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/unregister">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/unregister/jobID"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/unregister/contextID"/>
       </genOperations>
       <genOperations ecoreOperation="co-core.ecore#//OutputWrapper/contains">
-        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/contains/jobID"/>
+        <genParameters ecoreParameter="co-core.ecore#//OutputWrapper/contains/contextID"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="co-core.ecore#//ServerSocketConfig">

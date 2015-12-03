@@ -29,14 +29,6 @@ null
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated il-core -->
       <package
-            uri="http://www.smeup.org/asup/il/core/java"
-            class="org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage"
-            genModel="model/il-core.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated il-core -->
-      <package
             uri="http://www.smeup.org/asup/il/core/meta"
             class="org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage"
             genModel="model/il-core.genmodel"/>
@@ -55,6 +47,14 @@ null
       <package
             uri="http://www.smeup.org/asup/il/core/term"
             class="org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage"
+            genModel="model/il-core.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated il-core -->
+      <package
+            uri="http://www.smeup.org/asup/il/core/util"
+            class="org.smeup.sys.il.core.util.QUtilPackage"
             genModel="model/il-core.genmodel"/>
    </extension>
 </plugin>

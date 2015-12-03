@@ -7,6 +7,8 @@
  */
 package org.smeup.sys.os.module;
 
+import org.smeup.sys.os.type.QTypedContainer;
+
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -24,7 +26,7 @@ package org.smeup.sys.os.module;
  * @model
  * @generated
  */
-public interface QModuleContainer extends org.smeup.sys.os.type.QTypedContainer<QModule> {
+public interface QModuleContainer extends QTypedContainer<QModule> {
 	/**
 	 * Returns the value of the '<em><b>Base Package</b></em>' attribute. <!--
 	 * begin-user-doc -->

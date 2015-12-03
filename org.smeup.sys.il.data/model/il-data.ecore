@@ -279,27 +279,27 @@
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eClassifier="#//Character"/>
       </eGenericType>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eClassifier="#//Character"/>
       </eGenericType>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eClassifier="#//Character"/>
       </eGenericType>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1">
       <eGenericType eClassifier="#//Array">
         <eTypeArguments eClassifier="#//Character"/>
       </eGenericType>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eGenericSuperTypes eClassifier="#//BufferedList">
@@ -408,7 +408,7 @@
     </eOperations>
     <eOperations name="movea">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//BufferedList/movea.4/E"/>
@@ -416,7 +416,7 @@
     </eOperations>
     <eOperations name="movea">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="targetIndex" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="value">
@@ -425,7 +425,7 @@
     </eOperations>
     <eOperations name="movea">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="targetIndex" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="value">
@@ -589,12 +589,12 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -611,12 +611,12 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -658,20 +658,20 @@
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="cat">
-      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="cat">
+      <eParameters name="factor1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="space" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -688,23 +688,23 @@
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="factor2" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
       <eParameters name="factor2" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -727,11 +727,11 @@
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="cat">
       <eParameters name="factor1" lowerBound="1" eType="#//String"/>
-      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="space" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="cat">
@@ -767,7 +767,7 @@
     <eOperations name="clear"/>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/eq/E"/>
@@ -775,7 +775,7 @@
     </eOperations>
     <eOperations name="eval">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/eval/E"/>
@@ -783,7 +783,7 @@
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/ge/E"/>
@@ -791,7 +791,7 @@
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/gt/E"/>
@@ -800,7 +800,7 @@
     <eOperations name="isEmpty" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/le/E"/>
@@ -808,7 +808,7 @@
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/lt/E"/>
@@ -816,7 +816,7 @@
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Data/ne/E"/>
@@ -857,7 +857,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataArray" instanceTypeName="D[]"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataContainer" abstract="true" interface="true"
-      eSuperTypes="#//term/DataTermContainer ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+      eSuperTypes="#//term/DataTermContainer ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="clearData"/>
     <eOperations name="close"/>
     <eOperations name="createDataTerm" lowerBound="1">
@@ -865,8 +865,8 @@
         <eTypeArguments/>
       </eGenericType>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaType"/>
-      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaAnnotation"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
     </eOperations>
     <eOperations name="getData" eType="#//Data">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -929,7 +929,7 @@
       eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
     <eOperations name="endOfData" lowerBound="1" eType="#//Indicator"/>
     <eOperations name="found" lowerBound="1" eType="#//Indicator"/>
-    <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCharset"/>
+    <eOperations name="getCharset" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCharset"/>
     <eOperations name="getDataFactory" lowerBound="1" eType="#//DataFactory"/>
     <eOperations name="getDateFormat" lowerBound="1" eType="#//def/DateFormat"/>
     <eOperations name="getTimeFormat" lowerBound="1" eType="#//def/TimeFormat"/>
@@ -1007,8 +1007,8 @@
       <eGenericType eClassifier="#//def/DataDef">
         <eTypeArguments/>
       </eGenericType>
-      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaType"/>
-      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaAnnotation"/>
+      <eParameters name="type" lowerBound="1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaType"/>
+      <eParameters name="annotations" lowerBound="1" upperBound="-1" eType="ecore:EDataType ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaAnnotation"/>
     </eOperations>
     <eOperations name="createDataStruct" lowerBound="1">
       <eGenericType eTypeParameter="#//DataFactory/createDataStruct/D"/>
@@ -1057,7 +1057,7 @@
         <eTypeArguments eTypeParameter="#//DataFactory/createEnum/D"/>
       </eGenericType>
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eTypeParameters name="D">
         <eBounds eClassifier="#//BufferedData"/>
@@ -1376,7 +1376,7 @@
       eSuperTypes="#//BufferedData">
     <eOperations name="adddur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="format">
@@ -1386,7 +1386,7 @@
     </eOperations>
     <eOperations name="adddur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="format">
@@ -1396,7 +1396,7 @@
     </eOperations>
     <eOperations name="adddur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="format">
@@ -1405,7 +1405,7 @@
     </eOperations>
     <eOperations name="adddur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="format">
@@ -1425,7 +1425,7 @@
     </eOperations>
     <eOperations name="qDiff" eType="#//Numeric">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
       <eParameters name="format">
@@ -1440,7 +1440,7 @@
     </eOperations>
     <eOperations name="qSubdt" eType="#//Numeric">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="portion">
         <eGenericType eTypeParameter="#//Datetime/qSubdt/E"/>
@@ -1448,7 +1448,7 @@
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="format">
@@ -1458,7 +1458,7 @@
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="format">
@@ -1468,7 +1468,7 @@
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eParameters name="format">
@@ -1477,7 +1477,7 @@
     </eOperations>
     <eOperations name="subdur">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="duration" unique="false" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="format">
@@ -1495,7 +1495,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Enum" abstract="true" interface="true"
       eSuperTypes="#//BufferedData">
     <eTypeParameters name="E">
-      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+      <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
     </eTypeParameters>
     <eTypeParameters name="D">
       <eBounds eClassifier="#//BufferedData"/>
@@ -1616,7 +1616,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="array" lowerBound="1">
@@ -1633,8 +1633,8 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
       <eParameters name="array" lowerBound="1">
@@ -1659,7 +1659,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
@@ -1678,8 +1678,8 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
@@ -1689,7 +1689,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookup" lowerBound="1" eType="#//Numeric">
@@ -1698,7 +1698,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
@@ -1725,7 +1725,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
@@ -1744,8 +1744,8 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
@@ -1755,7 +1755,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookupgt" lowerBound="1" eType="#//Numeric">
@@ -1764,7 +1764,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
@@ -1791,7 +1791,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
@@ -1810,8 +1810,8 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
@@ -1821,7 +1821,7 @@
         </eGenericType>
       </eParameters>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="elements" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qLookuplt" lowerBound="1" eType="#//Numeric">
@@ -1830,7 +1830,7 @@
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="elements" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
@@ -1859,7 +1859,7 @@
     </eOperations>
     <eOperations name="move">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Moveable/move.6/E"/>
@@ -1867,7 +1867,7 @@
     </eOperations>
     <eOperations name="move">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Moveable/move.7/E"/>
@@ -1882,10 +1882,10 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="move">
-      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movea">
@@ -1967,7 +1967,7 @@
     </eOperations>
     <eOperations name="movel">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Moveable/movel.6/E"/>
@@ -1975,7 +1975,7 @@
     </eOperations>
     <eOperations name="movel">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Moveable/movel.7/E"/>
@@ -1990,10 +1990,10 @@
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="movel">
-      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
   </eClassifiers>
@@ -2060,7 +2060,7 @@
       <eParameters name="remainderTarget" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="eq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
@@ -2115,13 +2115,13 @@
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
@@ -2130,13 +2130,13 @@
     <eOperations name="isSigned" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="l" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="lt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
@@ -2212,14 +2212,14 @@
       <eParameters name="roundingMode" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eParameters name="value">
         <eGenericType eTypeParameter="#//Numeric/ne.2/E"/>
@@ -2485,11 +2485,11 @@
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="source" lowerBound="1" eType="#//Character"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="source" lowerBound="1" eType="#//Character"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
@@ -2510,11 +2510,11 @@
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qScan" lowerBound="1" eType="#//Numeric">
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="found" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
   </eClassifiers>
@@ -2638,18 +2638,18 @@
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
-      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="length" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="qSubst" lowerBound="1" eType="#//Character">
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="length" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
@@ -2677,26 +2677,26 @@
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="#//String"/>
-      <eParameters name="to" lowerBound="1" eType="#//String"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="#//String"/>
+      <eParameters name="to" lowerBound="1" eType="#//String"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -2714,13 +2714,13 @@
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -2751,26 +2751,26 @@
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eOperations>
-    <eOperations name="xlate">
-      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
+    </eOperations>
+    <eOperations name="xlate">
+      <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="source" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="start" lowerBound="1" eType="#//Numeric"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -2788,13 +2788,13 @@
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -2825,13 +2825,13 @@
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="to" lowerBound="1" eType="#//String"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -2862,13 +2862,13 @@
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
     </eOperations>
     <eOperations name="xlate">
       <eParameters name="from" lowerBound="1" eType="#//String"/>
       <eParameters name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="source" lowerBound="1" eType="#//String"/>
-      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaNumber"/>
+      <eParameters name="start" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaNumber"/>
       <eParameters name="clear" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
     <eOperations name="xlate">
@@ -3117,7 +3117,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EnumDef" abstract="true">
       <eTypeParameters name="E">
-        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaEnum"/>
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
       </eTypeParameters>
       <eTypeParameters name="D">
         <eBounds eClassifier="#//BufferedData"/>

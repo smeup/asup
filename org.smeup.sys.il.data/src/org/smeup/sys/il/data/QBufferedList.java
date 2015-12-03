@@ -60,7 +60,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movea(E value);
@@ -68,7 +68,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movea(int targetIndex, E value);
@@ -76,7 +76,7 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movea(QNumeric targetIndex, E value);

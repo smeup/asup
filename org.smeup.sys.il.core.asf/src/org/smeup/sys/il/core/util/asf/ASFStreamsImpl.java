@@ -9,13 +9,13 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.java.asf;
+package org.smeup.sys.il.core.util.asf;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.smeup.sys.il.core.java.QStreams;
+import org.smeup.sys.il.core.util.QStreams;
 
 public class ASFStreamsImpl implements QStreams {
 

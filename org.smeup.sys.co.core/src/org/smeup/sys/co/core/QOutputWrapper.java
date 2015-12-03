@@ -24,7 +24,7 @@ public interface QOutputWrapper {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException"
 	 * @generated
 	 */
 	void flush(String contextID) throws IOException;
@@ -32,7 +32,7 @@ public interface QOutputWrapper {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException"
 	 * @generated
 	 */
 	void write(String contextID, String value) throws IOException;
@@ -40,7 +40,7 @@ public interface QOutputWrapper {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model writerDataType="org.smeup.sys.il.core.java.JavaWriter"
+	 * @model writerDataType="org.smeup.sys.mi.core.JavaWriter"
 	 * @generated
 	 */
 	void register(String contextID, Writer writer);

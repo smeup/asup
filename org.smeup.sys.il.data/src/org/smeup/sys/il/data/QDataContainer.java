@@ -22,7 +22,7 @@ import org.smeup.sys.il.data.term.QDataTermContainer;
  *
  *
  * @see org.smeup.sys.il.data.QIntegratedLanguageDataPackage#getDataContainer()
- * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.data.term.DataTermContainer org.smeup.sys.il.core.java.JavaCloseable"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.data.term.DataTermContainer org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QDataContainer extends QDataTermContainer, Closeable {
@@ -44,7 +44,7 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @model required="true" nameRequired="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
 	 * @generated
 	 */
 	QDataTerm<?> createDataTerm(String name, Type type, List<Annotation> annotations);

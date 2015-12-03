@@ -35,7 +35,7 @@ public interface QESqlFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @model required="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
 	 * @generated
 	 */
 	QCursorTerm createCursorTerm(Type type, List<Annotation> annotations);
@@ -51,7 +51,7 @@ public interface QESqlFactory {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" typeDataType="org.smeup.sys.il.core.java.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.il.core.java.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
+	 * @model required="true" typeDataType="org.smeup.sys.mi.core.JavaType" typeRequired="true" annotationsDataType="org.smeup.sys.mi.core.JavaAnnotation" annotationsRequired="true" annotationsMany="true"
 	 * @generated
 	 */
 	QStatementTerm createStatementTerm(Type type, List<Annotation> annotations);

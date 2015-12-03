@@ -39,14 +39,15 @@ import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
-import org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl;
 import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
+import org.smeup.sys.il.core.util.QUtilPackage;
+import org.smeup.sys.il.core.util.impl.UtilPackageImpl;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -214,28 +215,31 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		QMachineInterfaceCorePackage.eINSTANCE.eClass();
+
 		// Obtain or create and register interdependencies
 		IntegratedLanguageCoreCtxPackageImpl theIntegratedLanguageCoreCtxPackage = (IntegratedLanguageCoreCtxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) instanceof IntegratedLanguageCoreCtxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
-		IntegratedLanguageCoreJavaPackageImpl theIntegratedLanguageCoreJavaPackage = (IntegratedLanguageCoreJavaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) instanceof IntegratedLanguageCoreJavaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI) : QIntegratedLanguageCoreJavaPackage.eINSTANCE);
 		IntegratedLanguageCoreMetaPackageImpl theIntegratedLanguageCoreMetaPackage = (IntegratedLanguageCoreMetaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) instanceof IntegratedLanguageCoreMetaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
 		IntegratedLanguageCoreOutPackageImpl theIntegratedLanguageCoreOutPackage = (IntegratedLanguageCoreOutPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) instanceof IntegratedLanguageCoreOutPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
 		IntegratedLanguageCoreTermPackageImpl theIntegratedLanguageCoreTermPackage = (IntegratedLanguageCoreTermPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) instanceof IntegratedLanguageCoreTermPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) : QIntegratedLanguageCoreTermPackage.eINSTANCE);
+		UtilPackageImpl theUtilPackage = (UtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI) instanceof UtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI) : QUtilPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageCorePackage.createPackageContents();
 		theIntegratedLanguageCoreCtxPackage.createPackageContents();
-		theIntegratedLanguageCoreJavaPackage.createPackageContents();
 		theIntegratedLanguageCoreMetaPackage.createPackageContents();
 		theIntegratedLanguageCoreOutPackage.createPackageContents();
 		theIntegratedLanguageCoreTermPackage.createPackageContents();
+		theUtilPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theIntegratedLanguageCorePackage.initializePackageContents();
 		theIntegratedLanguageCoreCtxPackage.initializePackageContents();
-		theIntegratedLanguageCoreJavaPackage.initializePackageContents();
 		theIntegratedLanguageCoreMetaPackage.initializePackageContents();
 		theIntegratedLanguageCoreOutPackage.initializePackageContents();
 		theIntegratedLanguageCoreTermPackage.initializePackageContents();
+		theUtilPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theIntegratedLanguageCorePackage.freeze();
@@ -687,17 +691,18 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QIntegratedLanguageCoreOutPackage theIntegratedLanguageCoreOutPackage = (QIntegratedLanguageCoreOutPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
+		QUtilPackage theUtilPackage = (QUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theIntegratedLanguageCoreCtxPackage);
-		getESubpackages().add(theIntegratedLanguageCoreJavaPackage);
 		getESubpackages().add(theIntegratedLanguageCoreMetaPackage);
 		getESubpackages().add(theIntegratedLanguageCoreOutPackage);
 		getESubpackages().add(theIntegratedLanguageCoreTermPackage);
+		getESubpackages().add(theUtilPackage);
 
 		// Create type parameters
 		ETypeParameter objectContainerEClass_T = addETypeParameter(objectContainerEClass, "T");
@@ -719,11 +724,11 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		namedNodeEClass.getESuperTypes().add(this.getNode());
 		namedNodeEClass.getESuperTypes().add(this.getNameable());
 		objectContainerEClass.getESuperTypes().add(this.getObject());
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaIterator());
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaIterator());
 		EGenericType g2 = createEGenericType(objectIteratorEClass_T);
 		g1.getETypeArguments().add(g2);
 		objectIteratorEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCloseable());
 		objectIteratorEClass.getEGenericSuperTypes().add(g1);
 		objectNameableEClass.getESuperTypes().add(this.getObject());
 		objectNameableEClass.getESuperTypes().add(this.getNameable());

@@ -37,7 +37,7 @@ import org.smeup.sys.dk.test.QTestManager;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.annotation.TestStarted;
 import org.smeup.sys.il.core.QAnnotationTest;
-import org.smeup.sys.il.core.java.QLists;
+import org.smeup.sys.il.core.util.QLists;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowFactory;

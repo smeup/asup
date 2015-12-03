@@ -9,9 +9,9 @@
  * Contributors:
  *   Mattia Rocchi - Initial API and implementation
  */
-package org.smeup.sys.il.core.java.asf;
+package org.smeup.sys.il.core.util.asf;
 
-import org.smeup.sys.il.core.java.QFiles;
+import org.smeup.sys.il.core.util.QFiles;
 
 public class ASFFilesImpl implements QFiles {
 

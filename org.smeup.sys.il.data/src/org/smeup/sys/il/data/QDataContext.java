@@ -69,7 +69,7 @@ public interface QDataContext extends QContextProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" type="org.smeup.sys.il.core.java.JavaCharset" required="true"
+	 * @model kind="operation" type="org.smeup.sys.mi.core.JavaCharset" required="true"
 	 * @generated
 	 */
 	Charset getCharset();

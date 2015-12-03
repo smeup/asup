@@ -10,6 +10,7 @@ package org.smeup.sys.os.usrspc;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -71,7 +72,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__APPLICATION = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
+	int USER_SPACE__APPLICATION = QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
@@ -80,7 +81,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__LIBRARY = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
+	int USER_SPACE__LIBRARY = QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -89,7 +90,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__NAME = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__NAME;
+	int USER_SPACE__NAME = QOperatingSystemTypePackage.TYPED_OBJECT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute. <!--
@@ -98,7 +99,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__TEXT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__TEXT;
+	int USER_SPACE__TEXT = QOperatingSystemTypePackage.TYPED_OBJECT__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
@@ -106,7 +107,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__CREATION_INFO = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
+	int USER_SPACE__CREATION_INFO = QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO;
 
 	/**
 	 * The feature id for the '<em><b>Header</b></em>' attribute. <!--
@@ -115,7 +116,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__HEADER = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
+	int USER_SPACE__HEADER = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute. <!--
@@ -124,7 +125,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE__CONTENT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
+	int USER_SPACE__CONTENT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>User Space</em>' class.
@@ -132,7 +133,7 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_SPACE_FEATURE_COUNT = org.smeup.sys.os.type.QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
+	int USER_SPACE_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.usrspc.QUserSpaceManager <em>User Space Manager</em>}' class.

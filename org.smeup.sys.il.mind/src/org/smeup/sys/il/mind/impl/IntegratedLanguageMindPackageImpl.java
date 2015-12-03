@@ -12,18 +12,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-
 import org.smeup.sys.il.mind.QGoal;
 import org.smeup.sys.il.mind.QIntegratedLanguageMindFactory;
 import org.smeup.sys.il.mind.QIntegratedLanguageMindPackage;
@@ -32,6 +27,7 @@ import org.smeup.sys.il.mind.QMindTerm;
 import org.smeup.sys.il.mind.QQuestion;
 import org.smeup.sys.il.mind.QReasoner;
 import org.smeup.sys.il.mind.QTheory;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -349,7 +345,7 @@ public class IntegratedLanguageMindPackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QIntegratedLanguageCoreMetaPackage theIntegratedLanguageCoreMetaPackage = (QIntegratedLanguageCoreMetaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -361,7 +357,7 @@ public class IntegratedLanguageMindPackageImpl extends EPackageImpl implements Q
 		questionEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		theoryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		reasonerEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		reasonerEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		reasonerEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(goalEClass, QGoal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

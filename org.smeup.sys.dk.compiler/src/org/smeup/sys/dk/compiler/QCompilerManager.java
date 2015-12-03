@@ -70,7 +70,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeDatabaseFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -78,7 +78,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeDisplayFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -86,7 +86,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeModule(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -94,7 +94,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writePrinterFile(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -102,7 +102,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeProgram(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -110,7 +110,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeProgramTest(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;
@@ -118,7 +118,7 @@ public interface QCompilerManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream" outputRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" compilationUnitRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
 	 * @generated
 	 */
 	void writeStub(QCompilationUnit compilationUnit, QCompilationSetup setup, OutputStream output) throws IOException;

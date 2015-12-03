@@ -23,7 +23,7 @@ public interface QApplicationManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" applicationRequired="true" outputDataType="org.smeup.sys.il.core.java.JavaOutputStream"
+	 * @model required="true" applicationRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream"
 	 * @generated
 	 */
 	QApplication start(QApplication application, OutputStream output);

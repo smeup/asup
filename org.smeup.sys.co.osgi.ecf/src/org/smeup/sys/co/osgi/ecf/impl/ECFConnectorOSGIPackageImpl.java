@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.smeup.sys.co.osgi.QConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIFactory;
 import org.smeup.sys.co.osgi.ecf.ECFConnectorOSGIPackage;
 import org.smeup.sys.co.osgi.ecf.ECFServerContainerConfig;
@@ -75,9 +74,6 @@ public class ECFConnectorOSGIPackageImpl extends EPackageImpl implements ECFConn
 		ECFConnectorOSGIPackageImpl theECFConnectorOSGIPackage = (ECFConnectorOSGIPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ECFConnectorOSGIPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ECFConnectorOSGIPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		QConnectorOSGIPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theECFConnectorOSGIPackage.createPackageContents();

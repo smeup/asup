@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.java;
+package org.smeup.sys.il.core.util;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaFactory
+ * @see org.smeup.sys.il.core.util.QIntegratedLanguageCoreJavaFactory
  * @model kind="package"
  * @generated
  */
@@ -53,7 +53,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * end-user-doc -->
 	 * @generated
 	 */
-	QIntegratedLanguageCoreJavaPackage eINSTANCE = org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl.init();
+	QIntegratedLanguageCoreJavaPackage eINSTANCE = org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link java.util.concurrent.Callable<V>
@@ -61,7 +61,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * -->
 	 *
 	 * @see java.util.concurrent.Callable<V>
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCallable()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCallable()
 	 * @generated
 	 */
 	int JAVA_CALLABLE = 0;
@@ -79,7 +79,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.nio.charset.Charset
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCharset()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCharset()
 	 * @generated
 	 */
 	int JAVA_CHARSET = 1;
@@ -97,7 +97,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * The meta object id for the '{@link java.lang.Enum<E> <em>Java Enum</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see java.lang.Enum<E>
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaEnum()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaEnum()
 	 * @generated
 	 */
 	int JAVA_ENUM = 4;
@@ -106,7 +106,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * The meta object id for the '{@link java.util.List<E> <em>Java List</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see java.util.List<E>
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaList()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaList()
 	 * @generated
 	 */
 	int JAVA_LIST = 6;
@@ -115,52 +115,52 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * The meta object id for the '{@link java.lang.Number <em>Java Number</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see java.lang.Number
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaNumber()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaNumber()
 	 * @generated
 	 */
 	int JAVA_NUMBER = 7;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.util.QFiles <em>Files</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.java.QFiles
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
+	 * @see org.smeup.sys.il.core.util.QFiles
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
 	 * @generated
 	 */
 	int FILES = 8;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.util.QStreams <em>Streams</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.java.QStreams
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
+	 * @see org.smeup.sys.il.core.util.QStreams
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
 	 * @generated
 	 */
 	int STREAMS = 9;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.util.QLists <em>Lists</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.java.QLists
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
+	 * @see org.smeup.sys.il.core.util.QLists
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
 	 * @generated
 	 */
 	int LISTS = 10;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.util.QStrings <em>Strings</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.java.QStrings
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
+	 * @see org.smeup.sys.il.core.util.QStrings
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
 	 * @generated
 	 */
 	int STRINGS = 11;
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.il.core.util.QURIs <em>UR Is</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see org.smeup.sys.il.core.java.QURIs
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
+	 * @see org.smeup.sys.il.core.util.QURIs
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
 	 * @generated
 	 */
 	int UR_IS = 12;
@@ -170,7 +170,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.annotation.Annotation
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaAnnotation()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaAnnotation()
 	 * @generated
 	 */
 	int JAVA_ANNOTATION = 13;
@@ -180,7 +180,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.io.Closeable
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCloseable()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCloseable()
 	 * @generated
 	 */
 	int JAVA_CLOSEABLE = 2;
@@ -199,7 +199,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.concurrent.ExecutorService
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
 	 * @generated
 	 */
 	int JAVA_EXECUTOR_SERVICE = 3;
@@ -227,7 +227,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.util.Dictionary
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaDictionary()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaDictionary()
 	 * @generated
 	 */
 	int JAVA_DICTIONARY = 14;
@@ -237,7 +237,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.Exception
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaException()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaException()
 	 * @generated
 	 */
 	int JAVA_EXCEPTION = 15;
@@ -247,7 +247,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.io.InputStream
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaInputStream()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaInputStream()
 	 * @generated
 	 */
 	int JAVA_INPUT_STREAM = 16;
@@ -257,7 +257,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.io.IOException
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIOException()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIOException()
 	 * @generated
 	 */
 	int JAVA_IO_EXCEPTION = 17;
@@ -267,7 +267,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.Iterable
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterable()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterable()
 	 * @generated
 	 */
 	int JAVA_ITERABLE = 18;
@@ -277,7 +277,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.util.Iterator
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterator()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterator()
 	 * @generated
 	 */
 	int JAVA_ITERATOR = 5;
@@ -358,7 +358,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.util.Map
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaMap()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaMap()
 	 * @generated
 	 */
 	int JAVA_MAP = 19;
@@ -368,7 +368,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.io.OutputStream
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaOutputStream()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaOutputStream()
 	 * @generated
 	 */
 	int JAVA_OUTPUT_STREAM = 20;
@@ -378,7 +378,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.util.Properties
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaProperties()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaProperties()
 	 * @generated
 	 */
 	int JAVA_PROPERTIES = 21;
@@ -388,7 +388,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.Runnable
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaRunnable()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaRunnable()
 	 * @generated
 	 */
 	int JAVA_RUNNABLE = 22;
@@ -398,7 +398,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.Throwable
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaThrowable()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaThrowable()
 	 * @generated
 	 */
 	int JAVA_THROWABLE = 23;
@@ -408,7 +408,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.lang.reflect.Type
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaType()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaType()
 	 * @generated
 	 */
 	int JAVA_TYPE = 24;
@@ -418,7 +418,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.net.URI
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURI()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURI()
 	 * @generated
 	 */
 	int JAVA_URI = 25;
@@ -428,7 +428,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.net.URL
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURL()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURL()
 	 * @generated
 	 */
 	int JAVA_URL = 26;
@@ -438,7 +438,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @see java.io.Writer
-	 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaWriter()
+	 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaWriter()
 	 * @generated
 	 */
 	int JAVA_WRITER = 27;
@@ -499,55 +499,55 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}'. <!--
+	 * {@link org.smeup.sys.il.core.util.QFiles <em>Files</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Files</em>'.
-	 * @see org.smeup.sys.il.core.java.QFiles
+	 * @see org.smeup.sys.il.core.util.QFiles
 	 * @generated
 	 */
 	EClass getFiles();
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}'. <!--
+	 * {@link org.smeup.sys.il.core.util.QStreams <em>Streams</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Streams</em>'.
-	 * @see org.smeup.sys.il.core.java.QStreams
+	 * @see org.smeup.sys.il.core.util.QStreams
 	 * @generated
 	 */
 	EClass getStreams();
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}'. <!--
+	 * {@link org.smeup.sys.il.core.util.QLists <em>Lists</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Lists</em>'.
-	 * @see org.smeup.sys.il.core.java.QLists
+	 * @see org.smeup.sys.il.core.util.QLists
 	 * @generated
 	 */
 	EClass getLists();
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}'. <!--
+	 * {@link org.smeup.sys.il.core.util.QStrings <em>Strings</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>Strings</em>'.
-	 * @see org.smeup.sys.il.core.java.QStrings
+	 * @see org.smeup.sys.il.core.util.QStrings
 	 * @generated
 	 */
 	EClass getStrings();
 
 	/**
 	 * Returns the meta object for class '
-	 * {@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}'. <!--
+	 * {@link org.smeup.sys.il.core.util.QURIs <em>UR Is</em>}'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @return the meta object for class '<em>UR Is</em>'.
-	 * @see org.smeup.sys.il.core.java.QURIs
+	 * @see org.smeup.sys.il.core.util.QURIs
 	 * @generated
 	 */
 	EClass getURIs();
@@ -767,7 +767,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '{@link java.util.concurrent.Callable <em>Java Callable</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.util.concurrent.Callable
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCallable()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCallable()
 		 * @generated
 		 */
 		EClass JAVA_CALLABLE = eINSTANCE.getJavaCallable();
@@ -777,7 +777,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.nio.charset.Charset
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCharset()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCharset()
 		 * @generated
 		 */
 		EClass JAVA_CHARSET = eINSTANCE.getJavaCharset();
@@ -788,7 +788,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * -->
 		 *
 		 * @see java.lang.Enum<E>
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaEnum()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaEnum()
 		 * @generated
 		 */
 		EClass JAVA_ENUM = eINSTANCE.getJavaEnum();
@@ -799,7 +799,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * -->
 		 *
 		 * @see java.util.List<E>
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaList()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaList()
 		 * @generated
 		 */
 		EClass JAVA_LIST = eINSTANCE.getJavaList();
@@ -809,58 +809,58 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * <!-- begin-user-doc --> <!--
 		 * end-user-doc -->
 		 * @see java.lang.Number
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaNumber()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaNumber()
 		 * @generated
 		 */
 		EClass JAVA_NUMBER = eINSTANCE.getJavaNumber();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.java.QFiles <em>Files</em>}' class. <!--
+		 * {@link org.smeup.sys.il.core.util.QFiles <em>Files</em>}' class. <!--
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
-		 * @see org.smeup.sys.il.core.java.QFiles
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
+		 * @see org.smeup.sys.il.core.util.QFiles
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getFiles()
 		 * @generated
 		 */
 		EClass FILES = eINSTANCE.getFiles();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QStreams <em>Streams</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.util.QStreams <em>Streams</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.java.QStreams
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
+		 * @see org.smeup.sys.il.core.util.QStreams
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getStreams()
 		 * @generated
 		 */
 		EClass STREAMS = eINSTANCE.getStreams();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.java.QLists <em>Lists</em>}' class. <!--
+		 * {@link org.smeup.sys.il.core.util.QLists <em>Lists</em>}' class. <!--
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
-		 * @see org.smeup.sys.il.core.java.QLists
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
+		 * @see org.smeup.sys.il.core.util.QLists
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getLists()
 		 * @generated
 		 */
 		EClass LISTS = eINSTANCE.getLists();
 
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.il.core.java.QStrings <em>Strings</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.util.QStrings <em>Strings</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @see org.smeup.sys.il.core.java.QStrings
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
+		 * @see org.smeup.sys.il.core.util.QStrings
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getStrings()
 		 * @generated
 		 */
 		EClass STRINGS = eINSTANCE.getStrings();
 
 		/**
 		 * The meta object literal for the '
-		 * {@link org.smeup.sys.il.core.java.QURIs <em>UR Is</em>}' class. <!--
+		 * {@link org.smeup.sys.il.core.util.QURIs <em>UR Is</em>}' class. <!--
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
-		 * @see org.smeup.sys.il.core.java.QURIs
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
+		 * @see org.smeup.sys.il.core.util.QURIs
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getURIs()
 		 * @generated
 		 */
 		EClass UR_IS = eINSTANCE.getURIs();
@@ -869,7 +869,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Annotation</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.lang.annotation.Annotation
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaAnnotation()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaAnnotation()
 		 * @generated
 		 */
 		EDataType JAVA_ANNOTATION = eINSTANCE.getJavaAnnotation();
@@ -878,7 +878,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '{@link java.io.Closeable <em>Java Closeable</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.io.Closeable
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCloseable()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaCloseable()
 		 * @generated
 		 */
 		EClass JAVA_CLOSEABLE = eINSTANCE.getJavaCloseable();
@@ -888,7 +888,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.concurrent.ExecutorService
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaExecutorService()
 		 * @generated
 		 */
 		EClass JAVA_EXECUTOR_SERVICE = eINSTANCE.getJavaExecutorService();
@@ -897,7 +897,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Dictionary</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.util.Dictionary
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaDictionary()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaDictionary()
 		 * @generated
 		 */
 		EDataType JAVA_DICTIONARY = eINSTANCE.getJavaDictionary();
@@ -906,7 +906,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Exception</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.lang.Exception
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaException()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaException()
 		 * @generated
 		 */
 		EDataType JAVA_EXCEPTION = eINSTANCE.getJavaException();
@@ -915,7 +915,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Input Stream</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.io.InputStream
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaInputStream()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaInputStream()
 		 * @generated
 		 */
 		EDataType JAVA_INPUT_STREAM = eINSTANCE.getJavaInputStream();
@@ -924,7 +924,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java IO Exception</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.io.IOException
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIOException()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIOException()
 		 * @generated
 		 */
 		EDataType JAVA_IO_EXCEPTION = eINSTANCE.getJavaIOException();
@@ -933,7 +933,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Iterable</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.lang.Iterable
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterable()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterable()
 		 * @generated
 		 */
 		EDataType JAVA_ITERABLE = eINSTANCE.getJavaIterable();
@@ -942,7 +942,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '{@link java.util.Iterator <em>Java Iterator</em>}' class.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.util.Iterator
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterator()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaIterator()
 		 * @generated
 		 */
 		EClass JAVA_ITERATOR = eINSTANCE.getJavaIterator();
@@ -952,7 +952,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
 		 * @see java.util.Map
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaMap()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaMap()
 		 * @generated
 		 */
 		EDataType JAVA_MAP = eINSTANCE.getJavaMap();
@@ -961,7 +961,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Output Stream</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.io.OutputStream
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaOutputStream()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaOutputStream()
 		 * @generated
 		 */
 		EDataType JAVA_OUTPUT_STREAM = eINSTANCE.getJavaOutputStream();
@@ -970,7 +970,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Properties</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.util.Properties
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaProperties()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaProperties()
 		 * @generated
 		 */
 		EDataType JAVA_PROPERTIES = eINSTANCE.getJavaProperties();
@@ -979,7 +979,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Runnable</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.lang.Runnable
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaRunnable()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaRunnable()
 		 * @generated
 		 */
 		EDataType JAVA_RUNNABLE = eINSTANCE.getJavaRunnable();
@@ -988,7 +988,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Throwable</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.lang.Throwable
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaThrowable()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaThrowable()
 		 * @generated
 		 */
 		EDataType JAVA_THROWABLE = eINSTANCE.getJavaThrowable();
@@ -998,7 +998,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
 		 * @see java.lang.reflect.Type
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaType()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaType()
 		 * @generated
 		 */
 		EDataType JAVA_TYPE = eINSTANCE.getJavaType();
@@ -1008,7 +1008,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
 		 * @see java.net.URI
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURI()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURI()
 		 * @generated
 		 */
 		EDataType JAVA_URI = eINSTANCE.getJavaURI();
@@ -1018,7 +1018,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * begin-user-doc --> <!-- end-user-doc -->
 		 *
 		 * @see java.net.URL
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURL()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaURL()
 		 * @generated
 		 */
 		EDataType JAVA_URL = eINSTANCE.getJavaURL();
@@ -1027,7 +1027,7 @@ public interface QIntegratedLanguageCoreJavaPackage extends EPackage {
 		 * The meta object literal for the '<em>Java Writer</em>' data type.
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see java.io.Writer
-		 * @see org.smeup.sys.il.core.java.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaWriter()
+		 * @see org.smeup.sys.il.core.util.impl.IntegratedLanguageCoreJavaPackageImpl#getJavaWriter()
 		 * @generated
 		 */
 		EDataType JAVA_WRITER = eINSTANCE.getJavaWriter();

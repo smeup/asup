@@ -55,9 +55,9 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -973,7 +973,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
 
 		// Create type parameters
@@ -988,7 +988,7 @@ public class DatabaseCorePackageImpl extends EPackageImpl implements QDatabaseCo
 		indexColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		preparedStatementEClass.getESuperTypes().add(this.getStatement());
 		schemaDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
-		statementEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		statementEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		tableDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		tableColumnDefEClass.getESuperTypes().add(this.getDatabaseObjectDef());
 		viewDefEClass.getESuperTypes().add(this.getTableDef());

@@ -16,7 +16,7 @@ import java.util.concurrent.Callable;
  *
  *
  * @see org.smeup.sys.dk.test.QDevelopmentKitTestPackage#getCallableTest()
- * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.java.JavaCallable<org.smeup.sys.dk.test.TestResult>"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.mi.core.JavaCallable<org.smeup.sys.dk.test.TestResult>"
  * @generated
  */
 public interface QCallableTest extends Callable<QTestResult> {

@@ -20,7 +20,7 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
-import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QRecord;

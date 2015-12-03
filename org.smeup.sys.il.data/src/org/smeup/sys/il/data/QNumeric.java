@@ -162,7 +162,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean eq(Number value);
@@ -274,7 +274,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean ge(Number value);
@@ -288,7 +288,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean gt(Number value);
@@ -309,7 +309,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean le(Number value);
@@ -323,7 +323,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean lt(Number value);
@@ -487,7 +487,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model valueType="org.smeup.sys.il.core.java.JavaNumber" valueRequired="true"
+	 * @model valueType="org.smeup.sys.mi.core.JavaNumber" valueRequired="true"
 	 * @generated
 	 */
 	boolean ne(Number value);
@@ -501,7 +501,7 @@ public interface QNumeric extends QBufferedData {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	@Override

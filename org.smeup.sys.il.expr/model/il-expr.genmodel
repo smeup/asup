@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
-    modelDirectory="/org.smeup.sys.il.expr/src" modelPluginID="org.smeup.sys.il.expr" modelName="As.UP Integrated Language Expression"
-    modelPluginClass="" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    modelDirectory="/org.smeup.sys.il.expr/src" modelPluginID="org.smeup.sys.il.expr"
+    modelName="As.UP Integrated Language Expression" modelPluginClass="" rootExtendsInterface=""
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>il-expr.ecore</foreignModel>
-  <genPackages prefix="IntegratedLanguageExpression" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
-      adapterFactory="false" ecorePackage="il-expr.ecore#/">
+  <genPackages prefix="IntegratedLanguageExpression" basePackage="org.smeup.sys.il"
+      disposableProviderFactory="true" adapterFactory="false" ecorePackage="il-expr.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-expr.ecore#//ArithmeticOperator">
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ArithmeticOperator/Plus"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ArithmeticOperator/Minus"/>
@@ -29,7 +30,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-expr.ecore#//AtomicType">
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Boolean"/>
-      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Datetime"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Date"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Floating"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Hexadecimal"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Indicator"/>
@@ -37,6 +38,8 @@
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Name"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Special"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Time"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//AtomicType/Timestamp"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-expr.ecore#//ExpressionType">
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Arithmetic"/>
@@ -45,7 +48,8 @@
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Relational"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Boolean"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Atomic"/>
-      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Compound"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Qualified"/>
+      <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Function"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//ExpressionType/Block"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="il-expr.ecore#//LogicalOperator">
@@ -61,8 +65,6 @@
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//RelationalOperator/GreaterThan"/>
       <genEnumLiterals ecoreEnumLiteral="il-expr.ecore#//RelationalOperator/GreaterThanEqual"/>
     </genEnums>
-    <genDataTypes ecoreDataType="il-expr.ecore#//IntegratedLanguageExpressionException"/>
-    <genDataTypes ecoreDataType="il-expr.ecore#//IntegratedLanguageExpressionRuntimeException"/>
     <genClasses ecoreClass="il-expr.ecore#//ArithmeticExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//ArithmeticExpression/leftOperand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//ArithmeticExpression/operator"/>
@@ -86,10 +88,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//CompoundTermExpression/elements"/>
     </genClasses>
     <genClasses ecoreClass="il-expr.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//Expression/expressionFormat"/>
       <genOperations ecoreOperation="il-expr.ecore#//Expression/accept">
         <genParameters ecoreParameter="il-expr.ecore#//Expression/accept/visitor"/>
       </genOperations>
       <genOperations ecoreOperation="il-expr.ecore#//Expression/getExpressionType"/>
+      <genOperations ecoreOperation="il-expr.ecore#//Expression/match">
+        <genParameters ecoreParameter="il-expr.ecore#//Expression/match/pattern"/>
+      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-expr.ecore#//ExpressionParser">
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionParser/parseExpression">
@@ -109,6 +115,12 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="il-expr.ecore#//ExpressionParserRegistry"/>
+    <genClasses image="false" ecoreClass="il-expr.ecore#//ExpressionWriter">
+      <genOperations ecoreOperation="il-expr.ecore#//ExpressionWriter/writeExpression">
+        <genParameters ecoreParameter="il-expr.ecore#//ExpressionWriter/writeExpression/expression"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-expr.ecore#//ExpressionWriterRegistry"/>
     <genClasses image="false" ecoreClass="il-expr.ecore#//ExpressionVisitor">
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/endVisit">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/endVisit/expression"/>
@@ -134,6 +146,9 @@
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/endVisit.7">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/endVisit.7/expression"/>
       </genOperations>
+      <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/endVisit.8">
+        <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/endVisit.8/expression"/>
+      </genOperations>
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit/expression"/>
       </genOperations>
@@ -158,21 +173,24 @@
       <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit.7">
         <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit.7/expression"/>
       </genOperations>
+      <genOperations ecoreOperation="il-expr.ecore#//ExpressionVisitor/visit.8">
+        <genParameters ecoreParameter="il-expr.ecore#//ExpressionVisitor/visit.8/expression"/>
+      </genOperations>
     </genClasses>
+    <genClasses ecoreClass="il-expr.ecore#//FunctionTermExpression"/>
     <genClasses ecoreClass="il-expr.ecore#//LogicalExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//LogicalExpression/leftOperand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//LogicalExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//LogicalExpression/rightOperand"/>
     </genClasses>
     <genClasses image="false" ecoreClass="il-expr.ecore#//PredicateExpression"/>
+    <genClasses ecoreClass="il-expr.ecore#//QualifiedTermExpression"/>
     <genClasses ecoreClass="il-expr.ecore#//RelationalExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//RelationalExpression/leftOperand"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//RelationalExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-expr.ecore#//RelationalExpression/rightOperand"/>
     </genClasses>
     <genClasses image="false" ecoreClass="il-expr.ecore#//TermExpression">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//TermExpression/function"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//TermExpression/special"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-expr.ecore#//TermExpression/value"/>
     </genClasses>
   </genPackages>

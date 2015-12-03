@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.os.module.QModule;
 import org.smeup.sys.os.module.QModuleContainer;
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
+import org.smeup.sys.os.type.impl.TypedContainerImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -27,7 +28,7 @@ import org.smeup.sys.os.module.QOperatingSystemModulePackage;
  *
  * @generated
  */
-public class ModuleContainerImpl extends org.smeup.sys.os.type.impl.TypedContainerImpl<QModule> implements QModuleContainer {
+public class ModuleContainerImpl extends TypedContainerImpl<QModule> implements QModuleContainer {
 	/**
 	 * 
 	 */

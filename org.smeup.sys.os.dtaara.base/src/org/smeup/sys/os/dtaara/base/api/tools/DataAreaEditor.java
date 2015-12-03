@@ -14,7 +14,7 @@ package org.smeup.sys.os.dtaara.base.api.tools;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.os.dtaara.DataAreaType;
 import org.smeup.sys.os.dtaara.QDataArea;
 

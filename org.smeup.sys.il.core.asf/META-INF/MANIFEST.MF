@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.smeup.sys.il.core.asf
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.smeup.sys.il.core.java.asf
+Export-Package: org.smeup.sys.il.core.util.asf
 Bundle-ClassPath: .,
  lib/commons-io-2.4.jar
 Require-Bundle: org.smeup.sys.il.core

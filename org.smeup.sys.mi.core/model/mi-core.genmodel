@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
+    modelDirectory="/org.smeup.sys.mi.core/src" modelPluginID="org.smeup.sys.mi.core"
+    modelName="As.UP Machine Interface Core" modelPluginClass="" rootExtendsInterface=""
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" suppressGenModelAnnotations="false"
+    copyrightFields="false" language="EN" interfaceNamePattern="Q{0}" importOrganizing="true">
+  <foreignModel>mi-core.ecore</foreignModel>
+  <genPackages prefix="MachineInterfaceCore" basePackage="org.smeup.sys.mi" disposableProviderFactory="true"
+      adapterFactory="false" ecorePackage="mi-core.ecore#/">
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaAnnotation"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaDictionary">
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaDictionary/K"/>
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaDictionary/V"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaException"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaInputStream"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaIOException"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaIterable"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaMap">
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaMap/K"/>
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaMap/V"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaOutputStream"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaProperties"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaRunnable"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaThrowable"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaType"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaURI"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaURL"/>
+    <genDataTypes ecoreDataType="mi-core.ecore#//JavaWriter"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaCallable">
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaCallable/V"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaCharset"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaCloseable"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaExecutorService"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaEnum"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaIterator">
+      <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaIterator/T"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaList"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaNumber"/>
+  </genPackages>
+</genmodel:GenModel>

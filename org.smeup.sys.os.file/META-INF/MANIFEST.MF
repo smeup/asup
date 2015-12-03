@@ -14,6 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.il.data;visibility:=reexport,
  org.smeup.sys.os.core;visibility:=reexport,
  org.smeup.sys.os.type;visibility:=reexport,
+ org.smeup.sys.mi.core;visibility:=reexport,
  org.smeup.sys.il.expr;visibility:=reexport,
  org.smeup.sys.il.lock;visibility:=reexport,
  org.smeup.sys.il.memo;visibility:=reexport

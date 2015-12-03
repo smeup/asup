@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.dk.test/src" modelPluginID="org.smeup.sys.dk.test"
     modelName="As.UP Development Kit Test" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>dk-test.ecore</foreignModel>
   <genPackages prefix="DevelopmentKitTest" basePackage="org.smeup.sys.dk" disposableProviderFactory="true"
@@ -91,6 +91,12 @@
       <genOperations ecoreOperation="dk-test.ecore#//Asserter/fail">
         <genParameters ecoreParameter="dk-test.ecore#//Asserter/fail/message"/>
       </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/message">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/message/message"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//Asserter/success">
+        <genParameters ecoreParameter="dk-test.ecore#//Asserter/success/message"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="dk-test.ecore#//AssertionFailed"/>
     <genClasses ecoreClass="dk-test.ecore#//AssertionResult">
@@ -100,6 +106,7 @@
     </genClasses>
     <genClasses ecoreClass="dk-test.ecore#//AssertionSuccess"/>
     <genClasses image="false" ecoreClass="dk-test.ecore#//CallableTest"/>
+    <genClasses ecoreClass="dk-test.ecore#//Message"/>
     <genClasses ecoreClass="dk-test.ecore#//SuiteTestRunner"/>
     <genClasses image="false" ecoreClass="dk-test.ecore#//TestAsserter">
       <genOperations ecoreOperation="dk-test.ecore#//TestAsserter/resetTime"/>
@@ -107,21 +114,20 @@
     <genClasses ecoreClass="dk-test.ecore#//TestContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestContainer/tests"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="dk-test.ecore#//TestListener">
-      <genOperations ecoreOperation="dk-test.ecore#//TestListener/addAssertionResult">
-        <genParameters ecoreParameter="dk-test.ecore#//TestListener/addAssertionResult/assertionResult"/>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestRunnerListener">
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunnerListener/assertionResultAdded">
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunnerListener/assertionResultAdded/testClass"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunnerListener/assertionResultAdded/assertionResult"/>
       </genOperations>
-      <genOperations ecoreOperation="dk-test.ecore#//TestListener/startTest">
-        <genParameters ecoreParameter="dk-test.ecore#//TestListener/startTest/test"/>
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunnerListener/testStarted">
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunnerListener/testStarted/testClass"/>
       </genOperations>
-      <genOperations ecoreOperation="dk-test.ecore#//TestListener/endTest">
-        <genParameters ecoreParameter="dk-test.ecore#//TestListener/endTest/test"/>
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunnerListener/testStopped">
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunnerListener/testStopped/testClass"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunnerListener/testStopped/result"/>
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="dk-test.ecore#//TestManager">
-      <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareContext">
-        <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareContext/klass"/>
-      </genOperations>
       <genOperations ecoreOperation="dk-test.ecore#//TestManager/prepareRunner">
         <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/context"/>
         <genParameters ecoreParameter="dk-test.ecore#//TestManager/prepareRunner/klass"/>
@@ -140,8 +146,49 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dk-test.ecore#//TestResult/time"/>
     </genClasses>
     <genClasses ecoreClass="dk-test.ecore#//TestRunner">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dk-test.ecore#//TestRunner/listeners"/>
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunner/registerListener">
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunner/registerListener/listener"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunner/removeListener">
+        <genParameters ecoreParameter="dk-test.ecore#//TestRunner/removeListener/listener"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestRunner/getListeners"/>
     </genClasses>
     <genClasses ecoreClass="dk-test.ecore#//UnitTestRunner"/>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestLauncher">
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/destroy">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/destroy/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/init">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/init/context"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/launch">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/launch/context"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/launch/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/registerListener">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/registerListener/context"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/registerListener/listener"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/removeListener">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/removeListener/context"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/removeListener/listener"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncher/getListeners">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncher/getListeners/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dk-test.ecore#//TestLauncherListener">
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncherListener/launcherStopped">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncherListener/launcherStopped/launcher"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncherListener/launcherStarted">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncherListener/launcherStarted/launcher"/>
+      </genOperations>
+      <genOperations ecoreOperation="dk-test.ecore#//TestLauncherListener/resultAdded">
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncherListener/resultAdded/runner"/>
+        <genParameters ecoreParameter="dk-test.ecore#//TestLauncherListener/resultAdded/result"/>
+      </genOperations>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

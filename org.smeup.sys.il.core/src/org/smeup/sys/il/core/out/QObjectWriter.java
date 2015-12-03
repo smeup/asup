@@ -36,7 +36,7 @@ public interface QObjectWriter {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model exceptions="org.smeup.sys.il.core.java.JavaIOException" objectRequired="true"
+	 * @model exceptions="org.smeup.sys.mi.core.JavaIOException" objectRequired="true"
 	 * @generated
 	 */
 	void write(QObject object) throws IOException;

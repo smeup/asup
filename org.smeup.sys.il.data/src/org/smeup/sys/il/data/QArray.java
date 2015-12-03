@@ -499,7 +499,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" lengthType="org.smeup.sys.mi.core.JavaNumber" lengthRequired="true"
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(Number start, Number length);
@@ -507,7 +507,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true"
+	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true"
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(Number start);
@@ -515,7 +515,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" startRequired="true" lengthType="org.smeup.sys.il.core.java.JavaNumber" lengthRequired="true"
+	 * @model required="true" startRequired="true" lengthType="org.smeup.sys.mi.core.JavaNumber" lengthRequired="true"
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(QNumeric start, Number length);
@@ -523,7 +523,7 @@ public interface QArray<D extends QBufferedData> extends QBufferedList<D> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" startType="org.smeup.sys.il.core.java.JavaNumber" startRequired="true" lengthRequired="true"
+	 * @model required="true" startType="org.smeup.sys.mi.core.JavaNumber" startRequired="true" lengthRequired="true"
 	 * @generated
 	 */
 	QArray<QCharacter> qSubst(Number start, QNumeric length);

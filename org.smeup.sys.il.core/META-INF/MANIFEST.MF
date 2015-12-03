@@ -11,15 +11,17 @@ Export-Package: org.smeup.sys.il.core,
  org.smeup.sys.il.core.ctx,
  org.smeup.sys.il.core.ctx.impl,
  org.smeup.sys.il.core.impl,
- org.smeup.sys.il.core.java,
- org.smeup.sys.il.core.java.impl,
  org.smeup.sys.il.core.meta,
  org.smeup.sys.il.core.meta.impl,
  org.smeup.sys.il.core.out,
  org.smeup.sys.il.core.out.impl,
  org.smeup.sys.il.core.term,
- org.smeup.sys.il.core.term.impl
+ org.smeup.sys.il.core.term.impl,
+ org.smeup.sys.il.core.util,
+ org.smeup.sys.il.core.util.impl,
+ org.smeup.sys.il.core.util.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.smeup.sys.mi.core;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

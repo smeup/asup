@@ -16,7 +16,7 @@ import java.util.Iterator;
  *
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getObjectIterator()
- * @model interface="true" abstract="true" superTypes="org.smeup.sys.il.core.java.JavaIterator<T> org.smeup.sys.il.core.java.JavaCloseable"
+ * @model interface="true" abstract="true" superTypes="org.smeup.sys.mi.core.JavaIterator<T> org.smeup.sys.mi.core.JavaCloseable"
  * @generated
  */
 public interface QObjectIterator<T extends QObject> extends Iterator<T>, Closeable {

@@ -12,6 +12,7 @@ Require-Bundle: org.eclipse.core.resources,
  org.eclipse.flux.core,
  org.eclipse.flux.client.java.osgi,
  org.smeup.sys.il.core;visibility:=reexport,
+ org.smeup.sys.mi.core;visibility:=reexport,
  org.smeup.sys.rt.core,
  org.eclipse.jdt.core
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

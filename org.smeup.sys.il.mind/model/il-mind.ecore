@@ -40,7 +40,7 @@
         eType="#//MindTerm" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reasoner" abstract="true" interface="true"
-      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.il.core/model/il-core.ecore#//java/JavaCloseable">
+      eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaCloseable">
     <eOperations name="buildQuestion" lowerBound="1" eType="#//Question">
       <eParameters name="question" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.rt.repo/src" modelPluginID="org.smeup.sys.rt.repo"
     modelName="As.UP Runtime Repository" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.rt.core/model/rt-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.rt.core/model/rt-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" operationReflection="true" importOrganizing="true">
   <foreignModel>rt-repo.ecore</foreignModel>
   <genPackages prefix="RuntimeRepository" basePackage="org.smeup.sys.rt" disposableProviderFactory="true"
@@ -12,6 +12,15 @@
     <genClasses image="false" ecoreClass="rt-repo.ecore#//RepositoryManager">
       <genOperations ecoreOperation="rt-repo.ecore#//RepositoryManager/checkUpdates">
         <genParameters ecoreParameter="rt-repo.ecore#//RepositoryManager/checkUpdates/application"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-repo.ecore#//RepositoryManager/updateApplication">
+        <genParameters ecoreParameter="rt-repo.ecore#//RepositoryManager/updateApplication/application"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-repo.ecore#//RepositoryManager/checkUpdates.1">
+        <genParameters ecoreParameter="rt-repo.ecore#//RepositoryManager/checkUpdates.1/component"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-repo.ecore#//RepositoryManager/updateComponent">
+        <genParameters ecoreParameter="rt-repo.ecore#//RepositoryManager/updateComponent/component"/>
       </genOperations>
     </genClasses>
   </genPackages>

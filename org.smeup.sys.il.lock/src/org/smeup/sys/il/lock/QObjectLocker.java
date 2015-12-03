@@ -19,7 +19,6 @@ package org.smeup.sys.il.lock;
 public interface QObjectLocker<T extends QObjectLockable> {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
@@ -27,7 +26,6 @@ public interface QObjectLocker<T extends QObjectLockable> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
@@ -35,7 +33,6 @@ public interface QObjectLocker<T extends QObjectLockable> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
@@ -43,7 +40,6 @@ public interface QObjectLocker<T extends QObjectLockable> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
@@ -51,7 +47,6 @@ public interface QObjectLocker<T extends QObjectLockable> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model lockTypeRequired="true"
 	 * @generated
 	 */
@@ -59,7 +54,6 @@ public interface QObjectLocker<T extends QObjectLockable> {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @model kind="operation"
 	 * @generated
 	 */

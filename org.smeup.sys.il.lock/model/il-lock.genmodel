@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.il.lock/src" modelPluginID="org.smeup.sys.il.lock"
     modelName="As.UP Integrated Language Lock" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>il-lock.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageLock" basePackage="org.smeup.sys.il" disposableProviderFactory="true"
@@ -16,7 +16,7 @@
     <genClasses image="false" ecoreClass="il-lock.ecore#//LockManager">
       <genOperations ecoreOperation="il-lock.ecore#//LockManager/getLocker">
         <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker/context"/>
-        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker/klass"/>
+        <genParameters ecoreParameter="il-lock.ecore#//LockManager/getLocker/object"/>
         <genTypeParameters ecoreTypeParameter="il-lock.ecore#//LockManager/getLocker/T"/>
       </genOperations>
     </genClasses>
@@ -26,28 +26,25 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-lock.ecore#//ObjectLockable/lockRead"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference il-lock.ecore#//ObjectLockable/lockWrite"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="il-lock.ecore#//Locker">
-      <genTypeParameters ecoreTypeParameter="il-lock.ecore#//Locker/T"/>
-      <genOperations ecoreOperation="il-lock.ecore#//Locker/lock">
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/lock/object"/>
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/lock/lockType"/>
+    <genClasses image="false" ecoreClass="il-lock.ecore#//ObjectLocker">
+      <genTypeParameters ecoreTypeParameter="il-lock.ecore#//ObjectLocker/T"/>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/lock">
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/lock/lockType"/>
       </genOperations>
-      <genOperations ecoreOperation="il-lock.ecore#//Locker/tryLock">
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/object"/>
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/time"/>
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/tryLock/lockType"/>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/tryLock">
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/tryLock/time"/>
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/tryLock/lockType"/>
       </genOperations>
-      <genOperations ecoreOperation="il-lock.ecore#//Locker/unlock">
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/unlock/object"/>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/unlock">
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/unlock/lockType"/>
       </genOperations>
-      <genOperations ecoreOperation="il-lock.ecore#//Locker/isLocked">
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLocked/object"/>
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLocked/lockType"/>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/isLocked">
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/isLocked/lockType"/>
       </genOperations>
-      <genOperations ecoreOperation="il-lock.ecore#//Locker/isLockedByOther">
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLockedByOther/object"/>
-        <genParameters ecoreParameter="il-lock.ecore#//Locker/isLockedByOther/lockType"/>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/isLockedByOther">
+        <genParameters ecoreParameter="il-lock.ecore#//ObjectLocker/isLockedByOther/lockType"/>
       </genOperations>
+      <genOperations ecoreOperation="il-lock.ecore#//ObjectLocker/getObject"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

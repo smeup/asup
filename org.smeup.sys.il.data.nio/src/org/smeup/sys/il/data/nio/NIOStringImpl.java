@@ -35,7 +35,7 @@ public abstract class NIOStringImpl extends NIOBufferedDataImpl implements QStri
 
 	@Override
 	public QCharacter qSubst(Number start) {
-		return qSubst(start, 0);
+		return qSubst(start, (Number)null);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public abstract class NIOStringImpl extends NIOBufferedDataImpl implements QStri
 		if (start == null)
 			start = 1;
 
-		if (length == null || length.equals(0))
+		if (length == null)
 			length = getLength() - start.intValue() + 1;
 
 		QCharacter character = new NIOCharacterImpl(getDataContext(), length.intValue());

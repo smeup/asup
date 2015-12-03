@@ -37,7 +37,7 @@ public interface QJobManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model type="org.smeup.sys.il.core.java.JavaExecutorService" required="true" jobRequired="true"
+	 * @model type="org.smeup.sys.mi.core.JavaExecutorService" required="true" jobRequired="true"
 	 * @generated
 	 */
 	ExecutorService executorFor(QJob job);

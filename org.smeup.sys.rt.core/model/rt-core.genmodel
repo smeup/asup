@@ -6,7 +6,7 @@
     rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" featureMapWrapperInterface="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.rt.core.edit"
-    editorPluginID="org.smeup.sys.rt.core.editor" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core"
+    editorPluginID="org.smeup.sys.rt.core.editor" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>rt-core.ecore</foreignModel>
   <genPackages prefix="RuntimeCore" basePackage="org.smeup.sys.rt" disposableProviderFactory="true"
@@ -35,6 +35,8 @@
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/restart"/>
       <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/restartCalled"/>
+      <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/stop"/>
+      <genOperations ecoreOperation="rt-core.ecore#//ApplicationManager/stopCalled"/>
     </genClasses>
     <genClasses ecoreClass="rt-core.ecore#//ApplicationModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rt-core.ecore#//ApplicationModule/name"/>
@@ -75,29 +77,41 @@
         <genParameters ecoreParameter="rt-core.ecore#//Logger/debug/message"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/debug.1">
-        <genParameters ecoreParameter="rt-core.ecore#//Logger/debug.1/message"/>
         <genParameters ecoreParameter="rt-core.ecore#//Logger/debug.1/throwable"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-core.ecore#//Logger/debug.2">
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/debug.2/message"/>
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/debug.2/throwable"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/error">
         <genParameters ecoreParameter="rt-core.ecore#//Logger/error/message"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/error.1">
-        <genParameters ecoreParameter="rt-core.ecore#//Logger/error.1/message"/>
         <genParameters ecoreParameter="rt-core.ecore#//Logger/error.1/throwable"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-core.ecore#//Logger/error.2">
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/error.2/message"/>
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/error.2/throwable"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/info">
         <genParameters ecoreParameter="rt-core.ecore#//Logger/info/message"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/info.1">
-        <genParameters ecoreParameter="rt-core.ecore#//Logger/info.1/message"/>
         <genParameters ecoreParameter="rt-core.ecore#//Logger/info.1/throwable"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-core.ecore#//Logger/info.2">
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/info.2/message"/>
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/info.2/throwable"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/warning">
         <genParameters ecoreParameter="rt-core.ecore#//Logger/warning/message"/>
       </genOperations>
       <genOperations ecoreOperation="rt-core.ecore#//Logger/warning.1">
-        <genParameters ecoreParameter="rt-core.ecore#//Logger/warning.1/message"/>
         <genParameters ecoreParameter="rt-core.ecore#//Logger/warning.1/throwable"/>
+      </genOperations>
+      <genOperations ecoreOperation="rt-core.ecore#//Logger/warning.2">
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/warning.2/message"/>
+        <genParameters ecoreParameter="rt-core.ecore#//Logger/warning.2/throwable"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="rt-core.ecore#//ServiceHook"/>
@@ -118,10 +132,14 @@
         disposableProviderFactory="true" adapterFactory="false" ecorePackage="rt-core.ecore#//auth">
       <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationToken">
         <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationToken/getID"/>
+        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationToken/isValid"/>
       </genClasses>
       <genClasses image="false" ecoreClass="rt-core.ecore#//auth/AuthenticationManager">
         <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken">
           <genParameters ecoreParameter="rt-core.ecore#//auth/AuthenticationManager/createAuthenticationToken/credentials"/>
+        </genOperations>
+        <genOperations ecoreOperation="rt-core.ecore#//auth/AuthenticationManager/deleteAuthenticationToken">
+          <genParameters ecoreParameter="rt-core.ecore#//auth/AuthenticationManager/deleteAuthenticationToken/authToken"/>
         </genOperations>
       </genClasses>
     </nestedGenPackages>

@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import org.smeup.sys.il.core.java.QStrings;
+import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;

@@ -28,7 +28,6 @@ public class LockWriteImpl extends ObjectImpl implements QLockWrite {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected LockWriteImpl() {
@@ -37,7 +36,6 @@ public class LockWriteImpl extends ObjectImpl implements QLockWrite {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

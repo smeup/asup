@@ -22,31 +22,32 @@ import org.smeup.sys.il.lock.QLockWrite;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements QIntegratedLanguageLockFactory {
 	/**
-	 * Creates the default factory implementation. <!-- begin-user-doc --> <!--
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static QIntegratedLanguageLockFactory init() {
 		try {
-			QIntegratedLanguageLockFactory theIntegratedLanguageLockFactory = (QIntegratedLanguageLockFactory) EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageLockPackage.eNS_URI);
-			if (theIntegratedLanguageLockFactory != null)
+			QIntegratedLanguageLockFactory theIntegratedLanguageLockFactory = (QIntegratedLanguageLockFactory)EPackage.Registry.INSTANCE.getEFactory(QIntegratedLanguageLockPackage.eNS_URI);
+			if (theIntegratedLanguageLockFactory != null) {
 				return theIntegratedLanguageLockFactory;
-		} catch (Exception exception) {
+			}
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new IntegratedLanguageLockFactoryImpl();
 	}
 
 	/**
-	 * Creates an instance of the factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IntegratedLanguageLockFactoryImpl() {
@@ -55,54 +56,48 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case QIntegratedLanguageLockPackage.LOCK_READ:
-			return (EObject) createLockRead();
-		case QIntegratedLanguageLockPackage.LOCK_WRITE:
-			return (EObject) createLockWrite();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageLockPackage.LOCK_READ: return (EObject)createLockRead();
+			case QIntegratedLanguageLockPackage.LOCK_WRITE: return (EObject)createLockWrite();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageLockPackage.LOCK_TYPE:
-			return createLockTypeFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageLockPackage.LOCK_TYPE:
+				return createLockTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case QIntegratedLanguageLockPackage.LOCK_TYPE:
-			return convertLockTypeToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case QIntegratedLanguageLockPackage.LOCK_TYPE:
+				return convertLockTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -113,7 +108,6 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -124,19 +118,16 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public LockType createLockTypeFromString(EDataType eDataType, String initialValue) {
 		LockType result = LockType.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String convertLockTypeToString(EDataType eDataType, Object instanceValue) {
@@ -145,17 +136,15 @@ public class IntegratedLanguageLockFactoryImpl extends EFactoryImpl implements Q
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public QIntegratedLanguageLockPackage getIntegratedLanguageLockPackage() {
-		return (QIntegratedLanguageLockPackage) getEPackage();
+		return (QIntegratedLanguageLockPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

@@ -376,7 +376,15 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qCheck(String comparator, QString base, Integer start) {
-		return null;
+		if(start == null)
+			start = 1;
+		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
+		int i = base.qSubst(start).trimR().indexOf(comparator)+1;
+		if(i>0)
+			decimal.eval(i);
+		else
+			decimal.eval(base.qSubst(start).trimR().length());
+		return decimal;
 	}
 
 	public QDecimal qCheckr(String comparator, QString base, Integer start) {

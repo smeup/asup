@@ -55,7 +55,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void adddur(int duration, E format, QDatetime value);
@@ -63,7 +63,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void adddur(QNumeric duration, E format, QDatetime value);
@@ -71,7 +71,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void adddur(int duration, E format);
@@ -79,7 +79,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void adddur(QNumeric duration, E format);
@@ -95,7 +95,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void subdur(int duration, E format, QDatetime value);
@@ -103,7 +103,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" valueRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void subdur(QNumeric duration, E format, QDatetime value);
@@ -111,7 +111,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void subdur(int duration, E format);
@@ -119,7 +119,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model durationUnique="false" durationRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void subdur(QNumeric duration, E format);
@@ -127,7 +127,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model valueRequired="true" EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model valueRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> QNumeric qDiff(QDatetime value, E format);
@@ -143,7 +143,7 @@ public interface QDatetime extends QBufferedData {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model EBounds="org.smeup.sys.il.core.java.JavaEnum"
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> QNumeric qSubdt(E portion);

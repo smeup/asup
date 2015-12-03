@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
-    modelDirectory="/org.smeup.sys.db.esql/src" modelPluginID="org.smeup.sys.db.esql" modelName="As.UP Integrated Language Embedded SQL"
-    rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelDirectory="/org.smeup.sys.db.esql/src" modelPluginID="org.smeup.sys.db.esql"
+    modelName="As.UP Integrated Language Embedded SQL" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.il.data/model/il-data.genmodel#//data"
+    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.il.data/model/il-data.genmodel#//data platform:/plugin/org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>db-esql.ecore</foreignModel>
-  <genPackages prefix="IntegratedLanguageEmbeddedSQL" basePackage="org.smeup.sys.db" disposableProviderFactory="true"
-      adapterFactory="false" ecorePackage="db-esql.ecore#/">
+  <genPackages prefix="IntegratedLanguageEmbeddedSQL" basePackage="org.smeup.sys.db"
+      disposableProviderFactory="true" adapterFactory="false" ecorePackage="db-esql.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="db-esql.ecore#//CursorType">
       <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//CursorType/NotScrollable"/>
       <genEnumLiterals ecoreEnumLiteral="db-esql.ecore#//CursorType/Scrollable"/>

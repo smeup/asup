@@ -35,11 +35,11 @@ import org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage;
 import org.smeup.sys.dk.compiler.anz.impl.DevelopmentKitCompilerAnalyzerPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-import org.smeup.sys.il.core.java.QIntegratedLanguageCoreJavaPackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
 import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.file.QOperatingSystemFilePackage;
 import org.smeup.sys.os.module.QOperatingSystemModulePackage;
@@ -504,7 +504,7 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		// Obtain other dependent packages
 		QDevelopmentKitCompilerAnalyzerPackage theDevelopmentKitCompilerAnalyzerPackage = (QDevelopmentKitCompilerAnalyzerPackage)EPackage.Registry.INSTANCE.getEPackage(QDevelopmentKitCompilerAnalyzerPackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
-		QIntegratedLanguageCoreJavaPackage theIntegratedLanguageCoreJavaPackage = (QIntegratedLanguageCoreJavaPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreJavaPackage.eNS_URI);
+		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageEmbeddedSQLPackage theIntegratedLanguageEmbeddedSQLPackage = (QIntegratedLanguageEmbeddedSQLPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEmbeddedSQLPackage.eNS_URI);
 		QIntegratedLanguageEsamPackage theIntegratedLanguageEsamPackage = (QIntegratedLanguageEsamPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageEsamPackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
@@ -525,9 +525,9 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 
 		// Add supertypes to classes
 		compilationUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		compilationUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		compilationUnitEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		conversionUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
-		conversionUnitEClass.getESuperTypes().add(theIntegratedLanguageCoreJavaPackage.getJavaCloseable());
+		conversionUnitEClass.getESuperTypes().add(theMachineInterfaceCorePackage.getJavaCloseable());
 		compilerLinkerEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		EGenericType g1 = createEGenericType(theIntegratedLanguageCoreCtxPackage.getPluginRegistry());
 		EGenericType g2 = createEGenericType(this.getUnitConverter());
@@ -688,44 +688,44 @@ public class DevelopmentKitCompilerPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(compilerManagerEClass, null, "writeDatabaseFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writeDisplayFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writeModule", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writePrinterFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writeProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writeProgramTest", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		op = addEOperation(compilerManagerEClass, null, "writeStub", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationUnit(), "compilationUnit", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getCompilationSetup(), "setup", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theIntegratedLanguageCoreJavaPackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, theIntegratedLanguageCoreJavaPackage.getJavaIOException());
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaOutputStream(), "output", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEException(op, theMachineInterfaceCorePackage.getJavaIOException());
 
 		initEClass(unitConverterEClass, QUnitConverter.class, "UnitConverter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

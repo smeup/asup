@@ -7,13 +7,11 @@
     editorPluginClass="" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="7.0" copyrightFields="false" editPluginID="org.smeup.sys.os.msgf.edit"
-    editorPluginID="org.smeup.sys.os.msgf.editor" language="EN" usedGenPackages="../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.il.expr/model/il-expr.genmodel#//expr ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock"
+    editorPluginID="org.smeup.sys.os.msgf.editor" language="EN" usedGenPackages="../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-msgf.ecore</foreignModel>
   <genPackages prefix="OperatingSystemMessageFile" basePackage="org.smeup.sys.os"
       disposableProviderFactory="true" adapterFactory="false" fileExtensions="" ecorePackage="os-msgf.ecore#/">
-    <genDataTypes ecoreDataType="os-msgf.ecore#//MessageVariableList"/>
-    <genDataTypes ecoreDataType="os-msgf.ecore#//MessageException"/>
     <genClasses ecoreClass="os-msgf.ecore#//MessageDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-msgf.ecore#//MessageDescription/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-msgf.ecore#//MessageDescription/severity"/>
@@ -36,12 +34,6 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="os-msgf.ecore#//MessageFileManager">
-      <genOperations ecoreOperation="os-msgf.ecore#//MessageFileManager/prepareException">
-        <genParameters ecoreParameter="os-msgf.ecore#//MessageFileManager/prepareException/job"/>
-        <genParameters ecoreParameter="os-msgf.ecore#//MessageFileManager/prepareException/messageName"/>
-        <genParameters ecoreParameter="os-msgf.ecore#//MessageFileManager/prepareException/variables"/>
-        <genTypeParameters ecoreTypeParameter="os-msgf.ecore#//MessageFileManager/prepareException/E"/>
-      </genOperations>
       <genOperations ecoreOperation="os-msgf.ecore#//MessageFileManager/overrideMessageFile">
         <genParameters ecoreParameter="os-msgf.ecore#//MessageFileManager/overrideMessageFile/job"/>
         <genParameters ecoreParameter="os-msgf.ecore#//MessageFileManager/overrideMessageFile/messageFileFrom"/>

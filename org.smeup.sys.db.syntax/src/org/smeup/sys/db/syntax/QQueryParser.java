@@ -27,7 +27,7 @@ public interface QQueryParser extends QStatementParser {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.smeup.sys.db.syntax.SQLQueryParseResult" exceptions="org.smeup.sys.db.core.DatabaseException" streamDataType="org.smeup.sys.il.core.java.JavaInputStream" streamRequired="true"
+	 * @model dataType="org.smeup.sys.db.syntax.SQLQueryParseResult" exceptions="org.smeup.sys.db.core.DatabaseException" streamDataType="org.smeup.sys.mi.core.JavaInputStream" streamRequired="true"
 	 * @generated
 	 */
 	SQLQueryParseResult parseQuery(InputStream stream) throws SQLParserException, SQLParserInternalException, SQLException;

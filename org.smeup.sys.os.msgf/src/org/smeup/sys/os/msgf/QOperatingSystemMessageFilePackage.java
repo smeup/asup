@@ -142,6 +142,15 @@ public interface QOperatingSystemMessageFilePackage extends EPackage {
 	int MESSAGE_DATA_FIELD__FACETS = QIntegratedLanguageDataTermPackage.DATA_TERM__FACETS;
 
 	/**
+	 * The feature id for the '<em><b>Based</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_DATA_FIELD__BASED = QIntegratedLanguageDataTermPackage.DATA_TERM__BASED;
+
+	/**
 	 * The feature id for the '<em><b>Cardinality</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
