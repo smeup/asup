@@ -365,7 +365,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
@@ -374,7 +374,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
-		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	private String formatStackParameters(QData[] entry) {
