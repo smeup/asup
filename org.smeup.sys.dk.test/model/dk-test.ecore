@@ -88,7 +88,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionFailed" eSuperTypes="#//AssertionResult"/>
   <eClassifiers xsi:type="ecore:EClass" name="AssertionResult" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-    <eOperations name="getAssertionState" eType="#//AssertionState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assertionState" eType="#//AssertionState"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
         <details key="length" value="128"/>
