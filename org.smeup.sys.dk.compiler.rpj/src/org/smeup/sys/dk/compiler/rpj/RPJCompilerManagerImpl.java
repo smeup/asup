@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.StringLiteral;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.dk.compiler.CaseSensitiveType;
@@ -331,7 +332,8 @@ public class RPJCompilerManagerImpl implements QCompilerManager {
 		}
 
 		try {
-			URL entry = FrameworkUtil.getBundle(this.getClass()).getEntry("./modules/" + moduleName.replaceAll("\\*", "q") + ".xmi");
+			Bundle bundle = FrameworkUtil.getBundle(this.getClass());
+			URL entry = bundle.getEntry("/modules/" + moduleName.replaceAll("\\*", "q") + ".xmi");
 			Resource resource = resourceSet.createResource(URI.createURI(entry.toString()));
 			resource.load(Collections.EMPTY_MAP);
 
