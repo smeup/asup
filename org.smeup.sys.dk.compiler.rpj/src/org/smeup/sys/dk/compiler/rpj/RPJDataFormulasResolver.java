@@ -23,7 +23,7 @@ import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.def.QBufferedDataDef;
 import org.smeup.sys.il.data.def.QCompoundDataDef;
-import org.smeup.sys.il.data.def.QMultipleAtomicDataDef;
+import org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef;
 import org.smeup.sys.il.data.def.QMultipleDataDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.il.expr.ExpressionType;
@@ -154,21 +154,16 @@ public class RPJDataFormulasResolver extends RPJAbstractDataRefactor {
 					}
 					default_.setValue(stringValue);
 
-					break;
 				} else if(dataValue.getDataTermType().isMultiple()){
 					
-					stringValue = null;
 					try {
-						QBufferedDataDef<?> argument = (QBufferedDataDef<?>) ((QDataTerm<QMultipleAtomicDataDef<?>>) dataValue).getDefinition().getArgument();
+						QBufferedDataDef<?> argument = ((QDataTerm<QMultipleAtomicBufferedDataDef<?>>) dataValue).getDefinition().getArgument();
 						stringValue = Integer.toString(argument.getLength());
 					} catch (Exception e) {
 						throw new IntegratedLanguageDataRuntimeException("Unexpected condition: cb564sxdgesdfsafdsf26sda", e);
 					}
 					default_.setValue(stringValue);
-
-					break;
 				}
-				logger.warning(exceptionManager.prepareException(job, RPJCompilerMessage.AS00104, new String[] { value.toString() }));
 				break;
 			case "%size":
 				if (dataValue.getDataTermType().isAtomic())
