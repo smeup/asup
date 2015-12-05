@@ -92,6 +92,34 @@ public interface QDevelopmentKitCorePackage extends EPackage {
 	int DEVELOPMENT_STATUS_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.dk.core.impl.CommentImpl <em>Comment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.dk.core.impl.CommentImpl
+	 * @see org.smeup.sys.dk.core.impl.DevelopmentKitCorePackageImpl#getComment()
+	 * @generated
+	 */
+	int COMMENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT__TEXT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Comment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMENT_FEATURE_COUNT = QIntegratedLanguageCoreMetaPackage.FACET_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.dk.core.DevelopmentStatusType <em>Development Status Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -99,7 +127,7 @@ public interface QDevelopmentKitCorePackage extends EPackage {
 	 * @see org.smeup.sys.dk.core.impl.DevelopmentKitCorePackageImpl#getDevelopmentStatusType()
 	 * @generated
 	 */
-	int DEVELOPMENT_STATUS_TYPE = 1;
+	int DEVELOPMENT_STATUS_TYPE = 2;
 
 
 	/**
@@ -122,6 +150,27 @@ public interface QDevelopmentKitCorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDevelopmentStatus_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.dk.core.QComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Comment</em>'.
+	 * @see org.smeup.sys.dk.core.QComment
+	 * @generated
+	 */
+	EClass getComment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.dk.core.QComment#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.smeup.sys.dk.core.QComment#getText()
+	 * @see #getComment()
+	 * @generated
+	 */
+	EAttribute getComment_Text();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.dk.core.DevelopmentStatusType <em>Development Status Type</em>}'.
@@ -173,6 +222,24 @@ public interface QDevelopmentKitCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DEVELOPMENT_STATUS__VALUE = eINSTANCE.getDevelopmentStatus_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.dk.core.impl.CommentImpl <em>Comment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.dk.core.impl.CommentImpl
+		 * @see org.smeup.sys.dk.core.impl.DevelopmentKitCorePackageImpl#getComment()
+		 * @generated
+		 */
+		EClass COMMENT = eINSTANCE.getComment();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMENT__TEXT = eINSTANCE.getComment_Text();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.dk.core.DevelopmentStatusType <em>Development Status Type</em>}' enum.
