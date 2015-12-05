@@ -7,9 +7,7 @@
  */
 package org.smeup.sys.il.expr.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.smeup.sys.il.core.impl.NodeImpl;
 import org.smeup.sys.il.expr.BaseExpressionStringBuilder;
 import org.smeup.sys.il.expr.ExpressionType;
@@ -22,33 +20,11 @@ import org.smeup.sys.il.expr.neutral.NeutralExpressionMatcher;
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Expression</b></em>'. <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.smeup.sys.il.expr.impl.ExpressionImpl#getExpressionFormat <em>Expression Format</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
  */
 public abstract class ExpressionImpl extends NodeImpl implements QExpression {
-	/**
-	 * The default value of the '{@link #getExpressionFormat() <em>Expression Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpressionFormat()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String EXPRESSION_FORMAT_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getExpressionFormat() <em>Expression Format</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpressionFormat()
-	 * @generated
-	 * @ordered
-	 */
-	protected String expressionFormat = EXPRESSION_FORMAT_EDEFAULT;
 	/**
 	 *
 	 */
@@ -69,27 +45,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	@Override
 	protected EClass eStaticClass() {
 		return QIntegratedLanguageExpressionPackage.Literals.EXPRESSION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getExpressionFormat() {
-		return expressionFormat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExpressionFormat(String newExpressionFormat) {
-		String oldExpressionFormat = expressionFormat;
-		expressionFormat = newExpressionFormat;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QIntegratedLanguageExpressionPackage.EXPRESSION__EXPRESSION_FORMAT, oldExpressionFormat, expressionFormat));
 	}
 
 	/**
@@ -133,64 +88,6 @@ public abstract class ExpressionImpl extends NodeImpl implements QExpression {
 	 */
 	public boolean match(String pattern) {
 		return NeutralExpressionMatcher.getInstance().match(this, pattern);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.EXPRESSION__EXPRESSION_FORMAT:
-				return getExpressionFormat();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.EXPRESSION__EXPRESSION_FORMAT:
-				setExpressionFormat((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.EXPRESSION__EXPRESSION_FORMAT:
-				setExpressionFormat(EXPRESSION_FORMAT_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case QIntegratedLanguageExpressionPackage.EXPRESSION__EXPRESSION_FORMAT:
-				return EXPRESSION_FORMAT_EDEFAULT == null ? expressionFormat != null : !EXPRESSION_FORMAT_EDEFAULT.equals(expressionFormat);
-		}
-		return super.eIsSet(featureID);
 	}
 	
 } // ExpressionImpl

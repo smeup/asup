@@ -36,5 +36,4 @@ public interface BaseExpressionHelper {
 
 	public String getFunctionName(Tree node);
 	
-	public String getExpressionFormat();
 }

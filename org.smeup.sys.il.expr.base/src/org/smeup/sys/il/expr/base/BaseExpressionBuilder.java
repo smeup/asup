@@ -32,7 +32,6 @@ import org.smeup.sys.il.expr.QTermExpression;
 public class BaseExpressionBuilder {
 
 	private BaseExpressionHelper expressionHelper;
-	private String expressionFormat;
 
 	private static final String[] ASS_STR_OP = { "**=", "*=", "+=", "-=", "/=", "=" };
 	private static final AssignmentOperator[] ASS_OP = { AssignmentOperator.POWER_ASSIGN, AssignmentOperator.TIMES_ASSIGN, AssignmentOperator.PLUS_ASSIGN, AssignmentOperator.MINUS_ASSIGN,
@@ -40,7 +39,6 @@ public class BaseExpressionBuilder {
 
 	public BaseExpressionBuilder(BaseExpressionHelper expressionHelper) {
 		this.expressionHelper = expressionHelper;
-		this.expressionFormat = expressionHelper.getExpressionFormat();
 	}
 
 	public QExpression buildAsExpression(String expression) throws IntegratedLanguageExpressionRuntimeException {
@@ -154,8 +152,6 @@ public class BaseExpressionBuilder {
 
 		ast.setRightOperand(rightExpression);
 		
-		ast.setExpressionFormat(expressionFormat);
-		
 		return ast;
 	}
 
@@ -163,7 +159,6 @@ public class BaseExpressionBuilder {
 
 		Tree antAst = expressionHelper.parse(expression);
 		QPredicateExpression predicateExpression = buildAsPredicate(antAst);
-		predicateExpression.setExpressionFormat(expressionFormat);
 		
 		return predicateExpression;
 	}
@@ -180,7 +175,6 @@ public class BaseExpressionBuilder {
 			QTermExpression termExpression = (QTermExpression) buildChildExpression(node);
 			QBooleanExpression booleanExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBooleanExpression();
 			booleanExpression.setOperand(termExpression);
-			booleanExpression.setExpressionFormat(expressionFormat);
 
 			return booleanExpression;
 		case QUALIFIED:
@@ -188,7 +182,6 @@ public class BaseExpressionBuilder {
 			termExpression = (QTermExpression) buildChildExpression(node);
 			booleanExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBooleanExpression();
 			booleanExpression.setOperand(termExpression);			
-			booleanExpression.setExpressionFormat(expressionFormat);
 			
 			return booleanExpression;
 		case LOGICAL:
@@ -252,7 +245,6 @@ public class BaseExpressionBuilder {
 
 		Tree antAst = expressionHelper.parse(expression);
 		QTermExpression ast = buildAsTerm(antAst);
-		ast.setExpressionFormat(expressionFormat);
 
 		return ast;
 	}
@@ -276,7 +268,6 @@ public class BaseExpressionBuilder {
 
 			QTermExpression booleanExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createAtomicTermExpression();
 			booleanExpression.setValue(node.getText());
-			booleanExpression.setExpressionFormat(expressionFormat);
 			
 			return booleanExpression;
 
@@ -373,7 +364,6 @@ public class BaseExpressionBuilder {
 			throw new IntegratedLanguageExpressionRuntimeException("Invalid AST node: " + node);
 		}
 		
-		expression.setExpressionFormat(expressionFormat);
 		return expression;
 	}
 
