@@ -63,6 +63,7 @@ public class DevelopmentKitCoreFactoryImpl extends EFactoryImpl implements QDeve
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QDevelopmentKitCorePackage.DEVELOPMENT_STATUS: return (EObject)createDevelopmentStatus();
+			case QDevelopmentKitCorePackage.COMMENT: return (EObject)createComment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -106,6 +107,16 @@ public class DevelopmentKitCoreFactoryImpl extends EFactoryImpl implements QDeve
 	public QDevelopmentStatus createDevelopmentStatus() {
 		DevelopmentStatusImpl developmentStatus = new DevelopmentStatusImpl();
 		return developmentStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QComment createComment() {
+		CommentImpl comment = new CommentImpl();
+		return comment;
 	}
 
 	/**

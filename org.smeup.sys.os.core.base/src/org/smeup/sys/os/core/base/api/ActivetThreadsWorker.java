@@ -24,7 +24,6 @@ import org.smeup.sys.dk.core.annotation.Supported;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
-import org.smeup.sys.il.core.out.QWritableObject;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
@@ -32,7 +31,10 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
+import org.smeup.sys.os.core.jobs.JobThreadStatus;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobThread;
+import org.smeup.sys.os.core.jobs.impl.JobThreadImpl;
 
 
 @Program(name = "QWCCDSACTHD")
@@ -69,15 +71,12 @@ public class ActivetThreadsWorker {
 		objectWriter.flush();
 	}
 
-	private Collection<QObject> threads() {
+	private Collection<QJobThread> threads() {
 		 ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
 		 ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadMXBean.getAllThreadIds());
-		 Collection<QObject> result = new ArrayList<QObject>();
+		 Collection<QJobThread> result = new ArrayList<QJobThread>();
 		 for (ThreadInfo threadInfo: threadInfos) {
-			String label = "Thread name";
-			QWritableObject objectToWrite = outputManager.getWritableObject(label, Math.max(label.length(), 30));
-			objectToWrite.setObject(threadInfo.getThreadName());
-			result.add(objectToWrite.getObjectToWrite());
+			 result.add(new InternalJobThreadAdapter(threadInfo));
 		}
 		return result;
 	}
@@ -86,5 +85,38 @@ public class ActivetThreadsWorker {
 		@Special(value = "*")
 		TERM_STAR, @Special(value = "L")
 		PRINT
+	}
+	
+	private class InternalJobThreadAdapter extends JobThreadImpl {
+
+		private static final long serialVersionUID = 1L;
+		private ThreadInfo threadInfo;
+		
+		public InternalJobThreadAdapter(ThreadInfo threadInfo) {
+			this.threadInfo = threadInfo;
+			this.name = threadInfo.getThreadName(); 
+		}
+
+		@Override
+		public JobThreadStatus getThreadStatus() {
+
+			JobThreadStatus jobThreadStatus = null;
+			
+			switch (threadInfo.getThreadState()) {
+			case NEW:
+			case RUNNABLE:
+				jobThreadStatus = JobThreadStatus.RUN;
+				break;			
+			case BLOCKED:
+			case TIMED_WAITING:
+			case WAITING:
+				jobThreadStatus = JobThreadStatus.WAITING;
+				break;
+			case TERMINATED:
+				jobThreadStatus = JobThreadStatus.END;
+				break;
+			}
+			return jobThreadStatus;
+		}
 	}
 }

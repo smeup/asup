@@ -25,11 +25,6 @@ import org.smeup.sys.il.expr.RelationalOperator;
 import org.smeup.sys.il.expr.base.BaseExpressionHelper;
 
 public class CLExpressionHelper implements BaseExpressionHelper {
-	
-	@Override
-	public String getExpressionFormat() {
-		return "CL";
-	}
 
 	@Override
 	public ExpressionType getExpressionType(Tree tree) {

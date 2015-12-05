@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -27,6 +28,7 @@ import org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl;
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
 import org.smeup.sys.os.core.jobs.JobStatus;
+import org.smeup.sys.os.core.jobs.JobThreadStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobEvent;
@@ -35,6 +37,7 @@ import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobThread;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
@@ -85,6 +88,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass jobThreadEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass jobListenerEClass = null;
 
 	/**
@@ -107,6 +117,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EEnum jobTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jobThreadStatusEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,6 +179,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		isInited = true;
 
 		// Initialize simple dependencies
+		QDevelopmentKitCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 
@@ -456,6 +474,24 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getJobThread() {
+		return jobThreadEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobThread_Name() {
+		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getJobListener() {
 		return jobListenerEClass;
 	}
@@ -505,6 +541,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	@Override
 	public EEnum getJobType() {
 		return jobTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getJobThreadStatus() {
+		return jobThreadStatusEEnum;
 	}
 
 	/**
@@ -583,10 +628,14 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		jobManagerEClass = createEClass(JOB_MANAGER);
 
+		jobThreadEClass = createEClass(JOB_THREAD);
+		createEAttribute(jobThreadEClass, JOB_THREAD__NAME);
+
 		// Create enums
 		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
 		jobStatusEEnum = createEEnum(JOB_STATUS);
 		jobTypeEEnum = createEEnum(JOB_TYPE);
+		jobThreadStatusEEnum = createEEnum(JOB_THREAD_STATUS);
 	}
 
 	/**
@@ -628,6 +677,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		jobLogEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobLogEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		jobThreadEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(jobEClass, QJob.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -753,6 +803,11 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(jobThreadEClass, QJobThread.class, "JobThread", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJobThread_Name(), ecorePackage.getEString(), "name", null, 1, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, this.getJobThreadStatus(), "getThreadStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(jobEventTypeEEnum, JobEventType.class, "JobEventType");
 		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STARTING);
@@ -775,9 +830,16 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(jobTypeEEnum, JobType.INTERACTIVE);
 		addEEnumLiteral(jobTypeEEnum, JobType.BATCH);
 
+		initEEnum(jobThreadStatusEEnum, JobThreadStatus.class, "JobThreadStatus");
+		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.RUN);
+		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.WAITING);
+		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.END);
+
 		// Create annotations
 		// il-data
 		createIldataAnnotations();
+		// dk-core
+		createDkcoreAnnotations();
 	}
 
 	/**
@@ -868,6 +930,34 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (getJobThread_Name(), 
+		   source, 
+		   new String[] {
+			 "length", "30"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>dk-core</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDkcoreAnnotations() {
+		String source = "dk-core";	
+		addAnnotation
+		  (jobThreadEClass, 
+		   source, 
+		   new String[] {
+			 "text", "Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un\'interfaccia pura"
+		   },
+		   new URI[] {
+			 URI.createURI(QDevelopmentKitCorePackage.eNS_URI).appendFragment("//Comment")
 		   });
 	}
 

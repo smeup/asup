@@ -413,6 +413,34 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl <em>Job Thread</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.impl.JobThreadImpl
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobThread()
+	 * @generated
+	 */
+	int JOB_THREAD = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_THREAD__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Job Thread</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_THREAD_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,7 +448,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobStatus()
 	 * @generated
 	 */
-	int JOB_STATUS = 8;
+	int JOB_STATUS = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobType <em>Job Type</em>}' enum.
@@ -430,8 +458,18 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobType()
 	 * @generated
 	 */
-	int JOB_TYPE = 9;
+	int JOB_TYPE = 10;
 
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobThreadStatus <em>Job Thread Status</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobThreadStatus()
+	 * @generated
+	 */
+	int JOB_THREAD_STATUS = 11;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.
@@ -441,7 +479,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEventType()
 	 * @generated
 	 */
-	int JOB_EVENT_TYPE = 7;
+	int JOB_EVENT_TYPE = 8;
 
 
 	/**
@@ -737,6 +775,27 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EClass getJobManager();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobThread <em>Job Thread</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Job Thread</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobThread
+	 * @generated
+	 */
+	EClass getJobThread();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobThread#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobThread#getName()
+	 * @see #getJobThread()
+	 * @generated
+	 */
+	EAttribute getJobThread_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -797,6 +856,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getJobType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobThreadStatus <em>Job Thread Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Job Thread Status</em>'.
+	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
+	 * @generated
+	 */
+	EEnum getJobThreadStatus();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}'.
@@ -1057,6 +1126,24 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EClass JOB_MANAGER = eINSTANCE.getJobManager();
 
 		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl <em>Job Thread</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.impl.JobThreadImpl
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobThread()
+		 * @generated
+		 */
+		EClass JOB_THREAD = eINSTANCE.getJobThread();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_THREAD__NAME = eINSTANCE.getJobThread_Name();
+
+		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1111,6 +1198,16 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum JOB_TYPE = eINSTANCE.getJobType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobThreadStatus <em>Job Thread Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobThreadStatus()
+		 * @generated
+		 */
+		EEnum JOB_THREAD_STATUS = eINSTANCE.getJobThreadStatus();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.

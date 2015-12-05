@@ -7,7 +7,9 @@
  */
 package org.smeup.sys.os.type;
 
+import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.os.core.QCreationInfo;
 
 /**
@@ -18,6 +20,7 @@ import org.smeup.sys.os.core.QCreationInfo;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getApplication <em>Application</em>}</li>
+ *   <li>{@link org.smeup.sys.os.type.QTypedObject#getFacets <em>Facets</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.QTypedObject#getText <em>Text</em>}</li>
@@ -55,6 +58,23 @@ public interface QTypedObject extends QObjectNameable {
 	 * @generated
 	 */
 	void setApplication(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Facets</b></em>' containment reference list.
+	 * The list contents are of type {@link org.smeup.sys.il.core.meta.QFacet}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Facets</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Facets</em>' containment reference list.
+	 * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedObject_Facets()
+	 * @model containment="true"
+	 *        annotation="dk-core text='Per ora metto i facets sul typedObject, ma non ne sono tanto sicuro\nAlmeno per\362 posso annotare gli oggetti tipizzati'"
+	 * @generated
+	 */
+	List<QFacet> getFacets();
 
 	/**
 	 * Returns the value of the '<em><b>Library</b></em>' attribute. <!--

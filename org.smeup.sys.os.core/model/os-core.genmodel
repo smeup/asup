@@ -5,7 +5,7 @@
     runtimeJar="true" modelName="As.UP Operating System Core" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
     booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="../../org.smeup.sys.dk.core/model/dk.core.genmodel#//core ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>os-core.ecore</foreignModel>
   <genPackages prefix="OperatingSystemCore" basePackage="org.smeup.sys.os" disposableProviderFactory="true"
@@ -92,6 +92,11 @@
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Kernel"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Interactive"/>
         <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobType/Batch"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="os-core.ecore#//jobs/JobThreadStatus">
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/Run"/>
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/Waiting"/>
+        <genEnumLiterals ecoreEnumLiteral="os-core.ecore#//jobs/JobThreadStatus/End"/>
       </genEnums>
       <genClasses ecoreClass="os-core.ecore#//jobs/Job">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference os-core.ecore#//jobs/Job/context"/>
@@ -217,6 +222,10 @@
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/job"/>
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/updateStatus/status"/>
         </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="os-core.ecore#//jobs/JobThread">
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobThread/name"/>
+        <genOperations ecoreOperation="os-core.ecore#//jobs/JobThread/getThreadStatus"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="OperatingSystemEnvironment" basePackage="org.smeup.sys.os.core"

@@ -3,11 +3,12 @@
     xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dk-core="http://www.smeup.com/asup/dk/core"
     xmlns:il-core="http://www.smeup.org/asup/il/core"
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
+    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
   <contents
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"
@@ -5172,6 +5173,12 @@
       text="Work with Active Jobs"
       program="QWCCDSACTHD"
       status="TODO">
+    <facets
+        xsi:type="dk-core:Comment"
+        text="Attenzione al nome dell'API, QASxxx e QMUxxx"/>
+    <facets
+        xsi:type="dk-core:Comment"
+        text="Nel nostro modello il thread è sempre dipendente dal job"/>
     <parameters
         allowVariable="true"
         name="OUTPUT"

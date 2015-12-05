@@ -55,6 +55,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QResourceManager resourceManager;
 	@Inject
 	private QActivationGroupManager activationGroupManager;
+	@SuppressWarnings("unused")
 	@Inject
 	private QStrings strings;
 
@@ -359,6 +360,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return program;
 	}
 
+	@SuppressWarnings("unused")
 	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "-> " + callableProgram.getProgram().getName() + " (";
 
@@ -368,6 +370,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 //		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
+	@SuppressWarnings("unused")
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
 		String text = "<- " + callableProgram.getProgram().getName() + " (";
 		if (callableProgram.getEntry() != null)

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.dk.core.DevelopmentStatusType;
+import org.smeup.sys.dk.core.QComment;
 import org.smeup.sys.dk.core.QDevelopmentKitCoreFactory;
 import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.dk.core.QDevelopmentStatus;
@@ -36,6 +37,13 @@ public class DevelopmentKitCorePackageImpl extends EPackageImpl implements QDeve
 	 * @generated
 	 */
 	private EClass developmentStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,6 +139,24 @@ public class DevelopmentKitCorePackageImpl extends EPackageImpl implements QDeve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComment() {
+		return commentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComment_Text() {
+		return (EAttribute)commentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getDevelopmentStatusType() {
 		return developmentStatusTypeEEnum;
 	}
@@ -165,6 +191,9 @@ public class DevelopmentKitCorePackageImpl extends EPackageImpl implements QDeve
 		// Create classes and their features
 		developmentStatusEClass = createEClass(DEVELOPMENT_STATUS);
 		createEAttribute(developmentStatusEClass, DEVELOPMENT_STATUS__VALUE);
+
+		commentEClass = createEClass(COMMENT);
+		createEAttribute(commentEClass, COMMENT__TEXT);
 
 		// Create enums
 		developmentStatusTypeEEnum = createEEnum(DEVELOPMENT_STATUS_TYPE);
@@ -202,10 +231,14 @@ public class DevelopmentKitCorePackageImpl extends EPackageImpl implements QDeve
 
 		// Add supertypes to classes
 		developmentStatusEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
+		commentEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(developmentStatusEClass, QDevelopmentStatus.class, "DevelopmentStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDevelopmentStatus_Value(), this.getDevelopmentStatusType(), "value", null, 1, 1, QDevelopmentStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(commentEClass, QComment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComment_Text(), ecorePackage.getEString(), "text", null, 1, 1, QComment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(developmentStatusTypeEEnum, DevelopmentStatusType.class, "DevelopmentStatusType");

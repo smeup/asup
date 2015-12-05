@@ -98,15 +98,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int EXPRESSION__FACETS = QIntegratedLanguageCorePackage.NODE__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPRESSION__EXPRESSION_FORMAT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.ArithmeticExpressionImpl <em>Arithmetic Expression</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -202,7 +193,7 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 1;
+	int EXPRESSION_FEATURE_COUNT = QIntegratedLanguageCorePackage.NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
@@ -211,15 +202,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARITHMETIC_EXPRESSION__FACETS = EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARITHMETIC_EXPRESSION__EXPRESSION_FORMAT = EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
@@ -263,15 +245,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int ASSIGNMENT_EXPRESSION__FACETS = EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSIGNMENT_EXPRESSION__EXPRESSION_FORMAT = EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -313,15 +286,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int TERM_EXPRESSION__FACETS = EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERM_EXPRESSION__EXPRESSION_FORMAT = EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -345,15 +309,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATOMIC_TERM_EXPRESSION__FACETS = TERM_EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATOMIC_TERM_EXPRESSION__EXPRESSION_FORMAT = TERM_EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
@@ -388,15 +343,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREDICATE_EXPRESSION__FACETS = EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICATE_EXPRESSION__EXPRESSION_FORMAT = EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.expr.impl.BlockExpressionImpl <em>Block Expression</em>}' class.
@@ -435,15 +381,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int BOOLEAN_EXPRESSION__FACETS = PREDICATE_EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_EXPRESSION__EXPRESSION_FORMAT = PREDICATE_EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -468,15 +405,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int BLOCK_EXPRESSION__FACETS = EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCK_EXPRESSION__EXPRESSION_FORMAT = EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
@@ -499,15 +427,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOUND_TERM_EXPRESSION__FACETS = TERM_EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOUND_TERM_EXPRESSION__EXPRESSION_FORMAT = TERM_EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
@@ -627,15 +546,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int FUNCTION_TERM_EXPRESSION__FACETS = COMPOUND_TERM_EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_TERM_EXPRESSION__EXPRESSION_FORMAT = COMPOUND_TERM_EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -668,15 +578,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_EXPRESSION__FACETS = PREDICATE_EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_EXPRESSION__EXPRESSION_FORMAT = PREDICATE_EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
@@ -730,15 +631,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	int QUALIFIED_TERM_EXPRESSION__FACETS = COMPOUND_TERM_EXPRESSION__FACETS;
 
 	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUALIFIED_TERM_EXPRESSION__EXPRESSION_FORMAT = COMPOUND_TERM_EXPRESSION__EXPRESSION_FORMAT;
-
-	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -771,15 +663,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATIONAL_EXPRESSION__FACETS = PREDICATE_EXPRESSION__FACETS;
-
-	/**
-	 * The feature id for the '<em><b>Expression Format</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RELATIONAL_EXPRESSION__EXPRESSION_FORMAT = PREDICATE_EXPRESSION__EXPRESSION_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
@@ -1036,17 +919,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExpression();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.il.expr.QExpression#getExpressionFormat <em>Expression Format</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Expression Format</em>'.
-	 * @see org.smeup.sys.il.expr.QExpression#getExpressionFormat()
-	 * @see #getExpression()
-	 * @generated
-	 */
-	EAttribute getExpression_ExpressionFormat();
 
 	/**
 	 * Returns the meta object for class '
@@ -1465,14 +1337,6 @@ public interface QIntegratedLanguageExpressionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXPRESSION = eINSTANCE.getExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Expression Format</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EXPRESSION__EXPRESSION_FORMAT = eINSTANCE.getExpression_ExpressionFormat();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.expr.QExpressionParser <em>Expression Parser</em>}' class.

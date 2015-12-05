@@ -11,26 +11,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
+import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
-
 import org.smeup.sys.il.lock.QIntegratedLanguageLockPackage;
-
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
-
 import org.smeup.sys.os.core.env.EnvironmentLevel;
 import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentFactory;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
-
 import org.smeup.sys.os.core.impl.OperatingSystemCorePackageImpl;
-
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
-
 import org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl;
 
 /**
@@ -108,6 +101,7 @@ public class OperatingSystemEnvironmentPackageImpl extends EPackageImpl implemen
 		isInited = true;
 
 		// Initialize simple dependencies
+		QDevelopmentKitCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 		QIntegratedLanguageLockPackage.eINSTANCE.eClass();
 
