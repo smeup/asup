@@ -111,13 +111,22 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	int TYPED_OBJECT__APPLICATION = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_OBJECT__FACETS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_OBJECT__LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int TYPED_OBJECT__LIBRARY = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -126,7 +135,7 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_OBJECT__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int TYPED_OBJECT__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -135,7 +144,7 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_OBJECT__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
+	int TYPED_OBJECT__TEXT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Creation Info</b></em>' containment reference.
@@ -144,7 +153,7 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_OBJECT__CREATION_INFO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 4;
+	int TYPED_OBJECT__CREATION_INFO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Typed Object</em>' class.
@@ -153,7 +162,7 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPED_OBJECT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 5;
+	int TYPED_OBJECT_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Application</b></em>' attribute.
@@ -163,6 +172,15 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE__APPLICATION = TYPED_OBJECT__APPLICATION;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__FACETS = TYPED_OBJECT__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute.
@@ -393,6 +411,17 @@ public interface QOperatingSystemTypePackage extends EPackage {
 	EAttribute getTypedObject_Application();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.type.QTypedObject#getFacets <em>Facets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Facets</em>'.
+	 * @see org.smeup.sys.os.type.QTypedObject#getFacets()
+	 * @see #getTypedObject()
+	 * @generated
+	 */
+	EReference getTypedObject_Facets();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.type.QTypedObject#getLibrary <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -563,6 +592,14 @@ public interface QOperatingSystemTypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPED_OBJECT__APPLICATION = eINSTANCE.getTypedObject_Application();
+
+		/**
+		 * The meta object literal for the '<em><b>Facets</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED_OBJECT__FACETS = eINSTANCE.getTypedObject_Facets();
 
 		/**
 		 * The meta object literal for the '<em><b>Library</b></em>' attribute feature.

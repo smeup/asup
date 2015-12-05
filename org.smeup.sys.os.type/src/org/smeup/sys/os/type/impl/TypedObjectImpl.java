@@ -7,12 +7,18 @@
  */
 package org.smeup.sys.os.type.impl;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
+import org.smeup.sys.il.core.meta.QFacet;
 import org.smeup.sys.os.core.QCreationInfo;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 import org.smeup.sys.os.type.QTypedObject;
@@ -24,6 +30,7 @@ import org.smeup.sys.os.type.QTypedObject;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getApplication <em>Application</em>}</li>
+ *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getFacets <em>Facets</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.type.impl.TypedObjectImpl#getText <em>Text</em>}</li>
@@ -54,6 +61,16 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	 * @ordered
 	 */
 	protected String application = APPLICATION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getFacets() <em>Facets</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFacets()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<QFacet> facets;
 
 	/**
 	 * The default value of the '{@link #getLibrary() <em>Library</em>}' attribute.
@@ -167,6 +184,18 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<QFacet> getFacets() {
+		if (facets == null) {
+			facets = new EObjectContainmentEList<QFacet>(QFacet.class, this, QOperatingSystemTypePackage.TYPED_OBJECT__FACETS);
+		}
+		return facets;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -184,6 +213,8 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
+				return ((InternalEList<?>)getFacets()).basicRemove(otherEnd, msgs);
 			case QOperatingSystemTypePackage.TYPED_OBJECT__CREATION_INFO:
 				return basicSetCreationInfo(null, msgs);
 		}
@@ -304,6 +335,8 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION:
 				return getApplication();
+			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
+				return getFacets();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
 				return getLibrary();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
@@ -320,11 +353,16 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION:
 				setApplication((String)newValue);
+				return;
+			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
+				getFacets().clear();
+				getFacets().addAll((Collection<? extends QFacet>)newValue);
 				return;
 			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
 				setLibrary((String)newValue);
@@ -352,6 +390,9 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 			case QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION:
 				setApplication(APPLICATION_EDEFAULT);
 				return;
+			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
+				getFacets().clear();
+				return;
 			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
 				setLibrary(LIBRARY_EDEFAULT);
 				return;
@@ -377,6 +418,8 @@ public abstract class TypedObjectImpl extends ObjectNameableImpl implements QTyp
 		switch (featureID) {
 			case QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION:
 				return APPLICATION_EDEFAULT == null ? application != null : !APPLICATION_EDEFAULT.equals(application);
+			case QOperatingSystemTypePackage.TYPED_OBJECT__FACETS:
+				return facets != null && !facets.isEmpty();
 			case QOperatingSystemTypePackage.TYPED_OBJECT__LIBRARY:
 				return LIBRARY_EDEFAULT == null ? library != null : !LIBRARY_EDEFAULT.equals(library);
 			case QOperatingSystemTypePackage.TYPED_OBJECT__NAME:
