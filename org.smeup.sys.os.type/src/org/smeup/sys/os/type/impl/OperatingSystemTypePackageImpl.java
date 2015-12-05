@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.smeup.sys.dk.core.QDevelopmentKitCorePackage;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
@@ -440,6 +441,8 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		// Create annotations
 		// il-data
 		createIldataAnnotations();
+		// dk-core
+		createDkcoreAnnotations();
 	}
 
 	/**
@@ -512,6 +515,25 @@ public class OperatingSystemTypePackageImpl extends EPackageImpl implements QOpe
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>dk-core</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDkcoreAnnotations() {
+		String source = "dk-core";	
+		addAnnotation
+		  (getTypedObject_Facets(), 
+		   source, 
+		   new String[] {
+			 "text", "Per ora metto i facets sul typedObject, ma non ne sono tanto sicuro\nAlmeno per\u00f2 posso annotare gli oggetti tipizzati"
+		   },
+		   new URI[] {
+			 URI.createURI(QDevelopmentKitCorePackage.eNS_URI).appendFragment("//Comment")
 		   });
 	}
 

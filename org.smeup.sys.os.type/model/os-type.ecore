@@ -55,7 +55,11 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="facets" upperBound="-1"
         eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//meta/Facet"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="dk-core" references="../../org.smeup.sys.dk.core/model/dk.core.ecore#//Comment">
+        <details key="text" value="Per ora metto i facets sul typedObject, ma non ne sono tanto sicuro&#xA;Almeno però posso annotare gli oggetti tipizzati"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">

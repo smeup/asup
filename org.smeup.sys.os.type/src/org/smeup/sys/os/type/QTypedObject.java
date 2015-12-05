@@ -71,6 +71,7 @@ public interface QTypedObject extends QObjectNameable {
 	 * @return the value of the '<em>Facets</em>' containment reference list.
 	 * @see org.smeup.sys.os.type.QOperatingSystemTypePackage#getTypedObject_Facets()
 	 * @model containment="true"
+	 *        annotation="dk-core text='Per ora metto i facets sul typedObject, ma non ne sono tanto sicuro\nAlmeno per\362 posso annotare gli oggetti tipizzati'"
 	 * @generated
 	 */
 	List<QFacet> getFacets();
