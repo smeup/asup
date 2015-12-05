@@ -14,6 +14,7 @@ Export-Package: org.smeup.sys.os.core,
  org.smeup.sys.os.core.jobs.impl
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.smeup.sys.dk.core;visibility:=reexport,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.il.lock;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport,

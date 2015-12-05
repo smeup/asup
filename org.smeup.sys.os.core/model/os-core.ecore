@@ -274,10 +274,28 @@
       <eLiterals name="EndOfJob" value="70" literal="EOJ"/>
       <eLiterals name="End" value="80" literal="END"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobThread" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+      <eAnnotations source="dk-core" references="../../org.smeup.sys.dk.core/model/dk.core.ecore#//Comment">
+        <details key="text" value="Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un'interfaccia pura"/>
+      </eAnnotations>
+      <eOperations name="getThreadStatus" lowerBound="1" eType="#//jobs/JobThreadStatus"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          changeable="false" derived="true">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.data/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="30"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobType">
       <eLiterals name="Kernel" value="10" literal="KRN"/>
       <eLiterals name="Interactive" value="20" literal="INT"/>
       <eLiterals name="Batch" value="30" literal="BCH"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="JobThreadStatus">
+      <eLiterals name="Run" value="10" literal="RUN"/>
+      <eLiterals name="Waiting" value="20" literal="WAIT"/>
+      <eLiterals name="End" value="30" literal="END"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="env" nsURI="http://www.smeup.org/asup/os/core/env" nsPrefix="os-core-env">

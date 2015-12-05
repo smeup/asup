@@ -5176,6 +5176,9 @@
     <facets
         xsi:type="dk-core:Comment"
         text="Attenzione al nome dell'API, QASxxx e QMUxxx"/>
+    <facets
+        xsi:type="dk-core:Comment"
+        text="Nel nostro modello il thread è sempre dipendente dal job"/>
     <parameters
         allowVariable="true"
         name="OUTPUT"
