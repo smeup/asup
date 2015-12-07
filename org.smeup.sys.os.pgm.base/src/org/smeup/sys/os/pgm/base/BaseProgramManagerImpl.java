@@ -55,6 +55,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	private QResourceManager resourceManager;
 	@Inject
 	private QActivationGroupManager activationGroupManager;
+
 	@SuppressWarnings("unused")
 	@Inject
 	private QStrings strings;

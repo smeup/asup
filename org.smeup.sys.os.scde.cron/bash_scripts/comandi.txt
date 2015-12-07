@@ -28,4 +28,8 @@ Chiamata script per registrazione crontask:
 	Parametri: 1) Nome task o Id task 	
  	
  	Esempio:  ./removecron WRKOBJ_PGM
+	
+*** cronlog ***
+
+		Mostra il log delle sottomissioni effettuate
  

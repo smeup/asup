@@ -31,14 +31,15 @@ public interface QDataManager {
 	 * @model required="true" dataContextRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault);
+	QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" contextRequired="true"
 	 * @generated
 	 */
-	QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms, boolean useDefault);
+	QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -1933,19 +1933,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		addEOperation(dataContainerEClass, ecorePackage.getEString(), "getKeys", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "hasDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "dataTerm", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isSet", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "isSet", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "hasDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theIntegratedLanguageDataTermPackage.getDataTerm());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -2223,7 +2214,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		addEParameter(op, g1, "dataTerms", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "useDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -2235,7 +2225,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		addEParameter(op, g1, "dataTerms", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "useDefault", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataManagerEClass, this.getDataContainer(), "createDataContainer", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theIntegratedLanguageCoreCtxPackage.getContext(), "context", 1, 1, IS_UNIQUE, IS_ORDERED);

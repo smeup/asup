@@ -95,7 +95,7 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 
 	@SuppressWarnings("resource")
 	@Override
-	public QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
+	public QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean controlRequiredParms) {
 
 		if (command == null || command.trim().equals(""))
 			throw new OperatingSystemRuntimeException("Empty command line", null);
@@ -159,12 +159,11 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		}
 
 		// data container
-		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms, defaults);
+		QDataContainer dataContainer = dataManager.createDataContainer(job.getContext(), dataTerms);
 		dataContainer.clearData();
 		callableCommand.setDataContainer(dataContainer);
 
-		if (defaults)
-			dataContainer.resetData();
+		dataContainer.resetData();
 
 		QDataWriter dataWriter = QIntegratedLanguageDataFactory.eINSTANCE.createDataWriter();
 
@@ -197,12 +196,19 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 			QDataTerm<?> dataTerm = dataTerms.get(commandParameter.getName());
 
 			QData data = null;
-			if (value.startsWith("&") || value.isEmpty() == false)
+			if (value.startsWith("&") || value.isEmpty() == false) {
 				data = assignValue(dataTerm, dataContainer, dataWriter, value, variables);
+			} else {
+				data = dataContainer.getData(dataTerm);
+			}
 
+			
 			// required
-			if ((data == null || (data != null && data.isEmpty())) && commandParameter.isRequired())
-				throw new OperatingSystemRuntimeException("Required parameter: " + commandParameter.getName());
+			if (controlRequiredParms) {
+				if ((data == null || (data != null && data.isEmpty())) && commandParameter.isRequired())
+					throw new OperatingSystemRuntimeException("Required parameter: " + commandParameter.getName());
+			}
+				
 		}
 		return callableCommand;
 	}
@@ -683,25 +689,25 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	}
 
 	@Override
-	public void executeCommand(String contextID, String command, Map<String, Object> variables, boolean defaults) {
+	public void executeCommand(String contextID, String command, Map<String, Object> variables) {
 
-		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, defaults);
+		QCallableCommand callableCommand = prepareCommand(contextID, command, variables, true);
 		executeCommand(contextID, callableCommand);
 		callableCommand.close();
 	}
 
 	@SuppressWarnings("resource")
 	@Override
-	public QDataContainer decodeCommand(String contextID, String command, boolean useDefaults) {
+	public QDataContainer decodeCommand(String contextID, String command) {
 
-		QCallableCommand callableCommand = prepareCommand(contextID, command, null, useDefaults);
+		QCallableCommand callableCommand = prepareCommand(contextID, command, null, false);
 		return callableCommand.getDataContainer();
 	}
 
 	@Override
-	public String encodeCommand(String contextID, QDataContainer dataContainer, boolean useDefaults) {
+	public String encodeCommand(String contextID, QDataContainer dataContainer, boolean showDefaults) {
 
-		return IBMiCommandEncoder.encodeCommand(contextID, dataContainer, useDefaults);
+		return IBMiCommandEncoder.encodeCommand(contextID, dataContainer, showDefaults);
 	}
 
 	@Override

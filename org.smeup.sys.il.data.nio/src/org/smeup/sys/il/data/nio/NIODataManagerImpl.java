@@ -52,13 +52,13 @@ public class NIODataManagerImpl implements QDataManager {
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
-		return new NIODataContainerImpl((NIODataContextImpl) dataContext, dataTerms, useDefault);
+	public QDataContainer createDataContainer(QDataContext dataContext, Map<String, QDataTerm<?>> dataTerms) {
+		return new NIODataContainerImpl((NIODataContextImpl) dataContext, dataTerms);
 	}
 
 	@Override
-	public QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
-		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms, useDefault);
+	public QDataContainer createDataContainer(QContext context, Map<String, QDataTerm<?>> dataTerms) {
+		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class NIODataManagerImpl implements QDataManager {
 
 		Map<String, QDataTerm<?>> dataTerms = buildDataTerms(frame, frameManager.getFrame(term));
 
-		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms, true);
+		return new NIODataContainerImpl(new NIODataContextImpl(context), dataTerms);
 	}
 
 	@Override

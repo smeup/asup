@@ -53,13 +53,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 	private Map<String, QData> datas;
 
-	private boolean useDefault;
-
-	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms, boolean useDefault) {
+	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms) {
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
-		this.useDefault = useDefault;
-
 		this.dataContext = dataContext;
 	}
 
@@ -293,78 +289,29 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	}
 
 	@Override
-	public boolean isDefault(String key) {
+	public boolean hasDefaultValue(String key) {
 
 		QDataTerm<?> dataTerm = dataTerms.get(key);
 
-		return isDefault(dataTerm);
+		return hasDefaultValue(dataTerm);
 	}
 
 	@Override
-	public boolean isDefault(QDataTerm<?> dataTerm) {
-		boolean result = false;
+	public boolean hasDefaultValue(QDataTerm<?> dataTerm) {		
 
 		if (dataTerm == null)
 			return false;
 
-		QData data = getOrCreateData(dataTerm);
-		data.clear();
-
-		NIODataResetter resetter = new NIODataResetter(data);
-		dataTerm.accept(resetter);
-
-		try {
-
-			String s1 = getData(dataTerm).toString();
-			String s2 = data.toString();
-
-			result = s1.equals(s2);
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			result = false;
-		}
-		return result;
-	}
-
-	@Override
-	public boolean isSet(String key) {
-
-		QDataTerm<?> dataTerm = dataTerms.get(key);
-
-		return isSet(dataTerm);
-	}
-
-	@Override
-	public boolean isSet(QDataTerm<?> dataTerm) {
-
-		boolean result = false;
-
-		if (dataTerm == null)
-			return false;
-
-		QData data = getOrCreateData(dataTerm);
-		data.clear();
-
-		if (useDefault) {
-			NIODataResetter resetter = new NIODataResetter(data);
+		QData clearData = createData(dataTerm, true);
+		QOverlay overlay = dataTerm.getFacet(QOverlay.class);
+		if (overlay == null) {
+			NIODataResetter resetter = new NIODataResetter(clearData);
 			dataTerm.accept(resetter);
 		}
 
-		try {
+		QData data = datas.get(getKey(dataTerm));
 
-			String s1 = getData(dataTerm).toString();
-			String s2 = data.toString();
-
-			result = !s1.equals(s2);
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			result = false;
-		}
-		return result;
-	}
-
-	private QData getOrCreateData(QDataTerm<?> dataTerm) {
-		return getOrCreateData(getKey(dataTerm), dataTerm);
+		return data.toString().equals(clearData.toString());
 	}
 
 	private QData getOrCreateData(String key) {

@@ -24,26 +24,26 @@ public interface QShellManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextIDRequired="true" commandRequired="true" useDefaultsRequired="true"
+	 * @model contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	void executeCommand(String contextID, String command, Map<String, Object> variables, boolean useDefaults);
+	void executeCommand(String contextID, String command, Map<String, Object> variables);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" commandRequired="true" useDefaultsRequired="true"
+	 * @model required="true" contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	QDataContainer decodeCommand(String contextID, String command, boolean useDefaults);
+	QDataContainer decodeCommand(String contextID, String command);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" containerRequired="true" useDefaultsRequired="true"
+	 * @model required="true" contextIDRequired="true" containerRequired="true"
 	 * @generated
 	 */
-	String encodeCommand(String contextID, QDataContainer container, boolean useDefaults);
+	String encodeCommand(String contextID, QDataContainer container, boolean showDefaults);
 
 	/**
 	 * <!-- begin-user-doc -->

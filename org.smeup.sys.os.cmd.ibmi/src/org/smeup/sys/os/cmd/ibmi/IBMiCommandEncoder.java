@@ -31,7 +31,7 @@ public class IBMiCommandEncoder {
 
 	private static final String SPACE = " ";
 
-	public static String encodeCommand(String contextID, QDataContainer dataContainer, boolean defaults) {
+	public static String encodeCommand(String contextID, QDataContainer dataContainer, boolean showDefault) {
 
 		String result = "";
 		
@@ -44,7 +44,7 @@ public class IBMiCommandEncoder {
 			 * QDataTerm<?> dataTerm = dataContext.getTerms().get(position);
 			 */
 
-			if (dataContainer.isSet(key) || defaults) {
+			if (!dataContainer.hasDefaultValue(key)|| showDefault) {
 
 				result += key + "(";
 

@@ -95,7 +95,7 @@ public class BaseCallableInjector {
 
 	public QCallableProgram prepareCallable(QProgram program, Class<?> klass) {
 
-		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>(), true);
+		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
 
 		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, new ArrayList<Annotation>());
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
@@ -128,7 +128,7 @@ public class BaseCallableInjector {
 
 	public <P extends Object> P prepareProcedure(Object owner, Class<P> klass) {
 
-		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>(), true);
+		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
 		Constructor<?> constructor = null;
 
 		try {

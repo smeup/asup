@@ -127,6 +127,7 @@ public class JobSubmitter {
 		private QCallableProgram caller;
 
 		protected SubmittedCommand(QJob qJob, String commandString, QCallableProgram caller) {
+			super("Sub cmd:" + commandString);
 			this.qJob = qJob;
 			this.commandString = commandString;
 			this.caller = caller;
@@ -168,7 +169,7 @@ public class JobSubmitter {
 				}
 			}
 
-			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables, true);
+			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables);
 
 			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
 			QJobLog jobLog = jobLogManager.lookup(qJob);

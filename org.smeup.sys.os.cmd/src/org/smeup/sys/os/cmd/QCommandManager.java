@@ -22,10 +22,10 @@ public interface QCommandManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model required="true" contextIDRequired="true" commandRequired="true" defaultsRequired="true"
+	 * @model required="true" contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean defaults);
+	QCallableCommand prepareCommand(String contextID, String command, Map<String, Object> variables, boolean controlRequiredParms);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -38,9 +38,9 @@ public interface QCommandManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model contextIDRequired="true" commandRequired="true" defaultsRequired="true"
+	 * @model contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	void executeCommandImmediate(String contextID, String command, Map<String, Object> variables, boolean defaults);
+	void executeCommandImmediate(String contextID, String command, Map<String, Object> variables);
 
 } // QCommandManager

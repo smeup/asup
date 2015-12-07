@@ -618,7 +618,7 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "defaults", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "controlRequiredParms", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(commandManagerEClass, null, "executeCommand", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -633,7 +633,6 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEBoolean(), "defaults", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(commandParameterEClass, QCommandParameter.class, "CommandParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandParameter_AllowVariable(), ecorePackage.getEBoolean(), "allowVariable", null, 1, 1, QCommandParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

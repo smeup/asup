@@ -173,7 +173,7 @@ public class BaseShellSocketHandler extends Thread {
 		}
 		
 		System.out.println("Executing " + command + "...");
-		shellManager.executeCommand(authenticationToken.getID(), command, null, true);
+		shellManager.executeCommand(authenticationToken.getID(), command, null);
 		System.out.println(command + " terminated");
 		
 		return nextLoop;

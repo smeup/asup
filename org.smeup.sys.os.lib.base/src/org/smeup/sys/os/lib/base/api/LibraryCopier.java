@@ -84,7 +84,7 @@ public @Supported class LibraryCopier {
 
 		String command = "CRTDUPOBJ OBJ(*ALL)" + " FROMLIB(" + existingLibrary.trimR() + ")" + " OBJTYPE(*ALL)" + " TOLIB(" + newLibName + ")" + " NEWOBJ(*OBJ)" + " DATA("
 				+ duplicateData.asData().trimR() + ")";
-		commandManager.executeCommandImmediate(job.getJobID(), command, null, true);
+		commandManager.executeCommandImmediate(job.getJobID(), command, null);
 	}
 
 	public static enum CREATELIBRARYEnum {
