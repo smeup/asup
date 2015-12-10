@@ -11,22 +11,22 @@
  */
 package org.smeup.sys.il.core.meta.e4;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.smeup.sys.il.core.meta.QCardinality;
 
 public class E4CardinalityAdapter implements QCardinality {
 
 	private static final long serialVersionUID = 1L;
 
-	private EStructuralFeature structuralFeature;
+	private ETypedElement element;
 
-	public E4CardinalityAdapter(EStructuralFeature structuralFeature) {
-		this.structuralFeature = structuralFeature;
+	public E4CardinalityAdapter(ETypedElement element) {
+		this.element = element;
 	}
 
 	@Override
 	public int getMin() {
-		return this.structuralFeature.getLowerBound();
+		return this.element.getLowerBound();
 	}
 
 	@Override
@@ -36,17 +36,17 @@ public class E4CardinalityAdapter implements QCardinality {
 
 	@Override
 	public boolean isMandatory() {
-		return this.structuralFeature.getLowerBound() > 0;
+		return this.element.getLowerBound() > 0;
 	}
 
 	@Override
 	public boolean isMultiple() {
-		return this.structuralFeature.getUpperBound() > 1;
+		return this.element.getUpperBound() > 1;
 	}
 
 	@Override
 	public int getMax() {
-		return this.structuralFeature.getUpperBound();
+		return this.element.getUpperBound();
 	}
 
 	@Override

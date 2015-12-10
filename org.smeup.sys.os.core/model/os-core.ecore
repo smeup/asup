@@ -279,6 +279,7 @@
         <details key="text" value="Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un'interfaccia pura"/>
       </eAnnotations>
       <eOperations name="getThreadStatus" lowerBound="1" eType="#//jobs/JobThreadStatus"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           changeable="false" derived="true">

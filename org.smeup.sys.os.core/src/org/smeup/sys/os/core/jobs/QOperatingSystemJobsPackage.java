@@ -423,13 +423,22 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_THREAD = 7;
 
 	/**
+	 * The feature id for the '<em><b>Thread ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_THREAD__THREAD_ID = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_THREAD__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+	int JOB_THREAD__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Job Thread</em>' class.
@@ -438,7 +447,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_THREAD_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+	int JOB_THREAD_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}' enum.
@@ -796,6 +805,17 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJobThread_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread ID</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobThread#getThreadID()
+	 * @see #getJobThread()
+	 * @generated
+	 */
+	EAttribute getJobThread_ThreadID();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1142,6 +1162,14 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB_THREAD__NAME = eINSTANCE.getJobThread_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_THREAD__THREAD_ID = eINSTANCE.getJobThread_ThreadID();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}' class.

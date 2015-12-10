@@ -95,6 +95,7 @@ public class ActivetThreadsWorker {
 		public InternalJobThreadAdapter(ThreadInfo threadInfo) {
 			this.threadInfo = threadInfo;
 			this.name = threadInfo.getThreadName(); 
+			setThreadID(threadInfo.getThreadId());
 		}
 
 		@Override
@@ -118,5 +119,6 @@ public class ActivetThreadsWorker {
 			}
 			return jobThreadStatus;
 		}
+				
 	}
 }

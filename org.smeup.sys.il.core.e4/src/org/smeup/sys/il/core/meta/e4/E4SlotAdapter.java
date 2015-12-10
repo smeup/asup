@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QCardinality;
@@ -23,25 +24,27 @@ import org.smeup.sys.il.core.meta.QSlot;
 
 public class E4SlotAdapter implements QSlot {
 
-	private EStructuralFeature structuralFeature;
+	private ETypedElement element;
 
-	public E4SlotAdapter(EStructuralFeature structuralFeature) {
-		this.structuralFeature = structuralFeature;
+	public E4SlotAdapter(ETypedElement element) {
+		this.element = element;
 	}
 
 	@Override
 	public String getName() {
-		return structuralFeature.getName();
+		return element.getName();
 	}
 
 	@Override
 	public QCardinality getCardinality() {
-		return new E4CardinalityAdapter(this.structuralFeature);
+		return new E4CardinalityAdapter(this.element);
 	}
 
 	@Override
 	public Object getDefaultValue() {
-		return this.structuralFeature.getDefaultValue();
+		if (element instanceof EStructuralFeature) 
+			return ((EStructuralFeature)this.element).getDefaultValue();
+		return null;
 	}
 
 	@Override
@@ -52,18 +55,22 @@ public class E4SlotAdapter implements QSlot {
 
 	@Override
 	public boolean isTransient() {
-		return this.structuralFeature.isTransient();
+		if (element instanceof EStructuralFeature) 
+			return ((EStructuralFeature)this.element).isTransient();
+		return false;
 	}
 
 	@Override
-	public boolean isVolatile() {
-		return this.structuralFeature.isVolatile();
+	public boolean isVolatile() {		
+		if (element instanceof EStructuralFeature) 
+			return ((EStructuralFeature)this.element).isVolatile();
+		return false;
 	}
 
 	@Override
 	public QObject getValue(String nsPrefix) {
 
-		EAnnotation eAnnotation = this.structuralFeature.getEAnnotation(nsPrefix);
+		EAnnotation eAnnotation = this.element.getEAnnotation(nsPrefix);
 
 		if (eAnnotation == null)
 			return null;
@@ -87,6 +94,6 @@ public class E4SlotAdapter implements QSlot {
 
 	@Override
 	public String toString() {
-		return this.structuralFeature.toString();
+		return this.element.toString();
 	}
 }

@@ -12,12 +12,14 @@
 package org.smeup.sys.co.shell.base;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
 import org.smeup.sys.il.core.QObject;
@@ -88,9 +90,15 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 		dataContainer.clearData();
 
 		for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
-			QData data = dataContainer.getData(dataTerm);
-
-			Object value = eObject.eGet(eClass.getEStructuralFeature(dataTerm.getName()));
+			QData data = dataContainer.getData(dataTerm);		
+			
+			EStructuralFeature feature = eClass.getEStructuralFeature(dataTerm.getName());
+			Object value;
+			if (feature != null) 
+				value = eObject.eGet(feature);
+			else 
+				value = invoke(eObject, dataTerm.getName());
+				
 			if (value == null) {
 				data.clear();
 				streamWrite(data + "|");
@@ -129,6 +137,16 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 		streamWrite("\n");
 		streamFlush();
+	}
+
+	private Object invoke(EObject eObject, String name) {
+		try {
+			Method method = eObject.getClass().getMethod(name, new Class[0]);
+			method.setAccessible(true);
+			return method.invoke(eObject, new Object[0]);
+		} catch (Throwable e) {
+			throw new RuntimeException(e);
+		}	
 	}
 
 	@Override

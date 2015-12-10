@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -42,6 +43,32 @@ public interface QJobThread extends QObjectNameable {
 	 * @generated
 	 */
 	String getName();
+
+	/**
+	 * Returns the value of the '<em><b>Thread ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Thread ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Thread ID</em>' attribute.
+	 * @see #setThreadID(long)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread_ThreadID()
+	 * @model
+	 * @generated
+	 */
+	long getThreadID();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Thread ID</em>' attribute.
+	 * @see #getThreadID()
+	 * @generated
+	 */
+	void setThreadID(long value);
 
 	/**
 	 * <!-- begin-user-doc -->

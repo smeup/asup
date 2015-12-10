@@ -484,6 +484,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EAttribute getJobThread_Name() {
+		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobThread_ThreadID() {
 		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -629,6 +638,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobManagerEClass = createEClass(JOB_MANAGER);
 
 		jobThreadEClass = createEClass(JOB_THREAD);
+		createEAttribute(jobThreadEClass, JOB_THREAD__THREAD_ID);
 		createEAttribute(jobThreadEClass, JOB_THREAD__NAME);
 
 		// Create enums
@@ -804,6 +814,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(jobThreadEClass, QJobThread.class, "JobThread", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJobThread_ThreadID(), ecorePackage.getELong(), "threadID", null, 0, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJobThread_Name(), ecorePackage.getEString(), "name", null, 1, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		addEOperation(jobThreadEClass, this.getJobThreadStatus(), "getThreadStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
