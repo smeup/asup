@@ -278,7 +278,6 @@
       <eAnnotations source="dk-core" references="../../org.smeup.sys.dk.core/model/dk.core.ecore#//Comment">
         <details key="text" value="Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un'interfaccia pura"/>
       </eAnnotations>
-      <eOperations name="getThreadStatus" lowerBound="1" eType="#//jobs/JobThreadStatus"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -287,6 +286,8 @@
           <details key="length" value="30"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="threadStatus" lowerBound="1"
+          eType="#//jobs/JobThreadStatus"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobType">
       <eLiterals name="Kernel" value="10" literal="KRN"/>

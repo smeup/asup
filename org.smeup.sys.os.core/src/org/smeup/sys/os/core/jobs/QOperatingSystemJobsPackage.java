@@ -441,13 +441,22 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_THREAD__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Thread Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_THREAD__THREAD_STATUS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Job Thread</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_THREAD_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
+	int JOB_THREAD_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}' enum.
@@ -803,6 +812,17 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJobThread_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus <em>Thread Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Thread Status</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus()
+	 * @see #getJobThread()
+	 * @generated
+	 */
+	EAttribute getJobThread_ThreadStatus();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}'.
@@ -1162,6 +1182,14 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB_THREAD__NAME = eINSTANCE.getJobThread_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Thread Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_THREAD__THREAD_STATUS = eINSTANCE.getJobThread_ThreadStatus();
 
 		/**
 		 * The meta object literal for the '<em><b>Thread ID</b></em>' attribute feature.

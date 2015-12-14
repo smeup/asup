@@ -19,6 +19,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus <em>Thread Status</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,11 +72,28 @@ public interface QJobThread extends QObjectNameable {
 	void setThreadID(long value);
 
 	/**
+	 * Returns the value of the '<em><b>Thread Status</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.smeup.sys.os.core.jobs.JobThreadStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
+	 * @return the value of the '<em>Thread Status</em>' attribute.
+	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
+	 * @see #setThreadStatus(JobThreadStatus)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread_ThreadStatus()
+	 * @model required="true"
 	 * @generated
 	 */
 	JobThreadStatus getThreadStatus();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus <em>Thread Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Thread Status</em>' attribute.
+	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
+	 * @see #getThreadStatus()
+	 * @generated
+	 */
+	void setThreadStatus(JobThreadStatus value);
 
 } // QJobThread

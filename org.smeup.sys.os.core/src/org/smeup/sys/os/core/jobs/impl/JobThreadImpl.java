@@ -26,6 +26,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getThreadID <em>Thread ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getThreadStatus <em>Thread Status</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,6 +77,26 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getThreadStatus() <em>Thread Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final JobThreadStatus THREAD_STATUS_EDEFAULT = JobThreadStatus.RUN;
+
+	/**
+	 * The cached value of the '{@link #getThreadStatus() <em>Thread Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getThreadStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected JobThreadStatus threadStatus = THREAD_STATUS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,9 +153,19 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 	 * @generated
 	 */
 	public JobThreadStatus getThreadStatus() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return threadStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setThreadStatus(JobThreadStatus newThreadStatus) {
+		JobThreadStatus oldThreadStatus = threadStatus;
+		threadStatus = newThreadStatus == null ? THREAD_STATUS_EDEFAULT : newThreadStatus;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB_THREAD__THREAD_STATUS, oldThreadStatus, threadStatus));
 	}
 
 	/**
@@ -149,6 +180,8 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 				return getThreadID();
 			case QOperatingSystemJobsPackage.JOB_THREAD__NAME:
 				return getName();
+			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_STATUS:
+				return getThreadStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,6 +197,9 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_ID:
 				setThreadID((Long)newValue);
 				return;
+			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_STATUS:
+				setThreadStatus((JobThreadStatus)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -178,6 +214,9 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 		switch (featureID) {
 			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_ID:
 				setThreadID(THREAD_ID_EDEFAULT);
+				return;
+			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_STATUS:
+				setThreadStatus(THREAD_STATUS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -195,6 +234,8 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 				return threadID != THREAD_ID_EDEFAULT;
 			case QOperatingSystemJobsPackage.JOB_THREAD__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case QOperatingSystemJobsPackage.JOB_THREAD__THREAD_STATUS:
+				return threadStatus != THREAD_STATUS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +254,8 @@ public abstract class JobThreadImpl extends ObjectNameableImpl implements QJobTh
 		result.append(threadID);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", threadStatus: ");
+		result.append(threadStatus);
 		result.append(')');
 		return result.toString();
 	}

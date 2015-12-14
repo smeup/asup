@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QFrame;
@@ -45,24 +44,13 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 					for (EStructuralFeature structuralFeature : eClass.getEAllStructuralFeatures())
 						this.slots.add(new E4SlotAdapter(structuralFeature));
-
-					for (EOperation operation : eClass.getEAllOperations()) 
-						if (operation.getEParameters().size() == 0 && isValid(operation))
-							this.slots.add(new E4SlotAdapter(operation));
-
-
 				}
 			}
 
 		return this.slots;
 	}
 
-	private boolean isValid(EOperation operation) {
-		// TODO Stabilire come identificare le operazioni da visualizzare
-		return "getThreadStatus".equals(operation.getName());
-	}
-
-	@SuppressWarnings("rawtypes")	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public QFrame<?> ako() {
 
