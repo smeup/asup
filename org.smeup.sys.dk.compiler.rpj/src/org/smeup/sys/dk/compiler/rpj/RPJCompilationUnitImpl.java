@@ -65,7 +65,7 @@ import org.smeup.sys.os.file.QExternalFile;
 import org.smeup.sys.os.file.QFileFormat;
 
 public class RPJCompilationUnitImpl extends CompilationUnitImpl {
-	
+
 	private QContext context;
 	private QNameable node;
 
@@ -196,9 +196,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		return keyListTerm;
 
 	}
-	
-	
-	
+
 	@Override
 	public QDataTerm<?> getDataTerm(String name, boolean deep) {
 
@@ -215,11 +213,12 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		if (dataTerm == null && getNode() instanceof QProcedure) {
 			QProcedure qProcedure = (QProcedure) getNode();
 
-			for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
-				if (equalsTermName(entryParameter.getName(), name)) {
-					dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
-					break;
-				}
+			if (qProcedure.getEntry() != null)
+				for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters())
+					if (equalsTermName(entryParameter.getName(), name)) {
+						dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
+						break;
+					}
 		}
 
 		// deep search on module
@@ -278,7 +277,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			}
 
 			// search on renamed dataSet
-			if (dataTerm == null) {
+			if (dataTerm == null)
 				for (QDataSetTerm dataSetTerm : renamedFiles) {
 					if (dataSetTerm.getFormat() == null)
 						continue;
@@ -292,12 +291,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					if (dataTerm != null)
 						break;
 				}
-			}
 
 		}
 
 		// search on display
-		if (dataTerm == null) {
+		if (dataTerm == null)
 			for (QDisplayTerm displayTerm : displays) {
 				if (displayTerm.getFormat() == null)
 					continue;
@@ -306,10 +304,9 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (dataTerm != null)
 					break;
 			}
-		}
 
 		// search on printers
-		if (dataTerm == null) {
+		if (dataTerm == null)
 			for (QPrintTerm printTerm : printers) {
 				if (printTerm.getFormat() == null)
 					continue;
@@ -318,66 +315,58 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				if (dataTerm != null)
 					break;
 			}
-		}
 
 		if (dataTerm != null)
 			cachedTerms.put(normalizeTermName(name), dataTerm);
 
 		return dataTerm;
 	}
-		
-	
+
 	@Override
 	public Map<String, QDataTerm<?>> getDataTerms(boolean deep) {
-		
+
 		cachedTerms = new HashMap<String, QDataTerm<?>>();
-		
+
 		QCallableUnit callableUnit = (QCallableUnit) getNode();
-		
+
 		// search on dataTermContainer
-		if (callableUnit.getDataSection() != null){
-			for (QDataTerm<?> dataTerm: callableUnit.getDataSection().getDatas()){				
-				registerData(cachedTerms, dataTerm);					
-			}
-		}	
+		if (callableUnit.getDataSection() != null)
+			for (QDataTerm<?> dataTerm : callableUnit.getDataSection().getDatas())
+				registerData(cachedTerms, dataTerm);
 
 		if (getNode() instanceof QProcedure) {
 			QProcedure qProcedure = (QProcedure) getNode();
 
 			for (QEntryParameter<?> entryParameter : qProcedure.getEntry().getParameters()) {
-				
+
 				QDataTerm<?> dataTerm = (QDataTerm<?>) entryParameter.getDelegate();
 				registerData(cachedTerms, dataTerm);
-			}				
+			}
 		}
-		
+
 		// Deep search
 		if (deep) {
-			
+
 			// Load nested compilation units list
 			Map<String, QCompilationUnit> compilationUnits = new HashMap<String, QCompilationUnit>();
-			loadNestedCompilationUnit(this, compilationUnits, true);			
-			
-			// Deep search on nested compilation units			
-			for (String compilationUnitKey : compilationUnits.keySet()){
+			loadNestedCompilationUnit(this, compilationUnits, true);
+
+			// Deep search on nested compilation units
+			for (String compilationUnitKey : compilationUnits.keySet()) {
 
 				Map<String, QDataTerm<?>> dataTerms = compilationUnits.get(compilationUnitKey).getDataTerms(false);
-				for (String dataTermName: dataTerms.keySet()){
+				for (String dataTermName : dataTerms.keySet())
 					if (!cachedTerms.containsKey(dataTermName))
 						registerData(cachedTerms, dataTerms.get(dataTermName));
-				}
 			}
-			
+
 			// Deep search on parent unit
-			if (this.parentUnit != null) {
-				for (String dataTermName: this.parentUnit.getDataTerms(deep).keySet()){
+			if (this.parentUnit != null)
+				for (String dataTermName : this.parentUnit.getDataTerms(deep).keySet())
 					registerData(cachedTerms, this.parentUnit.getDataTerms(false).get(dataTermName));
-				}
-			}
 		}
 
-
-		// DataSet	
+		// DataSet
 
 		List<QDataSetTerm> renamedFiles = new ArrayList<QDataSetTerm>();
 
@@ -399,58 +388,42 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				continue;
 
 			// search on primary dataSet
-			
-			for (QDataTerm<?> dataTerm : dataSetTerm.getFormat().getDefinition().getElements()) {			
+
+			for (QDataTerm<?> dataTerm : dataSetTerm.getFormat().getDefinition().getElements())
 				registerData(cachedTerms, dataTerm);
-			}
 		}
-		
+
 		// Renamed dataSet
-		for (QDataSetTerm dataSetTerm : renamedFiles) {
-			
-			if (dataSetTerm.getFormat() != null) {								
-				//Format name
+		for (QDataSetTerm dataSetTerm : renamedFiles)
+			if (dataSetTerm.getFormat() != null) {
+				// Format name
 				registerData(cachedTerms, dataSetTerm.getFormat());
 				// Format definition
-				for (QDataTerm<?> definitionTerm: dataSetTerm.getFormat().getDefinition().getElements()){
+				for (QDataTerm<?> definitionTerm : dataSetTerm.getFormat().getDefinition().getElements())
 					registerData(cachedTerms, definitionTerm);
-				}
 			}
-		}
-
 
 		// Display
-		
-		for (QDisplayTerm displayTerm : displays) {
-			if (displayTerm.getFormat() != null) {
-				
-				for (QDataTerm<?> definitionTerm: displayTerm.getFormat().getDefinition().getElements()){
-					registerData(cachedTerms, definitionTerm);
-				}
-			}
-		}
 
+		for (QDisplayTerm displayTerm : displays)
+			if (displayTerm.getFormat() != null)
+				for (QDataTerm<?> definitionTerm : displayTerm.getFormat().getDefinition().getElements())
+					registerData(cachedTerms, definitionTerm);
 
 		// Printers
-		for (QPrintTerm printTerm : printers) {
-			
-			if (printTerm.getFormat() != null) {
-				
-				for (QDataTerm<?> definitionTerm: printTerm.getFormat().getDefinition().getElements()){
+		for (QPrintTerm printTerm : printers)
+			if (printTerm.getFormat() != null)
+				for (QDataTerm<?> definitionTerm : printTerm.getFormat().getDefinition().getElements())
 					registerData(cachedTerms, definitionTerm);
-				}
-			}
-		}
 
 		return cachedTerms;
 	}
-	
-	
+
 	@SuppressWarnings("unchecked")
-	private void registerData(Map<String, QDataTerm<?>> dataTermList, QDataTerm<?> dataTerm){
-		
+	private void registerData(Map<String, QDataTerm<?>> dataTermList, QDataTerm<?> dataTerm) {
+
 		dataTermList.put(normalizeTermName(dataTerm.getName()), dataTerm);
-		
+
 		if (dataTerm.getDataTermType().isCompound()) {
 			QDataTerm<QCompoundDataDef<?, ?>> compoundDataTerm = (QDataTerm<QCompoundDataDef<?, ?>>) dataTerm;
 
@@ -458,16 +431,13 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			if (dataTerm.getDefinition() instanceof QDataAreaDef) {
 				QDataAreaDef<?> dataAreaDef = (QDataAreaDef<?>) dataTerm.getDefinition();
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) dataAreaDef.getArgument();
-			} else {
+			} else
 				compoundDataDef = (QCompoundDataDef<?, QDataTerm<?>>) compoundDataTerm.getDefinition();
-			}
-			
-			for (QDataTerm<?> child: compoundDataDef.getElements()) {
+
+			for (QDataTerm<?> child : compoundDataDef.getElements())
 				registerData(dataTermList, child);
-			}
 		}
 	}
-	
 
 	@Override
 	public QDisplayTerm getDisplay(String name, boolean deep) {
@@ -519,20 +489,6 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 			printerTerm = this.parentUnit.getPrinter(name, deep);
 
 		return printerTerm;
-	}
-
-	@SuppressWarnings("unused")
-	private QDataTerm<?> findDataTerm(List<QDataTerm<QCompoundDataDef<?, ?>>> formats, String name) {
-
-		QDataTerm<?> dataTerm = null;
-
-		for (QDataTerm<QCompoundDataDef<?, ?>> format : formats) {
-			dataTerm = findDataTerm(format.getDefinition(), name);
-			if (dataTerm != null)
-				break;
-		}
-
-		return dataTerm;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -602,12 +558,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					String[] tokens = name.split("\\.");
 					if (tokens.length > 1) {
 						name = null;
-						for (int i = 1; i < tokens.length; i++) {
+						for (int i = 1; i < tokens.length; i++)
 							if (name != null)
 								name = name + "." + tokens[i];
 							else
 								name = tokens[i];
-						}
 					}
 				}
 				if (compoundDataDef.getPrefix() != null) {
@@ -1027,14 +982,14 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 		for (EClassifier eClassifier : QIntegratedLanguageDataPackage.eINSTANCE.getEClassifiers()) {
 			if (!(eClassifier instanceof EClass))
 				continue;
-			
+
 			EClass eClass = (EClass) eClassifier;
 
 			for (EOperation eOperation : eClass.getEAllOperations()) {
 				// TODO remove me
-				if(eOperation.getName().startsWith("qLookup"))
+				if (eOperation.getName().startsWith("qLookup"))
 					continue;
-				
+
 				if (!eOperation.getName().equalsIgnoreCase(normalizeTermName(name)))
 					continue;
 
@@ -1044,8 +999,7 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				prototype = QIntegratedLanguageFlowFactory.eINSTANCE.createPrototype();
 				prototype.setName(name);
 
-				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter()) ||
-					eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getString())) {
+				if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getCharacter()) || eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getString())) {
 					QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 					prototype.setDefinition(characterDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getNumeric())) {
@@ -1053,11 +1007,10 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 					prototype.setDefinition(decimalDef);
 				} else if (eOperation.getEType().equals(QIntegratedLanguageDataPackage.eINSTANCE.getArray())) {
 					QArrayDef<?> arrayDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createArrayDef();
-					if(eOperation.getName().equals("qSubst")) {
+					if (eOperation.getName().equals("qSubst")) {
 						QCharacterDef characterDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createCharacterDef();
 						arrayDef.setArgument(characterDef);
-					}
-					else {
+					} else {
 						QBufferDef bufferDef = QIntegratedLanguageDataDefFactory.eINSTANCE.createBufferDef();
 						arrayDef.setArgument(bufferDef);
 					}
@@ -1093,8 +1046,8 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				}
 				break;
 			}
-			
-			if(prototype != null)
+
+			if (prototype != null)
 				break;
 		}
 		return prototype;
@@ -1131,18 +1084,16 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 				QDataTerm<?> dataTerm = (QDataTerm<?>) node;
 				if (dataTerm.getDataTermType() == DataTermType.MULTIPLE_COMPOUND)
 					name = "current()." + name;
-				else if (dataTerm.getDefinition() instanceof QDataAreaDef) {
+				else if (dataTerm.getDefinition() instanceof QDataAreaDef)
 					name = "get()." + name;
-				} else if (dataTerm instanceof QFileFormat) {
+				else if (dataTerm instanceof QFileFormat)
 					name = "get()." + name;
-				} else if (dataTerm.getName() == null || dataTerm.getName().isEmpty()) {
+				else if (dataTerm.getName() == null || dataTerm.getName().isEmpty())
 					continue;
-				}
 			}
 
-			if (node instanceof QDisplayTerm) {
+			if (node instanceof QDisplayTerm)
 				name = "get()." + name;
-			}
 
 			if (node instanceof QProgram)
 				continue;
@@ -1185,22 +1136,19 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	protected void loadNestedCompilationUnit(QCompilationUnit compilationUnit, Map<String, QCompilationUnit> compilationUnitList, boolean excludePassedUnit) {
-		
-		if (compilationUnit instanceof RPJCompilationUnitImpl){			
+
+		if (compilationUnit instanceof RPJCompilationUnitImpl) {
 			RPJCompilationUnitImpl rpjCompilationUnit = (RPJCompilationUnitImpl) compilationUnit;
-			if (!excludePassedUnit) {
+			if (!excludePassedUnit)
 				addCompilationUnit(compilationUnitList, rpjCompilationUnit);
-			}
-			
-			for (QCompilationUnit nestedCompilationUnit: rpjCompilationUnit.childUnits){
+
+			for (QCompilationUnit nestedCompilationUnit : rpjCompilationUnit.childUnits)
 				loadNestedCompilationUnit(nestedCompilationUnit, compilationUnitList, false);
-			}
 		}
 	}
-	
-	protected void addCompilationUnit(Map<String, QCompilationUnit> compilationUnitList, QCompilationUnit compilationUnit){
-		if (!compilationUnitList.containsKey(compilationUnit.getNode().getName())) {
+
+	protected void addCompilationUnit(Map<String, QCompilationUnit> compilationUnitList, QCompilationUnit compilationUnit) {
+		if (!compilationUnitList.containsKey(compilationUnit.getNode().getName()))
 			compilationUnitList.put(compilationUnit.getNode().getName(), compilationUnit);
-		}
 	}
 }

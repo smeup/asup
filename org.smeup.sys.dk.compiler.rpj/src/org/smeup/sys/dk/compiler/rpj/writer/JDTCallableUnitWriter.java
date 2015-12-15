@@ -603,7 +603,8 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		} else {
 			QProcedure procedure = getCompilationUnit().getProcedure(prototype.getName(), false);
 			if (procedure != null) {
-				writeEntry(methodDeclaration, procedure.getEntry());
+				if(procedure.getEntry() != null)
+					writeEntry(methodDeclaration, procedure.getEntry());
 
 				writeLazyLoading(procedure, block);
 
@@ -661,8 +662,10 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	@SuppressWarnings("unchecked")
 	private void writeSetEntryParams(QProcedure procedure, Block block) {
 		List<QEntryParameter<?>> entryParameters = new ArrayList<QEntryParameter<?>>();
-		entryParameters.addAll(procedure.getEntry().getParameters());
-		Collections.reverse(entryParameters);
+		if(procedure.getEntry() != null) {
+			entryParameters.addAll(procedure.getEntry().getParameters());
+			Collections.reverse(entryParameters);
+		}
 
 		int p = entryParameters.size();
 
@@ -924,7 +927,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 
 	@SuppressWarnings("unchecked")
 	public void writeEntry(MethodDeclaration methodDeclaration, QEntry entry) {
-
+		
 		int p = 0;
 		for (QEntryParameter<?> entryParameter : entry.getParameters()) {
 
