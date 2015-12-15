@@ -278,8 +278,8 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 	}
 
 	@Override
-	public String toString() {
-		return asDate().toString();
+	public String toString() {		
+		return getDateFormat(_type, _dateFormat, null, _timeFormat, null).format(asDate());		
 	}
 
 	@Override
@@ -351,8 +351,11 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			break;
 		}
 
-		if (separator != null)
+		if (separator != null) {
 			format = format.replaceAll("-", separator);
+		} else {
+			format = format.replaceAll("-", "");
+		}
 
 		return format;
 	}
@@ -381,8 +384,12 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 			break;
 		}
 
-		if (separator != null)
+		if (separator != null) { 
 			format = format.replaceAll(".", separator);
+		} else {
+			format = format.replaceAll(".", "");
+		}
+		
 
 		return format;
 	}

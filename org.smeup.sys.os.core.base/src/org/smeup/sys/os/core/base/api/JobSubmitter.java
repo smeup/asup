@@ -171,7 +171,7 @@ public class JobSubmitter {
 
 			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables);
 
-			QObjectWriter objectWriter = outputManager.getObjectWriter(job.getContext(), "P");
+			QObjectWriter objectWriter = outputManager.getObjectWriter(qJob.getContext(), "P");
 			QJobLog jobLog = jobLogManager.lookup(qJob);
 
 			new JobLogWriter(objectWriter).write(jobLog);
