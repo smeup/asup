@@ -171,6 +171,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyFieldRequired="true"
 	 * @generated
 	 */
+	boolean reade(QData keyField, Boolean lock);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
 	boolean reade(QData keyField, QIndicator endOfData, Boolean lock);
 
 	/**
@@ -194,6 +202,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @generated
 	 */
 	boolean reade(Object keyField, QIndicator endOfData);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyFieldRequired="true"
+	 * @generated
+	 */
+	boolean reade(Object keyField, Boolean lock);
 
 	/**
 	 * <!-- begin-user-doc -->
