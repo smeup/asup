@@ -68,6 +68,14 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> void movea(E value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
@@ -76,10 +84,26 @@ public interface QBufferedList<D extends QBufferedData> extends QList<D>, QBuffe
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> void movea(int targetIndex, E value, boolean clear);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model targetIndexRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
 	 * @generated
 	 */
 	<E extends Enum<E>> void movea(QNumeric targetIndex, E value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model targetIndexRequired="true" clearRequired="true" EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> void movea(QNumeric targetIndex, E value, boolean clear);
 
 	/**
 	 * <!-- begin-user-doc -->
