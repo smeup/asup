@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.smeup.sys.os.core.base
 Bundle-Version: 0.7.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/jvmtop_lib.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.smeup.sys.os.core.base,
