@@ -1486,7 +1486,32 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		t1 = addETypeParameter(op, "E");
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
 		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
 		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1497,6 +1522,7 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, this.getNumeric(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "clear", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedListEClass, null, "movea", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "targetIndex", 1, 1, IS_UNIQUE, IS_ORDERED);

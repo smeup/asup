@@ -510,6 +510,9 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 	@SuppressWarnings("unchecked")
 	public MethodDeclaration writeRoutine(QRoutine routine) {
 
+		if(routine.getName().equals("STAMPA"))
+			"".toCharArray();
+		
 		MethodDeclaration methodDeclaration = getAST().newMethodDeclaration();
 
 		String routineName = getCompilationUnit().normalizeTermName(routine.getName());

@@ -12,11 +12,10 @@
 package org.smeup.sys.os.core.base.api;
 
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,6 +35,9 @@ import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobThread;
 import org.smeup.sys.os.core.jobs.impl.JobThreadImpl;
 
+import com.jvmtop.monitor.ThreadStats;
+import com.jvmtop.monitor.VMInfo;
+
 
 @Program(name = "QWCCDSACTHD")
 public class ActivetThreadsWorker {
@@ -47,7 +49,6 @@ public class ActivetThreadsWorker {
 
 	@Main
 	public void main(@Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
-
 		QObjectWriter objectWriter = null;
 
 		switch (output.asEnum()) {
@@ -72,18 +73,23 @@ public class ActivetThreadsWorker {
 	}
 
 	private Collection<QJobThread> threads() {
-		 ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
-		 ThreadInfo[] threadInfos = threadMXBean.getThreadInfo(threadMXBean.getAllThreadIds());
-		 Collection<QJobThread> result = new ArrayList<QJobThread>();
-		 for (ThreadInfo threadInfo: threadInfos) {
-			 result.add(new InternalJobThreadAdapter(threadInfo));
+		try {
+			VMInfo info = VMInfo.processCurrentVM();
+			List<ThreadStats> threadInfosSortedByCPU = info.getThreadInfoSortedByCPU();
+			Collection<QJobThread> result = new ArrayList<QJobThread>();
+			for (ThreadStats threadStats: threadInfosSortedByCPU) {
+				result.add(new InternalJobThreadAdapter(threadStats.getThreadInfo()));
+			}
+			return result;
+		} catch (Exception e) {
+			throw new OperatingSystemRuntimeException(e);
 		}
-		return result;
 	}
 
 	public static enum OutputEnum {
 		@Special(value = "*")
-		TERM_STAR, @Special(value = "L")
+		TERM_STAR, 
+		@Special(value = "L")
 		PRINT
 	}
 	
