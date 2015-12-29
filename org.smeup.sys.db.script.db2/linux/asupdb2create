@@ -1,0 +1,27 @@
+#! /bin/bash 
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 dbName"
+    exit 1
+fi
+
+LEN=$(echo ${#1})
+if [ $LEN -gt 8 ]; then
+    echo "The maximum length of the database name is 8 chars"
+    exit 1
+fi
+
+createdb '' $1
+
+if [ "$?" = "0" ]; then
+
+db2 -v -t << EOF
+    CONNECT TO $1;
+    GRANT DBADM, CREATETAB, BINDADD, CONNECT, CREATE_NOT_FENCED, IMPLICIT_SCHEMA, LOAD ON DATABASE TO USER ASUP;
+    UPDATE DATABASE CONFIGURATION FOR $1 USING LOGFILSIZ 1024;
+    UPDATE DATABASE CONFIGURATION FOR $1 USING LOGPRIMARY 16;
+    UPDATE DATABASE CONFIGURATION FOR $1 USING LOGSECOND 240;
+    QUIT;
+EOF
+
+  echo "Database $1 configurated successfully"
+fi

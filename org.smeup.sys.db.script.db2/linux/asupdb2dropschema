@@ -1,0 +1,16 @@
+#! /bin/bash 
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 dbName schemaName"
+    exit 1
+fi
+
+ERR_SCHEMA="ERR_S"
+ERR_TABLE="ERR_T"
+
+db2 -v -t << EOF
+  CONNECT TO $1;
+  CREATE SCHEMA $ERR_SCHEMA;
+  DROP TABLE $ERR_SCHEMA.$ERR_TABLE;
+  CALL SYSPROC.ADMIN_DROP_SCHEMA('$2', NULL, '$ERR_SCHEMA', '$ERR_TABLE');
+EOF
+

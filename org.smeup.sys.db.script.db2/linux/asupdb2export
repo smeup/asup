@@ -1,0 +1,11 @@
+#! /bin/bash
+
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 dbName export_folder"
+    exit 1
+fi
+
+db2look -d $1  -o $2/$1_create.sql -l -e -x
+
+echo "Export of DDL for $1 terminated"
+

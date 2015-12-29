@@ -1,0 +1,14 @@
+#! /bin/bash
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 dbName backup_folder"
+    exit 1
+fi
+
+db2 -v -t << EOF
+RESTORE DATABASE $1 FROM $2 WITH 70 BUFFERS BUFFER 4096 WITHOUT PROMPTING;
+ROLLFORWARD DATABASE $1 TO END OF LOGS;
+QUIT;
+EOF
+
+echo "Restore of $1 terminated"
+

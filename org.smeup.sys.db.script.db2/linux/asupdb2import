@@ -1,0 +1,12 @@
+#! /bin/bash
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 dbName backup_folder"
+    exit 1
+fi
+
+asupdb2create $1
+
+db2 -tvf  $2/$1_create.sql
+
+echo "Import of DDL for $1 terminated"
+
