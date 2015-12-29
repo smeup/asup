@@ -17,5 +17,18 @@
       </application>
    
    </extension>
+   <extension
+         id="product"
+         name="As.UP Product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.smeup.sys.rt.core.e4.application"
+            name="As.UP Application E4">
+         <property
+               name="appName"
+               value="As.UP Application E4">
+         </property>
+      </product>
+   </extension>
    
 </plugin>

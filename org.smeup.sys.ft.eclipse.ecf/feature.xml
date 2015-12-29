@@ -123,14 +123,21 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ecf.remoteservice.asyncproxy"
+         id="org.eclipse.ecf.server.generic"
          download-size="0"
          install-size="0"
-         version="1.0.0.v20140410-1838"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.ecf.server.generic"
+         id="org.eclipse.ecf.remoteservice.asyncproxy"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ecf.remoteservice.asyncproxy"
          download-size="0"
          install-size="0"
          version="0.0.0"

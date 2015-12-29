@@ -55,9 +55,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 
 	@Override
 	public void stop() {
-
 		this.system = null;
-
 	}
 
 	protected QJob getStartupJob() {
