@@ -132,6 +132,11 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 	}
 
 	@Override
+	public void delete(Object[] keyList, QIndicator notFound) {
+		deleteRecord(keyList, notFound, null);		
+	}
+
+	@Override
 	public void delete(Object[] keyList, QIndicator notFound, QIndicator error) {
 		deleteRecord(keyList, notFound, error);
 	}
@@ -454,5 +459,4 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 		Object[] keyList = { keyField };
 		setll(keyList, found, equal, error);
 	}
-
 }

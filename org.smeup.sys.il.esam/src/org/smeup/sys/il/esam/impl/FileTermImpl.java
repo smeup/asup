@@ -24,13 +24,13 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * <em><b>File Term</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getInfoStruct <em>Info Struct</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.FileTermImpl#isUserOpen <em>User Open</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
