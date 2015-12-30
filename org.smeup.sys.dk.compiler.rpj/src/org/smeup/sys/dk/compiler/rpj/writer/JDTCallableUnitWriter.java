@@ -135,7 +135,7 @@ public abstract class JDTCallableUnitWriter extends JDTUnitWriter {
 		for (String label : labels) {
 
 			EnumConstantDeclaration constantDeclaration = getAST().newEnumConstantDeclaration();
-			constantDeclaration.setName(getAST().newSimpleName(normalizeEnumName(label)));
+			constantDeclaration.setName(getAST().newSimpleName(getCompilationUnit().normalizeLabelName(label)));
 
 			enumType.enumConstants().add(num, constantDeclaration);
 			num++;

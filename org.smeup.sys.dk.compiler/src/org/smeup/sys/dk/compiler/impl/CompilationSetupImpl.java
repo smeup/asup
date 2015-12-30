@@ -23,13 +23,13 @@ import org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getEntryType <em>Entry Type</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getOptimizationType <em>Optimization Type</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationSetupImpl#getProcedureType <em>Procedure Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

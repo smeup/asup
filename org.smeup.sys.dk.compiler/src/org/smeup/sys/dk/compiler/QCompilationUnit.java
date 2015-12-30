@@ -32,10 +32,10 @@ import org.smeup.sys.il.flow.QRoutine;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationUnit#getTrashCan <em>Trash Can</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilationUnit()
  * @model abstract="true" superTypes="org.smeup.sys.il.core.ctx.ContextProvider org.smeup.sys.mi.core.JavaCloseable"
@@ -227,6 +227,14 @@ public interface QCompilationUnit extends QContextProvider, Closeable {
 	 * @generated
 	 */
 	QStatementTerm getStatement(String name, boolean deep);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	String normalizeLabelName(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

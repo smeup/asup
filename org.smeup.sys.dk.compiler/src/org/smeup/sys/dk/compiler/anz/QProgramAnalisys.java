@@ -16,10 +16,10 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QProgramAnalisys#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getProgramAnalisys()
  * @model

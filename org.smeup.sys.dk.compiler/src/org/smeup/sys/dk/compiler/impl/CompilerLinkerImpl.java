@@ -20,11 +20,11 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilerLinkerImpl#getLinkedClass <em>Linked Class</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilerLinkerImpl#getLinkedTermName <em>Linked Term Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

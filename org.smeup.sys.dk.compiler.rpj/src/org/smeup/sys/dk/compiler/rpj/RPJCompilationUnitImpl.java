@@ -836,6 +836,11 @@ public class RPJCompilationUnitImpl extends CompilationUnitImpl {
 	}
 
 	@Override
+	public String normalizeLabelName(String name) {
+		return normalizeTermName(name).toUpperCase();
+	}
+
+	@Override
 	public String normalizeTermName(String name) {
 
 		if (name == null)

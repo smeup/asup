@@ -16,11 +16,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedClass <em>Linked Class</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilerLinker#getLinkedTermName <em>Linked Term Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilerLinker()
  * @model

@@ -15,13 +15,13 @@ package org.smeup.sys.dk.compiler;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationSetup#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationSetup#getEntryType <em>Entry Type</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationSetup#getOptimizationType <em>Optimization Type</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationSetup#getProcedureType <em>Procedure Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilationSetup()
  * @model

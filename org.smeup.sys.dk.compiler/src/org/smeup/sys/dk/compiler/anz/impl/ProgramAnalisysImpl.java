@@ -32,10 +32,10 @@ import org.smeup.sys.dk.compiler.anz.QVariableRef;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.ProgramAnalisysImpl#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

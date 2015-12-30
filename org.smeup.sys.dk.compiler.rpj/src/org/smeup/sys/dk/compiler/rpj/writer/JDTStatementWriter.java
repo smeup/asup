@@ -471,7 +471,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		methodInvocation.setExpression(ast.newSimpleName("qRPJ"));
 		methodInvocation.setName(ast.newSimpleName("qJump"));
 
-		Name labelName = ast.newName(new String[] { "TAG", statement.getLabel() });
+		Name labelName = ast.newName(new String[] { "TAG", compilationUnit.normalizeLabelName(statement.getLabel()) });
 		methodInvocation.arguments().add(0, labelName);
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);
@@ -499,7 +499,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		methodInvocation.setExpression(ast.newSimpleName("qRPJ"));
 		methodInvocation.setName(ast.newSimpleName("qLabel"));
 
-		Name labelName = ast.newName(new String[] { "TAG", statement.getName() });
+		Name labelName = ast.newName(new String[] { "TAG", compilationUnit.normalizeLabelName(statement.getName()) });
 		methodInvocation.arguments().add(0, labelName);
 
 		ExpressionStatement expressionStatement = ast.newExpressionStatement(methodInvocation);

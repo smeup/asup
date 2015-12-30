@@ -40,10 +40,10 @@ import org.smeup.sys.il.flow.QRoutine;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationUnitImpl#getTrashCan <em>Trash Can</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -478,6 +478,17 @@ public abstract class CompilationUnitImpl extends MinimalEObjectImpl.Container i
 	 */
 	@Override
 	public QStatementTerm getStatement(String name, boolean deep) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String normalizeLabelName(String name) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

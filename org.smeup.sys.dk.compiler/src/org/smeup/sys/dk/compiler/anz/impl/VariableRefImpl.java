@@ -30,12 +30,12 @@ import org.smeup.sys.dk.compiler.anz.QVariableRef;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getOccurences <em>Occurences</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.impl.VariableRefImpl#getStatements <em>Statements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

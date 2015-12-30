@@ -16,12 +16,12 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getOccurences <em>Occurences</em>}</li>
  *   <li>{@link org.smeup.sys.dk.compiler.anz.QVariableRef#getStatements <em>Statements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.anz.QDevelopmentKitCompilerAnalyzerPackage#getVariableRef()
  * @model

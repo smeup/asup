@@ -123,6 +123,8 @@ public enum CaseSensitiveType implements Enumerator {
 	 * Returns the '<em><b>Case Sensitive Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CaseSensitiveType get(String literal) {
@@ -139,6 +141,8 @@ public enum CaseSensitiveType implements Enumerator {
 	 * Returns the '<em><b>Case Sensitive Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CaseSensitiveType getByName(String name) {
@@ -155,6 +159,8 @@ public enum CaseSensitiveType implements Enumerator {
 	 * Returns the '<em><b>Case Sensitive Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static CaseSensitiveType get(int value) {

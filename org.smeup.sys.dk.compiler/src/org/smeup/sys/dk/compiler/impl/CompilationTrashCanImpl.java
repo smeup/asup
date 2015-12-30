@@ -33,10 +33,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.impl.CompilationTrashCanImpl#getDataTerms <em>Data Terms</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -18,10 +18,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.dk.compiler.QCompilationTrashCan#getDataTerms <em>Data Terms</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.dk.compiler.QDevelopmentKitCompilerPackage#getCompilationTrashCan()
  * @model
