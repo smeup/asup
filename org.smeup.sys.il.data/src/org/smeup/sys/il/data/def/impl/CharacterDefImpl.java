@@ -20,11 +20,11 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Character Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CharacterDefImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CharacterDefImpl#isVarying <em>Varying</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

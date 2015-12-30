@@ -23,10 +23,10 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Array Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.ArrayDefImpl#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

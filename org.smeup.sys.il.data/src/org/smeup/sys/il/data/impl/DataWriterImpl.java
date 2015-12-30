@@ -33,8 +33,6 @@ import org.smeup.sys.il.data.QString;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Data Writer</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

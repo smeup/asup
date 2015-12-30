@@ -26,11 +26,11 @@ import org.smeup.sys.il.data.def.QWrapperDef;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataAreaDefImpl#getArgument <em>Argument</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataAreaDefImpl#getExternalName <em>External Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -17,11 +17,11 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getLength <em>Length</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QStrollerDef#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getStrollerDef()
  * @model

@@ -15,10 +15,10 @@ import org.smeup.sys.il.data.QFloating;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QFloatingDef#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getFloatingDef()
  * @model

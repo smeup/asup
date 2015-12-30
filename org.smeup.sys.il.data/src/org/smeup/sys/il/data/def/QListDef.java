@@ -15,10 +15,10 @@ import org.smeup.sys.il.data.QList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QListDef#getArgument <em>Argument</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getListDef()
  * @model

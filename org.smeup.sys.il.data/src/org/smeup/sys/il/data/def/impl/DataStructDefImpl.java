@@ -22,10 +22,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>QData Structure Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataStructDefImpl#getLength <em>Length</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -17,10 +17,10 @@ import org.smeup.sys.il.data.SortDirection;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QScrollerDef#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getScrollerDef()
  * @model

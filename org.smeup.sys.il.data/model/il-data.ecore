@@ -1581,6 +1581,9 @@
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Indicator"/>
     </eOperations>
+    <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="qTrim" lowerBound="1" eType="#//Character"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InitStrategy">

@@ -39,7 +39,28 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	}
 
 	@Override
+	public boolean eq(String value) {
+		
+		if(asBoolean()) {
+			if(value.equals("1"))
+				return true;
+			else 
+				return false;
+		}
+		else
+			if(!value.equals("1"))
+				return true;
+			else 
+				return false;
+	}
+
+	@Override
 	public boolean ne(boolean value) {
+		return !eq(value);
+	}
+
+	@Override
+	public boolean ne(String value) {
 		return !eq(value);
 	}
 
@@ -97,22 +118,6 @@ public class NIOIndicatorImpl extends NIOBufferedDataImpl implements QIndicator 
 	@Override
 	public int getSize() {
 		return 1;
-	}
-
-	@Override
-	public boolean eq(String value) {
-		
-		if(asBoolean()) {
-			if(value.equals("1"))
-				return true;
-			else 
-				return false;
-		}
-		else
-			if(!value.equals("1"))
-				return true;
-			else 
-				return false;
 	}
 
 	@Override

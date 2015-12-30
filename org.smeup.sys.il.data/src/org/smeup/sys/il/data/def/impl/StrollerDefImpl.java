@@ -25,11 +25,11 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Stroller Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.StrollerDefImpl#getLength <em>Length</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.StrollerDefImpl#getOrder <em>Order</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

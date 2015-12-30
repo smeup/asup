@@ -15,10 +15,10 @@ package org.smeup.sys.il.data.def;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QWrapperDef#getArgument <em>Argument</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getWrapperDef()
  * @model abstract="true"

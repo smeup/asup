@@ -28,13 +28,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Compound Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getClassDelegator <em>Class Delegator</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.CompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

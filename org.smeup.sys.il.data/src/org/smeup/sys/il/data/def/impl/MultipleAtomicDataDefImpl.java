@@ -16,8 +16,6 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Multiple Atomic Data Def</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

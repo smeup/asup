@@ -21,10 +21,10 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Floating Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.FloatingDefImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

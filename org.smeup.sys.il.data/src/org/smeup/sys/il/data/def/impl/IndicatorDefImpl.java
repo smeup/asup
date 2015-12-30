@@ -16,8 +16,6 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Indicator Def</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

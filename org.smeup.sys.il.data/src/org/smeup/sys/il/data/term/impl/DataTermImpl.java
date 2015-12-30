@@ -30,6 +30,7 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  * <em><b>Data Term</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getBased <em>Based</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getCardinality <em>Cardinality</em>}</li>
@@ -42,7 +43,6 @@ import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#isRestricted <em>Restricted</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.term.impl.DataTermImpl#getText <em>Text</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
