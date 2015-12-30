@@ -509,6 +509,10 @@
     <eOperations name="delete">
       <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
       <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
+    </eOperations>
+    <eOperations name="delete">
+      <eParameters name="keyList" lowerBound="1" eType="#//KeyList"/>
+      <eParameters name="notFound" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
       <eParameters name="error" eType="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//Indicator"/>
     </eOperations>
     <eOperations name="reade" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

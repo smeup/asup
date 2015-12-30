@@ -19,6 +19,7 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  * <em><b>Data Set Term</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getAccessMode <em>Access Mode</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getExternalFile <em>External File</em>}</li>
@@ -27,7 +28,6 @@ import org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage;
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#isKeyedAccess <em>Keyed Access</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.DataSetTermImpl#getPrefix <em>Prefix</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

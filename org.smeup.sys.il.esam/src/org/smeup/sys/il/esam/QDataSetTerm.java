@@ -15,6 +15,7 @@ package org.smeup.sys.il.esam;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getAccessMode <em>Access Mode</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getExternalFile <em>External File</em>}</li>
@@ -23,7 +24,6 @@ package org.smeup.sys.il.esam;
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#isKeyedAccess <em>Keyed Access</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QDataSetTerm#getPrefix <em>Prefix</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getDataSetTerm()
  * @model

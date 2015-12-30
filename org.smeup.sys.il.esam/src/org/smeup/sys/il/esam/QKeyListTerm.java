@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.term.QTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QKeyListTerm#getKeyFields <em>Key Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getKeyListTerm()
  * @model

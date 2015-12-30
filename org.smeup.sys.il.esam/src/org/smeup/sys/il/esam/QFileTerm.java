@@ -17,13 +17,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getFormat <em>Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getInfoStruct <em>Info Struct</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.QFileTerm#isUserOpen <em>User Open</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.esam.QIntegratedLanguageEsamPackage#getFileTerm()
  * @model abstract="true"

@@ -25,11 +25,11 @@ import org.smeup.sys.il.esam.QKeyListTerm;
  * <em><b>Key List Term</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.esam.impl.KeyListTermImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.esam.impl.KeyListTermImpl#getKeyFields <em>Key Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

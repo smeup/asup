@@ -149,6 +149,14 @@ public interface QKSDataSet<R extends QRecord> extends QDataSet<R> {
 	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
 	 * @generated
 	 */
+	void delete(Object[] keyList, QIndicator notFound);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model keyListDataType="org.smeup.sys.il.esam.KeyList" keyListRequired="true"
+	 * @generated
+	 */
 	void delete(Object[] keyList, QIndicator notFound, QIndicator error);
 
 	/**
