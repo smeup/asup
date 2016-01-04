@@ -433,7 +433,10 @@ public class RPJProgramSupport {
 
 		switch (format) {
 		case "Z":
-			character.eval(numberFormat.format(numeric.asInteger()));
+//			character.eval(numberFormat.format(numeric.asInteger()));
+			// TODO 
+			// remove leading zero
+			character.eval(numberFormat.format(numeric.asInteger()).replaceAll("^0+",""));
 			break;
 		case "X":
 			character.move(numeric);
@@ -696,7 +699,27 @@ public class RPJProgramSupport {
 	}
 
 	public QString qXlate(String oldString, String newString, QString source) {
-		return null;
+		// TODO
+		/*
+		 * Verify with il-data
+		 */
+		StringBuffer sb = new StringBuffer();
+		int startId = 1;
+		int start = 1;
+		for (char c : source.s().toCharArray()) {
+			int i = oldString.indexOf(c);
+			if (startId >= start && (newString.length() >= i && i >= 0)) {
+				sb.append(newString.substring(i, i + 1));
+			} else {
+				sb.append(c);
+			}
+			startId++;
+		}
+		
+		QCharacter string = dataContext.getDataFactory().createCharacter(source.getLength(), false, true);
+		string.eval(sb.toString());
+
+		return string;
 	}
 
 	public void qXfoot(QArray<QDecimal> list, QNumeric target) {
