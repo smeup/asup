@@ -20,6 +20,7 @@ import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataStruct;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -777,6 +778,11 @@ public class NIOStrollerImpl<D extends QDataStruct> extends NIOScrollerImpl<D> i
 		current().cat(factor1, clear);
 	}
 
+	@Override
+	public <E extends Enum<E>> QDatetime qDate(E format) {
+		return current().qDate(format);
+	}
+	
 	@Override
 	public QNumeric qInt() {
 		return current().qInt();

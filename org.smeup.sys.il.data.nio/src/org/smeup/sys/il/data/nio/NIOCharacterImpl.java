@@ -18,6 +18,7 @@ import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataVisitor;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QHexadecimal;
 import org.smeup.sys.il.data.QIndicator;
@@ -732,6 +733,12 @@ public class NIOCharacterImpl extends NIOStringImpl implements QCharacter {
 	public boolean le(QHexadecimal value) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public <E extends Enum<E>> QDatetime qDate(E format) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

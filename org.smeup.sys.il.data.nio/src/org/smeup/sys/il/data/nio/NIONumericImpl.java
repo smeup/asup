@@ -18,6 +18,7 @@ import java.util.Calendar;
 
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QDataContext;
+import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.def.DecimalType;
@@ -605,6 +606,12 @@ public abstract class NIONumericImpl extends NIOBufferedDataImpl implements QNum
 	@Override
 	public void eval(BigDecimal value, String roundingMode) {
 		writeNumber(value, roundingMode);
+	}
+	
+	@Override
+	public <E extends Enum<E>> QDatetime qDate(E format) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

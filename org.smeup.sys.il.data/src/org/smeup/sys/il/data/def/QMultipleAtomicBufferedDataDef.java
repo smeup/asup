@@ -15,10 +15,10 @@ import org.smeup.sys.il.data.QBufferedList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QMultipleAtomicBufferedDataDef#getArgument <em>Argument</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getMultipleAtomicBufferedDataDef()
  * @model abstract="true"

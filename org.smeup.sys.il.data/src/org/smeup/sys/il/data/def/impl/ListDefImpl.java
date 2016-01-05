@@ -25,10 +25,10 @@ import org.smeup.sys.il.data.def.QUnaryAtomicDataDef;
  * <em><b>List Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.ListDefImpl#getArgument <em>Argument</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

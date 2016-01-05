@@ -2477,6 +2477,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(datetimeEClass, null, "eval", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDatetime(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(datetimeEClass, this.getDatetime(), "qDate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "format", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(datetimeEClass, this.getNumeric(), "qDiff", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "E");
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
@@ -3288,6 +3295,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(numericEClass, this.getNumeric(), "power", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNumeric(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(numericEClass, this.getDatetime(), "qDate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "format", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(numericEClass, this.getNumeric(), "qDiv", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEShort(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3647,6 +3661,13 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(stringEClass, ecorePackage.getEBoolean(), "ne", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getHexadecimal(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringEClass, this.getDatetime(), "qDate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "E");
+		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaEnum());
+		t1.getEBounds().add(g1);
+		g1 = createEGenericType(t1);
+		addEParameter(op, g1, "format", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(stringEClass, this.getNumeric(), "qInt", 0, 1, IS_UNIQUE, IS_ORDERED);
 

@@ -15,11 +15,11 @@ import org.smeup.sys.il.data.QBinary;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QBinaryDef#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QBinaryDef#isUnsigned <em>Unsigned</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getBinaryDef()
  * @model

@@ -242,15 +242,21 @@ public class NIODatetimeImpl extends NIOBufferedDataImpl implements QDatetime {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
-	public <E extends Enum<E>> QNumeric qSubdt(E portion) {
+	public <E extends Enum<E>> QDatetime qDate(E format) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public <E extends Enum<E>> QNumeric qDiff(QDatetime value, E format) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <E extends Enum<E>> QNumeric qSubdt(E portion) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1440,6 +1440,14 @@
     <eOperations name="eval">
       <eParameters name="value" lowerBound="1" eType="#//Datetime"/>
     </eOperations>
+    <eOperations name="qDate" eType="#//Datetime">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Datetime/qDate/E"/>
+      </eParameters>
+    </eOperations>
     <eOperations name="qDiff" eType="#//Numeric">
       <eTypeParameters name="E">
         <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
@@ -2292,6 +2300,14 @@
     <eOperations name="power" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="#//Numeric"/>
     </eOperations>
+    <eOperations name="qDate" eType="#//Datetime">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//Numeric/qDate/E"/>
+      </eParameters>
+    </eOperations>
     <eOperations name="qDiv" eType="#//Numeric">
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EShort"/>
     </eOperations>
@@ -2647,6 +2663,14 @@
     </eOperations>
     <eOperations name="ne" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" lowerBound="1" eType="#//Hexadecimal"/>
+    </eOperations>
+    <eOperations name="qDate" eType="#//Datetime">
+      <eTypeParameters name="E">
+        <eBounds eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaEnum"/>
+      </eTypeParameters>
+      <eParameters name="format">
+        <eGenericType eTypeParameter="#//String/qDate/E"/>
+      </eParameters>
     </eOperations>
     <eOperations name="qInt" eType="#//Numeric"/>
     <eOperations name="qInth" eType="#//Numeric"/>

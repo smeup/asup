@@ -864,6 +864,10 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 		return delegate.qScan(argument);
 	}
 
+	public <E extends Enum<E>> QDatetime qDate(E format) {
+		return delegate.qDate(format);
+	}
+	
 	@Override
 	public QNumeric qInt() {
 		return delegate.qInt();

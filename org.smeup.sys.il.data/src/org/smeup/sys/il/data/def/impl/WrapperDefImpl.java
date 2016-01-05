@@ -26,10 +26,10 @@ import org.smeup.sys.il.data.def.QWrapperDef;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.WrapperDefImpl#getArgument <em>Argument</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

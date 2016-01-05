@@ -21,12 +21,12 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Decimal Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getPrecision <em>Precision</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getScale <em>Scale</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DecimalDefImpl#getType <em>Type</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

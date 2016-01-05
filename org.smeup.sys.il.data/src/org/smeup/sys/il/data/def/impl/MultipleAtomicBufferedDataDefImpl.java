@@ -22,10 +22,10 @@ import org.smeup.sys.il.data.def.QUnaryAtomicBufferedDataDef;
  * <em><b>Multiple Atomic Buffered Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleAtomicBufferedDataDefImpl#getArgument <em>Argument</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

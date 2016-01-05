@@ -611,6 +611,14 @@ public interface QNumeric extends QBufferedData {
 	QNumeric power(QNumeric value);
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model EBounds="org.smeup.sys.mi.core.JavaEnum"
+	 * @generated
+	 */
+	<E extends Enum<E>> QDatetime qDate(E format);
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model valueRequired="true"
 	 * @generated

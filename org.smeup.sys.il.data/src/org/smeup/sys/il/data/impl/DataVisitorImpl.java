@@ -36,6 +36,8 @@ import org.smeup.sys.il.data.QStroller;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Data Visitor</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

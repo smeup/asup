@@ -22,11 +22,11 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Enum Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.EnumDefImpl#getDelegate <em>Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.EnumDefImpl#getKlass <em>Klass</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

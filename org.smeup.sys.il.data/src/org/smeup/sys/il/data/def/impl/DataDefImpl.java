@@ -24,10 +24,10 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DataDefImpl#getFormulas <em>Formulas</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
