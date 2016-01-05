@@ -176,7 +176,7 @@ public class RPJProgramSupport {
 	public static boolean TRUE = true;
 	
 	public static enum Specials {
-		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D;
+		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D, ISO;
 
 		public boolean asBoolean() {
 			return this.toString().equals("ON");
