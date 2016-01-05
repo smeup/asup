@@ -301,6 +301,9 @@ public class JDBCKeySequencedDataSetImpl<R extends QRecord> extends JDBCDataSetI
 		} catch (SQLException e) {
 			handleSQLException(e);
 		}
+		
+		if (beginningOfData != null)
+			beginningOfData.eval(isEndOfData());
 
 		if (error != null)
 			error.eval(onError());
