@@ -127,7 +127,7 @@ public class JobSubmitter {
 		private QCallableProgram caller;
 
 		protected SubmittedCommand(QJob qJob, String commandString, QCallableProgram caller) {
-			super("Sub cmd:" + commandString);
+			super("asup://thread/jobs/"+qJob.getJobNumber()+"-"+qJob.getJobUser()+"-"+qJob.getJobName());
 			this.qJob = qJob;
 			this.commandString = commandString;
 			this.caller = caller;
@@ -169,7 +169,7 @@ public class JobSubmitter {
 				}
 			}
 
-			commandManager.executeCommandImmediate(qJob.getJobID(), commandString, variables);
+			commandManager.executeCommand(qJob.getJobID(), commandString, variables);
 
 			QObjectWriter objectWriter = outputManager.getObjectWriter(qJob.getContext(), "P");
 			QJobLog jobLog = jobLogManager.lookup(qJob);

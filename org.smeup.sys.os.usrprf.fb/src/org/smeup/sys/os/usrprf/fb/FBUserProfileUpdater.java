@@ -31,6 +31,8 @@ public class FBUserProfileUpdater extends Thread {
 	private FacebookClient facebookClient;
 
 	protected FBUserProfileUpdater(QJob job, QResourceWriter<QUserProfile> userProfileWriter, FacebookClient facebookClient) {
+		super("asup://thread/facebook");
+		setDaemon(true);
 		this.job = job;
 		this.userProfileWriter = userProfileWriter;
 		this.facebookClient = facebookClient;

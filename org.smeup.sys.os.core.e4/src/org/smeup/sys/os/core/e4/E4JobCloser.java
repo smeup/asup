@@ -23,6 +23,8 @@ public class E4JobCloser extends Thread {
 	private E4JobManagerImpl jobManager;
 	
 	public E4JobCloser(E4JobManagerImpl jobManager) {
+		super("asup://thread/jobs/closer");
+		setDaemon(true);
 		this.jobManager = jobManager;
 	}
 

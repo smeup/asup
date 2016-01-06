@@ -26,6 +26,8 @@ public class CDOJobCloser extends Thread {
 	private CDOJobManagerImpl jobManager;
 
 	public CDOJobCloser(CDOJobManagerImpl jobManager) {
+		super("asup://thread/jobs/closer");
+		setDaemon(true);
 		this.jobManager = jobManager;
 	}
 

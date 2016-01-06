@@ -26,7 +26,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
 
-public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
+public class BaseShellServerSocketImpl extends Thread implements QServerSocket {
 
 	private QApplication application;
 	private QServerSocketConfig config;
@@ -35,8 +35,9 @@ public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 	public void init(QApplication application, QServerSocketConfig config) {
 		this.application = application;
 		this.config = config;
+		this.setName("asup://thread/telnet/" + config.getAddress()+":"+config.getPort());
 		
-		new Thread(this).start();
+		start();
 	}
 
 	@Override

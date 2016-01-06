@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -50,7 +49,7 @@ public class BaseShellSocketHandler extends Thread {
 	private static String LOGIN = "login> ";
 
 	public BaseShellSocketHandler(Socket socket) {
-		super("Telnet " + socket.getRemoteSocketAddress());
+		super("asup://thread/telnet-rcv/" + socket.getRemoteSocketAddress());
 		this.socket = socket;
 	}
 
@@ -117,8 +116,8 @@ public class BaseShellSocketHandler extends Thread {
 		
 		shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
 		shellManager.setDefaultWriter(authenticationToken.getID(), "S");
-		
-		logConnection();
+
+		setName(getName()+"("+user+")");
 	}
 
 	private void checkValidSession() {
@@ -137,12 +136,6 @@ public class BaseShellSocketHandler extends Thread {
 			outputStreamWriter.write(LOGIN);
 	}
 
-
-	private void logConnection() {
-		//TODO -> DSPLOG
-		System.out.println(new Date() + " User " + user + " connected from " + this.socket.getRemoteSocketAddress());
-		setName("Telnet " +  this.socket.getRemoteSocketAddress() + " " + user);
-	}
 
 	private QAuthenticationToken authenticate(String command) {
 		// retrieve user
