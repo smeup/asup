@@ -19,13 +19,13 @@ import org.smeup.sys.il.data.QDataContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.QCallableCommand#getCommand <em>Command</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCallableCommand#getCommandString <em>Command String</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCallableCommand#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCallableCommand#getDataContainer <em>Data Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCallableCommand()
  * @model superTypes="org.smeup.sys.il.core.Object org.smeup.sys.mi.core.JavaCloseable"

@@ -88,7 +88,7 @@
       <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="command" lowerBound="1" eType="#//CallableCommand"/>
     </eOperations>
-    <eOperations name="executeCommandImmediate" lowerBound="1">
+    <eOperations name="executeCommand" lowerBound="1">
       <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="command" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="variables">

@@ -18,10 +18,10 @@ import org.smeup.sys.os.core.QEnvironmentVariable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.env.QEnvironmentVariableContainer#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage#getEnvironmentVariableContainer()
  * @model

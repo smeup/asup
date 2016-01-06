@@ -21,12 +21,12 @@ import org.smeup.sys.os.core.QOperatingSystemCorePackage;
  * <em><b>QCreation Info</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.impl.CreationInfoImpl#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.CreationInfoImpl#getCreationUser <em>Creation User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.CreationInfoImpl#getCreationSystem <em>Creation System</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

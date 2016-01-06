@@ -41,6 +41,6 @@ public interface QCommandManager {
 	 * @model contextIDRequired="true" commandRequired="true"
 	 * @generated
 	 */
-	void executeCommandImmediate(String contextID, String command, Map<String, Object> variables);
+	void executeCommand(String contextID, String command, Map<String, Object> variables);
 
 } // QCommandManager

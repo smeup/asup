@@ -23,12 +23,12 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getThreadID <em>Thread ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobThreadImpl#getThreadStatus <em>Thread Status</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

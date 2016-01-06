@@ -15,14 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectIterator;
-import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -38,37 +35,30 @@ import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobEvent;
-import org.smeup.sys.os.core.jobs.QJobListener;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
 import org.smeup.sys.rt.core.QApplication;
-import org.smeup.sys.rt.core.auth.QAuthenticationManager;
-import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
-public class E4JobManagerImpl extends BaseJobManagerImpl implements QAuthenticationManager {
+public class E4JobManagerImpl extends BaseJobManagerImpl {
 
 	private Map<String, QJob> activeJobs;
-	private Map<String, ExecutorService> jobExecutorServices;
-
 	
 	private E4SystemManagerImpl systemManager;
 	private QResourceManager resourceManager;
 
 	private QExpressionParser expressionParser;
 
-	private List<QJobListener> listeners = new ArrayList<QJobListener>();
-
 	@Inject
-	public E4JobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QApplication application) {
+	public E4JobManagerImpl(QApplication application, QSystemManager systemManager, QResourceManager resourceManager) {
+		
+		super(application);
+		
 		this.systemManager = (E4SystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
 		this.activeJobs = new HashMap<String, QJob>();  //TODO ConcurrentHashMap????
-		this.jobExecutorServices = new HashMap<String, ExecutorService>();  //TODO ConcurrentHashMap????
 		
 		new E4JobCloser(this).start();
-
-		application.getContext().set(QAuthenticationManager.class, this);
 	}
 
 	@PostConstruct
@@ -154,19 +144,15 @@ public class E4JobManagerImpl extends BaseJobManagerImpl implements QAuthenticat
 		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 		jobEvent.setSource(job);
 		jobEvent.setType(JobEventType.STARTING);
-
-		for (QJobListener jobListener : this.listeners)
-			jobListener.handleEvent(jobEvent);
+		fireEvent(jobEvent);
 
 		// save
 		QResourceWriter<QJob> jobWriter = resourceManager.getResourceWriter(job, QJob.class, job.getSystem().getSystemLibrary());
 		jobWriter.save(job);
 
 		jobEvent.setType(JobEventType.STARTED);
-
-		for (QJobListener jobListener : this.listeners)
-			jobListener.handleEvent(jobEvent);
-
+		fireEvent(jobEvent);
+		
 		activeJobs.put(job.getJobID(), job);
 
 		return job;
@@ -189,61 +175,8 @@ public class E4JobManagerImpl extends BaseJobManagerImpl implements QAuthenticat
 
 	@Override
 	public void close(QJob job) {
-
-		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
-		jobEvent.setSource(job);
-		jobEvent.setType(JobEventType.STOPPING);
-
-		for (QJobListener jobListener : this.listeners)
-			jobListener.handleEvent(jobEvent);
+		super.close(job);
 
 		this.activeJobs.remove(job.getJobID());
-		this.jobExecutorServices.remove(job.getJobID());
-
-		job.getContext().close();
-
-		jobEvent.setType(JobEventType.STOPPED);
-
-		for (QJobListener jobListener : this.listeners)
-			jobListener.handleEvent(jobEvent);
-	}
-
-	@Override
-	public QAuthenticationToken createAuthenticationToken(QCredentials credentials) {
-		final QJob job = create(credentials.getUser(), credentials.getPassword());
-
-		return new QAuthenticationToken() {
-
-			@Override
-			public String getID() {
-				return job.getJobID();
-			}
-
-			@Override
-			public Boolean isValid() {
-				return job != null && 
-					   lookup(job.getJobID()) != null;	
-			}
-		};
-	}
-
-	@Override
-	public void deleteAuthenticationToken(QAuthenticationToken authToken) {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public void registerListener(QJobListener listener) {
-		this.listeners.add(listener);
-	}
-
-	@Override
-	public synchronized ExecutorService executorFor(QJob job) {
-		ExecutorService executorService = this.jobExecutorServices.get(job.getJobID());
-		if (executorService == null) {
-			executorService = Executors.newSingleThreadExecutor();
-			this.jobExecutorServices.put(job.getJobID(), executorService);
-		}
-		return executorService;
 	}
 }

@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -46,6 +44,7 @@ import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.jobd.QJobDescription;
 import org.smeup.sys.os.usrprf.QUserProfile;
+import org.smeup.sys.rt.core.QApplication;
 
 public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager {
 
@@ -56,20 +55,19 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	private static final String CDO_RESOURCE = "os/core";
 
 	private Map<String, QJob> activeJobs;
-	private Map<String, ExecutorService> jobExecutorServices;
 
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
 
 	@Inject
-	public CDOJobManagerImpl(QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
-
+	public CDOJobManagerImpl(QApplication application, QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
+		super(application);
+		
 		this.systemManager = (CDOSystemManagerImpl) systemManager;
 		this.resourceManager = resourceManager;
 		this.lockManager = lockManager;
 		this.activeJobs = new HashMap<String, QJob>();
-		this.jobExecutorServices = new HashMap<String, ExecutorService>();  //TODO ConcurrentHashMap????
 		
-		new CDOJobCloser(this).start();
+		new CDOJobCloser(this).start();		
 	}
 	
 	@Override
@@ -241,37 +239,13 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 
 	@Override
 	public void close(QJob job) {
-
-		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
-		jobEvent.setSource(job);
-		jobEvent.setType(JobEventType.STOPPING);
+		super.close(job);
 		
-		for(QJobListener jobListener: this.listeners)
-			jobListener.handleEvent(jobEvent);
-	
 		this.activeJobs.remove(job.getJobID());
-		this.jobExecutorServices.remove(job.getJobID());
-		
-		job.getContext().close();
-				
-		jobEvent.setType(JobEventType.STOPPED);
-		
-		for(QJobListener jobListener: this.listeners)
-			jobListener.handleEvent(jobEvent);
 	}
 
 	@Override
 	public void registerListener(QJobListener listener) {
 		this.listeners.add(listener);		
-	}
-	
-	@Override
-	public synchronized ExecutorService executorFor(QJob job) {
-		ExecutorService executorService = this.jobExecutorServices.get(job.getJobID());
-		if (executorService == null) {
-			executorService = Executors.newSingleThreadExecutor();
-			this.jobExecutorServices.put(job.getJobID(), executorService);
-		}
-		return executorService;
 	}
 }

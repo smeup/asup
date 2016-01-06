@@ -31,6 +31,7 @@ import org.smeup.sys.os.core.SystemStatus;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getCreationInfo <em>Creation Info</em>}</li>
@@ -43,7 +44,6 @@ import org.smeup.sys.os.core.SystemStatus;
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getTemporaryLibrary <em>Temporary Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -35,6 +35,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <em><b>QJob</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCreationInfo <em>Creation Info</em>}</li>
@@ -54,7 +55,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -1019,12 +1019,6 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		result.append(timeSeparator);
 		result.append(')');
 		return result.toString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
 	}
 
 	@Override

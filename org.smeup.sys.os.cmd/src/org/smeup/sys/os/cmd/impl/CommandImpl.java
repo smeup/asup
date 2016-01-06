@@ -37,6 +37,7 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <em><b>QCommand</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandImpl#isAllowBatch <em>Allow Batch</em>}</li>
@@ -47,7 +48,6 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandImpl#getTypeName <em>Type Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

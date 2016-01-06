@@ -33,10 +33,10 @@ import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

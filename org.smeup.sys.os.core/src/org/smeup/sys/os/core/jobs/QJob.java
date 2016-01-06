@@ -22,6 +22,7 @@ import org.smeup.sys.os.core.QSystem;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCreationInfo <em>Creation Info</em>}</li>
@@ -41,7 +42,6 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob()
  * @model

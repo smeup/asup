@@ -16,10 +16,10 @@ import org.smeup.sys.os.type.QTypedContainer;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.QCommandContainer#getTypeName <em>Type Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCommandContainer()
  * @model

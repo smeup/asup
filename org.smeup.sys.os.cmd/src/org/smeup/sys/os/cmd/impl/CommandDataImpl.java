@@ -19,8 +19,6 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Command Data</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

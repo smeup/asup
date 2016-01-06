@@ -12,7 +12,10 @@
 package org.smeup.sys.os.core.base;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.memo.QResourceManager;
@@ -33,6 +36,13 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 	@Inject
 	private QJobManager jobManager;
 
+	private ExecutorService jobLogExecutor;
+	
+	@PostConstruct
+	private void init() {
+		jobLogExecutor = Executors.newCachedThreadPool(new JobLogThreadFactory());		
+	}
+	
 	@Override
 	public void info(QJob job, String message) {
 		addEntry(job, 10, message);
@@ -50,8 +60,7 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 
 	@Override
 	public void addEntry(QJob job, int gravity, String message) {
-		ExecutorService executor = jobManager.executorFor(job);
-		executor.submit(taskFor(job, gravity, message));
+		jobLogExecutor.submit(taskFor(job, gravity, message));
 	}
 
 	private Runnable taskFor(final QJob job, final int gravity, final String message) {
@@ -105,5 +114,15 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 		QJobLog jobLog = jobLogReader.lookup(jobTarget.getJobID());
 
 		return jobLog;
+	}
+	
+	private class JobLogThreadFactory implements ThreadFactory {
+
+		@Override
+		public Thread newThread(Runnable r) {
+			Thread t = new Thread(r, "asup://thread/jobLogger");
+			return t;
+		}
+
 	}
 }

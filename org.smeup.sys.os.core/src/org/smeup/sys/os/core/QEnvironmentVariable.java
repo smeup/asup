@@ -16,11 +16,11 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.QEnvironmentVariable#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QEnvironmentVariable#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getEnvironmentVariable()
  * @model

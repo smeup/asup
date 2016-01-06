@@ -8,7 +8,6 @@
 package org.smeup.sys.os.core.jobs;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -33,14 +32,6 @@ public interface QJobManager {
 	 * @generated
 	 */
 	void updateStatus(QJob job, JobStatus status);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model type="org.smeup.sys.mi.core.JavaExecutorService" required="true" jobRequired="true"
-	 * @generated
-	 */
-	ExecutorService executorFor(QJob job);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

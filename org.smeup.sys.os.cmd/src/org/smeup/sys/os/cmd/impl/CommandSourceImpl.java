@@ -22,11 +22,11 @@ import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
  * <em><b>QCommand Source</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandSourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.impl.CommandSourceImpl#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

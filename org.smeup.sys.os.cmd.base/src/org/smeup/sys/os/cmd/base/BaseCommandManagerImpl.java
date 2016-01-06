@@ -56,7 +56,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 		programManager.callProgram(contextID, null, callableCommand.getCommand().getProgram(), parameters);
 	}
 	@Override
-	public void executeCommandImmediate(String contextID, String command, Map<String, Object> variables) {
+	public void executeCommand(String contextID, String command, Map<String, Object> variables) {
 		try {
 			QCallableCommand callableCommand = prepareCommand(contextID, command, variables, true);
 			executeCommand(contextID, callableCommand);

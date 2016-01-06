@@ -20,6 +20,7 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getCreationInfo <em>Creation Info</em>}</li>
@@ -32,7 +33,6 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *   <li>{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem()
  * @model

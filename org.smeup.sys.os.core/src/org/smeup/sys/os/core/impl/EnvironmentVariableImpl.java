@@ -24,11 +24,11 @@ import org.smeup.sys.os.core.QOperatingSystemCorePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.EnvironmentVariableImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

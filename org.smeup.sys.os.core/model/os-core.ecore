@@ -233,9 +233,6 @@
       <eOperations name="delay">
         <eParameters name="resumeTime" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eOperations>
-      <eOperations name="executorFor" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaExecutorService">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-      </eOperations>
       <eOperations name="getActiveJobs" lowerBound="1" upperBound="-1" eType="#//jobs/Job"/>
       <eOperations name="lookup" eType="#//jobs/Job">
         <eParameters name="contextID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

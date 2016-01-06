@@ -15,6 +15,7 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.cmd.QCommandParameter#isAllowVariable <em>Allow Variable</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCommandParameter#getDataTerm <em>Data Term</em>}</li>
@@ -23,7 +24,6 @@ import org.smeup.sys.il.core.QObject;
  *   <li>{@link org.smeup.sys.os.cmd.QCommandParameter#getStatus <em>Status</em>}</li>
  *   <li>{@link org.smeup.sys.os.cmd.QCommandParameter#isHidden <em>Hidden</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.cmd.QOperatingSystemCommandPackage#getCommandParameter()
  * @model
