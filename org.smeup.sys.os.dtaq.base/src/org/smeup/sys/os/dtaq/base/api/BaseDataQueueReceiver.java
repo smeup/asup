@@ -38,11 +38,17 @@ public class BaseDataQueueReceiver {
 			@DataDef(precision = 5, packed = true) QDecimal wait) {
 
 		// content
-		String content = dataQueueManager.readDataQueue(job.getJobID(), library.trimR(), name.trimR(), wait.asInteger() * 1000 * 100, null, null);
+		String content = dataQueueManager.readDataQueue(job.getJobID(), library.trimR(), name.trimR(), wait.asInteger() * 1000, null, null);
 
-		System.out.println("dtaq:\t" + content);
+		System.out.println("dtaq-rcv:\t" + content);
 
-		data.qStr(content.length()).eval(content);
-		length.eval(content.length());
+		if (content != null) {
+			length.eval(content.length());
+			data.qStr(content.length()).eval(content);
+		}
+		else  {
+			length.clear();
+			data.clear();
+		}
 	}
 }

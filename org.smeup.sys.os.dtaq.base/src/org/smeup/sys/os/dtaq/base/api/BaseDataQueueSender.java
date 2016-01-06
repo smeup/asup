@@ -32,7 +32,10 @@ public class BaseDataQueueSender {
 
 	@Main
 	public void main(@DataDef(length = 10) QCharacter name, @DataDef(length = 10) QCharacter library, @DataDef(precision = 5, packed = true) QDecimal dataLength, QPointer data) {
-
-		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, data.qStr(dataLength.asInteger()));
+		
+		String content = data.qStr(dataLength.asInteger()).asString();
+		System.out.println("dtaq-snd:\t" + content);
+		
+		dataQueueManager.writeDataQueue(job.getJobID(), library.trimR(), name.trimR(), null, content);
 	}
 }
