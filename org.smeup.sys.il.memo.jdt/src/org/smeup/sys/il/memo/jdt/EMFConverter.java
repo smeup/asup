@@ -38,8 +38,6 @@ public class EMFConverter {
 
 		EObject eObject = resource.getContents().get(0);
 		
-		resource.unload();
-
 		return eObject;
 	}
 
@@ -49,7 +47,5 @@ public class EMFConverter {
 		resource.getContents().add(object);
 
 		resource.save(stream, Collections.EMPTY_MAP);
-		
-		resource.unload();
 	}
 }
