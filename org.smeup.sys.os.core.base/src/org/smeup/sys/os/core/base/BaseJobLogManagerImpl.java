@@ -120,7 +120,7 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 
 		@Override
 		public Thread newThread(Runnable r) {
-			Thread t = new Thread(r, "asup://thread/jobLogger");
+			Thread t = new Thread(r, "asup://thread/jobs/logger");
 			return t;
 		}
 
