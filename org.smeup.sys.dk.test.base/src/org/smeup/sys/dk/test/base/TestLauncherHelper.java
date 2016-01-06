@@ -28,7 +28,7 @@ import org.smeup.sys.dk.test.QTestRunner;
 import org.smeup.sys.dk.test.annotation.Test;
 import org.smeup.sys.dk.test.impl.DevelopmentKitTestFactoryImpl;
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.rt.core.QApplication;
 
 public class TestLauncherHelper {
 	
@@ -42,7 +42,7 @@ public class TestLauncherHelper {
 		component = component.trim();
 		module = module.trim();
 		
-		BundleContext bundleContext = FrameworkUtil.getBundle(QSystem.class).getBundleContext();
+		BundleContext bundleContext = FrameworkUtil.getBundle(QApplication.class).getBundleContext();
 		
 		// Search QTestLauncher services for specific component
 		String filter = "";

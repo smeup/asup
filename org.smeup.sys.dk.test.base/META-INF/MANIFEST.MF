@@ -7,10 +7,7 @@ Bundle-Vendor: www.smeup.com
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.inject,
  org.osgi.framework;version="1.8.0"
-Require-Bundle: org.smeup.sys.dk.test;visibility:=reexport,
- org.smeup.sys.rt.core,
- org.smeup.sys.co.shell,
- org.smeup.sys.dk.core,
- org.smeup.sys.os.core
-Export-Package: org.smeup.sys.dk.test.base,
- org.smeup.sys.dk.test.base.api
+Require-Bundle: org.smeup.sys.dk.core,
+ org.smeup.sys.dk.test;visibility:=reexport,
+ org.smeup.sys.rt.core
+Export-Package: org.smeup.sys.dk.test.base
