@@ -41,7 +41,7 @@ public class FBUserProfileUpdater extends Thread {
 	@Override
 	public void run() {
 
-		while (true)
+		while (Thread.currentThread().isInterrupted()) {
 			try {
 				Thread.sleep(60 * 1000);
 
@@ -73,8 +73,10 @@ public class FBUserProfileUpdater extends Thread {
 						userProfileWriter.delete(userProfile);
 				
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				 Thread.currentThread().interrupt();
+				    break;
 			}
+		}
 	}
 
 	private boolean existsUser(List<User> users, String id) {

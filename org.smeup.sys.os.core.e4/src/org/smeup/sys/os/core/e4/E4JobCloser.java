@@ -21,7 +21,7 @@ import org.smeup.sys.os.core.jobs.QJob;
 public class E4JobCloser extends Thread {
 
 	private E4JobManagerImpl jobManager;
-	
+
 	public E4JobCloser(E4JobManagerImpl jobManager) {
 		super("asup://thread/jobs/closer");
 		setDaemon(true);
@@ -31,12 +31,13 @@ public class E4JobCloser extends Thread {
 	@Override
 	public void run() {
 
-		while (true) {
+		while (Thread.currentThread().isInterrupted()) {
 
 			try {
 				Thread.sleep(60 * 1000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
+				break;
 			}
 
 			Iterator<QJob> iterator = jobManager.getActiveJobs().iterator();

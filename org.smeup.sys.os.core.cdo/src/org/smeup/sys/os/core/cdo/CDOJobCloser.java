@@ -34,12 +34,13 @@ public class CDOJobCloser extends Thread {
 	@Override
 	public void run() {
 
-		while (true) {
+		while (Thread.currentThread().isInterrupted()) {
 
 			try {
 				Thread.sleep(60 * 1000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Thread.currentThread().interrupt();
+				break;
 			}
 
 			StringBuffer queryString = new StringBuffer();

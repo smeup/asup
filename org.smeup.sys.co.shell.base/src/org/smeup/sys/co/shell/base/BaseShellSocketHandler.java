@@ -49,7 +49,7 @@ public class BaseShellSocketHandler extends Thread {
 	private static String LOGIN = "login> ";
 
 	public BaseShellSocketHandler(Socket socket) {
-		super("asup://thread/telnet-rcv/" + socket.getRemoteSocketAddress());
+		super("asup://thread/telnet/" + socket.getRemoteSocketAddress());
 		this.socket = socket;
 	}
 
