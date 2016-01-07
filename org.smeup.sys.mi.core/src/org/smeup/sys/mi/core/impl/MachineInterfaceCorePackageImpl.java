@@ -33,13 +33,11 @@ import java.util.Properties;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage;

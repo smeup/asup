@@ -7,6 +7,7 @@
  */
 package org.smeup.sys.mi.core.util;
 
+import java.lang.management.ThreadInfo;
 import java.util.List;
 
 /**
@@ -27,5 +28,13 @@ public interface QThreads {
 	 * @generated
 	 */
 	List<Thread> listThreads();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadInfo"
+	 * @generated
+	 */
+	List<ThreadInfo> listThreadInfos();
 
 } // QThreads

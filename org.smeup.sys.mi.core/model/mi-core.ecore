@@ -167,6 +167,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Threads" abstract="true" interface="true">
       <eOperations name="listThreads" upperBound="-1" eType="#//JavaThread"/>
+      <eOperations name="listThreadInfos" upperBound="-1" eType="#//JavaThreadInfo"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

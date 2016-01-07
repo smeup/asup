@@ -14,11 +14,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
-
 import org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl;
-
 import org.smeup.sys.mi.core.util.QFiles;
 import org.smeup.sys.mi.core.util.QLists;
 import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilFactory;
@@ -384,6 +381,8 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		initEClass(threadsEClass, QThreads.class, "Threads", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "listThreadInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } //MachineInterfaceCoreUtilPackageImpl

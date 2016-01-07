@@ -26,5 +26,4 @@
             class="org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage"
             genModel="model/mi-core.genmodel"/>
    </extension>
-
 </plugin>

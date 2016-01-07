@@ -4,9 +4,9 @@
     modelDirectory="/org.smeup.sys.mi.core/src" modelPluginID="org.smeup.sys.mi.core"
     modelName="As.UP Machine Interface Core" modelPluginClass="" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
-    importerID="org.eclipse.emf.importer.ecore" arrayAccessors="true" complianceLevel="7.0"
-    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" interfaceNamePattern="Q{0}"
-    classNamePattern="" importOrganizing="true">
+    featureMapWrapperInternalInterface="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" suppressGenModelAnnotations="false" copyrightFields="false"
+    language="EN" interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
   <foreignModel>mi-core.ecore</foreignModel>
   <genPackages prefix="MachineInterfaceCore" basePackage="org.smeup.sys.mi" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="mi-core.ecore#/">
@@ -46,8 +46,8 @@
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThread"/>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadGroup"/>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadInfo"/>
-    <nestedGenPackages prefix="MachineInterfaceCoreUtil" disposableProviderFactory="true"
-        adapterFactory="false" ecorePackage="mi-core.ecore#//util">
+    <nestedGenPackages prefix="MachineInterfaceCoreUtil" basePackage="org.smeup.sys.mi.core"
+        disposableProviderFactory="true" adapterFactory="false" ecorePackage="mi-core.ecore#//util">
       <genClasses image="false" ecoreClass="mi-core.ecore#//util/Files">
         <genOperations ecoreOperation="mi-core.ecore#//util/Files/getBaseName">
           <genParameters ecoreParameter="mi-core.ecore#//util/Files/getBaseName/fileName"/>

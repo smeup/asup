@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.lang.management.ThreadInfo;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,14 +28,12 @@ import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
+import org.smeup.sys.mi.core.util.QThreads;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.JobThreadStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobThread;
 import org.smeup.sys.os.core.jobs.impl.JobThreadImpl;
-
-import com.jvmtop.monitor.ThreadStats;
-import com.jvmtop.monitor.VMInfo;
 
 
 @Program(name = "QWCCDSACTHD")
@@ -46,7 +43,9 @@ public class ActivetThreadsWorker {
 	private QOutputManager outputManager;
 	@Inject
 	private QJob job;
-
+	@Inject
+	private QThreads threads;
+	
 	@Main
 	public void main(@Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
 		QObjectWriter objectWriter = null;
@@ -74,11 +73,10 @@ public class ActivetThreadsWorker {
 
 	private Collection<QJobThread> threads() {
 		try {
-			VMInfo info = VMInfo.processCurrentVM();
-			List<ThreadStats> threadInfosSortedByCPU = info.getThreadInfoSortedByCPU();
 			Collection<QJobThread> result = new ArrayList<QJobThread>();
-			for (ThreadStats threadStats: threadInfosSortedByCPU) {
-				result.add(new InternalJobThreadAdapter(threadStats.getThreadInfo()));
+			
+			for (ThreadInfo threadInfo: threads.listThreadInfos()) {
+				result.add(new InternalJobThreadAdapter(threadInfo));
 			}
 			return result;
 		} catch (Exception e) {
