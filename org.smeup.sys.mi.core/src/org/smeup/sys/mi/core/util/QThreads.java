@@ -32,10 +32,34 @@ public interface QThreads {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" threadGroupRequired="true"
+	 * @generated
+	 */
+	List<Thread> listThreads(String threadGroup);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" threadGroupType="org.smeup.sys.mi.core.JavaThreadGroup" threadGroupRequired="true"
+	 * @generated
+	 */
+	List<Thread> listThreads(ThreadGroup threadGroup);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model type="org.smeup.sys.mi.core.JavaThreadInfo"
 	 * @generated
 	 */
 	List<ThreadInfo> listThreadInfos();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadGroup"
+	 * @generated
+	 */
+	List<ThreadGroup> listThreadGroups();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,6 +100,14 @@ public interface QThreads {
 	 * @generated
 	 */
 	Thread lookupThread(ThreadInfo info);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadGroup" nameRequired="true"
+	 * @generated
+	 */
+	ThreadGroup lookupThreadGroup(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

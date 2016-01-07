@@ -41,11 +41,50 @@ public class BaseThreadsImpl implements QThreads {
 	}
 
 	@Override
+	public List<Thread> listThreads(String threadGroup) {
+		final ThreadGroup group = lookupThreadGroup(threadGroup);
+		if (group == null)
+			return null;
+		return listThreads(group);
+
+	}
+
+	@Override
+	public List<Thread> listThreads(ThreadGroup threadGroup) {
+		int size = threadGroup.activeCount();
+		int n = 0;
+		Thread[] threads = null;
+		do {
+			size *= 2;
+			threads = new Thread[size];
+			n = threadGroup.enumerate(threads, false);
+		} while (n == size);
+		return java.util.Arrays.asList(threads);
+
+	}
+
+	@Override
+	public List<ThreadGroup> listThreadGroups() {
+		final ThreadGroup root = getRootThreadGroup();
+		int size = root.activeGroupCount();
+		int n = 0;
+		ThreadGroup[] groups = null;
+		do {
+			size *= 2;
+			groups = new ThreadGroup[size];
+			n = root.enumerate(groups, true);
+		} while (n == size);
+		ThreadGroup[] allGroups = new ThreadGroup[n + 1];
+		allGroups[0] = root;
+		System.arraycopy(groups, 0, allGroups, 1, n);
+		return java.util.Arrays.asList(allGroups);
+	}
+
+	@Override
 	public List<ThreadInfo> listThreadInfos() {
 		final ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
 		final long[] threadIds = thbean.getAllThreadIds();
 
-		// Get thread info with lock info, when available.
 		ThreadInfo[] infos;
 		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
 			infos = thbean.getThreadInfo(threadIds);
@@ -113,6 +152,14 @@ public class BaseThreadsImpl implements QThreads {
 	@Override
 	public Thread lookupThread(ThreadInfo info) {
 		return lookupThread(info.getThreadId());
+	}
+
+	@Override
+	public ThreadGroup lookupThreadGroup(String name) {
+		for (ThreadGroup group : listThreadGroups())
+			if (group.getName().equals(name))
+				return group;
+		return null;
 	}
 
 	@Override
