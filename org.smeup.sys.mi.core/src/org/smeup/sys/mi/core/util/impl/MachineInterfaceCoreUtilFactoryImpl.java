@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util.impl;
+package org.smeup.sys.mi.core.util.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.smeup.sys.il.core.util.*;
+import org.smeup.sys.mi.core.util.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,24 +23,24 @@ import org.smeup.sys.il.core.util.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UtilFactoryImpl extends EFactoryImpl implements QUtilFactory {
+public class MachineInterfaceCoreUtilFactoryImpl extends EFactoryImpl implements QMachineInterfaceCoreUtilFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static QUtilFactory init() {
+	public static QMachineInterfaceCoreUtilFactory init() {
 		try {
-			QUtilFactory theUtilFactory = (QUtilFactory)EPackage.Registry.INSTANCE.getEFactory(QUtilPackage.eNS_URI);
-			if (theUtilFactory != null) {
-				return theUtilFactory;
+			QMachineInterfaceCoreUtilFactory theMachineInterfaceCoreUtilFactory = (QMachineInterfaceCoreUtilFactory)EPackage.Registry.INSTANCE.getEFactory(QMachineInterfaceCoreUtilPackage.eNS_URI);
+			if (theMachineInterfaceCoreUtilFactory != null) {
+				return theMachineInterfaceCoreUtilFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new UtilFactoryImpl();
+		return new MachineInterfaceCoreUtilFactoryImpl();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class UtilFactoryImpl extends EFactoryImpl implements QUtilFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UtilFactoryImpl() {
+	public MachineInterfaceCoreUtilFactoryImpl() {
 		super();
 	}
 
@@ -71,8 +71,8 @@ public class UtilFactoryImpl extends EFactoryImpl implements QUtilFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QUtilPackage getUtilPackage() {
-		return (QUtilPackage)getEPackage();
+	public QMachineInterfaceCoreUtilPackage getMachineInterfaceCoreUtilPackage() {
+		return (QMachineInterfaceCoreUtilPackage)getEPackage();
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class UtilFactoryImpl extends EFactoryImpl implements QUtilFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static QUtilPackage getPackage() {
-		return QUtilPackage.eINSTANCE;
+	public static QMachineInterfaceCoreUtilPackage getPackage() {
+		return QMachineInterfaceCoreUtilPackage.eINSTANCE;
 	}
 
-} //UtilFactoryImpl
+} //MachineInterfaceCoreUtilFactoryImpl

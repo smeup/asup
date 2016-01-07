@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QFormat#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QFormat#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getFormat()
  * @model

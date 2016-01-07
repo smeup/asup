@@ -18,11 +18,11 @@ import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
  * <em><b>Annotation Test</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.AnnotationTestImpl#getMessage <em>Message</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

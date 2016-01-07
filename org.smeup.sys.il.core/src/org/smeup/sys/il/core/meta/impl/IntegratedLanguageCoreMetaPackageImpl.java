@@ -32,8 +32,6 @@ import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
 import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
 import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
 import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
-import org.smeup.sys.il.core.util.QUtilPackage;
-import org.smeup.sys.il.core.util.impl.UtilPackageImpl;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
@@ -143,7 +141,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		IntegratedLanguageCoreCtxPackageImpl theIntegratedLanguageCoreCtxPackage = (IntegratedLanguageCoreCtxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) instanceof IntegratedLanguageCoreCtxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
 		IntegratedLanguageCoreOutPackageImpl theIntegratedLanguageCoreOutPackage = (IntegratedLanguageCoreOutPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) instanceof IntegratedLanguageCoreOutPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
 		IntegratedLanguageCoreTermPackageImpl theIntegratedLanguageCoreTermPackage = (IntegratedLanguageCoreTermPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) instanceof IntegratedLanguageCoreTermPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) : QIntegratedLanguageCoreTermPackage.eINSTANCE);
-		UtilPackageImpl theUtilPackage = (UtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI) instanceof UtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI) : QUtilPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theIntegratedLanguageCoreMetaPackage.createPackageContents();
@@ -151,7 +148,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		theIntegratedLanguageCoreCtxPackage.createPackageContents();
 		theIntegratedLanguageCoreOutPackage.createPackageContents();
 		theIntegratedLanguageCoreTermPackage.createPackageContents();
-		theUtilPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theIntegratedLanguageCoreMetaPackage.initializePackageContents();
@@ -159,7 +155,6 @@ public class IntegratedLanguageCoreMetaPackageImpl extends EPackageImpl implemen
 		theIntegratedLanguageCoreCtxPackage.initializePackageContents();
 		theIntegratedLanguageCoreOutPackage.initializePackageContents();
 		theIntegratedLanguageCoreTermPackage.initializePackageContents();
-		theUtilPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theIntegratedLanguageCoreMetaPackage.freeze();

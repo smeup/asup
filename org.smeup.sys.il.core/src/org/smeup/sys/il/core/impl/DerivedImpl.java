@@ -15,8 +15,6 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Derived</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

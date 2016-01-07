@@ -11,7 +11,7 @@
  */
 package org.smeup.sys.il.core.util.asf;
 
-import org.smeup.sys.il.core.util.QFiles;
+import org.smeup.sys.mi.core.util.QFiles;
 
 public class ASFFilesImpl implements QFiles {
 

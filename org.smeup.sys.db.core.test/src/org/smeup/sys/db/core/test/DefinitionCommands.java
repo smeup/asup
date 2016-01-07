@@ -40,9 +40,9 @@ import org.smeup.sys.db.core.QTableDef;
 import org.smeup.sys.db.core.QViewDef;
 import org.smeup.sys.dk.test.e4.E4TestHelper;
 import org.smeup.sys.dk.test.e4.E4TestProviderImpl;
-import org.smeup.sys.il.core.util.QFiles;
 import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefFactory;
+import org.smeup.sys.mi.core.util.QFiles;
 
 public class DefinitionCommands extends E4TestProviderImpl {
 

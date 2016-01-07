@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getUser <em>User</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.ctx.QCredentials#getPassword <em>Password</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage#getCredentials()
  * @model abstract="true"

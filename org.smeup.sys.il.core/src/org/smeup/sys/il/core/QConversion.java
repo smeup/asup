@@ -15,10 +15,10 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QConversion#getStatus <em>Status</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getConversion()
  * @model

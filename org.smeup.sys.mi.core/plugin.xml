@@ -19,4 +19,12 @@
             genModel="model/mi-core.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mi-core -->
+      <package
+            uri="http://www.smeup.org/asup/mi/core/util"
+            class="org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage"
+            genModel="model/mi-core.genmodel"/>
+   </extension>
+
 </plugin>

@@ -5,26 +5,23 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util;
-
-import java.io.InputStream;
-import java.io.OutputStream;
+package org.smeup.sys.mi.core.util;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Streams</b></em>'. <!-- end-user-doc -->
+ * <em><b>Files</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.util.QUtilPackage#getStreams()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getFiles()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QStreams {
+public interface QFiles {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model inputDataType="org.smeup.sys.mi.core.JavaInputStream" inputRequired="true" outputDataType="org.smeup.sys.mi.core.JavaOutputStream" outputRequired="true"
+	 * @model required="true" fileNameRequired="true"
 	 * @generated
 	 */
-	void copy(InputStream input, OutputStream output);
+	String getBaseName(String fileName);
 
-} // QStreams
+} // QFiles

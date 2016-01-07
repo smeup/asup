@@ -4,8 +4,9 @@
     modelDirectory="/org.smeup.sys.mi.core/src" modelPluginID="org.smeup.sys.mi.core"
     modelName="As.UP Machine Interface Core" modelPluginClass="" rootExtendsInterface=""
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" suppressGenModelAnnotations="false"
-    copyrightFields="false" language="EN" interfaceNamePattern="Q{0}" importOrganizing="true">
+    importerID="org.eclipse.emf.importer.ecore" arrayAccessors="true" complianceLevel="7.0"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" interfaceNamePattern="Q{0}"
+    classNamePattern="" importOrganizing="true">
   <foreignModel>mi-core.ecore</foreignModel>
   <genPackages prefix="MachineInterfaceCore" basePackage="org.smeup.sys.mi" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="mi-core.ecore#/">
@@ -42,5 +43,118 @@
     </genClasses>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaList"/>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaNumber"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThread"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadGroup"/>
+    <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadInfo"/>
+    <nestedGenPackages prefix="MachineInterfaceCoreUtil" disposableProviderFactory="true"
+        adapterFactory="false" ecorePackage="mi-core.ecore#//util">
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Files">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Files/getBaseName">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Files/getBaseName/fileName"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Streams">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Streams/copy">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Streams/copy/input"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Streams/copy/output"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Lists">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Lists/addFirst">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addFirst/list"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addFirst/element"/>
+          <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Lists/addFirst/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Lists/addLast">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addLast/list"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addLast/element"/>
+          <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Lists/addLast/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Lists/addBefore">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addBefore/list"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addBefore/oldElement"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addBefore/newElement"/>
+          <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Lists/addBefore/E"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Lists/addAfter">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addAfter/list"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addAfter/oldElement"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Lists/addAfter/newElement"/>
+          <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Lists/addAfter/E"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Strings">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/appendChars">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/appendChars/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/appendChars/chars"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/appendChars/times"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/appendChars/before"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/firstToUpper">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/firstToUpper/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/removeFirstChar">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/removeFirstChar/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/removeLastChar">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/removeLastChar/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/trimL">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/trimL/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/trimR">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/trimR/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/isEmptyTrim">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/isEmptyTrim/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/isOneOf">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/isOneOf/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/isOneOf/values"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/checkEquals">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/checkEquals/string1"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/checkEquals/string2"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/left">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/left/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/left/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/lSet">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/lSet/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/lSet/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/lSet.1">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/lSet.1/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/lSet.1/nrOfChars"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/lSet.1/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/string">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/string/nrOfChars"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/string/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/rSet">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/rSet/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/rSet/nrOfChars"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/rSet.1">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/rSet.1/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/rSet.1/nrOfChars"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/rSet.1/filler"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/right">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/right/string"/>
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/right/nrOfChars"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/URIs">
+        <genOperations ecoreOperation="mi-core.ecore#//util/URIs/getBaseName">
+          <genParameters ecoreParameter="mi-core.ecore#//util/URIs/getBaseName/uri"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Threads">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreads"/>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

@@ -20,7 +20,6 @@ import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;
-import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QRecord;
@@ -31,6 +30,7 @@ import org.smeup.sys.il.esam.OperationRead;
 import org.smeup.sys.il.esam.OperationSet;
 import org.smeup.sys.il.esam.QIndex;
 import org.smeup.sys.il.esam.QIndexColumn;
+import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.rt.core.QApplication;
 
 public class JDBCAccessHelper {

@@ -24,7 +24,6 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.out.QObjectWriter;
-import org.smeup.sys.il.core.util.QStrings;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
@@ -34,6 +33,7 @@ import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
 import org.smeup.sys.il.data.term.QDataTerm;
+import org.smeup.sys.mi.core.util.QStrings;
 
 public class BaseShellObjectWriterImpl implements QObjectWriter {
 

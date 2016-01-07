@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.meta.QFacet;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QRemap#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QRemap#getIndex <em>Index</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getRemap()
  * @model

@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util.impl;
+package org.smeup.sys.mi.core.util.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
@@ -15,35 +15,18 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
-
-import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
-
-import org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl;
-
-import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
-
-import org.smeup.sys.il.core.meta.impl.IntegratedLanguageCoreMetaPackageImpl;
-
-import org.smeup.sys.il.core.out.QIntegratedLanguageCoreOutPackage;
-
-import org.smeup.sys.il.core.out.impl.IntegratedLanguageCoreOutPackageImpl;
-
-import org.smeup.sys.il.core.term.QIntegratedLanguageCoreTermPackage;
-
-import org.smeup.sys.il.core.term.impl.IntegratedLanguageCoreTermPackageImpl;
-
-import org.smeup.sys.il.core.util.QFiles;
-import org.smeup.sys.il.core.util.QLists;
-import org.smeup.sys.il.core.util.QStreams;
-import org.smeup.sys.il.core.util.QStrings;
-import org.smeup.sys.il.core.util.QURIs;
-import org.smeup.sys.il.core.util.QUtilFactory;
-import org.smeup.sys.il.core.util.QUtilPackage;
-
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+
+import org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl;
+
+import org.smeup.sys.mi.core.util.QFiles;
+import org.smeup.sys.mi.core.util.QLists;
+import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilFactory;
+import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage;
+import org.smeup.sys.mi.core.util.QStreams;
+import org.smeup.sys.mi.core.util.QStrings;
+import org.smeup.sys.mi.core.util.QThreads;
+import org.smeup.sys.mi.core.util.QURIs;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +34,7 @@ import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
+public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements QMachineInterfaceCoreUtilPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,6 +71,13 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 	private EClass urIsEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass threadsEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -98,12 +88,12 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.il.core.util.QUtilPackage#eNS_URI
+	 * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private UtilPackageImpl() {
-		super(eNS_URI, QUtilFactory.eINSTANCE);
+	private MachineInterfaceCoreUtilPackageImpl() {
+		super(eNS_URI, QMachineInterfaceCoreUtilFactory.eINSTANCE);
 	}
 
 	/**
@@ -116,7 +106,7 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link QUtilPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QMachineInterfaceCoreUtilPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,47 +115,32 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static QUtilPackage init() {
-		if (isInited) return (QUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QUtilPackage.eNS_URI);
+	public static QMachineInterfaceCoreUtilPackage init() {
+		if (isInited) return (QMachineInterfaceCoreUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI);
 
 		// Obtain or create and register package
-		UtilPackageImpl theUtilPackage = (UtilPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UtilPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new UtilPackageImpl());
+		MachineInterfaceCoreUtilPackageImpl theMachineInterfaceCoreUtilPackage = (MachineInterfaceCoreUtilPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MachineInterfaceCoreUtilPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MachineInterfaceCoreUtilPackageImpl());
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		QMachineInterfaceCorePackage.eINSTANCE.eClass();
-
 		// Obtain or create and register interdependencies
-		IntegratedLanguageCorePackageImpl theIntegratedLanguageCorePackage = (IntegratedLanguageCorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI) instanceof IntegratedLanguageCorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI) : QIntegratedLanguageCorePackage.eINSTANCE);
-		IntegratedLanguageCoreCtxPackageImpl theIntegratedLanguageCoreCtxPackage = (IntegratedLanguageCoreCtxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) instanceof IntegratedLanguageCoreCtxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI) : QIntegratedLanguageCoreCtxPackage.eINSTANCE);
-		IntegratedLanguageCoreMetaPackageImpl theIntegratedLanguageCoreMetaPackage = (IntegratedLanguageCoreMetaPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) instanceof IntegratedLanguageCoreMetaPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreMetaPackage.eNS_URI) : QIntegratedLanguageCoreMetaPackage.eINSTANCE);
-		IntegratedLanguageCoreOutPackageImpl theIntegratedLanguageCoreOutPackage = (IntegratedLanguageCoreOutPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) instanceof IntegratedLanguageCoreOutPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI) : QIntegratedLanguageCoreOutPackage.eINSTANCE);
-		IntegratedLanguageCoreTermPackageImpl theIntegratedLanguageCoreTermPackage = (IntegratedLanguageCoreTermPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) instanceof IntegratedLanguageCoreTermPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI) : QIntegratedLanguageCoreTermPackage.eINSTANCE);
+		MachineInterfaceCorePackageImpl theMachineInterfaceCorePackage = (MachineInterfaceCorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI) instanceof MachineInterfaceCorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI) : QMachineInterfaceCorePackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theUtilPackage.createPackageContents();
-		theIntegratedLanguageCorePackage.createPackageContents();
-		theIntegratedLanguageCoreCtxPackage.createPackageContents();
-		theIntegratedLanguageCoreMetaPackage.createPackageContents();
-		theIntegratedLanguageCoreOutPackage.createPackageContents();
-		theIntegratedLanguageCoreTermPackage.createPackageContents();
+		theMachineInterfaceCoreUtilPackage.createPackageContents();
+		theMachineInterfaceCorePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theUtilPackage.initializePackageContents();
-		theIntegratedLanguageCorePackage.initializePackageContents();
-		theIntegratedLanguageCoreCtxPackage.initializePackageContents();
-		theIntegratedLanguageCoreMetaPackage.initializePackageContents();
-		theIntegratedLanguageCoreOutPackage.initializePackageContents();
-		theIntegratedLanguageCoreTermPackage.initializePackageContents();
+		theMachineInterfaceCoreUtilPackage.initializePackageContents();
+		theMachineInterfaceCorePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theUtilPackage.freeze();
+		theMachineInterfaceCoreUtilPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(QUtilPackage.eNS_URI, theUtilPackage);
-		return theUtilPackage;
+		EPackage.Registry.INSTANCE.put(QMachineInterfaceCoreUtilPackage.eNS_URI, theMachineInterfaceCoreUtilPackage);
+		return theMachineInterfaceCoreUtilPackage;
 	}
 
 	/**
@@ -218,8 +193,17 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QUtilFactory getUtilFactory() {
-		return (QUtilFactory)getEFactoryInstance();
+	public EClass getThreads() {
+		return threadsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QMachineInterfaceCoreUtilFactory getMachineInterfaceCoreUtilFactory() {
+		return (QMachineInterfaceCoreUtilFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -250,6 +234,8 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 		stringsEClass = createEClass(STRINGS);
 
 		urIsEClass = createEClass(UR_IS);
+
+		threadsEClass = createEClass(THREADS);
 	}
 
 	/**
@@ -394,6 +380,10 @@ public class UtilPackageImpl extends EPackageImpl implements QUtilPackage {
 
 		op = addEOperation(urIsEClass, ecorePackage.getEString(), "getBaseName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaURI(), "uri", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(threadsEClass, QThreads.class, "Threads", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
 	}
 
-} //UtilPackageImpl
+} //MachineInterfaceCoreUtilPackageImpl

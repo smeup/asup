@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util;
+package org.smeup.sys.mi.core.util;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.il.core.util.QUtilPackage
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage
  * @generated
  */
-public interface QUtilFactory extends EFactory {
+public interface QMachineInterfaceCoreUtilFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QUtilFactory eINSTANCE = org.smeup.sys.il.core.util.impl.UtilFactoryImpl.init();
+	QMachineInterfaceCoreUtilFactory eINSTANCE = org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -33,6 +33,6 @@ public interface QUtilFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	QUtilPackage getUtilPackage();
+	QMachineInterfaceCoreUtilPackage getMachineInterfaceCoreUtilPackage();
 
-} //QUtilFactory
+} //QMachineInterfaceCoreUtilFactory

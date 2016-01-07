@@ -5,23 +5,25 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util;
+package org.smeup.sys.mi.core.util;
+
+import java.net.URI;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Files</b></em>'. <!-- end-user-doc -->
+ * <em><b>UR Is</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.util.QUtilPackage#getFiles()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getURIs()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QFiles {
+public interface QURIs {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model required="true" fileNameRequired="true"
+	 * @model required="true" uriDataType="org.smeup.sys.mi.core.JavaURI" uriRequired="true"
 	 * @generated
 	 */
-	String getBaseName(String fileName);
+	String getBaseName(URI uri);
 
-} // QFiles
+} // QURIs

@@ -20,11 +20,11 @@ import org.smeup.sys.il.core.meta.impl.FacetImpl;
  * <em><b>Format</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.FormatImpl#getExpression <em>Expression</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.impl.FormatImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -25,10 +25,10 @@ import org.smeup.sys.il.core.QObjectContainer;
  * <em><b>Object Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.impl.ObjectContainerImpl#getContents <em>Contents</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

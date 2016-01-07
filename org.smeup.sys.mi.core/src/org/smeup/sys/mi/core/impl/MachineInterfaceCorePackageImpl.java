@@ -17,6 +17,7 @@ import java.lang.Iterable;
 
 import java.lang.annotation.Annotation;
 
+import java.lang.management.ThreadInfo;
 import java.lang.reflect.Type;
 
 import java.net.URI;
@@ -41,6 +42,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage;
+import org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -104,6 +107,27 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaThreadEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaThreadGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaThreadInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,11 +280,16 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		MachineInterfaceCoreUtilPackageImpl theMachineInterfaceCoreUtilPackage = (MachineInterfaceCoreUtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI) instanceof MachineInterfaceCoreUtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI) : QMachineInterfaceCoreUtilPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theMachineInterfaceCorePackage.createPackageContents();
+		theMachineInterfaceCoreUtilPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theMachineInterfaceCorePackage.initializePackageContents();
+		theMachineInterfaceCoreUtilPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theMachineInterfaceCorePackage.freeze();
@@ -341,6 +370,33 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 */
 	public EClass getJavaNumber() {
 		return javaNumberEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaThread() {
+		return javaThreadEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaThreadGroup() {
+		return javaThreadGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJavaThreadInfo() {
+		return javaThreadInfoEClass;
 	}
 
 	/**
@@ -522,6 +578,12 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaNumberEClass = createEClass(JAVA_NUMBER);
 
+		javaThreadEClass = createEClass(JAVA_THREAD);
+
+		javaThreadGroupEClass = createEClass(JAVA_THREAD_GROUP);
+
+		javaThreadInfoEClass = createEClass(JAVA_THREAD_INFO);
+
 		// Create data types
 		javaAnnotationEDataType = createEDataType(JAVA_ANNOTATION);
 		javaDictionaryEDataType = createEDataType(JAVA_DICTIONARY);
@@ -563,6 +625,12 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		QMachineInterfaceCoreUtilPackage theMachineInterfaceCoreUtilPackage = (QMachineInterfaceCoreUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI);
+
+		// Add subpackages
+		getESubpackages().add(theMachineInterfaceCoreUtilPackage);
+
 		// Create type parameters
 		addETypeParameter(javaCallableEClass, "V");
 		addETypeParameter(javaIteratorEClass, "T");
@@ -591,6 +659,12 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEClass(javaListEClass, List.class, "JavaList", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<E>");
 
 		initEClass(javaNumberEClass, Number.class, "JavaNumber", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaThreadEClass, Thread.class, "JavaThread", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaThreadGroupEClass, ThreadGroup.class, "JavaThreadGroup", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(javaThreadInfoEClass, ThreadInfo.class, "JavaThreadInfo", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(javaAnnotationEDataType, Annotation.class, "JavaAnnotation", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

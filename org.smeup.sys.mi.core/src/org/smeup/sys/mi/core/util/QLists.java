@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.il.core.util;
+package org.smeup.sys.mi.core.util;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * <em><b>Lists</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.il.core.util.QUtilPackage#getLists()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getLists()
  * @model interface="true" abstract="true"
  * @generated
  */

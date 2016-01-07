@@ -16,10 +16,7 @@ Export-Package: org.smeup.sys.il.core,
  org.smeup.sys.il.core.out,
  org.smeup.sys.il.core.out.impl,
  org.smeup.sys.il.core.term,
- org.smeup.sys.il.core.term.impl,
- org.smeup.sys.il.core.util,
- org.smeup.sys.il.core.util.impl,
- org.smeup.sys.il.core.util.util
+ org.smeup.sys.il.core.term.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport
