@@ -41,7 +41,7 @@ public class FBUserProfileUpdater extends Thread {
 	@Override
 	public void run() {
 
-		while (Thread.currentThread().isInterrupted()) {
+		while (!Thread.currentThread().isInterrupted()) {
 			try {
 				Thread.sleep(60 * 1000);
 
@@ -71,10 +71,10 @@ public class FBUserProfileUpdater extends Thread {
 				for (QUserProfile userProfile : savedUser)
 					if (!existsUser(tempFriends, userProfile.getName()))
 						userProfileWriter.delete(userProfile);
-				
+
 			} catch (InterruptedException e) {
-				 Thread.currentThread().interrupt();
-				    break;
+				Thread.currentThread().interrupt();
+				break;
 			}
 		}
 	}

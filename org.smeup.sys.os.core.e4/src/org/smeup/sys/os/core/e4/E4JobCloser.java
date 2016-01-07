@@ -31,7 +31,7 @@ public class E4JobCloser extends Thread {
 	@Override
 	public void run() {
 
-		while (Thread.currentThread().isInterrupted()) {
+		while (!Thread.currentThread().isInterrupted()) {
 
 			try {
 				Thread.sleep(60 * 1000);
