@@ -12,6 +12,7 @@
 package org.smeup.sys.il.core.base;
 
 import java.lang.management.ManagementFactory;
+import java.lang.management.MonitorInfo;
 import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.util.List;
@@ -56,11 +57,90 @@ public class BaseThreadsImpl implements QThreads {
 		for (ThreadInfo info : infos)
 			if (info != null)
 				notNulls[nNotNulls++] = info;
-		
+
 		if (nNotNulls == infos.length)
 			return java.util.Arrays.asList(infos);
-		
+
 		return java.util.Arrays.asList(notNulls);
+	}
+
+	@Override
+	public Thread lookupBlockingThread(Thread thread) {
+		final ThreadInfo info = lookupThreadInfo(thread);
+		if (info == null)
+			return null;
+		final long id = info.getLockOwnerId();
+		if (id == -1)
+			return null;
+		return lookupThread(id);
+	}
+
+	@Override
+	public Thread lookupLockingThread(Object object) {
+
+		final long identity = System.identityHashCode(object);
+
+		ThreadInfo info = null;
+		MonitorInfo[] monitors = null;
+		for (Thread thread : listThreads()) {
+			info = lookupThreadInfo(thread.getId());
+			if (info == null)
+				continue;
+			monitors = info.getLockedMonitors();
+			for (MonitorInfo monitor : monitors)
+				if (identity == monitor.getIdentityHashCode())
+					return thread;
+		}
+		return null;
+	}
+
+	@Override
+	public Thread lookupThread(long id) {
+		for (Thread thread : listThreads())
+			if (thread.getId() == id)
+				return thread;
+		return null;
+	}
+
+	@Override
+	public Thread lookupThread(String name) {
+		for (Thread thread : listThreads())
+			if (thread.getName().equals(name))
+				return thread;
+		return null;
+	}
+
+	@Override
+	public Thread lookupThread(ThreadInfo info) {
+		return lookupThread(info.getThreadId());
+	}
+
+	@Override
+	public ThreadInfo lookupThreadInfo(long id) {
+		final ThreadMXBean thbean = ManagementFactory.getThreadMXBean();
+
+		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
+			return thbean.getThreadInfo(id);
+
+		final ThreadInfo[] infos = thbean.getThreadInfo(new long[] { id }, true, true);
+		if (infos.length == 0)
+			return null;
+		return infos[0];
+	}
+
+	@Override
+	public ThreadInfo lookupThreadInfo(Thread thread) {
+		return lookupThreadInfo(thread.getId());
+	}
+
+	@Override
+	public ThreadInfo lookupThreadInfo(String name) {
+
+		for (Thread thread : listThreads())
+			if (thread.getName().equals(name))
+				return lookupThreadInfo(thread.getId());
+		return null;
+
 	}
 
 	private ThreadGroup getRootThreadGroup() {

@@ -37,4 +37,68 @@ public interface QThreads {
 	 */
 	List<ThreadInfo> listThreadInfos();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" threadType="org.smeup.sys.mi.core.JavaThread" threadRequired="true"
+	 * @generated
+	 */
+	Thread lookupBlockingThread(Thread thread);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" objectRequired="true"
+	 * @generated
+	 */
+	Thread lookupLockingThread(Object object);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" idRequired="true"
+	 * @generated
+	 */
+	Thread lookupThread(long id);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" nameRequired="true"
+	 * @generated
+	 */
+	Thread lookupThread(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThread" infoType="org.smeup.sys.mi.core.JavaThreadInfo" infoRequired="true"
+	 * @generated
+	 */
+	Thread lookupThread(ThreadInfo info);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadInfo" idRequired="true"
+	 * @generated
+	 */
+	ThreadInfo lookupThreadInfo(long id);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadInfo" nameRequired="true"
+	 * @generated
+	 */
+	ThreadInfo lookupThreadInfo(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model type="org.smeup.sys.mi.core.JavaThreadInfo" threadType="org.smeup.sys.mi.core.JavaThread" threadRequired="true"
+	 * @generated
+	 */
+	ThreadInfo lookupThreadInfo(Thread thread);
+
 } // QThreads

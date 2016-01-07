@@ -383,6 +383,30 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "listThreadInfos", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "lookupBlockingThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "lookupLockingThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "object", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "lookupThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getELong(), "id", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "lookupThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "lookupThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaThreadInfo(), "info", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "lookupThreadInfo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getELong(), "id", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "lookupThreadInfo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "lookupThreadInfo", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
 } //MachineInterfaceCoreUtilPackageImpl

@@ -168,6 +168,30 @@
     <eClassifiers xsi:type="ecore:EClass" name="Threads" abstract="true" interface="true">
       <eOperations name="listThreads" upperBound="-1" eType="#//JavaThread"/>
       <eOperations name="listThreadInfos" upperBound="-1" eType="#//JavaThreadInfo"/>
+      <eOperations name="lookupBlockingThread" eType="#//JavaThread">
+        <eParameters name="thread" lowerBound="1" eType="#//JavaThread"/>
+      </eOperations>
+      <eOperations name="lookupLockingThread" eType="#//JavaThread">
+        <eParameters name="object" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eOperations>
+      <eOperations name="lookupThread" eType="#//JavaThread">
+        <eParameters name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eOperations>
+      <eOperations name="lookupThread" eType="#//JavaThread">
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="lookupThread" eType="#//JavaThread">
+        <eParameters name="info" lowerBound="1" eType="#//JavaThreadInfo"/>
+      </eOperations>
+      <eOperations name="lookupThreadInfo" eType="#//JavaThreadInfo">
+        <eParameters name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eOperations>
+      <eOperations name="lookupThreadInfo" eType="#//JavaThreadInfo">
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="lookupThreadInfo" eType="#//JavaThreadInfo">
+        <eParameters name="thread" lowerBound="1" eType="#//JavaThread"/>
+      </eOperations>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
