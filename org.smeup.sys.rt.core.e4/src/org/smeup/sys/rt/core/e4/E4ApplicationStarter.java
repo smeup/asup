@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Dictionary;
@@ -30,6 +32,7 @@ import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextDescription;
 import org.smeup.sys.il.core.e4.E4ContextRootImpl;
+import org.smeup.sys.mi.core.util.QSingleton;
 import org.smeup.sys.rt.core.ApplicationStarted;
 import org.smeup.sys.rt.core.ApplicationStarting;
 import org.smeup.sys.rt.core.ComponentStarted;
@@ -44,6 +47,8 @@ import org.smeup.sys.rt.core.ServiceRegistering;
 import org.smeup.sys.rt.core.ServiceStatus;
 
 public class E4ApplicationStarter {
+
+	private static final String SINGLETON_INSTANCE = "qINSTANCE";
 
 	private QApplication application;
 	private BundleContext bundleContext;
@@ -66,22 +71,22 @@ public class E4ApplicationStarter {
 		final String name = bundleContext.getBundle().getSymbolicName();
 		// root context
 		QContextDescription contextDescription = new QContextDescription() {
-			
+
 			@Override
 			public String getSystemLibrary() {
 				return getSystemLibrary();
 			}
-			
+
 			@Override
 			public String getName() {
 				return name;
 			}
-			
+
 			@Override
 			public List<String> getLibraryPath() {
 				return Collections.singletonList(getSystemLibrary());
 			}
-			
+
 			@Override
 			public String getCurrentLibrary() {
 				return getSystemLibrary();
@@ -124,7 +129,7 @@ public class E4ApplicationStarter {
 			println(">component " + component);
 			activateComponent(application, component, contextComponent);
 			messageLevel--;
-			
+
 			contextComponent.close();
 		}
 
@@ -142,7 +147,6 @@ public class E4ApplicationStarter {
 	}
 
 	public void activateComponent(QApplication application, QApplicationComponent component, QContext contextComponent) {
-
 
 		// hooks
 		messageLevel++;
@@ -194,7 +198,7 @@ public class E4ApplicationStarter {
 		}
 		messageLevel--;
 	}
-	
+
 	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, QServiceRef serviceRef) throws ClassNotFoundException {
 
 		// STOPPED
@@ -227,7 +231,7 @@ public class E4ApplicationStarter {
 			dictionary.put("org.smeup.sys.rt.core.plugin.version", plugin.getVersion());
 
 		}
-		
+
 		// service registry
 		if (serviceRef.getInterfaceName() != null)
 			registerService(application, component, componentContext, serviceRef.getInterfaceName(), service, dictionary, serviceRef.isRemoteExport());
@@ -235,11 +239,12 @@ public class E4ApplicationStarter {
 			registerService(application, component, componentContext, serviceRef.getClassName(), service, dictionary, serviceRef.isRemoteExport());
 	}
 
-	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties, boolean remoteExport) {
+	public void registerService(QApplication application, QApplicationComponent component, QContext componentContext, String name, Object service, Dictionary<String, Object> properties,
+			boolean remoteExport) {
 
 		// Register component as service property
 		properties.put("org.smeup.sys.rt.core.component", component.getName().toLowerCase());
-		
+
 		QContext contextService = componentContext.createChildContext(name);
 		contextService.set("org.smeup.sys.rt.core.service.name", name);
 		contextService.set("org.smeup.sys.rt.core.service.object", service);
@@ -253,6 +258,23 @@ public class E4ApplicationStarter {
 		// component hooks
 		for (Object hook : loadHooks(component))
 			contextService.invoke(hook, ServiceRegistering.class);
+
+		if (service instanceof QSingleton<?>) {
+			Class<?> klass = service.getClass();
+			try {
+				Field field = klass.getField(SINGLETON_INSTANCE);
+				if (field != null) {
+					field.setAccessible(true);
+					Field modifiersField = Field.class.getDeclaredField("modifiers");
+					modifiersField.setAccessible(true);
+					modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+					field.set(null, service);
+					field.setAccessible(false);
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
 
 		bundleContext.registerService(name, service, properties);
 
