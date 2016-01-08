@@ -457,7 +457,7 @@ public class RPJProgramSupport {
 //			character.eval(numberFormat.format(numeric.asInteger()));
 			// TODO 
 			// remove leading zero
-			character.eval(numberFormat.format(numeric.asInteger()).replaceAll("^0+",""));
+			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+","") );
 			break;
 		case "X":
 			character.move(numeric);
