@@ -32,6 +32,18 @@ public class BaseStringsImpl implements QStrings {
 	}
 
 	@Override
+	public String firstToLower(String string) {
+		StringBuffer s = new StringBuffer(string.length());
+		CharacterIterator it = new StringCharacterIterator(string);
+		for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next())
+			if (it.getIndex() == 0)
+				s.append(String.valueOf(ch).toLowerCase());
+			else
+				s.append(ch);
+		return s.toString();
+	}
+
+	@Override
 	public String appendChars(String string, String chars, int times,
 			boolean before) {
 
