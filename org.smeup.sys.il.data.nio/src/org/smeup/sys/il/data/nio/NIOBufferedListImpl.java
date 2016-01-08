@@ -315,6 +315,8 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(QBufferedData value, boolean clear) {
+		if (clear)
+			this.clear();
 		if (getModel() instanceof QString)
 			NIOBufferHelper.movel(getBuffer(), getPosition(), value.getSize(), value.asBytes(), clear, NIOCharacterImpl.INIT);
 		else
@@ -456,7 +458,7 @@ public abstract class NIOBufferedListImpl<D extends QBufferedData> extends NIOBu
 
 	@Override
 	public void movea(int targetIndex, QArray<?> value, boolean clear) {
-		movea(targetIndex, value, 1, false);
+		movea(targetIndex, value, 1, clear);
 	}
 
 	@Override
