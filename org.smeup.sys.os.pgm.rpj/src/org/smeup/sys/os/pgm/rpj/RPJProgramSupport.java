@@ -376,26 +376,47 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qCheck(String comparator, QString base, Integer start) {
+		// returns the first position of the string base that contains a character that does not appear in string comparator
 		if(start == null)
 			start = 1;
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
-		int i = base.qSubst(start).trimR().indexOf(comparator)+1;
-		if(i>0)
-			decimal.eval(i);
+		
+		int i = 0;
+		int s = 0;
+		while(true){
+			i= base.qSubst(start).trimR().indexOf(comparator, s);
+			if(i==-1)
+				break;
+			s++;
+		}
+		
+		if(s>0)
+			decimal.eval(s+1);
 		else
 			decimal.eval(base.qSubst(start).trimR().length());
+
 		return decimal;
 	}
 
 	public QDecimal qCheckr(String comparator, QString base, Integer start) {
+		// TODO verify
 		if(start == null)
 			start = 1;
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
-		int i = base.qSubst(start).trimR().lastIndexOf(comparator)+1;
-		if(i>0)
-			decimal.eval(i);
+		int i = 0;
+		int s = base.qSubst(start).trimR().length();
+		while(true){
+			i= base.qSubst(start).trimR().indexOf(comparator, s);
+			if(i==-1)
+				break;
+			s--;
+		}
+		
+		if(s>0)
+			decimal.eval(s-1);
 		else
 			decimal.eval(base.qSubst(start).trimR().length());
+
 		return decimal;
 	}
 
