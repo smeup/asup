@@ -482,33 +482,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getJobThread_Name() {
-		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getJobThread_ThreadStatus() {
-		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getJobThread_ThreadID() {
-		return (EAttribute)jobThreadEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getJobListener() {
 		return jobListenerEClass;
 	}
@@ -646,9 +619,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobManagerEClass = createEClass(JOB_MANAGER);
 
 		jobThreadEClass = createEClass(JOB_THREAD);
-		createEAttribute(jobThreadEClass, JOB_THREAD__THREAD_ID);
-		createEAttribute(jobThreadEClass, JOB_THREAD__NAME);
-		createEAttribute(jobThreadEClass, JOB_THREAD__THREAD_STATUS);
 
 		// Create enums
 		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
@@ -695,7 +665,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		jobLogEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobLogEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		jobThreadEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
+		jobThreadEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(jobEClass, QJob.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -819,9 +789,16 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(jobThreadEClass, QJobThread.class, "JobThread", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJobThread_ThreadID(), ecorePackage.getELong(), "threadID", null, 0, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJobThread_Name(), ecorePackage.getEString(), "name", null, 1, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJobThread_ThreadStatus(), this.getJobThreadStatus(), "threadStatus", null, 1, 1, QJobThread.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, ecorePackage.getELong(), "getThreadID", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, ecorePackage.getEString(), "getThreadName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, ecorePackage.getEInt(), "getThreadPriority", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, this.getJobThreadStatus(), "getThreadStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobThreadEClass, ecorePackage.getEBoolean(), "isThreadDaemon", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(jobEventTypeEEnum, JobEventType.class, "JobEventType");
@@ -947,10 +924,46 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });	
 		addAnnotation
-		  (getJobThread_Name(), 
+		  (jobThreadEClass.getEOperations().get(0), 
 		   source, 
 		   new String[] {
-			 "length", "30"
+			 "precision", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (jobThreadEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "length", "96"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobThreadEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "precision", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (jobThreadEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "length", "12"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobThreadEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "length", "10"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")

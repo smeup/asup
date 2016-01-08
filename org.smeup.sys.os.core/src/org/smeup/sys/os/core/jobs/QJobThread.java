@@ -7,93 +7,67 @@
  */
 package org.smeup.sys.os.core.jobs;
 
-import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Job Thread</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getName <em>Name</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus <em>Thread Status</em>}</li>
- * </ul>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread()
  * @model abstract="true"
  *        annotation="dk-core text='Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un\'interfaccia pura'"
  * @generated
  */
-public interface QJobThread extends QObjectNameable {
+public interface QJobThread extends QObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread_Name()
-	 * @model required="true" changeable="false" derived="true"
-	 *        annotation="il-data length='30'"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Returns the value of the '<em><b>Thread ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Thread ID</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Thread ID</em>' attribute.
-	 * @see #setThreadID(long)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread_ThreadID()
-	 * @model
+	 * @model kind="operation"
+	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
 	long getThreadID();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadID <em>Thread ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Thread ID</em>' attribute.
-	 * @see #getThreadID()
+	 * @model kind="operation"
+	 *        annotation="il-data length='96'"
 	 * @generated
 	 */
-	void setThreadID(long value);
+	String getThreadName();
 
 	/**
-	 * Returns the value of the '<em><b>Thread Status</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.os.core.jobs.JobThreadStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Thread Status</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
-	 * @see #setThreadStatus(JobThreadStatus)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThread_ThreadStatus()
-	 * @model required="true"
+	 * @model kind="operation"
+	 *        annotation="il-data precision='10'"
+	 * @generated
+	 */
+	int getThreadPriority();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data length='12'"
 	 * @generated
 	 */
 	JobThreadStatus getThreadStatus();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJobThread#getThreadStatus <em>Thread Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Thread Status</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobThreadStatus
-	 * @see #getThreadStatus()
+	 * @model kind="operation"
+	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
-	void setThreadStatus(JobThreadStatus value);
+	boolean isThreadDaemon();
 
 } // QJobThread

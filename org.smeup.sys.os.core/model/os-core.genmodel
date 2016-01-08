@@ -192,9 +192,6 @@
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/delay.1">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/delay.1/resumeTime"/>
         </genOperations>
-        <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/executorFor">
-          <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/executorFor/job"/>
-        </genOperations>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/getActiveJobs"/>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobManager/lookup">
           <genParameters ecoreParameter="os-core.ecore#//jobs/JobManager/lookup/contextID"/>
@@ -224,7 +221,7 @@
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="os-core.ecore#//jobs/JobThread">
-        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobThread/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute os-core.ecore#//jobs/JobThread/threadID"/>
         <genOperations ecoreOperation="os-core.ecore#//jobs/JobThread/getThreadStatus"/>
       </genClasses>
     </nestedGenPackages>

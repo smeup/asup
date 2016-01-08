@@ -19,7 +19,6 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
-import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
@@ -61,9 +60,9 @@ public class ActivetThreadsWorker {
 
 		objectWriter.initialize();
 
-		for (QObject thrd :threads())
+		for (QJobThread thread :threads())
 			try {
-				objectWriter.write(thrd);
+				objectWriter.write(thread);
 			} catch (IOException e) {
 				throw new OperatingSystemRuntimeException(e);
 			}
@@ -76,7 +75,7 @@ public class ActivetThreadsWorker {
 			Collection<QJobThread> result = new ArrayList<QJobThread>();
 			
 			for (ThreadInfo threadInfo: threads.listThreadInfos()) {
-				result.add(new InternalJobThreadAdapter(threadInfo));
+				result.add(new InternalJobThreadAdapter(threads, threadInfo));
 			}
 			return result;
 		} catch (Exception e) {
@@ -91,15 +90,20 @@ public class ActivetThreadsWorker {
 		PRINT
 	}
 	
-	private class InternalJobThreadAdapter extends JobThreadImpl {
+	public static class InternalJobThreadAdapter extends JobThreadImpl {
 
 		private static final long serialVersionUID = 1L;
 		private ThreadInfo threadInfo;
+		private QThreads threads;
 		
-		public InternalJobThreadAdapter(ThreadInfo threadInfo) {
+		public InternalJobThreadAdapter(QThreads threads, ThreadInfo threadInfo) {
+			this.threads = threads;
 			this.threadInfo = threadInfo;
-			this.name = threadInfo.getThreadName(); 
-			setThreadID(threadInfo.getThreadId());
+		}
+
+		@Override
+		public String getThreadName() {
+			return threadInfo.getThreadName();
 		}
 
 		@Override
@@ -123,6 +127,23 @@ public class ActivetThreadsWorker {
 			}
 			return jobThreadStatus;
 		}
-				
+
+		@Override
+		public long getThreadID() {
+			return threadInfo.getThreadId();
+		}
+		
+		@Override
+		public int getThreadPriority() {
+			Thread thread = threads.lookupThread(threadInfo);
+			return thread.getPriority();
+		}
+		
+		
+		@Override
+		public boolean isThreadDaemon() {
+			Thread thread = threads.lookupThread(threadInfo);
+			return thread.isDaemon();
+		}
 	}
 }
