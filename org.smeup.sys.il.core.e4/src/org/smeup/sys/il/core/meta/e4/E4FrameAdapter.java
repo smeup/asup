@@ -14,16 +14,21 @@ package org.smeup.sys.il.core.meta.e4;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.meta.QFrame;
 import org.smeup.sys.il.core.meta.QSlot;
+import org.smeup.sys.mi.core.util.QStrings;
 
 public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 	private EClass eClass;
 	private List<QSlot> slots;
+
+	private static final String nsPrefix = "il-data";
 
 	public E4FrameAdapter(EClass eClass) {
 		this.eClass = eClass;
@@ -44,6 +49,21 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 					for (EStructuralFeature structuralFeature : eClass.getEAllStructuralFeatures())
 						this.slots.add(new E4SlotAdapter(structuralFeature));
+
+					for (EOperation operation : eClass.getEAllOperations()) {
+
+						EAnnotation eAnnotation = operation.getEAnnotation(nsPrefix);
+						if (eAnnotation == null) 
+							continue;
+
+						if (operation.getName().length() > 3 && operation.getName().startsWith("get") && operation.getEParameters().isEmpty()) {
+							String name = operation.getName().substring(3);				
+							name = QStrings.qINSTANCE.firstToLower(name);
+							this.slots.add(new E4SlotAdapter(operation, name));
+						}
+						else
+							this.slots.add(new E4SlotAdapter(operation));
+					}
 				}
 			}
 

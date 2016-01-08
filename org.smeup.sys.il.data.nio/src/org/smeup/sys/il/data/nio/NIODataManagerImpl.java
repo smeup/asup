@@ -85,13 +85,10 @@ public class NIODataManagerImpl implements QDataManager {
 
 		for (QSlot slot : frame.getSlots()) {
 
-			if (slot.isTransient())
-				continue;
+			// cardinality
+			QCardinality cardinality = slot.getCardinality();
 
-			if (slot.isVolatile())
-				continue;
-
-			if (slot.getCardinality().isMultiple())
+			if (cardinality.isMultiple())
 				continue;
 
 //			if (slot.getName().equals("content"))
@@ -102,9 +99,6 @@ public class NIODataManagerImpl implements QDataManager {
 
 			// dataDef
 			DD dataDef = (DD) buildDataDef(slot);
-
-			// cardinality
-			QCardinality cardinality = slot.getCardinality();
 
 			// dataTerm
 			QDataTerm<DD> dataTerm = (QDataTerm<DD>) frameManager.createObject(term);

@@ -3,13 +3,13 @@
     copyrightText="Copyright (c) 2012, 2015 Sme.UP and others.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html"
     modelDirectory="/org.smeup.sys.mi.core/src" modelPluginID="org.smeup.sys.mi.core"
     modelName="As.UP Machine Interface Core" modelPluginClass="" rootExtendsInterface=""
-    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" suppressEMFTypes="true"
-    featureMapWrapperInternalInterface="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="7.0" suppressGenModelAnnotations="false" copyrightFields="false"
-    language="EN" interfaceNamePattern="Q{0}" classNamePattern="" importOrganizing="true">
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" rootImplementsInterface=""
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
+    suppressGenModelAnnotations="false" copyrightFields="false" language="EN" interfaceNamePattern="Q{0}"
+    importOrganizing="true">
   <foreignModel>mi-core.ecore</foreignModel>
   <genPackages prefix="MachineInterfaceCore" basePackage="org.smeup.sys.mi" disposableProviderFactory="true"
-      adapterFactory="false" ecorePackage="mi-core.ecore#/">
+      adapterFactory="false" contentTypeIdentifier="" ecorePackage="mi-core.ecore#/">
     <genDataTypes ecoreDataType="mi-core.ecore#//JavaAnnotation"/>
     <genDataTypes ecoreDataType="mi-core.ecore#//JavaDictionary">
       <genTypeParameters ecoreTypeParameter="mi-core.ecore#//JavaDictionary/K"/>
@@ -46,8 +46,8 @@
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThread"/>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadGroup"/>
     <genClasses image="false" ecoreClass="mi-core.ecore#//JavaThreadInfo"/>
-    <nestedGenPackages prefix="MachineInterfaceCoreUtil" basePackage="org.smeup.sys.mi.core"
-        disposableProviderFactory="true" adapterFactory="false" ecorePackage="mi-core.ecore#//util">
+    <nestedGenPackages prefix="MachineInterfaceUtil" disposableProviderFactory="true"
+        adapterFactory="false" contentTypeIdentifier="" ecorePackage="mi-core.ecore#//util">
       <genClasses image="false" ecoreClass="mi-core.ecore#//util/Files">
         <genOperations ecoreOperation="mi-core.ecore#//util/Files/getBaseName">
           <genParameters ecoreParameter="mi-core.ecore#//util/Files/getBaseName/fileName"/>
@@ -83,6 +83,9 @@
           <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Lists/addAfter/E"/>
         </genOperations>
       </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Singleton">
+        <genTypeParameters ecoreTypeParameter="mi-core.ecore#//util/Singleton/S"/>
+      </genClasses>
       <genClasses image="false" ecoreClass="mi-core.ecore#//util/Strings">
         <genOperations ecoreOperation="mi-core.ecore#//util/Strings/appendChars">
           <genParameters ecoreParameter="mi-core.ecore#//util/Strings/appendChars/string"/>
@@ -92,6 +95,9 @@
         </genOperations>
         <genOperations ecoreOperation="mi-core.ecore#//util/Strings/firstToUpper">
           <genParameters ecoreParameter="mi-core.ecore#//util/Strings/firstToUpper/string"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Strings/firstToLower">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Strings/firstToLower/string"/>
         </genOperations>
         <genOperations ecoreOperation="mi-core.ecore#//util/Strings/removeFirstChar">
           <genParameters ecoreParameter="mi-core.ecore#//util/Strings/removeFirstChar/string"/>
@@ -147,13 +153,48 @@
           <genParameters ecoreParameter="mi-core.ecore#//util/Strings/right/nrOfChars"/>
         </genOperations>
       </genClasses>
+      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Threads">
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreads"/>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreads.1">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/listThreads.1/threadGroup"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreads.2">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/listThreads.2/threadGroup"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreadInfos"/>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreadGroups"/>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupBlockingThread">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupBlockingThread/thread"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupLockingThread">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupLockingThread/object"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThread">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThread/id"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThread.1">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThread.1/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThread.2">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThread.2/info"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThreadGroup">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThreadGroup/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThreadInfo">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThreadInfo/id"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThreadInfo.1">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThreadInfo.1/name"/>
+        </genOperations>
+        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/lookupThreadInfo.2">
+          <genParameters ecoreParameter="mi-core.ecore#//util/Threads/lookupThreadInfo.2/thread"/>
+        </genOperations>
+      </genClasses>
       <genClasses image="false" ecoreClass="mi-core.ecore#//util/URIs">
         <genOperations ecoreOperation="mi-core.ecore#//util/URIs/getBaseName">
           <genParameters ecoreParameter="mi-core.ecore#//util/URIs/getBaseName/uri"/>
         </genOperations>
-      </genClasses>
-      <genClasses image="false" ecoreClass="mi-core.ecore#//util/Threads">
-        <genOperations ecoreOperation="mi-core.ecore#//util/Threads/listThreads"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

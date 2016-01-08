@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilFactory
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilFactory
  * @model kind="package"
  * @generated
  */
-public interface QMachineInterfaceCoreUtilPackage extends EPackage {
+public interface QMachineInterfaceUtilPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -56,14 +56,14 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QMachineInterfaceCoreUtilPackage eINSTANCE = org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl.init();
+	QMachineInterfaceUtilPackage eINSTANCE = org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QFiles <em>Files</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.mi.core.util.QFiles
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getFiles()
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getFiles()
 	 * @generated
 	 */
 	int FILES = 0;
@@ -82,7 +82,7 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.mi.core.util.QStreams
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getStreams()
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getStreams()
 	 * @generated
 	 */
 	int STREAMS = 1;
@@ -101,7 +101,7 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.mi.core.util.QLists
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getLists()
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getLists()
 	 * @generated
 	 */
 	int LISTS = 2;
@@ -116,14 +116,33 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	int LISTS_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QSingleton <em>Singleton</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.mi.core.util.QSingleton
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getSingleton()
+	 * @generated
+	 */
+	int SINGLETON = 3;
+
+	/**
+	 * The number of structural features of the '<em>Singleton</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QStrings <em>Strings</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.mi.core.util.QStrings
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getStrings()
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getStrings()
 	 * @generated
 	 */
-	int STRINGS = 3;
+	int STRINGS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Strings</em>' class.
@@ -132,33 +151,14 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRINGS_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.mi.core.util.QURIs
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getURIs()
-	 * @generated
-	 */
-	int UR_IS = 4;
-
-	/**
-	 * The number of structural features of the '<em>UR Is</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UR_IS_FEATURE_COUNT = 0;
+	int STRINGS_FEATURE_COUNT = SINGLETON_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QThreads <em>Threads</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.smeup.sys.mi.core.util.QThreads
-	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getThreads()
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getThreads()
 	 * @generated
 	 */
 	int THREADS = 5;
@@ -171,6 +171,25 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * @ordered
 	 */
 	int THREADS_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.mi.core.util.QURIs
+	 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getURIs()
+	 * @generated
+	 */
+	int UR_IS = 6;
+
+	/**
+	 * The number of structural features of the '<em>UR Is</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UR_IS_FEATURE_COUNT = 0;
 
 
 	/**
@@ -204,6 +223,16 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	EClass getLists();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.mi.core.util.QSingleton <em>Singleton</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Singleton</em>'.
+	 * @see org.smeup.sys.mi.core.util.QSingleton
+	 * @generated
+	 */
+	EClass getSingleton();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.mi.core.util.QStrings <em>Strings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,16 +241,6 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getStrings();
-
-	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>UR Is</em>'.
-	 * @see org.smeup.sys.mi.core.util.QURIs
-	 * @generated
-	 */
-	EClass getURIs();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.mi.core.util.QThreads <em>Threads</em>}'.
@@ -234,13 +253,23 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 	EClass getThreads();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>UR Is</em>'.
+	 * @see org.smeup.sys.mi.core.util.QURIs
+	 * @generated
+	 */
+	EClass getURIs();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	QMachineInterfaceCoreUtilFactory getMachineInterfaceCoreUtilFactory();
+	QMachineInterfaceUtilFactory getMachineInterfaceUtilFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,7 +289,7 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.mi.core.util.QFiles
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getFiles()
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getFiles()
 		 * @generated
 		 */
 		EClass FILES = eINSTANCE.getFiles();
@@ -270,7 +299,7 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.mi.core.util.QStreams
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getStreams()
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getStreams()
 		 * @generated
 		 */
 		EClass STREAMS = eINSTANCE.getStreams();
@@ -280,41 +309,51 @@ public interface QMachineInterfaceCoreUtilPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.mi.core.util.QLists
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getLists()
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getLists()
 		 * @generated
 		 */
 		EClass LISTS = eINSTANCE.getLists();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.mi.core.util.QSingleton <em>Singleton</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.mi.core.util.QSingleton
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getSingleton()
+		 * @generated
+		 */
+		EClass SINGLETON = eINSTANCE.getSingleton();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.mi.core.util.QStrings <em>Strings</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.mi.core.util.QStrings
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getStrings()
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getStrings()
 		 * @generated
 		 */
 		EClass STRINGS = eINSTANCE.getStrings();
-
-		/**
-		 * The meta object literal for the '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.mi.core.util.QURIs
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getURIs()
-		 * @generated
-		 */
-		EClass UR_IS = eINSTANCE.getURIs();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.mi.core.util.QThreads <em>Threads</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.smeup.sys.mi.core.util.QThreads
-		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl#getThreads()
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getThreads()
 		 * @generated
 		 */
 		EClass THREADS = eINSTANCE.getThreads();
 
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.mi.core.util.QURIs
+		 * @see org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl#getURIs()
+		 * @generated
+		 */
+		EClass UR_IS = eINSTANCE.getURIs();
+
 	}
 
-} //QMachineInterfaceCoreUtilPackage
+} //QMachineInterfaceUtilPackage

@@ -10,52 +10,70 @@ package org.smeup.sys.mi.core.util;
 import java.util.List;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Strings</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Strings</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getStrings()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage#getStrings()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QStrings {
+public interface QStrings extends QSingleton<QStrings> {
+	
+	QStrings qINSTANCE = null;
+	
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true" charsRequired="true" timesRequired="true" beforeRequired="true"
 	 * @generated
 	 */
 	String appendChars(String string, String chars, int times, boolean before);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
 	String firstToUpper(String string);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" stringRequired="true"
+	 * @generated
+	 */
+	String firstToLower(String string);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
 	String removeFirstChar(String string);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
 	String removeLastChar(String string);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */
 	String trimL(String string);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model required="true" stringRequired="true"
 	 * @generated
 	 */

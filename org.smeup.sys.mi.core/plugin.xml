@@ -23,7 +23,7 @@
       <!-- @generated mi-core -->
       <package
             uri="http://www.smeup.org/asup/mi/core/util"
-            class="org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage"
+            class="org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage"
             genModel="model/mi-core.genmodel"/>
    </extension>
 </plugin>

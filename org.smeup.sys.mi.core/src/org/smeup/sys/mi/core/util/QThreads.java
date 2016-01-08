@@ -8,6 +8,7 @@
 package org.smeup.sys.mi.core.util;
 
 import java.lang.management.ThreadInfo;
+
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getThreads()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage#getThreads()
  * @model interface="true" abstract="true"
  * @generated
  */

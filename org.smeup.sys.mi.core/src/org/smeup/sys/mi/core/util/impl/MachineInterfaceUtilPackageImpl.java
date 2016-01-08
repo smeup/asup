@@ -14,12 +14,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+
 import org.smeup.sys.mi.core.impl.MachineInterfaceCorePackageImpl;
+
 import org.smeup.sys.mi.core.util.QFiles;
 import org.smeup.sys.mi.core.util.QLists;
-import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilFactory;
-import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilFactory;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
+import org.smeup.sys.mi.core.util.QSingleton;
 import org.smeup.sys.mi.core.util.QStreams;
 import org.smeup.sys.mi.core.util.QStrings;
 import org.smeup.sys.mi.core.util.QThreads;
@@ -31,7 +35,7 @@ import org.smeup.sys.mi.core.util.QURIs;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements QMachineInterfaceCoreUtilPackage {
+public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMachineInterfaceUtilPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,6 +62,13 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass singletonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass stringsEClass = null;
 
 	/**
@@ -65,14 +76,14 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass urIsEClass = null;
+	private EClass threadsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass threadsEClass = null;
+	private EClass urIsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -85,12 +96,12 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#eNS_URI
+	 * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private MachineInterfaceCoreUtilPackageImpl() {
-		super(eNS_URI, QMachineInterfaceCoreUtilFactory.eINSTANCE);
+	private MachineInterfaceUtilPackageImpl() {
+		super(eNS_URI, QMachineInterfaceUtilFactory.eINSTANCE);
 	}
 
 	/**
@@ -103,7 +114,7 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link QMachineInterfaceCoreUtilPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link QMachineInterfaceUtilPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,11 +123,11 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static QMachineInterfaceCoreUtilPackage init() {
-		if (isInited) return (QMachineInterfaceCoreUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI);
+	public static QMachineInterfaceUtilPackage init() {
+		if (isInited) return (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MachineInterfaceCoreUtilPackageImpl theMachineInterfaceCoreUtilPackage = (MachineInterfaceCoreUtilPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MachineInterfaceCoreUtilPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MachineInterfaceCoreUtilPackageImpl());
+		MachineInterfaceUtilPackageImpl theMachineInterfaceUtilPackage = (MachineInterfaceUtilPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MachineInterfaceUtilPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MachineInterfaceUtilPackageImpl());
 
 		isInited = true;
 
@@ -124,20 +135,20 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		MachineInterfaceCorePackageImpl theMachineInterfaceCorePackage = (MachineInterfaceCorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI) instanceof MachineInterfaceCorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI) : QMachineInterfaceCorePackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theMachineInterfaceCoreUtilPackage.createPackageContents();
+		theMachineInterfaceUtilPackage.createPackageContents();
 		theMachineInterfaceCorePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theMachineInterfaceCoreUtilPackage.initializePackageContents();
+		theMachineInterfaceUtilPackage.initializePackageContents();
 		theMachineInterfaceCorePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theMachineInterfaceCoreUtilPackage.freeze();
+		theMachineInterfaceUtilPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(QMachineInterfaceCoreUtilPackage.eNS_URI, theMachineInterfaceCoreUtilPackage);
-		return theMachineInterfaceCoreUtilPackage;
+		EPackage.Registry.INSTANCE.put(QMachineInterfaceUtilPackage.eNS_URI, theMachineInterfaceUtilPackage);
+		return theMachineInterfaceUtilPackage;
 	}
 
 	/**
@@ -172,8 +183,8 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStrings() {
-		return stringsEClass;
+	public EClass getSingleton() {
+		return singletonEClass;
 	}
 
 	/**
@@ -181,8 +192,8 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getURIs() {
-		return urIsEClass;
+	public EClass getStrings() {
+		return stringsEClass;
 	}
 
 	/**
@@ -199,8 +210,17 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QMachineInterfaceCoreUtilFactory getMachineInterfaceCoreUtilFactory() {
-		return (QMachineInterfaceCoreUtilFactory)getEFactoryInstance();
+	public EClass getURIs() {
+		return urIsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QMachineInterfaceUtilFactory getMachineInterfaceUtilFactory() {
+		return (QMachineInterfaceUtilFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -228,11 +248,13 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 
 		listsEClass = createEClass(LISTS);
 
+		singletonEClass = createEClass(SINGLETON);
+
 		stringsEClass = createEClass(STRINGS);
 
-		urIsEClass = createEClass(UR_IS);
-
 		threadsEClass = createEClass(THREADS);
+
+		urIsEClass = createEClass(UR_IS);
 	}
 
 	/**
@@ -262,10 +284,17 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 
 		// Create type parameters
+		ETypeParameter singletonEClass_S = addETypeParameter(singletonEClass, "S");
 
 		// Set bounds for type parameters
+		EGenericType g1 = createEGenericType(ecorePackage.getEJavaObject());
+		singletonEClass_S.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		g1 = createEGenericType(this.getSingleton());
+		EGenericType g2 = createEGenericType(this.getStrings());
+		g1.getETypeArguments().add(g2);
+		stringsEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(filesEClass, QFiles.class, "Files", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -284,7 +313,7 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		op = addEOperation(listsEClass, null, "addFirst", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "E");
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaList(), "list", 1, 1, IS_UNIQUE, IS_ORDERED);
-		EGenericType g1 = createEGenericType(t1);
+		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "element", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(listsEClass, null, "addLast", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -309,6 +338,8 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		g1 = createEGenericType(t1);
 		addEParameter(op, g1, "newElement", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(singletonEClass, QSingleton.class, "Singleton", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(stringsEClass, QStrings.class, "Strings", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(stringsEClass, ecorePackage.getEString(), "appendChars", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -318,6 +349,9 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		addEParameter(op, ecorePackage.getEBoolean(), "before", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(stringsEClass, ecorePackage.getEString(), "firstToUpper", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(stringsEClass, ecorePackage.getEString(), "firstToLower", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(stringsEClass, ecorePackage.getEString(), "removeFirstChar", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -373,11 +407,6 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 		addEParameter(op, ecorePackage.getEString(), "string", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "nrOfChars", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(urIsEClass, QURIs.class, "URIs", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = addEOperation(urIsEClass, ecorePackage.getEString(), "getBaseName", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theMachineInterfaceCorePackage.getJavaURI(), "uri", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(threadsEClass, QThreads.class, "Threads", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
@@ -418,6 +447,11 @@ public class MachineInterfaceCoreUtilPackageImpl extends EPackageImpl implements
 
 		op = addEOperation(threadsEClass, theMachineInterfaceCorePackage.getJavaThreadInfo(), "lookupThreadInfo", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theMachineInterfaceCorePackage.getJavaThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(urIsEClass, QURIs.class, "URIs", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(urIsEClass, ecorePackage.getEString(), "getBaseName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaURI(), "uri", 1, 1, IS_UNIQUE, IS_ORDERED);
 	}
 
-} //MachineInterfaceCoreUtilPackageImpl
+} //MachineInterfaceUtilPackageImpl

@@ -8,7 +8,6 @@
 package org.smeup.sys.il.core.ctx.impl;
 
 import java.lang.annotation.Annotation;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;

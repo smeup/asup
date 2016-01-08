@@ -18,6 +18,7 @@ import java.lang.Iterable;
 import java.lang.annotation.Annotation;
 
 import java.lang.management.ThreadInfo;
+
 import java.lang.reflect.Type;
 
 import java.net.URI;
@@ -33,15 +34,19 @@ import java.util.Properties;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
-import org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage;
-import org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilPackageImpl;
+
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
+
+import org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -279,15 +284,15 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		MachineInterfaceCoreUtilPackageImpl theMachineInterfaceCoreUtilPackage = (MachineInterfaceCoreUtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI) instanceof MachineInterfaceCoreUtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI) : QMachineInterfaceCoreUtilPackage.eINSTANCE);
+		MachineInterfaceUtilPackageImpl theMachineInterfaceUtilPackage = (MachineInterfaceUtilPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI) instanceof MachineInterfaceUtilPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI) : QMachineInterfaceUtilPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theMachineInterfaceCorePackage.createPackageContents();
-		theMachineInterfaceCoreUtilPackage.createPackageContents();
+		theMachineInterfaceUtilPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theMachineInterfaceCorePackage.initializePackageContents();
-		theMachineInterfaceCoreUtilPackage.initializePackageContents();
+		theMachineInterfaceUtilPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theMachineInterfaceCorePackage.freeze();
@@ -624,10 +629,10 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		QMachineInterfaceCoreUtilPackage theMachineInterfaceCoreUtilPackage = (QMachineInterfaceCoreUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCoreUtilPackage.eNS_URI);
+		QMachineInterfaceUtilPackage theMachineInterfaceUtilPackage = (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 
 		// Add subpackages
-		getESubpackages().add(theMachineInterfaceCoreUtilPackage);
+		getESubpackages().add(theMachineInterfaceUtilPackage);
 
 		// Create type parameters
 		addETypeParameter(javaCallableEClass, "V");

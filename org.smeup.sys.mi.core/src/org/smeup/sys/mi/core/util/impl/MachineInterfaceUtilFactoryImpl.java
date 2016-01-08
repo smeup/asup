@@ -23,24 +23,24 @@ import org.smeup.sys.mi.core.util.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MachineInterfaceCoreUtilFactoryImpl extends EFactoryImpl implements QMachineInterfaceCoreUtilFactory {
+public class MachineInterfaceUtilFactoryImpl extends EFactoryImpl implements QMachineInterfaceUtilFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static QMachineInterfaceCoreUtilFactory init() {
+	public static QMachineInterfaceUtilFactory init() {
 		try {
-			QMachineInterfaceCoreUtilFactory theMachineInterfaceCoreUtilFactory = (QMachineInterfaceCoreUtilFactory)EPackage.Registry.INSTANCE.getEFactory(QMachineInterfaceCoreUtilPackage.eNS_URI);
-			if (theMachineInterfaceCoreUtilFactory != null) {
-				return theMachineInterfaceCoreUtilFactory;
+			QMachineInterfaceUtilFactory theMachineInterfaceUtilFactory = (QMachineInterfaceUtilFactory)EPackage.Registry.INSTANCE.getEFactory(QMachineInterfaceUtilPackage.eNS_URI);
+			if (theMachineInterfaceUtilFactory != null) {
+				return theMachineInterfaceUtilFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new MachineInterfaceCoreUtilFactoryImpl();
+		return new MachineInterfaceUtilFactoryImpl();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class MachineInterfaceCoreUtilFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MachineInterfaceCoreUtilFactoryImpl() {
+	public MachineInterfaceUtilFactoryImpl() {
 		super();
 	}
 
@@ -71,8 +71,8 @@ public class MachineInterfaceCoreUtilFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public QMachineInterfaceCoreUtilPackage getMachineInterfaceCoreUtilPackage() {
-		return (QMachineInterfaceCoreUtilPackage)getEPackage();
+	public QMachineInterfaceUtilPackage getMachineInterfaceUtilPackage() {
+		return (QMachineInterfaceUtilPackage)getEPackage();
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class MachineInterfaceCoreUtilFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	@Deprecated
-	public static QMachineInterfaceCoreUtilPackage getPackage() {
-		return QMachineInterfaceCoreUtilPackage.eINSTANCE;
+	public static QMachineInterfaceUtilPackage getPackage() {
+		return QMachineInterfaceUtilPackage.eINSTANCE;
 	}
 
-} //MachineInterfaceCoreUtilFactoryImpl
+} //MachineInterfaceUtilFactoryImpl

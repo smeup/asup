@@ -41,7 +41,7 @@ public class E4CardinalityAdapter implements QCardinality {
 
 	@Override
 	public boolean isMultiple() {
-		return this.element.getUpperBound() > 1;
+		return this.element.isMany();
 	}
 
 	@Override

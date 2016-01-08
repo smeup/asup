@@ -14,17 +14,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage
  * @generated
  */
-public interface QMachineInterfaceCoreUtilFactory extends EFactory {
+public interface QMachineInterfaceUtilFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	QMachineInterfaceCoreUtilFactory eINSTANCE = org.smeup.sys.mi.core.util.impl.MachineInterfaceCoreUtilFactoryImpl.init();
+	QMachineInterfaceUtilFactory eINSTANCE = org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -33,6 +33,6 @@ public interface QMachineInterfaceCoreUtilFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	QMachineInterfaceCoreUtilPackage getMachineInterfaceCoreUtilPackage();
+	QMachineInterfaceUtilPackage getMachineInterfaceUtilPackage();
 
-} //QMachineInterfaceCoreUtilFactory
+} //QMachineInterfaceUtilFactory

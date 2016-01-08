@@ -25,14 +25,23 @@ import org.smeup.sys.il.core.meta.QSlot;
 public class E4SlotAdapter implements QSlot {
 
 	private ETypedElement element;
+	private String name;
 
 	public E4SlotAdapter(ETypedElement element) {
+		this(element, null);
+	}
+	
+	public E4SlotAdapter(ETypedElement element, String name) {
 		this.element = element;
+		this.name = name;
 	}
 
 	@Override
 	public String getName() {
-		return element.getName();
+		if(this.name != null)
+			return this.name;
+		else
+			return element.getName();
 	}
 
 	@Override
@@ -57,14 +66,14 @@ public class E4SlotAdapter implements QSlot {
 	public boolean isTransient() {
 		if (element instanceof EStructuralFeature) 
 			return ((EStructuralFeature)this.element).isTransient();
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isVolatile() {		
 		if (element instanceof EStructuralFeature) 
 			return ((EStructuralFeature)this.element).isVolatile();
-		return false;
+		return true;
 	}
 
 	@Override

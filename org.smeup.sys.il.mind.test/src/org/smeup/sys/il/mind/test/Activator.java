@@ -15,9 +15,13 @@ import org.smeup.sys.il.mind.gnu.GNUMindManagerImpl;
 
 public class Activator implements BundleActivator {
 
+	@SuppressWarnings("unused")
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 
+		if(true)
+			return;
+		
 		QContext context = new E4ContextRootImpl(bundleContext, "il.mind.test", null);
 		
 		QFrameManager frameManager = new E4FrameManagerImpl();

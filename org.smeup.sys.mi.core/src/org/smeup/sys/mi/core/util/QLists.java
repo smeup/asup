@@ -10,24 +10,27 @@ package org.smeup.sys.mi.core.util;
 import java.util.List;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Lists</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Lists</b></em>'.
+ * <!-- end-user-doc -->
  *
  *
- * @see org.smeup.sys.mi.core.util.QMachineInterfaceCoreUtilPackage#getLists()
+ * @see org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage#getLists()
  * @model interface="true" abstract="true"
  * @generated
  */
 public interface QLists {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
 	<E> void addFirst(List<E> list, E element);
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model listType="org.smeup.sys.mi.core.JavaList" listRequired="true" elementRequired="true"
 	 * @generated
 	 */
