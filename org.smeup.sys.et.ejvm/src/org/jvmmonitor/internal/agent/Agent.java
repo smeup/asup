@@ -102,7 +102,8 @@ public class Agent {
      *            The instrumentation service
      * @throws Throwable
      */
-    private static void init(String agentJar, Instrumentation inst)
+    @SuppressWarnings("resource")
+	private static void init(String agentJar, Instrumentation inst)
             throws Throwable {
         inst.appendToBootstrapClassLoaderSearch(new JarFile(agentJar));
 

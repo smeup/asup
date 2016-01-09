@@ -943,7 +943,8 @@ public class MBeanServer implements IMBeanServer {
      * @return The MBean server connection
      * @throws JvmCoreException
      */
-    private MBeanServerConnection connectToMBeanServer(JMXServiceURL url)
+    @SuppressWarnings("resource")
+	private MBeanServerConnection connectToMBeanServer(JMXServiceURL url)
             throws JvmCoreException {
         JMXConnector jmxc;
         try {
@@ -1055,6 +1056,7 @@ public class MBeanServer implements IMBeanServer {
                     break;
                 }
             }
+            scanner.close();
         }
         heapListElements = newHeapElements;
     }

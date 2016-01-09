@@ -62,7 +62,8 @@ public class Util {
      *            The file path
      * @return The properties, or <tt>null</tt> if loading properties fails
      */
-    public static Properties loadProperties(IPath filePath) {
+    @SuppressWarnings("resource")
+	public static Properties loadProperties(IPath filePath) {
         Properties props = new Properties();
         IFileStore fileStore = EFS.getLocalFileSystem().getStore(filePath);
         try {
