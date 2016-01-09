@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: As.UP Extern Tool JVMMonitor
+Bundle-SymbolicName: org.smeup.sys.et.ejvm;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Vendor: www.smeup.com
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.osgi.framework
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.core.runtime,
+ org.eclipse.core.filesystem,
+ org.eclipse.jdt.core
+Export-Package: org.jvmmonitor.core,
+ org.jvmmonitor.core.cpu,
+ org.jvmmonitor.core.dump,
+ org.jvmmonitor.core.mbean,
+ org.jvmmonitor.internal.core
+Bundle-Activator: org.jvmmonitor.core.Activator
+Bundle-ActivationPolicy: lazy
+Premain-Class: org.jvmmonitor.internal.agent.Agent
+Agent-Class: org.jvmmonitor.internal.agent.Agent
+Can-Retransform-Classes: true
