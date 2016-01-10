@@ -103,6 +103,41 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true">
+    <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThreadManager" abstract="true" interface="true">
+    <eOperations name="createThread" eType="#//Thread">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="runnable" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaRunnable"/>
+    </eOperations>
+    <eOperations name="createThread" eType="#//Thread">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="runnable" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaRunnable"/>
+      <eParameters name="daemon" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="currentThread" lowerBound="1" eType="#//Thread"/>
+    <eOperations name="listThreads" upperBound="-1" eType="#//Thread"/>
+    <eOperations name="lookupThread" eType="#//Thread">
+      <eParameters name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    </eOperations>
+    <eOperations name="lookupThread" eType="#//Thread">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="release">
+      <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
+    </eOperations>
+    <eOperations name="start">
+      <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
+    </eOperations>
+    <eOperations name="stop">
+      <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
+    </eOperations>
+    <eOperations name="suspend">
+      <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
+    </eOperations>
+  </eClassifiers>
   <eSubpackages name="ctx" nsURI="http://www.smeup.org/asup/il/core/ctx" nsPrefix="il-core-ctx">
     <eClassifiers xsi:type="ecore:EClass" name="AdapterFactory" abstract="true" interface="true">
       <eOperations name="getAdapter">

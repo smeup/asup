@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -24,15 +25,14 @@ import com.restfb.Connection;
 import com.restfb.FacebookClient;
 import com.restfb.types.User;
 
-public class FBUserProfileUpdater extends Thread {
+public class FBUserProfileUpdater implements Runnable {
 
 	private QJob job;
 	private QResourceWriter<QUserProfile> userProfileWriter;
+	private QThreadManager threadManager;
 	private FacebookClient facebookClient;
 
-	protected FBUserProfileUpdater(QJob job, QResourceWriter<QUserProfile> userProfileWriter, FacebookClient facebookClient) {
-		super("asup://thread/facebook");
-		setDaemon(true);
+	protected FBUserProfileUpdater(QThreadManager threadManager, QJob job, QResourceWriter<QUserProfile> userProfileWriter, FacebookClient facebookClient) {
 		this.job = job;
 		this.userProfileWriter = userProfileWriter;
 		this.facebookClient = facebookClient;
@@ -40,8 +40,8 @@ public class FBUserProfileUpdater extends Thread {
 
 	@Override
 	public void run() {
-
-		while (!Thread.currentThread().isInterrupted()) {
+		
+		while (threadManager.currentThread().checkRunnable()) {
 			try {
 				Thread.sleep(60 * 1000);
 

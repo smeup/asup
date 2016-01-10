@@ -14,29 +14,29 @@ package org.smeup.sys.os.core.e4;
 import java.util.Date;
 import java.util.Iterator;
 
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 
-public class E4JobCloser extends Thread {
+public class E4JobCloser implements Runnable {
 
 	private E4JobManagerImpl jobManager;
-
-	public E4JobCloser(E4JobManagerImpl jobManager) {
-		super("asup://thread/jobs/closer");
-		setDaemon(true);
+	private QThreadManager threadManager;
+	
+	public E4JobCloser(QThreadManager threadManager, E4JobManagerImpl jobManager) {
+		this.threadManager = threadManager;
 		this.jobManager = jobManager;
 	}
 
 	@Override
 	public void run() {
 
-		while (!Thread.currentThread().isInterrupted()) {
+		while (threadManager.currentThread().checkRunnable()) {
 
 			try {
 				Thread.sleep(60 * 1000);
 			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
 				break;
 			}
 

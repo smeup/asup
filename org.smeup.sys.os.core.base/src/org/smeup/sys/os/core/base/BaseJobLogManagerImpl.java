@@ -18,6 +18,8 @@ import java.util.concurrent.ThreadFactory;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.QResourceWriter;
@@ -35,12 +37,14 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 	private QResourceManager resourceManager;
 	@Inject
 	private QJobManager jobManager;
-
+	@Inject
+	private QThreadManager threadManager;
+	
 	private ExecutorService jobLogExecutor;
 	
 	@PostConstruct
 	private void init() {
-		jobLogExecutor = Executors.newCachedThreadPool(new JobLogThreadFactory());		
+		jobLogExecutor = Executors.newCachedThreadPool(new JobLogThreadFactory(threadManager));		
 	}
 	
 	@Override
@@ -118,10 +122,16 @@ public class BaseJobLogManagerImpl implements QJobLogManager {
 	
 	private class JobLogThreadFactory implements ThreadFactory {
 
+		private QThreadManager threadManager;
+		
+		public JobLogThreadFactory(QThreadManager threadManager) {
+			this.threadManager = threadManager;
+		}
+		
 		@Override
-		public Thread newThread(Runnable r) {
-			Thread t = new Thread(r, "asup://thread/jobs/logger");
-			return t;
+		public Thread newThread(Runnable runnable) {
+			QThread thread = threadManager.createThread("job-logger", runnable);
+			return thread.getJavaThread();
 		}
 
 	}

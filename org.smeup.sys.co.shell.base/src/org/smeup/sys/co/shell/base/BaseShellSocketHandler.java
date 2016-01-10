@@ -26,7 +26,7 @@ import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.rt.core.auth.QAuthenticationManager;
 import org.smeup.sys.rt.core.auth.QAuthenticationToken;
 
-public class BaseShellSocketHandler extends Thread {
+public class BaseShellSocketHandler implements Runnable {
 
 	@Inject
 	private QAuthenticationManager authenticationManager;
@@ -49,7 +49,6 @@ public class BaseShellSocketHandler extends Thread {
 	private static String LOGIN = "login> ";
 
 	public BaseShellSocketHandler(Socket socket) {
-		super("asup://thread/telnet/" + socket.getRemoteSocketAddress());
 		this.socket = socket;
 	}
 
@@ -73,7 +72,7 @@ public class BaseShellSocketHandler extends Thread {
 				String request = bufferedReader.readLine();
 
 				// hello
-				if (request.equals("HELLO")) {
+				if (request.equalsIgnoreCase("HELLO")) {
 					outputStreamWriter.write(WELCOME);
 				} else {
 					try {
@@ -116,16 +115,13 @@ public class BaseShellSocketHandler extends Thread {
 		
 		shellOutputWrapper.register(authenticationToken.getID(), outputStreamWriter);
 		shellManager.setDefaultWriter(authenticationToken.getID(), "S");
-
-		setName(getName()+"("+user+")");
 	}
 
 	private void checkValidSession() {
 		if (authenticationToken != null && !authenticationToken.isValid()) {
 			shellOutputWrapper.unregister(authenticationToken.getID());
 			authenticationManager.deleteAuthenticationToken(authenticationToken);
-			authenticationToken = null;
-			setName("" + this.socket.getRemoteSocketAddress());					
+			authenticationToken = null;				
 		}
 	}
 
@@ -160,7 +156,7 @@ public class BaseShellSocketHandler extends Thread {
 			return nextLoop;
 		}
 		
-		if (command.equals("QUIT") || command.equals("EXIT")) {
+		if (command.equalsIgnoreCase("QUIT") || command.equalsIgnoreCase("EXIT")) {
 			nextLoop = false;
 			command = "SIGNOFF";
 		}

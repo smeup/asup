@@ -19,6 +19,8 @@ import java.util.Collection;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QCharacter;
@@ -44,6 +46,8 @@ public class ActivetThreadsWorker {
 	private QJob job;
 	@Inject
 	private QThreads threads;
+	@Inject
+	private QThreadManager threadManager;
 	
 	@Main
 	public void main(@Supported @DataDef(length = 1) QEnum<OutputEnum, QCharacter> output) {
@@ -68,6 +72,27 @@ public class ActivetThreadsWorker {
 			}
 
 		objectWriter.flush();
+		
+		
+		QThread myThread = threadManager.createThread("job-test"+System.currentTimeMillis(), new MyRunnable());
+		threadManager.start(myThread);
+		
+		try {
+			Thread.sleep(5000);
+			System.out.println("suspend "+myThread.getJavaThread().getName());
+			threadManager.suspend(myThread);
+			
+			Thread.sleep(5000);			
+			System.out.println("release "+myThread.getJavaThread().getName());
+			threadManager.release(myThread);
+			
+			Thread.sleep(5000);
+			System.out.println("stop "+myThread.getJavaThread().getName());
+			threadManager.stop(myThread);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}				
 	}
 
 	private Collection<QJobThread> threads() {
@@ -145,5 +170,24 @@ public class ActivetThreadsWorker {
 			Thread thread = threads.lookupThread(threadInfo);
 			return thread.isDaemon();
 		}
+	}
+	
+	private class MyRunnable implements Runnable {
+
+		@Override
+		public void run() {
+			
+			QThread currentThread = threadManager.currentThread();
+			while(currentThread.checkRunnable()) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					break;
+				}
+			}
+			
+			System.out.println("ended");
+		}
+		
 	}
 }

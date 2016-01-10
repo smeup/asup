@@ -41,6 +41,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 	@Override
 	public void executeCommand(String contextID, QCallableCommand callableCommand) {
 
+		// TODO create a dataContainer visitor with replaced variables 
 		jobLogManager.info(jobManager.lookup(contextID), callableCommand.getCommandString());
 
 		@SuppressWarnings("resource")
@@ -55,6 +56,7 @@ public abstract class BaseCommandManagerImpl implements QCommandManager {
 
 		programManager.callProgram(contextID, null, callableCommand.getCommand().getProgram(), parameters);
 	}
+	
 	@Override
 	public void executeCommand(String contextID, String command, Map<String, Object> variables) {
 		try {

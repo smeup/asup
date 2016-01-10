@@ -15,6 +15,7 @@ import java.io.Writer;
 
 import java.lang.Iterable;
 
+import java.lang.Thread;
 import java.lang.annotation.Annotation;
 
 import java.lang.management.ThreadInfo;
@@ -40,10 +41,8 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
-
 import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 
 import org.smeup.sys.mi.core.util.impl.MachineInterfaceUtilPackageImpl;
@@ -110,6 +109,13 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EClass javaNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass javaRunnableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,13 +200,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * @generated
 	 */
 	private EDataType javaPropertiesEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType javaRunnableEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -488,8 +487,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getJavaRunnable() {
-		return javaRunnableEDataType;
+	public EClass getJavaRunnable() {
+		return javaRunnableEClass;
 	}
 
 	/**
@@ -581,6 +580,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		javaNumberEClass = createEClass(JAVA_NUMBER);
 
+		javaRunnableEClass = createEClass(JAVA_RUNNABLE);
+
 		javaThreadEClass = createEClass(JAVA_THREAD);
 
 		javaThreadGroupEClass = createEClass(JAVA_THREAD_GROUP);
@@ -597,7 +598,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		javaMapEDataType = createEDataType(JAVA_MAP);
 		javaOutputStreamEDataType = createEDataType(JAVA_OUTPUT_STREAM);
 		javaPropertiesEDataType = createEDataType(JAVA_PROPERTIES);
-		javaRunnableEDataType = createEDataType(JAVA_RUNNABLE);
 		javaThrowableEDataType = createEDataType(JAVA_THROWABLE);
 		javaTypeEDataType = createEDataType(JAVA_TYPE);
 		javaURIEDataType = createEDataType(JAVA_URI);
@@ -663,6 +663,8 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 
 		initEClass(javaNumberEClass, Number.class, "JavaNumber", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(javaRunnableEClass, Runnable.class, "JavaRunnable", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(javaThreadEClass, Thread.class, "JavaThread", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(javaThreadGroupEClass, ThreadGroup.class, "JavaThreadGroup", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
@@ -679,7 +681,6 @@ public class MachineInterfaceCorePackageImpl extends EPackageImpl implements QMa
 		initEDataType(javaMapEDataType, Map.class, "JavaMap", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaOutputStreamEDataType, OutputStream.class, "JavaOutputStream", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaPropertiesEDataType, Properties.class, "JavaProperties", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(javaRunnableEDataType, Runnable.class, "JavaRunnable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaThrowableEDataType, Throwable.class, "JavaThrowable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaTypeEDataType, Type.class, "JavaType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(javaURIEDataType, URI.class, "JavaURI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

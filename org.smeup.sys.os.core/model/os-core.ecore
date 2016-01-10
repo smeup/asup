@@ -301,15 +301,15 @@
         </eAnnotations>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="JobType">
-      <eLiterals name="Kernel" value="10" literal="KRN"/>
-      <eLiterals name="Interactive" value="20" literal="INT"/>
-      <eLiterals name="Batch" value="30" literal="BCH"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobThreadStatus">
       <eLiterals name="Run" value="10" literal="RUN"/>
       <eLiterals name="Waiting" value="20" literal="WAIT"/>
       <eLiterals name="End" value="30" literal="END"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="JobType">
+      <eLiterals name="Kernel" value="10" literal="KRN"/>
+      <eLiterals name="Interactive" value="20" literal="INT"/>
+      <eLiterals name="Batch" value="30" literal="BCH"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="env" nsURI="http://www.smeup.org/asup/os/core/env" nsPrefix="os-core-env">

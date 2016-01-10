@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.smeup.sys.mi.core.*;
+import org.smeup.sys.mi.core.QMachineInterfaceCoreFactory;
+import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,8 +111,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return createJavaOutputStreamFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_PROPERTIES:
 				return createJavaPropertiesFromString(eDataType, initialValue);
-			case QMachineInterfaceCorePackage.JAVA_RUNNABLE:
-				return createJavaRunnableFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_THROWABLE:
 				return createJavaThrowableFromString(eDataType, initialValue);
 			case QMachineInterfaceCorePackage.JAVA_TYPE:
@@ -154,8 +152,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 				return convertJavaOutputStreamToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_PROPERTIES:
 				return convertJavaPropertiesToString(eDataType, instanceValue);
-			case QMachineInterfaceCorePackage.JAVA_RUNNABLE:
-				return convertJavaRunnableToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_THROWABLE:
 				return convertJavaThrowableToString(eDataType, instanceValue);
 			case QMachineInterfaceCorePackage.JAVA_TYPE:
@@ -331,24 +327,6 @@ public class MachineInterfaceCoreFactoryImpl extends EFactoryImpl implements QMa
 	 * @generated
 	 */
 	public String convertJavaPropertiesToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Runnable createJavaRunnableFromString(EDataType eDataType, String initialValue) {
-		return (Runnable)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJavaRunnableToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

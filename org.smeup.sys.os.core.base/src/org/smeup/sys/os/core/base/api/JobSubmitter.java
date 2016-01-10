@@ -22,6 +22,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
@@ -53,6 +55,8 @@ public class JobSubmitter {
 	private QJob job;
 	@Inject
 	private QJobManager jobManager;
+	@Inject
+	private QThreadManager threadManager;
 	@Inject
 	private QJobLogManager jobLogManager;
 	@Inject
@@ -115,19 +119,20 @@ public class JobSubmitter {
 		job.getMessages().add(numberFormat.format(childJob.getJobNumber()));
 
 		// Submit command
-		new SubmittedCommand(childJob, commandToRun.trimR(), caller).start();
+		String threadName = "job/" + childJob.getJobNumber() + "-" + childJob.getJobUser() + "-" + childJob.getJobName();
+		QThread thread = threadManager.createThread(threadName, new SubmittedCommand(childJob, commandToRun.trimR(), caller));
+		threadManager.start(thread);		
 
 		jobLogManager.info(job, "Job submitted:" + childJob);
 	}
 
-	private class SubmittedCommand extends Thread {
+	private class SubmittedCommand implements Runnable {
 
 		private QJob qJob;
 		private String commandString;
 		private QCallableProgram caller;
 
 		protected SubmittedCommand(QJob qJob, String commandString, QCallableProgram caller) {
-			super("asup://thread/jobs/job/"+qJob.getJobNumber()+"-"+qJob.getJobUser()+"-"+qJob.getJobName());
 			this.qJob = qJob;
 			this.commandString = commandString;
 			this.caller = caller;
@@ -137,7 +142,7 @@ public class JobSubmitter {
 		public void run() {
 
 			Map<String, Object> variables = null;
-			if (caller != null) {
+			if (threadManager.currentThread().checkRunnable() && caller != null) {
 
 				variables = new HashMap<String, Object>();
 
@@ -217,18 +222,15 @@ public class JobSubmitter {
 	}
 
 	public static enum JobPriorityonJOBQEnum {
-		@Special(value = "*")
-		JOBD, OTHER
+		@Special(value = "*") JOBD, OTHER
 	}
 
 	public static enum OutputPriorityonOUTQEnum {
-		@Special(value = "*")
-		JOBD, OTHER
+		@Special(value = "*") JOBD, OTHER
 	}
 
 	public static enum PrintDeviceEnum {
-		CURRENT, @Special(value = "X'40404040404040404040'")
-		USRPRF, SYSVAL, JOBD, OTHER
+		CURRENT, @Special(value = "X'40404040404040404040'") USRPRF, SYSVAL, JOBD, OTHER
 	}
 
 	public static class OutputQueue extends QDataStructWrapper {
@@ -293,29 +295,20 @@ public class JobSubmitter {
 		public QEnum<TextEnum, QCharacter> text;
 
 		public static enum LevelEnum {
-			@Special(value = "*")
-			JOBD, OTHER
+			@Special(value = "*") JOBD, OTHER
 		}
 
 		public static enum SeverityEnum {
-			@Special(value = "-2")
-			JOBD, OTHER
+			@Special(value = "-2") JOBD, OTHER
 		}
 
 		public static enum TextEnum {
-			@Special(value = "*")
-			JOBD, @Special(value = "M")
-			MSG, @Special(value = "S")
-			SECLVL, @Special(value = "N")
-			NOLIST
+			@Special(value = "*") JOBD, @Special(value = "M") MSG, @Special(value = "S") SECLVL, @Special(value = "N") NOLIST
 		}
 	}
 
 	public static enum LogCLProgramCommandsEnum {
-		@Special(value = "*")
-		JOBD, @Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "*") JOBD, @Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum JobLogOutputEnum {
@@ -323,57 +316,31 @@ public class JobSubmitter {
 	}
 
 	public static enum JobMessageQueueMaximumSizeEnum {
-		@Special(value = "1")
-		JOBD, @Special(value = "0")
-		SYSVAL, OTHER
+		@Special(value = "1") JOBD, @Special(value = "0") SYSVAL, OTHER
 	}
 
 	public static enum JobMessageQueueFullActionEnum {
-		@Special(value = "D")
-		JOBD, SYSVAL, @Special(value = "N")
-		NOWRAP, @Special(value = "W")
-		WRAP, @Special(value = "P")
-		PRTWRAP
+		@Special(value = "D") JOBD, SYSVAL, @Special(value = "N") NOWRAP, @Special(value = "W") WRAP, @Special(value = "P") PRTWRAP
 	}
 
 	public static enum InquiryMessageReplyEnum {
-		@Special(value = "*")
-		JOBD, @Special(value = "X'00'")
-		RQD, @Special(value = "X'01'")
-		DFT, @Special(value = "X'02'")
-		SYSRPYL
+		@Special(value = "*") JOBD, @Special(value = "X'00'") RQD, @Special(value = "X'01'") DFT, @Special(value = "X'02'") SYSRPYL
 	}
 
 	public static enum HoldOnJobQueueEnum {
-		@Special(value = "*")
-		JOBD, @Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "*") JOBD, @Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum ScheduleDateEnum {
-		@Special(value = "0000001")
-		CURRENT, @Special(value = "0000002")
-		MONTHSTR, @Special(value = "0000003")
-		MONTHEND, @Special(value = "0000011")
-		MON, @Special(value = "0000012")
-		TUE, @Special(value = "0000013")
-		WED, @Special(value = "0000014")
-		THU, @Special(value = "0000015")
-		FRI, @Special(value = "0000016")
-		SAT, @Special(value = "0000017")
-		SUN, OTHER
+		@Special(value = "0000001") CURRENT, @Special(value = "0000002") MONTHSTR, @Special(value = "0000003") MONTHEND, @Special(value = "0000011") MON, @Special(value = "0000012") TUE, @Special(value = "0000013") WED, @Special(value = "0000014") THU, @Special(value = "0000015") FRI, @Special(value = "0000016") SAT, @Special(value = "0000017") SUN, OTHER
 	}
 
 	public static enum ScheduleTimeEnum {
-		@Special(value = "999999")
-		CURRENT, OTHER
+		@Special(value = "999999") CURRENT, OTHER
 	}
 
 	public static enum JobDateEnum {
-		@Special(value = "0020000")
-		JOBD, @Special(value = "0010000")
-		SYSVAL, OTHER
+		@Special(value = "0020000") JOBD, @Special(value = "0010000") SYSVAL, OTHER
 	}
 
 	public static enum JobSwitchesEnum {
@@ -381,9 +348,7 @@ public class JobSubmitter {
 	}
 
 	public static enum AllowDisplayByWRKSBMJOBEnum {
-		@Special(value = "Y")
-		YES, @Special(value = "N")
-		NO
+		@Special(value = "Y") YES, @Special(value = "N") NO
 	}
 
 	public static class SubmittedFor extends QDataStructWrapper {
@@ -433,38 +398,23 @@ public class JobSubmitter {
 	}
 
 	public static enum LanguageIDEnum {
-		@Special(value = "*")
-		CURRENT, @Special(value = "*US")
-		USRPRF, @Special(value = "*SY")
-		SYSVAL, OTHER
+		@Special(value = "*") CURRENT, @Special(value = "*US") USRPRF, @Special(value = "*SY") SYSVAL, OTHER
 	}
 
 	public static enum CountryOrRegionIDEnum {
-		@Special(value = "*")
-		CURRENT, @Special(value = "*U")
-		USRPRF, @Special(value = "*S")
-		SYSVAL, OTHER
+		@Special(value = "*") CURRENT, @Special(value = "*U") USRPRF, @Special(value = "*S") SYSVAL, OTHER
 	}
 
 	public static enum CodedCharacterSetIDEnum {
-		@Special(value = "0")
-		CURRENT, @Special(value = "-1")
-		USRPRF, @Special(value = "-2")
-		SYSVAL, @Special(value = "65535")
-		HEX, OTHER
+		@Special(value = "0") CURRENT, @Special(value = "-1") USRPRF, @Special(value = "-2") SYSVAL, @Special(value = "65535") HEX, OTHER
 	}
 
 	public static enum CopyEnvironmentVariablesEnum {
-		@Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum AllowMultipleThreadsEnum {
-		@Special(value = "*")
-		JOBD, @Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "*") JOBD, @Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum SpooledFileActionEnum {

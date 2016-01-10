@@ -37,6 +37,8 @@ import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
@@ -155,6 +157,20 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass specialElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass threadEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass threadManagerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -561,6 +577,24 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getThread() {
+		return threadEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getThreadManager() {
+		return threadManagerEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -656,6 +690,10 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__TEXT);
 		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__UNARY);
 		createEAttribute(specialElementEClass, SPECIAL_ELEMENT__VALUE);
+
+		threadEClass = createEClass(THREAD);
+
+		threadManagerEClass = createEClass(THREAD_MANAGER);
 
 		// Create enums
 		conversionStatusEEnum = createEEnum(CONVERSION_STATUS);
@@ -815,6 +853,45 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		initEAttribute(getSpecialElement_Text(), ecorePackage.getEString(), "text", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSpecialElement_Unary(), ecorePackage.getEBoolean(), "unary", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSpecialElement_Value(), ecorePackage.getEString(), "value", null, 0, 1, QSpecialElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(threadEClass, QThread.class, "Thread", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(threadEClass, ecorePackage.getEBoolean(), "checkRunnable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, theMachineInterfaceCorePackage.getJavaThread(), "getJavaThread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(threadManagerEClass, QThreadManager.class, "ThreadManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(threadManagerEClass, this.getThread(), "createThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaRunnable(), "runnable", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, this.getThread(), "createThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theMachineInterfaceCorePackage.getJavaRunnable(), "runnable", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEBoolean(), "daemon", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadManagerEClass, this.getThread(), "currentThread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadManagerEClass, this.getThread(), "listThreads", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, this.getThread(), "lookupThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getELong(), "id", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, this.getThread(), "lookupThread", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, null, "release", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, null, "stop", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(threadManagerEClass, null, "suspend", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getThread(), "thread", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(conversionStatusEEnum, ConversionStatus.class, "ConversionStatus");

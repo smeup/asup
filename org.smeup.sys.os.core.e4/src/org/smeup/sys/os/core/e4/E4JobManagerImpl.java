@@ -20,6 +20,8 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QObjectIterator;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.expr.QExpressionParser;
 import org.smeup.sys.il.expr.QExpressionParserRegistry;
 import org.smeup.sys.il.expr.QPredicateExpression;
@@ -50,7 +52,7 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 	private QExpressionParser expressionParser;
 
 	@Inject
-	public E4JobManagerImpl(QApplication application, QSystemManager systemManager, QResourceManager resourceManager) {
+	public E4JobManagerImpl(QApplication application, QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager) {
 		
 		super(application);
 		
@@ -58,7 +60,8 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 		this.resourceManager = resourceManager;
 		this.activeJobs = new HashMap<String, QJob>();  //TODO ConcurrentHashMap????
 		
-		new E4JobCloser(this).start();
+		QThread thread = threadManager.createThread("job-closer", new E4JobCloser(threadManager, this), true);
+		threadManager.start(thread);		
 	}
 
 	@PostConstruct

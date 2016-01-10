@@ -90,6 +90,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/unary"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute il-core.ecore#//SpecialElement/value"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="il-core.ecore#//Thread">
+      <genOperations ecoreOperation="il-core.ecore#//Thread/checkRunnable"/>
+      <genOperations ecoreOperation="il-core.ecore#//Thread/getJavaThread"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="il-core.ecore#//ThreadManager">
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/createThread">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/createThread/name"/>
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/createThread/runnable"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/createThread.1">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/createThread.1/name"/>
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/createThread.1/runnable"/>
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/createThread.1/daemon"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/currentThread"/>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/listThreads"/>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/release">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/release/thread"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/start">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/start/thread"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/stop">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/stop/thread"/>
+      </genOperations>
+      <genOperations ecoreOperation="il-core.ecore#//ThreadManager/suspend">
+        <genParameters ecoreParameter="il-core.ecore#//ThreadManager/suspend/thread"/>
+      </genOperations>
+    </genClasses>
     <nestedGenPackages prefix="IntegratedLanguageCoreCtx" basePackage="org.smeup.sys.il.core"
         disposableProviderFactory="true" adapterFactory="false" contentTypeIdentifier=""
         ecorePackage="il-core.ecore#//ctx">

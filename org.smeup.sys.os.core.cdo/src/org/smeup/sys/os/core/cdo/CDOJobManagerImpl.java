@@ -23,6 +23,8 @@ import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.emf.ecore.EObject;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
@@ -59,7 +61,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	private List<QJobListener> listeners = new ArrayList<QJobListener>();
 
 	@Inject
-	public CDOJobManagerImpl(QApplication application, QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
+	public CDOJobManagerImpl(QApplication application, QThreadManager threadManager, QSystemManager systemManager, QResourceManager resourceManager, QLockManager lockManager) {
 		super(application);
 		
 		this.systemManager = (CDOSystemManagerImpl) systemManager;
@@ -67,7 +69,8 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 		this.lockManager = lockManager;
 		this.activeJobs = new HashMap<String, QJob>();
 		
-		new CDOJobCloser(this).start();		
+		QThread thread = threadManager.createThread("job-closer", new CDOJobCloser(threadManager, this), true);
+		threadManager.start(thread);		
 	}
 	
 	@Override

@@ -52,17 +52,19 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 
 					for (EOperation operation : eClass.getEAllOperations()) {
 
-						EAnnotation eAnnotation = operation.getEAnnotation(nsPrefix);
-						if (eAnnotation == null) 
-							continue;
-
 						if (operation.getName().length() > 3 && operation.getName().startsWith("get") && operation.getEParameters().isEmpty()) {
 							String name = operation.getName().substring(3);				
 							name = QStrings.qINSTANCE.firstToLower(name);
 							this.slots.add(new E4SlotAdapter(operation, name));
+							
+							continue;
 						}
-						else
-							this.slots.add(new E4SlotAdapter(operation));
+						
+						EAnnotation eAnnotation = operation.getEAnnotation(nsPrefix);
+						if (eAnnotation == null) 
+							continue;
+
+						this.slots.add(new E4SlotAdapter(operation));
 					}
 				}
 			}

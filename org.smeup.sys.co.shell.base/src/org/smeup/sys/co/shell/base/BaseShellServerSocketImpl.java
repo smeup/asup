@@ -21,23 +21,27 @@ import java.net.SocketAddress;
 import org.smeup.sys.co.core.ConnectorCoreHelper;
 import org.smeup.sys.co.core.QServerSocket;
 import org.smeup.sys.co.core.QServerSocketConfig;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.ContextInjectionStrategy;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.rt.core.ComponentStarted;
 import org.smeup.sys.rt.core.QApplication;
 
-public class BaseShellServerSocketImpl extends Thread implements QServerSocket {
+public class BaseShellServerSocketImpl implements QServerSocket, Runnable {
 
 	private QApplication application;
+	private QThreadManager threadManager;
 	private QServerSocketConfig config;
 
 	@ComponentStarted
-	public void init(QApplication application, QServerSocketConfig config) {
+	public void init(QApplication application, QThreadManager threadManager, QServerSocketConfig config) {
 		this.application = application;
+		this.threadManager = threadManager;
 		this.config = config;
-		this.setName("asup://thread/telnet/" + config.getAddress()+":"+config.getPort());
 		
-		start();
+		QThread thread = threadManager.createThread("telnet", this);
+		threadManager.start(thread);
 	}
 
 	@Override
@@ -53,16 +57,17 @@ public class BaseShellServerSocketImpl extends Thread implements QServerSocket {
 			serverSocket = new ServerSocket();
 			serverSocket.bind(socketAddress);
 
-			while (!Thread.currentThread().isInterrupted()) {
+			while (threadManager.currentThread().checkRunnable()) {
 				socket = serverSocket.accept();
 
+
+				BaseShellSocketHandler shellHandler = new BaseShellSocketHandler(socket);
+				QContext connectionContext = application.getContext().createChildContext(shellHandler.toString(), ContextInjectionStrategy.REMOTE);
+				connectionContext.inject(shellHandler);
+
 				// start thread handler
-				BaseShellSocketHandler shellThread = new BaseShellSocketHandler(socket);
-
-				QContext connectionContext = application.getContext().createChildContext(shellThread.toString(), ContextInjectionStrategy.REMOTE);
-				connectionContext.inject(shellThread);
-
-				shellThread.start();
+				QThread thread = threadManager.createThread("telnet/" + socket.getRemoteSocketAddress(), shellHandler);
+				threadManager.start(thread);				
 			}
 
 		} catch (IOException e) {

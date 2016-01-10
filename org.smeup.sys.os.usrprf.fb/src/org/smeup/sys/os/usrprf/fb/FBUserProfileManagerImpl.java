@@ -12,6 +12,8 @@ package org.smeup.sys.os.usrprf.fb;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
@@ -29,7 +31,9 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 
 	@Inject
 	private QResourceManager resourceManager;
-
+	@Inject
+	private QThreadManager threadManager;
+	
 	public void init(QJob job) {
 
 		QSystem qSystem = job.getSystem();
@@ -49,7 +53,8 @@ public class FBUserProfileManagerImpl extends BaseUserProfileManagerImpl {
 			resourceUserProfile.save(userProfile);
 		}
 
-		new FBUserProfileUpdater(job, userProfileWriter, facebookClient).start();
+		QThread thread = threadManager.createThread("facebook", new FBUserProfileUpdater(threadManager, job, userProfileWriter, facebookClient), true);
+		threadManager.start(thread);		
 	}
 
 }

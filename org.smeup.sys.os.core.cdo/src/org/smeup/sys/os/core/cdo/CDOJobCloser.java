@@ -15,31 +15,31 @@ import java.util.Date;
 
 import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.net4j.util.collection.CloseableIterator;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 
-public class CDOJobCloser extends Thread {
+public class CDOJobCloser implements Runnable {
 
 	private CDOJobManagerImpl jobManager;
-
-	public CDOJobCloser(CDOJobManagerImpl jobManager) {
-		super("asup://thread/jobs/closer");
-		setDaemon(true);
+	private QThreadManager threadManager;
+	
+	public CDOJobCloser(QThreadManager threadManager, CDOJobManagerImpl jobManager) {
+		this.threadManager = threadManager;
 		this.jobManager = jobManager;
 	}
 
 	@Override
 	public void run() {
 
-		while (!Thread.currentThread().isInterrupted()) {
+		while (threadManager.currentThread().checkRunnable()) {
 
 			try {
 				Thread.sleep(60 * 1000);
 			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
 				break;
 			}
 

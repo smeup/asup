@@ -539,13 +539,51 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	int SPECIAL_ELEMENT_FEATURE_COUNT = NAMED_NODE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.QThread
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
+	 * @generated
+	 */
+	int THREAD = 17;
+
+	/**
+	 * The number of structural features of the '<em>Thread</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.QThreadManager
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
+	 * @generated
+	 */
+	int THREAD_MANAGER = 18;
+
+	/**
+	 * The number of structural features of the '<em>Thread Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THREAD_MANAGER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ConversionStatus <em>Conversion Status</em>}' enum.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.smeup.sys.il.core.ConversionStatus
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getConversionStatus()
 	 * @generated
 	 */
-	int CONVERSION_STATUS = 17;
+	int CONVERSION_STATUS = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.FormatType
@@ -556,7 +594,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getFormatType()
 	 * @generated
 	 */
-	int FORMAT_TYPE = 18;
+	int FORMAT_TYPE = 20;
 
 	/**
 	 * Returns the meta object for class '
@@ -913,6 +951,26 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	EAttribute getSpecialElement_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Thread</em>'.
+	 * @see org.smeup.sys.il.core.QThread
+	 * @generated
+	 */
+	EClass getThread();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Thread Manager</em>'.
+	 * @see org.smeup.sys.il.core.QThreadManager
+	 * @generated
+	 */
+	EClass getThreadManager();
+
+	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ConversionStatus <em>Conversion Status</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Conversion Status</em>'.
@@ -1241,6 +1299,26 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SPECIAL_ELEMENT__VALUE = eINSTANCE.getSpecialElement_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.QThread <em>Thread</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.QThread
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThread()
+		 * @generated
+		 */
+		EClass THREAD = eINSTANCE.getThread();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.QThreadManager
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadManager()
+		 * @generated
+		 */
+		EClass THREAD_MANAGER = eINSTANCE.getThreadManager();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.il.core.ConversionStatus <em>Conversion Status</em>}' enum.
