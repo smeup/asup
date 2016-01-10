@@ -41,9 +41,9 @@ public class CDOResourceReaderImpl<T extends QObjectNameable> extends ResourceRe
 		setContextProvider(contextProvider);
 		this.session = session;
 		this.klass = klass;
-		this.klassName = CDOResourceUtil.getModelName(klass);
-		EPackage ePackage = CDOResourceUtil.getEPackage(session, klass);
-		this.eClass = CDOResourceUtil.getEClass(ePackage, klass);
+		this.klassName = CDOResourceHelper.getModelName(klass);
+		EPackage ePackage = CDOResourceHelper.getEPackage(session, klass);
+		this.eClass = CDOResourceHelper.getEClass(ePackage, klass);
 		this.resourceEvent = QIntegratedLanguageMemoryFactory.eINSTANCE.createResourceEvent();
 		this.resourceEvent.setResource(this);
 	}

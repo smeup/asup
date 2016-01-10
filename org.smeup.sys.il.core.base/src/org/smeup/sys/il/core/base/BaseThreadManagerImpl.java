@@ -32,8 +32,13 @@ public class BaseThreadManagerImpl implements QThreadManager {
 		List<QThread> qThreads = new ArrayList<QThread>();
 		
 		for(Thread thread: threads.listThreads()) {
+			if(thread == null)
+				continue;
+			
 			if(thread instanceof QThread)
 				qThreads.add((QThread) thread);
+			else
+				qThreads.add(new BaseThreadAdapter(thread));
 		}
 
 		return qThreads;
@@ -45,8 +50,8 @@ public class BaseThreadManagerImpl implements QThreadManager {
 		Thread thread = threads.lookupThread(id);
 		if(thread instanceof QThread)
 			return (QThread)thread;
-		
-		return null;
+		else
+			return new BaseThreadAdapter(thread);
 	}
 
 	@Override
@@ -55,35 +60,45 @@ public class BaseThreadManagerImpl implements QThreadManager {
 		Thread thread = threads.lookupThread(name);
 		if(thread instanceof QThread)
 			return (QThread)thread;
-		
-		return null;
+		else
+			return new BaseThreadAdapter(thread);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void release(QThread thread) {
-	    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
-	    synchronized (baseThreadImpl.lock) {
-			baseThreadImpl.lock.unlock();			
-		}		
+		if(thread instanceof BaseThreadImpl) {
+		    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
+		    synchronized (baseThreadImpl.lock) {
+				baseThreadImpl.lock.unlock();			
+			}
+		}
+		else 
+			thread.getJavaThread().resume();
 	}
 
 	@Override
 	public void start(QThread thread) {
-		((BaseThreadImpl)thread).start();
+		thread.getJavaThread().start();
 	}
 
 	@Override
-	public void stop(QThread thread) {
-	    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;		
-	    baseThreadImpl.interrupt();
+	public void stop(QThread thread) {		
+		thread.getJavaThread().interrupt();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void suspend(QThread thread) {
-	    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
-	    synchronized (baseThreadImpl.lock) {
-			baseThreadImpl.lock.lock();			
+
+		if(thread instanceof BaseThreadImpl) {
+		    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
+		    synchronized (baseThreadImpl.lock) {
+				baseThreadImpl.lock.lock();			
+			}
 		}
+		else
+			thread.getJavaThread().suspend();
 	}
 
 	@Override
@@ -92,7 +107,7 @@ public class BaseThreadManagerImpl implements QThreadManager {
 		Thread currentThread = Thread.currentThread();
 		if(currentThread instanceof QThread)
 			return (QThread)currentThread;
-		
-		return null;
+		else
+			return new BaseThreadAdapter(currentThread);
 	}
 }

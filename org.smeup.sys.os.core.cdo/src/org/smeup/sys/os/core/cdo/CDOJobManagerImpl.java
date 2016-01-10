@@ -31,7 +31,7 @@ import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.il.memo.QResourceReader;
 import org.smeup.sys.il.memo.Scope;
-import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
+import org.smeup.sys.il.memo.cdo.CDOResourceHelper;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
@@ -156,7 +156,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	public QJob lookup(String contextID, String name, String user, int number) {
 
 		StringBuffer queryString = new StringBuffer();
-		queryString.append("select * from " + CDOResourceUtil.getTableName(QJob.class));
+		queryString.append("select * from " + CDOResourceHelper.getTableName(QJob.class));
 		queryString.append(" where jobName=:jobName and jobUser=:jobUser and jobNumber=:jobNumber");
 
 		CDOQuery query = systemManager.getView().createQuery("sql", queryString.toString());
@@ -176,7 +176,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	public List<QJob> getActiveJobs() {
 
 		StringBuffer queryString = new StringBuffer();
-		queryString.append("select * from " + CDOResourceUtil.getTableName(QJob.class));
+		queryString.append("select * from " + CDOResourceHelper.getTableName(QJob.class));
 		queryString.append(" where jobStatus<>:end");
 
 		CDOQuery query = systemManager.getView().createQuery("sql", queryString.toString());
@@ -198,7 +198,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 			return job;
 
 		StringBuffer queryString = new StringBuffer();
-		queryString.append("select * from " + CDOResourceUtil.getTableName(QJob.class));
+		queryString.append("select * from " + CDOResourceHelper.getTableName(QJob.class));
 		queryString.append(" where jobID=:jobID");
 
 		CDOQuery query = systemManager.getView().createQuery("sql", queryString.toString());

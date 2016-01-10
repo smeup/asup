@@ -19,16 +19,69 @@ import java.lang.Thread;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QThread {
+public interface QThread extends QObject {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" type="org.smeup.sys.mi.core.JavaThread" required="true"
-	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
 	Thread getJavaThread();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data precision='10'"
+	 * @generated
+	 */
+	long getThreadID();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data length='96'"
+	 * @generated
+	 */
+	String getThreadName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data precision='10'"
+	 * @generated
+	 */
+	int getThreadPriority();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data length='12'"
+	 * @generated
+	 */
+	ThreadStatus getThreadStatus();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	boolean isNative();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	boolean isThreadDaemon();
 
 	/**
 	 * <!-- begin-user-doc -->

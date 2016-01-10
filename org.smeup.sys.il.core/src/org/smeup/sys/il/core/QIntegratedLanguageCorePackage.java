@@ -555,7 +555,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THREAD_FEATURE_COUNT = 0;
+	int THREAD_FEATURE_COUNT = OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.QThreadManager <em>Thread Manager</em>}' class.
@@ -595,6 +595,16 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 */
 	int FORMAT_TYPE = 20;
+
+	/**
+	 * The meta object id for the '{@link org.smeup.sys.il.core.ThreadStatus <em>Thread Status</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.il.core.ThreadStatus
+	 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
+	 * @generated
+	 */
+	int THREAD_STATUS = 21;
 
 	/**
 	 * Returns the meta object for class '
@@ -991,6 +1001,16 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	EEnum getFormatType();
 
 	/**
+	 * Returns the meta object for enum '{@link org.smeup.sys.il.core.ThreadStatus <em>Thread Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Thread Status</em>'.
+	 * @see org.smeup.sys.il.core.ThreadStatus
+	 * @generated
+	 */
+	EEnum getThreadStatus();
+
+	/**
 	 * Returns the factory that creates the instances of the model. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1338,6 +1358,16 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum FORMAT_TYPE = eINSTANCE.getFormatType();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.il.core.ThreadStatus <em>Thread Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.il.core.ThreadStatus
+		 * @see org.smeup.sys.il.core.impl.IntegratedLanguageCorePackageImpl#getThreadStatus()
+		 * @generated
+		 */
+		EEnum THREAD_STATUS = eINSTANCE.getThreadStatus();
 
 	}
 

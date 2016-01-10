@@ -40,6 +40,7 @@ import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.QThreadManager;
+import org.smeup.sys.il.core.ThreadStatus;
 import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.core.ctx.impl.IntegratedLanguageCoreCtxPackageImpl;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
@@ -190,6 +191,13 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EEnum formatTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum threadStatusEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -629,6 +637,15 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getThreadStatus() {
+		return threadStatusEEnum;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -714,6 +731,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		// Create enums
 		conversionStatusEEnum = createEEnum(CONVERSION_STATUS);
 		formatTypeEEnum = createEEnum(FORMAT_TYPE);
+		threadStatusEEnum = createEEnum(THREAD_STATUS);
 	}
 
 	/**
@@ -783,6 +801,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		remapEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialElementEClass.getESuperTypes().add(this.getNamedNode());
+		threadEClass.getESuperTypes().add(this.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(annotationEClass, QAnnotation.class, "Annotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -876,6 +895,18 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		addEOperation(threadEClass, theMachineInterfaceCorePackage.getJavaThread(), "getJavaThread", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(threadEClass, ecorePackage.getELong(), "getThreadID", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, ecorePackage.getEString(), "getThreadName", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, ecorePackage.getEInt(), "getThreadPriority", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, this.getThreadStatus(), "getThreadStatus", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isNative", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isThreadDaemon", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(threadManagerEClass, QThreadManager.class, "ThreadManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(threadManagerEClass, this.getThread(), "createThread", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -925,6 +956,11 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEEnumLiteral(formatTypeEEnum, FormatType.REGULAR_EXPRESSION);
 		addEEnumLiteral(formatTypeEEnum, FormatType.SIMPLE_NAME);
 
+		initEEnum(threadStatusEEnum, ThreadStatus.class, "ThreadStatus");
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.RUN);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.WAITING);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.END);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -942,13 +978,58 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
 		addAnnotation
-		  (threadEClass.getEOperations().get(1), 
+		  (threadEClass.getEOperations().get(2), 
 		   source, 
 		   new String[] {
 			 "precision", "10"
 		   },
 		   new URI[] {
 			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(3), 
+		   source, 
+		   new String[] {
+			 "length", "96"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(4), 
+		   source, 
+		   new String[] {
+			 "precision", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/DecimalDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(5), 
+		   source, 
+		   new String[] {
+			 "length", "12"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(6), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(7), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
 		   });
 	}
 

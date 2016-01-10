@@ -28,6 +28,7 @@ import org.smeup.sys.il.core.QOverlay;
 import org.smeup.sys.il.core.QRemap;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
+import org.smeup.sys.il.core.ThreadStatus;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -98,6 +99,8 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 				return createConversionStatusFromString(eDataType, initialValue);
 			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
 				return createFormatTypeFromString(eDataType, initialValue);
+			case QIntegratedLanguageCorePackage.THREAD_STATUS:
+				return createThreadStatusFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +117,8 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 				return convertConversionStatusToString(eDataType, instanceValue);
 			case QIntegratedLanguageCorePackage.FORMAT_TYPE:
 				return convertFormatTypeToString(eDataType, instanceValue);
+			case QIntegratedLanguageCorePackage.THREAD_STATUS:
+				return convertThreadStatusToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -262,6 +267,26 @@ public class IntegratedLanguageCoreFactoryImpl extends EFactoryImpl implements Q
 	 * @generated
 	 */
 	public String convertFormatTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ThreadStatus createThreadStatusFromString(EDataType eDataType, String initialValue) {
+		ThreadStatus result = ThreadStatus.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertThreadStatusToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

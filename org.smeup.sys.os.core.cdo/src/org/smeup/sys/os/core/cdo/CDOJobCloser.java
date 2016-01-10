@@ -16,7 +16,7 @@ import java.util.Date;
 import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.net4j.util.collection.CloseableIterator;
 import org.smeup.sys.il.core.QThreadManager;
-import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
+import org.smeup.sys.il.memo.cdo.CDOResourceHelper;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.jobs.JobStatus;
@@ -44,7 +44,7 @@ public class CDOJobCloser implements Runnable {
 			}
 
 			StringBuffer queryString = new StringBuffer();
-			queryString.append("select * from " + CDOResourceUtil.getTableName(QJob.class));
+			queryString.append("select * from " + CDOResourceHelper.getTableName(QJob.class));
 			queryString.append(" where jobStatus<>:end");
 
 			CDOQuery query = jobManager.getTransaction().createQuery("sql", queryString.toString());

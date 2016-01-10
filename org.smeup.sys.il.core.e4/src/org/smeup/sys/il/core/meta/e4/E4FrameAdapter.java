@@ -11,11 +11,13 @@
  */
 package org.smeup.sys.il.core.meta.e4;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.il.core.QObject;
@@ -51,6 +53,10 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 						this.slots.add(new E4SlotAdapter(structuralFeature));
 
 					for (EOperation operation : eClass.getEAllOperations()) {
+						
+						EAnnotation eAnnotation = operation.getEAnnotation(nsPrefix);
+						if (eAnnotation == null) 
+							continue;
 
 						if (operation.getName().length() > 3 && operation.getName().startsWith("get") && operation.getEParameters().isEmpty()) {
 							String name = operation.getName().substring(3);				
@@ -59,10 +65,6 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 							
 							continue;
 						}
-						
-						EAnnotation eAnnotation = operation.getEAnnotation(nsPrefix);
-						if (eAnnotation == null) 
-							continue;
 
 						this.slots.add(new E4SlotAdapter(operation));
 					}
@@ -87,5 +89,57 @@ public class E4FrameAdapter<O extends QObject> implements QFrame<O> {
 	@Override
 	public String toString() {
 		return eClass.toString();
+	}
+
+	@Override
+	public QSlot getSlot(String name) {
+		
+		for(QSlot slot: getSlots())
+			if(slot.getName().equals(name))
+				return slot;
+		
+		return null;
+	}
+
+	@Override
+	public Object getValue(QObject object, QSlot slot) {
+		
+		if(object instanceof EObject)
+			return getValue((EObject)object, slot);
+		else
+			return getValue((Object) object, slot);
+	}
+	
+	private Object getValue(EObject eObject, QSlot slot) {
+		Object value = null;
+		
+		EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(slot.getName());
+		if (eStructuralFeature != null)
+			value = eObject.eGet(eStructuralFeature);
+		else {
+			value = getValue((Object)eObject, slot);
+		}				
+		
+		return value;
+	}
+	
+	private Object getValue(Object object, QSlot slot) {
+		Object value = null;
+
+		try {
+			String methodName = null;
+			if (slot.getName().startsWith("is"))
+				methodName = slot.getName();
+			else
+				methodName = "get" + QStrings.qINSTANCE.firstToUpper(slot.getName());
+			Method method = object.getClass().getMethod(methodName, new Class[] {});
+			if (method != null) {
+				value = method.invoke(object, new Object[] {});
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return value;
 	}
 }

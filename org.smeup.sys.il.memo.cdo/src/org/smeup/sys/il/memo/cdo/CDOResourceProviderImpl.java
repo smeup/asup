@@ -161,7 +161,7 @@ public class CDOResourceProviderImpl implements QResourceProvider {
 
 		CDONet4jSession session = contextProvider.getContext().get(CDONet4jSession.class);
 		if (session == null) {
-			session = CDOSessionUtil.openSession(socketConfig.getAddress()+":"+socketConfig.getPort(), application.getName());
+			session = CDOSessionHelper.openSession(socketConfig.getAddress()+":"+socketConfig.getPort(), application.getName());
 			session.options().getNet4jProtocol().setTimeout(60000);
 		}
 		return session;

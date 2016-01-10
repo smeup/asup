@@ -103,11 +103,38 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true"
+      eSuperTypes="#//Object">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread">
+    <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread"/>
+    <eOperations name="getThreadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
       <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
         <details key="precision" value="10"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getThreadName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="96"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getThreadPriority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
+        <details key="precision" value="10"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getThreadStatus" eType="#//ThreadStatus">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="12"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isNative" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isThreadDaemon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
       </eAnnotations>
     </eOperations>
   </eClassifiers>
@@ -141,6 +168,11 @@
     <eOperations name="suspend">
       <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ThreadStatus">
+    <eLiterals name="Run" value="10" literal="RUN"/>
+    <eLiterals name="Waiting" value="20" literal="WAIT"/>
+    <eLiterals name="End" value="30" literal="END"/>
   </eClassifiers>
   <eSubpackages name="ctx" nsURI="http://www.smeup.org/asup/il/core/ctx" nsPrefix="il-core-ctx">
     <eClassifiers xsi:type="ecore:EClass" name="AdapterFactory" abstract="true" interface="true">
@@ -339,7 +371,14 @@
           <eTypeArguments/>
         </eGenericType>
       </eOperations>
+      <eOperations name="getSlot" lowerBound="1" eType="#//meta/Slot">
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
       <eOperations name="getSlots" upperBound="-1" eType="#//meta/Slot"/>
+      <eOperations name="getValue" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+        <eParameters name="object" lowerBound="1" eType="#//Object"/>
+        <eParameters name="slot" lowerBound="1" eType="#//meta/Slot"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="FrameManager" abstract="true" interface="true">
       <eOperations name="getFrame" lowerBound="1">

@@ -25,7 +25,7 @@ import org.eclipse.net4j.util.container.ContainerUtil;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
-public class CDOSessionUtil {
+public class CDOSessionHelper {
 
 	public static CDONet4jSession openSession(String description, String repository) {
 

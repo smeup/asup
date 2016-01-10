@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.smeup.sys.il.lock.LockType;
 import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
-import org.smeup.sys.il.memo.cdo.CDOResourceUtil;
-import org.smeup.sys.il.memo.cdo.CDOSessionUtil;
+import org.smeup.sys.il.memo.cdo.CDOResourceHelper;
+import org.smeup.sys.il.memo.cdo.CDOSessionHelper;
 import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
@@ -169,7 +169,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		// properties.get("org.asup.os.system.address").toString();
 
 		// session
-		session = CDOSessionUtil.openSession("asup-db1:2036", systemConfig.getName());
+		session = CDOSessionHelper.openSession("asup-db1:2036", systemConfig.getName());
 
 		// view
 		view = session.openView();
@@ -178,7 +178,7 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 		transaction = session.openTransaction();
 		transaction.options().setAutoReleaseLocksEnabled(false);
 
-		String queryString = "select * from " + CDOResourceUtil.getTableName(QSystem.class) + " where name=:name";
+		String queryString = "select * from " + CDOResourceHelper.getTableName(QSystem.class) + " where name=:name";
 
 		try {
 			CDOQuery query = transaction.createQuery("sql", queryString);

@@ -12,19 +12,18 @@
 package org.smeup.sys.co.shell.base;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 import javax.inject.Inject;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.smeup.sys.co.shell.QCommunicationShellPackage;
 import org.smeup.sys.co.shell.QShellOutputWrapper;
 import org.smeup.sys.il.core.QObject;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.core.meta.QFrame;
+import org.smeup.sys.il.core.meta.QFrameManager;
+import org.smeup.sys.il.core.meta.QSlot;
 import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QData;
@@ -34,6 +33,7 @@ import org.smeup.sys.il.data.QDataWriter;
 import org.smeup.sys.il.data.QIntegratedLanguageDataFactory;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QString;
+import org.smeup.sys.il.data.def.QCharacterDef;
 import org.smeup.sys.il.data.def.QDecimalDef;
 import org.smeup.sys.il.data.term.QDataTerm;
 import org.smeup.sys.mi.core.util.QStrings;
@@ -45,9 +45,12 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	@Inject
 	private QDataManager dataManager;
 	@Inject
+	private QFrameManager frameManager;
+	
+	@Inject
 	private QStrings strings;
-
-	private EClass eClass = null;
+	
+	private QFrame<?> qFrame = null;
 
 	private QDataContainer dataContainer = null;
 
@@ -62,14 +65,13 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 	@Override
 	public synchronized void write(QObject object) throws IOException {
 
-		EObject eObject = (EObject) object;
-		EClass eClass = eObject.eClass();
+		QFrame<?> qFrame = frameManager.getFrame(object);
 
 		// dataContext changed
-		if (this.eClass != eClass) {
+		if (this.qFrame == null || !this.qFrame.getName().equals(qFrame.getName())) {
 			streamWrite("\n");
 
-			this.eClass = eClass;
+			this.qFrame = qFrame;
 			dataContainer = dataManager.createDataContainer(context, object, QCommunicationShellPackage.eINSTANCE.getShellData());
 
 			for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
@@ -93,38 +95,15 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 		for (QDataTerm<?> dataTerm : dataContainer.getTerms()) {
 			QData data = dataContainer.getData(dataTerm);
 
-			Object value = null;
-			EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(dataTerm.getName());
-			if (eStructuralFeature != null)
-				value = eObject.eGet(eStructuralFeature);
-			else {
-				try {
-					String methodName = null;
-					if (dataTerm.getName().startsWith("is"))
-						methodName = dataTerm.getName();
-					else
-						methodName = "get" + QStrings.qINSTANCE.firstToUpper(dataTerm.getName());
-					Method method = object.getClass().getMethod(methodName, new Class[] {});
-					if (method != null) {
-						value = method.invoke(object, new Object[] {});
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+			QSlot slot = qFrame.getSlot(dataTerm.getName());
+			Object value = qFrame.getValue(object, slot);
+
 			if (value == null) {
 				data.clear();
 				streamWrite(data + "|");
 
 				continue;
 			}
-
-			/*
-			 * else if (value instanceof QCreationInfo) { QCreationInfo
-			 * qCreationInfo = (QCreationInfo) value;
-			 * data.accept(dataWriter.set(qCreationInfo.getCreationDate()));
-			 * streamWrite(data + "|"); }
-			 */
 
 			if (value instanceof QObjectNameable) {
 				QObjectNameable qValue = (QObjectNameable) value;
@@ -139,7 +118,11 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 				data.accept(dataWriter.set(eEnumerator.getName()));
 				streamWrite(data + "|");
 			} else if (value instanceof Number) {
-				QCharacter character = dataContainer.getDataContext().getDataFactory().createCharacter(((QDecimalDef) dataTerm.getDefinition()).getPrecision(), false, true);
+				QCharacter character = null;
+				if(dataTerm.getDefinition() instanceof QDecimalDef)
+					character = dataContainer.getDataContext().getDataFactory().createCharacter(((QDecimalDef) dataTerm.getDefinition()).getPrecision(), false, true);
+				else
+					character = dataContainer.getDataContext().getDataFactory().createCharacter(((QCharacterDef) dataTerm.getDefinition()).getLength(), false, true);	
 				character.move(value.toString());
 				streamWrite(character + "|");
 			} else {
@@ -184,7 +167,6 @@ public class BaseShellObjectWriterImpl implements QObjectWriter {
 
 	@Override
 	public void initialize() {
-
-		this.eClass = null;
+		this.qFrame = null;
 	}
 }

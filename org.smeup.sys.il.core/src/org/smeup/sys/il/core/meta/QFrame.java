@@ -32,6 +32,14 @@ public interface QFrame<O extends QObject> extends QNameable {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" nameRequired="true"
+	 * @generated
+	 */
+	QSlot getSlot(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Slots</em>' reference list isn't clear, there
 	 * really should be more of a description here...
@@ -41,4 +49,12 @@ public interface QFrame<O extends QObject> extends QNameable {
 	 * @generated
 	 */
 	List<QSlot> getSlots();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" objectRequired="true" slotRequired="true"
+	 * @generated
+	 */
+	Object getValue(QObject object, QSlot slot);
 } // QFrame

@@ -271,41 +271,6 @@
       <eLiterals name="EndOfJob" value="70" literal="EOJ"/>
       <eLiterals name="End" value="80" literal="END"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="JobThread" abstract="true" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-      <eAnnotations source="dk-core" references="../../org.smeup.sys.dk.core/model/dk.core.ecore#//Comment">
-        <details key="text" value="Ritengo questa classe assolutamente sbagliata, non dovrebbe essere astratta, ma un'interfaccia pura"/>
-      </eAnnotations>
-      <eOperations name="getThreadID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
-          <details key="precision" value="10"/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="getThreadName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="96"/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="getThreadPriority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/DecimalDef">
-          <details key="precision" value="10"/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="getThreadStatus" eType="#//jobs/JobThreadStatus">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="12"/>
-        </eAnnotations>
-      </eOperations>
-      <eOperations name="isThreadDaemon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
-          <details key="length" value="10"/>
-        </eAnnotations>
-      </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="JobThreadStatus">
-      <eLiterals name="Run" value="10" literal="RUN"/>
-      <eLiterals name="Waiting" value="20" literal="WAIT"/>
-      <eLiterals name="End" value="30" literal="END"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobType">
       <eLiterals name="Kernel" value="10" literal="KRN"/>
       <eLiterals name="Interactive" value="20" literal="INT"/>

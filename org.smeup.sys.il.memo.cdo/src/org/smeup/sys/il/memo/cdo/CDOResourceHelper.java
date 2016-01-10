@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.smeup.sys.il.core.QObjectNameable;
 
-public class CDOResourceUtil {
+public class CDOResourceHelper {
 
 	public static <T extends QObjectNameable> String getTableName(Class<? extends QObjectNameable> klass) {
 		Package _package = klass.getPackage();
@@ -30,7 +30,7 @@ public class CDOResourceUtil {
 	public static <T extends QObjectNameable> String getPackageURI(Class<? extends QObjectNameable> klass) {
 		Package _package = klass.getPackage();
 		if (_package.getName().startsWith("org.smeup.sys")) {
-			String tableName = "http://www.smeup.org/asup/" + _package.getName().substring(9).replaceAll("\\.", "/");
+			String tableName = "http://www.smeup.org/asup/" + _package.getName().substring(13).replaceAll("\\.", "/");
 			return tableName.toLowerCase();
 		} else
 			return _package.getName();

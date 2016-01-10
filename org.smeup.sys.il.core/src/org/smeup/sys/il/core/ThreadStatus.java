@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  */
-package org.smeup.sys.os.core.jobs;
+package org.smeup.sys.il.core;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,14 +15,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Job Thread Status</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Thread Status</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobThreadStatus()
+ * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getThreadStatus()
  * @model
  * @generated
  */
-public enum JobThreadStatus implements Enumerator {
+public enum ThreadStatus implements Enumerator {
 	/**
 	 * The '<em><b>Run</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -99,37 +99,37 @@ public enum JobThreadStatus implements Enumerator {
 	public static final int END_VALUE = 30;
 
 	/**
-	 * An array of all the '<em><b>Job Thread Status</b></em>' enumerators.
+	 * An array of all the '<em><b>Thread Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final JobThreadStatus[] VALUES_ARRAY =
-		new JobThreadStatus[] {
+	private static final ThreadStatus[] VALUES_ARRAY =
+		new ThreadStatus[] {
 			RUN,
 			WAITING,
 			END,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Job Thread Status</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Thread Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<JobThreadStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ThreadStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Job Thread Status</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Thread Status</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static JobThreadStatus get(String literal) {
+	public static ThreadStatus get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			JobThreadStatus result = VALUES_ARRAY[i];
+			ThreadStatus result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -138,16 +138,16 @@ public enum JobThreadStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Job Thread Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Thread Status</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static JobThreadStatus getByName(String name) {
+	public static ThreadStatus getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			JobThreadStatus result = VALUES_ARRAY[i];
+			ThreadStatus result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -156,14 +156,14 @@ public enum JobThreadStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Job Thread Status</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Thread Status</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static JobThreadStatus get(int value) {
+	public static ThreadStatus get(int value) {
 		switch (value) {
 			case RUN_VALUE: return RUN;
 			case WAITING_VALUE: return WAITING;
@@ -199,7 +199,7 @@ public enum JobThreadStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private JobThreadStatus(int value, String name, String literal) {
+	private ThreadStatus(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -243,4 +243,4 @@ public enum JobThreadStatus implements Enumerator {
 		return literal;
 	}
 	
-} //JobThreadStatus
+} //ThreadStatus
