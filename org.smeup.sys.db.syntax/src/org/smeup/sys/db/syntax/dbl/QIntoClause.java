@@ -15,11 +15,11 @@ package org.smeup.sys.db.syntax.dbl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getDescriptorName <em>Descriptor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QIntoClause#getUsing <em>Using</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getIntoClause()
  * @model

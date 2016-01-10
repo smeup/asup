@@ -20,11 +20,11 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateTableStatement#getTableName <em>Table Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateTableStatement#getFields <em>Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getCreateTableStatement()
  * @model

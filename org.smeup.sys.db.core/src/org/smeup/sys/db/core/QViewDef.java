@@ -13,10 +13,10 @@ package org.smeup.sys.db.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QViewDef#getQuerySelect <em>Query Select</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getViewDef()
  * @model

@@ -80,6 +80,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int FILE__APPLICATION = QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -143,6 +152,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATABASE_FILE__APPLICATION = FILE__APPLICATION;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_FILE__FACETS = FILE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
@@ -849,6 +867,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int DISPLAY_FILE__APPLICATION = FILE__APPLICATION;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISPLAY_FILE__FACETS = FILE__FACETS;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1489,6 +1516,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int LOGICAL_FILE__APPLICATION = DATABASE_FILE__APPLICATION;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_FILE__FACETS = DATABASE_FILE__FACETS;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1566,6 +1602,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	int PHYSICAL_FILE__APPLICATION = DATABASE_FILE__APPLICATION;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_FILE__FACETS = DATABASE_FILE__FACETS;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
@@ -1624,6 +1669,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int PRINTER_FILE__APPLICATION = FILE__APPLICATION;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINTER_FILE__FACETS = FILE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
@@ -1943,6 +1997,15 @@ public interface QOperatingSystemFilePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE_FILE__APPLICATION = FILE__APPLICATION;
+
+	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_FILE__FACETS = FILE__FACETS;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--

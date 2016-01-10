@@ -26,10 +26,10 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <em><b>Entry</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EntryImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

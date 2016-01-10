@@ -449,7 +449,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobType()
 	 * @generated
 	 */
-	int JOB_TYPE = 10;
+	int JOB_TYPE = 11;
 
 
 	/**
@@ -460,7 +460,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobThreadStatus()
 	 * @generated
 	 */
-	int JOB_THREAD_STATUS = 11;
+	int JOB_THREAD_STATUS = 10;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobEventType <em>Job Event Type</em>}' enum.

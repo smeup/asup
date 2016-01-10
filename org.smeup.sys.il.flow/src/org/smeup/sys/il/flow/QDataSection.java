@@ -17,10 +17,10 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QDataSection#getDatas <em>Datas</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getDataSection()
  * @model

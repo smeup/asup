@@ -21,10 +21,10 @@ import org.smeup.sys.os.type.impl.TypedObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.outq.impl.OutQueueImpl#getSequence <em>Sequence</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -21,10 +21,10 @@ import org.smeup.sys.il.core.impl.NamedNodeImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.esql.impl.ESqlTermImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

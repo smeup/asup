@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QLogicalFile#getCreationStatement <em>Creation Statement</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QLogicalFile#getTables <em>Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getLogicalFile()
  * @model

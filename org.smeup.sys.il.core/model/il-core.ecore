@@ -105,7 +105,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Thread" abstract="true" interface="true">
     <eOperations name="checkRunnable" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread"/>
+    <eOperations name="getJavaThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//JavaThread">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/DecimalDef">
+        <details key="precision" value="10"/>
+      </eAnnotations>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThreadManager" abstract="true" interface="true">
     <eOperations name="createThread" eType="#//Thread">

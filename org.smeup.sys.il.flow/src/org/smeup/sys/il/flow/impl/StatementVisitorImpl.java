@@ -38,8 +38,6 @@ import org.smeup.sys.il.flow.QWhile;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Statement Visitor</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -19,12 +19,12 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>External File</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.ExternalFileImpl#getRule <em>Rule</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

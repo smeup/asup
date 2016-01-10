@@ -83,10 +83,10 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 				return createJobEventTypeFromString(eDataType, initialValue);
 			case QOperatingSystemJobsPackage.JOB_STATUS:
 				return createJobStatusFromString(eDataType, initialValue);
-			case QOperatingSystemJobsPackage.JOB_TYPE:
-				return createJobTypeFromString(eDataType, initialValue);
 			case QOperatingSystemJobsPackage.JOB_THREAD_STATUS:
 				return createJobThreadStatusFromString(eDataType, initialValue);
+			case QOperatingSystemJobsPackage.JOB_TYPE:
+				return createJobTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -104,10 +104,10 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 				return convertJobEventTypeToString(eDataType, instanceValue);
 			case QOperatingSystemJobsPackage.JOB_STATUS:
 				return convertJobStatusToString(eDataType, instanceValue);
-			case QOperatingSystemJobsPackage.JOB_TYPE:
-				return convertJobTypeToString(eDataType, instanceValue);
 			case QOperatingSystemJobsPackage.JOB_THREAD_STATUS:
 				return convertJobThreadStatusToString(eDataType, instanceValue);
+			case QOperatingSystemJobsPackage.JOB_TYPE:
+				return convertJobTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}

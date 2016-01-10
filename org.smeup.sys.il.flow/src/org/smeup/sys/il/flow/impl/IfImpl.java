@@ -22,12 +22,12 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>If</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getThen <em>Then</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getElse <em>Else</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.IfImpl#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

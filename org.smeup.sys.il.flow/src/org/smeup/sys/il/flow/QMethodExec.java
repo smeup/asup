@@ -15,12 +15,12 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getObject <em>Object</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getMethod <em>Method</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QMethodExec#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getMethodExec()
  * @model

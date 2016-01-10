@@ -16,11 +16,11 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QSetTransactionStatement#getIsolationLevel <em>Isolation Level</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QSetTransactionStatement#getRwOperation <em>Rw Operation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getSetTransactionStatement()
  * @model

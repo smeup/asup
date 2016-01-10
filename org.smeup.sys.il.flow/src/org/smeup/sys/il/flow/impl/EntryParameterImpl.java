@@ -23,12 +23,12 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <em><b>Entry Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EntryParameterImpl#getDelegate <em>Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EntryParameterImpl#isNullable <em>Nullable</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EntryParameterImpl#getPassingType <em>Passing Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

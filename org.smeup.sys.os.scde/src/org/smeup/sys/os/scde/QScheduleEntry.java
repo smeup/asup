@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getCommandToRun <em>Command To Run</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getDescription <em>Description</em>}</li>
@@ -28,7 +29,6 @@ import org.smeup.sys.il.core.QObjectNameable;
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getScheduledTime <em>Scheduled Time</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.QScheduleEntry#getUser <em>User</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.scde.QOperativeSystemScheduleEntryPackage#getScheduleEntry()
  * @model

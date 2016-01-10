@@ -25,11 +25,11 @@ import org.smeup.sys.os.splf.QSpoolFileRow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileRowImpl#getSpoolFile <em>Spool File</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileRowImpl#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

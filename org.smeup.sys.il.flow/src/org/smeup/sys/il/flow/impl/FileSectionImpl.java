@@ -30,6 +30,7 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <em><b>Data Set Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.FileSectionImpl#getDataSets <em>Data Sets</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.FileSectionImpl#getKeyLists <em>Key Lists</em>}</li>
@@ -38,7 +39,6 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  *   <li>{@link org.smeup.sys.il.flow.impl.FileSectionImpl#getDisplays <em>Displays</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.FileSectionImpl#getPrinters <em>Printers</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

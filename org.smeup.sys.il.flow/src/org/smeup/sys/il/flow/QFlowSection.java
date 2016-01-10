@@ -15,13 +15,13 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getParameterLists <em>Parameter Lists</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getProcedures <em>Procedures</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getPrototypes <em>Prototypes</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QFlowSection#getRoutines <em>Routines</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFlowSection()
  * @model

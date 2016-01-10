@@ -13,13 +13,13 @@ package org.smeup.sys.il.flow;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getSetupSection <em>Setup Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getDataSection <em>Data Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFileSection <em>File Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCallableUnit#getFlowSection <em>Flow Section</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCallableUnit()
  * @model abstract="true"

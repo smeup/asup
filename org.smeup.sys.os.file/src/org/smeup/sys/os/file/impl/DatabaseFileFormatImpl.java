@@ -22,10 +22,10 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>Database File Format</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.DatabaseFileFormatImpl#getFormatKey <em>Format Key</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

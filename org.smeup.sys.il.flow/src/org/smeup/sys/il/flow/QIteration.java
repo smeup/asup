@@ -13,11 +13,11 @@ package org.smeup.sys.il.flow;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QIteration#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QIteration#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getIteration()
  * @model abstract="true"

@@ -20,10 +20,10 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CommitStatementImpl#isHold <em>Hold</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -19,10 +19,10 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Command Exec</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.CommandExecImpl#getStatement <em>Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -22,12 +22,12 @@ import org.smeup.sys.os.file.QOperatingSystemFilePackage;
  * <em><b>File Override</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getFileTo <em>File To</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.impl.FileOverrideImpl#getMemberTo <em>Member To</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

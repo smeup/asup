@@ -13,12 +13,12 @@ package org.smeup.sys.db.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QIndexColumnDef#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QIndexColumnDef#getOrdering <em>Ordering</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QIndexColumnDef#getSequence <em>Sequence</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getIndexColumnDef()
  * @model

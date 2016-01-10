@@ -16,8 +16,6 @@ import org.smeup.sys.dk.test.QMessage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Message</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -15,11 +15,11 @@ import org.smeup.sys.il.data.def.QDataDef;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QProcedure#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QProcedure#getReturnType <em>Return Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getProcedure()
  * @model

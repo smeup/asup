@@ -18,12 +18,12 @@ import org.smeup.sys.il.core.ctx.QContext;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext <em>Framework Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getActivationGroup()
  * @model

@@ -19,11 +19,11 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>For</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getIncrement <em>Increment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ForImpl#getInitialization <em>Initialization</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

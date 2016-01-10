@@ -15,10 +15,10 @@ package org.smeup.sys.db.syntax;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.QStatementWriter#getNameHelper <em>Name Helper</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.QDatabaseSyntaxPackage#getStatementWriter()
  * @model abstract="true"

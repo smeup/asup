@@ -13,10 +13,10 @@ package org.smeup.sys.il.flow;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QRoutineExec#getRoutine <em>Routine</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getRoutineExec()
  * @model

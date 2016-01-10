@@ -23,10 +23,10 @@ import org.smeup.sys.il.flow.QPrototype;
  * <em><b>Prototype</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.PrototypeImpl#getEntry <em>Entry</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

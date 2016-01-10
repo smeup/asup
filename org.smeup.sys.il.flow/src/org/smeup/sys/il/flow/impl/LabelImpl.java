@@ -19,10 +19,10 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Label</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.LabelImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

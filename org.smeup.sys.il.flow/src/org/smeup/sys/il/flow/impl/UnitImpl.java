@@ -22,11 +22,11 @@ import org.smeup.sys.il.flow.QUnit;
  * <em><b>Unit</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.UnitImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.UnitImpl#getMain <em>Main</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

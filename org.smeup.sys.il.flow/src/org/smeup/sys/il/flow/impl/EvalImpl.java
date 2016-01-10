@@ -19,12 +19,12 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Eval</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getAssignment <em>Assignment</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#getRoundingMode <em>Rounding Mode</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.EvalImpl#isRightAdjust <em>Right Adjust</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

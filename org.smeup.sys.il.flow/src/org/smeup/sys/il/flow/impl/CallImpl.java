@@ -24,13 +24,13 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Call</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getError <em>Error</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallImpl#getErrorHandling <em>Error Handling</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

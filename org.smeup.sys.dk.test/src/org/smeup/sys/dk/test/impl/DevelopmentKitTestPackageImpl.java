@@ -201,6 +201,7 @@ public class DevelopmentKitTestPackageImpl extends EPackageImpl implements QDeve
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects

@@ -28,6 +28,7 @@ import org.smeup.sys.il.flow.QSetupSection;
  * <em><b>Setup Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getApplication <em>Application</em>}</li>
@@ -36,7 +37,6 @@ import org.smeup.sys.il.flow.QSetupSection;
  *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#getModules <em>Modules</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.SetupSectionImpl#isTermSensitive <em>Term Sensitive</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

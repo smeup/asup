@@ -25,10 +25,10 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <em><b>Data Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.DataSectionImpl#getDatas <em>Datas</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

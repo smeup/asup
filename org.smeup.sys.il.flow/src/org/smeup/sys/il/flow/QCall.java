@@ -15,13 +15,13 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getProgram <em>Program</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getError <em>Error</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QCall#getErrorHandling <em>Error Handling</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getCall()
  * @model

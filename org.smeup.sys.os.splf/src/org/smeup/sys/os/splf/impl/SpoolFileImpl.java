@@ -28,6 +28,7 @@ import org.smeup.sys.os.splf.QSpoolFileRow;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getJobName <em>Job Name</em>}</li>
@@ -38,7 +39,6 @@ import org.smeup.sys.os.splf.QSpoolFileRow;
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getSpoolID <em>Spool ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.impl.SpoolFileImpl#getUserData <em>User Data</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -23,11 +23,11 @@ import org.smeup.sys.db.syntax.dbl.QOption;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.OptionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.OptionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

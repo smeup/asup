@@ -25,10 +25,10 @@ import org.smeup.sys.db.core.QTableDef;
  * <em><b>Table</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.TableDefImpl#getColumns <em>Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

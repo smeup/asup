@@ -30,12 +30,12 @@ import org.smeup.sys.os.pgm.QProgram;
  * <em><b>QActivation Group</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getFrameworkContext <em>Framework Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getPrograms <em>Programs</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

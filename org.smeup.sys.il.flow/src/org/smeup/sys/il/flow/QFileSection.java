@@ -22,6 +22,7 @@ import org.smeup.sys.il.esam.QPrintTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QFileSection#getDataSets <em>Data Sets</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QFileSection#getKeyLists <em>Key Lists</em>}</li>
@@ -30,7 +31,6 @@ import org.smeup.sys.il.esam.QPrintTerm;
  *   <li>{@link org.smeup.sys.il.flow.QFileSection#getDisplays <em>Displays</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QFileSection#getPrinters <em>Printers</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getFileSection()
  * @model

@@ -172,6 +172,8 @@ public enum EvalOperator implements Enumerator {
 	/**
 	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EvalOperator get(String literal) {
@@ -187,6 +189,8 @@ public enum EvalOperator implements Enumerator {
 	/**
 	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EvalOperator getByName(String name) {
@@ -202,6 +206,8 @@ public enum EvalOperator implements Enumerator {
 	/**
 	 * Returns the '<em><b>Eval Operator</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static EvalOperator get(int value) {

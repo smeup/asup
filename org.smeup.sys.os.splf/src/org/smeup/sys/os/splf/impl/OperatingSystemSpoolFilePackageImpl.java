@@ -116,6 +116,7 @@ public class OperatingSystemSpoolFilePackageImpl extends EPackageImpl implements
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects

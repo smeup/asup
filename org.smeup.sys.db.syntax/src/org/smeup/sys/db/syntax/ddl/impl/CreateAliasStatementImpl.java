@@ -23,11 +23,11 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateAliasStatementImpl#getAliasName <em>Alias Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateAliasStatementImpl#getTableName <em>Table Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,11 +13,11 @@ package org.smeup.sys.os.file;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileFormatKeyField#isDescend <em>Descend</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileFormatKeyField()
  * @model

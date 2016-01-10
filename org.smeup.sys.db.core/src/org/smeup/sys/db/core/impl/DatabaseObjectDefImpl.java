@@ -19,10 +19,10 @@ import org.smeup.sys.db.core.QDatabaseObjectDef;
  * <em><b>Database Object Definition</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.DatabaseObjectDefImpl#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

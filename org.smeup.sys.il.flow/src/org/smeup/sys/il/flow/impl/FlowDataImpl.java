@@ -16,8 +16,6 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Flow Data</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -28,13 +28,13 @@ import org.smeup.sys.il.core.impl.ObjectImpl;
  * <em><b>Database Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.DatabaseContainerImpl#getCatalogContainers <em>Catalog Containers</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.DatabaseContainerImpl#getDefaultCatalogContainer <em>Default Catalog Container</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.DatabaseContainerImpl#getVendor <em>Vendor</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.DatabaseContainerImpl#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

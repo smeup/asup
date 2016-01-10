@@ -15,12 +15,12 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QIndexDef#isClustered <em>Clustered</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QIndexDef#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QIndexDef#isUnique <em>Unique</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getIndexDef()
  * @model

@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.QNamedNode;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QUnit#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QUnit#getMain <em>Main</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getUnit()
  * @model abstract="true"

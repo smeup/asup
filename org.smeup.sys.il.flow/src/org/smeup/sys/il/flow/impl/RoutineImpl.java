@@ -14,8 +14,6 @@ import org.smeup.sys.il.flow.QRoutine;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Routine</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

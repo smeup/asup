@@ -18,6 +18,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getBasePackage <em>Base Package</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getDependencies <em>Dependencies</em>}</li>
@@ -25,7 +26,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#getParentLibrary <em>Parent Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.lib.QLibrary#isSynchronized <em>Synchronized</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.lib.QOperatingSystemLibraryPackage#getLibrary()
  * @model

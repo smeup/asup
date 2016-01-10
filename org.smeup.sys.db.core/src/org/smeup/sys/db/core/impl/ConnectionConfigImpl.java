@@ -22,6 +22,7 @@ import org.smeup.sys.db.core.QDatabaseCorePackage;
  * <em><b>Connection Config</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.ConnectionConfigImpl#getCredentials <em>Credentials</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.ConnectionConfigImpl#getVendor <em>Vendor</em>}</li>
@@ -30,7 +31,6 @@ import org.smeup.sys.db.core.QDatabaseCorePackage;
  *   <li>{@link org.smeup.sys.db.core.impl.ConnectionConfigImpl#getCatalog <em>Catalog</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.ConnectionConfigImpl#isPersistent <em>Persistent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -16,10 +16,10 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.dtaq.QDataQueueContent#getEntries <em>Entries</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.dtaq.QOperatingSystemDataQueuePackage#getDataQueueContent()
  * @model

@@ -26,11 +26,11 @@ import org.smeup.sys.os.pgm.QProgramStack;
  * <em><b>QProgram Stack</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramStackImpl#getDateEnter <em>Date Enter</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramStackImpl#getDateExit <em>Date Exit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

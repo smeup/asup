@@ -16,11 +16,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.QBindingParseResult#getBindingStatement <em>Binding Statement</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.QBindingParseResult#getErrorList <em>Error List</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.QDatabaseSyntaxPackage#getBindingParseResult()
  * @model

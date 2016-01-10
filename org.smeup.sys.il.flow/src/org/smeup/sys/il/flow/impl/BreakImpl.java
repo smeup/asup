@@ -15,8 +15,6 @@ import org.smeup.sys.il.flow.QStatementVisitor;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Break</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

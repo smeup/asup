@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFileRow#getSpoolFile <em>Spool File</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFileRow#getContent <em>Content</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFileRow()
  * @model

@@ -17,12 +17,12 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QDropStatement#getRange <em>Range</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QDropStatement#getTargetName <em>Target Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QDropStatement#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getDropStatement()
  * @model

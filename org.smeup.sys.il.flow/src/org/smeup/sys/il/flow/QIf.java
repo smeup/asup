@@ -13,12 +13,12 @@ package org.smeup.sys.il.flow;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QIf#getThen <em>Then</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QIf#getElse <em>Else</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QIf#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getIf()
  * @model

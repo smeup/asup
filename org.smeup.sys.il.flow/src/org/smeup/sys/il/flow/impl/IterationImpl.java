@@ -22,11 +22,11 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Iteration</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.IterationImpl#getCondition <em>Condition</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

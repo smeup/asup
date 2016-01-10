@@ -16,8 +16,6 @@ import org.smeup.sys.db.syntax.QDatabaseSyntaxPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Binding Parse Error</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

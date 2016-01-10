@@ -18,11 +18,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgramStack#getDateEnter <em>Date Enter</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgramStack#getDateExit <em>Date Exit</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramStack()
  * @model

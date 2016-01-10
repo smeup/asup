@@ -15,13 +15,13 @@ import org.smeup.sys.il.data.def.QDataDef;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QTableColumnDef#isDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QTableColumnDef#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QTableColumnDef#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QTableColumnDef#isNullable <em>Nullable</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getTableColumnDef()
  * @model

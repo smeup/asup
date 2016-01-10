@@ -16,6 +16,7 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getCursorName <em>Cursor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getInto <em>Into</em>}</li>
@@ -23,7 +24,6 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getRelativePosition <em>Relative Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getMultipleRowClause <em>Multiple Row Clause</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getFetchStatement()
  * @model

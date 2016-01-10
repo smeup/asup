@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileFormatKey#isUnique <em>Unique</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileFormatKey#getKeyFields <em>Key Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileFormatKey()
  * @model

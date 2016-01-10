@@ -29,11 +29,11 @@ import org.smeup.sys.db.syntax.QDatabaseSyntaxPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.impl.BindingParseResultImpl#getBindingStatement <em>Binding Statement</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.impl.BindingParseResultImpl#getErrorList <em>Error List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

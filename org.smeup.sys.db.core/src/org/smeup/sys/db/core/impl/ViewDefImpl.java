@@ -18,10 +18,10 @@ import org.smeup.sys.db.core.QViewDef;
  * <em><b>View</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.ViewDefImpl#getQuerySelect <em>Query Select</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

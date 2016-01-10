@@ -8,7 +8,7 @@
     suppressEMFTypes="true" testsDirectory="/org.smeup.sys.os.usrspc.tests/src" testSuiteClass=""
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" suppressGenModelAnnotations="false"
     copyrightFields="false" editPluginID="org.smeup.sys.os.usrspc.edit" editorPluginID="org.smeup.sys.os.usrspc.editor"
-    testsPluginID="org.smeup.sys.os.usrspc.tests" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.data/model/il-data.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    testsPluginID="org.smeup.sys.os.usrspc.tests" language="EN" usedGenPackages="../../org.smeup.sys.os.core/model/os-core.genmodel#//core ../../org.smeup.sys.os.type/model/os-type.genmodel#//type ../../org.smeup.sys.il.core/model/il-core.genmodel#//data ../../org.smeup.sys.il.core/model/il-core.genmodel#//core ../../org.smeup.sys.il.lock/model/il-lock.genmodel#//lock ../../org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
     interfaceNamePattern="Q{0}">
   <foreignModel>os-usrspc.ecore</foreignModel>
   <genPackages prefix="OperatingSystemUserSpace" basePackage="org.smeup.sys.os" disposableProviderFactory="true"

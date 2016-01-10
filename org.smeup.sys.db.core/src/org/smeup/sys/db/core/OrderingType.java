@@ -90,6 +90,8 @@ public enum OrderingType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Ordering Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OrderingType get(String literal) {
@@ -105,6 +107,8 @@ public enum OrderingType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Ordering Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OrderingType getByName(String name) {
@@ -120,6 +124,8 @@ public enum OrderingType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Ordering Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OrderingType get(int value) {

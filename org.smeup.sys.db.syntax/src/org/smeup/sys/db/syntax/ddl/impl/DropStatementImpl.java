@@ -25,12 +25,12 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.DropStatementImpl#getRange <em>Range</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.DropStatementImpl#getTargetName <em>Target Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.DropStatementImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

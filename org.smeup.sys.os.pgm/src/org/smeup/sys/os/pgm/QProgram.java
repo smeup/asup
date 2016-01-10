@@ -17,6 +17,7 @@ import org.smeup.sys.os.type.QTypedObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getActivationGroup <em>Activation Group</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getAddress <em>Address</em>}</li>
@@ -24,7 +25,6 @@ import org.smeup.sys.os.type.QTypedObject;
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getCreationParams <em>Creation Params</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgram#getSource <em>Source</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgram()
  * @model

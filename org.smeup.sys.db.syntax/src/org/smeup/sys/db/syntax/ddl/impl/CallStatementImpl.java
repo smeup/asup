@@ -27,11 +27,11 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CallStatementImpl#getProcedureName <em>Procedure Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CallStatementImpl#getParms <em>Parms</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

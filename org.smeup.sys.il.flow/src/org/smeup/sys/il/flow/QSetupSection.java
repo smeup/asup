@@ -17,6 +17,7 @@ import org.smeup.sys.il.core.QAnnotation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getApplication <em>Application</em>}</li>
@@ -25,7 +26,6 @@ import org.smeup.sys.il.core.QAnnotation;
  *   <li>{@link org.smeup.sys.il.flow.QSetupSection#getModules <em>Modules</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QSetupSection#isTermSensitive <em>Term Sensitive</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getSetupSection()
  * @model

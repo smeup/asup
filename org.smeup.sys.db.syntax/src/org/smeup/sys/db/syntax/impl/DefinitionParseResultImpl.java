@@ -29,11 +29,11 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.impl.DefinitionParseResultImpl#getDefinitionStatement <em>Definition Statement</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.impl.DefinitionParseResultImpl#getErrorList <em>Error List</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

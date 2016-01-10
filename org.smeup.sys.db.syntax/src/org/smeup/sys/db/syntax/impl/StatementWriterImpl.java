@@ -23,10 +23,10 @@ import org.smeup.sys.db.syntax.QStatementWriter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.impl.StatementWriterImpl#getNameHelper <em>Name Helper</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -20,12 +20,12 @@ import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.MultipleRowFetchClauseImpl#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.MultipleRowFetchClauseImpl#getRowsNumber <em>Rows Number</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.MultipleRowFetchClauseImpl#isUsingDescriptor <em>Using Descriptor</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -26,11 +26,11 @@ import org.smeup.sys.il.flow.QProgram;
  * <em><b>Program</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProgramImpl#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProgramImpl#getMessages <em>Messages</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

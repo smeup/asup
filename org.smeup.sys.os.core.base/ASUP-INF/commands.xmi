@@ -8,7 +8,7 @@
     xmlns:il-core-meta="http://www.smeup.org/asup/il/core/meta"
     xmlns:il-data-def="http://www.smeup.org/asup/il/data/def"
     xmlns:os-cmd="http://www.smeup.org/asup/os/cmd"
-    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.data/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
+    xsi:schemaLocation="http://www.smeup.com/asup/dk/core ../../org.smeup.sys.dk.core/model/dk.core.ecore http://www.smeup.org/asup/il/core ../../org.smeup.sys.il.core/model/il-core.ecore http://www.smeup.org/asup/il/core/meta ../../org.smeup.sys.il.core/model/il-core.ecore#//meta http://www.smeup.org/asup/il/data/def ../../org.smeup.sys.il.core/model/il-data.ecore#//def http://www.smeup.org/asup/os/cmd ../../org.smeup.sys.os.cmd/model/os-cmd.ecore">
   <contents
       xsi:type="os-cmd:Command"
       name="ADDENVVAR"

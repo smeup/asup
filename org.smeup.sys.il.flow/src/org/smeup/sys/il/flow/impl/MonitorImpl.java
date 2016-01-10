@@ -29,11 +29,11 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Monitor</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.MonitorImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.MonitorImpl#getOnErrors <em>On Errors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

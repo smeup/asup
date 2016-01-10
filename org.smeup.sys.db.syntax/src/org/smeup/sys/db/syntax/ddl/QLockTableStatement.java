@@ -17,12 +17,12 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QLockTableStatement#isAllowRead <em>Allow Read</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QLockTableStatement#getShareMode <em>Share Mode</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QLockTableStatement#getTableName <em>Table Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getLockTableStatement()
  * @model

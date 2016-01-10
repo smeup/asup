@@ -16,10 +16,10 @@ import org.eclipse.datatools.modelbase.sql.query.QueryExpressionBody;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dml.QExtendedQueryExpressionBody#getOptimizeRecordsNumber <em>Optimize Records Number</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.dml.QDatabaseSyntaxDMLPackage#getExtendedQueryExpressionBody()
  * @model

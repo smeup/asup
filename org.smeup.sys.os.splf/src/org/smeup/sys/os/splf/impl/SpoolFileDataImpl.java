@@ -22,8 +22,6 @@ import org.smeup.sys.os.splf.QSpoolFileData;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Spool File Data</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

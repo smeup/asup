@@ -21,11 +21,11 @@ import org.smeup.sys.db.syntax.dbl.UsingType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoClauseImpl#getDescriptorName <em>Descriptor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.IntoClauseImpl#getUsing <em>Using</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

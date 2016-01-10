@@ -18,13 +18,13 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getIndexName <em>Index Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getOnTable <em>On Table</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateIndexStatement#isUnique <em>Unique</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getCreateIndexStatement()
  * @model

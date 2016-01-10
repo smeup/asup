@@ -15,13 +15,13 @@ package org.smeup.sys.db.esql;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.esql.QCursorTerm#getCursorType <em>Cursor Type</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.QCursorTerm#isHold <em>Hold</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.QCursorTerm#getSql <em>Sql</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.QCursorTerm#getStatementName <em>Statement Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage#getCursorTerm()
  * @model

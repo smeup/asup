@@ -21,6 +21,7 @@ import org.smeup.sys.il.core.ctx.QContext;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#isActive <em>Active</em>}</li>
@@ -28,7 +29,6 @@ import org.smeup.sys.il.core.ctx.QContext;
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#isSupportsGuestAccess <em>Supports Guest Access</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QCatalogContainer#getGenerationStrategy <em>Generation Strategy</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getCatalogContainer()
  * @model

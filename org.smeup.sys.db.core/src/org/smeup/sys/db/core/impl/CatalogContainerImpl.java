@@ -31,6 +31,7 @@ import org.smeup.sys.il.core.ctx.QContext;
  * <em><b>Catalog Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#isActive <em>Active</em>}</li>
@@ -38,7 +39,6 @@ import org.smeup.sys.il.core.ctx.QContext;
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#isSupportsGuestAccess <em>Supports Guest Access</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogContainerImpl#getGenerationStrategy <em>Generation Strategy</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

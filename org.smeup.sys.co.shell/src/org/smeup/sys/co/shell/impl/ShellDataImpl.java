@@ -17,8 +17,6 @@ import org.smeup.sys.il.data.term.impl.DataTermImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Shell Data</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

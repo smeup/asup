@@ -21,13 +21,13 @@ import org.smeup.sys.il.data.def.QDataDef;
  * <em><b>Table Field</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.TableColumnDefImpl#isDefault <em>Default</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.TableColumnDefImpl#getDefinition <em>Definition</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.TableColumnDefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.TableColumnDefImpl#isNullable <em>Nullable</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

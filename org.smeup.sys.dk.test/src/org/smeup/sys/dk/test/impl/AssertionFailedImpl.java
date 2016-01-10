@@ -15,8 +15,6 @@ import org.smeup.sys.dk.test.QDevelopmentKitTestPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Assertion Failed</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

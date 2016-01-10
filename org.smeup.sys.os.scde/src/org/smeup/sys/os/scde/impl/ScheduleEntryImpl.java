@@ -24,6 +24,7 @@ import org.smeup.sys.os.scde.QScheduleEntry;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getCommandToRun <em>Command To Run</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getDescription <em>Description</em>}</li>
@@ -35,7 +36,6 @@ import org.smeup.sys.os.scde.QScheduleEntry;
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getScheduledTime <em>Scheduled Time</em>}</li>
  *   <li>{@link org.smeup.sys.os.scde.impl.ScheduleEntryImpl#getUser <em>User</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

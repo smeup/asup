@@ -13,10 +13,10 @@ package org.smeup.sys.db.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QDatabaseObjectDef#getLabel <em>Label</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getDatabaseObjectDef()
  * @model abstract="true"

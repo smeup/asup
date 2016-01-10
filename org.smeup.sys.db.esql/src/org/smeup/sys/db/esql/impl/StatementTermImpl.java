@@ -15,8 +15,6 @@ import org.smeup.sys.db.esql.QStatementTerm;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Statement Term</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

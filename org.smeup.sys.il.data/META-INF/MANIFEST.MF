@@ -11,12 +11,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.smeup.sys.il.core;visibility:=reexport,
  org.smeup.sys.mi.core;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.smeup.sys.il.data,
- org.smeup.sys.il.data.annotation,
- org.smeup.sys.il.data.def,
- org.smeup.sys.il.data.def.impl,
- org.smeup.sys.il.data.enums,
- org.smeup.sys.il.data.impl,
- org.smeup.sys.il.data.term,
- org.smeup.sys.il.data.term.impl
 Bundle-ActivationPolicy: lazy

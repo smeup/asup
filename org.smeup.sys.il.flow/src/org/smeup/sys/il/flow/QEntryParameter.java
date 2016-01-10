@@ -16,12 +16,12 @@ import org.smeup.sys.il.core.term.QTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#getDelegate <em>Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#isNullable <em>Nullable</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QEntryParameter#getPassingType <em>Passing Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getEntryParameter()
  * @model

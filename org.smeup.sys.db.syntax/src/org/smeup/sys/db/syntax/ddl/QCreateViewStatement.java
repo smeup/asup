@@ -19,12 +19,12 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateViewStatement#getViewName <em>View Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateViewStatement#getFields <em>Fields</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCreateViewStatement#getQuery <em>Query</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getCreateViewStatement()
  * @model

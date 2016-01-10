@@ -28,13 +28,13 @@ import org.smeup.sys.il.flow.QRoutine;
  * <em><b>Flow Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.FlowSectionImpl#getParameterLists <em>Parameter Lists</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.FlowSectionImpl#getProcedures <em>Procedures</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.FlowSectionImpl#getPrototypes <em>Prototypes</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.FlowSectionImpl#getRoutines <em>Routines</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

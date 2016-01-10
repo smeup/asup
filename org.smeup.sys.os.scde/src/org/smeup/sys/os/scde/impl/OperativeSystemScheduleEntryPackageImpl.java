@@ -78,6 +78,7 @@ public class OperativeSystemScheduleEntryPackageImpl extends EPackageImpl implem
 		isInited = true;
 
 		// Initialize simple dependencies
+		QIntegratedLanguageCorePackage.eINSTANCE.eClass();
 		QIntegratedLanguageDataPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects

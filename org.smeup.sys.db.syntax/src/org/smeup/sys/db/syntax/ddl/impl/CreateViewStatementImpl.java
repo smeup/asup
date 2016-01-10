@@ -27,12 +27,12 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateViewStatementImpl#getViewName <em>View Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateViewStatementImpl#getFields <em>Fields</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateViewStatementImpl#getQuery <em>Query</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

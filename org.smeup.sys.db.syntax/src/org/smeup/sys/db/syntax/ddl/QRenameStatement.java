@@ -17,13 +17,13 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QRenameStatement#getNewName <em>New Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QRenameStatement#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QRenameStatement#getOriginalName <em>Original Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QRenameStatement#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getRenameStatement()
  * @model

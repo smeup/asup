@@ -29,11 +29,11 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateTableStatementImpl#getTableName <em>Table Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateTableStatementImpl#getFields <em>Fields</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

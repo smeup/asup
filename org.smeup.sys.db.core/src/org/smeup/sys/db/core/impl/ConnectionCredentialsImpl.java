@@ -15,8 +15,6 @@ import org.smeup.sys.il.core.ctx.impl.CredentialsImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Connection Credentials</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

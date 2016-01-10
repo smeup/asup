@@ -27,12 +27,12 @@ import org.smeup.sys.db.core.QIndexDef;
  * <em><b>Index</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexDefImpl#isClustered <em>Clustered</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexDefImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexDefImpl#isUnique <em>Unique</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

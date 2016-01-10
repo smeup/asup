@@ -19,11 +19,11 @@ import org.smeup.sys.db.core.QDatabaseCorePackage;
  * <em><b>Catalog Generation Strategy</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogGenerationStrategyImpl#isCreateIndexOnView <em>Create Index On View</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.CatalogGenerationStrategyImpl#isCreateRelativeRecordNumber <em>Create Relative Record Number</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -22,11 +22,11 @@ import org.smeup.sys.il.flow.QProcedure;
  * <em><b>Procedure</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureImpl#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureImpl#getReturnType <em>Return Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

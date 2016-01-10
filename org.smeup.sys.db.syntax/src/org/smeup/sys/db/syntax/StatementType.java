@@ -123,6 +123,8 @@ public enum StatementType implements Enumerator {
 	 * Returns the '<em><b>Statement Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static StatementType get(String literal) {
@@ -139,6 +141,8 @@ public enum StatementType implements Enumerator {
 	 * Returns the '<em><b>Statement Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static StatementType getByName(String name) {
@@ -155,6 +159,8 @@ public enum StatementType implements Enumerator {
 	 * Returns the '<em><b>Statement Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static StatementType get(int value) {

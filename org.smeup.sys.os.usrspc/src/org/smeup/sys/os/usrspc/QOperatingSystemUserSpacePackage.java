@@ -75,6 +75,15 @@ public interface QOperatingSystemUserSpacePackage extends EPackage {
 	int USER_SPACE__APPLICATION = QOperatingSystemTypePackage.TYPED_OBJECT__APPLICATION;
 
 	/**
+	 * The feature id for the '<em><b>Facets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_SPACE__FACETS = QOperatingSystemTypePackage.TYPED_OBJECT__FACETS;
+
+	/**
 	 * The feature id for the '<em><b>Library</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 

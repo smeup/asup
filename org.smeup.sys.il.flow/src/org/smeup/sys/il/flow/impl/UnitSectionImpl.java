@@ -15,8 +15,6 @@ import org.smeup.sys.il.flow.QUnitSection;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Term Section</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

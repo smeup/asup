@@ -13,6 +13,7 @@ package org.smeup.sys.db.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QConnectionConfig#getCredentials <em>Credentials</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QConnectionConfig#getVendor <em>Vendor</em>}</li>
@@ -21,7 +22,6 @@ package org.smeup.sys.db.core;
  *   <li>{@link org.smeup.sys.db.core.QConnectionConfig#getCatalog <em>Catalog</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QConnectionConfig#isPersistent <em>Persistent</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getConnectionConfig()
  * @model

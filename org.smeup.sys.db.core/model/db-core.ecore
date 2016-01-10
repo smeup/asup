@@ -323,7 +323,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" lowerBound="1"
         containment="true">
-      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.data/model/il-data.ecore#//def/DataDef">
+      <eGenericType eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//def/DataDef">
         <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>

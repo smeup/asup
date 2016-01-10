@@ -21,8 +21,6 @@ import org.smeup.sys.il.core.ctx.QContextDescription;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Catalog Meta Data</b></em>'. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

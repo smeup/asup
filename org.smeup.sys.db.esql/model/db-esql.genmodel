@@ -4,7 +4,7 @@
     modelDirectory="/org.smeup.sys.db.esql/src" modelPluginID="org.smeup.sys.db.esql"
     modelName="As.UP Integrated Language Embedded SQL" rootExtendsInterface="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
-    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.il.data/model/il-data.genmodel#//data platform:/plugin/org.smeup.sys.mi.core/model/mi-core.genmodel#//core"
+    copyrightFields="false" language="EN" usedGenPackages="platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//core platform:/plugin/org.smeup.sys.mi.core/model/mi-core.genmodel#//core platform:/plugin/org.smeup.sys.il.core/model/il-core.genmodel#//data"
     interfaceNamePattern="Q{0}" importOrganizing="true">
   <foreignModel>db-esql.ecore</foreignModel>
   <genPackages prefix="IntegratedLanguageEmbeddedSQL" basePackage="org.smeup.sys.db"

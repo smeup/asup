@@ -16,8 +16,6 @@ import org.smeup.sys.dk.test.QUnitTestRunner;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Unit Test Runner</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

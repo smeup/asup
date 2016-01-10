@@ -24,6 +24,7 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getCursorName <em>Cursor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getInto <em>Into</em>}</li>
@@ -31,7 +32,6 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getRelativePosition <em>Relative Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getMultipleRowClause <em>Multiple Row Clause</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

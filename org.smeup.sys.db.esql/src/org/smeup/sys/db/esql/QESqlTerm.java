@@ -17,10 +17,10 @@ import org.smeup.sys.il.core.term.QTerm;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.esql.QESqlTerm#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage#getESqlTerm()
  * @model abstract="true"

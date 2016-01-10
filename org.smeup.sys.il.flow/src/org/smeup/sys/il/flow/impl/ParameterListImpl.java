@@ -24,11 +24,11 @@ import org.smeup.sys.il.flow.QParameterList;
  * <em><b>Entry</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ParameterListImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

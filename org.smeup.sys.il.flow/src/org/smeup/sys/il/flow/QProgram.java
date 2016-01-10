@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QProgram#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QProgram#getMessages <em>Messages</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getProgram()
  * @model

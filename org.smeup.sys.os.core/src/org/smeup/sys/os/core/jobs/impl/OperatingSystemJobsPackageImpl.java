@@ -623,8 +623,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		// Create enums
 		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
 		jobStatusEEnum = createEEnum(JOB_STATUS);
-		jobTypeEEnum = createEEnum(JOB_TYPE);
 		jobThreadStatusEEnum = createEEnum(JOB_THREAD_STATUS);
+		jobTypeEEnum = createEEnum(JOB_TYPE);
 	}
 
 	/**
@@ -817,15 +817,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(jobStatusEEnum, JobStatus.END_OF_JOB);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.END);
 
-		initEEnum(jobTypeEEnum, JobType.class, "JobType");
-		addEEnumLiteral(jobTypeEEnum, JobType.KERNEL);
-		addEEnumLiteral(jobTypeEEnum, JobType.INTERACTIVE);
-		addEEnumLiteral(jobTypeEEnum, JobType.BATCH);
-
 		initEEnum(jobThreadStatusEEnum, JobThreadStatus.class, "JobThreadStatus");
 		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.RUN);
 		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.WAITING);
 		addEEnumLiteral(jobThreadStatusEEnum, JobThreadStatus.END);
+
+		initEEnum(jobTypeEEnum, JobType.class, "JobType");
+		addEEnumLiteral(jobTypeEEnum, JobType.KERNEL);
+		addEEnumLiteral(jobTypeEEnum, JobType.INTERACTIVE);
+		addEEnumLiteral(jobTypeEEnum, JobType.BATCH);
 
 		// Create annotations
 		// il-data

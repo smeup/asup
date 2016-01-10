@@ -15,12 +15,12 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getFileTo <em>File To</em>}</li>
  *   <li>{@link org.smeup.sys.os.file.QFileOverride#getMemberTo <em>Member To</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getFileOverride()
  * @model

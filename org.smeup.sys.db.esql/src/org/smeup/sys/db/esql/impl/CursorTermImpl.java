@@ -20,13 +20,13 @@ import org.smeup.sys.db.esql.QIntegratedLanguageEmbeddedSQLPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.esql.impl.CursorTermImpl#getCursorType <em>Cursor Type</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.impl.CursorTermImpl#isHold <em>Hold</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.impl.CursorTermImpl#getSql <em>Sql</em>}</li>
  *   <li>{@link org.smeup.sys.db.esql.impl.CursorTermImpl#getStatementName <em>Statement Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -15,10 +15,10 @@ import org.smeup.sys.il.core.QAnnotation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QAnnotationCommand#getCommand <em>Command</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getAnnotationCommand()
  * @model

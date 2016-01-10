@@ -22,11 +22,11 @@ import org.smeup.sys.il.flow.QStatement;
  * <em><b>On Error</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.OnErrorImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.OnErrorImpl#getError <em>Error</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

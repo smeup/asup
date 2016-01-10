@@ -19,10 +19,10 @@ import org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage;
  * <em><b>Annotation Command</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.AnnotationCommandImpl#getCommand <em>Command</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

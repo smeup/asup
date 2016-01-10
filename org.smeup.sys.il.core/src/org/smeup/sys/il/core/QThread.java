@@ -25,6 +25,7 @@ public interface QThread {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" type="org.smeup.sys.mi.core.JavaThread" required="true"
+	 *        annotation="il-data precision='10'"
 	 * @generated
 	 */
 	Thread getJavaThread();

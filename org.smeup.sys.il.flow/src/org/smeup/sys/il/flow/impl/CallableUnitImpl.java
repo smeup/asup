@@ -24,13 +24,13 @@ import org.smeup.sys.il.flow.QSetupSection;
  * <em><b>Callable Unit</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getSetupSection <em>Setup Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getDataSection <em>Data Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFileSection <em>File Section</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.CallableUnitImpl#getFlowSection <em>Flow Section</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

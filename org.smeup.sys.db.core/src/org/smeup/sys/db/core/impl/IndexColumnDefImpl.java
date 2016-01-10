@@ -19,12 +19,12 @@ import org.smeup.sys.db.core.QIndexColumnDef;
  * <em><b>Index Field</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexColumnDefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexColumnDefImpl#getOrdering <em>Ordering</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.impl.IndexColumnDefImpl#getSequence <em>Sequence</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

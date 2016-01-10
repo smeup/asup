@@ -24,11 +24,11 @@ import org.smeup.sys.il.flow.QStatementVisitor;
  * <em><b>Procedure Exec</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getProcedure <em>Procedure</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.impl.ProcedureExecImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

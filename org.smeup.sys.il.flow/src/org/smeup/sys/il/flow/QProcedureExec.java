@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QProcedureExec#getProcedure <em>Procedure</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QProcedureExec#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getProcedureExec()
  * @model

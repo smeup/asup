@@ -13,10 +13,10 @@ package org.smeup.sys.os.file;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.file.QDatabaseFileFormat#getFormatKey <em>Format Key</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.file.QOperatingSystemFilePackage#getDatabaseFileFormat()
  * @model

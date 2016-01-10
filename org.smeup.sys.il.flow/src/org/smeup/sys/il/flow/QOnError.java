@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.QNode;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QOnError#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QOnError#getError <em>Error</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getOnError()
  * @model

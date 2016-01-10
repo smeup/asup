@@ -15,11 +15,11 @@ import java.util.List;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QMonitor#getBody <em>Body</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QMonitor#getOnErrors <em>On Errors</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getMonitor()
  * @model

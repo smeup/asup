@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QNode;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.flow.QParameterList#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.flow.QParameterList#getParameters <em>Parameters</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.il.flow.QIntegratedLanguageFlowPackage#getParameterList()
  * @model

@@ -18,6 +18,7 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getJobName <em>Job Name</em>}</li>
@@ -28,7 +29,6 @@ import org.smeup.sys.il.core.QObjectNameable;
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getSpoolID <em>Spool ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.splf.QSpoolFile#getUserData <em>User Data</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.os.splf.QOperatingSystemSpoolFilePackage#getSpoolFile()
  * @model

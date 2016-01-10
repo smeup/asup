@@ -16,13 +16,13 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.core.QDatabaseContainer#getCatalogContainers <em>Catalog Containers</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QDatabaseContainer#getDefaultCatalogContainer <em>Default Catalog Container</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QDatabaseContainer#getVendor <em>Vendor</em>}</li>
  *   <li>{@link org.smeup.sys.db.core.QDatabaseContainer#getVersion <em>Version</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.smeup.sys.db.core.QDatabaseCorePackage#getDatabaseContainer()
  * @model
