@@ -73,4 +73,9 @@ public class BaseThreadImpl extends Thread implements QThread {
 	public boolean isNative() {
 		return true;
 	}
+
+	@Override
+	public boolean isSuspended() {
+		return lock.isLocked();
+	}
 }

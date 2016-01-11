@@ -149,6 +149,17 @@ public abstract class ContextImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isClosed() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Class<?> loadClass(String address) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

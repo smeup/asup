@@ -88,6 +88,14 @@ public interface QContext {
 	void inject(Object object) throws IntegratedLanguageCoreRuntimeException;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	boolean isClosed();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" addressRequired="true"
 	 * @generated

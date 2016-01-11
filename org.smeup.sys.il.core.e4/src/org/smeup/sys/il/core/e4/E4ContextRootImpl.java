@@ -32,4 +32,9 @@ public class E4ContextRootImpl extends E4ContextImpl {
 	public IEclipseContext getEclipseContext() {
 		return eclipseContext;
 	}
+	
+	@Override
+	void removeEclipseContext() {
+		this.eclipseContext = null;
+	}
 }

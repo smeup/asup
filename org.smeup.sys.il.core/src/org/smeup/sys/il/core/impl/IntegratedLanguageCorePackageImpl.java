@@ -911,6 +911,8 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 
 		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isNative", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isSuspended", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		addEOperation(threadEClass, ecorePackage.getEBoolean(), "isThreadDaemon", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(threadManagerEClass, QThreadManager.class, "ThreadManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -963,9 +965,12 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		addEEnumLiteral(formatTypeEEnum, FormatType.SIMPLE_NAME);
 
 		initEEnum(threadStatusEEnum, ThreadStatus.class, "ThreadStatus");
-		addEEnumLiteral(threadStatusEEnum, ThreadStatus.RUN);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.NEW);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.RUNNABLE);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.BLOCKED);
 		addEEnumLiteral(threadStatusEEnum, ThreadStatus.WAITING);
-		addEEnumLiteral(threadStatusEEnum, ThreadStatus.END);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.TIMED_WAITING);
+		addEEnumLiteral(threadStatusEEnum, ThreadStatus.TERMINATED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1030,6 +1035,15 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		   });	
 		addAnnotation
 		  (threadEClass.getEOperations().get(7), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (threadEClass.getEOperations().get(8), 
 		   source, 
 		   new String[] {
 			 "length", "10"

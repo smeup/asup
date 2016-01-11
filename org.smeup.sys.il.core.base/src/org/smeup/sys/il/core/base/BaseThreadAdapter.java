@@ -3,6 +3,7 @@ package org.smeup.sys.il.core.base;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ThreadStatus;
 import org.smeup.sys.il.core.impl.ObjectImpl;
+import org.smeup.sys.mi.core.util.QThreads;
 
 public class BaseThreadAdapter extends ObjectImpl implements QThread {
 
@@ -52,5 +53,10 @@ public class BaseThreadAdapter extends ObjectImpl implements QThread {
 	@Override
 	public boolean isNative() {
 		return false;
+	}
+
+	@Override
+	public boolean isSuspended() {
+		return QThreads.qINSTANCE.lookupThreadInfo(getJavaThread()).isSuspended();
 	}
 }

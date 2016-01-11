@@ -49,7 +49,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	private BundleContext bundleContext;
 	private QContextDescription contextDescription;
 	private String contextID;
-
+	
 	public E4ContextImpl(BundleContext bundleContext, String contextID, QContextDescription contextDescription) {
 		this.bundleContext = bundleContext;
 		this.contextID = contextID;
@@ -57,6 +57,7 @@ public abstract class E4ContextImpl extends ContextImpl {
 	}
 
 	abstract IEclipseContext getEclipseContext();
+	abstract void removeEclipseContext();
 
 	protected void initializeContext(IEclipseContext eclipseContext) {
 		eclipseContext.set(ADAPTER_FACTORIES_NAME, new HashMap<Class<?>, List<QAdapterFactory>>());
@@ -148,8 +149,6 @@ public abstract class E4ContextImpl extends ContextImpl {
 		return class_;
 		
 	}
-	
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -159,6 +158,13 @@ public abstract class E4ContextImpl extends ContextImpl {
 		adapterFactories.clear();
 
 		getEclipseContext().dispose();
+		
+		removeEclipseContext();
+	}
+
+	@Override
+	public boolean isClosed() {
+		return getEclipseContext() != null;
 	}
 
 	@SuppressWarnings("unchecked")

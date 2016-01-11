@@ -29,4 +29,9 @@ public class E4ContextChildImpl extends E4ContextImpl {
 	IEclipseContext getEclipseContext() {
 		return eclipseContext;
 	}
+
+	@Override
+	void removeEclipseContext() {
+		this.eclipseContext = null;
+	}
 }

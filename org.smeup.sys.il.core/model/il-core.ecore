@@ -132,6 +132,11 @@
         <details key="length" value="10"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="isSuspended" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
+        <details key="length" value="10"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="isThreadDaemon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="il-data" references="il-data.ecore#//def/CharacterDef">
         <details key="length" value="10"/>
@@ -173,9 +178,12 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ThreadStatus">
-    <eLiterals name="Run" value="10" literal="RUN"/>
-    <eLiterals name="Waiting" value="20" literal="WAIT"/>
-    <eLiterals name="End" value="30" literal="END"/>
+    <eLiterals name="New" value="10" literal="NEW"/>
+    <eLiterals name="Runnable" value="20" literal="RUN"/>
+    <eLiterals name="Blocked" value="30" literal="BLOCK"/>
+    <eLiterals name="Waiting" value="40" literal="WAIT"/>
+    <eLiterals name="TimedWaiting" value="50" literal="TIME_WAIT"/>
+    <eLiterals name="Terminated" value="60" literal="END"/>
   </eClassifiers>
   <eSubpackages name="ctx" nsURI="http://www.smeup.org/asup/il/core/ctx" nsPrefix="il-core-ctx">
     <eClassifiers xsi:type="ecore:EClass" name="AdapterFactory" abstract="true" interface="true">
@@ -232,6 +240,7 @@
       <eOperations name="inject">
         <eParameters name="object" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </eOperations>
+      <eOperations name="isClosed" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eOperations name="loadClass" lowerBound="1">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
           <eTypeArguments/>

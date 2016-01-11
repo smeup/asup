@@ -2,28 +2,28 @@ package org.smeup.sys.il.core.base;
 
 import java.lang.Thread.State;
 
+import org.smeup.sys.il.core.IntegratedLanguageCoreRuntimeException;
 import org.smeup.sys.il.core.ThreadStatus;
 
 public class BaseThreadHelper {
 
 	public static ThreadStatus getThreadStatus(State state) {
 
-		ThreadStatus jobThreadStatus = null;
-		
 		switch (state) {
 		case NEW:
+			return ThreadStatus.NEW;
 		case RUNNABLE:
-			jobThreadStatus = ThreadStatus.RUN;
-			break;			
-		case BLOCKED:
+			return ThreadStatus.RUNNABLE;
 		case TIMED_WAITING:
+			return ThreadStatus.TIMED_WAITING;
+		case BLOCKED:			
+			return ThreadStatus.BLOCKED;
 		case WAITING:
-			jobThreadStatus = ThreadStatus.WAITING;
-			break;
+			return ThreadStatus.WAITING;
 		case TERMINATED:
-			jobThreadStatus = ThreadStatus.END;
-			break;
+			return ThreadStatus.TERMINATED;
 		}
-		return jobThreadStatus;
+		
+		throw new IntegratedLanguageCoreRuntimeException("Invalid thread status: "+state);
 	}
 }
