@@ -54,9 +54,9 @@ import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
 import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
 
-@Module(name="*RPJ", scope = Scope.OWNER)
+@Module(name = "*RPJ", scope = Scope.OWNER)
 public class RPJProgramSupport {
-	
+
 	@Inject
 	private BaseCallableInjector injector;
 	@Inject
@@ -64,11 +64,12 @@ public class RPJProgramSupport {
 	@Inject
 	public QProgramManager programManager;
 	@Inject
-	public QJob job;	
-	
-	@Inject @Program(name = "*OWNER")
+	public QJob job;
+
+	@Inject
+	@Program(name = "*OWNER")
 	private Object programOwner;
-	
+
 	@Overlay(name = "*PGMSTATUS")
 	private BaseProgramStatusImpl programStatus;
 
@@ -146,12 +147,12 @@ public class RPJProgramSupport {
 	public QIndicator qINU8;
 	@DataDef
 	public QIndicator qINU9;
-	
+
 	@DataDef
 	public Date qDATE;
 
 	public static Specials qSP;
-	
+
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
@@ -173,17 +174,26 @@ public class RPJProgramSupport {
 		public QDecimal uyear;
 	}
 
-//	public static boolean FALSE = false;
+	// public static boolean FALSE = false;
 	public static boolean TRUE = true;
-	
+
+	private int countRunnable = 0;
+
 	public boolean qRunnable() {
-		QThread thread = job.getJobThread();
-		if(thread != null)
-			return thread.checkRunnable();
-		else
-			return !Thread.currentThread().isInterrupted();
+		if (countRunnable == 10) {
+			countRunnable = 0;
+			QThread thread = job.getJobThread();
+			if (thread != null)
+				return thread.checkRunnable();
+			else
+				return !Thread.currentThread().isInterrupted();
+		}
+		else {
+			countRunnable++;
+			return true;
+		}
 	}
-	
+
 	public static enum Specials {
 		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D, ISO;
 
@@ -216,7 +226,7 @@ public class RPJProgramSupport {
 	public QDecimal qBitand(Integer expression, QDecimal expression2) {
 		return null;
 	}
-	
+
 	public QDecimal qBitnot(Integer expression) {
 		return null;
 	}
@@ -237,7 +247,7 @@ public class RPJProgramSupport {
 
 		QDecimal qDecimal = null;
 
-		if(decimal == null)
+		if (decimal == null)
 			qDecimal = dataContext.getDataFactory().createDecimal(0, 0, DecimalType.ZONED, false);
 		else if (Math.abs(decimal) >= 0 && Math.abs(decimal) <= 9)
 			qDecimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
@@ -269,7 +279,7 @@ public class RPJProgramSupport {
 
 		QDecimal qDecimal = null;
 
-		if(double_ == null)
+		if (double_ == null)
 			qDecimal = dataContext.getDataFactory().createDecimal(0, 0, DecimalType.ZONED, false);
 		else if (Math.abs(double_) >= 0 && Math.abs(double_) <= 9)
 			qDecimal = dataContext.getDataFactory().createDecimal(1, 0, DecimalType.ZONED, true);
@@ -284,11 +294,11 @@ public class RPJProgramSupport {
 	public QCharacter qBox(String character) {
 
 		QCharacter qCharacter = null;
-		if(character == null)
+		if (character == null)
 			qCharacter = dataContext.getDataFactory().createCharacter(0, false, false);
 		else
 			qCharacter = dataContext.getDataFactory().createCharacter(character.length(), false, true);
-		
+
 		qCharacter.eval(character);
 
 		return qCharacter;
@@ -311,7 +321,7 @@ public class RPJProgramSupport {
 	public void qCall(Class<?> program, QData[] parameters) {
 		programManager.callProgram(job, program, parameters);
 	}
-	
+
 	public void qCall(QString program, QData[] parameters) {
 		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
 	}
@@ -319,8 +329,7 @@ public class RPJProgramSupport {
 	public void qCall(String program, QData[] parameters) {
 		try {
 			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
 		}
 	}
@@ -385,22 +394,23 @@ public class RPJProgramSupport {
 	}
 
 	public QDecimal qCheck(String comparator, QString base, Integer start) {
-		// returns the first position of the string base that contains a character that does not appear in string comparator
-		if(start == null)
+		// returns the first position of the string base that contains a
+		// character that does not appear in string comparator
+		if (start == null)
 			start = 1;
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
-		
+
 		int i = 0;
 		int s = 0;
-		while(true){
-			i= base.qSubst(start).trimR().indexOf(comparator, s);
-			if(i==-1)
+		while (true) {
+			i = base.qSubst(start).trimR().indexOf(comparator, s);
+			if (i == -1)
 				break;
 			s++;
 		}
-		
-		if(s>0)
-			decimal.eval(s+1);
+
+		if (s > 0)
+			decimal.eval(s + 1);
 		else
 			decimal.eval(base.qSubst(start).trimR().length());
 
@@ -409,20 +419,20 @@ public class RPJProgramSupport {
 
 	public QDecimal qCheckr(String comparator, QString base, Integer start) {
 		// TODO verify
-		if(start == null)
+		if (start == null)
 			start = 1;
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.PACKED, true);
 		int i = 0;
 		int s = base.qSubst(start).trimR().length();
-		while(true){
-			i= base.qSubst(start).trimR().indexOf(comparator, s);
-			if(i==-1)
+		while (true) {
+			i = base.qSubst(start).trimR().indexOf(comparator, s);
+			if (i == -1)
 				break;
 			s--;
 		}
-		
-		if(s>0)
-			decimal.eval(s-1);
+
+		if (s > 0)
+			decimal.eval(s - 1);
 		else
 			decimal.eval(base.qSubst(start).trimR().length());
 
@@ -463,10 +473,10 @@ public class RPJProgramSupport {
 
 		switch (format) {
 		case "Z":
-//			character.eval(numberFormat.format(numeric.asInteger()));
-			// TODO 
+			// character.eval(numberFormat.format(numeric.asInteger()));
+			// TODO
 			// remove leading zero
-			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+","") );
+			character.eval(Integer.toString(numeric.asInteger()).replaceAll("^0+", ""));
 			break;
 		case "X":
 			character.move(numeric);
@@ -604,10 +614,10 @@ public class RPJProgramSupport {
 
 	public QDecimal qSize(QBufferedList<?> bufferedData) {
 		QDecimal decimal = dataContext.getDataFactory().createDecimal(7, 0, DecimalType.ZONED, true);
-		decimal.eval(bufferedData.getSize()/bufferedData.capacity());
+		decimal.eval(bufferedData.getSize() / bufferedData.capacity());
 		return decimal;
 	}
-	
+
 	public QDecimal qRem(QNumeric ope1, QNumeric ope2) {
 		return null;
 	}
@@ -745,7 +755,7 @@ public class RPJProgramSupport {
 			}
 			startId++;
 		}
-		
+
 		QCharacter string = dataContext.getDataFactory().createCharacter(source.getLength(), false, true);
 		string.eval(sb.toString());
 
@@ -779,7 +789,7 @@ public class RPJProgramSupport {
 	public QDataFiller qAll(int numeric) {
 		return this.dataFiller.set(qBox(numeric));
 	}
-	
+
 	public QDataFiller qAll(QNumeric numeric) {
 		return this.dataFiller.set(numeric);
 	}
@@ -842,7 +852,7 @@ public class RPJProgramSupport {
 	public <BD extends QBufferedData> QNumeric qLookupEQ(BD argument, QList<BD> list, QDecimal startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
-	
+
 	public <BD extends QBufferedData> QNumeric qLookup(BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 		return qLookup(LookupOperator.EQ, argument, list, startIndex, numElements);
 	}
@@ -957,7 +967,7 @@ public class RPJProgramSupport {
 		this.dataContext.found().eval(result.ge(1));
 
 		startIndex.eval(result);
-		
+
 		return result;
 	}
 
@@ -1077,7 +1087,7 @@ public class RPJProgramSupport {
 
 		return string;
 	}
-	
+
 	public <P extends Object> P bindProcedure(Object owner, Class<P> klass) {
 		return injector.prepareProcedure(owner, klass);
 	}
@@ -1091,7 +1101,7 @@ public class RPJProgramSupport {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	// TODO remove return value
 	public QNumeric qTime(QDatetime datetime) {
 
@@ -1120,7 +1130,7 @@ public class RPJProgramSupport {
 	}
 
 	public QArray<QCharacter> qArray(String string) {
-		
+
 		return null;
 	}
 }
