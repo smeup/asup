@@ -73,6 +73,8 @@ public class E4JobCloser implements Runnable {
 					break;
 				case MESSAGE_WAITING:
 					break;
+				case HOLD:
+					break;					
 				case RUN:
 					break;
 				case TIME_WAITING:

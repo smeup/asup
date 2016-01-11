@@ -82,6 +82,12 @@
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
   <eSubpackages name="jobs" nsURI="http://www.smeup.org/asup/os/core/jobs" nsPrefix="os-core-jobs">
     <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+      <eOperations name="getJobThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"/>
+      <eOperations name="isRunning" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
           transient="true" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"
@@ -268,8 +274,9 @@
       <eLiterals name="MessageWaiting" value="40" literal="MSGW"/>
       <eLiterals name="LockWaiting" value="50" literal="LCKW"/>
       <eLiterals name="EventWaiting" value="60" literal="EVTW"/>
-      <eLiterals name="EndOfJob" value="70" literal="EOJ"/>
-      <eLiterals name="End" value="80" literal="END"/>
+      <eLiterals name="Hold" value="70" literal="HLD"/>
+      <eLiterals name="EndOfJob" value="80" literal="EOJ"/>
+      <eLiterals name="End" value="90" literal="END"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobType">
       <eLiterals name="Kernel" value="10" literal="KRN"/>

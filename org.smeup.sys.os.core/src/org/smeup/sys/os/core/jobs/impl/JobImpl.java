@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.smeup.sys.il.core.QThread;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -656,6 +658,24 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			variables = new EObjectContainmentEList<QEnvironmentVariable>(QEnvironmentVariable.class, this, QOperatingSystemJobsPackage.JOB__VARIABLES);
 		}
 		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QThread getJobThread() {
+		return QThreadManager.qINSTANCE.currentThread();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRunning() {
+		return getJobThread() != null;
 	}
 
 	/**

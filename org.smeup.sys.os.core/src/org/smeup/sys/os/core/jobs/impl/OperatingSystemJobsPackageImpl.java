@@ -649,6 +649,10 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getJob_TimeSeparator(), ecorePackage.getEString(), "timeSeparator", ":", 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_Variables(), theOperatingSystemCorePackage.getEnvironmentVariable(), null, "variables", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(jobEClass, theIntegratedLanguageCorePackage.getThread(), "getJobThread", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isRunning", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(jobEventEClass, QJobEvent.class, "JobEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobEvent_Source(), this.getJob(), null, "source", null, 0, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJobEvent_Type(), this.getJobEventType(), "type", null, 1, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -764,6 +768,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEEnumLiteral(jobStatusEEnum, JobStatus.MESSAGE_WAITING);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.LOCK_WAITING);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.EVENT_WAITING);
+		addEEnumLiteral(jobStatusEEnum, JobStatus.HOLD);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.END_OF_JOB);
 		addEEnumLiteral(jobStatusEEnum, JobStatus.END);
 
@@ -785,6 +790,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	protected void createIldataAnnotations() {
 		String source = "il-data";	
+		addAnnotation
+		  (jobEClass.getEOperations().get(1), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
 		addAnnotation
 		  (getJob_CurrentLibrary(), 
 		   source, 

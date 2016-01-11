@@ -9,6 +9,7 @@ package org.smeup.sys.os.core.jobs;
 
 import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
+import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.def.DateFormat;
@@ -439,6 +440,23 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	List<QEnvironmentVariable> getVariables();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
+	QThread getJobThread();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	boolean isRunning();
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

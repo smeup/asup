@@ -83,6 +83,14 @@ public enum JobStatus implements Enumerator {
 	EVENT_WAITING(60, "EventWaiting", "EVTW"),
 
 	/**
+	 * The '<em><b>Hold</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HOLD_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	HOLD(70, "Hold", "HLD"), /**
 	 * The '<em><b>End Of Job</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,7 +98,7 @@ public enum JobStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	END_OF_JOB(70, "EndOfJob", "EOJ"),
+	END_OF_JOB(80, "EndOfJob", "EOJ"),
 
 	/**
 	 * The '<em><b>End</b></em>' literal object.
@@ -100,7 +108,7 @@ public enum JobStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	END(80, "End", "END");
+	END(90, "End", "END");
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
@@ -195,6 +203,21 @@ public enum JobStatus implements Enumerator {
 	public static final int EVENT_WAITING_VALUE = 60;
 
 	/**
+	 * The '<em><b>Hold</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Hold</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #HOLD
+	 * @model name="Hold" literal="HLD"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HOLD_VALUE = 70;
+
+	/**
 	 * The '<em><b>End Of Job</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -207,7 +230,7 @@ public enum JobStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int END_OF_JOB_VALUE = 70;
+	public static final int END_OF_JOB_VALUE = 80;
 
 	/**
 	 * The '<em><b>End</b></em>' literal value.
@@ -222,7 +245,7 @@ public enum JobStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int END_VALUE = 80;
+	public static final int END_VALUE = 90;
 
 	/**
 	 * An array of all the '<em><b>Job Status</b></em>' enumerators. <!--
@@ -237,6 +260,7 @@ public enum JobStatus implements Enumerator {
 			MESSAGE_WAITING,
 			LOCK_WAITING,
 			EVENT_WAITING,
+			HOLD,
 			END_OF_JOB,
 			END,
 		};
@@ -297,6 +321,7 @@ public enum JobStatus implements Enumerator {
 			case MESSAGE_WAITING_VALUE: return MESSAGE_WAITING;
 			case LOCK_WAITING_VALUE: return LOCK_WAITING;
 			case EVENT_WAITING_VALUE: return EVENT_WAITING;
+			case HOLD_VALUE: return HOLD;
 			case END_OF_JOB_VALUE: return END_OF_JOB;
 			case END_VALUE: return END;
 		}
