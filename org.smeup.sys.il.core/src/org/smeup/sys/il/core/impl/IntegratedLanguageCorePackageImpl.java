@@ -56,6 +56,7 @@ import org.smeup.sys.il.data.impl.IntegratedLanguageDataPackageImpl;
 import org.smeup.sys.il.data.term.QIntegratedLanguageDataTermPackage;
 import org.smeup.sys.il.data.term.impl.IntegratedLanguageDataTermPackageImpl;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -762,6 +763,7 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		QIntegratedLanguageCoreOutPackage theIntegratedLanguageCoreOutPackage = (QIntegratedLanguageCoreOutPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreOutPackage.eNS_URI);
 		QIntegratedLanguageCoreTermPackage theIntegratedLanguageCoreTermPackage = (QIntegratedLanguageCoreTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreTermPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
+		QMachineInterfaceUtilPackage theMachineInterfaceUtilPackage = (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theIntegratedLanguageCoreCtxPackage);
@@ -802,6 +804,10 @@ public class IntegratedLanguageCorePackageImpl extends EPackageImpl implements Q
 		specialEClass.getESuperTypes().add(theIntegratedLanguageCoreMetaPackage.getFacet());
 		specialElementEClass.getESuperTypes().add(this.getNamedNode());
 		threadEClass.getESuperTypes().add(this.getObject());
+		g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
+		g2 = createEGenericType(this.getThreadManager());
+		g1.getETypeArguments().add(g2);
+		threadManagerEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(annotationEClass, QAnnotation.class, "Annotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

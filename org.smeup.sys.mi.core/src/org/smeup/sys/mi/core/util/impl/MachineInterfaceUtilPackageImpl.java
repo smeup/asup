@@ -295,6 +295,10 @@ public class MachineInterfaceUtilPackageImpl extends EPackageImpl implements QMa
 		EGenericType g2 = createEGenericType(this.getStrings());
 		g1.getETypeArguments().add(g2);
 		stringsEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getSingleton());
+		g2 = createEGenericType(this.getThreads());
+		g1.getETypeArguments().add(g2);
+		threadsEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(filesEClass, QFiles.class, "Files", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -170,7 +170,7 @@ public interface QMachineInterfaceUtilPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THREADS_FEATURE_COUNT = 0;
+	int THREADS_FEATURE_COUNT = SINGLETON_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.mi.core.util.QURIs <em>UR Is</em>}' class.

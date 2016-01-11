@@ -9,6 +9,8 @@ package org.smeup.sys.il.core;
 
 import java.util.List;
 
+import org.smeup.sys.mi.core.util.QSingleton;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Thread Manager</b></em>'.
@@ -19,7 +21,10 @@ import java.util.List;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QThreadManager {
+public interface QThreadManager extends QSingleton<QThreadManager> {
+	
+	QThreadManager qINSTANCE = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

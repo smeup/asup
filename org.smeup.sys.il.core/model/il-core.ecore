@@ -168,6 +168,9 @@
     <eOperations name="suspend">
       <eParameters name="thread" lowerBound="1" eType="#//Thread"/>
     </eOperations>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//util/Singleton">
+      <eTypeArguments eClassifier="#//ThreadManager"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ThreadStatus">
     <eLiterals name="Run" value="10" literal="RUN"/>

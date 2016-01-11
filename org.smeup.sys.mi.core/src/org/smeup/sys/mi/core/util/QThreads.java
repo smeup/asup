@@ -21,7 +21,10 @@ import java.util.List;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QThreads {
+public interface QThreads extends QSingleton<QThreads> {
+	
+	QThreads qINSTANCE = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

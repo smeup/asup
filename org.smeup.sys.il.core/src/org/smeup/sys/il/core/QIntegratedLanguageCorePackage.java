@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -574,7 +575,7 @@ public interface QIntegratedLanguageCorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int THREAD_MANAGER_FEATURE_COUNT = 0;
+	int THREAD_MANAGER_FEATURE_COUNT = QMachineInterfaceUtilPackage.SINGLETON_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.il.core.ConversionStatus <em>Conversion Status</em>}' enum.
