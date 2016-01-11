@@ -652,7 +652,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isActive", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isRunning", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isRouted", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(jobEventEClass, QJobEvent.class, "JobEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getJobEvent_Source(), this.getJob(), null, "source", null, 0, 1, QJobEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

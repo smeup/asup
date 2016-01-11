@@ -69,9 +69,7 @@ public class BaseThreadManagerImpl implements QThreadManager {
 	public void release(QThread thread) {
 		if(thread instanceof BaseThreadImpl) {
 		    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
-		    synchronized (baseThreadImpl.lock) {
-				baseThreadImpl.lock.unlock();			
-			}
+		    baseThreadImpl.unlock();
 		}
 		else 
 			thread.getJavaThread().resume();
@@ -93,9 +91,7 @@ public class BaseThreadManagerImpl implements QThreadManager {
 
 		if(thread instanceof BaseThreadImpl) {
 		    BaseThreadImpl baseThreadImpl = (BaseThreadImpl) thread;
-		    synchronized (baseThreadImpl.lock) {
-				baseThreadImpl.lock.lock();			
-			}
+		    baseThreadImpl.lock();
 		}
 		else
 			thread.getJavaThread().suspend();

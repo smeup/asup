@@ -905,8 +905,11 @@ public class JDTExpressionStringBuilder extends ExpressionVisitorImpl {
 
 			value.append(")");
 
-			writeValue(prototype.getDefinition().getDataClass(), this.target, value.toString());
-
+			if (prototype.isConstant())
+				writeValue(prototype.getDefinition().getJavaClass(), this.target, value.toString());
+			else
+				writeValue(prototype.getDefinition().getDataClass(), this.target, value.toString());
+			
 		} else if (namedNode instanceof QDataTerm<?>) {
 			QDataTerm<?> dataTerm = (QDataTerm<?>) namedNode;
 

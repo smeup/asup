@@ -695,7 +695,7 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * 
 	 * @generated NOT
 	 */
-	public boolean isRunning() {
+	public boolean isRouted() {
 		return getJobThread() != null;
 	}
 

@@ -92,7 +92,7 @@
           <details key="length" value="10"/>
         </eAnnotations>
       </eOperations>
-      <eOperations name="isRunning" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eOperations name="isRouted" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
         </eAnnotations>

@@ -354,38 +354,6 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean visit(QFor statement) {
-
-		Block block = blocks.peek();
-
-		ForStatement forSt = ast.newForStatement();
-
-		// initialization
-		QAssignmentExpression assignment = expressionParser.parseAssignment(statement.getInitialization());
-		forSt.initializers().add(buildAssignmentMethod(assignment, false));
-
-		// condition
-		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
-		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
-		forSt.setExpression(expression);
-
-		// increment
-		QAssignmentExpression increment = expressionParser.parseAssignment(statement.getIncrement());
-		forSt.updaters().add(buildAssignmentMethod(increment, false));
-
-		block.statements().add(forSt);
-
-		// body
-		Block bodyBlock = ast.newBlock();
-		forSt.setBody(bodyBlock);
-
-		blocks.push(bodyBlock);
-
-		return super.visit(statement);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public boolean visit(QProcedureExec statement) {
 
 		Block block = blocks.peek();
@@ -478,13 +446,8 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		block.statements().add(expressionStatement);
 
 		// dummy break
-		if (isParentFor(statement)) {
+		if (isParentFor(statement)) 
 			block.statements().add(ast.newBreakStatement());
-//			IfStatement ifSt = ast.newIfStatement();
-//			ifSt.setExpression(ast.newName("qRPJ.FALSE"));
-//			ifSt.setThenStatement(ast.newBreakStatement());
-//			block.statements().add(ifSt);
-		}
 
 		return super.visit(statement);
 	}
@@ -679,6 +642,38 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	public boolean visit(QFor statement) {
+
+		Block block = blocks.peek();
+
+		ForStatement forSt = ast.newForStatement();
+
+		// initialization
+		QAssignmentExpression assignment = expressionParser.parseAssignment(statement.getInitialization());
+		forSt.initializers().add(buildAssignmentMethod(assignment, false));
+
+		// condition
+		QPredicateExpression condition = buildIterationCondition(statement.getCondition());
+		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
+		forSt.setExpression(expression);
+
+		// increment
+		QAssignmentExpression increment = expressionParser.parseAssignment(statement.getIncrement());
+		forSt.updaters().add(buildAssignmentMethod(increment, false));
+
+		block.statements().add(forSt);
+
+		// body
+		Block bodyBlock = ast.newBlock();
+		forSt.setBody(bodyBlock);
+
+		blocks.push(bodyBlock);
+
+		return super.visit(statement);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public boolean visit(QUntil statement) {
 
 		Block block = blocks.peek();
@@ -688,7 +683,10 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		QLogicalExpression logicalExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createLogicalExpression();
 		logicalExpression.setOperator(LogicalOperator.NOT);
 		QBlockExpression blockExpression = QIntegratedLanguageExpressionFactory.eINSTANCE.createBlockExpression();
-		blockExpression.setExpression(expressionParser.parsePredicate(statement.getCondition()));
+		
+		QPredicateExpression condition = buildIterationCondition(statement.getCondition());		
+		blockExpression.setExpression(condition);
+		
 		logicalExpression.setLeftOperand(blockExpression);
 
 		Expression expression = buildExpression(ast, logicalExpression, CompilationContextHelper.getJavaClass(compilationUnit, logicalExpression));
@@ -705,18 +703,31 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 		return super.visit(statement);
 	}
 
+	private QPredicateExpression buildIterationCondition(String condition) {
+			
+		if (condition == null)
+			condition = "%runnable";
+		else {
+			if(condition.equalsIgnoreCase("*ON"))
+				condition = "%runnable";
+			else
+				condition = "%runnable and ("+condition+")";
+		}
+		
+		QPredicateExpression predicateExpression = expressionParser.parsePredicate(condition);
+
+		return predicateExpression;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean visit(QWhile statement) {
-
-		if (statement.getCondition() == null)
-			statement.setCondition("true");
 
 		Block block = blocks.peek();
 
 		WhileStatement whileSt = ast.newWhileStatement();
 
-		QPredicateExpression condition = expressionParser.parsePredicate(statement.getCondition());
+		QPredicateExpression condition = buildIterationCondition(statement.getCondition());		
 		Expression expression = buildExpression(ast, condition, CompilationContextHelper.getJavaClass(compilationUnit, condition));
 		whileSt.setExpression(expression);
 

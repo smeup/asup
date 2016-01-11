@@ -1786,6 +1786,12 @@
       </entry>
     </prototypes>
     <prototypes
+        constant="true"
+        name="%runnable">
+      <definition
+          xsi:type="il-data-def:IndicatorDef"/>
+    </prototypes>
+    <prototypes
         name="%size">
       <definition
           xsi:type="il-data-def:DecimalDef"

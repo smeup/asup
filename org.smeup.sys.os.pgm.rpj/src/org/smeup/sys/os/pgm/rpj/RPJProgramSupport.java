@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.annotation.Overlay;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
@@ -172,8 +173,16 @@ public class RPJProgramSupport {
 		public QDecimal uyear;
 	}
 
-	public static boolean FALSE = false;
+//	public static boolean FALSE = false;
 	public static boolean TRUE = true;
+	
+	public boolean qRunnable() {
+		QThread thread = job.getJobThread();
+		if(thread != null)
+			return thread.checkRunnable();
+		else
+			return !Thread.currentThread().isInterrupted();
+	}
 	
 	public static enum Specials {
 		ALL, NULL, OFF, ON, ZERO, ZEROS, BLANK, BLANKS, LOVAL, HIVAL, OMIT, MS, YEARS, Y, MONTHS, M, DAYS, D, ISO;

@@ -463,7 +463,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
-	boolean isRunning();
+	boolean isRouted();
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

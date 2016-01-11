@@ -89,7 +89,7 @@ public class BaseThreadsImpl implements QThreads {
 		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
 			infos = thbean.getThreadInfo(threadIds);
 		else
-			infos = thbean.getThreadInfo(threadIds, true, true);
+			infos = thbean.getThreadInfo(threadIds, true, false);
 
 		final ThreadInfo[] notNulls = new ThreadInfo[infos.length];
 		int nNotNulls = 0;
@@ -169,7 +169,7 @@ public class BaseThreadsImpl implements QThreads {
 		if (!thbean.isObjectMonitorUsageSupported() || !thbean.isSynchronizerUsageSupported())
 			return thbean.getThreadInfo(id);
 
-		final ThreadInfo[] infos = thbean.getThreadInfo(new long[] { id }, true, true);
+		final ThreadInfo[] infos = thbean.getThreadInfo(new long[] { id }, true, false);
 		if (infos.length == 0)
 			return null;
 		return infos[0];

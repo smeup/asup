@@ -8,11 +8,8 @@ import org.smeup.sys.il.core.ThreadStatus;
 
 public class BaseThreadImpl extends Thread implements QThread {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	protected volatile ReentrantLock lock = new ReentrantLock();	
+	private volatile ReentrantLock lock = new ReentrantLock();	
 
 	protected BaseThreadImpl(Runnable runnable, String name, boolean daemon) {
 		super(runnable, name);
@@ -26,18 +23,21 @@ public class BaseThreadImpl extends Thread implements QThread {
 
 	@Override
 	public boolean checkRunnable() {
-
-		if (Thread.currentThread().isInterrupted())
-			return false;
-
+		
 		try {
 			while(true) {
-				if(lock.tryLock() || lock.tryLock(100, TimeUnit.MILLISECONDS)) {
-					lock.unlock();
-					return true;
-				}
 				if (Thread.currentThread().isInterrupted())
 					return false;
+
+				synchronized (lock) {
+					if(!lock.isLocked())
+						return true;
+
+					if(lock.tryLock(100, TimeUnit.MILLISECONDS)) {
+						lock.unlock();
+						return true;
+					}					
+				}
 			}
 		} catch (InterruptedException e) {				
 			return false;
@@ -77,5 +77,17 @@ public class BaseThreadImpl extends Thread implements QThread {
 	@Override
 	public boolean isSuspended() {
 		return lock.isLocked();
+	}
+
+	protected void unlock() {
+	    synchronized (lock) {
+			lock.unlock();			
+		}		
+	}
+
+	protected void lock() {
+	    synchronized (lock) {
+			lock.lock();			
+		}		
 	}
 }
