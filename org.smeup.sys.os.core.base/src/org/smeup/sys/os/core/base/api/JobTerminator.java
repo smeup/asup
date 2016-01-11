@@ -24,8 +24,7 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.base.api.tools.JobName;
-import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
+import org.smeup.sys.os.core.base.api.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 

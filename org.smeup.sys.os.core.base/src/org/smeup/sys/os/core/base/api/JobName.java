@@ -9,7 +9,7 @@
  * Contributors:
  *   Franco Lombardo - Initial API and implementation
  */
-package org.smeup.sys.os.core.base.api.tools;
+package org.smeup.sys.os.core.base.api;
 
 import org.smeup.sys.il.data.QCharacter;
 import org.smeup.sys.il.data.QDataStructWrapper;

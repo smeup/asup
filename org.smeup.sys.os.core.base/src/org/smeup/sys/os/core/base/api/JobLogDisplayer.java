@@ -11,6 +11,8 @@
  */
 package org.smeup.sys.os.core.base.api;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.Supported;
@@ -27,9 +29,9 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.enums.YesNoEnum;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.base.api.tools.JobLogWriter;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLog;
+import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 
 @Program(name = "QMHDSPJL")
@@ -55,7 +57,15 @@ public class JobLogDisplayer {
 
 		QJobLog jobLog = findJobLog(jobName);
 		QObjectWriter objectWriter = findWiter(output);
-		new JobLogWriter(objectWriter, shortFormat.asEnum().asBoolean(), outputManager).write(jobLog);
+
+		objectWriter.initialize();
+		try {
+			for (QJobLogEntry jobLogEntry : jobLog.getEntries())
+				objectWriter.write(jobLogEntry);
+		} catch (IOException e) {
+			throw new OperatingSystemRuntimeException(e);
+		}
+		objectWriter.flush();
 	}
 
 	private QJobLog findJobLog(JobName jobName) {

@@ -36,6 +36,7 @@ import org.smeup.sys.os.cmd.QCommandParameter;
 import org.smeup.sys.os.cmd.QCommandSource;
 import org.smeup.sys.os.cmd.QOperatingSystemCommandFactory;
 import org.smeup.sys.os.cmd.QOperatingSystemCommandPackage;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -545,6 +546,7 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		QOperatingSystemTypePackage theOperatingSystemTypePackage = (QOperatingSystemTypePackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemTypePackage.eNS_URI);
 		QIntegratedLanguageDataTermPackage theIntegratedLanguageDataTermPackage = (QIntegratedLanguageDataTermPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataTermPackage.eNS_URI);
 		QIntegratedLanguageDataDefPackage theIntegratedLanguageDataDefPackage = (QIntegratedLanguageDataDefPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataDefPackage.eNS_URI);
+		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -633,6 +635,12 @@ public class OperatingSystemCommandPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(ecorePackage.getEJavaObject());
 		g1.getETypeArguments().add(g2);
 		addEParameter(op, g1, "variables", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(commandManagerEClass, theOperatingSystemJobsPackage.getJob(), "submitJob", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "contextID", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "command", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "jobName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "caller", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(commandParameterEClass, QCommandParameter.class, "CommandParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandParameter_AllowVariable(), ecorePackage.getEBoolean(), "allowVariable", null, 1, 1, QCommandParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

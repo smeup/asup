@@ -33,7 +33,7 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobName <em>Job Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobNumber <em>Job Number</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobStatus <em>Job Status</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobType <em>Job Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobUser <em>Job User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getLibraries <em>Libraries</em>}</li>
@@ -161,33 +161,17 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setJobNumber(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Job Status</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.smeup.sys.os.core.jobs.JobStatus}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Job Status</em>' attribute isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job Status</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobStatus
-	 * @see #setJobStatus(JobStatus)
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobStatus()
-	 * @model required="true"
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='20'"
 	 * @generated
 	 */
 	JobStatus getJobStatus();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobStatus <em>Job Status</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Job Status</em>' attribute.
-	 * @see org.smeup.sys.os.core.jobs.JobStatus
-	 * @see #getJobStatus()
-	 * @generated
-	 */
-	void setJobStatus(JobStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Job Type</b></em>' attribute.
@@ -442,12 +426,35 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	List<QEnvironmentVariable> getVariables();
 
 	/**
+	 * Returns the value of the '<em><b>Job Thread</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" required="true"
+	 * @return the value of the '<em>Job Thread</em>' reference.
+	 * @see #setJobThread(QThread)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobThread()
+	 * @model resolveProxies="false" transient="true"
 	 * @generated
 	 */
 	QThread getJobThread();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Job Thread</em>' reference.
+	 * @see #getJobThread()
+	 * @generated
+	 */
+	void setJobThread(QThread value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	boolean isActive();
 
 	/**
 	 * <!-- begin-user-doc -->

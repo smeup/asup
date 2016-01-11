@@ -9,6 +9,8 @@ package org.smeup.sys.os.cmd;
 
 import java.util.Map;
 
+import org.smeup.sys.os.core.jobs.QJob;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>QCommand Manager</b></em>'. <!-- end-user-doc -->
@@ -42,5 +44,13 @@ public interface QCommandManager {
 	 * @generated
 	 */
 	void executeCommand(String contextID, String command, Map<String, Object> variables);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" contextIDRequired="true" commandRequired="true"
+	 * @generated
+	 */
+	QJob submitJob(String contextID, String command, String jobName, Object caller);
 
 } // QCommandManager

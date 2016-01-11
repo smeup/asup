@@ -146,13 +146,13 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Job Status</b></em>' attribute.
+	 * The feature id for the '<em><b>Job Thread</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__JOB_STATUS = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int JOB__JOB_THREAD = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Job Type</b></em>' attribute.
@@ -521,15 +521,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJob_JobNumber();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getJobStatus <em>Job Status</em>}'.
+	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Job Status</em>'.
-	 * @see org.smeup.sys.os.core.jobs.QJob#getJobStatus()
+	 * @return the meta object for the reference '<em>Job Thread</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getJobThread()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EAttribute getJob_JobStatus();
+	EReference getJob_JobThread();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJob#getJobType <em>Job Type</em>}'.
@@ -889,12 +889,12 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EAttribute JOB__JOB_NUMBER = eINSTANCE.getJob_JobNumber();
 
 		/**
-		 * The meta object literal for the '<em><b>Job Status</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Job Thread</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOB__JOB_STATUS = eINSTANCE.getJob_JobStatus();
+		EReference JOB__JOB_THREAD = eINSTANCE.getJob_JobThread();
 
 		/**
 		 * The meta object literal for the '<em><b>Job Type</b></em>' attribute feature.

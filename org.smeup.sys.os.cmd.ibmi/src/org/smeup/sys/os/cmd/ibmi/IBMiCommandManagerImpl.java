@@ -39,6 +39,7 @@ import org.smeup.sys.il.core.FormatType;
 import org.smeup.sys.il.core.QFormat;
 import org.smeup.sys.il.core.QSpecial;
 import org.smeup.sys.il.core.QSpecialElement;
+import org.smeup.sys.il.core.QThreadManager;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QAdapter;
 import org.smeup.sys.il.data.QBufferedData;
@@ -81,9 +82,9 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 	protected ParserInterface<?> clParser;
 
 	@Inject
-	public IBMiCommandManagerImpl(QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
+	public IBMiCommandManagerImpl(QThreadManager threadManager, QResourceManager resourceManager, QJobManager jobManager, QJobLogManager jobLogManager, QDataManager dataManager, QProgramManager programManager,
 			QOutputManager outputManager, QApplication application) {
-		super(resourceManager, jobManager, jobLogManager, programManager);
+		super(threadManager, resourceManager, jobManager, jobLogManager, programManager);
 		this.jobManager = jobManager;
 		this.dataManager = dataManager;
 		this.outputManager = outputManager;

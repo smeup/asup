@@ -228,19 +228,6 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 	}
 
 	@Override
-	public void updateStatus(QJob job, JobStatus status) {
-		try {
-			// save job
-			CDOResource resource = systemManager.getTransaction().getOrCreateResource(CDO_RESOURCE);
-			job.setJobStatus(status);
-			resource.getContents().add((EObject) job);
-			systemManager.getTransaction().commit();
-		} catch (CommitException e) {
-			throw new OperatingSystemRuntimeException(e);
-		}
-	}
-
-	@Override
 	public void close(QJob job) {
 		super.close(job);
 		

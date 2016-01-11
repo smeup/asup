@@ -28,13 +28,11 @@ import org.smeup.sys.il.lock.QLockManager;
 import org.smeup.sys.il.lock.QObjectLocker;
 import org.smeup.sys.il.memo.cdo.CDOResourceHelper;
 import org.smeup.sys.il.memo.cdo.CDOSessionHelper;
-import org.smeup.sys.os.core.OperatingSystemException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.SystemStatus;
 import org.smeup.sys.os.core.base.BaseSystemManagerImpl;
-import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.rt.core.ComponentStarted;
@@ -240,17 +238,5 @@ public class CDOSystemManagerImpl extends BaseSystemManagerImpl {
 	@Override
 	protected QJob createJob(JobType jobType, String user, String jobName){
 		return super.createJob(jobType, user, jobName);
-	}
-	
-	public void updateStatus(JobStatus status) throws OperatingSystemException {
-		try {
-			// save job
-			CDOResource resource = transaction.getOrCreateResource(CDO_CORE);
-			startupJob.setJobStatus(status);
-			resource.getContents().add((EObject) startupJob);
-			transaction.commit();
-		} catch (CommitException e) {
-			throw new OperatingSystemException(e);
-		}
 	}
 }

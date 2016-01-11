@@ -8,6 +8,7 @@
  *
  * Contributors:
  *   Franco Lombardo - Initial API and implementation
+ *   Mattia Rocchi - Implementation
  */
 package org.smeup.sys.os.core.base.api;
 

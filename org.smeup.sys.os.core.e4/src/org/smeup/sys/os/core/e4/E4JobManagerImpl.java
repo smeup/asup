@@ -33,7 +33,6 @@ import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QSystemManager;
 import org.smeup.sys.os.core.base.BaseJobManagerImpl;
 import org.smeup.sys.os.core.jobs.JobEventType;
-import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobEvent;
@@ -101,11 +100,6 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 
 			return jobTarget;
 		}
-	}
-
-	@Override
-	public void updateStatus(QJob job, JobStatus status) {
-		job.setJobStatus(status);
 	}
 
 	@Override

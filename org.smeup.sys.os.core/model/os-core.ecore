@@ -82,7 +82,16 @@
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
   <eSubpackages name="jobs" nsURI="http://www.smeup.org/asup/os/core/jobs" nsPrefix="os-core-jobs">
     <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-      <eOperations name="getJobThread" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"/>
+      <eOperations name="getJobStatus" lowerBound="1" eType="#//jobs/JobStatus">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="20"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="isActive" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eOperations>
       <eOperations name="isRunning" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
@@ -123,8 +132,8 @@
           <details key="precision" value="6"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobStatus" lowerBound="1"
-          eType="#//jobs/JobStatus"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="jobThread" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"
+          transient="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobType" eType="#//jobs/JobType"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
@@ -160,8 +169,9 @@
     <eClassifiers xsi:type="ecore:EEnum" name="JobEventType">
       <eLiterals name="Starting" value="10" literal="STARTING"/>
       <eLiterals name="Started" value="20" literal="STARTED"/>
-      <eLiterals name="Stopping" value="30" literal="STOPPING"/>
-      <eLiterals name="Stopped" value="40" literal="STOPPED"/>
+      <eLiterals name="StatusChanged" value="30" literal="STATUS_CHG"/>
+      <eLiterals name="Stopping" value="40" literal="STOPPING"/>
+      <eLiterals name="Stopped" value="50" literal="STOPPED"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobListener" abstract="true" interface="true">
       <eOperations name="handleEvent">

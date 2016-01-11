@@ -1,6 +1,7 @@
 package org.smeup.sys.os.core.base.api;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.inject.Inject;
 
@@ -18,9 +19,7 @@ import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.base.api.tools.JobDateFormatter;
-import org.smeup.sys.os.core.base.api.tools.JobName;
-import org.smeup.sys.os.core.base.api.tools.JobName.JobNotFoundException;
+import org.smeup.sys.os.core.base.api.JobName.JobNotFoundException;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobManager;
 
@@ -102,7 +101,9 @@ public @Supported class JobAttributesSetter_sav {
 
 	private void setJobDate(QJob jobToChange, QEnum<JOBDATEEnum, QDatetime> jobDate) {
 		try {
-			jobDate.asEnum().setJobDate(jobToChange, jobDate.asData().toString());
+			
+			DateFormat fmt = forType(jobToChange.getDateFormat());
+			jobToChange.getCreationInfo().setCreationDate(fmt.parse(jobDate.asData().toString()));
 		} catch (Exception e) {
 			throw exceptionManager.prepareException(job, QCPFMSG.CPD0082, new String[] { "", "DATE", jobDate.asData().toString() });
 		}
@@ -113,19 +114,17 @@ public @Supported class JobAttributesSetter_sav {
 		try {
 			jobSwitches.asEnum().setSwitches(jobToChange, jobSwitchesString);
 		} catch (Exception e) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321, new String[] { jobToChange.getName(), jobToChange.getCreationInfo().getCreationUser(), "" + jobToChange.getJobNumber(),
-					jobSwitchesString });
+			throw exceptionManager.prepareException(job, QCPFMSG.CPF1321,
+					new String[] { jobToChange.getName(), jobToChange.getCreationInfo().getCreationUser(), "" + jobToChange.getJobNumber(), jobSwitchesString });
 		}
 	}
 
 	public static enum JOBPRIORITYONJOBQEnum {
-		@Special(value = "*")
-		SAME, OTHER
+		@Special(value = "*") SAME, OTHER
 	}
 
 	public static enum OUTPUTPRIORITYONOUTQEnum {
-		@Special(value = "*")
-		SAME, OTHER
+		@Special(value = "*") SAME, OTHER
 	}
 
 	public static enum PRINTDEVICEEnum {
@@ -149,8 +148,7 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum RUNPRIORITYEnum {
-		@Special(value = "0")
-		SAME, OTHER
+		@Special(value = "0") SAME, OTHER
 	}
 
 	public static class JOBQUEUE extends QDataStructWrapper {
@@ -183,29 +181,20 @@ public @Supported class JobAttributesSetter_sav {
 		public QEnum<TEXTEnum, QCharacter> text;
 
 		public static enum LEVELEnum {
-			@Special(value = "*")
-			SAME, OTHER
+			@Special(value = "*") SAME, OTHER
 		}
 
 		public static enum SEVERITYEnum {
-			@Special(value = "-2")
-			SAME, OTHER
+			@Special(value = "-2") SAME, OTHER
 		}
 
 		public static enum TEXTEnum {
-			@Special(value = "*")
-			SAME, @Special(value = "M")
-			MSG, @Special(value = "S")
-			SECLVL, @Special(value = "N")
-			NOLIST
+			@Special(value = "*") SAME, @Special(value = "M") MSG, @Special(value = "S") SECLVL, @Special(value = "N") NOLIST
 		}
 	}
 
 	public static enum LOGCLPROGRAMCOMMANDSEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "N")
-		NO, @Special(value = "Y")
-		YES
+		@Special(value = "*") SAME, @Special(value = "N") NO, @Special(value = "Y") YES
 	}
 
 	public static enum JOBLOGOUTPUTEnum {
@@ -213,19 +202,11 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum JOBMESSAGEQUEUEFULLACTIONEnum {
-		@Special(value = "*")
-		SAME, SYSVAL, @Special(value = "N")
-		NOWRAP, @Special(value = "W")
-		WRAP, @Special(value = "P")
-		PRTWRAP
+		@Special(value = "*") SAME, SYSVAL, @Special(value = "N") NOWRAP, @Special(value = "W") WRAP, @Special(value = "P") PRTWRAP
 	}
 
 	public static enum INQUIRYMESSAGEREPLYEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "X'00'")
-		RQD, @Special(value = "X'01'")
-		DFT, @Special(value = "X'02'")
-		SYSRPYL
+		@Special(value = "*") SAME, @Special(value = "X'00'") RQD, @Special(value = "X'01'") DFT, @Special(value = "X'02'") SYSRPYL
 	}
 
 	public static enum BREAKMESSAGEHANDLINGEnum {
@@ -237,90 +218,54 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum DDMCONVERSATIONEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "X'00'")
-		KEEP, @Special(value = "D")
-		DROP
+		@Special(value = "*") SAME, @Special(value = "X'00'") KEEP, @Special(value = "D") DROP
 	}
 
 	public static enum SCHEDULEDATEEnum {
-		@Special(value = "0000000")
-		SAME, @Special(value = "0000001")
-		CURRENT, @Special(value = "0000002")
-		MONTHSTR, @Special(value = "0000003")
-		MONTHEND, @Special(value = "0000011")
-		MON, @Special(value = "0000012")
-		TUE, @Special(value = "0000013")
-		WED, @Special(value = "0000014")
-		THU, @Special(value = "0000015")
-		FRI, @Special(value = "0000016")
-		SAT, @Special(value = "0000017")
-		SUN, OTHER
+		@Special(value = "0000000") SAME, @Special(value = "0000001") CURRENT, @Special(value = "0000002") MONTHSTR, @Special(value = "0000003") MONTHEND, @Special(value = "0000011") MON, @Special(value = "0000012") TUE, @Special(value = "0000013") WED, @Special(value = "0000014") THU, @Special(value = "0000015") FRI, @Special(value = "0000016") SAT, @Special(value = "0000017") SUN, OTHER
 	}
 
 	public static enum SCHEDULETIMEEnum {
-		@Special(value = "888888")
-		SAME, @Special(value = "999999")
-		CURRENT, OTHER
+		@Special(value = "888888") SAME, @Special(value = "999999") CURRENT, OTHER
 	}
 
 	public static enum JOBDATEEnum {
-		@Special(value = "0000000")
-		SAME {
-			@Override
-			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
-				DateFormat fmt = JobDateFormatter.forType(jobToChange.getDateFormat());
-				jobToChange.getCreationInfo().setCreationDate(fmt.parse(dateString));
-			}
-		},
-		OTHER {
-			@Override
-			public void setJobDate(QJob jobToChange, String dateString) throws Exception {
-
-			}
-		};
-		public abstract void setJobDate(QJob jobToChange, String dateString) throws Exception;
+		@Special(value = "0000000") SAME, OTHER;
 	}
 
 	public static enum DATEFORMATEnum {
-		@Special(value = "-1")
-		SAME {
+		@Special(value = "-1") SAME {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				// Nothing to do
 			}
 		},
-		@Special(value = "0")
-		SYSVAL {
+		@Special(value = "0") SYSVAL {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				// TODO ????
 			}
 		},
 
-		@Special(value = "1")
-		YMD {
+		@Special(value = "1") YMD {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.YMD);
 			}
 		},
-		@Special(value = "2")
-		MDY {
+		@Special(value = "2") MDY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.MDY);
 			}
 		},
-		@Special(value = "3")
-		DMY {
+		@Special(value = "3") DMY {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.DMY);
 			}
 		},
-		@Special(value = "4")
-		JUL {
+		@Special(value = "4") JUL {
 			@Override
 			public void setDateFormat(QJob jobToChange) {
 				jobToChange.setDateFormat(org.smeup.sys.il.data.def.DateFormat.JUL);
@@ -331,64 +276,56 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum DATESEPARATOREnum {
-		@Special(value = "*")
-		SAME {
+		@Special(value = "*") SAME {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				// Nothing to do
 			}
 		},
 
-		@Special(value = "X'00'")
-		SYSVAL {
+		@Special(value = "X'00'") SYSVAL {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				// TODO ??
 			}
 		},
 
-		@Special(value = "X'40'")
-		BLANK {
+		@Special(value = "X'40'") BLANK {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("");
 			}
 		},
 
-		@Special(value = "/")
-		slash {
+		@Special(value = "/") slash {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("/");
 			}
 		},
 
-		@Special(value = "-")
-		minus {
+		@Special(value = "-") minus {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("-");
 			}
 		},
 
-		@Special(value = ".")
-		dot {
+		@Special(value = ".") dot {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator("0");
 			}
 		},
 
-		@Special(value = "")
-		blank {
+		@Special(value = "") blank {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator(" ");
 			}
 		},
 
-		@Special(value = ",")
-		comma {
+		@Special(value = ",") comma {
 			@Override
 			public void setDateSeparator(QJob jobToChange) {
 				jobToChange.setDateSeparator(",");
@@ -399,56 +336,49 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum TIMESEPARATOREnum {
-		@Special(value = "*")
-		SAME {
+		@Special(value = "*") SAME {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				// Nothing to do
 			}
 		},
 
-		@Special(value = "X'00'")
-		SYSVAL {
+		@Special(value = "X'00'") SYSVAL {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				// TODO ??
 			}
 		},
 
-		@Special(value = "X'40'")
-		BLANK {
+		@Special(value = "X'40'") BLANK {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator("");
 			}
 		},
 
-		@Special(value = ":")
-		column {
+		@Special(value = ":") column {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator(":");
 			}
 		},
 
-		@Special(value = ".")
-		dot {
+		@Special(value = ".") dot {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator(".");
 			}
 		},
 
-		@Special(value = "")
-		blank {
+		@Special(value = "") blank {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator("");
 			}
 		},
 
-		@Special(value = ",")
-		comma {
+		@Special(value = ",") comma {
 			@Override
 			public void setTimeSeparator(QJob jobToChange) {
 				jobToChange.setTimeSeparator(",");
@@ -493,21 +423,15 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum TIMESLICEEnum {
-		@Special(value = "0")
-		SAME, OTHER
+		@Special(value = "0") SAME, OTHER
 	}
 
 	public static enum ELIGIBLEFORPURGEEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "Y")
-		YES, @Special(value = "N")
-		NO
+		@Special(value = "*") SAME, @Special(value = "Y") YES, @Special(value = "N") NO
 	}
 
 	public static enum DEFAULTWAITTIMEEnum {
-		@Special(value = "0")
-		SAME, @Special(value = "-1")
-		NOMAX, OTHER
+		@Special(value = "0") SAME, @Special(value = "-1") NOMAX, OTHER
 	}
 
 	public static enum DEVICERECOVERYACTIONEnum {
@@ -539,34 +463,19 @@ public @Supported class JobAttributesSetter_sav {
 	}
 
 	public static enum LANGUAGEIDEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "*US")
-		USRPRF, @Special(value = "*SY")
-		SYSVAL, OTHER
+		@Special(value = "*") SAME, @Special(value = "*US") USRPRF, @Special(value = "*SY") SYSVAL, OTHER
 	}
 
 	public static enum COUNTRYORREGIONIDEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "*U")
-		USRPRF, @Special(value = "*S")
-		SYSVAL, OTHER
+		@Special(value = "*") SAME, @Special(value = "*U") USRPRF, @Special(value = "*S") SYSVAL, OTHER
 	}
 
 	public static enum CODEDCHARACTERSETIDEnum {
-		@Special(value = "0")
-		SAME, @Special(value = "-1")
-		USRPRF, @Special(value = "-2")
-		SYSVAL, @Special(value = "65535")
-		HEX, OTHER
+		@Special(value = "0") SAME, @Special(value = "-1") USRPRF, @Special(value = "-2") SYSVAL, @Special(value = "65535") HEX, OTHER
 	}
 
 	public static enum DECIMALFORMATEnum {
-		@Special(value = "*")
-		SAME, @Special(value = "X'00'")
-		SYSVAL, @Special(value = "X'40'")
-		BLANK, @Special(value = "I")
-		I, @Special(value = "J")
-		J
+		@Special(value = "*") SAME, @Special(value = "X'00'") SYSVAL, @Special(value = "X'40'") BLANK, @Special(value = "I") I, @Special(value = "J") J
 	}
 
 	public static enum CHARACTERIDENTIFIERCONTROLEnum {
@@ -583,5 +492,20 @@ public @Supported class JobAttributesSetter_sav {
 
 	public static enum DUPLICATEJOBOPTIONEnum {
 		SELECT, MSG
+	}
+
+	private DateFormat forType(org.smeup.sys.il.data.def.DateFormat format) {
+		switch (format) {
+		case DMY:
+			return new SimpleDateFormat("ddMMyy");
+		case MDY:
+			return new SimpleDateFormat("MMddyy");
+		case YMD:
+			return new SimpleDateFormat("yyMMdd");
+		case JUL:
+			return new SimpleDateFormat("yyD");
+		default:
+			throw new RuntimeException("Unknokwn date format: " + format);
+		}
 	}
 }

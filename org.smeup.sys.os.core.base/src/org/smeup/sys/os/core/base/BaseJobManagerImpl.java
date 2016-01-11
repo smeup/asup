@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.smeup.sys.il.core.ctx.QCredentials;
 import org.smeup.sys.os.core.jobs.JobEventType;
+import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobEvent;
 import org.smeup.sys.os.core.jobs.QJobListener;
@@ -92,6 +93,16 @@ public abstract class BaseJobManagerImpl implements QJobManager, QAuthentication
 		for (QJobListener jobListener : this.listeners)
 			jobListener.handleEvent(jobEvent);
 
+	}
+
+	@Override
+	public void updateStatus(QJob job, JobStatus status) {
+		
+		QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
+		jobEvent.setSource(job);
+		jobEvent.setType(JobEventType.STATUS_CHANGED);
+		
+		fireEvent(jobEvent);
 	}
 
 	@Override

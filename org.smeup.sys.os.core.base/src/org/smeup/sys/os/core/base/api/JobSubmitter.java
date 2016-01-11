@@ -11,24 +11,15 @@
  */
 package org.smeup.sys.os.core.base.api;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.smeup.sys.dk.core.annotation.ToDo;
-import org.smeup.sys.il.core.QThread;
-import org.smeup.sys.il.core.QThreadManager;
-import org.smeup.sys.il.core.out.QObjectWriter;
 import org.smeup.sys.il.core.out.QOutputManager;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QCharacter;
-import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataStructWrapper;
 import org.smeup.sys.il.data.QDatetime;
 import org.smeup.sys.il.data.QEnum;
@@ -39,24 +30,21 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.def.DatetimeType;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.il.memo.Scope;
 import org.smeup.sys.os.cmd.QCommandManager;
-import org.smeup.sys.os.core.base.api.tools.JobLogWriter;
 import org.smeup.sys.os.core.jobs.QJob;
-import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
-import org.smeup.sys.os.core.jobs.QJobManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QProgramManager;
+import org.smeup.sys.os.usrprf.QUserProfile;
 
 @Program(name = "QWTCCSBJ")
 public class JobSubmitter {
 
 	@Inject
 	private QJob job;
-	@Inject
-	private QJobManager jobManager;
-	@Inject
-	private QThreadManager threadManager;
 	@Inject
 	private QJobLogManager jobLogManager;
 	@Inject
@@ -65,6 +53,8 @@ public class JobSubmitter {
 	private QProgramManager programManager;
 	@Inject
 	private QOutputManager outputManager;
+	@Inject
+	private QResourceManager resourceManager;
 
 	@Main
 	public void main(@ToDo @DataDef(length = 20000) QCharacter commandToRun, @ToDo @DataDef(length = 10) QEnum<JobNameEnum, QCharacter> jobName,
@@ -91,98 +81,39 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
 		@SuppressWarnings("resource")
-		QCallableProgram caller = programManager.getCaller(job.getJobID(), this);
+		QCallableProgram callableProgram = programManager.getCaller(job.getJobID(), this);
+		Object caller = null;
+		if(callableProgram != null)
+			caller = callableProgram.getRawProgram();
 
 		// Job spawn
-		QJob childJob = null;
+		QJob jobSubmitted = null;
 
 		switch (jobName.asEnum()) {
 		// TODO
-		case JOBD:
-			childJob = jobManager.create(job);
+		case JOBD: {
+			QResourceReader<QUserProfile> userProfileReader = resourceManager.getResourceReader(job, QUserProfile.class, Scope.ALL);
+			QUserProfile userProfile = userProfileReader.lookup(job.getJobUser());
+			jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), userProfile.getJobDescription(), caller);
 			break;
+		}
 		case OTHER:
 			if (!jobName.isEmpty()) {
-				childJob = jobManager.create(job, jobName.asData().trimR());
+				jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), jobName.asData().trimR(), caller);
 
 				// TODO remove -> QJobListener
-				if (childJob.getJobName().startsWith("LO_")) {
+				if (jobSubmitted.getJobName().startsWith("LO_"))
 					outputManager.setDefaultWriter(job.getContext(), "L");
-				}
 			} else
-				childJob = jobManager.create(job);
+				jobSubmitted = commandManager.submitJob(job.getJobID(), commandToRun.trimR(), null, caller);
 			break;
 		}
 
 		// add message to queue
 		NumberFormat numberFormat = new DecimalFormat("000000");
-		job.getMessages().add(numberFormat.format(childJob.getJobNumber()));
+		job.getMessages().add(numberFormat.format(jobSubmitted.getJobNumber()));
 
-		// Submit command
-		String threadName = "job/" + childJob.getJobNumber() + "-" + childJob.getJobUser() + "-" + childJob.getJobName();
-		QThread thread = threadManager.createThread(threadName, new SubmittedCommand(childJob, commandToRun.trimR(), caller));
-		threadManager.start(thread);		
-
-		jobLogManager.info(job, "Job submitted:" + childJob);
-	}
-
-	private class SubmittedCommand implements Runnable {
-
-		private QJob qJob;
-		private String commandString;
-		private QCallableProgram caller;
-
-		protected SubmittedCommand(QJob qJob, String commandString, QCallableProgram caller) {
-			this.qJob = qJob;
-			this.commandString = commandString;
-			this.caller = caller;
-		}
-
-		@Override
-		public void run() {
-
-			Map<String, Object> variables = null;
-			if (threadManager.currentThread().checkRunnable() && caller != null) {
-
-				variables = new HashMap<String, Object>();
-
-				for (Field field : caller.getRawProgram().getClass().getDeclaredFields()) {
-
-					Type type = field.getGenericType();
-
-					Class<?> fieldKlass = null;
-
-					if (type instanceof ParameterizedType)
-						fieldKlass = (Class<?>) ((ParameterizedType) type).getRawType();
-					else
-						fieldKlass = (Class<?>) type;
-
-					if (QData.class.isAssignableFrom(fieldKlass)) {
-						Object variable;
-						try {
-							field.setAccessible(true);
-							variable = field.get(caller.getRawProgram());
-							variables.put(field.getName(), variable);
-						} catch (IllegalArgumentException | IllegalAccessException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} finally {
-							field.setAccessible(false);
-						}
-
-					}
-				}
-			}
-
-			commandManager.executeCommand(qJob.getJobID(), commandString, variables);
-
-			QObjectWriter objectWriter = outputManager.getObjectWriter(qJob.getContext(), "P");
-			QJobLog jobLog = jobLogManager.lookup(qJob);
-
-			new JobLogWriter(objectWriter).write(jobLog);
-
-			jobManager.close(qJob);
-		}
+		jobLogManager.info(job, "Job submitted:" + jobSubmitted);
 	}
 
 	public static enum JobNameEnum {
