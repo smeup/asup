@@ -69,8 +69,7 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 	}
 
 	@Override
-	public QJob lookup(String contextID) {
-
+	public QJob lookup(String contextID) {		
 		return activeJobs.get(contextID);
 	}
 
@@ -123,7 +122,7 @@ public class E4JobManagerImpl extends BaseJobManagerImpl {
 			throw new OperatingSystemRuntimeException("User " + user + " is disabled");
 
 		QJob job = systemManager.createJob(JobType.BATCH, userProfile.getName(), jobName);
-
+		
 		// add job description libraries
 		if (userProfile.getJobDescription() != null) {
 			QResourceReader<QJobDescription> jobDescriptionResource = resourceManager.getResourceReader(startupJob, QJobDescription.class, Scope.ALL);

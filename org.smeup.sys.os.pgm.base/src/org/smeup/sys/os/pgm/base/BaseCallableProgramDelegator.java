@@ -107,7 +107,8 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 
 		// try API mode
 		if (entry == null) {
-			entry = buildEntry(_main);
+			if(_main != null)
+				entry = buildEntry(_main);
 			apiMode = entry != null;
 		}
 	}

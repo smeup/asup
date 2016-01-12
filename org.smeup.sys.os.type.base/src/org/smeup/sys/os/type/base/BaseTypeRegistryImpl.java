@@ -90,23 +90,6 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 	}
 
 	@Override
-	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
-		
-		switch (scope) {
-		case ALL:
-		case ALL_USER:
-		case CURRENT_LIBRARY:
-		case LIBRARY_LIST:
-		case USER_LIBRARY_LIST:
-			return getResourceWriter(contextProvider, klass, scope);
-		case OTHER:
-			return getResourceWriter(contextProvider, klass, name);
-		}
-				
-		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 
-	}
-
-	@Override
 	public QType<?> lookup(String name) {
 		QType<?> type = null;
 
@@ -307,6 +290,11 @@ public class BaseTypeRegistryImpl<TP extends QTypedObject> implements QTypeRegis
 	@Override
 	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider context, Class<T> klass, Scope scope) {
 		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);
+	}
+
+	@Override
+	public <T extends QObjectNameable> QResourceWriter<T> getResourceWriter(QContextProvider contextProvider, Class<T> klass, Scope scope, String name) {
+		throw new OperatingSystemRuntimeException("Not writable object: " + QType.class);		
 	}
 
 }

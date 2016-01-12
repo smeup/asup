@@ -44,7 +44,7 @@ public abstract class SCDEAbstractResourceProviderImpl<SE extends QScheduleEntry
 		case ALL_USER:
 			return getResourceReader(contextProvider, klass, scope);
 		case OTHER:
-			return getResourceReader(contextProvider, klass, scope, name);
+			return getResourceReader(contextProvider, klass, name);
 		}
 		
 		throw new IntegratedLanguageMemoryRuntimeException("Invalid scope: "+scope); 

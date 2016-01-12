@@ -119,9 +119,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 			QJobEvent jobEvent = QOperatingSystemJobsFactory.eINSTANCE.createJobEvent();
 			jobEvent.setSource(job);
 			jobEvent.setType(JobEventType.STARTING);
-			
-			for(QJobListener jobListener: this.listeners)
-				jobListener.handleEvent(jobEvent);
+			fireEvent(jobEvent);
 
 			// save job
 			CDOResource resource = systemManager.getTransaction().getOrCreateResource(CDO_RESOURCE);
@@ -129,9 +127,7 @@ public class CDOJobManagerImpl extends BaseJobManagerImpl implements QJobManager
 			systemManager.getTransaction().commit();
 
 			jobEvent.setType(JobEventType.STARTED);
-			
-			for(QJobListener jobListener: this.listeners)
-				jobListener.handleEvent(jobEvent);
+			fireEvent(jobEvent);			
 
 			activeJobs.put(job.getJobID(), job);
 

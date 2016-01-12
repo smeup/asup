@@ -102,8 +102,10 @@ public class BaseCallableInjector {
 
 		QDataTerm<?> programStatusTerm = dataContainer.createDataTerm("*pgmstatus", BaseProgramStatusImpl.class, new ArrayList<Annotation>());
 		QProgramStatus programStatus = (QProgramStatus) dataContainer.getData(programStatusTerm);
-		programStatus.getProgramName().eval(program.getName());
-		programStatus.getProgramLibrary().eval(program.getLibrary());
+		if(program != null) {
+			programStatus.getProgramName().eval(program.getName());
+			programStatus.getProgramLibrary().eval(program.getLibrary());
+		}
 		programStatus.getUserName().eval(job.getJobUser());
 		programStatus.getJobNumber().eval(job.getJobNumber());
 		programStatus.getJobName().eval(job.getJobName());
