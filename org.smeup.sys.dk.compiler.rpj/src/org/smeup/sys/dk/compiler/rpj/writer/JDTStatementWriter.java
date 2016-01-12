@@ -705,7 +705,7 @@ public class JDTStatementWriter extends StatementVisitorImpl {
 
 	private QPredicateExpression buildIterationCondition(String condition) {
 			
-		if (condition == null)
+		if (condition == null || condition.isEmpty())
 			condition = "%runnable";
 		else {
 			if(condition.equalsIgnoreCase("*ON"))
