@@ -392,4 +392,9 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 
 		return data;
 	}
+
+	@Override
+	public List<QData> getDatas() {
+		return new ArrayList<QData>(datas.values());
+	}
 }

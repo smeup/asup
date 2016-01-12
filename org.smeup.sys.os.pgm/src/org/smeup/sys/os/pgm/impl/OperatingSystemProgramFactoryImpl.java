@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.smeup.sys.il.data.QData;
+import org.smeup.sys.os.pgm.*;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
@@ -67,6 +68,7 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP: return (EObject)createActivationGroup();
 			case QOperatingSystemProgramPackage.PROGRAM: return (EObject)createProgram();
 			case QOperatingSystemProgramPackage.PROGRAM_CONTAINER: return (EObject)createProgramContainer();
+			case QOperatingSystemProgramPackage.PROGRAM_INFO: return (EObject)createProgramInfo();
 			case QOperatingSystemProgramPackage.PROGRAM_SOURCE: return (EObject)createProgramSource();
 			case QOperatingSystemProgramPackage.PROGRAM_STACK: return (EObject)createProgramStack();
 			default:
@@ -130,6 +132,16 @@ public class OperatingSystemProgramFactoryImpl extends EFactoryImpl implements Q
 	public QProgramContainer createProgramContainer() {
 		ProgramContainerImpl programContainer = new ProgramContainerImpl();
 		return programContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QProgramInfo createProgramInfo() {
+		ProgramInfoImpl programInfo = new ProgramInfoImpl();
+		return programInfo;
 	}
 
 	/**

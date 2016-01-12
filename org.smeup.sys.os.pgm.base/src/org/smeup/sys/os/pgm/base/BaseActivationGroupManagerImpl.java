@@ -11,7 +11,9 @@
  */
 package org.smeup.sys.os.pgm.base;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -60,5 +62,10 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
 		return activationGroup;
 
+	}
+
+	@Override
+	public List<QActivationGroup> list(QJob job) {
+		return new ArrayList<QActivationGroup>(getMapActivationGroup(job).values());
 	}
 }

@@ -22,6 +22,9 @@
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="register" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eOperations>
+    <eOperations name="list" upperBound="-1" eType="#//ActivationGroup">
+      <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+    </eOperations>
     <eOperations name="lookup" eType="#//ActivationGroup">
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -30,12 +33,16 @@
       <eParameters name="job" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="activationGroup" lowerBound="1" eType="#//ActivationGroup"/>
     </eOperations>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.mi.core/model/mi-core.ecore#//util/Singleton">
+      <eTypeArguments eClassifier="#//ActivationGroupManager"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true" interface="true">
     <eOperations name="close"/>
     <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContext"/>
     <eOperations name="getEntry" eType="#//ParameterList"/>
     <eOperations name="getProgram" lowerBound="1" eType="#//Program"/>
+    <eOperations name="getProgramInfo" lowerBound="1" eType="#//ProgramInfo"/>
     <eOperations name="getProgramStatus" lowerBound="1" eType="#//ProgramStatus"/>
     <eOperations name="getRawProgram" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -78,6 +85,9 @@
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.os.type/model/os-type.ecore#//TypedContainer">
       <eTypeArguments eClassifier="#//Program"/>
     </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProgramInfo" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramManager" abstract="true" interface="true">
     <eOperations name="callProgram">

@@ -29,6 +29,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.ctx.QContext;
+import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -60,7 +61,9 @@ import org.smeup.sys.os.file.QFile;
 import org.smeup.sys.os.file.QFileManager;
 import org.smeup.sys.os.file.QFileOverride;
 import org.smeup.sys.os.pgm.QCallableProgram;
+import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
 public class BaseCallableInjector {
@@ -113,7 +116,22 @@ public class BaseCallableInjector {
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
 			Object delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
-			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate);
+			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
+				
+			long memorySize = 0;
+			List<Object> stores = new ArrayList<Object>();
+			for(QData data: dataContainer.getDatas()) {
+				if(data instanceof QBufferedData) {
+					QBufferedData bufferedData = ((QBufferedData)data);
+					Object store = bufferedData.getStore();
+					if(!stores.contains(store)) {						
+						memorySize += bufferedData.getSize();
+						stores.add(store);
+					}
+				}
+			}
+			programInfo.setMemorySize(memorySize);
+			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate, programInfo);
 
 			QDataContext dataContext = getDataContext();
 			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);

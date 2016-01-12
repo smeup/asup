@@ -908,6 +908,7 @@
       </eParameters>
     </eOperations>
     <eOperations name="getDataContext" lowerBound="1" eType="#//DataContext"/>
+    <eOperations name="getDatas" upperBound="-1" eType="#//Data"/>
     <eOperations name="getDataTerm">
       <eGenericType eClassifier="#//term/DataTerm">
         <eTypeArguments/>

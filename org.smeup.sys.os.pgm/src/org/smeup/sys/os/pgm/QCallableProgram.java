@@ -61,6 +61,14 @@ public interface QCallableProgram extends QObject, Callable<QData[]>, Closeable 
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
+	QProgramInfo getProgramInfo();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 * @generated
+	 */
 	QProgramStatus getProgramStatus();
 
 	/**

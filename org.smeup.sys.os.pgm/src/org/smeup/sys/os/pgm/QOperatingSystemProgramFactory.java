@@ -52,6 +52,15 @@ public interface QOperatingSystemProgramFactory extends EFactory {
 	QProgramContainer createProgramContainer();
 
 	/**
+	 * Returns a new object of class '<em>Program Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Program Info</em>'.
+	 * @generated
+	 */
+	QProgramInfo createProgramInfo();
+
+	/**
 	 * Returns a new object of class '<em>Program Source</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *

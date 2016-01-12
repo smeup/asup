@@ -72,6 +72,14 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	QDataContext getDataContext();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	List<QData> getDatas();
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model keyRequired="true"
 	 * @generated

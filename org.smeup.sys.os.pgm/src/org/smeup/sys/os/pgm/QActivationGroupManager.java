@@ -7,6 +7,9 @@
  */
 package org.smeup.sys.os.pgm;
 
+import java.util.List;
+
+import org.smeup.sys.mi.core.util.QSingleton;
 import org.smeup.sys.os.core.jobs.QJob;
 
 /**
@@ -18,13 +21,24 @@ import org.smeup.sys.os.core.jobs.QJob;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface QActivationGroupManager {
+public interface QActivationGroupManager extends QSingleton<QActivationGroupManager> {
+	
+	QActivationGroupManager qINSTANCE = null;
+	
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model required="true" jobRequired="true" nameRequired="true" registerRequired="true"
 	 * @generated
 	 */
 	QActivationGroup create(QJob job, String name, boolean register);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true"
+	 * @generated
+	 */
+	List<QActivationGroup> list(QJob job);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

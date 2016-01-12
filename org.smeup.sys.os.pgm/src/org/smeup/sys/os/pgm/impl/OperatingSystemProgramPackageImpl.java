@@ -21,6 +21,7 @@ import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
@@ -29,6 +30,7 @@ import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramPackage;
 import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramContainer;
+import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramSource;
 import org.smeup.sys.os.pgm.QProgramStack;
@@ -70,6 +72,13 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	private EClass programContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass programInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -301,6 +310,24 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProgramInfo() {
+		return programInfoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProgramInfo_MemorySize() {
+		return (EAttribute)programInfoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -429,6 +456,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		createEAttribute(programContainerEClass, PROGRAM_CONTAINER__BASE_PACKAGE);
 		createEAttribute(programContainerEClass, PROGRAM_CONTAINER__SCAN_PACKAGE);
 
+		programInfoEClass = createEClass(PROGRAM_INFO);
+		createEAttribute(programInfoEClass, PROGRAM_INFO__MEMORY_SIZE);
+
 		programManagerEClass = createEClass(PROGRAM_MANAGER);
 
 		programSourceEClass = createEClass(PROGRAM_SOURCE);
@@ -470,6 +500,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
 		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
+		QMachineInterfaceUtilPackage theMachineInterfaceUtilPackage = (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
 		QIntegratedLanguageDataPackage theIntegratedLanguageDataPackage = (QIntegratedLanguageDataPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageDataPackage.eNS_URI);
@@ -481,10 +512,14 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		// Add supertypes to classes
 		activationGroupEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
-		EGenericType g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
+		EGenericType g1 = createEGenericType(theMachineInterfaceUtilPackage.getSingleton());
+		EGenericType g2 = createEGenericType(this.getActivationGroupManager());
+		g1.getETypeArguments().add(g2);
+		activationGroupManagerEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(theIntegratedLanguageCorePackage.getObject());
 		callableProgramEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCallable());
-		EGenericType g2 = createEGenericType(this.getParameterList());
+		g2 = createEGenericType(this.getParameterList());
 		g1.getETypeArguments().add(g2);
 		callableProgramEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(theMachineInterfaceCorePackage.getJavaCloseable());
@@ -494,6 +529,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g2 = createEGenericType(this.getProgram());
 		g1.getETypeArguments().add(g2);
 		programContainerEClass.getEGenericSuperTypes().add(g1);
+		programInfoEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		programSourceEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		programStackEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 		programStatusEClass.getESuperTypes().add(theIntegratedLanguageDataPackage.getDataStruct());
@@ -517,6 +553,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEBoolean(), "register", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(activationGroupManagerEClass, this.getActivationGroup(), "list", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		op = addEOperation(activationGroupManagerEClass, this.getActivationGroup(), "lookup", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -534,6 +573,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		addEOperation(callableProgramEClass, this.getParameterList(), "getEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, this.getProgram(), "getProgram", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(callableProgramEClass, this.getProgramInfo(), "getProgramInfo", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(callableProgramEClass, this.getProgramStatus(), "getProgramStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -557,6 +598,9 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		initEClass(programContainerEClass, QProgramContainer.class, "ProgramContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProgramContainer_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, QProgramContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProgramContainer_ScanPackage(), ecorePackage.getEBoolean(), "scanPackage", null, 1, 1, QProgramContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(programInfoEClass, QProgramInfo.class, "ProgramInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProgramInfo_MemorySize(), ecorePackage.getELong(), "memorySize", null, 0, 1, QProgramInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(programManagerEClass, QProgramManager.class, "ProgramManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

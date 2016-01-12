@@ -35,6 +35,7 @@ import org.smeup.sys.os.core.OperatingSystemMessageException;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
 public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container implements QCallableProgram {
@@ -58,12 +59,15 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 	private QIndicator inlr = null;
 	private boolean apiMode = false;
 
-	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, Object delegate) {
+	private QProgramInfo programInfo = null;
+	
+	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, Object delegate, QProgramInfo programInfo) {
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
 		this.delegate = delegate;
-
+		
+		this.programInfo = programInfo;		
 		analyzeDelegate(delegate);
 	}
 
@@ -309,5 +313,10 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 	@Override
 	public QProgramStatus getProgramStatus() {
 		return this.programStatus;
+	}
+
+	@Override
+	public QProgramInfo getProgramInfo() {
+		return this.programInfo;
 	}
 }

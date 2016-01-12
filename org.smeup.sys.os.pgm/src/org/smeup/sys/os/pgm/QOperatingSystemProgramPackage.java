@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
+import org.smeup.sys.mi.core.util.QMachineInterfaceUtilPackage;
 import org.smeup.sys.os.type.QOperatingSystemTypePackage;
 
 /**
@@ -120,7 +121,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVATION_GROUP_MANAGER_FEATURE_COUNT = 0;
+	int ACTIVATION_GROUP_MANAGER_FEATURE_COUNT = QMachineInterfaceUtilPackage.SINGLETON_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.ProgramImpl <em>Program</em>}' class.
@@ -299,6 +300,34 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int PROGRAM_CONTAINER_FEATURE_COUNT = QOperatingSystemTypePackage.TYPED_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.pgm.impl.ProgramInfoImpl <em>Program Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.pgm.impl.ProgramInfoImpl
+	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramInfo()
+	 * @generated
+	 */
+	int PROGRAM_INFO = 5;
+
+	/**
+	 * The feature id for the '<em><b>Memory Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM_INFO__MEMORY_SIZE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Program Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROGRAM_INFO_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}' class.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
@@ -306,7 +335,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramManager()
 	 * @generated
 	 */
-	int PROGRAM_MANAGER = 5;
+	int PROGRAM_MANAGER = 6;
 
 	/**
 	 * The number of structural features of the '<em>Program Manager</em>' class.
@@ -324,7 +353,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramSource()
 	 * @generated
 	 */
-	int PROGRAM_SOURCE = 6;
+	int PROGRAM_SOURCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute. <!--
@@ -359,7 +388,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStack()
 	 * @generated
 	 */
-	int PROGRAM_STACK = 7;
+	int PROGRAM_STACK = 8;
 
 	/**
 	 * The feature id for the '<em><b>Date Enter</b></em>' attribute. <!--
@@ -395,7 +424,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramStatus()
 	 * @generated
 	 */
-	int PROGRAM_STATUS = 8;
+	int PROGRAM_STATUS = 9;
 
 	/**
 	 * The number of structural features of the '<em>Program Status</em>' class.
@@ -412,7 +441,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getParameterList()
 	 * @generated
 	 */
-	int PARAMETER_LIST = 9;
+	int PARAMETER_LIST = 10;
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QActivationGroup <em>Activation Group</em>}'.
@@ -571,6 +600,27 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProgramContainer_ScanPackage();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramInfo <em>Program Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Program Info</em>'.
+	 * @see org.smeup.sys.os.pgm.QProgramInfo
+	 * @generated
+	 */
+	EClass getProgramInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QProgramInfo#getMemorySize <em>Memory Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory Size</em>'.
+	 * @see org.smeup.sys.os.pgm.QProgramInfo#getMemorySize()
+	 * @see #getProgramInfo()
+	 * @generated
+	 */
+	EAttribute getProgramInfo_MemorySize();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}'.
@@ -805,6 +855,24 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROGRAM_CONTAINER__SCAN_PACKAGE = eINSTANCE.getProgramContainer_ScanPackage();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.impl.ProgramInfoImpl <em>Program Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.pgm.impl.ProgramInfoImpl
+		 * @see org.smeup.sys.os.pgm.impl.OperatingSystemProgramPackageImpl#getProgramInfo()
+		 * @generated
+		 */
+		EClass PROGRAM_INFO = eINSTANCE.getProgramInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROGRAM_INFO__MEMORY_SIZE = eINSTANCE.getProgramInfo_MemorySize();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.pgm.QProgramManager <em>Program Manager</em>}' class.
