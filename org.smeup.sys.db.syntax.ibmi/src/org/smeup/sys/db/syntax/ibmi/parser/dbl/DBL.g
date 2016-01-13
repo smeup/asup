@@ -26,7 +26,6 @@ options {
 }
 
 
-tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
@@ -41,9 +40,11 @@ tokens {
   COUNT_ROWS;
   //CURRENT
   DB_NAME;
+  DEALLOCATE_DESCRIPTOR;
   DECLARE_CURSOR_STATEMENT;
   DESCRIBE_STATEMENT;
   DESCRIPTOR;
+  DESCRIPTOR_SCOPE;
   EMPTY_GROUPING_SET;
   EXECUTE_STATEMENT;
   EXECUTE_IMMEDIATE_STATEMENT;
@@ -111,6 +112,8 @@ tokens {
   WITH_MAX;
   WITHOUT_HOLD;
 }
+
+
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -269,6 +272,7 @@ CURSOR	:	 C U R S O R;
 DATFMT 	:	D A T F M T;
 DATSEP  :	D A T S E P;
 DBGVIEW	:	D B G V I E W;
+DEALLOCATE	:	D E A L L O C A T E;
 DEFAULT	: D E F A U L T;	 
 DECLARE	:	 D E C L A R E;
 DECMPT  :	 D E C M P T;
@@ -657,6 +661,8 @@ statement
   set_option_statement
   |
   allocate_descriptor
+  |
+  deallocate_descriptor
   
   ;  
   
@@ -977,9 +983,9 @@ allocate_descriptor
 
 descriptor_scope
 	:
-	LOCAL 
+	l=LOCAL -> ^(DESCRIPTOR_SCOPE $l)
 	|
-	GLOBAL 
+	g=GLOBAL -> ^(DESCRIPTOR_SCOPE $g)
 	;
 
 descriptor_limits
@@ -987,6 +993,13 @@ descriptor_limits
 	WITH MAX i=NUMBER -> ^(WITH_MAX $i)
 	|
 	WITH MAX v= Variable -> ^(WITH_MAX ^(VARIABLE $v))
+	;	
+
+/* DEALLOCATE DESCRIPTOR STATEMENT */
+
+deallocate_descriptor
+	:
+	DEALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(DEALLOCATE_DESCRIPTOR ^(DESCRIPTOR $d) $s* )
 	;	
 
 /*
