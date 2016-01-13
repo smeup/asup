@@ -37,6 +37,7 @@ tokens {
   COLUMN;
   COLUMNS_LIST;
   COLUMN_NAME;
+  CONDITION_ITEMS;
   COUNT_VAL;
   COUNT_ROWS;
   //CURRENT
@@ -56,6 +57,7 @@ tokens {
   FIELD_TYPE;
   FUNCTION;
   FUNC_ARGS;
+  GET_DIAGNOSTICS_STATEMENT;
   GET_DESCRIPTOR_STATEMENT;
   GROUP_BY;
   HEADER_INFO;
@@ -268,6 +270,7 @@ COUNT : C O U N T;
 CREATE : C R E A T E;
 COMMIT	:	 C O M M I T;
 COMMITTED	:	 C O M M I T T E D;
+CONDITION	:	C O N D I T I O N;
 CONNECT :	 C O N N E C T;
 CONNECTION	:	C O N N E C T I O N;
 CROSS : C R O S S;
@@ -285,6 +288,7 @@ DFTRDBCOL: 	D F T R D B C O L;
 DESC : D E S C;
 DESCRIBE : D E S C R I B E;
 DESCRIPTOR : D E S C R I P T O R;	
+DIAGNOSTICS :	D I A G N O S T I C S;
 DISTINCT : D I S T I N C T;
 DISCONNECT : D I S C O N N E C T;
 DLYPRP	: D L Y P R P;	
@@ -671,6 +675,8 @@ statement
   get_descriptor
   |
   set_descriptor
+  |
+  get_diagnostic
   
   ;  
   
@@ -1066,8 +1072,25 @@ item_info_assign
 	:
 	i = Identifier EQUAL v = Variable -> ^(VALUE ^(ITEM $i) ^(VALUE ^(VARIABLE $v))) 
 	;	
-	
 
+/* GET DIAGNOSTIC STATEMENT */
+
+get_diagnostic
+	:
+	GET DIAGNOSTICS condition_information -> ^(GET_DIAGNOSTICS_STATEMENT condition_information)
+	;			
+
+condition_information
+	:
+	CONDITION i=NUMBER condition_information_items -> ^(CONDITION $i condition_information_items)
+	|
+	CONDITION v=Variable condition_information_items -> ^(CONDITION ^(VARIABLE $v) condition_information_items)
+	;	
+
+condition_information_items
+	:	
+	variable_assign (',' variable_assign)* -> ^(CONDITION_ITEMS variable_assign variable_assign*)
+	;
 /*
 ===============================================================================
   <query_expression>
