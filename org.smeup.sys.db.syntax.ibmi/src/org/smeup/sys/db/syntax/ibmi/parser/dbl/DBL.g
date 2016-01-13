@@ -871,8 +871,16 @@ hold
 /* DESCRIBE STATEMENT */
  describe_statement
  	:	
- 	DESCRIBE s=Identifier into_clause ->^(DESCRIBE_STATEMENT ^(STATEMENT $s) into_clause)
+ 	DESCRIBE s=Identifier into_clause -> ^(DESCRIBE_STATEMENT ^(STATEMENT $s) into_clause)
+ 	|
+ 	DESCRIBE s=Identifier using_clause -> ^(DESCRIBE_STATEMENT ^(STATEMENT $s) using_clause)
  	;
+ 	
+ using_clause
+ 	:
+ 	USING (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(USING ^(DESCRIPTOR $d) $s*)
+ 	;	
+ 	
 /* FETCH STATEMENT*/ 
  fetch_statement
  	:
