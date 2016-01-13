@@ -26,7 +26,7 @@ options {
 }
 
 
-  tokens {
+tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
@@ -61,6 +61,8 @@ options {
   HEADER_INFO;
   INDEX_NAME;
   ISOLATION_LEVEL;
+  ITEM;
+  ITEM_INFO;
   MEMBER;
   MULTIPLE_ROW_FETCH;
   NEW_NAME;
@@ -85,6 +87,7 @@ options {
   ROLLBACK_STATEMENT;  
   RW_OPERATION;
   SEL_LIST;
+  SET_DESCRIPTOR_STATEMENT;
   SET_OPTION;
   SET_OPTION_STATEMENT;  
   SET_TRANSACTION_STATEMENT;
@@ -107,7 +110,6 @@ options {
   FOR_COLUMN;
   NOT_NULL;
   USING_DESCRIPTOR;
-  VALUE;
   VALUES;
   VARIABLE;
   VIEW_NAME;
@@ -391,6 +393,7 @@ UNKNOWN : U N K N O W N;
 USING : U S I N G;
 USER	:	U S E R;
 USRPRF : U S R P R F;
+VALUE	:	V A L U E;
 VALUES : V A L U E S;
 VARYING : V A R Y I N G;
 WHEN : W H E N;
@@ -666,6 +669,8 @@ statement
   deallocate_descriptor
   |
   get_descriptor
+  |
+  set_descriptor
   
   ;  
   
@@ -1022,7 +1027,7 @@ get_descriptor
 	
 header_info
 	:
-	v1 = variable_assign (',' v2= variable_assign)*-> ^(HEADER_INFO $v1 $v2*)
+	variable_assign (',' variable_assign)*-> ^(HEADER_INFO variable_assign variable_assign*)
 	;	
 
 variable_assign
@@ -1037,6 +1042,31 @@ variable_value
 	|
 	i = Identifier -> ^(VALUE $i)
 	;	
+	
+/* SET DESCRIPTOR STATEMENT */
+
+set_descriptor
+	:
+	SET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name value_settings -> ^(SET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* value_settings)
+	;		
+
+value_settings
+	:
+	VALUE i=NUMBER ii = value_item_info -> ^(ITEM_INFO $i $ii)
+	|
+	VALUE v=Variable ii = value_item_info -> ^(ITEM_INFO ^(VARIABLE $v) $ii) 
+	;
+
+value_item_info
+	:
+	item_info_assign  (',' item_info_assign)* -> ^(VALUES item_info_assign item_info_assign*)
+	;	
+
+item_info_assign
+	:
+	i = Identifier EQUAL v = Variable -> ^(VALUE ^(ITEM $i) ^(VALUE ^(VARIABLE $v))) 
+	;	
+	
 
 /*
 ===============================================================================
