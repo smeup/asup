@@ -26,10 +26,11 @@ options {
 }
 
 
+  tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
-  ALLOCATE_DESCRIPTOR;
+  ALLOCATE_DESCRIPTOR_STATEMENT;
   ALLOW_READ;    
   AS_EXPRESSION;
   CLOSE_STATEMENT;
@@ -40,7 +41,7 @@ options {
   COUNT_ROWS;
   //CURRENT
   DB_NAME;
-  DEALLOCATE_DESCRIPTOR;
+  DEALLOCATE_DESCRIPTOR_STATEMENT;
   DECLARE_CURSOR_STATEMENT;
   DESCRIBE_STATEMENT;
   DESCRIPTOR;
@@ -55,7 +56,9 @@ options {
   FIELD_TYPE;
   FUNCTION;
   FUNC_ARGS;
+  GET_DESCRIPTOR_STATEMENT;
   GROUP_BY;
+  HEADER_INFO;
   INDEX_NAME;
   ISOLATION_LEVEL;
   MEMBER;
@@ -104,6 +107,7 @@ options {
   FOR_COLUMN;
   NOT_NULL;
   USING_DESCRIPTOR;
+  VALUE;
   VALUES;
   VARIABLE;
   VIEW_NAME;
@@ -112,7 +116,6 @@ options {
   WITH_MAX;
   WITHOUT_HOLD;
 }
-
 
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
@@ -301,6 +304,7 @@ FOR 	:	 F O R;
 FORMAT : F O R M A T;
 FULL : F U L L;
 FROM : F R O M;
+GET 	:	G E T;
 GLOBAL	:	G L O B A L;
 GROUP : G R O U P;
 HAVING : H A V I N G;
@@ -453,9 +457,6 @@ S_USA	:	 MULT U S A;
 S_USER	:	 MULT U S E R;
 S_YES	:	MULT Y E S;
 S_YMD	:	MULT Y M D;
-
-
-
 
 
 /*
@@ -663,6 +664,8 @@ statement
   allocate_descriptor
   |
   deallocate_descriptor
+  |
+  get_descriptor
   
   ;  
   
@@ -986,7 +989,7 @@ field_type
 
 allocate_descriptor
 	:
-	ALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name (l=descriptor_limits)* -> ^(ALLOCATE_DESCRIPTOR ^(DESCRIPTOR $d) $s* $l*)
+	ALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name (l=descriptor_limits)* -> ^(ALLOCATE_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* $l*)
 	;
 
 descriptor_scope
@@ -1007,7 +1010,32 @@ descriptor_limits
 
 deallocate_descriptor
 	:
-	DEALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(DEALLOCATE_DESCRIPTOR ^(DESCRIPTOR $d) $s* )
+	DEALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name -> ^(DEALLOCATE_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* )
+	;	
+
+/* GET DESCRIPTOR STATEMENT */
+
+get_descriptor
+	:
+	GET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name header_info -> ^(GET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* header_info)
+	;	
+	
+header_info
+	:
+	v1 = variable_assign (',' v2= variable_assign)*-> ^(HEADER_INFO $v1 $v2*)
+	;	
+
+variable_assign
+	:
+	v=Variable EQUAL variable_value -> ^(VALUES ^(VARIABLE $v) variable_value) 
+	;	
+
+variable_value
+
+	:
+	c = COUNT -> ^(VALUE $c)
+	|
+	i = Identifier -> ^(VALUE $i)
 	;	
 
 /*
