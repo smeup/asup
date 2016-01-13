@@ -121,18 +121,19 @@ public class BaseCallableInjector {
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
 				
 			long memorySize = 0;
-			List<Object> stores = new ArrayList<Object>();
+			List<Integer> stores = new ArrayList<Integer>();
 			for(QData data: dataContainer.getDatas()) {
 				if(data instanceof QBufferedData) {
 					QBufferedData bufferedData = ((QBufferedData)data);
 					Object store = bufferedData.getStore();
-					if(!stores.contains(store)) {						
+					if(!stores.contains(store.hashCode())) {						
 						memorySize += bufferedData.getSize();
-						stores.add(store);
+						stores.add(store.hashCode());
 					}
 				}
 			}
 			programInfo.setMemorySize(memorySize);
+			
 			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate, programInfo);
 
 			QDataContext dataContext = getDataContext();

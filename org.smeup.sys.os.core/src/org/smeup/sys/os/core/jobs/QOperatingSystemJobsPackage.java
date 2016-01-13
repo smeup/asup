@@ -146,13 +146,22 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__JOB_NUMBER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Job Run Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__JOB_RUN_INFO = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Job Thread</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__JOB_THREAD = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 8;
+	int JOB__JOB_THREAD = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Job Type</b></em>' attribute.
@@ -161,7 +170,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__JOB_TYPE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 9;
+	int JOB__JOB_TYPE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Job User</b></em>' attribute.
@@ -170,7 +179,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__JOB_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 10;
+	int JOB__JOB_USER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Libraries</b></em>' attribute list.
@@ -179,7 +188,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__LIBRARIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 11;
+	int JOB__LIBRARIES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Messages</b></em>' attribute list.
@@ -188,7 +197,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MESSAGES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 12;
+	int JOB__MESSAGES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Switches</b></em>' attribute.
@@ -197,7 +206,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__SWITCHES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 13;
+	int JOB__SWITCHES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>System</b></em>' reference.
@@ -206,7 +215,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__SYSTEM = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 14;
+	int JOB__SYSTEM = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Time Separator</b></em>' attribute.
@@ -215,7 +224,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 15;
+	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
 
 	/**
 	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
@@ -224,7 +233,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__VARIABLES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
+	int JOB__VARIABLES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -233,7 +242,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 17;
+	int JOB_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.
@@ -413,6 +422,34 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB_MANAGER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.impl.JobRunInfoImpl <em>Job Run Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.jobs.impl.JobRunInfoImpl
+	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobRunInfo()
+	 * @generated
+	 */
+	int JOB_RUN_INFO = 7;
+
+	/**
+	 * The feature id for the '<em><b>Memory Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_RUN_INFO__MEMORY_SIZE = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Job Run Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB_RUN_INFO_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobStatus <em>Job Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,7 +457,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobStatus()
 	 * @generated
 	 */
-	int JOB_STATUS = 8;
+	int JOB_STATUS = 9;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.jobs.JobType <em>Job Type</em>}' enum.
@@ -430,7 +467,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobType()
 	 * @generated
 	 */
-	int JOB_TYPE = 9;
+	int JOB_TYPE = 10;
 
 
 	/**
@@ -441,7 +478,7 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobEventType()
 	 * @generated
 	 */
-	int JOB_EVENT_TYPE = 7;
+	int JOB_EVENT_TYPE = 8;
 
 
 	/**
@@ -519,6 +556,17 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJob_JobNumber();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.os.core.jobs.QJob#getJobRunInfo <em>Job Run Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Job Run Info</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getJobRunInfo()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_JobRunInfo();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}'.
@@ -737,6 +785,27 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EClass getJobManager();
 
 	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobRunInfo <em>Job Run Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Job Run Info</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobRunInfo
+	 * @generated
+	 */
+	EClass getJobRunInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.jobs.QJobRunInfo#getMemorySize <em>Memory Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory Size</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJobRunInfo#getMemorySize()
+	 * @see #getJobRunInfo()
+	 * @generated
+	 */
+	EAttribute getJobRunInfo_MemorySize();
+
+	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -887,6 +956,14 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB__JOB_NUMBER = eINSTANCE.getJob_JobNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Run Info</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB__JOB_RUN_INFO = eINSTANCE.getJob_JobRunInfo();
 
 		/**
 		 * The meta object literal for the '<em><b>Job Thread</b></em>' reference feature.
@@ -1055,6 +1132,24 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass JOB_MANAGER = eINSTANCE.getJobManager();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobRunInfoImpl <em>Job Run Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.jobs.impl.JobRunInfoImpl
+		 * @see org.smeup.sys.os.core.jobs.impl.OperatingSystemJobsPackageImpl#getJobRunInfo()
+		 * @generated
+		 */
+		EClass JOB_RUN_INFO = eINSTANCE.getJobRunInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JOB_RUN_INFO__MEMORY_SIZE = eINSTANCE.getJobRunInfo_MemorySize();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.QJobListener <em>Job Listener</em>}' class.

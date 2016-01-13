@@ -87,6 +87,11 @@
           <details key="length" value="20"/>
         </eAnnotations>
       </eOperations>
+      <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="10"/>
+        </eAnnotations>
+      </eOperations>
       <eOperations name="isActive" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
@@ -132,6 +137,8 @@
           <details key="precision" value="6"/>
         </eAnnotations>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="jobRunInfo" lowerBound="1"
+          eType="#//jobs/JobRunInfo" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="jobThread" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Thread"
           transient="true" resolveProxies="false"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobType" eType="#//jobs/JobType"/>
@@ -276,6 +283,9 @@
         <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
         <eParameters name="status" lowerBound="1" eType="#//jobs/JobStatus"/>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JobRunInfo" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="memorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="JobStatus">
       <eLiterals name="Active" value="10" literal="ACT"/>

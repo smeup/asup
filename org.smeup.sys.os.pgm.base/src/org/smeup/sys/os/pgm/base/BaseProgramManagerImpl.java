@@ -38,11 +38,14 @@ import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobRunInfo;
+import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QCallableProgram;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 import org.smeup.sys.os.pgm.QProgram;
+import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.QProgramStack;
 
@@ -191,10 +194,20 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
-	public QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
+	private QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
 
 		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
 		QCallableProgram callableProgram = callableInjector.prepareCallable(program, klass);
+
+		QProgramInfo programInfo = callableProgram.getProgramInfo();
+		if (programInfo != null) {
+			QJobRunInfo jobRunInfo = job.getJobRunInfo();
+			if (jobRunInfo == null) {
+				jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
+				job.setJobRunInfo(jobRunInfo);
+			}
+			jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() + programInfo.getMemorySize());
+		}
 
 		return callableProgram;
 	}
@@ -227,10 +240,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			} else
 				throw new OperatingSystemRuntimeException("Unexpected condition: nxt057t024xn", null);
 			/*
-			if (paramsTo[i] instanceof QAdapter) {
-				QAdapter adapter = (QAdapter) paramsTo[i];
-				adapter.eval(adapter.getDelegate());
-			}  
+			 * if (paramsTo[i] instanceof QAdapter) { QAdapter adapter =
+			 * (QAdapter) paramsTo[i]; adapter.eval(adapter.getDelegate()); }
 			 */
 		}
 
@@ -310,6 +321,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 					QProgram program = callableProgram.getProgram();
 					QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 					activationGroup.remove(program);
+
+					QProgramInfo programInfo = callableProgram.getProgramInfo();
+					if (programInfo != null) {
+						QJobRunInfo jobRunInfo = job.getJobRunInfo();
+						if (jobRunInfo == null) {
+							jobRunInfo = QOperatingSystemJobsFactory.eINSTANCE.createJobRunInfo();
+							job.setJobRunInfo(jobRunInfo);
+						}
+
+						jobRunInfo.setMemorySize(jobRunInfo.getMemorySize() - programInfo.getMemorySize());
+					}
 				}
 
 			} catch (OperatingSystemMessageException | OperatingSystemRuntimeException e) {
@@ -368,7 +390,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		// System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")"
+		// + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	@SuppressWarnings("unused")
@@ -378,7 +401,8 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
-//		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		// System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")"
+		// + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	private String formatStackParameters(QData[] entry) {

@@ -33,6 +33,7 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobName <em>Job Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobNumber <em>Job Number</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobRunInfo <em>Job Run Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobThread <em>Job Thread</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobType <em>Job Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getJobUser <em>Job User</em>}</li>
@@ -161,6 +162,32 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setJobNumber(int value);
 
 	/**
+	 * Returns the value of the '<em><b>Job Run Info</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Job Run Info</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Job Run Info</em>' containment reference.
+	 * @see #setJobRunInfo(QJobRunInfo)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_JobRunInfo()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	QJobRunInfo getJobRunInfo();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getJobRunInfo <em>Job Run Info</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Job Run Info</em>' containment reference.
+	 * @see #getJobRunInfo()
+	 * @generated
+	 */
+	void setJobRunInfo(QJobRunInfo value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Job Status</em>' attribute isn't clear, there
@@ -172,6 +199,15 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 * @generated
 	 */
 	JobStatus getJobStatus();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" required="true"
+	 *        annotation="il-data length='10'"
+	 * @generated
+	 */
+	int getMemorySize();
 
 	/**
 	 * Returns the value of the '<em><b>Job Type</b></em>' attribute.

@@ -30,6 +30,7 @@ import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
 /**
@@ -47,6 +48,7 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobID <em>Job ID</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobName <em>Job Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobNumber <em>Job Number</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobRunInfo <em>Job Run Info</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobThread <em>Job Thread</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobType <em>Job Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getJobUser <em>Job User</em>}</li>
@@ -196,6 +198,16 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * @ordered
 	 */
 	protected int jobNumber = JOB_NUMBER_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getJobRunInfo() <em>Job Run Info</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getJobRunInfo()
+	 * @generated
+	 * @ordered
+	 */
+	protected QJobRunInfo jobRunInfo;
 
 	/**
 	 * The cached value of the '{@link #getJobThread() <em>Job Thread</em>}' reference.
@@ -460,6 +472,49 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QJobRunInfo getJobRunInfo() {
+		return jobRunInfo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetJobRunInfo(QJobRunInfo newJobRunInfo, NotificationChain msgs) {
+		QJobRunInfo oldJobRunInfo = jobRunInfo;
+		jobRunInfo = newJobRunInfo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO, oldJobRunInfo, newJobRunInfo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setJobRunInfo(QJobRunInfo newJobRunInfo) {
+		if (newJobRunInfo != jobRunInfo) {
+			NotificationChain msgs = null;
+			if (jobRunInfo != null)
+				msgs = ((InternalEObject)jobRunInfo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO, null, msgs);
+			if (newJobRunInfo != null)
+				msgs = ((InternalEObject)newJobRunInfo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO, null, msgs);
+			msgs = basicSetJobRunInfo(newJobRunInfo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO, newJobRunInfo, newJobRunInfo));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QThread getJobThread() {
 		return jobThread;
 	}
@@ -537,6 +592,20 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 		}
 		
 		throw new OperatingSystemRuntimeException("Invalid job status: "+getJobID());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public int getMemorySize() {		
+		QJobRunInfo jobRunInfo = getJobRunInfo();
+		if(jobRunInfo == null)
+			return 0;
+		
+		long memorySize = jobRunInfo.getMemorySize()/1024;
+		return (int) memorySize;
 	}
 
 	/**
@@ -794,6 +863,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return basicSetContext(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__CREATION_INFO:
 				return basicSetCreationInfo(null, msgs);
+			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
+				return basicSetJobRunInfo(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__VARIABLES:
 				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
@@ -823,6 +894,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return getJobName();
 			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
 				return getJobNumber();
+			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
+				return getJobRunInfo();
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				return getJobThread();
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:
@@ -877,6 +950,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
 				setJobNumber((Integer)newValue);
+				return;
+			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
+				setJobRunInfo((QJobRunInfo)newValue);
 				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				setJobThread((QThread)newValue);
@@ -943,6 +1019,9 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
 				setJobNumber(JOB_NUMBER_EDEFAULT);
 				return;
+			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
+				setJobRunInfo((QJobRunInfo)null);
+				return;
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				setJobThread((QThread)null);
 				return;
@@ -997,6 +1076,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
 			case QOperatingSystemJobsPackage.JOB__JOB_NUMBER:
 				return jobNumber != JOB_NUMBER_EDEFAULT;
+			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
+				return jobRunInfo != null;
 			case QOperatingSystemJobsPackage.JOB__JOB_THREAD:
 				return jobThread != null;
 			case QOperatingSystemJobsPackage.JOB__JOB_TYPE:

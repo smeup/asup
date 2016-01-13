@@ -66,6 +66,7 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 			case QOperatingSystemJobsPackage.JOB_EVENT: return (EObject)createJobEvent();
 			case QOperatingSystemJobsPackage.JOB_LOG: return (EObject)createJobLog();
 			case QOperatingSystemJobsPackage.JOB_LOG_ENTRY: return (EObject)createJobLogEntry();
+			case QOperatingSystemJobsPackage.JOB_RUN_INFO: return (EObject)createJobRunInfo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -140,6 +141,16 @@ public class OperatingSystemJobsFactoryImpl extends EFactoryImpl implements QOpe
 	public QJobLogEntry createJobLogEntry() {
 		JobLogEntryImpl jobLogEntry = new JobLogEntryImpl();
 		return jobLogEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QJobRunInfo createJobRunInfo() {
+		JobRunInfoImpl jobRunInfo = new JobRunInfoImpl();
+		return jobRunInfo;
 	}
 
 	/**

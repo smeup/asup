@@ -35,6 +35,7 @@ import org.smeup.sys.os.core.jobs.QJobLog;
 import org.smeup.sys.os.core.jobs.QJobLogEntry;
 import org.smeup.sys.os.core.jobs.QJobLogManager;
 import org.smeup.sys.os.core.jobs.QJobManager;
+import org.smeup.sys.os.core.jobs.QJobRunInfo;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsFactory;
 import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
 
@@ -79,6 +80,13 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	private EClass jobManagerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jobRunInfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,7 +214,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EReference getJob_System() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(14);
+		return (EReference)jobEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -264,8 +272,17 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getJob_JobThread() {
+	public EReference getJob_JobRunInfo() {
 		return (EReference)jobEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getJob_JobThread() {
+		return (EReference)jobEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -275,16 +292,6 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 */
 	@Override
 	public EAttribute getJob_JobType() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getJob_JobUser() {
 		return (EAttribute)jobEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -294,7 +301,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJob_Libraries() {
+	public EAttribute getJob_JobUser() {
 		return (EAttribute)jobEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -304,8 +311,18 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJob_Messages() {
+	public EAttribute getJob_Libraries() {
 		return (EAttribute)jobEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getJob_Messages() {
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -332,7 +349,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EAttribute getJob_Switches() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(13);
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -350,7 +367,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EAttribute getJob_TimeSeparator() {
-		return (EAttribute)jobEClass.getEStructuralFeatures().get(15);
+		return (EAttribute)jobEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -359,7 +376,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	 * @generated
 	 */
 	public EReference getJob_Variables() {
-		return (EReference)jobEClass.getEStructuralFeatures().get(16);
+		return (EReference)jobEClass.getEStructuralFeatures().get(17);
 	}
 
 	/**
@@ -449,6 +466,24 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 	@Override
 	public EClass getJobManager() {
 		return jobManagerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJobRunInfo() {
+		return jobRunInfoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getJobRunInfo_MemorySize() {
+		return (EAttribute)jobRunInfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -554,6 +589,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		createEAttribute(jobEClass, JOB__JOB_ID);
 		createEAttribute(jobEClass, JOB__JOB_NAME);
 		createEAttribute(jobEClass, JOB__JOB_NUMBER);
+		createEReference(jobEClass, JOB__JOB_RUN_INFO);
 		createEReference(jobEClass, JOB__JOB_THREAD);
 		createEAttribute(jobEClass, JOB__JOB_TYPE);
 		createEAttribute(jobEClass, JOB__JOB_USER);
@@ -582,6 +618,9 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobLogManagerEClass = createEClass(JOB_LOG_MANAGER);
 
 		jobManagerEClass = createEClass(JOB_MANAGER);
+
+		jobRunInfoEClass = createEClass(JOB_RUN_INFO);
+		createEAttribute(jobRunInfoEClass, JOB_RUN_INFO__MEMORY_SIZE);
 
 		// Create enums
 		jobEventTypeEEnum = createEEnum(JOB_EVENT_TYPE);
@@ -627,6 +666,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		jobEClass.getESuperTypes().add(theIntegratedLanguageCoreCtxPackage.getContextProvider());
 		jobLogEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObjectNameable());
 		jobLogEntryEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
+		jobRunInfoEClass.getESuperTypes().add(theIntegratedLanguageCorePackage.getObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(jobEClass, QJob.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -638,6 +678,7 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEAttribute(getJob_JobID(), ecorePackage.getEString(), "jobID", null, 1, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobName(), ecorePackage.getEString(), "jobName", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobNumber(), ecorePackage.getEInt(), "jobNumber", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_JobRunInfo(), this.getJobRunInfo(), null, "jobRunInfo", null, 1, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_JobThread(), theIntegratedLanguageCorePackage.getThread(), null, "jobThread", null, 0, 1, QJob.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobType(), this.getJobType(), "jobType", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_JobUser(), ecorePackage.getEString(), "jobUser", null, 0, 1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -649,6 +690,8 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		initEReference(getJob_Variables(), theOperatingSystemCorePackage.getEnvironmentVariable(), null, "variables", null, 0, -1, QJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(jobEClass, this.getJobStatus(), "getJobStatus", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(jobEClass, ecorePackage.getEInt(), "getMemorySize", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(jobEClass, ecorePackage.getEBoolean(), "isActive", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -755,6 +798,9 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		addEParameter(op, this.getJob(), "job", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getJobStatus(), "status", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(jobRunInfoEClass, QJobRunInfo.class, "JobRunInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJobRunInfo_MemorySize(), ecorePackage.getELong(), "memorySize", null, 0, 1, QJobRunInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(jobEventTypeEEnum, JobEventType.class, "JobEventType");
 		addEEnumLiteral(jobEventTypeEEnum, JobEventType.STARTING);
@@ -812,6 +858,15 @@ public class OperatingSystemJobsPackageImpl extends EPackageImpl implements QOpe
 		   });	
 		addAnnotation
 		  (jobEClass.getEOperations().get(2), 
+		   source, 
+		   new String[] {
+			 "length", "10"
+		   },
+		   new URI[] {
+			 URI.createURI(QIntegratedLanguageDataPackage.eNS_URI).appendFragment("//def/CharacterDef")
+		   });	
+		addAnnotation
+		  (jobEClass.getEOperations().get(3), 
 		   source, 
 		   new String[] {
 			 "length", "10"
