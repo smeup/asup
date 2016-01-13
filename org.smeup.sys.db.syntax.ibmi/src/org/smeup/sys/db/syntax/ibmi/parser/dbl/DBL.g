@@ -823,7 +823,7 @@ using_variable
  */
  open_using_descriptor
  	:
- 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Identifier))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
+ 	OPEN c=Identifier (USING DESCRIPTOR (v2=Variable|d=Descriptor_Name))? -> {$v2 != null}? ^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(VARIABLE $v2))) 
  								      -> {$d != null}? 	^(OPEN_STATEMENT ^(CURSOR $c) ^(USING_DESCRIPTOR ^(DESCRIPTOR $d)))	
  								      -> ^(OPEN_STATEMENT ^(CURSOR $c))			
  	;	
@@ -883,12 +883,21 @@ hold
  single_fetch
  	:
  	INTO into_variable  (',' into_variable)* -> ^(SINGLE_FETCH ^(INTO into_variable (into_variable)*))
+ 	|
+ 	INTO into_descriptor -> ^(SINGLE_FETCH ^(INTO into_descriptor))
  	;
  	
  into_variable
  	:
  	v=Variable -> ^(VARIABLE $v)
  	;	
+
+ into_descriptor
+ 	:
+ 	SQL DESCRIPTOR v=Variable -> ^(DESCRIPTOR ^(VARIABLE $v)) 	
+ 	|
+ 	SQL DESCRIPTOR d=Descriptor_Name -> ^(DESCRIPTOR $d) 	
+ 	;	 	
 
  	
  multiple_row_fetch
@@ -899,7 +908,9 @@ hold
  	
  multiple_row
  	:
- 	USING DESCRIPTOR d=Variable ->^(DESCRIPTOR ^(VARIABLE $d)) 	
+ 	USING DESCRIPTOR v=Variable ->^(DESCRIPTOR ^(VARIABLE $v)) 	
+ 	|
+ 	USING DESCRIPTOR d=Descriptor_Name ->^(DESCRIPTOR $d) 	
  	;	
  	
  /*CLOSE STATEMENT*/
@@ -1372,6 +1383,11 @@ COMMENT
     :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
     |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
+
+Descriptor_Name
+	: '\'' Identifier '\''
+	;
+
 /*
 ===============================================================================
  Identifiers
