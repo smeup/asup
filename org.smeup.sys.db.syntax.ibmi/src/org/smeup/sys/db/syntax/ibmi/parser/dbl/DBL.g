@@ -30,6 +30,7 @@ tokens {
   ALIAS_NAME;
   ALL; 
   ALL_SQL;
+  ALLOCATE_DESCRIPTOR;
   ALLOW_READ;    
   AS_EXPRESSION;
   CLOSE_STATEMENT;
@@ -107,9 +108,9 @@ tokens {
   VIEW_NAME;
   WITH_DEFAULT;
   WITH_HOLD;
+  WITH_MAX;
   WITHOUT_HOLD;
 }
-
 @header {
 package org.smeup.sys.db.syntax.ibmi.parser.dbl;
 
@@ -236,6 +237,7 @@ AFTER	:	A F T E R;
 AS : A S;
 ALIAS	:	A L I A S;
 ALL : A L L;
+ALLOCATE : A L L O C A T E;	 
 ALLOW	:	 A L L O W;
 ALWBLK 	: A L W B L K;
 ALWCPYDTA : A L W C P Y D T A;	
@@ -295,6 +297,7 @@ FOR 	:	 F O R;
 FORMAT : F O R M A T;
 FULL : F U L L;
 FROM : F R O M;
+GLOBAL	:	G L O B A L;
 GROUP : G R O U P;
 HAVING : H A V I N G;
 HOLD	:	 H O L D;
@@ -315,8 +318,10 @@ LEFT : L E F T;
 LEVEL	:	 L E V E L;
 LIKE : L I K E;
 LIMIT : L I M I T;
+LOCAL 	:	 L O C A L;
 LOCATION : L O C A T I O N;
 LOCK	:	 L O C K;
+MAX	:	M A X;
 MODE	:	 M O D E;
 NAME	:	 N A M E;
 NAMES	:	 N A M E S;
@@ -650,6 +655,8 @@ statement
   close_statement
   |
   set_option_statement
+  |
+  allocate_descriptor
   
   ;  
   
@@ -961,8 +968,26 @@ field_type
   : data_type
   ;
 
+/* ALLOCATE DESCRIPTOR STATEMENT */
 
+allocate_descriptor
+	:
+	ALLOCATE (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name (l=descriptor_limits)* -> ^(ALLOCATE_DESCRIPTOR ^(DESCRIPTOR $d) $s* $l*)
+	;
 
+descriptor_scope
+	:
+	LOCAL 
+	|
+	GLOBAL 
+	;
+
+descriptor_limits
+	:
+	WITH MAX i=NUMBER -> ^(WITH_MAX $i)
+	|
+	WITH MAX v= Variable -> ^(WITH_MAX ^(VARIABLE $v))
+	;	
 
 /*
 ===============================================================================
