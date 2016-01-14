@@ -22,11 +22,11 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetTransactionStatementImpl#getIsolationLevel <em>Isolation Level</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.SetTransactionStatementImpl#getRwOperation <em>Rw Operation</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

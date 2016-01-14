@@ -15,11 +15,11 @@ package org.smeup.sys.db.syntax.dbl;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QOption#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QOption#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getOption()
  * @model

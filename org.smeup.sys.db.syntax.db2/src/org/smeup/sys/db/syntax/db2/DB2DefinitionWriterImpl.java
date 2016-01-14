@@ -93,14 +93,11 @@ public class DB2DefinitionWriterImpl extends BaseDefinitionWriterImpl {
 	}
 
 	@Override
-	public String deleteData(Table table) {
-		return super.deleteData(table);
-		// TODO
-		
-/*		return "TRUNCATE TABLE " + getQualifiedNameInSQLFormat(table) +
-		       " IGNORE DELETE TRIGGERS" +
-		       " DROP STORAGE" +
-		       " IMMEDIATE";*/
+	public String truncateTable(Table table) {
+		return "TRUNCATE TABLE " + getQualifiedNameInSQLFormat(table) +
+			       " IGNORE DELETE TRIGGERS" +
+			       " DROP STORAGE" +
+			       " IMMEDIATE";
 	}
 	
 	public String createIndex(Table table, String indexName, QIndexDef index) {

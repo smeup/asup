@@ -19,11 +19,11 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCallStatement#getProcedureName <em>Procedure Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QCallStatement#getParms <em>Parms</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getCallStatement()
  * @model

@@ -16,12 +16,12 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QPrepareStatement#getFrom <em>From</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QPrepareStatement#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QPrepareStatement#getStatementName <em>Statement Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getPrepareStatement()
  * @model

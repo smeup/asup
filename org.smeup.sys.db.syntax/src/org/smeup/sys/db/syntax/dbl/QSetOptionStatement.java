@@ -18,10 +18,10 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QSetOptionStatement#getOptions <em>Options</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getSetOptionStatement()
  * @model

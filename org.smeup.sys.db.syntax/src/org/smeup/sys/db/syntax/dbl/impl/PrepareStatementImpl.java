@@ -23,12 +23,12 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.PrepareStatementImpl#getFrom <em>From</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.PrepareStatementImpl#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.PrepareStatementImpl#getStatementName <em>Statement Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

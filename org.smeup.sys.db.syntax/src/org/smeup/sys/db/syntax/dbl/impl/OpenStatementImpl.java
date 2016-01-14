@@ -21,12 +21,12 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.OpenStatementImpl#getCursor <em>Cursor</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.OpenStatementImpl#getUsing <em>Using</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.OpenStatementImpl#getUsingType <em>Using Type</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

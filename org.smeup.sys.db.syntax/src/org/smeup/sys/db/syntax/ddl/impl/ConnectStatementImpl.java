@@ -20,13 +20,13 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.ConnectStatementImpl#getPwd <em>Pwd</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.ConnectStatementImpl#isReset <em>Reset</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.ConnectStatementImpl#getTo <em>To</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.ConnectStatementImpl#getUser <em>User</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

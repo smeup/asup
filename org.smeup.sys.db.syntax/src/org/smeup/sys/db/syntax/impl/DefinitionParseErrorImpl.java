@@ -16,6 +16,8 @@ import org.smeup.sys.db.syntax.QDefinitionParseError;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Definition Parse Error</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

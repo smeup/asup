@@ -16,10 +16,10 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement#getVariable <em>Variable</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getExecuteImmediateStatement()
  * @model

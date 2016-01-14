@@ -24,13 +24,13 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getIndexName <em>Index Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getOnTable <em>On Table</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#getSortBy <em>Sort By</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.CreateIndexStatementImpl#isUnique <em>Unique</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

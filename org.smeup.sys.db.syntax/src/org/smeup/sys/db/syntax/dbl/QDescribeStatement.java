@@ -16,11 +16,11 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QDescribeStatement#getStatementName <em>Statement Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getDescribeStatement()
  * @model

@@ -140,6 +140,14 @@ public interface QDefinitionWriter extends QStatementWriter {
 	 * @model required="true" tableRequired="true"
 	 * @generated
 	 */
+	String truncateTable(Table table);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model required="true" tableRequired="true"
+	 * @generated
+	 */
 	String hasLogicals(Table table);
 
 	/**

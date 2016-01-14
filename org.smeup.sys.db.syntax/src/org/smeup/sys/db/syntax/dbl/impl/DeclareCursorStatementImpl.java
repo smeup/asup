@@ -21,7 +21,6 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl#getCursorName <em>Cursor Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl#getCursorType <em>Cursor Type</em>}</li>
@@ -29,6 +28,7 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl#getForStatementName <em>For Statement Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl#isHold <em>Hold</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

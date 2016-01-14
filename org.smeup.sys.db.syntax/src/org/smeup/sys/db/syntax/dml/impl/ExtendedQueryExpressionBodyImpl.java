@@ -20,10 +20,10 @@ import org.smeup.sys.db.syntax.dml.QExtendedQueryExpressionBody;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dml.impl.ExtendedQueryExpressionBodyImpl#getOptimizeRecordsNumber <em>Optimize Records Number</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

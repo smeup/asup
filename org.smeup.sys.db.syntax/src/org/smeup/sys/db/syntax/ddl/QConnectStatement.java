@@ -16,13 +16,13 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QConnectStatement#getPwd <em>Pwd</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QConnectStatement#isReset <em>Reset</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QConnectStatement#getTo <em>To</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QConnectStatement#getUser <em>User</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getConnectStatement()
  * @model

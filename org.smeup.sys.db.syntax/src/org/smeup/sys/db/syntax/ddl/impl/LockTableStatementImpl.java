@@ -24,12 +24,12 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.LockTableStatementImpl#isAllowRead <em>Allow Read</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.LockTableStatementImpl#getShareMode <em>Share Mode</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.LockTableStatementImpl#getTableName <em>Table Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

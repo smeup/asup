@@ -188,6 +188,11 @@ public abstract class BaseDefinitionWriterImpl extends StatementWriterImpl imple
 	}
 	
 	@Override
+	public String truncateTable(Table table) {
+		return deleteData(table);
+	}
+	
+	@Override
 	@SuppressWarnings("unchecked")
 	public String insertData(Table table, List<String> fieldNames) {
 		StringBuffer result = new StringBuffer("INSERT INTO " + getQualifiedNameInSQLFormat(table));

@@ -24,13 +24,13 @@ import org.smeup.sys.db.syntax.impl.DefinitionStatementImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.RenameStatementImpl#getNewName <em>New Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.RenameStatementImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.RenameStatementImpl#getOriginalName <em>Original Name</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.impl.RenameStatementImpl#getTarget <em>Target</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

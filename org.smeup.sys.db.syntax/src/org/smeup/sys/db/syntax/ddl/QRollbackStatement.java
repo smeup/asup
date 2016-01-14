@@ -16,10 +16,10 @@ import org.smeup.sys.db.syntax.QDefinitionStatement;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.ddl.QRollbackStatement#isHold <em>Hold</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.db.syntax.ddl.QDatabaseSyntaxDDLPackage#getRollbackStatement()
  * @model
