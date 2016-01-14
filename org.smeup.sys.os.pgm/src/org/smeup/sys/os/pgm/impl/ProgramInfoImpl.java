@@ -22,10 +22,10 @@ import org.smeup.sys.os.pgm.QProgramInfo;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramInfoImpl#getMemorySize <em>Memory Size</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

@@ -26,11 +26,11 @@ import org.smeup.sys.os.pgm.QProgramStack;
  * <em><b>QProgram Stack</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramStackImpl#getDateEnter <em>Date Enter</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramStackImpl#getDateExit <em>Date Exit</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -71,7 +71,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private Stack<QCallableProgram> stack;
+	private Stack<QCallableProgram<?>> stack;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -80,7 +80,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 */
 	protected ProgramStackImpl() {
 		super();
-		this.stack = new Stack<QCallableProgram>();
+		this.stack = new Stack<QCallableProgram<?>>();
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public void push(QCallableProgram element) {
+	public void push(QCallableProgram<?> element) {
 		this.stack.push(element);
 	}
 
@@ -150,7 +150,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public QCallableProgram peek() {
+	public QCallableProgram<?> peek() {
 		return this.stack.peek();
 	}
 
@@ -160,7 +160,7 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public QCallableProgram pop() {
+	public QCallableProgram<?> pop() {
 		return this.stack.pop();
 	}
 
@@ -180,12 +180,12 @@ public class ProgramStackImpl extends ObjectImpl implements QProgramStack {
 	 * @generated NOT
 	 */
 	@Override
-	public List<QCallableProgram> list() {
-		List<QCallableProgram> programList = new ArrayList<QCallableProgram>();
-		Iterator<QCallableProgram> programs = stack.iterator();
+	public List<QCallableProgram<?>> list() {
+		List<QCallableProgram<?>> programList = new ArrayList<QCallableProgram<?>>();
+		Iterator<QCallableProgram<?>> programs = stack.iterator();
 		while (programs.hasNext()) {
 			@SuppressWarnings("resource")
-			QCallableProgram program = programs.next();
+			QCallableProgram<?> program = programs.next();
 			programList.add(program);
 		}
 		return programList;

@@ -2,7 +2,10 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pgm" nsURI="http://www.smeup.org/asup/os/pgm" nsPrefix="os-pgm">
   <eClassifiers xsi:type="ecore:EClass" name="ActivationGroup" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
-    <eOperations name="lookup" eType="#//CallableProgram">
+    <eOperations name="lookup">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
     <eOperations name="remove">
@@ -13,7 +16,11 @@
         transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="programs" upperBound="-1"
-        eType="#//CallableProgram" transient="true" containment="true"/>
+        transient="true" containment="true">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivationGroupManager" abstract="true"
       interface="true">
@@ -38,13 +45,18 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallableProgram" abstract="true" interface="true">
+    <eTypeParameters name="P">
+      <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eTypeParameters>
     <eOperations name="close"/>
     <eOperations name="getDataContext" lowerBound="1" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-data.ecore#//DataContext"/>
     <eOperations name="getEntry" eType="#//ParameterList"/>
     <eOperations name="getProgram" lowerBound="1" eType="#//Program"/>
     <eOperations name="getProgramInfo" lowerBound="1" eType="#//ProgramInfo"/>
     <eOperations name="getProgramStatus" lowerBound="1" eType="#//ProgramStatus"/>
-    <eOperations name="getRawProgram" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eOperations name="getRawProgram" lowerBound="1">
+      <eGenericType eTypeParameter="#//CallableProgram/P"/>
+    </eOperations>
     <eOperations name="isOpen" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="open"/>
     <eGenericSuperTypes eClassifier="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//Object"/>
@@ -105,11 +117,21 @@
       </eParameters>
       <eParameters name="params" eType="#//ParameterList"/>
     </eOperations>
-    <eOperations name="getCaller" eType="#//CallableProgram">
+    <eOperations name="getCaller">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
       <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="program" lowerBound="1" eType="#//CallableProgram"/>
+      <eParameters name="program" lowerBound="1">
+        <eGenericType eClassifier="#//CallableProgram">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
     </eOperations>
-    <eOperations name="getCaller" eType="#//CallableProgram">
+    <eOperations name="getCaller">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
       <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="program" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
@@ -120,15 +142,24 @@
       <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="jobID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="loadProgram" eType="#//CallableProgram">
+    <eOperations name="loadProgram">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
       <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
-    <eOperations name="loadProgram" eType="#//CallableProgram">
+    <eOperations name="loadProgram">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments eTypeParameter="#//ProgramManager/loadProgram.1/P"/>
+      </eGenericType>
+      <eTypeParameters name="P">
+        <eBounds eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eTypeParameters>
       <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
       <eParameters name="klass">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-          <eTypeArguments/>
+          <eTypeArguments eTypeParameter="#//ProgramManager/loadProgram.1/P"/>
         </eGenericType>
       </eParameters>
     </eOperations>
@@ -140,12 +171,28 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProgramStack" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//Object">
     <eOperations name="isEmpty" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="list" upperBound="-1" eType="#//CallableProgram"/>
-    <eOperations name="push">
-      <eParameters name="element" lowerBound="1" eType="#//CallableProgram"/>
+    <eOperations name="list" upperBound="-1">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
     </eOperations>
-    <eOperations name="peek" eType="#//CallableProgram"/>
-    <eOperations name="pop" eType="#//CallableProgram"/>
+    <eOperations name="push">
+      <eParameters name="element" lowerBound="1">
+        <eGenericType eClassifier="#//CallableProgram">
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eOperations name="peek">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="pop">
+      <eGenericType eClassifier="#//CallableProgram">
+        <eTypeArguments/>
+      </eGenericType>
+    </eOperations>
     <eOperations name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateEnter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateExit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>

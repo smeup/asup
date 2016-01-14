@@ -18,12 +18,12 @@ import org.smeup.sys.il.core.ctx.QContext;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext <em>Framework Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getActivationGroup()
  * @model
@@ -32,7 +32,7 @@ import org.smeup.sys.il.core.ctx.QContext;
 public interface QActivationGroup extends QObject {
 	/**
 	 * Returns the value of the '<em><b>Programs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.os.pgm.QCallableProgram}.
+	 * The list contents are of type {@link org.smeup.sys.os.pgm.QCallableProgram}&lt;?>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Programs</em>' attribute isn't clear, there
@@ -44,14 +44,14 @@ public interface QActivationGroup extends QObject {
 	 * @model containment="true" transient="true"
 	 * @generated
 	 */
-	List<QCallableProgram> getPrograms();
+	List<QCallableProgram<?>> getPrograms();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram lookup(QProgram program);
+	QCallableProgram<?> lookup(QProgram program);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -38,14 +38,14 @@ import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramInfo;
 import org.smeup.sys.os.pgm.QProgramStatus;
 
-public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container implements QCallableProgram {
+public class BaseCallableProgramDelegator<P> extends MinimalEObjectImpl.Container implements QCallableProgram<P> {
 
 	private static final long serialVersionUID = 1L;
 
 	private QDataContext dataContext;
 	private QProgram program;
 	private QProgramStatus programStatus;
-	private Object delegate;
+	private P delegate;
 
 	private InitStrategy initStrategy;
 
@@ -61,7 +61,7 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 
 	private QProgramInfo programInfo = null;
 	
-	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, Object delegate, QProgramInfo programInfo) {
+	protected BaseCallableProgramDelegator(QDataContext dataContext, QProgram program, QProgramStatus programStatus, P delegate, QProgramInfo programInfo) {
 		this.dataContext = dataContext;
 		this.program = program;
 		this.programStatus = programStatus;
@@ -256,12 +256,12 @@ public class BaseCallableProgramDelegator extends MinimalEObjectImpl.Container i
 		return isOpen;
 	}
 
-	public Object getDelegate() {
+	public P getDelegate() {
 		return delegate;
 	}
 
 	@Override
-	public Object getRawProgram() {
+	public P getRawProgram() {
 		return getDelegate();
 	}
 

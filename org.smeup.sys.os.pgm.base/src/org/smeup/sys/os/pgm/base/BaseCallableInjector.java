@@ -95,7 +95,7 @@ public class BaseCallableInjector {
 		return dataContext;
 	}
 
-	public QCallableProgram prepareCallable(QProgram program, Class<?> klass) {
+	public <P> QCallableProgram<P> prepareCallable(QProgram program, Class<P> klass) {
 
 		QDataContainer dataContainer = dataManager.createDataContainer(dataContext, new HashMap<String, QDataTerm<?>>());
 
@@ -116,11 +116,11 @@ public class BaseCallableInjector {
 			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
-			Object delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
+			P delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();				
 			programInfo.setMemorySize(dataContainer.getMemorySize());
 			
-			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate, programInfo);
+			QCallableProgram<P> callableProgram = new BaseCallableProgramDelegator<P>(dataContext, program, programStatus, delegate, programInfo);
 
 			QDataContext dataContext = getDataContext();
 			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
@@ -159,10 +159,10 @@ public class BaseCallableInjector {
 		}
 	}
 
-	private <C> C injectData(Object owner, Class<C> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
+	private <P> P injectData(Object owner, Class<P> klass, QDataContainer dataContainer, QAccessFactory accessFactory, Map<String, Object> unitModules, Map<String, QRecord> records)
 			throws IllegalArgumentException, IllegalAccessException, InstantiationException {
 
-		C callable = klass.newInstance();
+		P callable = klass.newInstance();
 
 		if (owner == null)
 			owner = callable;

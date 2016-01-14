@@ -19,11 +19,11 @@ import org.smeup.sys.os.pgm.QProgramSource;
  * <em><b>QProgram Source</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramSourceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ProgramSourceImpl#getContent <em>Content</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

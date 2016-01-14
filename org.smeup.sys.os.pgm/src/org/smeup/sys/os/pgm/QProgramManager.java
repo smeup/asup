@@ -42,7 +42,7 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram getCaller(String contextID, QCallableProgram program);
+	QCallableProgram<?> getCaller(String contextID, QCallableProgram<?> program);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram getCaller(String contextID, Object program);
+	QCallableProgram<?> getCaller(String contextID, Object program);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,13 +73,13 @@ public interface QProgramManager {
 	 * @model programRequired="true"
 	 * @generated
 	 */
-	QCallableProgram loadProgram(QJob job, QProgram program);
+	QCallableProgram<?> loadProgram(QJob job, QProgram program);
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @model
+	 * @model PBounds="org.eclipse.emf.ecore.EJavaObject"
 	 * @generated
 	 */
-	QCallableProgram loadProgram(QJob job, Class<?> klass);
+	<P extends Object> QCallableProgram<P> loadProgram(QJob job, Class<P> klass);
 
 } // QProgramManager

@@ -15,11 +15,11 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.pgm.QProgramSource#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QProgramSource#getContent <em>Content</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getProgramSource()
  * @model

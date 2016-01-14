@@ -344,7 +344,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 				continue;
 			}
 			if (QCallableProgram.class.isAssignableFrom(klass) || klass.getAnnotation(Program.class) != null)
-				programs.add(buildProgram(bundle, (Class<QCallableProgram>) klass));
+				programs.add(buildProgram(bundle, (Class<QCallableProgram<?>>) klass));
 		}
 
 		return programs;
@@ -388,7 +388,7 @@ public class BaseBundleManagerImpl implements QBundleManager {
 			}
 
 			if (klass.getAnnotation(Module.class) != null)
-				modules.add(buildModule(bundle, (Class<QCallableProgram>) klass));
+				modules.add(buildModule(bundle, (Class<QCallableProgram<?>>) klass));
 		}
 
 		return modules;

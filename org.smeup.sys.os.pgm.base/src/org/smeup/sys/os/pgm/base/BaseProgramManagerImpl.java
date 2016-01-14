@@ -84,7 +84,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
 
-		QCallableProgram callableProgram = activationGroup.lookup(program);
+		QCallableProgram<?> callableProgram = activationGroup.lookup(program);
 
 		// new program
 		if (callableProgram == null) {
@@ -109,7 +109,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
 
-		QCallableProgram callableProgram = activationGroup.lookup(program);
+		QCallableProgram<?> callableProgram = activationGroup.lookup(program);
 
 		// new program
 		if (callableProgram == null) {
@@ -121,7 +121,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram loadProgram(QJob job, QProgram program) {
+	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
 
 		// API
 		String address = null;
@@ -140,17 +140,17 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (klass == null)
 			throw new OperatingSystemRuntimeException("Class not found: " + address);
 
-		QCallableProgram callableProgram = prepareCallableProgram(job, program, klass);
+		QCallableProgram<?> callableProgram = prepareCallableProgram(job, program, klass);
 
 		return callableProgram;
 	}
 
 	@Override
-	public QCallableProgram loadProgram(QJob job, Class<?> klass) {
+	public <P> QCallableProgram<P> loadProgram(QJob job, Class<P> klass) {
 
 		try {
 			QProgram program = null;
-			QCallableProgram callableProgram = prepareCallableProgram(job, program, klass);
+			QCallableProgram<P> callableProgram = prepareCallableProgram(job, program, klass);
 
 			return callableProgram;
 
@@ -180,11 +180,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram getCaller(String contextID, QCallableProgram program) {
+	public QCallableProgram<?> getCaller(String contextID, QCallableProgram<?> program) {
 
 		QProgramStack programStack = getProgramStack(contextID);
-		QCallableProgram caller = null;
-		for (QCallableProgram level : programStack.list()) {
+		QCallableProgram<?> caller = null;
+		for (QCallableProgram<?> level : programStack.list()) {
 			// looking for this
 			if (level.equals(program))
 				return caller;
@@ -194,10 +194,10 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return null;
 	}
 
-	private QCallableProgram prepareCallableProgram(QJob job, QProgram program, Class<?> klass) {
+	private <P> QCallableProgram<P> prepareCallableProgram(QJob job, QProgram program, Class<P> klass) {
 
 		BaseCallableInjector callableInjector = job.getContext().make(BaseCallableInjector.class);
-		QCallableProgram callableProgram = callableInjector.prepareCallable(program, klass);
+		QCallableProgram<P> callableProgram = callableInjector.prepareCallable(program, klass);
 
 		QProgramInfo programInfo = callableProgram.getProgramInfo();
 		if (programInfo != null) {
@@ -212,7 +212,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return callableProgram;
 	}
 
-	private void assignParameters(QCallableProgram callableProgram, QData[] paramsFrom) {
+	private void assignParameters(QCallableProgram<?> callableProgram, QData[] paramsFrom) {
 
 		QData[] paramsTo = callableProgram.getEntry();
 
@@ -273,11 +273,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@Override
-	public QCallableProgram getCaller(String contextID, Object program) {
+	public QCallableProgram<?> getCaller(String contextID, Object program) {
 
 		QProgramStack programStack = getProgramStack(contextID);
-		QCallableProgram caller = null;
-		for (QCallableProgram level : programStack.list()) {
+		QCallableProgram<?> caller = null;
+		for (QCallableProgram<?> level : programStack.list()) {
 			// looking for this
 			if (level.getRawProgram().equals(program))
 				return caller;
@@ -288,7 +288,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	}
 
-	private void callProgram(QJob job, QCallableProgram callableProgram, QData[] params) {
+	private void callProgram(QJob job, QCallableProgram<?> callableProgram, QData[] params) {
 
 		synchronized (callableProgram) {
 
@@ -384,7 +384,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@SuppressWarnings("unused")
-	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
+	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
 		String text = "-> " + callableProgram.getProgram().getName() + " (";
 
 		if (callableProgram.getEntry() != null)
@@ -395,7 +395,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	}
 
 	@SuppressWarnings("unused")
-	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram callableProgram) {
+	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
 		String text = "<- " + callableProgram.getProgram().getName() + " (";
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());

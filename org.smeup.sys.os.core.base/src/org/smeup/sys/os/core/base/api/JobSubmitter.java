@@ -81,7 +81,7 @@ public class JobSubmitter {
 			@ToDo @DataDef(length = 1) QEnum<AllowMultipleThreadsEnum, QCharacter> allowMultipleThreads, @ToDo @DataDef(length = 10) QEnum<SpooledFileActionEnum, QCharacter> spooledFileAction) {
 
 		@SuppressWarnings("resource")
-		QCallableProgram callableProgram = programManager.getCaller(job.getJobID(), this);
+		QCallableProgram<?> callableProgram = programManager.getCaller(job.getJobID(), this);
 		Object caller = null;
 		if(callableProgram != null)
 			caller = callableProgram.getRawProgram();
