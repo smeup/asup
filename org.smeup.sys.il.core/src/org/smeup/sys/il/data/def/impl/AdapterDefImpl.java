@@ -16,6 +16,8 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Adapter Def</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

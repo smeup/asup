@@ -15,12 +15,12 @@ import org.smeup.sys.il.data.QDatetime;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QDatetimeDef#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QDatetimeDef#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QDatetimeDef#getTimeFormat <em>Time Format</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDatetimeDef()
  * @model

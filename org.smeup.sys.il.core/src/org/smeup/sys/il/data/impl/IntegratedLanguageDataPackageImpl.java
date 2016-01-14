@@ -1422,8 +1422,6 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(bufferedDataEClass, null, "fill", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getBufferedData(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "isNull", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "ge", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1445,6 +1443,10 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "gt", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getDataFiller(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "isNull", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "isStoreOwner", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(bufferedDataEClass, ecorePackage.getEBoolean(), "le", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEByte(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1983,6 +1985,8 @@ public class IntegratedLanguageDataPackageImpl extends EPackageImpl implements Q
 		initEOperation(op, g1);
 
 		addEOperation(dataContainerEClass, ecorePackage.getEString(), "getKeys", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(dataContainerEClass, ecorePackage.getELong(), "getMemorySize", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(dataContainerEClass, ecorePackage.getEBoolean(), "hasDefaultValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "key", 1, 1, IS_UNIQUE, IS_ORDERED);

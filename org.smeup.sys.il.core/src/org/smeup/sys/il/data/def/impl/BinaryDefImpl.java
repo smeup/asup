@@ -21,11 +21,11 @@ import org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage;
  * <em><b>Binary Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.BinaryDefImpl#isUnsigned <em>Unsigned</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

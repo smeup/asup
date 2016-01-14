@@ -29,13 +29,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Unary Compound Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getClassDelegator <em>Class Delegator</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.UnaryCompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

@@ -29,7 +29,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.smeup.sys.il.core.ctx.QContext;
-import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QDataContainer;
 import org.smeup.sys.il.data.QDataContext;
@@ -118,21 +117,8 @@ public class BaseCallableInjector {
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
 
 			Object delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
-			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();
-				
-			long memorySize = 0;
-			List<Integer> stores = new ArrayList<Integer>();
-			for(QData data: dataContainer.getDatas()) {
-				if(data instanceof QBufferedData) {
-					QBufferedData bufferedData = ((QBufferedData)data);
-					Object store = bufferedData.getStore();
-					if(!stores.contains(store.hashCode())) {						
-						memorySize += bufferedData.getSize();
-						stores.add(store.hashCode());
-					}
-				}
-			}
-			programInfo.setMemorySize(memorySize);
+			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();				
+			programInfo.setMemorySize(dataContainer.getMemorySize());
 			
 			QCallableProgram callableProgram = new BaseCallableProgramDelegator(dataContext, program, programStatus, delegate, programInfo);
 
@@ -416,41 +402,6 @@ public class BaseCallableInjector {
 			}
 		}
 	}
-
-	/*
-	 * private void injectSmeupData(Object callable) throws
-	 * IllegalArgumentException, IllegalAccessException {
-	 * 
-	 * Field £mubField = null; try { £mubField =
-	 * callable.getClass().getField("£Mub"); } catch (NoSuchFieldException |
-	 * SecurityException e1) { return; }
-	 * 
-	 * try { £mubField.setAccessible(true);
-	 * 
-	 * Object £mub = £mubField.get(callable); Object £mu_£pds_1 =
-	 * £mub.getClass().getField("£mu_£pds_1").get(£mub);
-	 * 
-	 * // program name Object £pdsnp =
-	 * £mu_£pds_1.getClass().getField("£pdsnp").get(£mu_£pds_1); String
-	 * programName = callable.getClass().getSimpleName(); Program program =
-	 * callable.getClass().getAnnotation(Program.class); if (program != null)
-	 * programName = program.name(); £pdsnp.getClass().getMethod("eval",
-	 * String.class).invoke(£pdsnp, new Object[] { programName });
-	 * 
-	 * // user name Object £pdsnu =
-	 * £mu_£pds_1.getClass().getField("£pdsnu").get(£mu_£pds_1);
-	 * £pdsnu.getClass().getMethod("eval", String.class).invoke(£pdsnu, new
-	 * Object[] { job.getJobUser() });
-	 * 
-	 * // job number Object £pdsjz =
-	 * £mu_£pds_1.getClass().getField("£pdsjz").get(£mu_£pds_1);
-	 * £pdsjz.getClass().getMethod("eval", Integer.TYPE).invoke(£pdsjz, new
-	 * Object[] { job.getJobNumber() });
-	 * 
-	 * } catch (NoSuchFieldException | InvocationTargetException |
-	 * NoSuchMethodException e) { e.printStackTrace(); } finally {
-	 * £mubField.setAccessible(false); } }
-	 */
 
 	@SuppressWarnings("unused")
 	private QFile getFile(String name) {

@@ -18,11 +18,11 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  * <em><b>Domain</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.DomainImpl#getText <em>Text</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

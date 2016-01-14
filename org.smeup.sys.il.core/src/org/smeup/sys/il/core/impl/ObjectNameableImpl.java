@@ -14,6 +14,8 @@ import org.smeup.sys.il.core.QObjectNameable;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
  * <em><b>Object Nameable</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * </p>
  *
  * @generated
  */

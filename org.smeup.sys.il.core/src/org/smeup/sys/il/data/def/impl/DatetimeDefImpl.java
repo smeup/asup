@@ -25,12 +25,12 @@ import org.smeup.sys.il.data.def.TimeFormat;
  * <em><b>Datetime Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getDateFormat <em>Date Format</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.DatetimeDefImpl#getTimeFormat <em>Time Format</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

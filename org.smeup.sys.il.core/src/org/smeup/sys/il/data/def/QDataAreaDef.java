@@ -16,10 +16,10 @@ import org.smeup.sys.il.data.QBufferedData;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QDataAreaDef#getExternalName <em>External Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getDataAreaDef()
  * @model

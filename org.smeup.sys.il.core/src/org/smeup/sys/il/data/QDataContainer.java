@@ -96,6 +96,14 @@ public interface QDataContainer extends QDataTermContainer, Closeable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	long getMemorySize();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model keyRequired="true"
 	 * @generated
 	 */

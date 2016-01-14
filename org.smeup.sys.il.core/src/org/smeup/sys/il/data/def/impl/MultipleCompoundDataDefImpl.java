@@ -29,13 +29,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  * <em><b>Multiple Compound Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#getClassDelegator <em>Class Delegator</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleCompoundDataDefImpl#isQualified <em>Qualified</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

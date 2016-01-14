@@ -18,13 +18,13 @@ import org.smeup.sys.il.data.term.QDataTerm;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getClassDelegator <em>Class Delegator</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getElements <em>Elements</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#getPrefix <em>Prefix</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCompoundDataDef#isQualified <em>Qualified</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCompoundDataDef()
  * @model abstract="true"

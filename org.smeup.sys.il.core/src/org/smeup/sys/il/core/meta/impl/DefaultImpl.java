@@ -23,11 +23,11 @@ import org.smeup.sys.il.core.meta.QIntegratedLanguageCoreMetaPackage;
  * <em><b>Default</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.meta.impl.DefaultImpl#getValues <em>Values</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

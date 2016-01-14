@@ -13,13 +13,13 @@ package org.smeup.sys.il.core;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getText <em>Text</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QSpecialElement#isUnary <em>Unary</em>}</li>
  *   <li>{@link org.smeup.sys.il.core.QSpecialElement#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.core.QIntegratedLanguageCorePackage#getSpecialElement()
  * @model

@@ -52,7 +52,8 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	private Map<String, QDataTerm<?>> dataTerms;
 
 	private Map<String, QData> datas;
-
+	private long memorySize = 0;
+	
 	protected NIODataContainerImpl(NIODataContextImpl dataContext, Map<String, QDataTerm<?>> dataTerms) {
 		this.dataTerms = dataTerms;
 		this.datas = new HashMap<String, QData>();
@@ -280,7 +281,12 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	public void removeDataTerm(QDataTerm<?> dataTerm) {
 		String key = getKey(dataTerm);
 		this.dataTerms.remove(key);
-		this.datas.remove(key);
+		QData data = this.datas.remove(key);
+		if(data instanceof QBufferedData) {
+			QBufferedData bufferedData = (QBufferedData)data;
+			if(!bufferedData.isStoreOwner())
+				this.memorySize -= bufferedData.getSize();
+		}
 	}
 
 	@Override
@@ -319,8 +325,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = datas.get(key);
 		if (data == null) {
 			QDataTerm<?> dataTerm = getDataTerm(key);
-			if (dataTerm == null)
-				"".toCharArray();
 			data = getOrCreateData(key, dataTerm);
 		}
 
@@ -335,8 +339,14 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 			return data;
 
 		data = createData(dataTerm, true);
-
 		datas.put(key, data);
+		
+		if(data instanceof QBufferedData) {
+			QBufferedData bufferedData = (QBufferedData)data;
+			if(!bufferedData.isStoreOwner())
+				this.memorySize += bufferedData.getSize();
+		}
+		
 		if (data instanceof QStruct<?>) {
 			for (Field field : NIOStructHelper.getFields((Class<? extends QStruct<?>>) data.getClass())) {
 				if (QData.class.isAssignableFrom(field.getType())) {
@@ -383,8 +393,6 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 					data = dataFactory.createData(dataTerm, false);
 					// TODO remove lowerCase
 					QData overlayedData = getData(overlay.getName().toLowerCase());
-					if(overlayedData == null)
-						"".toCharArray();
 					((QBufferedData) overlayedData).assign((QBufferedData) data);
 				}
 			}
@@ -396,5 +404,10 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 	@Override
 	public List<QData> getDatas() {
 		return new ArrayList<QData>(datas.values());
+	}
+
+	@Override
+	public long getMemorySize() {
+		return this.memorySize;
 	}
 }

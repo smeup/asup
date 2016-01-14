@@ -1150,4 +1150,9 @@ public abstract class QDataStructWrapper implements QDataStruct, QBufferedDataDe
 	public boolean lt(QBufferedData value) {
 		return delegate.lt(value);
 	}
+
+	public boolean isStoreOwner() {
+		return delegate.isStoreOwner();
+	}
+
 }

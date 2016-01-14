@@ -23,6 +23,7 @@ import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBufferedData;
 import org.smeup.sys.il.data.QDataContext;
 import org.smeup.sys.il.data.QDataFiller;
+import org.smeup.sys.il.data.QDataVisitor;
 import org.smeup.sys.il.data.QDecimal;
 import org.smeup.sys.il.data.QNumeric;
 import org.smeup.sys.il.data.QPointer;
@@ -141,6 +142,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public boolean isNull() {
 		return getBuffer() == null;
+	}
+
+	@Override
+	public boolean isStoreOwner() {
+		return _buffer != null;
 	}
 
 	protected ByteBuffer getBuffer() {
@@ -631,5 +637,11 @@ public abstract class NIOBufferedDataImpl extends NIODataImpl implements QBuffer
 	@Override
 	public void fill(QBufferedData filler) {
 		NIOBufferHelper.fill(getBuffer(), getPosition(), getLength(), filler.asBytes());
+	}
+
+	@Override
+	public void accept(QDataVisitor visitor) {
+		// TODO Auto-generated method stub
+		
 	}
 }

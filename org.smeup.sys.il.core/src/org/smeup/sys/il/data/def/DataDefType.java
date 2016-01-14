@@ -483,8 +483,6 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DataDefType get(String literal) {
@@ -500,8 +498,6 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DataDefType getByName(String name) {
@@ -517,8 +513,6 @@ public enum DataDefType implements Enumerator {
 	/**
 	 * Returns the '<em><b>Data Def Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DataDefType get(int value) {

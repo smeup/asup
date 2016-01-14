@@ -329,7 +329,6 @@
     <eOperations name="fill">
       <eParameters name="value" lowerBound="1" eType="#//BufferedData"/>
     </eOperations>
-    <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="ge" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
@@ -350,6 +349,8 @@
     <eOperations name="gt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="#//DataFiller"/>
     </eOperations>
+    <eOperations name="isNull" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="isStoreOwner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="le" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
     </eOperations>
@@ -916,6 +917,7 @@
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getKeys" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getMemorySize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eOperations name="hasDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

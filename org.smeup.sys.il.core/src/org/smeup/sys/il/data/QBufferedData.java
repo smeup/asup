@@ -83,6 +83,14 @@ public interface QBufferedData extends QData, QMoveable, QStorable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isStoreOwner();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */

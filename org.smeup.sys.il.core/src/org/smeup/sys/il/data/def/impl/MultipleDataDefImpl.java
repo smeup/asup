@@ -19,10 +19,10 @@ import org.smeup.sys.il.data.def.QMultipleDataDef;
  * <em><b>Multiple Data Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.MultipleDataDefImpl#getDimension <em>Dimension</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

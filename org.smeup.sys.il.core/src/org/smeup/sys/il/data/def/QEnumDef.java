@@ -15,11 +15,11 @@ import org.smeup.sys.il.data.QBufferedData;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QEnumDef#getDelegate <em>Delegate</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QEnumDef#getKlass <em>Klass</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getEnumDef()
  * @model abstract="true" EBounds="org.smeup.sys.mi.core.JavaEnum"

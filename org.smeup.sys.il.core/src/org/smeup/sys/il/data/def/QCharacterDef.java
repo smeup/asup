@@ -15,11 +15,11 @@ import org.smeup.sys.il.data.QCharacter;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#getLength <em>Length</em>}</li>
  *   <li>{@link org.smeup.sys.il.data.def.QCharacterDef#isVarying <em>Varying</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.il.data.def.QIntegratedLanguageDataDefPackage#getCharacterDef()
  * @model

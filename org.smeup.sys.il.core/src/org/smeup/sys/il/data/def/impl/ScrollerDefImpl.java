@@ -24,10 +24,10 @@ import org.smeup.sys.il.data.def.QScrollerDef;
  * <em><b>Scroller Def</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.il.data.def.impl.ScrollerDefImpl#getOrder <em>Order</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

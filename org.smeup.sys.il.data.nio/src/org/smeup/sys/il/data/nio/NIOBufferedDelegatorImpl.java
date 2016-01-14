@@ -443,4 +443,9 @@ public abstract class NIOBufferedDelegatorImpl extends NIODataImpl implements QB
 	public boolean lt(QBufferedData value) {
 		return _delegate.lt(value);
 	}
+
+	@Override
+	public boolean isStoreOwner() {
+		return _delegate.isStoreOwner();
+	}
 }
