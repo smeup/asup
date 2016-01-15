@@ -81,6 +81,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QIntoClause createIntoClause();
 
 	/**
+	 * Returns a new object of class '<em>Single Row Fetch Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Row Fetch Clause</em>'.
+	 * @generated
+	 */
+	QSingleRowFetchClause createSingleRowFetchClause();
+
+	/**
 	 * Returns a new object of class '<em>Multiple Row Fetch Clause</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

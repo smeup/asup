@@ -42,6 +42,7 @@ import org.smeup.sys.db.syntax.dbl.QOpenStatement;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
+import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
 import org.smeup.sys.db.syntax.dml.QExtendedQuerySelect;
 import org.smeup.sys.dk.compiler.rpj.RPJStatementRewriter;
 import org.smeup.sys.il.flow.QCallableUnit;
@@ -299,7 +300,22 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		return methodExec;
 	}
-
+	
+	/*
+	 * Parms list:
+	 * 
+	 * 1) Into
+	 * 2) Rows number
+	 * 3) Descriptor
+	 * 
+	 * For CURSOR_METHOD.RELATIVE:
+	 * 
+	 * 1) Relative position
+	 * 2) Into
+	 * 3) Rows number
+	 * 4) Description
+	 * 
+	 */
 	private QStatement manageFetchStatement(QFetchStatement bindingStatement) {
 
 		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
@@ -337,23 +353,41 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		else
 			methodExec.setMethod(CURSOR_METHOD.NEXT);
 
-		if (bindingStatement.getInto() != null)
-			// Single fetch or Multiple Row Fetch?
-			if (bindingStatement.getMultipleRowClause() != null) {
+		
+		// Single fetch or Multiple Row Fetch?
+		if (bindingStatement.getMultipleRowClause() != null) {
 
-				// Into
-				methodExec.getParameters().add(bindingStatement.getInto());
+			QMultipleRowFetchClause multipleRowClause = bindingStatement.getMultipleRowClause();
+			
+			// Into
+			methodExec.getParameters().add(multipleRowClause.getInto());
 
-				QMultipleRowFetchClause multipleRowClause = bindingStatement.getMultipleRowClause();
+			// Rows number
+			methodExec.getParameters().add(multipleRowClause.getRowsNumber());
 
-				// Rows number
-				methodExec.getParameters().add(multipleRowClause.getRowsNumber());
-
-				if (multipleRowClause.getDescriptor() != null)
-					methodExec.getParameters().add(multipleRowClause.getDescriptor());
-			} else
-				// Into
-				methodExec.getParameters().add(bindingStatement.getInto());
+			// Descriptor
+			if (multipleRowClause.getDescriptor() != null)
+				methodExec.getParameters().add(multipleRowClause.getDescriptor());
+		} else {
+			
+			//Into
+			QSingleRowFetchClause singleRowClause = bindingStatement.getSingleRowClause();			
+				
+			if (singleRowClause.getInto() != null) {	
+				if (singleRowClause.isUsingDescriptor()) {
+					
+					if ( singleRowClause.getInto().get(0) != null)
+						methodExec.getParameters().add(singleRowClause.getInto().get(0));
+				} else {
+					// Variables list
+					String intoValues = "";
+					for (int i = 0; i < singleRowClause.getInto().size(); i++) {
+						intoValues += singleRowClause.getInto().get(i) + " ";
+					}
+					methodExec.getParameters().add(intoValues.trim());
+				}
+			}
+		}
 
 		return methodExec;
 	}
@@ -386,8 +420,10 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 		methodExec.setObject(null); // TODO: null?
 
 		/*
-		 * PREPARE_METHOD parameter list: 1) Statement name 2) Into variable 3)
-		 * Using
+		 * PREPARE_METHOD parameter list: 
+		 * 1) Statement name 
+		 * 2) Into variable 
+		 * 3) Using
 		 */
 
 		// Par 1

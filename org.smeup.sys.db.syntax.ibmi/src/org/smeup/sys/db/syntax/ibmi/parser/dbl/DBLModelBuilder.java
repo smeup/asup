@@ -40,6 +40,7 @@ import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
+import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.RWOperation;
 import org.smeup.sys.db.syntax.dbl.UsingType;
 
@@ -253,10 +254,23 @@ public class DBLModelBuilder {
 
 				if (intoToken != null && intoToken.getType() == DBLLexer.INTO) {
 
-					Tree variableToken = intoToken.getChild(0);
-
-					if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
-						fetchStatement.setInto(variableToken.getChild(0).getText());
+					Tree intoRefToken = null;
+					
+					QSingleRowFetchClause singleRowClause = QDatabaseSyntaxDBLFactory.eINSTANCE.createSingleRowFetchClause();
+					
+					for (int j = 0; j < intoToken.getChildCount(); j++) {
+						
+						intoRefToken = intoToken.getChild(j);
+						
+						if (intoRefToken != null && intoRefToken.getType() == DBLLexer.VARIABLE) {
+							singleRowClause.setUsingDescriptor(false);
+						} else  if (intoRefToken.getType() == DBLLexer.DESCRIPTOR) {
+							singleRowClause.setUsingDescriptor(true);
+						}
+							
+						singleRowClause.getInto().add(intoRefToken.getChild(0).getText());
+					}
+					fetchStatement.setSingleRowClause(singleRowClause);
 				}
 
 				break;
@@ -294,7 +308,7 @@ public class DBLModelBuilder {
 					Tree variableToken = multipleRowChildToken.getChild(0);
 
 					if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
-						fetchStatement.setInto(variableToken.getChild(0).getText());
+						multipleRowClause.setInto(variableToken.getChild(0).getText());
 
 					break;
 

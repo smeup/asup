@@ -16,6 +16,7 @@ import org.smeup.sys.db.syntax.dbl.FetchPosition;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
 import org.smeup.sys.db.syntax.dbl.QFetchStatement;
 import org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause;
+import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
 import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
 
 /**
@@ -26,10 +27,10 @@ import org.smeup.sys.db.syntax.impl.BindingStatementImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getCursorName <em>Cursor Name</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getRelativePosition <em>Relative Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getMultipleRowClause <em>Multiple Row Clause</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.impl.FetchStatementImpl#getSingleRowClause <em>Single Row Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,26 +56,6 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 	 * @ordered
 	 */
 	protected String cursorName = CURSOR_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getInto() <em>Into</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInto()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INTO_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInto() <em>Into</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInto()
-	 * @generated
-	 * @ordered
-	 */
-	protected String into = INTO_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -127,6 +108,16 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 	protected QMultipleRowFetchClause multipleRowClause;
 
 	/**
+	 * The cached value of the '{@link #getSingleRowClause() <em>Single Row Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSingleRowClause()
+	 * @generated
+	 * @ordered
+	 */
+	protected QSingleRowFetchClause singleRowClause;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,27 +155,6 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 		cursorName = newCursorName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__CURSOR_NAME, oldCursorName, cursorName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getInto() {
-		return into;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInto(String newInto) {
-		String oldInto = into;
-		into = newInto;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__INTO, oldInto, into));
 	}
 
 	/**
@@ -277,11 +247,56 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QSingleRowFetchClause getSingleRowClause() {
+		return singleRowClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSingleRowClause(QSingleRowFetchClause newSingleRowClause, NotificationChain msgs) {
+		QSingleRowFetchClause oldSingleRowClause = singleRowClause;
+		singleRowClause = newSingleRowClause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE, oldSingleRowClause, newSingleRowClause);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSingleRowClause(QSingleRowFetchClause newSingleRowClause) {
+		if (newSingleRowClause != singleRowClause) {
+			NotificationChain msgs = null;
+			if (singleRowClause != null)
+				msgs = ((InternalEObject)singleRowClause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE, null, msgs);
+			if (newSingleRowClause != null)
+				msgs = ((InternalEObject)newSingleRowClause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE, null, msgs);
+			msgs = basicSetSingleRowClause(newSingleRowClause, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE, newSingleRowClause, newSingleRowClause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__MULTIPLE_ROW_CLAUSE:
 				return basicSetMultipleRowClause(null, msgs);
+			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE:
+				return basicSetSingleRowClause(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -296,14 +311,14 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__CURSOR_NAME:
 				return getCursorName();
-			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__INTO:
-				return getInto();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__POSITION:
 				return getPosition();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__RELATIVE_POSITION:
 				return getRelativePosition();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__MULTIPLE_ROW_CLAUSE:
 				return getMultipleRowClause();
+			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE:
+				return getSingleRowClause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,9 +334,6 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__CURSOR_NAME:
 				setCursorName((String)newValue);
 				return;
-			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__INTO:
-				setInto((String)newValue);
-				return;
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__POSITION:
 				setPosition((FetchPosition)newValue);
 				return;
@@ -330,6 +342,9 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 				return;
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__MULTIPLE_ROW_CLAUSE:
 				setMultipleRowClause((QMultipleRowFetchClause)newValue);
+				return;
+			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE:
+				setSingleRowClause((QSingleRowFetchClause)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -346,9 +361,6 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__CURSOR_NAME:
 				setCursorName(CURSOR_NAME_EDEFAULT);
 				return;
-			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__INTO:
-				setInto(INTO_EDEFAULT);
-				return;
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -357,6 +369,9 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 				return;
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__MULTIPLE_ROW_CLAUSE:
 				setMultipleRowClause((QMultipleRowFetchClause)null);
+				return;
+			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE:
+				setSingleRowClause((QSingleRowFetchClause)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -372,14 +387,14 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 		switch (featureID) {
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__CURSOR_NAME:
 				return CURSOR_NAME_EDEFAULT == null ? cursorName != null : !CURSOR_NAME_EDEFAULT.equals(cursorName);
-			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__INTO:
-				return INTO_EDEFAULT == null ? into != null : !INTO_EDEFAULT.equals(into);
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__POSITION:
 				return position != POSITION_EDEFAULT;
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__RELATIVE_POSITION:
 				return RELATIVE_POSITION_EDEFAULT == null ? relativePosition != null : !RELATIVE_POSITION_EDEFAULT.equals(relativePosition);
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__MULTIPLE_ROW_CLAUSE:
 				return multipleRowClause != null;
+			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT__SINGLE_ROW_CLAUSE:
+				return singleRowClause != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -396,8 +411,6 @@ public class FetchStatementImpl extends BindingStatementImpl implements QFetchSt
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cursorName: ");
 		result.append(cursorName);
-		result.append(", into: ");
-		result.append(into);
 		result.append(", position: ");
 		result.append(position);
 		result.append(", relativePosition: ");

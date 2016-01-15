@@ -65,6 +65,7 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			case QDatabaseSyntaxDBLPackage.EXECUTE_STATEMENT: return (EObject)createExecuteStatement();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT: return (EObject)createFetchStatement();
 			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
+			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
 			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
@@ -185,6 +186,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QIntoClause createIntoClause() {
 		IntoClauseImpl intoClause = new IntoClauseImpl();
 		return intoClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QSingleRowFetchClause createSingleRowFetchClause() {
+		SingleRowFetchClauseImpl singleRowFetchClause = new SingleRowFetchClauseImpl();
+		return singleRowFetchClause;
 	}
 
 	/**
