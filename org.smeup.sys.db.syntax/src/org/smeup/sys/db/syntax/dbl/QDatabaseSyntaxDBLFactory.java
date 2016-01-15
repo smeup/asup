@@ -27,6 +27,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QDatabaseSyntaxDBLFactory eINSTANCE = org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Allocate Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Allocate Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QAllocateDescriptorStatement createAllocateDescriptorStatement();
+
+	/**
 	 * Returns a new object of class '<em>Declare Cursor Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

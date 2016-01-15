@@ -18,9 +18,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.db.core.QDatabaseCorePackage;
 import org.smeup.sys.db.syntax.QDatabaseSyntaxPackage;
 import org.smeup.sys.db.syntax.dbl.CursorType;
+import org.smeup.sys.db.syntax.dbl.DescriptorScope;
 import org.smeup.sys.db.syntax.dbl.FetchPosition;
 import org.smeup.sys.db.syntax.dbl.IsolationLevel;
 import org.smeup.sys.db.syntax.dbl.OpenUsingType;
+import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
@@ -52,6 +54,13 @@ import org.smeup.sys.db.syntax.impl.DatabaseSyntaxPackageImpl;
  * @generated
  */
 public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatabaseSyntaxDBLPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass allocateDescriptorStatementEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,6 +171,13 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EEnum descriptorScopeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum fetchPositionEEnum = null;
 
 	/**
@@ -266,6 +282,42 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(QDatabaseSyntaxDBLPackage.eNS_URI, theDatabaseSyntaxDBLPackage);
 		return theDatabaseSyntaxDBLPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAllocateDescriptorStatement() {
+		return allocateDescriptorStatementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAllocateDescriptorStatement_DescriptorName() {
+		return (EAttribute)allocateDescriptorStatementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAllocateDescriptorStatement_DescriptorScope() {
+		return (EAttribute)allocateDescriptorStatementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAllocateDescriptorStatement_WithMax() {
+		return (EAttribute)allocateDescriptorStatementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -714,6 +766,15 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getDescriptorScope() {
+		return descriptorScopeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getFetchPosition() {
 		return fetchPositionEEnum;
 	}
@@ -782,6 +843,11 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		isCreated = true;
 
 		// Create classes and their features
+		allocateDescriptorStatementEClass = createEClass(ALLOCATE_DESCRIPTOR_STATEMENT);
+		createEAttribute(allocateDescriptorStatementEClass, ALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
+		createEAttribute(allocateDescriptorStatementEClass, ALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE);
+		createEAttribute(allocateDescriptorStatementEClass, ALLOCATE_DESCRIPTOR_STATEMENT__WITH_MAX);
+
 		declareCursorStatementEClass = createEClass(DECLARE_CURSOR_STATEMENT);
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__CURSOR_NAME);
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__CURSOR_TYPE);
@@ -846,6 +912,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		// Create enums
 		cursorTypeEEnum = createEEnum(CURSOR_TYPE);
+		descriptorScopeEEnum = createEEnum(DESCRIPTOR_SCOPE);
 		fetchPositionEEnum = createEEnum(FETCH_POSITION);
 		isolationLevelEEnum = createEEnum(ISOLATION_LEVEL);
 		rwOperationEEnum = createEEnum(RW_OPERATION);
@@ -885,6 +952,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		allocateDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		declareCursorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		describeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		executeImmediateStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
@@ -897,6 +965,11 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		closeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(allocateDescriptorStatementEClass, QAllocateDescriptorStatement.class, "AllocateDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAllocateDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAllocateDescriptorStatement_DescriptorScope(), this.getDescriptorScope(), "descriptorScope", null, 1, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAllocateDescriptorStatement_WithMax(), theEcorePackage.getEString(), "withMax", null, 0, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(declareCursorStatementEClass, QDeclareCursorStatement.class, "DeclareCursorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeclareCursorStatement_CursorName(), theEcorePackage.getEString(), "cursorName", null, 1, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDeclareCursorStatement_CursorType(), this.getCursorType(), "cursorType", null, 0, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -964,6 +1037,11 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		addEEnumLiteral(cursorTypeEEnum, CursorType.NOTSCROLL);
 		addEEnumLiteral(cursorTypeEEnum, CursorType.SCROLL);
 		addEEnumLiteral(cursorTypeEEnum, CursorType.DYNSCROLL);
+
+		initEEnum(descriptorScopeEEnum, DescriptorScope.class, "DescriptorScope");
+		addEEnumLiteral(descriptorScopeEEnum, DescriptorScope.NONE);
+		addEEnumLiteral(descriptorScopeEEnum, DescriptorScope.LOCAL);
+		addEEnumLiteral(descriptorScopeEEnum, DescriptorScope.GLOBAL);
 
 		initEEnum(fetchPositionEEnum, FetchPosition.class, "FetchPosition");
 		addEEnumLiteral(fetchPositionEEnum, FetchPosition.NEXT);

@@ -30,6 +30,7 @@ import org.smeup.sys.db.syntax.QBindingParseResult;
 import org.smeup.sys.db.syntax.QBindingParser;
 import org.smeup.sys.db.syntax.QBindingStatement;
 import org.smeup.sys.db.syntax.QQueryParser;
+import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
@@ -181,6 +182,8 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 				result = manageFetchStatement((QFetchStatement) bindingStatement);
 			else if (bindingStatement instanceof QCloseStatement)
 				result = manageCloseStatement((QCloseStatement) bindingStatement);
+			else if (bindingStatement instanceof QAllocateDescriptorStatement)
+				result = manageAllocateDescriptorStatement((QAllocateDescriptorStatement) bindingStatement);
 
 		} else {
 			// TODO: manage parser error
@@ -238,6 +241,23 @@ public class DBLStatementRewriter extends RPJStatementRewriter {
 
 		return methodExec;
 	}
+	
+	private QStatement manageAllocateDescriptorStatement(QAllocateDescriptorStatement bindingStatement) {
+
+		QMethodExec methodExec = QIntegratedLanguageFlowFactory.eINSTANCE.createMethodExec();
+		methodExec.setObject(bindingStatement.getDescriptorName());
+		methodExec.setMethod("allocateDescriptor");
+		
+		//Scope
+		methodExec.getParameters().add(bindingStatement.getDescriptorScope().getLiteral());
+		
+		//withMax
+		methodExec.getParameters().add(bindingStatement.getWithMax());
+		
+
+		return methodExec;
+	}
+
 
 	private QStatement managePrepareStatement(QPrepareStatement bindingStatement) {
 
