@@ -18,10 +18,10 @@ import org.smeup.sys.db.syntax.QBindingStatement;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getCursorName <em>Cursor Name</em>}</li>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getPosition <em>Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getRelativePosition <em>Relative Position</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getMultipleRowClause <em>Multiple Row Clause</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getSingleRowClause <em>Single Row Clause</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,32 +55,6 @@ public interface QFetchStatement extends QBindingStatement {
 	 * @generated
 	 */
 	void setCursorName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Into</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Into</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Into</em>' attribute.
-	 * @see #setInto(String)
-	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getFetchStatement_Into()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getInto();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getInto <em>Into</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Into</em>' attribute.
-	 * @see #getInto()
-	 * @generated
-	 */
-	void setInto(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Position</b></em>' attribute.
@@ -162,5 +136,31 @@ public interface QFetchStatement extends QBindingStatement {
 	 * @generated
 	 */
 	void setMultipleRowClause(QMultipleRowFetchClause value);
+
+	/**
+	 * Returns the value of the '<em><b>Single Row Clause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Single Row Clause</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Single Row Clause</em>' containment reference.
+	 * @see #setSingleRowClause(QSingleRowFetchClause)
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getFetchStatement_SingleRowClause()
+	 * @model containment="true"
+	 * @generated
+	 */
+	QSingleRowFetchClause getSingleRowClause();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QFetchStatement#getSingleRowClause <em>Single Row Clause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Single Row Clause</em>' containment reference.
+	 * @see #getSingleRowClause()
+	 * @generated
+	 */
+	void setSingleRowClause(QSingleRowFetchClause value);
 
 } // QFetchStatement

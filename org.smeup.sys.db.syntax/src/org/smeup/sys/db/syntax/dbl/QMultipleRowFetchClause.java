@@ -16,9 +16,10 @@ package org.smeup.sys.db.syntax.dbl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getInto <em>Into</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getRowsNumber <em>Rows Number</em>}</li>
  *   <li>{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#isUsingDescriptor <em>Using Descriptor</em>}</li>
+ *   <li>{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,30 +29,30 @@ package org.smeup.sys.db.syntax.dbl;
  */
 public interface QMultipleRowFetchClause {
 	/**
-	 * Returns the value of the '<em><b>Descriptor</b></em>' attribute.
+	 * Returns the value of the '<em><b>Into</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Descriptor</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Into</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Descriptor</em>' attribute.
-	 * @see #setDescriptor(String)
-	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getMultipleRowFetchClause_Descriptor()
+	 * @return the value of the '<em>Into</em>' attribute.
+	 * @see #setInto(String)
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getMultipleRowFetchClause_Into()
 	 * @model
 	 * @generated
 	 */
-	String getDescriptor();
+	String getInto();
 
 	/**
-	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getDescriptor <em>Descriptor</em>}' attribute.
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getInto <em>Into</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Descriptor</em>' attribute.
-	 * @see #getDescriptor()
+	 * @param value the new value of the '<em>Into</em>' attribute.
+	 * @see #getInto()
 	 * @generated
 	 */
-	void setDescriptor(String value);
+	void setInto(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Rows Number</b></em>' attribute.
@@ -105,5 +106,31 @@ public interface QMultipleRowFetchClause {
 	 * @generated
 	 */
 	void setUsingDescriptor(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Descriptor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Descriptor</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Descriptor</em>' attribute.
+	 * @see #setDescriptor(String)
+	 * @see org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage#getMultipleRowFetchClause_Descriptor()
+	 * @model
+	 * @generated
+	 */
+	String getDescriptor();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.db.syntax.dbl.QMultipleRowFetchClause#getDescriptor <em>Descriptor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Descriptor</em>' attribute.
+	 * @see #getDescriptor()
+	 * @generated
+	 */
+	void setDescriptor(String value);
 
 } // QMultipleRowFetchClause

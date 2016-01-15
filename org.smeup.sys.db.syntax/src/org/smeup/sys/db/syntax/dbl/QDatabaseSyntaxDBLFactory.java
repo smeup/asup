@@ -27,6 +27,24 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QDatabaseSyntaxDBLFactory eINSTANCE = org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Allocate Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Allocate Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QAllocateDescriptorStatement createAllocateDescriptorStatement();
+
+	/**
+	 * Returns a new object of class '<em>Deallocate Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deallocate Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QDeallocateDescriptorStatement createDeallocateDescriptorStatement();
+
+	/**
 	 * Returns a new object of class '<em>Declare Cursor Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +97,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	 * @generated
 	 */
 	QIntoClause createIntoClause();
+
+	/**
+	 * Returns a new object of class '<em>Single Row Fetch Clause</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Row Fetch Clause</em>'.
+	 * @generated
+	 */
+	QSingleRowFetchClause createSingleRowFetchClause();
 
 	/**
 	 * Returns a new object of class '<em>Multiple Row Fetch Clause</em>'.

@@ -318,10 +318,23 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="dbl" nsURI="http://www.smeup.org/asup/db/syntax/dbl" nsPrefix="db-syntax-dbl">
+    <eClassifiers xsi:type="ecore:EClass" name="AllocateDescriptorStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorScope" lowerBound="1"
+          eType="#//dbl/DescriptorScope"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="withMax" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="CursorType">
       <eLiterals name="NOTSCROLL" value="10" literal="NOTSCROLL"/>
       <eLiterals name="SCROLL" value="20"/>
       <eLiterals name="DYNSCROLL" value="30"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeallocateDescriptorStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorScope" lowerBound="1"
+          eType="#//dbl/DescriptorScope"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DeclareCursorStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursorName" lowerBound="1"
@@ -335,6 +348,11 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="into" eType="#//dbl/IntoClause"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="statementName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="DescriptorScope">
+      <eLiterals name="NONE" value="10" literal="NONE"/>
+      <eLiterals name="LOCAL" value="20" literal="LOCAL"/>
+      <eLiterals name="GLOBAL" value="30" literal="GLOBAL"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ExecuteImmediateStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -355,11 +373,11 @@
     <eClassifiers xsi:type="ecore:EClass" name="FetchStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursorName" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="into" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="#//dbl/FetchPosition"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="relativePosition" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="multipleRowClause" eType="#//dbl/MultipleRowFetchClause"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="singleRowClause" eType="#//dbl/SingleRowFetchClause"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IntoClause">
@@ -375,12 +393,19 @@
       <eLiterals name="READ_COMMITTED" value="50"/>
       <eLiterals name="REPEATABLE_READ" value="60"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SingleRowFetchClause">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="into" lowerBound="1"
+          upperBound="-1" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="usingDescriptor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="MultipleRowFetchClause">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="into" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rowsNumber" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="usingDescriptor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
           defaultValueLiteral="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptor" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="RWOperation">
       <eLiterals name="READ_ONLY" literal="READ_ONLY"/>

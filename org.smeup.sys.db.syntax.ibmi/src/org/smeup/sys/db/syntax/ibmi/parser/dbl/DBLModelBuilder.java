@@ -23,11 +23,14 @@ import org.smeup.sys.db.syntax.QBindingParseResult;
 import org.smeup.sys.db.syntax.QBindingStatement;
 import org.smeup.sys.db.syntax.QDatabaseSyntaxFactory;
 import org.smeup.sys.db.syntax.dbl.CursorType;
+import org.smeup.sys.db.syntax.dbl.DescriptorScope;
 import org.smeup.sys.db.syntax.dbl.FetchPosition;
 import org.smeup.sys.db.syntax.dbl.IsolationLevel;
 import org.smeup.sys.db.syntax.dbl.OpenUsingType;
+import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
+import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
@@ -40,6 +43,7 @@ import org.smeup.sys.db.syntax.dbl.QOption;
 import org.smeup.sys.db.syntax.dbl.QPrepareStatement;
 import org.smeup.sys.db.syntax.dbl.QSetOptionStatement;
 import org.smeup.sys.db.syntax.dbl.QSetTransactionStatement;
+import org.smeup.sys.db.syntax.dbl.QSingleRowFetchClause;
 import org.smeup.sys.db.syntax.dbl.RWOperation;
 import org.smeup.sys.db.syntax.dbl.UsingType;
 
@@ -134,7 +138,16 @@ public class DBLModelBuilder {
 
 		case DBLLexer.CLOSE_STATEMENT:
 			result = manageCloseStatement(tree);
+			break;
+		
+		case DBLLexer.ALLOCATE_DESCRIPTOR_STATEMENT:
+			result = manageAllocateDescriptorStatement(tree);
+			break;	
+		
+		case DBLLexer.DEALLOCATE_DESCRIPTOR_STATEMENT:
+			result = manageDeallocateDescriptorStatement(tree);
 			break;		
+			
 
 		default:
 			break;
@@ -170,6 +183,93 @@ public class DBLModelBuilder {
 
 		return closeStatement;
 	}
+	
+	private QBindingStatement manageAllocateDescriptorStatement(Tree tree) {
+		
+		QAllocateDescriptorStatement allocateDescriptorStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createAllocateDescriptorStatement();
+		allocateDescriptorStatement.setDescriptorScope(DescriptorScope.NONE);
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.DESCRIPTOR:
+
+				allocateDescriptorStatement.setDescriptorName(fieldToken.getChild(0).getText());
+
+				break;
+				
+			case DBLLexer.DESCRIPTOR_SCOPE:
+				
+				if (fieldToken.getChildCount() > 0) {				
+					if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.LOCAL.getLiteral())) {
+						allocateDescriptorStatement.setDescriptorScope(DescriptorScope.LOCAL);
+					} else if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.GLOBAL.getLiteral())) {
+						allocateDescriptorStatement.setDescriptorScope(DescriptorScope.GLOBAL);
+					} 
+				}
+
+				break;
+				
+			case DBLLexer.WITH_MAX:
+				
+				if (fieldToken.getChildCount() > 0) {
+					if (fieldToken.getChild(0).getType() == DBLLexer.VARIABLE) {
+						if (fieldToken.getChild(0).getChildCount() > 0) {
+							allocateDescriptorStatement.setWithMax(fieldToken.getChild(0).getChild(0).getText());
+						}
+					} else {
+						allocateDescriptorStatement.setWithMax(fieldToken.getChild(0).getText());
+					}
+				}
+
+				break;
+			}
+		}
+
+		return allocateDescriptorStatement;
+	}
+	
+	private QBindingStatement manageDeallocateDescriptorStatement(Tree tree) {
+		
+		QDeallocateDescriptorStatement deallocateDescriptorStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createDeallocateDescriptorStatement();
+		deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.NONE);
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.DESCRIPTOR:
+
+				deallocateDescriptorStatement.setDescriptorName(fieldToken.getChild(0).getText());
+
+				break;
+				
+			case DBLLexer.DESCRIPTOR_SCOPE:
+				
+				if (fieldToken.getChildCount() > 0) {				
+					if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.LOCAL.getLiteral())) {
+						deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.LOCAL);
+					} else if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.GLOBAL.getLiteral())) {
+						deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.GLOBAL);
+					} 
+				}
+
+				break;
+				
+			}
+		}
+
+		return deallocateDescriptorStatement;
+	}
+
+
 
 	private QBindingStatement manageFetchStatement(Tree tree) {
 		QFetchStatement fetchStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createFetchStatement();
@@ -253,10 +353,23 @@ public class DBLModelBuilder {
 
 				if (intoToken != null && intoToken.getType() == DBLLexer.INTO) {
 
-					Tree variableToken = intoToken.getChild(0);
-
-					if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
-						fetchStatement.setInto(variableToken.getChild(0).getText());
+					Tree intoRefToken = null;
+					
+					QSingleRowFetchClause singleRowClause = QDatabaseSyntaxDBLFactory.eINSTANCE.createSingleRowFetchClause();
+					
+					for (int j = 0; j < intoToken.getChildCount(); j++) {
+						
+						intoRefToken = intoToken.getChild(j);
+						
+						if (intoRefToken != null && intoRefToken.getType() == DBLLexer.VARIABLE) {
+							singleRowClause.setUsingDescriptor(false);
+						} else  if (intoRefToken.getType() == DBLLexer.DESCRIPTOR) {
+							singleRowClause.setUsingDescriptor(true);
+						}
+							
+						singleRowClause.getInto().add(intoRefToken.getChild(0).getText());
+					}
+					fetchStatement.setSingleRowClause(singleRowClause);
 				}
 
 				break;
@@ -294,7 +407,7 @@ public class DBLModelBuilder {
 					Tree variableToken = multipleRowChildToken.getChild(0);
 
 					if (variableToken != null && variableToken.getType() == DBLLexer.VARIABLE)
-						fetchStatement.setInto(variableToken.getChild(0).getText());
+						multipleRowClause.setInto(variableToken.getChild(0).getText());
 
 					break;
 

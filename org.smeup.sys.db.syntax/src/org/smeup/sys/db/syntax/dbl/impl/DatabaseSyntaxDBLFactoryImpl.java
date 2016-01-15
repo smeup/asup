@@ -59,12 +59,15 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QDatabaseSyntaxDBLPackage.ALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createAllocateDescriptorStatement();
+			case QDatabaseSyntaxDBLPackage.DEALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createDeallocateDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.DECLARE_CURSOR_STATEMENT: return (EObject)createDeclareCursorStatement();
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT: return (EObject)createDescribeStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_IMMEDIATE_STATEMENT: return (EObject)createExecuteImmediateStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_STATEMENT: return (EObject)createExecuteStatement();
 			case QDatabaseSyntaxDBLPackage.FETCH_STATEMENT: return (EObject)createFetchStatement();
 			case QDatabaseSyntaxDBLPackage.INTO_CLAUSE: return (EObject)createIntoClause();
+			case QDatabaseSyntaxDBLPackage.SINGLE_ROW_FETCH_CLAUSE: return (EObject)createSingleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.MULTIPLE_ROW_FETCH_CLAUSE: return (EObject)createMultipleRowFetchClause();
 			case QDatabaseSyntaxDBLPackage.SET_TRANSACTION_STATEMENT: return (EObject)createSetTransactionStatement();
 			case QDatabaseSyntaxDBLPackage.SET_OPTION_STATEMENT: return (EObject)createSetOptionStatement();
@@ -87,6 +90,8 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 		switch (eDataType.getClassifierID()) {
 			case QDatabaseSyntaxDBLPackage.CURSOR_TYPE:
 				return createCursorTypeFromString(eDataType, initialValue);
+			case QDatabaseSyntaxDBLPackage.DESCRIPTOR_SCOPE:
+				return createDescriptorScopeFromString(eDataType, initialValue);
 			case QDatabaseSyntaxDBLPackage.FETCH_POSITION:
 				return createFetchPositionFromString(eDataType, initialValue);
 			case QDatabaseSyntaxDBLPackage.ISOLATION_LEVEL:
@@ -112,6 +117,8 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 		switch (eDataType.getClassifierID()) {
 			case QDatabaseSyntaxDBLPackage.CURSOR_TYPE:
 				return convertCursorTypeToString(eDataType, instanceValue);
+			case QDatabaseSyntaxDBLPackage.DESCRIPTOR_SCOPE:
+				return convertDescriptorScopeToString(eDataType, instanceValue);
 			case QDatabaseSyntaxDBLPackage.FETCH_POSITION:
 				return convertFetchPositionToString(eDataType, instanceValue);
 			case QDatabaseSyntaxDBLPackage.ISOLATION_LEVEL:
@@ -125,6 +132,26 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QAllocateDescriptorStatement createAllocateDescriptorStatement() {
+		AllocateDescriptorStatementImpl allocateDescriptorStatement = new AllocateDescriptorStatementImpl();
+		return allocateDescriptorStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDeallocateDescriptorStatement createDeallocateDescriptorStatement() {
+		DeallocateDescriptorStatementImpl deallocateDescriptorStatement = new DeallocateDescriptorStatementImpl();
+		return deallocateDescriptorStatement;
 	}
 
 	/**
@@ -185,6 +212,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QIntoClause createIntoClause() {
 		IntoClauseImpl intoClause = new IntoClauseImpl();
 		return intoClause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QSingleRowFetchClause createSingleRowFetchClause() {
+		SingleRowFetchClauseImpl singleRowFetchClause = new SingleRowFetchClauseImpl();
+		return singleRowFetchClause;
 	}
 
 	/**
@@ -274,6 +311,26 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	 * @generated
 	 */
 	public String convertCursorTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DescriptorScope createDescriptorScopeFromString(EDataType eDataType, String initialValue) {
+		DescriptorScope result = DescriptorScope.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDescriptorScopeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
