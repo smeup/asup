@@ -923,12 +923,17 @@ public class RPJProgramSupport {
 
 	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 
+
 		if (startIndex == null)
 			startIndex = 1;
 
-		if (numElements == null || numElements == 0)
+//		if (numElements == null || numElements == 0)
+		if (numElements == null)
 			numElements = list.capacity();
 
+		if (numElements == 0)
+			System.err.println("Verify condition: 92378y2irfsdcs98a");
+		
 		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {
@@ -950,9 +955,13 @@ public class RPJProgramSupport {
 		if (startIndex == null)
 			startIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true).plus(1);
 
-		if (numElements == null || numElements == 0)
+//		if (numElements == null || numElements == 0)
+		if (numElements == null)
 			numElements = list.capacity();
 
+		if (numElements == 0)
+			System.err.println("Verify condition: 92378y2irfsdcs98b");
+		
 		QDecimal result = null;
 		for (int i = startIndex.i(); i <= numElements; i++) {
 			if (list.get(i).eq(argument)) {
@@ -976,8 +985,12 @@ public class RPJProgramSupport {
 		if (startIndex == null)
 			startIndex = 1;
 
-		if (numElements == null || numElements == 0)
+//		if (numElements == null || numElements == 0)
+		if (numElements == null)
 			numElements = list.capacity();
+
+		if (numElements == 0)
+			System.err.println("Verify condition: 92378y2irfsdcs98c");
 
 		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
