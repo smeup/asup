@@ -114,6 +114,7 @@ tokens {
   USING_DESCRIPTOR;
   VALUES;
   VARIABLE;
+  VAR_INFO;
   VIEW_NAME;
   WITH_DEFAULT;
   WITH_HOLD;
@@ -1028,9 +1029,28 @@ deallocate_descriptor
 
 get_descriptor
 	:
-	GET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name header_info -> ^(GET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* header_info)
+	GET (SQL)* DESCRIPTOR (s=descriptor_scope)* d= Descriptor_Name info -> ^(GET_DESCRIPTOR_STATEMENT ^(DESCRIPTOR $d) $s* info)
 	;	
 	
+info
+	:
+	header_info
+	|
+	var_settings
+	;	
+	
+var_settings
+	:
+	VALUE i=NUMBER var_item_info -> ^(VAR_INFO $i var_item_info)
+	|
+	VALUE v=Variable var_item_info -> ^(VAR_INFO ^(VARIABLE $v) var_item_info) 
+	;
+
+var_item_info
+	:
+	variable_assign  (',' variable_assign)* -> ^(VALUES variable_assign variable_assign*)
+	;	
+
 header_info
 	:
 	variable_assign (',' variable_assign)*-> ^(HEADER_INFO variable_assign variable_assign*)
@@ -1046,8 +1066,14 @@ variable_value
 	:
 	c = COUNT -> ^(VALUE $c)
 	|
+	p = PRECISION -> ^(VALUE $p)
+	|
+	n = NAME -> ^(VALUE $n)
+	|
 	i = Identifier -> ^(VALUE $i)
 	;	
+
+	
 	
 /* SET DESCRIPTOR STATEMENT */
 
@@ -1058,9 +1084,9 @@ set_descriptor
 
 value_settings
 	:
-	VALUE i=NUMBER ii = value_item_info -> ^(ITEM_INFO $i $ii)
+	VALUE i=NUMBER value_item_info -> ^(ITEM_INFO $i value_item_info)
 	|
-	VALUE v=Variable ii = value_item_info -> ^(ITEM_INFO ^(VARIABLE $v) $ii) 
+	VALUE v=Variable value_item_info -> ^(ITEM_INFO ^(VARIABLE $v) value_item_info) 
 	;
 
 value_item_info
