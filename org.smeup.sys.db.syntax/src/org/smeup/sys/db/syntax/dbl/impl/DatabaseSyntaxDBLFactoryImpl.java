@@ -60,6 +60,7 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case QDatabaseSyntaxDBLPackage.ALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createAllocateDescriptorStatement();
+			case QDatabaseSyntaxDBLPackage.DEALLOCATE_DESCRIPTOR_STATEMENT: return (EObject)createDeallocateDescriptorStatement();
 			case QDatabaseSyntaxDBLPackage.DECLARE_CURSOR_STATEMENT: return (EObject)createDeclareCursorStatement();
 			case QDatabaseSyntaxDBLPackage.DESCRIBE_STATEMENT: return (EObject)createDescribeStatement();
 			case QDatabaseSyntaxDBLPackage.EXECUTE_IMMEDIATE_STATEMENT: return (EObject)createExecuteImmediateStatement();
@@ -141,6 +142,16 @@ public class DatabaseSyntaxDBLFactoryImpl extends EFactoryImpl implements QDatab
 	public QAllocateDescriptorStatement createAllocateDescriptorStatement() {
 		AllocateDescriptorStatementImpl allocateDescriptorStatement = new AllocateDescriptorStatementImpl();
 		return allocateDescriptorStatement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QDeallocateDescriptorStatement createDeallocateDescriptorStatement() {
+		DeallocateDescriptorStatementImpl deallocateDescriptorStatement = new DeallocateDescriptorStatementImpl();
+		return deallocateDescriptorStatement;
 	}
 
 	/**

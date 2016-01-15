@@ -30,6 +30,7 @@ import org.smeup.sys.db.syntax.dbl.OpenUsingType;
 import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
+import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
@@ -142,6 +143,10 @@ public class DBLModelBuilder {
 		case DBLLexer.ALLOCATE_DESCRIPTOR_STATEMENT:
 			result = manageAllocateDescriptorStatement(tree);
 			break;	
+		
+		case DBLLexer.DEALLOCATE_DESCRIPTOR_STATEMENT:
+			result = manageDeallocateDescriptorStatement(tree);
+			break;		
 			
 
 		default:
@@ -227,6 +232,43 @@ public class DBLModelBuilder {
 
 		return allocateDescriptorStatement;
 	}
+	
+	private QBindingStatement manageDeallocateDescriptorStatement(Tree tree) {
+		
+		QDeallocateDescriptorStatement deallocateDescriptorStatement = QDatabaseSyntaxDBLFactory.eINSTANCE.createDeallocateDescriptorStatement();
+		deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.NONE);
+		
+		Tree fieldToken = null;
+
+		for (int i = 0; i < tree.getChildCount(); i++) {
+			fieldToken = tree.getChild(i);
+
+			switch (fieldToken.getType()) {
+
+			case DBLLexer.DESCRIPTOR:
+
+				deallocateDescriptorStatement.setDescriptorName(fieldToken.getChild(0).getText());
+
+				break;
+				
+			case DBLLexer.DESCRIPTOR_SCOPE:
+				
+				if (fieldToken.getChildCount() > 0) {				
+					if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.LOCAL.getLiteral())) {
+						deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.LOCAL);
+					} else if (fieldToken.getChild(0).getText().equalsIgnoreCase(DescriptorScope.GLOBAL.getLiteral())) {
+						deallocateDescriptorStatement.setDescriptorScope(DescriptorScope.GLOBAL);
+					} 
+				}
+
+				break;
+				
+			}
+		}
+
+		return deallocateDescriptorStatement;
+	}
+
 
 
 	private QBindingStatement manageFetchStatement(Tree tree) {

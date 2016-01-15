@@ -36,6 +36,15 @@ public interface QDatabaseSyntaxDBLFactory extends EFactory {
 	QAllocateDescriptorStatement createAllocateDescriptorStatement();
 
 	/**
+	 * Returns a new object of class '<em>Deallocate Descriptor Statement</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deallocate Descriptor Statement</em>'.
+	 * @generated
+	 */
+	QDeallocateDescriptorStatement createDeallocateDescriptorStatement();
+
+	/**
 	 * Returns a new object of class '<em>Declare Cursor Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

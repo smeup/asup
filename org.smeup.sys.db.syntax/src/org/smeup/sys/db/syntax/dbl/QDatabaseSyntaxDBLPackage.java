@@ -109,6 +109,43 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	int ALLOCATE_DESCRIPTOR_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeallocateDescriptorStatementImpl <em>Deallocate Descriptor Statement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.db.syntax.dbl.impl.DeallocateDescriptorStatementImpl
+	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDeallocateDescriptorStatement()
+	 * @generated
+	 */
+	int DEALLOCATE_DESCRIPTOR_STATEMENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Descriptor Scope</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Deallocate Descriptor Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEALLOCATE_DESCRIPTOR_STATEMENT_FEATURE_COUNT = QDatabaseSyntaxPackage.BINDING_STATEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl <em>Declare Cursor Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,7 +153,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDeclareCursorStatement()
 	 * @generated
 	 */
-	int DECLARE_CURSOR_STATEMENT = 1;
+	int DECLARE_CURSOR_STATEMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Cursor Name</b></em>' attribute.
@@ -180,7 +217,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDescribeStatement()
 	 * @generated
 	 */
-	int DESCRIBE_STATEMENT = 2;
+	int DESCRIBE_STATEMENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Into</b></em>' containment reference.
@@ -217,7 +254,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getExecuteImmediateStatement()
 	 * @generated
 	 */
-	int EXECUTE_IMMEDIATE_STATEMENT = 3;
+	int EXECUTE_IMMEDIATE_STATEMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -245,7 +282,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getExecuteStatement()
 	 * @generated
 	 */
-	int EXECUTE_STATEMENT = 4;
+	int EXECUTE_STATEMENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Statement Name</b></em>' attribute.
@@ -273,7 +310,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getFetchStatement()
 	 * @generated
 	 */
-	int FETCH_STATEMENT = 5;
+	int FETCH_STATEMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Cursor Name</b></em>' attribute.
@@ -337,7 +374,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getIntoClause()
 	 * @generated
 	 */
-	int INTO_CLAUSE = 6;
+	int INTO_CLAUSE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Descriptor Name</b></em>' attribute.
@@ -374,7 +411,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSingleRowFetchClause()
 	 * @generated
 	 */
-	int SINGLE_ROW_FETCH_CLAUSE = 7;
+	int SINGLE_ROW_FETCH_CLAUSE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Into</b></em>' attribute list.
@@ -411,7 +448,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getMultipleRowFetchClause()
 	 * @generated
 	 */
-	int MULTIPLE_ROW_FETCH_CLAUSE = 8;
+	int MULTIPLE_ROW_FETCH_CLAUSE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Into</b></em>' attribute.
@@ -466,7 +503,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSetTransactionStatement()
 	 * @generated
 	 */
-	int SET_TRANSACTION_STATEMENT = 9;
+	int SET_TRANSACTION_STATEMENT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Isolation Level</b></em>' attribute.
@@ -503,7 +540,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getSetOptionStatement()
 	 * @generated
 	 */
-	int SET_OPTION_STATEMENT = 10;
+	int SET_OPTION_STATEMENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Options</b></em>' reference list.
@@ -531,7 +568,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOpenStatement()
 	 * @generated
 	 */
-	int OPEN_STATEMENT = 11;
+	int OPEN_STATEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Cursor</b></em>' attribute.
@@ -577,7 +614,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getPrepareStatement()
 	 * @generated
 	 */
-	int PREPARE_STATEMENT = 12;
+	int PREPARE_STATEMENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' attribute.
@@ -623,7 +660,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getCloseStatement()
 	 * @generated
 	 */
-	int CLOSE_STATEMENT = 13;
+	int CLOSE_STATEMENT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Cursor</b></em>' attribute.
@@ -651,7 +688,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOption()
 	 * @generated
 	 */
-	int OPTION = 14;
+	int OPTION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -688,7 +725,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getCursorType()
 	 * @generated
 	 */
-	int CURSOR_TYPE = 15;
+	int CURSOR_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.DescriptorScope <em>Descriptor Scope</em>}' enum.
@@ -698,7 +735,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDescriptorScope()
 	 * @generated
 	 */
-	int DESCRIPTOR_SCOPE = 16;
+	int DESCRIPTOR_SCOPE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.FetchPosition <em>Fetch Position</em>}' enum.
@@ -708,7 +745,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getFetchPosition()
 	 * @generated
 	 */
-	int FETCH_POSITION = 17;
+	int FETCH_POSITION = 18;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.IsolationLevel <em>Isolation Level</em>}' enum.
@@ -718,7 +755,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getIsolationLevel()
 	 * @generated
 	 */
-	int ISOLATION_LEVEL = 18;
+	int ISOLATION_LEVEL = 19;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.RWOperation <em>RW Operation</em>}' enum.
@@ -728,7 +765,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getRWOperation()
 	 * @generated
 	 */
-	int RW_OPERATION = 19;
+	int RW_OPERATION = 20;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.OpenUsingType <em>Open Using Type</em>}' enum.
@@ -738,7 +775,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getOpenUsingType()
 	 * @generated
 	 */
-	int OPEN_USING_TYPE = 20;
+	int OPEN_USING_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.db.syntax.dbl.UsingType <em>Using Type</em>}' enum.
@@ -748,7 +785,7 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getUsingType()
 	 * @generated
 	 */
-	int USING_TYPE = 21;
+	int USING_TYPE = 22;
 
 
 	/**
@@ -793,6 +830,38 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAllocateDescriptorStatement_WithMax();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement <em>Deallocate Descriptor Statement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Deallocate Descriptor Statement</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement
+	 * @generated
+	 */
+	EClass getDeallocateDescriptorStatement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement#getDescriptorName <em>Descriptor Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Descriptor Name</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement#getDescriptorName()
+	 * @see #getDeallocateDescriptorStatement()
+	 * @generated
+	 */
+	EAttribute getDeallocateDescriptorStatement_DescriptorName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement#getDescriptorScope <em>Descriptor Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Descriptor Scope</em>'.
+	 * @see org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement#getDescriptorScope()
+	 * @see #getDeallocateDescriptorStatement()
+	 * @generated
+	 */
+	EAttribute getDeallocateDescriptorStatement_DescriptorScope();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement <em>Declare Cursor Statement</em>}'.
@@ -1433,6 +1502,32 @@ public interface QDatabaseSyntaxDBLPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ALLOCATE_DESCRIPTOR_STATEMENT__WITH_MAX = eINSTANCE.getAllocateDescriptorStatement_WithMax();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeallocateDescriptorStatementImpl <em>Deallocate Descriptor Statement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.db.syntax.dbl.impl.DeallocateDescriptorStatementImpl
+		 * @see org.smeup.sys.db.syntax.dbl.impl.DatabaseSyntaxDBLPackageImpl#getDeallocateDescriptorStatement()
+		 * @generated
+		 */
+		EClass DEALLOCATE_DESCRIPTOR_STATEMENT = eINSTANCE.getDeallocateDescriptorStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME = eINSTANCE.getDeallocateDescriptorStatement_DescriptorName();
+
+		/**
+		 * The meta object literal for the '<em><b>Descriptor Scope</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE = eINSTANCE.getDeallocateDescriptorStatement_DescriptorScope();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.db.syntax.dbl.impl.DeclareCursorStatementImpl <em>Declare Cursor Statement</em>}' class.

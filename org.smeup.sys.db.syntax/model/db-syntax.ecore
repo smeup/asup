@@ -330,6 +330,12 @@
       <eLiterals name="SCROLL" value="20"/>
       <eLiterals name="DYNSCROLL" value="30"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeallocateDescriptorStatement" eSuperTypes="#//BindingStatement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorName" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptorScope" lowerBound="1"
+          eType="#//dbl/DescriptorScope"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DeclareCursorStatement" eSuperTypes="#//BindingStatement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cursorName" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

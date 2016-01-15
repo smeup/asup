@@ -26,6 +26,7 @@ import org.smeup.sys.db.syntax.dbl.QAllocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QCloseStatement;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLFactory;
 import org.smeup.sys.db.syntax.dbl.QDatabaseSyntaxDBLPackage;
+import org.smeup.sys.db.syntax.dbl.QDeallocateDescriptorStatement;
 import org.smeup.sys.db.syntax.dbl.QDeclareCursorStatement;
 import org.smeup.sys.db.syntax.dbl.QDescribeStatement;
 import org.smeup.sys.db.syntax.dbl.QExecuteImmediateStatement;
@@ -60,6 +61,13 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 * @generated
 	 */
 	private EClass allocateDescriptorStatementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deallocateDescriptorStatementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -318,6 +326,33 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 	 */
 	public EAttribute getAllocateDescriptorStatement_WithMax() {
 		return (EAttribute)allocateDescriptorStatementEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeallocateDescriptorStatement() {
+		return deallocateDescriptorStatementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeallocateDescriptorStatement_DescriptorName() {
+		return (EAttribute)deallocateDescriptorStatementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeallocateDescriptorStatement_DescriptorScope() {
+		return (EAttribute)deallocateDescriptorStatementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -848,6 +883,10 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		createEAttribute(allocateDescriptorStatementEClass, ALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE);
 		createEAttribute(allocateDescriptorStatementEClass, ALLOCATE_DESCRIPTOR_STATEMENT__WITH_MAX);
 
+		deallocateDescriptorStatementEClass = createEClass(DEALLOCATE_DESCRIPTOR_STATEMENT);
+		createEAttribute(deallocateDescriptorStatementEClass, DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_NAME);
+		createEAttribute(deallocateDescriptorStatementEClass, DEALLOCATE_DESCRIPTOR_STATEMENT__DESCRIPTOR_SCOPE);
+
 		declareCursorStatementEClass = createEClass(DECLARE_CURSOR_STATEMENT);
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__CURSOR_NAME);
 		createEAttribute(declareCursorStatementEClass, DECLARE_CURSOR_STATEMENT__CURSOR_TYPE);
@@ -953,6 +992,7 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 
 		// Add supertypes to classes
 		allocateDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
+		deallocateDescriptorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		declareCursorStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		describeStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
 		executeImmediateStatementEClass.getESuperTypes().add(theDatabaseSyntaxPackage.getBindingStatement());
@@ -969,6 +1009,10 @@ public class DatabaseSyntaxDBLPackageImpl extends EPackageImpl implements QDatab
 		initEAttribute(getAllocateDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAllocateDescriptorStatement_DescriptorScope(), this.getDescriptorScope(), "descriptorScope", null, 1, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAllocateDescriptorStatement_WithMax(), theEcorePackage.getEString(), "withMax", null, 0, 1, QAllocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(deallocateDescriptorStatementEClass, QDeallocateDescriptorStatement.class, "DeallocateDescriptorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeallocateDescriptorStatement_DescriptorName(), theEcorePackage.getEString(), "descriptorName", null, 1, 1, QDeallocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeallocateDescriptorStatement_DescriptorScope(), this.getDescriptorScope(), "descriptorScope", null, 1, 1, QDeallocateDescriptorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(declareCursorStatementEClass, QDeclareCursorStatement.class, "DeclareCursorStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeclareCursorStatement_CursorName(), theEcorePackage.getEString(), "cursorName", null, 1, 1, QDeclareCursorStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
