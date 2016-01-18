@@ -117,9 +117,6 @@ public class IBMiCommandManagerImpl extends BaseCommandManagerImpl implements QS
 		}
 		CLCommand clCommand = clRow.getCommand();
 
-		// TODO remove me
-		job.getLibraries().add(job.getSystem().getSystemLibrary());
-		
 		// lookup command
 		QResourceSetReader<QCommand> commandResource = resourceManager.getResourceReader(job, QCommand.class, Scope.LIBRARY_LIST);
 		QCommand qCommand = commandResource.lookup(clCommand.getName());
