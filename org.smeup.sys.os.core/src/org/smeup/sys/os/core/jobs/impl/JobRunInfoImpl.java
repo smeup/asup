@@ -24,10 +24,10 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobRunInfoImpl#getMemorySize <em>Memory Size</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

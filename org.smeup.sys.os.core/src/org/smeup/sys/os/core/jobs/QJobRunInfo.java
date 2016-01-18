@@ -16,10 +16,10 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobRunInfo#getMemorySize <em>Memory Size</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobRunInfo()
  * @model

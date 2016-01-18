@@ -24,8 +24,8 @@ import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
 import org.smeup.sys.il.data.enums.YesNoEnum;
-import org.smeup.sys.il.memo.QResourceManager;
-import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.env.EnvironmentLevel;
+import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Supported
@@ -35,31 +35,35 @@ public class EnvironmentVariableAdder {
 	@Inject
 	private QJob job;
 	@Inject
-	private QSystemManager systemManager;
-	@Inject
-	private QResourceManager resourceManager;
-	
+	private QEnvironmentVariableManager environmentVariableManager;
+
 	@Main
 	public void main(
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
 			@Supported @DataDef(length = 1024) QEnum<InitialValueEnum, QCharacter> initialValue,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, 
-			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level,
+			@Supported @DataDef(length = 4) QEnum<EnvironmentLevel, QCharacter> level,
 			@Supported @DataDef(length = 4) QEnum<YesNoEnum, QCharacter> replaceExistingEntry) {
-	
-		new EnvironmentVariablesManager(job, level.asEnum())
-		.setValue(environmentVariable.trimR(), getValue(initialValue), replaceExistingEntry.asEnum().asBoolean())
-		.save(systemManager, resourceManager);
-	}
 
-	private String getValue(QEnum<InitialValueEnum, QCharacter> initialValue) {
+		String value = null;
 		switch (initialValue.asEnum()) {
 		case NULL:
-			return null;
+			value = null;
+			break;
 		case OTHER:
-			return initialValue.asData().trimR();
+			value = initialValue.asData().trimR();
+			break;
 		}
-		throw new RuntimeException("Wrong initial value: " + initialValue);
+		
+		boolean replace = false;
+		switch (replaceExistingEntry.asEnum()) {
+		case NO:
+			break;
+		case YES:
+			break;
+		}
+		
+		environmentVariableManager.addVariable(job, level.asEnum(), environmentVariable.trimR(), value, replace);
 	}
 
 	public static enum InitialValueEnum {

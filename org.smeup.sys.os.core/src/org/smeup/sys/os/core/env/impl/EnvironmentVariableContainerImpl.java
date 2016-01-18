@@ -11,19 +11,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.smeup.sys.os.core.QEnvironmentVariable;
-
+import org.smeup.sys.os.core.env.QEnvironmentVariable;
 import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
 
@@ -33,10 +27,10 @@ import org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl#getVariables <em>Variables</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

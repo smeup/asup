@@ -9,8 +9,6 @@ package org.smeup.sys.os.core.env;
 
 import java.util.List;
 
-import org.smeup.sys.os.core.QEnvironmentVariable;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Environment Variable Container</b></em>'.
@@ -18,10 +16,10 @@ import org.smeup.sys.os.core.QEnvironmentVariable;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.env.QEnvironmentVariableContainer#getVariables <em>Variables</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage#getEnvironmentVariableContainer()
  * @model
@@ -30,7 +28,7 @@ import org.smeup.sys.os.core.QEnvironmentVariable;
 public interface QEnvironmentVariableContainer {
 	/**
 	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.os.core.QEnvironmentVariable}.
+	 * The list contents are of type {@link org.smeup.sys.os.core.env.QEnvironmentVariable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,

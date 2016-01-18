@@ -17,11 +17,11 @@ import org.smeup.sys.il.core.QObjectNameable;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobLog#getJob <em>Job</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobLog()
  * @model

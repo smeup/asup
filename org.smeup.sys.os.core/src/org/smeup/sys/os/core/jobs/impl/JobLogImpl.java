@@ -30,11 +30,11 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <em><b>QJob Log</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getEntries <em>Entries</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl#getJob <em>Job</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

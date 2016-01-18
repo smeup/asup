@@ -149,8 +149,6 @@ public enum SystemStatus implements Enumerator {
 	 * Returns the '<em><b>System Status</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param literal the literal.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SystemStatus get(String literal) {
@@ -167,8 +165,6 @@ public enum SystemStatus implements Enumerator {
 	 * Returns the '<em><b>System Status</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name the name.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SystemStatus getByName(String name) {
@@ -185,8 +181,6 @@ public enum SystemStatus implements Enumerator {
 	 * Returns the '<em><b>System Status</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the integer value.
-	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static SystemStatus get(int value) {

@@ -227,13 +227,13 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	int JOB__TIME_SEPARATOR = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 16;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Variable Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__VARIABLES = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 17;
+	int JOB__VARIABLE_CONTAINER = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 17;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -679,15 +679,15 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 	EAttribute getJob_TimeSeparator();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.smeup.sys.os.core.jobs.QJob#getVariableContainer <em>Variable Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
-	 * @see org.smeup.sys.os.core.jobs.QJob#getVariables()
+	 * @return the meta object for the containment reference '<em>Variable Container</em>'.
+	 * @see org.smeup.sys.os.core.jobs.QJob#getVariableContainer()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_Variables();
+	EReference getJob_VariableContainer();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.jobs.QJobLog <em>Job Log</em>}'.
@@ -1046,12 +1046,12 @@ public interface QOperatingSystemJobsPackage extends EPackage {
 		EAttribute JOB__TIME_SEPARATOR = eINSTANCE.getJob_TimeSeparator();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Variable Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__VARIABLES = eINSTANCE.getJob_Variables();
+		EReference JOB__VARIABLE_CONTAINER = eINSTANCE.getJob_VariableContainer();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.jobs.impl.JobLogImpl <em>Job Log</em>}' class.

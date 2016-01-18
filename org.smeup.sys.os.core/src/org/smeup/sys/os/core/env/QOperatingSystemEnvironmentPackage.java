@@ -7,10 +7,12 @@
  */
 package org.smeup.sys.os.core.env;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,23 +63,41 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	QOperatingSystemEnvironmentPackage eINSTANCE = org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.smeup.sys.os.core.env.QEnvironmentVariableManager <em>Environment Variable Manager</em>}' class.
+	 * The meta object id for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.smeup.sys.os.core.env.QEnvironmentVariableManager
-	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableManager()
+	 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableImpl
+	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariable()
 	 * @generated
 	 */
-	int ENVIRONMENT_VARIABLE_MANAGER = 0;
+	int ENVIRONMENT_VARIABLE = 0;
 
 	/**
-	 * The number of structural features of the '<em>Environment Variable Manager</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE_MANAGER_FEATURE_COUNT = 0;
+	int ENVIRONMENT_VARIABLE__NAME = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE__VALUE = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Environment Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_NAMEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl <em>Environment Variable Container</em>}' class.
@@ -108,6 +128,25 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	int ENVIRONMENT_VARIABLE_CONTAINER_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableManagerImpl <em>Environment Variable Manager</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableManagerImpl
+	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableManager()
+	 * @generated
+	 */
+	int ENVIRONMENT_VARIABLE_MANAGER = 2;
+
+	/**
+	 * The number of structural features of the '<em>Environment Variable Manager</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENVIRONMENT_VARIABLE_MANAGER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,18 +154,40 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentLevel()
 	 * @generated
 	 */
-	int ENVIRONMENT_LEVEL = 2;
+	int ENVIRONMENT_LEVEL = 3;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.smeup.sys.os.core.env.QEnvironmentVariableManager <em>Environment Variable Manager</em>}'.
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.env.QEnvironmentVariable <em>Environment Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Environment Variable Manager</em>'.
-	 * @see org.smeup.sys.os.core.env.QEnvironmentVariableManager
+	 * @return the meta object for class '<em>Environment Variable</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariable
 	 * @generated
 	 */
-	EClass getEnvironmentVariableManager();
+	EClass getEnvironmentVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.env.QEnvironmentVariable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariable#getName()
+	 * @see #getEnvironmentVariable()
+	 * @generated
+	 */
+	EAttribute getEnvironmentVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.core.env.QEnvironmentVariable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariable#getValue()
+	 * @see #getEnvironmentVariable()
+	 * @generated
+	 */
+	EAttribute getEnvironmentVariable_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.smeup.sys.os.core.env.QEnvironmentVariableContainer <em>Environment Variable Container</em>}'.
@@ -148,6 +209,16 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEnvironmentVariableContainer_Variables();
+
+	/**
+	 * Returns the meta object for class '{@link org.smeup.sys.os.core.env.QEnvironmentVariableManager <em>Environment Variable Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Environment Variable Manager</em>'.
+	 * @see org.smeup.sys.os.core.env.QEnvironmentVariableManager
+	 * @generated
+	 */
+	EClass getEnvironmentVariableManager();
 
 	/**
 	 * Returns the meta object for enum '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}'.
@@ -182,14 +253,30 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.QEnvironmentVariableManager <em>Environment Variable Manager</em>}' class.
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.smeup.sys.os.core.env.QEnvironmentVariableManager
-		 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableManager()
+		 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableImpl
+		 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariable()
 		 * @generated
 		 */
-		EClass ENVIRONMENT_VARIABLE_MANAGER = eINSTANCE.getEnvironmentVariableManager();
+		EClass ENVIRONMENT_VARIABLE = eINSTANCE.getEnvironmentVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENVIRONMENT_VARIABLE__NAME = eINSTANCE.getEnvironmentVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENVIRONMENT_VARIABLE__VALUE = eINSTANCE.getEnvironmentVariable_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableContainerImpl <em>Environment Variable Container</em>}' class.
@@ -208,6 +295,16 @@ public interface QOperatingSystemEnvironmentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENVIRONMENT_VARIABLE_CONTAINER__VARIABLES = eINSTANCE.getEnvironmentVariableContainer_Variables();
+
+		/**
+		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.impl.EnvironmentVariableManagerImpl <em>Environment Variable Manager</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.smeup.sys.os.core.env.impl.EnvironmentVariableManagerImpl
+		 * @see org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentPackageImpl#getEnvironmentVariableManager()
+		 * @generated
+		 */
+		EClass ENVIRONMENT_VARIABLE_MANAGER = eINSTANCE.getEnvironmentVariableManager();
 
 		/**
 		 * The meta object literal for the '{@link org.smeup.sys.os.core.env.EnvironmentLevel <em>Environment Level</em>}' enum.

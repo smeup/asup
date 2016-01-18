@@ -27,6 +27,15 @@ public interface QOperatingSystemEnvironmentFactory extends EFactory {
 	QOperatingSystemEnvironmentFactory eINSTANCE = org.smeup.sys.os.core.env.impl.OperatingSystemEnvironmentFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Environment Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Environment Variable</em>'.
+	 * @generated
+	 */
+	QEnvironmentVariable createEnvironmentVariable();
+
+	/**
 	 * Returns a new object of class '<em>Environment Variable Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34,6 +43,15 @@ public interface QOperatingSystemEnvironmentFactory extends EFactory {
 	 * @generated
 	 */
 	QEnvironmentVariableContainer createEnvironmentVariableContainer();
+
+	/**
+	 * Returns a new object of class '<em>Environment Variable Manager</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Environment Variable Manager</em>'.
+	 * @generated
+	 */
+	QEnvironmentVariableManager createEnvironmentVariableManager();
 
 	/**
 	 * Returns the package supported by this factory.

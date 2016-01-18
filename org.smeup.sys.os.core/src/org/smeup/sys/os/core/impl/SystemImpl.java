@@ -7,23 +7,18 @@
  */
 package org.smeup.sys.os.core.impl;
 
-import java.util.Collection;
-import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.lock.impl.ObjectLockableImpl;
 import org.smeup.sys.os.core.QCreationInfo;
-import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QOperatingSystemCorePackage;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.SystemStatus;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +26,6 @@ import org.smeup.sys.os.core.SystemStatus;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getCreationInfo <em>Creation Info</em>}</li>
@@ -42,8 +36,9 @@ import org.smeup.sys.os.core.SystemStatus;
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getTemporaryLibrary <em>Temporary Library</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.impl.SystemImpl#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -214,14 +209,14 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	protected String temporaryLibrary = TEMPORARY_LIBRARY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+	 * The cached value of the '{@link #getVariableContainer() <em>Variable Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariables()
+	 * @see #getVariableContainer()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QEnvironmentVariable> variables;
+	protected QEnvironmentVariableContainer variableContainer;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -496,11 +491,42 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QEnvironmentVariable> getVariables() {
-		if (variables == null) {
-			variables = new EObjectContainmentEList<QEnvironmentVariable>(QEnvironmentVariable.class, this, QOperatingSystemCorePackage.SYSTEM__VARIABLES);
+	public QEnvironmentVariableContainer getVariableContainer() {
+		return variableContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVariableContainer(QEnvironmentVariableContainer newVariableContainer, NotificationChain msgs) {
+		QEnvironmentVariableContainer oldVariableContainer = variableContainer;
+		variableContainer = newVariableContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER, oldVariableContainer, newVariableContainer);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return variables;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVariableContainer(QEnvironmentVariableContainer newVariableContainer) {
+		if (newVariableContainer != variableContainer) {
+			NotificationChain msgs = null;
+			if (variableContainer != null)
+				msgs = ((InternalEObject)variableContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER, null, msgs);
+			if (newVariableContainer != null)
+				msgs = ((InternalEObject)newVariableContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER, null, msgs);
+			msgs = basicSetVariableContainer(newVariableContainer, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER, newVariableContainer, newVariableContainer));
 	}
 
 	/**
@@ -515,8 +541,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return basicSetContext(null, msgs);
 			case QOperatingSystemCorePackage.SYSTEM__CREATION_INFO:
 				return basicSetCreationInfo(null, msgs);
-			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
-				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
+				return basicSetVariableContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -547,8 +573,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return getSystemUser();
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return getTemporaryLibrary();
-			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
-				return getVariables();
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
+				return getVariableContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -558,7 +584,6 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -589,9 +614,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary((String)newValue);
 				return;
-			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
-				getVariables().clear();
-				getVariables().addAll((Collection<? extends QEnvironmentVariable>)newValue);
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
+				setVariableContainer((QEnvironmentVariableContainer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -632,8 +656,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				setTemporaryLibrary(TEMPORARY_LIBRARY_EDEFAULT);
 				return;
-			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
-				getVariables().clear();
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
+				setVariableContainer((QEnvironmentVariableContainer)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -665,8 +689,8 @@ public class SystemImpl extends ObjectLockableImpl implements QSystem {
 				return SYSTEM_USER_EDEFAULT == null ? systemUser != null : !SYSTEM_USER_EDEFAULT.equals(systemUser);
 			case QOperatingSystemCorePackage.SYSTEM__TEMPORARY_LIBRARY:
 				return TEMPORARY_LIBRARY_EDEFAULT == null ? temporaryLibrary != null : !TEMPORARY_LIBRARY_EDEFAULT.equals(temporaryLibrary);
-			case QOperatingSystemCorePackage.SYSTEM__VARIABLES:
-				return variables != null && !variables.isEmpty();
+			case QOperatingSystemCorePackage.SYSTEM__VARIABLE_CONTAINER:
+				return variableContainer != null;
 		}
 		return super.eIsSet(featureID);
 	}

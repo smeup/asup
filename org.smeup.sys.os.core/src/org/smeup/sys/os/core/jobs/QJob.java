@@ -14,8 +14,8 @@ import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.os.core.QCreationInfo;
-import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -23,7 +23,6 @@ import org.smeup.sys.os.core.QSystem;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getCreationInfo <em>Creation Info</em>}</li>
@@ -42,8 +41,9 @@ import org.smeup.sys.os.core.QSystem;
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSwitches <em>Switches</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getTimeSeparator <em>Time Separator</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.QJob#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob()
  * @model
@@ -207,7 +207,7 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	 *        annotation="il-data length='10'"
 	 * @generated
 	 */
-	int getMemorySize();
+	double getMemorySize();
 
 	/**
 	 * Returns the value of the '<em><b>Job Type</b></em>' attribute.
@@ -446,20 +446,30 @@ public interface QJob extends QObjectNameable, QContextProvider {
 	void setTimeSeparator(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.os.core.QEnvironmentVariable}.
+	 * Returns the value of the '<em><b>Variable Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variables</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Variable Container</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_Variables()
+	 * @return the value of the '<em>Variable Container</em>' containment reference.
+	 * @see #setVariableContainer(QEnvironmentVariableContainer)
+	 * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJob_VariableContainer()
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<QEnvironmentVariable> getVariables();
+	QEnvironmentVariableContainer getVariableContainer();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.jobs.QJob#getVariableContainer <em>Variable Container</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variable Container</em>' containment reference.
+	 * @see #getVariableContainer()
+	 * @generated
+	 */
+	void setVariableContainer(QEnvironmentVariableContainer value);
 
 	/**
 	 * Returns the value of the '<em><b>Job Thread</b></em>' reference.

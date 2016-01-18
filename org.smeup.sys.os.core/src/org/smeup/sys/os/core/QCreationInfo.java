@@ -17,12 +17,12 @@ import org.smeup.sys.il.core.QObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.QCreationInfo#getCreationDate <em>Creation Date</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QCreationInfo#getCreationUser <em>Creation User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QCreationInfo#getCreationSystem <em>Creation System</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getCreationInfo()
  * @model

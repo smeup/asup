@@ -17,16 +17,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectNameableImpl;
 import org.smeup.sys.il.data.def.DateFormat;
 import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.QCreationInfo;
-import org.smeup.sys.os.core.QEnvironmentVariable;
 import org.smeup.sys.os.core.QSystem;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.JobStatus;
 import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
@@ -38,7 +36,6 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  * <em><b>QJob</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getCreationInfo <em>Creation Info</em>}</li>
@@ -57,8 +54,9 @@ import org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage;
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSwitches <em>Switches</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getSystem <em>System</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getTimeSeparator <em>Time Separator</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.jobs.impl.JobImpl#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -321,13 +319,14 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	protected String timeSeparator = TIME_SEPARATOR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getVariables()
+	 * The cached value of the '{@link #getVariableContainer() <em>Variable Container</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariableContainer()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<QEnvironmentVariable> variables;
+	protected QEnvironmentVariableContainer variableContainer;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -599,12 +598,12 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public int getMemorySize() {		
+	public double getMemorySize() {		
 		QJobRunInfo jobRunInfo = getJobRunInfo();
 		if(jobRunInfo == null)
 			return 0;
 		
-		long memorySize = jobRunInfo.getMemorySize()/1024;
+		long memorySize = jobRunInfo.getMemorySize()/1024/1024;
 		return (int) memorySize;
 	}
 
@@ -733,14 +732,46 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List<QEnvironmentVariable> getVariables() {
-		if (variables == null) {
-			variables = new EObjectContainmentEList<QEnvironmentVariable>(QEnvironmentVariable.class, this, QOperatingSystemJobsPackage.JOB__VARIABLES);
+	public QEnvironmentVariableContainer getVariableContainer() {
+		return variableContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVariableContainer(QEnvironmentVariableContainer newVariableContainer, NotificationChain msgs) {
+		QEnvironmentVariableContainer oldVariableContainer = variableContainer;
+		variableContainer = newVariableContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER, oldVariableContainer, newVariableContainer);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return variables;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVariableContainer(QEnvironmentVariableContainer newVariableContainer) {
+		if (newVariableContainer != variableContainer) {
+			NotificationChain msgs = null;
+			if (variableContainer != null)
+				msgs = ((InternalEObject)variableContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER, null, msgs);
+			if (newVariableContainer != null)
+				msgs = ((InternalEObject)newVariableContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER, null, msgs);
+			msgs = basicSetVariableContainer(newVariableContainer, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER, newVariableContainer, newVariableContainer));
 	}
 
 	/**
@@ -865,8 +896,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return basicSetCreationInfo(null, msgs);
 			case QOperatingSystemJobsPackage.JOB__JOB_RUN_INFO:
 				return basicSetJobRunInfo(null, msgs);
-			case QOperatingSystemJobsPackage.JOB__VARIABLES:
-				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
+			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
+				return basicSetVariableContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -913,8 +944,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return basicGetSystem();
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return getTimeSeparator();
-			case QOperatingSystemJobsPackage.JOB__VARIABLES:
-				return getVariables();
+			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
+				return getVariableContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -980,9 +1011,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator((String)newValue);
 				return;
-			case QOperatingSystemJobsPackage.JOB__VARIABLES:
-				getVariables().clear();
-				getVariables().addAll((Collection<? extends QEnvironmentVariable>)newValue);
+			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
+				setVariableContainer((QEnvironmentVariableContainer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1046,8 +1076,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				setTimeSeparator(TIME_SEPARATOR_EDEFAULT);
 				return;
-			case QOperatingSystemJobsPackage.JOB__VARIABLES:
-				getVariables().clear();
+			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
+				setVariableContainer((QEnvironmentVariableContainer)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1094,8 +1124,8 @@ public class JobImpl extends ObjectNameableImpl implements QJob {
 				return system != null;
 			case QOperatingSystemJobsPackage.JOB__TIME_SEPARATOR:
 				return TIME_SEPARATOR_EDEFAULT == null ? timeSeparator != null : !TIME_SEPARATOR_EDEFAULT.equals(timeSeparator);
-			case QOperatingSystemJobsPackage.JOB__VARIABLES:
-				return variables != null && !variables.isEmpty();
+			case QOperatingSystemJobsPackage.JOB__VARIABLE_CONTAINER:
+				return variableContainer != null;
 		}
 		return super.eIsSet(featureID);
 	}

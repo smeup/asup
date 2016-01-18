@@ -8,7 +8,6 @@
 package org.smeup.sys.os.core.env;
 
 import java.util.List;
-import org.smeup.sys.os.core.QEnvironmentVariable;
 
 import org.smeup.sys.os.core.jobs.QJob;
 
@@ -19,25 +18,25 @@ import org.smeup.sys.os.core.jobs.QJob;
  *
  *
  * @see org.smeup.sys.os.core.env.QOperatingSystemEnvironmentPackage#getEnvironmentVariableManager()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface QEnvironmentVariableManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" levelRequired="true" variableRequired="true" replaceRequired="true"
+	 * @model jobRequired="true" levelRequired="true" nameRequired="true" valueRequired="true" replaceRequired="true"
 	 * @generated
 	 */
-	void addVariable(QJob job, EnvironmentLevel level, QEnvironmentVariable variable, boolean replace);
+	QEnvironmentVariable addVariable(QJob job, EnvironmentLevel level, String name, String value, boolean replace);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" levelRequired="true" variableRequired="true" replaceRequired="true"
+	 * @model jobRequired="true" levelRequired="true" nameRequired="true" valueRequired="true"
 	 * @generated
 	 */
-	void changeVariable(QJob job, EnvironmentLevel level, QEnvironmentVariable variable, boolean replace);
+	QEnvironmentVariable changeVariable(QJob job, EnvironmentLevel level, String name, String value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -50,9 +49,17 @@ public interface QEnvironmentVariableManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model jobRequired="true" levelRequired="true" nameRequired="true" replaceRequired="true"
+	 * @model jobRequired="true" levelRequired="true" nameRequired="true"
 	 * @generated
 	 */
-	void removeVariable(QJob job, EnvironmentLevel level, QEnvironmentVariable name, boolean replace);
+	QEnvironmentVariable lookupVariable(QJob job, EnvironmentLevel level, String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model jobRequired="true" levelRequired="true" nameRequired="true"
+	 * @generated
+	 */
+	QEnvironmentVariable removeVariable(QJob job, EnvironmentLevel level, String name);
 
 } // QEnvironmentVariableManager

@@ -22,7 +22,8 @@ import org.smeup.sys.os.core.jobs.JobType;
 import org.smeup.sys.os.core.jobs.QJob;
 
 public class E4SystemManagerImpl extends BaseSystemManagerImpl {
-		private QSystem system;
+
+	private QSystem system;
 
 	private QJob startupJob;
 
@@ -49,7 +50,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	public QJob start() {
 
 		this.startupJob = createJob(JobType.KERNEL, "QASUP", "KERNEL_E4");
-					
+
 		return startupJob;
 	}
 
@@ -69,7 +70,7 @@ public class E4SystemManagerImpl extends BaseSystemManagerImpl {
 	}
 
 	@Override
-	protected QJob createJob(JobType jobType, String user, String jobName){
+	protected QJob createJob(JobType jobType, String user, String jobName) {
 		return super.createJob(jobType, user, jobName);
 	}
 }

@@ -23,9 +23,9 @@ import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
 import org.smeup.sys.il.data.annotation.Special;
 import org.smeup.sys.il.data.def.BinaryType;
-import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.env.EnvironmentLevel;
+import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Supported
@@ -39,9 +39,7 @@ public class EnvironmentVariableChanger {
 	@Inject
 	private QJob job;
 	@Inject
-	private QSystemManager systemManager;
-	@Inject
-	private QResourceManager resourceManager;
+	private QEnvironmentVariableManager environmentVariableManager;
 	@Inject
 	private QExceptionManager exceptionManager;
 	
@@ -50,27 +48,24 @@ public class EnvironmentVariableChanger {
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
 			@Supported @DataDef(length = 1024) QEnum<NewValueEnum, QCharacter> newValue,
 			@ToDo @DataDef(binaryType = BinaryType.INTEGER) QEnum<CodedCharacterSetIDEnum, QBinary> codedCharacterSetID, 
-			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level) {
-	
-		EnvironmentVariablesManager environmentVariablesManager = new EnvironmentVariablesManager(job, level.asEnum());
-		String key = environmentVariable.trimR();
-		if (!environmentVariablesManager.contains(key)) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPFA981, new String[0]); 
-		}
-		
+			@Supported @DataDef(length = 4) QEnum<EnvironmentLevel, QCharacter> level) {
+
+		String value = null;
 		switch (newValue.asEnum()) {
 		case SAME:
 			return;
 		
 		case NULL:
-			environmentVariablesManager.setValue(key, null, true);
 			break;
 
 		case OTHER:
-			environmentVariablesManager.setValue(key, newValue.asData().trimR(), true);
+			value = newValue.asData().asString();
 			break;
-		}
-		environmentVariablesManager.save(systemManager, resourceManager);				
+		}				
+
+		if(environmentVariableManager.changeVariable(job, level.asEnum(), environmentVariable.trimR(), value) == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPFA981, environmentVariable.trimR()); 
+
 	}
 
 	public static enum NewValueEnum {

@@ -19,9 +19,9 @@ import org.smeup.sys.il.data.QEnum;
 import org.smeup.sys.il.data.annotation.DataDef;
 import org.smeup.sys.il.data.annotation.Main;
 import org.smeup.sys.il.data.annotation.Program;
-import org.smeup.sys.il.memo.QResourceManager;
 import org.smeup.sys.os.core.QExceptionManager;
-import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.env.EnvironmentLevel;
+import org.smeup.sys.os.core.env.QEnvironmentVariableManager;
 import org.smeup.sys.os.core.jobs.QJob;
 
 @Supported
@@ -35,22 +35,16 @@ public class EnvironmentVariablerRemover {
 	@Inject
 	private QJob job;
 	@Inject
-	private QSystemManager systemManager;
-	@Inject
-	private QResourceManager resourceManager;
+	private QEnvironmentVariableManager environmentVariableManager;
 	@Inject
 	private QExceptionManager exceptionManager;
 	
 	@Main
 	public void main(
 			@Supported @DataDef(length = 128) QCharacter environmentVariable, 
-			@Supported @DataDef(length = 4) QEnum<EnvironmentVariableLevelEnum, QCharacter> level) {
+			@Supported @DataDef(length = 4) QEnum<EnvironmentLevel, QCharacter> level) {
 	
-		EnvironmentVariablesManager variablesManager = new EnvironmentVariablesManager(job, level.asEnum());
-		if (!variablesManager.contains(environmentVariable.trimR())) {
-			throw exceptionManager.prepareException(job, QCPFMSG.CPFA981, new String[0]); 
-		}
-		variablesManager.remove(environmentVariable.trimR())
-						.save(systemManager, resourceManager);
+		if(environmentVariableManager.removeVariable(job, level.asEnum(), environmentVariable.trimR()) == null)
+			throw exceptionManager.prepareException(job, QCPFMSG.CPFA981, environmentVariable.trimR()); 
 	}
 }

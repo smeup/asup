@@ -15,11 +15,11 @@ package org.smeup.sys.os.core.jobs;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobEvent#getSource <em>Source</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.jobs.QJobEvent#getType <em>Type</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.jobs.QOperatingSystemJobsPackage#getJobEvent()
  * @model

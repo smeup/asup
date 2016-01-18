@@ -17,6 +17,7 @@ import org.smeup.sys.il.memo.QResourceWriter;
 import org.smeup.sys.os.core.QOperatingSystemCoreHelper;
 import org.smeup.sys.os.core.QSystem;
 import org.smeup.sys.os.core.QSystemManager;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.lib.QLibrary;
 import org.smeup.sys.os.lib.QOperatingSystemLibraryFactory;
@@ -53,10 +54,12 @@ public class BaseSystemActivator {
 		QResourceWriter<QSystem> systemWriter = resourceManager.getResourceWriter(job, QSystem.class, system.getSystemLibrary());
 		QSystem persistedSystem = systemWriter.lookup(system.getName());
 		if (persistedSystem != null) {
-			system.getVariables().addAll(persistedSystem.getVariables());
+			QEnvironmentVariableContainer variableContainer = persistedSystem.getVariableContainer();
+			if(variableContainer != null) {
+				system.setVariableContainer(variableContainer);
+				systemWriter.save(system, true);
+			}
 		}
-		systemWriter.save(system, true);
-
 		QResourceWriter<QUserProfile> userProfileWriter = resourceManager.getResourceWriter(job, QUserProfile.class, system.getSystemLibrary());
 
 		if (!userProfileWriter.exists(system.getSystemUser())) {

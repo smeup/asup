@@ -62,7 +62,9 @@ public class OperatingSystemEnvironmentFactoryImpl extends EFactoryImpl implemen
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case QOperatingSystemEnvironmentPackage.ENVIRONMENT_VARIABLE: return (EObject)createEnvironmentVariable();
 			case QOperatingSystemEnvironmentPackage.ENVIRONMENT_VARIABLE_CONTAINER: return (EObject)createEnvironmentVariableContainer();
+			case QOperatingSystemEnvironmentPackage.ENVIRONMENT_VARIABLE_MANAGER: return (EObject)createEnvironmentVariableManager();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,9 +105,29 @@ public class OperatingSystemEnvironmentFactoryImpl extends EFactoryImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QEnvironmentVariable createEnvironmentVariable() {
+		EnvironmentVariableImpl environmentVariable = new EnvironmentVariableImpl();
+		return environmentVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public QEnvironmentVariableContainer createEnvironmentVariableContainer() {
 		EnvironmentVariableContainerImpl environmentVariableContainer = new EnvironmentVariableContainerImpl();
 		return environmentVariableContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QEnvironmentVariableManager createEnvironmentVariableManager() {
+		EnvironmentVariableManagerImpl environmentVariableManager = new EnvironmentVariableManagerImpl();
+		return environmentVariableManager;
 	}
 
 	/**

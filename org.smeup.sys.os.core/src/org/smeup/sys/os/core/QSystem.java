@@ -7,11 +7,11 @@
  */
 package org.smeup.sys.os.core;
 
-import java.util.List;
 import org.smeup.sys.il.core.QObjectNameable;
 import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.ctx.QContextProvider;
 import org.smeup.sys.il.lock.QObjectLockable;
+import org.smeup.sys.os.core.env.QEnvironmentVariableContainer;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,6 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getContext <em>Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getCreationInfo <em>Creation Info</em>}</li>
@@ -31,8 +30,9 @@ import org.smeup.sys.il.lock.QObjectLockable;
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemLibrary <em>System Library</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getSystemUser <em>System User</em>}</li>
  *   <li>{@link org.smeup.sys.os.core.QSystem#getTemporaryLibrary <em>Temporary Library</em>}</li>
- *   <li>{@link org.smeup.sys.os.core.QSystem#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.smeup.sys.os.core.QSystem#getVariableContainer <em>Variable Container</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem()
  * @model
@@ -286,19 +286,29 @@ public interface QSystem extends QObjectLockable, QObjectNameable, QContextProvi
 	void setTemporaryLibrary(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.smeup.sys.os.core.QEnvironmentVariable}.
+	 * Returns the value of the '<em><b>Variable Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variables</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Variable Container</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_Variables()
+	 * @return the value of the '<em>Variable Container</em>' containment reference.
+	 * @see #setVariableContainer(QEnvironmentVariableContainer)
+	 * @see org.smeup.sys.os.core.QOperatingSystemCorePackage#getSystem_VariableContainer()
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<QEnvironmentVariable> getVariables();
+	QEnvironmentVariableContainer getVariableContainer();
+
+	/**
+	 * Sets the value of the '{@link org.smeup.sys.os.core.QSystem#getVariableContainer <em>Variable Container</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variable Container</em>' containment reference.
+	 * @see #getVariableContainer()
+	 * @generated
+	 */
+	void setVariableContainer(QEnvironmentVariableContainer value);
 
 } // QSystem

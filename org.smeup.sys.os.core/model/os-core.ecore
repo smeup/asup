@@ -6,46 +6,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationUser" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationSystem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
-        transient="true" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="installPath" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Path di installazione del sistema.&#xA;&#xA;All'interno e' generalmente prevista una strutturazione del tipo:&#xA;&#xA;$installPath/library/objectType/objectName"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastJobNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
-        eType="#//SystemStatus" defaultValueLiteral="STP"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="systemLibrary" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="systemUser" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="temporaryLibrary" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-        eType="#//EnvironmentVariable" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemManager" abstract="true" interface="true">
-    <eOperations name="getSystem" eType="#//System"/>
-    <eOperations name="start" lowerBound="1" eType="#//jobs/Job"/>
-    <eOperations name="stop"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SystemStatus">
-    <eLiterals name="Activating" value="10" literal="ACT"/>
-    <eLiterals name="Started" value="20" literal="STR"/>
-    <eLiterals name="Ending" value="70" literal="END"/>
-    <eLiterals name="Stopped" value="80" literal="STP"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExceptionManager" abstract="true" interface="true">
     <eOperations name="prepareException" eType="#//MessageException">
       <eTypeParameters name="E">
@@ -80,6 +40,41 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageVariableList" instanceClassName="java.lang.Object[]"/>
   <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="org.smeup.sys.os.core.OperatingSystemMessageException"/>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="../../org.smeup.sys.il.lock/model/il-lock.ecore#//ObjectLockable ../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
+        transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="creationInfo" eType="#//CreationInfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="installPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Path di installazione del sistema.&#xA;&#xA;All'interno e' generalmente prevista una strutturazione del tipo:&#xA;&#xA;$installPath/library/objectType/objectName"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastJobNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" lowerBound="1"
+        eType="#//SystemStatus" defaultValueLiteral="STP"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="systemLibrary" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="systemUser" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="temporaryLibrary" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemManager" abstract="true" interface="true">
+    <eOperations name="getSystem" eType="#//System"/>
+    <eOperations name="start" lowerBound="1" eType="#//jobs/Job"/>
+    <eOperations name="stop"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SystemStatus">
+    <eLiterals name="Activating" value="10" literal="ACT"/>
+    <eLiterals name="Started" value="20" literal="STR"/>
+    <eLiterals name="Ending" value="70" literal="END"/>
+    <eLiterals name="Stopped" value="80" literal="STP"/>
+  </eClassifiers>
   <eSubpackages name="jobs" nsURI="http://www.smeup.org/asup/os/core/jobs" nsPrefix="os-core-jobs">
     <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/ContextProvider">
       <eOperations name="getJobStatus" lowerBound="1" eType="#//jobs/JobStatus">
@@ -87,7 +82,7 @@
           <details key="length" value="20"/>
         </eAnnotations>
       </eOperations>
-      <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eOperations name="getMemorySize" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
         <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
           <details key="length" value="10"/>
         </eAnnotations>
@@ -165,8 +160,8 @@
           <details key="length" value="1"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-          eType="#//EnvironmentVariable" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="variableContainer" eType="#//env/EnvironmentVariableContainer"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="JobEvent">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//jobs/Job"/>
@@ -309,34 +304,53 @@
       <eLiterals name="System" value="10" literal="*SYS"/>
       <eLiterals name="Job" value="20" literal="*JOB"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableManager" abstract="true"
-        interface="true">
-      <eOperations name="addVariable">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
-        <eParameters name="variable" lowerBound="1" eType="#//EnvironmentVariable"/>
-        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      </eOperations>
-      <eOperations name="changeVariable">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
-        <eParameters name="variable" lowerBound="1" eType="#//EnvironmentVariable"/>
-        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      </eOperations>
-      <eOperations name="listVariables" upperBound="-1" eType="#//EnvironmentVariable">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
-      </eOperations>
-      <eOperations name="removeVariable">
-        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
-        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
-        <eParameters name="name" lowerBound="1" eType="#//EnvironmentVariable"/>
-        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      </eOperations>
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="../../org.smeup.sys.il.core/model/il-core.ecore#//ObjectNameable">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          iD="true">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="20"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="il-data" references="../../org.smeup.sys.il.core/model/il-data.ecore#//def/CharacterDef">
+          <details key="length" value="132"/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableContainer">
       <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-          eType="#//EnvironmentVariable" containment="true"/>
+          eType="#//env/EnvironmentVariable" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariableManager">
+      <eOperations name="addVariable" eType="#//env/EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="replace" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </eOperations>
+      <eOperations name="changeVariable" eType="#//env/EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="listVariables" upperBound="-1" eType="#//env/EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+      </eOperations>
+      <eOperations name="lookupVariable" eType="#//env/EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
+      <eOperations name="removeVariable" eType="#//env/EnvironmentVariable">
+        <eParameters name="job" lowerBound="1" eType="#//jobs/Job"/>
+        <eParameters name="level" lowerBound="1" eType="#//env/EnvironmentLevel"/>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eOperations>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>
