@@ -284,7 +284,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		QData data = this.datas.remove(key);
 		if(data instanceof QBufferedData) {
 			QBufferedData bufferedData = (QBufferedData)data;
-			if(!bufferedData.isStoreOwner())
+			if(bufferedData.isStoreOwner())
 				this.memorySize -= bufferedData.getSize();
 		}
 	}
@@ -343,7 +343,7 @@ public class NIODataContainerImpl extends ObjectImpl implements QDataContainer, 
 		
 		if(data instanceof QBufferedData) {
 			QBufferedData bufferedData = (QBufferedData)data;
-			if(!bufferedData.isStoreOwner())
+			if(bufferedData.isStoreOwner())
 				this.memorySize += bufferedData.getSize();
 		}
 		
