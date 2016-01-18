@@ -10,7 +10,6 @@ package org.smeup.sys.os.pgm;
 import java.util.List;
 
 import org.smeup.sys.il.core.QObject;
-import org.smeup.sys.il.core.ctx.QContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -19,7 +18,6 @@ import org.smeup.sys.il.core.ctx.QContext;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext <em>Framework Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.QActivationGroup#getPrograms <em>Programs</em>}</li>
  * </ul>
@@ -60,32 +58,6 @@ public interface QActivationGroup extends QObject {
 	 * @generated
 	 */
 	void remove(QProgram program);
-
-	/**
-	 * Returns the value of the '<em><b>Framework Context</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Framework Context</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Framework Context</em>' containment reference.
-	 * @see #setFrameworkContext(QContext)
-	 * @see org.smeup.sys.os.pgm.QOperatingSystemProgramPackage#getActivationGroup_FrameworkContext()
-	 * @model containment="true" required="true" transient="true"
-	 * @generated
-	 */
-	QContext getFrameworkContext();
-
-	/**
-	 * Sets the value of the '{@link org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext <em>Framework Context</em>}' containment reference.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Framework Context</em>' containment reference.
-	 * @see #getFrameworkContext()
-	 * @generated
-	 */
-	void setFrameworkContext(QContext value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--

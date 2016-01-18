@@ -72,21 +72,13 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	int ACTIVATION_GROUP = 0;
 
 	/**
-	 * The feature id for the '<em><b>Framework Context</b></em>' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVATION_GROUP__FRAMEWORK_CONTEXT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 *
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVATION_GROUP__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
+	int ACTIVATION_GROUP__NAME = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Programs</b></em>' containment reference list.
@@ -94,7 +86,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVATION_GROUP__PROGRAMS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
+	int ACTIVATION_GROUP__PROGRAMS = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Activation Group</em>' class.
@@ -102,7 +94,7 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVATION_GROUP_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 3;
+	int ACTIVATION_GROUP_FEATURE_COUNT = QIntegratedLanguageCorePackage.OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.smeup.sys.os.pgm.QActivationGroupManager <em>Activation Group Manager</em>}' class.
@@ -453,20 +445,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 	EClass getActivationGroup();
 
 	/**
-	 * Returns the meta object for the containment reference '
-	 * {@link org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext
-	 * <em>Framework Context</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 *
-	 * @return the meta object for the containment reference '
-	 *         <em>Framework Context</em>'.
-	 * @see org.smeup.sys.os.pgm.QActivationGroup#getFrameworkContext()
-	 * @see #getActivationGroup()
-	 * @generated
-	 */
-	EReference getActivationGroup_FrameworkContext();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.smeup.sys.os.pgm.QActivationGroup#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
@@ -743,14 +721,6 @@ public interface QOperatingSystemProgramPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ACTIVATION_GROUP = eINSTANCE.getActivationGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>Framework Context</b></em>' containment reference feature.
-		 * <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTIVATION_GROUP__FRAMEWORK_CONTEXT = eINSTANCE.getActivationGroup_FrameworkContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

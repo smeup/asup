@@ -14,7 +14,6 @@ package org.smeup.sys.os.pgm.base;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -59,43 +58,23 @@ public class BaseProgramManagerImpl implements QProgramManager {
 	@Inject
 	private QActivationGroupManager activationGroupManager;
 
-	@SuppressWarnings("unused")
 	@Inject
 	private QStrings strings;
 
-	private Map<Thread, QResourceSetReader<QProgram>> programReaders;
 	private Map<String, QProgramStack> programStacks;
 
 	@PostConstruct
 	private void init() {
-		this.programReaders = new WeakHashMap<Thread, QResourceSetReader<QProgram>>();
 		this.programStacks = new HashMap<String, QProgramStack>();
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(String contextID, String library, String name, QData[] params) {
 
 		QJob job = jobManager.lookup(contextID);
-
-		QProgram program = getProgram(job, library, name);
-
-		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
-		if (activationGroup == null)
-			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
-
-		QCallableProgram<?> callableProgram = activationGroup.lookup(program);
-
-		// new program
-		if (callableProgram == null) {
-			callableProgram = loadProgram(job, program);
-			activationGroup.getPrograms().add(callableProgram);
-		}
-
-		callProgram(job, callableProgram, params);
+		callProgram(job, library, name, params);
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void callProgram(QJob job, Class<?> klass, QData[] params) {
 
@@ -103,8 +82,21 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		if (programAnnotation == null)
 			throw new OperatingSystemRuntimeException("Program class not callable: " + klass);
 
-		QProgram program = getProgram(job, null, programAnnotation.name());
+		callProgram(job, null, programAnnotation.name(), params);
+	}
 
+	@Override
+	public void callProgram(QJob job, String library, String programName, QData[] params) {
+		
+		QProgram program = getProgram(job, library, programName);
+
+		callProgram(job, program, params);		
+	}
+
+	@SuppressWarnings("resource")
+	@Override
+	public void callProgram(QJob job, QProgram program, QData[] params) {
+		
 		QActivationGroup activationGroup = activationGroupManager.lookup(job, program.getActivationGroup());
 		if (activationGroup == null)
 			activationGroup = activationGroupManager.create(job, program.getActivationGroup(), true);
@@ -116,10 +108,9 @@ public class BaseProgramManagerImpl implements QProgramManager {
 			callableProgram = loadProgram(job, program);
 			activationGroup.getPrograms().add(callableProgram);
 		}
-
+		
 		callProgram(job, callableProgram, params);
 	}
-
 	@Override
 	public QCallableProgram<?> loadProgram(QJob job, QProgram program) {
 
@@ -312,7 +303,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				if (!callableProgram.isOpen())
 					callableProgram.open();
 
-				printSendStack(job, programStack, callableProgram);
+//				printSendStack(job, programStack, callableProgram);
 
 				// call
 				callableProgram.call();
@@ -346,7 +337,7 @@ public class BaseProgramManagerImpl implements QProgramManager {
 				}
 				throw new OperatingSystemRuntimeException(e.getMessage(), e);
 			} finally {
-				printReceiveStack(job, programStack, callableProgram);
+//				printReceiveStack(job, programStack, callableProgram);
 
 				// remove program from stack
 				programStack.setDateExit(new Date());
@@ -360,20 +351,11 @@ public class BaseProgramManagerImpl implements QProgramManager {
 
 	private QProgram getProgram(QJob job, String library, String name) {
 
-		QResourceSetReader<QProgram> programReader = programReaders.get(Thread.currentThread());
-		if (programReader == null) {
-			programReader = programReaders.get(Thread.currentThread());
-			synchronized (programReaders) {
-				if (programReader == null) {
-					programReader = resourceManager.getResourceReader(job, QProgram.class, Scope.ALL);
-					programReaders.put(Thread.currentThread(), programReader);
-				}
-			}
-		}
-
 		// check program
 		if (library != null && library.equalsIgnoreCase("*LIBL"))
 			library = null;
+
+		QResourceSetReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, Scope.ALL);		
 		QProgram program = programReader.lookup(library, name);
 		if (program == null) {
 			jobLogManager.error(job, "Program not found: " + name);
@@ -383,26 +365,22 @@ public class BaseProgramManagerImpl implements QProgramManager {
 		return program;
 	}
 
-	@SuppressWarnings("unused")
 	protected void printSendStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
 		String text = "-> " + callableProgram.getProgram().getName() + " (";
 
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
-		// System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")"
-		// + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
-	@SuppressWarnings("unused")
 	protected void printReceiveStack(QJob job, QProgramStack programStack, QCallableProgram<?> callableProgram) {
 		String text = "<- " + callableProgram.getProgram().getName() + " (";
 		if (callableProgram.getEntry() != null)
 			text += formatStackParameters(callableProgram.getEntry());
 		text += ")";
 		text += callableProgram.isOpen() ? "(RT)" : "(LR)";
-		// System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")"
-		// + strings.appendChars(text, "\t", programStack.size() - 1, true));
+		System.out.println(job.getJobName() + "(" + job.getJobNumber() + ")" + strings.appendChars(text, "\t", programStack.size() - 1, true));
 	}
 
 	private String formatStackParameters(QData[] entry) {

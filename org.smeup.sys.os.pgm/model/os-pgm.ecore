@@ -11,9 +11,6 @@
     <eOperations name="remove">
       <eParameters name="program" lowerBound="1" eType="#//Program"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="frameworkContext" lowerBound="1"
-        eType="ecore:EClass ../../org.smeup.sys.il.core/model/il-core.ecore#//ctx/Context"
-        transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="programs" upperBound="-1"
         transient="true" containment="true">
@@ -105,16 +102,27 @@
     <eOperations name="callProgram">
       <eParameters name="contextID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="program" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="program" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="params" eType="#//ParameterList"/>
     </eOperations>
     <eOperations name="callProgram">
       <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
-      <eParameters name="klass">
+      <eParameters name="klass" lowerBound="1">
         <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
           <eTypeArguments/>
         </eGenericType>
       </eParameters>
+      <eParameters name="params" eType="#//ParameterList"/>
+    </eOperations>
+    <eOperations name="callProgram">
+      <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="library" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="program" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="params" eType="#//ParameterList"/>
+    </eOperations>
+    <eOperations name="callProgram">
+      <eParameters name="job" eType="ecore:EClass ../../org.smeup.sys.os.core/model/os-core.ecore#//jobs/Job"/>
+      <eParameters name="program" lowerBound="1" eType="#//Program"/>
       <eParameters name="params" eType="#//ParameterList"/>
     </eOperations>
     <eOperations name="getCaller">

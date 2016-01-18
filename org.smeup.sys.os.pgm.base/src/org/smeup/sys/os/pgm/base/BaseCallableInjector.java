@@ -115,7 +115,7 @@ public class BaseCallableInjector {
 
 			Map<String, Object> unitModules = new HashMap<String, Object>();
 			Map<String, QRecord> records = new HashMap<String, QRecord>();
-
+			
 			P delegate = injectData(null, klass, dataContainer, accessFactory, unitModules, records);
 			QProgramInfo programInfo = QOperatingSystemProgramFactory.eINSTANCE.createProgramInfo();				
 			programInfo.setMemorySize(dataContainer.getMemorySize());
@@ -124,7 +124,7 @@ public class BaseCallableInjector {
 
 			QDataContext dataContext = getDataContext();
 			dataContext.getContext().invoke(callableProgram.getRawProgram(), PostConstruct.class);
-
+			
 			return callableProgram;
 		} catch (Exception e) {
 			throw new OperatingSystemRuntimeException(e);

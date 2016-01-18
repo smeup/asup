@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.core.impl.ObjectImpl;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QCallableProgram;
@@ -31,7 +30,6 @@ import org.smeup.sys.os.pgm.QProgram;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getFrameworkContext <em>Framework Context</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.smeup.sys.os.pgm.impl.ActivationGroupImpl#getPrograms <em>Programs</em>}</li>
  * </ul>
@@ -44,17 +42,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * The cached value of the '{@link #getFrameworkContext()
-	 * <em>Framework Context</em>}' containment reference. <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 *
-	 * @see #getFrameworkContext()
-	 * @generated NOT
-	 * @ordered
-	 */
-	protected transient QContext frameworkContext;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -98,48 +85,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	protected EClass eStaticClass() {
 		return QOperatingSystemProgramPackage.Literals.ACTIVATION_GROUP;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QContext getFrameworkContext() {
-		return frameworkContext;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetFrameworkContext(QContext newFrameworkContext, NotificationChain msgs) {
-		QContext oldFrameworkContext = frameworkContext;
-		frameworkContext = newFrameworkContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT, oldFrameworkContext, newFrameworkContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFrameworkContext(QContext newFrameworkContext) {
-		if (newFrameworkContext != frameworkContext) {
-			NotificationChain msgs = null;
-			if (frameworkContext != null)
-				msgs = ((InternalEObject)frameworkContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT, null, msgs);
-			if (newFrameworkContext != null)
-				msgs = ((InternalEObject)newFrameworkContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT, null, msgs);
-			msgs = basicSetFrameworkContext(newFrameworkContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT, newFrameworkContext, newFrameworkContext));
 	}
 
 	/**
@@ -212,8 +157,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT:
-				return basicSetFrameworkContext(null, msgs);
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS:
 				return ((InternalEList<?>)getPrograms()).basicRemove(otherEnd, msgs);
 		}
@@ -227,8 +170,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT:
-				return getFrameworkContext();
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__NAME:
 				return getName();
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS:
@@ -245,9 +186,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT:
-				setFrameworkContext((QContext)newValue);
-				return;
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__NAME:
 				setName((String)newValue);
 				return;
@@ -266,9 +204,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT:
-				setFrameworkContext((QContext)null);
-				return;
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -286,8 +221,6 @@ public class ActivationGroupImpl extends ObjectImpl implements QActivationGroup 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__FRAMEWORK_CONTEXT:
-				return frameworkContext != null;
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case QOperatingSystemProgramPackage.ACTIVATION_GROUP__PROGRAMS:

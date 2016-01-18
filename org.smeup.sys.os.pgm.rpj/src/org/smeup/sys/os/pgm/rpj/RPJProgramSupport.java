@@ -11,8 +11,6 @@
  */
 package org.smeup.sys.os.pgm.rpj;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -21,6 +19,7 @@ import javax.inject.Inject;
 
 import org.smeup.sys.il.core.QThread;
 import org.smeup.sys.il.core.annotation.Overlay;
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.il.data.QArray;
 import org.smeup.sys.il.data.QBinary;
 import org.smeup.sys.il.data.QBufferedData;
@@ -48,8 +47,11 @@ import org.smeup.sys.il.data.def.DecimalType;
 import org.smeup.sys.il.esam.QDataSet;
 import org.smeup.sys.il.esam.QDisplay;
 import org.smeup.sys.il.esam.QPrint;
-import org.smeup.sys.os.core.OperatingSystemMessageException;
+import org.smeup.sys.il.memo.QResourceManager;
+import org.smeup.sys.il.memo.QResourceReader;
+import org.smeup.sys.os.core.OperatingSystemRuntimeException;
 import org.smeup.sys.os.core.jobs.QJob;
+import org.smeup.sys.os.pgm.QProgram;
 import org.smeup.sys.os.pgm.QProgramManager;
 import org.smeup.sys.os.pgm.base.BaseCallableInjector;
 import org.smeup.sys.os.pgm.base.BaseProgramStatusImpl;
@@ -60,9 +62,12 @@ public class RPJProgramSupport {
 	@Inject
 	private BaseCallableInjector injector;
 	@Inject
-	public QDataContext dataContext;
+	private QDataContext dataContext;
 	@Inject
-	public QProgramManager programManager;
+	private QProgramManager programManager;
+	@Inject
+	private QResourceManager resourceManager;
+	
 	@Inject
 	public QJob job;
 
@@ -156,8 +161,7 @@ public class RPJProgramSupport {
 	@DataDef(length = 1024)
 	public QCharacter qLDA;
 
-	QDataFiller dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
-	NumberFormat numberFormat = new DecimalFormat();
+	private QDataFiller dataFiller = QIntegratedLanguageDataFactory.eINSTANCE.createDataFiller();
 
 	public Object getProgramOwner() {
 		return this.programOwner;
@@ -318,62 +322,73 @@ public class RPJProgramSupport {
 		return indicator;
 	}
 
-	public void qCall(Class<?> program, QData[] parameters) {
-		programManager.callProgram(job, program, parameters);
-	}
-
 	public void qCall(QString program, QData[] parameters) {
-		programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
+		qCall(program.trimR(), parameters);
 	}
 
 	public void qCall(String program, QData[] parameters) {
-		try {
-			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
-		} catch (Exception e) {
-			throw new OperatingSystemMessageException("00211", e.getMessage(), 40);
-		}
+		qCall(program, parameters, (QIndicator)null);
 	}
 
 	public void qCall(QString program, QData[] parameters, QIndicator error) {
-
-		try {
-			error.eval(false);
-			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
-		} catch (RuntimeException e) {
-			error.eval(true);
-		}
+		qCall(program.trimR(), parameters, error);
 	}
 
 	public void qCall(String program, QData[] parameters, QIndicator error) {
 
 		try {
-			error.eval(false);
-			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+			if(error != null)
+				error.eval(false);
+			programManager.callProgram(job, getProgram(program.trim()), parameters);
 		} catch (RuntimeException e) {
-			error.eval(true);
+			// TODO
+			if(error != null)
+				error.eval(true);
 		}
 	}
 
 	public void qCall(QString program, QData[] parameters, String errorHandling) {
-		try {
-			qError(null).eval(false);
-			programManager.callProgram(job.getJobID(), null, program.trimR(), parameters);
-		} catch (RuntimeException e) {
-			// TODO
-			qError(null).eval(true);
-		}
+		qCall(program.trimR(), parameters, errorHandling);
 	}
 
 	public void qCall(String program, QData[] parameters, String errorHandling) {
 		try {
 			qError().eval(false);
-			programManager.callProgram(job.getJobID(), null, program.trim(), parameters);
+			programManager.callProgram(job, getProgram(program.trim()), parameters);
 		} catch (RuntimeException e) {
 			// TODO
 			qError().eval(true);
 		}
 	}
 
+	private QProgram getProgram(String name) {
+		
+		QProgram program = null;
+		
+		QContext jobContext = job.getContext();
+		RPJProgramCache programCache = jobContext.get(RPJProgramCache.class);
+		if(programCache == null) {
+			synchronized (job) {
+				programCache = jobContext.get(RPJProgramCache.class);
+				if(programCache == null) {
+					programCache = new RPJProgramCache();
+					jobContext.set(RPJProgramCache.class, programCache);
+				}
+			}
+		}
+		
+		program = programCache.get(name);
+		if(program == null) {
+			QResourceReader<QProgram> programReader = resourceManager.getResourceReader(job, QProgram.class, org.smeup.sys.il.memo.Scope.LIBRARY_LIST);
+			program = programReader.lookup(name);
+			if(program == null)
+				throw new OperatingSystemRuntimeException("Program not found: "+name);
+			programCache.put(name, program);
+		}
+		
+		return program;
+	}
+	
 	public QBufferedData qChar(QBinary numeric) {
 		return qBox(Long.toString(numeric.asLong()));
 	}
@@ -902,7 +917,7 @@ public class RPJProgramSupport {
 		if (startIndex == null)
 			startIndex = 1;
 
-		if (numElements == null || numElements == 0)
+		if (numElements == null)
 			numElements = list.capacity();
 
 		QDecimal result = null;
@@ -923,16 +938,11 @@ public class RPJProgramSupport {
 
 	private <BD extends QBufferedData> QDecimal qLookup(LookupOperator operator, BD argument, QList<BD> list, Integer startIndex, Integer numElements) {
 
-
 		if (startIndex == null)
 			startIndex = 1;
 
-//		if (numElements == null || numElements == 0)
 		if (numElements == null)
 			numElements = list.capacity();
-
-		if (numElements == 0)
-			System.err.println("Verify condition: 92378y2irfsdcs98a");
 		
 		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {
@@ -955,12 +965,8 @@ public class RPJProgramSupport {
 		if (startIndex == null)
 			startIndex = dataContext.getDataFactory().createDecimal(5, 0, DecimalType.ZONED, true).plus(1);
 
-//		if (numElements == null || numElements == 0)
 		if (numElements == null)
 			numElements = list.capacity();
-
-		if (numElements == 0)
-			System.err.println("Verify condition: 92378y2irfsdcs98b");
 		
 		QDecimal result = null;
 		for (int i = startIndex.i(); i <= numElements; i++) {
@@ -985,12 +991,8 @@ public class RPJProgramSupport {
 		if (startIndex == null)
 			startIndex = 1;
 
-//		if (numElements == null || numElements == 0)
 		if (numElements == null)
 			numElements = list.capacity();
-
-		if (numElements == 0)
-			System.err.println("Verify condition: 92378y2irfsdcs98c");
 
 		QDecimal result = null;
 		for (int i = startIndex; i <= numElements; i++) {

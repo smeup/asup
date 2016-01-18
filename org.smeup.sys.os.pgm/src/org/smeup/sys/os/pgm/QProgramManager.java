@@ -23,7 +23,7 @@ public interface QProgramManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model paramsDataType="org.smeup.sys.os.pgm.ParameterList"
+	 * @model programRequired="true" paramsDataType="org.smeup.sys.os.pgm.ParameterList"
 	 * @generated
 	 */
 	void callProgram(String contextID, String library, String program, QData[] params);
@@ -31,10 +31,26 @@ public interface QProgramManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model paramsDataType="org.smeup.sys.os.pgm.ParameterList"
+	 * @model klassRequired="true" paramsDataType="org.smeup.sys.os.pgm.ParameterList"
 	 * @generated
 	 */
 	void callProgram(QJob job, Class<?> klass, QData[] params);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model programRequired="true" paramsDataType="org.smeup.sys.os.pgm.ParameterList"
+	 * @generated
+	 */
+	void callProgram(QJob job, String library, String program, QData[] params);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model programRequired="true" paramsDataType="org.smeup.sys.os.pgm.ParameterList"
+	 * @generated
+	 */
+	void callProgram(QJob job, QProgram program, QData[] params);
 
 	/**
 	 * <!-- begin-user-doc -->

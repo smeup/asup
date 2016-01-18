@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.smeup.sys.il.core.QIntegratedLanguageCorePackage;
-import org.smeup.sys.il.core.ctx.QIntegratedLanguageCoreCtxPackage;
 import org.smeup.sys.il.data.QData;
 import org.smeup.sys.il.data.QIntegratedLanguageDataPackage;
 import org.smeup.sys.mi.core.QMachineInterfaceCorePackage;
@@ -189,17 +188,8 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 * @generated
 	 */
 	@Override
-	public EReference getActivationGroup_FrameworkContext() {
-		return (EReference)activationGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getActivationGroup_Name() {
-		return (EAttribute)activationGroupEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)activationGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -208,7 +198,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 	 */
 	@Override
 	public EReference getActivationGroup_Programs() {
-		return (EReference)activationGroupEClass.getEStructuralFeatures().get(2);
+		return (EReference)activationGroupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -438,7 +428,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		// Create classes and their features
 		activationGroupEClass = createEClass(ACTIVATION_GROUP);
-		createEReference(activationGroupEClass, ACTIVATION_GROUP__FRAMEWORK_CONTEXT);
 		createEAttribute(activationGroupEClass, ACTIVATION_GROUP__NAME);
 		createEReference(activationGroupEClass, ACTIVATION_GROUP__PROGRAMS);
 
@@ -500,7 +489,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		// Obtain other dependent packages
 		QIntegratedLanguageCorePackage theIntegratedLanguageCorePackage = (QIntegratedLanguageCorePackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCorePackage.eNS_URI);
-		QIntegratedLanguageCoreCtxPackage theIntegratedLanguageCoreCtxPackage = (QIntegratedLanguageCoreCtxPackage)EPackage.Registry.INSTANCE.getEPackage(QIntegratedLanguageCoreCtxPackage.eNS_URI);
 		QMachineInterfaceUtilPackage theMachineInterfaceUtilPackage = (QMachineInterfaceUtilPackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceUtilPackage.eNS_URI);
 		QOperatingSystemJobsPackage theOperatingSystemJobsPackage = (QOperatingSystemJobsPackage)EPackage.Registry.INSTANCE.getEPackage(QOperatingSystemJobsPackage.eNS_URI);
 		QMachineInterfaceCorePackage theMachineInterfaceCorePackage = (QMachineInterfaceCorePackage)EPackage.Registry.INSTANCE.getEPackage(QMachineInterfaceCorePackage.eNS_URI);
@@ -540,7 +528,6 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(activationGroupEClass, QActivationGroup.class, "ActivationGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getActivationGroup_FrameworkContext(), theIntegratedLanguageCoreCtxPackage.getContext(), null, "frameworkContext", null, 1, 1, QActivationGroup.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getActivationGroup_Name(), ecorePackage.getEString(), "name", null, 1, 1, QActivationGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getCallableProgram());
 		g2 = createEGenericType();
@@ -620,7 +607,7 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		op = addEOperation(programManagerEClass, null, "callProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "contextID", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "library", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "program", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(programManagerEClass, null, "callProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -628,7 +615,18 @@ public class OperatingSystemProgramPackageImpl extends EPackageImpl implements Q
 		g1 = createEGenericType(ecorePackage.getEJavaClass());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "klass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, g1, "klass", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(programManagerEClass, null, "callProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "library", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(programManagerEClass, null, "callProgram", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOperatingSystemJobsPackage.getJob(), "job", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getProgram(), "program", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getParameterList(), "params", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(programManagerEClass, null, "getCaller", 0, 1, IS_UNIQUE, IS_ORDERED);

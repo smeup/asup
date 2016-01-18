@@ -12,19 +12,16 @@
 package org.smeup.sys.os.pgm.base;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.WeakHashMap;
 
+import org.smeup.sys.il.core.ctx.QContext;
 import org.smeup.sys.os.core.jobs.QJob;
 import org.smeup.sys.os.pgm.QActivationGroup;
 import org.smeup.sys.os.pgm.QActivationGroupManager;
 import org.smeup.sys.os.pgm.QOperatingSystemProgramFactory;
 
 public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
-
-	private Map<QJob, Map<String, QActivationGroup>> contextToMapActivationGroup = new WeakHashMap<QJob, Map<String, QActivationGroup>>();
 
 	@Override
 	public void register(QJob job, QActivationGroup activationGroup) {
@@ -38,14 +35,19 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 
 	protected Map<String, QActivationGroup> getMapActivationGroup(QJob job) {
 
-		// retrieve job activation groups
-		Map<String, QActivationGroup> mapActivationGroup = contextToMapActivationGroup.get(job);
-		if (mapActivationGroup == null) {
-			mapActivationGroup = new HashMap<String, QActivationGroup>();
-			contextToMapActivationGroup.put(job, mapActivationGroup);
+		QContext jobContext = job.getContext();
+		BaseActivationGroupCache activationGroupCache = jobContext.get(BaseActivationGroupCache.class);
+		if(activationGroupCache == null) {
+			synchronized (job) {
+				activationGroupCache = jobContext.get(BaseActivationGroupCache.class);
+				if(activationGroupCache == null) {
+					activationGroupCache = new BaseActivationGroupCache();
+					jobContext.set(BaseActivationGroupCache.class, activationGroupCache);
+				}
+			}
 		}
 
-		return mapActivationGroup;
+		return activationGroupCache;
 	}
 
 	@Override
@@ -54,14 +56,12 @@ public class BaseActivationGroupManagerImpl implements QActivationGroupManager {
 		// create
 		QActivationGroup activationGroup = QOperatingSystemProgramFactory.eINSTANCE.createActivationGroup();
 		activationGroup.setName(name);
-		activationGroup.setFrameworkContext(job.getContext().createChildContext(job.getJobName() + "/" + name));
 
 		// register on job
 		if (register)
 			register(job, activationGroup);
 
 		return activationGroup;
-
 	}
 
 	@Override
